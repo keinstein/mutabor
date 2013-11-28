@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d2/ddd/structyytbl__dmap" kind="struct" prot="public">
+    <compoundname>yytbl_dmap</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d2/ddd/structyytbl__dmap_1a84f4e055b9daed633e8a72dd1b328308" prot="public" static="no" mutable="no">
+        <type>enum <ref refid="d5/d4b/mutlex_8c_1a7ac151ad0d3fb8135ec0691984f31b41" kindref="member">yytbl_id</ref></type>
+        <definition>enum yytbl_id yytbl_dmap::dm_id</definition>
+        <argsstring></argsstring>
+        <name>dm_id</name>
+        <briefdescription>
+<para>table identifier </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" line="867" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" bodystart="905" bodyend="-1"/>
+        <referencedby refid="da/d43/libmutabor_2mutlex_8h_1a45c2cfa859b01e6bbe6197132a3149e1" compoundref="d5/d4b/mutlex_8c" startline="2945" endline="2962">mutabor_parser_tables_destroy</referencedby>
+        <referencedby refid="d5/d4b/mutlex_8c_1ac8a0b2f815503ad3c2f5a780e0f9a1e2" compoundref="d5/d4b/mutlex_8c" startline="2663" endline="2671">yytbl_dmap_lookup</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/ddd/structyytbl__dmap_1a8d1237e0a6ba3c389129c9e030a7e0c5" prot="public" static="no" mutable="no">
+        <type>void **</type>
+        <definition>void** yytbl_dmap::dm_arr</definition>
+        <argsstring></argsstring>
+        <name>dm_arr</name>
+        <briefdescription>
+<para>address of pointer to store the deserialized table. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" line="906" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" bodystart="906" bodyend="-1"/>
+        <referencedby refid="da/d43/libmutabor_2mutlex_8h_1a45c2cfa859b01e6bbe6197132a3149e1" compoundref="d5/d4b/mutlex_8c" startline="2945" endline="2962">mutabor_parser_tables_destroy</referencedby>
+        <referencedby refid="d5/d4b/mutlex_8c_1a53bcdbf8647191e35ac4f83d19715edf" compoundref="d5/d4b/mutlex_8c" startline="2677" endline="2881">yytbl_data_load</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/ddd/structyytbl__dmap_1a3ae3cc9a6c52cf25720981d0b964b627" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t yytbl_dmap::dm_sz</definition>
+        <argsstring></argsstring>
+        <name>dm_sz</name>
+        <briefdescription>
+<para>local sizeof() each element in table. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" line="907" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" bodystart="907" bodyend="-1"/>
+        <referencedby refid="d5/d4b/mutlex_8c_1a53bcdbf8647191e35ac4f83d19715edf" compoundref="d5/d4b/mutlex_8c" startline="2677" endline="2881">yytbl_data_load</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Describes a mapping from a serialized table id to its deserialized state in this scanner. </para>    </briefdescription>
+    <detaileddescription>
+<para>This is the bridge between our &quot;generic&quot; deserialization code and the specifics of this scanner. </para>    </detaileddescription>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" line="904" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" bodystart="904" bodyend="908"/>
+    <listofallmembers>
+      <member refid="d2/ddd/structyytbl__dmap_1a8d1237e0a6ba3c389129c9e030a7e0c5" prot="public" virt="non-virtual"><scope>yytbl_dmap</scope><name>dm_arr</name></member>
+      <member refid="d2/ddd/structyytbl__dmap_1a84f4e055b9daed633e8a72dd1b328308" prot="public" virt="non-virtual"><scope>yytbl_dmap</scope><name>dm_id</name></member>
+      <member refid="d2/ddd/structyytbl__dmap_1a3ae3cc9a6c52cf25720981d0b964b627" prot="public" virt="non-virtual"><scope>yytbl_dmap</scope><name>dm_sz</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d1/dea/classmutaborGUI_1_1MutSTCLexer" kind="class" prot="public">
+    <compoundname>mutaborGUI::MutSTCLexer</compoundname>
+    <includes refid="d1/de5/stclanguage_8h" local="no">stclanguage.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9a" prot="public" static="no">
+        <name>States</name>
+        <enumvalue id="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa18aa80f9c7eae109714428f6f8d96f4f" prot="public">
+          <name>DEFAULT</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa9108d0e77ee4a31b856f8cbdaf8817a1" prot="public">
+          <name>IDENTIFIER</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa130a8a6c4075baf4c514d5556889b28e" prot="public">
+          <name>SECTIONKEYWORD</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa9c6b08db335cd838df4d71c304f47986" prot="public">
+          <name>OPERATOR</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa396b03fe4d1ab7de2e2914028b773ef6" prot="public">
+          <name>RESERVEDWORD</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa55d6c9c718bbe7d5371d947eede915e3" prot="public">
+          <name>DELIMITER</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aaf0207672dc18cc2307a7e9b8c4924df8" prot="public">
+          <name>COMMENT</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa0aa8a6eea259f7e2a5af85a768a699c4" prot="public">
+          <name>NUMBER</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa788ea6ccfd09f873b481e530104abc30" prot="public">
+          <name>PARAMETER</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa019a8cfacb14e2b37a0c20a23e78a1fa" prot="public">
+          <name>OTHER</name>
+          <initializer>= 9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa488a8cfde98fc85135069def29570609" prot="public">
+          <name>ERROR</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa926b59f8d442b37837ab5544ed975f57" prot="public">
+          <name>BRACE</name>
+          <initializer>= 11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="215" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="215" bodyend="228"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a4213eaf54322dafc8fc44af0e6b80ea5" prot="protected" static="no" mutable="no">
+        <type>wxStyledTextCtrl *</type>
+        <definition>wxStyledTextCtrl* mutaborGUI::MutSTCLexer::editor</definition>
+        <argsstring></argsstring>
+        <name>editor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="233" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="233" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d1/dea/classmutaborGUI_1_1MutSTCLexer_1aa0fa0411034be6c5334787c7f56b12ae" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutaborGUI::MutSTCLexer::MutSTCLexer</definition>
+        <argsstring>(wxStyledTextCtrl *e)</argsstring>
+        <name>MutSTCLexer</name>
+        <param>
+          <type>wxStyledTextCtrl *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="230" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="230" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a30e777b67eb50a9c08427266b9bd08c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutSTCLexer::OnStyleNeeded</definition>
+        <argsstring>(wxStyledTextEvent &amp;event)</argsstring>
+        <name>OnStyleNeeded</name>
+        <param>
+          <type>wxStyledTextEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="231" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.cpp" bodystart="368" bodyend="568"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d0/df6/classmutabor_1_1mutabor__lexer_1af53e52611293bc67ba01ca619f90054a" compoundref="db/d15/mutlex_8h" startline="92" endline="92">mutabor::mutabor_lexer::free_identifier</references>
+        <references refid="d1/de1/Mut__Tab_8cpp_1a45734d64ac1283048289925ad7b30dfe" compoundref="d1/de1/Mut__Tab_8cpp" startline="4">IDENTIFIER</references>
+        <references refid="df/d33/mut_8cc_1a82ba2f7498f79e347cc81dea98a7e2c1" compoundref="df/d33/mut_8cc" startline="200">MUTABOR_TOKEN_ANCHOR</references>
+        <references refid="df/d33/mut_8cc_1a1d123df35bccfd2914d66a77776672fc" compoundref="df/d33/mut_8cc" startline="197">MUTABOR_TOKEN_CALLS</references>
+        <references refid="df/d33/mut_8cc_1a9928d70e291367b5c7820a8d10027588" compoundref="df/d33/mut_8cc" startline="205">MUTABOR_TOKEN_COMMENT</references>
+        <references refid="df/d33/mut_8cc_1a2c32e47c19107d66dedf8598c63e60d1" compoundref="df/d33/mut_8cc" startline="207">MUTABOR_TOKEN_COMMENT_END</references>
+        <references refid="df/d33/mut_8cc_1a2f4deafe036725d63bfc1b2759044608" compoundref="df/d33/mut_8cc" startline="206">MUTABOR_TOKEN_COMMENT_START</references>
+        <references refid="df/d33/mut_8cc_1a1e5a318cdc097558bc72fb14523727eb" compoundref="df/d33/mut_8cc" startline="201">MUTABOR_TOKEN_DISTANCE</references>
+        <references refid="df/d33/mut_8cc_1a3c325ef76ade79cde57531d899d4931b" compoundref="df/d33/mut_8cc" startline="198">MUTABOR_TOKEN_ELSE</references>
+        <references refid="df/d33/mut_8cc_1ac180ed55d564de35f1c82c88dec1a7ce" compoundref="df/d33/mut_8cc" startline="202">MUTABOR_TOKEN_ENDOFFILE</references>
+        <references refid="df/d33/mut_8cc_1affb6deaac9468699fa8e68a55bd4d9ef" compoundref="df/d33/mut_8cc" startline="203">MUTABOR_TOKEN_ERROR</references>
+        <references refid="df/d33/mut_8cc_1a45f5d6d40e3abea87a5941b0056234aa" compoundref="df/d33/mut_8cc" startline="182">MUTABOR_TOKEN_F_NUMBER</references>
+        <references refid="df/d33/mut_8cc_1a7ff5a6d8c2a7ab27b050f90e4f3d4589" compoundref="df/d33/mut_8cc" startline="192">MUTABOR_TOKEN_FORM</references>
+        <references refid="df/d33/mut_8cc_1a6ef55fbbf39a92becc360d6a4ab9d0f2" compoundref="df/d33/mut_8cc" startline="188">MUTABOR_TOKEN_HARMONY</references>
+        <references refid="df/d33/mut_8cc_1a0d72fb8dd436cba2bba26a18e220f6d3" compoundref="df/d33/mut_8cc" startline="196">MUTABOR_TOKEN_HARMONY_ANALYSIS</references>
+        <references refid="df/d33/mut_8cc_1afab30a2b83d2de70bb5b6950073d9436" compoundref="df/d33/mut_8cc" startline="181">MUTABOR_TOKEN_IDENTIFIER</references>
+        <references refid="df/d33/mut_8cc_1aee9421b95d46262a12f2eab723748a3e" compoundref="df/d33/mut_8cc" startline="183">MUTABOR_TOKEN_INTEGER</references>
+        <references refid="df/d33/mut_8cc_1a86dcb2c0f62a6efc11cee23029937277" compoundref="df/d33/mut_8cc" startline="184">MUTABOR_TOKEN_INTERVAL</references>
+        <references refid="df/d33/mut_8cc_1ad04b0b44942731afe6bd2ec58dde5f02" compoundref="df/d33/mut_8cc" startline="191">MUTABOR_TOKEN_KEY</references>
+        <references refid="df/d33/mut_8cc_1ae5ba2a8e5c1748bb6acbf6ddf1647d52" compoundref="df/d33/mut_8cc" startline="189">MUTABOR_TOKEN_LOGIC</references>
+        <references refid="df/d33/mut_8cc_1a28548fb40e01028502e454a8d609496a" compoundref="df/d33/mut_8cc" startline="194">MUTABOR_TOKEN_MIDI_IN</references>
+        <references refid="df/d33/mut_8cc_1a7df9c20e185856ecb0952b9749495ba2" compoundref="df/d33/mut_8cc" startline="195">MUTABOR_TOKEN_MIDI_OUT</references>
+        <references refid="df/d33/mut_8cc_1ae312dfebe81598d0f9762703345ccc28" compoundref="df/d33/mut_8cc" startline="190">MUTABOR_TOKEN_MIDICHANNEL</references>
+        <references refid="df/d33/mut_8cc_1a0a6e4f442093223f5d85044945d4d91d" compoundref="df/d33/mut_8cc" startline="208">MUTABOR_TOKEN_OTHER</references>
+        <references refid="df/d33/mut_8cc_1a8bf001e71de46ff3b91e93b465c369d3" compoundref="df/d33/mut_8cc" startline="199">MUTABOR_TOKEN_PARAMETER</references>
+        <references refid="df/d33/mut_8cc_1af8cce028dac21602620da61df1b6dfda" compoundref="df/d33/mut_8cc" startline="187">MUTABOR_TOKEN_RETUNING</references>
+        <references refid="df/d33/mut_8cc_1a6b122787c40075849163b73ca9fdd0aa" compoundref="df/d33/mut_8cc" startline="193">MUTABOR_TOKEN_ROOT</references>
+        <references refid="df/d33/mut_8cc_1a1db62ca03eaf420b6c02c1a853e228eb" compoundref="df/d33/mut_8cc" startline="204">MUTABOR_TOKEN_SPACES</references>
+        <references refid="df/d33/mut_8cc_1a63b2a3f7bd37f14f94e1a3df717fd0f8" compoundref="df/d33/mut_8cc" startline="185">MUTABOR_TOKEN_TONE</references>
+        <references refid="df/d33/mut_8cc_1ac542b38bc09dd028a0060d778d467b20" compoundref="df/d33/mut_8cc" startline="186">MUTABOR_TOKEN_TONESYSTEM</references>
+        <references refid="d0/df6/classmutabor_1_1mutabor__lexer_1a6c1fb2469053ed3ef5bf7553b48147f2">mutabor::mutabor_lexer::yylex</references>
+        <referencedby refid="df/dd1/group__GUI_1ga2e1e2c5dea8e42fcc858b701007349ed" compoundref="d1/da4/MutEditFile_8cpp" startline="1002" endline="1004">mutaborGUI::MutEditFile::OnStyleNeeded</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="d1/dea/classmutaborGUI_1_1MutSTCLexer_1aee5ea6f87755d1016abec5f4acc64645" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutaborGUI::MutSTCLexer::SetStyling</definition>
+        <argsstring>(int style, int pos, int len)</argsstring>
+        <name>SetStyling</name>
+        <param>
+          <type>int</type>
+          <declname>style</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="235" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.cpp" bodystart="570" bodyend="593"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="213" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="213" bodyend="236"/>
+    <listofallmembers>
+      <member refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa926b59f8d442b37837ab5544ed975f57" prot="public" virt="non-virtual"><scope>mutaborGUI::MutSTCLexer</scope><name>BRACE</name></member>
+      <member refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aaf0207672dc18cc2307a7e9b8c4924df8" prot="public" virt="non-virtual"><scope>mutaborGUI::MutSTCLexer</scope><name>COMMENT</name></member>
+      <member refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa18aa80f9c7eae109714428f6f8d96f4f" prot="public" virt="non-virtual"><scope>mutaborGUI::MutSTCLexer</scope><name>DEFAULT</name></member>
+      <member refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa55d6c9c718bbe7d5371d947eede915e3" prot="public" virt="non-virtual"><scope>mutaborGUI::MutSTCLexer</scope><name>DELIMITER</name></member>
+      <member refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a4213eaf54322dafc8fc44af0e6b80ea5" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutSTCLexer</scope><name>editor</name></member>
+      <member refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa488a8cfde98fc85135069def29570609" prot="public" virt="non-virtual"><scope>mutaborGUI::MutSTCLexer</scope><name>ERROR</name></member>
+      <member refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa9108d0e77ee4a31b856f8cbdaf8817a1" prot="public" virt="non-virtual"><scope>mutaborGUI::MutSTCLexer</scope><name>IDENTIFIER</name></member>
+      <member refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1aa0fa0411034be6c5334787c7f56b12ae" prot="public" virt="non-virtual"><scope>mutaborGUI::MutSTCLexer</scope><name>MutSTCLexer</name></member>
+      <member refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa0aa8a6eea259f7e2a5af85a768a699c4" prot="public" virt="non-virtual"><scope>mutaborGUI::MutSTCLexer</scope><name>NUMBER</name></member>
+      <member refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a30e777b67eb50a9c08427266b9bd08c9" prot="public" virt="non-virtual"><scope>mutaborGUI::MutSTCLexer</scope><name>OnStyleNeeded</name></member>
+      <member refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa9c6b08db335cd838df4d71c304f47986" prot="public" virt="non-virtual"><scope>mutaborGUI::MutSTCLexer</scope><name>OPERATOR</name></member>
+      <member refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa019a8cfacb14e2b37a0c20a23e78a1fa" prot="public" virt="non-virtual"><scope>mutaborGUI::MutSTCLexer</scope><name>OTHER</name></member>
+      <member refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa788ea6ccfd09f873b481e530104abc30" prot="public" virt="non-virtual"><scope>mutaborGUI::MutSTCLexer</scope><name>PARAMETER</name></member>
+      <member refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa396b03fe4d1ab7de2e2914028b773ef6" prot="public" virt="non-virtual"><scope>mutaborGUI::MutSTCLexer</scope><name>RESERVEDWORD</name></member>
+      <member refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa130a8a6c4075baf4c514d5556889b28e" prot="public" virt="non-virtual"><scope>mutaborGUI::MutSTCLexer</scope><name>SECTIONKEYWORD</name></member>
+      <member refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1aee5ea6f87755d1016abec5f4acc64645" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutSTCLexer</scope><name>SetStyling</name></member>
+      <member refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9a" prot="public" virt="non-virtual"><scope>mutaborGUI::MutSTCLexer</scope><name>States</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

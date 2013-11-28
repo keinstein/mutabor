@@ -1,0 +1,583 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d3/d85/classmutabor_1_1channel__queue__template" kind="class" prot="public">
+    <compoundname>mutabor::channel_queue_template</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::vector&lt; T &gt;</basecompoundref>
+    <includes refid="de/d21/midicmn_8h" local="no">midicmn.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>T</declname>
+        <defname>T</defname>
+        <defval><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></defval>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>count</declname>
+        <defname>count</defname>
+        <defval>16</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="d3/d85/classmutabor_1_1channel__queue__template_1a6766f712a893339961f8ff6b24dc467a" prot="public" static="no">
+        <type>std::vector&lt; T &gt;</type>
+        <definition>typedef std::vector&lt;T&gt; mutabor::channel_queue_template&lt; T, count &gt;::basetype</definition>
+        <argsstring></argsstring>
+        <name>basetype</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="61" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" prot="public" static="no">
+        <type>basetype::iterator</type>
+        <definition>typedef basetype::iterator mutabor::channel_queue_template&lt; T, count &gt;::iterator</definition>
+        <argsstring></argsstring>
+        <name>iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="62" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="d3/d85/classmutabor_1_1channel__queue__template_1aa6c55eeafed419b40dfb9248cc22560f" prot="public" static="no">
+        <type>basetype::const_iterator</type>
+        <definition>typedef basetype::const_iterator mutabor::channel_queue_template&lt; T, count &gt;::const_iterator</definition>
+        <argsstring></argsstring>
+        <name>const_iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="63" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d3/d85/classmutabor_1_1channel__queue__template_1a3b31a67f8bc715d420e3d2521378f696" prot="protected" static="no" mutable="no">
+        <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+        <definition>iterator mutabor::channel_queue_template&lt; T, count &gt;::first_free</definition>
+        <argsstring></argsstring>
+        <name>first_free</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="236" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="236" bodyend="-1"/>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a5b08a59e389f73e83a21645cd7cc7167" compoundref="de/d21/midicmn_8h" startline="176" endline="192">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::free_channel</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1ac99b2c157e90626cad92149a522d5f85" compoundref="de/d21/midicmn_8h" startline="232" endline="232">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::get_first_free</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a596fb3a38bf50ad7530b8072d147efcd" compoundref="de/d21/midicmn_8h" startline="75" endline="82">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::init</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a0c8aa257a77fe16b451ca04cb0347dd5" compoundref="de/d21/midicmn_8h" startline="128" endline="146">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::reserve_channel</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a58b16f964d758b6cae49734f62a39218" compoundref="de/d21/midicmn_8h" startline="123" endline="126">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::reserve_channel_filtered</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a53b64b56b272d20e70998989a614298d" compoundref="de/d21/midicmn_8h" startline="211" endline="222">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::sustain_channel</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d3/d85/classmutabor_1_1channel__queue__template_1a3e83418db64528a00342949cdb295e3a" prot="protected" static="no" mutable="no">
+        <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+        <definition>iterator mutabor::channel_queue_template&lt; T, count &gt;::last_sustained</definition>
+        <argsstring></argsstring>
+        <name>last_sustained</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="237" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="237" bodyend="-1"/>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a5b08a59e389f73e83a21645cd7cc7167" compoundref="de/d21/midicmn_8h" startline="176" endline="192">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::free_channel</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1af54dd13e76ca639c53ae0b932825a0e1" compoundref="de/d21/midicmn_8h" startline="233" endline="233">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::get_last_sustained</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a596fb3a38bf50ad7530b8072d147efcd" compoundref="de/d21/midicmn_8h" startline="75" endline="82">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::init</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a0c8aa257a77fe16b451ca04cb0347dd5" compoundref="de/d21/midicmn_8h" startline="128" endline="146">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::reserve_channel</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a53b64b56b272d20e70998989a614298d" compoundref="de/d21/midicmn_8h" startline="211" endline="222">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::sustain_channel</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d3/d85/classmutabor_1_1channel__queue__template_1ab93492ba8817825b45ccf3b7b0dae3e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::channel_queue_template&lt; T, count &gt;::channel_queue_template</definition>
+        <argsstring>(T size=count)</argsstring>
+        <name>channel_queue_template</name>
+        <param>
+          <type>T</type>
+          <declname>size</declname>
+          <defval>count</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="68" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="68" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d85/classmutabor_1_1channel__queue__template_1a596fb3a38bf50ad7530b8072d147efcd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::channel_queue_template&lt; T, count &gt;::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="75" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="75" bodyend="82"/>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1ab93492ba8817825b45ccf3b7b0dae3e1" compoundref="de/d21/midicmn_8h" startline="68" endline="72">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::channel_queue_template</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d3/d85/classmutabor_1_1channel__queue__template_1acc6cf0321c8e338b910046ed11572abe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+        <definition>iterator mutabor::channel_queue_template&lt; T, count &gt;::find_channel</definition>
+        <argsstring>(T nr)</argsstring>
+        <name>find_channel</name>
+        <param>
+          <type>T</type>
+          <declname>nr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="84" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="84" bodyend="86"/>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a81d5a9df0b7bcf6bba6f71aba9f1ceaa" compoundref="de/d21/midicmn_8h" startline="167" endline="169">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::free_channel</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a7b47ec43e04191c6786a1fb2c47da598" compoundref="de/d21/midicmn_8h" startline="157" endline="159">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::reserve_channel</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1ac510b1741728f83742e16ae7cd13a42d" compoundref="de/d21/midicmn_8h" startline="200" endline="204">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::sustain_channel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d3/d85/classmutabor_1_1channel__queue__template_1a790ae9f3f28d449eb1c3729343f6ba20" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1aa6c55eeafed419b40dfb9248cc22560f" kindref="member">const_iterator</ref></type>
+        <definition>const_iterator mutabor::channel_queue_template&lt; T, count &gt;::find_channel</definition>
+        <argsstring>(T nr) const </argsstring>
+        <name>find_channel</name>
+        <param>
+          <type>T</type>
+          <declname>nr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="88" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="88" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d85/classmutabor_1_1channel__queue__template_1a9384420f74845a6b95840aae5bfa7e14" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+        <definition>iterator mutabor::channel_queue_template&lt; T, count &gt;::find_matching_channel</definition>
+        <argsstring>(iterator start, F filter)</argsstring>
+        <name>find_matching_channel</name>
+        <param>
+          <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>F</type>
+          <declname>filter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="94" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="94" bodyend="106"/>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a58b16f964d758b6cae49734f62a39218" compoundref="de/d21/midicmn_8h" startline="123" endline="126">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::reserve_channel_filtered</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d3/d85/classmutabor_1_1channel__queue__template_1a58b16f964d758b6cae49734f62a39218" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1aa6c55eeafed419b40dfb9248cc22560f" kindref="member">const_iterator</ref></type>
+        <definition>const_iterator mutabor::channel_queue_template&lt; T, count &gt;::reserve_channel_filtered</definition>
+        <argsstring>(F filter)</argsstring>
+        <name>reserve_channel_filtered</name>
+        <param>
+          <type>F</type>
+          <declname>filter</declname>
+        </param>
+        <briefdescription>
+<para>Reserves the first free channel. </para>        </briefdescription>
+        <detaileddescription>
+<para>That is usually the longest unused one.</para><para><simplesect kind="note"><para>This can change if certain Channels are registered to be sustained. In that case they are postponed until no channels are availlable anymore.</para></simplesect>
+Sustaining is <emphasis>not</emphasis> handled by this class.</para><para><simplesect kind="return"><para>number of the first free channel </para></simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>end()</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if no free or sustained channel can be found </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="123" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="123" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d85/classmutabor_1_1channel__queue__template_1a0c8aa257a77fe16b451ca04cb0347dd5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+        <definition>iterator mutabor::channel_queue_template&lt; T, count &gt;::reserve_channel</definition>
+        <argsstring>(iterator actual)</argsstring>
+        <name>reserve_channel</name>
+        <param>
+          <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+          <declname>actual</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="128" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="128" bodyend="146"/>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a7b47ec43e04191c6786a1fb2c47da598" compoundref="de/d21/midicmn_8h" startline="157" endline="159">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::reserve_channel</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a58b16f964d758b6cae49734f62a39218" compoundref="de/d21/midicmn_8h" startline="123" endline="126">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::reserve_channel_filtered</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d3/d85/classmutabor_1_1channel__queue__template_1a7b47ec43e04191c6786a1fb2c47da598" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+        <definition>iterator mutabor::channel_queue_template&lt; T, count &gt;::reserve_channel</definition>
+        <argsstring>(T nr)</argsstring>
+        <name>reserve_channel</name>
+        <param>
+          <type>T</type>
+          <declname>nr</declname>
+        </param>
+        <briefdescription>
+<para>Forcibly reserve given channel regardless of its state. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function is used if there are no free channels left and the system frees a channel depending on semantic data.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="d3/dfe/structChannel" kindref="compound">Channel</ref> to be reserved</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>iterator to the channel. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="157" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="157" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d85/classmutabor_1_1channel__queue__template_1a81d5a9df0b7bcf6bba6f71aba9f1ceaa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::channel_queue_template&lt; T, count &gt;::free_channel</definition>
+        <argsstring>(T nr)</argsstring>
+        <name>free_channel</name>
+        <param>
+          <type>T</type>
+          <declname>nr</declname>
+        </param>
+        <briefdescription>
+<para>Find and free a channel. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>the channel must not be freed already.</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="d3/dfe/structChannel" kindref="compound">Channel</ref> to bee freed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="167" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="167" bodyend="169"/>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a81d5a9df0b7bcf6bba6f71aba9f1ceaa" compoundref="de/d21/midicmn_8h" startline="167" endline="169">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::free_channel</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a8df70721c429a70032de1eb3f5a6ae34" compoundref="de/d21/midicmn_8h" startline="228" endline="230">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::unsustain_channel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d3/d85/classmutabor_1_1channel__queue__template_1a5b08a59e389f73e83a21645cd7cc7167" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::channel_queue_template&lt; T, count &gt;::free_channel</definition>
+        <argsstring>(iterator current)</argsstring>
+        <name>free_channel</name>
+        <param>
+          <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+          <declname>current</declname>
+        </param>
+        <briefdescription>
+<para>Mark a channel to be free. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>current</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>iterator pointing to the channel to be regarded as free. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="176" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="176" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d85/classmutabor_1_1channel__queue__template_1ac510b1741728f83742e16ae7cd13a42d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::channel_queue_template&lt; T, count &gt;::sustain_channel</definition>
+        <argsstring>(T nr, bool sustain=true)</argsstring>
+        <name>sustain_channel</name>
+        <param>
+          <type>T</type>
+          <declname>nr</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>sustain</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Find and sustain a channel. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>the channel must not be sustaind already.</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="d3/dfe/structChannel" kindref="compound">Channel</ref> to bee sustaind. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="200" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="200" bodyend="204"/>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1ac510b1741728f83742e16ae7cd13a42d" compoundref="de/d21/midicmn_8h" startline="200" endline="204">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::sustain_channel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d3/d85/classmutabor_1_1channel__queue__template_1a53b64b56b272d20e70998989a614298d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+        <definition>iterator mutabor::channel_queue_template&lt; T, count &gt;::sustain_channel</definition>
+        <argsstring>(iterator current)</argsstring>
+        <name>sustain_channel</name>
+        <param>
+          <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+          <declname>current</declname>
+        </param>
+        <briefdescription>
+<para>Mark a channel to be sustained. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>current</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>iterator pointing to the channel to be regarded as sustained. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="211" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="211" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d85/classmutabor_1_1channel__queue__template_1a8df70721c429a70032de1eb3f5a6ae34" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::channel_queue_template&lt; T, count &gt;::unsustain_channel</definition>
+        <argsstring>(iterator current)</argsstring>
+        <name>unsustain_channel</name>
+        <param>
+          <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+          <declname>current</declname>
+        </param>
+        <briefdescription>
+<para>Unmark channel to be sustained;. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>current</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>iterator pointing to the channel to be regarded as sustained. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="228" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="228" bodyend="230"/>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1ac510b1741728f83742e16ae7cd13a42d" compoundref="de/d21/midicmn_8h" startline="200" endline="204">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::sustain_channel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d3/d85/classmutabor_1_1channel__queue__template_1ac99b2c157e90626cad92149a522d5f85" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+        <definition>iterator mutabor::channel_queue_template&lt; T, count &gt;::get_first_free</definition>
+        <argsstring>()</argsstring>
+        <name>get_first_free</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="232" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="232" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d85/classmutabor_1_1channel__queue__template_1af54dd13e76ca639c53ae0b932825a0e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+        <definition>iterator mutabor::channel_queue_template&lt; T, count &gt;::get_last_sustained</definition>
+        <argsstring>()</argsstring>
+        <name>get_last_sustained</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="233" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="233" bodyend="233"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="d3/d85/classmutabor_1_1channel__queue__template_1a0f561bb18a34e4637b61859c66c72e55" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::channel_queue_template&lt; T, count &gt;::move_to_end</definition>
+        <argsstring>(iterator current, iterator end)</argsstring>
+        <name>move_to_end</name>
+        <param>
+          <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+          <declname>current</declname>
+        </param>
+        <param>
+          <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+<para>Move current pointer to the end of a range. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>current</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>current position </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>position after the end position of the element. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="245" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="245" bodyend="252"/>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a5b08a59e389f73e83a21645cd7cc7167" compoundref="de/d21/midicmn_8h" startline="176" endline="192">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::free_channel</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a0c8aa257a77fe16b451ca04cb0347dd5" compoundref="de/d21/midicmn_8h" startline="128" endline="146">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::reserve_channel</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a53b64b56b272d20e70998989a614298d" compoundref="de/d21/midicmn_8h" startline="211" endline="222">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::sustain_channel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d3/d85/classmutabor_1_1channel__queue__template_1a75cc72a7627ca023c30db1dbcb95ed65" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::channel_queue_template&lt; T, count &gt;::move_to_front</definition>
+        <argsstring>(iterator current, iterator final)</argsstring>
+        <name>move_to_front</name>
+        <param>
+          <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+          <declname>current</declname>
+        </param>
+        <param>
+          <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" kindref="member">iterator</ref></type>
+          <declname>final</declname>
+        </param>
+        <briefdescription>
+<para>Move current pointer to the beginning of a range. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>current</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>current position </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>final</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>position where the element should be moved to </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="260" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="260" bodyend="267"/>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a5b08a59e389f73e83a21645cd7cc7167" compoundref="de/d21/midicmn_8h" startline="176" endline="192">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::free_channel</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a0c8aa257a77fe16b451ca04cb0347dd5" compoundref="de/d21/midicmn_8h" startline="128" endline="146">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::reserve_channel</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2407">
+        <label>std::vector&lt; T &gt;</label>
+      </node>
+      <node id="2406">
+        <label>mutabor::channel_queue_template&lt; T, count &gt;</label>
+        <link refid="d3/d85/classmutabor_1_1channel__queue__template"/>
+        <childnode refid="2407" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2410">
+        <label>T</label>
+      </node>
+      <node id="2409">
+        <label>std::vector&lt; T &gt;</label>
+        <childnode refid="2410" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2411">
+        <label>std::vector&lt; T &gt;::iterator</label>
+      </node>
+      <node id="2408">
+        <label>mutabor::channel_queue_template&lt; T, count &gt;</label>
+        <link refid="d3/d85/classmutabor_1_1channel__queue__template"/>
+        <childnode refid="2409" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2411" relation="usage">
+          <edgelabel>last_sustained</edgelabel>
+          <edgelabel>first_free</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="59" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="59" bodyend="269"/>
+    <listofallmembers>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1a6766f712a893339961f8ff6b24dc467a" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>basetype</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1ab93492ba8817825b45ccf3b7b0dae3e1" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>channel_queue_template</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1aa6c55eeafed419b40dfb9248cc22560f" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>const_iterator</name></member>
+      <member refid="dd/d4e/classstd_1_1vector_1a2396209900e8f592db1f0b2467f7d899" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>elements</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1acc6cf0321c8e338b910046ed11572abe" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>find_channel</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1a790ae9f3f28d449eb1c3729343f6ba20" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>find_channel</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1a9384420f74845a6b95840aae5bfa7e14" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>find_matching_channel</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1a3b31a67f8bc715d420e3d2521378f696" prot="protected" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>first_free</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1a81d5a9df0b7bcf6bba6f71aba9f1ceaa" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>free_channel</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1a5b08a59e389f73e83a21645cd7cc7167" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>free_channel</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1ac99b2c157e90626cad92149a522d5f85" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>get_first_free</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1af54dd13e76ca639c53ae0b932825a0e1" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>get_last_sustained</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1a596fb3a38bf50ad7530b8072d147efcd" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>init</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1ad9fa620c003d36c149590d1f12dc2105" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>iterator</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1a3e83418db64528a00342949cdb295e3a" prot="protected" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>last_sustained</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1a0f561bb18a34e4637b61859c66c72e55" prot="protected" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>move_to_end</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1a75cc72a7627ca023c30db1dbcb95ed65" prot="protected" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>move_to_front</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1a0c8aa257a77fe16b451ca04cb0347dd5" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>reserve_channel</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1a7b47ec43e04191c6786a1fb2c47da598" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>reserve_channel</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1a58b16f964d758b6cae49734f62a39218" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>reserve_channel_filtered</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1ac510b1741728f83742e16ae7cd13a42d" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>sustain_channel</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1a53b64b56b272d20e70998989a614298d" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>sustain_channel</name></member>
+      <member refid="d3/d85/classmutabor_1_1channel__queue__template_1a8df70721c429a70032de1eb3f5a6ae34" prot="public" virt="non-virtual"><scope>mutabor::channel_queue_template</scope><name>unsustain_channel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

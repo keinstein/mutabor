@@ -1,0 +1,902 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d4/d12/ton_8h" kind="file">
+    <compoundname>ton.h</compoundname>
+    <includes refid="d2/d8a/interval_8h" local="yes">mutabor/interval.h</includes>
+    <includedby refid="d8/d39/tonsystem_8h" local="yes">src/includes/mutabor/tonsystem.h</includedby>
+    <includedby refid="da/d7f/umstimmung_8h" local="yes">src/includes/mutabor/umstimmung.h</includedby>
+    <includedby refid="df/de8/ton_8c" local="yes">src/libmutabor/ton.c</includedby>
+    <incdepgraph>
+      <node id="15064">
+        <label>mutabor/interval.h</label>
+        <link refid="d2/d8a/interval_8h"/>
+        <childnode refid="15065" relation="include">
+        </childnode>
+        <childnode refid="15067" relation="include">
+        </childnode>
+      </node>
+      <node id="15066">
+        <label>mutabor/object.h</label>
+        <link refid="de/d10/object_8h"/>
+      </node>
+      <node id="15065">
+        <label>mutabor/identifier.h</label>
+        <link refid="d7/da7/identifier_8h"/>
+        <childnode refid="15066" relation="include">
+        </childnode>
+      </node>
+      <node id="15063">
+        <label>src/includes/mutabor/ton.h</label>
+        <link refid="ton.h"/>
+        <childnode refid="15064" relation="include">
+        </childnode>
+      </node>
+      <node id="15068">
+        <label>math.h</label>
+      </node>
+      <node id="15067">
+        <label>mutabor/bad_decl.h</label>
+        <link refid="df/d8e/bad__decl_8h"/>
+        <childnode refid="15068" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="15084">
+        <label>src/libmutabor/anweisung.c</label>
+        <link refid="d5/dfe/anweisung_8c"/>
+      </node>
+      <node id="15089">
+        <label>src/libmutabor/tonsystem.c</label>
+        <link refid="da/dd2/tonsystem_8c"/>
+      </node>
+      <node id="15079">
+        <label>src/libmutabor/interpreter.c</label>
+        <link refid="dc/d30/interpreter_8c"/>
+      </node>
+      <node id="15085">
+        <label>src/includes/mutabor/case_liste.h</label>
+        <link refid="db/d99/case__liste_8h"/>
+        <childnode refid="15086" relation="include">
+        </childnode>
+      </node>
+      <node id="15076">
+        <label>src/gmut/gmutdos.cpp</label>
+        <link refid="dd/d15/gmutdos_8cpp"/>
+      </node>
+      <node id="15080">
+        <label>src/libmutabor/logik.c</label>
+        <link refid="d7/d6e/logik_8c"/>
+      </node>
+      <node id="15071">
+        <label>src/includes/mutabor/aktion.h</label>
+        <link refid="dd/de4/aktion_8h"/>
+        <childnode refid="15072" relation="include">
+        </childnode>
+        <childnode refid="15085" relation="include">
+        </childnode>
+        <childnode refid="15074" relation="include">
+        </childnode>
+        <childnode refid="15080" relation="include">
+        </childnode>
+      </node>
+      <node id="15086">
+        <label>src/includes/mutabor/umstimmung.h</label>
+        <link refid="da/d7f/umstimmung_8h"/>
+        <childnode refid="15071" relation="include">
+        </childnode>
+        <childnode refid="15075" relation="include">
+        </childnode>
+        <childnode refid="15077" relation="include">
+        </childnode>
+        <childnode refid="15087" relation="include">
+        </childnode>
+        <childnode refid="15080" relation="include">
+        </childnode>
+        <childnode refid="15088" relation="include">
+        </childnode>
+        <childnode refid="15081" relation="include">
+        </childnode>
+        <childnode refid="15082" relation="include">
+        </childnode>
+        <childnode refid="15083" relation="include">
+        </childnode>
+      </node>
+      <node id="15070">
+        <label>src/includes/mutabor/tonsystem.h</label>
+        <link refid="d8/d39/tonsystem_8h"/>
+        <childnode refid="15071" relation="include">
+        </childnode>
+        <childnode refid="15075" relation="include">
+        </childnode>
+        <childnode refid="15077" relation="include">
+        </childnode>
+        <childnode refid="15080" relation="include">
+        </childnode>
+        <childnode refid="15081" relation="include">
+        </childnode>
+        <childnode refid="15082" relation="include">
+        </childnode>
+        <childnode refid="15089" relation="include">
+        </childnode>
+        <childnode refid="15083" relation="include">
+        </childnode>
+      </node>
+      <node id="15088">
+        <label>src/libmutabor/midicalc.c</label>
+        <link refid="d8/dff/midicalc_8c"/>
+      </node>
+      <node id="15073">
+        <label>src/includes/mutabor/ausloeser.h</label>
+        <link refid="d1/dfa/ausloeser_8h"/>
+        <childnode refid="15072" relation="include">
+        </childnode>
+        <childnode refid="15074" relation="include">
+        </childnode>
+        <childnode refid="15078" relation="include">
+        </childnode>
+        <childnode refid="15079" relation="include">
+        </childnode>
+      </node>
+      <node id="15069">
+        <label>src/includes/mutabor/ton.h</label>
+        <link refid="ton.h"/>
+        <childnode refid="15070" relation="include">
+        </childnode>
+        <childnode refid="15086" relation="include">
+        </childnode>
+        <childnode refid="15090" relation="include">
+        </childnode>
+      </node>
+      <node id="15090">
+        <label>src/libmutabor/ton.c</label>
+        <link refid="df/de8/ton_8c"/>
+      </node>
+      <node id="15083">
+        <label>src/libmutabor/umstimmung.c</label>
+        <link refid="d2/d4a/umstimmung_8c"/>
+      </node>
+      <node id="15077">
+        <label>src/libmutabor/aktion.c</label>
+        <link refid="d8/dc3/aktion_8c"/>
+      </node>
+      <node id="15078">
+        <label>src/libmutabor/ausloeser.c</label>
+        <link refid="d6/dcc/ausloeser_8c"/>
+      </node>
+      <node id="15087">
+        <label>src/libmutabor/case_liste.c</label>
+        <link refid="dc/d54/case__liste_8c"/>
+      </node>
+      <node id="15075">
+        <label>src/includes/mutabor/global.h</label>
+        <link refid="d2/d49/global_8h"/>
+        <childnode refid="15076" relation="include">
+        </childnode>
+      </node>
+      <node id="15081">
+        <label>src/libmutabor/mut.c</label>
+        <link refid="d3/da3/mut_8c"/>
+      </node>
+      <node id="15082">
+        <label>src/libmutabor/parser.c</label>
+        <link refid="d2/d72/parser_8c"/>
+      </node>
+      <node id="15074">
+        <label>src/includes/mutabor/logik.h</label>
+        <link refid="d1/dff/logik_8h"/>
+        <childnode refid="15071" relation="include">
+        </childnode>
+        <childnode refid="15075" relation="include">
+        </childnode>
+        <childnode refid="15077" relation="include">
+        </childnode>
+        <childnode refid="15078" relation="include">
+        </childnode>
+        <childnode refid="15079" relation="include">
+        </childnode>
+        <childnode refid="15080" relation="include">
+        </childnode>
+        <childnode refid="15081" relation="include">
+        </childnode>
+        <childnode refid="15082" relation="include">
+        </childnode>
+        <childnode refid="15083" relation="include">
+        </childnode>
+      </node>
+      <node id="15072">
+        <label>src/includes/mutabor/anweisung.h</label>
+        <link refid="d0/db7/anweisung_8h"/>
+        <childnode refid="15073" relation="include">
+        </childnode>
+        <childnode refid="15075" relation="include">
+        </childnode>
+        <childnode refid="15084" relation="include">
+        </childnode>
+        <childnode refid="15078" relation="include">
+        </childnode>
+        <childnode refid="15080" relation="include">
+        </childnode>
+        <childnode refid="15081" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="dd/da3/structton" prot="public">ton</innerclass>
+    <innerclass refid="d4/dd8/structton__einstell" prot="public">ton_einstell</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="d4/d12/ton_8h_1a4fe65436d72e9762190aa11871293925" prot="public" static="no">
+        <name>ton_typ</name>
+        <enumvalue id="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a39f2b025374e0969cf0d22ea3389a36b" prot="public">
+          <name>ton_absolut</name>
+          <briefdescription>
+<para>Absoluter Ton. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a435f7f05f60006f36ac067d647a8ac92" prot="public">
+          <name>ton_komplex</name>
+          <briefdescription>
+<para>Intervallfolge. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a39f2b025374e0969cf0d22ea3389a36b" prot="public">
+          <name>ton_absolut</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a435f7f05f60006f36ac067d647a8ac92" prot="public">
+          <name>ton_komplex</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Töne können absolut oder als Folge von Intervallen relativ zu einem Grundton angegeben werden. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" line="22" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="enum" id="d4/d12/ton_8h_1a862a99d722d27db127b715f42761465b" prot="public" static="no">
+        <name>ton_einstell_typ</name>
+        <enumvalue id="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465ba8c2451b3a3b251272b1dad44f9aec46a" prot="public">
+          <name>einstell_stumm</name>
+          <briefdescription>
+<para>Ton soll nicht erklingen. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465babc9dee31f8a67378b01d72709b2dbf7d" prot="public">
+          <name>einstell_gleich</name>
+          <briefdescription>
+<para>Ton soll gleich bleiben. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465badf29554d2bdf1693c1ea53ba41d23159" prot="public">
+          <name>einstell_absolut</name>
+          <briefdescription>
+<para>Ton soll absolut verändert werden. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465ba532c6dad23c53fb25fed3d3d88642044" prot="public">
+          <name>einstell_relativ</name>
+          <briefdescription>
+<para>Ton soll relativ verändert werden. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465ba8c2451b3a3b251272b1dad44f9aec46a" prot="public">
+          <name>einstell_stumm</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465babc9dee31f8a67378b01d72709b2dbf7d" prot="public">
+          <name>einstell_gleich</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465badf29554d2bdf1693c1ea53ba41d23159" prot="public">
+          <name>einstell_absolut</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465ba532c6dad23c53fb25fed3d3d88642044" prot="public">
+          <name>einstell_relativ</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Typ einer Einstellung für einen zu berechnenden Ton. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" line="49" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" bodystart="49" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="d4/d12/ton_8h_1aa614e631a7a7c9e90ad0614fbee2dd13" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="dd/da3/structton" kindref="compound">ton</ref> *</type>
+        <definition>struct ton* list_of_toene</definition>
+        <argsstring></argsstring>
+        <name>list_of_toene</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" line="89" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" bodystart="89" bodyend="-1"/>
+        <referencedby refid="da/dd2/tonsystem_8c_1aedcfdecbf7dd48ab19a6830732fa982e" compoundref="da/dd2/tonsystem_8c" startline="151" endline="169">check_tonsystem_konsistenz</referencedby>
+        <referencedby refid="d2/d4a/umstimmung_8c_1a9fc87f323f75b7afaef30c37c78af7c6" compoundref="d2/d4a/umstimmung_8c" startline="538" endline="732">check_umstimmungs_konsistenz</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1ga624187681a6783c21bd14e86fc82a929" compoundref="d8/dc3/aktion_8c" startline="276" endline="319">expandiere_tonsystem</referencedby>
+        <referencedby refid="d2/d72/parser_8c_1afa88ae69a747f2c139bf6161d9b2d82d" compoundref="d2/d72/parser_8c" startline="85" endline="386">mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d12/ton_8h_1a680b21381666f4b8c5d13f5c832e51c2" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="dd/da3/structton" kindref="compound">ton</ref> *</type>
+        <definition>struct ton* ton_ohne_namen</definition>
+        <argsstring></argsstring>
+        <name>ton_ohne_namen</name>
+        <briefdescription>
+<para>Frequenz=0. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" line="90" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d4/d12/ton_8h_1a611d8511d6c4f19ff594b2f44a1842f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void berechne_toene_absolut</definition>
+        <argsstring>(struct ton *ton_liste)</argsstring>
+        <name>berechne_toene_absolut</name>
+        <param>
+          <type>struct <ref refid="dd/da3/structton" kindref="compound">ton</ref> *</type>
+          <declname>ton_liste</declname>
+          <defname>list_of_toene</defname>
+        </param>
+        <briefdescription>
+<para>Berechnet die absoluten Tonwerte für eine einfach verkettete Tonliste. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei werden die globalen Variablen <computeroutput>anzahl_toene</computeroutput>, <computeroutput>toene</computeroutput>, <computeroutput>visited</computeroutput> und die Adjazenzmatrix benutzt. Falls mit <computeroutput>DEBUG_ANZEIGE</computeroutput> compiliert, wird die Matrix nach der Aufstellung auf der Standardausgabe ausgegeben. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">list_of_toene</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" line="72" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ton.c" bodystart="338" bodyend="438"/>
+        <references refid="df/de8/ton_8c_1a2ed1ec7e866f3c90c32fa270fa111ae4" compoundref="df/de8/ton_8c" startline="229">adjazent</references>
+        <references refid="df/de8/ton_8c_1afbea649390ed64a23faa58e030c993f0" compoundref="df/de8/ton_8c" startline="215">anzahl_toene</references>
+        <references refid="df/de8/ton_8c_1a9bab183da553d52175a6f252aca2bca5" compoundref="df/de8/ton_8c" startline="240" endline="251">belege_toene</references>
+        <references refid="df/de8/ton_8c_1a9ee68d12698d887ee5970f589f228937" compoundref="df/de8/ton_8c" startline="291" endline="330">berechne_ton_endgueltig</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="df/de8/ton_8c_1affecc17206fd5a2778b175ad231246d9" compoundref="df/de8/ton_8c" startline="222">matrix</references>
+        <references refid="de/d45/errors_8h_1ae2387ffc56e4c38de349dcd17ce78865" compoundref="d0/d15/errors_8c" startline="20">mutabor_debug_level</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="df/de8/ton_8c_1ac3dbc291054ffea9750cedc4e760bbd4" compoundref="df/de8/ton_8c" startline="272" endline="285">test_zyklen</references>
+        <references refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a39f2b025374e0969cf0d22ea3389a36b" compoundref="d4/d12/ton_8h" startline="23">ton_absolut</references>
+        <references refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a435f7f05f60006f36ac067d647a8ac92" compoundref="d4/d12/ton_8h" startline="24">ton_komplex</references>
+        <references refid="d4/d12/ton_8h_1a7205dceb2bb780245ab66f9b032e301a" compoundref="df/de8/ton_8c" startline="57" endline="60">ton_list_laenge</references>
+        <references refid="df/de8/ton_8c_1a184008ed76f721b551b35fba839272f1" compoundref="df/de8/ton_8c" startline="257" endline="266">ton_nummer</references>
+        <references refid="dd/da3/structton_1a2173eae7dfaa7102dbed7bd7900ae82b">ton::u</references>
+        <references refid="df/de8/ton_8c_1a7999d7225aef06bf494a27803df3d6ed" compoundref="df/de8/ton_8c" startline="220">visited</references>
+        <references refid="da/ddb/heap_8h_1a95116b44bc41d1e825e79c148ab7d0a6" compoundref="d2/d29/heap_8c" startline="96" endline="107">xalloca</references>
+        <references refid="d9/d7c/group__kernel_1ga32c911fc6ec259d831549e90fbd9f00c" compoundref="da/d02/Hilfs_8cpp" startline="114" endline="122">xde_alloca</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d4/d12/ton_8h_1a61af28a6d9513c57295b9bf6bad3e00a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void drucke_ton</definition>
+        <argsstring>(struct ton *lauf)</argsstring>
+        <name>drucke_ton</name>
+        <param>
+          <type>struct <ref refid="dd/da3/structton" kindref="compound">ton</ref> *</type>
+          <declname>lauf</declname>
+        </param>
+        <briefdescription>
+<para>Gibt einen Ton auf der Standardausgabe aus. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lauf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ton </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" line="73" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ton.c" bodystart="81" bodyend="108"/>
+        <references refid="d7/dc9/structkomplex__intervall_1aafd0c9431aec7e190f7bf33577794bef" compoundref="d2/d8a/interval_8h" startline="86">komplex_intervall::faktor</references>
+        <references refid="dd/da3/structton_1a3c9499dd5cfd4d6ce65697b1a86852e6" compoundref="d4/d12/ton_8h" startline="34">ton::name</references>
+        <references refid="d7/dc9/structkomplex__intervall_1ae897df400fcb6617d8d1bdaed26e2b56" compoundref="d2/d8a/interval_8h" startline="87">komplex_intervall::name</references>
+        <references refid="d7/dc9/structkomplex__intervall_1a91e64f6f6d25719010524e551c8119bf" compoundref="d2/d8a/interval_8h" startline="88">komplex_intervall::next</references>
+        <references refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a39f2b025374e0969cf0d22ea3389a36b" compoundref="d4/d12/ton_8h" startline="23">ton_absolut</references>
+        <references refid="dd/da3/structton_1a2865e603abed94a0582ca7798ad95a21">ton::ton_absolut</references>
+        <references refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a435f7f05f60006f36ac067d647a8ac92" compoundref="d4/d12/ton_8h" startline="24">ton_komplex</references>
+        <references refid="dd/da3/structton_1aac4a8ccc88617139d5880560beac649a">ton::ton_komplex</references>
+        <references refid="dd/da3/structton_1a2da939321629a524deceb2bea16366d9" compoundref="d4/d12/ton_8h" startline="35">ton::ton_typ</references>
+        <references refid="dd/da3/structton_1a2173eae7dfaa7102dbed7bd7900ae82b">ton::u</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d4/d12/ton_8h_1aa3e79c7164fb84b3e03a95afd2d865ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_new_ton_absolut</definition>
+        <argsstring>(char *name, double wert)</argsstring>
+        <name>get_new_ton_absolut</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>wert</declname>
+        </param>
+        <briefdescription>
+<para>Fügt einen absoluten Ton ans Ende von <emphasis>list_of_toene</emphasis> an. </para>        </briefdescription>
+        <detaileddescription>
+<para>Taucht der Tonname schon einmal auf, wird ein fataler Fehler ausgegeben. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bezeichnung des Tones, das angefügt werden soll </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wert</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Wert des Tones, der angfügt werden soll </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Es wird immer die gesamte Liste durchsucht. Effektivität? </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" line="75" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ton.c" bodystart="122" bodyend="137"/>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="dd/da3/structton_1a0531d0ab1a39337684a162a66c88b5d0" compoundref="d4/d12/ton_8h" startline="45">ton::next</references>
+        <references refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a39f2b025374e0969cf0d22ea3389a36b" compoundref="d4/d12/ton_8h" startline="23">ton_absolut</references>
+        <references refid="dd/da3/structton_1a2173eae7dfaa7102dbed7bd7900ae82b">ton::u</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d4/d12/ton_8h_1a0a6c4428485d9da14db1229e94d4db5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double get_komplex_frequenz</definition>
+        <argsstring>(struct ton *dieser)</argsstring>
+        <name>get_komplex_frequenz</name>
+        <param>
+          <type>struct <ref refid="dd/da3/structton" kindref="compound">ton</ref> *</type>
+          <declname>dieser</declname>
+        </param>
+        <briefdescription>
+<para>Berechnet deie Frequenz eines komplexen Tones. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dieser</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ton, für den die Frequenz berechnet werden soll. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" line="76" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ton.c" bodystart="443" bodyend="448"/>
+        <references refid="d2/d8a/interval_8h_1a0812e04f17c515d5e3a639dd51e5801c" compoundref="d5/d28/interval_8c" startline="190" endline="204">get_komplex_faktor</references>
+        <references refid="d4/d12/ton_8h_1adf3f50ce72e583c1a3a2c42302c7d7f5" compoundref="df/de8/ton_8c" startline="69" endline="75">get_ton</references>
+        <references refid="dd/da3/structton_1aac4a8ccc88617139d5880560beac649a">ton::ton_komplex</references>
+        <references refid="dd/da3/structton_1a2173eae7dfaa7102dbed7bd7900ae82b">ton::u</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga2c6a360c780adc8cdda172a1a26c164b" compoundref="d3/da0/TabGen_8cpp" startline="396" endline="461">expand_tonliste</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d4/d12/ton_8h_1a219b10b544e38392a75ab1d57f134c65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_komplex_ton_list</definition>
+        <argsstring>(void)</argsstring>
+        <name>init_komplex_ton_list</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Setzt Liste komplexer Intervalle auf NULL. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>Die Liste wird nicht gelöscht. Das muss gegebenenfalls vor der Initialiserung manuell erledigt werden. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" line="77" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interval.c" bodystart="496" bodyend="499"/>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d4/d12/ton_8h_1aa8f91addbbc92af1bfe65133d0b80605" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_new_ton_komplex_positive</definition>
+        <argsstring>(char *name, char *bezugston)</argsstring>
+        <name>get_new_ton_komplex_positive</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>bezugston</declname>
+        </param>
+        <briefdescription>
+<para>Fügt einen komplexen Ton ans Ende von <emphasis>list_of_toene</emphasis> an. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei wird mittels <computeroutput><ref refid="d2/d8a/interval_8h_1a628fbc6b1014c2a2290a7510a81f60ec" kindref="member">get_last_komplex_intervall()</ref></computeroutput> die letzte eingelesene Intevallliste verwendet. Taucht der Tonname schon einmal auf, wird ein fataler Fehler ausgegeben. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bezeichnung des Tones, das angefügt werden soll </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bezugston</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Basiston, auf den sich die Intervallliste bezieht. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Es wird immer die gesamte Liste durchsucht. Effektivität? </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" line="78" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ton.c" bodystart="148" bodyend="164"/>
+        <references refid="dd/da3/structton_1a1a0c3eb687ec5c5275cc91592bd268f7" compoundref="d4/d12/ton_8h" startline="41">ton::bezugston</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d2/d8a/interval_8h_1a628fbc6b1014c2a2290a7510a81f60ec" compoundref="d5/d28/interval_8c" startline="529" endline="532">get_last_komplex_intervall</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="dd/da3/structton_1a0531d0ab1a39337684a162a66c88b5d0" compoundref="d4/d12/ton_8h" startline="45">ton::next</references>
+        <references refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a435f7f05f60006f36ac067d647a8ac92" compoundref="d4/d12/ton_8h" startline="24">ton_komplex</references>
+        <references refid="dd/da3/structton_1a2173eae7dfaa7102dbed7bd7900ae82b">ton::u</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d4/d12/ton_8h_1abfa0d4b34c0225bf1824b777238e6f98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_new_ton_komplex_negative</definition>
+        <argsstring>(char *name, char *bezugston)</argsstring>
+        <name>get_new_ton_komplex_negative</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>bezugston</declname>
+        </param>
+        <briefdescription>
+<para>Fügt einen komplexen Ton ans Ende von <emphasis>list_of_toene</emphasis> an. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei wird mittels <computeroutput><ref refid="d2/d8a/interval_8h_1a628fbc6b1014c2a2290a7510a81f60ec" kindref="member">get_last_komplex_intervall()</ref></computeroutput> die letzte eingelesene Intevallliste verwendet. Diese wird jedoch zunächst einmal invertiert. Taucht der Tonname schon einmal auf, wird ein fataler Fehler ausgegeben. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bezeichnung des Tones, das angefügt werden soll </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bezugston</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Basiston, auf den sich die Intervallliste bezieht. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Es wird immer die gesamte Liste durchsucht. Effektivität? </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" line="79" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ton.c" bodystart="175" bodyend="200"/>
+        <references refid="dd/da3/structton_1a1a0c3eb687ec5c5275cc91592bd268f7" compoundref="d4/d12/ton_8h" startline="41">ton::bezugston</references>
+        <references refid="d7/dc9/structkomplex__intervall_1aafd0c9431aec7e190f7bf33577794bef" compoundref="d2/d8a/interval_8h" startline="86">komplex_intervall::faktor</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d2/d8a/interval_8h_1a628fbc6b1014c2a2290a7510a81f60ec" compoundref="d5/d28/interval_8c" startline="529" endline="532">get_last_komplex_intervall</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="dd/da3/structton_1a0531d0ab1a39337684a162a66c88b5d0" compoundref="d4/d12/ton_8h" startline="45">ton::next</references>
+        <references refid="d7/dc9/structkomplex__intervall_1a91e64f6f6d25719010524e551c8119bf" compoundref="d2/d8a/interval_8h" startline="88">komplex_intervall::next</references>
+        <references refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a435f7f05f60006f36ac067d647a8ac92" compoundref="d4/d12/ton_8h" startline="24">ton_komplex</references>
+        <references refid="dd/da3/structton_1a2173eae7dfaa7102dbed7bd7900ae82b">ton::u</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d4/d12/ton_8h_1a153ddee23195f6f86fe37d75d5ac1c67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_nullton</definition>
+        <argsstring>(void)</argsstring>
+        <name>init_nullton</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" line="81" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ton.c" bodystart="45" bodyend="51"/>
+        <references refid="dd/da3/structton_1a3c9499dd5cfd4d6ce65697b1a86852e6" compoundref="d4/d12/ton_8h" startline="34">ton::name</references>
+        <references refid="dd/da3/structton_1a0531d0ab1a39337684a162a66c88b5d0" compoundref="d4/d12/ton_8h" startline="45">ton::next</references>
+        <references refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a39f2b025374e0969cf0d22ea3389a36b" compoundref="d4/d12/ton_8h" startline="23">ton_absolut</references>
+        <references refid="dd/da3/structton_1a2865e603abed94a0582ca7798ad95a21">ton::ton_absolut</references>
+        <references refid="dd/da3/structton_1a2da939321629a524deceb2bea16366d9" compoundref="d4/d12/ton_8h" startline="35">ton::ton_typ</references>
+        <references refid="dd/da3/structton_1a2173eae7dfaa7102dbed7bd7900ae82b">ton::u</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="d2/d72/parser_8c_1a417c5902868bcd39387f99422a2040bf" compoundref="d2/d72/parser_8c" startline="64" endline="66">allgemeine_initialisierungen</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d4/d12/ton_8h_1aa877b2d80b4ba9f480447d7cec66a8e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_ton_liste</definition>
+        <argsstring>(void)</argsstring>
+        <name>init_ton_liste</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Setzt <computeroutput>ton_liste</computeroutput> auf NULL. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>Die Liste wird nicht gelöscht. Das muss gegebenenfalls vor der Initialiserung manuell erledigt werden. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" line="82" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/tonsystem.c" bodystart="70" bodyend="73"/>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d4/d12/ton_8h_1a4804286989f826b909dab9efb963fbe3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_new_ton_in_tonsystem</definition>
+        <argsstring>(char *name)</argsstring>
+        <name>get_new_ton_in_tonsystem</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Fügt einen Ton ans Ende von <emphasis>ton_liste</emphasis> an. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name des Tones </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Es wird immer die gesamte Liste durchsucht. Effektivität? </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" line="83" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/tonsystem.c" bodystart="79" bodyend="90"/>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="dd/da3/structton_1a0531d0ab1a39337684a162a66c88b5d0" compoundref="d4/d12/ton_8h" startline="45">ton::next</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d4/d12/ton_8h_1a7205dceb2bb780245ab66f9b032e301a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ton_list_laenge</definition>
+        <argsstring>(struct ton *list)</argsstring>
+        <name>ton_list_laenge</name>
+        <param>
+          <type>struct <ref refid="dd/da3/structton" kindref="compound">ton</ref> *</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+<para>Zählen der Elemente einer einfach verketteten Tonliste. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Liste der Töne </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Anzahl der Elemente von <emphasis>list</emphasis> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" line="85" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ton.c" bodystart="57" bodyend="60"/>
+        <references refid="dd/da3/structton_1a0531d0ab1a39337684a162a66c88b5d0" compoundref="d4/d12/ton_8h" startline="45">ton::next</references>
+        <references refid="d4/d12/ton_8h_1a7205dceb2bb780245ab66f9b032e301a" compoundref="df/de8/ton_8c" startline="57" endline="60">ton_list_laenge</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga12d23ae1832242b2dc02810fe94b1d9b" compoundref="dc/df5/Parser_8cpp" startline="2399" endline="2510">berechne_toene_absolut</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="604" endline="645">mutabor::BoxClass::Compile</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga13b966770b2c6d5e64470a014a958058" compoundref="d3/da0/TabGen_8cpp" startline="464" endline="511">expandiere_tonsystem</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+        <referencedby refid="df/de8/ton_8c_1a7205dceb2bb780245ab66f9b032e301a" compoundref="df/de8/ton_8c" startline="57" endline="60">ton_list_laenge</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d4/d12/ton_8h_1adf3f50ce72e583c1a3a2c42302c7d7f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="dd/da3/structton" kindref="compound">ton</ref> *</type>
+        <definition>struct ton* get_ton</definition>
+        <argsstring>(char *name, struct ton *liste)</argsstring>
+        <name>get_ton</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="dd/da3/structton" kindref="compound">ton</ref> *</type>
+          <declname>liste</declname>
+        </param>
+        <briefdescription>
+<para>Sucht einen ton aus einer Tonliste. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name des gesuchten Tones </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>liste</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Liste der Töne, in der der Ton gesucht wird </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>ton_ohne_namen</parametername>
+<parametername>falls</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><emphasis>name</emphasis> == <emphasis>NULL</emphasis> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>NULL</parametername>
+<parametername>falls</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ton nicht in <emphasis>liste</emphasis> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Ton</parametername>
+<parametername>sonst.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h" line="87" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ton.c" bodystart="69" bodyend="75"/>
+        <references refid="d4/d12/ton_8h_1adf3f50ce72e583c1a3a2c42302c7d7f5" compoundref="df/de8/ton_8c" startline="69" endline="75">get_ton</references>
+        <references refid="dd/da3/structton_1a3c9499dd5cfd4d6ce65697b1a86852e6" compoundref="d4/d12/ton_8h" startline="34">ton::name</references>
+        <references refid="dd/da3/structton_1a0531d0ab1a39337684a162a66c88b5d0" compoundref="d4/d12/ton_8h" startline="45">ton::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="da/dd2/tonsystem_8c_1aedcfdecbf7dd48ab19a6830732fa982e" compoundref="da/dd2/tonsystem_8c" startline="151" endline="169">check_tonsystem_konsistenz</referencedby>
+        <referencedby refid="d2/d4a/umstimmung_8c_1a9fc87f323f75b7afaef30c37c78af7c6" compoundref="d2/d4a/umstimmung_8c" startline="538" endline="732">check_umstimmungs_konsistenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga13b966770b2c6d5e64470a014a958058" compoundref="d3/da0/TabGen_8cpp" startline="464" endline="511">expandiere_tonsystem</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gac870ef84145f2f27a7b21506339cfb88" compoundref="d3/da0/TabGen_8cpp" startline="127" endline="133">get_komplex_frequenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga813d2784f1403541be25a0a5d5da4545" compoundref="dc/df5/Parser_8cpp" startline="165" endline="172">get_ton</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Alles zu Tönen. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein_junior@gmx.net">keinstein_junior@gmx.net</ulink> </para></simplesect>
+<simplesect kind="date"><para>2005 </para></simplesect>
+<simplesect kind="version"><para>0.1 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="10"><highlight class="preprocessor">#ifndef<sp/>__TON_H_INCLUDED</highlight></codeline>
+<codeline lineno="11"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>__TON_H_INCLUDED</highlight></codeline>
+<codeline lineno="12"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d8a/interval_8h" kindref="compound">mutabor/interval.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="16"><highlight class="preprocessor"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="19"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="22" refid="d4/d12/ton_8h_1a4fe65436d72e9762190aa11871293925" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="d4/d12/ton_8h_1a4fe65436d72e9762190aa11871293925" kindref="member">ton_typ</ref><sp/>{</highlight></codeline>
+<codeline lineno="23" refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a39f2b025374e0969cf0d22ea3389a36b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a39f2b025374e0969cf0d22ea3389a36b" kindref="member">ton_absolut</ref>,<sp/></highlight></codeline>
+<codeline lineno="24" refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a435f7f05f60006f36ac067d647a8ac92" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a435f7f05f60006f36ac067d647a8ac92" kindref="member">ton_komplex</ref><sp/></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="dd/da3/structton" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dd/da3/structton" kindref="compound">ton</ref><sp/>{</highlight></codeline>
+<codeline lineno="34" refid="dd/da3/structton_1a3c9499dd5cfd4d6ce65697b1a86852e6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dd/da3/structton_1a3c9499dd5cfd4d6ce65697b1a86852e6" kindref="member">name</ref>;<sp/></highlight></codeline>
+<codeline lineno="35" refid="dd/da3/structton_1a2da939321629a524deceb2bea16366d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="d4/d12/ton_8h_1a4fe65436d72e9762190aa11871293925" kindref="member">ton_typ</ref><sp/><ref refid="d4/d12/ton_8h_1a4fe65436d72e9762190aa11871293925" kindref="member">ton_typ</ref>;<sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38" refid="dd/da3/structton_1a4a1375f913eef7717ae998ae1239f9db" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="dd/da3/structton_1a4a1375f913eef7717ae998ae1239f9db" kindref="member">ton_wert</ref>;<sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a39f2b025374e0969cf0d22ea3389a36b" kindref="member">ton_absolut</ref>;<sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41" refid="dd/da3/structton_1a1a0c3eb687ec5c5275cc91592bd268f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dd/da3/structton_1a1a0c3eb687ec5c5275cc91592bd268f7" kindref="member">bezugston</ref>;<sp/></highlight></codeline>
+<codeline lineno="42" refid="dd/da3/structton_1a29ecf75e0f5d75b1615a703a0f6cefed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/dc9/structkomplex__intervall" kindref="compound">komplex_intervall</ref><sp/>*<sp/><ref refid="dd/da3/structton_1a29ecf75e0f5d75b1615a703a0f6cefed" kindref="member">komplex_liste</ref>;<sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a435f7f05f60006f36ac067d647a8ac92" kindref="member">ton_komplex</ref>;<sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>u;</highlight></codeline>
+<codeline lineno="45" refid="dd/da3/structton_1a0531d0ab1a39337684a162a66c88b5d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dd/da3/structton" kindref="compound">ton</ref><sp/>*<sp/><ref refid="dd/da3/structton_1a0531d0ab1a39337684a162a66c88b5d0" kindref="member">next</ref>;<sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="d4/d12/ton_8h_1a862a99d722d27db127b715f42761465b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="d4/d12/ton_8h_1a862a99d722d27db127b715f42761465b" kindref="member">ton_einstell_typ</ref><sp/>{<sp/></highlight></codeline>
+<codeline lineno="50" refid="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465ba8c2451b3a3b251272b1dad44f9aec46a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465ba8c2451b3a3b251272b1dad44f9aec46a" kindref="member">einstell_stumm</ref>,<sp/></highlight></codeline>
+<codeline lineno="51" refid="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465babc9dee31f8a67378b01d72709b2dbf7d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465babc9dee31f8a67378b01d72709b2dbf7d" kindref="member">einstell_gleich</ref>,<sp/></highlight></codeline>
+<codeline lineno="52" refid="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465badf29554d2bdf1693c1ea53ba41d23159" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465badf29554d2bdf1693c1ea53ba41d23159" kindref="member">einstell_absolut</ref>,<sp/></highlight></codeline>
+<codeline lineno="53" refid="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465ba532c6dad23c53fb25fed3d3d88642044" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465ba532c6dad23c53fb25fed3d3d88642044" kindref="member">einstell_relativ</ref><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="d4/dd8/structton__einstell" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d4/dd8/structton__einstell" kindref="compound">ton_einstell</ref><sp/>{</highlight></codeline>
+<codeline lineno="60" refid="d4/dd8/structton__einstell_1aeb79b8500ac42176b82d1dbdd878975f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="d4/d12/ton_8h_1a862a99d722d27db127b715f42761465b" kindref="member">ton_einstell_typ</ref><sp/><ref refid="d4/d12/ton_8h_1a862a99d722d27db127b715f42761465b" kindref="member">ton_einstell_typ</ref>;<sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63" refid="d4/dd8/structton__einstell_1ab8774a49cb6b293363e0e88890498e04" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="d4/dd8/structton__einstell_1ab8774a49cb6b293363e0e88890498e04" kindref="member">wert</ref>;<sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465badf29554d2bdf1693c1ea53ba41d23159" kindref="member">einstell_absolut</ref>;<sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>wert;<sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465ba532c6dad23c53fb25fed3d3d88642044" kindref="member">einstell_relativ</ref>;<sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>u;<sp/></highlight></codeline>
+<codeline lineno="69" refid="d4/dd8/structton__einstell_1a1b26f4bbf71f1c5e8568d7bf781140bb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d4/dd8/structton__einstell" kindref="compound">ton_einstell</ref><sp/>*<sp/><ref refid="d4/dd8/structton__einstell_1a1b26f4bbf71f1c5e8568d7bf781140bb" kindref="member">next</ref>;<sp/></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/d12/ton_8h_1a611d8511d6c4f19ff594b2f44a1842f9" kindref="member">berechne_toene_absolut</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="dd/da3/structton" kindref="compound">ton</ref><sp/>*<ref refid="da/dd2/tonsystem_8c_1a68f87163e6b9e872ab00dbdb652a9293" kindref="member">ton_liste</ref>);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/d12/ton_8h_1a61af28a6d9513c57295b9bf6bad3e00a" kindref="member">drucke_ton</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="dd/da3/structton" kindref="compound">ton</ref><sp/>*<sp/>lauf);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/d12/ton_8h_1aa3e79c7164fb84b3e03a95afd2d865ee" kindref="member">get_new_ton_absolut</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="d4/dd8/structton__einstell_1ab8774a49cb6b293363e0e88890498e04" kindref="member">wert</ref>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="d4/d12/ton_8h_1a0a6c4428485d9da14db1229e94d4db5b" kindref="member">get_komplex_frequenz</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="dd/da3/structton" kindref="compound">ton</ref><sp/>*<sp/>dieser);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/d12/ton_8h_1a219b10b544e38392a75ab1d57f134c65" kindref="member">init_komplex_ton_list</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/d12/ton_8h_1aa8f91addbbc92af1bfe65133d0b80605" kindref="member">get_new_ton_komplex_positive</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*bezugston);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/d12/ton_8h_1abfa0d4b34c0225bf1824b777238e6f98" kindref="member">get_new_ton_komplex_negative</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*bezugston);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/d12/ton_8h_1a153ddee23195f6f86fe37d75d5ac1c67" kindref="member">init_nullton</ref>(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/d12/ton_8h_1aa877b2d80b4ba9f480447d7cec66a8e5" kindref="member">init_ton_liste</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/d12/ton_8h_1a4804286989f826b909dab9efb963fbe3" kindref="member">get_new_ton_in_tonsystem</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/d12/ton_8h_1a7205dceb2bb780245ab66f9b032e301a" kindref="member">ton_list_laenge</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="dd/da3/structton" kindref="compound">ton</ref><sp/>*list);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dd/da3/structton" kindref="compound">ton</ref><sp/>*<sp/><ref refid="d4/d12/ton_8h_1adf3f50ce72e583c1a3a2c42302c7d7f5" kindref="member">get_ton</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="dd/da3/structton" kindref="compound">ton</ref><sp/>*<sp/>liste);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="d4/d12/ton_8h_1aa614e631a7a7c9e90ad0614fbee2dd13" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dd/da3/structton" kindref="compound">ton</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d4/d12/ton_8h_1aa614e631a7a7c9e90ad0614fbee2dd13" kindref="member">list_of_toene</ref>;</highlight></codeline>
+<codeline lineno="90" refid="d4/d12/ton_8h_1a680b21381666f4b8c5d13f5c832e51c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dd/da3/structton" kindref="compound">ton</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d4/d12/ton_8h_1a680b21381666f4b8c5d13f5c832e51c2" kindref="member">ton_ohne_namen</ref>;<sp/></highlight></codeline>
+<codeline lineno="92"><highlight class="preprocessor">#ifdef<sp/>__cplusplus<sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>extern<sp/>&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mutabor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__TON_H_INCLUDED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ton.h"/>
+  </compounddef>
+</doxygen>

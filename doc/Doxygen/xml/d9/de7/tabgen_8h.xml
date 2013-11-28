@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d9/de7/tabgen_8h" kind="file">
+    <compoundname>tabgen.h</compoundname>
+    <includedby refid="d2/d49/global_8h" local="yes">src/includes/mutabor/global.h</includedby>
+    <invincdepgraph>
+      <node id="15054">
+        <label>src/gmut/gmutdos.cpp</label>
+        <link refid="dd/d15/gmutdos_8cpp"/>
+      </node>
+      <node id="15052">
+        <label>src/includes/mutabor/tabgen.h</label>
+        <link refid="tabgen.h"/>
+        <childnode refid="15053" relation="include">
+        </childnode>
+      </node>
+      <node id="15053">
+        <label>src/includes/mutabor/global.h</label>
+        <link refid="d2/d49/global_8h"/>
+        <childnode refid="15054" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d9/de7/tabgen_8h_1a80f694cdb409db5d5dd155ca0759f310" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor_tabellen_generator</definition>
+        <argsstring>(void)</argsstring>
+        <name>mutabor_tabellen_generator</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialisiert die Mutabor-Tabellen. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei werden die globalen und die lokalen Auslöser initialisiert. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/tabgen.h" line="24" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c" bodystart="81" bodyend="139"/>
+        <references refid="db/d28/structlogik_1a65b45930b368455fcb255d827496dc2b" compoundref="d1/dff/logik_8h" startline="35">logik::anweisungsliste</references>
+        <references refid="d2/d1c/group__Interpreter_1ga49fcfc4930df7019571296f7c2c9d320" compoundref="d6/dcc/ausloeser_8c" startline="530" endline="592">expandiere_in_globale_liste</references>
+        <references refid="dd/d21/group__Parser_1gaeb4def1910a49d76e3898d8ef6be1f0f" compoundref="d6/dcc/ausloeser_8c" startline="46">first_harmonie</references>
+        <references refid="dd/d21/group__Parser_1ga0efb7f4c5368462a4f0eed6de4e8c025" compoundref="d6/dcc/ausloeser_8c" startline="52">first_keyboard</references>
+        <references refid="dd/d21/group__Parser_1gaa539e63152f2a354b62a0b98490e2293" compoundref="d6/dcc/ausloeser_8c" startline="50">first_lokal_harmonie</references>
+        <references refid="dd/d21/group__Parser_1gac413ef20e141cd76dd18c44e99df1ba4" compoundref="d6/dcc/ausloeser_8c" startline="56">first_lokal_keyboard</references>
+        <references refid="dd/d21/group__Parser_1gaa4d5de4a97f2396dd4c30ac78285d6bf" compoundref="d6/dcc/ausloeser_8c" startline="62">first_lokal_midi</references>
+        <references refid="dd/d21/group__Parser_1gaf0944493cbec9f89bad097c3b952634a" compoundref="d6/dcc/ausloeser_8c" startline="58">first_midi</references>
+        <references refid="d2/d1c/group__Interpreter_1gab7918076c80dc48be1a4c64a39be0510" compoundref="d6/dcc/ausloeser_8c" startline="386" endline="390">get_ende_harmonie</references>
+        <references refid="d2/d1c/group__Interpreter_1gaf764bbaa2fdfbb274ead1ebf61f49ac7" compoundref="d6/dcc/ausloeser_8c" startline="397" endline="401">get_ende_keyboard</references>
+        <references refid="d2/d1c/group__Interpreter_1gaa6d0bceb2b55629cbd049f76ca7fc577" compoundref="d6/dcc/ausloeser_8c" startline="408" endline="412">get_ende_midi</references>
+        <references refid="d2/d1c/group__Interpreter_1ga69baa9919250669cbe29d4a4fa4bf9ca" compoundref="d6/dcc/ausloeser_8c" startline="295" endline="379">insert_in_globale_liste</references>
+        <references refid="d2/d1c/group__Interpreter_1gadd38444278d5ab45b8fed1d6683d16b1" compoundref="d6/dcc/ausloeser_8c" startline="420" endline="524">insert_in_lokale_liste</references>
+        <references refid="dd/d21/group__Parser_1gafa20457ba0cc68c3fb9b951396475f39" compoundref="d6/dcc/ausloeser_8c" startline="48">last_global_harmonie</references>
+        <references refid="dd/d21/group__Parser_1ga7d7d753e6a50fb64c3142215b6d3dc8d" compoundref="d6/dcc/ausloeser_8c" startline="54">last_global_keyboard</references>
+        <references refid="dd/d21/group__Parser_1gaeacc603c530f9ab8c25eaf9386d74ed2" compoundref="d6/dcc/ausloeser_8c" startline="60">last_global_midi</references>
+        <references refid="d1/dff/logik_8h_1a7f772804a850a0156f485df5f8cb1339" compoundref="d7/d6e/logik_8c" startline="44">list_of_logiken</references>
+        <references refid="d1/dff/logik_8h_1a1bf49a0b791eef42c75d45a8bca773f0" compoundref="d7/d6e/logik_8c" startline="50" endline="53">logik_list_laenge</references>
+        <references refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" compoundref="df/d8e/bad__decl_8h" startline="52">MAX_BOX</references>
+        <references refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" compoundref="d1/dff/logik_8h" startline="32">logik::name</references>
+        <references refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" compoundref="d1/dff/logik_8h" startline="36">logik::next</references>
+        <references refid="d0/dab/structanweisung_1ac2f1fdc2202ad29c50dbdc676fdc9a6a" compoundref="d0/db7/anweisung_8h" startline="39">anweisung::next</references>
+        <references refid="da/ddb/heap_8h_1ab0c7434dd1577c62500713d2508d89ce" compoundref="d2/d29/heap_8c" startline="258" endline="268">xcalloc</references>
+        <referencedby refid="d3/d14/gmut_8cpp_1aa4fbd34cae8e303c82cf546234111c10" compoundref="d3/d14/gmut_8cpp" startline="153" endline="185">GMutCompile</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Tabellengenerator. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="rcs"><title>Id:</title><para>tabgen.h,v 1.2 2005/11/03 14:36:28 keinstein Exp </para></simplesect>
+<simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein_junior@gmx.net">keinstein_junior@gmx.net</ulink> </para></simplesect>
+<simplesect kind="date"><para></para></simplesect>
+<simplesect kind="rcs"><title>Date:</title><para>2005/11/03 14:36:28 </para></simplesect>
+<simplesect kind="version"><para></para></simplesect>
+<simplesect kind="rcs"><title>Revision:</title><para>1.2 </para></simplesect>
+</para><para><simplesect kind="rcs"><title>Log:</title><para>tabgen.h,v </para></simplesect>
+Revision 1.2 2005/11/03 14:36:28 keinstein new file header </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="16"><highlight class="preprocessor">#ifndef<sp/>__TABGEN_H_INCLUDED</highlight></codeline>
+<codeline lineno="17"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>__TABGEN_H_INCLUDED</highlight></codeline>
+<codeline lineno="18"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="20"><highlight class="preprocessor"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/de7/tabgen_8h_1a80f694cdb409db5d5dd155ca0759f310" kindref="member">mutabor_tabellen_generator</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus<sp/></highlight></codeline>
+<codeline lineno="28"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>extern<sp/>&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mutabor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__TABGEN_H_INCLUDED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/tabgen.h"/>
+  </compounddef>
+</doxygen>

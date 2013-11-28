@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d6/de3/classmutaborGUI_1_1GUIRouteFactory" kind="class" prot="public">
+    <compoundname>mutaborGUI::GUIRouteFactory</compoundname>
+    <basecompoundref refid="d9/d3e/classmutabor_1_1RouteFactory" prot="public" virt="non-virtual">mutabor::RouteFactory</basecompoundref>
+    <includes refid="d6/dfa/GUIRoute_8h" local="no">GUIRoute.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1ad3ab6d3f7336e7edf2f940ea35fd2b3a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutaborGUI::GUIRouteFactory::GUIRouteFactory</definition>
+        <argsstring>()</argsstring>
+        <name>GUIRouteFactory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="302" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" bodystart="302" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1a3cba37e0e43139019615d2c5d4be75e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual mutaborGUI::GUIRouteFactory::~GUIRouteFactory</definition>
+        <argsstring>()</argsstring>
+        <name>~GUIRouteFactory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="303" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" bodystart="303" bodyend="303"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1a997f1178a8757ba2bcde5243a8e31dc0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d8/d8e/classmutaborGUI_1_1MutBoxChannelShape" kindref="compound">MutBoxChannelShape</ref> *</type>
+        <definition>static MutBoxChannelShape* mutaborGUI::GUIRouteFactory::CreateBoxChannelShape</definition>
+        <argsstring>(mutabor::Route &amp;route, wxWindow *parent) __attribute__((malloc))</argsstring>
+        <name>CreateBoxChannelShape</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">mutabor::Route</ref> &amp;</type>
+          <declname>route</declname>
+        </param>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="305" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" bodystart="305" bodyend="312"/>
+        <references refid="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1a75a8d7d51409f856c07a7845fd8f6a66" compoundref="d4/dee/GUIRoute_8cpp" startline="601" endline="634">DoCreateBoxChannelShape</references>
+        <references refid="d5/dee/group__route_1ga8676d872d8c910a03484ba95dc4abf7d" compoundref="d1/d65/Route_8h" startline="719">mutabor::RouteFactory::factory</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1a3dc58a640f4137a88a3a085b10a81362" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="d5/dee/group__route_1ga1883da1b1be8d9e8d11d091c04a37521" kindref="member">mutabor::RouteClass</ref> *</type>
+        <definition>RouteClass * mutaborGUI::GUIRouteFactory::DoCreate</definition>
+        <argsstring>() const __attribute__((malloc))</argsstring>
+        <name>DoCreate</name>
+        <reimplements refid="d5/dee/group__route_1ga77104b4e19967c4a9677ae959ec411e0">DoCreate</reimplements>
+        <briefdescription>
+<para>Creates a generic route. </para>        </briefdescription>
+        <detaileddescription>
+<para>This functions creates a route object on the heap and returns a smart pointer to it. This route will not be preconfigured.</para><para>Each RouteFactory class must override this function to return a route of its type.</para><para><simplesect kind="return"><para>Route smart pointer to the newly created route </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="315" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.cpp" bodystart="537" bodyend="544"/>
+        <references refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1a20f496591d4e24a0d07d669893365847" compoundref="d6/dfa/GUIRoute_8h" startline="262" endline="264">mutaborGUI::GUIfiedRoute&lt; T &gt;::GetRoute</references>
+      </memberdef>
+      <memberdef kind="function" id="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1a3f8907e4cd81045372dbdd156e00721b" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="d5/dee/group__route_1ga1883da1b1be8d9e8d11d091c04a37521" kindref="member">mutabor::RouteClass</ref> *</type>
+        <definition>virtual mutabor::RouteClass* mutaborGUI::GUIRouteFactory::DoCreate</definition>
+        <argsstring>(mutabor::InputDevice &amp;in, mutabor::OutputDevice &amp;out, mutabor::RouteType type, int iFrom, int iTo, mutabor::Box box, bool active, int oFrom, int oTo, bool oNoDrum) const __attribute__((malloc))</argsstring>
+        <name>DoCreate</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gaa07c845228719e7505615a18d241734d" kindref="member">mutabor::InputDevice</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gaa9af06d2b801f5fbf129acc683bb764d" kindref="member">mutabor::OutputDevice</ref> &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga40717007e1ff5cfd3b0255fa4db7f45e" kindref="member">mutabor::RouteType</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iFrom</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iTo</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">mutabor::Box</ref></type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>active</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>oFrom</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>oTo</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>oNoDrum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="317" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1a75a8d7d51409f856c07a7845fd8f6a66" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="d8/d8e/classmutaborGUI_1_1MutBoxChannelShape" kindref="compound">MutBoxChannelShape</ref> *</type>
+        <definition>MutBoxChannelShape * mutaborGUI::GUIRouteFactory::DoCreateBoxChannelShape</definition>
+        <argsstring>(mutabor::Route &amp;route, wxWindow *parent) const </argsstring>
+        <name>DoCreateBoxChannelShape</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">mutabor::Route</ref> &amp;</type>
+          <declname>route</declname>
+        </param>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="dd/da0/todo_1_todo000032"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>implement ID sharing between the different shapes of one common route </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="330" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.cpp" bodystart="601" bodyend="634"/>
+        <references refid="dc/d06/classmutaborGUI_1_1MutRouteWnd_1a1b62a9db129f1f62e8d69a83a125ea52" compoundref="d3/dd7/MutRouteWnd_8h" startline="194" endline="212">mutaborGUI::MutRouteWnd::AddBox</references>
+        <references refid="d6/daa/namespacemutabor_1a65c68128daf0c3feda58f55b7aca2e05" compoundref="d2/d2c/Route-inlines_8h" startline="58" endline="61">mutabor::connect</references>
+        <references refid="d5/dee/group__route_1ga1b747523cf90d4b44b18f88512405445" compoundref="de/d0f/Box_8h" startline="737" endline="752">mutabor::BoxFactory::Create</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1ab970b1792ebb1d6aebb0c11f031adb84" compoundref="d5/d12/GUIBoxData-inlines_8h" startline="183" endline="190">mutaborGUI::BoxData::GetShape</references>
+        <references refid="d9/d7c/group__kernel_1ga929b9e3b3d2ed10ebd92110d49320603" compoundref="d1/da4/boost-interface_8h" startline="107" endline="111">intrusive_ptr_get_refcount</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542aeb2ddcbaa727016dcb5229fc6dacc23f" compoundref="de/d0f/Box_8h" startline="113">mutabor::NoBox</references>
+        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="309" endline="312">mutaborGUI::ToGUIBase</references>
+        <referencedby refid="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1a997f1178a8757ba2bcde5243a8e31dc0" compoundref="d6/dfa/GUIRoute_8h" startline="305" endline="312">CreateBoxChannelShape</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2963">
+        <label>mutaborGUI::GUIRouteFactory</label>
+        <link refid="d6/de3/classmutaborGUI_1_1GUIRouteFactory"/>
+        <childnode refid="2964" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2964">
+        <label>mutabor::RouteFactory</label>
+        <link refid="d9/d3e/classmutabor_1_1RouteFactory"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2965">
+        <label>mutaborGUI::GUIRouteFactory</label>
+        <link refid="d6/de3/classmutaborGUI_1_1GUIRouteFactory"/>
+        <childnode refid="2966" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2966">
+        <label>mutabor::RouteFactory</label>
+        <link refid="d9/d3e/classmutabor_1_1RouteFactory"/>
+        <childnode refid="2966" relation="usage">
+          <edgelabel>factory</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="300" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" bodystart="300" bodyend="332"/>
+    <listofallmembers>
+      <member refid="d5/dee/group__route_1gaf8817ebce7a0d0d9fecacf9bdeff028c" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIRouteFactory</scope><name>Create</name></member>
+      <member refid="d5/dee/group__route_1gaaea7e07fc7ee1c4f5abda52fcd1b3fe6" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIRouteFactory</scope><name>Create</name></member>
+      <member refid="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1a997f1178a8757ba2bcde5243a8e31dc0" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIRouteFactory</scope><name>CreateBoxChannelShape</name></member>
+      <member refid="d5/dee/group__route_1gae5e1322c29a81057f167583065aa64a4" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIRouteFactory</scope><name>Destroy</name></member>
+      <member refid="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1a3dc58a640f4137a88a3a085b10a81362" prot="protected" virt="virtual"><scope>mutaborGUI::GUIRouteFactory</scope><name>DoCreate</name></member>
+      <member refid="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1a3f8907e4cd81045372dbdd156e00721b" prot="protected" virt="virtual"><scope>mutaborGUI::GUIRouteFactory</scope><name>DoCreate</name></member>
+      <member refid="d5/dee/group__route_1ga0342b49d053c98883e862cd9a03dc79e" prot="protected" virt="virtual" ambiguityscope="mutabor::RouteFactory::"><scope>mutaborGUI::GUIRouteFactory</scope><name>DoCreate</name></member>
+      <member refid="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1a75a8d7d51409f856c07a7845fd8f6a66" prot="protected" virt="virtual"><scope>mutaborGUI::GUIRouteFactory</scope><name>DoCreateBoxChannelShape</name></member>
+      <member refid="d5/dee/group__route_1gae7d8b2c6ad14d3d94718377969abcd8c" prot="protected" virt="virtual"><scope>mutaborGUI::GUIRouteFactory</scope><name>DoLoadRoutes</name></member>
+      <member refid="d5/dee/group__route_1gaf17cf4768d8fb8cc93dc827b40153605" prot="protected" virt="virtual"><scope>mutaborGUI::GUIRouteFactory</scope><name>DoSaveRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga8676d872d8c910a03484ba95dc4abf7d" prot="protected" virt="non-virtual"><scope>mutaborGUI::GUIRouteFactory</scope><name>factory</name></member>
+      <member refid="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1ad3ab6d3f7336e7edf2f940ea35fd2b3a" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIRouteFactory</scope><name>GUIRouteFactory</name></member>
+      <member refid="d5/dee/group__route_1ga8ffdbcbb93567fd8aea32fcb8a09bafe" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIRouteFactory</scope><name>LoadRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga76330e1ef6f9b17784f7802a4f316f39" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIRouteFactory</scope><name>RouteFactory</name></member>
+      <member refid="d5/dee/group__route_1ga7967d16e41377608b99ae06048d60254" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIRouteFactory</scope><name>SaveRoutes</name></member>
+      <member refid="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1a3cba37e0e43139019615d2c5d4be75e7" prot="public" virt="virtual"><scope>mutaborGUI::GUIRouteFactory</scope><name>~GUIRouteFactory</name></member>
+      <member refid="d5/dee/group__route_1ga95f0a6b81915028485c5d41a25903599" prot="protected" virt="virtual"><scope>mutaborGUI::GUIRouteFactory</scope><name>~RouteFactory</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,544 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d1/dce/box_8cpp" kind="file">
+    <compoundname>box.cpp</compoundname>
+    <includes refid="dc/d19/box_8h" local="yes">box.h</includes>
+    <includes refid="d6/d0c/Parser_8h" local="yes">Parser.h</includes>
+    <includes refid="de/d11/Execute_8h" local="yes">Execute.h</includes>
+    <includes refid="d2/d32/Hilfs_8h" local="yes">Hilfs.h</includes>
+    <includes refid="d6/d68/TabGen_8h" local="yes">TabGen.h</includes>
+    <incdepgraph>
+      <node id="12928">
+        <label>stdarg.h</label>
+      </node>
+      <node id="12936">
+        <label>Execute.h</label>
+        <link refid="de/d11/Execute_8h"/>
+        <childnode refid="12927" relation="include">
+        </childnode>
+        <childnode refid="12931" relation="include">
+        </childnode>
+      </node>
+      <node id="12927">
+        <label>Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="12928" relation="include">
+        </childnode>
+        <childnode refid="12929" relation="include">
+        </childnode>
+      </node>
+      <node id="12941">
+        <label>TabGen.h</label>
+        <link refid="d6/d68/TabGen_8h"/>
+        <childnode refid="12927" relation="include">
+        </childnode>
+      </node>
+      <node id="12932">
+        <label>stdlib.h</label>
+      </node>
+      <node id="12937">
+        <label>malloc.h</label>
+      </node>
+      <node id="12933">
+        <label>string</label>
+      </node>
+      <node id="12938">
+        <label>Parser.h</label>
+        <link refid="d6/d0c/Parser_8h"/>
+        <childnode refid="12927" relation="include">
+        </childnode>
+        <childnode refid="12926" relation="include">
+        </childnode>
+        <childnode refid="12930" relation="include">
+        </childnode>
+        <childnode refid="12939" relation="include">
+        </childnode>
+      </node>
+      <node id="12939">
+        <label>limits.h</label>
+      </node>
+      <node id="12935">
+        <label>Interpre.h</label>
+        <link refid="d2/dd8/Interpre_8h"/>
+        <childnode refid="12927" relation="include">
+        </childnode>
+        <childnode refid="12930" relation="include">
+        </childnode>
+      </node>
+      <node id="12926">
+        <label>box.h</label>
+        <link refid="dc/d19/box_8h"/>
+        <childnode refid="12927" relation="include">
+        </childnode>
+        <childnode refid="12930" relation="include">
+        </childnode>
+        <childnode refid="12935" relation="include">
+        </childnode>
+        <childnode refid="12936" relation="include">
+        </childnode>
+        <childnode refid="12937" relation="include">
+        </childnode>
+      </node>
+      <node id="12940">
+        <label>Hilfs.h</label>
+        <link refid="d2/d32/Hilfs_8h"/>
+        <childnode refid="12927" relation="include">
+        </childnode>
+        <childnode refid="12926" relation="include">
+        </childnode>
+        <childnode refid="12931" relation="include">
+        </childnode>
+      </node>
+      <node id="12930">
+        <label>Global.h</label>
+        <link refid="dd/d40/Global_8h"/>
+        <childnode refid="12927" relation="include">
+        </childnode>
+        <childnode refid="12931" relation="include">
+        </childnode>
+        <childnode refid="12932" relation="include">
+        </childnode>
+        <childnode refid="12928" relation="include">
+        </childnode>
+        <childnode refid="12933" relation="include">
+        </childnode>
+        <childnode refid="12934" relation="include">
+        </childnode>
+      </node>
+      <node id="12925">
+        <label>src/kernel/box.cpp</label>
+        <link refid="box.cpp"/>
+        <childnode refid="12926" relation="include">
+        </childnode>
+        <childnode refid="12938" relation="include">
+        </childnode>
+        <childnode refid="12936" relation="include">
+        </childnode>
+        <childnode refid="12940" relation="include">
+        </childnode>
+        <childnode refid="12941" relation="include">
+        </childnode>
+      </node>
+      <node id="12934">
+        <label>math.h</label>
+      </node>
+      <node id="12929">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+      <node id="12931">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="d9/d7c/group__kernel_1ga8551cc7b1cd2b0964f7c21c669fb0b27" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int laufzeit_meldungen_erlaubt</definition>
+        <argsstring></argsstring>
+        <name>laufzeit_meldungen_erlaubt</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" line="44" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/d7c/group__kernel_1ga95a4aa4b32a3cd07f690d322b0fa618c" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int aktuelles_midi_instrument</definition>
+        <argsstring></argsstring>
+        <name>aktuelles_midi_instrument</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" line="45" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/d7c/group__kernel_1ga62f2752bfa77e306c30a7f4881965da0" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t minimal_box_used</definition>
+        <argsstring></argsstring>
+        <name>minimal_box_used</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" line="47" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" bodystart="47" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1ga9f387b950a812c3815291654546e7249" compoundref="dc/df3/MutFrame_8cpp" startline="1872" endline="1909">mutaborGUI::CheckBoxesUsed</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gae1c89fe3498f15f1d499e98d6cc26866" compoundref="dc/df3/MutFrame_8cpp" startline="1747" endline="1812">mutaborGUI::MutFrame::CloseAll</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="699" endline="831">mutaborGUI::MutFrame::CmDoActivate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d9/d7c/group__kernel_1ga651eda1dedadab7e91dbcfc842180218" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int keys_changed_sum</definition>
+        <argsstring></argsstring>
+        <name>keys_changed_sum</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" line="48" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d9/d7c/group__kernel_1gada2c15aa7cb554aa175109fcb3771be9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor_set_logic</definition>
+        <argsstring>(struct mutabor_box_type *box, struct mutabor_logic_parsed *logic)</argsstring>
+        <name>mutabor_set_logic</name>
+        <param>
+          <type>struct <ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="d7/d21/structmutabor__logic__parsed" kindref="compound">mutabor_logic_parsed</ref> *</type>
+          <declname>logic</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" line="50" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" bodystart="50" bodyend="69"/>
+        <references refid="d0/d33/structmutabor__box__type_1adaff5b982df1fe1a858d7e322601a7f7" compoundref="dc/d19/box_8h" startline="180">mutabor_box_type::file</references>
+        <references refid="d9/d7c/group__kernel_1ga6cdadb41b8ac72cc80f2bccd24b7fefc" compoundref="da/d02/Hilfs_8cpp" startline="287" endline="308">loesche_syntax_speicher</references>
+        <references refid="d9/d7c/group__kernel_1ga53bd64c4280a2354b04f581059194d74" compoundref="de/d11/Execute_8h" startline="170" endline="172">mutabor_lock_logic</references>
+        <references refid="d9/d7c/group__kernel_1gaae6692040892343d073fbf062c978bc5" compoundref="de/d11/Execute_8h" startline="174" endline="176">mutabor_unlock_logic</references>
+        <references refid="d7/d21/structmutabor__logic__parsed_1afe0ae704c39211396ef226b153d292ea" compoundref="d6/d0c/Parser_8h" startline="101">mutabor_logic_parsed::refcount</references>
+        <referencedby refid="d5/dee/group__route_1ga52872f74de2779bc1608a8b340f9d2ba" compoundref="de/d0f/Box_8h" startline="539" endline="541">mutabor::BoxClass::SetLogic</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga86f16f8947d969c3c8f4632d25b6e146" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor_reset_keys</definition>
+        <argsstring>(struct mutabor_box_type *box)</argsstring>
+        <name>mutabor_reset_keys</name>
+        <param>
+          <type>struct <ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" line="72" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" bodystart="72" bodyend="94"/>
+        <references refid="d0/d33/structmutabor__box__type_1a8f1880d183e054b9cf80e2db4ad246b2" compoundref="dc/d19/box_8h" startline="121">mutabor_box_type::current_keys</references>
+        <references refid="d9/df2/structmutabor__key__index__type_1a87bd419b7ad8a42c5964f80398af7430" compoundref="dc/d19/box_8h" startline="100">mutabor_key_index_type::key</references>
+        <references refid="d0/d33/structmutabor__box__type_1a08cac9bb8e78a1890e5ee38dafe97b66" compoundref="dc/d19/box_8h" startline="122">mutabor_box_type::key_count</references>
+        <references refid="d9/d7c/group__kernel_1gad30ac6940847881b49405bfad519ad48" compoundref="dc/d19/box_8h" startline="257" endline="311">mutabor_delete_key_in_box</references>
+        <references refid="d9/d7c/group__kernel_1ga1ebbd525ea538e57d912eaedcb2f2423" compoundref="dc/d19/box_8h" startline="215" endline="227">mutabor_find_key_in_box</references>
+        <references refid="d9/d7c/group__kernel_1ga72d1445b7ffb591bc81d73f0382be6ae" compoundref="dd/d40/Global_8h" startline="72">MUTABOR_KEYRANGE_MAX_WIDTH</references>
+        <references refid="d9/d7c/group__kernel_1ga093e71973b0d2a319538430c3f458c04" compoundref="dc/d19/box_8h" startline="97">MUTABOR_NO_NEXT</references>
+        <references refid="d6/d0c/structmutabor__note__type_1acf8cf1d896cdd3612d117bf75a8ea9c8" compoundref="dc/d19/box_8h" startline="72">mutabor_note_type::next</references>
+        <references refid="d0/d33/structmutabor__box__type_1a06326c348a83309a955c2687552f86e0" compoundref="dc/d19/box_8h" startline="144">mutabor_box_type::pattern</references>
+        <references refid="d3/dc4/structPTRN_1a22ad148904be142106c18a07cd840f9a" compoundref="d2/dd8/Interpre_8h" startline="137">PTRN::tonigkeit</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga0dda3f2e2a4d66c46d93cfaa44ae3aa5" compoundref="d1/dce/box_8cpp" startline="100" endline="126">mutabor_reset_box</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaf9dc832e91a28da7a19382beddb8edaf" compoundref="dd/dc6/Box_8cpp" startline="324" endline="328">mutabor::BoxClass::Panic</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga0dda3f2e2a4d66c46d93cfaa44ae3aa5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor_reset_box</definition>
+        <argsstring>(struct mutabor_box_type *box)</argsstring>
+        <name>mutabor_reset_box</name>
+        <param>
+          <type>struct <ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" line="100" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" bodystart="100" bodyend="126"/>
+        <references refid="d4/d2a/structTSYS_1a8259cdab04a561ed9c1ff24bdcd781f9" compoundref="d2/dd8/Interpre_8h" startline="73">TSYS::anker</references>
+        <references refid="d0/d33/structmutabor__box__type_1a1afdbc8be0301f11bd82e1e3fb319e75" compoundref="dc/d19/box_8h" startline="156">mutabor_box_type::current_logic</references>
+        <references refid="d0/d33/structmutabor__box__type_1a195e45c91aa40929382671925d80e749" compoundref="dc/d19/box_8h" startline="140">mutabor_box_type::current_parameters</references>
+        <references refid="d0/d33/structmutabor__box__type_1aeaaa6b7a868c9a05adaf4635ee8224f0" compoundref="dc/d19/box_8h" startline="129">mutabor_box_type::distance</references>
+        <references refid="d0/d33/structmutabor__box__type_1a950c0883d38d396f04837b5999d812d7" compoundref="dc/d19/box_8h" startline="154">mutabor_box_type::last_tonesystem</references>
+        <references refid="d9/d7c/group__kernel_1gaf34479d48a45079c3b7a64247a476898" compoundref="d2/dd8/Interpre_8h" startline="102" endline="105">mutabor_convert_pitch_to_interval</references>
+        <references refid="d9/d7c/group__kernel_1ga0694cd2c9dbaddc3b72d8f00615b9014" compoundref="d2/dd8/Interpre_8h" startline="129" endline="132">mutabor_convert_pitch_to_tone</references>
+        <references refid="d9/d7c/group__kernel_1ga72d1445b7ffb591bc81d73f0382be6ae" compoundref="dd/d40/Global_8h" startline="72">MUTABOR_KEYRANGE_MAX_WIDTH</references>
+        <references refid="d9/d7c/group__kernel_1ga86f16f8947d969c3c8f4632d25b6e146" compoundref="d1/dce/box_8cpp" startline="72" endline="94">mutabor_reset_keys</references>
+        <references refid="d4/d2a/structTSYS_1a8e6c51d7cbd7d65a0ed6e9b4d061f3f5" compoundref="d2/dd8/Interpre_8h" startline="76">TSYS::ton</references>
+        <references refid="d0/d33/structmutabor__box__type_1a055c695aa5bc8ce01b64e4598ca77e8f" compoundref="dc/d19/box_8h" startline="152">mutabor_box_type::tonesystem</references>
+        <references refid="d0/d33/structmutabor__box__type_1a8fdd1a5a797239203868f392a079be85" compoundref="dc/d19/box_8h" startline="153">mutabor_box_type::tonesystem_memory</references>
+        <referencedby refid="d9/d7c/group__kernel_1gac8bbab79a2ec35f146d66578ff02ec09" compoundref="d1/dce/box_8cpp" startline="129" endline="154">mutabor_initialize_box</referencedby>
+        <referencedby refid="d5/dee/group__route_1gacde207de41abe9defd55468078513aab" compoundref="dd/dc6/Box_8cpp" startline="330" endline="335">mutabor::BoxClass::Reset</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1gac8bbab79a2ec35f146d66578ff02ec09" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor_initialize_box</definition>
+        <argsstring>(mutabor_box_type *box, int id)</argsstring>
+        <name>mutabor_initialize_box</name>
+        <param>
+          <type><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" line="129" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" bodystart="129" bodyend="154"/>
+        <references refid="d0/d33/structmutabor__box__type_1a8f1880d183e054b9cf80e2db4ad246b2" compoundref="dc/d19/box_8h" startline="121">mutabor_box_type::current_keys</references>
+        <references refid="d0/d33/structmutabor__box__type_1a1afdbc8be0301f11bd82e1e3fb319e75" compoundref="dc/d19/box_8h" startline="156">mutabor_box_type::current_logic</references>
+        <references refid="d0/d33/structmutabor__box__type_1a195e45c91aa40929382671925d80e749" compoundref="dc/d19/box_8h" startline="140">mutabor_box_type::current_parameters</references>
+        <references refid="d0/d33/structmutabor__box__type_1a49b61c74d15d1b8943264eedf48168b7" compoundref="dc/d19/box_8h" startline="117">mutabor_box_type::id</references>
+        <references refid="d9/df2/structmutabor__key__index__type_1a87bd419b7ad8a42c5964f80398af7430" compoundref="dc/d19/box_8h" startline="100">mutabor_key_index_type::key</references>
+        <references refid="d9/d7c/group__kernel_1ga0e8b0f244b0a3b2d3afe46647a73860e" compoundref="d1/dce/box_8cpp" startline="182" endline="192">mutabor_initialize_keyplane</references>
+        <references refid="d9/d7c/group__kernel_1ga0dda3f2e2a4d66c46d93cfaa44ae3aa5" compoundref="d1/dce/box_8cpp" startline="100" endline="126">mutabor_reset_box</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d0/d33/structmutabor__box__type_1a31dd9cd6e20dfcde099130333ff396ad" compoundref="dc/d19/box_8h" startline="141">mutabor_box_type::parameters</references>
+        <references refid="d0/d33/structmutabor__box__type_1a677b970d80b869a750b1de829032819a" compoundref="dc/d19/box_8h" startline="119">mutabor_box_type::userdata</references>
+        <referencedby refid="d5/dee/group__route_1ga6eb42c00125e3001f785e9298acd29cc" compoundref="dd/dc6/Box_8cpp" startline="722" endline="741">mutabor::BoxClass::BoxClass</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gab9a27a873f970d50ea458d548cde6920" compoundref="d1/da7/boxTest_8cpp" startline="46" endline="56">boxTest::setUp</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga0e8b0f244b0a3b2d3afe46647a73860e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor_initialize_keyplane</definition>
+        <argsstring>(mutabor_key_index_type *plane)</argsstring>
+        <name>mutabor_initialize_keyplane</name>
+        <param>
+          <type><ref refid="d9/df2/structmutabor__key__index__type" kindref="compound">mutabor_key_index_type</ref> *</type>
+          <declname>plane</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" line="182" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp" bodystart="182" bodyend="192"/>
+        <references refid="d9/df2/structmutabor__key__index__type_1a87bd419b7ad8a42c5964f80398af7430" compoundref="dc/d19/box_8h" startline="100">mutabor_key_index_type::key</references>
+        <references refid="d9/d7c/group__kernel_1gacf95074714ba91a3d0f6421d82dd328a" compoundref="dc/d19/box_8h" startline="96">MUT_BOX_MAX_KEY_INDEX</references>
+        <references refid="d9/d7c/group__kernel_1ga093e71973b0d2a319538430c3f458c04" compoundref="dc/d19/box_8h" startline="97">MUTABOR_NO_NEXT</references>
+        <references refid="d6/d0c/structmutabor__note__type_1acf8cf1d896cdd3612d117bf75a8ea9c8" compoundref="dc/d19/box_8h" startline="72">mutabor_note_type::next</references>
+        <references refid="d9/df2/structmutabor__key__index__type_1a95b0411d011e74ef700e466eab29c72c" compoundref="dc/d19/box_8h" startline="101">mutabor_key_index_type::next</references>
+        <references refid="d6/d0c/structmutabor__note__type_1af21c06b013395e7317caeaa8af956a7f" compoundref="dc/d19/box_8h" startline="71">mutabor_note_type::userdata</references>
+        <referencedby refid="d9/d7c/group__kernel_1gaab6aec3dae497f4d0b26de1ba0a566f5" compoundref="dc/d19/box_8h" startline="314" endline="376">mutabor_create_key_in_box</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gac8bbab79a2ec35f146d66578ff02ec09" compoundref="d1/dce/box_8cpp" startline="129" endline="154">mutabor_initialize_box</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Box data structures and management functions. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright: (c) 2008 TU Dresden changes after 2011-11 (c) by the authors <simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein@users.berlios.de">keinstein@users.berlios.de</ulink>  GPL</para></simplesect>
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</para><para>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</para><para>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dc/d19/box_8h" kindref="compound">box.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d6/d0c/Parser_8h" kindref="compound">Parser.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d11/Execute_8h" kindref="compound">Execute.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d32/Hilfs_8h" kindref="compound">Hilfs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d6/d68/TabGen_8h" kindref="compound">TabGen.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">hidden<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//tone_system<sp/>*free_tonesystem<sp/>=<sp/>NULL;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//mutabor_box_type<sp/>mut_box[MAX_BOX];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="d9/d7c/group__kernel_1ga8551cc7b1cd2b0964f7c21c669fb0b27" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga8551cc7b1cd2b0964f7c21c669fb0b27" kindref="member">laufzeit_meldungen_erlaubt</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="45" refid="d9/d7c/group__kernel_1ga95a4aa4b32a3cd07f690d322b0fa618c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga95a4aa4b32a3cd07f690d322b0fa618c" kindref="member">aktuelles_midi_instrument</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>int<sp/>aktuelle_keyboard_box<sp/>=<sp/>0;<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="d9/d7c/group__kernel_1ga62f2752bfa77e306c30a7f4881965da0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga62f2752bfa77e306c30a7f4881965da0" kindref="member">minimal_box_used</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="48" refid="d9/d7c/group__kernel_1ga651eda1dedadab7e91dbcfc842180218" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga651eda1dedadab7e91dbcfc842180218" kindref="member">keys_changed_sum</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="d9/d7c/group__kernel_1gada2c15aa7cb554aa175109fcb3771be9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gada2c15aa7cb554aa175109fcb3771be9" kindref="member">mutabor_set_logic</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d7/d21/structmutabor__logic__parsed" kindref="compound">mutabor_logic_parsed</ref><sp/>*<sp/>logic)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(logic<sp/>==<sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1adaff5b982df1fe1a858d7e322601a7f7" kindref="member">file</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(logic)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga53bd64c4280a2354b04f581059194d74" kindref="member">mutabor_lock_logic</ref>(logic);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logic-&gt;<ref refid="d7/d21/structmutabor__logic__parsed_1afe0ae704c39211396ef226b153d292ea" kindref="member">refcount</ref>++;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(box-&gt;<ref refid="d0/d33/structmutabor__box__type_1adaff5b982df1fe1a858d7e322601a7f7" kindref="member">file</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga53bd64c4280a2354b04f581059194d74" kindref="member">mutabor_lock_logic</ref>(box-&gt;<ref refid="d0/d33/structmutabor__box__type_1adaff5b982df1fe1a858d7e322601a7f7" kindref="member">file</ref>);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1adaff5b982df1fe1a858d7e322601a7f7" kindref="member">file</ref>-&gt;<ref refid="d7/d21/structmutabor__logic__parsed_1afe0ae704c39211396ef226b153d292ea" kindref="member">refcount</ref>--;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!box-&gt;<ref refid="d0/d33/structmutabor__box__type_1adaff5b982df1fe1a858d7e322601a7f7" kindref="member">file</ref>-&gt;<ref refid="d7/d21/structmutabor__logic__parsed_1afe0ae704c39211396ef226b153d292ea" kindref="member">refcount</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga6cdadb41b8ac72cc80f2bccd24b7fefc" kindref="member">loesche_syntax_speicher</ref>(box);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gaae6692040892343d073fbf062c978bc5" kindref="member">mutabor_unlock_logic</ref>(box-&gt;<ref refid="d0/d33/structmutabor__box__type_1adaff5b982df1fe1a858d7e322601a7f7" kindref="member">file</ref>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1adaff5b982df1fe1a858d7e322601a7f7" kindref="member">file</ref><sp/>=<sp/>logic;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(logic)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gaae6692040892343d073fbf062c978bc5" kindref="member">mutabor_unlock_logic</ref>(logic);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="d9/d7c/group__kernel_1ga86f16f8947d969c3c8f4632d25b6e146" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga86f16f8947d969c3c8f4632d25b6e146" kindref="member">mutabor_reset_keys</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight></codeline>
+<codeline lineno="75"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>box-&gt;last_global_harmony<sp/>&amp;&amp;<sp/>*(box-&gt;last_global_harmony)<sp/>)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*(box-&gt;last_global_harmony)<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>box-&gt;last_global_keyboard<sp/>&amp;&amp;<sp/>*(box-&gt;last_global_keyboard)<sp/>)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*(box-&gt;last_global_keyboard)<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>box-&gt;last_global_midi<sp/>&amp;&amp;<sp/>*(box-&gt;last_global_midi)<sp/>)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*(box-&gt;last_global_midi)=NULL;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="85"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>we<sp/>make<sp/>no<sp/>shortcuts,<sp/>here<sp/>to<sp/>avoid<sp/>errors<sp/>and<sp/>make<sp/>them<sp/>more<sp/>easy<sp/>to<sp/>find<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="d9/d7c/group__kernel_1ga1ebbd525ea538e57d912eaedcb2f2423" kindref="member">mutabor_find_key_in_box</ref>(box,<sp/>0)<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gad30ac6940847881b49405bfad519ad48" kindref="member">mutabor_delete_key_in_box</ref>(box,<sp/>0);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a08cac9bb8e78a1890e5ee38dafe97b66" kindref="member">key_count</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a8f1880d183e054b9cf80e2db4ad246b2" kindref="member">current_keys</ref>.<ref refid="d9/df2/structmutabor__key__index__type_1a87bd419b7ad8a42c5964f80398af7430" kindref="member">key</ref>[0].<ref refid="d6/d0c/structmutabor__note__type_1acf8cf1d896cdd3612d117bf75a8ea9c8" kindref="member">next</ref><sp/>=<sp/><ref refid="d9/d7c/group__kernel_1ga093e71973b0d2a319538430c3f458c04" kindref="member">MUTABOR_NO_NEXT</ref>;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/><ref refid="d9/d7c/group__kernel_1ga72d1445b7ffb591bc81d73f0382be6ae" kindref="member">MUTABOR_KEYRANGE_MAX_WIDTH</ref>;<sp/>j++)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a06326c348a83309a955c2687552f86e0" kindref="member">pattern</ref>.<ref refid="d3/dc4/structPTRN_1a22ad148904be142106c18a07cd840f9a" kindref="member">tonigkeit</ref>[j]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>This<sp/>function<sp/>uses<sp/>tonsystem_memory<sp/>which<sp/>is<sp/>just<sp/>a<sp/>set<sp/>of<sp/>tone<sp/>systems</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/>that<sp/>will<sp/>be<sp/>assigned<sp/>to<sp/>the<sp/>boxes<sp/>via<sp/>pointers<sp/>later.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="d9/d7c/group__kernel_1ga0dda3f2e2a4d66c46d93cfaa44ae3aa5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0dda3f2e2a4d66c46d93cfaa44ae3aa5" kindref="member">mutabor_reset_box</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="d4/d2a/structTSYS" kindref="compound">tone_system</ref><sp/>tonesystem_init<sp/>=</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0,<sp/>1,<sp/><ref refid="d9/d7c/group__kernel_1gaf34479d48a45079c3b7a64247a476898" kindref="member">mutabor_convert_pitch_to_interval</ref><sp/>(1),<sp/></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><ref refid="d9/d7c/group__kernel_1ga0694cd2c9dbaddc3b72d8f00615b9014" kindref="member">mutabor_convert_pitch_to_tone</ref>(60)<sp/>}}<sp/>;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!tonesystem_init.<ref refid="d4/d2a/structTSYS_1a8259cdab04a561ed9c1ff24bdcd781f9" kindref="member">anker</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset(&amp;(tonesystem_init.<ref refid="d4/d2a/structTSYS_1a8e6c51d7cbd7d65a0ed6e9b4d061f3f5" kindref="member">ton</ref>[1]),</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="d9/d7c/group__kernel_1ga72d1445b7ffb591bc81d73f0382be6ae" kindref="member">MUTABOR_KEYRANGE_MAX_WIDTH</ref>-1)<sp/></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(tonesystem_init.<ref refid="d4/d2a/structTSYS_1a8e6c51d7cbd7d65a0ed6e9b4d061f3f5" kindref="member">ton</ref>[1]));</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tonesystem_init.<ref refid="d4/d2a/structTSYS_1a8259cdab04a561ed9c1ff24bdcd781f9" kindref="member">anker</ref><sp/>=<sp/>60;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>2<sp/>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a8fdd1a5a797239203868f392a079be85" kindref="member">tonesystem_memory</ref>[i]<sp/>=<sp/>tonesystem_init;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a055c695aa5bc8ce01b64e4598ca77e8f" kindref="member">tonesystem</ref><sp/>=<sp/>&amp;(box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a8fdd1a5a797239203868f392a079be85" kindref="member">tonesystem_memory</ref>[0]);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a950c0883d38d396f04837b5999d812d7" kindref="member">last_tonesystem</ref><sp/>=<sp/>tonesystem_init;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reset<sp/>parameters<sp/>but<sp/>don&apos;t<sp/>free<sp/>them.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>box-&gt;parameters<sp/>can<sp/>be<sp/>used<sp/>during<sp/>the<sp/>next<sp/>run.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a195e45c91aa40929382671925d80e749" kindref="member">current_parameters</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a1afdbc8be0301f11bd82e1e3fb319e75" kindref="member">current_logic</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1aeaaa6b7a868c9a05adaf4635ee8224f0" kindref="member">distance</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga86f16f8947d969c3c8f4632d25b6e146" kindref="member">mutabor_reset_keys</ref><sp/>(box);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="d9/d7c/group__kernel_1gac8bbab79a2ec35f146d66578ff02ec09" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gac8bbab79a2ec35f146d66578ff02ec09" kindref="member">mutabor_initialize_box</ref>(<ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>C<sp/>standard<sp/>does<sp/>not<sp/>define<sp/>NULL<sp/>to<sp/>be<sp/>0<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" kindref="member">mutASSERT</ref>(box<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset(box,0,</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref>));</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" kindref="member">mutASSERT</ref>(box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a8f1880d183e054b9cf80e2db4ad246b2" kindref="member">current_keys</ref>.<ref refid="d9/df2/structmutabor__key__index__type_1a87bd419b7ad8a42c5964f80398af7430" kindref="member">key</ref><sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>C<sp/>standard<sp/>does<sp/>not<sp/>define<sp/>NULL<sp/>to<sp/>be<sp/>0<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>the<sp/>following<sp/>if<sp/>statement<sp/>will<sp/>be<sp/>optimized<sp/>away</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>not<sp/>needed<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(0<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a677b970d80b869a750b1de829032819a" kindref="member">userdata</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a1afdbc8be0301f11bd82e1e3fb319e75" kindref="member">current_logic</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga0e8b0f244b0a3b2d3afe46647a73860e" kindref="member">mutabor_initialize_keyplane</ref>(&amp;box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a8f1880d183e054b9cf80e2db4ad246b2" kindref="member">current_keys</ref>);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a31dd9cd6e20dfcde099130333ff396ad" kindref="member">parameters</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a195e45c91aa40929382671925d80e749" kindref="member">current_parameters</ref><sp/>=<sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a31dd9cd6e20dfcde099130333ff396ad" kindref="member">parameters</ref>;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight></codeline>
+<codeline lineno="149"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>application<sp/>is<sp/>now<sp/>responsible<sp/>for<sp/>logging<sp/>actions<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;nextprotocol<sp/>=<sp/>&amp;box-&gt;protocol;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="152"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a49b61c74d15d1b8943264eedf48168b7" kindref="member">id</ref><sp/>=<sp/>id;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga0dda3f2e2a4d66c46d93cfaa44ae3aa5" kindref="member">mutabor_reset_box</ref>(box);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>This<sp/>function<sp/>uses<sp/>tonsystem_memory<sp/>which<sp/>is<sp/>just<sp/>a<sp/>set<sp/>of<sp/>tone<sp/>systems</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/>that<sp/>will<sp/>be<sp/>assigned<sp/>to<sp/>the<sp/>boxes<sp/>via<sp/>pointers<sp/>later.<sp/></highlight></codeline>
+<codeline lineno="157"><highlight class="comment">void<sp/>GlobalReset()</highlight></codeline>
+<codeline lineno="158"><highlight class="comment">{</highlight></codeline>
+<codeline lineno="159"><highlight class="comment">#pragma<sp/>message<sp/>&quot;tonesystem_memory<sp/>should<sp/>be<sp/>box<sp/>specific<sp/>to<sp/>be<sp/>thread<sp/>proof&quot;</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>MAX_BOX;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tonesystem_memory[i]<sp/>=<sp/>tonesystem_init;</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mut_box[i].tonesystem<sp/>=<sp/>tonesystem_memory<sp/>+<sp/>i;</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tonesystem_memory[MAX_BOX]<sp/>=<sp/>tonesystem_init;</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free_tonesystem<sp/>=<sp/>tonesystem_memory+MAX_BOX;</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"></highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MutResetKeys<sp/>();</highlight></codeline>
+<codeline lineno="168"><highlight class="comment">}</highlight></codeline>
+<codeline lineno="169"><highlight class="comment"></highlight></codeline>
+<codeline lineno="170"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="173"><highlight class="comment">void<sp/>initialize_boxes<sp/>()<sp/></highlight></codeline>
+<codeline lineno="174"><highlight class="comment">{</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>use<sp/>int<sp/>here,<sp/>as<sp/>otherwise<sp/>C++<sp/>doesn&apos;t<sp/>find<sp/>mutabor_initialize_box</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>MAX_BOX;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>initialize_box(<sp/>&amp;mut_box[i],i);</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="179"><highlight class="comment">}</highlight></codeline>
+<codeline lineno="180"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182" refid="d9/d7c/group__kernel_1ga0e8b0f244b0a3b2d3afe46647a73860e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0e8b0f244b0a3b2d3afe46647a73860e" kindref="member">mutabor_initialize_keyplane</ref>(<ref refid="d9/df2/structmutabor__key__index__type" kindref="compound">mutabor_key_index_type</ref><sp/>*<sp/>plane)</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d0c/structmutabor__note__type" kindref="compound">mutabor_note_type</ref><sp/>*key;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;=<sp/><ref refid="d9/d7c/group__kernel_1gacf95074714ba91a3d0f6421d82dd328a" kindref="member">MUT_BOX_MAX_KEY_INDEX</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>key<sp/>=<sp/>&amp;(plane-&gt;<ref refid="d9/df2/structmutabor__key__index__type_1a87bd419b7ad8a42c5964f80398af7430" kindref="member">key</ref>[i]);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>key-&gt;<ref refid="d6/d0c/structmutabor__note__type_1af21c06b013395e7317caeaa8af956a7f" kindref="member">userdata</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>key-&gt;<ref refid="d6/d0c/structmutabor__note__type_1acf8cf1d896cdd3612d117bf75a8ea9c8" kindref="member">next</ref><sp/>=<sp/><ref refid="d9/d7c/group__kernel_1ga093e71973b0d2a319538430c3f458c04" kindref="member">MUTABOR_NO_NEXT</ref>;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>plane-&gt;<ref refid="d9/df2/structmutabor__key__index__type_1a95b0411d011e74ef700e466eab29c72c" kindref="member">next</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>DEBUG</highlight></codeline>
+<codeline lineno="195"><highlight class="preprocessor"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gae6d79c3781feda20abadf08f8b8b64e5" kindref="member">mutabor_check_key_count</ref>(<ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>checking<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(checking)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>checking<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a08cac9bb8e78a1890e5ee38dafe97b66" kindref="member">key_count</ref>)<sp/>{<sp/>checking<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(index<sp/>!=<sp/><ref refid="d9/d7c/group__kernel_1ga093e71973b0d2a319538430c3f458c04" kindref="member">MUTABOR_NO_NEXT</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count++;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d0c/structmutabor__note__type" kindref="compound">mutabor_note_type</ref><sp/>*<sp/>key<sp/>=<sp/><ref refid="d9/d7c/group__kernel_1ga1ebbd525ea538e57d912eaedcb2f2423" kindref="member">mutabor_find_key_in_box</ref>(box,index);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!key)<sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga3af99897b60119951af8961dbd52dd3f" kindref="member">UNREACHABLE</ref>;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>checking<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>index<sp/>=<sp/>key-&gt;<ref refid="d6/d0c/structmutabor__note__type_1acf8cf1d896cdd3612d117bf75a8ea9c8" kindref="member">next</ref>;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" kindref="member">mutASSERT</ref>(box-&gt;<ref refid="d0/d33/structmutabor__box__type_1a08cac9bb8e78a1890e5ee38dafe97b66" kindref="member">key_count</ref><sp/>==<sp/>count);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>checking<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="217"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus<sp/></highlight></codeline>
+<codeline lineno="219"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="223"><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.cpp"/>
+  </compounddef>
+</doxygen>

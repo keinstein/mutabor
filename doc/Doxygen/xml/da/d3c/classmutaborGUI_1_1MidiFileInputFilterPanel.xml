@@ -1,0 +1,308 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="da/d3c/classmutaborGUI_1_1MidiFileInputFilterPanel" kind="class" prot="public">
+    <compoundname>mutaborGUI::MidiFileInputFilterPanel</compoundname>
+    <basecompoundref refid="db/ded/classMidiFileInputFilterPanelBase" prot="public" virt="non-virtual">MidiFileInputFilterPanelBase</basecompoundref>
+    <includes refid="d1/da8/InputMidiFileDeviceShape_8h" local="no">InputMidiFileDeviceShape.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga311ae6d6407cdcc95f247e74e8eef99b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutaborGUI::MidiFileInputFilterPanel::MidiFileInputFilterPanel</definition>
+        <argsstring>(wxWindow *parent)</argsstring>
+        <name>MidiFileInputFilterPanel</name>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" line="64" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" bodystart="64" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga324601c687a1a5c236c0519ea24f6280" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MidiFileInputFilterPanel::SetFromChannel</definition>
+        <argsstring>(int current, int min, int max)</argsstring>
+        <name>SetFromChannel</name>
+        <param>
+          <type>int</type>
+          <declname>current</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+<para>TODO: set limits according to changes: min.max = max.value and max.min = min.value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" line="68" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" bodystart="68" bodyend="71"/>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1a52bb20404fc175bf556217d028dffcfb" compoundref="d2/dc0/wxresource_8h" startline="410">MidiFileInputFilterPanelBase::from_channel</references>
+        <referencedby refid="dc/df2/group__GUIroute_1ga204aa6ad79a19142b95fbeccf5c018c4" compoundref="d3/de3/InputMidiFileDeviceShape_8cpp" startline="88" endline="113">mutaborGUI::MutInputMidiFileDeviceShape::GetFilterPanel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gafdd03b09ea6ba4c21794efa4148ab9ab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutaborGUI::MidiFileInputFilterPanel::GetFromChannel</definition>
+        <argsstring>() const </argsstring>
+        <name>GetFromChannel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" line="72" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" bodystart="72" bodyend="72"/>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1a52bb20404fc175bf556217d028dffcfb" compoundref="d2/dc0/wxresource_8h" startline="410">MidiFileInputFilterPanelBase::from_channel</references>
+        <referencedby refid="dc/df2/group__GUIroute_1gaa709c5fc8b8179d26519cbe9dbbd0bf2" compoundref="d3/de3/InputMidiFileDeviceShape_8cpp" startline="127" endline="153">mutaborGUI::MutInputMidiFileDeviceShape::ReadFilterPanel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gadc8d457cf0dd639c2dc1e01878e55858" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MidiFileInputFilterPanel::SetToChannel</definition>
+        <argsstring>(int current, int min, int max)</argsstring>
+        <name>SetToChannel</name>
+        <param>
+          <type>int</type>
+          <declname>current</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" line="74" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" bodystart="74" bodyend="77"/>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1a37b7b90d9040090e4f676abbc1f896d2" compoundref="d2/dc0/wxresource_8h" startline="411">MidiFileInputFilterPanelBase::to_channel</references>
+        <referencedby refid="dc/df2/group__GUIroute_1ga204aa6ad79a19142b95fbeccf5c018c4" compoundref="d3/de3/InputMidiFileDeviceShape_8cpp" startline="88" endline="113">mutaborGUI::MutInputMidiFileDeviceShape::GetFilterPanel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga4e49b3f2f196b4a4c0fce1918ca6bc7e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutaborGUI::MidiFileInputFilterPanel::GetToChannel</definition>
+        <argsstring>() const </argsstring>
+        <name>GetToChannel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" line="78" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" bodystart="78" bodyend="78"/>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1a37b7b90d9040090e4f676abbc1f896d2" compoundref="d2/dc0/wxresource_8h" startline="411">MidiFileInputFilterPanelBase::to_channel</references>
+        <referencedby refid="dc/df2/group__GUIroute_1gaa709c5fc8b8179d26519cbe9dbbd0bf2" compoundref="d3/de3/InputMidiFileDeviceShape_8cpp" startline="127" endline="153">mutaborGUI::MutInputMidiFileDeviceShape::ReadFilterPanel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga053d304588e7cfbc1e89969f59b44ead" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MidiFileInputFilterPanel::SetFromTrack</definition>
+        <argsstring>(int current, int min, int max)</argsstring>
+        <name>SetFromTrack</name>
+        <param>
+          <type>int</type>
+          <declname>current</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" line="80" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" bodystart="80" bodyend="83"/>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1a4888df27c5563513a98440c93d073a66" compoundref="d2/dc0/wxresource_8h" startline="413">MidiFileInputFilterPanelBase::from_track</references>
+        <referencedby refid="dc/df2/group__GUIroute_1ga204aa6ad79a19142b95fbeccf5c018c4" compoundref="d3/de3/InputMidiFileDeviceShape_8cpp" startline="88" endline="113">mutaborGUI::MutInputMidiFileDeviceShape::GetFilterPanel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga58087aa667e61a00374be2a74c5b01af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutaborGUI::MidiFileInputFilterPanel::GetFromTrack</definition>
+        <argsstring>() const </argsstring>
+        <name>GetFromTrack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" line="84" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" bodystart="84" bodyend="87"/>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1a4888df27c5563513a98440c93d073a66" compoundref="d2/dc0/wxresource_8h" startline="413">MidiFileInputFilterPanelBase::from_track</references>
+        <referencedby refid="dc/df2/group__GUIroute_1gaa709c5fc8b8179d26519cbe9dbbd0bf2" compoundref="d3/de3/InputMidiFileDeviceShape_8cpp" startline="127" endline="153">mutaborGUI::MutInputMidiFileDeviceShape::ReadFilterPanel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga93d61699e6509297a5707a816c6112fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MidiFileInputFilterPanel::SetToTrack</definition>
+        <argsstring>(int current, int min, int max)</argsstring>
+        <name>SetToTrack</name>
+        <param>
+          <type>int</type>
+          <declname>current</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" line="89" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" bodystart="89" bodyend="92"/>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1a13e8a3c5d703cb50d32a4a18d6df36df" compoundref="d2/dc0/wxresource_8h" startline="414">MidiFileInputFilterPanelBase::to_track</references>
+        <referencedby refid="dc/df2/group__GUIroute_1ga204aa6ad79a19142b95fbeccf5c018c4" compoundref="d3/de3/InputMidiFileDeviceShape_8cpp" startline="88" endline="113">mutaborGUI::MutInputMidiFileDeviceShape::GetFilterPanel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gafe5acade59f5ce5eb447f203e0e199c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutaborGUI::MidiFileInputFilterPanel::GetToTrack</definition>
+        <argsstring>() const </argsstring>
+        <name>GetToTrack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" line="93" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" bodystart="93" bodyend="96"/>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1a13e8a3c5d703cb50d32a4a18d6df36df" compoundref="d2/dc0/wxresource_8h" startline="414">MidiFileInputFilterPanelBase::to_track</references>
+        <referencedby refid="dc/df2/group__GUIroute_1gaa709c5fc8b8179d26519cbe9dbbd0bf2" compoundref="d3/de3/InputMidiFileDeviceShape_8cpp" startline="127" endline="153">mutaborGUI::MutInputMidiFileDeviceShape::ReadFilterPanel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga61cb5a50b229e6fa7fc94d78858b16f4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MidiFileInputFilterPanel::SetRouteType</definition>
+        <argsstring>(mutabor::RouteType routetype)</argsstring>
+        <name>SetRouteType</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga40717007e1ff5cfd3b0255fa4db7f45e" kindref="member">mutabor::RouteType</ref></type>
+          <declname>routetype</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" line="98" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" bodystart="98" bodyend="114"/>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1afab678cce045e19fe1b7d7fc1fde3e64" compoundref="d2/dc0/wxresource_8h" startline="408">MidiFileInputFilterPanelBase::all_panel</references>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1a9ffc7b455123b4e4b27870c36761df2d" compoundref="d2/dc0/wxresource_8h" startline="409">MidiFileInputFilterPanelBase::channel_panel</references>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1af381c290b08a3e51ad7ac84da9b45582" compoundref="d2/dc0/wxresource_8h" startline="415">MidiFileInputFilterPanelBase::else_panel</references>
+        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45eaf43f088132d41bd9b008a37e561bb218" compoundref="d1/d65/Route_8h" startline="79">mutabor::RTall</references>
+        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45ea50bfca9bacf204a403c6f37b47af802c" compoundref="d1/d65/Route_8h" startline="81">mutabor::RTchannel</references>
+        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45eac3c8aee25fc8afe5bafcb3de4a403bd9" compoundref="d1/d65/Route_8h" startline="80">mutabor::RTelse</references>
+        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45eaa42b7d5ee257d648d6469bbcb456a723" compoundref="d1/d65/Route_8h" startline="82">mutabor::RTstaff</references>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1ade569875d458a8c3db4cec0d72f4e154" compoundref="d2/dc0/wxresource_8h" startline="412">MidiFileInputFilterPanelBase::track_panel</references>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1a9e880befe7349001f3db2bf9468d6870" compoundref="d2/dc0/wxresource_8h" startline="407">MidiFileInputFilterPanelBase::type</references>
+        <referencedby refid="dc/df2/group__GUIroute_1ga204aa6ad79a19142b95fbeccf5c018c4" compoundref="d3/de3/InputMidiFileDeviceShape_8cpp" startline="88" endline="113">mutaborGUI::MutInputMidiFileDeviceShape::GetFilterPanel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga4246c86978f3f1bb694d97d152d8f19f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1ga40717007e1ff5cfd3b0255fa4db7f45e" kindref="member">mutabor::RouteType</ref></type>
+        <definition>mutabor::RouteType mutaborGUI::MidiFileInputFilterPanel::GetRouteType</definition>
+        <argsstring>() const </argsstring>
+        <name>GetRouteType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" line="117" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" bodystart="117" bodyend="131"/>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1afab678cce045e19fe1b7d7fc1fde3e64" compoundref="d2/dc0/wxresource_8h" startline="408">MidiFileInputFilterPanelBase::all_panel</references>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1a9ffc7b455123b4e4b27870c36761df2d" compoundref="d2/dc0/wxresource_8h" startline="409">MidiFileInputFilterPanelBase::channel_panel</references>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1af381c290b08a3e51ad7ac84da9b45582" compoundref="d2/dc0/wxresource_8h" startline="415">MidiFileInputFilterPanelBase::else_panel</references>
+        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45eaf43f088132d41bd9b008a37e561bb218" compoundref="d1/d65/Route_8h" startline="79">mutabor::RTall</references>
+        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45ea50bfca9bacf204a403c6f37b47af802c" compoundref="d1/d65/Route_8h" startline="81">mutabor::RTchannel</references>
+        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45eac3c8aee25fc8afe5bafcb3de4a403bd9" compoundref="d1/d65/Route_8h" startline="80">mutabor::RTelse</references>
+        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45eaa42b7d5ee257d648d6469bbcb456a723" compoundref="d1/d65/Route_8h" startline="82">mutabor::RTstaff</references>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1ade569875d458a8c3db4cec0d72f4e154" compoundref="d2/dc0/wxresource_8h" startline="412">MidiFileInputFilterPanelBase::track_panel</references>
+        <references refid="db/ded/classMidiFileInputFilterPanelBase_1a9e880befe7349001f3db2bf9468d6870" compoundref="d2/dc0/wxresource_8h" startline="407">MidiFileInputFilterPanelBase::type</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+        <referencedby refid="dc/df2/group__GUIroute_1gaa709c5fc8b8179d26519cbe9dbbd0bf2" compoundref="d3/de3/InputMidiFileDeviceShape_8cpp" startline="127" endline="153">mutaborGUI::MutInputMidiFileDeviceShape::ReadFilterPanel</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3313">
+        <label>mutaborGUI::MidiFileInputFilterPanel</label>
+        <link refid="da/d3c/classmutaborGUI_1_1MidiFileInputFilterPanel"/>
+        <childnode refid="3314" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3315">
+        <label>wxPanel</label>
+      </node>
+      <node id="3314">
+        <label>MidiFileInputFilterPanelBase</label>
+        <link refid="db/ded/classMidiFileInputFilterPanelBase"/>
+        <childnode refid="3315" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3316">
+        <label>mutaborGUI::MidiFileInputFilterPanel</label>
+        <link refid="da/d3c/classmutaborGUI_1_1MidiFileInputFilterPanel"/>
+        <childnode refid="3317" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3318">
+        <label>wxPanel</label>
+      </node>
+      <node id="3317">
+        <label>MidiFileInputFilterPanelBase</label>
+        <link refid="db/ded/classMidiFileInputFilterPanelBase"/>
+        <childnode refid="3318" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" line="62" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/InputMidiFileDeviceShape.h" bodystart="62" bodyend="132"/>
+    <listofallmembers>
+      <member refid="db/ded/classMidiFileInputFilterPanelBase_1afab678cce045e19fe1b7d7fc1fde3e64" prot="protected" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>all_panel</name></member>
+      <member refid="db/ded/classMidiFileInputFilterPanelBase_1a9ffc7b455123b4e4b27870c36761df2d" prot="protected" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>channel_panel</name></member>
+      <member refid="db/ded/classMidiFileInputFilterPanelBase_1af381c290b08a3e51ad7ac84da9b45582" prot="protected" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>else_panel</name></member>
+      <member refid="db/ded/classMidiFileInputFilterPanelBase_1a52bb20404fc175bf556217d028dffcfb" prot="protected" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>from_channel</name></member>
+      <member refid="db/ded/classMidiFileInputFilterPanelBase_1a4888df27c5563513a98440c93d073a66" prot="protected" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>from_track</name></member>
+      <member refid="dc/df2/group__GUIroute_1gafdd03b09ea6ba4c21794efa4148ab9ab" prot="public" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>GetFromChannel</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga58087aa667e61a00374be2a74c5b01af" prot="public" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>GetFromTrack</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga4246c86978f3f1bb694d97d152d8f19f" prot="public" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>GetRouteType</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga4e49b3f2f196b4a4c0fce1918ca6bc7e" prot="public" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>GetToChannel</name></member>
+      <member refid="dc/df2/group__GUIroute_1gafe5acade59f5ce5eb447f203e0e199c5" prot="public" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>GetToTrack</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga311ae6d6407cdcc95f247e74e8eef99b" prot="public" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>MidiFileInputFilterPanel</name></member>
+      <member refid="db/ded/classMidiFileInputFilterPanelBase_1a565d07713b6c5e70189d44e514f5bd51" prot="public" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>MidiFileInputFilterPanelBase</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga324601c687a1a5c236c0519ea24f6280" prot="public" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>SetFromChannel</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga053d304588e7cfbc1e89969f59b44ead" prot="public" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>SetFromTrack</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga61cb5a50b229e6fa7fc94d78858b16f4" prot="public" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>SetRouteType</name></member>
+      <member refid="dc/df2/group__GUIroute_1gadc8d457cf0dd639c2dc1e01878e55858" prot="public" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>SetToChannel</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga93d61699e6509297a5707a816c6112fc" prot="public" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>SetToTrack</name></member>
+      <member refid="db/ded/classMidiFileInputFilterPanelBase_1a37b7b90d9040090e4f676abbc1f896d2" prot="protected" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>to_channel</name></member>
+      <member refid="db/ded/classMidiFileInputFilterPanelBase_1a13e8a3c5d703cb50d32a4a18d6df36df" prot="protected" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>to_track</name></member>
+      <member refid="db/ded/classMidiFileInputFilterPanelBase_1ade569875d458a8c3db4cec0d72f4e154" prot="protected" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>track_panel</name></member>
+      <member refid="db/ded/classMidiFileInputFilterPanelBase_1a9e880befe7349001f3db2bf9468d6870" prot="protected" virt="non-virtual"><scope>mutaborGUI::MidiFileInputFilterPanel</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

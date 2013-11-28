@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d8/dd6/classmutaborGUI_1_1MutView" kind="class" prot="public">
+    <compoundname>mutaborGUI::MutView</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">wxView</basecompoundref>
+    <includes refid="d0/d9e/MutView_8h" local="no">MutView.h</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="d8/dd6/classmutaborGUI_1_1MutView_1af96ba6cf47382a73516d5e188595b504" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class MutDocument</definition>
+        <argsstring></argsstring>
+        <name>MutDocument</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" line="68" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" bodystart="68" bodyend="-1"/>
+        <referencedby refid="da/d79/group__docview_1ga4c3dd53c5437b3993953311811a9a415" compoundref="d8/d33/MutView_8cpp" startline="53" endline="217">END_EVENT_TABLE</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d8/dd6/classmutaborGUI_1_1MutView_1a0486223c32554bc90e805ab129617db2" prot="public" static="no" mutable="no">
+        <type>DECLARE_EVENT_TABLE() protected <ref refid="de/dfe/classmutaborGUI_1_1MutEditFile" kindref="compound">MutEditFile</ref> *</type>
+        <definition>DECLARE_EVENT_TABLE () protected MutEditFile* mutaborGUI::MutView::textsw</definition>
+        <argsstring></argsstring>
+        <name>textsw</name>
+        <briefdescription>
+<para>MutView::ProcessEvent is called indirectly from <ref refid="de/d4d/classmutaborGUI_1_1MutApp" kindref="compound">MutApp</ref> event handlers. </para>        </briefdescription>
+        <detaileddescription>
+<para>This leads to endless loops. To prevent these loops, we must be very careful, which kind of events get passed back.</para><para>Probably no events should be propagated. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" line="112" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" bodystart="101" bodyend="-1"/>
+        <referencedby refid="da/d79/group__docview_1ga4c3dd53c5437b3993953311811a9a415" compoundref="d8/d33/MutView_8cpp" startline="53" endline="217">END_EVENT_TABLE</referencedby>
+        <referencedby refid="d8/dd6/classmutaborGUI_1_1MutView_1a79d6d38d8ff2f6d7a017d548f0edeb09" compoundref="d0/d9e/MutView_8h" startline="91" endline="91">GetTextsw</referencedby>
+        <referencedby refid="d8/dd6/classmutaborGUI_1_1MutView_1ac7673837e9f290a87edbfcf1a433a757" compoundref="d0/d9e/MutView_8h" startline="92" endline="92">SetTextsw</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d8/dd6/classmutaborGUI_1_1MutView_1a35cfecb2bb3499bb1deb301c6be441e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mutaborGUI::MutView::MutView</definition>
+        <argsstring>()</argsstring>
+        <name>MutView</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" line="70" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dd6/classmutaborGUI_1_1MutView_1ad2b278864ff2bbc4240d16629c660235" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual mutaborGUI::MutView::~MutView</definition>
+        <argsstring>()</argsstring>
+        <name>~MutView</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" line="71" column="1"/>
+        <referencedby refid="da/d79/group__docview_1ga4c3dd53c5437b3993953311811a9a415" compoundref="d8/d33/MutView_8cpp" startline="53" endline="217">END_EVENT_TABLE</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d8/dd6/classmutaborGUI_1_1MutView_1a800c910c7736d85b41993b1bbcee0b36" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool mutaborGUI::MutView::OnCreate</definition>
+        <argsstring>(wxDocument *doc, long flags)</argsstring>
+        <name>OnCreate</name>
+        <param>
+          <type>wxDocument *</type>
+          <declname>doc</declname>
+        </param>
+        <param>
+          <type>long</type>
+          <declname>flags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" line="75" column="1"/>
+        <referencedby refid="da/d79/group__docview_1ga4c3dd53c5437b3993953311811a9a415" compoundref="d8/d33/MutView_8cpp" startline="53" endline="217">END_EVENT_TABLE</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d8/dd6/classmutaborGUI_1_1MutView_1a76f9344ea73163b79df3948add50bea9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool mutaborGUI::MutView::OnClose</definition>
+        <argsstring>(bool deleteWindow=true)</argsstring>
+        <name>OnClose</name>
+        <param>
+          <type>bool</type>
+          <declname>deleteWindow</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" line="77" column="1"/>
+        <referencedby refid="da/d79/group__docview_1ga4c3dd53c5437b3993953311811a9a415" compoundref="d8/d33/MutView_8cpp" startline="53" endline="217">END_EVENT_TABLE</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d8/dd6/classmutaborGUI_1_1MutView_1a1e54454e5df456f2f8cc99bc1c8515e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void mutaborGUI::MutView::OnDraw</definition>
+        <argsstring>(wxDC *dc)</argsstring>
+        <name>OnDraw</name>
+        <param>
+          <type>wxDC *</type>
+          <declname>dc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" line="84" column="1"/>
+        <referencedby refid="da/d79/group__docview_1ga4c3dd53c5437b3993953311811a9a415" compoundref="d8/d33/MutView_8cpp" startline="53" endline="217">END_EVENT_TABLE</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d8/dd6/classmutaborGUI_1_1MutView_1a115f62940de37426b0b5736cc26327b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void mutaborGUI::MutView::OnUpdate</definition>
+        <argsstring>(wxView *sender, wxObject *hint=NULL)</argsstring>
+        <name>OnUpdate</name>
+        <param>
+          <type>wxView *</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>wxObject *</type>
+          <declname>hint</declname>
+          <defval>NULL</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" line="86" column="1"/>
+        <referencedby refid="da/d79/group__docview_1ga4c3dd53c5437b3993953311811a9a415" compoundref="d8/d33/MutView_8cpp" startline="53" endline="217">END_EVENT_TABLE</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d8/dd6/classmutaborGUI_1_1MutView_1a3933aa705cc36fb5959454410b6572db" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void mutaborGUI::MutView::OnActivateView</definition>
+        <argsstring>(bool activate, wxView *activeView, wxView *deactiveView)</argsstring>
+        <name>OnActivateView</name>
+        <param>
+          <type>bool</type>
+          <declname>activate</declname>
+        </param>
+        <param>
+          <type>wxView *</type>
+          <declname>activeView</declname>
+        </param>
+        <param>
+          <type>wxView *</type>
+          <declname>deactiveView</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" line="88" column="1"/>
+        <referencedby refid="da/d79/group__docview_1ga4c3dd53c5437b3993953311811a9a415" compoundref="d8/d33/MutView_8cpp" startline="53" endline="217">END_EVENT_TABLE</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d8/dd6/classmutaborGUI_1_1MutView_1a79d6d38d8ff2f6d7a017d548f0edeb09" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile" kindref="compound">MutEditFile</ref> *</type>
+        <definition>MutEditFile* mutaborGUI::MutView::GetTextsw</definition>
+        <argsstring>()</argsstring>
+        <name>GetTextsw</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" line="91" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" bodystart="91" bodyend="91"/>
+        <references refid="d8/dd6/classmutaborGUI_1_1MutView_1a0486223c32554bc90e805ab129617db2" compoundref="d0/d9e/MutView_8h" startline="101">textsw</references>
+      </memberdef>
+      <memberdef kind="function" id="d8/dd6/classmutaborGUI_1_1MutView_1ac7673837e9f290a87edbfcf1a433a757" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutView::SetTextsw</definition>
+        <argsstring>(MutEditFile *t)</argsstring>
+        <name>SetTextsw</name>
+        <param>
+          <type><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile" kindref="compound">MutEditFile</ref> *</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" line="92" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" bodystart="92" bodyend="92"/>
+        <references refid="d8/dd6/classmutaborGUI_1_1MutView_1a0486223c32554bc90e805ab129617db2" compoundref="d0/d9e/MutView_8h" startline="101">textsw</references>
+        <referencedby refid="df/dd1/group__GUI_1gae695a8906050edfa64dddeef8c206219" compoundref="d1/da4/MutEditFile_8cpp" startline="214" endline="219">mutaborGUI::MutEditFile::~MutEditFile</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga2255fbb1b03e902ac19724c508ed1f9a" compoundref="dc/df3/MutFrame_8cpp" startline="355" endline="371">mutaborGUI::MutFrame::~MutFrame</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d8/dd6/classmutaborGUI_1_1MutView_1a33890494df2f24c54e1394b054478c9e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d6/d63/classmutaborGUI_1_1MutFrame" kindref="compound">MutFrame</ref> *</type>
+        <definition>MutFrame* mutaborGUI::MutView::GetMutFrame</definition>
+        <argsstring>()</argsstring>
+        <name>GetMutFrame</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" line="93" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" bodystart="93" bodyend="99"/>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <referencedby refid="da/d79/group__docview_1ga4c3dd53c5437b3993953311811a9a415" compoundref="d8/d33/MutView_8cpp" startline="53" endline="217">END_EVENT_TABLE</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>What are the important qualities of a view? A view is registered with its document, and when the view becomes active (ie the user clicks on it) then it will set its document to be the active/current document. </para>    </briefdescription>
+    <detaileddescription>
+<para>What else? it will receive instructions from the document to update (ie redraw) when the document changes, and close when the document closes, and do something when the document changes its filename (eg the user does a save_as). Does the view need an event table? no I think its methods get called by direct pointer access p-&gt;method etc. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="3823">
+        <label>wxView</label>
+      </node>
+      <node id="3822">
+        <label>mutaborGUI::MutView</label>
+        <link refid="d8/dd6/classmutaborGUI_1_1MutView"/>
+        <childnode refid="3823" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3825">
+        <label>wxView</label>
+      </node>
+      <node id="3828">
+        <label>mutaborGUI::MutSTCLexer</label>
+        <link refid="d1/dea/classmutaborGUI_1_1MutSTCLexer"/>
+      </node>
+      <node id="3827">
+        <label>wxStyledTextCtrl</label>
+      </node>
+      <node id="3826">
+        <label>mutaborGUI::MutEditFile</label>
+        <link refid="de/dfe/classmutaborGUI_1_1MutEditFile"/>
+        <childnode refid="3827" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3828" relation="usage">
+          <edgelabel>lexer</edgelabel>
+        </childnode>
+        <childnode refid="3829" relation="usage">
+          <edgelabel>m_language</edgelabel>
+        </childnode>
+        <childnode refid="3824" relation="usage">
+          <edgelabel>view</edgelabel>
+        </childnode>
+      </node>
+      <node id="3829">
+        <label>mutaborGUI::LanguageInfo</label>
+        <link refid="d4/d4a/structmutaborGUI_1_1LanguageInfo"/>
+      </node>
+      <node id="3824">
+        <label>mutaborGUI::MutView</label>
+        <link refid="d8/dd6/classmutaborGUI_1_1MutView"/>
+        <childnode refid="3825" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3826" relation="usage">
+          <edgelabel>textsw</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" line="66" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" bodystart="65" bodyend="115"/>
+    <listofallmembers>
+      <member refid="d8/dd6/classmutaborGUI_1_1MutView_1a33890494df2f24c54e1394b054478c9e" prot="public" virt="non-virtual"><scope>mutaborGUI::MutView</scope><name>GetMutFrame</name></member>
+      <member refid="d8/dd6/classmutaborGUI_1_1MutView_1a79d6d38d8ff2f6d7a017d548f0edeb09" prot="public" virt="non-virtual"><scope>mutaborGUI::MutView</scope><name>GetTextsw</name></member>
+      <member refid="d8/dd6/classmutaborGUI_1_1MutView_1af96ba6cf47382a73516d5e188595b504" prot="private" virt="non-virtual"><scope>mutaborGUI::MutView</scope><name>MutDocument</name></member>
+      <member refid="d8/dd6/classmutaborGUI_1_1MutView_1a35cfecb2bb3499bb1deb301c6be441e3" prot="public" virt="non-virtual"><scope>mutaborGUI::MutView</scope><name>MutView</name></member>
+      <member refid="d8/dd6/classmutaborGUI_1_1MutView_1a3933aa705cc36fb5959454410b6572db" prot="public" virt="virtual"><scope>mutaborGUI::MutView</scope><name>OnActivateView</name></member>
+      <member refid="d8/dd6/classmutaborGUI_1_1MutView_1a76f9344ea73163b79df3948add50bea9" prot="public" virt="virtual"><scope>mutaborGUI::MutView</scope><name>OnClose</name></member>
+      <member refid="d8/dd6/classmutaborGUI_1_1MutView_1a800c910c7736d85b41993b1bbcee0b36" prot="public" virt="virtual"><scope>mutaborGUI::MutView</scope><name>OnCreate</name></member>
+      <member refid="d8/dd6/classmutaborGUI_1_1MutView_1a1e54454e5df456f2f8cc99bc1c8515e6" prot="public" virt="virtual"><scope>mutaborGUI::MutView</scope><name>OnDraw</name></member>
+      <member refid="d8/dd6/classmutaborGUI_1_1MutView_1a115f62940de37426b0b5736cc26327b5" prot="public" virt="virtual"><scope>mutaborGUI::MutView</scope><name>OnUpdate</name></member>
+      <member refid="d8/dd6/classmutaborGUI_1_1MutView_1ac7673837e9f290a87edbfcf1a433a757" prot="public" virt="non-virtual"><scope>mutaborGUI::MutView</scope><name>SetTextsw</name></member>
+      <member refid="d8/dd6/classmutaborGUI_1_1MutView_1a0486223c32554bc90e805ab129617db2" prot="public" virt="non-virtual"><scope>mutaborGUI::MutView</scope><name>textsw</name></member>
+      <member refid="d8/dd6/classmutaborGUI_1_1MutView_1ad2b278864ff2bbc4240d16629c660235" prot="public" virt="virtual"><scope>mutaborGUI::MutView</scope><name>~MutView</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,328 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d5/d36/parser_8h" kind="file">
+    <compoundname>parser.h</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes refid="d0/d24/midicalc_8h" local="yes">mutabor/midicalc.h</includes>
+    <includes refid="db/d1e/argument_8h" local="yes">mutabor/argument.h</includes>
+    <includedby refid="d2/d49/global_8h" local="yes">src/includes/mutabor/global.h</includedby>
+    <includedby refid="d5/d28/interval_8c" local="yes">src/libmutabor/interval.c</includedby>
+    <includedby refid="d3/da3/mut_8c" local="yes">src/libmutabor/mut.c</includedby>
+    <includedby refid="d2/d72/parser_8c" local="yes">src/libmutabor/parser.c</includedby>
+    <includedby refid="d8/d9b/testmutfile_8c" local="yes">src/libmutabor/tests/testmutfile.c</includedby>
+    <includedby refid="d3/d47/testparser_8c" local="yes">src/libmutabor/tests/testparser.c</includedby>
+    <incdepgraph>
+      <node id="15026">
+        <label>mutabor/argument.h</label>
+        <link refid="db/d1e/argument_8h"/>
+        <childnode refid="15027" relation="include">
+        </childnode>
+      </node>
+      <node id="15029">
+        <label>math.h</label>
+      </node>
+      <node id="15025">
+        <label>mutabor/midicalc.h</label>
+        <link refid="d0/d24/midicalc_8h"/>
+      </node>
+      <node id="15024">
+        <label>stdio.h</label>
+      </node>
+      <node id="15027">
+        <label>mutabor/parameter.h</label>
+        <link refid="d2/d2a/parameter_8h"/>
+        <childnode refid="15026" relation="include">
+        </childnode>
+        <childnode refid="15028" relation="include">
+        </childnode>
+      </node>
+      <node id="15023">
+        <label>src/includes/mutabor/parser.h</label>
+        <link refid="parser.h"/>
+        <childnode refid="15024" relation="include">
+        </childnode>
+        <childnode refid="15025" relation="include">
+        </childnode>
+        <childnode refid="15026" relation="include">
+        </childnode>
+      </node>
+      <node id="15028">
+        <label>mutabor/bad_decl.h</label>
+        <link refid="df/d8e/bad__decl_8h"/>
+        <childnode refid="15029" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="15032">
+        <label>src/gmut/gmutdos.cpp</label>
+        <link refid="dd/d15/gmutdos_8cpp"/>
+      </node>
+      <node id="15033">
+        <label>src/libmutabor/interval.c</label>
+        <link refid="d5/d28/interval_8c"/>
+      </node>
+      <node id="15037">
+        <label>src/libmutabor/tests/testparser.c</label>
+        <link refid="d3/d47/testparser_8c"/>
+      </node>
+      <node id="15036">
+        <label>src/libmutabor/tests/testmutfile.c</label>
+        <link refid="d8/d9b/testmutfile_8c"/>
+      </node>
+      <node id="15031">
+        <label>src/includes/mutabor/global.h</label>
+        <link refid="d2/d49/global_8h"/>
+        <childnode refid="15032" relation="include">
+        </childnode>
+      </node>
+      <node id="15034">
+        <label>src/libmutabor/mut.c</label>
+        <link refid="d3/da3/mut_8c"/>
+      </node>
+      <node id="15035">
+        <label>src/libmutabor/parser.c</label>
+        <link refid="d2/d72/parser_8c"/>
+      </node>
+      <node id="15030">
+        <label>src/includes/mutabor/parser.h</label>
+        <link refid="parser.h"/>
+        <childnode refid="15031" relation="include">
+        </childnode>
+        <childnode refid="15033" relation="include">
+        </childnode>
+        <childnode refid="15034" relation="include">
+        </childnode>
+        <childnode refid="15035" relation="include">
+        </childnode>
+        <childnode refid="15036" relation="include">
+        </childnode>
+        <childnode refid="15037" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="d5/d36/parser_8h_1ac80104399eefcfdcc1635bf7c604581d" prot="public" static="no" mutable="no">
+        <type>FILE *</type>
+        <definition>FILE* mutabor_parser_in</definition>
+        <argsstring></argsstring>
+        <name>mutabor_parser_in</name>
+        <briefdescription>
+<para>Quelldatei f¸r das Mutabor-Programm. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/parser.h" line="25" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/parser.c" bodystart="78" bodyend="-1"/>
+        <referencedby refid="d2/d72/parser_8c_1afa88ae69a747f2c139bf6161d9b2d82d" compoundref="d2/d72/parser_8c" startline="85" endline="386">mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d9/d7c/group__kernel_1ga133c01da80801dde358f411a4ef498e6" prot="public" static="no" mutable="no">
+        <type>long</type>
+        <definition>long anzahl_eingelesene_zeichen</definition>
+        <argsstring></argsstring>
+        <name>anzahl_eingelesene_zeichen</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/parser.h" line="26" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/mut_tab.h" bodystart="49" bodyend="-1"/>
+        <referencedby refid="d1/de1/Mut__Tab_8cpp_1a9a7bd1b3d14701eb97c03f3ef34deff1" compoundref="d1/de1/Mut__Tab_8cpp" startline="1600" endline="1819">yylex</referencedby>
+        <referencedby refid="d1/de1/Mut__Tab_8cpp_1a77980177a457976be153c83a9d266da5" compoundref="d1/de1/Mut__Tab_8cpp" startline="1821" endline="1825">init_yylex</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d5/d36/parser_8h_1afa88ae69a747f2c139bf6161d9b2d82d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor_programm_einlesen</definition>
+        <argsstring>(char *filename)</argsstring>
+        <name>mutabor_programm_einlesen</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+<para>Liest ein Mutabor-Programm ein. </para>        </briefdescription>
+        <detaileddescription>
+<para>Ist <computeroutput>DEBUG_ANZEIGE</computeroutput> definiert, dann werden die erzeugten Strukturen auf der Standard-Ausgabe angezeigt. <simplesect kind="note"><para>Eigentlich sollte die Debug-Ausgabe auf die Standardfehlerausgabe. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/parser.h" line="23" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/parser.c" bodystart="85" bodyend="386"/>
+        <references refid="db/d28/structlogik_1a9220a60ca430902aad58a930d8f5e8f6" compoundref="d1/dff/logik_8h" startline="33">logik::ausloeser</references>
+        <references refid="d2/d8a/interval_8h_1aaf64925d429496057cd72c2b8e2c7cd1" compoundref="d5/d28/interval_8c" startline="350" endline="459">berechne_intervalle_absolut</references>
+        <references refid="d4/d12/ton_8h_1a611d8511d6c4f19ff594b2f44a1842f9" compoundref="df/de8/ton_8c" startline="338" endline="438">berechne_toene_absolut</references>
+        <references refid="d0/d45/structcase__liste_1a561cc7f23132a4e8c9ca5626a6edc5c3" compoundref="db/d99/case__liste_8h" startline="38">case_liste::case_aktion</references>
+        <references refid="d0/d45/structcase__liste_1a0e3632823354b944bcd041c08dd6c2af" compoundref="db/d99/case__liste_8h" startline="36">case_liste::case_label</references>
+        <references refid="d5/d36/parser_8h_1a5a40f6b2e81f6ff497b18880102fbecb" compoundref="d2/d72/parser_8c" startline="597" endline="777">check_konsistenz</references>
+        <references refid="db/d1e/argument_8h_1ab2df1fd1457d1487623c1468c1d33d35" compoundref="d3/d14/argument_8c" startline="123" endline="133">drucke_argument</references>
+        <references refid="dd/d21/group__Parser_1gaa1b9ac58a9b49f9bdc1d72ba58ffe070" compoundref="dd/d35/harmonie_8c" startline="64" endline="73">drucke_harmonie</references>
+        <references refid="d4/d12/ton_8h_1a61af28a6d9513c57295b9bf6bad3e00a" compoundref="df/de8/ton_8c" startline="81" endline="108">drucke_ton</references>
+        <references refid="db/d28/structlogik_1a31836516d5c9d7d7c65ee0abc4c44324" compoundref="d1/dff/logik_8h" startline="34">logik::einstimmungs_name</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d3/d4c/instrument_8h_1a17e64de3a93012931ac31d74adb77e21" compoundref="d8/d3d/instrument_8c" startline="42" endline="86">get_instrument_dekl</references>
+        <references refid="d2/d8a/interval_8h_1abb18e2ce884c58d7c66452df23ed4f74" compoundref="d5/d28/interval_8c" startline="562" endline="580">get_new_intervall</references>
+        <references refid="d4/d12/ton_8h_1aa3e79c7164fb84b3e03a95afd2d865ee" compoundref="df/de8/ton_8c" startline="122" endline="137">get_new_ton_absolut</references>
+        <references refid="d9/d7c/group__kernel_1gga8c8d351bdfe923b888c986762de6c157afb88ed4210f3b213bbbefb755312e3c0" compoundref="d2/d8a/interval_8h" startline="82">intervall_absolut</references>
+        <references refid="dd/dce/structintervall_1aa71e646e1fc2d30d31bbd25cf42c4946">intervall::intervall_absolut</references>
+        <references refid="dd/dce/structintervall_1ae1b1701309814bb9260c76001c9e307c" compoundref="d2/d8a/interval_8h" startline="96">intervall::intervall_typ</references>
+        <references refid="d0/d45/structcase__liste_1abd47924362217e6214412632178c9952" compoundref="db/d99/case__liste_8h" startline="37">case_liste::is_default</references>
+        <references refid="d3/d4c/instrument_8h_1a2c6d09e99621546bafeb0a939484402f" compoundref="d2/d72/parser_8c" startline="52">list_of_config_instrumente</references>
+        <references refid="dd/d21/group__Parser_1ga3f2f9506513cddd0cef78847058f51f3" compoundref="dd/d35/harmonie_8c" startline="45">list_of_harmonien</references>
+        <references refid="d2/d8a/interval_8h_1ad6d100d330fe972be883912e24965ed6" compoundref="d5/d28/interval_8c" startline="82">list_of_intervalle</references>
+        <references refid="d1/dff/logik_8h_1a7f772804a850a0156f485df5f8cb1339" compoundref="d7/d6e/logik_8c" startline="44">list_of_logiken</references>
+        <references refid="d4/d12/ton_8h_1aa614e631a7a7c9e90ad0614fbee2dd13" compoundref="d4/d12/ton_8h" startline="89">list_of_toene</references>
+        <references refid="d8/d39/tonsystem_8h_1a1c6d9a9da675102ad666d5da4ad167ca" compoundref="d8/d39/tonsystem_8h" startline="66">list_of_tonsysteme</references>
+        <references refid="da/d7f/umstimmung_8h_1a96aa4405f944de769b350336489cf56e" compoundref="da/d7f/umstimmung_8h" startline="117">list_of_umstimmungen</references>
+        <references refid="d4/d0f/structinstrument_1a4cced7e2505d227bbd07fc8cf5c87e6c" compoundref="d3/d4c/instrument_8h" startline="28">instrument::midi_bis</references>
+        <references refid="d4/d0f/structinstrument_1a6d18b193c9041077fffeeedc601c9a19" compoundref="d3/d4c/instrument_8h" startline="26">instrument::midi_in</references>
+        <references refid="d4/d0f/structinstrument_1aaa6369891d84317bd27a57050e41a486" compoundref="d3/d4c/instrument_8h" startline="27">instrument::midi_von</references>
+        <references refid="de/d45/errors_8h_1ae2387ffc56e4c38de349dcd17ce78865" compoundref="d0/d15/errors_8c" startline="20">mutabor_debug_level</references>
+        <references refid="d5/d36/parser_8h_1ac80104399eefcfdcc1635bf7c604581d" compoundref="d2/d72/parser_8c" startline="78">mutabor_parser_in</references>
+        <references refid="d4/dfd/mut__tab_8h_1a65471dcacc7648c3ca8c28ba005e2314">mutabor_parser_parse</references>
+        <references refid="d2/d86/structparameter__liste_1a5912856e33ce57c2f87ac12a0ce5b5d0" compoundref="d2/d2a/parameter_8h" startline="31">parameter_liste::name</references>
+        <references refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" compoundref="d1/dff/logik_8h" startline="32">logik::name</references>
+        <references refid="dd/da3/structton_1a3c9499dd5cfd4d6ce65697b1a86852e6" compoundref="d4/d12/ton_8h" startline="34">ton::name</references>
+        <references refid="dc/dba/structtonsystem_1a98a48eff067c9024e68cb558390b7dbb" compoundref="d8/d39/tonsystem_8h" startline="42">tonsystem::name</references>
+        <references refid="d2/d1c/structumstimmung_1abd217ffce7f0666151e53606789705cf" compoundref="da/d7f/umstimmung_8h" startline="43">umstimmung::name</references>
+        <references refid="d7/dc9/structkomplex__intervall_1ae897df400fcb6617d8d1bdaed26e2b56" compoundref="d2/d8a/interval_8h" startline="87">komplex_intervall::name</references>
+        <references refid="dd/dce/structintervall_1a5639740d189ef6481fbba4a6663a0023" compoundref="d2/d8a/interval_8h" startline="95">intervall::name</references>
+        <references refid="d4/d0f/structinstrument_1a3d9ebc690ddc5343b9887d92e7d68275" compoundref="d3/d4c/instrument_8h" startline="30">instrument::next</references>
+        <references refid="d2/d86/structparameter__liste_1a66c5c39266a34249414be30e09bc3028" compoundref="d2/d2a/parameter_8h" startline="32">parameter_liste::next</references>
+        <references refid="d4/dcb/structharmonie_1a80634228728c4f5be8953164b80b7df3" compoundref="d1/d63/harmonie_8h" startline="36">harmonie::next</references>
+        <references refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" compoundref="d1/dff/logik_8h" startline="36">logik::next</references>
+        <references refid="d0/d45/structcase__liste_1a290cbd2723599508d118f507c3528c03" compoundref="db/d99/case__liste_8h" startline="39">case_liste::next</references>
+        <references refid="dd/da3/structton_1a0531d0ab1a39337684a162a66c88b5d0" compoundref="d4/d12/ton_8h" startline="45">ton::next</references>
+        <references refid="dc/dba/structtonsystem_1a2bb4dffd4c50e1b8497ada26f70ec98b" compoundref="d8/d39/tonsystem_8h" startline="46">tonsystem::next</references>
+        <references refid="d5/def/structaktions__liste_1a7db6137d5e8695b72d1a51e787d286f2" compoundref="dd/de4/aktion_8h" startline="69">aktions_liste::next</references>
+        <references refid="d2/d1c/structumstimmung_1ae67b979d3d4d8dbbf5d36515bd58d6c7" compoundref="da/d7f/umstimmung_8h" startline="81">umstimmung::next</references>
+        <references refid="dd/dce/structintervall_1a894b3800258fc9c5b3a0874cc4e98152" compoundref="d2/d8a/interval_8h" startline="105">intervall::next</references>
+        <references refid="d2/d1c/structumstimmung_1a1537c95f6384e8ccaa1d3a916e96649b" compoundref="da/d7f/umstimmung_8h" startline="44">umstimmung::parameter_liste</references>
+        <references refid="dc/dba/structtonsystem_1a86bed24eb2fac685c2b5fb3242b3cb92" compoundref="d8/d39/tonsystem_8h" startline="44">tonsystem::periode</references>
+        <references refid="dd/d21/group__Parser_1ga752d214843c36ae8167149add578e1c4" compoundref="d8/dc3/aktion_8c" startline="105" endline="122">print_aktions_liste</references>
+        <references refid="dd/d21/group__Parser_1gac0676abdb811f08267cf9372f32ca690" compoundref="d6/dcc/ausloeser_8c" startline="142" endline="179">print_ausloeser</references>
+        <references refid="d1/dff/logik_8h_1af4e510432930be6bebe8b280c36b8c12" compoundref="d7/d6e/logik_8c" startline="92" endline="145">setze_nummer_von_abstand_und_zentrum</references>
+        <references refid="dc/dba/structtonsystem_1afaffb5975b3f08077b60fef6e6a41f0e" compoundref="d8/d39/tonsystem_8h" startline="43">tonsystem::taste</references>
+        <references refid="dc/dba/structtonsystem_1a9eba9da0faa68c9bdfc8b1a6c6bb773b" compoundref="d8/d39/tonsystem_8h" startline="45">tonsystem::toene</references>
+        <references refid="d4/d12/ton_8h_1a7205dceb2bb780245ab66f9b032e301a" compoundref="df/de8/ton_8c" startline="57" endline="60">ton_list_laenge</references>
+        <references refid="dd/da3/structton_1a2173eae7dfaa7102dbed7bd7900ae82b">ton::u</references>
+        <references refid="d2/d1c/structumstimmung_1af6c0515f9099f9d765cedd86762d9c6b">umstimmung::u</references>
+        <references refid="dd/dce/structintervall_1a514d8c803b1de0bb362717c8add908e4">intervall::u</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa8879390ae7740d1e6d77458bf8837018" compoundref="da/d7f/umstimmung_8h" startline="29">umstimmung_breite_abs</references>
+        <references refid="d2/d1c/structumstimmung_1afc99e04ffdb79ca027d7d4540781216e">umstimmung::umstimmung_breite_abs</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaf5ef8366ca077fbd9096f9e91117bd88" compoundref="da/d7f/umstimmung_8h" startline="30">umstimmung_breite_rel</references>
+        <references refid="d2/d1c/structumstimmung_1aa4d357ff24656ae3a4b2493ba43af0d4">umstimmung::umstimmung_breite_rel</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aabd7780801f2432bc197c238b90f476da" compoundref="da/d7f/umstimmung_8h" startline="27">umstimmung_taste_abs</references>
+        <references refid="d2/d1c/structumstimmung_1a5b970f1acddc758aee3234494e6751a1">umstimmung::umstimmung_taste_abs</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aafe2f45099e251961aacaf58101885deb" compoundref="da/d7f/umstimmung_8h" startline="28">umstimmung_taste_rel</references>
+        <references refid="d2/d1c/structumstimmung_1adc79e3476f239eabe9df9853d6e55095">umstimmung::umstimmung_taste_rel</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa14c0a1e77760dbe7bf7fd23d047daf65" compoundref="da/d7f/umstimmung_8h" startline="31">umstimmung_toene_veraendert</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa6762ebe62dfd2cb6d4a659f6a840e2a4" compoundref="da/d7f/umstimmung_8h" startline="35">umstimmung_umstimmungs_case</references>
+        <references refid="d2/d1c/structumstimmung_1a152278390f21c75ae6180c7a7c738e81">umstimmung::umstimmung_umstimmungs_case</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa185e81c4fa5d32b1500d5d5d895a0af8" compoundref="da/d7f/umstimmung_8h" startline="34">umstimmung_umstimmungsbund</references>
+        <references refid="d2/d1c/structumstimmung_1a3eec91d4b820edc872944be5769f80e0">umstimmung::umstimmung_umstimmungsbund</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaee34b68ac28af4bdc8876001aec69edf" compoundref="da/d7f/umstimmung_8h" startline="32">umstimmung_wiederholung_abs</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa29dcdd9f8c0808b673707fc06aace5c0" compoundref="da/d7f/umstimmung_8h" startline="33">umstimmung_wiederholung_rel</references>
+        <references refid="d2/d1c/structumstimmung_1acca623c83c1f22345450a145d059ce68">umstimmung::umstimmung_wiederholung_rel</references>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="604" endline="645">mutabor::BoxClass::Compile</referencedby>
+        <referencedby refid="d3/d14/gmut_8cpp_1aa4fbd34cae8e303c82cf546234111c10" compoundref="d3/d14/gmut_8cpp" startline="153" endline="185">GMutCompile</referencedby>
+        <referencedby refid="d3/d47/testparser_8c_1a3c04138a5bfe5d72780bb7e82a18e627" compoundref="d3/d47/testparser_8c" startline="41" endline="62">main</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga71f10b089581270382caaf7219946a1f" compoundref="d1/da7/boxTest_8cpp" startline="331" endline="366">boxTest::testBug1Permutation1</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gacd9628c16629b6a3989ef814becb55be" compoundref="d1/da7/boxTest_8cpp" startline="369" endline="457">boxTest::testBug1Permutation2</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gae5cd429df106dae578f5e9bca96fdcce" compoundref="d1/da7/boxTest_8cpp" startline="283" endline="329">boxTest::testFindKeyByKey</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/d36/parser_8h_1a5a40f6b2e81f6ff497b18880102fbecb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void check_konsistenz</definition>
+        <argsstring>(void)</argsstring>
+        <name>check_konsistenz</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Testet das gesamte Mutabor-Programm auf Konsistenz. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Tonsysteme: ‹berpr¸fen, ob Periode und Tˆne deklariert sind und ob die Taste im Bereich 36 - 96 liegt. </para></listitem>
+<listitem><para>Umstimmungen: pr¸fen, ob alle Tˆne und Intervalle global deklariert sind, ob Umstimmungsbund und <computeroutput>umstimmungs_case</computeroutput> keine Rekursion enth‰lt, ob <computeroutput>case_labels</computeroutput> eindeutig sind, und ob die benutzten Parameter zu den deklarierten Parametern passen. </para></listitem>
+<listitem><para>Logiken: öberprÅfen, ob Einstimmung deklariert ist und ob die Anweisungen korrekt deklariert sind.</para></listitem>
+</itemizedlist>
+Gegebenenfalls werden Warnungen und fatale Fehler ausgelˆst. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/parser.h" line="28" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/parser.c" bodystart="597" bodyend="777"/>
+        <references refid="d9/d7c/group__kernel_1gga4640ca6a739d886d48063bab20c0a6bda3199b6eb05486b74e1ba3242b42f7985" compoundref="dd/de4/aktion_8h" startline="36">aktion_aufruf</references>
+        <references refid="d5/def/structaktions__liste_1aa0db71fd64685d582c7d8c1efa2a7afc">aktions_liste::aktion_aufruf</references>
+        <references refid="d9/d7c/group__kernel_1gaebaf2be9983d7f1f5d2acc6cf38700e1" compoundref="dc/df5/Parser_8cpp" startline="70" endline="78">allgemeine_initialisierungen</references>
+        <references refid="d2/d72/parser_8c_1a23d64237ae5480e0000345734006e4c2" compoundref="d2/d72/parser_8c" startline="479">anzahl_umstimmungen_und_logiken</references>
+        <references refid="d2/d72/parser_8c_1a821be4accaf8b4641f9fcb8c7b4bd047" compoundref="d2/d72/parser_8c" startline="513" endline="530">belege_zyklenfeld</references>
+        <references refid="d1/dff/logik_8h_1aed04795a6b7c21df1893c7bc845231e6" compoundref="d7/d6e/logik_8c" startline="192" endline="251">check_logik_konsistenz</references>
+        <references refid="d8/d39/tonsystem_8h_1aedcfdecbf7dd48ab19a6830732fa982e" compoundref="da/dd2/tonsystem_8c" startline="151" endline="169">check_tonsystem_konsistenz</references>
+        <references refid="da/d7f/umstimmung_8h_1a9fc87f323f75b7afaef30c37c78af7c6" compoundref="d2/d4a/umstimmung_8c" startline="538" endline="732">check_umstimmungs_konsistenz</references>
+        <references refid="d1/dff/logik_8h_1aeac62519a6479ab36a94d3ad1937bb61" compoundref="d7/d6e/logik_8c" startline="78" endline="83">get_logik</references>
+        <references refid="da/d7f/umstimmung_8h_1ae60de5ad4f8f7e1954cf3105b34d21bc" compoundref="d2/d4a/umstimmung_8c" startline="60" endline="66">get_umstimmung</references>
+        <references refid="d1/dff/logik_8h_1a7f772804a850a0156f485df5f8cb1339" compoundref="d7/d6e/logik_8c" startline="44">list_of_logiken</references>
+        <references refid="da/d7f/umstimmung_8h_1a96aa4405f944de769b350336489cf56e" compoundref="da/d7f/umstimmung_8h" startline="117">list_of_umstimmungen</references>
+        <references refid="d1/dff/logik_8h_1a1bf49a0b791eef42c75d45a8bca773f0" compoundref="d7/d6e/logik_8c" startline="50" endline="53">logik_list_laenge</references>
+        <references refid="de/d45/errors_8h_1ae2387ffc56e4c38de349dcd17ce78865" compoundref="d0/d15/errors_8c" startline="20">mutabor_debug_level</references>
+        <references refid="d0/d45/structcase__liste_1a290cbd2723599508d118f507c3528c03" compoundref="db/d99/case__liste_8h" startline="39">case_liste::next</references>
+        <references refid="d5/def/structaktions__liste_1a7db6137d5e8695b72d1a51e787d286f2" compoundref="dd/de4/aktion_8h" startline="69">aktions_liste::next</references>
+        <references refid="d2/d72/parser_8c_1a02c3d262203b17156b3e020a8390342a" compoundref="d2/d72/parser_8c" startline="537" endline="552">test_zyklen_nummer</references>
+        <references refid="d9/d7c/group__kernel_1ga176d15ed803da7c32bc5a8bbaa4bd028acc7b57c16d81ebb18b6f4b5a3707aad7" compoundref="d6/d0c/Parser_8h" startline="67">typ_logik</references>
+        <references refid="d9/d7c/group__kernel_1ga176d15ed803da7c32bc5a8bbaa4bd028a9781ab8a59eb09efee5c5c862b7bae32" compoundref="d6/d0c/Parser_8h" startline="67">typ_umstimmung</references>
+        <references refid="d5/def/structaktions__liste_1a552bd3733146d7edcbbbabd254302f29">aktions_liste::u</references>
+        <references refid="d8/d35/structumst__oder__logik_1ae3defa288d9c90ee276be67d18f052e7">umst_oder_logik::u</references>
+        <references refid="d2/d1c/structumstimmung_1af6c0515f9099f9d765cedd86762d9c6b">umstimmung::u</references>
+        <references refid="d2/d72/parser_8c_1a2bcdf8fd78f67283ad0bf89e1c5f1aa2" compoundref="d2/d72/parser_8c" startline="503">u_adjazent</references>
+        <references refid="d2/d72/parser_8c_1af9379465fa45492b0483f66a8bd78187" compoundref="d2/d72/parser_8c" startline="557" endline="576">u_test_zyklen</references>
+        <references refid="d8/d35/structumst__oder__logik_1a5119925ae505dfc21b598d4d09d88465" compoundref="d6/d0c/Parser_8h" startline="75">umst_oder_logik::umstimmung</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa6762ebe62dfd2cb6d4a659f6a840e2a4" compoundref="da/d7f/umstimmung_8h" startline="35">umstimmung_umstimmungs_case</references>
+        <references refid="d2/d1c/structumstimmung_1a152278390f21c75ae6180c7a7c738e81">umstimmung::umstimmung_umstimmungs_case</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa185e81c4fa5d32b1500d5d5d895a0af8" compoundref="da/d7f/umstimmung_8h" startline="34">umstimmung_umstimmungsbund</references>
+        <references refid="d2/d1c/structumstimmung_1a3eec91d4b820edc872944be5769f80e0">umstimmung::umstimmung_umstimmungsbund</references>
+        <references refid="da/d7f/umstimmung_8h_1aea2de13ed6df5c29b1c3e5f00428ce72" compoundref="d2/d4a/umstimmung_8c" startline="49" endline="52">umstimmungs_list_laenge</references>
+        <references refid="da/ddb/heap_8h_1a95116b44bc41d1e825e79c148ab7d0a6" compoundref="d2/d29/heap_8c" startline="96" endline="107">xalloca</references>
+        <references refid="d9/d7c/group__kernel_1ga32c911fc6ec259d831549e90fbd9f00c" compoundref="da/d02/Hilfs_8cpp" startline="114" endline="122">xde_alloca</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Mutabor-Datei-Parser. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein_junior@gmx.net">keinstein_junior@gmx.net</ulink> </para></simplesect>
+<simplesect kind="date"><para>2005 </para></simplesect>
+<simplesect kind="version"><para>0.1 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="10"><highlight class="preprocessor">#ifndef<sp/>__PARSER_H_INCLUDED</highlight></codeline>
+<codeline lineno="11"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>__PARSER_H_INCLUDED</highlight></codeline>
+<codeline lineno="12"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d0/d24/midicalc_8h" kindref="compound">mutabor/midicalc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="db/d1e/argument_8h" kindref="compound">mutabor/argument.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="18"><highlight class="preprocessor"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="21"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d5/d36/parser_8h_1afa88ae69a747f2c139bf6161d9b2d82d" kindref="member">mutabor_programm_einlesen</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>filename)<sp/>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>FILE<sp/>*<sp/><ref refid="d5/d36/parser_8h_1ac80104399eefcfdcc1635bf7c604581d" kindref="member">mutabor_parser_in</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="d4/dfd/mut__tab_8h_1a133c01da80801dde358f411a4ef498e6" kindref="member">anzahl_eingelesene_zeichen</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d5/d36/parser_8h_1a5a40f6b2e81f6ff497b18880102fbecb" kindref="member">check_konsistenz</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus<sp/></highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>extern<sp/>&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mutabor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__PARSER_H_INCLUDED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/parser.h"/>
+  </compounddef>
+</doxygen>

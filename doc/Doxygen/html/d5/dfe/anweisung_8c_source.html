@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/libmutabor/anweisung.c Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_36b066032255252bd9de4e8c33341f8d.html">libmutabor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">anweisung.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d5/dfe/anweisung_8c.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifdef HAVE_CONFIG_H</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  include &quot;config.h&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifdef HAVE_STDDEF_H</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  include &lt;stddef.h&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="../../d0/db7/anweisung_8h.html">mutabor/anweisung.h</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../da/ddb/heap_8h.html">mutabor/heap.h</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="../../d5/dfe/anweisung_8c.html#ac553d501cedd5adce1e4daea11ddebe7">   32</a></span>&#160;<span class="keyword">static</span> <span class="keyword">struct </span><a class="code" href="../../d0/dab/structanweisung.html">anweisung</a> * <a class="code" href="../../d5/dfe/anweisung_8c.html#ac553d501cedd5adce1e4daea11ddebe7">tmp_anweisungsliste</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../d5/dfe/anweisung_8c.html#a5147664e7b76cf9ee4a0b4cce0cb33c1">   38</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d0/db7/anweisung_8h.html#a5147664e7b76cf9ee4a0b4cce0cb33c1">init_anweisungs_liste</a> (<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    tmp_anweisungsliste = NULL;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../d5/dfe/anweisung_8c.html#a69a9cc9b2f12873daad5f0fa8da3d40d">   44</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../d0/dab/structanweisung.html">anweisung</a> * <a class="code" href="../../d0/db7/anweisung_8h.html#a69a9cc9b2f12873daad5f0fa8da3d40d">get_last_anweisungs_liste</a> (<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d5/dfe/anweisung_8c.html#ac553d501cedd5adce1e4daea11ddebe7">tmp_anweisungsliste</a> ;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../d5/dfe/anweisung_8c.html#a3a6809dc9fdfa33f77a00a4bcfcc2dc4">   54</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d0/db7/anweisung_8h.html#a3a6809dc9fdfa33f77a00a4bcfcc2dc4">get_new_anweisung</a> (<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">struct </span><a class="code" href="../../d0/dab/structanweisung.html">anweisung</a> * * lauf;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">for</span> (lauf= &amp; tmp_anweisungsliste; * lauf; lauf= &amp; (*lauf)-&gt;<a class="code" href="../../d0/dab/structanweisung.html#ac2f1fdc2202ad29c50dbdc676fdc9a6a">next</a>)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="comment">/* Nur Ende der Liste finden */</span> ;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    (* lauf) = (<span class="keyword">struct </span><a class="code" href="../../d0/dab/structanweisung.html">anweisung</a>*) <a class="code" href="../../da/ddb/heap_8h.html#a42ccfa6fc49cc4ce90cc44cd05052490">xmalloc</a> (<span class="keyword">sizeof</span> (<span class="keyword">struct</span> <a class="code" href="../../d0/dab/structanweisung.html">anweisung</a>));</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    (* lauf) -&gt; <a class="code" href="../../d9/de5/structausloeser.html">ausloeser</a>   = <a class="code" href="../../dd/d21/group__Parser.html#ga1e505704cb9a70800ee05786127a8cef">get_last_ausloeser</a> ();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    (* lauf) -&gt; <a class="code" href="../../d0/dab/structanweisung.html#affb7b32738f8c88cac91baaab9ad3383">aktion</a>      = <a class="code" href="../../dd/d21/group__Parser.html#gab57972c0331c7a5aff6f7f8ee0edbab7">get_last_aktions_liste</a> ();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    (* lauf) -&gt; <a class="code" href="../../d0/dab/structanweisung.html#ac2f1fdc2202ad29c50dbdc676fdc9a6a">next</a>        = NULL;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="ttc" id="anweisung_8h_html_a69a9cc9b2f12873daad5f0fa8da3d40d"><div class="ttname"><a href="../../d0/db7/anweisung_8h.html#a69a9cc9b2f12873daad5f0fa8da3d40d">get_last_anweisungs_liste</a></div><div class="ttdeci">struct anweisung * get_last_anweisungs_liste(void)</div><div class="ttdoc">Gibt Wurzelelement von #tmp_anweisungs_liste zurück. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dfe/anweisung_8c_source.html#l00044">anweisung.c:44</a></div></div>
+<div class="ttc" id="structausloeser_html"><div class="ttname"><a href="../../d9/de5/structausloeser.html">ausloeser</a></div><div class="ttdoc">Einzelndes Ereignis, das Logik aktiviert. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dfa/ausloeser_8h_source.html#l00033">ausloeser.h:33</a></div></div>
+<div class="ttc" id="anweisung_8c_html_ac553d501cedd5adce1e4daea11ddebe7"><div class="ttname"><a href="../../d5/dfe/anweisung_8c.html#ac553d501cedd5adce1e4daea11ddebe7">tmp_anweisungsliste</a></div><div class="ttdeci">static struct anweisung * tmp_anweisungsliste</div><div class="ttdoc">Globaler Zwischenspeicher für genau eine Anweisungsliste. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dfe/anweisung_8c_source.html#l00032">anweisung.c:32</a></div></div>
+<div class="ttc" id="anweisung_8h_html_a3a6809dc9fdfa33f77a00a4bcfcc2dc4"><div class="ttname"><a href="../../d0/db7/anweisung_8h.html#a3a6809dc9fdfa33f77a00a4bcfcc2dc4">get_new_anweisung</a></div><div class="ttdeci">void get_new_anweisung(void)</div><div class="ttdoc">Fügt eine neue Anweisung ans Ende von tmp_anweisungsliste an. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dfe/anweisung_8c_source.html#l00054">anweisung.c:54</a></div></div>
+<div class="ttc" id="structanweisung_html"><div class="ttname"><a href="../../d0/dab/structanweisung.html">anweisung</a></div><div class="ttdoc">Anweisungen als einfach verkettete Liste. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db7/anweisung_8h_source.html#l00036">anweisung.h:36</a></div></div>
+<div class="ttc" id="group__Parser_html_gab57972c0331c7a5aff6f7f8ee0edbab7"><div class="ttname"><a href="../../dd/d21/group__Parser.html#gab57972c0331c7a5aff6f7f8ee0edbab7">get_last_aktions_liste</a></div><div class="ttdeci">struct aktions_liste * get_last_aktions_liste(void)</div><div class="ttdoc">Gibt die Wurzel von list_of_aktionen zurück. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dc3/aktion_8c_source.html#l00099">aktion.c:99</a></div></div>
+<div class="ttc" id="structanweisung_html_affb7b32738f8c88cac91baaab9ad3383"><div class="ttname"><a href="../../d0/dab/structanweisung.html#affb7b32738f8c88cac91baaab9ad3383">anweisung::aktion</a></div><div class="ttdeci">struct aktions_liste * aktion</div><div class="ttdoc">Ausgelöste Aktion. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db7/anweisung_8h_source.html#l00038">anweisung.h:38</a></div></div>
+<div class="ttc" id="structanweisung_html_ac2f1fdc2202ad29c50dbdc676fdc9a6a"><div class="ttname"><a href="../../d0/dab/structanweisung.html#ac2f1fdc2202ad29c50dbdc676fdc9a6a">anweisung::next</a></div><div class="ttdeci">struct anweisung * next</div><div class="ttdoc">Nächste Anweisung. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db7/anweisung_8h_source.html#l00039">anweisung.h:39</a></div></div>
+<div class="ttc" id="heap_8h_html"><div class="ttname"><a href="../../da/ddb/heap_8h.html">heap.h</a></div><div class="ttdoc">Heapverwaltung. </div></div>
+<div class="ttc" id="heap_8h_html_a42ccfa6fc49cc4ce90cc44cd05052490"><div class="ttname"><a href="../../da/ddb/heap_8h.html#a42ccfa6fc49cc4ce90cc44cd05052490">xmalloc</a></div><div class="ttdeci">void * xmalloc(size_t size)</div><div class="ttdoc">Belegt einen Speicherbereich in der einfach verketteten Liste syntax_heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00166">heap.c:166</a></div></div>
+<div class="ttc" id="anweisung_8h_html"><div class="ttname"><a href="../../d0/db7/anweisung_8h.html">anweisung.h</a></div><div class="ttdoc">Alles zu Anweisungen. </div></div>
+<div class="ttc" id="group__Parser_html_ga1e505704cb9a70800ee05786127a8cef"><div class="ttname"><a href="../../dd/d21/group__Parser.html#ga1e505704cb9a70800ee05786127a8cef">get_last_ausloeser</a></div><div class="ttdeci">struct ausloeser * get_last_ausloeser(void)</div><div class="ttdoc">Gibt Wurzelelement von tmp_ausloeser zurück. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dcc/ausloeser_8c_source.html#l00075">ausloeser.c:75</a></div></div>
+<div class="ttc" id="anweisung_8h_html_a5147664e7b76cf9ee4a0b4cce0cb33c1"><div class="ttname"><a href="../../d0/db7/anweisung_8h.html#a5147664e7b76cf9ee4a0b4cce0cb33c1">init_anweisungs_liste</a></div><div class="ttdeci">void init_anweisungs_liste(void)</div><div class="ttdoc">Setzt globalen Anweisungs-Zwischenspeicher auf NULL. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dfe/anweisung_8c_source.html#l00038">anweisung.c:38</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:03:01 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

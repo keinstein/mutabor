@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/includes/mutabor/heap.h Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_bf59d41d727aac54882b42f236ae575e.html">includes</a></li><li class="navelem"><a class="el" href="../../dir_6db30062d01f5c3ec76e386385d23595.html">mutabor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">heap.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../da/ddb/heap_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#ifndef __HEAP_H_INCLUDED__</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="../../da/ddb/heap_8h.html#abcd97c0118478f729ba20393cb285a59">   16</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __HEAP_H_INCLUDED__7</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifdef HAVE_CONFIG_H</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  include &quot;config.h&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/* für size_t */</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor"></span><span class="keyword">namespace </span>mutabor {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span>    </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include&lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../df/d8e/bad__decl_8h.html">mutabor/bad_decl.h</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="../../da/ddb/heap_8h.html#aa93f2514a0844adf4ff82a3853148266">   32</a></span>&#160;<span class="preprocessor">#define HEAP_PORTION_SYNTAX   </span><span class="comment">/*65536L*/</span><span class="preprocessor"> 64000</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../da/ddb/heap_8h.html#a2ed983b16ea3bd4d726f9c5a2a36cc7d">   34</a></span>&#160;<span class="preprocessor">#define HEAP_PORTION_LAUFZEIT </span><span class="comment">/*65536L*/</span><span class="preprocessor"> 64000</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor"></span>    </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">/* #define alloca xmalloc */</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../da/ddb/heap_8h.html#af635d7d022992e16be90be833e7979df">   37</a></span>&#160;<span class="preprocessor">#define bcopy(from,to,n) memcpy((to),(from),(n))</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../da/ddb/heap_8h.html#adaaf2b22de5705e2e8190e0b0214268c">   38</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define bzero(s,n) memset((s),0,(n))</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../da/ddb/heap_8h.html#a5ff0acc4b4213d656c1fb54275543358">   39</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define bcmp(b1,b2,len) memcmp((b1),(b2),(len))</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga2a0a21b8d377742eac6cb1f7f3229e86">xfree</a> (<span class="keywordtype">void</span> * pointer);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> * <a class="code" href="../../da/ddb/heap_8h.html#a42ccfa6fc49cc4ce90cc44cd05052490">xmalloc</a> (<span class="keywordtype">size_t</span> size);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> * <a class="code" href="../../da/ddb/heap_8h.html#ac56ae312aa3a8be7c32ffbd997fed591">xrealloc</a> (<span class="keywordtype">void</span> * block, <span class="keywordtype">size_t</span> newsize);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> * <a class="code" href="../../da/ddb/heap_8h.html#ab0c7434dd1577c62500713d2508d89ce">xcalloc</a> (<span class="keywordtype">size_t</span> anzahl, <span class="keywordtype">size_t</span> size);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga59a78112aeea661097792d86d23ea657">yfree</a> (<span class="keywordtype">void</span> * pointer);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> * <a class="code" href="../../da/ddb/heap_8h.html#a20022f7843438dccec544ebde6e6889b">ymalloc</a> (<span class="keywordtype">size_t</span> size);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> * <a class="code" href="../../da/ddb/heap_8h.html#a4a6ce40acee5db6621bace7d200296a9">yrealloc</a> (<span class="keywordtype">void</span> * block, <span class="keywordtype">size_t</span> newsize);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> * <a class="code" href="../../da/ddb/heap_8h.html#ad4012a6a8a0b3a9007cf8a440370076e">ycalloc</a> (<span class="keywordtype">size_t</span> anzahl, <span class="keywordtype">size_t</span> size);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../da/ddb/heap_8h.html#a422a5aa2850896c98dd2a5b52959a968">loesche_syntax_speicher</a> ( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../da/ddb/heap_8h.html#a7f918156b5c5fbb2fddf370f407292ca">init_syntax_speicher</a> ( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../da/ddb/heap_8h.html#ac1b46a2090e2218f2e85831fe4a5787f">init_laufzeit_speicher</a> ( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../da/ddb/heap_8h.html#abeb3de8f1a02e90f536a351e3824d7da">loesche_laufzeit_speicher</a> ( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> * <a class="code" href="../../da/ddb/heap_8h.html#a95116b44bc41d1e825e79c148ab7d0a6">xalloca</a> (<span class="keywordtype">size_t</span> size);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga32c911fc6ec259d831549e90fbd9f00c">xde_alloca</a> (<span class="keywordtype">void</span> * pointer);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">int</span>  <a class="code" href="../../da/ddb/heap_8h.html#a9a3f8e6ec3a617a7f957e75aaf48dfe7">intern_fgetc</a>( FILE *stream );</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">int</span>  <a class="code" href="../../da/ddb/heap_8h.html#a0cfd6bb0e826070880878722da07d0d6">intern_ungetc</a>( <span class="keywordtype">int</span> c, FILE *stream );</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="../../da/ddb/heap_8h.html#a16213d14dc040ce1dd1cc9253fe93d6a">geheimcode</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor"></span>  }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __HEAP_H_INCLUDED__ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="heap_8h_html_a20022f7843438dccec544ebde6e6889b"><div class="ttname"><a href="../../da/ddb/heap_8h.html#a20022f7843438dccec544ebde6e6889b">ymalloc</a></div><div class="ttdeci">void * ymalloc(size_t size)</div><div class="ttdoc">Fordert Speicher auf dem Laufzeit-Heap an. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00335">heap.c:335</a></div></div>
+<div class="ttc" id="group__kernel_html_ga2a0a21b8d377742eac6cb1f7f3229e86"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga2a0a21b8d377742eac6cb1f7f3229e86">xfree</a></div><div class="ttdeci">void xfree(void *pointer)</div><div class="ttdoc">Freigeben oder auch nich. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00145">Hilfs.cpp:145</a></div></div>
+<div class="ttc" id="bad__decl_8h_html"><div class="ttname"><a href="../../df/d8e/bad__decl_8h.html">bad_decl.h</a></div><div class="ttdoc">Zu korrigierende Querabhängigkeiten zur GUI und sonstige komische Deklarationen. </div></div>
+<div class="ttc" id="heap_8h_html_a4a6ce40acee5db6621bace7d200296a9"><div class="ttname"><a href="../../da/ddb/heap_8h.html#a4a6ce40acee5db6621bace7d200296a9">yrealloc</a></div><div class="ttdeci">void * yrealloc(void *block, size_t newsize)</div><div class="ttdoc">Ändert die Größe eines Elementes auf dem Laufzeit-Heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00362">heap.c:362</a></div></div>
+<div class="ttc" id="heap_8h_html_ab0c7434dd1577c62500713d2508d89ce"><div class="ttname"><a href="../../da/ddb/heap_8h.html#ab0c7434dd1577c62500713d2508d89ce">xcalloc</a></div><div class="ttdeci">void * xcalloc(size_t anzahl, size_t size)</div><div class="ttdoc">Fordert einen Speicherbereich vom Syntax-Heap an, der anzahl * size Zeichen enthält. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00258">heap.c:258</a></div></div>
+<div class="ttc" id="heap_8h_html_a16213d14dc040ce1dd1cc9253fe93d6a"><div class="ttname"><a href="../../da/ddb/heap_8h.html#a16213d14dc040ce1dd1cc9253fe93d6a">geheimcode</a></div><div class="ttdeci">int geheimcode</div></div>
+<div class="ttc" id="heap_8h_html_abeb3de8f1a02e90f536a351e3824d7da"><div class="ttname"><a href="../../da/ddb/heap_8h.html#abeb3de8f1a02e90f536a351e3824d7da">loesche_laufzeit_speicher</a></div><div class="ttdeci">int loesche_laufzeit_speicher(void)</div><div class="ttdoc">Löscht den Laufzeitspeicher. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00394">heap.c:394</a></div></div>
+<div class="ttc" id="heap_8h_html_ad4012a6a8a0b3a9007cf8a440370076e"><div class="ttname"><a href="../../da/ddb/heap_8h.html#ad4012a6a8a0b3a9007cf8a440370076e">ycalloc</a></div><div class="ttdeci">void * ycalloc(size_t anzahl, size_t size)</div><div class="ttdoc">Fordert eine Anzahl von Einheiten auf dem Laufzeit-Heap an. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00373">heap.c:373</a></div></div>
+<div class="ttc" id="group__kernel_html_ga32c911fc6ec259d831549e90fbd9f00c"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga32c911fc6ec259d831549e90fbd9f00c">xde_alloca</a></div><div class="ttdeci">void xde_alloca(void *pointer)</div><div class="ttdoc">Gibt einen Speicherbereich wieder frei. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00114">Hilfs.cpp:114</a></div></div>
+<div class="ttc" id="heap_8h_html_ac56ae312aa3a8be7c32ffbd997fed591"><div class="ttname"><a href="../../da/ddb/heap_8h.html#ac56ae312aa3a8be7c32ffbd997fed591">xrealloc</a></div><div class="ttdeci">void * xrealloc(void *block, size_t newsize)</div><div class="ttdoc">Ändert die Größe eines aktuellen Speicherbereiches im privaten Syntax-Heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00224">heap.c:224</a></div></div>
+<div class="ttc" id="heap_8h_html_a95116b44bc41d1e825e79c148ab7d0a6"><div class="ttname"><a href="../../da/ddb/heap_8h.html#a95116b44bc41d1e825e79c148ab7d0a6">xalloca</a></div><div class="ttdeci">void * xalloca(size_t size)</div><div class="ttdoc">Allokiert einen Speicherbereich und erzeugt im Fehlerfall einen fatalen Fehler. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00096">heap.c:96</a></div></div>
+<div class="ttc" id="heap_8h_html_a0cfd6bb0e826070880878722da07d0d6"><div class="ttname"><a href="../../da/ddb/heap_8h.html#a0cfd6bb0e826070880878722da07d0d6">intern_ungetc</a></div><div class="ttdeci">int intern_ungetc(int c, FILE *stream)</div><div class="ttdoc">Spezielle Implementation von ungetc. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00075">heap.c:75</a></div></div>
+<div class="ttc" id="heap_8h_html_a7f918156b5c5fbb2fddf370f407292ca"><div class="ttname"><a href="../../da/ddb/heap_8h.html#a7f918156b5c5fbb2fddf370f407292ca">init_syntax_speicher</a></div><div class="ttdeci">int init_syntax_speicher(void)</div><div class="ttdoc">Initialisiert den Syntax-Heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00298">heap.c:298</a></div></div>
+<div class="ttc" id="heap_8h_html_a42ccfa6fc49cc4ce90cc44cd05052490"><div class="ttname"><a href="../../da/ddb/heap_8h.html#a42ccfa6fc49cc4ce90cc44cd05052490">xmalloc</a></div><div class="ttdeci">void * xmalloc(size_t size)</div><div class="ttdoc">Belegt einen Speicherbereich in der einfach verketteten Liste syntax_heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00166">heap.c:166</a></div></div>
+<div class="ttc" id="heap_8h_html_a422a5aa2850896c98dd2a5b52959a968"><div class="ttname"><a href="../../da/ddb/heap_8h.html#a422a5aa2850896c98dd2a5b52959a968">loesche_syntax_speicher</a></div><div class="ttdeci">int loesche_syntax_speicher(void)</div><div class="ttdoc">Löscht den gesamten Syntax-Heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00276">heap.c:276</a></div></div>
+<div class="ttc" id="group__kernel_html_ga59a78112aeea661097792d86d23ea657"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga59a78112aeea661097792d86d23ea657">yfree</a></div><div class="ttdeci">void yfree(void *pointer)</div><div class="ttdoc">Löscht pointer nicht vom Laufzeit-Heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00328">Hilfs.cpp:328</a></div></div>
+<div class="ttc" id="heap_8h_html_ac1b46a2090e2218f2e85831fe4a5787f"><div class="ttname"><a href="../../da/ddb/heap_8h.html#ac1b46a2090e2218f2e85831fe4a5787f">init_laufzeit_speicher</a></div><div class="ttdeci">int init_laufzeit_speicher(void)</div><div class="ttdoc">Initialisiert (Löscht) den Laufzeit-Speicher. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00385">heap.c:385</a></div></div>
+<div class="ttc" id="heap_8h_html_a9a3f8e6ec3a617a7f957e75aaf48dfe7"><div class="ttname"><a href="../../da/ddb/heap_8h.html#a9a3f8e6ec3a617a7f957e75aaf48dfe7">intern_fgetc</a></div><div class="ttdeci">int intern_fgetc(FILE *stream)</div><div class="ttdoc">Spezielle Implementation von fgetc. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00053">heap.c:53</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:03:00 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

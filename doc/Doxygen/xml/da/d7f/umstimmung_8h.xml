@@ -1,0 +1,1364 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="da/d7f/umstimmung_8h" kind="file">
+    <compoundname>umstimmung.h</compoundname>
+    <includes refid="d4/d12/ton_8h" local="yes">mutabor/ton.h</includes>
+    <includes refid="db/d99/case__liste_8h" local="yes">mutabor/case_liste.h</includes>
+    <includedby refid="dd/de4/aktion_8h" local="yes">src/includes/mutabor/aktion.h</includedby>
+    <includedby refid="d2/d49/global_8h" local="yes">src/includes/mutabor/global.h</includedby>
+    <includedby refid="d8/dc3/aktion_8c" local="yes">src/libmutabor/aktion.c</includedby>
+    <includedby refid="dc/d54/case__liste_8c" local="yes">src/libmutabor/case_liste.c</includedby>
+    <includedby refid="d7/d6e/logik_8c" local="yes">src/libmutabor/logik.c</includedby>
+    <includedby refid="d8/dff/midicalc_8c" local="yes">src/libmutabor/midicalc.c</includedby>
+    <includedby refid="d3/da3/mut_8c" local="yes">src/libmutabor/mut.c</includedby>
+    <includedby refid="d2/d72/parser_8c" local="yes">src/libmutabor/parser.c</includedby>
+    <includedby refid="d2/d4a/umstimmung_8c" local="yes">src/libmutabor/umstimmung.c</includedby>
+    <incdepgraph>
+      <node id="15125">
+        <label>mutabor/case_liste.h</label>
+        <link refid="db/d99/case__liste_8h"/>
+        <childnode refid="15126" relation="include">
+        </childnode>
+      </node>
+      <node id="15120">
+        <label>mutabor/interval.h</label>
+        <link refid="d2/d8a/interval_8h"/>
+        <childnode refid="15121" relation="include">
+        </childnode>
+        <childnode refid="15123" relation="include">
+        </childnode>
+      </node>
+      <node id="15122">
+        <label>mutabor/object.h</label>
+        <link refid="de/d10/object_8h"/>
+      </node>
+      <node id="15128">
+        <label>mutabor/argument.h</label>
+        <link refid="db/d1e/argument_8h"/>
+        <childnode refid="15129" relation="include">
+        </childnode>
+      </node>
+      <node id="15126">
+        <label>mutabor/aktion.h</label>
+        <link refid="dd/de4/aktion_8h"/>
+        <childnode refid="15127" relation="include">
+        </childnode>
+        <childnode refid="15128" relation="include">
+        </childnode>
+        <childnode refid="15118" relation="include">
+        </childnode>
+        <childnode refid="15130" relation="include">
+        </childnode>
+        <childnode refid="15129" relation="include">
+        </childnode>
+        <childnode refid="15131" relation="include">
+        </childnode>
+      </node>
+      <node id="15118">
+        <label>src/includes/mutabor/umstimmung.h</label>
+        <link refid="umstimmung.h"/>
+        <childnode refid="15119" relation="include">
+        </childnode>
+        <childnode refid="15125" relation="include">
+        </childnode>
+      </node>
+      <node id="15121">
+        <label>mutabor/identifier.h</label>
+        <link refid="d7/da7/identifier_8h"/>
+        <childnode refid="15122" relation="include">
+        </childnode>
+      </node>
+      <node id="15130">
+        <label>mutabor/tonsystem.h</label>
+        <link refid="d8/d39/tonsystem_8h"/>
+        <childnode refid="15119" relation="include">
+        </childnode>
+        <childnode refid="15120" relation="include">
+        </childnode>
+        <childnode refid="15123" relation="include">
+        </childnode>
+      </node>
+      <node id="15132">
+        <label>mutabor/ausloeser.h</label>
+        <link refid="d1/dfa/ausloeser_8h"/>
+        <childnode refid="15127" relation="include">
+        </childnode>
+        <childnode refid="15133" relation="include">
+        </childnode>
+        <childnode refid="15134" relation="include">
+        </childnode>
+      </node>
+      <node id="15119">
+        <label>mutabor/ton.h</label>
+        <link refid="d4/d12/ton_8h"/>
+        <childnode refid="15120" relation="include">
+        </childnode>
+      </node>
+      <node id="15124">
+        <label>math.h</label>
+      </node>
+      <node id="15133">
+        <label>mutabor/harmonie.h</label>
+        <link refid="d1/d63/harmonie_8h"/>
+        <childnode refid="15120" relation="include">
+        </childnode>
+        <childnode refid="15123" relation="include">
+        </childnode>
+      </node>
+      <node id="15131">
+        <label>mutabor/logik.h</label>
+        <link refid="d1/dff/logik_8h"/>
+        <childnode refid="15132" relation="include">
+        </childnode>
+        <childnode refid="15126" relation="include">
+        </childnode>
+      </node>
+      <node id="15127">
+        <label>mutabor/midicalc.h</label>
+        <link refid="d0/d24/midicalc_8h"/>
+      </node>
+      <node id="15129">
+        <label>mutabor/parameter.h</label>
+        <link refid="d2/d2a/parameter_8h"/>
+        <childnode refid="15128" relation="include">
+        </childnode>
+        <childnode refid="15123" relation="include">
+        </childnode>
+      </node>
+      <node id="15123">
+        <label>mutabor/bad_decl.h</label>
+        <link refid="df/d8e/bad__decl_8h"/>
+        <childnode refid="15124" relation="include">
+        </childnode>
+      </node>
+      <node id="15134">
+        <label>mutabor/anweisung.h</label>
+        <link refid="d0/db7/anweisung_8h"/>
+        <childnode refid="15132" relation="include">
+        </childnode>
+        <childnode refid="15126" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="15149">
+        <label>src/libmutabor/anweisung.c</label>
+        <link refid="d5/dfe/anweisung_8c"/>
+      </node>
+      <node id="15144">
+        <label>src/libmutabor/interpreter.c</label>
+        <link refid="dc/d30/interpreter_8c"/>
+      </node>
+      <node id="15150">
+        <label>src/includes/mutabor/case_liste.h</label>
+        <link refid="db/d99/case__liste_8h"/>
+        <childnode refid="15135" relation="include">
+        </childnode>
+      </node>
+      <node id="15141">
+        <label>src/gmut/gmutdos.cpp</label>
+        <link refid="dd/d15/gmutdos_8cpp"/>
+      </node>
+      <node id="15145">
+        <label>src/libmutabor/logik.c</label>
+        <link refid="d7/d6e/logik_8c"/>
+      </node>
+      <node id="15136">
+        <label>src/includes/mutabor/aktion.h</label>
+        <link refid="dd/de4/aktion_8h"/>
+        <childnode refid="15137" relation="include">
+        </childnode>
+        <childnode refid="15150" relation="include">
+        </childnode>
+        <childnode refid="15139" relation="include">
+        </childnode>
+        <childnode refid="15145" relation="include">
+        </childnode>
+      </node>
+      <node id="15135">
+        <label>src/includes/mutabor/umstimmung.h</label>
+        <link refid="umstimmung.h"/>
+        <childnode refid="15136" relation="include">
+        </childnode>
+        <childnode refid="15140" relation="include">
+        </childnode>
+        <childnode refid="15142" relation="include">
+        </childnode>
+        <childnode refid="15151" relation="include">
+        </childnode>
+        <childnode refid="15145" relation="include">
+        </childnode>
+        <childnode refid="15152" relation="include">
+        </childnode>
+        <childnode refid="15146" relation="include">
+        </childnode>
+        <childnode refid="15147" relation="include">
+        </childnode>
+        <childnode refid="15148" relation="include">
+        </childnode>
+      </node>
+      <node id="15152">
+        <label>src/libmutabor/midicalc.c</label>
+        <link refid="d8/dff/midicalc_8c"/>
+      </node>
+      <node id="15138">
+        <label>src/includes/mutabor/ausloeser.h</label>
+        <link refid="d1/dfa/ausloeser_8h"/>
+        <childnode refid="15137" relation="include">
+        </childnode>
+        <childnode refid="15139" relation="include">
+        </childnode>
+        <childnode refid="15143" relation="include">
+        </childnode>
+        <childnode refid="15144" relation="include">
+        </childnode>
+      </node>
+      <node id="15148">
+        <label>src/libmutabor/umstimmung.c</label>
+        <link refid="d2/d4a/umstimmung_8c"/>
+      </node>
+      <node id="15142">
+        <label>src/libmutabor/aktion.c</label>
+        <link refid="d8/dc3/aktion_8c"/>
+      </node>
+      <node id="15143">
+        <label>src/libmutabor/ausloeser.c</label>
+        <link refid="d6/dcc/ausloeser_8c"/>
+      </node>
+      <node id="15151">
+        <label>src/libmutabor/case_liste.c</label>
+        <link refid="dc/d54/case__liste_8c"/>
+      </node>
+      <node id="15140">
+        <label>src/includes/mutabor/global.h</label>
+        <link refid="d2/d49/global_8h"/>
+        <childnode refid="15141" relation="include">
+        </childnode>
+      </node>
+      <node id="15146">
+        <label>src/libmutabor/mut.c</label>
+        <link refid="d3/da3/mut_8c"/>
+      </node>
+      <node id="15147">
+        <label>src/libmutabor/parser.c</label>
+        <link refid="d2/d72/parser_8c"/>
+      </node>
+      <node id="15139">
+        <label>src/includes/mutabor/logik.h</label>
+        <link refid="d1/dff/logik_8h"/>
+        <childnode refid="15136" relation="include">
+        </childnode>
+        <childnode refid="15140" relation="include">
+        </childnode>
+        <childnode refid="15142" relation="include">
+        </childnode>
+        <childnode refid="15143" relation="include">
+        </childnode>
+        <childnode refid="15144" relation="include">
+        </childnode>
+        <childnode refid="15145" relation="include">
+        </childnode>
+        <childnode refid="15146" relation="include">
+        </childnode>
+        <childnode refid="15147" relation="include">
+        </childnode>
+        <childnode refid="15148" relation="include">
+        </childnode>
+      </node>
+      <node id="15137">
+        <label>src/includes/mutabor/anweisung.h</label>
+        <link refid="d0/db7/anweisung_8h"/>
+        <childnode refid="15138" relation="include">
+        </childnode>
+        <childnode refid="15140" relation="include">
+        </childnode>
+        <childnode refid="15149" relation="include">
+        </childnode>
+        <childnode refid="15143" relation="include">
+        </childnode>
+        <childnode refid="15145" relation="include">
+        </childnode>
+        <childnode refid="15146" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d2/d1c/structumstimmung" prot="public">umstimmung</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="da/d7f/umstimmung_8h_1ae4a3d9bbce90258ea2550ced0e649d0a" prot="public" static="no">
+        <name>umstimmung_typ</name>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aabd7780801f2432bc197c238b90f476da" prot="public">
+          <name>umstimmung_taste_abs</name>
+          <briefdescription>
+<para>eine Ankertaste absolut stimmen </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aafe2f45099e251961aacaf58101885deb" prot="public">
+          <name>umstimmung_taste_rel</name>
+          <briefdescription>
+<para>eine Ankertaste relativ stimmen </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa8879390ae7740d1e6d77458bf8837018" prot="public">
+          <name>umstimmung_breite_abs</name>
+          <briefdescription>
+<para>verändern der Periodenlänge/breite (absolut) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaf5ef8366ca077fbd9096f9e91117bd88" prot="public">
+          <name>umstimmung_breite_rel</name>
+          <briefdescription>
+<para>verändern der Periodenlänge/breite (relativ) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa14c0a1e77760dbe7bf7fd23d047daf65" prot="public">
+          <name>umstimmung_toene_veraendert</name>
+          <briefdescription>
+<para>Töne verändern. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaee34b68ac28af4bdc8876001aec69edf" prot="public">
+          <name>umstimmung_wiederholung_abs</name>
+          <briefdescription>
+<para>Wiederholung absolut. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa29dcdd9f8c0808b673707fc06aace5c0" prot="public">
+          <name>umstimmung_wiederholung_rel</name>
+          <briefdescription>
+<para>Wiederholung relativ. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa185e81c4fa5d32b1500d5d5d895a0af8" prot="public">
+          <name>umstimmung_umstimmungsbund</name>
+          <briefdescription>
+<para>Mehrere Umstimmungsschritte. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa6762ebe62dfd2cb6d4a659f6a840e2a4" prot="public">
+          <name>umstimmung_umstimmungs_case</name>
+          <briefdescription>
+<para>Bedingte Umstimmungen. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aab0e072b71e6b4d425ff841b448a7272e" prot="public">
+          <name>umstimmung_midi_out</name>
+          <briefdescription>
+<para>Keine Umstimmung, MIDI-Ausgabe. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aabd7780801f2432bc197c238b90f476da" prot="public">
+          <name>umstimmung_taste_abs</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aafe2f45099e251961aacaf58101885deb" prot="public">
+          <name>umstimmung_taste_rel</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa8879390ae7740d1e6d77458bf8837018" prot="public">
+          <name>umstimmung_breite_abs</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaf5ef8366ca077fbd9096f9e91117bd88" prot="public">
+          <name>umstimmung_breite_rel</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa14c0a1e77760dbe7bf7fd23d047daf65" prot="public">
+          <name>umstimmung_toene_veraendert</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaee34b68ac28af4bdc8876001aec69edf" prot="public">
+          <name>umstimmung_wiederholung_abs</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa29dcdd9f8c0808b673707fc06aace5c0" prot="public">
+          <name>umstimmung_wiederholung_rel</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa185e81c4fa5d32b1500d5d5d895a0af8" prot="public">
+          <name>umstimmung_umstimmungsbund</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa6762ebe62dfd2cb6d4a659f6a840e2a4" prot="public">
+          <name>umstimmung_umstimmungs_case</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aab0e072b71e6b4d425ff841b448a7272e" prot="public">
+          <name>umstimmung_midi_out</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Typ einer Umstimming. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="26" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" bodystart="26" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="da/d7f/umstimmung_8h_1a96aa4405f944de769b350336489cf56e" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d2/d1c/structumstimmung" kindref="compound">umstimmung</ref> *</type>
+        <definition>struct umstimmung* list_of_umstimmungen</definition>
+        <argsstring></argsstring>
+        <name>list_of_umstimmungen</name>
+        <briefdescription>
+<para>Wurzel der Umstimmungen. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="117" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" bodystart="117" bodyend="-1"/>
+        <referencedby refid="dd/d21/group__Parser_1gaa415e8810b15cf168d92015c1bae5a9e" compoundref="d8/dc3/aktion_8c" startline="133" endline="205">check_aktionen</referencedby>
+        <referencedby refid="d2/d72/parser_8c_1a5a40f6b2e81f6ff497b18880102fbecb" compoundref="d2/d72/parser_8c" startline="597" endline="777">check_konsistenz</referencedby>
+        <referencedby refid="d7/d6e/logik_8c_1aed04795a6b7c21df1893c7bc845231e6" compoundref="d7/d6e/logik_8c" startline="192" endline="251">check_logik_konsistenz</referencedby>
+        <referencedby refid="d7/d6e/logik_8c_1adeba205c8988dbafa8226746ae29a639" compoundref="d7/d6e/logik_8c" startline="260" endline="299">expandiere_logik</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1ga78114178682e1b11d830e325a46787c8" compoundref="d8/dc3/aktion_8c" startline="482" endline="524">expandiere_name</referencedby>
+        <referencedby refid="d2/d72/parser_8c_1afa88ae69a747f2c139bf6161d9b2d82d" compoundref="d2/d72/parser_8c" startline="85" endline="386">mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="da/d7f/umstimmung_8h_1a825a2d7cb8bc82c2e30098d1b3c1dc6e" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d2/d1c/structumstimmung" kindref="compound">umstimmung</ref> *</type>
+        <definition>struct umstimmung* tmp_umstimmung</definition>
+        <argsstring></argsstring>
+        <name>tmp_umstimmung</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="118" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" bodystart="118" bodyend="-1"/>
+        <referencedby refid="d2/d4a/umstimmung_8c_1a3d53b94af7e65fd8f9d2865a19e2a253" compoundref="d2/d4a/umstimmung_8c" startline="101" endline="108">get_new_umstimmung</referencedby>
+        <referencedby refid="d8/dff/midicalc_8c_1adc7899c09f52cbe396ad6c6e34626694" compoundref="d8/dff/midicalc_8c" startline="100" endline="105">get_umstimmung_midi_out</referencedby>
+        <referencedby refid="dd/da8/group__parser_1gaffd00a427bdc135041aff69245ec4667" compoundref="dc/d54/case__liste_8c" startline="156" endline="225">get_umstimmung_umstimm_case_parameter</referencedby>
+        <referencedby refid="dd/da8/group__parser_1gae037a4769c7d049fcb409abbefad4df9" compoundref="dc/d54/case__liste_8c" startline="96" endline="147">get_umstimmung_umstimm_case_zahl</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1a3b3284aff323f2b2176c03f72e071113" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_umstimmung</definition>
+        <argsstring>(char *name)</argsstring>
+        <name>init_umstimmung</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Erzeugt eine leere Umstimmung auf <computeroutput>tmp_umstimmung</computeroutput>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Vorher wird jedoch die Umstimmungsliste <computeroutput>list_of_umstimmungen</computeroutput> durchsucht, ob <emphasis>name</emphasis> schon vorhanden ist. Gegebenenfalls wird ein fataler Fehler ausgeworfen. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name der neu einzurichtenden Umstimmung. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="warning"><para><computeroutput>tmp_umstimmnug</computeroutput> wird nicht gelöscht. Das muss gegebenenfalls extra erledigt werden. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="84" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="83" bodyend="96"/>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="d2/d1c/structumstimmung_1ae67b979d3d4d8dbbf5d36515bd58d6c7" compoundref="da/d7f/umstimmung_8h" startline="81">umstimmung::next</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1ac8ee9a5c00610665a2bbebda37191af0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void eintrage_parameterliste_in_umstimmung</definition>
+        <argsstring>(void)</argsstring>
+        <name>eintrage_parameterliste_in_umstimmung</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Hängt die letzte eingelesene Parameterliste an geeigneter Stelle in <computeroutput>tmp_umstimmung</computeroutput> ein. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="85" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="113" bodyend="116"/>
+        <references refid="d2/d2a/parameter_8h_1a563642b7f094ac51b03613b825a94708" compoundref="d7/d2d/parameter_8c" startline="85" endline="88">get_last_parameter_liste</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1a3d53b94af7e65fd8f9d2865a19e2a253" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_new_umstimmung</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_new_umstimmung</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Hängt <computeroutput>tmp_umstimmung</computeroutput> an list_of_umstimmungen an. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Es wird immer die gesamte Liste durchsucht. Effektivität? </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="86" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="101" bodyend="108"/>
+        <references refid="d2/d1c/structumstimmung_1ae67b979d3d4d8dbbf5d36515bd58d6c7" compoundref="da/d7f/umstimmung_8h" startline="81">umstimmung::next</references>
+        <references refid="da/d7f/umstimmung_8h_1a825a2d7cb8bc82c2e30098d1b3c1dc6e" compoundref="da/d7f/umstimmung_8h" startline="118">tmp_umstimmung</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1a5a1870d4265d8a69e50128c2c512045d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_umstimmung_taste_abs</definition>
+        <argsstring>(enum argument_typ argument, double zahl_wert, char *parameter)</argsstring>
+        <name>get_umstimmung_taste_abs</name>
+        <param>
+          <type>enum <ref refid="db/d1e/argument_8h_1a670b4baf221831f19e00a812a7b68282" kindref="member">argument_typ</ref></type>
+          <declname>argument</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>zahl_wert</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>parameter</declname>
+        </param>
+        <briefdescription>
+<para>Baut <computeroutput>tmp_umstimmung</computeroutput> zu einer absoluten Tasten-Umstimmung aus. </para>        </briefdescription>
+        <detaileddescription>
+<para>Wird nicht-numerisch umgestimmt, und wirde der Parameter nicht definiert, wird ein fataler Fehler ausgelöst. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>argument</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Typ des Argumentes der Umstimmung </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>zahl_wert</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Zahlenwert eines numerischen Argumentes. Wird ansonsten ignoriert. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name des Parameters für die nicht numerische Umstimmung. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<xrefsect id="dd/da0/todo_1_todo000037"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>Typkonvertierung von <computeroutput>double</computeroutput> nach <computeroutput>int</computeroutput> prüfen </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="88" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="137" bodyend="162"/>
+        <references refid="d2/d1c/structumstimmung_1a921dd8e2f67ac77984fbaf95057ee873" compoundref="da/d7f/umstimmung_8h" startline="48">umstimmung::argument</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d2/d1c/structumstimmung_1abd217ffce7f0666151e53606789705cf" compoundref="da/d7f/umstimmung_8h" startline="43">umstimmung::name</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" compoundref="db/d1e/argument_8h" startline="30">parameter</references>
+        <references refid="d2/d1c/structumstimmung_1a1537c95f6384e8ccaa1d3a916e96649b" compoundref="da/d7f/umstimmung_8h" startline="44">umstimmung::parameter_liste</references>
+        <references refid="d2/d2a/parameter_8h_1a5bf29214dc54ea66a905c8b8b67fb54f" compoundref="d7/d2d/parameter_8c" startline="98" endline="106">parameter_nummer</references>
+        <references refid="d2/d1c/structumstimmung_1af6c0515f9099f9d765cedd86762d9c6b">umstimmung::u</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aabd7780801f2432bc197c238b90f476da" compoundref="da/d7f/umstimmung_8h" startline="27">umstimmung_taste_abs</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a47e9a84a3f91507862a3baa02e1a05b6" compoundref="db/d1e/argument_8h" startline="30">zahl</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1a4840da992a8fa2aee65208814dd40fe0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_umstimmung_taste_rel</definition>
+        <argsstring>(enum argument_typ argument, double zahl_wert, char *parameter, char vorzeichen)</argsstring>
+        <name>get_umstimmung_taste_rel</name>
+        <param>
+          <type>enum <ref refid="db/d1e/argument_8h_1a670b4baf221831f19e00a812a7b68282" kindref="member">argument_typ</ref></type>
+          <declname>argument</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>zahl_wert</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>parameter</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <declname>vorzeichen</declname>
+        </param>
+        <briefdescription>
+<para>Baut <computeroutput>tmp_umstimmung</computeroutput> zu einer relativen Tasten-Umstimmung aus. </para>        </briefdescription>
+        <detaileddescription>
+<para>Wird nicht-numerisch umgestimmt, und wirde der Parameter nicht definiert, wird ein fataler Fehler ausgelöst. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>argument</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Typ des Argumentes der Umstimmung </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>zahl_wert</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Zahlenwert eines numerischen Argumentes. Wird ansonsten ignoriert. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name des Parameters für die nicht numerische Umstimmung. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vorzeichen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rechenzeichen für die Umstimmung. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Rechenzeichen = +/-, also Richtung? </para></simplesect>
+<xrefsect id="dd/da0/todo_1_todo000038"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>Typkonvertierung von <computeroutput>double</computeroutput> nach <computeroutput>int</computeroutput> prüfen. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="92" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="175" bodyend="202"/>
+        <references refid="d2/d1c/structumstimmung_1a921dd8e2f67ac77984fbaf95057ee873" compoundref="da/d7f/umstimmung_8h" startline="48">umstimmung::argument</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" compoundref="db/d1e/argument_8h" startline="30">parameter</references>
+        <references refid="d2/d1c/structumstimmung_1a1537c95f6384e8ccaa1d3a916e96649b" compoundref="da/d7f/umstimmung_8h" startline="44">umstimmung::parameter_liste</references>
+        <references refid="d2/d2a/parameter_8h_1a5bf29214dc54ea66a905c8b8b67fb54f" compoundref="d7/d2d/parameter_8c" startline="98" endline="106">parameter_nummer</references>
+        <references refid="d2/d1c/structumstimmung_1af6c0515f9099f9d765cedd86762d9c6b">umstimmung::u</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aafe2f45099e251961aacaf58101885deb" compoundref="da/d7f/umstimmung_8h" startline="28">umstimmung_taste_rel</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a47e9a84a3f91507862a3baa02e1a05b6" compoundref="db/d1e/argument_8h" startline="30">zahl</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1ad8499c071050f3b6019724cf95efa94a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_umstimmung_breite_abs</definition>
+        <argsstring>(enum argument_typ argument, double zahl_wert, char *parameter)</argsstring>
+        <name>get_umstimmung_breite_abs</name>
+        <param>
+          <type>enum <ref refid="db/d1e/argument_8h_1a670b4baf221831f19e00a812a7b68282" kindref="member">argument_typ</ref></type>
+          <declname>argument</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>zahl_wert</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>parameter</declname>
+        </param>
+        <briefdescription>
+<para>Baut <computeroutput>tmp_umstimmung</computeroutput> zu einer absoluten Änderung der Referenz-Breite aus. </para>        </briefdescription>
+        <detaileddescription>
+<para>Wird nicht-numerisch umgestimmt, und wirde der Parameter nicht definiert, wird ein fataler Fehler ausgelöst. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>argument</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Typ des Argumentes der Umstimmung </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>zahl_wert</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Zahlenwert eines numerischen Argumentes. Wird ansonsten ignoriert. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name des Parameters für die nicht numerische Umstimmung. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<xrefsect id="dd/da0/todo_1_todo000039"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>Typkonvertierung von <computeroutput>double</computeroutput> nauch <computeroutput>int</computeroutput> prüfen. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="95" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="213" bodyend="238"/>
+        <references refid="d2/d1c/structumstimmung_1a921dd8e2f67ac77984fbaf95057ee873" compoundref="da/d7f/umstimmung_8h" startline="48">umstimmung::argument</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d2/d1c/structumstimmung_1abd217ffce7f0666151e53606789705cf" compoundref="da/d7f/umstimmung_8h" startline="43">umstimmung::name</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" compoundref="db/d1e/argument_8h" startline="30">parameter</references>
+        <references refid="d2/d1c/structumstimmung_1a1537c95f6384e8ccaa1d3a916e96649b" compoundref="da/d7f/umstimmung_8h" startline="44">umstimmung::parameter_liste</references>
+        <references refid="d2/d2a/parameter_8h_1a5bf29214dc54ea66a905c8b8b67fb54f" compoundref="d7/d2d/parameter_8c" startline="98" endline="106">parameter_nummer</references>
+        <references refid="d2/d1c/structumstimmung_1af6c0515f9099f9d765cedd86762d9c6b">umstimmung::u</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa8879390ae7740d1e6d77458bf8837018" compoundref="da/d7f/umstimmung_8h" startline="29">umstimmung_breite_abs</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a47e9a84a3f91507862a3baa02e1a05b6" compoundref="db/d1e/argument_8h" startline="30">zahl</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1aad31037efd9d8c14f2d878eb043cf13f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_umstimmung_breite_rel</definition>
+        <argsstring>(enum argument_typ argument, double zahl_wert, char *parameter, char vorzeichen)</argsstring>
+        <name>get_umstimmung_breite_rel</name>
+        <param>
+          <type>enum <ref refid="db/d1e/argument_8h_1a670b4baf221831f19e00a812a7b68282" kindref="member">argument_typ</ref></type>
+          <declname>argument</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>zahl_wert</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>parameter</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <declname>vorzeichen</declname>
+        </param>
+        <briefdescription>
+<para>Baut <computeroutput>tmp_umstimmung</computeroutput> zu einer relativen Änderung der Referenz-Breite aus. </para>        </briefdescription>
+        <detaileddescription>
+<para>Wird nicht-numerisch umgestimmt, und wirde der Parameter nicht definiert, wird ein fataler Fehler ausgelöst. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>argument</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Typ des Argumentes der Umstimmung </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>zahl_wert</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Zahlenwert eines numerischen Argumentes. Wird ansonsten ignoriert. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name des Parameters für die nicht numerische Umstimmung. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vorzeichen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rechenzeichen für die Umstimmung. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Rechenzeichen = +/-, also Richtung? </para></simplesect>
+<xrefsect id="dd/da0/todo_1_todo000040"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>Typkonvertierung von <computeroutput>double</computeroutput> nach <computeroutput>int</computeroutput> prüfen. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="98" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="251" bodyend="278"/>
+        <references refid="d2/d1c/structumstimmung_1a921dd8e2f67ac77984fbaf95057ee873" compoundref="da/d7f/umstimmung_8h" startline="48">umstimmung::argument</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d2/d1c/structumstimmung_1abd217ffce7f0666151e53606789705cf" compoundref="da/d7f/umstimmung_8h" startline="43">umstimmung::name</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" compoundref="db/d1e/argument_8h" startline="30">parameter</references>
+        <references refid="d2/d1c/structumstimmung_1a1537c95f6384e8ccaa1d3a916e96649b" compoundref="da/d7f/umstimmung_8h" startline="44">umstimmung::parameter_liste</references>
+        <references refid="d2/d2a/parameter_8h_1a5bf29214dc54ea66a905c8b8b67fb54f" compoundref="d7/d2d/parameter_8c" startline="98" endline="106">parameter_nummer</references>
+        <references refid="d2/d1c/structumstimmung_1af6c0515f9099f9d765cedd86762d9c6b">umstimmung::u</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaf5ef8366ca077fbd9096f9e91117bd88" compoundref="da/d7f/umstimmung_8h" startline="30">umstimmung_breite_rel</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a47e9a84a3f91507862a3baa02e1a05b6" compoundref="db/d1e/argument_8h" startline="30">zahl</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1a18e8c2fe9cceaa1662cea0d032a65af0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_umstimm_expression_list</definition>
+        <argsstring>(void)</argsstring>
+        <name>init_umstimm_expression_list</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Setzt <computeroutput>tmp_tonliste</computeroutput> auf NULL. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>Die Liste wird nicht gelöscht. Das muss gegebenenfalls vor der Initialiserung manuell erledigt werden. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="101" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="292" bodyend="295"/>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1a89f7b9b313870397364fa5171697fc4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_umstimmung_tonhoehe_veraendert</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_umstimmung_tonhoehe_veraendert</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Baut <computeroutput>tmp_umstimmung</computeroutput> zu einer Änderung der Tonhöhe aus. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei wird <computeroutput>tmp_tonliste</computeroutput> als Tonliste der Veränderung eingehängt. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="102" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="376" bodyend="381"/>
+        <references refid="d2/d4a/umstimmung_8c_1aedc2c7a3afa888b106119ac149473195" compoundref="d2/d4a/umstimmung_8c" startline="286">tmp_tonliste</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa14c0a1e77760dbe7bf7fd23d047daf65" compoundref="da/d7f/umstimmung_8h" startline="31">umstimmung_toene_veraendert</references>
+        <references refid="d2/d1c/structumstimmung_1a17bcbd19a918a3f6b7b59e3095060006">umstimmung::umstimmung_toene_veraendert</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1a1c4ff1cc2a67b423f0009ad54bd17c55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_new_umstimm_expression</definition>
+        <argsstring>(char *bezugston)</argsstring>
+        <name>get_new_umstimm_expression</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>bezugston</declname>
+        </param>
+        <briefdescription>
+<para>Fügt einen einfachen komplexen Ton ans Ende von <emphasis>tmp_tonliste</emphasis> an. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei wird sowohl der Name des Tones als auch der des Bezugstones des komplexen Intervalles auf <emphasis>name</emphasis> gesetzt. Die komplexe Intervallliste wird leer initialisiert. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bezugston</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bezeichnung des Tones, der angefügt werden soll </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Es wird immer die gesamte Liste durchsucht. Effektivität? </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="103" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="304" bodyend="317"/>
+        <references refid="dd/da3/structton_1a1a0c3eb687ec5c5275cc91592bd268f7" compoundref="d4/d12/ton_8h" startline="41">ton::bezugston</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="dd/da3/structton_1a0531d0ab1a39337684a162a66c88b5d0" compoundref="d4/d12/ton_8h" startline="45">ton::next</references>
+        <references refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a435f7f05f60006f36ac067d647a8ac92" compoundref="d4/d12/ton_8h" startline="24">ton_komplex</references>
+        <references refid="dd/da3/structton_1a2173eae7dfaa7102dbed7bd7900ae82b">ton::u</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1a6ff30437c97c85b5f0db34ed2c5e6e6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_new_umstimm_expression_positive</definition>
+        <argsstring>(char *bezugston)</argsstring>
+        <name>get_new_umstimm_expression_positive</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>bezugston</declname>
+        </param>
+        <briefdescription>
+<para>Fügt einen komplexen Ton ans Ende von <emphasis>tmp_tonliste</emphasis> an. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei wird sowohl der Name des Tones als auch der des Bezugstones des komplexen Intervalles auf <emphasis>name</emphasis> gesetzt. Als komplexe Intervallliste wird die letzte eingelesene eingehängt. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bezugston</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bezeichnung des Tones, der angefügt werden soll </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Es wird immer die gesamte Liste durchsucht. Effektivität? </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="104" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="327" bodyend="340"/>
+        <references refid="dd/da3/structton_1a1a0c3eb687ec5c5275cc91592bd268f7" compoundref="d4/d12/ton_8h" startline="41">ton::bezugston</references>
+        <references refid="d2/d8a/interval_8h_1a628fbc6b1014c2a2290a7510a81f60ec" compoundref="d5/d28/interval_8c" startline="529" endline="532">get_last_komplex_intervall</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="dd/da3/structton_1a0531d0ab1a39337684a162a66c88b5d0" compoundref="d4/d12/ton_8h" startline="45">ton::next</references>
+        <references refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a435f7f05f60006f36ac067d647a8ac92" compoundref="d4/d12/ton_8h" startline="24">ton_komplex</references>
+        <references refid="dd/da3/structton_1a2173eae7dfaa7102dbed7bd7900ae82b">ton::u</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1a7fd6c397f2a118c66c4aa6b29977802b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_new_umstimm_expression_negative</definition>
+        <argsstring>(char *bezugston)</argsstring>
+        <name>get_new_umstimm_expression_negative</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>bezugston</declname>
+        </param>
+        <briefdescription>
+<para>Fügt einen komplexen Ton ans Ende von <emphasis>tmp_tonliste</emphasis> an. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei wird sowohl der Name des Tones als auch der des Bezugstones des komplexen Intervalles auf <emphasis>name</emphasis> gesetzt. Als komplexe Intervallliste wird die letzte eingelesene eingehängt. Diese wird jedoch vorher invertiert. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bezugston</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bezeichnung des Tones, der angefügt werden soll </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Es wird immer die gesamte Liste durchsucht. Effektivität? </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="105" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="351" bodyend="370"/>
+        <references refid="dd/da3/structton_1a1a0c3eb687ec5c5275cc91592bd268f7" compoundref="d4/d12/ton_8h" startline="41">ton::bezugston</references>
+        <references refid="d7/dc9/structkomplex__intervall_1aafd0c9431aec7e190f7bf33577794bef" compoundref="d2/d8a/interval_8h" startline="86">komplex_intervall::faktor</references>
+        <references refid="d2/d8a/interval_8h_1a628fbc6b1014c2a2290a7510a81f60ec" compoundref="d5/d28/interval_8c" startline="529" endline="532">get_last_komplex_intervall</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="dd/da3/structton_1a0531d0ab1a39337684a162a66c88b5d0" compoundref="d4/d12/ton_8h" startline="45">ton::next</references>
+        <references refid="d7/dc9/structkomplex__intervall_1a91e64f6f6d25719010524e551c8119bf" compoundref="d2/d8a/interval_8h" startline="88">komplex_intervall::next</references>
+        <references refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a435f7f05f60006f36ac067d647a8ac92" compoundref="d4/d12/ton_8h" startline="24">ton_komplex</references>
+        <references refid="dd/da3/structton_1a2173eae7dfaa7102dbed7bd7900ae82b">ton::u</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1a0e5e3525a98df95e6352eff852bd79ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_umstimmung_wiederholung_abs</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_umstimmung_wiederholung_abs</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Baut <computeroutput>tmp_umstimmung</computeroutput> zu einer absoluten Änderung der Wiederholungsvorschrift aus. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei wird die letzte eingelesene komplexe Intervallliste verwendet. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="106" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="387" bodyend="392"/>
+        <references refid="d2/d8a/interval_8h_1a628fbc6b1014c2a2290a7510a81f60ec" compoundref="d5/d28/interval_8c" startline="529" endline="532">get_last_komplex_intervall</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaee34b68ac28af4bdc8876001aec69edf" compoundref="da/d7f/umstimmung_8h" startline="32">umstimmung_wiederholung_abs</references>
+        <references refid="d2/d1c/structumstimmung_1a4fa668220d409503b83ca4830a76584a">umstimmung::umstimmung_wiederholung_abs</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1ab57a7023da290e2f0ce623f04bf38f3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_umstimmung_wiederholung_abs_negative</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_umstimmung_wiederholung_abs_negative</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Baut <computeroutput>tmp_umstimmung</computeroutput> zu einer absoluten Änderung der Wiederholungsvorschrift aus. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei wird die letzte eingelesene komplexe Intervallliste verwendet. Diese wird jedoch vorher invertiert. Ist sie leer, wird ein fataler Fehler ausgelöst. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="107" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="400" bodyend="412"/>
+        <references refid="d7/dc9/structkomplex__intervall_1aafd0c9431aec7e190f7bf33577794bef" compoundref="d2/d8a/interval_8h" startline="86">komplex_intervall::faktor</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d2/d8a/interval_8h_1a628fbc6b1014c2a2290a7510a81f60ec" compoundref="d5/d28/interval_8c" startline="529" endline="532">get_last_komplex_intervall</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaee34b68ac28af4bdc8876001aec69edf" compoundref="da/d7f/umstimmung_8h" startline="32">umstimmung_wiederholung_abs</references>
+        <references refid="d2/d1c/structumstimmung_1a4fa668220d409503b83ca4830a76584a">umstimmung::umstimmung_wiederholung_abs</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1a2eeff97c57685b68dadee3fd66917186" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_umstimmung_wiederholung_rel_positive</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_umstimmung_wiederholung_rel_positive</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Baut <computeroutput>tmp_umstimmung</computeroutput> zu einer relativen änderung der Wiederholungsvorschrift aus. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei wird die letzte eingelesene komplexe Intervallliste verwendet. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="108" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="419" bodyend="424"/>
+        <references refid="d2/d8a/interval_8h_1a628fbc6b1014c2a2290a7510a81f60ec" compoundref="d5/d28/interval_8c" startline="529" endline="532">get_last_komplex_intervall</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa29dcdd9f8c0808b673707fc06aace5c0" compoundref="da/d7f/umstimmung_8h" startline="33">umstimmung_wiederholung_rel</references>
+        <references refid="d2/d1c/structumstimmung_1acca623c83c1f22345450a145d059ce68">umstimmung::umstimmung_wiederholung_rel</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1a8b76164e9c5c3e1545371316cef94afa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_umstimmung_wiederholung_rel_negative</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_umstimmung_wiederholung_rel_negative</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Baut <computeroutput>tmp_umstimmung</computeroutput> zu einer relativen Änderung der Wiederholungsvorschrift aus. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei wird die letzte eingelesene komplexe Intervallliste verwendet. Diese wird jedoch vorher invertiert. Ist sie leer, wird ein fataler Fehler ausgelöst. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="109" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="432" bodyend="440"/>
+        <references refid="d7/dc9/structkomplex__intervall_1aafd0c9431aec7e190f7bf33577794bef" compoundref="d2/d8a/interval_8h" startline="86">komplex_intervall::faktor</references>
+        <references refid="d2/d8a/interval_8h_1a628fbc6b1014c2a2290a7510a81f60ec" compoundref="d5/d28/interval_8c" startline="529" endline="532">get_last_komplex_intervall</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa29dcdd9f8c0808b673707fc06aace5c0" compoundref="da/d7f/umstimmung_8h" startline="33">umstimmung_wiederholung_rel</references>
+        <references refid="d2/d1c/structumstimmung_1acca623c83c1f22345450a145d059ce68">umstimmung::umstimmung_wiederholung_rel</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1ab1380991dbff53d19cba283ab8262b54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_umstimmung_umstimmungs_bund</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_umstimmung_umstimmungs_bund</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Baut <computeroutput>tmp_umstimmung</computeroutput> zu einem Umstimmungsbund aus. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dazu wird die letzte eingelesene Aktionsliste verwendet. Falls ein Parameter darin nicht definiert ist, wird ein fataler Fehler ausgelöst. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="110" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="452" bodyend="492"/>
+        <references refid="d9/d7c/group__kernel_1gga4640ca6a739d886d48063bab20c0a6bda3199b6eb05486b74e1ba3242b42f7985" compoundref="dd/de4/aktion_8h" startline="36">aktion_aufruf</references>
+        <references refid="d5/def/structaktions__liste_1aa0db71fd64685d582c7d8c1efa2a7afc">aktions_liste::aktion_aufruf</references>
+        <references refid="dd/d7c/structargument__liste_1a62205ad94c3fb485ffc1c8d599fdf3d1" compoundref="db/d1e/argument_8h" startline="49">argument_liste::argument</references>
+        <references refid="d2/d74/structargument_1aebffb910f9535b2c61aaf2629909a524" compoundref="db/d1e/argument_8h" startline="34">argument::argument_typ</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="dd/d21/group__Parser_1gab57972c0331c7a5aff6f7f8ee0edbab7" compoundref="d8/dc3/aktion_8c" startline="99" endline="102">get_last_aktions_liste</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="dd/d7c/structargument__liste_1a17fc5968b0581a9d61d426e3185533c7" compoundref="db/d1e/argument_8h" startline="50">argument_liste::next</references>
+        <references refid="d5/def/structaktions__liste_1a7db6137d5e8695b72d1a51e787d286f2" compoundref="dd/de4/aktion_8h" startline="69">aktions_liste::next</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" compoundref="db/d1e/argument_8h" startline="30">parameter</references>
+        <references refid="d2/d74/structargument_1ae6f70084cffab08980e51bba6aa80856">argument::parameter</references>
+        <references refid="d2/d2a/parameter_8h_1a5bf29214dc54ea66a905c8b8b67fb54f" compoundref="d7/d2d/parameter_8c" startline="98" endline="106">parameter_nummer</references>
+        <references refid="d2/d74/structargument_1a3ccccc4ff00127c5d4731a94768c8cd8">argument::u</references>
+        <references refid="d5/def/structaktions__liste_1a552bd3733146d7edcbbbabd254302f29">aktions_liste::u</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa185e81c4fa5d32b1500d5d5d895a0af8" compoundref="da/d7f/umstimmung_8h" startline="34">umstimmung_umstimmungsbund</references>
+        <references refid="d2/d1c/structumstimmung_1a3eec91d4b820edc872944be5769f80e0">umstimmung::umstimmung_umstimmungsbund</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1adc7899c09f52cbe396ad6c6e34626694" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_umstimmung_midi_out</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_umstimmung_midi_out</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Baut <computeroutput>tmp_umstimmung</computeroutput> zu einer MIDI-Ausgabe aus. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei wird die letzte eingelesene Ganzzahlen-Liste verwendet. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="111" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/midicalc.c" bodystart="100" bodyend="105"/>
+        <references refid="d0/d24/midicalc_8h_1a39abbf3b6344eda62f537b164f21fb24" compoundref="d8/dff/midicalc_8c" startline="79" endline="82">get_last_integersequenz</references>
+        <references refid="da/d7f/umstimmung_8h_1a825a2d7cb8bc82c2e30098d1b3c1dc6e" compoundref="da/d7f/umstimmung_8h" startline="118">tmp_umstimmung</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aab0e072b71e6b4d425ff841b448a7272e" compoundref="da/d7f/umstimmung_8h" startline="36">umstimmung_midi_out</references>
+        <references refid="d2/d1c/structumstimmung_1a235688adac19434827d30078734b8ac0">umstimmung::umstimmung_midi_out</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1aea2de13ed6df5c29b1c3e5f00428ce72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int umstimmungs_list_laenge</definition>
+        <argsstring>(struct umstimmung *list)</argsstring>
+        <name>umstimmungs_list_laenge</name>
+        <param>
+          <type>struct <ref refid="d2/d1c/structumstimmung" kindref="compound">umstimmung</ref> *</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+<para>Zählen der Elemente einer einfach verketteten Umstimmungsliste. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Liste der Umstimmungen </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Anzahl der Elemente von <emphasis>list</emphasis> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="112" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="49" bodyend="52"/>
+        <references refid="d2/d1c/structumstimmung_1ae67b979d3d4d8dbbf5d36515bd58d6c7" compoundref="da/d7f/umstimmung_8h" startline="81">umstimmung::next</references>
+        <references refid="da/d7f/umstimmung_8h_1aea2de13ed6df5c29b1c3e5f00428ce72" compoundref="d2/d4a/umstimmung_8c" startline="49" endline="52">umstimmungs_list_laenge</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="604" endline="645">mutabor::BoxClass::Compile</referencedby>
+        <referencedby refid="d2/d4a/umstimmung_8c_1aea2de13ed6df5c29b1c3e5f00428ce72" compoundref="d2/d4a/umstimmung_8c" startline="49" endline="52">umstimmungs_list_laenge</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1ae60de5ad4f8f7e1954cf3105b34d21bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="d2/d1c/structumstimmung" kindref="compound">umstimmung</ref> *</type>
+        <definition>struct umstimmung* get_umstimmung</definition>
+        <argsstring>(char *name, struct umstimmung *liste)</argsstring>
+        <name>get_umstimmung</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="d2/d1c/structumstimmung" kindref="compound">umstimmung</ref> *</type>
+          <declname>liste</declname>
+        </param>
+        <briefdescription>
+<para>Sucht eine Umstimmung in einer Umstimmungsliste. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name der gesuchten Umstimmung </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>liste</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Liste der Umstimmungen, in der die Umstimmung gesucht wird </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>NULL</parametername>
+<parametername>falls</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Umstimmung nicht in <emphasis>liste</emphasis> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Umstimmung</parametername>
+<parametername>sonst.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="113" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="60" bodyend="66"/>
+        <references refid="da/d7f/umstimmung_8h_1ae60de5ad4f8f7e1954cf3105b34d21bc" compoundref="d2/d4a/umstimmung_8c" startline="60" endline="66">get_umstimmung</references>
+        <references refid="d2/d1c/structumstimmung_1abd217ffce7f0666151e53606789705cf" compoundref="da/d7f/umstimmung_8h" startline="43">umstimmung::name</references>
+        <references refid="d2/d1c/structumstimmung_1ae67b979d3d4d8dbbf5d36515bd58d6c7" compoundref="da/d7f/umstimmung_8h" startline="81">umstimmung::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga905a1b74bbe8c62344795da1a2a07c3a" compoundref="dc/df5/Parser_8cpp" startline="2697" endline="2862">check_aktionen</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d7/d6e/logik_8c_1aed04795a6b7c21df1893c7bc845231e6" compoundref="d7/d6e/logik_8c" startline="192" endline="251">check_logik_konsistenz</referencedby>
+        <referencedby refid="d2/d4a/umstimmung_8c_1a9fc87f323f75b7afaef30c37c78af7c6" compoundref="d2/d4a/umstimmung_8c" startline="538" endline="732">check_umstimmungs_konsistenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga4ea14e5284c0840695599141a22e95c7" compoundref="d3/da0/TabGen_8cpp" startline="514" endline="583">expandiere_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gac450e7eec8ccc0dfa7bdd4e816e1be0b" compoundref="d3/da0/TabGen_8cpp" startline="835" endline="889">expandiere_name</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga8e9c1d3756a03475a24e906160a792f7" compoundref="dc/df5/Parser_8cpp" startline="193" endline="200">get_umstimmung</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/d7f/umstimmung_8h_1a9fc87f323f75b7afaef30c37c78af7c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void check_umstimmungs_konsistenz</definition>
+        <argsstring>(void)</argsstring>
+        <name>check_umstimmungs_konsistenz</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h" line="114" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/umstimmung.c" bodystart="538" bodyend="732"/>
+        <references refid="d9/d7c/group__kernel_1gga4640ca6a739d886d48063bab20c0a6bda3199b6eb05486b74e1ba3242b42f7985" compoundref="dd/de4/aktion_8h" startline="36">aktion_aufruf</references>
+        <references refid="d5/def/structaktions__liste_1aa0db71fd64685d582c7d8c1efa2a7afc">aktions_liste::aktion_aufruf</references>
+        <references refid="db/d1e/argument_8h_1ab25c931f33390392a2b537055f8af416" compoundref="d3/d14/argument_8c" startline="37" endline="40">argument_list_laenge</references>
+        <references refid="d9/d7c/group__kernel_1ga5c5c3b8746ca5c9a6a199e3f7894288d" compoundref="dc/df5/Parser_8cpp" startline="2535" endline="2545">case_label_enthalten_in_case_liste</references>
+        <references refid="d2/d8a/interval_8h_1af03f22aa6ae635e4805c481975608935" compoundref="d5/d28/interval_8c" startline="470" endline="484">check_komplex_intervall</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d1/dff/logik_8h_1aeac62519a6479ab36a94d3ad1937bb61" compoundref="d7/d6e/logik_8c" startline="78" endline="83">get_logik</references>
+        <references refid="d4/d12/ton_8h_1adf3f50ce72e583c1a3a2c42302c7d7f5" compoundref="df/de8/ton_8c" startline="69" endline="75">get_ton</references>
+        <references refid="da/d7f/umstimmung_8h_1ae60de5ad4f8f7e1954cf3105b34d21bc" compoundref="d2/d4a/umstimmung_8c" startline="60" endline="66">get_umstimmung</references>
+        <references refid="d1/dff/logik_8h_1a7f772804a850a0156f485df5f8cb1339" compoundref="d7/d6e/logik_8c" startline="44">list_of_logiken</references>
+        <references refid="d4/d12/ton_8h_1aa614e631a7a7c9e90ad0614fbee2dd13" compoundref="d4/d12/ton_8h" startline="89">list_of_toene</references>
+        <references refid="d8/d39/tonsystem_8h_1a1c6d9a9da675102ad666d5da4ad167ca" compoundref="d8/d39/tonsystem_8h" startline="66">list_of_tonsysteme</references>
+        <references refid="dd/da3/structton_1a3c9499dd5cfd4d6ce65697b1a86852e6" compoundref="d4/d12/ton_8h" startline="34">ton::name</references>
+        <references refid="d2/d1c/structumstimmung_1abd217ffce7f0666151e53606789705cf" compoundref="da/d7f/umstimmung_8h" startline="43">umstimmung::name</references>
+        <references refid="dd/da3/structton_1a0531d0ab1a39337684a162a66c88b5d0" compoundref="d4/d12/ton_8h" startline="45">ton::next</references>
+        <references refid="d5/def/structaktions__liste_1a7db6137d5e8695b72d1a51e787d286f2" compoundref="dd/de4/aktion_8h" startline="69">aktions_liste::next</references>
+        <references refid="d2/d1c/structumstimmung_1ae67b979d3d4d8dbbf5d36515bd58d6c7" compoundref="da/d7f/umstimmung_8h" startline="81">umstimmung::next</references>
+        <references refid="d2/d2a/parameter_8h_1a21fc3bfc074c82c17e2ae9240f8029eb" compoundref="d7/d2d/parameter_8c" startline="43" endline="46">parameter_list_laenge</references>
+        <references refid="d8/d39/tonsystem_8h_1a4563750267670ae068cbd8f00d5a7796" compoundref="da/dd2/tonsystem_8c" startline="50" endline="56">parser_get_tonsystem</references>
+        <references refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a39f2b025374e0969cf0d22ea3389a36b" compoundref="d4/d12/ton_8h" startline="23">ton_absolut</references>
+        <references refid="dd/da3/structton_1aac4a8ccc88617139d5880560beac649a">ton::ton_komplex</references>
+        <references refid="dd/da3/structton_1a2173eae7dfaa7102dbed7bd7900ae82b">ton::u</references>
+        <references refid="d5/def/structaktions__liste_1a552bd3733146d7edcbbbabd254302f29">aktions_liste::u</references>
+        <references refid="d2/d1c/structumstimmung_1af6c0515f9099f9d765cedd86762d9c6b">umstimmung::u</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa8879390ae7740d1e6d77458bf8837018" compoundref="da/d7f/umstimmung_8h" startline="29">umstimmung_breite_abs</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaf5ef8366ca077fbd9096f9e91117bd88" compoundref="da/d7f/umstimmung_8h" startline="30">umstimmung_breite_rel</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aabd7780801f2432bc197c238b90f476da" compoundref="da/d7f/umstimmung_8h" startline="27">umstimmung_taste_abs</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aafe2f45099e251961aacaf58101885deb" compoundref="da/d7f/umstimmung_8h" startline="28">umstimmung_taste_rel</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa14c0a1e77760dbe7bf7fd23d047daf65" compoundref="da/d7f/umstimmung_8h" startline="31">umstimmung_toene_veraendert</references>
+        <references refid="d2/d1c/structumstimmung_1a17bcbd19a918a3f6b7b59e3095060006">umstimmung::umstimmung_toene_veraendert</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa6762ebe62dfd2cb6d4a659f6a840e2a4" compoundref="da/d7f/umstimmung_8h" startline="35">umstimmung_umstimmungs_case</references>
+        <references refid="d2/d1c/structumstimmung_1a152278390f21c75ae6180c7a7c738e81">umstimmung::umstimmung_umstimmungs_case</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa185e81c4fa5d32b1500d5d5d895a0af8" compoundref="da/d7f/umstimmung_8h" startline="34">umstimmung_umstimmungsbund</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaee34b68ac28af4bdc8876001aec69edf" compoundref="da/d7f/umstimmung_8h" startline="32">umstimmung_wiederholung_abs</references>
+        <references refid="d2/d1c/structumstimmung_1a4fa668220d409503b83ca4830a76584a">umstimmung::umstimmung_wiederholung_abs</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa29dcdd9f8c0808b673707fc06aace5c0" compoundref="da/d7f/umstimmung_8h" startline="33">umstimmung_wiederholung_rel</references>
+        <references refid="d2/d1c/structumstimmung_1acca623c83c1f22345450a145d059ce68">umstimmung::umstimmung_wiederholung_rel</references>
+        <referencedby refid="d2/d72/parser_8c_1a5a40f6b2e81f6ff497b18880102fbecb" compoundref="d2/d72/parser_8c" startline="597" endline="777">check_konsistenz</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Alles zu Umstimmungen. </para>    </briefdescription>
+    <detaileddescription>
+<para>Umstimmungen werden als verkettete Liste implementiert.</para><para><simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein_junior@gmx.net">keinstein_junior@gmx.net</ulink> </para></simplesect>
+<simplesect kind="date"><para>2005 </para></simplesect>
+<simplesect kind="version"><para>0.1 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#ifndef<sp/>__UMSTIMMUNG_H_INCLUDED</highlight></codeline>
+<codeline lineno="12"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>__UMSTIMMUNG_H_INCLUDED</highlight></codeline>
+<codeline lineno="13"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d1c/structumstimmung" kindref="compound">umstimmung</ref>;<sp/></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d4/d12/ton_8h" kindref="compound">mutabor/ton.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="db/d99/case__liste_8h" kindref="compound">mutabor/case_liste.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="19"><highlight class="preprocessor"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="22"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*********<sp/><sp/>Definition<sp/>der<sp/>Umstimmungen<sp/>als<sp/>verkettete<sp/>Liste<sp/>********/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="26" refid="da/d7f/umstimmung_8h_1ae4a3d9bbce90258ea2550ced0e649d0a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1ae4a3d9bbce90258ea2550ced0e649d0a" kindref="member">umstimmung_typ</ref><sp/>{</highlight></codeline>
+<codeline lineno="27" refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aabd7780801f2432bc197c238b90f476da" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aabd7780801f2432bc197c238b90f476da" kindref="member">umstimmung_taste_abs</ref>,<sp/></highlight></codeline>
+<codeline lineno="28" refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aafe2f45099e251961aacaf58101885deb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aafe2f45099e251961aacaf58101885deb" kindref="member">umstimmung_taste_rel</ref>,<sp/></highlight></codeline>
+<codeline lineno="29" refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa8879390ae7740d1e6d77458bf8837018" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa8879390ae7740d1e6d77458bf8837018" kindref="member">umstimmung_breite_abs</ref>,<sp/></highlight></codeline>
+<codeline lineno="30" refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaf5ef8366ca077fbd9096f9e91117bd88" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaf5ef8366ca077fbd9096f9e91117bd88" kindref="member">umstimmung_breite_rel</ref>,<sp/></highlight></codeline>
+<codeline lineno="31" refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa14c0a1e77760dbe7bf7fd23d047daf65" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa14c0a1e77760dbe7bf7fd23d047daf65" kindref="member">umstimmung_toene_veraendert</ref>,<sp/></highlight></codeline>
+<codeline lineno="32" refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaee34b68ac28af4bdc8876001aec69edf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaee34b68ac28af4bdc8876001aec69edf" kindref="member">umstimmung_wiederholung_abs</ref>,<sp/></highlight></codeline>
+<codeline lineno="33" refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa29dcdd9f8c0808b673707fc06aace5c0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa29dcdd9f8c0808b673707fc06aace5c0" kindref="member">umstimmung_wiederholung_rel</ref>,<sp/></highlight></codeline>
+<codeline lineno="34" refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa185e81c4fa5d32b1500d5d5d895a0af8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa185e81c4fa5d32b1500d5d5d895a0af8" kindref="member">umstimmung_umstimmungsbund</ref>,<sp/><sp/></highlight></codeline>
+<codeline lineno="35" refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa6762ebe62dfd2cb6d4a659f6a840e2a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa6762ebe62dfd2cb6d4a659f6a840e2a4" kindref="member">umstimmung_umstimmungs_case</ref>,<sp/></highlight></codeline>
+<codeline lineno="36" refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aab0e072b71e6b4d425ff841b448a7272e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aab0e072b71e6b4d425ff841b448a7272e" kindref="member">umstimmung_midi_out</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="d2/d1c/structumstimmung" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d1c/structumstimmung" kindref="compound">umstimmung</ref><sp/>{</highlight></codeline>
+<codeline lineno="43" refid="d2/d1c/structumstimmung_1abd217ffce7f0666151e53606789705cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="d2/d1c/structumstimmung_1abd217ffce7f0666151e53606789705cf" kindref="member">name</ref>;<sp/></highlight></codeline>
+<codeline lineno="44" refid="d2/d1c/structumstimmung_1a1537c95f6384e8ccaa1d3a916e96649b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d86/structparameter__liste" kindref="compound">parameter_liste</ref><sp/>*<sp/><ref refid="d2/d1c/structumstimmung_1a1537c95f6384e8ccaa1d3a916e96649b" kindref="member">parameter_liste</ref>;<sp/></highlight></codeline>
+<codeline lineno="45" refid="d2/d1c/structumstimmung_1ac1a99dc1f0c6491fb14d5973cb4462ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1ae4a3d9bbce90258ea2550ced0e649d0a" kindref="member">umstimmung_typ</ref><sp/><ref refid="da/d7f/umstimmung_8h_1ae4a3d9bbce90258ea2550ced0e649d0a" kindref="member">umstimmung_typ</ref>;<sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48" refid="d2/d1c/structumstimmung_1a921dd8e2f67ac77984fbaf95057ee873" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d74/structargument" kindref="compound">argument</ref><sp/><ref refid="d2/d74/structargument" kindref="compound">argument</ref>;<sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aabd7780801f2432bc197c238b90f476da" kindref="member">umstimmung_taste_abs</ref>;<sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d74/structargument" kindref="compound">argument</ref><sp/><ref refid="d2/d74/structargument" kindref="compound">argument</ref>;<sp/></highlight></codeline>
+<codeline lineno="52" refid="d2/d1c/structumstimmung_1ade2516e0f40c702ab08dbaab91e2e530" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="d2/d1c/structumstimmung_1ade2516e0f40c702ab08dbaab91e2e530" kindref="member">rechenzeichen</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aafe2f45099e251961aacaf58101885deb" kindref="member">umstimmung_taste_rel</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d74/structargument" kindref="compound">argument</ref><sp/>argument;<sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa8879390ae7740d1e6d77458bf8837018" kindref="member">umstimmung_breite_abs</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d74/structargument" kindref="compound">argument</ref><sp/><ref refid="d2/d74/structargument" kindref="compound">argument</ref>;<sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>rechenzeichen;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaf5ef8366ca077fbd9096f9e91117bd88" kindref="member">umstimmung_breite_rel</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62" refid="d2/d1c/structumstimmung_1ac787a233e8d474ce39345bcdc4643bf5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dd/da3/structton" kindref="compound">ton</ref><sp/>*<sp/><ref refid="d2/d1c/structumstimmung_1ac787a233e8d474ce39345bcdc4643bf5" kindref="member">tonliste</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa14c0a1e77760dbe7bf7fd23d047daf65" kindref="member">umstimmung_toene_veraendert</ref>;<sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65" refid="d2/d1c/structumstimmung_1a47392b3f5c1477b6ae9ec3a8a6b7b6c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/dc9/structkomplex__intervall" kindref="compound">komplex_intervall</ref><sp/>*<sp/><ref refid="d2/d1c/structumstimmung_1a47392b3f5c1477b6ae9ec3a8a6b7b6c7" kindref="member">komplex_liste</ref>;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaee34b68ac28af4bdc8876001aec69edf" kindref="member">umstimmung_wiederholung_abs</ref>;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/dc9/structkomplex__intervall" kindref="compound">komplex_intervall</ref><sp/>*<sp/>komplex_liste;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa29dcdd9f8c0808b673707fc06aace5c0" kindref="member">umstimmung_wiederholung_rel</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="71" refid="d2/d1c/structumstimmung_1a2b315fc621a2b6caf40cd9a3bb0e3f72" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d5/def/structaktions__liste" kindref="compound">aktions_liste</ref><sp/>*<sp/><ref refid="d2/d1c/structumstimmung_1a2b315fc621a2b6caf40cd9a3bb0e3f72" kindref="member">aktions_liste</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa185e81c4fa5d32b1500d5d5d895a0af8" kindref="member">umstimmung_umstimmungsbund</ref>;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d74/structargument" kindref="compound">argument</ref><sp/>argument;</highlight></codeline>
+<codeline lineno="75" refid="d2/d1c/structumstimmung_1a48257a8377736ae4cb706035d71c9088" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/d45/structcase__liste" kindref="compound">case_liste</ref><sp/>*<sp/><ref refid="d2/d1c/structumstimmung_1a48257a8377736ae4cb706035d71c9088" kindref="member">umstimmungs_case_liste</ref>;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa6762ebe62dfd2cb6d4a659f6a840e2a4" kindref="member">umstimmung_umstimmungs_case</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="78" refid="d2/d1c/structumstimmung_1a2c649d9ad163c353d7b4a8562df63ace" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/df2/structmidiliste" kindref="compound">midiliste</ref><sp/>*<sp/><ref refid="d2/d1c/structumstimmung_1a2c649d9ad163c353d7b4a8562df63ace" kindref="member">out_liste</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aab0e072b71e6b4d425ff841b448a7272e" kindref="member">umstimmung_midi_out</ref>;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>u;</highlight></codeline>
+<codeline lineno="81" refid="d2/d1c/structumstimmung_1ae67b979d3d4d8dbbf5d36515bd58d6c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d1c/structumstimmung" kindref="compound">umstimmung</ref><sp/>*<sp/><ref refid="d2/d1c/structumstimmung_1ae67b979d3d4d8dbbf5d36515bd58d6c7" kindref="member">next</ref>;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1a3b3284aff323f2b2176c03f72e071113" kindref="member">init_umstimmung</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1ac8ee9a5c00610665a2bbebda37191af0" kindref="member">eintrage_parameterliste_in_umstimmung</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1a3d53b94af7e65fd8f9d2865a19e2a253" kindref="member">get_new_umstimmung</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1a5a1870d4265d8a69e50128c2c512045d" kindref="member">get_umstimmung_taste_abs</ref><sp/>(</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="db/d1e/argument_8h_1a670b4baf221831f19e00a812a7b68282" kindref="member">argument_typ</ref><sp/><ref refid="d2/d74/structargument" kindref="compound">argument</ref>,<sp/></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>zahl_oder_parameter_typ<sp/>zahl_oder_parameter,<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>zahl_wert,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" kindref="member">parameter</ref>);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1a4840da992a8fa2aee65208814dd40fe0" kindref="member">get_umstimmung_taste_rel</ref><sp/>(</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="db/d1e/argument_8h_1a670b4baf221831f19e00a812a7b68282" kindref="member">argument_typ</ref><sp/><ref refid="d2/d74/structargument" kindref="compound">argument</ref>,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>zahl_wert,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" kindref="member">parameter</ref>,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>vorzeichen);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1ad8499c071050f3b6019724cf95efa94a" kindref="member">get_umstimmung_breite_abs</ref><sp/>(</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="db/d1e/argument_8h_1a670b4baf221831f19e00a812a7b68282" kindref="member">argument_typ</ref><sp/><ref refid="d2/d74/structargument" kindref="compound">argument</ref>,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>zahl_wert,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" kindref="member">parameter</ref>);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1aad31037efd9d8c14f2d878eb043cf13f" kindref="member">get_umstimmung_breite_rel</ref><sp/>(</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="db/d1e/argument_8h_1a670b4baf221831f19e00a812a7b68282" kindref="member">argument_typ</ref><sp/><ref refid="d2/d74/structargument" kindref="compound">argument</ref>,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>zahl_wert,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" kindref="member">parameter</ref>,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>vorzeichen);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1a18e8c2fe9cceaa1662cea0d032a65af0" kindref="member">init_umstimm_expression_list</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1a89f7b9b313870397364fa5171697fc4f" kindref="member">get_umstimmung_tonhoehe_veraendert</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1a1c4ff1cc2a67b423f0009ad54bd17c55" kindref="member">get_new_umstimm_expression</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>bezugston);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1a6ff30437c97c85b5f0db34ed2c5e6e6a" kindref="member">get_new_umstimm_expression_positive</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>bezugston);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1a7fd6c397f2a118c66c4aa6b29977802b" kindref="member">get_new_umstimm_expression_negative</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>bezugston);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1a0e5e3525a98df95e6352eff852bd79ba" kindref="member">get_umstimmung_wiederholung_abs</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1ab57a7023da290e2f0ce623f04bf38f3b" kindref="member">get_umstimmung_wiederholung_abs_negative</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1a2eeff97c57685b68dadee3fd66917186" kindref="member">get_umstimmung_wiederholung_rel_positive</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1a8b76164e9c5c3e1545371316cef94afa" kindref="member">get_umstimmung_wiederholung_rel_negative</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1ab1380991dbff53d19cba283ab8262b54" kindref="member">get_umstimmung_umstimmungs_bund</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1adc7899c09f52cbe396ad6c6e34626694" kindref="member">get_umstimmung_midi_out</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1aea2de13ed6df5c29b1c3e5f00428ce72" kindref="member">umstimmungs_list_laenge</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d2/d1c/structumstimmung" kindref="compound">umstimmung</ref><sp/>*list);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d1c/structumstimmung" kindref="compound">umstimmung</ref><sp/>*<sp/><ref refid="da/d7f/umstimmung_8h_1ae60de5ad4f8f7e1954cf3105b34d21bc" kindref="member">get_umstimmung</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d2/d1c/structumstimmung" kindref="compound">umstimmung</ref><sp/>*<sp/>liste);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d7f/umstimmung_8h_1a9fc87f323f75b7afaef30c37c78af7c6" kindref="member">check_umstimmungs_konsistenz</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="da/d7f/umstimmung_8h_1a96aa4405f944de769b350336489cf56e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d1c/structumstimmung" kindref="compound">umstimmung</ref><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="da/d7f/umstimmung_8h_1a96aa4405f944de769b350336489cf56e" kindref="member">list_of_umstimmungen</ref>;</highlight></codeline>
+<codeline lineno="118" refid="da/d7f/umstimmung_8h_1a825a2d7cb8bc82c2e30098d1b3c1dc6e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d1c/structumstimmung" kindref="compound">umstimmung</ref><sp/>*<sp/><ref refid="da/d7f/umstimmung_8h_1a825a2d7cb8bc82c2e30098d1b3c1dc6e" kindref="member">tmp_umstimmung</ref>;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus<sp/></highlight></codeline>
+<codeline lineno="120"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>extern<sp/>&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mutabor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="123"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__UMSTIMMUNG_H_INCLUDED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/umstimmung.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,371 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="dc/ddd/classInFile" kind="class" prot="public">
+    <compoundname>InFile</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ifstream</basecompoundref>
+    <includes refid="de/d69/infile_8h" local="no">infile.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="dc/ddd/classInFile_1afb59ee109172ac54e1a5fc6d1bff2392" prot="protected" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <definition>char InFile::s1[LMAX_LINE]</definition>
+        <argsstring>[LMAX_LINE]</argsstring>
+        <name>s1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="16" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="16" bodyend="-1"/>
+        <referencedby refid="dc/ddd/classInFile_1ab1d5d7ddcf906b2e88997568440ecad8" compoundref="de/d69/infile_8h" startline="23" endline="24">InFile</referencedby>
+        <referencedby refid="dc/ddd/classInFile_1a9f39f32a77384cc84d354243428499b7" compoundref="d9/dc1/infile_8cpp" startline="86" endline="96">NewLine</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/ddd/classInFile_1add3fc638f920fe2cea0d07bf353e58b4" prot="protected" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <definition>char * InFile::s</definition>
+        <argsstring></argsstring>
+        <name>s</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="16" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="16" bodyend="-1"/>
+        <referencedby refid="dc/ddd/classInFile_1af324cb1bae0b218ca7dae2aa923428fa" compoundref="d9/dc1/infile_8cpp" startline="98" endline="119">CheckNewToken</referencedby>
+        <referencedby refid="dc/ddd/classInFile_1ab1d5d7ddcf906b2e88997568440ecad8" compoundref="de/d69/infile_8h" startline="23" endline="24">InFile</referencedby>
+        <referencedby refid="dc/ddd/classInFile_1a9f39f32a77384cc84d354243428499b7" compoundref="d9/dc1/infile_8cpp" startline="86" endline="96">NewLine</referencedby>
+        <referencedby refid="dc/ddd/classInFile_1aaadb642faf0c2ad1231f6e2b4ad88d07" compoundref="d9/dc1/infile_8cpp" startline="19" endline="84">ReadToken</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/ddd/classInFile_1a6783f545d40281c18e83296f87aeca71" prot="protected" static="no" mutable="no">
+        <type><ref refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5" kindref="member">TTokenType</ref></type>
+        <definition>TTokenType InFile::TokenType</definition>
+        <argsstring></argsstring>
+        <name>TokenType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="17" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="17" bodyend="-1"/>
+        <referencedby refid="dc/ddd/classInFile_1a09de3f19e4e3753df08f53a17020e2c5" compoundref="de/d69/infile_8h" startline="27" endline="27">GetTokenType</referencedby>
+        <referencedby refid="dc/ddd/classInFile_1ab1d5d7ddcf906b2e88997568440ecad8" compoundref="de/d69/infile_8h" startline="23" endline="24">InFile</referencedby>
+        <referencedby refid="dc/ddd/classInFile_1a9f39f32a77384cc84d354243428499b7" compoundref="d9/dc1/infile_8cpp" startline="86" endline="96">NewLine</referencedby>
+        <referencedby refid="dc/ddd/classInFile_1aaadb642faf0c2ad1231f6e2b4ad88d07" compoundref="d9/dc1/infile_8cpp" startline="19" endline="84">ReadToken</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/ddd/classInFile_1a26803830de35bdde8b0c4f069bc71749" prot="protected" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <definition>char InFile::String[LMAX_LINE]</definition>
+        <argsstring>[LMAX_LINE]</argsstring>
+        <name>String</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="18" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="18" bodyend="-1"/>
+        <referencedby refid="dc/ddd/classInFile_1ac2cab1717b2576ed0c06e9e65bcabf4f" compoundref="de/d69/infile_8h" startline="28" endline="28">GetString</referencedby>
+        <referencedby refid="dc/ddd/classInFile_1aaadb642faf0c2ad1231f6e2b4ad88d07" compoundref="d9/dc1/infile_8cpp" startline="19" endline="84">ReadToken</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/ddd/classInFile_1a77c1f8c49d1ad37621106a514787bab4" prot="protected" static="no" mutable="no">
+        <type>long</type>
+        <definition>long InFile::Long</definition>
+        <argsstring></argsstring>
+        <name>Long</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="19" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="19" bodyend="-1"/>
+        <referencedby refid="dc/ddd/classInFile_1a7e9a8c3f9baff1de73bd7a6d87f8163f" compoundref="de/d69/infile_8h" startline="30" endline="30">GetLong</referencedby>
+        <referencedby refid="dc/ddd/classInFile_1a18afb5c6b58d997bf73fa12f301c4a4c" compoundref="de/d69/infile_8h" startline="29" endline="29">GetSign</referencedby>
+        <referencedby refid="dc/ddd/classInFile_1aaadb642faf0c2ad1231f6e2b4ad88d07" compoundref="d9/dc1/infile_8cpp" startline="19" endline="84">ReadToken</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/ddd/classInFile_1a2de57d9c3a13c27bdb8490098e3ff408" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double InFile::Double</definition>
+        <argsstring></argsstring>
+        <name>Double</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="20" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="20" bodyend="-1"/>
+        <referencedby refid="dc/ddd/classInFile_1a153f2701beebf22ab9b6170b6d44c942" compoundref="de/d69/infile_8h" startline="31" endline="31">GetDouble</referencedby>
+        <referencedby refid="dc/ddd/classInFile_1aaadb642faf0c2ad1231f6e2b4ad88d07" compoundref="d9/dc1/infile_8cpp" startline="19" endline="84">ReadToken</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/ddd/classInFile_1a82721b5f29d280221a7dd3c518a719c8" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int InFile::Line</definition>
+        <argsstring></argsstring>
+        <name>Line</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="21" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="dc/ddd/classInFile_1a66211f82aec7025c7c5e7a4a3cd9c081" compoundref="de/d69/infile_8h" startline="32" endline="32">GetLine</referencedby>
+        <referencedby refid="dc/ddd/classInFile_1ab1d5d7ddcf906b2e88997568440ecad8" compoundref="de/d69/infile_8h" startline="23" endline="24">InFile</referencedby>
+        <referencedby refid="dc/ddd/classInFile_1a9f39f32a77384cc84d354243428499b7" compoundref="d9/dc1/infile_8cpp" startline="86" endline="96">NewLine</referencedby>
+        <referencedby refid="dc/ddd/classInFile_1aaadb642faf0c2ad1231f6e2b4ad88d07" compoundref="d9/dc1/infile_8cpp" startline="19" endline="84">ReadToken</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/ddd/classInFile_1ab1d5d7ddcf906b2e88997568440ecad8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>InFile::InFile</definition>
+        <argsstring>(const char *Name)</argsstring>
+        <name>InFile</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="23" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="23" bodyend="24"/>
+        <references refid="dc/ddd/classInFile_1a82721b5f29d280221a7dd3c518a719c8" compoundref="de/d69/infile_8h" startline="21">Line</references>
+        <references refid="dc/ddd/classInFile_1add3fc638f920fe2cea0d07bf353e58b4" compoundref="de/d69/infile_8h" startline="16">s</references>
+        <references refid="dc/ddd/classInFile_1afb59ee109172ac54e1a5fc6d1bff2392" compoundref="de/d69/infile_8h" startline="16">s1</references>
+        <references refid="dc/ddd/classInFile_1a6783f545d40281c18e83296f87aeca71" compoundref="de/d69/infile_8h" startline="17">TokenType</references>
+        <references refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5ab0b93306ddd4f3cea57d5aa90d2add0a" compoundref="de/d69/infile_8h" startline="11">TT_SIGN</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/ddd/classInFile_1a09e1363a5b306b11a8a0e2d447a1831f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>InFile::~InFile</definition>
+        <argsstring>()</argsstring>
+        <name>~InFile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="25" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="25" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/ddd/classInFile_1aaadb642faf0c2ad1231f6e2b4ad88d07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5" kindref="member">TTokenType</ref></type>
+        <definition>TTokenType InFile::ReadToken</definition>
+        <argsstring>(char *str=0, int max=0)</argsstring>
+        <name>ReadToken</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>str</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>max</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="26" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.cpp" bodystart="19" bodyend="84"/>
+        <references refid="dc/ddd/classInFile_1af324cb1bae0b218ca7dae2aa923428fa" compoundref="d9/dc1/infile_8cpp" startline="98" endline="119">CheckNewToken</references>
+        <references refid="dc/ddd/classInFile_1a2de57d9c3a13c27bdb8490098e3ff408" compoundref="de/d69/infile_8h" startline="20">Double</references>
+        <references refid="d9/dc1/infile_8cpp_1a28207fc2d154e57243bcbd04a66c601f" compoundref="d9/dc1/infile_8cpp" startline="16">HEX_ZEICHEN</references>
+        <references refid="d9/dc1/infile_8cpp_1ade86100f53d6c094e58270a48d070656" compoundref="d9/dc1/infile_8cpp" startline="13">HexaZeichen</references>
+        <references refid="dc/ddd/classInFile_1a82721b5f29d280221a7dd3c518a719c8" compoundref="de/d69/infile_8h" startline="21">Line</references>
+        <references refid="dc/ddd/classInFile_1a77c1f8c49d1ad37621106a514787bab4" compoundref="de/d69/infile_8h" startline="19">Long</references>
+        <references refid="dc/ddd/classInFile_1add3fc638f920fe2cea0d07bf353e58b4" compoundref="de/d69/infile_8h" startline="16">s</references>
+        <references refid="d9/dc1/infile_8cpp_1a23f5c808c97426a2bea6a35886006d79" compoundref="d9/dc1/infile_8cpp" startline="12">SignZeichen</references>
+        <references refid="dc/ddd/classInFile_1a26803830de35bdde8b0c4f069bc71749" compoundref="de/d69/infile_8h" startline="18">String</references>
+        <references refid="d9/dc1/infile_8cpp_1ae7ce02c9b082e0aa44f15dbd49800c3c" compoundref="d9/dc1/infile_8cpp" startline="14">StringZeichen</references>
+        <references refid="dc/ddd/classInFile_1a6783f545d40281c18e83296f87aeca71" compoundref="de/d69/infile_8h" startline="17">TokenType</references>
+        <references refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5a0ef600753ba8f64e2fac5aef8737b4e3" compoundref="de/d69/infile_8h" startline="11">TT_DOUBLE</references>
+        <references refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5aaffedff66c98c1bc186e2c35cdc7ab66" compoundref="de/d69/infile_8h" startline="11">TT_EOF</references>
+        <references refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5ada8fd1435d4c325f87001cab253c3753" compoundref="de/d69/infile_8h" startline="11">TT_LONG</references>
+        <references refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5ab0b93306ddd4f3cea57d5aa90d2add0a" compoundref="de/d69/infile_8h" startline="11">TT_SIGN</references>
+        <references refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5a3355cc282f3b7c2eea509d182247b0fa" compoundref="de/d69/infile_8h" startline="11">TT_STRING</references>
+        <references refid="d9/dc1/infile_8cpp_1abf75ebe2213254bbd464b81a65b6f8f8" compoundref="d9/dc1/infile_8cpp" startline="11">ZahlZeichen</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/ddd/classInFile_1a09de3f19e4e3753df08f53a17020e2c5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5" kindref="member">TTokenType</ref></type>
+        <definition>TTokenType InFile::GetTokenType</definition>
+        <argsstring>()</argsstring>
+        <name>GetTokenType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="27" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="27" bodyend="27"/>
+        <references refid="dc/ddd/classInFile_1a6783f545d40281c18e83296f87aeca71" compoundref="de/d69/infile_8h" startline="17">TokenType</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/ddd/classInFile_1ac2cab1717b2576ed0c06e9e65bcabf4f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <definition>char* InFile::GetString</definition>
+        <argsstring>()</argsstring>
+        <name>GetString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="28" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="28" bodyend="28"/>
+        <references refid="dc/ddd/classInFile_1a26803830de35bdde8b0c4f069bc71749" compoundref="de/d69/infile_8h" startline="18">String</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/ddd/classInFile_1a18afb5c6b58d997bf73fa12f301c4a4c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <definition>char InFile::GetSign</definition>
+        <argsstring>()</argsstring>
+        <name>GetSign</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="29" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="29" bodyend="29"/>
+        <references refid="dc/ddd/classInFile_1a77c1f8c49d1ad37621106a514787bab4" compoundref="de/d69/infile_8h" startline="19">Long</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/ddd/classInFile_1a7e9a8c3f9baff1de73bd7a6d87f8163f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>long</type>
+        <definition>long InFile::GetLong</definition>
+        <argsstring>()</argsstring>
+        <name>GetLong</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="30" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="30" bodyend="30"/>
+        <references refid="dc/ddd/classInFile_1a77c1f8c49d1ad37621106a514787bab4" compoundref="de/d69/infile_8h" startline="19">Long</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/ddd/classInFile_1a153f2701beebf22ab9b6170b6d44c942" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double InFile::GetDouble</definition>
+        <argsstring>()</argsstring>
+        <name>GetDouble</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="31" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="31" bodyend="31"/>
+        <references refid="dc/ddd/classInFile_1a2de57d9c3a13c27bdb8490098e3ff408" compoundref="de/d69/infile_8h" startline="20">Double</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/ddd/classInFile_1a66211f82aec7025c7c5e7a4a3cd9c081" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int InFile::GetLine</definition>
+        <argsstring>()</argsstring>
+        <name>GetLine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="32" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="32" bodyend="32"/>
+        <references refid="dc/ddd/classInFile_1a82721b5f29d280221a7dd3c518a719c8" compoundref="de/d69/infile_8h" startline="21">Line</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="dc/ddd/classInFile_1a9f39f32a77384cc84d354243428499b7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <definition>char InFile::NewLine</definition>
+        <argsstring>()</argsstring>
+        <name>NewLine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="34" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.cpp" bodystart="86" bodyend="96"/>
+        <references refid="dc/ddd/classInFile_1a82721b5f29d280221a7dd3c518a719c8" compoundref="de/d69/infile_8h" startline="21">Line</references>
+        <references refid="de/d69/infile_8h_1a4da78e242f22b09371e5deda081e032a" compoundref="de/d69/infile_8h" startline="6">LMAX_LINE</references>
+        <references refid="dc/ddd/classInFile_1add3fc638f920fe2cea0d07bf353e58b4" compoundref="de/d69/infile_8h" startline="16">s</references>
+        <references refid="dc/ddd/classInFile_1afb59ee109172ac54e1a5fc6d1bff2392" compoundref="de/d69/infile_8h" startline="16">s1</references>
+        <references refid="dc/ddd/classInFile_1a6783f545d40281c18e83296f87aeca71" compoundref="de/d69/infile_8h" startline="17">TokenType</references>
+        <references refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5aaffedff66c98c1bc186e2c35cdc7ab66" compoundref="de/d69/infile_8h" startline="11">TT_EOF</references>
+        <references refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5a63aedd7b3e899b727bea4b28f41ca51d" compoundref="de/d69/infile_8h" startline="11">TT_ERROR</references>
+        <referencedby refid="dc/ddd/classInFile_1af324cb1bae0b218ca7dae2aa923428fa" compoundref="d9/dc1/infile_8cpp" startline="98" endline="119">CheckNewToken</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/ddd/classInFile_1af324cb1bae0b218ca7dae2aa923428fa" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <definition>char InFile::CheckNewToken</definition>
+        <argsstring>()</argsstring>
+        <name>CheckNewToken</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="35" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.cpp" bodystart="98" bodyend="119"/>
+        <references refid="dc/ddd/classInFile_1a9f39f32a77384cc84d354243428499b7" compoundref="d9/dc1/infile_8cpp" startline="86" endline="96">NewLine</references>
+        <references refid="d9/dc1/infile_8cpp_1a4bca56c5391dc47b0909c2de2a702f99" compoundref="d9/dc1/infile_8cpp" startline="17">REM_ZEICHEN</references>
+        <references refid="dc/ddd/classInFile_1add3fc638f920fe2cea0d07bf353e58b4" compoundref="de/d69/infile_8h" startline="16">s</references>
+        <references refid="d9/dc1/infile_8cpp_1ab4da9c8ceadd429b5806c1d8e1e242c4" compoundref="d9/dc1/infile_8cpp" startline="10">TrennZeichen</references>
+        <referencedby refid="dc/ddd/classInFile_1aaadb642faf0c2ad1231f6e2b4ad88d07" compoundref="d9/dc1/infile_8cpp" startline="19" endline="84">ReadToken</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3003">
+        <label>InFile</label>
+        <link refid="dc/ddd/classInFile"/>
+        <childnode refid="3004" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3004">
+        <label>ifstream</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3005">
+        <label>InFile</label>
+        <link refid="dc/ddd/classInFile"/>
+        <childnode refid="3006" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3006">
+        <label>ifstream</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="14" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="13" bodyend="36"/>
+    <listofallmembers>
+      <member refid="dc/ddd/classInFile_1af324cb1bae0b218ca7dae2aa923428fa" prot="private" virt="non-virtual"><scope>InFile</scope><name>CheckNewToken</name></member>
+      <member refid="dc/ddd/classInFile_1a2de57d9c3a13c27bdb8490098e3ff408" prot="protected" virt="non-virtual"><scope>InFile</scope><name>Double</name></member>
+      <member refid="dc/ddd/classInFile_1a153f2701beebf22ab9b6170b6d44c942" prot="public" virt="non-virtual"><scope>InFile</scope><name>GetDouble</name></member>
+      <member refid="dc/ddd/classInFile_1a66211f82aec7025c7c5e7a4a3cd9c081" prot="public" virt="non-virtual"><scope>InFile</scope><name>GetLine</name></member>
+      <member refid="dc/ddd/classInFile_1a7e9a8c3f9baff1de73bd7a6d87f8163f" prot="public" virt="non-virtual"><scope>InFile</scope><name>GetLong</name></member>
+      <member refid="dc/ddd/classInFile_1a18afb5c6b58d997bf73fa12f301c4a4c" prot="public" virt="non-virtual"><scope>InFile</scope><name>GetSign</name></member>
+      <member refid="dc/ddd/classInFile_1ac2cab1717b2576ed0c06e9e65bcabf4f" prot="public" virt="non-virtual"><scope>InFile</scope><name>GetString</name></member>
+      <member refid="dc/ddd/classInFile_1a09de3f19e4e3753df08f53a17020e2c5" prot="public" virt="non-virtual"><scope>InFile</scope><name>GetTokenType</name></member>
+      <member refid="dc/ddd/classInFile_1ab1d5d7ddcf906b2e88997568440ecad8" prot="public" virt="non-virtual"><scope>InFile</scope><name>InFile</name></member>
+      <member refid="dc/ddd/classInFile_1a82721b5f29d280221a7dd3c518a719c8" prot="protected" virt="non-virtual"><scope>InFile</scope><name>Line</name></member>
+      <member refid="dc/ddd/classInFile_1a77c1f8c49d1ad37621106a514787bab4" prot="protected" virt="non-virtual"><scope>InFile</scope><name>Long</name></member>
+      <member refid="dc/ddd/classInFile_1a9f39f32a77384cc84d354243428499b7" prot="private" virt="non-virtual"><scope>InFile</scope><name>NewLine</name></member>
+      <member refid="dc/ddd/classInFile_1aaadb642faf0c2ad1231f6e2b4ad88d07" prot="public" virt="non-virtual"><scope>InFile</scope><name>ReadToken</name></member>
+      <member refid="dc/ddd/classInFile_1add3fc638f920fe2cea0d07bf353e58b4" prot="protected" virt="non-virtual"><scope>InFile</scope><name>s</name></member>
+      <member refid="dc/ddd/classInFile_1afb59ee109172ac54e1a5fc6d1bff2392" prot="protected" virt="non-virtual"><scope>InFile</scope><name>s1</name></member>
+      <member refid="dc/ddd/classInFile_1a26803830de35bdde8b0c4f069bc71749" prot="protected" virt="non-virtual"><scope>InFile</scope><name>String</name></member>
+      <member refid="dc/ddd/classInFile_1a6783f545d40281c18e83296f87aeca71" prot="protected" virt="non-virtual"><scope>InFile</scope><name>TokenType</name></member>
+      <member refid="dc/ddd/classInFile_1a09e1363a5b306b11a8a0e2d447a1831f" prot="public" virt="non-virtual"><scope>InFile</scope><name>~InFile</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,466 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d0/d24/midicalc_8h" kind="file">
+    <compoundname>midicalc.h</compoundname>
+    <includedby refid="dd/de4/aktion_8h" local="yes">src/includes/mutabor/aktion.h</includedby>
+    <includedby refid="d1/dfa/ausloeser_8h" local="yes">src/includes/mutabor/ausloeser.h</includedby>
+    <includedby refid="d5/d36/parser_8h" local="yes">src/includes/mutabor/parser.h</includedby>
+    <invincdepgraph>
+      <node id="14903">
+        <label>src/libmutabor/anweisung.c</label>
+        <link refid="d5/dfe/anweisung_8c"/>
+      </node>
+      <node id="14898">
+        <label>src/libmutabor/interpreter.c</label>
+        <link refid="dc/d30/interpreter_8c"/>
+      </node>
+      <node id="14904">
+        <label>src/includes/mutabor/case_liste.h</label>
+        <link refid="db/d99/case__liste_8h"/>
+        <childnode refid="14905" relation="include">
+        </childnode>
+      </node>
+      <node id="14895">
+        <label>src/gmut/gmutdos.cpp</label>
+        <link refid="dd/d15/gmutdos_8cpp"/>
+      </node>
+      <node id="14899">
+        <label>src/libmutabor/logik.c</label>
+        <link refid="d7/d6e/logik_8c"/>
+      </node>
+      <node id="14909">
+        <label>src/libmutabor/interval.c</label>
+        <link refid="d5/d28/interval_8c"/>
+      </node>
+      <node id="14890">
+        <label>src/includes/mutabor/aktion.h</label>
+        <link refid="dd/de4/aktion_8h"/>
+        <childnode refid="14891" relation="include">
+        </childnode>
+        <childnode refid="14904" relation="include">
+        </childnode>
+        <childnode refid="14893" relation="include">
+        </childnode>
+        <childnode refid="14899" relation="include">
+        </childnode>
+      </node>
+      <node id="14905">
+        <label>src/includes/mutabor/umstimmung.h</label>
+        <link refid="da/d7f/umstimmung_8h"/>
+        <childnode refid="14890" relation="include">
+        </childnode>
+        <childnode refid="14894" relation="include">
+        </childnode>
+        <childnode refid="14896" relation="include">
+        </childnode>
+        <childnode refid="14906" relation="include">
+        </childnode>
+        <childnode refid="14899" relation="include">
+        </childnode>
+        <childnode refid="14907" relation="include">
+        </childnode>
+        <childnode refid="14900" relation="include">
+        </childnode>
+        <childnode refid="14901" relation="include">
+        </childnode>
+        <childnode refid="14902" relation="include">
+        </childnode>
+      </node>
+      <node id="14907">
+        <label>src/libmutabor/midicalc.c</label>
+        <link refid="d8/dff/midicalc_8c"/>
+      </node>
+      <node id="14892">
+        <label>src/includes/mutabor/ausloeser.h</label>
+        <link refid="d1/dfa/ausloeser_8h"/>
+        <childnode refid="14891" relation="include">
+        </childnode>
+        <childnode refid="14893" relation="include">
+        </childnode>
+        <childnode refid="14897" relation="include">
+        </childnode>
+        <childnode refid="14898" relation="include">
+        </childnode>
+      </node>
+      <node id="14902">
+        <label>src/libmutabor/umstimmung.c</label>
+        <link refid="d2/d4a/umstimmung_8c"/>
+      </node>
+      <node id="14911">
+        <label>src/libmutabor/tests/testparser.c</label>
+        <link refid="d3/d47/testparser_8c"/>
+      </node>
+      <node id="14896">
+        <label>src/libmutabor/aktion.c</label>
+        <link refid="d8/dc3/aktion_8c"/>
+      </node>
+      <node id="14897">
+        <label>src/libmutabor/ausloeser.c</label>
+        <link refid="d6/dcc/ausloeser_8c"/>
+      </node>
+      <node id="14910">
+        <label>src/libmutabor/tests/testmutfile.c</label>
+        <link refid="d8/d9b/testmutfile_8c"/>
+      </node>
+      <node id="14906">
+        <label>src/libmutabor/case_liste.c</label>
+        <link refid="dc/d54/case__liste_8c"/>
+      </node>
+      <node id="14894">
+        <label>src/includes/mutabor/global.h</label>
+        <link refid="d2/d49/global_8h"/>
+        <childnode refid="14895" relation="include">
+        </childnode>
+      </node>
+      <node id="14900">
+        <label>src/libmutabor/mut.c</label>
+        <link refid="d3/da3/mut_8c"/>
+      </node>
+      <node id="14901">
+        <label>src/libmutabor/parser.c</label>
+        <link refid="d2/d72/parser_8c"/>
+      </node>
+      <node id="14893">
+        <label>src/includes/mutabor/logik.h</label>
+        <link refid="d1/dff/logik_8h"/>
+        <childnode refid="14890" relation="include">
+        </childnode>
+        <childnode refid="14894" relation="include">
+        </childnode>
+        <childnode refid="14896" relation="include">
+        </childnode>
+        <childnode refid="14897" relation="include">
+        </childnode>
+        <childnode refid="14898" relation="include">
+        </childnode>
+        <childnode refid="14899" relation="include">
+        </childnode>
+        <childnode refid="14900" relation="include">
+        </childnode>
+        <childnode refid="14901" relation="include">
+        </childnode>
+        <childnode refid="14902" relation="include">
+        </childnode>
+      </node>
+      <node id="14889">
+        <label>src/includes/mutabor/midicalc.h</label>
+        <link refid="midicalc.h"/>
+        <childnode refid="14890" relation="include">
+        </childnode>
+        <childnode refid="14892" relation="include">
+        </childnode>
+        <childnode refid="14908" relation="include">
+        </childnode>
+      </node>
+      <node id="14908">
+        <label>src/includes/mutabor/parser.h</label>
+        <link refid="d5/d36/parser_8h"/>
+        <childnode refid="14894" relation="include">
+        </childnode>
+        <childnode refid="14909" relation="include">
+        </childnode>
+        <childnode refid="14900" relation="include">
+        </childnode>
+        <childnode refid="14901" relation="include">
+        </childnode>
+        <childnode refid="14910" relation="include">
+        </childnode>
+        <childnode refid="14911" relation="include">
+        </childnode>
+      </node>
+      <node id="14891">
+        <label>src/includes/mutabor/anweisung.h</label>
+        <link refid="d0/db7/anweisung_8h"/>
+        <childnode refid="14892" relation="include">
+        </childnode>
+        <childnode refid="14894" relation="include">
+        </childnode>
+        <childnode refid="14903" relation="include">
+        </childnode>
+        <childnode refid="14897" relation="include">
+        </childnode>
+        <childnode refid="14899" relation="include">
+        </childnode>
+        <childnode refid="14900" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="df/df2/structmidiliste" prot="public">midiliste</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="d0/d24/midicalc_8h_1a0ce82fc5bcce51924e0aaf286582ef7d" prot="public" static="no">
+        <name>DOUBLE_TO_LONG</name>
+        <param><defname>x</defname></param>
+        <initializer>((long int) ((x) * (1L&lt;&lt;24)))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/midicalc.h" line="28" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/midicalc.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="d2/d1c/group__Interpreter_1gac14268034c5788ccce35a8cd5d7e6c79" compoundref="d8/dc3/aktion_8c" startline="215" endline="270">expand_tonliste</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1ga624187681a6783c21bd14e86fc82a929" compoundref="d8/dc3/aktion_8c" startline="276" endline="319">expandiere_tonsystem</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1ga6140e72fda79613ca5af30a3832c286c" compoundref="d8/dc3/aktion_8c" startline="360" endline="470">expandiere_umstimmung</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="d0/d24/midicalc_8h_1a2218d4cc1662a2a7147ec7ad9cb90ae1" prot="public" static="no">
+        <name>FREQUENZ_TO_MIDI</name>
+        <param><defname>x</defname></param>
+        <initializer>(log((x)/440.0)/0.05776226504666210908 + 69)</initializer>
+        <briefdescription>
+<para>Frequenz nach Midi umrechnen. </para>        </briefdescription>
+        <detaileddescription>
+<para>Es gilt: <formula id="0">\[0.05776226504666210908=\ln\left(\sqrt[12]2\right)\]</formula>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Freqenz </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>erweiterte Midi-Tastennummer </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/midicalc.h" line="35" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/midicalc.h" bodystart="35" bodyend="-1"/>
+        <referencedby refid="d2/d1c/group__Interpreter_1gac14268034c5788ccce35a8cd5d7e6c79" compoundref="d8/dc3/aktion_8c" startline="215" endline="270">expand_tonliste</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1ga624187681a6783c21bd14e86fc82a929" compoundref="d8/dc3/aktion_8c" startline="276" endline="319">expandiere_tonsystem</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="d0/d24/midicalc_8h_1a29cffdaab2019075e978c1459d4d0b14" prot="public" static="no">
+        <name>FAKTOR_TO_MIDI</name>
+        <param><defname>x</defname></param>
+        <initializer>(17.31234049066756089 * log(x))</initializer>
+        <briefdescription>
+<para>Faktor nach Midi umrechnen. </para>        </briefdescription>
+        <detaileddescription>
+<para>Es gilt: <formula id="1">\[17.31234049066756089=\frac{12}{\ln 2}\]</formula>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Faktor </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>erweiterte Midi-Tastennummer </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/midicalc.h" line="42" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/midicalc.h" bodystart="42" bodyend="-1"/>
+        <referencedby refid="d2/d1c/group__Interpreter_1gac14268034c5788ccce35a8cd5d7e6c79" compoundref="d8/dc3/aktion_8c" startline="215" endline="270">expand_tonliste</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1ga624187681a6783c21bd14e86fc82a929" compoundref="d8/dc3/aktion_8c" startline="276" endline="319">expandiere_tonsystem</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1ga6140e72fda79613ca5af30a3832c286c" compoundref="d8/dc3/aktion_8c" startline="360" endline="470">expandiere_umstimmung</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d0/d24/midicalc_8h_1affb194d6f7f27751fc2736a390859f6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_integersequenz</definition>
+        <argsstring>(void)</argsstring>
+        <name>init_integersequenz</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Setzt Integersequenz auf NULL. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>Die Integersequenz wird nicht gelöscht. Das muss gegebenenfalls vor der Initialiserung manuell erledigt werden. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/midicalc.h" line="55" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/midicalc.c" bodystart="57" bodyend="60"/>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d0/d24/midicalc_8h_1adec7190766843b0d781da08b7100323f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_new_integer_in_integersequenz</definition>
+        <argsstring>(int wert)</argsstring>
+        <name>get_new_integer_in_integersequenz</name>
+        <param>
+          <type>int</type>
+          <declname>wert</declname>
+        </param>
+        <briefdescription>
+<para>Hängt einen Wert an <emphasis>list_of_integers</emphasis> an. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">wert</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Anzuhängende ganze Zahl </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Es wird immer die gesamte Liste durchsucht. Effektivität? </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/midicalc.h" line="56" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/midicalc.c" bodystart="66" bodyend="75"/>
+        <references refid="df/df2/structmidiliste_1a39c148af3f0e5556a71412b94958a30f" compoundref="d0/d24/midicalc_8h" startline="51">midiliste::midi_code</references>
+        <references refid="df/df2/structmidiliste_1a6a0c42708eebd22168563a38ca00a02c" compoundref="d0/d24/midicalc_8h" startline="52">midiliste::next</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d0/d24/midicalc_8h_1a211bbae54c64209cb0fdcc8754e02394" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int midi_list_laenge</definition>
+        <argsstring>(struct midiliste *list)</argsstring>
+        <name>midi_list_laenge</name>
+        <param>
+          <type>struct <ref refid="df/df2/structmidiliste" kindref="compound">midiliste</ref> *</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+<para>Zählen der Elemente einer einfach verketteten MIDI-Liste. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MIDI-Liste </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Anzahl der Elemente von <emphasis>list</emphasis> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/midicalc.h" line="57" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/midicalc.c" bodystart="41" bodyend="44"/>
+        <references refid="d0/d24/midicalc_8h_1a211bbae54c64209cb0fdcc8754e02394" compoundref="d8/dff/midicalc_8c" startline="41" endline="44">midi_list_laenge</references>
+        <references refid="d2/d1c/structumstimmung_1ae67b979d3d4d8dbbf5d36515bd58d6c7" compoundref="da/d7f/umstimmung_8h" startline="81">umstimmung::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1gab3424f2af7bcb85b065de642ca1d1105" compoundref="d3/da0/TabGen_8cpp" startline="924" endline="939">create_midi_scan_liste</referencedby>
+        <referencedby refid="d8/dff/midicalc_8c_1a211bbae54c64209cb0fdcc8754e02394" compoundref="d8/dff/midicalc_8c" startline="41" endline="44">midi_list_laenge</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa36f1adad3a94ce3eb7463d81b7e408c" compoundref="dd/dc6/Box_8cpp" startline="647" endline="661">mutabor::BoxClass::MidiOut</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d0/d24/midicalc_8h_1a39abbf3b6344eda62f537b164f21fb24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="df/df2/structmidiliste" kindref="compound">midiliste</ref> *</type>
+        <definition>struct midiliste* get_last_integersequenz</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_last_integersequenz</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gibt die Wurzel von <emphasis>list_of_integers</emphasis> zurück. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/midicalc.h" line="58" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/midicalc.c" bodystart="79" bodyend="82"/>
+        <references refid="d8/dff/midicalc_8c_1a920816f318efc1ed225fa1b86c144050" compoundref="d8/dff/midicalc_8c" startline="51">list_of_integers</references>
+        <referencedby refid="d9/d7c/group__kernel_1gac5911d354b6baa70038c11be48c0cf0c" compoundref="dc/df5/Parser_8cpp" startline="2150" endline="2159">get_ausloeser_midi_in</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gafebabb9473c10d702661104df0815209" compoundref="dc/df5/Parser_8cpp" startline="442" endline="455">get_new_aktion_midi_out_element</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga7cbd491f1577c0861068f0a49d0dd979" compoundref="dc/df5/Parser_8cpp" startline="1974" endline="1981">get_umstimmung_midi_out</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1ga9d00fa30c4b5542162e707c060daec77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int *</type>
+        <definition>int* create_midi_scan_liste</definition>
+        <argsstring>(struct midiliste *lauf)</argsstring>
+        <name>create_midi_scan_liste</name>
+        <param>
+          <type>struct <ref refid="df/df2/structmidiliste" kindref="compound">midiliste</ref> *</type>
+          <declname>lauf</declname>
+        </param>
+        <briefdescription>
+<para>Wandelt eine einfach verkettete MIDI-Liste in ein Ganzzahlen-(<computeroutput>int</computeroutput>)-Feld um. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Ganzzahlenfeld. Der Letzte Eintrag enthält quasi als Wächter den Wert -1. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/midicalc.h" line="59" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/midicalc.c" bodystart="116" bodyend="128"/>
+        <references refid="d0/d24/midicalc_8h_1a211bbae54c64209cb0fdcc8754e02394" compoundref="d8/dff/midicalc_8c" startline="41" endline="44">midi_list_laenge</references>
+        <references refid="da/ddb/heap_8h_1ab0c7434dd1577c62500713d2508d89ce" compoundref="d2/d29/heap_8c" startline="258" endline="268">xcalloc</references>
+        <references refid="df/df2/structmidiliste_1a6a0c42708eebd22168563a38ca00a02c" compoundref="d0/d24/midicalc_8h" startline="52">midiliste::next</references>
+        <references refid="df/df2/structmidiliste_1a39c148af3f0e5556a71412b94958a30f" compoundref="d0/d24/midicalc_8h" startline="51">midiliste::midi_code</references>
+        <referencedby refid="d9/d7c/group__kernel_1gabebfd8538aae475e3a2ba47f95d7d2c3" compoundref="d3/da0/TabGen_8cpp" startline="978" endline="1085">insert_in_globale_liste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaa32d94398d0aa7cb0b2f2bf3b2308c30" compoundref="d3/da0/TabGen_8cpp" startline="1087" endline="1214">insert_in_lokale_liste</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1gae0f2e4ab4ba734abcdd1679382fe08e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void print_integersequenz</definition>
+        <argsstring>(struct midiliste *this_)</argsstring>
+        <name>print_integersequenz</name>
+        <param>
+          <type>struct <ref refid="df/df2/structmidiliste" kindref="compound">midiliste</ref> *</type>
+          <declname>this_</declname>
+        </param>
+        <briefdescription>
+<para>Gibt eine Integersequenz aus. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">this_</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sequenz </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/midicalc.h" line="61" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.cpp" bodystart="1005" bodyend="1012"/>
+        <references refid="df/df2/structmidiliste_1a39c148af3f0e5556a71412b94958a30f" compoundref="d0/d24/midicalc_8h" startline="51">midiliste::midi_code</references>
+        <references refid="d9/d7c/group__kernel_1gae0f2e4ab4ba734abcdd1679382fe08e0" compoundref="dc/df5/Parser_8cpp" startline="1005" endline="1012">print_integersequenz</references>
+        <references refid="df/df2/structmidiliste_1a6a0c42708eebd22168563a38ca00a02c" compoundref="d0/d24/midicalc_8h" startline="52">midiliste::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1gae0f2e4ab4ba734abcdd1679382fe08e0" compoundref="dc/df5/Parser_8cpp" startline="1005" endline="1012">print_integersequenz</referencedby>
+        <referencedby refid="dd/d21/group__Parser_1gac0676abdb811f08267cf9372f32ca690" compoundref="d6/dcc/ausloeser_8c" startline="142" endline="179">print_ausloeser</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>MIDI-Berechnungen. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="rcs"><title>Id:</title><para>midicalc.h,v 1.3 2005/11/03 14:33:36 keinstein Exp </para></simplesect>
+<simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein_junior@gmx.net">keinstein_junior@gmx.net</ulink> </para></simplesect>
+<simplesect kind="date"><para></para></simplesect>
+<simplesect kind="rcs"><title>Date:</title><para>2005/11/03 14:33:36 </para></simplesect>
+<simplesect kind="version"><para></para></simplesect>
+<simplesect kind="rcs"><title>Revision:</title><para>1.3 </para></simplesect>
+</para><para><simplesect kind="rcs"><title>Log:</title><para>midicalc.h,v </para></simplesect>
+Revision 1.3 2005/11/03 14:33:36 keinstein new header includes corrected interpreter data structures and functions </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="18"><highlight class="preprocessor">#ifndef<sp/>__MIDICALC_H_INCLUDED</highlight></codeline>
+<codeline lineno="19"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>__MIDICALC_H_INCLUDED</highlight></codeline>
+<codeline lineno="20"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAVE_MATH_H</highlight></codeline>
+<codeline lineno="22"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/>include&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Zur<sp/>Umrechnung<sp/>in<sp/>die<sp/>Midi-Darstellung</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/><sp/><sp/>als<sp/>Gleitpunktzahl<sp/>in<sp/>long.</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/><sp/><sp/>Erstes<sp/>Byte<sp/>Vorkommastellen,<sp/>drei<sp/>Bytes<sp/>Nachkommastellen.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="d0/d24/midicalc_8h_1a0ce82fc5bcce51924e0aaf286582ef7d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DOUBLE_TO_LONG(x)<sp/>((long<sp/>int)<sp/>((x)<sp/>*<sp/>(1L&lt;&lt;24)))</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="35" refid="d0/d24/midicalc_8h_1a2218d4cc1662a2a7147ec7ad9cb90ae1" refkind="member"><highlight class="preprocessor">#define<sp/>FREQUENZ_TO_MIDI(x)<sp/>(log((x)/440.0)/0.05776226504666210908<sp/>+<sp/>69)</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="42" refid="d0/d24/midicalc_8h_1a29cffdaab2019075e978c1459d4d0b14" refkind="member"><highlight class="preprocessor">#define<sp/>FAKTOR_TO_MIDI(x)<sp/>(17.31234049066756089<sp/>*<sp/>log(x))</highlight></codeline>
+<codeline lineno="43"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="50" refid="df/df2/structmidiliste" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/df2/structmidiliste" kindref="compound">midiliste</ref><sp/>{</highlight></codeline>
+<codeline lineno="51" refid="df/df2/structmidiliste_1a39c148af3f0e5556a71412b94958a30f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/df2/structmidiliste_1a39c148af3f0e5556a71412b94958a30f" kindref="member">midi_code</ref>;</highlight></codeline>
+<codeline lineno="52" refid="df/df2/structmidiliste_1a6a0c42708eebd22168563a38ca00a02c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/df2/structmidiliste" kindref="compound">midiliste</ref><sp/>*<sp/><ref refid="df/df2/structmidiliste_1a6a0c42708eebd22168563a38ca00a02c" kindref="member">next</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d0/d24/midicalc_8h_1affb194d6f7f27751fc2736a390859f6c" kindref="member">init_integersequenz</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d0/d24/midicalc_8h_1adec7190766843b0d781da08b7100323f" kindref="member">get_new_integer_in_integersequenz</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>wert);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d0/d24/midicalc_8h_1a211bbae54c64209cb0fdcc8754e02394" kindref="member">midi_list_laenge</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="df/df2/structmidiliste" kindref="compound">midiliste</ref><sp/>*list);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/df2/structmidiliste" kindref="compound">midiliste</ref><sp/>*<sp/><ref refid="d0/d24/midicalc_8h_1a39abbf3b6344eda62f537b164f21fb24" kindref="member">get_last_integersequenz</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d2/d1c/group__Interpreter_1ga9d00fa30c4b5542162e707c060daec77" kindref="member">create_midi_scan_liste</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="df/df2/structmidiliste" kindref="compound">midiliste</ref><sp/>*<sp/>lauf);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gae0f2e4ab4ba734abcdd1679382fe08e0" kindref="member">print_integersequenz</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="df/df2/structmidiliste" kindref="compound">midiliste</ref><sp/>*<sp/>this_);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus<sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__MIDICALC_H_INCLUDED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/midicalc.h"/>
+  </compounddef>
+</doxygen>

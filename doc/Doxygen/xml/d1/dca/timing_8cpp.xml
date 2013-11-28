@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d1/dca/timing_8cpp" kind="file">
+    <compoundname>timing.cpp</compoundname>
+    <includes local="no">stdexcept</includes>
+    <includes refid="db/d41/timing_8h" local="yes">src/kernel/routing/timing.h</includes>
+    <incdepgraph>
+      <node id="17843">
+        <label>stdarg.h</label>
+      </node>
+      <node id="17841">
+        <label>src/kernel/routing/timing.h</label>
+        <link refid="db/d41/timing_8h"/>
+        <childnode refid="17842" relation="include">
+        </childnode>
+        <childnode refid="17845" relation="include">
+        </childnode>
+        <childnode refid="17846" relation="include">
+        </childnode>
+        <childnode refid="17847" relation="include">
+        </childnode>
+        <childnode refid="17840" relation="include">
+        </childnode>
+        <childnode refid="17848" relation="include">
+        </childnode>
+        <childnode refid="17849" relation="include">
+        </childnode>
+      </node>
+      <node id="17846">
+        <label>limits</label>
+      </node>
+      <node id="17842">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="17843" relation="include">
+        </childnode>
+        <childnode refid="17844" relation="include">
+        </childnode>
+      </node>
+      <node id="17839">
+        <label>src/kernel/routing/timing.cpp</label>
+        <link refid="timing.cpp"/>
+        <childnode refid="17840" relation="include">
+        </childnode>
+        <childnode refid="17841" relation="include">
+        </childnode>
+      </node>
+      <node id="17840">
+        <label>stdexcept</label>
+      </node>
+      <node id="17847">
+        <label>exception</label>
+      </node>
+      <node id="17845">
+        <label>src/kernel/MidiKern.h</label>
+        <link refid="da/dfd/MidiKern_8h"/>
+        <childnode refid="17842" relation="include">
+        </childnode>
+      </node>
+      <node id="17844">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+      <node id="17849">
+        <label>thread.h</label>
+        <link refid="db/dd5/thread_8h"/>
+        <childnode refid="17842" relation="include">
+        </childnode>
+      </node>
+      <node id="17848">
+        <label>wx/stopwatch.h</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="d6/daa/namespacemutabor">mutabor</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="31"><highlight class="comment">//<sp/>availlable<sp/>groups:<sp/>GUI,<sp/>route,<sp/>kernel,<sp/>muwx,<sp/>debug,<sp/>docview</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="db/d41/timing_8h" kindref="compound">src/kernel/routing/timing.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor">#ifdef<sp/>__BORLANDC__</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#pragma<sp/>hdrstop</highlight></codeline>
+<codeline lineno="39"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CurrentTime<sp/>------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dda/classmutabor_1_1CurrentTimer" kindref="compound">CurrentTimer</ref><sp/><ref refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" kindref="member">CurrentTime</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="d9/de0/classmutabor_1_1timing__params_1af079d3630d39bfcdb1255ef8dabe52dd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::pair&lt;uint8_t,uint8_t&gt;<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1af079d3630d39bfcdb1255ef8dabe52dd" kindref="member">timing_params::get_MIDI_tick_signature</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::pair&lt;uint8_t,uint8_t&gt;<sp/>retval;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutint64<sp/>quotient;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" kindref="member">is_fixed_ticks</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval.first<sp/>=<sp/>(<ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>&gt;&gt;<sp/>8)&amp;<sp/>0xFF;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval.second<sp/>=<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(midifile,_T(</highlight><highlight class="stringliteral">&quot;%lx:<sp/>%x<sp/>%x&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref>,<sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval.first,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval.second);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>retval;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval.first<sp/>=<sp/>(-<ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref>)<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutint64<sp/>myfps<sp/>=<sp/>(<ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref><sp/>==<sp/>29<sp/>?<sp/>30:<ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref>);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>quotient<sp/>=<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>/<sp/>myfps;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval.second<sp/>=<sp/>quotient<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>%<sp/>myfps)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::range_error(<ref refid="d9/d7c/group__kernel_1ga426d842d7b3e04622b2da17b089e586d" kindref="member">gettext_noop</ref>(</highlight><highlight class="stringliteral">&quot;frame<sp/>rate<sp/>does<sp/>not<sp/>divide<sp/>time<sp/>divisiens&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{<sp/></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(<ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>%<sp/>30))<sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref><sp/>=<sp/>30;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(<ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>%<sp/>25))<sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref><sp/>=<sp/>25;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(<ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>%<sp/>24))<sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref><sp/>=<sp/>24;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::range_error(<ref refid="d9/d7c/group__kernel_1ga426d842d7b3e04622b2da17b089e586d" kindref="member">gettext_noop</ref>(</highlight><highlight class="stringliteral">&quot;frame<sp/>rate<sp/>does<sp/>not<sp/>divide<sp/>time<sp/>divisiens&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>quotient<sp/>=<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>/<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval.first<sp/>=<sp/>(-<ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref>)<sp/>&amp;<sp/>0xff;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval.second<sp/>=<sp/>quotient<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(quotient<sp/>&gt;<sp/>0xFF)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::range_error(<ref refid="d9/d7c/group__kernel_1ga426d842d7b3e04622b2da17b089e586d" kindref="member">gettext_noop</ref>(</highlight><highlight class="stringliteral">&quot;time<sp/>division<sp/>is<sp/>too<sp/>high<sp/>for<sp/>current<sp/>frame<sp/>rate&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(midifile,_T(</highlight><highlight class="stringliteral">&quot;%lx:<sp/>%x<sp/>%x&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref>,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval.first,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval.second);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>retval;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="d9/de0/classmutabor_1_1timing__params_1acd1d82276b80f1c324c766ab721b8a48" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1acd1d82276b80f1c324c766ab721b8a48" kindref="member">timing_params::set_MIDI_tick_signature</ref>(uint8_t<sp/>bfps,<sp/>uint8_t<sp/>bcount)<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(bfps<sp/>&amp;<sp/>0x80))<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>quarter<sp/>divisions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!bfps<sp/>&amp;&amp;<sp/>!<sp/>bcount)<sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::range_error(<ref refid="d9/d7c/group__kernel_1ga426d842d7b3e04622b2da17b089e586d" kindref="member">gettext_noop</ref>(</highlight><highlight class="stringliteral">&quot;Trying<sp/>to<sp/>set<sp/>bad<sp/>midi<sp/>header<sp/>parameters&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>=<sp/>(((int)<sp/>bfps)<sp/>&lt;&lt;<sp/>8)<sp/>+<sp/>bcount;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" kindref="member">is_fixed_ticks</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<sp/>bcount)<sp/></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::range_error(<ref refid="d9/d7c/group__kernel_1ga426d842d7b3e04622b2da17b089e586d" kindref="member">gettext_noop</ref>(</highlight><highlight class="stringliteral">&quot;Trying<sp/>to<sp/>set<sp/>bad<sp/>midi<sp/>header<sp/>parameters&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" kindref="member">is_fixed_ticks</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref><sp/>=<sp/>0x100<sp/>-<sp/>(int)<sp/>bfps;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref><sp/>==<sp/>29)<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref><sp/>=<sp/>30;<sp/></highlight><highlight class="comment">//<sp/>ignoring<sp/>NTSC<sp/>29.97Hz<sp/>frame<sp/>dropping<sp/>should<sp/>be<sp/>ok.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>=<sp/>(mutint64)<ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref><sp/>*<sp/>(mutint64)bcount;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="d9/de0/classmutabor_1_1timing__params_1aa8ab063d3451df81c53a5f549bba1f4d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1aa8ab063d3451df81c53a5f549bba1f4d" kindref="member">timing_params::TowxString</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxString::Format(_T(</highlight><highlight class="stringliteral">&quot;\</highlight></codeline>
+<codeline lineno="111"><highlight class="stringliteral">is_fixed_ticks<sp/>=<sp/>%d,<sp/>fps<sp/>=<sp/>%d,<sp/>quarter_divisions<sp/>=<sp/>%ld,<sp/>quarter_duration<sp/>=<sp/>%ld&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" kindref="member">is_fixed_ticks</ref>,<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref>,<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref>,<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1aa6a719796af0458e9a133d78c3bdf7c2" kindref="member">quarter_duration</ref>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.cpp"/>
+  </compounddef>
+</doxygen>

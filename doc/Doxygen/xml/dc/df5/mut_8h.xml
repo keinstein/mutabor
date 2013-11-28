@@ -1,0 +1,1251 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="dc/df5/mut_8h" kind="file">
+    <compoundname>mut.h</compoundname>
+    <includedby refid="d4/dfd/mut__tab_8h" local="yes">src/includes/mutabor/mut_tab.h</includedby>
+    <includedby refid="d5/d4b/mutlex_8c" local="yes">src/libmutabor/mutlex.c</includedby>
+    <includedby refid="de/d09/mutfile_8c" local="yes">src/libmutabor/mutfile.c</includedby>
+    <invincdepgraph>
+      <node id="21010">
+        <label>src/libmutabor/mutfile.c</label>
+        <link refid="de/d09/mutfile_8c"/>
+      </node>
+      <node id="21006">
+        <label>src/includes/mutabor/mut_tab.h</label>
+        <link refid="d4/dfd/mut__tab_8h"/>
+        <childnode refid="21007" relation="include">
+        </childnode>
+        <childnode refid="21009" relation="include">
+        </childnode>
+        <childnode refid="21010" relation="include">
+        </childnode>
+        <childnode refid="21011" relation="include">
+        </childnode>
+      </node>
+      <node id="21008">
+        <label>src/gmut/gmutdos.cpp</label>
+        <link refid="dd/d15/gmutdos_8cpp"/>
+      </node>
+      <node id="21007">
+        <label>src/includes/mutabor/global.h</label>
+        <link refid="d2/d49/global_8h"/>
+        <childnode refid="21008" relation="include">
+        </childnode>
+      </node>
+      <node id="21009">
+        <label>src/libmutabor/mut.c</label>
+        <link refid="d3/da3/mut_8c"/>
+      </node>
+      <node id="21005">
+        <label>src/libmutabor/mut.h</label>
+        <link refid="mut.h"/>
+        <childnode refid="21006" relation="include">
+        </childnode>
+        <childnode refid="21012" relation="include">
+        </childnode>
+        <childnode refid="21010" relation="include">
+        </childnode>
+      </node>
+      <node id="21011">
+        <label>src/libmutabor/parser.c</label>
+        <link refid="d2/d72/parser_8c"/>
+      </node>
+      <node id="21013">
+        <label>src/libmutabor/cmutlex.c</label>
+        <link refid="d6/d05/cmutlex_8c"/>
+      </node>
+      <node id="21012">
+        <label>src/libmutabor/mutlex.c</label>
+        <link refid="d5/d4b/mutlex_8c"/>
+        <childnode refid="21013" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="da/d7e/unionYYSTYPE" prot="public">YYSTYPE</innerclass>
+    <innerclass refid="d8/d38/structYYLTYPE" prot="public">YYLTYPE</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="dc/df5/mut_8h_1a45734d64ac1283048289925ad7b30dfe" prot="public" static="no">
+        <name>IDENTIFIER</name>
+        <initializer>258</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="53" column="10" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1ac70277258714a5d0956ade74c741105b" prot="public" static="no">
+        <name>F_NUMBER</name>
+        <initializer>259</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="54" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1a91d43eadec33c80149f92e5abf5df58c" prot="public" static="no">
+        <name>INTEGER</name>
+        <initializer>260</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="55" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1a8b5ca43c0eb00ba1a448cab7a6217cdc" prot="public" static="no">
+        <name>UNREACHED</name>
+        <initializer>261</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="56" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1a963e181ff911392364c4c660c60c38f6" prot="public" static="no">
+        <name>INTERVALL</name>
+        <initializer>262</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="57" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1a131824533e99a6252a7b1db6206ab412" prot="public" static="no">
+        <name>INTERVALLOBJ</name>
+        <initializer>263</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="58" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1a626041088f7051a842a9d7fa520a5beb" prot="public" static="no">
+        <name>WURZEL</name>
+        <initializer>264</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="59" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1aa304ff7c0d3f5e07c235fb769e1cc6cb" prot="public" static="no">
+        <name>TON</name>
+        <initializer>265</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="60" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1a02283d9e4cb0fc6b93271b2c6482c9b3" prot="public" static="no">
+        <name>TONOBJ</name>
+        <initializer>266</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="61" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1a4e70e92d4ea7b7d95ff49596d5d1f77e" prot="public" static="no">
+        <name>TONSYSTEM</name>
+        <initializer>267</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="62" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1af64000159bd212d0927da35f72b0805f" prot="public" static="no">
+        <name>UMSTIMMUNG</name>
+        <initializer>268</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="63" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1ac2678fa2b016f02bb503243c7de5adae" prot="public" static="no">
+        <name>HARMONIE</name>
+        <initializer>269</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="64" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1a8f75b756d9912c13642015e1859b25ef" prot="public" static="no">
+        <name>LOGIK</name>
+        <initializer>270</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="65" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1aff4519d858ed63ac8308bb4f95d7afa4" prot="public" static="no">
+        <name>FORM</name>
+        <initializer>271</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="66" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1a543b1c4ee9f6f75d5ba1532395373e4c" prot="public" static="no">
+        <name>INSTRUMENT</name>
+        <initializer>272</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="67" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1a4fcf7fa9c8869d6cbd67f42ca367a4c5" prot="public" static="no">
+        <name>TASTE</name>
+        <initializer>273</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="68" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1a11393d47c3a4fcda3352249ea5f6d59c" prot="public" static="no">
+        <name>MIDI_IN</name>
+        <initializer>274</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="69" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1a1f7db720ba6021328353df2e65bf4cff" prot="public" static="no">
+        <name>MIDI_OUT</name>
+        <initializer>275</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="70" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1acc9ab8a51a4cd7821a6e36a43e9fab2a" prot="public" static="no">
+        <name>ANSONSTEN</name>
+        <initializer>276</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="71" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1a4ccf5315e8f5c1cec48ec67ca1771e3a" prot="public" static="no">
+        <name>yystype</name>
+        <initializer><ref refid="da/d7e/unionYYSTYPE" kindref="compound">YYSTYPE</ref> /* obsolescent; will be withdrawn */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="86" column="11" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1af0232d21120b2cfc5e5f82f0fbadab3c" prot="public" static="no">
+        <name>YYSTYPE_IS_DECLARED</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="87" column="10" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1a2e3dbf169c5ee24cf6af37c61cf3995d" prot="public" static="no">
+        <name>YYSTYPE_IS_TRIVIAL</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="88" column="10" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1ae2ea1b9f8896c4587b575b5196e60cb7" prot="public" static="no">
+        <name>yyltype</name>
+        <initializer><ref refid="d8/d38/structYYLTYPE" kindref="compound">YYLTYPE</ref> /* obsolescent; will be withdrawn */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="101" column="10" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1a4332d355678b732da19b65634dc8df36" prot="public" static="no">
+        <name>YYLTYPE_IS_DECLARED</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="102" column="10" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/df5/mut_8h_1aa74132fedf91ad815c092333af771376" prot="public" static="no">
+        <name>YYLTYPE_IS_TRIVIAL</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="103" column="10" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9" prot="public" static="no">
+        <name>yytokentype</name>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9ac953e5948646ee22117f4136495fc707" prot="public">
+          <name>MUTABOR_TOKEN_IDENTIFIER</name>
+          <initializer>= 258</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9a48739b93fa04c0ce3d6d18a3bd3c370a" prot="public">
+          <name>MUTABOR_TOKEN_F_NUMBER</name>
+          <initializer>= 259</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9aa5be10e41454dd52b8dcaaf9f582eaec" prot="public">
+          <name>MUTABOR_TOKEN_INTEGER</name>
+          <initializer>= 260</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9a33b0b5ecf49a4fa4cf22de2c49f85af4" prot="public">
+          <name>MUTABOR_TOKEN_INTERVAL</name>
+          <initializer>= 261</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9a8488f047dde4279e7bb37735f4ee7628" prot="public">
+          <name>MUTABOR_TOKEN_TONE</name>
+          <initializer>= 262</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9a37af44e8f27e46db786c911a86b8e8ca" prot="public">
+          <name>MUTABOR_TOKEN_TONESYSTEM</name>
+          <initializer>= 263</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9a1ff3cfdc30902bcc0721d73d8d64b300" prot="public">
+          <name>MUTABOR_TOKEN_RETUNING</name>
+          <initializer>= 264</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9ab28bba58bb7fd3d2797ccbcb895094bf" prot="public">
+          <name>MUTABOR_TOKEN_HARMONY</name>
+          <initializer>= 265</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9abb540271d28c2df9b2965b83727fae23" prot="public">
+          <name>MUTABOR_TOKEN_LOGIC</name>
+          <initializer>= 266</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9aa3d6955aacdc691a458053810f5f1727" prot="public">
+          <name>MUTABOR_TOKEN_MIDICHANNEL</name>
+          <initializer>= 267</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9a1be109bdbb969cc4f0798c63741b6a7f" prot="public">
+          <name>MUTABOR_TOKEN_KEY</name>
+          <initializer>= 268</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9aa394525831f1790239eb90f1e620be50" prot="public">
+          <name>MUTABOR_TOKEN_FORM</name>
+          <initializer>= 269</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9ae595ec8e722b5af0c0825d6f3e398872" prot="public">
+          <name>MUTABOR_TOKEN_ROOT</name>
+          <initializer>= 270</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9ac02cf160c31606d507c4cb8df24154f1" prot="public">
+          <name>MUTABOR_TOKEN_MIDI_IN</name>
+          <initializer>= 271</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9aa313b6f5a842ba97323b5561775db0d7" prot="public">
+          <name>MUTABOR_TOKEN_MIDI_OUT</name>
+          <initializer>= 272</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9ab5991fc10d01943fb2e34ce96fd3759d" prot="public">
+          <name>MUTABOR_TOKEN_HARMONY_ANALYSIS</name>
+          <initializer>= 273</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9a23eabbd4faa1ea2fd02ff679297bd286" prot="public">
+          <name>MUTABOR_TOKEN_CALLS</name>
+          <initializer>= 274</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9a3fa5da4427083f334762e585c701d030" prot="public">
+          <name>MUTABOR_TOKEN_ELSE</name>
+          <initializer>= 275</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9ad88a8e2fbad3c87cc2060be93b3f4ec2" prot="public">
+          <name>MUTABOR_TOKEN_PARAMETER</name>
+          <initializer>= 276</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9a71b4fd9a0a882daa4dba764da88d5b5c" prot="public">
+          <name>MUTABOR_TOKEN_ANCHOR</name>
+          <initializer>= 277</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9ad76b925118c0badf6d0411013179c89a" prot="public">
+          <name>MUTABOR_TOKEN_DISTANCE</name>
+          <initializer>= 278</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9ae6bd69ad95b4366cc0d28b759672811c" prot="public">
+          <name>MUTABOR_TOKEN_ENDOFFILE</name>
+          <initializer>= 279</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9a313bf21f483c3df919b7935e9f8fadb8" prot="public">
+          <name>MUTABOR_TOKEN_ERROR</name>
+          <initializer>= 280</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9ac767fbd5cec9ee15ef7f3f5df06765a4" prot="public">
+          <name>MUTABOR_TOKEN_SPACES</name>
+          <initializer>= 281</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9a54793f1ea7e8706b880714bab84577cb" prot="public">
+          <name>MUTABOR_TOKEN_COMMENT</name>
+          <initializer>= 282</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9acae742d435ecd6cbe3c4f6a35bda6a43" prot="public">
+          <name>MUTABOR_TOKEN_COMMENT_START</name>
+          <initializer>= 283</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9a68dd4a0e0f1f121683542c04a1f65532" prot="public">
+          <name>MUTABOR_TOKEN_COMMENT_END</name>
+          <initializer>= 284</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9aa64c682dfa57e14fcb0c997c42b42916" prot="public">
+          <name>MUTABOR_TOKEN_OTHER</name>
+          <initializer>= 285</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9ac953e5948646ee22117f4136495fc707" prot="public">
+          <name>MUTABOR_TOKEN_IDENTIFIER</name>
+          <initializer>= 258</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9a48739b93fa04c0ce3d6d18a3bd3c370a" prot="public">
+          <name>MUTABOR_TOKEN_F_NUMBER</name>
+          <initializer>= 259</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9aa5be10e41454dd52b8dcaaf9f582eaec" prot="public">
+          <name>MUTABOR_TOKEN_INTEGER</name>
+          <initializer>= 260</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9a33b0b5ecf49a4fa4cf22de2c49f85af4" prot="public">
+          <name>MUTABOR_TOKEN_INTERVAL</name>
+          <initializer>= 261</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9a8488f047dde4279e7bb37735f4ee7628" prot="public">
+          <name>MUTABOR_TOKEN_TONE</name>
+          <initializer>= 262</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9a37af44e8f27e46db786c911a86b8e8ca" prot="public">
+          <name>MUTABOR_TOKEN_TONESYSTEM</name>
+          <initializer>= 263</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9a1ff3cfdc30902bcc0721d73d8d64b300" prot="public">
+          <name>MUTABOR_TOKEN_RETUNING</name>
+          <initializer>= 264</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9ab28bba58bb7fd3d2797ccbcb895094bf" prot="public">
+          <name>MUTABOR_TOKEN_HARMONY</name>
+          <initializer>= 265</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9abb540271d28c2df9b2965b83727fae23" prot="public">
+          <name>MUTABOR_TOKEN_LOGIC</name>
+          <initializer>= 266</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9aa3d6955aacdc691a458053810f5f1727" prot="public">
+          <name>MUTABOR_TOKEN_MIDICHANNEL</name>
+          <initializer>= 267</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9a1be109bdbb969cc4f0798c63741b6a7f" prot="public">
+          <name>MUTABOR_TOKEN_KEY</name>
+          <initializer>= 268</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9aa394525831f1790239eb90f1e620be50" prot="public">
+          <name>MUTABOR_TOKEN_FORM</name>
+          <initializer>= 269</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9ae595ec8e722b5af0c0825d6f3e398872" prot="public">
+          <name>MUTABOR_TOKEN_ROOT</name>
+          <initializer>= 270</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9ac02cf160c31606d507c4cb8df24154f1" prot="public">
+          <name>MUTABOR_TOKEN_MIDI_IN</name>
+          <initializer>= 271</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9aa313b6f5a842ba97323b5561775db0d7" prot="public">
+          <name>MUTABOR_TOKEN_MIDI_OUT</name>
+          <initializer>= 272</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9ab5991fc10d01943fb2e34ce96fd3759d" prot="public">
+          <name>MUTABOR_TOKEN_HARMONY_ANALYSIS</name>
+          <initializer>= 273</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9a23eabbd4faa1ea2fd02ff679297bd286" prot="public">
+          <name>MUTABOR_TOKEN_CALLS</name>
+          <initializer>= 274</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9a3fa5da4427083f334762e585c701d030" prot="public">
+          <name>MUTABOR_TOKEN_ELSE</name>
+          <initializer>= 275</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9ad88a8e2fbad3c87cc2060be93b3f4ec2" prot="public">
+          <name>MUTABOR_TOKEN_PARAMETER</name>
+          <initializer>= 276</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9a71b4fd9a0a882daa4dba764da88d5b5c" prot="public">
+          <name>MUTABOR_TOKEN_ANCHOR</name>
+          <initializer>= 277</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9ad76b925118c0badf6d0411013179c89a" prot="public">
+          <name>MUTABOR_TOKEN_DISTANCE</name>
+          <initializer>= 278</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9ae6bd69ad95b4366cc0d28b759672811c" prot="public">
+          <name>MUTABOR_TOKEN_ENDOFFILE</name>
+          <initializer>= 279</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9a313bf21f483c3df919b7935e9f8fadb8" prot="public">
+          <name>MUTABOR_TOKEN_ERROR</name>
+          <initializer>= 280</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9ac767fbd5cec9ee15ef7f3f5df06765a4" prot="public">
+          <name>MUTABOR_TOKEN_SPACES</name>
+          <initializer>= 281</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9a54793f1ea7e8706b880714bab84577cb" prot="public">
+          <name>MUTABOR_TOKEN_COMMENT</name>
+          <initializer>= 282</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9acae742d435ecd6cbe3c4f6a35bda6a43" prot="public">
+          <name>MUTABOR_TOKEN_COMMENT_START</name>
+          <initializer>= 283</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9a68dd4a0e0f1f121683542c04a1f65532" prot="public">
+          <name>MUTABOR_TOKEN_COMMENT_END</name>
+          <initializer>= 284</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4e/mut_8hh_1a15c9f7bd2f0e9686df5d9df4f3314aa9aa64c682dfa57e14fcb0c997c42b42916" prot="public">
+          <name>MUTABOR_TOKEN_OTHER</name>
+          <initializer>= 285</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a84f8ae2490f9e4bd2321fd21f4b0e807" prot="public">
+          <name>IDENTIFIER</name>
+          <initializer>= 258</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a4f8004461285c5e70c2480aaed902673" prot="public">
+          <name>F_NUMBER</name>
+          <initializer>= 259</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a5a063e265d2ac903b6808e9f6e73ec46" prot="public">
+          <name>INTEGER</name>
+          <initializer>= 260</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a56bfaed2239924b170c577351971633e" prot="public">
+          <name>UNREACHED</name>
+          <initializer>= 261</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9aa8141f8bc978160b15b2f34c60315fd8" prot="public">
+          <name>INTERVALL</name>
+          <initializer>= 262</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9ad31d463372a8c78344d767fa83bc0651" prot="public">
+          <name>INTERVALLOBJ</name>
+          <initializer>= 263</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9adbd05acee7a03ed2373de471f553d8bd" prot="public">
+          <name>WURZEL</name>
+          <initializer>= 264</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9ad8b6423cbf056a2b1daf7bc3735862ac" prot="public">
+          <name>TON</name>
+          <initializer>= 265</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a8b602f63070db6f8e073fb5603c518b0" prot="public">
+          <name>TONOBJ</name>
+          <initializer>= 266</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a13eaa29fdf386369898fa1386cf88746" prot="public">
+          <name>TONSYSTEM</name>
+          <initializer>= 267</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a328528e714a406324994b948c814750a" prot="public">
+          <name>UMSTIMMUNG</name>
+          <initializer>= 268</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a995272018327b844d30903d9dacd18f4" prot="public">
+          <name>HARMONIE</name>
+          <initializer>= 269</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a2a6d053966c6a1928a4b2a3a4cfc2b9f" prot="public">
+          <name>LOGIK</name>
+          <initializer>= 270</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a037bb825c7463f533fd72ce3181c4d41" prot="public">
+          <name>FORM</name>
+          <initializer>= 271</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9ab9a2965cc36333e4b9c1b0e055435d45" prot="public">
+          <name>INSTRUMENT</name>
+          <initializer>= 272</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a8585a493765238d03fa238f05c6b846a" prot="public">
+          <name>TASTE</name>
+          <initializer>= 273</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9ad831f8b75998c552b8b436da6b375d79" prot="public">
+          <name>MIDI_IN</name>
+          <initializer>= 274</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9ac53236fec80b247070be1b0a1b43ef09" prot="public">
+          <name>MIDI_OUT</name>
+          <initializer>= 275</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d3/da3/mut_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a660a0df00605bc2700f8a68f4fe9987e" prot="public">
+          <name>ANSONSTEN</name>
+          <initializer>= 276</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a84f8ae2490f9e4bd2321fd21f4b0e807" prot="public">
+          <name>IDENTIFIER</name>
+          <initializer>= 258</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a4f8004461285c5e70c2480aaed902673" prot="public">
+          <name>F_NUMBER</name>
+          <initializer>= 259</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a5a063e265d2ac903b6808e9f6e73ec46" prot="public">
+          <name>INTEGER</name>
+          <initializer>= 260</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a56bfaed2239924b170c577351971633e" prot="public">
+          <name>UNREACHED</name>
+          <initializer>= 261</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9aa8141f8bc978160b15b2f34c60315fd8" prot="public">
+          <name>INTERVALL</name>
+          <initializer>= 262</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9ad31d463372a8c78344d767fa83bc0651" prot="public">
+          <name>INTERVALLOBJ</name>
+          <initializer>= 263</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9adbd05acee7a03ed2373de471f553d8bd" prot="public">
+          <name>WURZEL</name>
+          <initializer>= 264</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9ad8b6423cbf056a2b1daf7bc3735862ac" prot="public">
+          <name>TON</name>
+          <initializer>= 265</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a8b602f63070db6f8e073fb5603c518b0" prot="public">
+          <name>TONOBJ</name>
+          <initializer>= 266</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a13eaa29fdf386369898fa1386cf88746" prot="public">
+          <name>TONSYSTEM</name>
+          <initializer>= 267</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a328528e714a406324994b948c814750a" prot="public">
+          <name>UMSTIMMUNG</name>
+          <initializer>= 268</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a995272018327b844d30903d9dacd18f4" prot="public">
+          <name>HARMONIE</name>
+          <initializer>= 269</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a2a6d053966c6a1928a4b2a3a4cfc2b9f" prot="public">
+          <name>LOGIK</name>
+          <initializer>= 270</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a037bb825c7463f533fd72ce3181c4d41" prot="public">
+          <name>FORM</name>
+          <initializer>= 271</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9ab9a2965cc36333e4b9c1b0e055435d45" prot="public">
+          <name>INSTRUMENT</name>
+          <initializer>= 272</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a8585a493765238d03fa238f05c6b846a" prot="public">
+          <name>TASTE</name>
+          <initializer>= 273</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9ad831f8b75998c552b8b436da6b375d79" prot="public">
+          <name>MIDI_IN</name>
+          <initializer>= 274</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9ac53236fec80b247070be1b0a1b43ef09" prot="public">
+          <name>MIDI_OUT</name>
+          <initializer>= 275</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a660a0df00605bc2700f8a68f4fe9987e" prot="public">
+          <name>ANSONSTEN</name>
+          <initializer>= 276</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="31" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" bodystart="31" bodyend="51"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="dc/df5/mut_8h_1a09fb1f7c65e10ed0f0c1aa8ef7ce16b5" prot="public" static="no">
+        <type>union <ref refid="da/d7e/unionYYSTYPE" kindref="compound">YYSTYPE</ref></type>
+        <definition>typedef union YYSTYPE  YYSTYPE</definition>
+        <argsstring></argsstring>
+        <name>YYSTYPE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="83" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="dc/df5/mut_8h_1aa164674530718b37355927efd53f676b" prot="public" static="no">
+        <type>struct <ref refid="d8/d38/structYYLTYPE" kindref="compound">YYLTYPE</ref></type>
+        <definition>typedef struct YYLTYPE  YYLTYPE</definition>
+        <argsstring></argsstring>
+        <name>YYLTYPE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h" line="100" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/>A<sp/>Bison<sp/>parser,<sp/>made<sp/>by<sp/>GNU<sp/>Bison<sp/>1.875d.<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Skeleton<sp/>parser<sp/>for<sp/>Yacc-like<sp/>parsing<sp/>with<sp/>Bison,</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/><sp/><sp/>Copyright<sp/>(C)<sp/>1984,<sp/>1989,<sp/>1990,<sp/>2000,<sp/>2001,<sp/>2002,<sp/>2003,<sp/>2004<sp/>Free<sp/>Software<sp/>Foundation,<sp/>Inc.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"></highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/><sp/><sp/>This<sp/>program<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/><sp/><sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/><sp/><sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2,<sp/>or<sp/>(at<sp/>your<sp/>option)</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/><sp/><sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"></highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/><sp/><sp/>This<sp/>program<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/><sp/><sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/><sp/><sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/><sp/><sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"></highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/><sp/><sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/><sp/><sp/>along<sp/>with<sp/>this<sp/>program;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/><sp/><sp/>Foundation,<sp/>Inc.,<sp/>59<sp/>Temple<sp/>Place<sp/>-<sp/>Suite<sp/>330,</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/><sp/><sp/>Boston,<sp/>MA<sp/>02111-1307,<sp/>USA.<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>As<sp/>a<sp/>special<sp/>exception,<sp/>when<sp/>this<sp/>file<sp/>is<sp/>copied<sp/>by<sp/>Bison<sp/>into<sp/>a</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/><sp/><sp/>Bison<sp/>output<sp/>file,<sp/>you<sp/>may<sp/>use<sp/>that<sp/>output<sp/>file<sp/>without<sp/>restriction.</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/><sp/><sp/>This<sp/>special<sp/>exception<sp/>was<sp/>added<sp/>by<sp/>the<sp/>Free<sp/>Software<sp/>Foundation</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/><sp/><sp/>in<sp/>version<sp/>1.24<sp/>of<sp/>Bison.<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Tokens.<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>YYTOKENTYPE</highlight></codeline>
+<codeline lineno="28"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/>define<sp/>YYTOKENTYPE</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Put<sp/>the<sp/>tokens<sp/>into<sp/>the<sp/>symbol<sp/>table,<sp/>so<sp/>that<sp/>GDB<sp/>and<sp/>other<sp/>debuggers</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>know<sp/>about<sp/>them.<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9" refkind="member"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="df/d33/mut_8cc_1a15c9f7bd2f0e9686df5d9df4f3314aa9" kindref="member">yytokentype</ref><sp/>{</highlight></codeline>
+<codeline lineno="32" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a84f8ae2490f9e4bd2321fd21f4b0e807" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d1/de1/Mut__Tab_8cpp_1a45734d64ac1283048289925ad7b30dfe" kindref="member">IDENTIFIER</ref><sp/>=<sp/>258,</highlight></codeline>
+<codeline lineno="33" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a4f8004461285c5e70c2480aaed902673" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d1/de1/Mut__Tab_8cpp_1ac70277258714a5d0956ade74c741105b" kindref="member">F_NUMBER</ref><sp/>=<sp/>259,</highlight></codeline>
+<codeline lineno="34" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a5a063e265d2ac903b6808e9f6e73ec46" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d1/de1/Mut__Tab_8cpp_1a91d43eadec33c80149f92e5abf5df58c" kindref="member">INTEGER</ref><sp/>=<sp/>260,</highlight></codeline>
+<codeline lineno="35" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a56bfaed2239924b170c577351971633e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d3/da3/mut_8c_1a8b5ca43c0eb00ba1a448cab7a6217cdc" kindref="member">UNREACHED</ref><sp/>=<sp/>261,</highlight></codeline>
+<codeline lineno="36" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9aa8141f8bc978160b15b2f34c60315fd8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d1/de1/Mut__Tab_8cpp_1a963e181ff911392364c4c660c60c38f6" kindref="member">INTERVALL</ref><sp/>=<sp/>262,</highlight></codeline>
+<codeline lineno="37" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9ad31d463372a8c78344d767fa83bc0651" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d3/da3/mut_8c_1a131824533e99a6252a7b1db6206ab412" kindref="member">INTERVALLOBJ</ref><sp/>=<sp/>263,</highlight></codeline>
+<codeline lineno="38" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9adbd05acee7a03ed2373de471f553d8bd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d1/de1/Mut__Tab_8cpp_1a626041088f7051a842a9d7fa520a5beb" kindref="member">WURZEL</ref><sp/>=<sp/>264,</highlight></codeline>
+<codeline lineno="39" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9ad8b6423cbf056a2b1daf7bc3735862ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d1/de1/Mut__Tab_8cpp_1aa304ff7c0d3f5e07c235fb769e1cc6cb" kindref="member">TON</ref><sp/>=<sp/>265,</highlight></codeline>
+<codeline lineno="40" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a8b602f63070db6f8e073fb5603c518b0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d3/da3/mut_8c_1a02283d9e4cb0fc6b93271b2c6482c9b3" kindref="member">TONOBJ</ref><sp/>=<sp/>266,</highlight></codeline>
+<codeline lineno="41" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a13eaa29fdf386369898fa1386cf88746" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d3/da3/mut_8c_1a4e70e92d4ea7b7d95ff49596d5d1f77e" kindref="member">TONSYSTEM</ref><sp/>=<sp/>267,</highlight></codeline>
+<codeline lineno="42" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a328528e714a406324994b948c814750a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d1/de1/Mut__Tab_8cpp_1af64000159bd212d0927da35f72b0805f" kindref="member">UMSTIMMUNG</ref><sp/>=<sp/>268,</highlight></codeline>
+<codeline lineno="43" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a995272018327b844d30903d9dacd18f4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d1/de1/Mut__Tab_8cpp_1ac2678fa2b016f02bb503243c7de5adae" kindref="member">HARMONIE</ref><sp/>=<sp/>269,</highlight></codeline>
+<codeline lineno="44" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a2a6d053966c6a1928a4b2a3a4cfc2b9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d1/de1/Mut__Tab_8cpp_1a8f75b756d9912c13642015e1859b25ef" kindref="member">LOGIK</ref><sp/>=<sp/>270,</highlight></codeline>
+<codeline lineno="45" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a037bb825c7463f533fd72ce3181c4d41" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d1/de1/Mut__Tab_8cpp_1aff4519d858ed63ac8308bb4f95d7afa4" kindref="member">FORM</ref><sp/>=<sp/>271,</highlight></codeline>
+<codeline lineno="46" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9ab9a2965cc36333e4b9c1b0e055435d45" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d1/de1/Mut__Tab_8cpp_1a543b1c4ee9f6f75d5ba1532395373e4c" kindref="member">INSTRUMENT</ref><sp/>=<sp/>272,</highlight></codeline>
+<codeline lineno="47" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a8585a493765238d03fa238f05c6b846a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d1/de1/Mut__Tab_8cpp_1a4fcf7fa9c8869d6cbd67f42ca367a4c5" kindref="member">TASTE</ref><sp/>=<sp/>273,</highlight></codeline>
+<codeline lineno="48" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9ad831f8b75998c552b8b436da6b375d79" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d1/de1/Mut__Tab_8cpp_1a11393d47c3a4fcda3352249ea5f6d59c" kindref="member">MIDI_IN</ref><sp/>=<sp/>274,</highlight></codeline>
+<codeline lineno="49" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9ac53236fec80b247070be1b0a1b43ef09" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d1/de1/Mut__Tab_8cpp_1a1f7db720ba6021328353df2e65bf4cff" kindref="member">MIDI_OUT</ref><sp/>=<sp/>275,</highlight></codeline>
+<codeline lineno="50" refid="dc/df5/mut_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a660a0df00605bc2700f8a68f4fe9987e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d1/de1/Mut__Tab_8cpp_1acc9ab8a51a4cd7821a6e36a43e9fab2a" kindref="member">ANSONSTEN</ref><sp/>=<sp/>276</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="53" refid="dc/df5/mut_8h_1a45734d64ac1283048289925ad7b30dfe" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDENTIFIER<sp/>258</highlight></codeline>
+<codeline lineno="54" refid="dc/df5/mut_8h_1ac70277258714a5d0956ade74c741105b" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>F_NUMBER<sp/>259</highlight></codeline>
+<codeline lineno="55" refid="dc/df5/mut_8h_1a91d43eadec33c80149f92e5abf5df58c" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>INTEGER<sp/>260</highlight></codeline>
+<codeline lineno="56" refid="dc/df5/mut_8h_1a8b5ca43c0eb00ba1a448cab7a6217cdc" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNREACHED<sp/>261</highlight></codeline>
+<codeline lineno="57" refid="dc/df5/mut_8h_1a963e181ff911392364c4c660c60c38f6" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>INTERVALL<sp/>262</highlight></codeline>
+<codeline lineno="58" refid="dc/df5/mut_8h_1a131824533e99a6252a7b1db6206ab412" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>INTERVALLOBJ<sp/>263</highlight></codeline>
+<codeline lineno="59" refid="dc/df5/mut_8h_1a626041088f7051a842a9d7fa520a5beb" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WURZEL<sp/>264</highlight></codeline>
+<codeline lineno="60" refid="dc/df5/mut_8h_1aa304ff7c0d3f5e07c235fb769e1cc6cb" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TON<sp/>265</highlight></codeline>
+<codeline lineno="61" refid="dc/df5/mut_8h_1a02283d9e4cb0fc6b93271b2c6482c9b3" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TONOBJ<sp/>266</highlight></codeline>
+<codeline lineno="62" refid="dc/df5/mut_8h_1a4e70e92d4ea7b7d95ff49596d5d1f77e" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TONSYSTEM<sp/>267</highlight></codeline>
+<codeline lineno="63" refid="dc/df5/mut_8h_1af64000159bd212d0927da35f72b0805f" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UMSTIMMUNG<sp/>268</highlight></codeline>
+<codeline lineno="64" refid="dc/df5/mut_8h_1ac2678fa2b016f02bb503243c7de5adae" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>HARMONIE<sp/>269</highlight></codeline>
+<codeline lineno="65" refid="dc/df5/mut_8h_1a8f75b756d9912c13642015e1859b25ef" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>LOGIK<sp/>270</highlight></codeline>
+<codeline lineno="66" refid="dc/df5/mut_8h_1aff4519d858ed63ac8308bb4f95d7afa4" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>FORM<sp/>271</highlight></codeline>
+<codeline lineno="67" refid="dc/df5/mut_8h_1a543b1c4ee9f6f75d5ba1532395373e4c" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>INSTRUMENT<sp/>272</highlight></codeline>
+<codeline lineno="68" refid="dc/df5/mut_8h_1a4fcf7fa9c8869d6cbd67f42ca367a4c5" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TASTE<sp/>273</highlight></codeline>
+<codeline lineno="69" refid="dc/df5/mut_8h_1a11393d47c3a4fcda3352249ea5f6d59c" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MIDI_IN<sp/>274</highlight></codeline>
+<codeline lineno="70" refid="dc/df5/mut_8h_1a1f7db720ba6021328353df2e65bf4cff" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MIDI_OUT<sp/>275</highlight></codeline>
+<codeline lineno="71" refid="dc/df5/mut_8h_1acc9ab8a51a4cd7821a6e36a43e9fab2a" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>ANSONSTEN<sp/>276</highlight></codeline>
+<codeline lineno="72"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!<sp/>defined<sp/>(YYSTYPE)<sp/>&amp;&amp;<sp/>!<sp/>defined<sp/>(YYSTYPE_IS_DECLARED)</highlight></codeline>
+<codeline lineno="77"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#line<sp/>113<sp/>&quot;../../libmutabor/mut.y&quot;</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="da/d7e/unionYYSTYPE" kindref="compound">YYSTYPE</ref><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="da/d7e/unionYYSTYPE_1a5c271e70f4d29399df5af39a9d791473" kindref="member">f_value</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>for<sp/>floating<sp/>point<sp/>numbers<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="da/d7e/unionYYSTYPE_1ac55b36b4702bf2a5ddedd846d8204b36" kindref="member">integer</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>for<sp/>integers<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="da/d7e/unionYYSTYPE_1a90664571e9d5d6cabe4c478b7282b49a" kindref="member">identifier</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>for<sp/>names<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="da/d7e/unionYYSTYPE_1a65bf2def3eb8cd51fbb58b2a1a4a7a74" kindref="member">object</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>for<sp/>data<sp/>objects<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}<sp/><ref refid="df/d33/mut_8cc_1a09fb1f7c65e10ed0f0c1aa8ef7ce16b5" kindref="member">YYSTYPE</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Line<sp/>1285<sp/>of<sp/>yacc.c.<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#line<sp/>86<sp/>&quot;../../libmutabor/mut.h&quot;</highlight></codeline>
+<codeline lineno="86" refid="dc/df5/mut_8h_1a4ccf5315e8f5c1cec48ec67ca1771e3a" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/>define<sp/>yystype<sp/>YYSTYPE<sp/></highlight><highlight class="comment">/*<sp/>obsolescent;<sp/>will<sp/>be<sp/>withdrawn<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="87" refid="dc/df5/mut_8h_1af0232d21120b2cfc5e5f82f0fbadab3c" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/>define<sp/>YYSTYPE_IS_DECLARED<sp/>1</highlight></codeline>
+<codeline lineno="88" refid="dc/df5/mut_8h_1a2e3dbf169c5ee24cf6af37c61cf3995d" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/>define<sp/>YYSTYPE_IS_TRIVIAL<sp/>1</highlight></codeline>
+<codeline lineno="89"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="90"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!<sp/>defined<sp/>(YYLTYPE)<sp/>&amp;&amp;<sp/>!<sp/>defined<sp/>(YYLTYPE_IS_DECLARED)</highlight></codeline>
+<codeline lineno="94"><highlight class="preprocessor"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d8/d38/structYYLTYPE" kindref="compound">YYLTYPE</ref></highlight></codeline>
+<codeline lineno="95"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d8/d38/structYYLTYPE_1a50ad3435eaea74bcab6f1ae5fbaefd89" kindref="member">first_line</ref>;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d8/d38/structYYLTYPE_1a3a556533babab1b9066fa9bdbb809210" kindref="member">first_column</ref>;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d8/d38/structYYLTYPE_1a3075f2bc3448df5d2a9f16d22bff2cc1" kindref="member">last_line</ref>;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d8/d38/structYYLTYPE_1acf87f8c98686f286eaf700c4b62157b2" kindref="member">last_column</ref>;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}<sp/><ref refid="d1/de1/Mut__Tab_8cpp_1a05958fcca5262ce3895ecf3be642dc52" kindref="member">YYLTYPE</ref>;</highlight></codeline>
+<codeline lineno="101" refid="dc/df5/mut_8h_1ae2ea1b9f8896c4587b575b5196e60cb7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>yyltype<sp/>YYLTYPE<sp/></highlight><highlight class="comment">/*<sp/>obsolescent;<sp/>will<sp/>be<sp/>withdrawn<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="102" refid="dc/df5/mut_8h_1a4332d355678b732da19b65634dc8df36" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/>define<sp/>YYLTYPE_IS_DECLARED<sp/>1</highlight></codeline>
+<codeline lineno="103" refid="dc/df5/mut_8h_1aa74132fedf91ad815c092333af771376" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/>define<sp/>YYLTYPE_IS_TRIVIAL<sp/>1</highlight></codeline>
+<codeline lineno="104"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="105"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mut.h"/>
+  </compounddef>
+</doxygen>

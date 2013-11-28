@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d3/d6e/classGisSegment" kind="class" prot="public">
+    <compoundname>GisSegment</compoundname>
+    <basecompoundref refid="d2/db7/classGisToken" prot="public" virt="non-virtual">GisToken</basecompoundref>
+    <includes refid="dd/d4d/GIS_8h" local="no">GIS.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d3/d6e/classGisSegment_1a4743ae74989cd7f235b5de4fbbf31f67" prot="public" static="no" mutable="no">
+        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+        <definition>mutString GisSegment::Sep2</definition>
+        <argsstring></argsstring>
+        <name>Sep2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="247" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="247" bodyend="-1"/>
+        <referencedby refid="d3/d6e/classGisSegment_1a9b527d1c61d240acfefe5f27d329ddf3" compoundref="dd/d4d/GIS_8h" startline="251" endline="256">GisSegment</referencedby>
+        <referencedby refid="d3/d6e/classGisSegment_1aefd74e0052d9fc19964308e8beefad97" compoundref="dd/d4d/GIS_8h" startline="258" endline="264">~GisSegment</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d3/d6e/classGisSegment_1a0a5f8521b9792771b778b1af0416d222" prot="public" static="no" mutable="no">
+        <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+        <definition>GisToken* GisSegment::Contents</definition>
+        <argsstring></argsstring>
+        <name>Contents</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="249" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="249" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga60ebc1360c6cb89494cae8f2d6d0ca64" compoundref="dc/de7/GIS_8cpp" startline="517" endline="532">BeginSegment</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaba99a430e658d303cbc5307bb3abf644" compoundref="d7/da0/GIS__Head_8cpp" startline="265" endline="300">GisReadHead::CreateSegmentSubs</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac89b6135357ffc8e02f5d98d687a482f" compoundref="d7/da0/GIS__Head_8cpp" startline="303" endline="316">GisReadHead::CreateSequenzSubs</referencedby>
+        <referencedby refid="d3/d6e/classGisSegment_1a9b527d1c61d240acfefe5f27d329ddf3" compoundref="dd/d4d/GIS_8h" startline="251" endline="256">GisSegment</referencedby>
+        <referencedby refid="d3/d6e/classGisSegment_1aefd74e0052d9fc19964308e8beefad97" compoundref="dd/d4d/GIS_8h" startline="258" endline="264">~GisSegment</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d3/d6e/classGisSegment_1a9b527d1c61d240acfefe5f27d329ddf3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GisSegment::GisSegment</definition>
+        <argsstring>(GisToken *contents=0, const mutString sep=mutEmptyString, GisToken *next=0)</argsstring>
+        <name>GisSegment</name>
+        <param>
+          <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+          <declname>contents</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+          <declname>sep</declname>
+          <defval><ref refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" kindref="member">mutEmptyString</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+          <declname>next</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="251" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="251" bodyend="256"/>
+        <references refid="d3/d6e/classGisSegment_1a0a5f8521b9792771b778b1af0416d222" compoundref="dd/d4d/GIS_8h" startline="249">Contents</references>
+        <references refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" compoundref="d1/d73/Defs_8h" startline="171">mutEmptyString</references>
+        <references refid="d3/d6e/classGisSegment_1a4743ae74989cd7f235b5de4fbbf31f67" compoundref="dd/d4d/GIS_8h" startline="247">Sep2</references>
+      </memberdef>
+      <memberdef kind="function" id="d3/d6e/classGisSegment_1aefd74e0052d9fc19964308e8beefad97" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GisSegment::~GisSegment</definition>
+        <argsstring>()</argsstring>
+        <name>~GisSegment</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="258" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="258" bodyend="264"/>
+        <references refid="d3/d6e/classGisSegment_1a0a5f8521b9792771b778b1af0416d222" compoundref="dd/d4d/GIS_8h" startline="249">Contents</references>
+        <references refid="d9/d7c/group__kernel_1gae1886fec5e1bc39af4e253f3508da561" compoundref="d1/d73/Defs_8h" startline="172">mutFreeString</references>
+        <references refid="d3/d6e/classGisSegment_1a4743ae74989cd7f235b5de4fbbf31f67" compoundref="dd/d4d/GIS_8h" startline="247">Sep2</references>
+      </memberdef>
+      <memberdef kind="function" id="d3/d6e/classGisSegment_1a4fc149b3027b0d6f40a52a3cc9c4167d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d5/dee/group__route_1gaef354ea2f89281ef17c6735860c89861" kindref="member">GisType</ref></type>
+        <definition>virtual GisType GisSegment::Type</definition>
+        <argsstring>() const </argsstring>
+        <name>Type</name>
+        <reimplements refid="d2/db7/classGisToken_1ae4d7f75c10842938ece11120d1665106">Type</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="266" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="266" bodyend="269"/>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861afe97a3e9b9a485aeb126e6300fe17849" compoundref="dd/d4d/GIS_8h" startline="119">GTSegment</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2788">
+        <label>GisSegment</label>
+        <link refid="d3/d6e/classGisSegment"/>
+        <childnode refid="2789" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2789">
+        <label>GisToken</label>
+        <link refid="d2/db7/classGisToken"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2790">
+        <label>GisSegment</label>
+        <link refid="d3/d6e/classGisSegment"/>
+        <childnode refid="2791" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2791" relation="usage">
+          <edgelabel>Contents</edgelabel>
+        </childnode>
+      </node>
+      <node id="2791">
+        <label>GisToken</label>
+        <link refid="d2/db7/classGisToken"/>
+        <childnode refid="2791" relation="usage">
+          <edgelabel>Next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="244" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="243" bodyend="289"/>
+    <listofallmembers>
+      <member refid="d3/d6e/classGisSegment_1a0a5f8521b9792771b778b1af0416d222" prot="public" virt="non-virtual"><scope>GisSegment</scope><name>Contents</name></member>
+      <member refid="d2/db7/classGisToken_1a699f4bc89b801908bd6178f6f144d645" prot="public" virt="virtual"><scope>GisSegment</scope><name>Copy</name></member>
+      <member refid="d3/d6e/classGisSegment_1a9b527d1c61d240acfefe5f27d329ddf3" prot="public" virt="non-virtual"><scope>GisSegment</scope><name>GisSegment</name></member>
+      <member refid="d2/db7/classGisToken_1aa7d3797aec95b6fe33acf8c255fc1268" prot="public" virt="non-virtual"><scope>GisSegment</scope><name>GisToken</name></member>
+      <member refid="d2/db7/classGisToken_1a5ebe3590397490871cf0839a758e2449" prot="public" virt="non-virtual"><scope>GisSegment</scope><name>Next</name></member>
+      <member refid="d2/db7/classGisToken_1a5987643937d79847fcd3f0dab8fe4b58" prot="public" virt="non-virtual"><scope>GisSegment</scope><name>Sep</name></member>
+      <member refid="d3/d6e/classGisSegment_1a4743ae74989cd7f235b5de4fbbf31f67" prot="public" virt="non-virtual"><scope>GisSegment</scope><name>Sep2</name></member>
+      <member refid="d3/d6e/classGisSegment_1a4fc149b3027b0d6f40a52a3cc9c4167d" prot="public" virt="virtual"><scope>GisSegment</scope><name>Type</name></member>
+      <member refid="d3/d6e/classGisSegment_1aefd74e0052d9fc19964308e8beefad97" prot="public" virt="non-virtual"><scope>GisSegment</scope><name>~GisSegment</name></member>
+      <member refid="d2/db7/classGisToken_1ab3ec071213876b13b7ce9f9900cfec69" prot="public" virt="virtual"><scope>GisSegment</scope><name>~GisToken</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

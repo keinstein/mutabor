@@ -1,0 +1,457 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="dc/d30/interpreter_8c" kind="file">
+    <compoundname>interpreter.c</compoundname>
+    <includes refid="d3/d97/interpreter_8h" local="yes">mutabor/interpreter.h</includes>
+    <includes refid="d2/d2a/parameter_8h" local="yes">mutabor/parameter.h</includes>
+    <includes refid="da/ddb/heap_8h" local="yes">mutabor/heap.h</includes>
+    <includes refid="d1/dfa/ausloeser_8h" local="yes">mutabor/ausloeser.h</includes>
+    <includes refid="d1/dff/logik_8h" local="yes">mutabor/logik.h</includes>
+    <incdepgraph>
+      <node id="20824">
+        <label>src/libmutabor/interpreter.c</label>
+        <link refid="interpreter.c"/>
+        <childnode refid="20825" relation="include">
+        </childnode>
+        <childnode refid="20828" relation="include">
+        </childnode>
+        <childnode refid="20830" relation="include">
+        </childnode>
+        <childnode refid="20832" relation="include">
+        </childnode>
+        <childnode refid="20844" relation="include">
+        </childnode>
+      </node>
+      <node id="20842">
+        <label>mutabor/case_liste.h</label>
+        <link refid="db/d99/case__liste_8h"/>
+        <childnode refid="20839" relation="include">
+        </childnode>
+      </node>
+      <node id="20835">
+        <label>mutabor/interval.h</label>
+        <link refid="d2/d8a/interval_8h"/>
+        <childnode refid="20836" relation="include">
+        </childnode>
+        <childnode refid="20826" relation="include">
+        </childnode>
+      </node>
+      <node id="20837">
+        <label>mutabor/object.h</label>
+        <link refid="de/d10/object_8h"/>
+      </node>
+      <node id="20829">
+        <label>mutabor/argument.h</label>
+        <link refid="db/d1e/argument_8h"/>
+        <childnode refid="20828" relation="include">
+        </childnode>
+      </node>
+      <node id="20825">
+        <label>mutabor/interpreter.h</label>
+        <link refid="d3/d97/interpreter_8h"/>
+        <childnode refid="20826" relation="include">
+        </childnode>
+      </node>
+      <node id="20839">
+        <label>mutabor/aktion.h</label>
+        <link refid="dd/de4/aktion_8h"/>
+        <childnode refid="20833" relation="include">
+        </childnode>
+        <childnode refid="20829" relation="include">
+        </childnode>
+        <childnode refid="20840" relation="include">
+        </childnode>
+        <childnode refid="20843" relation="include">
+        </childnode>
+        <childnode refid="20828" relation="include">
+        </childnode>
+        <childnode refid="20844" relation="include">
+        </childnode>
+      </node>
+      <node id="20840">
+        <label>mutabor/umstimmung.h</label>
+        <link refid="da/d7f/umstimmung_8h"/>
+        <childnode refid="20841" relation="include">
+        </childnode>
+        <childnode refid="20842" relation="include">
+        </childnode>
+      </node>
+      <node id="20836">
+        <label>mutabor/identifier.h</label>
+        <link refid="d7/da7/identifier_8h"/>
+        <childnode refid="20837" relation="include">
+        </childnode>
+      </node>
+      <node id="20843">
+        <label>mutabor/tonsystem.h</label>
+        <link refid="d8/d39/tonsystem_8h"/>
+        <childnode refid="20841" relation="include">
+        </childnode>
+        <childnode refid="20835" relation="include">
+        </childnode>
+        <childnode refid="20826" relation="include">
+        </childnode>
+      </node>
+      <node id="20832">
+        <label>mutabor/ausloeser.h</label>
+        <link refid="d1/dfa/ausloeser_8h"/>
+        <childnode refid="20833" relation="include">
+        </childnode>
+        <childnode refid="20834" relation="include">
+        </childnode>
+        <childnode refid="20838" relation="include">
+        </childnode>
+      </node>
+      <node id="20841">
+        <label>mutabor/ton.h</label>
+        <link refid="d4/d12/ton_8h"/>
+        <childnode refid="20835" relation="include">
+        </childnode>
+      </node>
+      <node id="20827">
+        <label>math.h</label>
+      </node>
+      <node id="20834">
+        <label>mutabor/harmonie.h</label>
+        <link refid="d1/d63/harmonie_8h"/>
+        <childnode refid="20835" relation="include">
+        </childnode>
+        <childnode refid="20826" relation="include">
+        </childnode>
+      </node>
+      <node id="20830">
+        <label>mutabor/heap.h</label>
+        <link refid="da/ddb/heap_8h"/>
+        <childnode refid="20831" relation="include">
+        </childnode>
+        <childnode refid="20826" relation="include">
+        </childnode>
+      </node>
+      <node id="20844">
+        <label>mutabor/logik.h</label>
+        <link refid="d1/dff/logik_8h"/>
+        <childnode refid="20832" relation="include">
+        </childnode>
+        <childnode refid="20839" relation="include">
+        </childnode>
+      </node>
+      <node id="20833">
+        <label>mutabor/midicalc.h</label>
+        <link refid="d0/d24/midicalc_8h"/>
+      </node>
+      <node id="20831">
+        <label>stdio.h</label>
+      </node>
+      <node id="20828">
+        <label>mutabor/parameter.h</label>
+        <link refid="d2/d2a/parameter_8h"/>
+        <childnode refid="20829" relation="include">
+        </childnode>
+        <childnode refid="20826" relation="include">
+        </childnode>
+      </node>
+      <node id="20826">
+        <label>bad_decl.h</label>
+        <link refid="df/d8e/bad__decl_8h"/>
+        <childnode refid="20827" relation="include">
+        </childnode>
+      </node>
+      <node id="20838">
+        <label>mutabor/anweisung.h</label>
+        <link refid="d0/db7/anweisung_8h"/>
+        <childnode refid="20832" relation="include">
+        </childnode>
+        <childnode refid="20839" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="df/d97/structcache__konstanten" prot="public">cache_konstanten</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="dc/d30/interpreter_8c_1acae04c91d075c1d03113a38e00b5a00a" prot="public" static="yes" mutable="no">
+        <type>struct <ref refid="d2/d46/structinterpreter__parameter__liste" kindref="compound">interpreter_parameter_liste</ref></type>
+        <definition>struct interpreter_parameter_liste zentrums_knoten</definition>
+        <argsstring></argsstring>
+        <name>zentrums_knoten</name>
+        <initializer>=
+     { &amp; <ref refid="dc/d30/interpreter_8c_1a6e0f61a7f42c9cd894c164eb52f44ac0" kindref="member">laufzeit_zentrum</ref>, NULL }</initializer>
+        <briefdescription>
+<para>Diese Zweielementige Liste ist Parameterliste bei Logiken. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c" line="42" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dc/d30/interpreter_8c_1a14b6b1f0facd3d7e30ffd9a6066f2b6c" prot="public" static="yes" mutable="no">
+        <type>struct <ref refid="d2/d46/structinterpreter__parameter__liste" kindref="compound">interpreter_parameter_liste</ref></type>
+        <definition>struct interpreter_parameter_liste abstands_knoten</definition>
+        <argsstring></argsstring>
+        <name>abstands_knoten</name>
+        <initializer>=
+     { &amp; <ref refid="dc/d30/interpreter_8c_1a67d0856adbc3f3e3d6a072810a27112b" kindref="member">laufzeit_abstand</ref>, &amp; <ref refid="dc/d30/interpreter_8c_1acae04c91d075c1d03113a38e00b5a00a" kindref="member">zentrums_knoten</ref> }</initializer>
+        <briefdescription>
+<para>Diese Zweielementige Liste ist Parameterliste bei Logiken. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c" line="42" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dc/d30/interpreter_8c_1a9ce22c816d7eba71ee7eb07b751b168b" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d2/d46/structinterpreter__parameter__liste" kindref="compound">interpreter_parameter_liste</ref> *</type>
+        <definition>struct interpreter_parameter_liste* start_parameter_liste</definition>
+        <argsstring></argsstring>
+        <name>start_parameter_liste</name>
+        <initializer>=
+    &amp; <ref refid="dc/d30/interpreter_8c_1a14b6b1f0facd3d7e30ffd9a6066f2b6c" kindref="member">abstands_knoten</ref></initializer>
+        <briefdescription>
+<para>Diese Zweielementige Liste ist Parameterliste bei Logiken. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c" line="38" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c" bodystart="38" bodyend="-1"/>
+        <referencedby refid="d2/d1c/group__Interpreter_1gadd38444278d5ab45b8fed1d6683d16b1" compoundref="d6/dcc/ausloeser_8c" startline="420" endline="524">insert_in_lokale_liste</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/d30/interpreter_8c_1a6e0f61a7f42c9cd894c164eb52f44ac0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int laufzeit_zentrum[MAX_BOX]</definition>
+        <argsstring>[MAX_BOX]</argsstring>
+        <name>laufzeit_zentrum</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c" line="41" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dc/d30/interpreter_8c_1a67d0856adbc3f3e3d6a072810a27112b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int laufzeit_abstand[MAX_BOX]</definition>
+        <argsstring>[MAX_BOX]</argsstring>
+        <name>laufzeit_abstand</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c" line="42" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dc/d30/interpreter_8c_1a25c95ad7436ad1fa8abccbd8f232f11e" prot="public" static="yes" mutable="no">
+        <type>struct <ref refid="df/d97/structcache__konstanten" kindref="compound">cache_konstanten</ref> *</type>
+        <definition>struct cache_konstanten* cache_konstanten</definition>
+        <argsstring></argsstring>
+        <name>cache_konstanten</name>
+        <initializer>= NULL</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c" line="53" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="dc/d30/interpreter_8c_1a97e40f66eb0949a7a12b20cc142bb401" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int(*</type>
+        <definition>int(* get_cache_konstante</definition>
+        <argsstring>(int wert))[MAX_BOX]</argsstring>
+        <name>get_cache_konstante</name>
+        <param>
+          <type>int</type>
+          <declname>wert</declname>
+        </param>
+        <briefdescription>
+<para>Sichert, dass ein Wert in <ref refid="df/d97/structcache__konstanten" kindref="compound">cache_konstanten</ref> vorhanden ist und gibt das entsprechende Element der Liste zurück. </para>        </briefdescription>
+        <detaileddescription>
+<para>Bei neuen Einträgen werden alle Einträge des entsprechenden Feldes <computeroutput>konstante</computeroutput> auf den übergebenen Wert gesetzt. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>wert</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Wert, dessen Element zurückgegeben werden soll </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c" line="61" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c" bodystart="61" bodyend="75"/>
+        <references refid="df/d97/structcache__konstanten_1a1024b0d8811455746cd730a850e33d6d" compoundref="dc/d30/interpreter_8c" startline="49">cache_konstanten::konstante</references>
+        <references refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" compoundref="df/d8e/bad__decl_8h" startline="52">MAX_BOX</references>
+        <references refid="df/d97/structcache__konstanten_1ac0ea021d04d05bf9af20fbd4af70e182" compoundref="dc/d30/interpreter_8c" startline="50">cache_konstanten::next</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="d7/d2d/parameter_8c_1a493a3f825cf92358363ce341cbf1c4cb" compoundref="d7/d2d/parameter_8c" startline="116" endline="148">gen_parameter_liste</referencedby>
+        <referencedby refid="d3/d14/argument_8c_1af636a1e8393f27b82c5c10e8c0120f04" compoundref="d3/d14/argument_8c" startline="159" endline="189">get_wert_of_argument</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor_tabellen_generator</definition>
+        <argsstring>(void)</argsstring>
+        <name>mutabor_tabellen_generator</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialisiert die Mutabor-Tabellen. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei werden die globalen und die lokalen Auslöser initialisiert. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c" line="81" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c" bodystart="81" bodyend="139"/>
+        <references refid="db/d28/structlogik_1a65b45930b368455fcb255d827496dc2b" compoundref="d1/dff/logik_8h" startline="35">logik::anweisungsliste</references>
+        <references refid="d2/d1c/group__Interpreter_1ga49fcfc4930df7019571296f7c2c9d320" compoundref="d6/dcc/ausloeser_8c" startline="530" endline="592">expandiere_in_globale_liste</references>
+        <references refid="dd/d21/group__Parser_1gaeb4def1910a49d76e3898d8ef6be1f0f" compoundref="d6/dcc/ausloeser_8c" startline="46">first_harmonie</references>
+        <references refid="dd/d21/group__Parser_1ga0efb7f4c5368462a4f0eed6de4e8c025" compoundref="d6/dcc/ausloeser_8c" startline="52">first_keyboard</references>
+        <references refid="dd/d21/group__Parser_1gaa539e63152f2a354b62a0b98490e2293" compoundref="d6/dcc/ausloeser_8c" startline="50">first_lokal_harmonie</references>
+        <references refid="dd/d21/group__Parser_1gac413ef20e141cd76dd18c44e99df1ba4" compoundref="d6/dcc/ausloeser_8c" startline="56">first_lokal_keyboard</references>
+        <references refid="dd/d21/group__Parser_1gaa4d5de4a97f2396dd4c30ac78285d6bf" compoundref="d6/dcc/ausloeser_8c" startline="62">first_lokal_midi</references>
+        <references refid="dd/d21/group__Parser_1gaf0944493cbec9f89bad097c3b952634a" compoundref="d6/dcc/ausloeser_8c" startline="58">first_midi</references>
+        <references refid="d2/d1c/group__Interpreter_1gab7918076c80dc48be1a4c64a39be0510" compoundref="d6/dcc/ausloeser_8c" startline="386" endline="390">get_ende_harmonie</references>
+        <references refid="d2/d1c/group__Interpreter_1gaf764bbaa2fdfbb274ead1ebf61f49ac7" compoundref="d6/dcc/ausloeser_8c" startline="397" endline="401">get_ende_keyboard</references>
+        <references refid="d2/d1c/group__Interpreter_1gaa6d0bceb2b55629cbd049f76ca7fc577" compoundref="d6/dcc/ausloeser_8c" startline="408" endline="412">get_ende_midi</references>
+        <references refid="d2/d1c/group__Interpreter_1ga69baa9919250669cbe29d4a4fa4bf9ca" compoundref="d6/dcc/ausloeser_8c" startline="295" endline="379">insert_in_globale_liste</references>
+        <references refid="d2/d1c/group__Interpreter_1gadd38444278d5ab45b8fed1d6683d16b1" compoundref="d6/dcc/ausloeser_8c" startline="420" endline="524">insert_in_lokale_liste</references>
+        <references refid="dd/d21/group__Parser_1gafa20457ba0cc68c3fb9b951396475f39" compoundref="d6/dcc/ausloeser_8c" startline="48">last_global_harmonie</references>
+        <references refid="dd/d21/group__Parser_1ga7d7d753e6a50fb64c3142215b6d3dc8d" compoundref="d6/dcc/ausloeser_8c" startline="54">last_global_keyboard</references>
+        <references refid="dd/d21/group__Parser_1gaeacc603c530f9ab8c25eaf9386d74ed2" compoundref="d6/dcc/ausloeser_8c" startline="60">last_global_midi</references>
+        <references refid="d1/dff/logik_8h_1a7f772804a850a0156f485df5f8cb1339" compoundref="d7/d6e/logik_8c" startline="44">list_of_logiken</references>
+        <references refid="d1/dff/logik_8h_1a1bf49a0b791eef42c75d45a8bca773f0" compoundref="d7/d6e/logik_8c" startline="50" endline="53">logik_list_laenge</references>
+        <references refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" compoundref="df/d8e/bad__decl_8h" startline="52">MAX_BOX</references>
+        <references refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" compoundref="d1/dff/logik_8h" startline="32">logik::name</references>
+        <references refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" compoundref="d1/dff/logik_8h" startline="36">logik::next</references>
+        <references refid="d0/dab/structanweisung_1ac2f1fdc2202ad29c50dbdc676fdc9a6a" compoundref="d0/db7/anweisung_8h" startline="39">anweisung::next</references>
+        <references refid="da/ddb/heap_8h_1ab0c7434dd1577c62500713d2508d89ce" compoundref="d2/d29/heap_8c" startline="258" endline="268">xcalloc</references>
+        <referencedby refid="d3/d14/gmut_8cpp_1aa4fbd34cae8e303c82cf546234111c10" compoundref="d3/d14/gmut_8cpp" startline="153" endline="185">GMutCompile</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Mutabor Interpreter. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="rcs"><title>Header:</title><para>/home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/interpreter.c,v 1.1 2005/11/03 14:07:19 keinstein Exp </para></simplesect>
+<simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein@users.berlios.de">keinstein@users.berlios.de</ulink> </para></simplesect>
+<simplesect kind="date"><para></para></simplesect>
+<simplesect kind="rcs"><title>Date:</title><para>2005/11/03 14:07:19 </para></simplesect>
+<simplesect kind="version"><para></para></simplesect>
+<simplesect kind="rcs"><title>Revision:</title><para>1.1 </para></simplesect>
+</para><para><simplesect kind="rcs"><title>Log:</title><para><ref refid="dc/d30/interpreter_8c" kindref="compound">interpreter.c</ref>,v </para></simplesect>
+Revision 1.1 2005/11/03 14:07:19 keinstein initial revision </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="16"><highlight class="preprocessor">#ifdef<sp/>HAVE_CONFIG_H</highlight></codeline>
+<codeline lineno="17"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>include<sp/>&quot;config.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="19"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAVE_STDLIB_H</highlight></codeline>
+<codeline lineno="21"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d3/d97/interpreter_8h" kindref="compound">mutabor/interpreter.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d2a/parameter_8h" kindref="compound">mutabor/parameter.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="da/ddb/heap_8h" kindref="compound">mutabor/heap.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/dfa/ausloeser_8h" kindref="compound">mutabor/ausloeser.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/dff/logik_8h" kindref="compound">mutabor/logik.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="dc/d30/interpreter_8c_1acae04c91d075c1d03113a38e00b5a00a" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d46/structinterpreter__parameter__liste" kindref="compound">interpreter_parameter_liste</ref><sp/><ref refid="dc/d30/interpreter_8c_1acae04c91d075c1d03113a38e00b5a00a" kindref="member">zentrums_knoten</ref><sp/>=</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>{<sp/>&amp;<sp/><ref refid="d3/d97/interpreter_8h_1a6e0f61a7f42c9cd894c164eb52f44ac0" kindref="member">laufzeit_zentrum</ref>,<sp/>NULL<sp/>};</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="dc/d30/interpreter_8c_1a14b6b1f0facd3d7e30ffd9a6066f2b6c" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d46/structinterpreter__parameter__liste" kindref="compound">interpreter_parameter_liste</ref><sp/><ref refid="dc/d30/interpreter_8c_1a14b6b1f0facd3d7e30ffd9a6066f2b6c" kindref="member">abstands_knoten</ref><sp/>=</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>{<sp/>&amp;<sp/><ref refid="d3/d97/interpreter_8h_1a67d0856adbc3f3e3d6a072810a27112b" kindref="member">laufzeit_abstand</ref>,<sp/>&amp;<sp/>zentrums_knoten<sp/>};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="dc/d30/interpreter_8c_1a9ce22c816d7eba71ee7eb07b751b168b" refkind="member"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d46/structinterpreter__parameter__liste" kindref="compound">interpreter_parameter_liste</ref><sp/>*<sp/><ref refid="d2/d2a/parameter_8h_1a9ce22c816d7eba71ee7eb07b751b168b" kindref="member">start_parameter_liste</ref><sp/>=</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>&amp;<sp/><ref refid="dc/d30/interpreter_8c_1a14b6b1f0facd3d7e30ffd9a6066f2b6c" kindref="member">abstands_knoten</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="dc/d30/interpreter_8c_1a6e0f61a7f42c9cd894c164eb52f44ac0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d3/d97/interpreter_8h_1a6e0f61a7f42c9cd894c164eb52f44ac0" kindref="member">laufzeit_zentrum</ref>[<ref refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" kindref="member">MAX_BOX</ref>];</highlight></codeline>
+<codeline lineno="42" refid="dc/d30/interpreter_8c_1a67d0856adbc3f3e3d6a072810a27112b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d3/d97/interpreter_8h_1a67d0856adbc3f3e3d6a072810a27112b" kindref="member">laufzeit_abstand</ref>[<ref refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" kindref="member">MAX_BOX</ref>];</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="df/d97/structcache__konstanten" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/d97/structcache__konstanten" kindref="compound">cache_konstanten</ref><sp/>{</highlight></codeline>
+<codeline lineno="49" refid="df/d97/structcache__konstanten_1a1024b0d8811455746cd730a850e33d6d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d97/structcache__konstanten_1a1024b0d8811455746cd730a850e33d6d" kindref="member">konstante</ref><sp/>[<ref refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" kindref="member">MAX_BOX</ref>];</highlight></codeline>
+<codeline lineno="50" refid="df/d97/structcache__konstanten_1ac0ea021d04d05bf9af20fbd4af70e182" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/d97/structcache__konstanten" kindref="compound">cache_konstanten</ref><sp/>*<sp/><ref refid="df/d97/structcache__konstanten_1ac0ea021d04d05bf9af20fbd4af70e182" kindref="member">next</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="dc/d30/interpreter_8c_1a25c95ad7436ad1fa8abccbd8f232f11e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/d97/structcache__konstanten" kindref="compound">cache_konstanten</ref><sp/>*<sp/><ref refid="df/d97/structcache__konstanten" kindref="compound">cache_konstanten</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="dc/d30/interpreter_8c_1a97e40f66eb0949a7a12b20cc142bb401" refkind="member"><highlight class="normal">int<sp/>(*<sp/><ref refid="d3/d97/interpreter_8h_1a97e40f66eb0949a7a12b20cc142bb401" kindref="member">get_cache_konstante</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>wert)<sp/>)<sp/>[<ref refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" kindref="member">MAX_BOX</ref>]</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">cache_konstanten<sp/>**<sp/>lauf;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(lauf<sp/>=<sp/>&amp;<sp/>cache_konstanten;<sp/>*lauf;<sp/>lauf<sp/>=<sp/>&amp;<sp/>(*lauf)-&gt;<ref refid="df/d97/structcache__konstanten_1ac0ea021d04d05bf9af20fbd4af70e182" kindref="member">next</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((*lauf)-&gt;konstante[0]<sp/>==<sp/>wert)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<sp/>(*lauf)-&gt;<ref refid="df/d97/structcache__konstanten_1a1024b0d8811455746cd730a850e33d6d" kindref="member">konstante</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>*lauf<sp/>=<sp/>(</highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">cache_konstanten*)<sp/><ref refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" kindref="member">xmalloc</ref><sp/>(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>cache_konstanten));</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;<ref refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" kindref="member">MAX_BOX</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*lauf)-&gt;konstante[i]<sp/>=<sp/>wert;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>(*lauf)-&gt;next<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<sp/>(*lauf)-&gt;konstante;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/de7/tabgen_8h_1a80f694cdb409db5d5dd155ca0759f310" kindref="member">mutabor_tabellen_generator</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Ausgabe<sp/>der<sp/>Pointer-Setz-Prozeduren<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d28/structlogik" kindref="compound">logik</ref><sp/>*<sp/>lauf;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/dab/structanweisung" kindref="compound">anweisung</ref><sp/>*<sp/>lauf_anweisung;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Neu:<sp/><sp/>extra<sp/>Löschungen<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>cache_konstanten<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;<ref refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" kindref="member">MAX_BOX</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d21/group__Parser_1gaf0944493cbec9f89bad097c3b952634a" kindref="member">first_midi</ref><sp/><sp/><sp/><sp/><sp/>[i]<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d21/group__Parser_1ga0efb7f4c5368462a4f0eed6de4e8c025" kindref="member">first_keyboard</ref><sp/>[i]<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d21/group__Parser_1gaeb4def1910a49d76e3898d8ef6be1f0f" kindref="member">first_harmonie</ref><sp/>[i]<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;i&lt;<ref refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" kindref="member">MAX_BOX</ref>;i++)<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Die<sp/>globalen<sp/>Listen<sp/>werden<sp/>initialisiert:<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Die<sp/>globalen<sp/>Auslöser<sp/>werden<sp/>in<sp/>die<sp/>vorbereiteten<sp/>Listen<sp/>eingetragen:<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(lauf<sp/>=<sp/><ref refid="d1/dff/logik_8h_1a7f772804a850a0156f485df5f8cb1339" kindref="member">list_of_logiken</ref>;<sp/>lauf;<sp/>lauf<sp/>=<sp/>lauf<sp/>-&gt;<sp/><ref refid="d0/dab/structanweisung_1ac2f1fdc2202ad29c50dbdc676fdc9a6a" kindref="member">next</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d2/d1c/group__Interpreter_1ga69baa9919250669cbe29d4a4fa4bf9ca" kindref="member">insert_in_globale_liste</ref><sp/>(i,<sp/>lauf);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d21/group__Parser_1gafa20457ba0cc68c3fb9b951396475f39" kindref="member">last_global_harmonie</ref>[i]=<ref refid="d2/d1c/group__Interpreter_1gab7918076c80dc48be1a4c64a39be0510" kindref="member">get_ende_harmonie</ref><sp/>(&amp;<sp/><ref refid="dd/d21/group__Parser_1gaeb4def1910a49d76e3898d8ef6be1f0f" kindref="member">first_harmonie</ref>[i]);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d21/group__Parser_1ga7d7d753e6a50fb64c3142215b6d3dc8d" kindref="member">last_global_keyboard</ref>[i]=<ref refid="d2/d1c/group__Interpreter_1gaf764bbaa2fdfbb274ead1ebf61f49ac7" kindref="member">get_ende_keyboard</ref><sp/>(&amp;<sp/><ref refid="dd/d21/group__Parser_1ga0efb7f4c5368462a4f0eed6de4e8c025" kindref="member">first_keyboard</ref>[i]);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d21/group__Parser_1gaeacc603c530f9ab8c25eaf9386d74ed2" kindref="member">last_global_midi</ref>[i]=<ref refid="d2/d1c/group__Interpreter_1gaa6d0bceb2b55629cbd049f76ca7fc577" kindref="member">get_ende_midi</ref><sp/>(&amp;<sp/><ref refid="dd/d21/group__Parser_1gaf0944493cbec9f89bad097c3b952634a" kindref="member">first_midi</ref>[i]);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Die<sp/>lokalen<sp/>Listen<sp/>werden<sp/>erzeugt:<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Es<sp/>wird<sp/>ein<sp/>Array<sp/>mit<sp/>Anfangszeigern<sp/><sp/>auf<sp/>die<sp/>lokalen</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Auslöser<sp/>angelegt.<sp/>Die<sp/>Nummer<sp/>der<sp/>Logik<sp/>ist<sp/>index<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>i<sp/>=<sp/><ref refid="d1/dff/logik_8h_1a1bf49a0b791eef42c75d45a8bca773f0" kindref="member">logik_list_laenge</ref><sp/>(<ref refid="d1/dff/logik_8h_1a7f772804a850a0156f485df5f8cb1339" kindref="member">list_of_logiken</ref>);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dd/d21/group__Parser_1gaa539e63152f2a354b62a0b98490e2293" kindref="member">first_lokal_harmonie</ref><sp/>=<sp/>(</highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d9/d5b/structharmonie__ereignis" kindref="compound">harmonie_ereignis</ref>*<sp/>*)<sp/><ref refid="da/ddb/heap_8h_1ab0c7434dd1577c62500713d2508d89ce" kindref="member">xcalloc</ref><sp/>((</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">)i,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="dd/d21/group__Parser_1gaa539e63152f2a354b62a0b98490e2293" kindref="member">first_lokal_harmonie</ref>[0]));</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dd/d21/group__Parser_1gac413ef20e141cd76dd18c44e99df1ba4" kindref="member">first_lokal_keyboard</ref><sp/>=<sp/>(</highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d8/d8e/structkeyboard__ereignis" kindref="compound">keyboard_ereignis</ref>*<sp/>*)<sp/><ref refid="da/ddb/heap_8h_1ab0c7434dd1577c62500713d2508d89ce" kindref="member">xcalloc</ref><sp/>((</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">)i,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="dd/d21/group__Parser_1gac413ef20e141cd76dd18c44e99df1ba4" kindref="member">first_lokal_keyboard</ref>[0]));</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dd/d21/group__Parser_1gaa4d5de4a97f2396dd4c30ac78285d6bf" kindref="member">first_lokal_midi</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>(</highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/d77/structmidi__ereignis" kindref="compound">midi_ereignis</ref>*<sp/>*)<sp/><ref refid="da/ddb/heap_8h_1ab0c7434dd1577c62500713d2508d89ce" kindref="member">xcalloc</ref><sp/>((</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">)i,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="dd/d21/group__Parser_1gaa4d5de4a97f2396dd4c30ac78285d6bf" kindref="member">first_lokal_midi</ref>[0]));</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>####<sp/>Wichtig<sp/>ist,<sp/>dass<sp/>calloc<sp/>alles<sp/>auf<sp/>0<sp/>setzt<sp/>(NULL)<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(lauf=<ref refid="d1/dff/logik_8h_1a7f772804a850a0156f485df5f8cb1339" kindref="member">list_of_logiken</ref>,<sp/>i=0;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf=lauf-&gt;<ref refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" kindref="member">next</ref>,<sp/>i++<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(lauf_anweisung=lauf-&gt;<ref refid="db/d28/structlogik_1a65b45930b368455fcb255d827496dc2b" kindref="member">anweisungsliste</ref>;<sp/>lauf_anweisung;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf_anweisung=lauf_anweisung-&gt;<ref refid="d0/dab/structanweisung_1ac2f1fdc2202ad29c50dbdc676fdc9a6a" kindref="member">next</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d2/d1c/group__Interpreter_1gadd38444278d5ab45b8fed1d6683d16b1" kindref="member">insert_in_lokale_liste</ref><sp/>(i,<sp/>lauf_anweisung,<sp/>lauf-&gt;<ref refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d1c/group__Interpreter_1ga49fcfc4930df7019571296f7c2c9d320" kindref="member">expandiere_in_globale_liste</ref><sp/>();</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>end<sp/>of<sp/>mutabor_tabellen_generator<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/interpreter.c"/>
+  </compounddef>
+</doxygen>

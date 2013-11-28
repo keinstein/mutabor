@@ -1,0 +1,238 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="de/dc3/classmhArray" kind="class" prot="public">
+    <compoundname>mhArray</compoundname>
+    <includes refid="d6/dd9/mhArray_8h" local="no">mhArray.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="de/dc3/classmhArray_1a03315c047295c8068e4d276cb423f404" prot="protected" static="no" mutable="no">
+        <type>baseType</type>
+        <definition>baseType mhArray&lt; T &gt;::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" line="37" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="de/dc3/classmhArray_1a7cc8f527b9da05b16e1ca167dfad66a7" compoundref="d6/dd9/mhArray_8h" startline="43" endline="43">mhArray&lt; T &gt;::Add</referencedby>
+        <referencedby refid="de/dc3/classmhArray_1ade00f5e65287ca015266a6d7df9782aa" compoundref="d6/dd9/mhArray_8h" startline="46" endline="46">mhArray&lt; T &gt;::AddAt</referencedby>
+        <referencedby refid="de/dc3/classmhArray_1a9e6ba7ab9f28c3031d9a1d6f95039227" compoundref="d6/dd9/mhArray_8h" startline="45" endline="45">mhArray&lt; T &gt;::Destroy</referencedby>
+        <referencedby refid="de/dc3/classmhArray_1a328f487806888e768eb2ccf39ea406b0" compoundref="d6/dd9/mhArray_8h" startline="42" endline="42">mhArray&lt; T &gt;::Flush</referencedby>
+        <referencedby refid="de/dc3/classmhArray_1a02a0939f4e987e6e7c4559e28514c26b" compoundref="d6/dd9/mhArray_8h" startline="41" endline="41">mhArray&lt; T &gt;::GetItemsInContainer</referencedby>
+        <referencedby refid="de/dc3/classmhArray_1aa2e9062d4583fcd3078d5b879fcf8baa" compoundref="d6/dd9/mhArray_8h" startline="44" endline="44">mhArray&lt; T &gt;::operator[]</referencedby>
+        <referencedby refid="de/dc3/classmhArray_1a521cd5c066d6766936c3a4703688da24" compoundref="d6/dd9/mhArray_8h" startline="47" endline="47">mhArray&lt; T &gt;::RemoveEntry</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="de/dc3/classmhArray_1a4dbcaf0cf11d635b8e6fda45d704710f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mhArray&lt; T &gt;::WX_DEFINE_ARRAY_INT</definition>
+        <argsstring>(BYTE, baseType)</argsstring>
+        <name>WX_DEFINE_ARRAY_INT</name>
+        <param>
+          <type>BYTE</type>
+        </param>
+        <param>
+          <type>baseType</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" line="36" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/dc3/classmhArray_1a42bdb25328053bac8bf7a70dfdac075f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mhArray&lt; T &gt;::mhArray</definition>
+        <argsstring>(int WXUNUSED(i), int WXUNUSED(j), int WXUNUSED(k))</argsstring>
+        <name>mhArray</name>
+        <param>
+          <type>int </type>
+          <declname>WXUNUSED</declname>
+          <array>i</array>
+        </param>
+        <param>
+          <type>int </type>
+          <declname>WXUNUSED</declname>
+          <array>j</array>
+        </param>
+        <param>
+          <type>int </type>
+          <declname>WXUNUSED</declname>
+          <array>k</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" line="39" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" bodystart="39" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="de/dc3/classmhArray_1abb590a15944da635ba094c587b346184" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mhArray&lt; T &gt;::~mhArray</definition>
+        <argsstring>()</argsstring>
+        <name>~mhArray</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" line="40" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="de/dc3/classmhArray_1a02a0939f4e987e6e7c4559e28514c26b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t mhArray&lt; T &gt;::GetItemsInContainer</definition>
+        <argsstring>() const </argsstring>
+        <name>GetItemsInContainer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" line="41" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" bodystart="41" bodyend="41"/>
+        <references refid="de/dc3/classmhArray_1a03315c047295c8068e4d276cb423f404" compoundref="d6/dd9/mhArray_8h" startline="37">mhArray&lt; T &gt;::data</references>
+      </memberdef>
+      <memberdef kind="function" id="de/dc3/classmhArray_1a328f487806888e768eb2ccf39ea406b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mhArray&lt; T &gt;::Flush</definition>
+        <argsstring>()</argsstring>
+        <name>Flush</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" line="42" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" bodystart="42" bodyend="42"/>
+        <references refid="de/dc3/classmhArray_1a03315c047295c8068e4d276cb423f404" compoundref="d6/dd9/mhArray_8h" startline="37">mhArray&lt; T &gt;::data</references>
+      </memberdef>
+      <memberdef kind="function" id="de/dc3/classmhArray_1a7cc8f527b9da05b16e1ca167dfad66a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mhArray&lt; T &gt;::Add</definition>
+        <argsstring>(T t)</argsstring>
+        <name>Add</name>
+        <param>
+          <type>T</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" line="43" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" bodystart="43" bodyend="43"/>
+        <references refid="de/dc3/classmhArray_1a03315c047295c8068e4d276cb423f404" compoundref="d6/dd9/mhArray_8h" startline="37">mhArray&lt; T &gt;::data</references>
+      </memberdef>
+      <memberdef kind="function" id="de/dc3/classmhArray_1aa2e9062d4583fcd3078d5b879fcf8baa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T&amp; mhArray&lt; T &gt;::operator[]</definition>
+        <argsstring>(size_t uiIndex) const </argsstring>
+        <name>operator[]</name>
+        <param>
+          <type>size_t</type>
+          <declname>uiIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" line="44" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" bodystart="44" bodyend="44"/>
+        <references refid="de/dc3/classmhArray_1a03315c047295c8068e4d276cb423f404" compoundref="d6/dd9/mhArray_8h" startline="37">mhArray&lt; T &gt;::data</references>
+      </memberdef>
+      <memberdef kind="function" id="de/dc3/classmhArray_1a9e6ba7ab9f28c3031d9a1d6f95039227" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mhArray&lt; T &gt;::Destroy</definition>
+        <argsstring>(size_t uiIndex)</argsstring>
+        <name>Destroy</name>
+        <param>
+          <type>size_t</type>
+          <declname>uiIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" line="45" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" bodystart="45" bodyend="45"/>
+        <references refid="de/dc3/classmhArray_1a03315c047295c8068e4d276cb423f404" compoundref="d6/dd9/mhArray_8h" startline="37">mhArray&lt; T &gt;::data</references>
+      </memberdef>
+      <memberdef kind="function" id="de/dc3/classmhArray_1ade00f5e65287ca015266a6d7df9782aa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mhArray&lt; T &gt;::AddAt</definition>
+        <argsstring>(T t, size_t uiIndex)</argsstring>
+        <name>AddAt</name>
+        <param>
+          <type>T</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>uiIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" line="46" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" bodystart="46" bodyend="46"/>
+        <references refid="de/dc3/classmhArray_1a03315c047295c8068e4d276cb423f404" compoundref="d6/dd9/mhArray_8h" startline="37">mhArray&lt; T &gt;::data</references>
+      </memberdef>
+      <memberdef kind="function" id="de/dc3/classmhArray_1a521cd5c066d6766936c3a4703688da24" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mhArray&lt; T &gt;::RemoveEntry</definition>
+        <argsstring>(size_t uiIndex)</argsstring>
+        <name>RemoveEntry</name>
+        <param>
+          <type>size_t</type>
+          <declname>uiIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" line="47" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" bodystart="47" bodyend="47"/>
+        <references refid="de/dc3/classmhArray_1a03315c047295c8068e4d276cb423f404" compoundref="d6/dd9/mhArray_8h" startline="37">mhArray&lt; T &gt;::data</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" line="34" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" bodystart="34" bodyend="48"/>
+    <listofallmembers>
+      <member refid="de/dc3/classmhArray_1a7cc8f527b9da05b16e1ca167dfad66a7" prot="public" virt="non-virtual"><scope>mhArray</scope><name>Add</name></member>
+      <member refid="de/dc3/classmhArray_1ade00f5e65287ca015266a6d7df9782aa" prot="public" virt="non-virtual"><scope>mhArray</scope><name>AddAt</name></member>
+      <member refid="de/dc3/classmhArray_1a03315c047295c8068e4d276cb423f404" prot="protected" virt="non-virtual"><scope>mhArray</scope><name>data</name></member>
+      <member refid="de/dc3/classmhArray_1a9e6ba7ab9f28c3031d9a1d6f95039227" prot="public" virt="non-virtual"><scope>mhArray</scope><name>Destroy</name></member>
+      <member refid="de/dc3/classmhArray_1a328f487806888e768eb2ccf39ea406b0" prot="public" virt="non-virtual"><scope>mhArray</scope><name>Flush</name></member>
+      <member refid="de/dc3/classmhArray_1a02a0939f4e987e6e7c4559e28514c26b" prot="public" virt="non-virtual"><scope>mhArray</scope><name>GetItemsInContainer</name></member>
+      <member refid="de/dc3/classmhArray_1a42bdb25328053bac8bf7a70dfdac075f" prot="public" virt="non-virtual"><scope>mhArray</scope><name>mhArray</name></member>
+      <member refid="de/dc3/classmhArray_1aa2e9062d4583fcd3078d5b879fcf8baa" prot="public" virt="non-virtual"><scope>mhArray</scope><name>operator[]</name></member>
+      <member refid="de/dc3/classmhArray_1a521cd5c066d6766936c3a4703688da24" prot="public" virt="non-virtual"><scope>mhArray</scope><name>RemoveEntry</name></member>
+      <member refid="de/dc3/classmhArray_1a4dbcaf0cf11d635b8e6fda45d704710f" prot="protected" virt="non-virtual"><scope>mhArray</scope><name>WX_DEFINE_ARRAY_INT</name></member>
+      <member refid="de/dc3/classmhArray_1abb590a15944da635ba094c587b346184" prot="public" virt="non-virtual"><scope>mhArray</scope><name>~mhArray</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

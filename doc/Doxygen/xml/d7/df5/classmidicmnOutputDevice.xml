@@ -1,0 +1,541 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d7/df5/classmidicmnOutputDevice" kind="class" prot="public">
+    <compoundname>midicmnOutputDevice</compoundname>
+    <basecompoundref refid="dd/df5/classmutabor_1_1CommonMidiOutput" prot="public" virt="non-virtual">mutabor::CommonMidiOutput&lt; mutabor::DebugMidiOutputProvider, mutabor::OutputDeviceClass &gt;</basecompoundref>
+    <includes refid="dd/d56/midicmnTest_8h" local="no">midicmnTest.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="d7/df5/classmidicmnOutputDevice_1a7a55edf43caaf190eed9cfed11c1e884" prot="public" static="no">
+        <type><ref refid="dd/df5/classmutabor_1_1CommonMidiOutput" kindref="compound">mutabor::CommonMidiOutput</ref>&lt; <ref refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider" kindref="compound">mutabor::DebugMidiOutputProvider</ref>, <ref refid="d2/d2f/classmutabor_1_1OutputDeviceClass" kindref="compound">mutabor::OutputDeviceClass</ref> &gt;</type>
+        <definition>typedef mutabor::CommonMidiOutput&lt;mutabor::DebugMidiOutputProvider,mutabor::OutputDeviceClass&gt; midicmnOutputDevice::base</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="68" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d7/df5/classmidicmnOutputDevice_1a1a45047e5e2035c268209b9fe55f8d14" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>midicmnOutputDevice::midicmnOutputDevice</definition>
+        <argsstring>(wxString name, int id=-1, int bendingRange=2)</argsstring>
+        <name>midicmnOutputDevice</name>
+        <param>
+          <type>wxString</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+          <defval>-1</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>bendingRange</declname>
+          <defval>2</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="70" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="70" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/df5/classmidicmnOutputDevice_1ad625ce420ada0a4e4be0acd1fc1b70eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>midicmnOutputDevice::~midicmnOutputDevice</definition>
+        <argsstring>()</argsstring>
+        <name>~midicmnOutputDevice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="73" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="73" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/df5/classmidicmnOutputDevice_1a058cd6eda4c96426e7f8e2ff50bce793" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider" kindref="compound">mutabor::DebugMidiOutputProvider</ref> &amp;</type>
+        <definition>mutabor::DebugMidiOutputProvider&amp; midicmnOutputDevice::getOut</definition>
+        <argsstring>()</argsstring>
+        <name>getOut</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="74" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="74" bodyend="74"/>
+        <references refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab9e21db48481b66774b6f439d964601d" compoundref="de/d21/midicmn_8h" startline="753">mutabor::CommonMidiOutput&lt; mutabor::DebugMidiOutputProvider, mutabor::OutputDeviceClass &gt;::Out</references>
+        <referencedby refid="d5/dee/group__route_1gacbc442186afd2221606b8c9178bc5094" compoundref="d8/d59/midicmnTest_8cpp" startline="955" endline="1325">CommonMidiInputTest::testGlobalPanic</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga1e95b1be14158e0e6848202acec95977" compoundref="d8/d59/midicmnTest_8cpp" startline="83" endline="327">CommonMidiOutputTest::testNoteOnOff</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga28763107ca50051640ed4834f627ffdc" compoundref="d8/d59/midicmnTest_8cpp" startline="599" endline="953">CommonMidiInputTest::testPanic</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d7/df5/classmidicmnOutputDevice_1a74ddae86c4d87adb7aa78156923c4fb4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void midicmnOutputDevice::Save</definition>
+        <argsstring>(mutabor::tree_storage &amp;)</argsstring>
+        <name>Save</name>
+        <reimplements refid="d5/dee/group__route_1ga3e21f1fc02103f0d7a43504abff28a07">Save</reimplements>
+        <param>
+          <type><ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">mutabor::tree_storage</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Save current device settings in a tree storage. </para>        </briefdescription>
+        <detaileddescription>
+<para>config (tree_storage) storage class, where the data will be saved. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="77" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/df5/classmidicmnOutputDevice_1a3730c855ba15c074d8f23a963bc2ce45" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void midicmnOutputDevice::Save</definition>
+        <argsstring>(mutabor::tree_storage &amp;, const mutabor::RouteClass *)</argsstring>
+        <name>Save</name>
+        <reimplements refid="d5/dee/group__route_1ga3e5d36bc704b3de28f788e011fd19c73">Save</reimplements>
+        <param>
+          <type><ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">mutabor::tree_storage</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1ga1883da1b1be8d9e8d11d091c04a37521" kindref="member">mutabor::RouteClass</ref> *</type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+<para>Save route settings (filter settings) for a given route. </para>        </briefdescription>
+        <detaileddescription>
+<para>Some route settings (e.g. filter settings) are device type specific. This function saves them in a tree storage.  config (tree_storage *) Storage class, where the data will be saved.  route (Route) Route whos data shall be saved. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="78" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/df5/classmidicmnOutputDevice_1a0816135f6d303428c9a7bafec0add5d1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void midicmnOutputDevice::Load</definition>
+        <argsstring>(mutabor::tree_storage &amp;)</argsstring>
+        <name>Load</name>
+        <reimplements refid="d5/dee/group__route_1ga729fbbd6717f17a9c8fbe0750b0e1b3c">Load</reimplements>
+        <param>
+          <type><ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">mutabor::tree_storage</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Load current device settings from a tree storage. </para>        </briefdescription>
+        <detaileddescription>
+<para>config (tree_storage) storage class, where the data will be loaded from. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="79" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="79" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/df5/classmidicmnOutputDevice_1a45475f0121b6327cc61a265f17800e2a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void midicmnOutputDevice::Load</definition>
+        <argsstring>(mutabor::tree_storage &amp;, mutabor::RouteClass *)</argsstring>
+        <name>Load</name>
+        <reimplements refid="d5/dee/group__route_1ga4af91d72a0b616012d29405fb7fc9b50">Load</reimplements>
+        <param>
+          <type><ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">mutabor::tree_storage</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga1883da1b1be8d9e8d11d091c04a37521" kindref="member">mutabor::RouteClass</ref> *</type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+<para>Load route settings (filter settings) for a given route. </para>        </briefdescription>
+        <detaileddescription>
+<para>Some route settings (e.g. filter settings) are device type specific. This function loads them from a tree storage.  config (tree_storage *) Storage class, where the data will be restored from.  route (Route) Route whos data shall be loaded. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="80" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/df5/classmidicmnOutputDevice_1abedb6e15d71c68e1e9e071a6a8a7a453" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void midicmnOutputDevice::AddTime</definition>
+        <argsstring>(frac)</argsstring>
+        <name>AddTime</name>
+        <param>
+          <type><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="81" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="81" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/df5/classmidicmnOutputDevice_1a6cecbe585b2de6190283752976e306c2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>int</type>
+        <definition>int midicmnOutputDevice::GetMaxChannel</definition>
+        <argsstring>() const </argsstring>
+        <name>GetMaxChannel</name>
+        <reimplements refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a1a3c73aed338a413e51e993a52d72842">GetMaxChannel</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="82" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="82" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/df5/classmidicmnOutputDevice_1a31c37690874a0b090b0747fd0e821464" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>int</type>
+        <definition>int midicmnOutputDevice::GetMinChannel</definition>
+        <argsstring>() const </argsstring>
+        <name>GetMinChannel</name>
+        <reimplements refid="dd/df5/classmutabor_1_1CommonMidiOutput_1aae9f66b57cda634544bbcd5c903936c1">GetMinChannel</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="83" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="83" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/df5/classmidicmnOutputDevice_1a06022e0b9a4696860bb03ce8a57c0171" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool midicmnOutputDevice::Check</definition>
+        <argsstring>(mutString s, int line=-1, mutString filename=_T(__FILE__))</argsstring>
+        <name>Check</name>
+        <param>
+          <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>line</declname>
+          <defval>-1</defval>
+        </param>
+        <param>
+          <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+          <declname>filename</declname>
+          <defval>_T(__FILE__)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="84" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="84" bodyend="94"/>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1ab5a9dfd1b091ffe8a1448b6d9ca7d7b0" compoundref="de/d21/midicmn_8h" startline="483" endline="483">mutabor::DebugMidiOutputProvider::ClearData</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" compoundref="d1/d73/Defs_8h" startline="169">mutString</references>
+        <references refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab9e21db48481b66774b6f439d964601d" compoundref="de/d21/midicmn_8h" startline="753">mutabor::CommonMidiOutput&lt; mutabor::DebugMidiOutputProvider, mutabor::OutputDeviceClass &gt;::Out</references>
+        <referencedby refid="d5/dee/group__route_1ga2a92d096b48cecf841988b6c1263ca31" compoundref="d9/d99/DevMidFTest_8cpp" startline="43" endline="602">InputMidiFileTest::testBatchPlay1</referencedby>
+        <referencedby refid="d5/dee/group__route_1gab68c1c36d9a962246c5f1363d25e3aa7" compoundref="d9/d99/DevMidFTest_8cpp" startline="946" endline="1287">InputMidiFileTest::testBug019010</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4c70a75c2ee66f5074b6db03f318347b" compoundref="d9/d99/DevMidFTest_8cpp" startline="605" endline="943">InputMidiFileTest::testBug019010_2</referencedby>
+        <referencedby refid="d5/dee/group__route_1gacbc442186afd2221606b8c9178bc5094" compoundref="d8/d59/midicmnTest_8cpp" startline="955" endline="1325">CommonMidiInputTest::testGlobalPanic</referencedby>
+        <referencedby refid="d5/dee/group__route_1gabcdead0d5b9631a98363a3df4fe63f89" compoundref="d8/d59/midicmnTest_8cpp" startline="329" endline="541">CommonMidiOutputTest::testMoreNotesThanChannels</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga1e95b1be14158e0e6848202acec95977" compoundref="d8/d59/midicmnTest_8cpp" startline="83" endline="327">CommonMidiOutputTest::testNoteOnOff</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga28763107ca50051640ed4834f627ffdc" compoundref="d8/d59/midicmnTest_8cpp" startline="599" endline="953">CommonMidiInputTest::testPanic</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>not for headers </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3287">
+        <label>mutabor::CommonTypedDeviceAPI&lt; OutputDeviceClass &gt;</label>
+        <link refid="d9/dbf/classmutabor_1_1CommonTypedDeviceAPI"/>
+        <childnode refid="3288" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3286">
+        <label>mutabor::OutputDeviceClass</label>
+        <link refid="d2/d2f/classmutabor_1_1OutputDeviceClass"/>
+        <childnode refid="3287" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3288">
+        <label>mutabor::Device</label>
+        <link refid="db/db4/classmutabor_1_1Device"/>
+      </node>
+      <node id="3285">
+        <label>mutabor::CommonMidiOutput&lt; mutabor::DebugMidiOutputProvider, mutabor::OutputDeviceClass &gt;</label>
+        <link refid="dd/df5/classmutabor_1_1CommonMidiOutput"/>
+        <childnode refid="3286" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3284">
+        <label>midicmnOutputDevice</label>
+        <link refid="d7/df5/classmidicmnOutputDevice"/>
+        <childnode refid="3285" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3292">
+        <label>mutabor::CommonTypedDeviceAPI&lt; OutputDeviceClass &gt;</label>
+        <link refid="d9/dbf/classmutabor_1_1CommonTypedDeviceAPI"/>
+        <childnode refid="3293" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3303">
+        <label>mutabor::channel_queue_template&lt; unsigned char, 16 &gt;</label>
+        <link refid="d3/d85/classmutabor_1_1channel__queue__template"/>
+        <childnode refid="3304" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3305" relation="usage">
+          <edgelabel>last_sustained</edgelabel>
+          <edgelabel>first_free</edgelabel>
+        </childnode>
+      </node>
+      <node id="3299">
+        <label>mutabor::TAK</label>
+        <link refid="d9/d2a/structmutabor_1_1TAK"/>
+        <childnode refid="3300" relation="usage">
+          <edgelabel>outkey</edgelabel>
+        </childnode>
+      </node>
+      <node id="3296">
+        <label>T</label>
+      </node>
+      <node id="3294">
+        <label>mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;</label>
+        <link refid="db/d05/classmutabor_1_1TRouteClass"/>
+        <childnode refid="3295" relation="usage">
+          <edgelabel>routeList</edgelabel>
+        </childnode>
+        <childnode refid="3297" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="3297">
+        <label>mutabor::idtype&lt; mutabor::TRouteClass&lt; InputDevice, OutputDevice &gt; &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="3291">
+        <label>mutabor::OutputDeviceClass</label>
+        <link refid="d2/d2f/classmutabor_1_1OutputDeviceClass"/>
+        <childnode refid="3292" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3298">
+        <label>mutabor::idtype&lt; mutabor::Device &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="3293">
+        <label>mutabor::Device</label>
+        <link refid="db/db4/classmutabor_1_1Device"/>
+        <childnode refid="3294" relation="usage">
+          <edgelabel>routes</edgelabel>
+        </childnode>
+        <childnode refid="3298" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="3295">
+        <label>std::list&lt; T &gt;</label>
+        <childnode refid="3296" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="3290">
+        <label>mutabor::CommonMidiOutput&lt; mutabor::DebugMidiOutputProvider, mutabor::OutputDeviceClass &gt;</label>
+        <link refid="dd/df5/classmutabor_1_1CommonMidiOutput"/>
+        <childnode refid="3291" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3299" relation="usage">
+          <edgelabel>ton_auf_kanal</edgelabel>
+        </childnode>
+        <childnode refid="3301" relation="usage">
+          <edgelabel>Cd</edgelabel>
+        </childnode>
+        <childnode refid="3303" relation="usage">
+          <edgelabel>channel_queue</edgelabel>
+        </childnode>
+        <childnode refid="3306" relation="usage">
+          <edgelabel>Out</edgelabel>
+        </childnode>
+      </node>
+      <node id="3300">
+        <label>mutabor::pitch_bend_type</label>
+        <link refid="dd/d7d/classmutabor_1_1pitch__bend__type"/>
+      </node>
+      <node id="3301">
+        <label>mutabor::ChannelData</label>
+        <link refid="d4/d4a/classmutabor_1_1ChannelData"/>
+        <childnode refid="3302" relation="usage">
+          <edgelabel>controller_changed</edgelabel>
+          <edgelabel>controller</edgelabel>
+        </childnode>
+      </node>
+      <node id="3305">
+        <label>std::vector&lt; T &gt;::iterator</label>
+      </node>
+      <node id="3304">
+        <label>std::vector&lt; unsigned char &gt;</label>
+        <childnode refid="3296" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="3306">
+        <label>mutabor::DebugMidiOutputProvider</label>
+        <link refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider"/>
+        <childnode refid="3293" relation="usage">
+          <edgelabel>device</edgelabel>
+        </childnode>
+      </node>
+      <node id="3289">
+        <label>midicmnOutputDevice</label>
+        <link refid="d7/df5/classmidicmnOutputDevice"/>
+        <childnode refid="3290" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3302">
+        <label>std::vector&lt; int &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="66" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="66" bodyend="95"/>
+    <listofallmembers>
+      <member refid="d5/dee/group__route_1ga310387a6e3aebf00b508887391d82b3d" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Add</name></member>
+      <member refid="d7/df5/classmidicmnOutputDevice_1abedb6e15d71c68e1e9e071a6a8a7a453" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>AddTime</name></member>
+      <member refid="d5/dee/group__route_1ga0500b92557be2d528f6f75f4537f7b88" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>AppendToDeviceList</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ae895c695b6a7d73a5b2f85c6810ded48" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>bank_mode</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1affbbcda1dbbe3827830cbc52a306f3ef" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>bank_type</name></member>
+      <member refid="d7/df5/classmidicmnOutputDevice_1a7a55edf43caaf190eed9cfed11c1e884" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>base</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a42b4b2d9d7b54c091549df13b162e143" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>bending_range</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ae6dd4208656f4d3a2777d44b2aebd0ac" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>Cd</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a22cd500e998cebb59515880fcacbbc9d" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>channel_queue</name></member>
+      <member refid="d7/df5/classmidicmnOutputDevice_1a06022e0b9a4696860bb03ce8a57c0171" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>Check</name></member>
+      <member refid="d5/dee/group__route_1ga6a549b9131f3f5f7322b89bfa941de4a" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>ClearDeviceList</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab263ae394691352ce2878bedc397edae" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Close</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a23d53d4afb4118ec6bbf370ba9a5eee4" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>CommonMidiOutput</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a8195e1e24a9333701d628185ea89a1f1" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>CommonMidiOutput</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a8cf3412e4458875039ecab71e676066b" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>CommonMidiOutput</name></member>
+      <member refid="d5/dee/group__route_1ga9787ad2f4d97cd1c4e616a433d284b13" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>CommonTypedDeviceAPI</name></member>
+      <member refid="d5/dee/group__route_1ga3d9ec96127224d9c481d207a2a315f0e" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>CommonTypedDeviceAPI</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ac6472e7bef2ea2f15f78c44f45916e9e" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>controller</name></member>
+      <member refid="d5/dee/group__route_1gaeba938951676843639bed5fd51a2208e" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>Controller</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1aa34679ed2cc18306c52adf05acef66c5" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>CopyProgramChange</name></member>
+      <member refid="d5/dee/group__route_1gad212bd763c21f167dc9c6523033d2b62" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Destroy</name></member>
+      <member refid="d5/dee/group__route_1ga5a34853b39a1fe85e2420e262dfb0f6a" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>Device</name></member>
+      <member refid="d5/dee/group__route_1gad6aa54a6af79287ce009e35bc448da2b" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>deviceList</name></member>
+      <member refid="d5/dee/group__route_1gaebc414494d4db2ad9f687eb2b3d43a14" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>DevicePtr</name></member>
+      <member refid="d5/dee/group__route_1ga1274fa7f3bc0cd8f6d2a44aac8e42bb3" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>devidtype</name></member>
+      <member refid="d5/dee/group__route_1gabb922714830f90c1af5bb9f5fe4ce615" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>dirty</name></member>
+      <member refid="d5/dee/group__route_1ga76cdbc43252351386362bfd14c62cf45" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>Dirty</name></member>
+      <member refid="d5/dee/group__route_1ga3ff0800ee50f8cf48a2d991365e56e0b" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>DisconnectFromAll</name></member>
+      <member refid="d5/dee/group__route_1gafe2f29681da76de312218331ac168115" prot="protected" virt="pure-virtual"><scope>midicmnOutputDevice</scope><name>do_AddTime</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a1090b361f27e9e68e40437012f82ec3b" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_Controller</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a695084d69d0dd0b194bac47b74cfa21f" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_GetChannel</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a1763508a1c9abc965829cd1f0793f00d" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_Gis</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1acffddd2d43ce718f15b4901a33d4a09f" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_MidiOut</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a17b57dcfadf7b6b599799d58e8b87620" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_MidiOut</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ac4ebdd04cc1b0b2ca5bddd9283d77464" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_NoteOff</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a23dfccd2e97e799cd8b32dea22306e5c" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_NoteOn</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a70648241a951d4f79aa3eb3aa9f83122" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_Open</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1af8efd78cfb3c9f9f744f49d899a77bc4" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_Panic</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a3e9beb053705ae8a01aee1866f7d1304" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_Quiet</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a8295cae4cc60dc36db5fb23c69218b94" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>do_SendBendingRange</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a3317040cafaa0eaf568c263dd19ad7d9" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>do_SplitOut</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a219c31648d7a9a7e425ee57bb7873e59" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>do_UpdateControllers</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ae068c3fe86a1c768f15c0249cdfb11ea" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_UpdateTones</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1abf8c289438dc78db52b32f807ad5d0b7" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>EmergencyFindChannel</name></member>
+      <member refid="d5/dee/group__route_1ga40c9efe47aabb03bc924cdec9aff95fc" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>FindInDeviceList</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a735ce2918b5b6c2542c754d6db1a504e" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>fix_bend</name></member>
+      <member refid="d5/dee/group__route_1ga6d853cde85216e56f3d74d20ff9556b2" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>get_routefile_id</name></member>
+      <member refid="d5/dee/group__route_1ga48afafba127beb4c42f6a1a9bceb2148" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>get_session_id</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab2f6cee54c89bc6c52c1ee5746cb6613" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>GetBendingRange</name></member>
+      <member refid="d5/dee/group__route_1gaea242193cb0d834e89a15cefc38e79c9" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>GetChannel</name></member>
+      <member refid="d5/dee/group__route_1ga0003618beb50da006e94e57baf9f7afa" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>GetDevice</name></member>
+      <member refid="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>GetDeviceList</name></member>
+      <member refid="d7/df5/classmidicmnOutputDevice_1a6cecbe585b2de6190283752976e306c2" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>GetMaxChannel</name></member>
+      <member refid="d7/df5/classmidicmnOutputDevice_1a31c37690874a0b090b0747fd0e821464" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>GetMinChannel</name></member>
+      <member refid="d5/dee/group__route_1ga85133d32c2a68f1a343aeab80bbd92f4" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>GetMode</name></member>
+      <member refid="d5/dee/group__route_1gabacd3a9aa739a6e21a737feeb9b9e9c9" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>GetName</name></member>
+      <member refid="d7/df5/classmidicmnOutputDevice_1a058cd6eda4c96426e7f8e2ff50bce793" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>getOut</name></member>
+      <member refid="d5/dee/group__route_1ga88774ccf4e5c5dfb2646e1a95c1719d6" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>GetRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga15e9894fe4909c6aadff876f323d3384" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>GetRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga88bc3737a5843795342bfa75acb85391" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>GetType</name></member>
+      <member refid="d5/dee/group__route_1gae47a80850f70881e2f5d56160c8e0233" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>GetTypeName</name></member>
+      <member refid="d5/dee/group__route_1ga6b40f3affafc4ecaf39ac957e2c74cd3" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>getUserData</name></member>
+      <member refid="d5/dee/group__route_1ga8aecda816c5c7f6ce396c65912840edf" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>Gis</name></member>
+      <member refid="d5/dee/group__route_1gga1274fa7f3bc0cd8f6d2a44aac8e42bb3aa5dc2f5a43d36c391b773a6adc16e948" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>IDTypeFile</name></member>
+      <member refid="d5/dee/group__route_1gga1274fa7f3bc0cd8f6d2a44aac8e42bb3a57119faede41f9f36b4547aa812e42aa" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>IDTypeHardware</name></member>
+      <member refid="d5/dee/group__route_1gga1274fa7f3bc0cd8f6d2a44aac8e42bb3af953940c733081b6e3dad32c6d807943" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>IDTypeSession</name></member>
+      <member refid="d5/dee/group__route_1ga0129007d64b3aaf687dc34665d14b399" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>InitializeIds</name></member>
+      <member refid="d5/dee/group__route_1ga479bbdd0212790e89bf71dc227ab2303" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>IsDirty</name></member>
+      <member refid="d5/dee/group__route_1ga60c8451e058e88b0a5e8bc932e66089f" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>IsInDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga219acefe8692f1b3e00181f97c9c866f" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>IsOpen</name></member>
+      <member refid="d5/dee/group__route_1ga1cdc51c75faaeaec8d2b4cbb40d36e3b" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>isOpen</name></member>
+      <member refid="d5/dee/group__route_1gab0ae031e02b18ee00f5794736fc135dd" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>listtype</name></member>
+      <member refid="d7/df5/classmidicmnOutputDevice_1a0816135f6d303428c9a7bafec0add5d1" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Load</name></member>
+      <member refid="d7/df5/classmidicmnOutputDevice_1a45475f0121b6327cc61a265f17800e2a" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Load</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1affbbcda1dbbe3827830cbc52a306f3efa2655c11b15f302ba2faa29a30b4c81bb" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>lsb_first</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1affbbcda1dbbe3827830cbc52a306f3efae05b8567ceb4fdad6893771c706c1c97" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>lsb_only</name></member>
+      <member refid="d7/df5/classmidicmnOutputDevice_1a1a45047e5e2035c268209b9fe55f8d14" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>midicmnOutputDevice</name></member>
+      <member refid="d5/dee/group__route_1ga97e4ddbae9a9d8097038c07a7b52046e" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>MidiOut</name></member>
+      <member refid="d5/dee/group__route_1gae48defd6215d421f119d321b3c20c219" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>MidiOut</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab44eec9359669a42b6430b31fea22192" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>midiprovider</name></member>
+      <member refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>Mode</name></member>
+      <member refid="d5/dee/group__route_1ga1e90f04620e908e170e66539c8f9b47a" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>MoveInList</name></member>
+      <member refid="d5/dee/group__route_1ga143bc287529a671195a80dc3fbf4d3d4" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>MoveRoutes</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1affbbcda1dbbe3827830cbc52a306f3efa5255d59593d4d4bf8918aff6f03300cf" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>msb_first</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1affbbcda1dbbe3827830cbc52a306f3efa775048a28fc3f4070e18289b94b452e7" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>msb_only</name></member>
+      <member refid="d5/dee/group__route_1ga86a80a0d59ab5740c7f0eb708c1b6e76" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>Name</name></member>
+      <member refid="d5/dee/group__route_1gab9de5728ebbc88f38204e91e2d7c1a78" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>NeedsRealTime</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a4ba17d91065117deb53669556036910c" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>nKeyOn</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ac007ddc222a589470ec39707ceac8759" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>note_off</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1af0aae5f498d21afaad760bbce5cc0c33" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>note_on</name></member>
+      <member refid="d5/dee/group__route_1gada45d2195fdab9d484c8614097d0dd77" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>NoteOff</name></member>
+      <member refid="d5/dee/group__route_1ga99cfd79e61d54e12b804a7cc3ecbfd89" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>NoteOn</name></member>
+      <member refid="d5/dee/group__route_1ga121ded40710df3f74a6150082999597b" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>nRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga1e7ff931fc0fbd026f00d07b11924c7d" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Open</name></member>
+      <member refid="d5/dee/group__route_1ga7cafe18237e838d40bbb9efe90484066" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>operator const thistype &amp;</name></member>
+      <member refid="d5/dee/group__route_1gad379062646f2315b58267c314cdf1c49" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>operator thistype &amp;</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab9e21db48481b66774b6f439d964601d" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>Out</name></member>
+      <member refid="d5/dee/group__route_1ga8b24cbec4d6ce0820a121362a716aaf1" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>OutputDeviceClass</name></member>
+      <member refid="d5/dee/group__route_1ga16b47649cb0a3e37ff8d60e439a1e941" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>OutputDeviceClass</name></member>
+      <member refid="d5/dee/group__route_1gac77e443b48248e49dc70250edef9cd4e" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Panic</name></member>
+      <member refid="d5/dee/group__route_1ga877980d75727478edae304ea0b513324" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Pause</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a61000ffa761d3b1ca8a1bb3156c83db1" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>pitch_and_bend</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a2cfe10d2dd44591bbcf715873fe9ce45" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>pitch_and_bend</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a34906a20e5c41af5979db58656b6a181" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>pitch_bend</name></member>
+      <member refid="d5/dee/group__route_1ga8d7e66cd428ad6bc8d82bfd5fde5ab4b" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Play</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a2476082a0c5bdc67c3d0abf8b7d99a66" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>program_change</name></member>
+      <member refid="d5/dee/group__route_1ga294ad7f8b724e44e7fde7f87157046ee" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>Quiet</name></member>
+      <member refid="d5/dee/group__route_1ga005dc1a3518ecb0bfb408cf058319d7a" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>ReadData</name></member>
+      <member refid="d5/dee/group__route_1ga75c2c1c9312c7fd3b0ac67482bc3f3b7" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Remove</name></member>
+      <member refid="d5/dee/group__route_1gaea9507768e02eb39aa56acde9fbb0d75" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>RemoveFromDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga2875373929d294d6c51991238407f542" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Replace</name></member>
+      <member refid="d5/dee/group__route_1gaa9515535e69b65e614b048f0c417024e" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>routefile_id</name></member>
+      <member refid="d5/dee/group__route_1ga0050f060be5dcbdaa7473c97e675140c" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>routes</name></member>
+      <member refid="d5/dee/group__route_1ga01c3f19123c1f42d8f1a2d405c3d21e2" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>runtime_error</name></member>
+      <member refid="d5/dee/group__route_1gac5f5412fc2ea0b0b5edbd199353309c9" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>runtime_error</name></member>
+      <member refid="d7/df5/classmidicmnOutputDevice_1a74ddae86c4d87adb7aa78156923c4fb4" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Save</name></member>
+      <member refid="d7/df5/classmidicmnOutputDevice_1a3730c855ba15c074d8f23a963bc2ce45" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Save</name></member>
+      <member refid="d5/dee/group__route_1ga25dab27656e5e9960b90178f5365c890" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>session_id</name></member>
+      <member refid="d5/dee/group__route_1ga33283f3fbd5c5a384980e320223fca94" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>set_file_id</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a78638ba70064acde4f70314d807d08ef" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>SetBendingRange</name></member>
+      <member refid="d5/dee/group__route_1ga67e80dc8dd7ecc105020ae37eed4bf63" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>SetMode</name></member>
+      <member refid="d5/dee/group__route_1ga5d6f8f7b6518cf74b80d683f69030e2e" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>SetName</name></member>
+      <member refid="d5/dee/group__route_1gaf4269c12f276f471046dd60a6034322f" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>setUserData</name></member>
+      <member refid="d5/dee/group__route_1ga70164b668155aa5907d04a56c39c85c0" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Stop</name></member>
+      <member refid="d5/dee/group__route_1gaf592e59b9c1a9cdcc036f6a5a4f197eb" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>thisptr</name></member>
+      <member refid="d5/dee/group__route_1gae86c4bcadc561ffa2ba18b641a7dc667" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>thisptr</name></member>
+      <member refid="d5/dee/group__route_1gae62e6954f27bdff3e405f60aa3a12235" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>thistype</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ad8064aed93c4e5ed23bb5e8dd75f7083" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>ton_auf_kanal</name></member>
+      <member refid="d5/dee/group__route_1ga62782ee9bbed258704f22506993da782" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>TruncateDeviceList</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a8faf145f94e16dbe8c0504a18eb83895" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>UpdateControllers</name></member>
+      <member refid="d5/dee/group__route_1gafc4377bb7c9e5ab07cdb7b1f15ded9db" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>UpdateTones</name></member>
+      <member refid="d5/dee/group__route_1ga3530e30a7c1aa7378ad81a4fae73d90b" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>write_lock</name></member>
+      <member refid="d5/dee/group__route_1gae75382843673e90f40cf3d216faffe42" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>WriteData</name></member>
+      <member refid="d5/dee/group__route_1ga35b63eeb3932c5e938f34239a57825cb" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>~CommonTypedDeviceAPI</name></member>
+      <member refid="d5/dee/group__route_1gaeb8df260fe37691b9c990e5a2eef42fe" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>~Device</name></member>
+      <member refid="d7/df5/classmidicmnOutputDevice_1ad625ce420ada0a4e4be0acd1fc1b70eb" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>~midicmnOutputDevice</name></member>
+      <member refid="d5/dee/group__route_1gaf2a30408568febfb9f0eb4212fa0f314" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>~OutputDeviceClass</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

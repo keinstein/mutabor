@@ -1,0 +1,320 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/wxGUI/Panel.cpp Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_eaae7e9da1b31c6b329e928d72e0e61a.html">wxGUI</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Panel.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d5/d10/Panel_8cpp.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">// ============================================================================</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">// declarations</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// ============================================================================</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">// headers</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d0/d1d/Panel_8h.html">src/wxGUI/Panel.h</a>&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;wx/object.h&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;wx/font.h&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;wx/colour.h&quot;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;wx/settings.h&quot;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &quot;wx/log.h&quot;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &quot;wx/panel.h&quot;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &quot;wx/containr.h&quot;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &quot;wx/sizer.h&quot;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#ifdef __BORLANDC__</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #pragma hdrstop</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">// wxWin macros</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#if wxUSE_EXTENDED_RTTI</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span>WX_DEFINE_FLAGS( MutPanelStyle )</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;wxBEGIN_FLAGS( MutPanelStyle )</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// new style border flags, we put them first to</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// use them for streaming out</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    wxFLAGS_MEMBER(wxBORDER_SIMPLE)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    wxFLAGS_MEMBER(wxBORDER_SUNKEN)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    wxFLAGS_MEMBER(wxBORDER_DOUBLE)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    wxFLAGS_MEMBER(wxBORDER_RAISED)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    wxFLAGS_MEMBER(wxBORDER_STATIC)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    wxFLAGS_MEMBER(wxBORDER_NONE)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// old style border flags</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    wxFLAGS_MEMBER(wxSIMPLE_BORDER)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    wxFLAGS_MEMBER(wxSUNKEN_BORDER)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    wxFLAGS_MEMBER(wxDOUBLE_BORDER)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    wxFLAGS_MEMBER(wxRAISED_BORDER)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    wxFLAGS_MEMBER(wxSTATIC_BORDER)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    wxFLAGS_MEMBER(wxBORDER)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">// standard window styles</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    wxFLAGS_MEMBER(wxTAB_TRAVERSAL)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    wxFLAGS_MEMBER(wxCLIP_CHILDREN)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    wxFLAGS_MEMBER(wxTRANSPARENT_WINDOW)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    wxFLAGS_MEMBER(wxWANTS_CHARS)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    wxFLAGS_MEMBER(wxFULL_REPAINT_ON_RESIZE)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    wxFLAGS_MEMBER(wxALWAYS_SHOW_SB )</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    wxFLAGS_MEMBER(wxVSCROLL)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    wxFLAGS_MEMBER(wxHSCROLL)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;wxEND_FLAGS( MutPanelStyle )</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;IMPLEMENT_DYNAMIC_CLASS_XTI(<a class="code" href="../../df/df2/classMutPanel.html">MutPanel</a>, wxControl,&quot;Panel.<a class="code" href="../../d3/d26/mutgis_8cpp.html#a26506d124b947beae862c007bc8195bb">h</a>&quot;)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;wxBEGIN_PROPERTIES_TABLE(MutPanel)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    wxPROPERTY_FLAGS( WindowStyle , </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                      MutPanelStyle , <span class="keywordtype">long</span> , </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                      SetWindowStyleFlag , GetWindowStyleFlag , </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                      EMPTY_MACROVALUE, 0 <span class="comment">/*flags*/</span> , </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                      wxT(&quot;Helpstring&quot;) , wxT(&quot;group&quot;)) <span class="comment">// style</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">// style wxTAB_TRAVERSAL</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;wxEND_PROPERTIES_TABLE()</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;wxBEGIN_HANDLERS_TABLE(MutPanel)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;wxEND_HANDLERS_TABLE()</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;wxCONSTRUCTOR_5( MutPanel , </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                 wxWindow* , </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                 Parent , </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                 wxWindowID , </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                 Id , </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                 wxPoint , </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                 Position , </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                 wxSize , Size , </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                 <span class="keywordtype">long</span> , </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                 WindowStyle )</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor"></span><a class="code" href="../../da/d79/group__docview.html#ga6ec13dcf56fb697ed3fc3f815657c4fa">IMPLEMENT_DYNAMIC_CLASS</a>(MutPanel, wxControl)</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<a class="code" href="../../df/dd1/group__GUI.html#gae91e1ff5ac7d0866e88220faba0a463b">BEGIN_EVENT_TABLE</a>(MutPanel, wxControl)</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#ga7dae318216460a766030e900f8cc34ad">  123</a></span>&#160;    <a class="code" href="../../df/dd1/group__GUI.html#ga7dae318216460a766030e900f8cc34ad">EVT_SIZE</a>(MutPanel::OnSize)</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">//    WX_EVENT_TABLE_CONTROL_CONTAINER(MutPanel)</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;EVT_SET_FOCUS(MutPanel::OnFocus) </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;EVT_CHILD_FOCUS(MutPanel::OnChildFocus) </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">// Currently we do not need to traverse each client separately</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">// so we disable this, here:</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">// EVT_NAVIGATION_KEY(MutPanel::OnNavigationKey)</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<a class="code" href="../../dd/db0/MutDocManager_8cpp.html#a9e7a087c5c550acffcd802f4b40bd609">END_EVENT_TABLE</a>()</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">// ============================================================================</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">// implementation</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">// ============================================================================</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">//WX_DELEGATE_TO_CONTROL_CONTAINER(MutPanel, wxControl)</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="keywordtype">void</span> MutPanel::OnNavigationKey( wxNavigationKeyEvent&amp; event ) </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;{ </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <a class="code" href="../../d9/d7c/group__kernel.html#gaedf3113729faf15522da4884cc137733">mutUnused</a>(event);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">// (works on wx2.8.10)  m_container.HandleOnNavigationKey(event); </span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;} </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#gada329ce8fdddfbf8be5a371d71a41660">  146</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/dd1/group__GUI.html#gada329ce8fdddfbf8be5a371d71a41660">MutPanel::RemoveChild</a>(wxWindowBase *child) { </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">//      m_container.HandleOnWindowDestroy(child); </span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        wxControl::RemoveChild(child); </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;} </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#ga0b4fa312ba3a177c69f8b15652195297">  151</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/dd1/group__GUI.html#ga0b4fa312ba3a177c69f8b15652195297">MutPanel::SetFocus</a>() { </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        wxControl::SetFocus();</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">//      if ( !m_container.DoSetFocus() ) wxControl::SetFocus(); </span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;} </div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#gaeb34b02ce60d0ad98a9048f5cce1f52d">  155</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/dd1/group__GUI.html#gaeb34b02ce60d0ad98a9048f5cce1f52d">MutPanel::SetFocusIgnoringChildren</a>() { </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        wxControl::SetFocus(); </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;} </div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#gaf91386562e1e057b46bed9774eb923c1">  158</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/dd1/group__GUI.html#gaf91386562e1e057b46bed9774eb923c1">MutPanel::OnChildFocus</a>(wxChildFocusEvent&amp; event) {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <a class="code" href="../../d9/d7c/group__kernel.html#gaedf3113729faf15522da4884cc137733">mutUnused</a>(event);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        wxFocusEvent ev;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        wxPostEvent(<span class="keyword">this</span>,ev);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">//      m_container.SetLastFocus(event.GetWindow()); </span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">//      event.Skip(); </span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;} </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#gafc651e2797ac4f52804836637137aff7">  166</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/dd1/group__GUI.html#gafc651e2797ac4f52804836637137aff7">MutPanel::OnFocus</a>(wxFocusEvent&amp; event) { </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="comment">//      SetFocus();</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keyword">event</span>.Skip();</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment">//      m_container.HandleOnFocus(event); </span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;} </div>
+<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#ga2b8ec2fe36513eaa57dbadc4b501ebd8">  172</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/dd1/group__GUI.html#ga2b8ec2fe36513eaa57dbadc4b501ebd8">MutPanel::AcceptsFocus</a>()<span class="keyword"> const </span>{ </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordflow">return</span> IsEnabled() &amp;&amp; IsShown();</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">//      return m_container.AcceptsFocus(); </span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;}</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">// wxPanel creation</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#ga09fc250280017059371a06c53255b690">  183</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/dd1/group__GUI.html#ga09fc250280017059371a06c53255b690">MutPanel::Init</a>()</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;{</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <a class="code" href="../../df/df2/classMutPanel.html#a8df7db7c6228f9b3f8cbd9bc1ab1498b">m_container</a>.SetContainerWindow(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;}</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#ga6db4ff1d919db7002998d07050be9fca">  188</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/dd1/group__GUI.html#ga6db4ff1d919db7002998d07050be9fca">MutPanel::Create</a>(wxWindow *parent,</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                      wxWindowID winid,</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                      <span class="keyword">const</span> wxPoint&amp; pos,</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                      <span class="keyword">const</span> wxSize&amp; size,</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                      <span class="keywordtype">long</span> style,</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                      <span class="keyword">const</span> wxValidator&amp; validator,</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                      <span class="keyword">const</span> wxString&amp; name)</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;{</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">if</span> (!wxControl::Create( parent, winid, pos, size, style, validator, name))</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="comment">// so we don&#39;t have too much problems with background style settings.</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        SetBackgroundStyle(wxBG_STYLE_SYSTEM);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="comment">// so that non-solid background renders correctly under GTK+:</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        SetThemeEnabled(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="preprocessor">#if defined(__WXWINCE__) &amp;&amp; (defined(__POCKETPC__) || defined(__SMARTPHONE__))</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor"></span>        <span class="comment">// Required to get solid control backgrounds under WinCE</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOW));</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">// wxGTK</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="preprocessor">#if wxCHECK_VERSION(2,9,0)</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="preprocessor"></span>        SetBackgroundStyle(wxBG_STYLE_SYSTEM);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="preprocessor"></span>        SetBackgroundStyle(wxBG_STYLE_COLOUR);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="preprocessor"></span>        SetBackgroundColour(wxNullColour);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;}</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
+<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#gada61e2352d10cc55b4cdcaba97df82fc">  221</a></span>&#160;<a class="code" href="../../df/dd1/group__GUI.html#gada61e2352d10cc55b4cdcaba97df82fc">MutPanel::~MutPanel</a>()</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;{</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;}</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
+<div class="line"><a name="l00225"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#gabd4977102e752763038723f0b4c03e8e">  225</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/dd1/group__GUI.html#gabd4977102e752763038723f0b4c03e8e">MutPanel::Destroy</a>() </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;{</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        Hide();</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        wxSizer * sizer = GetContainingSizer();</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <span class="keywordflow">if</span> (sizer) {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                sizer-&gt;Detach(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                SetSizer(NULL);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        wxWindow * parent = GetParent();</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="keywordflow">if</span> (parent) {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                parent-&gt;RemoveChild(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="keywordflow">if</span> ( !wxPendingDelete.Member(<span class="keyword">this</span>) )</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        wxPendingDelete.Append(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        </div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;}</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
+<div class="line"><a name="l00246"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#ga1844f125f2466adc4722b648c79016ea">  246</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/dd1/group__GUI.html#ga1844f125f2466adc4722b648c79016ea">MutPanel::InitDialog</a>()</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;{</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        wxInitDialogEvent event(GetId());</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        <span class="keyword">event</span>.SetEventObject(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        GetEventHandler()-&gt;ProcessEvent(event);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;}</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="comment">// event handlers</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
+<div class="line"><a name="l00257"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#ga925abd6c6c3e860261b2accaacdd6927">  257</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/dd1/group__GUI.html#ga925abd6c6c3e860261b2accaacdd6927">MutPanel::OnSize</a>(wxSizeEvent&amp; event)</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;{</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordflow">if</span> (GetAutoLayout())</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        Layout();</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="preprocessor">#if wxUSE_CONSTRAINTS</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#if defined(__WXPM__) &amp;&amp; 0</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    {</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="comment">// Need to properly move child windows under OS/2</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        PSWP                        pWinSwp = GetSwp();</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="keywordflow">if</span> (pWinSwp-&gt;cx == 0 &amp;&amp; pWinSwp-&gt;cy == 0 &amp;&amp; pWinSwp-&gt;fl == 0)</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            <span class="comment">// Uninitialized</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            ::WinQueryWindowPos(GetHWND(), pWinSwp);</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        }</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            SWP                     vSwp;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="keywordtype">int</span>                     nYDiff;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            ::WinQueryWindowPos(GetHWND(), &amp;vSwp);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            nYDiff = pWinSwp-&gt;cy - vSwp.cy;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            MoveChildren(nYDiff);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            pWinSwp-&gt;cx = vSwp.cx;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            pWinSwp-&gt;cy = vSwp.cy;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    }</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif // wxUSE_CONSTRAINTS</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keyword">event</span>.Skip();</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;}</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="ttc" id="classMutPanel_html"><div class="ttname"><a href="../../df/df2/classMutPanel.html">MutPanel</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d1d/Panel_8h_source.html#l00060">Panel.h:60</a></div></div>
+<div class="ttc" id="classMutPanel_html_a8df7db7c6228f9b3f8cbd9bc1ab1498b"><div class="ttname"><a href="../../df/df2/classMutPanel.html#a8df7db7c6228f9b3f8cbd9bc1ab1498b">MutPanel::m_container</a></div><div class="ttdeci">wxControlContainer m_container</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d1d/Panel_8h_source.html#l00126">Panel.h:126</a></div></div>
+<div class="ttc" id="group__GUI_html_gada61e2352d10cc55b4cdcaba97df82fc"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gada61e2352d10cc55b4cdcaba97df82fc">MutPanel::~MutPanel</a></div><div class="ttdeci">virtual ~MutPanel()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d10/Panel_8cpp_source.html#l00221">Panel.cpp:221</a></div></div>
+<div class="ttc" id="mutgis_8cpp_html_a26506d124b947beae862c007bc8195bb"><div class="ttname"><a href="../../d3/d26/mutgis_8cpp.html#a26506d124b947beae862c007bc8195bb">h</a></div><div class="ttdeci">GisReadArtHead * h</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d26/mutgis_8cpp_source.html#l00005">mutgis.cpp:5</a></div></div>
+<div class="ttc" id="Panel_8h_html"><div class="ttname"><a href="../../d0/d1d/Panel_8h.html">Panel.h</a></div><div class="ttdoc">Mutabor Panel. </div></div>
+<div class="ttc" id="group__GUI_html_gada329ce8fdddfbf8be5a371d71a41660"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gada329ce8fdddfbf8be5a371d71a41660">MutPanel::RemoveChild</a></div><div class="ttdeci">virtual void RemoveChild(wxWindowBase *child)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d10/Panel_8cpp_source.html#l00146">Panel.cpp:146</a></div></div>
+<div class="ttc" id="group__GUI_html_ga0b4fa312ba3a177c69f8b15652195297"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga0b4fa312ba3a177c69f8b15652195297">MutPanel::SetFocus</a></div><div class="ttdeci">virtual void SetFocus()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d10/Panel_8cpp_source.html#l00151">Panel.cpp:151</a></div></div>
+<div class="ttc" id="group__GUI_html_ga2b8ec2fe36513eaa57dbadc4b501ebd8"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga2b8ec2fe36513eaa57dbadc4b501ebd8">MutPanel::AcceptsFocus</a></div><div class="ttdeci">virtual bool AcceptsFocus() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d10/Panel_8cpp_source.html#l00172">Panel.cpp:172</a></div></div>
+<div class="ttc" id="group__kernel_html_gaedf3113729faf15522da4884cc137733"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gaedf3113729faf15522da4884cc137733">mutUnused</a></div><div class="ttdeci">#define mutUnused(expr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00079">Defs.h:79</a></div></div>
+<div class="ttc" id="group__GUI_html_gaf91386562e1e057b46bed9774eb923c1"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gaf91386562e1e057b46bed9774eb923c1">MutPanel::OnChildFocus</a></div><div class="ttdeci">virtual void OnChildFocus(wxChildFocusEvent &amp;event)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d10/Panel_8cpp_source.html#l00158">Panel.cpp:158</a></div></div>
+<div class="ttc" id="group__docview_html_ga6ec13dcf56fb697ed3fc3f815657c4fa"><div class="ttname"><a href="../../da/d79/group__docview.html#ga6ec13dcf56fb697ed3fc3f815657c4fa">IMPLEMENT_DYNAMIC_CLASS</a></div><div class="ttdeci">IMPLEMENT_DYNAMIC_CLASS(MutCommandProcessor, wxCommandProcessor) IMPLEMENT_DYNAMIC_CLASS(MutDocument</div></div>
+<div class="ttc" id="group__GUI_html_ga7dae318216460a766030e900f8cc34ad"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga7dae318216460a766030e900f8cc34ad">EVT_SIZE</a></div><div class="ttdeci">wxControl EVT_SIZE(MutPanel::OnSize) EVT_SET_FOCUS(MutPanel</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d10/Panel_8cpp_source.html#l00123">Panel.cpp:123</a></div></div>
+<div class="ttc" id="group__GUI_html_ga1844f125f2466adc4722b648c79016ea"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga1844f125f2466adc4722b648c79016ea">MutPanel::InitDialog</a></div><div class="ttdeci">virtual void InitDialog()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d10/Panel_8cpp_source.html#l00246">Panel.cpp:246</a></div></div>
+<div class="ttc" id="group__GUI_html_ga925abd6c6c3e860261b2accaacdd6927"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga925abd6c6c3e860261b2accaacdd6927">MutPanel::OnSize</a></div><div class="ttdeci">void OnSize(wxSizeEvent &amp;event)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d10/Panel_8cpp_source.html#l00257">Panel.cpp:257</a></div></div>
+<div class="ttc" id="group__GUI_html_gafc651e2797ac4f52804836637137aff7"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gafc651e2797ac4f52804836637137aff7">MutPanel::OnFocus</a></div><div class="ttdeci">void OnFocus(wxFocusEvent &amp;event)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d10/Panel_8cpp_source.html#l00166">Panel.cpp:166</a></div></div>
+<div class="ttc" id="MutDocManager_8cpp_html_a9e7a087c5c550acffcd802f4b40bd609"><div class="ttname"><a href="../../dd/db0/MutDocManager_8cpp.html#a9e7a087c5c550acffcd802f4b40bd609">END_EVENT_TABLE</a></div><div class="ttdeci">MutDocManager::CmExecuteLogic END_EVENT_TABLE() namespace mutaborGUI</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db0/MutDocManager_8cpp_source.html#l00087">MutDocManager.cpp:87</a></div></div>
+<div class="ttc" id="group__GUI_html_gae91e1ff5ac7d0866e88220faba0a463b"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gae91e1ff5ac7d0866e88220faba0a463b">mutaborGUI::BEGIN_EVENT_TABLE</a></div><div class="ttdeci">BEGIN_EVENT_TABLE(MutChild, MutTextBox) EVT_ACTIVATE(MutChild</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d72/MutChild_8cpp_source.html#l00077">MutChild.cpp:77</a></div></div>
+<div class="ttc" id="group__GUI_html_ga6db4ff1d919db7002998d07050be9fca"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga6db4ff1d919db7002998d07050be9fca">MutPanel::Create</a></div><div class="ttdeci">bool Create(wxWindow *parent, wxWindowID winid=wxID_ANY, const wxPoint &amp;pos=wxDefaultPosition, const wxSize &amp;size=wxDefaultSize, long style=0, const wxValidator &amp;validator=wxDefaultValidator, const wxString &amp;name=wxPanelNameStr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d10/Panel_8cpp_source.html#l00188">Panel.cpp:188</a></div></div>
+<div class="ttc" id="group__GUI_html_gaeb34b02ce60d0ad98a9048f5cce1f52d"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gaeb34b02ce60d0ad98a9048f5cce1f52d">MutPanel::SetFocusIgnoringChildren</a></div><div class="ttdeci">virtual void SetFocusIgnoringChildren()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d10/Panel_8cpp_source.html#l00155">Panel.cpp:155</a></div></div>
+<div class="ttc" id="group__GUI_html_gabd4977102e752763038723f0b4c03e8e"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gabd4977102e752763038723f0b4c03e8e">MutPanel::Destroy</a></div><div class="ttdeci">virtual bool Destroy()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d10/Panel_8cpp_source.html#l00225">Panel.cpp:225</a></div></div>
+<div class="ttc" id="group__GUI_html_ga09fc250280017059371a06c53255b690"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga09fc250280017059371a06c53255b690">MutPanel::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d10/Panel_8cpp_source.html#l00183">Panel.cpp:183</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:38:41 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

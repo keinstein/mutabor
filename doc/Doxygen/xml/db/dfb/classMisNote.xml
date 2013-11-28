@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="db/dfb/classMisNote" kind="class" prot="public">
+    <compoundname>MisNote</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="db/dfb/classMisNote_1a602ea0f8b3064d9b15dcb3439a4f5dbe" prot="public" static="no" mutable="no">
+        <type><ref refid="db/dfb/classMisNote" kindref="compound">MisNote</ref> *</type>
+        <definition>MisNote* MisNote::Next</definition>
+        <argsstring></argsstring>
+        <name>Next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" line="57" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="57" bodyend="-1"/>
+        <referencedby refid="d5/d67/classMisFile_1a8c89dbe3cf8c2699ebc1bff23fb68226" compoundref="d4/df2/mis_8cpp" startline="246" endline="257">MisFile::GetNote</referencedby>
+        <referencedby refid="db/dfb/classMisNote_1ad9c7b4275e1ffdfd2e815dc5b707ad76" compoundref="d4/df2/mis_8cpp" startline="61" endline="67">MisNote</referencedby>
+        <referencedby refid="d5/d67/classMisFile_1a1c3662b5cbdfd72092550ccd7161edd8" compoundref="d4/df2/mis_8cpp" startline="297" endline="316">MisFile::NoteOff</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="db/dfb/classMisNote_1a079450521c3f4ce95f5cedd929e0bdd3" prot="public" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <definition>char MisNote::Key</definition>
+        <argsstring></argsstring>
+        <name>Key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" line="58" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="58" bodyend="-1"/>
+        <referencedby refid="db/dfb/classMisNote_1ad9c7b4275e1ffdfd2e815dc5b707ad76" compoundref="d4/df2/mis_8cpp" startline="61" endline="67">MisNote</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="db/dfb/classMisNote_1a4fd1856f958c88fa4476df8769d38727" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MisNote::InstrumentId</definition>
+        <argsstring></argsstring>
+        <name>InstrumentId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" line="59" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="59" bodyend="-1"/>
+        <referencedby refid="db/dfb/classMisNote_1ad9c7b4275e1ffdfd2e815dc5b707ad76" compoundref="d4/df2/mis_8cpp" startline="61" endline="67">MisNote</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="db/dfb/classMisNote_1ae7644f6c990dd980991de93d4bb7415a" prot="public" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <definition>char MisNote::Channel</definition>
+        <argsstring></argsstring>
+        <name>Channel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" line="60" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="60" bodyend="-1"/>
+        <referencedby refid="d5/d67/classMisFile_1a1c3662b5cbdfd72092550ccd7161edd8" compoundref="d4/df2/mis_8cpp" startline="297" endline="316">MisFile::NoteOff</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/dfb/classMisNote_1ad9c7b4275e1ffdfd2e815dc5b707ad76" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MisNote::MisNote</definition>
+        <argsstring>(char key, int instrumentId, char channel, MisNote *next=0)</argsstring>
+        <name>MisNote</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>instrumentId</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type><ref refid="db/dfb/classMisNote" kindref="compound">MisNote</ref> *</type>
+          <declname>next</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" line="61" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="61" bodyend="67"/>
+        <references refid="db/dfb/classMisNote_1a4fd1856f958c88fa4476df8769d38727" compoundref="d4/df2/mis_8cpp" startline="59">InstrumentId</references>
+        <references refid="db/dfb/classMisNote_1a079450521c3f4ce95f5cedd929e0bdd3" compoundref="d4/df2/mis_8cpp" startline="58">Key</references>
+        <references refid="db/dfb/classMisNote_1a602ea0f8b3064d9b15dcb3439a4f5dbe" compoundref="d4/df2/mis_8cpp" startline="57">Next</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3395">
+        <label>MisNote</label>
+        <link refid="db/dfb/classMisNote"/>
+        <childnode refid="3395" relation="usage">
+          <edgelabel>Next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" line="55" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="54" bodyend="68"/>
+    <listofallmembers>
+      <member refid="db/dfb/classMisNote_1ae7644f6c990dd980991de93d4bb7415a" prot="public" virt="non-virtual"><scope>MisNote</scope><name>Channel</name></member>
+      <member refid="db/dfb/classMisNote_1a4fd1856f958c88fa4476df8769d38727" prot="public" virt="non-virtual"><scope>MisNote</scope><name>InstrumentId</name></member>
+      <member refid="db/dfb/classMisNote_1a079450521c3f4ce95f5cedd929e0bdd3" prot="public" virt="non-virtual"><scope>MisNote</scope><name>Key</name></member>
+      <member refid="db/dfb/classMisNote_1ad9c7b4275e1ffdfd2e815dc5b707ad76" prot="public" virt="non-virtual"><scope>MisNote</scope><name>MisNote</name></member>
+      <member refid="db/dfb/classMisNote_1a602ea0f8b3064d9b15dcb3439a4f5dbe" prot="public" virt="non-virtual"><scope>MisNote</scope><name>Next</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

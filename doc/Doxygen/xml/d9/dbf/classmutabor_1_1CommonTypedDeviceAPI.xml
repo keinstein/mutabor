@@ -1,0 +1,690 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d9/dbf/classmutabor_1_1CommonTypedDeviceAPI" kind="class" prot="public">
+    <compoundname>mutabor::CommonTypedDeviceAPI</compoundname>
+    <basecompoundref refid="db/db4/classmutabor_1_1Device" prot="public" virt="non-virtual">mutabor::Device</basecompoundref>
+    <includes refid="de/d05/Device_8h" local="no">Device.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+      <param>
+        <type>class</type>
+        <declname>P</declname>
+        <defname>P</defname>
+        <defval>boost::intrusive_ptr&lt;T&gt;</defval>
+      </param>
+      <param>
+        <type>class</type>
+        <declname>L</declname>
+        <defname>L</defname>
+        <defval>std::vector &lt;P&gt;</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="d5/dee/group__route_1gae62e6954f27bdff3e405f60aa3a12235" prot="public" static="no">
+        <type>T</type>
+        <definition>typedef T mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::thistype</definition>
+        <argsstring></argsstring>
+        <name>thistype</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="542" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="542" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="d5/dee/group__route_1gaebc414494d4db2ad9f687eb2b3d43a14" prot="public" static="no">
+        <type>P</type>
+        <definition>typedef P mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::DevicePtr</definition>
+        <argsstring></argsstring>
+        <name>DevicePtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="543" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="543" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="d5/dee/group__route_1gab0ae031e02b18ee00f5794736fc135dd" prot="public" static="no">
+        <type>L</type>
+        <definition>typedef L mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::listtype</definition>
+        <argsstring></argsstring>
+        <name>listtype</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="544" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="544" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d5/dee/group__route_1ga2150d27f39b7f4dc8c228c2f19a82983" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::REFPTR_INTERFACE</definition>
+        <argsstring></argsstring>
+        <name>REFPTR_INTERFACE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="538" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="538" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="d5/dee/group__route_1gad6aa54a6af79287ce009e35bc448da2b" prot="protected" static="yes" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gab0ae031e02b18ee00f5794736fc135dd" kindref="member">listtype</ref></type>
+        <definition>CommonTypedDeviceAPI&lt; T, P, L &gt;::listtype mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::deviceList</definition>
+        <argsstring></argsstring>
+        <name>deviceList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="546" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="546" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga6a549b9131f3f5f7322b89bfa941de4a" compoundref="de/d05/Device_8h" startline="649" endline="660">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::ClearDeviceList</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga40c9efe47aabb03bc924cdec9aff95fc" compoundref="de/d05/Device_8h" startline="667" endline="673">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::FindInDeviceList</referencedby>
+        <referencedby refid="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" compoundref="de/d05/Device_8h" startline="604" endline="606">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::GetDeviceList</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga60c8451e058e88b0a5e8bc932e66089f" compoundref="de/d05/Device_8h" startline="674" endline="676">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::IsInDeviceList</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="d5/dee/group__route_1ga9787ad2f4d97cd1c4e616a433d284b13" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::CommonTypedDeviceAPI</definition>
+        <argsstring>()</argsstring>
+        <name>CommonTypedDeviceAPI</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="548" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="548" bodyend="550"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga3d9ec96127224d9c481d207a2a315f0e" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::CommonTypedDeviceAPI</definition>
+        <argsstring>(const mutStringRef name, int id=-1)</argsstring>
+        <name>CommonTypedDeviceAPI</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="552" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="552" bodyend="555"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/dee/group__route_1ga35b63eeb3932c5e938f34239a57825cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::~CommonTypedDeviceAPI</definition>
+        <argsstring>()</argsstring>
+        <name>~CommonTypedDeviceAPI</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="558" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.cpp" bodystart="84" bodyend="97"/>
+        <references refid="de/db7/group__debug_1gad832f7644d01ea65a5de5dc9ba942d11" compoundref="de/de1/mutDebug_8h" startline="222" endline="222">debug_destruct_class</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gad212bd763c21f167dc9c6523033d2b62" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Destroy</definition>
+        <argsstring>()</argsstring>
+        <name>Destroy</name>
+        <briefdescription>
+<para>Destroy the current object. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function is called when an object shall be deleted. It clears up all references to itself so that it will be deleted if it is not needed anymore.</para><para>This functions detatches the device from all routes and calls DoDestroy() afterwards. Finally the <ref refid="db/db4/classmutabor_1_1Device" kindref="compound">Device</ref> is going to removed from the device list. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="569" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device-inlines.h" bodystart="53" bodyend="65"/>
+        <references refid="de/db7/group__debug_1ga33e4d2337c0d8d97f3f9527159d490a0" compoundref="de/de1/mutDebug_8h" startline="221" endline="221">debug_destroy_class</references>
+        <references refid="df/dd1/group__GUI_1ga7ad6b2305e866ae3936c307f5f9f4c04" compoundref="da/d72/MutChild_8cpp" startline="228" endline="264">mutaborGUI::IsOpen</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <referencedby refid="d5/dee/group__route_1gaa0a6460204073d8707e5e5a8de8f6e8b" compoundref="d8/d59/midicmnTest_8cpp" startline="575" endline="596">CommonMidiInputTest::tearDown</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga3ff0800ee50f8cf48a2d991365e56e0b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::DisconnectFromAll</definition>
+        <argsstring>()</argsstring>
+        <name>DisconnectFromAll</name>
+        <briefdescription>
+<para>Disconnect the device from all pairings with routes GUI data or something else. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function should be extended in subclasses so that after calling it only temporary pointers (variables in functions or temporary objects) point to the object. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="580" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device-inlines.h" bodystart="68" bodyend="81"/>
+        <references refid="d6/daa/namespacemutabor_1adb9659c6b97b933b1997d17e5e790296" compoundref="d2/d2c/Route-inlines_8h" startline="77" endline="84">mutabor::disconnect</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga310387a6e3aebf00b508887391d82b3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Add</definition>
+        <argsstring>(Route &amp;route)</argsstring>
+        <name>Add</name>
+        <reimplements refid="d5/dee/group__route_1ga5c987724477e17b02e862bdec75b8d1a">Add</reimplements>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">Route</ref> &amp;</type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+<para>add a route </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="583" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.cpp" bodystart="100" bodyend="111"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <referencedby refid="d5/dee/group__route_1ga2875373929d294d6c51991238407f542" compoundref="d2/dc0/Device_8cpp" startline="114" endline="126">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Replace</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga2875373929d294d6c51991238407f542" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Replace</definition>
+        <argsstring>(Route &amp;oldroute, Route &amp;newroute)</argsstring>
+        <name>Replace</name>
+        <reimplements refid="d5/dee/group__route_1gaadb4fdc84516a3d1519e69f92cf0ff22">Replace</reimplements>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">Route</ref> &amp;</type>
+          <declname>oldroute</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">Route</ref> &amp;</type>
+          <declname>newroute</declname>
+        </param>
+        <briefdescription>
+<para>replace a route </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="585" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.cpp" bodystart="114" bodyend="126"/>
+        <references refid="d5/dee/group__route_1ga310387a6e3aebf00b508887391d82b3d" compoundref="d2/dc0/Device_8cpp" startline="100" endline="111">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Add</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d5/dee/group__route_1ga75c2c1c9312c7fd3b0ac67482bc3f3b7" compoundref="d2/dc0/Device_8cpp" startline="129" endline="145">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Remove</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga75c2c1c9312c7fd3b0ac67482bc3f3b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Remove</definition>
+        <argsstring>(Route &amp;route)</argsstring>
+        <name>Remove</name>
+        <reimplements refid="d5/dee/group__route_1ga6b58b4eb4a69e55729cc770b4629cb99">Remove</reimplements>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">Route</ref> &amp;</type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+<para>remove a route </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="588" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.cpp" bodystart="129" bodyend="145"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga929b9e3b3d2ed10ebd92110d49320603" compoundref="d1/da4/boost-interface_8h" startline="107" endline="111">intrusive_ptr_get_refcount</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <referencedby refid="d5/dee/group__route_1ga2875373929d294d6c51991238407f542" compoundref="d2/dc0/Device_8cpp" startline="114" endline="126">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Replace</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga143bc287529a671195a80dc3fbf4d3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::MoveRoutes</definition>
+        <argsstring>(DevicePtr &amp;newclass)</argsstring>
+        <name>MoveRoutes</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gaebc414494d4db2ad9f687eb2b3d43a14" kindref="member">DevicePtr</ref> &amp;</type>
+          <declname>newclass</declname>
+        </param>
+        <briefdescription>
+<para>Move routes to another device. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="590" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.cpp" bodystart="148" bodyend="166"/>
+        <references refid="df/dd1/group__GUI_1ga7ad6b2305e866ae3936c307f5f9f4c04" compoundref="da/d72/MutChild_8cpp" startline="228" endline="264">mutaborGUI::IsOpen</references>
+        <references refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" compoundref="d2/d2c/Route-inlines_8h" startline="110" endline="124">mutabor::reconnect</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga121ded40710df3f74a6150082999597b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::nRoutes</definition>
+        <argsstring>()</argsstring>
+        <name>nRoutes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="593" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="593" bodyend="593"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga88774ccf4e5c5dfb2646e1a95c1719d6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1ga2467e9b2b92e759b6c5e5911545c09f1" kindref="member">routeListType</ref> &amp;</type>
+        <definition>const routeListType&amp; mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::GetRoutes</definition>
+        <argsstring>() const </argsstring>
+        <name>GetRoutes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="595" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="595" bodyend="597"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga15e9894fe4909c6aadff876f323d3384" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1ga2467e9b2b92e759b6c5e5911545c09f1" kindref="member">routeListType</ref> &amp;</type>
+        <definition>routeListType&amp; mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::GetRoutes</definition>
+        <argsstring>()</argsstring>
+        <name>GetRoutes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="599" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="599" bodyend="601"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga7cafe18237e838d40bbb9efe90484066" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::operator const thistype &amp;</definition>
+        <argsstring>() const </argsstring>
+        <name>operator const thistype &amp;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="622" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="622" bodyend="624"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gad379062646f2315b58267c314cdf1c49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::operator thistype &amp;</definition>
+        <argsstring>()</argsstring>
+        <name>operator thistype &amp;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="626" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="626" bodyend="628"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaf592e59b9c1a9cdcc036f6a5a4f197eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1gae62e6954f27bdff3e405f60aa3a12235" kindref="member">thistype</ref> *</type>
+        <definition>thistype* mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::thisptr</definition>
+        <argsstring>()</argsstring>
+        <name>thisptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="630" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="630" bodyend="632"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gae86c4bcadc561ffa2ba18b641a7dc667" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gae62e6954f27bdff3e405f60aa3a12235" kindref="member">thistype</ref> *</type>
+        <definition>const thistype* mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::thisptr</definition>
+        <argsstring>() const </argsstring>
+        <name>thisptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="634" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="634" bodyend="636"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga1e90f04620e908e170e66539c8f9b47a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::MoveInList</definition>
+        <argsstring>(int count)</argsstring>
+        <name>MoveInList</name>
+        <param>
+          <type>int</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+<para>Move the device in the device list. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of places the device should be moved up. Negative values indicate downwards direction.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>new position in the device list. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="647" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.cpp" bodystart="218" bodyend="242"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gab0ae031e02b18ee00f5794736fc135dd" kindref="member">listtype</ref> &amp;</type>
+        <definition>static const listtype&amp; mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::GetDeviceList</definition>
+        <argsstring>()</argsstring>
+        <name>GetDeviceList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="604" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="604" bodyend="606"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga0129007d64b3aaf687dc34665d14b399" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::InitializeIds</definition>
+        <argsstring>()</argsstring>
+        <name>InitializeIds</name>
+        <briefdescription>
+<para>Initialize the internal device identifiers. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function sets the internal device ids of all output devices, starting from 0 and incrementing by 1 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="613" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.cpp" bodystart="169" bodyend="187"/>
+        <references refid="de/db7/group__debug_1ga556434a0102a112e3dd0c2849d5e36fd" compoundref="de/de1/mutDebug_8h" startline="147">TRACET</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga0003618beb50da006e94e57baf9f7afa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1gaebc414494d4db2ad9f687eb2b3d43a14" kindref="member">DevicePtr</ref></type>
+        <definition>CommonTypedDeviceAPI&lt; T, P, L &gt;::DevicePtr mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::GetDevice</definition>
+        <argsstring>(int id, devidtype kind)</argsstring>
+        <name>GetDevice</name>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga1274fa7f3bc0cd8f6d2a44aac8e42bb3" kindref="member">devidtype</ref></type>
+          <declname>kind</declname>
+        </param>
+        <briefdescription>
+<para>Scan the list of input devices for a given id. </para>        </briefdescription>
+        <detaileddescription>
+<para>id (int) id to scan for <simplesect kind="return"><para>(OutputDevice) pointer to the input device with the given id if found, NULL else. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="620" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.cpp" bodystart="191" bodyend="214"/>
+        <references refid="df/dd1/group__GUI_1ga095007ba40aa91ee3979332ed9f40183" compoundref="d0/d68/mhDefs_8h" startline="147">UNREACHABLECT</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga6a549b9131f3f5f7322b89bfa941de4a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::ClearDeviceList</definition>
+        <argsstring>()</argsstring>
+        <name>ClearDeviceList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="649" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="649" bodyend="660"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="d5/dee/group__route_1ga0500b92557be2d528f6f75f4537f7b88" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::AppendToDeviceList</definition>
+        <argsstring>(DevicePtr dev)</argsstring>
+        <name>AppendToDeviceList</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gaebc414494d4db2ad9f687eb2b3d43a14" kindref="member">DevicePtr</ref></type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="665" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.cpp" bodystart="259" bodyend="269"/>
+        <references refid="df/dd1/group__GUI_1ga095007ba40aa91ee3979332ed9f40183" compoundref="d0/d68/mhDefs_8h" startline="147">UNREACHABLECT</references>
+        <referencedby refid="d5/dee/group__route_1ga9787ad2f4d97cd1c4e616a433d284b13" compoundref="de/d05/Device_8h" startline="548" endline="550">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::CommonTypedDeviceAPI</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaea9507768e02eb39aa56acde9fbb0d75" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::RemoveFromDeviceList</definition>
+        <argsstring>(DevicePtr dev)</argsstring>
+        <name>RemoveFromDeviceList</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gaebc414494d4db2ad9f687eb2b3d43a14" kindref="member">DevicePtr</ref></type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="666" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.cpp" bodystart="272" bodyend="280"/>
+        <references refid="df/dd1/group__GUI_1ga095007ba40aa91ee3979332ed9f40183" compoundref="d0/d68/mhDefs_8h" startline="147">UNREACHABLECT</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga40c9efe47aabb03bc924cdec9aff95fc" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>listtype::iterator</type>
+        <definition>static listtype::iterator mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::FindInDeviceList</definition>
+        <argsstring>(DevicePtr dev)</argsstring>
+        <name>FindInDeviceList</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gaebc414494d4db2ad9f687eb2b3d43a14" kindref="member">DevicePtr</ref></type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="667" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="667" bodyend="673"/>
+        <referencedby refid="d5/dee/group__route_1ga60c8451e058e88b0a5e8bc932e66089f" compoundref="de/d05/Device_8h" startline="674" endline="676">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::IsInDeviceList</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga60c8451e058e88b0a5e8bc932e66089f" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::IsInDeviceList</definition>
+        <argsstring>(const DevicePtr dev)</argsstring>
+        <name>IsInDeviceList</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gaebc414494d4db2ad9f687eb2b3d43a14" kindref="member">DevicePtr</ref></type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="674" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="674" bodyend="676"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga62782ee9bbed258704f22506993da782" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::TruncateDeviceList</definition>
+        <argsstring>(DevicePtr dev)</argsstring>
+        <name>TruncateDeviceList</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gaebc414494d4db2ad9f687eb2b3d43a14" kindref="member">DevicePtr</ref></type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="677" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.cpp" bodystart="283" bodyend="303"/>
+        <references refid="df/dd1/group__GUI_1ga06c750cbc293593a85009553cf6cfcc5" compoundref="d0/d68/mhDefs_8h" startline="140">STUB</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2549">
+        <label>mutabor::Device</label>
+        <link refid="db/db4/classmutabor_1_1Device"/>
+      </node>
+      <node id="2548">
+        <label>mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;</label>
+        <link refid="d9/dbf/classmutabor_1_1CommonTypedDeviceAPI"/>
+        <childnode refid="2549" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2554">
+        <label>T</label>
+      </node>
+      <node id="2552">
+        <label>mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;</label>
+        <link refid="db/d05/classmutabor_1_1TRouteClass"/>
+        <childnode refid="2553" relation="usage">
+          <edgelabel>routeList</edgelabel>
+        </childnode>
+        <childnode refid="2555" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="2555">
+        <label>mutabor::idtype&lt; mutabor::TRouteClass&lt; InputDevice, OutputDevice &gt; &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="2556">
+        <label>mutabor::idtype&lt; mutabor::Device &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="2551">
+        <label>mutabor::Device</label>
+        <link refid="db/db4/classmutabor_1_1Device"/>
+        <childnode refid="2552" relation="usage">
+          <edgelabel>routes</edgelabel>
+        </childnode>
+        <childnode refid="2556" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="2553">
+        <label>std::list&lt; T &gt;</label>
+        <childnode refid="2554" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2550">
+        <label>mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;</label>
+        <link refid="d9/dbf/classmutabor_1_1CommonTypedDeviceAPI"/>
+        <childnode refid="2551" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="536" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="536" bodyend="679"/>
+    <listofallmembers>
+      <member refid="d5/dee/group__route_1ga310387a6e3aebf00b508887391d82b3d" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Add</name></member>
+      <member refid="d5/dee/group__route_1ga0500b92557be2d528f6f75f4537f7b88" prot="protected" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>AppendToDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga6a549b9131f3f5f7322b89bfa941de4a" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>ClearDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga408aff2b137d1bef5de4ee0d23a9dc26" prot="public" virt="pure-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Close</name></member>
+      <member refid="d5/dee/group__route_1ga9787ad2f4d97cd1c4e616a433d284b13" prot="protected" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>CommonTypedDeviceAPI</name></member>
+      <member refid="d5/dee/group__route_1ga3d9ec96127224d9c481d207a2a315f0e" prot="protected" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>CommonTypedDeviceAPI</name></member>
+      <member refid="d5/dee/group__route_1gad212bd763c21f167dc9c6523033d2b62" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Destroy</name></member>
+      <member refid="d5/dee/group__route_1ga5a34853b39a1fe85e2420e262dfb0f6a" prot="protected" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Device</name></member>
+      <member refid="d5/dee/group__route_1gad6aa54a6af79287ce009e35bc448da2b" prot="protected" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>deviceList</name></member>
+      <member refid="d5/dee/group__route_1gaebc414494d4db2ad9f687eb2b3d43a14" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>DevicePtr</name></member>
+      <member refid="d5/dee/group__route_1ga1274fa7f3bc0cd8f6d2a44aac8e42bb3" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>devidtype</name></member>
+      <member refid="d5/dee/group__route_1gabb922714830f90c1af5bb9f5fe4ce615" prot="protected" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>dirty</name></member>
+      <member refid="d5/dee/group__route_1ga76cdbc43252351386362bfd14c62cf45" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Dirty</name></member>
+      <member refid="d5/dee/group__route_1ga3ff0800ee50f8cf48a2d991365e56e0b" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>DisconnectFromAll</name></member>
+      <member refid="d5/dee/group__route_1ga40c9efe47aabb03bc924cdec9aff95fc" prot="protected" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>FindInDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga6d853cde85216e56f3d74d20ff9556b2" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>get_routefile_id</name></member>
+      <member refid="d5/dee/group__route_1ga48afafba127beb4c42f6a1a9bceb2148" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>get_session_id</name></member>
+      <member refid="d5/dee/group__route_1ga0003618beb50da006e94e57baf9f7afa" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>GetDevice</name></member>
+      <member refid="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>GetDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga85133d32c2a68f1a343aeab80bbd92f4" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>GetMode</name></member>
+      <member refid="d5/dee/group__route_1gabacd3a9aa739a6e21a737feeb9b9e9c9" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>GetName</name></member>
+      <member refid="d5/dee/group__route_1ga88774ccf4e5c5dfb2646e1a95c1719d6" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>GetRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga15e9894fe4909c6aadff876f323d3384" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>GetRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga06d6b87300112e31a4373413a8ac3454" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>GetTypeName</name></member>
+      <member refid="d5/dee/group__route_1ga6b40f3affafc4ecaf39ac957e2c74cd3" prot="protected" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>getUserData</name></member>
+      <member refid="d5/dee/group__route_1gga1274fa7f3bc0cd8f6d2a44aac8e42bb3aa5dc2f5a43d36c391b773a6adc16e948" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>IDTypeFile</name></member>
+      <member refid="d5/dee/group__route_1gga1274fa7f3bc0cd8f6d2a44aac8e42bb3a57119faede41f9f36b4547aa812e42aa" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>IDTypeHardware</name></member>
+      <member refid="d5/dee/group__route_1gga1274fa7f3bc0cd8f6d2a44aac8e42bb3af953940c733081b6e3dad32c6d807943" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>IDTypeSession</name></member>
+      <member refid="d5/dee/group__route_1ga0129007d64b3aaf687dc34665d14b399" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>InitializeIds</name></member>
+      <member refid="d5/dee/group__route_1ga479bbdd0212790e89bf71dc227ab2303" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>IsDirty</name></member>
+      <member refid="d5/dee/group__route_1ga60c8451e058e88b0a5e8bc932e66089f" prot="protected" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>IsInDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga219acefe8692f1b3e00181f97c9c866f" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>IsOpen</name></member>
+      <member refid="d5/dee/group__route_1ga1cdc51c75faaeaec8d2b4cbb40d36e3b" prot="protected" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>isOpen</name></member>
+      <member refid="d5/dee/group__route_1gab0ae031e02b18ee00f5794736fc135dd" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>listtype</name></member>
+      <member refid="d5/dee/group__route_1ga729fbbd6717f17a9c8fbe0750b0e1b3c" prot="public" virt="pure-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Load</name></member>
+      <member refid="d5/dee/group__route_1ga4af91d72a0b616012d29405fb7fc9b50" prot="public" virt="pure-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Load</name></member>
+      <member refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" prot="protected" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Mode</name></member>
+      <member refid="d5/dee/group__route_1ga1e90f04620e908e170e66539c8f9b47a" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>MoveInList</name></member>
+      <member refid="d5/dee/group__route_1ga143bc287529a671195a80dc3fbf4d3d4" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>MoveRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga86a80a0d59ab5740c7f0eb708c1b6e76" prot="protected" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Name</name></member>
+      <member refid="d5/dee/group__route_1ga121ded40710df3f74a6150082999597b" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>nRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga1b67d7adf5f76fbffe0a5503bed265ff" prot="public" virt="pure-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Open</name></member>
+      <member refid="d5/dee/group__route_1ga7cafe18237e838d40bbb9efe90484066" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>operator const thistype &amp;</name></member>
+      <member refid="d5/dee/group__route_1gad379062646f2315b58267c314cdf1c49" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>operator thistype &amp;</name></member>
+      <member refid="d5/dee/group__route_1gacbfcb856b399d1b01b958c9f41d6c294" prot="public" virt="pure-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Panic</name></member>
+      <member refid="d5/dee/group__route_1ga877980d75727478edae304ea0b513324" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Pause</name></member>
+      <member refid="d5/dee/group__route_1ga8d7e66cd428ad6bc8d82bfd5fde5ab4b" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Play</name></member>
+      <member refid="d5/dee/group__route_1ga005dc1a3518ecb0bfb408cf058319d7a" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>ReadData</name></member>
+      <member refid="d5/dee/group__route_1ga2150d27f39b7f4dc8c228c2f19a82983" prot="private" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>REFPTR_INTERFACE</name></member>
+      <member refid="d5/dee/group__route_1ga75c2c1c9312c7fd3b0ac67482bc3f3b7" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Remove</name></member>
+      <member refid="d5/dee/group__route_1gaea9507768e02eb39aa56acde9fbb0d75" prot="protected" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>RemoveFromDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga2875373929d294d6c51991238407f542" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Replace</name></member>
+      <member refid="d5/dee/group__route_1gaa9515535e69b65e614b048f0c417024e" prot="protected" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>routefile_id</name></member>
+      <member refid="d5/dee/group__route_1ga0050f060be5dcbdaa7473c97e675140c" prot="protected" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>routes</name></member>
+      <member refid="d5/dee/group__route_1ga01c3f19123c1f42d8f1a2d405c3d21e2" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>runtime_error</name></member>
+      <member refid="d5/dee/group__route_1gac5f5412fc2ea0b0b5edbd199353309c9" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>runtime_error</name></member>
+      <member refid="d5/dee/group__route_1ga3e21f1fc02103f0d7a43504abff28a07" prot="public" virt="pure-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Save</name></member>
+      <member refid="d5/dee/group__route_1ga3e5d36bc704b3de28f788e011fd19c73" prot="public" virt="pure-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Save</name></member>
+      <member refid="d5/dee/group__route_1ga25dab27656e5e9960b90178f5365c890" prot="protected" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>session_id</name></member>
+      <member refid="d5/dee/group__route_1ga33283f3fbd5c5a384980e320223fca94" prot="protected" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>set_file_id</name></member>
+      <member refid="d5/dee/group__route_1ga67e80dc8dd7ecc105020ae37eed4bf63" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>SetMode</name></member>
+      <member refid="d5/dee/group__route_1ga5d6f8f7b6518cf74b80d683f69030e2e" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>SetName</name></member>
+      <member refid="d5/dee/group__route_1gaf4269c12f276f471046dd60a6034322f" prot="protected" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>setUserData</name></member>
+      <member refid="d5/dee/group__route_1ga70164b668155aa5907d04a56c39c85c0" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>Stop</name></member>
+      <member refid="d5/dee/group__route_1gaf592e59b9c1a9cdcc036f6a5a4f197eb" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>thisptr</name></member>
+      <member refid="d5/dee/group__route_1gae86c4bcadc561ffa2ba18b641a7dc667" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>thisptr</name></member>
+      <member refid="d5/dee/group__route_1gae62e6954f27bdff3e405f60aa3a12235" prot="public" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>thistype</name></member>
+      <member refid="d5/dee/group__route_1ga62782ee9bbed258704f22506993da782" prot="protected" virt="non-virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>TruncateDeviceList</name></member>
+      <member refid="d5/dee/group__route_1gae75382843673e90f40cf3d216faffe42" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>WriteData</name></member>
+      <member refid="d5/dee/group__route_1ga35b63eeb3932c5e938f34239a57825cb" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>~CommonTypedDeviceAPI</name></member>
+      <member refid="d5/dee/group__route_1gaeb8df260fe37691b9c990e5a2eef42fe" prot="public" virt="virtual"><scope>mutabor::CommonTypedDeviceAPI</scope><name>~Device</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

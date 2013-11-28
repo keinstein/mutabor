@@ -1,0 +1,650 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d9/d9a/timer1_8cpp" kind="file">
+    <compoundname>timer1.cpp</compoundname>
+    <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
+    <includes refid="d9/d6a/CommonFileDevice-inlines_8h" local="yes">src/kernel/routing/CommonFileDevice-inlines.h</includes>
+    <includes refid="d2/d2c/Route-inlines_8h" local="yes">src/kernel/routing/Route-inlines.h</includes>
+    <includes local="no">cstdlib</includes>
+    <includes refid="d9/d27/DebugRoute_8cpp" local="yes">src/wxGUI/Routing/DebugRoute.cpp</includes>
+    <includes local="no">wx/app.h</includes>
+    <incdepgraph>
+      <node id="17575">
+        <label>src/xrc/wxresource.h</label>
+        <link refid="d2/dc0/wxresource_8h"/>
+      </node>
+      <node id="17537">
+        <label>list</label>
+      </node>
+      <node id="17554">
+        <label>src/kernel/routing/Box.h</label>
+        <link refid="de/d0f/Box_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17533" relation="include">
+        </childnode>
+        <childnode refid="17535" relation="include">
+        </childnode>
+        <childnode refid="17531" relation="include">
+        </childnode>
+        <childnode refid="17549" relation="include">
+        </childnode>
+        <childnode refid="17555" relation="include">
+        </childnode>
+        <childnode refid="17536" relation="include">
+        </childnode>
+        <childnode refid="17538" relation="include">
+        </childnode>
+        <childnode refid="17544" relation="include">
+        </childnode>
+        <childnode refid="17545" relation="include">
+        </childnode>
+        <childnode refid="17520" relation="include">
+        </childnode>
+        <childnode refid="17550" relation="include">
+        </childnode>
+      </node>
+      <node id="17520">
+        <label>stdarg.h</label>
+      </node>
+      <node id="17567">
+        <label>wx/html/htmlwin.h</label>
+      </node>
+      <node id="17540">
+        <label>src/kernel/routing/timing.h</label>
+        <link refid="db/d41/timing_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17532" relation="include">
+        </childnode>
+        <childnode refid="17541" relation="include">
+        </childnode>
+        <childnode refid="17542" relation="include">
+        </childnode>
+        <childnode refid="17539" relation="include">
+        </childnode>
+        <childnode refid="17543" relation="include">
+        </childnode>
+        <childnode refid="17535" relation="include">
+        </childnode>
+      </node>
+      <node id="17541">
+        <label>limits</label>
+      </node>
+      <node id="17568">
+        <label>wx/radiobox.h</label>
+      </node>
+      <node id="17549">
+        <label>src/kernel/Execute.h</label>
+        <link refid="de/d11/Execute_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17550" relation="include">
+        </childnode>
+      </node>
+      <node id="17585">
+        <label>wx/app.h</label>
+      </node>
+      <node id="17536">
+        <label>boost/intrusive_ptr.hpp</label>
+      </node>
+      <node id="17519">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="17520" relation="include">
+        </childnode>
+        <childnode refid="17521" relation="include">
+        </childnode>
+      </node>
+      <node id="17530">
+        <label>stdlib.h</label>
+      </node>
+      <node id="17577">
+        <label>wx/wxchar.h</label>
+      </node>
+      <node id="17578">
+        <label>setjmp.h</label>
+      </node>
+      <node id="17552">
+        <label>src/kernel/Runtime.h</label>
+        <link refid="d5/d84/Runtime_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17553" relation="include">
+        </childnode>
+        <childnode refid="17524" relation="include">
+        </childnode>
+        <childnode refid="17577" relation="include">
+        </childnode>
+        <childnode refid="17578" relation="include">
+        </childnode>
+      </node>
+      <node id="17566">
+        <label>wx/filepicker.h</label>
+      </node>
+      <node id="17523">
+        <label>src/kernel/routing/CommonFileDevice.h</label>
+        <link refid="d9/d17/CommonFileDevice_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17524" relation="include">
+        </childnode>
+        <childnode refid="17535" relation="include">
+        </childnode>
+        <childnode refid="17541" relation="include">
+        </childnode>
+        <childnode refid="17548" relation="include">
+        </childnode>
+        <childnode refid="17546" relation="include">
+        </childnode>
+      </node>
+      <node id="17539">
+        <label>stdexcept</label>
+      </node>
+      <node id="17560">
+        <label>malloc.h</label>
+      </node>
+      <node id="17584">
+        <label>src/wxGUI/Routing/DebugRoute.cpp</label>
+        <link refid="d9/d27/DebugRoute_8cpp"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+      </node>
+      <node id="17564">
+        <label>wx/choicebk.h</label>
+      </node>
+      <node id="17551">
+        <label>src/kernel/GrafKern.h</label>
+        <link refid="d4/d47/GrafKern_8h"/>
+      </node>
+      <node id="17581">
+        <label>wx/timer.h</label>
+      </node>
+      <node id="17557">
+        <label>string</label>
+      </node>
+      <node id="17571">
+        <label>wx/stattext.h</label>
+      </node>
+      <node id="17522">
+        <label>src/kernel/routing/CommonFileDevice-inlines.h</label>
+        <link refid="d9/d6a/CommonFileDevice-inlines_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17523" relation="include">
+        </childnode>
+        <childnode refid="17549" relation="include">
+        </childnode>
+        <childnode refid="17551" relation="include">
+        </childnode>
+        <childnode refid="17552" relation="include">
+        </childnode>
+        <childnode refid="17579" relation="include">
+        </childnode>
+        <childnode refid="17580" relation="include">
+        </childnode>
+        <childnode refid="17581" relation="include">
+        </childnode>
+      </node>
+      <node id="17542">
+        <label>exception</label>
+      </node>
+      <node id="17579">
+        <label>wx/wfstream.h</label>
+      </node>
+      <node id="17563">
+        <label>wx/checkbox.h</label>
+      </node>
+      <node id="17573">
+        <label>wx/window.h</label>
+      </node>
+      <node id="17569">
+        <label>wx/radiobut.h</label>
+      </node>
+      <node id="17559">
+        <label>Interpre.h</label>
+        <link refid="d2/dd8/Interpre_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17556" relation="include">
+        </childnode>
+      </node>
+      <node id="17555">
+        <label>src/kernel/box.h</label>
+        <link refid="dc/d19/box_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17556" relation="include">
+        </childnode>
+        <childnode refid="17559" relation="include">
+        </childnode>
+        <childnode refid="17549" relation="include">
+        </childnode>
+        <childnode refid="17560" relation="include">
+        </childnode>
+      </node>
+      <node id="17565">
+        <label>wx/dialog.h</label>
+      </node>
+      <node id="17532">
+        <label>src/kernel/MidiKern.h</label>
+        <link refid="da/dfd/MidiKern_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+      </node>
+      <node id="17529">
+        <label>string.h</label>
+      </node>
+      <node id="17548">
+        <label>cstdio</label>
+      </node>
+      <node id="17574">
+        <label>wx/xrc/xmlres.h</label>
+      </node>
+      <node id="17538">
+        <label>vector</label>
+      </node>
+      <node id="17531">
+        <label>src/kernel/routing/Route.h</label>
+        <link refid="d1/d65/Route_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17532" relation="include">
+        </childnode>
+        <childnode refid="17533" relation="include">
+        </childnode>
+        <childnode refid="17534" relation="include">
+        </childnode>
+        <childnode refid="17536" relation="include">
+        </childnode>
+        <childnode refid="17537" relation="include">
+        </childnode>
+        <childnode refid="17538" relation="include">
+        </childnode>
+        <childnode refid="17539" relation="include">
+        </childnode>
+      </node>
+      <node id="17547">
+        <label>boost/unordered_set.hpp</label>
+      </node>
+      <node id="17545">
+        <label>sstream</label>
+      </node>
+      <node id="17527">
+        <label>wx/string.h</label>
+      </node>
+      <node id="17525">
+        <label>src/kernel/routing/gmn/GIS.h</label>
+        <link refid="dd/d4d/GIS_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17526" relation="include">
+        </childnode>
+        <childnode refid="17529" relation="include">
+        </childnode>
+        <childnode refid="17530" relation="include">
+        </childnode>
+      </node>
+      <node id="17556">
+        <label>Global.h</label>
+        <link refid="dd/d40/Global_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17550" relation="include">
+        </childnode>
+        <childnode refid="17530" relation="include">
+        </childnode>
+        <childnode refid="17520" relation="include">
+        </childnode>
+        <childnode refid="17557" relation="include">
+        </childnode>
+        <childnode refid="17558" relation="include">
+        </childnode>
+      </node>
+      <node id="17580">
+        <label>wx/msgdlg.h</label>
+      </node>
+      <node id="17582">
+        <label>src/kernel/routing/Route-inlines.h</label>
+        <link refid="d2/d2c/Route-inlines_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17531" relation="include">
+        </childnode>
+        <childnode refid="17524" relation="include">
+        </childnode>
+        <childnode refid="17554" relation="include">
+        </childnode>
+      </node>
+      <node id="17558">
+        <label>math.h</label>
+      </node>
+      <node id="17583">
+        <label>cstdlib</label>
+      </node>
+      <node id="17528">
+        <label>iostream</label>
+      </node>
+      <node id="17526">
+        <label>src/kernel/Frac.h</label>
+        <link refid="df/d4f/Frac_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17527" relation="include">
+        </childnode>
+        <childnode refid="17528" relation="include">
+        </childnode>
+      </node>
+      <node id="17521">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+      <node id="17561">
+        <label>src/wxGUI/resourceload.h</label>
+        <link refid="d3/daf/resourceload_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17562" relation="include">
+        </childnode>
+        <childnode refid="17563" relation="include">
+        </childnode>
+        <childnode refid="17564" relation="include">
+        </childnode>
+        <childnode refid="17565" relation="include">
+        </childnode>
+        <childnode refid="17566" relation="include">
+        </childnode>
+        <childnode refid="17567" relation="include">
+        </childnode>
+        <childnode refid="17568" relation="include">
+        </childnode>
+        <childnode refid="17569" relation="include">
+        </childnode>
+        <childnode refid="17570" relation="include">
+        </childnode>
+        <childnode refid="17571" relation="include">
+        </childnode>
+        <childnode refid="17572" relation="include">
+        </childnode>
+        <childnode refid="17573" relation="include">
+        </childnode>
+        <childnode refid="17574" relation="include">
+        </childnode>
+        <childnode refid="17575" relation="include">
+        </childnode>
+      </node>
+      <node id="17518">
+        <label>src/kernel/routing/tests/timer1.cpp</label>
+        <link refid="timer1.cpp"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17522" relation="include">
+        </childnode>
+        <childnode refid="17582" relation="include">
+        </childnode>
+        <childnode refid="17583" relation="include">
+        </childnode>
+        <childnode refid="17584" relation="include">
+        </childnode>
+        <childnode refid="17585" relation="include">
+        </childnode>
+      </node>
+      <node id="17546">
+        <label>wx/thread.h</label>
+      </node>
+      <node id="17535">
+        <label>src/kernel/routing/thread.h</label>
+        <link refid="db/dd5/thread_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+      </node>
+      <node id="17562">
+        <label>wx/button.h</label>
+      </node>
+      <node id="17570">
+        <label>wx/spinctrl.h</label>
+      </node>
+      <node id="17534">
+        <label>src/kernel/boost-interface.h</label>
+        <link refid="d1/da4/boost-interface_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17535" relation="include">
+        </childnode>
+      </node>
+      <node id="17543">
+        <label>wx/stopwatch.h</label>
+      </node>
+      <node id="17553">
+        <label>src/wxGUI/CompDlg.h</label>
+        <link refid="d4/d7c/CompDlg_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17554" relation="include">
+        </childnode>
+        <childnode refid="17561" relation="include">
+        </childnode>
+        <childnode refid="17576" relation="include">
+        </childnode>
+        <childnode refid="17566" relation="include">
+        </childnode>
+        <childnode refid="17574" relation="include">
+        </childnode>
+        <childnode refid="17567" relation="include">
+        </childnode>
+      </node>
+      <node id="17544">
+        <label>algorithm</label>
+      </node>
+      <node id="17524">
+        <label>src/kernel/routing/Device.h</label>
+        <link refid="de/d05/Device_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+        <childnode refid="17525" relation="include">
+        </childnode>
+        <childnode refid="17531" relation="include">
+        </childnode>
+        <childnode refid="17540" relation="include">
+        </childnode>
+        <childnode refid="17532" relation="include">
+        </childnode>
+        <childnode refid="17538" relation="include">
+        </childnode>
+        <childnode refid="17537" relation="include">
+        </childnode>
+        <childnode refid="17544" relation="include">
+        </childnode>
+        <childnode refid="17545" relation="include">
+        </childnode>
+        <childnode refid="17520" relation="include">
+        </childnode>
+        <childnode refid="17546" relation="include">
+        </childnode>
+        <childnode refid="17543" relation="include">
+        </childnode>
+        <childnode refid="17547" relation="include">
+        </childnode>
+      </node>
+      <node id="17576">
+        <label>wx/statline.h</label>
+      </node>
+      <node id="17550">
+        <label>stdio.h</label>
+      </node>
+      <node id="17572">
+        <label>wx/textctrl.h</label>
+      </node>
+      <node id="17533">
+        <label>src/kernel/treestorage.h</label>
+        <link refid="db/dbe/treestorage_8h"/>
+        <childnode refid="17519" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="dc/d13/classtestCommonFileDeviceTimer" prot="public">testCommonFileDeviceTimer</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="d2/d7d/group__tests_1gab23797a472d73f3c4dc79d7a3b65ceff" prot="public" static="no">
+        <name>no_wxGUI</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/timer1.cpp" line="45" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/timer1.cpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d2/d7d/group__tests_1ga3c04138a5bfe5d72780bb7e82a18e627" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>(int argc, char **argv)</argsstring>
+        <name>main</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> **</type>
+          <declname>argv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/tests/gmnopenfail1.cpp" line="140" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/tests/gmnopenfail1.cpp" bodystart="140" bodyend="177"/>
+        <references refid="d5/dee/group__route_1gaa237fcc1d0baa5e21ceb53b44a991683" compoundref="d2/dc0/Device_8cpp" startline="557" endline="563">mutabor::InitDeviceFactories</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="35"><highlight class="comment">//<sp/>availlable<sp/>groups:<sp/>GUI,<sp/>route,<sp/>kernel,<sp/>muwx,<sp/>debug,<sp/>docview</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">src/kernel/Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d9/d6a/CommonFileDevice-inlines_8h" kindref="compound">src/kernel/routing/CommonFileDevice-inlines.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d2c/Route-inlines_8h" kindref="compound">src/kernel/routing/Route-inlines.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Skip<sp/>the<sp/>GUI<sp/>related<sp/>checks<sp/>from<sp/>DebugRoute.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="d2/d7d/group__tests_1gab23797a472d73f3c4dc79d7a3b65ceff" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>no_wxGUI<sp/>1</highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d9/d27/DebugRoute_8cpp" kindref="compound">src/wxGUI/Routing/DebugRoute.cpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>no_wxGUI</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor">#ifdef<sp/>__BORLANDC__</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#pragma<sp/>hdrstop</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__WXMSW__</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>sleep(x)<sp/>Sleep(1000*x)</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;wx/app.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="dc/d13/classtestCommonFileDeviceTimer" kindref="compound">testCommonFileDeviceTimer</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="dd/d3c/classmutabor_1_1CommonFileInputDevice" kindref="compound">mutabor::CommonFileInputDevice</ref><sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutint64<sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a3c1d7c2ac20d6a8f55611a3ac40df262" kindref="member">lasttime</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref>;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1aa534ef9d8dc4183acfac2b125928b2e6" kindref="member">max</ref>;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a8741d926d3922911699d74b3ca4ab8d5" kindref="member">min</ref>;</highlight></codeline>
+<codeline lineno="68" refid="dc/d13/classtestCommonFileDeviceTimer_1a178f7301b7e2627e10c22be070197579" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a178f7301b7e2627e10c22be070197579" kindref="member">testCommonFileDeviceTimer</ref>():<ref refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a5e793bf4b7c203da99489ff869190455" kindref="member">CommonFileInputDevice</ref>(),<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref>(0),<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a3ce3ed253bdc23c788a8504514a35e2b" kindref="member">sw</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SetThreadKind(wxTHREAD_JOINABLE);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71" refid="dc/d13/classtestCommonFileDeviceTimer_1a1ea1c2899ef8912773d6b4a577025be5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a1ea1c2899ef8912773d6b4a577025be5" kindref="member">~testCommonFileDeviceTimer</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="72" refid="dc/d13/classtestCommonFileDeviceTimer_1a06a40c337fcc4e8b76e55265c782eaf8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a06a40c337fcc4e8b76e55265c782eaf8" kindref="member">Play</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" kindref="member">mutabor::CurrentTime</ref>.<ref refid="d7/dda/classmutabor_1_1CurrentTimer_1aaaae9a6186045cd8ef28f1d24bcf081d" kindref="member">UseRealtime</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1aa534ef9d8dc4183acfac2b125928b2e6" kindref="member">max</ref><sp/>=<sp/>0;<sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a8741d926d3922911699d74b3ca4ab8d5" kindref="member">min</ref><sp/>=<sp/>100000;<sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref>=<sp/>0;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CommonFileInputDevice::Play();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a3c1d7c2ac20d6a8f55611a3ac40df262" kindref="member">lasttime</ref><sp/>=<sp/>wxGetLocalTimeMillis().GetValue();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a3ce3ed253bdc23c788a8504514a35e2b" kindref="member">sw</ref>.Start(0);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="dc/d13/classtestCommonFileDeviceTimer_1a7955346d2a350280e5f0ce5321a16bab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a7955346d2a350280e5f0ce5321a16bab" kindref="member">Open</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a3ce3ed253bdc23c788a8504514a35e2b" kindref="member">sw</ref>.Start(0);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a3c1d7c2ac20d6a8f55611a3ac40df262" kindref="member">lasttime</ref><sp/>=<sp/>wxGetLocalTimeMillis().GetValue();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>CommonFileInputDevice::Open();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="dc/d13/classtestCommonFileDeviceTimer_1ae4d4b9913c9382ae44ad78d92024225c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1ae4d4b9913c9382ae44ad78d92024225c" kindref="member">Stop</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CommonFileInputDevice::Stop();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a3ce3ed253bdc23c788a8504514a35e2b" kindref="member">sw</ref>.Time()<sp/>&gt;<sp/>(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref>*(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref>-1))/2+30)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Played<sp/>too<sp/>long!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit<sp/>(1);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Played<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a3ce3ed253bdc23c788a8504514a35e2b" kindref="member">sw</ref>.Time()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;ms<sp/>(goal<sp/>is<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref>*(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref>-1))/2<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;ms)&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a3ce3ed253bdc23c788a8504514a35e2b" kindref="member">sw</ref>.Time()<sp/>&lt;<sp/>(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref>*(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref>-1))/2-30)<sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Played<sp/>too<sp/>short!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit<sp/>(1);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Played<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a3ce3ed253bdc23c788a8504514a35e2b" kindref="member">sw</ref>.Time()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;ms<sp/>(goal<sp/>is<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref>*(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref>-1))/2<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;ms)&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a3ce3ed253bdc23c788a8504514a35e2b" kindref="member">sw</ref>.Pause();</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101" refid="dc/d13/classtestCommonFileDeviceTimer_1afb7fc7a56fcc67e80980d4f371c1317c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutint64<sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1afb7fc7a56fcc67e80980d4f371c1317c" kindref="member">PrepareNextEvent</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutint64<sp/>tl<sp/>=<sp/>wxGetLocalTimeMillis().GetValue();</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tl<sp/>=<sp/>tl<sp/>-<sp/>(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a3c1d7c2ac20d6a8f55611a3ac40df262" kindref="member">lasttime</ref><sp/>+<sp/>(mutint64)(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref>*(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref>+1))/2);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1aa534ef9d8dc4183acfac2b125928b2e6" kindref="member">max</ref><sp/>&lt;<sp/>tl)<sp/><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1aa534ef9d8dc4183acfac2b125928b2e6" kindref="member">max</ref><sp/>=<sp/>tl;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a8741d926d3922911699d74b3ca4ab8d5" kindref="member">min</ref><sp/>&gt;<sp/>tl<sp/>||<sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a8741d926d3922911699d74b3ca4ab8d5" kindref="member">min</ref><sp/>==<sp/>0)<sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a8741d926d3922911699d74b3ca4ab8d5" kindref="member">min</ref><sp/>=<sp/>tl;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tl<sp/>&gt;<sp/>10)<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Too<sp/>slow:<sp/>(&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;^2<sp/>+<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;)<sp/>/<sp/>2<sp/>=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref>*(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref>+1))/2<sp/></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Runtime:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>tl<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;ms&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(3);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a3c1d7c2ac20d6a8f55611a3ac40df262" kindref="member">lasttime</ref><sp/>=<sp/>wxGetLocalTimeMillis().GetValue();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(++<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref>&lt;100)<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref><sp/>&lt;&lt;<sp/>std::flush;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(mutint64)(<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a4611be844e31088486256c15025d9088" kindref="member">i</ref><sp/>*<sp/>1000);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1gab552cc7e2033cc34840644adee86699f" kindref="member">GetNO_DELTA</ref>();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="dc/d13/classtestCommonFileDeviceTimer_1a1255b7d88968ecb904c8926cbca29dcf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a1255b7d88968ecb904c8926cbca29dcf" kindref="member">Save</ref>(tree_storage&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="db/d05/classmutabor_1_1TRouteClass" kindref="compound">mutabor::RouteClass</ref>*){}</highlight></codeline>
+<codeline lineno="120" refid="dc/d13/classtestCommonFileDeviceTimer_1aa74c492d13075f155892c21bb0d716d4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1aa74c492d13075f155892c21bb0d716d4" kindref="member">Load</ref>(tree_storage&amp;,<sp/><ref refid="db/d05/classmutabor_1_1TRouteClass" kindref="compound">mutabor::RouteClass</ref>*){}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="122" refid="dc/d13/classtestCommonFileDeviceTimer_1a3ce3ed253bdc23c788a8504514a35e2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxStopWatch<sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer_1a3ce3ed253bdc23c788a8504514a35e2b" kindref="member">sw</ref>;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/d21/gmn2midi_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**argv)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE,<sp/></highlight><highlight class="stringliteral">&quot;program&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>DEBUG</highlight></codeline>
+<codeline lineno="129"><highlight class="preprocessor"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>debugFlags::flags.timer<sp/>=<sp/>true;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>debugFlags::flags.thread<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="132"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxInitializer<sp/>initializer;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!initializer<sp/>)</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(stderr,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>initialize<sp/>the<sp/>wxWidgets<sp/>library,<sp/>aborting.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer" kindref="compound">testCommonFileDeviceTimer</ref><sp/>*<sp/>tim<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="dc/d13/classtestCommonFileDeviceTimer" kindref="compound">testCommonFileDeviceTimer</ref>();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tim<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Class<sp/>construction<sp/>failed.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(-1);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1gaa07c845228719e7505615a18d241734d" kindref="member">mutabor::InputDevice</ref><sp/>prevent_from_deletion(tim);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tim-&gt;<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a7955346d2a350280e5f0ce5321a16bab" kindref="member">Open</ref>();</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tim-&gt;<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a06a40c337fcc4e8b76e55265c782eaf8" kindref="member">Play</ref>();</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxThread::ExitCode<sp/>e<sp/>=<sp/>tim-&gt;<ref refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a0e07f85298f243526c07a976c7a44faa" kindref="member">WaitForDeviceFinish</ref>();</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Deviation<sp/>min:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>tim-&gt;<ref refid="dc/d13/classtestCommonFileDeviceTimer_1a8741d926d3922911699d74b3ca4ab8d5" kindref="member">min</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>max:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>tim-&gt;<ref refid="dc/d13/classtestCommonFileDeviceTimer_1aa534ef9d8dc4183acfac2b125928b2e6" kindref="member">max</ref><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(intptr_t)e;<sp/></highlight></codeline>
+<codeline lineno="154"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/timer1.cpp"/>
+  </compounddef>
+</doxygen>

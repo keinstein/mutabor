@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d2/d39/classmutaborGUI_1_1OutputFilterPanel" kind="class" prot="public">
+    <compoundname>mutaborGUI::OutputFilterPanel</compoundname>
+    <basecompoundref refid="d6/dcb/classOutputFilterPanelBase" prot="public" virt="non-virtual">OutputFilterPanelBase</basecompoundref>
+    <includes refid="d9/dd2/BoxDlg_8h" local="no">BoxDlg.h</includes>
+    <innerclass refid="da/dad/classmutaborGUI_1_1OutputFilterPanel_1_1OutputShapeData" prot="private">mutaborGUI::OutputFilterPanel::OutputShapeData</innerclass>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d2/d39/classmutaborGUI_1_1OutputFilterPanel_1a2ccd280fd03b22bbb2631abc710e4641" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutaborGUI::OutputFilterPanel::OutputFilterPanel</definition>
+        <argsstring>(wxWindow *parent)</argsstring>
+        <name>OutputFilterPanel</name>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxDlg.h" line="99" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxDlg.h" bodystart="99" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d39/classmutaborGUI_1_1OutputFilterPanel_1adb778b68e1827990da0aa49e5418a3cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>wxChoicebook *</type>
+        <definition>wxChoicebook* mutaborGUI::OutputFilterPanel::GetOutputDeviceBook</definition>
+        <argsstring>()</argsstring>
+        <name>GetOutputDeviceBook</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxDlg.h" line="100" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxDlg.h" bodystart="100" bodyend="100"/>
+        <references refid="d6/dcb/classOutputFilterPanelBase_1a5ef0978f0b86aea45e00bd9d4afa649e" compoundref="d2/dc0/wxresource_8h" startline="285">OutputFilterPanelBase::outputDevice</references>
+        <referencedby refid="dc/df2/group__GUIroute_1ga190e24cde75e2eac5bd925b1cca9c40f" compoundref="d9/d24/BoxChannelShape_8cpp" startline="395" endline="442">mutaborGUI::MutBoxChannelShape::InitializeOutputFilter</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d39/classmutaborGUI_1_1OutputFilterPanel_1a69d05e0ea6aa7184d9d5ff1081f66fe4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::OutputFilterPanel::AddPage</definition>
+        <argsstring>(wxPanel *panel, const wxString &amp;label, bool selected, MutOutputDeviceShape *shape)</argsstring>
+        <name>AddPage</name>
+        <param>
+          <type>wxPanel *</type>
+          <declname>panel</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxString &amp;</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>selected</declname>
+        </param>
+        <param>
+          <type><ref refid="dc/df2/group__GUIroute_1ga914c2e625ebf63e120a8c6c80274352d" kindref="member">MutOutputDeviceShape</ref> *</type>
+          <declname>shape</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxDlg.h" line="101" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxDlg.cpp" bodystart="108" bodyend="117"/>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+      </memberdef>
+      <memberdef kind="function" id="d2/d39/classmutaborGUI_1_1OutputFilterPanel_1a910a88bf5eff44efd98f79c8c921e326" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>wxWindow *</type>
+        <definition>wxWindow * mutaborGUI::OutputFilterPanel::GetCurrentDevicePage</definition>
+        <argsstring>()</argsstring>
+        <name>GetCurrentDevicePage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxDlg.h" line="102" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxDlg.cpp" bodystart="119" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d39/classmutaborGUI_1_1OutputFilterPanel_1a6fb670f71eaabeaf562224b0e4b1dcf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/df2/group__GUIroute_1ga914c2e625ebf63e120a8c6c80274352d" kindref="member">MutOutputDeviceShape</ref> *</type>
+        <definition>MutOutputDeviceShape * mutaborGUI::OutputFilterPanel::GetCurrentSelection</definition>
+        <argsstring>()</argsstring>
+        <name>GetCurrentSelection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxDlg.h" line="103" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxDlg.cpp" bodystart="124" bodyend="142"/>
+        <references refid="da/dad/classmutaborGUI_1_1OutputFilterPanel_1_1OutputShapeData_1a2ce66f9d5f1c6765e1c05cc8bb130ed2" compoundref="d9/dd2/BoxDlg_8h" startline="96" endline="96">mutaborGUI::OutputFilterPanel::OutputShapeData::GetDevice</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+        <referencedby refid="dc/df2/group__GUIroute_1ga4f90260150415ed28bd6069cb7c1298a" compoundref="d9/d24/BoxChannelShape_8cpp" startline="444" endline="560">mutaborGUI::MutBoxChannelShape::ReadPanel</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3948">
+        <label>wxPanel</label>
+      </node>
+      <node id="3947">
+        <label>OutputFilterPanelBase</label>
+        <link refid="d6/dcb/classOutputFilterPanelBase"/>
+        <childnode refid="3948" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3946">
+        <label>mutaborGUI::OutputFilterPanel</label>
+        <link refid="d2/d39/classmutaborGUI_1_1OutputFilterPanel"/>
+        <childnode refid="3947" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3951">
+        <label>wxPanel</label>
+      </node>
+      <node id="3950">
+        <label>OutputFilterPanelBase</label>
+        <link refid="d6/dcb/classOutputFilterPanelBase"/>
+        <childnode refid="3951" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3949">
+        <label>mutaborGUI::OutputFilterPanel</label>
+        <link refid="d2/d39/classmutaborGUI_1_1OutputFilterPanel"/>
+        <childnode refid="3950" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxDlg.h" line="91" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxDlg.h" bodystart="91" bodyend="104"/>
+    <listofallmembers>
+      <member refid="d2/d39/classmutaborGUI_1_1OutputFilterPanel_1a69d05e0ea6aa7184d9d5ff1081f66fe4" prot="public" virt="non-virtual"><scope>mutaborGUI::OutputFilterPanel</scope><name>AddPage</name></member>
+      <member refid="d2/d39/classmutaborGUI_1_1OutputFilterPanel_1a910a88bf5eff44efd98f79c8c921e326" prot="public" virt="non-virtual"><scope>mutaborGUI::OutputFilterPanel</scope><name>GetCurrentDevicePage</name></member>
+      <member refid="d2/d39/classmutaborGUI_1_1OutputFilterPanel_1a6fb670f71eaabeaf562224b0e4b1dcf1" prot="public" virt="non-virtual"><scope>mutaborGUI::OutputFilterPanel</scope><name>GetCurrentSelection</name></member>
+      <member refid="d2/d39/classmutaborGUI_1_1OutputFilterPanel_1adb778b68e1827990da0aa49e5418a3cf" prot="public" virt="non-virtual"><scope>mutaborGUI::OutputFilterPanel</scope><name>GetOutputDeviceBook</name></member>
+      <member refid="d6/dcb/classOutputFilterPanelBase_1a5ef0978f0b86aea45e00bd9d4afa649e" prot="protected" virt="non-virtual"><scope>mutaborGUI::OutputFilterPanel</scope><name>outputDevice</name></member>
+      <member refid="d2/d39/classmutaborGUI_1_1OutputFilterPanel_1a2ccd280fd03b22bbb2631abc710e4641" prot="public" virt="non-virtual"><scope>mutaborGUI::OutputFilterPanel</scope><name>OutputFilterPanel</name></member>
+      <member refid="d6/dcb/classOutputFilterPanelBase_1a814af112f405191f8f0eb5c924ff2657" prot="public" virt="non-virtual"><scope>mutaborGUI::OutputFilterPanel</scope><name>OutputFilterPanelBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

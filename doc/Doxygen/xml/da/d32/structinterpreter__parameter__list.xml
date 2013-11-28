@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="da/d32/structinterpreter__parameter__list" kind="struct" prot="public">
+    <compoundname>interpreter_parameter_list</compoundname>
+    <includes refid="d2/dd8/Interpre_8h" local="no">Interpre.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="da/d32/structinterpreter__parameter__list_1ac7af60a9c8c057bf6952458e9114a5a2" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t interpreter_parameter_list::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+<para>size of the allocated memory </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="218" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="218" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1gad0e9c82241b92358c5780470413b11bf" compoundref="df/d23/Execute_8cpp" startline="193" endline="268">call_actions</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga00cc2a76cfd7714e7536fa1d1d523dce" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">execute_aktion</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="da/d32/structinterpreter__parameter__list_1aee9bda949348a3960fab20c5e34dd41b" prot="public" static="no" mutable="no">
+        <type>int *</type>
+        <definition>int* interpreter_parameter_list::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+<para>data fields </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="219" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="219" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1gad0e9c82241b92358c5780470413b11bf" compoundref="df/d23/Execute_8cpp" startline="193" endline="268">call_actions</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga00cc2a76cfd7714e7536fa1d1d523dce" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">execute_aktion</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="da/d32/structinterpreter__parameter__list_1ac0b1806161d361a014a123ea3b437d62" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="da/d32/structinterpreter__parameter__list" kindref="compound">interpreter_parameter_list</ref> *</type>
+        <definition>struct interpreter_parameter_list* interpreter_parameter_list::next</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <briefdescription>
+<para>possibly next element </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="220" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="220" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1gad0e9c82241b92358c5780470413b11bf" compoundref="df/d23/Execute_8cpp" startline="193" endline="268">call_actions</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3166">
+        <label>interpreter_parameter_list</label>
+        <link refid="da/d32/structinterpreter__parameter__list"/>
+        <childnode refid="3166" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="217" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="216" bodyend="221"/>
+    <listofallmembers>
+      <member refid="da/d32/structinterpreter__parameter__list_1aee9bda949348a3960fab20c5e34dd41b" prot="public" virt="non-virtual"><scope>interpreter_parameter_list</scope><name>data</name></member>
+      <member refid="da/d32/structinterpreter__parameter__list_1ac0b1806161d361a014a123ea3b437d62" prot="public" virt="non-virtual"><scope>interpreter_parameter_list</scope><name>next</name></member>
+      <member refid="da/d32/structinterpreter__parameter__list_1ac7af60a9c8c057bf6952458e9114a5a2" prot="public" virt="non-virtual"><scope>interpreter_parameter_list</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

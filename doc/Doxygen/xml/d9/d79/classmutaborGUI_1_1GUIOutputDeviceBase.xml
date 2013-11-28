@@ -1,0 +1,438 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase" kind="class" prot="public" abstract="yes">
+    <compoundname>mutaborGUI::GUIOutputDeviceBase</compoundname>
+    <derivedcompoundref refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice" prot="public" virt="non-virtual">mutaborGUI::GUIfiedOutputDevice&lt; T &gt;</derivedcompoundref>
+    <includes refid="d6/dfa/GUIRoute_8h" local="no">GUIRoute.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a81bde0fdcef1efc6f1cb6674b72e978a" prot="protected" static="no" mutable="no">
+        <type><ref refid="dc/df2/group__GUIroute_1gaea54ceb9869d4bafd34bf540d256439f" kindref="member">MutOutputDeviceShapeList</ref></type>
+        <definition>MutOutputDeviceShapeList mutaborGUI::GUIOutputDeviceBase::shapes</definition>
+        <argsstring></argsstring>
+        <name>shapes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="358" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" bodystart="358" bodyend="-1"/>
+        <referencedby refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1acbe6a6861cb75a7c0d2193a541d13fbf" compoundref="d2/d73/GUIRoute-inlines_8h" startline="846" endline="875">Add</referencedby>
+        <referencedby refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a32b2c153657bd9456a2109d4013dbc94" compoundref="d2/d73/GUIRoute-inlines_8h" startline="1027" endline="1038">GetShape</referencedby>
+        <referencedby refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a88d42786efa8945ede45bb0554d171c9" compoundref="d2/d73/GUIRoute-inlines_8h" startline="946" endline="957">MoveToInList</referencedby>
+        <referencedby refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1afea3064b511c8418e28a891dee4940b8" compoundref="d2/d73/GUIRoute-inlines_8h" startline="909" endline="943">Remove</referencedby>
+        <referencedby refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1af64f5a0e0e56d4acdb6b3c82a85fd6f7" compoundref="d2/d73/GUIRoute-inlines_8h" startline="877" endline="908">Replace</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a89c1fbdd64137307f00d0c1070478d58" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="dc/df2/group__GUIroute_1gaea54ceb9869d4bafd34bf540d256439f" kindref="member">MutOutputDeviceShapeList</ref> &amp;</type>
+        <definition>const MutOutputDeviceShapeList&amp; mutaborGUI::GUIOutputDeviceBase::GetShapes</definition>
+        <argsstring>() const </argsstring>
+        <name>GetShapes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="361" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" bodystart="361" bodyend="363"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1ad22a51f0c4927b2a888890e798c467cd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="dc/df2/group__GUIroute_1gaea54ceb9869d4bafd34bf540d256439f" kindref="member">MutOutputDeviceShapeList</ref> &amp;</type>
+        <definition>MutOutputDeviceShapeList&amp; mutaborGUI::GUIOutputDeviceBase::GetShapes</definition>
+        <argsstring>()</argsstring>
+        <name>GetShapes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="364" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" bodystart="364" bodyend="366"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1acbe6a6861cb75a7c0d2193a541d13fbf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::GUIOutputDeviceBase::Add</definition>
+        <argsstring>(mutabor::Route &amp;route)</argsstring>
+        <name>Add</name>
+        <reimplementedby refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1a39d1137de5b7329cdc865a9d533bf1b2">Add</reimplementedby>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">mutabor::Route</ref> &amp;</type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+<para>add a route </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="369" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute-inlines.h" bodystart="846" bodyend="875"/>
+        <references refid="dc/df2/group__GUIroute_1ga87c202d6a6d9c73298bdbef2b9505c72" compoundref="d9/d24/BoxChannelShape_8cpp" startline="161" endline="165">mutaborGUI::MutBoxChannelShape::Add</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1abdcf85d9daa3775b12a455bf7da3d047">GetDevice</references>
+        <references refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a5ea441cfd467c5c764af892ae95ccb9e" compoundref="d2/d73/GUIRoute-inlines_8h" startline="758" endline="769">mutaborGUI::GUIRouteBase::GetShape</references>
+        <references refid="d9/d7c/group__kernel_1ga929b9e3b3d2ed10ebd92110d49320603" compoundref="d1/da4/boost-interface_8h" startline="107" endline="111">intrusive_ptr_get_refcount</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a81bde0fdcef1efc6f1cb6674b72e978a" compoundref="d6/dfa/GUIRoute_8h" startline="358">shapes</references>
+        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="309" endline="312">mutaborGUI::ToGUIBase</references>
+        <referencedby refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1a39d1137de5b7329cdc865a9d533bf1b2" compoundref="d2/d73/GUIRoute-inlines_8h" startline="961" endline="967">mutaborGUI::GUIfiedOutputDevice&lt; T &gt;::Add</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1af64f5a0e0e56d4acdb6b3c82a85fd6f7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::GUIOutputDeviceBase::Replace</definition>
+        <argsstring>(mutabor::Route &amp;oldroute, mutabor::Route &amp;newroute)</argsstring>
+        <name>Replace</name>
+        <reimplementedby refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1a63e855fe442544186d816e8d60e2b75a">Replace</reimplementedby>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">mutabor::Route</ref> &amp;</type>
+          <declname>oldroute</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">mutabor::Route</ref> &amp;</type>
+          <declname>newroute</declname>
+        </param>
+        <briefdescription>
+<para>replace a route </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="371" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute-inlines.h" bodystart="877" bodyend="908"/>
+        <references refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a5ea441cfd467c5c764af892ae95ccb9e" compoundref="d2/d73/GUIRoute-inlines_8h" startline="758" endline="769">mutaborGUI::GUIRouteBase::GetShape</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1afea3064b511c8418e28a891dee4940b8" compoundref="d2/d73/GUIRoute-inlines_8h" startline="909" endline="943">Remove</references>
+        <references refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a81bde0fdcef1efc6f1cb6674b72e978a" compoundref="d6/dfa/GUIRoute_8h" startline="358">shapes</references>
+        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="309" endline="312">mutaborGUI::ToGUIBase</references>
+        <referencedby refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1a63e855fe442544186d816e8d60e2b75a" compoundref="d2/d73/GUIRoute-inlines_8h" startline="971" endline="980">mutaborGUI::GUIfiedOutputDevice&lt; T &gt;::Replace</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1afea3064b511c8418e28a891dee4940b8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::GUIOutputDeviceBase::Remove</definition>
+        <argsstring>(mutabor::Route &amp;route)</argsstring>
+        <name>Remove</name>
+        <reimplementedby refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1a5d13c5838f8fea67ea1496cf83ccd2f0">Remove</reimplementedby>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">mutabor::Route</ref> &amp;</type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+<para>remove a route </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="373" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute-inlines.h" bodystart="909" bodyend="943"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1abdcf85d9daa3775b12a455bf7da3d047">GetDevice</references>
+        <references refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a5ea441cfd467c5c764af892ae95ccb9e" compoundref="d2/d73/GUIRoute-inlines_8h" startline="758" endline="769">mutaborGUI::GUIRouteBase::GetShape</references>
+        <references refid="d9/d7c/group__kernel_1ga929b9e3b3d2ed10ebd92110d49320603" compoundref="d1/da4/boost-interface_8h" startline="107" endline="111">intrusive_ptr_get_refcount</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="dc/df2/group__GUIroute_1ga319b533dacab1962dae03bda713c43cd" compoundref="d9/d24/BoxChannelShape_8cpp" startline="216" endline="223">mutaborGUI::MutBoxChannelShape::Remove</references>
+        <references refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a81bde0fdcef1efc6f1cb6674b72e978a" compoundref="d6/dfa/GUIRoute_8h" startline="358">shapes</references>
+        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="309" endline="312">mutaborGUI::ToGUIBase</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+        <referencedby refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1a5d13c5838f8fea67ea1496cf83ccd2f0" compoundref="d2/d73/GUIRoute-inlines_8h" startline="992" endline="1000">mutaborGUI::GUIfiedOutputDevice&lt; T &gt;::Remove</referencedby>
+        <referencedby refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1af64f5a0e0e56d4acdb6b3c82a85fd6f7" compoundref="d2/d73/GUIRoute-inlines_8h" startline="877" endline="908">Replace</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1ad71fa6d0b82317147f7e7e42be1c709c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::GUIOutputDeviceBase::Add</definition>
+        <argsstring>(MutOutputDeviceShape *shape)</argsstring>
+        <name>Add</name>
+        <param>
+          <type><ref refid="dc/df2/group__GUIroute_1ga914c2e625ebf63e120a8c6c80274352d" kindref="member">MutOutputDeviceShape</ref> *</type>
+          <declname>shape</declname>
+        </param>
+        <briefdescription>
+<para>Move routes to another device. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="377" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute-inlines.h" bodystart="1002" bodyend="1008"/>
+        <references refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a81bde0fdcef1efc6f1cb6674b72e978a" compoundref="d6/dfa/GUIRoute_8h" startline="358">shapes</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+      </memberdef>
+      <memberdef kind="function" id="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1af2c213a417bf28b06515100615e170dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::GUIOutputDeviceBase::Remove</definition>
+        <argsstring>(MutOutputDeviceShape *shape)</argsstring>
+        <name>Remove</name>
+        <param>
+          <type><ref refid="dc/df2/group__GUIroute_1ga914c2e625ebf63e120a8c6c80274352d" kindref="member">MutOutputDeviceShape</ref> *</type>
+          <declname>shape</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="378" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute-inlines.h" bodystart="1009" bodyend="1023"/>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a81bde0fdcef1efc6f1cb6674b72e978a" compoundref="d6/dfa/GUIRoute_8h" startline="358">shapes</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+      </memberdef>
+      <memberdef kind="function" id="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a32b2c153657bd9456a2109d4013dbc94" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="dc/df2/group__GUIroute_1ga914c2e625ebf63e120a8c6c80274352d" kindref="member">MutOutputDeviceShape</ref> *</type>
+        <definition>MutOutputDeviceShape * mutaborGUI::GUIOutputDeviceBase::GetShape</definition>
+        <argsstring>(wxWindow *parent)</argsstring>
+        <name>GetShape</name>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="380" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute-inlines.h" bodystart="1027" bodyend="1038"/>
+        <references refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a81bde0fdcef1efc6f1cb6674b72e978a" compoundref="d6/dfa/GUIRoute_8h" startline="358">shapes</references>
+        <referencedby refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a59ecff2c82cba60843071aafb7127dbf" compoundref="d2/d73/GUIRoute-inlines_8h" startline="381" endline="396">mutaborGUI::GUIRouteBase::Add</referencedby>
+        <referencedby refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1abdda40a92ac14984a9517b9cb939d2a1" compoundref="d2/d73/GUIRoute-inlines_8h" startline="612" endline="653">mutaborGUI::GUIRouteBase::Remove</referencedby>
+        <referencedby refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1ac5617cbdba3df10d8191a1d7b36fc5f2" compoundref="d2/d73/GUIRoute-inlines_8h" startline="453" endline="504">mutaborGUI::GUIRouteBase::Replace</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1abdcf85d9daa3775b12a455bf7da3d047" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="d2/d2f/classmutabor_1_1OutputDeviceClass" kindref="compound">mutabor::OutputDeviceClass</ref> *</type>
+        <definition>virtual mutabor::OutputDeviceClass* mutaborGUI::GUIOutputDeviceBase::GetDevice</definition>
+        <argsstring>()=0</argsstring>
+        <name>GetDevice</name>
+        <reimplementedby refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1a8e0ac62ae46e256b171109f9d7cc4a4d">GetDevice</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="391" column="1"/>
+        <referencedby refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1acbe6a6861cb75a7c0d2193a541d13fbf" compoundref="d2/d73/GUIRoute-inlines_8h" startline="846" endline="875">Add</referencedby>
+        <referencedby refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1afea3064b511c8418e28a891dee4940b8" compoundref="d2/d73/GUIRoute-inlines_8h" startline="909" endline="943">Remove</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a88d42786efa8945ede45bb0554d171c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::GUIOutputDeviceBase::MoveToInList</definition>
+        <argsstring>(int newpos)</argsstring>
+        <name>MoveToInList</name>
+        <param>
+          <type>int</type>
+          <declname>newpos</declname>
+        </param>
+        <briefdescription>
+<para>Move the associated device shape to a given position. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function handles the GUI part of <ref refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1a6925d6c1e9bc20a069c15cb0418c0ec4" kindref="member">GUIfiedOutputDevice::MoveInList()</ref>.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>newpos</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New position of the shape in the list. This parameter should reflect the actual position of the device in the (non GUI) output device list. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="403" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute-inlines.h" bodystart="946" bodyend="957"/>
+        <references refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a81bde0fdcef1efc6f1cb6674b72e978a" compoundref="d6/dfa/GUIRoute_8h" startline="358">shapes</references>
+        <referencedby refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1a6925d6c1e9bc20a069c15cb0418c0ec4" compoundref="d2/d73/GUIRoute-inlines_8h" startline="984" endline="988">mutaborGUI::GUIfiedOutputDevice&lt; T &gt;::MoveInList</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a8151d96d434fee057024db8c2c6c5c1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::GUIOutputDeviceBase::Destroy</definition>
+        <argsstring>()</argsstring>
+        <name>Destroy</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="405" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.cpp" bodystart="636" bodyend="650"/>
+        <references refid="d6/daa/namespacemutabor_1adb9659c6b97b933b1997d17e5e790296" compoundref="d2/d2c/Route-inlines_8h" startline="77" endline="84">mutabor::disconnect</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+      </memberdef>
+      <memberdef kind="function" id="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a84258f346a632fa421c55653e45e8153" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::GUIOutputDeviceBase::runtime_error</definition>
+        <argsstring>(bool iswarning, const mutString &amp;message, va_list &amp;args)</argsstring>
+        <name>runtime_error</name>
+        <reimplementedby refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1a5b0f33795729434013db9d26b8bd9513">runtime_error</reimplementedby>
+        <param>
+          <type>bool</type>
+          <declname>iswarning</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>va_list &amp;</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="407" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.cpp" bodystart="652" bodyend="656"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
+        <references refid="d9/d7c/group__kernel_1ggafeebd36c5713e8438dcf17e926f8ad96ad606e435413ea0944dd00d49e901e4ed" compoundref="de/d11/Execute_8h" startline="79">error</references>
+        <referencedby refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1a5b0f33795729434013db9d26b8bd9513" compoundref="d6/dfa/GUIRoute_8h" startline="444" endline="450">mutaborGUI::GUIfiedOutputDevice&lt; T &gt;::runtime_error</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a2b7acfc6cd62acc7872f0d021fb816e2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase" kindref="compound">GUIOutputDeviceBase</ref> *</type>
+        <definition>static GUIOutputDeviceBase* mutaborGUI::GUIOutputDeviceBase::GetGUIOutputDevice</definition>
+        <argsstring>(mutabor::OutputDeviceClass *d)</argsstring>
+        <name>GetGUIOutputDevice</name>
+        <param>
+          <type><ref refid="d2/d2f/classmutabor_1_1OutputDeviceClass" kindref="compound">mutabor::OutputDeviceClass</ref> *</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="382" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" bodystart="382" bodyend="384"/>
+        <references refid="d5/dee/group__route_1ga6b40f3affafc4ecaf39ac957e2c74cd3" compoundref="de/d05/Device_8h" startline="521" endline="521">mutabor::Device::getUserData</references>
+        <referencedby refid="db/d94/namespacemutaborGUI_1a3befb05e90d5b92744e475faf5c2352f" compoundref="d6/dfa/GUIRoute_8h" startline="453" endline="455">mutaborGUI::ToGUIBase</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1abc5c85a01fa37e92d0da4c2eebbd710e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase" kindref="compound">GUIOutputDeviceBase</ref> *</type>
+        <definition>static const GUIOutputDeviceBase* mutaborGUI::GUIOutputDeviceBase::GetGUIOutputDevice</definition>
+        <argsstring>(const mutabor::OutputDeviceClass *d)</argsstring>
+        <name>GetGUIOutputDevice</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d2/d2f/classmutabor_1_1OutputDeviceClass" kindref="compound">mutabor::OutputDeviceClass</ref> *</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="386" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" bodystart="386" bodyend="388"/>
+        <references refid="d5/dee/group__route_1ga6b40f3affafc4ecaf39ac957e2c74cd3" compoundref="de/d05/Device_8h" startline="521" endline="521">mutabor::Device::getUserData</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Prototype of any GUI based output device class. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2938">
+        <label>mutaborGUI::GUIOutputDeviceBase</label>
+        <link refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase"/>
+      </node>
+      <node id="2939">
+        <label>mutaborGUI::GUIfiedOutputDevice&lt; T &gt;</label>
+        <link refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice"/>
+        <childnode refid="2938" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2944">
+        <label>T</label>
+      </node>
+      <node id="2945">
+        <label>std::list&lt; wxPoint &gt;</label>
+      </node>
+      <node id="2948">
+        <label>mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;</label>
+        <link refid="db/d05/classmutabor_1_1TRouteClass"/>
+        <childnode refid="2949" relation="usage">
+          <edgelabel>routeList</edgelabel>
+        </childnode>
+        <childnode refid="2950" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="2950">
+        <label>mutabor::idtype&lt; mutabor::TRouteClass&lt; InputDevice, OutputDevice &gt; &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="2943">
+        <label>MutIconShape</label>
+        <link refid="d5/d12/classMutIconShapeClass"/>
+        <childnode refid="2944" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2945" relation="usage">
+          <edgelabel>usedperimeterpoints</edgelabel>
+        </childnode>
+      </node>
+      <node id="2940">
+        <label>mutaborGUI::GUIOutputDeviceBase</label>
+        <link refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase"/>
+        <childnode refid="2941" relation="usage">
+          <edgelabel>shapes</edgelabel>
+        </childnode>
+      </node>
+      <node id="2949">
+        <label>std::list&lt; T &gt;</label>
+        <childnode refid="2944" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2947">
+        <label>mutaborGUI::MutBoxChannelShape</label>
+        <link refid="d8/d8e/classmutaborGUI_1_1MutBoxChannelShape"/>
+        <childnode refid="2943" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2948" relation="usage">
+          <edgelabel>route</edgelabel>
+        </childnode>
+        <childnode refid="2942" relation="usage">
+          <edgelabel>output</edgelabel>
+          <edgelabel>input</edgelabel>
+        </childnode>
+      </node>
+      <node id="2941">
+        <label>std::list&lt; MutOutputDeviceShape * &gt;</label>
+        <childnode refid="2942" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2946">
+        <label>std::list&lt; MutBoxChannelShape * &gt;</label>
+        <childnode refid="2947" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2942">
+        <label>mutaborGUI::MutDeviceShape&lt; T &gt;</label>
+        <link refid="d3/d4c/classmutaborGUI_1_1MutDeviceShape"/>
+        <childnode refid="2943" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2946" relation="usage">
+          <edgelabel>routes</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="356" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" bodystart="356" bodyend="408"/>
+    <listofallmembers>
+      <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1acbe6a6861cb75a7c0d2193a541d13fbf" prot="public" virt="virtual"><scope>mutaborGUI::GUIOutputDeviceBase</scope><name>Add</name></member>
+      <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1ad71fa6d0b82317147f7e7e42be1c709c" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIOutputDeviceBase</scope><name>Add</name></member>
+      <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a8151d96d434fee057024db8c2c6c5c1a" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIOutputDeviceBase</scope><name>Destroy</name></member>
+      <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1abdcf85d9daa3775b12a455bf7da3d047" prot="public" virt="pure-virtual"><scope>mutaborGUI::GUIOutputDeviceBase</scope><name>GetDevice</name></member>
+      <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a2b7acfc6cd62acc7872f0d021fb816e2" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIOutputDeviceBase</scope><name>GetGUIOutputDevice</name></member>
+      <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1abc5c85a01fa37e92d0da4c2eebbd710e" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIOutputDeviceBase</scope><name>GetGUIOutputDevice</name></member>
+      <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a32b2c153657bd9456a2109d4013dbc94" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIOutputDeviceBase</scope><name>GetShape</name></member>
+      <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a89c1fbdd64137307f00d0c1070478d58" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIOutputDeviceBase</scope><name>GetShapes</name></member>
+      <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1ad22a51f0c4927b2a888890e798c467cd" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIOutputDeviceBase</scope><name>GetShapes</name></member>
+      <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a88d42786efa8945ede45bb0554d171c9" prot="public" virt="virtual"><scope>mutaborGUI::GUIOutputDeviceBase</scope><name>MoveToInList</name></member>
+      <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1afea3064b511c8418e28a891dee4940b8" prot="public" virt="virtual"><scope>mutaborGUI::GUIOutputDeviceBase</scope><name>Remove</name></member>
+      <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1af2c213a417bf28b06515100615e170dd" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIOutputDeviceBase</scope><name>Remove</name></member>
+      <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1af64f5a0e0e56d4acdb6b3c82a85fd6f7" prot="public" virt="virtual"><scope>mutaborGUI::GUIOutputDeviceBase</scope><name>Replace</name></member>
+      <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a84258f346a632fa421c55653e45e8153" prot="public" virt="virtual"><scope>mutaborGUI::GUIOutputDeviceBase</scope><name>runtime_error</name></member>
+      <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a81bde0fdcef1efc6f1cb6674b72e978a" prot="protected" virt="non-virtual"><scope>mutaborGUI::GUIOutputDeviceBase</scope><name>shapes</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

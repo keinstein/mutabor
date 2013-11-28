@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d6/d68/TabGen_8h" kind="file">
+    <compoundname>TabGen.h</compoundname>
+    <includes refid="d1/d73/Defs_8h" local="yes">Defs.h</includes>
+    <includedby refid="d1/dce/box_8cpp" local="yes">src/kernel/box.cpp</includedby>
+    <includedby refid="dd/dc6/Box_8cpp" local="yes">src/kernel/routing/Box.cpp</includedby>
+    <includedby refid="d1/da7/boxTest_8cpp" local="yes">src/kernel/tests/boxTest.cpp</includedby>
+    <incdepgraph>
+      <node id="18035">
+        <label>stdarg.h</label>
+      </node>
+      <node id="18034">
+        <label>Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="18035" relation="include">
+        </childnode>
+        <childnode refid="18036" relation="include">
+        </childnode>
+      </node>
+      <node id="18033">
+        <label>src/kernel/TabGen.h</label>
+        <link refid="TabGen.h"/>
+        <childnode refid="18034" relation="include">
+        </childnode>
+      </node>
+      <node id="18036">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="18037">
+        <label>src/kernel/TabGen.h</label>
+        <link refid="TabGen.h"/>
+        <childnode refid="18038" relation="include">
+        </childnode>
+        <childnode refid="18039" relation="include">
+        </childnode>
+        <childnode refid="18040" relation="include">
+        </childnode>
+      </node>
+      <node id="18040">
+        <label>src/kernel/tests/boxTest.cpp</label>
+        <link refid="d1/da7/boxTest_8cpp"/>
+      </node>
+      <node id="18038">
+        <label>src/kernel/box.cpp</label>
+        <link refid="d1/dce/box_8cpp"/>
+      </node>
+      <node id="18039">
+        <label>src/kernel/routing/Box.cpp</label>
+        <link refid="dd/dc6/Box_8cpp"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="d9/d7c/group__kernel_1gae68a4eb2b516e72a2694b7884da40e89" prot="public" static="no">
+        <name>SRC_KERNEL_TABGEN_H</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/TabGen.h" line="36" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/TabGen.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d9/d7c/group__kernel_1ga275c0c59be7f44ecc7c51dd59b0fd57c" prot="public" static="no">
+        <name>SRC_KERNEL_TABGEN_H_PRECOMPILED</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/TabGen.h" line="46" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/TabGen.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void expand_decition_tree</definition>
+        <argsstring>(mutabor_box_type *box)</argsstring>
+        <name>expand_decition_tree</name>
+        <param>
+          <type><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="dd/da0/todo_1_todo000020"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>ensure that the logics of the different boxes are independent </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/TabGen.cpp" line="1291" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/TabGen.cpp" bodystart="1291" bodyend="1368"/>
+        <references refid="db/d28/structlogik_1a58ef30390a1806c7e0eb4478dc4fef02" compoundref="dd/d40/Global_8h" startline="435">logik::anweisungsliste</references>
+        <references refid="d9/d7c/group__kernel_1gaedad3c39090670b392bd5bc072af9139" compoundref="d3/da0/TabGen_8cpp" startline="1217" endline="1258">expandiere_in_globale_liste</references>
+        <references refid="d0/d33/structmutabor__box__type_1adaff5b982df1fe1a858d7e322601a7f7" compoundref="dc/d19/box_8h" startline="180">mutabor_box_type::file</references>
+        <references refid="d7/d21/structmutabor__logic__parsed_1a92f6da553c3fe5aed3fb2fd5ab78e6de" compoundref="d6/d0c/Parser_8h" startline="140">mutabor_logic_parsed::global_harmonies</references>
+        <references refid="d7/d21/structmutabor__logic__parsed_1a8c26a3037e55c333cb3b0d8d3edb820e" compoundref="d6/d0c/Parser_8h" startline="141">mutabor_logic_parsed::global_keystrokes</references>
+        <references refid="d7/d21/structmutabor__logic__parsed_1a936d8d6ac7f8d28654b9fa605508e693" compoundref="d6/d0c/Parser_8h" startline="142">mutabor_logic_parsed::global_midi_inputs</references>
+        <references refid="d9/d7c/group__kernel_1gabebfd8538aae475e3a2ba47f95d7d2c3" compoundref="d3/da0/TabGen_8cpp" startline="978" endline="1085">insert_in_globale_liste</references>
+        <references refid="d9/d7c/group__kernel_1gaa32d94398d0aa7cb0b2f2bf3b2308c30" compoundref="d3/da0/TabGen_8cpp" startline="1087" endline="1214">insert_in_lokale_liste</references>
+        <references refid="d7/d21/structmutabor__logic__parsed_1a3143e0677bd812134ef3ec4e85413074" compoundref="d6/d0c/Parser_8h" startline="107">mutabor_logic_parsed::list_of_logiken</references>
+        <references refid="d9/d7c/group__kernel_1ga754b5ff0318d70968a739e883a56e291" compoundref="dc/df5/Parser_8cpp" startline="111" endline="119">logik_list_laenge</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="db/d28/structlogik_1abf8a525df5f9eff49b58f2ffaf404104" compoundref="dd/d40/Global_8h" startline="432">logik::name</references>
+        <references refid="d0/dab/structanweisung_1a590ae30bbdad54b1d1194d0c25c26a36" compoundref="dd/d40/Global_8h" startline="425">anweisung::next</references>
+        <references refid="db/d28/structlogik_1a42396331f5ffd2e29837bf1244cc84bb" compoundref="dd/d40/Global_8h" startline="436">logik::next</references>
+        <references refid="de/db7/group__debug_1gaad9cc64d45a76ba0d37c00f8cd9caa37" compoundref="de/de1/mutDebug_8h" startline="145">TRACE</references>
+        <references refid="d9/d7c/group__kernel_1ga958b1662c140766c29406d4b67446861" compoundref="da/d02/Hilfs_8cpp" startline="270" endline="285">xcalloc</references>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="604" endline="645">mutabor::BoxClass::Compile</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga71f10b089581270382caaf7219946a1f" compoundref="d1/da7/boxTest_8cpp" startline="331" endline="366">boxTest::testBug1Permutation1</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gacd9628c16629b6a3989ef814becb55be" compoundref="d1/da7/boxTest_8cpp" startline="369" endline="457">boxTest::testBug1Permutation2</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gae5cd429df106dae578f5e9bca96fdcce" compoundref="d1/da7/boxTest_8cpp" startline="283" endline="329">boxTest::testFindKeyByKey</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Table generators for the Mutabor engine. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright: (c) 2008 TU Dresden <simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein@users.berlios.de">keinstein@users.berlios.de</ulink>  GPL</para></simplesect>
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</para><para>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</para><para>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="comment">/*<sp/>we<sp/>guard<sp/>a<sp/>little<sp/>bit<sp/>complicated<sp/>to<sp/>ensure<sp/>the<sp/>references<sp/>are<sp/>set<sp/>right</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(!defined(SRC_KERNEL_TABGEN_H)<sp/>&amp;&amp;<sp/>!defined(PRECOMPILE))<sp/>\</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>(!defined(SRC_KERNEL_TABGEN_H_PRECOMPILED))</highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifndef<sp/>PRECOMPILE</highlight></codeline>
+<codeline lineno="36" refid="d9/d7c/group__kernel_1gae68a4eb2b516e72a2694b7884da40e89" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SRC_KERNEL_TABGEN_H</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SRC_KERNEL_TABGEN_H_PRECOMPILED</highlight></codeline>
+<codeline lineno="46" refid="d9/d7c/group__kernel_1ga275c0c59be7f44ecc7c51dd59b0fd57c" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SRC_KERNEL_TABGEN_H_PRECOMPILED</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>system<sp/>headers<sp/>which<sp/>do<sp/>seldom<sp/>change</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus<sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">hidden<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>TabGen.cpp<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" kindref="member">expand_decition_tree</ref><sp/>(<ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus<sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>extern<sp/>&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hidden</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mutabor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>precompiled</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/TabGen.h"/>
+  </compounddef>
+</doxygen>

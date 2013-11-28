@@ -1,0 +1,978 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="dd/d3c/classmutabor_1_1CommonFileInputDevice" kind="class" prot="public">
+    <compoundname>mutabor::CommonFileInputDevice</compoundname>
+    <basecompoundref refid="d4/d18/classmutabor_1_1InputDeviceClass" prot="public" virt="non-virtual">mutabor::InputDeviceClass</basecompoundref>
+    <derivedcompoundref refid="dc/d51/classmutabor_1_1CommonMidiInput" prot="public" virt="non-virtual">mutabor::CommonMidiInput&lt; CommonFileInputDevice &gt;</derivedcompoundref>
+    <derivedcompoundref refid="dc/da1/classmutabor_1_1InputGis" prot="public" virt="non-virtual">mutabor::InputGis</derivedcompoundref>
+    <derivedcompoundref refid="dc/d13/classtestCommonFileDeviceTimer" prot="public" virt="non-virtual">testCommonFileDeviceTimer</derivedcompoundref>
+    <derivedcompoundref refid="dc/d13/classtestCommonFileDeviceTimer" prot="public" virt="non-virtual">testCommonFileDeviceTimer</derivedcompoundref>
+    <includes refid="d9/d17/CommonFileDevice_8h" local="no">CommonFileDevice.h</includes>
+    <innerclass refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer" prot="public">mutabor::CommonFileInputDevice::FileTimer</innerclass>
+      <sectiondef kind="protected-type">
+      <memberdef kind="enum" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59" prot="protected" static="no">
+        <name>ThreadCommunication</name>
+        <enumvalue id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59adc14982a14900cbbd72e493540eec7a2" prot="protected">
+          <name>Nothing</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59a36c6fdc406fe47d6f70581062fc282d9" prot="protected">
+          <name>RequestExit</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59a6163594cb2510bbd2b8a32fcf7806062" prot="protected">
+          <name>RequestPause</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59aeedaf6a8fa478c488bd205f15396d3f9" prot="protected">
+          <name>ResetTime</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>restart counting the time of the thread. </para>          </briefdescription>
+          <detaileddescription>
+<para>This should be used only to sigal a start after the playback has been stopped </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Signals to communicate with the player thread. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="273" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="273" bodyend="284"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ab9d8e436f426b7f75f526fd9e88411cb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class MidiFileFactory</definition>
+        <argsstring></argsstring>
+        <name>MidiFileFactory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="122" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a63ef0124e0849202e8b92b5c90a46dd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class FileTimer</definition>
+        <argsstring></argsstring>
+        <name>FileTimer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="167" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="167" bodyend="-1"/>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3415f4a6ff1dac5d6436689cde87a136" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="143" endline="205">Open</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac12acf2139170dc37a1432f25affd4f2" prot="protected" static="no" mutable="no">
+        <type><ref refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer" kindref="compound">FileTimer</ref> *</type>
+        <definition>FileTimer* mutabor::CommonFileInputDevice::timer</definition>
+        <argsstring></argsstring>
+        <name>timer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="271" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="271" bodyend="-1"/>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aa69af4fd6fa82b1aef79985433de8929" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="207" endline="251">Close</referencedby>
+        <referencedby refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1af0f260d3c21578002d95f1b1eac5fae1" compoundref="d9/d17/CommonFileDevice_8h" startline="148" endline="155">mutabor::CommonFileInputDevice::FileTimer::OnExit</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3415f4a6ff1dac5d6436689cde87a136" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="143" endline="205">Open</referencedby>
+        <referencedby refid="dc/d13/classtestCommonFileDeviceTimer_1a06a40c337fcc4e8b76e55265c782eaf8" compoundref="d4/d70/CommonFileDeviceTest_8h" startline="50" endline="57">testCommonFileDeviceTimer::Play</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9678c9f5b289630497c3d88ed0e8d359" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="268" endline="320">Play</referencedby>
+        <referencedby refid="dc/d13/classtestCommonFileDeviceTimer_1afb7fc7a56fcc67e80980d4f371c1317c" compoundref="d4/d70/CommonFileDeviceTest_8h" startline="78" endline="111">testCommonFileDeviceTimer::PrepareNextEvent</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a8e75010c7d81cae7464c19e768a174b6" compoundref="d9/d17/CommonFileDevice_8h" startline="217" endline="220">SetThreadKind</referencedby>
+        <referencedby refid="dc/d13/classtestCommonFileDeviceTimer_1ae4d4b9913c9382ae44ad78d92024225c" compoundref="d4/d70/CommonFileDeviceTest_8h" startline="69" endline="76">testCommonFileDeviceTimer::Stop</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a0e07f85298f243526c07a976c7a44faa" compoundref="d9/d17/CommonFileDevice_8h" startline="229" endline="260">WaitForDeviceFinish</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a0ff99f1e190f67f0293e772bf1aafaa7" compoundref="d9/d17/CommonFileDevice_8h" startline="170" endline="173">~CommonFileInputDevice</referencedby>
+        <referencedby refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1add1c80ab7fafc2dc054de0d3b453342b" compoundref="d9/d17/CommonFileDevice_8h" startline="134" endline="141">mutabor::CommonFileInputDevice::FileTimer::~FileTimer</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac2397d62a5481190fc22e64132f17781" prot="protected" static="no" mutable="no">
+        <type>safe_integer&lt; int &gt;</type>
+        <definition>safe_integer&lt;int&gt; mutabor::CommonFileInputDevice::threadsignal</definition>
+        <argsstring></argsstring>
+        <name>threadsignal</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="286" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="286" bodyend="-1"/>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aa69af4fd6fa82b1aef79985433de8929" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="207" endline="251">Close</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3415f4a6ff1dac5d6436689cde87a136" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="143" endline="205">Open</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ab981fd4cdd68dc456a97889ddc851736" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="322" endline="346">Pause</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9678c9f5b289630497c3d88ed0e8d359" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="268" endline="320">Play</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1af61d4ef16eefc0fddf312d1e92eeff2f" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="253" endline="266">Stop</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a423d3eece573e61472d6ec5f1c782486" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="393" endline="555">ThreadPlay</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a0e07f85298f243526c07a976c7a44faa" compoundref="d9/d17/CommonFileDevice_8h" startline="229" endline="260">WaitForDeviceFinish</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3c551fc40d8b76855d59f00b6d82622e" prot="protected" static="no" mutable="no">
+        <type>Mutex</type>
+        <definition>Mutex mutabor::CommonFileInputDevice::waitMutex</definition>
+        <argsstring></argsstring>
+        <name>waitMutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="287" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="287" bodyend="-1"/>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aa69af4fd6fa82b1aef79985433de8929" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="207" endline="251">Close</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3415f4a6ff1dac5d6436689cde87a136" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="143" endline="205">Open</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9678c9f5b289630497c3d88ed0e8d359" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="268" endline="320">Play</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a423d3eece573e61472d6ec5f1c782486" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="393" endline="555">ThreadPlay</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a0e07f85298f243526c07a976c7a44faa" compoundref="d9/d17/CommonFileDevice_8h" startline="229" endline="260">WaitForDeviceFinish</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a159e75656d4a16408957610f4bc2d352" prot="protected" static="no" mutable="no">
+        <type>Mutex</type>
+        <definition>Mutex mutabor::CommonFileInputDevice::threadReady</definition>
+        <argsstring></argsstring>
+        <name>threadReady</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="287" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="287" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac521d166de1b0559a7edfac31cd6addd" prot="protected" static="no" mutable="no">
+        <type>Mutex</type>
+        <definition>Mutex mutabor::CommonFileInputDevice::lockMode</definition>
+        <argsstring></argsstring>
+        <name>lockMode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="287" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="287" bodyend="-1"/>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9678c9f5b289630497c3d88ed0e8d359" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="268" endline="320">Play</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1af61d4ef16eefc0fddf312d1e92eeff2f" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="253" endline="266">Stop</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a423d3eece573e61472d6ec5f1c782486" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="393" endline="555">ThreadPlay</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a08cdc253422eb5f4a333d75891faa245" prot="protected" static="no" mutable="no">
+        <type>Mutex</type>
+        <definition>Mutex mutabor::CommonFileInputDevice::exitLock</definition>
+        <argsstring></argsstring>
+        <name>exitLock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="287" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="287" bodyend="-1"/>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aa69af4fd6fa82b1aef79985433de8929" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="207" endline="251">Close</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a423d3eece573e61472d6ec5f1c782486" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="393" endline="555">ThreadPlay</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a722c2de3e9fd386e48c80eca1f18597b" prot="protected" static="no" mutable="no">
+        <type>ThreadCondition</type>
+        <definition>ThreadCondition mutabor::CommonFileInputDevice::waitCondition</definition>
+        <argsstring></argsstring>
+        <name>waitCondition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="288" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="288" bodyend="-1"/>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aa69af4fd6fa82b1aef79985433de8929" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="207" endline="251">Close</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3415f4a6ff1dac5d6436689cde87a136" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="143" endline="205">Open</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9678c9f5b289630497c3d88ed0e8d359" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="268" endline="320">Play</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a423d3eece573e61472d6ec5f1c782486" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="393" endline="555">ThreadPlay</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aad7425149e4ec19d09f47636572478bd" prot="protected" static="no" mutable="no">
+        <type>mutint64</type>
+        <definition>volatile mutint64 mutabor::CommonFileInputDevice::referenceTime</definition>
+        <argsstring></argsstring>
+        <name>referenceTime</name>
+        <briefdescription>
+<para>Fixed offset for the relative time the file returns. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="292" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="292" bodyend="-1"/>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9678c9f5b289630497c3d88ed0e8d359" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="268" endline="320">Play</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1af61d4ef16eefc0fddf312d1e92eeff2f" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="253" endline="266">Stop</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a423d3eece573e61472d6ec5f1c782486" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="393" endline="555">ThreadPlay</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9e446c5f5386b6ee6b8d014448a8dfad" prot="protected" static="no" mutable="no">
+        <type>mutint64</type>
+        <definition>volatile mutint64 mutabor::CommonFileInputDevice::pauseTime</definition>
+        <argsstring></argsstring>
+        <name>pauseTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="293" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="293" bodyend="-1"/>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ab981fd4cdd68dc456a97889ddc851736" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="322" endline="346">Pause</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9678c9f5b289630497c3d88ed0e8d359" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="268" endline="320">Play</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1af61d4ef16eefc0fddf312d1e92eeff2f" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="253" endline="266">Stop</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a1e0e69b99ef30bfdf94edbf55b0beda7" prot="protected" static="no" mutable="no">
+        <type><ref refid="d9/de0/classmutabor_1_1timing__params" kindref="compound">timing_params</ref></type>
+        <definition>timing_params mutabor::CommonFileInputDevice::timing</definition>
+        <argsstring></argsstring>
+        <name>timing</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="294" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="294" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a2a0b84c4c0f09a39a704333eedd64528" prot="protected" static="no" mutable="no">
+        <type>wxThreadKind</type>
+        <definition>wxThreadKind mutabor::CommonFileInputDevice::threadkind</definition>
+        <argsstring></argsstring>
+        <name>threadkind</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="295" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="295" bodyend="-1"/>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3415f4a6ff1dac5d6436689cde87a136" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="143" endline="205">Open</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a8e75010c7d81cae7464c19e768a174b6" compoundref="d9/d17/CommonFileDevice_8h" startline="217" endline="220">SetThreadKind</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a0ff99f1e190f67f0293e772bf1aafaa7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual mutabor::CommonFileInputDevice::~CommonFileInputDevice</definition>
+        <argsstring>()</argsstring>
+        <name>~CommonFileInputDevice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="170" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="170" bodyend="173"/>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aa69af4fd6fa82b1aef79985433de8929" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="207" endline="251">Close</references>
+        <references refid="d5/dee/group__route_1ga1cdc51c75faaeaec8d2b4cbb40d36e3b" compoundref="de/d05/Device_8h" startline="503">mutabor::Device::isOpen</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac12acf2139170dc37a1432f25affd4f2" compoundref="d9/d17/CommonFileDevice_8h" startline="271">timer</references>
+      </memberdef>
+      <memberdef kind="function" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aebd2d366f92f7fcb3fda5c3ffd7fa2a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonFileInputDevice::Save</definition>
+        <argsstring>(tree_storage &amp;config)</argsstring>
+        <name>Save</name>
+        <reimplements refid="d5/dee/group__route_1ga3e21f1fc02103f0d7a43504abff28a07">Save</reimplements>
+        <param>
+          <type><ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">tree_storage</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Save current device settings in a tree storage. </para>        </briefdescription>
+        <detaileddescription>
+<para>config (<ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">tree_storage</ref>) storage class, where the data will be saved. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="178" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice-inlines.h" bodystart="113" bodyend="122"/>
+        <references refid="da/de5/classmutabor_1_1tree__storage_1a56fd0890515d0b39ae35acb7c0682339">mutabor::tree_storage::GetPath</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d5/dee/group__route_1ga86a80a0d59ab5740c7f0eb708c1b6e76" compoundref="de/d05/Device_8h" startline="501">mutabor::Device::Name</references>
+        <references refid="da/de5/classmutabor_1_1tree__storage_1aa1883b11f7457404ba7036104924e42a">mutabor::tree_storage::Write</references>
+      </memberdef>
+      <memberdef kind="function" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a1f853e58525a5ff67937c48a208b7670" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonFileInputDevice::Load</definition>
+        <argsstring>(tree_storage &amp;config)</argsstring>
+        <name>Load</name>
+        <reimplements refid="d5/dee/group__route_1ga729fbbd6717f17a9c8fbe0750b0e1b3c">Load</reimplements>
+        <param>
+          <type><ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">tree_storage</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Load current device settings from a tree storage. </para>        </briefdescription>
+        <detaileddescription>
+<para>config (<ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">tree_storage</ref>) storage class, where the data will be loaded from. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="183" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice-inlines.h" bodystart="129" bodyend="138"/>
+        <references refid="da/de5/classmutabor_1_1tree__storage_1a56fd0890515d0b39ae35acb7c0682339">mutabor::tree_storage::GetPath</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" compoundref="d1/d73/Defs_8h" startline="171">mutEmptyString</references>
+        <references refid="d5/dee/group__route_1ga86a80a0d59ab5740c7f0eb708c1b6e76" compoundref="de/d05/Device_8h" startline="501">mutabor::Device::Name</references>
+        <references refid="da/de5/classmutabor_1_1tree__storage_1a80f4ed4e4d6294644d70885e186f6156">mutabor::tree_storage::Read</references>
+      </memberdef>
+      <memberdef kind="function" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3415f4a6ff1dac5d6436689cde87a136" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutabor::CommonFileInputDevice::Open</definition>
+        <argsstring>()</argsstring>
+        <name>Open</name>
+        <reimplements refid="d5/dee/group__route_1ga1b67d7adf5f76fbffe0a5503bed265ff">Open</reimplements>
+        <reimplementedby refid="dc/d13/classtestCommonFileDeviceTimer_1a7955346d2a350280e5f0ce5321a16bab">Open</reimplementedby>
+        <reimplementedby refid="dc/d13/classtestCommonFileDeviceTimer_1a7955346d2a350280e5f0ce5321a16bab">Open</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a6a333f73d085c18478973f1bddff8865">Open</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a6a333f73d085c18478973f1bddff8865">Open</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a6a333f73d085c18478973f1bddff8865">Open</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a6a333f73d085c18478973f1bddff8865">Open</reimplementedby>
+        <reimplementedby refid="dc/da1/classmutabor_1_1InputGis_1a5f9cd24f25454fe7cbbc87918fe06ab3">Open</reimplementedby>
+        <reimplementedby refid="d6/d12/classmutabor_1_1InputMidiFile_1aa7848ecf7c1cdd9ee118105da426b3c9">Open</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="186" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice-inlines.h" bodystart="143" bodyend="205"/>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aa69af4fd6fa82b1aef79985433de8929" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="207" endline="251">Close</references>
+        <references refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" compoundref="d1/dca/timing_8cpp" startline="43">mutabor::CurrentTime</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649" compoundref="de/d05/Device_8h" startline="77">mutabor::DeviceStop</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a04f0b919edf40d45442ee6153b4e512e" compoundref="de/d05/Device_8h" startline="81">mutabor::DeviceTimingError</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a63ef0124e0849202e8b92b5c90a46dd3" compoundref="d9/d17/CommonFileDevice_8h" startline="167">FileTimer</references>
+        <references refid="d5/dee/group__route_1ga1cdc51c75faaeaec8d2b4cbb40d36e3b" compoundref="de/d05/Device_8h" startline="503">mutabor::Device::isOpen</references>
+        <references refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" compoundref="de/d05/Device_8h" startline="504">mutabor::Device::Mode</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59a6163594cb2510bbd2b8a32fcf7806062" compoundref="d9/d17/CommonFileDevice_8h" startline="276">RequestPause</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1af61d4ef16eefc0fddf312d1e92eeff2f" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="253" endline="266">Stop</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a2a0b84c4c0f09a39a704333eedd64528" compoundref="d9/d17/CommonFileDevice_8h" startline="295">threadkind</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac2397d62a5481190fc22e64132f17781" compoundref="d9/d17/CommonFileDevice_8h" startline="286">threadsignal</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac12acf2139170dc37a1432f25affd4f2" compoundref="d9/d17/CommonFileDevice_8h" startline="271">timer</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a722c2de3e9fd386e48c80eca1f18597b" compoundref="d9/d17/CommonFileDevice_8h" startline="288">waitCondition</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3c551fc40d8b76855d59f00b6d82622e" compoundref="d9/d17/CommonFileDevice_8h" startline="287">waitMutex</references>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a5f9cd24f25454fe7cbbc87918fe06ab3" compoundref="db/d78/DevGIS_8cpp" startline="270" endline="307">mutabor::InputGis::Open</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a13c581ebc0d885e53cb8e134c97a4421" compoundref="d9/d17/CommonFileDevice_8h" startline="192" endline="203">SetName</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aa69af4fd6fa82b1aef79985433de8929" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonFileInputDevice::Close</definition>
+        <argsstring>()</argsstring>
+        <name>Close</name>
+        <reimplements refid="d5/dee/group__route_1ga74c7ff321332ac230d3696c91559dbcf">Close</reimplements>
+        <reimplementedby refid="d4/d1a/classmyDevice_1adce8cc9a06cc92297ca67055db730b0a">Close</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1adce8cc9a06cc92297ca67055db730b0a">Close</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1adce8cc9a06cc92297ca67055db730b0a">Close</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1adce8cc9a06cc92297ca67055db730b0a">Close</reimplementedby>
+        <reimplementedby refid="dc/da1/classmutabor_1_1InputGis_1ab14a7743d1cf4f74e06608c113ac4463">Close</reimplementedby>
+        <reimplementedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a28c0387b456dbd7ed53bbf3204fa2e1c">Close</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="187" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice-inlines.h" bodystart="207" bodyend="251"/>
+        <references refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" compoundref="d1/dca/timing_8cpp" startline="43">mutabor::CurrentTime</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a08cdc253422eb5f4a333d75891faa245" compoundref="d9/d17/CommonFileDevice_8h" startline="287">exitLock</references>
+        <references refid="d5/dee/group__route_1ga1cdc51c75faaeaec8d2b4cbb40d36e3b" compoundref="de/d05/Device_8h" startline="503">mutabor::Device::isOpen</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59a36c6fdc406fe47d6f70581062fc282d9" compoundref="d9/d17/CommonFileDevice_8h" startline="275">RequestExit</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1af61d4ef16eefc0fddf312d1e92eeff2f" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="253" endline="266">Stop</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac2397d62a5481190fc22e64132f17781" compoundref="d9/d17/CommonFileDevice_8h" startline="286">threadsignal</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac12acf2139170dc37a1432f25affd4f2" compoundref="d9/d17/CommonFileDevice_8h" startline="271">timer</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a722c2de3e9fd386e48c80eca1f18597b" compoundref="d9/d17/CommonFileDevice_8h" startline="288">waitCondition</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3c551fc40d8b76855d59f00b6d82622e" compoundref="d9/d17/CommonFileDevice_8h" startline="287">waitMutex</references>
+        <references refid="d5/dee/group__route_1ggac2bb84d1f1e0c5c42e57cf8ac9992996a5300617fee0bea844062acc80df5306d" compoundref="de/d05/Device_8h" startline="918">mutabor::InputDeviceClass::wxTHREAD_WAIT_BLOCK</references>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ab14a7743d1cf4f74e06608c113ac4463" compoundref="db/d78/DevGIS_8cpp" startline="309" endline="327">mutabor::InputGis::Close</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3415f4a6ff1dac5d6436689cde87a136" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="143" endline="205">Open</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a13c581ebc0d885e53cb8e134c97a4421" compoundref="d9/d17/CommonFileDevice_8h" startline="192" endline="203">SetName</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a0ff99f1e190f67f0293e772bf1aafaa7" compoundref="d9/d17/CommonFileDevice_8h" startline="170" endline="173">~CommonFileInputDevice</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1af61d4ef16eefc0fddf312d1e92eeff2f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonFileInputDevice::Stop</definition>
+        <argsstring>()</argsstring>
+        <name>Stop</name>
+        <reimplements refid="d5/dee/group__route_1gafd7b958ce532dc3ac37a3b312abfccd1">Stop</reimplements>
+        <reimplementedby refid="dc/d13/classtestCommonFileDeviceTimer_1ae4d4b9913c9382ae44ad78d92024225c">Stop</reimplementedby>
+        <reimplementedby refid="dc/d13/classtestCommonFileDeviceTimer_1ae4d4b9913c9382ae44ad78d92024225c">Stop</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a4e7101bdfd3d0061f8991c7d1e44eb5c">Stop</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a4e7101bdfd3d0061f8991c7d1e44eb5c">Stop</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a4e7101bdfd3d0061f8991c7d1e44eb5c">Stop</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a4e7101bdfd3d0061f8991c7d1e44eb5c">Stop</reimplementedby>
+        <reimplementedby refid="dc/da1/classmutabor_1_1InputGis_1a602dd53cc86c2dbf91bf290b169f00a0">Stop</reimplementedby>
+        <reimplementedby refid="d6/d12/classmutabor_1_1InputMidiFile_1af01cb3bb180e5f6f08ceeb8f7543c995">Stop</reimplementedby>
+        <briefdescription>
+<para>Stop playback or recording of the device. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="188" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice-inlines.h" bodystart="253" bodyend="266"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8" compoundref="de/d05/Device_8h" startline="80">mutabor::DeviceCompileError</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8" compoundref="de/d05/Device_8h" startline="78">mutabor::DevicePlay</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649" compoundref="de/d05/Device_8h" startline="77">mutabor::DeviceStop</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a04f0b919edf40d45442ee6153b4e512e" compoundref="de/d05/Device_8h" startline="81">mutabor::DeviceTimingError</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac521d166de1b0559a7edfac31cd6addd" compoundref="d9/d17/CommonFileDevice_8h" startline="287">lockMode</references>
+        <references refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" compoundref="de/d05/Device_8h" startline="504">mutabor::Device::Mode</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ab981fd4cdd68dc456a97889ddc851736" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="322" endline="346">Pause</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9e446c5f5386b6ee6b8d014448a8dfad" compoundref="d9/d17/CommonFileDevice_8h" startline="293">pauseTime</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aad7425149e4ec19d09f47636572478bd" compoundref="d9/d17/CommonFileDevice_8h" startline="292">referenceTime</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59aeedaf6a8fa478c488bd205f15396d3f9" compoundref="d9/d17/CommonFileDevice_8h" startline="277">ResetTime</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac2397d62a5481190fc22e64132f17781" compoundref="d9/d17/CommonFileDevice_8h" startline="286">threadsignal</references>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aa69af4fd6fa82b1aef79985433de8929" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="207" endline="251">Close</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3415f4a6ff1dac5d6436689cde87a136" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="143" endline="205">Open</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a602dd53cc86c2dbf91bf290b169f00a0" compoundref="db/d78/DevGIS_8cpp" startline="329" endline="355">mutabor::InputGis::Stop</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a423d3eece573e61472d6ec5f1c782486" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="393" endline="555">ThreadPlay</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9678c9f5b289630497c3d88ed0e8d359" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonFileInputDevice::Play</definition>
+        <argsstring>()</argsstring>
+        <name>Play</name>
+        <reimplements refid="d5/dee/group__route_1ga765cddc4de5de394f30bb2a4dd0301bd">Play</reimplements>
+        <reimplementedby refid="dc/d13/classtestCommonFileDeviceTimer_1a06a40c337fcc4e8b76e55265c782eaf8">Play</reimplementedby>
+        <reimplementedby refid="dc/d13/classtestCommonFileDeviceTimer_1a06a40c337fcc4e8b76e55265c782eaf8">Play</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a609add9eb24aa2033a6126fd4c563a5d">Play</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a609add9eb24aa2033a6126fd4c563a5d">Play</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a609add9eb24aa2033a6126fd4c563a5d">Play</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a609add9eb24aa2033a6126fd4c563a5d">Play</reimplementedby>
+        <briefdescription>
+<para>Command the device to play music. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function starts playing the music of the device at the curren position. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="189" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice-inlines.h" bodystart="268" bodyend="320"/>
+        <references refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" compoundref="d1/dca/timing_8cpp" startline="43">mutabor::CurrentTime</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8" compoundref="de/d05/Device_8h" startline="80">mutabor::DeviceCompileError</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a86530be4e7e984649e049f17857b8e5e" compoundref="de/d05/Device_8h" startline="79">mutabor::DevicePause</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8" compoundref="de/d05/Device_8h" startline="78">mutabor::DevicePlay</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649" compoundref="de/d05/Device_8h" startline="77">mutabor::DeviceStop</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a04f0b919edf40d45442ee6153b4e512e" compoundref="de/d05/Device_8h" startline="81">mutabor::DeviceTimingError</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a4fd9ce6cf94e3605cc2122e7aecd4dea" compoundref="de/d05/Device_8h" startline="75">mutabor::DeviceUnregistered</references>
+        <references refid="d7/dda/classmutabor_1_1CurrentTimer_1a7df1d50b0b51dd10a6cd2d59fd97581e" compoundref="db/d41/timing_8h" startline="496" endline="496">mutabor::CurrentTimer::Get</references>
+        <references refid="d7/dda/classmutabor_1_1CurrentTimer_1a14c65fde17d030dfd6b5380573475ca4" compoundref="db/d41/timing_8h" startline="475" endline="475">mutabor::CurrentTimer::isRealtime</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac521d166de1b0559a7edfac31cd6addd" compoundref="d9/d17/CommonFileDevice_8h" startline="287">lockMode</references>
+        <references refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" compoundref="de/d05/Device_8h" startline="504">mutabor::Device::Mode</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9e446c5f5386b6ee6b8d014448a8dfad" compoundref="d9/d17/CommonFileDevice_8h" startline="293">pauseTime</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aad7425149e4ec19d09f47636572478bd" compoundref="d9/d17/CommonFileDevice_8h" startline="292">referenceTime</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59a6163594cb2510bbd2b8a32fcf7806062" compoundref="d9/d17/CommonFileDevice_8h" startline="276">RequestPause</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac2397d62a5481190fc22e64132f17781" compoundref="d9/d17/CommonFileDevice_8h" startline="286">threadsignal</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac12acf2139170dc37a1432f25affd4f2" compoundref="d9/d17/CommonFileDevice_8h" startline="271">timer</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a722c2de3e9fd386e48c80eca1f18597b" compoundref="d9/d17/CommonFileDevice_8h" startline="288">waitCondition</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3c551fc40d8b76855d59f00b6d82622e" compoundref="d9/d17/CommonFileDevice_8h" startline="287">waitMutex</references>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ab981fd4cdd68dc456a97889ddc851736" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="322" endline="346">Pause</referencedby>
+        <referencedby refid="d4/d1a/classmyDevice_1a609add9eb24aa2033a6126fd4c563a5d" compoundref="d0/dd6/gmnopenfail1_8cpp" startline="126" endline="131">myDevice::Play</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ab981fd4cdd68dc456a97889ddc851736" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonFileInputDevice::Pause</definition>
+        <argsstring>()</argsstring>
+        <name>Pause</name>
+        <reimplements refid="d5/dee/group__route_1ga75218401589785a6a67e0b29289b3436">Pause</reimplements>
+        <reimplementedby refid="dc/d13/classtestCommonFileDeviceTimer_1a13071344ae08659badd874aca3a41c47">Pause</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1aeebcdc9b48e0355f8af30bd4a7a42123">Pause</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1aeebcdc9b48e0355f8af30bd4a7a42123">Pause</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1aeebcdc9b48e0355f8af30bd4a7a42123">Pause</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1aeebcdc9b48e0355f8af30bd4a7a42123">Pause</reimplementedby>
+        <briefdescription>
+<para>Pause playback or recording of the device. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="190" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice-inlines.h" bodystart="322" bodyend="346"/>
+        <references refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" compoundref="d1/dca/timing_8cpp" startline="43">mutabor::CurrentTime</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8" compoundref="de/d05/Device_8h" startline="80">mutabor::DeviceCompileError</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a86530be4e7e984649e049f17857b8e5e" compoundref="de/d05/Device_8h" startline="79">mutabor::DevicePause</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8" compoundref="de/d05/Device_8h" startline="78">mutabor::DevicePlay</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649" compoundref="de/d05/Device_8h" startline="77">mutabor::DeviceStop</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a04f0b919edf40d45442ee6153b4e512e" compoundref="de/d05/Device_8h" startline="81">mutabor::DeviceTimingError</references>
+        <references refid="d7/dda/classmutabor_1_1CurrentTimer_1a7df1d50b0b51dd10a6cd2d59fd97581e" compoundref="db/d41/timing_8h" startline="496" endline="496">mutabor::CurrentTimer::Get</references>
+        <references refid="d7/dda/classmutabor_1_1CurrentTimer_1a14c65fde17d030dfd6b5380573475ca4" compoundref="db/d41/timing_8h" startline="475" endline="475">mutabor::CurrentTimer::isRealtime</references>
+        <references refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" compoundref="de/d05/Device_8h" startline="504">mutabor::Device::Mode</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d5/dee/group__route_1ga4c7c24c48255adddc767a745ed3c8e1c" compoundref="de/d05/Device_8h" startline="989" endline="989">mutabor::InputDeviceClass::Panic</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9e446c5f5386b6ee6b8d014448a8dfad" compoundref="d9/d17/CommonFileDevice_8h" startline="293">pauseTime</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9678c9f5b289630497c3d88ed0e8d359" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="268" endline="320">Play</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59a6163594cb2510bbd2b8a32fcf7806062" compoundref="d9/d17/CommonFileDevice_8h" startline="276">RequestPause</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac2397d62a5481190fc22e64132f17781" compoundref="d9/d17/CommonFileDevice_8h" startline="286">threadsignal</references>
+        <referencedby refid="d4/d1a/classmyDevice_1aeebcdc9b48e0355f8af30bd4a7a42123" compoundref="d0/dd6/gmnopenfail1_8cpp" startline="132" endline="136">myDevice::Pause</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1af61d4ef16eefc0fddf312d1e92eeff2f" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="253" endline="266">Stop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a13c581ebc0d885e53cb8e134c97a4421" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void mutabor::CommonFileInputDevice::SetName</definition>
+        <argsstring>(const wxString &amp;s)</argsstring>
+        <name>SetName</name>
+        <reimplements refid="d5/dee/group__route_1ga5d6f8f7b6518cf74b80d683f69030e2e">SetName</reimplements>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxString &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="192" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="192" bodyend="203"/>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aa69af4fd6fa82b1aef79985433de8929" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="207" endline="251">Close</references>
+        <references refid="d5/dee/group__route_1ga219acefe8692f1b3e00181f97c9c866f" compoundref="de/d05/Device_8h" startline="487" endline="487">mutabor::Device::IsOpen</references>
+        <references refid="d5/dee/group__route_1ga86a80a0d59ab5740c7f0eb708c1b6e76" compoundref="de/d05/Device_8h" startline="501">mutabor::Device::Name</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3415f4a6ff1dac5d6436689cde87a136" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="143" endline="205">Open</references>
+      </memberdef>
+      <memberdef kind="function" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a8e75010c7d81cae7464c19e768a174b6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool mutabor::CommonFileInputDevice::SetThreadKind</definition>
+        <argsstring>(wxThreadKind k)</argsstring>
+        <name>SetThreadKind</name>
+        <param>
+          <type>wxThreadKind</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+<para>Sets the thread kind for the next thread that is being generated. </para>        </briefdescription>
+        <detaileddescription>
+<para>If we have already a timer thread then the thread kind will not be changed, but the value is stored for the next generated thread.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>k</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>thread kind to be saved</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>true</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if everything is ok. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>false</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if there is a thread that could not be updated. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="217" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="217" bodyend="220"/>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a2a0b84c4c0f09a39a704333eedd64528" compoundref="d9/d17/CommonFileDevice_8h" startline="295">threadkind</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac12acf2139170dc37a1432f25affd4f2" compoundref="d9/d17/CommonFileDevice_8h" startline="271">timer</references>
+      </memberdef>
+      <memberdef kind="function" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a423d3eece573e61472d6ec5f1c782486" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>wxThread::ExitCode</type>
+        <definition>wxThread::ExitCode mutabor::CommonFileInputDevice::ThreadPlay</definition>
+        <argsstring>(FileTimer *timer)</argsstring>
+        <name>ThreadPlay</name>
+        <param>
+          <type><ref refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer" kindref="compound">FileTimer</ref> *</type>
+          <declname>timer</declname>
+        </param>
+        <briefdescription>
+<para>Play the file. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function is called from the thread object. It plays the file using sleep operations. </para>        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="dd/da0/todo_1_todo000003"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>clean-up race conditions </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="228" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice-inlines.h" bodystart="393" bodyend="555"/>
+        <references refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" compoundref="d1/dca/timing_8cpp" startline="43">mutabor::CurrentTime</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8" compoundref="de/d05/Device_8h" startline="80">mutabor::DeviceCompileError</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a0806e5f0ca994f0086bf3603dab563a9" compoundref="de/d05/Device_8h" startline="76">mutabor::DeviceInitializing</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a86530be4e7e984649e049f17857b8e5e" compoundref="de/d05/Device_8h" startline="79">mutabor::DevicePause</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8" compoundref="de/d05/Device_8h" startline="78">mutabor::DevicePlay</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649" compoundref="de/d05/Device_8h" startline="77">mutabor::DeviceStop</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a04f0b919edf40d45442ee6153b4e512e" compoundref="de/d05/Device_8h" startline="81">mutabor::DeviceTimingError</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a08cdc253422eb5f4a333d75891faa245" compoundref="d9/d17/CommonFileDevice_8h" startline="287">exitLock</references>
+        <references refid="d7/dda/classmutabor_1_1CurrentTimer_1a7df1d50b0b51dd10a6cd2d59fd97581e" compoundref="db/d41/timing_8h" startline="496" endline="496">mutabor::CurrentTimer::Get</references>
+        <references refid="d5/dee/group__route_1gab552cc7e2033cc34840644adee86699f" compoundref="de/d05/Device_8h" startline="1002" endline="1004">mutabor::InputDeviceClass::GetNO_DELTA</references>
+        <references refid="d5/dee/group__route_1ga33c4a77081b2d1b31f0153cd442d597a" compoundref="de/d05/Device_8h" startline="1006" endline="1008">mutabor::InputDeviceClass::IsDelta</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac521d166de1b0559a7edfac31cd6addd" compoundref="d9/d17/CommonFileDevice_8h" startline="287">lockMode</references>
+        <references refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" compoundref="de/d05/Device_8h" startline="504">mutabor::Device::Mode</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d5/dee/group__route_1ga77179da20d4bb3a5cd8d03fc90435ddb" compoundref="de/d05/Device_8h" startline="966" endline="966">mutabor::InputDeviceClass::PrepareNextEvent</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aad7425149e4ec19d09f47636572478bd" compoundref="d9/d17/CommonFileDevice_8h" startline="292">referenceTime</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59a36c6fdc406fe47d6f70581062fc282d9" compoundref="d9/d17/CommonFileDevice_8h" startline="275">RequestExit</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59a6163594cb2510bbd2b8a32fcf7806062" compoundref="d9/d17/CommonFileDevice_8h" startline="276">RequestPause</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59aeedaf6a8fa478c488bd205f15396d3f9" compoundref="d9/d17/CommonFileDevice_8h" startline="277">ResetTime</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1af61d4ef16eefc0fddf312d1e92eeff2f" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="253" endline="266">Stop</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac2397d62a5481190fc22e64132f17781" compoundref="d9/d17/CommonFileDevice_8h" startline="286">threadsignal</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a722c2de3e9fd386e48c80eca1f18597b" compoundref="d9/d17/CommonFileDevice_8h" startline="288">waitCondition</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3c551fc40d8b76855d59f00b6d82622e" compoundref="d9/d17/CommonFileDevice_8h" startline="287">waitMutex</references>
+      </memberdef>
+      <memberdef kind="function" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a0e07f85298f243526c07a976c7a44faa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>wxThread::ExitCode</type>
+        <definition>wxThread::ExitCode mutabor::CommonFileInputDevice::WaitForDeviceFinish</definition>
+        <argsstring>()</argsstring>
+        <name>WaitForDeviceFinish</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="229" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="229" bodyend="260"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8" compoundref="de/d05/Device_8h" startline="80">mutabor::DeviceCompileError</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a86530be4e7e984649e049f17857b8e5e" compoundref="de/d05/Device_8h" startline="79">mutabor::DevicePause</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8" compoundref="de/d05/Device_8h" startline="78">mutabor::DevicePlay</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649" compoundref="de/d05/Device_8h" startline="77">mutabor::DeviceStop</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a04f0b919edf40d45442ee6153b4e512e" compoundref="de/d05/Device_8h" startline="81">mutabor::DeviceTimingError</references>
+        <references refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" compoundref="de/d05/Device_8h" startline="504">mutabor::Device::Mode</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac2397d62a5481190fc22e64132f17781" compoundref="d9/d17/CommonFileDevice_8h" startline="286">threadsignal</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac12acf2139170dc37a1432f25affd4f2" compoundref="d9/d17/CommonFileDevice_8h" startline="271">timer</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3c551fc40d8b76855d59f00b6d82622e" compoundref="d9/d17/CommonFileDevice_8h" startline="287">waitMutex</references>
+        <referencedby refid="d4/d8a/classCommonFileDeviceTest_1ab5166b26197bf90b6c83cca65eb1dc65" compoundref="d4/d70/CommonFileDeviceTest_8h" startline="163" endline="200">CommonFileDeviceTest::testTimer</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a74e4547dec81508d986a01c8c0bf0967" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+        <definition>virtual mutString mutabor::CommonFileInputDevice::GetTypeName</definition>
+        <argsstring>() const </argsstring>
+        <name>GetTypeName</name>
+        <reimplements refid="d5/dee/group__route_1ga0988ca3116773a66652ccc573204c928">GetTypeName</reimplements>
+        <reimplementedby refid="dc/da1/classmutabor_1_1InputGis_1a4249fc25714d8c8112337b3d77298774">GetTypeName</reimplementedby>
+        <reimplementedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a0e94bcd51fa6a37cc1757fa9e4cc0e09">GetTypeName</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="262" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="262" bodyend="264"/>
+        <references refid="d9/d7c/group__kernel_1gad948c0166cda5a0e7b02f24043302638" compoundref="d1/da2/Errors_8cpp" startline="22">N_</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a5e793bf4b7c203da99489ff869190455" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::CommonFileInputDevice::CommonFileInputDevice</definition>
+        <argsstring>()</argsstring>
+        <name>CommonFileInputDevice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="297" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="297" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a8b0fe1766ca08c7ed8b963d43f27ed91" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::CommonFileInputDevice::CommonFileInputDevice</definition>
+        <argsstring>(wxString name, MutaborModeType mode, int id)</argsstring>
+        <name>CommonFileInputDevice</name>
+        <param>
+          <type>wxString</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gaa3d7d1e712c727d12c3b60c8dc04b484" kindref="member">MutaborModeType</ref></type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="306" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="306" bodyend="317"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2446">
+        <label>mutabor::CommonMidiInput&lt; CommonFileInputDevice &gt;</label>
+        <link refid="dc/d51/classmutabor_1_1CommonMidiInput"/>
+        <childnode refid="2442" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2444">
+        <label>mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;</label>
+        <link refid="d9/dbf/classmutabor_1_1CommonTypedDeviceAPI"/>
+        <childnode refid="2445" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2443">
+        <label>mutabor::InputDeviceClass</label>
+        <link refid="d4/d18/classmutabor_1_1InputDeviceClass"/>
+        <childnode refid="2444" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2445">
+        <label>mutabor::Device</label>
+        <link refid="db/db4/classmutabor_1_1Device"/>
+      </node>
+      <node id="2450">
+        <label>testCommonFileDeviceTimer</label>
+        <link refid="dc/d13/classtestCommonFileDeviceTimer"/>
+        <childnode refid="2442" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2442" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2442">
+        <label>mutabor::CommonFileInputDevice</label>
+        <link refid="dd/d3c/classmutabor_1_1CommonFileInputDevice"/>
+        <childnode refid="2443" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2449">
+        <label>mutabor::InputGis</label>
+        <link refid="dc/da1/classmutabor_1_1InputGis"/>
+        <childnode refid="2442" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2447">
+        <label>mutabor::InputMidiFile</label>
+        <link refid="d6/d12/classmutabor_1_1InputMidiFile"/>
+        <childnode refid="2446" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2448">
+        <label>myDevice</label>
+        <link refid="d4/d1a/classmyDevice"/>
+        <childnode refid="2447" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2447" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2449" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2449" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2460">
+        <label>mutabor::InputDeviceClass::current_keys_type</label>
+        <link refid="dc/d50/structmutabor_1_1InputDeviceClass_1_1current__keys__type"/>
+      </node>
+      <node id="2457">
+        <label>T</label>
+      </node>
+      <node id="2463">
+        <label>mutabor::timing_params</label>
+        <link refid="d9/de0/classmutabor_1_1timing__params"/>
+      </node>
+      <node id="2455">
+        <label>mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;</label>
+        <link refid="db/d05/classmutabor_1_1TRouteClass"/>
+        <childnode refid="2456" relation="usage">
+          <edgelabel>routeList</edgelabel>
+        </childnode>
+        <childnode refid="2458" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="2458">
+        <label>mutabor::idtype&lt; mutabor::TRouteClass&lt; InputDevice, OutputDevice &gt; &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="2453">
+        <label>mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;</label>
+        <link refid="d9/dbf/classmutabor_1_1CommonTypedDeviceAPI"/>
+        <childnode refid="2454" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2459">
+        <label>mutabor::idtype&lt; mutabor::Device &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="2452">
+        <label>mutabor::InputDeviceClass</label>
+        <link refid="d4/d18/classmutabor_1_1InputDeviceClass"/>
+        <childnode refid="2453" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2460" relation="usage">
+          <edgelabel>current_keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="2454">
+        <label>mutabor::Device</label>
+        <link refid="db/db4/classmutabor_1_1Device"/>
+        <childnode refid="2455" relation="usage">
+          <edgelabel>routes</edgelabel>
+        </childnode>
+        <childnode refid="2459" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="2456">
+        <label>std::list&lt; T &gt;</label>
+        <childnode refid="2457" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2451">
+        <label>mutabor::CommonFileInputDevice</label>
+        <link refid="dd/d3c/classmutabor_1_1CommonFileInputDevice"/>
+        <childnode refid="2452" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2461" relation="usage">
+          <edgelabel>timer</edgelabel>
+        </childnode>
+        <childnode refid="2463" relation="usage">
+          <edgelabel>timing</edgelabel>
+        </childnode>
+      </node>
+      <node id="2462">
+        <label>Thread</label>
+      </node>
+      <node id="2461">
+        <label>mutabor::CommonFileInputDevice::FileTimer</label>
+        <link refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer"/>
+        <childnode refid="2462" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="121" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="120" bodyend="319"/>
+    <listofallmembers>
+      <member refid="d5/dee/group__route_1ga310387a6e3aebf00b508887391d82b3d" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Add</name></member>
+      <member refid="d5/dee/group__route_1ga0500b92557be2d528f6f75f4537f7b88" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>AppendToDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga2e005c6f49a1547b9b3b011a940879be" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>BatchPlay</name></member>
+      <member refid="d5/dee/group__route_1ga6a549b9131f3f5f7322b89bfa941de4a" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>ClearDeviceList</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aa69af4fd6fa82b1aef79985433de8929" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Close</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a5e793bf4b7c203da99489ff869190455" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>CommonFileInputDevice</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a8b0fe1766ca08c7ed8b963d43f27ed91" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>CommonFileInputDevice</name></member>
+      <member refid="d5/dee/group__route_1ga9787ad2f4d97cd1c4e616a433d284b13" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>CommonTypedDeviceAPI</name></member>
+      <member refid="d5/dee/group__route_1ga3d9ec96127224d9c481d207a2a315f0e" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>CommonTypedDeviceAPI</name></member>
+      <member refid="d5/dee/group__route_1gabd5333b4904bd05f4d82ee7f3e259530" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>current_keys</name></member>
+      <member refid="d5/dee/group__route_1gad212bd763c21f167dc9c6523033d2b62" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Destroy</name></member>
+      <member refid="d5/dee/group__route_1ga5a34853b39a1fe85e2420e262dfb0f6a" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Device</name></member>
+      <member refid="d5/dee/group__route_1gad6aa54a6af79287ce009e35bc448da2b" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>deviceList</name></member>
+      <member refid="d5/dee/group__route_1gaebc414494d4db2ad9f687eb2b3d43a14" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>DevicePtr</name></member>
+      <member refid="d5/dee/group__route_1ga1274fa7f3bc0cd8f6d2a44aac8e42bb3" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>devidtype</name></member>
+      <member refid="d5/dee/group__route_1gabb922714830f90c1af5bb9f5fe4ce615" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>dirty</name></member>
+      <member refid="d5/dee/group__route_1ga76cdbc43252351386362bfd14c62cf45" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Dirty</name></member>
+      <member refid="d5/dee/group__route_1ga3ff0800ee50f8cf48a2d991365e56e0b" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>DisconnectFromAll</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a08cdc253422eb5f4a333d75891faa245" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>exitLock</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a63ef0124e0849202e8b92b5c90a46dd3" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>FileTimer</name></member>
+      <member refid="d5/dee/group__route_1ga40c9efe47aabb03bc924cdec9aff95fc" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>FindInDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga6d853cde85216e56f3d74d20ff9556b2" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>get_routefile_id</name></member>
+      <member refid="d5/dee/group__route_1ga48afafba127beb4c42f6a1a9bceb2148" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>get_session_id</name></member>
+      <member refid="d5/dee/group__route_1ga0003618beb50da006e94e57baf9f7afa" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>GetDevice</name></member>
+      <member refid="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>GetDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga85133d32c2a68f1a343aeab80bbd92f4" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>GetMode</name></member>
+      <member refid="d5/dee/group__route_1gabacd3a9aa739a6e21a737feeb9b9e9c9" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>GetName</name></member>
+      <member refid="d5/dee/group__route_1gab552cc7e2033cc34840644adee86699f" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>GetNO_DELTA</name></member>
+      <member refid="d5/dee/group__route_1ga88774ccf4e5c5dfb2646e1a95c1719d6" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>GetRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga15e9894fe4909c6aadff876f323d3384" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>GetRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga0c8207244321c9d72913ae24fbad4be5" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>GetType</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a74e4547dec81508d986a01c8c0bf0967" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>GetTypeName</name></member>
+      <member refid="d5/dee/group__route_1ga6b40f3affafc4ecaf39ac957e2c74cd3" prot="protected" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>getUserData</name></member>
+      <member refid="d5/dee/group__route_1gga1274fa7f3bc0cd8f6d2a44aac8e42bb3aa5dc2f5a43d36c391b773a6adc16e948" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>IDTypeFile</name></member>
+      <member refid="d5/dee/group__route_1gga1274fa7f3bc0cd8f6d2a44aac8e42bb3a57119faede41f9f36b4547aa812e42aa" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>IDTypeHardware</name></member>
+      <member refid="d5/dee/group__route_1gga1274fa7f3bc0cd8f6d2a44aac8e42bb3af953940c733081b6e3dad32c6d807943" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>IDTypeSession</name></member>
+      <member refid="d5/dee/group__route_1ga0129007d64b3aaf687dc34665d14b399" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>InitializeIds</name></member>
+      <member refid="d5/dee/group__route_1ga2a95987d1056dd6fb4a0706d9eb894a5" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>InputDeviceClass</name></member>
+      <member refid="d5/dee/group__route_1ga33c4a77081b2d1b31f0153cd442d597a" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>IsDelta</name></member>
+      <member refid="d5/dee/group__route_1ga479bbdd0212790e89bf71dc227ab2303" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>IsDirty</name></member>
+      <member refid="d5/dee/group__route_1ga60c8451e058e88b0a5e8bc932e66089f" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>IsInDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga1cdc51c75faaeaec8d2b4cbb40d36e3b" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>isOpen</name></member>
+      <member refid="d5/dee/group__route_1ga219acefe8692f1b3e00181f97c9c866f" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>IsOpen</name></member>
+      <member refid="d5/dee/group__route_1gab0ae031e02b18ee00f5794736fc135dd" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>listtype</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a1f853e58525a5ff67937c48a208b7670" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Load</name></member>
+      <member refid="d5/dee/group__route_1ga4af91d72a0b616012d29405fb7fc9b50" prot="public" virt="pure-virtual" ambiguityscope="mutabor::InputDeviceClass::"><scope>mutabor::CommonFileInputDevice</scope><name>Load</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac521d166de1b0559a7edfac31cd6addd" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>lockMode</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ab9d8e436f426b7f75f526fd9e88411cb" prot="private" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>MidiFileFactory</name></member>
+      <member refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Mode</name></member>
+      <member refid="d5/dee/group__route_1ga1e90f04620e908e170e66539c8f9b47a" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>MoveInList</name></member>
+      <member refid="d5/dee/group__route_1ga143bc287529a671195a80dc3fbf4d3d4" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>MoveRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga86a80a0d59ab5740c7f0eb708c1b6e76" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Name</name></member>
+      <member refid="d5/dee/group__route_1ga7940967ce95f17bf1c79c6928cd732e7" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>NeedsRealTime</name></member>
+      <member refid="d5/dee/group__route_1gadab298f6643f7929782652b7a2764731" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>NoteOff</name></member>
+      <member refid="d5/dee/group__route_1gacc20d37049923e4473fc0ff10fed282c" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>NoteOn</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59adc14982a14900cbbd72e493540eec7a2" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Nothing</name></member>
+      <member refid="d5/dee/group__route_1ga121ded40710df3f74a6150082999597b" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>nRoutes</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3415f4a6ff1dac5d6436689cde87a136" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Open</name></member>
+      <member refid="d5/dee/group__route_1ga7cafe18237e838d40bbb9efe90484066" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>operator const thistype &amp;</name></member>
+      <member refid="d5/dee/group__route_1gad379062646f2315b58267c314cdf1c49" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>operator thistype &amp;</name></member>
+      <member refid="d5/dee/group__route_1ga4c7c24c48255adddc767a745ed3c8e1c" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Panic</name></member>
+      <member refid="d5/dee/group__route_1ga16e5549446e1eff905acfaa343ea254b" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Panic</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ab981fd4cdd68dc456a97889ddc851736" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Pause</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9e446c5f5386b6ee6b8d014448a8dfad" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>pauseTime</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9678c9f5b289630497c3d88ed0e8d359" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Play</name></member>
+      <member refid="d5/dee/group__route_1ga77179da20d4bb3a5cd8d03fc90435ddb" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>PrepareNextEvent</name></member>
+      <member refid="d5/dee/group__route_1ga005dc1a3518ecb0bfb408cf058319d7a" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>ReadData</name></member>
+      <member refid="d5/dee/group__route_1gacb751971284f0b211abb68ae3dafd4b4" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>RealtimePlay</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aad7425149e4ec19d09f47636572478bd" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>referenceTime</name></member>
+      <member refid="d5/dee/group__route_1ga75c2c1c9312c7fd3b0ac67482bc3f3b7" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Remove</name></member>
+      <member refid="d5/dee/group__route_1gaea9507768e02eb39aa56acde9fbb0d75" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>RemoveFromDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga2875373929d294d6c51991238407f542" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Replace</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59a36c6fdc406fe47d6f70581062fc282d9" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>RequestExit</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59a6163594cb2510bbd2b8a32fcf7806062" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>RequestPause</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59aeedaf6a8fa478c488bd205f15396d3f9" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>ResetTime</name></member>
+      <member refid="d5/dee/group__route_1gaa9515535e69b65e614b048f0c417024e" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>routefile_id</name></member>
+      <member refid="d5/dee/group__route_1ga0050f060be5dcbdaa7473c97e675140c" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>routes</name></member>
+      <member refid="d5/dee/group__route_1ga01c3f19123c1f42d8f1a2d405c3d21e2" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>runtime_error</name></member>
+      <member refid="d5/dee/group__route_1gac5f5412fc2ea0b0b5edbd199353309c9" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>runtime_error</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aebd2d366f92f7fcb3fda5c3ffd7fa2a3" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Save</name></member>
+      <member refid="d5/dee/group__route_1ga3e5d36bc704b3de28f788e011fd19c73" prot="public" virt="pure-virtual" ambiguityscope="mutabor::InputDeviceClass::"><scope>mutabor::CommonFileInputDevice</scope><name>Save</name></member>
+      <member refid="d5/dee/group__route_1ga25dab27656e5e9960b90178f5365c890" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>session_id</name></member>
+      <member refid="d5/dee/group__route_1ga33283f3fbd5c5a384980e320223fca94" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>set_file_id</name></member>
+      <member refid="d5/dee/group__route_1ga67e80dc8dd7ecc105020ae37eed4bf63" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>SetMode</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a13c581ebc0d885e53cb8e134c97a4421" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>SetName</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a8e75010c7d81cae7464c19e768a174b6" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>SetThreadKind</name></member>
+      <member refid="d5/dee/group__route_1gaf4269c12f276f471046dd60a6034322f" prot="protected" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>setUserData</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1af61d4ef16eefc0fddf312d1e92eeff2f" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>Stop</name></member>
+      <member refid="d5/dee/group__route_1gaf592e59b9c1a9cdcc036f6a5a4f197eb" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>thisptr</name></member>
+      <member refid="d5/dee/group__route_1gae86c4bcadc561ffa2ba18b641a7dc667" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>thisptr</name></member>
+      <member refid="d5/dee/group__route_1gae62e6954f27bdff3e405f60aa3a12235" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>thistype</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>ThreadCommunication</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a2a0b84c4c0f09a39a704333eedd64528" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>threadkind</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a423d3eece573e61472d6ec5f1c782486" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>ThreadPlay</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a159e75656d4a16408957610f4bc2d352" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>threadReady</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac2397d62a5481190fc22e64132f17781" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>threadsignal</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac12acf2139170dc37a1432f25affd4f2" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>timer</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a1e0e69b99ef30bfdf94edbf55b0beda7" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>timing</name></member>
+      <member refid="d5/dee/group__route_1ga62782ee9bbed258704f22506993da782" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>TruncateDeviceList</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a722c2de3e9fd386e48c80eca1f18597b" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>waitCondition</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a0e07f85298f243526c07a976c7a44faa" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>WaitForDeviceFinish</name></member>
+      <member refid="d5/dee/group__route_1ga53918898ee641c62d9ab122f0d0712aa" prot="public" virt="virtual" ambiguityscope="mutabor::InputDeviceClass::"><scope>mutabor::CommonFileInputDevice</scope><name>WaitForDeviceFinish</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3c551fc40d8b76855d59f00b6d82622e" prot="protected" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>waitMutex</name></member>
+      <member refid="d5/dee/group__route_1gae75382843673e90f40cf3d216faffe42" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>WriteData</name></member>
+      <member refid="d5/dee/group__route_1ggac2bb84d1f1e0c5c42e57cf8ac9992996a5300617fee0bea844062acc80df5306d" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>wxTHREAD_WAIT_BLOCK</name></member>
+      <member refid="d5/dee/group__route_1ggac2bb84d1f1e0c5c42e57cf8ac9992996a39530c962f92d84a1b55f32be3f5f0fd" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>wxTHREAD_WAIT_DEFAULT</name></member>
+      <member refid="d5/dee/group__route_1ggac2bb84d1f1e0c5c42e57cf8ac9992996a3662ffee8d8864568801818c1e4cde10" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>wxTHREAD_WAIT_YIELD</name></member>
+      <member refid="d5/dee/group__route_1gac2bb84d1f1e0c5c42e57cf8ac9992996" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice</scope><name>wxThreadWait</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a0ff99f1e190f67f0293e772bf1aafaa7" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>~CommonFileInputDevice</name></member>
+      <member refid="d5/dee/group__route_1ga35b63eeb3932c5e938f34239a57825cb" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>~CommonTypedDeviceAPI</name></member>
+      <member refid="d5/dee/group__route_1gaeb8df260fe37691b9c990e5a2eef42fe" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>~Device</name></member>
+      <member refid="d5/dee/group__route_1gab96d961196f9b390aba6a647a2c3602e" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice</scope><name>~InputDeviceClass</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

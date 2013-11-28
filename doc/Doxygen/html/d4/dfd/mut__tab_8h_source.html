@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/includes/mutabor/mut_tab.h Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_bf59d41d727aac54882b42f236ae575e.html">includes</a></li><li class="navelem"><a class="el" href="../../dir_6db30062d01f5c3ec76e386385d23595.html">mutabor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">mut_tab.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d4/dfd/mut__tab_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifndef __MUT_TAB_H_INCLUDED</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __MUT_TAB_H_INCLUDED</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="../../d4/dfd/mut__tab_8h.html#a68028d427baa3e23648e2c4ea6e3d119">   30</a></span>&#160;<span class="preprocessor">#define LINE_DRAW_QUANTUM 17</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="comment">/*</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">#include &quot;mut.h&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">void init_yylex (void);</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">int yylex();</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">void yyerror(char *);</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">int yyparse ();</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dc/df5/mut_8h.html">mut.h</a>&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/* for mutlex.h */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#ifndef YY_TYPEDEF_YY_SCANNER_T</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../d4/dfd/mut__tab_8h.html#a5d5508008cac8fb66fca3baa4e9b6584">   45</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define YY_TYPEDEF_YY_SCANNER_T</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../d4/dfd/mut__tab_8h.html#a157535ed0322a026cc197c8985c08d35">   46</a></span>&#160;<span class="preprocessor"></span><span class="keyword">typedef</span> <span class="keywordtype">void</span>* <a class="code" href="../../d4/dfd/mut__tab_8h.html#a157535ed0322a026cc197c8985c08d35">yyscan_t</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../d9/d7c/group__kernel.html#ga133c01da80801dde358f411a4ef498e6">   49</a></span>&#160;<span class="keywordtype">long</span> <a class="code" href="../../d4/dfd/mut__tab_8h.html#a133c01da80801dde358f411a4ef498e6">anzahl_eingelesene_zeichen</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="../../d4/dfd/mut__tab_8h.html#a65471dcacc7648c3ca8c28ba005e2314">mutabor_parser_parse</a>(<span class="keywordtype">void</span> * _self);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="../../d4/dfd/mut__tab_8h.html#a5832610062bab2a7375b88a40c582341">mutabor_parser_lex</a> (<a class="code" href="../../da/d7e/unionYYSTYPE.html">YYSTYPE</a> * yylval_param,<a class="code" href="../../d8/d38/structYYLTYPE.html">YYLTYPE</a> * yylloc_param ,<a class="code" href="../../d4/dfd/mut__tab_8h.html#a157535ed0322a026cc197c8985c08d35">yyscan_t</a> yyscanner);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">int mutabor_parser_lex (YYSTYPE * yylval_param, YYLTYPE * yylloc_param, void * _self );</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">void mutabor_parser_error(YYLTYPE * locp, void * _self, char const *s);</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __MUT_TAB_H_INCLUDED */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="mut_8h_html"><div class="ttname"><a href="../../dc/df5/mut_8h.html">mut.h</a></div></div>
+<div class="ttc" id="mut__tab_8h_html_a65471dcacc7648c3ca8c28ba005e2314"><div class="ttname"><a href="../../d4/dfd/mut__tab_8h.html#a65471dcacc7648c3ca8c28ba005e2314">mutabor_parser_parse</a></div><div class="ttdeci">int mutabor_parser_parse(void *_self)</div></div>
+<div class="ttc" id="mut__tab_8h_html_a157535ed0322a026cc197c8985c08d35"><div class="ttname"><a href="../../d4/dfd/mut__tab_8h.html#a157535ed0322a026cc197c8985c08d35">yyscan_t</a></div><div class="ttdeci">void * yyscan_t</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dfd/mut__tab_8h_source.html#l00046">mut_tab.h:46</a></div></div>
+<div class="ttc" id="structYYLTYPE_html"><div class="ttname"><a href="../../d8/d38/structYYLTYPE.html">YYLTYPE</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/mut_8cc_source.html#l00234">mut.cc:234</a></div></div>
+<div class="ttc" id="mut__tab_8h_html_a5832610062bab2a7375b88a40c582341"><div class="ttname"><a href="../../d4/dfd/mut__tab_8h.html#a5832610062bab2a7375b88a40c582341">mutabor_parser_lex</a></div><div class="ttdeci">int mutabor_parser_lex(YYSTYPE *yylval_param, YYLTYPE *yylloc_param, yyscan_t yyscanner)</div></div>
+<div class="ttc" id="unionYYSTYPE_html"><div class="ttname"><a href="../../da/d7e/unionYYSTYPE.html">YYSTYPE</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/mut_8cc_source.html#l00213">mut.cc:213</a></div></div>
+<div class="ttc" id="mut__tab_8h_html_a133c01da80801dde358f411a4ef498e6"><div class="ttname"><a href="../../d4/dfd/mut__tab_8h.html#a133c01da80801dde358f411a4ef498e6">anzahl_eingelesene_zeichen</a></div><div class="ttdeci">long anzahl_eingelesene_zeichen</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dfd/mut__tab_8h_source.html#l00049">mut_tab.h:49</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:03:00 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

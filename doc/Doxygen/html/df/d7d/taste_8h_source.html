@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/includes/mutabor/taste.h Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_bf59d41d727aac54882b42f236ae575e.html">includes</a></li><li class="navelem"><a class="el" href="../../dir_6db30062d01f5c3ec76e386385d23595.html">mutabor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">taste.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../df/d7d/taste_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef __TASTE_H_INCLUDED</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __TASTE_H_INCLUDED</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor"></span><span class="keyword">namespace </span>mutabor {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="../../d1/db5/structtaste.html">   19</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="../../d1/db5/structtaste.html">taste</a> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="../../d1/db5/structtaste.html#a9c88178a01aca8f82581a140a4d10d2b">   20</a></span>&#160;      <span class="keywordtype">int</span> <a class="code" href="../../d1/db5/structtaste.html#a9c88178a01aca8f82581a140a4d10d2b">taste</a>;           </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="../../d1/db5/structtaste.html#ad6e8e7fb2039f6ac1501d793cc8d3757">   21</a></span>&#160;      <span class="keywordtype">char</span> <a class="code" href="../../d1/db5/structtaste.html#ad6e8e7fb2039f6ac1501d793cc8d3757">stern</a>;          </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../d1/db5/structtaste.html#acae54c723bf57f7603de9a0d5f027e03">   22</a></span>&#160;      <span class="keyword">struct </span><a class="code" href="../../d1/db5/structtaste.html">taste</a> * <a class="code" href="../../d1/db5/structtaste.html#acae54c723bf57f7603de9a0d5f027e03">next</a>; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    };</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../df/d7d/taste_8h.html#a7c03591be73191090cfa4bc66f8daf96">init_tastenliste</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../df/d7d/taste_8h.html#a35136b1912d32bc653e1588485754816">get_new_taste</a> (<span class="keywordtype">int</span> <a class="code" href="../../d1/db5/structtaste.html">taste</a>, <span class="keywordtype">char</span> <a class="code" href="../../d1/db5/structtaste.html#ad6e8e7fb2039f6ac1501d793cc8d3757">stern</a>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga8cb1d2c54ae07b13d345a7e3966c4079">enthalten_in_tastenliste</a> (<span class="keywordtype">int</span> <a class="code" href="../../d1/db5/structtaste.html">taste</a>, <span class="keyword">struct</span> taste * lauf);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../df/d7d/taste_8h.html#ab225f4f6f321862e0e7c23ff393855df">   29</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="../../d1/db5/structtaste.html">taste</a> * <a class="code" href="../../df/d7d/taste_8h.html#ab225f4f6f321862e0e7c23ff393855df">tmp_tastenliste</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#ifdef __cplusplus </span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span>  } <span class="comment">// extern &quot;C&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;} <span class="comment">// namespace mutabor</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __TASTE_H_INCLUDED */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="structtaste_html_a9c88178a01aca8f82581a140a4d10d2b"><div class="ttname"><a href="../../d1/db5/structtaste.html#a9c88178a01aca8f82581a140a4d10d2b">taste::taste</a></div><div class="ttdeci">int taste</div><div class="ttdoc">Tastennummer (Schlüssel-C = 60) </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/taste_8h_source.html#l00020">taste.h:20</a></div></div>
+<div class="ttc" id="group__kernel_html_ga8cb1d2c54ae07b13d345a7e3966c4079"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga8cb1d2c54ae07b13d345a7e3966c4079">enthalten_in_tastenliste</a></div><div class="ttdeci">int enthalten_in_tastenliste(int taste, struct taste *lauf)</div><div class="ttdoc">Prüft ob eine Taste in einer Liste von Tasten enthalten ist. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/df5/Parser_8cpp_source.html#l02522">Parser.cpp:2522</a></div></div>
+<div class="ttc" id="taste_8h_html_ab225f4f6f321862e0e7c23ff393855df"><div class="ttname"><a href="../../df/d7d/taste_8h.html#ab225f4f6f321862e0e7c23ff393855df">tmp_tastenliste</a></div><div class="ttdeci">struct taste * tmp_tastenliste</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/taste_8h_source.html#l00029">taste.h:29</a></div></div>
+<div class="ttc" id="structtaste_html"><div class="ttname"><a href="../../d1/db5/structtaste.html">taste</a></div><div class="ttdoc">Einzelne Tasten als einfach verkettete Liste. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/taste_8h_source.html#l00019">taste.h:19</a></div></div>
+<div class="ttc" id="taste_8h_html_a35136b1912d32bc653e1588485754816"><div class="ttname"><a href="../../df/d7d/taste_8h.html#a35136b1912d32bc653e1588485754816">get_new_taste</a></div><div class="ttdeci">void get_new_taste(int taste, char stern)</div><div class="ttdoc">Fügt eine Taste ans Ende von tmp_tastenliste an. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dc9/taste_8c_source.html#l00047">taste.c:47</a></div></div>
+<div class="ttc" id="structtaste_html_ad6e8e7fb2039f6ac1501d793cc8d3757"><div class="ttname"><a href="../../d1/db5/structtaste.html#ad6e8e7fb2039f6ac1501d793cc8d3757">taste::stern</a></div><div class="ttdeci">char stern</div><div class="ttdoc">TRUE oder FALSE, ob Stern deklariert ist. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/taste_8h_source.html#l00021">taste.h:21</a></div></div>
+<div class="ttc" id="taste_8h_html_a7c03591be73191090cfa4bc66f8daf96"><div class="ttname"><a href="../../df/d7d/taste_8h.html#a7c03591be73191090cfa4bc66f8daf96">init_tastenliste</a></div><div class="ttdeci">void init_tastenliste(void)</div><div class="ttdoc">Setzt die temporäre Tastenliste auf NULL. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dc9/taste_8c_source.html#l00037">taste.c:37</a></div></div>
+<div class="ttc" id="structtaste_html_acae54c723bf57f7603de9a0d5f027e03"><div class="ttname"><a href="../../d1/db5/structtaste.html#acae54c723bf57f7603de9a0d5f027e03">taste::next</a></div><div class="ttdeci">struct taste * next</div><div class="ttdoc">Nächste Taste. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/taste_8h_source.html#l00022">taste.h:22</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:03:00 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

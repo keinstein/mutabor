@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d6/df1/structyytbl__hdr" kind="struct" prot="public">
+    <compoundname>yytbl_hdr</compoundname>
+    <includes refid="da/d43/libmutabor_2mutlex_8h" local="no">mutlex.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d6/df1/structyytbl__hdr_1a4eb39645dce7e0af44173d4698966fcb" prot="public" static="no" mutable="no">
+        <type><ref refid="d0/dc8/mutlex_8cc_1a36869712de12820c73aae736762e8e88" kindref="member">flex_uint32_t</ref></type>
+        <definition>flex_uint32_t yytbl_hdr::th_magic</definition>
+        <argsstring></argsstring>
+        <name>th_magic</name>
+        <briefdescription>
+<para>Must be 0xF13C57B1 (comes from &quot;Flex Table&quot;) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" line="853" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" bodystart="853" bodyend="-1"/>
+        <referencedby refid="d5/d4b/mutlex_8c_1a59401513bf899d38d02624c209900136" compoundref="d5/d4b/mutlex_8c" startline="2617" endline="2657">yytbl_hdr_read</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/df1/structyytbl__hdr_1afc60c914b741ff445dc3360341f7209d" prot="public" static="no" mutable="no">
+        <type><ref refid="d0/dc8/mutlex_8cc_1a36869712de12820c73aae736762e8e88" kindref="member">flex_uint32_t</ref></type>
+        <definition>flex_uint32_t yytbl_hdr::th_hsize</definition>
+        <argsstring></argsstring>
+        <name>th_hsize</name>
+        <briefdescription>
+<para>Size of this header in bytes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" line="854" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" bodystart="854" bodyend="-1"/>
+        <referencedby refid="d5/d4b/mutlex_8c_1a9b5b30fa12c45cbaa0b865b79fc9fe6a" compoundref="d5/d4b/mutlex_8c" startline="2887" endline="2933">yytbl_fload</referencedby>
+        <referencedby refid="d5/d4b/mutlex_8c_1a59401513bf899d38d02624c209900136" compoundref="d5/d4b/mutlex_8c" startline="2617" endline="2657">yytbl_hdr_read</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/df1/structyytbl__hdr_1ae3ad78429cc0f544afc65d77185cc095" prot="public" static="no" mutable="no">
+        <type><ref refid="d0/dc8/mutlex_8cc_1a36869712de12820c73aae736762e8e88" kindref="member">flex_uint32_t</ref></type>
+        <definition>flex_uint32_t yytbl_hdr::th_ssize</definition>
+        <argsstring></argsstring>
+        <name>th_ssize</name>
+        <briefdescription>
+<para>Size of this dataset, in bytes, including header. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" line="855" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" bodystart="855" bodyend="-1"/>
+        <referencedby refid="d5/d4b/mutlex_8c_1a9b5b30fa12c45cbaa0b865b79fc9fe6a" compoundref="d5/d4b/mutlex_8c" startline="2887" endline="2933">yytbl_fload</referencedby>
+        <referencedby refid="d5/d4b/mutlex_8c_1a59401513bf899d38d02624c209900136" compoundref="d5/d4b/mutlex_8c" startline="2617" endline="2657">yytbl_hdr_read</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/df1/structyytbl__hdr_1a5dd427110036b478bca11cf721ff5432" prot="public" static="no" mutable="no">
+        <type><ref refid="d0/dc8/mutlex_8cc_1ac50cdb9eefbef83a1cec89e3a7f6e1d2" kindref="member">flex_uint16_t</ref></type>
+        <definition>flex_uint16_t yytbl_hdr::th_flags</definition>
+        <argsstring></argsstring>
+        <name>th_flags</name>
+        <briefdescription>
+<para>Currently unused, must be 0. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" line="856" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" bodystart="856" bodyend="-1"/>
+        <referencedby refid="d5/d4b/mutlex_8c_1a59401513bf899d38d02624c209900136" compoundref="d5/d4b/mutlex_8c" startline="2617" endline="2657">yytbl_hdr_read</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/df1/structyytbl__hdr_1ac6b9ca55cc9b29eecefb6435530f4dd2" prot="public" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <definition>char * yytbl_hdr::th_version</definition>
+        <argsstring></argsstring>
+        <name>th_version</name>
+        <briefdescription>
+<para>Flex version string. </para>        </briefdescription>
+        <detaileddescription>
+<para>NUL terminated. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" line="857" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" bodystart="857" bodyend="-1"/>
+        <referencedby refid="d5/d4b/mutlex_8c_1a9b5b30fa12c45cbaa0b865b79fc9fe6a" compoundref="d5/d4b/mutlex_8c" startline="2887" endline="2933">yytbl_fload</referencedby>
+        <referencedby refid="d5/d4b/mutlex_8c_1a59401513bf899d38d02624c209900136" compoundref="d5/d4b/mutlex_8c" startline="2617" endline="2657">yytbl_hdr_read</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/df1/structyytbl__hdr_1a2c4f8d8b019701821e677f2ee43b9a9b" prot="public" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <definition>char * yytbl_hdr::th_name</definition>
+        <argsstring></argsstring>
+        <name>th_name</name>
+        <briefdescription>
+<para>The name of this table set. </para>        </briefdescription>
+        <detaileddescription>
+<para>NUL terminated. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" line="858" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" bodystart="858" bodyend="-1"/>
+        <referencedby refid="d5/d4b/mutlex_8c_1a9b5b30fa12c45cbaa0b865b79fc9fe6a" compoundref="d5/d4b/mutlex_8c" startline="2887" endline="2933">yytbl_fload</referencedby>
+        <referencedby refid="d5/d4b/mutlex_8c_1a59401513bf899d38d02624c209900136" compoundref="d5/d4b/mutlex_8c" startline="2617" endline="2657">yytbl_hdr_read</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" line="852" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" bodystart="852" bodyend="859"/>
+    <listofallmembers>
+      <member refid="d6/df1/structyytbl__hdr_1a5dd427110036b478bca11cf721ff5432" prot="public" virt="non-virtual"><scope>yytbl_hdr</scope><name>th_flags</name></member>
+      <member refid="d6/df1/structyytbl__hdr_1afc60c914b741ff445dc3360341f7209d" prot="public" virt="non-virtual"><scope>yytbl_hdr</scope><name>th_hsize</name></member>
+      <member refid="d6/df1/structyytbl__hdr_1a4eb39645dce7e0af44173d4698966fcb" prot="public" virt="non-virtual"><scope>yytbl_hdr</scope><name>th_magic</name></member>
+      <member refid="d6/df1/structyytbl__hdr_1a2c4f8d8b019701821e677f2ee43b9a9b" prot="public" virt="non-virtual"><scope>yytbl_hdr</scope><name>th_name</name></member>
+      <member refid="d6/df1/structyytbl__hdr_1ae3ad78429cc0f544afc65d77185cc095" prot="public" virt="non-virtual"><scope>yytbl_hdr</scope><name>th_ssize</name></member>
+      <member refid="d6/df1/structyytbl__hdr_1ac6b9ca55cc9b29eecefb6435530f4dd2" prot="public" virt="non-virtual"><scope>yytbl_hdr</scope><name>th_version</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

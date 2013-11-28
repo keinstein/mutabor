@@ -1,0 +1,757 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d4/d18/classmutabor_1_1InputDeviceClass" kind="class" prot="public">
+    <compoundname>mutabor::InputDeviceClass</compoundname>
+    <basecompoundref refid="d9/dbf/classmutabor_1_1CommonTypedDeviceAPI" prot="public" virt="non-virtual">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;</basecompoundref>
+    <derivedcompoundref refid="dc/d51/classmutabor_1_1CommonMidiInput" prot="public" virt="non-virtual">mutabor::CommonMidiInput&lt; InputDeviceClass &gt;</derivedcompoundref>
+    <derivedcompoundref refid="dc/d51/classmutabor_1_1CommonMidiInput" prot="public" virt="non-virtual">mutabor::CommonMidiInput&lt; mutabor::InputDeviceClass &gt;</derivedcompoundref>
+    <derivedcompoundref refid="dd/d3c/classmutabor_1_1CommonFileInputDevice" prot="public" virt="non-virtual">mutabor::CommonFileInputDevice</derivedcompoundref>
+    <includes refid="de/d05/Device_8h" local="no">Device.h</includes>
+    <innerclass refid="dc/d50/structmutabor_1_1InputDeviceClass_1_1current__keys__type" prot="public">mutabor::InputDeviceClass::current_keys_type</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="d5/dee/group__route_1gac2bb84d1f1e0c5c42e57cf8ac9992996" prot="public" static="no">
+        <name>wxThreadWait</name>
+        <enumvalue id="d5/dee/group__route_1ggac2bb84d1f1e0c5c42e57cf8ac9992996a5300617fee0bea844062acc80df5306d" prot="public">
+          <name>wxTHREAD_WAIT_BLOCK</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dee/group__route_1ggac2bb84d1f1e0c5c42e57cf8ac9992996a3662ffee8d8864568801818c1e4cde10" prot="public">
+          <name>wxTHREAD_WAIT_YIELD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dee/group__route_1ggac2bb84d1f1e0c5c42e57cf8ac9992996a39530c962f92d84a1b55f32be3f5f0fd" prot="public">
+          <name>wxTHREAD_WAIT_DEFAULT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="917" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="917" bodyend="921"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="d5/dee/group__route_1gac36d9e10cb965cbf9c71a189eff845af" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class DeviceFactory</definition>
+        <argsstring></argsstring>
+        <name>DeviceFactory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="824" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="824" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d5/dee/group__route_1gabd5333b4904bd05f4d82ee7f3e259530" prot="protected" static="no" mutable="no">
+        <type><ref refid="dc/d50/structmutabor_1_1InputDeviceClass_1_1current__keys__type" kindref="compound">current_keys_type</ref></type>
+        <definition>current_keys_type mutabor::InputDeviceClass::current_keys</definition>
+        <argsstring></argsstring>
+        <name>current_keys</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="1015" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="1015" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gadab298f6643f7929782652b7a2764731" compoundref="de/d05/Device_8h" startline="978" endline="986">NoteOff</referencedby>
+        <referencedby refid="d5/dee/group__route_1gacc20d37049923e4473fc0ff10fed282c" compoundref="de/d05/Device_8h" startline="968" endline="976">NoteOn</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga16e5549446e1eff905acfaa343ea254b" compoundref="d2/dc0/Device_8cpp" startline="321" endline="333">Panic</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/dee/group__route_1gab96d961196f9b390aba6a647a2c3602e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual mutabor::InputDeviceClass::~InputDeviceClass</definition>
+        <argsstring>()</argsstring>
+        <name>~InputDeviceClass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="886" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="886" bodyend="886"/>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga74c7ff321332ac230d3696c91559dbcf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void mutabor::InputDeviceClass::Close</definition>
+        <argsstring>()</argsstring>
+        <name>Close</name>
+        <reimplements refid="d5/dee/group__route_1ga408aff2b137d1bef5de4ee0d23a9dc26">Close</reimplements>
+        <reimplementedby refid="d4/d1a/classmyDevice_1adce8cc9a06cc92297ca67055db730b0a">Close</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1adce8cc9a06cc92297ca67055db730b0a">Close</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1adce8cc9a06cc92297ca67055db730b0a">Close</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1adce8cc9a06cc92297ca67055db730b0a">Close</reimplementedby>
+        <reimplementedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aa69af4fd6fa82b1aef79985433de8929">Close</reimplementedby>
+        <reimplementedby refid="dc/da1/classmutabor_1_1InputGis_1ab14a7743d1cf4f74e06608c113ac4463">Close</reimplementedby>
+        <reimplementedby refid="d2/dea/classmutabor_1_1InputMidiPort_1a997ed9a715013d4c8ba576fe282fba8a">Close</reimplementedby>
+        <reimplementedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a28c0387b456dbd7ed53bbf3204fa2e1c">Close</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="888" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="888" bodyend="890"/>
+        <references refid="d5/dee/group__route_1gafd7b958ce532dc3ac37a3b312abfccd1" compoundref="de/d05/Device_8h" startline="891" endline="894">Stop</references>
+        <referencedby refid="d5/dee/group__route_1gacbc442186afd2221606b8c9178bc5094" compoundref="d8/d59/midicmnTest_8cpp" startline="955" endline="1325">CommonMidiInputTest::testGlobalPanic</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga28763107ca50051640ed4834f627ffdc" compoundref="d8/d59/midicmnTest_8cpp" startline="599" endline="953">CommonMidiInputTest::testPanic</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gafd7b958ce532dc3ac37a3b312abfccd1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void mutabor::InputDeviceClass::Stop</definition>
+        <argsstring>()</argsstring>
+        <name>Stop</name>
+        <reimplements refid="d5/dee/group__route_1ga70164b668155aa5907d04a56c39c85c0">Stop</reimplements>
+        <reimplementedby refid="dc/d13/classtestCommonFileDeviceTimer_1ae4d4b9913c9382ae44ad78d92024225c">Stop</reimplementedby>
+        <reimplementedby refid="dc/d13/classtestCommonFileDeviceTimer_1ae4d4b9913c9382ae44ad78d92024225c">Stop</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a4e7101bdfd3d0061f8991c7d1e44eb5c">Stop</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a4e7101bdfd3d0061f8991c7d1e44eb5c">Stop</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a4e7101bdfd3d0061f8991c7d1e44eb5c">Stop</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a4e7101bdfd3d0061f8991c7d1e44eb5c">Stop</reimplementedby>
+        <reimplementedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1af61d4ef16eefc0fddf312d1e92eeff2f">Stop</reimplementedby>
+        <reimplementedby refid="dc/da1/classmutabor_1_1InputGis_1a602dd53cc86c2dbf91bf290b169f00a0">Stop</reimplementedby>
+        <reimplementedby refid="d2/dea/classmutabor_1_1InputMidiPort_1ade6dd1c1e3e15a604e866ce8ed5e1ebf">Stop</reimplementedby>
+        <reimplementedby refid="d6/d12/classmutabor_1_1InputMidiFile_1af01cb3bb180e5f6f08ceeb8f7543c995">Stop</reimplementedby>
+        <briefdescription>
+<para>Stop playback or recording of the device. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="891" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="891" bodyend="894"/>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649" compoundref="de/d05/Device_8h" startline="77">mutabor::DeviceStop</references>
+        <references refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" compoundref="de/d05/Device_8h" startline="504">mutabor::Device::Mode</references>
+        <references refid="d5/dee/group__route_1ga4c7c24c48255adddc767a745ed3c8e1c" compoundref="de/d05/Device_8h" startline="989" endline="989">Panic</references>
+        <referencedby refid="d5/dee/group__route_1ga74c7ff321332ac230d3696c91559dbcf" compoundref="de/d05/Device_8h" startline="888" endline="890">Close</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga765cddc4de5de394f30bb2a4dd0301bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void mutabor::InputDeviceClass::Play</definition>
+        <argsstring>()</argsstring>
+        <name>Play</name>
+        <reimplements refid="d5/dee/group__route_1ga8d7e66cd428ad6bc8d82bfd5fde5ab4b">Play</reimplements>
+        <reimplementedby refid="dc/d13/classtestCommonFileDeviceTimer_1a06a40c337fcc4e8b76e55265c782eaf8">Play</reimplementedby>
+        <reimplementedby refid="dc/d13/classtestCommonFileDeviceTimer_1a06a40c337fcc4e8b76e55265c782eaf8">Play</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a609add9eb24aa2033a6126fd4c563a5d">Play</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a609add9eb24aa2033a6126fd4c563a5d">Play</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a609add9eb24aa2033a6126fd4c563a5d">Play</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a609add9eb24aa2033a6126fd4c563a5d">Play</reimplementedby>
+        <reimplementedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9678c9f5b289630497c3d88ed0e8d359">Play</reimplementedby>
+        <briefdescription>
+<para>Command the device to play music. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function starts playing the music of the device at the curren position. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="899" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="899" bodyend="902"/>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a86530be4e7e984649e049f17857b8e5e" compoundref="de/d05/Device_8h" startline="79">mutabor::DevicePause</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8" compoundref="de/d05/Device_8h" startline="78">mutabor::DevicePlay</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649" compoundref="de/d05/Device_8h" startline="77">mutabor::DeviceStop</references>
+        <references refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" compoundref="de/d05/Device_8h" startline="504">mutabor::Device::Mode</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga53918898ee641c62d9ab122f0d0712aa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>wxThread::ExitCode</type>
+        <definition>virtual wxThread::ExitCode mutabor::InputDeviceClass::WaitForDeviceFinish</definition>
+        <argsstring>(wxThreadWait flags=wxTHREAD_WAIT_BLOCK)</argsstring>
+        <name>WaitForDeviceFinish</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gac2bb84d1f1e0c5c42e57cf8ac9992996" kindref="member">wxThreadWait</ref></type>
+          <declname>flags</declname>
+          <defval><ref refid="d5/dee/group__route_1ggac2bb84d1f1e0c5c42e57cf8ac9992996a5300617fee0bea844062acc80df5306d" kindref="member">wxTHREAD_WAIT_BLOCK</ref></defval>
+        </param>
+        <briefdescription>
+<para>Wait for the thread started with <ref refid="d5/dee/group__route_1ga765cddc4de5de394f30bb2a4dd0301bd" kindref="member">Play()</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function can be used to wait for the device to finish playing. It can be used for joinable threads, only. For detached threads its behaviour is undefined.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Indicators how to wait see wxThread::Wait for more detail.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>exit code from the thread after it has ended. Non-threaded devices will return NULL. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="935" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="935" bodyend="935"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga75218401589785a6a67e0b29289b3436" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void mutabor::InputDeviceClass::Pause</definition>
+        <argsstring>()</argsstring>
+        <name>Pause</name>
+        <reimplements refid="d5/dee/group__route_1ga877980d75727478edae304ea0b513324">Pause</reimplements>
+        <reimplementedby refid="dc/d13/classtestCommonFileDeviceTimer_1a13071344ae08659badd874aca3a41c47">Pause</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1aeebcdc9b48e0355f8af30bd4a7a42123">Pause</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1aeebcdc9b48e0355f8af30bd4a7a42123">Pause</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1aeebcdc9b48e0355f8af30bd4a7a42123">Pause</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1aeebcdc9b48e0355f8af30bd4a7a42123">Pause</reimplementedby>
+        <reimplementedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ab981fd4cdd68dc456a97889ddc851736">Pause</reimplementedby>
+        <reimplementedby refid="d2/dea/classmutabor_1_1InputMidiPort_1aaab5c9d9459339db6e8540fac1edf834">Pause</reimplementedby>
+        <briefdescription>
+<para>Pause playback or recording of the device. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="937" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="937" bodyend="939"/>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a86530be4e7e984649e049f17857b8e5e" compoundref="de/d05/Device_8h" startline="79">mutabor::DevicePause</references>
+        <references refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" compoundref="de/d05/Device_8h" startline="504">mutabor::Device::Mode</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga7940967ce95f17bf1c79c6928cd732e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool mutabor::InputDeviceClass::NeedsRealTime</definition>
+        <argsstring>()</argsstring>
+        <name>NeedsRealTime</name>
+        <reimplementedby refid="d2/dea/classmutabor_1_1InputMidiPort_1a8c4d82941db8d02cdab9b09af36a4952">NeedsRealTime</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="943" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="943" bodyend="945"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga77179da20d4bb3a5cd8d03fc90435ddb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>mutint64</type>
+        <definition>virtual mutint64 mutabor::InputDeviceClass::PrepareNextEvent</definition>
+        <argsstring>()</argsstring>
+        <name>PrepareNextEvent</name>
+        <reimplementedby refid="dc/d13/classtestCommonFileDeviceTimer_1afb7fc7a56fcc67e80980d4f371c1317c">PrepareNextEvent</reimplementedby>
+        <reimplementedby refid="dc/d13/classtestCommonFileDeviceTimer_1afb7fc7a56fcc67e80980d4f371c1317c">PrepareNextEvent</reimplementedby>
+        <reimplementedby refid="dc/da1/classmutabor_1_1InputGis_1a257cb27d407cd7c29ee8c7636c8f85db">PrepareNextEvent</reimplementedby>
+        <reimplementedby refid="d6/d12/classmutabor_1_1InputMidiFile_1aabfc9a226690dbd5314c7bd82195b056">PrepareNextEvent</reimplementedby>
+        <briefdescription>
+<para>Go on to the next event. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function must be provided by the device. It is asked to prepare the next event and return the time to wait in microseconds from the start of the piece. Though the timer has only milliseconds resolution, the errors will sum up so that we need a much higher resolution, here.</para><para>Here, we use the measure that is used in the SMF standard. It has been designed to reduce the deviation of a 4 minutes piece at 120 bpm to 500μs. If it were 500ms it would be unusable.</para><para><simplesect kind="return"><para>uint_fast64_t Absolute temporal position of the next event in the piece in μs. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="966" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="966" bodyend="966"/>
+        <references refid="d5/dee/group__route_1ga5c38af00c7fd323a00aae0133ea4336e" compoundref="db/d41/timing_8h" startline="61">MUTABOR_NO_DELTA</references>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a423d3eece573e61472d6ec5f1c782486" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="393" endline="555">mutabor::CommonFileInputDevice::ThreadPlay</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gacc20d37049923e4473fc0ff10fed282c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::InputDeviceClass::NoteOn</definition>
+        <argsstring>(Route &amp;R, int key, int velocity, size_t make_unique, const ChannelData &amp;input_channel_data, void *userdata)</argsstring>
+        <name>NoteOn</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">Route</ref> &amp;</type>
+          <declname>R</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>velocity</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>make_unique</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d4/d4a/classmutabor_1_1ChannelData" kindref="compound">ChannelData</ref> &amp;</type>
+          <declname>input_channel_data</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>userdata</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="968" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="968" bodyend="976"/>
+        <references refid="d5/dee/group__route_1ga3a786b7012a67df221d51392a837deec" compoundref="de/d05/Device_8h" startline="856" endline="861">mutabor::InputDeviceClass::current_keys_type::add</references>
+        <references refid="d5/dee/group__route_1gabd5333b4904bd05f4d82ee7f3e259530" compoundref="de/d05/Device_8h" startline="1015">current_keys</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gadab298f6643f7929782652b7a2764731" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::InputDeviceClass::NoteOff</definition>
+        <argsstring>(Route &amp;R, int key, int velocity, size_t make_unique)</argsstring>
+        <name>NoteOff</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">Route</ref> &amp;</type>
+          <declname>R</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>velocity</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>make_unique</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="978" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="978" bodyend="986"/>
+        <references refid="d5/dee/group__route_1gabd5333b4904bd05f4d82ee7f3e259530" compoundref="de/d05/Device_8h" startline="1015">current_keys</references>
+        <references refid="d5/dee/group__route_1ga5e13cc8cc989f36f96831ccef9835047" compoundref="de/d05/Device_8h" startline="863" endline="871">mutabor::InputDeviceClass::current_keys_type::remove</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga4c7c24c48255adddc767a745ed3c8e1c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::InputDeviceClass::Panic</definition>
+        <argsstring>()</argsstring>
+        <name>Panic</name>
+        <reimplements refid="d5/dee/group__route_1gacbfcb856b399d1b01b958c9f41d6c294">Panic</reimplements>
+        <reimplementedby refid="dc/da1/classmutabor_1_1InputGis_1a2c639ab63ae9f31104ef179646b77a45">Panic</reimplementedby>
+        <briefdescription>
+<para>reset the device if requested </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="989" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="989" bodyend="989"/>
+        <references refid="d5/dee/group__route_1ga4c7c24c48255adddc767a745ed3c8e1c" compoundref="de/d05/Device_8h" startline="989" endline="989">Panic</references>
+        <referencedby refid="d5/dee/group__route_1ga4c7c24c48255adddc767a745ed3c8e1c" compoundref="de/d05/Device_8h" startline="989" endline="989">Panic</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ab981fd4cdd68dc456a97889ddc851736" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="322" endline="346">mutabor::CommonFileInputDevice::Pause</referencedby>
+        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1ade6dd1c1e3e15a604e866ce8ed5e1ebf" compoundref="d4/da2/DevMidi_8h" startline="432" endline="432">mutabor::InputMidiPort::Stop</referencedby>
+        <referencedby refid="d5/dee/group__route_1gafd7b958ce532dc3ac37a3b312abfccd1" compoundref="de/d05/Device_8h" startline="891" endline="894">Stop</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga28763107ca50051640ed4834f627ffdc" compoundref="d8/d59/midicmnTest_8cpp" startline="599" endline="953">CommonMidiInputTest::testPanic</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga16e5549446e1eff905acfaa343ea254b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::InputDeviceClass::Panic</definition>
+        <argsstring>(bool global)</argsstring>
+        <name>Panic</name>
+        <param>
+          <type>bool</type>
+          <declname>global</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="990" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.cpp" bodystart="321" bodyend="333"/>
+        <references refid="d5/dee/group__route_1ga20093f61916baa598c1ed6899fc6e0ee" compoundref="de/d05/Device_8h" startline="877" endline="877">mutabor::InputDeviceClass::current_keys_type::begin</references>
+        <references refid="d5/dee/group__route_1gabd5333b4904bd05f4d82ee7f3e259530" compoundref="de/d05/Device_8h" startline="1015">current_keys</references>
+        <references refid="d5/dee/group__route_1gad19dacd14e10267a9275a70acde77bf3" compoundref="de/d05/Device_8h" startline="880" endline="880">mutabor::InputDeviceClass::current_keys_type::end</references>
+        <references refid="d5/dee/group__route_1ga5e13cc8cc989f36f96831ccef9835047" compoundref="de/d05/Device_8h" startline="863" endline="871">mutabor::InputDeviceClass::current_keys_type::remove</references>
+        <references refid="d5/dee/group__route_1ga0050f060be5dcbdaa7473c97e675140c" compoundref="de/d05/Device_8h" startline="505">mutabor::Device::routes</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga0c8207244321c9d72913ae24fbad4be5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d5/dee/group__route_1ga84f84d78781fc500cd66ee58b0efc83a" kindref="member">DevType</ref></type>
+        <definition>virtual DevType mutabor::InputDeviceClass::GetType</definition>
+        <argsstring>() const </argsstring>
+        <name>GetType</name>
+        <reimplementedby refid="dc/da1/classmutabor_1_1InputGis_1a7c417adaf61127aa63fe2ead5b3b8959">GetType</reimplementedby>
+        <reimplementedby refid="d2/dea/classmutabor_1_1InputMidiPort_1ab5335340ad85e434cf123a578e558740">GetType</reimplementedby>
+        <reimplementedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a144afa52a5540a72cc1d2dcc8f67e6af">GetType</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="993" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="993" bodyend="996"/>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa896ab52de20803c767b4941638b0ce5c" compoundref="de/d05/Device_8h" startline="89">mutabor::DTUnknown</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga0988ca3116773a66652ccc573204c928" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+        <definition>virtual mutString mutabor::InputDeviceClass::GetTypeName</definition>
+        <argsstring>() const </argsstring>
+        <name>GetTypeName</name>
+        <reimplements refid="d5/dee/group__route_1ga06d6b87300112e31a4373413a8ac3454">GetTypeName</reimplements>
+        <reimplementedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a74e4547dec81508d986a01c8c0bf0967">GetTypeName</reimplementedby>
+        <reimplementedby refid="dc/da1/classmutabor_1_1InputGis_1a4249fc25714d8c8112337b3d77298774">GetTypeName</reimplementedby>
+        <reimplementedby refid="d2/dea/classmutabor_1_1InputMidiPort_1aad2923e4f4fc12215b5f8da015fa54f3">GetTypeName</reimplementedby>
+        <reimplementedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a0e94bcd51fa6a37cc1757fa9e4cc0e09">GetTypeName</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="998" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="998" bodyend="1000"/>
+        <references refid="d9/d7c/group__kernel_1gad948c0166cda5a0e7b02f24043302638" compoundref="d1/da2/Errors_8cpp" startline="22">N_</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga33c4a77081b2d1b31f0153cd442d597a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::InputDeviceClass::IsDelta</definition>
+        <argsstring>(mutint64 d)</argsstring>
+        <name>IsDelta</name>
+        <param>
+          <type>mutint64</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="1006" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="1006" bodyend="1008"/>
+        <references refid="d5/dee/group__route_1gab552cc7e2033cc34840644adee86699f" compoundref="de/d05/Device_8h" startline="1002" endline="1004">GetNO_DELTA</references>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" compoundref="db/d78/DevGIS_8cpp" startline="571" endline="737">mutabor::InputGis::ReadOn</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a423d3eece573e61472d6ec5f1c782486" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="393" endline="555">mutabor::CommonFileInputDevice::ThreadPlay</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="d5/dee/group__route_1ga2e005c6f49a1547b9b3b011a940879be" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::InputDeviceClass::BatchPlay</definition>
+        <argsstring>()</argsstring>
+        <name>BatchPlay</name>
+        <briefdescription>
+<para>Play all input devices in batch mode The batch mode allows for direct conversion of data in a complex route environment. </para>        </briefdescription>
+        <detaileddescription>
+<para>In contrast to the normal <ref refid="d5/dee/group__route_1ga765cddc4de5de394f30bb2a4dd0301bd" kindref="member">Play()</ref> function this function doesn&apos;t use timers, but simulates timing.</para><para><xrefsect id="dd/da0/todo_1_todo000004"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>{find a better place for BatchPlay and RealtimePlay: we should not reference CurrentTime from <ref refid="db/db4/classmutabor_1_1Device" kindref="compound">Device</ref>.{h,cpp,-inlines.h} } </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="dd/da0/todo_1_todo000005"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>implement event types that use timestamps </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="909" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.cpp" bodystart="339" bodyend="389"/>
+        <references refid="d5/dee/group__route_1ga4a259200e6f0fb39029b6e317c8a185b" compoundref="de/d0f/Box_8h" startline="827" endline="833">mutabor::BoxClose</references>
+        <references refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" compoundref="d1/dca/timing_8cpp" startline="43">mutabor::CurrentTime</references>
+        <references refid="d5/dee/group__route_1gad6aa54a6af79287ce009e35bc448da2b" compoundref="de/d05/Device_8h" startline="546">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::deviceList</references>
+        <references refid="d7/dda/classmutabor_1_1CurrentTimer_1a7df1d50b0b51dd10a6cd2d59fd97581e" compoundref="db/d41/timing_8h" startline="496" endline="496">mutabor::CurrentTimer::Get</references>
+        <references refid="d5/dee/group__route_1gabdcdbd5c4e38b64953fe0f9437b0728c" compoundref="d2/dc0/Device_8cpp" startline="624" endline="632">mutabor::InClose</references>
+        <references refid="d5/dee/group__route_1ga5c38af00c7fd323a00aae0133ea4336e" compoundref="db/d41/timing_8h" startline="61">MUTABOR_NO_DELTA</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d5/dee/group__route_1ga8376c87747866f9eb111644263144fc9" compoundref="dd/dc6/Box_8cpp" startline="370" endline="398">mutabor::OpenAll</references>
+        <references refid="d5/dee/group__route_1ga9cb4f84d3ef2e5a1b33d74bd62e7c803" compoundref="d2/dc0/Device_8cpp" startline="588" endline="594">mutabor::OutClose</references>
+        <references refid="d7/dda/classmutabor_1_1CurrentTimer_1a72898125fe093e7e1b2f91119cdb794b" compoundref="db/d41/timing_8h" startline="482" endline="488">mutabor::CurrentTimer::Set</references>
+        <references refid="d7/dda/classmutabor_1_1CurrentTimer_1ac786e3b69adfb260915c39886e4673de" compoundref="db/d41/timing_8h" startline="505" endline="505">mutabor::CurrentTimer::Stop</references>
+        <references refid="d7/dda/classmutabor_1_1CurrentTimer_1aaaae9a6186045cd8ef28f1d24bcf081d" compoundref="db/d41/timing_8h" startline="458" endline="467">mutabor::CurrentTimer::UseRealtime</references>
+        <referencedby refid="d5/dee/group__route_1ga2a92d096b48cecf841988b6c1263ca31" compoundref="d9/d99/DevMidFTest_8cpp" startline="43" endline="602">InputMidiFileTest::testBatchPlay1</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga7362531b8f8f6fe014b4d30658640746" compoundref="d9/d99/DevMidFTest_8cpp" startline="1569" endline="2114">OutputMidiFileTest::testBatchPlay1</referencedby>
+        <referencedby refid="d5/dee/group__route_1gab68c1c36d9a962246c5f1363d25e3aa7" compoundref="d9/d99/DevMidFTest_8cpp" startline="946" endline="1287">InputMidiFileTest::testBug019010</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gacb751971284f0b211abb68ae3dafd4b4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::InputDeviceClass::RealtimePlay</definition>
+        <argsstring>()</argsstring>
+        <name>RealtimePlay</name>
+        <briefdescription>
+<para>Play all input devices in realtime mode The the realtime mode allows interactive playing together with the integrated sequencer. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="914" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.cpp" bodystart="391" bodyend="396"/>
+        <references refid="d5/dee/group__route_1gad6aa54a6af79287ce009e35bc448da2b" compoundref="de/d05/Device_8h" startline="546">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::deviceList</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gab552cc7e2033cc34840644adee86699f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>mutint64</type>
+        <definition>static mutint64 mutabor::InputDeviceClass::GetNO_DELTA</definition>
+        <argsstring>()</argsstring>
+        <name>GetNO_DELTA</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="1002" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="1002" bodyend="1004"/>
+        <referencedby refid="d5/dee/group__route_1ga33c4a77081b2d1b31f0153cd442d597a" compoundref="de/d05/Device_8h" startline="1006" endline="1008">IsDelta</referencedby>
+        <referencedby refid="dc/d13/classtestCommonFileDeviceTimer_1afb7fc7a56fcc67e80980d4f371c1317c" compoundref="d4/d70/CommonFileDeviceTest_8h" startline="78" endline="111">testCommonFileDeviceTimer::PrepareNextEvent</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" compoundref="db/d78/DevGIS_8cpp" startline="571" endline="737">mutabor::InputGis::ReadOn</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a423d3eece573e61472d6ec5f1c782486" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="393" endline="555">mutabor::CommonFileInputDevice::ThreadPlay</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="d5/dee/group__route_1ga2a95987d1056dd6fb4a0706d9eb894a5" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::InputDeviceClass::InputDeviceClass</definition>
+        <argsstring>(const mutStringRef name=mutEmptyString, mutabor::MutaborModeType m=DeviceStop, int id=-1)</argsstring>
+        <name>InputDeviceClass</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <declname>name</declname>
+          <defval><ref refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" kindref="member">mutEmptyString</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gaa3d7d1e712c727d12c3b60c8dc04b484" kindref="member">mutabor::MutaborModeType</ref></type>
+          <declname>m</declname>
+          <defval><ref refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649" kindref="member">DeviceStop</ref></defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="1017" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="1017" bodyend="1023"/>
+        <references refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" compoundref="de/d05/Device_8h" startline="504">mutabor::Device::Mode</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3029">
+        <label>mutabor::CommonMidiInput&lt; CommonFileInputDevice &gt;</label>
+        <link refid="dc/d51/classmutabor_1_1CommonMidiInput"/>
+        <childnode refid="3028" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3024">
+        <label>mutabor::CommonMidiInput&lt; InputDeviceClass &gt;</label>
+        <link refid="dc/d51/classmutabor_1_1CommonMidiInput"/>
+        <childnode refid="3021" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3022">
+        <label>mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;</label>
+        <link refid="d9/dbf/classmutabor_1_1CommonTypedDeviceAPI"/>
+        <childnode refid="3023" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3025">
+        <label>mutabor::InputMidiPort</label>
+        <link refid="d2/dea/classmutabor_1_1InputMidiPort"/>
+        <childnode refid="3024" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3021">
+        <label>mutabor::InputDeviceClass</label>
+        <link refid="d4/d18/classmutabor_1_1InputDeviceClass"/>
+        <childnode refid="3022" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3023">
+        <label>mutabor::Device</label>
+        <link refid="db/db4/classmutabor_1_1Device"/>
+      </node>
+      <node id="3027">
+        <label>midicmnInputDevice</label>
+        <link refid="d2/dce/classmidicmnInputDevice"/>
+        <childnode refid="3026" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3033">
+        <label>testCommonFileDeviceTimer</label>
+        <link refid="dc/d13/classtestCommonFileDeviceTimer"/>
+        <childnode refid="3028" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3028" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3028">
+        <label>mutabor::CommonFileInputDevice</label>
+        <link refid="dd/d3c/classmutabor_1_1CommonFileInputDevice"/>
+        <childnode refid="3021" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3032">
+        <label>mutabor::InputGis</label>
+        <link refid="dc/da1/classmutabor_1_1InputGis"/>
+        <childnode refid="3028" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3026">
+        <label>mutabor::CommonMidiInput&lt; mutabor::InputDeviceClass &gt;</label>
+        <link refid="dc/d51/classmutabor_1_1CommonMidiInput"/>
+        <childnode refid="3021" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3030">
+        <label>mutabor::InputMidiFile</label>
+        <link refid="d6/d12/classmutabor_1_1InputMidiFile"/>
+        <childnode refid="3029" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3031">
+        <label>myDevice</label>
+        <link refid="d4/d1a/classmyDevice"/>
+        <childnode refid="3030" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3030" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3032" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3032" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3042">
+        <label>mutabor::InputDeviceClass::current_keys_type</label>
+        <link refid="dc/d50/structmutabor_1_1InputDeviceClass_1_1current__keys__type"/>
+      </node>
+      <node id="3039">
+        <label>T</label>
+      </node>
+      <node id="3037">
+        <label>mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;</label>
+        <link refid="db/d05/classmutabor_1_1TRouteClass"/>
+        <childnode refid="3038" relation="usage">
+          <edgelabel>routeList</edgelabel>
+        </childnode>
+        <childnode refid="3040" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="3040">
+        <label>mutabor::idtype&lt; mutabor::TRouteClass&lt; InputDevice, OutputDevice &gt; &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="3035">
+        <label>mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;</label>
+        <link refid="d9/dbf/classmutabor_1_1CommonTypedDeviceAPI"/>
+        <childnode refid="3036" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3041">
+        <label>mutabor::idtype&lt; mutabor::Device &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="3034">
+        <label>mutabor::InputDeviceClass</label>
+        <link refid="d4/d18/classmutabor_1_1InputDeviceClass"/>
+        <childnode refid="3035" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3042" relation="usage">
+          <edgelabel>current_keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="3036">
+        <label>mutabor::Device</label>
+        <link refid="db/db4/classmutabor_1_1Device"/>
+        <childnode refid="3037" relation="usage">
+          <edgelabel>routes</edgelabel>
+        </childnode>
+        <childnode refid="3041" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="3038">
+        <label>std::list&lt; T &gt;</label>
+        <childnode refid="3039" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="823" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="822" bodyend="1025"/>
+    <listofallmembers>
+      <member refid="d5/dee/group__route_1ga310387a6e3aebf00b508887391d82b3d" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>Add</name></member>
+      <member refid="d5/dee/group__route_1ga0500b92557be2d528f6f75f4537f7b88" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>AppendToDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga2e005c6f49a1547b9b3b011a940879be" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>BatchPlay</name></member>
+      <member refid="d5/dee/group__route_1ga6a549b9131f3f5f7322b89bfa941de4a" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>ClearDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga74c7ff321332ac230d3696c91559dbcf" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>Close</name></member>
+      <member refid="d5/dee/group__route_1ga9787ad2f4d97cd1c4e616a433d284b13" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>CommonTypedDeviceAPI</name></member>
+      <member refid="d5/dee/group__route_1ga3d9ec96127224d9c481d207a2a315f0e" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>CommonTypedDeviceAPI</name></member>
+      <member refid="d5/dee/group__route_1gabd5333b4904bd05f4d82ee7f3e259530" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>current_keys</name></member>
+      <member refid="d5/dee/group__route_1gad212bd763c21f167dc9c6523033d2b62" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>Destroy</name></member>
+      <member refid="d5/dee/group__route_1ga5a34853b39a1fe85e2420e262dfb0f6a" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>Device</name></member>
+      <member refid="d5/dee/group__route_1gac36d9e10cb965cbf9c71a189eff845af" prot="private" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>DeviceFactory</name></member>
+      <member refid="d5/dee/group__route_1gad6aa54a6af79287ce009e35bc448da2b" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>deviceList</name></member>
+      <member refid="d5/dee/group__route_1gaebc414494d4db2ad9f687eb2b3d43a14" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>DevicePtr</name></member>
+      <member refid="d5/dee/group__route_1ga1274fa7f3bc0cd8f6d2a44aac8e42bb3" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>devidtype</name></member>
+      <member refid="d5/dee/group__route_1ga76cdbc43252351386362bfd14c62cf45" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>Dirty</name></member>
+      <member refid="d5/dee/group__route_1gabb922714830f90c1af5bb9f5fe4ce615" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>dirty</name></member>
+      <member refid="d5/dee/group__route_1ga3ff0800ee50f8cf48a2d991365e56e0b" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>DisconnectFromAll</name></member>
+      <member refid="d5/dee/group__route_1ga40c9efe47aabb03bc924cdec9aff95fc" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>FindInDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga6d853cde85216e56f3d74d20ff9556b2" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>get_routefile_id</name></member>
+      <member refid="d5/dee/group__route_1ga48afafba127beb4c42f6a1a9bceb2148" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>get_session_id</name></member>
+      <member refid="d5/dee/group__route_1ga0003618beb50da006e94e57baf9f7afa" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>GetDevice</name></member>
+      <member refid="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>GetDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga85133d32c2a68f1a343aeab80bbd92f4" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>GetMode</name></member>
+      <member refid="d5/dee/group__route_1gabacd3a9aa739a6e21a737feeb9b9e9c9" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>GetName</name></member>
+      <member refid="d5/dee/group__route_1gab552cc7e2033cc34840644adee86699f" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>GetNO_DELTA</name></member>
+      <member refid="d5/dee/group__route_1ga88774ccf4e5c5dfb2646e1a95c1719d6" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>GetRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga15e9894fe4909c6aadff876f323d3384" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>GetRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga0c8207244321c9d72913ae24fbad4be5" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>GetType</name></member>
+      <member refid="d5/dee/group__route_1ga0988ca3116773a66652ccc573204c928" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>GetTypeName</name></member>
+      <member refid="d5/dee/group__route_1ga6b40f3affafc4ecaf39ac957e2c74cd3" prot="protected" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>getUserData</name></member>
+      <member refid="d5/dee/group__route_1gga1274fa7f3bc0cd8f6d2a44aac8e42bb3aa5dc2f5a43d36c391b773a6adc16e948" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>IDTypeFile</name></member>
+      <member refid="d5/dee/group__route_1gga1274fa7f3bc0cd8f6d2a44aac8e42bb3a57119faede41f9f36b4547aa812e42aa" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>IDTypeHardware</name></member>
+      <member refid="d5/dee/group__route_1gga1274fa7f3bc0cd8f6d2a44aac8e42bb3af953940c733081b6e3dad32c6d807943" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>IDTypeSession</name></member>
+      <member refid="d5/dee/group__route_1ga0129007d64b3aaf687dc34665d14b399" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>InitializeIds</name></member>
+      <member refid="d5/dee/group__route_1ga2a95987d1056dd6fb4a0706d9eb894a5" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>InputDeviceClass</name></member>
+      <member refid="d5/dee/group__route_1ga33c4a77081b2d1b31f0153cd442d597a" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>IsDelta</name></member>
+      <member refid="d5/dee/group__route_1ga479bbdd0212790e89bf71dc227ab2303" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>IsDirty</name></member>
+      <member refid="d5/dee/group__route_1ga60c8451e058e88b0a5e8bc932e66089f" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>IsInDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga219acefe8692f1b3e00181f97c9c866f" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>IsOpen</name></member>
+      <member refid="d5/dee/group__route_1ga1cdc51c75faaeaec8d2b4cbb40d36e3b" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>isOpen</name></member>
+      <member refid="d5/dee/group__route_1gab0ae031e02b18ee00f5794736fc135dd" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>listtype</name></member>
+      <member refid="d5/dee/group__route_1ga729fbbd6717f17a9c8fbe0750b0e1b3c" prot="public" virt="pure-virtual"><scope>mutabor::InputDeviceClass</scope><name>Load</name></member>
+      <member refid="d5/dee/group__route_1ga4af91d72a0b616012d29405fb7fc9b50" prot="public" virt="pure-virtual"><scope>mutabor::InputDeviceClass</scope><name>Load</name></member>
+      <member refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>Mode</name></member>
+      <member refid="d5/dee/group__route_1ga1e90f04620e908e170e66539c8f9b47a" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>MoveInList</name></member>
+      <member refid="d5/dee/group__route_1ga143bc287529a671195a80dc3fbf4d3d4" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>MoveRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga86a80a0d59ab5740c7f0eb708c1b6e76" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>Name</name></member>
+      <member refid="d5/dee/group__route_1ga7940967ce95f17bf1c79c6928cd732e7" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>NeedsRealTime</name></member>
+      <member refid="d5/dee/group__route_1gadab298f6643f7929782652b7a2764731" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>NoteOff</name></member>
+      <member refid="d5/dee/group__route_1gacc20d37049923e4473fc0ff10fed282c" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>NoteOn</name></member>
+      <member refid="d5/dee/group__route_1ga121ded40710df3f74a6150082999597b" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>nRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga1b67d7adf5f76fbffe0a5503bed265ff" prot="public" virt="pure-virtual"><scope>mutabor::InputDeviceClass</scope><name>Open</name></member>
+      <member refid="d5/dee/group__route_1ga7cafe18237e838d40bbb9efe90484066" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>operator const thistype &amp;</name></member>
+      <member refid="d5/dee/group__route_1gad379062646f2315b58267c314cdf1c49" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>operator thistype &amp;</name></member>
+      <member refid="d5/dee/group__route_1ga4c7c24c48255adddc767a745ed3c8e1c" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>Panic</name></member>
+      <member refid="d5/dee/group__route_1ga16e5549446e1eff905acfaa343ea254b" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>Panic</name></member>
+      <member refid="d5/dee/group__route_1ga75218401589785a6a67e0b29289b3436" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>Pause</name></member>
+      <member refid="d5/dee/group__route_1ga765cddc4de5de394f30bb2a4dd0301bd" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>Play</name></member>
+      <member refid="d5/dee/group__route_1ga77179da20d4bb3a5cd8d03fc90435ddb" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>PrepareNextEvent</name></member>
+      <member refid="d5/dee/group__route_1ga005dc1a3518ecb0bfb408cf058319d7a" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>ReadData</name></member>
+      <member refid="d5/dee/group__route_1gacb751971284f0b211abb68ae3dafd4b4" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>RealtimePlay</name></member>
+      <member refid="d5/dee/group__route_1ga75c2c1c9312c7fd3b0ac67482bc3f3b7" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>Remove</name></member>
+      <member refid="d5/dee/group__route_1gaea9507768e02eb39aa56acde9fbb0d75" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>RemoveFromDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga2875373929d294d6c51991238407f542" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>Replace</name></member>
+      <member refid="d5/dee/group__route_1gaa9515535e69b65e614b048f0c417024e" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>routefile_id</name></member>
+      <member refid="d5/dee/group__route_1ga0050f060be5dcbdaa7473c97e675140c" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>routes</name></member>
+      <member refid="d5/dee/group__route_1ga01c3f19123c1f42d8f1a2d405c3d21e2" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>runtime_error</name></member>
+      <member refid="d5/dee/group__route_1gac5f5412fc2ea0b0b5edbd199353309c9" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>runtime_error</name></member>
+      <member refid="d5/dee/group__route_1ga3e21f1fc02103f0d7a43504abff28a07" prot="public" virt="pure-virtual"><scope>mutabor::InputDeviceClass</scope><name>Save</name></member>
+      <member refid="d5/dee/group__route_1ga3e5d36bc704b3de28f788e011fd19c73" prot="public" virt="pure-virtual"><scope>mutabor::InputDeviceClass</scope><name>Save</name></member>
+      <member refid="d5/dee/group__route_1ga25dab27656e5e9960b90178f5365c890" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>session_id</name></member>
+      <member refid="d5/dee/group__route_1ga33283f3fbd5c5a384980e320223fca94" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>set_file_id</name></member>
+      <member refid="d5/dee/group__route_1ga67e80dc8dd7ecc105020ae37eed4bf63" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>SetMode</name></member>
+      <member refid="d5/dee/group__route_1ga5d6f8f7b6518cf74b80d683f69030e2e" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>SetName</name></member>
+      <member refid="d5/dee/group__route_1gaf4269c12f276f471046dd60a6034322f" prot="protected" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>setUserData</name></member>
+      <member refid="d5/dee/group__route_1gafd7b958ce532dc3ac37a3b312abfccd1" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>Stop</name></member>
+      <member refid="d5/dee/group__route_1gaf592e59b9c1a9cdcc036f6a5a4f197eb" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>thisptr</name></member>
+      <member refid="d5/dee/group__route_1gae86c4bcadc561ffa2ba18b641a7dc667" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>thisptr</name></member>
+      <member refid="d5/dee/group__route_1gae62e6954f27bdff3e405f60aa3a12235" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>thistype</name></member>
+      <member refid="d5/dee/group__route_1ga62782ee9bbed258704f22506993da782" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>TruncateDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga53918898ee641c62d9ab122f0d0712aa" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>WaitForDeviceFinish</name></member>
+      <member refid="d5/dee/group__route_1gae75382843673e90f40cf3d216faffe42" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>WriteData</name></member>
+      <member refid="d5/dee/group__route_1ggac2bb84d1f1e0c5c42e57cf8ac9992996a5300617fee0bea844062acc80df5306d" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>wxTHREAD_WAIT_BLOCK</name></member>
+      <member refid="d5/dee/group__route_1ggac2bb84d1f1e0c5c42e57cf8ac9992996a39530c962f92d84a1b55f32be3f5f0fd" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>wxTHREAD_WAIT_DEFAULT</name></member>
+      <member refid="d5/dee/group__route_1ggac2bb84d1f1e0c5c42e57cf8ac9992996a3662ffee8d8864568801818c1e4cde10" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>wxTHREAD_WAIT_YIELD</name></member>
+      <member refid="d5/dee/group__route_1gac2bb84d1f1e0c5c42e57cf8ac9992996" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass</scope><name>wxThreadWait</name></member>
+      <member refid="d5/dee/group__route_1ga35b63eeb3932c5e938f34239a57825cb" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>~CommonTypedDeviceAPI</name></member>
+      <member refid="d5/dee/group__route_1gaeb8df260fe37691b9c990e5a2eef42fe" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>~Device</name></member>
+      <member refid="d5/dee/group__route_1gab96d961196f9b390aba6a647a2c3602e" prot="public" virt="virtual"><scope>mutabor::InputDeviceClass</scope><name>~InputDeviceClass</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1015 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d5/d72/classmutaborGUI_1_1MutBoxShape" kind="class" prot="public">
+    <compoundname>mutaborGUI::MutBoxShape</compoundname>
+    <basecompoundref refid="d2/ddf/classmutaborGUI_1_1MutBoxIconShape" prot="public" virt="non-virtual">mutaborGUI::MutBoxIconShape</basecompoundref>
+    <derivedcompoundref refid="d3/dd6/classmutaborGUI_1_1NewMutBoxShape" prot="public" virt="non-virtual">mutaborGUI::NewMutBoxShape</derivedcompoundref>
+    <includes refid="d9/d49/BoxShape_8h" local="no">BoxShape.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="dc/df2/group__GUIroute_1gae2ff2496d9f0fe6020f963ca06a74cbd" prot="protected" static="no" mutable="no">
+        <type><ref refid="d2/ddf/classmutaborGUI_1_1MutBoxIconShape" kindref="compound">MutBoxIconShape</ref> *</type>
+        <definition>MutBoxIconShape* mutaborGUI::MutBoxShape::m_icon</definition>
+        <argsstring></argsstring>
+        <name>m_icon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="252" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="252" bodyend="-1"/>
+        <referencedby refid="dc/df2/group__GUIroute_1ga71cf80c2cc9f5a356848ec1fa0721feb" compoundref="d9/d49/BoxShape_8h" startline="270" endline="274">SetBox</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/df2/group__GUIroute_1ga92d1531f1c0c7676ce82e3982575daa5" prot="protected" static="no" mutable="no">
+        <type>wxSizer *</type>
+        <definition>wxSizer* mutaborGUI::MutBoxShape::channels</definition>
+        <argsstring></argsstring>
+        <name>channels</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="253" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="253" bodyend="-1"/>
+        <referencedby refid="dc/df2/group__GUIroute_1gad6c43a69fda83bbaa0ed5c258794b475" compoundref="d9/d49/BoxShape_8h" startline="228" endline="234">Detach</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga2db0f09b5fdbbf0c76ab3426861a01ff" compoundref="d9/d49/BoxShape_8h" startline="249" endline="249">GetChannels</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/df2/group__GUIroute_1ga58ab842cebee766b813017d358dff416" prot="protected" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">mutabor::Box</ref></type>
+        <definition>mutabor::Box mutaborGUI::MutBoxShape::box</definition>
+        <argsstring></argsstring>
+        <name>box</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="254" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="254" bodyend="-1"/>
+        <referencedby refid="dc/df2/group__GUIroute_1gafca62ea8b3b32cd29912202080c2df91" compoundref="d9/d49/BoxShape_8h" startline="154" endline="161">Add</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga9cff412769db7e55f0dafac64012bf34" compoundref="d8/db4/BoxShape_8cpp" startline="360" endline="443">DoLeftDblClick</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga5dac2ee9a0322331680ef2b73c89fbc4" compoundref="d9/d49/BoxShape_8h" startline="247" endline="247">GetBox</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga428343a90a7ef6b35a847df8bf699359" compoundref="d9/d49/BoxShape_8h" startline="179" endline="190">Remove</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga11510b077d7358c5072b978cbca20ead" compoundref="d9/d49/BoxShape_8h" startline="164" endline="176">Replace</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="dc/df2/group__GUIroute_1gad36b931adb77334db5ffaaaa863b37cb" prot="protected" static="yes" mutable="no">
+        <type>wxSizerFlags</type>
+        <definition>wxSizerFlags mutaborGUI::MutBoxShape::sizerFlags</definition>
+        <argsstring></argsstring>
+        <name>sizerFlags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="255" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="255" bodyend="-1"/>
+        <referencedby refid="dc/df2/group__GUIroute_1gad3ba7a11a1cc47553e62ad3010f9a943" compoundref="d9/d49/BoxShape_8h" startline="99" endline="99">GetSizerFlags</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga023155f7ffbec1c7d4ece6eb2f43902d" compoundref="d9/d49/BoxShape_8h" startline="98" endline="98">SetSizerFlags</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gabe218565feae664082733682f90fba7b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutaborGUI::MutBoxShape::MutBoxShape</definition>
+        <argsstring>()</argsstring>
+        <name>MutBoxShape</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="77" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="77" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga9896490b179e5c701d76fd4c24782840" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutaborGUI::MutBoxShape::MutBoxShape</definition>
+        <argsstring>(wxWindow *parent, wxWindowID wid, mutabor::Box &amp;b)</argsstring>
+        <name>MutBoxShape</name>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>wxWindowID</type>
+          <declname>wid</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">mutabor::Box</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="86" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="86" bodyend="89"/>
+        <references refid="dc/df2/group__GUIroute_1ga8931609cd05a2b1e4faae8e3e7644acf" compoundref="d9/d49/BoxShape_8h" startline="93" endline="95">Create</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga24a48f01ee62ea3a593df5172d6faf66" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual mutaborGUI::MutBoxShape::~MutBoxShape</definition>
+        <argsstring>()</argsstring>
+        <name>~MutBoxShape</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="91" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga8931609cd05a2b1e4faae8e3e7644acf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::MutBoxShape::Create</definition>
+        <argsstring>(wxWindow *parent, wxWindowID wid)</argsstring>
+        <name>Create</name>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>wxWindowID</type>
+          <declname>wid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="93" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="93" bodyend="95"/>
+        <references refid="dc/df2/group__GUIroute_1ga3ad41a74c5b03b618efea6c11350d16b" compoundref="d2/de0/BoxIconShape_8h" startline="72" endline="75">mutaborGUI::MutBoxIconShape::Create</references>
+        <referencedby refid="d3/dd6/classmutaborGUI_1_1NewMutBoxShape_1a27fd24e19a7c3ea878f5ca84b6a87d43" compoundref="d4/dcc/NewBoxShape_8h" startline="72" endline="76">mutaborGUI::NewMutBoxShape::Create</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga9896490b179e5c701d76fd4c24782840" compoundref="d9/d49/BoxShape_8h" startline="86" endline="89">MutBoxShape</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gacfe7048b514950b7541f3a51abbfd953" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::MutBoxShape::Create</definition>
+        <argsstring>(wxWindow *parent, wxWindowID wid, mutabor::Box &amp;b)</argsstring>
+        <name>Create</name>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>wxWindowID</type>
+          <declname>wid</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">mutabor::Box</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="96" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga9cff412769db7e55f0dafac64012bf34" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutBoxShape::DoLeftDblClick</definition>
+        <argsstring>()</argsstring>
+        <name>DoLeftDblClick</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="dd/da0/todo_1_todo000029"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>Move this check into MutBoxDlg </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="101" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.cpp" bodystart="360" bodyend="443"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
+        <references refid="dc/df2/group__GUIroute_1ga58ab842cebee766b813017d358dff416" compoundref="d9/d49/BoxShape_8h" startline="254">box</references>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9" compoundref="de/d0f/Box_8h" startline="115">mutabor::Box0</references>
+        <references refid="d5/dee/group__route_1ga1b747523cf90d4b44b18f88512405445" compoundref="de/d0f/Box_8h" startline="737" endline="752">mutabor::BoxFactory::Create</references>
+        <references refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" compoundref="d5/d31/DebugRoute_8h" startline="56" endline="56">mutaborGUI::DebugCheckRoutes</references>
+        <references refid="df/dd1/group__GUI_1gab5b40ff9e8b7fe6966fc99a1dbce7615" compoundref="d5/d6f/IconShape_8h" startline="165" endline="167">MutIconShapeClass&lt; T &gt;::Fit</references>
+        <references refid="d5/dee/group__route_1gac05e39da29f9915758102a26aeadba8b" compoundref="dd/dc6/Box_8cpp" startline="227" endline="249">mutabor::BoxClass::GetBox</references>
+        <references refid="df/d7d/classmutaborGUI_1_1BoxDlg_1abf33a95630904a5bb2e8db91ea3fabef" compoundref="d9/dd2/BoxDlg_8h" startline="215" endline="220">mutaborGUI::BoxDlg::GetBoxNumber</references>
+        <references refid="df/d7d/classmutaborGUI_1_1BoxDlg_1a2304a1ae83792321fb59d2b0eecd48de" compoundref="d3/d2a/BoxDlg_8cpp" startline="304" endline="313">mutaborGUI::BoxDlg::GetBoxType</references>
+        <references refid="d5/dee/group__route_1gga59ad356edc8b877f64e9a02df6f5560ca67adbcea09886c9c80ed988c5cecb9f1" compoundref="de/d0f/Box_8h" startline="128">mutabor::BoxClass::IDTypeFile</references>
+        <references refid="dc/df2/group__GUIroute_1gad51f231a3ac834a8afeecd657fb30ad0" compoundref="d7/dcb/BoxIconShape_8cpp" startline="107" endline="115">mutaborGUI::MutBoxIconShape::Layout</references>
+        <references refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" compoundref="dc/df3/MutFrame_8cpp" startline="119">mutaborGUI::LogicOn</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="dc/df2/group__GUIroute_1gacbd37538b85e160a339c48e2dac82cb7" compoundref="d8/db4/BoxShape_8cpp" startline="522" endline="584">readDialog</references>
+        <references refid="de/db7/group__debug_1gaad9cc64d45a76ba0d37c00f8cd9caa37" compoundref="de/de1/mutDebug_8h" startline="145">TRACE</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+        <referencedby refid="dc/df2/group__GUIroute_1gad4d40a77d6a4ca91e9156057b7355892" compoundref="d9/d49/BoxShape_8h" startline="138" endline="141">CmLeftDblClick</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga8fe836c5fa88439a1109b607e4cb55b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutBoxShape::GotFocus</definition>
+        <argsstring>()</argsstring>
+        <name>GotFocus</name>
+        <reimplements refid="df/dd1/group__GUI_1ga370557a6690e8f868b6244a50e5f5607">GotFocus</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="109" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.cpp" bodystart="446" bodyend="449"/>
+        <references refid="db/d94/namespacemutaborGUI_1afb35365f69e843a5384e16a6d361ab88" compoundref="d5/df7/GUIBoxData_8h" startline="375" endline="377">mutaborGUI::SetCurrentBox</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gac130fb3e87472adbdb29d2c170241457" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::MutBoxShape::SetBackgroundColour</definition>
+        <argsstring>(const wxColour &amp;colour)</argsstring>
+        <name>SetBackgroundColour</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxColour &amp;</type>
+          <declname>colour</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="111" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.cpp" bodystart="115" bodyend="132"/>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga4e736dad2725072d277cb24825cb2768" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutBoxShape::CmMoveIcon</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>CmMoveIcon</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Move the box in the box list and update the GUI according to the new order. </para>        </briefdescription>
+        <detaileddescription>
+<para>Move the box in the box and update the GUI according to the new order.</para><para>This function provides the event handler that is called from the GUI.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>event</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>wxCommandEvent containing the request</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>event</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>wxCommandEvent containing the request </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="120" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.cpp" bodystart="656" bodyend="667"/>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga3d05b71219e245cf55f19eef7359b819" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutBoxShape::LeftDblClickEvent</definition>
+        <argsstring>(wxMouseEvent &amp;event)</argsstring>
+        <name>LeftDblClickEvent</name>
+        <param>
+          <type>wxMouseEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Get a double click and prepare for execution of the command. </para>        </briefdescription>
+        <detaileddescription>
+<para>Since programs might produce segmentation faults when the object is deleted during processing of mouse events, we send us a new event using the event queue. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="128" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="128" bodyend="132"/>
+        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a3be4d2886dfe53bb28c4089cd8bbf89c" compoundref="d9/d64/Mutabor_8rh" startline="116">mutaborGUI::CM_LEFT_DOUBLE_CLICK</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gad4d40a77d6a4ca91e9156057b7355892" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutBoxShape::CmLeftDblClick</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>CmLeftDblClick</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Process a double click. </para>        </briefdescription>
+        <detaileddescription>
+<para>Since programs might produce segmentation faults when the object is deleted during processing of mouse events, we send us a new event using the event queue. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="138" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="138" bodyend="141"/>
+        <references refid="dc/df2/group__GUIroute_1ga9cff412769db7e55f0dafac64012bf34" compoundref="d8/db4/BoxShape_8cpp" startline="360" endline="443">DoLeftDblClick</references>
+        <references refid="d9/d7c/group__kernel_1gaedf3113729faf15522da4884cc137733" compoundref="d1/d73/Defs_8h" startline="79">mutUnused</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gafebe7338d6cffc1dff397dbd5e7b31dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutBoxShape::OnKeyDown</definition>
+        <argsstring>(wxKeyEvent &amp;event)</argsstring>
+        <name>OnKeyDown</name>
+        <param>
+          <type>wxKeyEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="144" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.cpp" bodystart="670" bodyend="698"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gac946c92d094b2ce45b65b2a82de379f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="df/d7d/classmutaborGUI_1_1BoxDlg" kindref="compound">BoxDlg</ref> *</type>
+        <definition>BoxDlg * mutaborGUI::MutBoxShape::ShowBoxDialog</definition>
+        <argsstring>() const </argsstring>
+        <name>ShowBoxDialog</name>
+        <briefdescription>
+<para>Constructs the box configuration dialog. </para>        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="dd/da0/todo_1_todo000030"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>use value “unknown” for dynamic dialog creation</para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="146" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.cpp" bodystart="457" bodyend="510"/>
+        <references refid="df/d7d/classmutaborGUI_1_1BoxDlg_1ad468f1623ebe6c1358a61547de7a736d" compoundref="d9/dd2/BoxDlg_8h" startline="198" endline="201">mutaborGUI::BoxDlg::GetRouteWindow</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga15f862043e3c700673846806e35b1740" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutBoxShape::InitializeDialog</definition>
+        <argsstring>(BoxDlg *dlg) const </argsstring>
+        <name>InitializeDialog</name>
+        <reimplementedby refid="dc/df2/group__GUIroute_1ga9d64270fb543fc0bf3a19aeeba441cff">InitializeDialog</reimplementedby>
+        <param>
+          <type><ref refid="df/d7d/classmutaborGUI_1_1BoxDlg" kindref="compound">BoxDlg</ref> *</type>
+          <declname>dlg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="147" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.cpp" bodystart="512" bodyend="520"/>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9" compoundref="de/d0f/Box_8h" startline="115">mutabor::Box0</references>
+        <references refid="d5/dee/group__route_1ga654c8d02aae488f8ff6f6d0f62b08f7d" compoundref="de/d0f/Box_8h" startline="217" endline="219">mutabor::BoxClass::GetNextFreeBox</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542aeb2ddcbaa727016dcb5229fc6dacc23f" compoundref="de/d0f/Box_8h" startline="113">mutabor::NoBox</references>
+        <references refid="df/d7d/classmutaborGUI_1_1BoxDlg_1ad63d59141a1f8fac3e7b8c08c86274f4" compoundref="d9/dd2/BoxDlg_8h" startline="208" endline="213">mutaborGUI::BoxDlg::SetBoxNumber</references>
+        <references refid="df/d7d/classmutaborGUI_1_1BoxDlg_1add3353f6c9ee7c99f34446729ea58b66" compoundref="d3/d2a/BoxDlg_8cpp" startline="315" endline="343">mutaborGUI::BoxDlg::SetBoxType</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga18d2239d72bbc464a53764b63b59ddef" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="d8/d8e/classmutaborGUI_1_1MutBoxChannelShape" kindref="compound">MutBoxChannelShape</ref> *</type>
+        <definition>MutBoxChannelShape * mutaborGUI::MutBoxShape::AddChannel</definition>
+        <argsstring>(RoutePanel *panel)</argsstring>
+        <name>AddChannel</name>
+        <param>
+          <type><ref refid="d0/d6e/classmutaborGUI_1_1RoutePanel" kindref="compound">RoutePanel</ref> *</type>
+          <declname>panel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="151" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.cpp" bodystart="191" bodyend="211"/>
+        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
+        <references refid="d6/daa/namespacemutabor_1a65c68128daf0c3feda58f55b7aca2e05" compoundref="d2/d2c/Route-inlines_8h" startline="58" endline="61">mutabor::connect</references>
+        <references refid="d5/dee/group__route_1gaf8817ebce7a0d0d9fecacf9bdeff028c" compoundref="d1/d65/Route_8h" startline="571" endline="577">mutabor::RouteFactory::Create</references>
+        <references refid="dc/d7e/group__runtime_1gacd1e984f955655cb7d57b37569685bed" compoundref="db/d80/Runtime_8cpp" startline="235" endline="252">GetChannels</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="dc/df2/group__GUIroute_1ga4f90260150415ed28bd6069cb7c1298a" compoundref="d9/d24/BoxChannelShape_8cpp" startline="444" endline="560">mutaborGUI::MutBoxChannelShape::ReadPanel</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gafca62ea8b3b32cd29912202080c2df91" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void mutaborGUI::MutBoxShape::Add</definition>
+        <argsstring>(mutabor::Box &amp;b)</argsstring>
+        <name>Add</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">mutabor::Box</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>add a box </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="154" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="154" bodyend="161"/>
+        <references refid="dc/df2/group__GUIroute_1ga58ab842cebee766b813017d358dff416" compoundref="d9/d49/BoxShape_8h" startline="254">box</references>
+        <references refid="dc/df2/group__GUIroute_1ga71cf80c2cc9f5a356848ec1fa0721feb" compoundref="d9/d49/BoxShape_8h" startline="270" endline="274">SetBox</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+        <referencedby refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a68866b89d808ed81697756a2a41b6ae1" compoundref="d2/d73/GUIRoute-inlines_8h" startline="415" endline="451">mutaborGUI::GUIRouteBase::Add</referencedby>
+        <referencedby refid="dc/d06/classmutaborGUI_1_1MutRouteWnd_1af66b426a5b66893aef6df4b91e59206c" compoundref="d3/dd7/MutRouteWnd_8h" startline="214" endline="221">mutaborGUI::MutRouteWnd::AddRoute</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1a6d235c96041a62a550c3ec08c0b24008" compoundref="d5/d12/GUIBoxData-inlines_8h" startline="55" endline="92">mutaborGUI::connect</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1a8380faf990b9f66152ed4b57450ad3fe" compoundref="d2/d73/GUIRoute-inlines_8h" startline="115" endline="150">mutaborGUI::connect_device_shape</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga11510b077d7358c5072b978cbca20ead" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool mutaborGUI::MutBoxShape::Replace</definition>
+        <argsstring>(mutabor::Box oldbox, mutabor::Box newbox)</argsstring>
+        <name>Replace</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">mutabor::Box</ref></type>
+          <declname>oldbox</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">mutabor::Box</ref></type>
+          <declname>newbox</declname>
+        </param>
+        <briefdescription>
+<para>replace a box </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="164" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="164" bodyend="176"/>
+        <references refid="dc/df2/group__GUIroute_1ga58ab842cebee766b813017d358dff416" compoundref="d9/d49/BoxShape_8h" startline="254">box</references>
+        <references refid="dc/df2/group__GUIroute_1ga71cf80c2cc9f5a356848ec1fa0721feb" compoundref="d9/d49/BoxShape_8h" startline="270" endline="274">SetBox</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga428343a90a7ef6b35a847df8bf699359" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool mutaborGUI::MutBoxShape::Remove</definition>
+        <argsstring>(mutabor::Box b)</argsstring>
+        <name>Remove</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">mutabor::Box</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>remove a box </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="179" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="179" bodyend="190"/>
+        <references refid="dc/df2/group__GUIroute_1ga58ab842cebee766b813017d358dff416" compoundref="d9/d49/BoxShape_8h" startline="254">box</references>
+        <references refid="dc/df2/group__GUIroute_1ga71cf80c2cc9f5a356848ec1fa0721feb" compoundref="d9/d49/BoxShape_8h" startline="270" endline="274">SetBox</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+        <referencedby refid="db/d94/namespacemutaborGUI_1af9c3a082da5f2b4a0fb0770aad541af3" compoundref="d5/d12/GUIBoxData-inlines_8h" startline="94" endline="181">mutaborGUI::disconnect</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga4f86f32d782b2a4e8b617271b4bbb72b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="d8/d8e/classmutaborGUI_1_1MutBoxChannelShape" kindref="compound">MutBoxChannelShape</ref> *</type>
+        <definition>MutBoxChannelShape * mutaborGUI::MutBoxShape::Add</definition>
+        <argsstring>(MutBoxChannelShape *channel)</argsstring>
+        <name>Add</name>
+        <param>
+          <type><ref refid="d8/d8e/classmutaborGUI_1_1MutBoxChannelShape" kindref="compound">MutBoxChannelShape</ref> *</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="193" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.cpp" bodystart="168" bodyend="189"/>
+        <references refid="dc/df2/group__GUIroute_1ga87c202d6a6d9c73298bdbef2b9505c72" compoundref="d9/d24/BoxChannelShape_8cpp" startline="161" endline="165">mutaborGUI::MutBoxChannelShape::Add</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga3e392cdecdc2c3c24f6c88e6602e7176" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::MutBoxShape::Remove</definition>
+        <argsstring>(MutBoxChannelShape *shape)</argsstring>
+        <name>Remove</name>
+        <param>
+          <type><ref refid="d8/d8e/classmutaborGUI_1_1MutBoxChannelShape" kindref="compound">MutBoxChannelShape</ref> *</type>
+          <declname>shape</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="194" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.cpp" bodystart="223" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gafa5bda15bef951c8e5b190f9d83d7328" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::MutBoxShape::HasChannel</definition>
+        <argsstring>(const mutabor::Route &amp;route)</argsstring>
+        <name>HasChannel</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">mutabor::Route</ref> &amp;</type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="196" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.cpp" bodystart="227" bodyend="238"/>
+        <references refid="dc/df2/group__GUIroute_1ga9dc4cc2047b1862f9032b426aa17d055" compoundref="d6/d68/BoxChannelShape_8h" startline="250" endline="252">mutaborGUI::MutBoxChannelShape::GetRoute</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga514c2f3ff836e2d2aa7a1bc470b44a1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutBoxShape::AddPossibleOutput</definition>
+        <argsstring>(MutOutputDeviceShape *device)</argsstring>
+        <name>AddPossibleOutput</name>
+        <param>
+          <type><ref refid="dc/df2/group__GUIroute_1ga914c2e625ebf63e120a8c6c80274352d" kindref="member">MutOutputDeviceShape</ref> *</type>
+          <declname>device</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="198" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.cpp" bodystart="240" bodyend="251"/>
+        <references refid="d6/daa/namespacemutabor_1a65c68128daf0c3feda58f55b7aca2e05" compoundref="d2/d2c/Route-inlines_8h" startline="58" endline="61">mutabor::connect</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga80bdc070c49a72aef309b0256a9b1199" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutBoxShape::DrawLines</definition>
+        <argsstring>(wxDC &amp;dc, wxWindow *paintingWindow)</argsstring>
+        <name>DrawLines</name>
+        <param>
+          <type>wxDC &amp;</type>
+          <declname>dc</declname>
+        </param>
+        <param>
+          <type>wxWindow *</type>
+          <declname>paintingWindow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="224" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.cpp" bodystart="254" bodyend="298"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="dc/df2/group__GUIroute_1ga1743cd32a35efbfe7994c5b215d1dad7" compoundref="d9/d24/BoxChannelShape_8cpp" startline="563" endline="688">mutaborGUI::MutBoxChannelShape::DrawLines</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <referencedby refid="dc/df2/group__GUIroute_1gabafe8aa54e795f4ef7eb5ef86b2f8049" compoundref="dc/def/MutRouteWnd_8cpp" startline="719" endline="736">mutaborGUI::MutRouteWnd::OnDraw</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga19b226cd21b128d41a3daeacb409b3a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::MutBoxShape::Detach</definition>
+        <argsstring>(wxWindow *window)</argsstring>
+        <name>Detach</name>
+        <param>
+          <type>wxWindow *</type>
+          <declname>window</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="227" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.cpp" bodystart="313" bodyend="358"/>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+        <referencedby refid="dc/df2/group__GUIroute_1gad6c43a69fda83bbaa0ed5c258794b475" compoundref="d9/d49/BoxShape_8h" startline="228" endline="234">Detach</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gad6c43a69fda83bbaa0ed5c258794b475" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool mutaborGUI::MutBoxShape::Detach</definition>
+        <argsstring>(wxSizer *sizer)</argsstring>
+        <name>Detach</name>
+        <param>
+          <type>wxSizer *</type>
+          <declname>sizer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="228" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="228" bodyend="234"/>
+        <references refid="dc/df2/group__GUIroute_1ga92d1531f1c0c7676ce82e3982575daa5" compoundref="d9/d49/BoxShape_8h" startline="253">channels</references>
+        <references refid="dc/df2/group__GUIroute_1ga19b226cd21b128d41a3daeacb409b3a8" compoundref="d8/db4/BoxShape_8cpp" startline="313" endline="358">Detach</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga80bedd4924068fd3e83ce9ebd4f4dc8a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool mutaborGUI::MutBoxShape::Detach</definition>
+        <argsstring>(int index)</argsstring>
+        <name>Detach</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="235" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="235" bodyend="241"/>
+        <references refid="dc/df2/group__GUIroute_1ga92d1531f1c0c7676ce82e3982575daa5" compoundref="d9/d49/BoxShape_8h" startline="253">channels</references>
+        <references refid="dc/df2/group__GUIroute_1ga19b226cd21b128d41a3daeacb409b3a8" compoundref="d8/db4/BoxShape_8cpp" startline="313" endline="358">Detach</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga7727c91439e84a87903d8f5202621357" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::MutBoxShape::replaceSelfBy</definition>
+        <argsstring>(MutBoxShape *newshape)</argsstring>
+        <name>replaceSelfBy</name>
+        <reimplementedby refid="dc/df2/group__GUIroute_1gaf197019e836f6fbb61bd7192732dd61b">replaceSelfBy</reimplementedby>
+        <param>
+          <type><ref refid="d5/d72/classmutaborGUI_1_1MutBoxShape" kindref="compound">MutBoxShape</ref> *</type>
+          <declname>newshape</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="242" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.cpp" bodystart="586" bodyend="627"/>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gaebe1551353855119fe9578553baa7355" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::MutBoxShape::DeleteBox</definition>
+        <argsstring>()</argsstring>
+        <name>DeleteBox</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="243" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.cpp" bodystart="629" bodyend="647"/>
+        <references refid="dc/df2/group__GUIroute_1ga9dc4cc2047b1862f9032b426aa17d055" compoundref="d6/d68/BoxChannelShape_8h" startline="250" endline="252">mutaborGUI::MutBoxChannelShape::GetRoute</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gacbd37538b85e160a339c48e2dac82cb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::MutBoxShape::readDialog</definition>
+        <argsstring>(BoxDlg *boxdlg)</argsstring>
+        <name>readDialog</name>
+        <reimplementedby refid="d3/dd6/classmutaborGUI_1_1NewMutBoxShape_1ab58b3e29e06de747c4f830babf3171f4">readDialog</reimplementedby>
+        <param>
+          <type><ref refid="df/d7d/classmutaborGUI_1_1BoxDlg" kindref="compound">BoxDlg</ref> *</type>
+          <declname>boxdlg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="245" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.cpp" bodystart="522" bodyend="584"/>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9" compoundref="de/d0f/Box_8h" startline="115">mutabor::Box0</references>
+        <references refid="d6/daa/namespacemutabor_1a65c68128daf0c3feda58f55b7aca2e05" compoundref="d2/d2c/Route-inlines_8h" startline="58" endline="61">mutabor::connect</references>
+        <references refid="d5/dee/group__route_1gac05e39da29f9915758102a26aeadba8b" compoundref="dd/dc6/Box_8cpp" startline="227" endline="249">mutabor::BoxClass::GetBox</references>
+        <references refid="df/d7d/classmutaborGUI_1_1BoxDlg_1abf33a95630904a5bb2e8db91ea3fabef" compoundref="d9/dd2/BoxDlg_8h" startline="215" endline="220">mutaborGUI::BoxDlg::GetBoxNumber</references>
+        <references refid="df/d7d/classmutaborGUI_1_1BoxDlg_1a2304a1ae83792321fb59d2b0eecd48de" compoundref="d3/d2a/BoxDlg_8cpp" startline="304" endline="313">mutaborGUI::BoxDlg::GetBoxType</references>
+        <references refid="d5/dee/group__route_1ga9e68bd379bba25f75661d7cf4d3c38be" compoundref="de/d0f/Box_8h" startline="817" endline="823">mutabor::BoxClass::GetOrCreateBox</references>
+        <references refid="df/d7d/classmutaborGUI_1_1BoxDlg_1ad468f1623ebe6c1358a61547de7a736d" compoundref="d9/dd2/BoxDlg_8h" startline="198" endline="201">mutaborGUI::BoxDlg::GetRouteWindow</references>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542a29a2e5ffb6fc2f93b5c1eff689bf2468" compoundref="de/d0f/Box_8h" startline="114">mutabor::GmnBox</references>
+        <references refid="d5/dee/group__route_1gga59ad356edc8b877f64e9a02df6f5560ca67adbcea09886c9c80ed988c5cecb9f1" compoundref="de/d0f/Box_8h" startline="128">mutabor::BoxClass::IDTypeFile</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542aeb2ddcbaa727016dcb5229fc6dacc23f" compoundref="de/d0f/Box_8h" startline="113">mutabor::NoBox</references>
+        <references refid="db/d94/namespacemutaborGUI_1afb35365f69e843a5384e16a6d361ab88" compoundref="d5/df7/GUIBoxData_8h" startline="375" endline="377">mutaborGUI::SetCurrentBox</references>
+        <referencedby refid="dc/df2/group__GUIroute_1ga9cff412769db7e55f0dafac64012bf34" compoundref="d8/db4/BoxShape_8cpp" startline="360" endline="443">DoLeftDblClick</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gaa50361b37a306bf5348f55e51f596c8f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool mutaborGUI::MutBoxShape::CanHandleType</definition>
+        <argsstring>(int type)</argsstring>
+        <name>CanHandleType</name>
+        <reimplementedby refid="d3/dd6/classmutaborGUI_1_1NewMutBoxShape_1a1aee3cbf48725322530b5f3edd074f54">CanHandleType</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="246" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="246" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga5dac2ee9a0322331680ef2b73c89fbc4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">mutabor::Box</ref></type>
+        <definition>mutabor::Box mutaborGUI::MutBoxShape::GetBox</definition>
+        <argsstring>() const </argsstring>
+        <name>GetBox</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="247" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="247" bodyend="247"/>
+        <references refid="dc/df2/group__GUIroute_1ga58ab842cebee766b813017d358dff416" compoundref="d9/d49/BoxShape_8h" startline="254">box</references>
+        <referencedby refid="db/d94/namespacemutaborGUI_1a6d235c96041a62a550c3ec08c0b24008" compoundref="d5/d12/GUIBoxData-inlines_8h" startline="55" endline="92">mutaborGUI::connect</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1af9c3a082da5f2b4a0fb0770aad541af3" compoundref="d5/d12/GUIBoxData-inlines_8h" startline="94" endline="181">mutaborGUI::disconnect</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1a38cb90f1ef998ab2afcd0dafa5302e55" compoundref="d2/d73/GUIRoute-inlines_8h" startline="323" endline="332">mutaborGUI::reconnect</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga2db0f09b5fdbbf0c76ab3426861a01ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>wxSizer *</type>
+        <definition>wxSizer* mutaborGUI::MutBoxShape::GetChannels</definition>
+        <argsstring>() const </argsstring>
+        <name>GetChannels</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="249" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="249" bodyend="249"/>
+        <references refid="dc/df2/group__GUIroute_1ga92d1531f1c0c7676ce82e3982575daa5" compoundref="d9/d49/BoxShape_8h" startline="253">channels</references>
+        <referencedby refid="db/d94/namespacemutaborGUI_1af9c3a082da5f2b4a0fb0770aad541af3" compoundref="d5/d12/GUIBoxData-inlines_8h" startline="94" endline="181">mutaborGUI::disconnect</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga023155f7ffbec1c7d4ece6eb2f43902d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void mutaborGUI::MutBoxShape::SetSizerFlags</definition>
+        <argsstring>(wxSizerFlags flags)</argsstring>
+        <name>SetSizerFlags</name>
+        <param>
+          <type>wxSizerFlags</type>
+          <declname>flags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="98" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="98" bodyend="98"/>
+        <references refid="dc/df2/group__GUIroute_1gad36b931adb77334db5ffaaaa863b37cb" compoundref="d9/d49/BoxShape_8h" startline="255">sizerFlags</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gad3ba7a11a1cc47553e62ad3010f9a943" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxSizerFlags &amp;</type>
+        <definition>static const wxSizerFlags&amp; mutaborGUI::MutBoxShape::GetSizerFlags</definition>
+        <argsstring>()</argsstring>
+        <name>GetSizerFlags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="99" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="99" bodyend="99"/>
+        <references refid="dc/df2/group__GUIroute_1gad36b931adb77334db5ffaaaa863b37cb" compoundref="d9/d49/BoxShape_8h" startline="255">sizerFlags</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gaad0f90baf1b087c81afb6b0be75341a3" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void mutaborGUI::MutBoxShape::MoveBox</definition>
+        <argsstring>(int count)</argsstring>
+        <name>MoveBox</name>
+        <param>
+          <type>int</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+<para>Move the box in the box list and update the GUI according to the new order. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of entries the device should be moved up. Negative values indicate downwards direction. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="264" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="264" bodyend="266"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga71cf80c2cc9f5a356848ec1fa0721feb" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutBoxShape::SetBox</definition>
+        <argsstring>()</argsstring>
+        <name>SetBox</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="270" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="270" bodyend="274"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
+        <references refid="dc/df2/group__GUIroute_1gae2ff2496d9f0fe6020f963ca06a74cbd" compoundref="d9/d49/BoxShape_8h" startline="252">m_icon</references>
+        <references refid="df/dd1/group__GUI_1ga9c38263d8d0e9374e1e5df15192cdf84" compoundref="d5/d6f/IconShape_8h" startline="103" endline="111">MutIconShapeClass&lt; T &gt;::SetLabel</references>
+        <referencedby refid="dc/df2/group__GUIroute_1gafca62ea8b3b32cd29912202080c2df91" compoundref="d9/d49/BoxShape_8h" startline="154" endline="161">Add</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga428343a90a7ef6b35a847df8bf699359" compoundref="d9/d49/BoxShape_8h" startline="179" endline="190">Remove</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga11510b077d7358c5072b978cbca20ead" compoundref="d9/d49/BoxShape_8h" startline="164" endline="176">Replace</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga3a51c89841393059a8dc7d2b91022b09" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutBoxShape::SetBox</definition>
+        <argsstring>(mutabor::Box &amp;b, bool layout=true)</argsstring>
+        <name>SetBox</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">mutabor::Box</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>layout</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="275" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3549">
+        <label>wxControl</label>
+      </node>
+      <node id="3548">
+        <label>MutPanel</label>
+        <link refid="df/df2/classMutPanel"/>
+        <childnode refid="3549" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3547">
+        <label>MutIconShapeClass&lt; MutPanel &gt;</label>
+        <link refid="d5/d12/classMutIconShapeClass"/>
+        <childnode refid="3548" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3545">
+        <label>mutaborGUI::MutBoxShape</label>
+        <link refid="d5/d72/classmutaborGUI_1_1MutBoxShape"/>
+        <childnode refid="3546" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3550">
+        <label>mutaborGUI::NewMutBoxShape</label>
+        <link refid="d3/dd6/classmutaborGUI_1_1NewMutBoxShape"/>
+        <childnode refid="3545" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3546">
+        <label>mutaborGUI::MutBoxIconShape</label>
+        <link refid="d2/ddf/classmutaborGUI_1_1MutBoxIconShape"/>
+        <childnode refid="3547" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3556">
+        <label>std::list&lt; wxPoint &gt;</label>
+      </node>
+      <node id="3555">
+        <label>wxControl</label>
+      </node>
+      <node id="3554">
+        <label>MutPanel</label>
+        <link refid="df/df2/classMutPanel"/>
+        <childnode refid="3555" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3553">
+        <label>MutIconShapeClass&lt; MutPanel &gt;</label>
+        <link refid="d5/d12/classMutIconShapeClass"/>
+        <childnode refid="3554" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3556" relation="usage">
+          <edgelabel>usedperimeterpoints</edgelabel>
+        </childnode>
+      </node>
+      <node id="3551">
+        <label>mutaborGUI::MutBoxShape</label>
+        <link refid="d5/d72/classmutaborGUI_1_1MutBoxShape"/>
+        <childnode refid="3552" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3552" relation="usage">
+          <edgelabel>m_icon</edgelabel>
+        </childnode>
+      </node>
+      <node id="3552">
+        <label>mutaborGUI::MutBoxIconShape</label>
+        <link refid="d2/ddf/classmutaborGUI_1_1MutBoxIconShape"/>
+        <childnode refid="3553" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" line="75" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/BoxShape.h" bodystart="74" bodyend="278"/>
+    <listofallmembers>
+      <member refid="df/dd1/group__GUI_1gab25386f2189c0a3989cfa9011e71a113" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>AcceptsFocus</name></member>
+      <member refid="dc/df2/group__GUIroute_1gafca62ea8b3b32cd29912202080c2df91" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>Add</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga4f86f32d782b2a4e8b617271b4bbb72b" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>Add</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga18d2239d72bbc464a53764b63b59ddef" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>AddChannel</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga514c2f3ff836e2d2aa7a1bc470b44a1d" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>AddPossibleOutput</name></member>
+      <member refid="df/dd1/group__GUI_1gac00e57523cc2af20feb520a4d2fa7faf" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>borderOffset</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga58ab842cebee766b813017d358dff416" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>box</name></member>
+      <member refid="dc/df2/group__GUIroute_1gaa50361b37a306bf5348f55e51f596c8f" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>CanHandleType</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga92d1531f1c0c7676ce82e3982575daa5" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>channels</name></member>
+      <member refid="df/dd1/group__GUI_1ga6af37d42c1d2765b07320e60ba1b2ea4" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>ClearPerimeterPoints</name></member>
+      <member refid="dc/df2/group__GUIroute_1gad4d40a77d6a4ca91e9156057b7355892" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>CmLeftDblClick</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga4e736dad2725072d277cb24825cb2768" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>CmMoveIcon</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga8931609cd05a2b1e4faae8e3e7644acf" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>Create</name></member>
+      <member refid="dc/df2/group__GUIroute_1gacfe7048b514950b7541f3a51abbfd953" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>Create</name></member>
+      <member refid="df/dd1/group__GUI_1ga6db4ff1d919db7002998d07050be9fca" prot="public" virt="non-virtual" ambiguityscope="MutPanel::"><scope>mutaborGUI::MutBoxShape</scope><name>Create</name></member>
+      <member refid="dc/df2/group__GUIroute_1gaebe1551353855119fe9578553baa7355" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>DeleteBox</name></member>
+      <member refid="df/dd1/group__GUI_1ga6a32ece47417189c5f20868fbb6600c2" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>DeleteSelf</name></member>
+      <member refid="df/dd1/group__GUI_1ga527a2125bd392d9b54aa7abaa0968c11" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>DeleteSelfEvent</name></member>
+      <member refid="df/dd1/group__GUI_1ga6fa093d611e95444ae1b2a60aebf6ec6" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>Destroy</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga19b226cd21b128d41a3daeacb409b3a8" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>Detach</name></member>
+      <member refid="dc/df2/group__GUIroute_1gad6c43a69fda83bbaa0ed5c258794b475" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>Detach</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga80bedd4924068fd3e83ce9ebd4f4dc8a" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>Detach</name></member>
+      <member refid="df/dd1/group__GUI_1gafb111fbc128036409103a64b8f106cec" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>DoGetBestSize</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga9cff412769db7e55f0dafac64012bf34" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>DoLeftDblClick</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga80bdc070c49a72aef309b0256a9b1199" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>DrawLines</name></member>
+      <member refid="df/dd1/group__GUI_1gaff550c99aecc9d9fc9989bef770f791b" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>DrawPerimeterPoint</name></member>
+      <member refid="df/dd1/group__GUI_1gab5b40ff9e8b7fe6966fc99a1dbce7615" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>Fit</name></member>
+      <member refid="dc/df2/group__GUIroute_1gabf74d0d4d5c04c371a85b3822365240e" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>GetBordersForSizer</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga5dac2ee9a0322331680ef2b73c89fbc4" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>GetBox</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga2db0f09b5fdbbf0c76ab3426861a01ff" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>GetChannels</name></member>
+      <member refid="df/dd1/group__GUI_1ga34042c921771c02dc1e418cb80d11a39" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>GetIcon</name></member>
+      <member refid="df/dd1/group__GUI_1ga8c961a7c136dd837d106fa36ca406434" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>GetIconRect</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga02073f2d3d273764a6e4b703d4517163" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>GetMutIcon</name></member>
+      <member refid="df/dd1/group__GUI_1gafb46b285ddfcaf567dadb66d6abafc53" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>GetPerimeterPoint</name></member>
+      <member refid="df/dd1/group__GUI_1gaa81293c8ad433bd7799ff6886da801c8" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>GetPositionInWindow</name></member>
+      <member refid="dc/df2/group__GUIroute_1gad3ba7a11a1cc47553e62ad3010f9a943" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>GetSizerFlags</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga8fe836c5fa88439a1109b607e4cb55b7" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>GotFocus</name></member>
+      <member refid="dc/df2/group__GUIroute_1gafa5bda15bef951c8e5b190f9d83d7328" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>HasChannel</name></member>
+      <member refid="df/dd1/group__GUI_1gac2e20ca0916f1fe5079b4fdb521bf753" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>Icon</name></member>
+      <member refid="df/dd1/group__GUI_1ga09fc250280017059371a06c53255b690" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>Init</name></member>
+      <member refid="df/dd1/group__GUI_1ga1844f125f2466adc4722b648c79016ea" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>InitDialog</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga15f862043e3c700673846806e35b1740" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>InitializeDialog</name></member>
+      <member refid="dc/df2/group__GUIroute_1gad51f231a3ac834a8afeecd657fb30ad0" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>Layout</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga3d05b71219e245cf55f19eef7359b819" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>LeftDblClickEvent</name></member>
+      <member refid="df/dd1/group__GUI_1ga902ef06d34f93cfeec3d2920e5c11b22" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>LineTo</name></member>
+      <member refid="df/dd1/group__GUI_1gadba3c3c1619d41c27ec47e150e9aefcc" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>LostFocus</name></member>
+      <member refid="df/df2/classMutPanel_1a8df7db7c6228f9b3f8cbd9bc1ab1498b" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>m_container</name></member>
+      <member refid="dc/df2/group__GUIroute_1gae2ff2496d9f0fe6020f963ca06a74cbd" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>m_icon</name></member>
+      <member refid="df/dd1/group__GUI_1ga50ed5eb477a319c6a2e1d5a489886c88" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>maxBorderSize</name></member>
+      <member refid="dc/df2/group__GUIroute_1gaad0f90baf1b087c81afb6b0be75341a3" prot="protected" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>MoveBox</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga6041aa4a51c158e563a9d42feea033ad" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>MutBoxIconShape</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga53674d5e21b6f5411adda4fbce54e05e" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>MutBoxIconShape</name></member>
+      <member refid="dc/df2/group__GUIroute_1gabe218565feae664082733682f90fba7b" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>MutBoxShape</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga9896490b179e5c701d76fd4c24782840" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>MutBoxShape</name></member>
+      <member refid="df/dd1/group__GUI_1ga6c60085fcaf257e014f23011bd314689" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>MutIconShapeClass</name></member>
+      <member refid="df/dd1/group__GUI_1ga67a1e855645d1c2caace1d5755c00ed4" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>MutIconShapeClass</name></member>
+      <member refid="df/df2/classMutPanel_1a1de9b5b84242818ff47b747d26103a9d" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>MutPanel</name></member>
+      <member refid="df/df2/classMutPanel_1a3cac6864a36fb72929686bc9feccbbc4" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>MutPanel</name></member>
+      <member refid="df/df2/classMutPanel_1a3df9eb7da7b63fa042e732d842d9cc12" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>MutPanel</name></member>
+      <member refid="df/dd1/group__GUI_1gaf91386562e1e057b46bed9774eb923c1" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>OnChildFocus</name></member>
+      <member refid="dc/df2/group__GUIroute_1gac98659fabee7bb37593baa24df17a84f" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>OnDraw</name></member>
+      <member refid="df/dd1/group__GUI_1gafc651e2797ac4f52804836637137aff7" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>OnFocus</name></member>
+      <member refid="df/dd1/group__GUI_1gaddcd0a2c19d082c4ab3e7fb17ec9d316" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>OnGetFocus</name></member>
+      <member refid="dc/df2/group__GUIroute_1gafebe7338d6cffc1dff397dbd5e7b31dd" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>OnKeyDown</name></member>
+      <member refid="df/dd1/group__GUI_1ga9d72cf755410c0f9e357ab6dd04cc02c" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>OnKillFocus</name></member>
+      <member refid="df/dd1/group__GUI_1ga7e20bf5dd47deb647e8458e0ab985521" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>OnMouseClick</name></member>
+      <member refid="df/dd1/group__GUI_1ga7f1d22cc86025045416ba687dee7f41f" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>OnMove</name></member>
+      <member refid="df/df2/classMutPanel_1ab921e06ea43367d1a284930a66171794" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>OnNavigationKey</name></member>
+      <member refid="df/dd1/group__GUI_1ga2db78f04d6d7a26ab29da7faa0954def" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>OnPaint</name></member>
+      <member refid="df/dd1/group__GUI_1ga013ce0ee08027e1344b6310c98a3e432" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>OnSize</name></member>
+      <member refid="df/dd1/group__GUI_1gace19200ba44b40bef0d6e12e82d28036" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>parenttype</name></member>
+      <member refid="dc/df2/group__GUIroute_1gacbd37538b85e160a339c48e2dac82cb7" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>readDialog</name></member>
+      <member refid="df/dd1/group__GUI_1ga07f28cc023ae8756e9f9f87f95ad5409" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>Recompute</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga428343a90a7ef6b35a847df8bf699359" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>Remove</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga3e392cdecdc2c3c24f6c88e6602e7176" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>Remove</name></member>
+      <member refid="df/dd1/group__GUI_1gada329ce8fdddfbf8be5a371d71a41660" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>RemoveChild</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga11510b077d7358c5072b978cbca20ead" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>Replace</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga7727c91439e84a87903d8f5202621357" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>replaceSelfBy</name></member>
+      <member refid="dc/df2/group__GUIroute_1gac130fb3e87472adbdb29d2c170241457" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>SetBackgroundColour</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga71cf80c2cc9f5a356848ec1fa0721feb" prot="private" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>SetBox</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga3a51c89841393059a8dc7d2b91022b09" prot="private" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>SetBox</name></member>
+      <member refid="df/dd1/group__GUI_1ga0b4fa312ba3a177c69f8b15652195297" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>SetFocus</name></member>
+      <member refid="df/dd1/group__GUI_1gaeb34b02ce60d0ad98a9048f5cce1f52d" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>SetFocusIgnoringChildren</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga618d27525554cfcb206dd1181b576356" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>SetForegroundColour</name></member>
+      <member refid="df/dd1/group__GUI_1gaa2391577a1074831747407069db8256e" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>SetIcon</name></member>
+      <member refid="df/dd1/group__GUI_1ga9c38263d8d0e9374e1e5df15192cdf84" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>SetLabel</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga023155f7ffbec1c7d4ece6eb2f43902d" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>SetSizerFlags</name></member>
+      <member refid="dc/df2/group__GUIroute_1gac946c92d094b2ce45b65b2a82de379f2" prot="public" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>ShowBoxDialog</name></member>
+      <member refid="dc/df2/group__GUIroute_1gad36b931adb77334db5ffaaaa863b37cb" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>sizerFlags</name></member>
+      <member refid="df/dd1/group__GUI_1ga251ccb86f70128425f9e1b4677017e8e" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>staticText</name></member>
+      <member refid="df/dd1/group__GUI_1gac4fa33b7ec3b0cdd4e7007c836fbcf00" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>UpdateBorder</name></member>
+      <member refid="df/dd1/group__GUI_1ga00bc4210cf2d668fb7bf5c57d9c21a1f" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutBoxShape</scope><name>usedperimeterpoints</name></member>
+      <member refid="dc/df2/group__GUIroute_1gabb2d0ab7f2c1d37b6bfa99553524c605" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>~MutBoxIconShape</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga24a48f01ee62ea3a593df5172d6faf66" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>~MutBoxShape</name></member>
+      <member refid="df/dd1/group__GUI_1ga84fce5f40e796c9790e0375e250df937" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>~MutIconShapeClass</name></member>
+      <member refid="df/dd1/group__GUI_1gada61e2352d10cc55b4cdcaba97df82fc" prot="public" virt="virtual"><scope>mutaborGUI::MutBoxShape</scope><name>~MutPanel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

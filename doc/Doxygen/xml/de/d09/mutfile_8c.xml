@@ -1,0 +1,600 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="de/d09/mutfile_8c" kind="file">
+    <compoundname>mutfile.c</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">assert.h</includes>
+    <includes local="yes">lib-asprintf.h</includes>
+    <includes refid="d5/de7/mutfile_8h" local="yes">mutabor/mutfile.h</includes>
+    <includes refid="db/da5/mutfile_8hh" local="yes">mutabor/mutfile.hh</includes>
+    <includes refid="df/d8e/bad__decl_8h" local="yes">mutabor/bad_decl.h</includes>
+    <includes refid="d4/dfd/mut__tab_8h" local="yes">mutabor/mut_tab.h</includes>
+    <includes refid="d2/d8a/interval_8h" local="yes">mutabor/interval.h</includes>
+    <includes refid="d7/d66/intervalPlaceholder_8h" local="yes">mutabor/intervalPlaceholder.h</includes>
+    <includes refid="d4/d70/ptrlist_8h" local="yes">mutabor/ptrlist.h</includes>
+    <includes refid="de/d45/errors_8h" local="yes">mutabor/errors.h</includes>
+    <includes refid="dc/df5/mut_8h" local="yes">mut.h</includes>
+    <includes refid="da/d43/libmutabor_2mutlex_8h" local="yes">mutlex.h</includes>
+    <includes refid="d4/d64/libintl_8h" local="yes">libintl.h</includes>
+    <incdepgraph>
+      <node id="21014">
+        <label>src/libmutabor/mutfile.c</label>
+        <link refid="mutfile.c"/>
+        <childnode refid="21015" relation="include">
+        </childnode>
+        <childnode refid="21016" relation="include">
+        </childnode>
+        <childnode refid="21017" relation="include">
+        </childnode>
+        <childnode refid="21018" relation="include">
+        </childnode>
+        <childnode refid="21022" relation="include">
+        </childnode>
+        <childnode refid="21023" relation="include">
+        </childnode>
+        <childnode refid="21025" relation="include">
+        </childnode>
+        <childnode refid="21027" relation="include">
+        </childnode>
+        <childnode refid="21028" relation="include">
+        </childnode>
+        <childnode refid="21029" relation="include">
+        </childnode>
+        <childnode refid="21030" relation="include">
+        </childnode>
+        <childnode refid="21026" relation="include">
+        </childnode>
+        <childnode refid="21031" relation="include">
+        </childnode>
+        <childnode refid="21037" relation="include">
+        </childnode>
+      </node>
+      <node id="21039">
+        <label>stdarg.h</label>
+      </node>
+      <node id="21025">
+        <label>mutabor/mut_tab.h</label>
+        <link refid="d4/dfd/mut__tab_8h"/>
+        <childnode refid="21026" relation="include">
+        </childnode>
+      </node>
+      <node id="21027">
+        <label>mutabor/interval.h</label>
+        <link refid="d2/d8a/interval_8h"/>
+        <childnode refid="21020" relation="include">
+        </childnode>
+        <childnode refid="21023" relation="include">
+        </childnode>
+      </node>
+      <node id="21016">
+        <label>assert.h</label>
+      </node>
+      <node id="21019">
+        <label>mutabor/idlist.h</label>
+        <link refid="d9/d31/idlist_8h"/>
+        <childnode refid="21020" relation="include">
+        </childnode>
+      </node>
+      <node id="21021">
+        <label>mutabor/object.h</label>
+        <link refid="de/d10/object_8h"/>
+      </node>
+      <node id="21038">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="21039" relation="include">
+        </childnode>
+        <childnode refid="21040" relation="include">
+        </childnode>
+      </node>
+      <node id="21034">
+        <label>stdlib.h</label>
+      </node>
+      <node id="21022">
+        <label>mutabor/mutfile.hh</label>
+        <link refid="db/da5/mutfile_8hh"/>
+      </node>
+      <node id="21030">
+        <label>mutabor/errors.h</label>
+        <link refid="de/d45/errors_8h"/>
+      </node>
+      <node id="21033">
+        <label>errno.h</label>
+      </node>
+      <node id="21029">
+        <label>mutabor/ptrlist.h</label>
+        <link refid="d4/d70/ptrlist_8h"/>
+        <childnode refid="21021" relation="include">
+        </childnode>
+      </node>
+      <node id="21020">
+        <label>mutabor/identifier.h</label>
+        <link refid="d7/da7/identifier_8h"/>
+        <childnode refid="21021" relation="include">
+        </childnode>
+      </node>
+      <node id="21028">
+        <label>mutabor/intervalPlaceholder.h</label>
+        <link refid="d7/d66/intervalPlaceholder_8h"/>
+        <childnode refid="21027" relation="include">
+        </childnode>
+        <childnode refid="21023" relation="include">
+        </childnode>
+      </node>
+      <node id="21035">
+        <label>netinet/in.h</label>
+        <link refid="d1/d10/in_8h"/>
+      </node>
+      <node id="21018">
+        <label>mutabor/mutfile.h</label>
+        <link refid="d5/de7/mutfile_8h"/>
+        <childnode refid="21019" relation="include">
+        </childnode>
+      </node>
+      <node id="21032">
+        <label>string.h</label>
+      </node>
+      <node id="21036">
+        <label>unistd.h</label>
+      </node>
+      <node id="21037">
+        <label>libintl.h</label>
+        <link refid="d4/d64/libintl_8h"/>
+        <childnode refid="21038" relation="include">
+        </childnode>
+      </node>
+      <node id="21024">
+        <label>math.h</label>
+      </node>
+      <node id="21026">
+        <label>mut.h</label>
+        <link refid="dc/df5/mut_8h"/>
+      </node>
+      <node id="21040">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+      <node id="21017">
+        <label>lib-asprintf.h</label>
+      </node>
+      <node id="21031">
+        <label>mutlex.h</label>
+        <link refid="da/d43/libmutabor_2mutlex_8h"/>
+        <childnode refid="21015" relation="include">
+        </childnode>
+        <childnode refid="21032" relation="include">
+        </childnode>
+        <childnode refid="21033" relation="include">
+        </childnode>
+        <childnode refid="21034" relation="include">
+        </childnode>
+        <childnode refid="21035" relation="include">
+        </childnode>
+        <childnode refid="21036" relation="include">
+        </childnode>
+      </node>
+      <node id="21015">
+        <label>stdio.h</label>
+      </node>
+      <node id="21023">
+        <label>mutabor/bad_decl.h</label>
+        <link refid="df/d8e/bad__decl_8h"/>
+        <childnode refid="21024" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="de/d09/mutfile_8c_1a44d4609804f7dc554253feba5a40f8de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* MUTABOR_CLASS_FUNCTION</definition>
+        <argsstring>(object, constructor)</argsstring>
+        <name>MUTABOR_CLASS_FUNCTION</name>
+        <param>
+          <type>object</type>
+        </param>
+        <param>
+          <type>constructor</type>
+        </param>
+        <briefdescription>
+<para>Constructor for class object. </para>        </briefdescription>
+        <detaileddescription>
+<para>Does nothing than error checking. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutfile.c" line="51" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutfile.c" bodystart="51" bodyend="66"/>
+        <references refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" compoundref="de/d10/object_8h" startline="27">CHK_CLASS</references>
+        <references refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" compoundref="de/d10/object_8h" startline="33">MUT_CLASS</references>
+        <references refid="de/d10/object_8h_1a65851b9f91a4d9e49bf20401b28d7242" compoundref="de/d10/object_8h" startline="39">MUT_NEW</references>
+        <references refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" compoundref="de/d10/object_8h" startline="45">MUTABOR_CLASS_FUNCTION</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d09/mutfile_8c_1ae8749c4841e35061fdd497165248a95f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* MUTABOR_CLASS_FUNCTION</definition>
+        <argsstring>(mutfile, destructor)</argsstring>
+        <name>MUTABOR_CLASS_FUNCTION</name>
+        <param>
+          <type>mutfile</type>
+        </param>
+        <param>
+          <type>destructor</type>
+        </param>
+        <briefdescription>
+<para>Destructor for class object. </para>        </briefdescription>
+        <detaileddescription>
+<para>Does nothing than error checking. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutfile.c" line="70" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutfile.c" bodystart="70" bodyend="87"/>
+        <references refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" compoundref="de/d10/object_8h" startline="27">CHK_CLASS</references>
+        <references refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" compoundref="de/d10/object_8h" startline="33">MUT_CLASS</references>
+        <references refid="de/d10/object_8h_1ad3b722d501268b5e6614113662e57d46" compoundref="d0/de1/object_8c" startline="117" endline="121">mutabor_delete</references>
+        <references refid="d5/d4b/mutlex_8c_1a2657f9655f1d9e790296313089fdeb2b" compoundref="d5/d4b/mutlex_8c" startline="2435" endline="2459">mutabor_parser_lex_destroy</references>
+        <references refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" compoundref="d3/da3/mut_8c" startline="234">self</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d09/mutfile_8c_1a93abc50ff260bf50f927e9aea5050527" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <definition>char* MUTABOR_CLASS_FUNCTION</definition>
+        <argsstring>(mutfile, tostring)</argsstring>
+        <name>MUTABOR_CLASS_FUNCTION</name>
+        <param>
+          <type>mutfile</type>
+        </param>
+        <param>
+          <type>tostring</type>
+        </param>
+        <briefdescription>
+<para>Formats Class content as string. </para>        </briefdescription>
+        <detaileddescription>
+<para>Intented exspecially for debugging. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutfile.c" line="91" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutfile.c" bodystart="91" bodyend="113"/>
+        <references refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" compoundref="de/d10/object_8h" startline="27">CHK_CLASS</references>
+        <references refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" compoundref="de/d10/object_8h" startline="33">MUT_CLASS</references>
+        <references refid="de/d10/object_8h_1a1f973b95970e98bf6f69c21b27b90018" compoundref="de/d10/object_8h" startline="37">MUT_VIRTCALL</references>
+        <references refid="de/d10/object_8h_1a5bcd31da3e6b613992ef458459a10bbe" compoundref="de/d10/object_8h" startline="35">MUT_VIRTTABLE</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d09/mutfile_8c_1a1e79a29abb56e606c89a9aeb0ad5192f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MUTABOR_CLASS_FUNCTION</definition>
+        <argsstring>(mutfile, setfilename)</argsstring>
+        <name>MUTABOR_CLASS_FUNCTION</name>
+        <param>
+          <type>mutfile</type>
+        </param>
+        <param>
+          <type>setfilename</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutfile.c" line="115" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutfile.c" bodystart="115" bodyend="119"/>
+        <references refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" compoundref="de/d10/object_8h" startline="27">CHK_CLASS</references>
+        <references refid="de/d10/object_8h_1a26b0044f18a1161f76531febb946c1ec" compoundref="de/d10/object_8h" startline="34">MUT_VALUE</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d09/mutfile_8c_1a4224c715b92d2a6e1ebe65c421834cad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MUTABOR_CLASS_FUNCTION</definition>
+        <argsstring>(mutfile, parse)</argsstring>
+        <name>MUTABOR_CLASS_FUNCTION</name>
+        <param>
+          <type>mutfile</type>
+        </param>
+        <param>
+          <type>parse</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutfile.c" line="121" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutfile.c" bodystart="121" bodyend="150"/>
+        <references refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" compoundref="de/d10/object_8h" startline="27">CHK_CLASS</references>
+        <references refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" compoundref="de/d10/object_8h" startline="33">MUT_CLASS</references>
+        <references refid="df/d8e/bad__decl_8h_1add06f7a8eedac3939367e696b477746f" compoundref="df/d8e/bad__decl_8h" startline="74">mutabor_parser_get_table_filename</references>
+        <references refid="d5/d4b/mutlex_8c_1a2657f9655f1d9e790296313089fdeb2b" compoundref="d5/d4b/mutlex_8c" startline="2435" endline="2459">mutabor_parser_lex_destroy</references>
+        <references refid="d5/d4b/mutlex_8c_1aa5c5c4efff83983c799a3fc6c2e922ba" compoundref="d5/d4b/mutlex_8c" startline="2411" endline="2429">mutabor_parser_lex_init</references>
+        <references refid="d4/dfd/mut__tab_8h_1a65471dcacc7648c3ca8c28ba005e2314">mutabor_parser_parse</references>
+        <references refid="d5/d4b/mutlex_8c_1a439914e9f87dc1efd943191a3a932432" compoundref="d5/d4b/mutlex_8c" startline="2316" endline="2320">mutabor_parser_set_in</references>
+        <references refid="d5/d4b/mutlex_8c_1a45c2cfa859b01e6bbe6197132a3149e1" compoundref="d5/d4b/mutlex_8c" startline="2945" endline="2962">mutabor_parser_tables_destroy</references>
+        <references refid="d5/d4b/mutlex_8c_1aa63356936cc6758cd7c0bf591bef2aa8" compoundref="d5/d4b/mutlex_8c" startline="2936" endline="2942">mutabor_parser_tables_fload</references>
+        <references refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" compoundref="d3/da3/mut_8c" startline="234">self</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d09/mutfile_8c_1a14217002305cef55e5522f66850f5569" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* MUTABOR_CLASS_FUNCTION</definition>
+        <argsstring>(mutfile, insert_interval)</argsstring>
+        <name>MUTABOR_CLASS_FUNCTION</name>
+        <param>
+          <type>mutfile</type>
+        </param>
+        <param>
+          <type>insert_interval</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutfile.c" line="152" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutfile.c" bodystart="152" bodyend="159"/>
+        <references refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" compoundref="de/d10/object_8h" startline="27">CHK_CLASS</references>
+        <references refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" compoundref="de/d10/object_8h" startline="33">MUT_CLASS</references>
+        <references refid="de/d10/object_8h_1a1f973b95970e98bf6f69c21b27b90018" compoundref="de/d10/object_8h" startline="37">MUT_VIRTCALL</references>
+        <references refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" compoundref="d3/da3/mut_8c" startline="234">self</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d09/mutfile_8c_1a132e98dd8f647b5283520d223c2dea82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* MUTABOR_CLASS_FUNCTION</definition>
+        <argsstring>(mutfile, get_interval)</argsstring>
+        <name>MUTABOR_CLASS_FUNCTION</name>
+        <param>
+          <type>mutfile</type>
+        </param>
+        <param>
+          <type>get_interval</type>
+        </param>
+        <briefdescription>
+<para>searches the interval list for a given identifier. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>_self</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>current <computeroutput>mutfile</computeroutput> class. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>name of the intervall to search. It won&apos;t be deleted. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>interval or new created alias to the interval if interval doesn&apos;t exist yet. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutfile.c" line="166" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutfile.c" bodystart="166" bodyend="184"/>
+        <references refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" compoundref="de/d10/object_8h" startline="27">CHK_CLASS</references>
+        <references refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" compoundref="de/d10/object_8h" startline="33">MUT_CLASS</references>
+        <references refid="de/d10/object_8h_1a65851b9f91a4d9e49bf20401b28d7242" compoundref="de/d10/object_8h" startline="39">MUT_NEW</references>
+        <references refid="de/d10/object_8h_1a1f973b95970e98bf6f69c21b27b90018" compoundref="de/d10/object_8h" startline="37">MUT_VIRTCALL</references>
+        <references refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" compoundref="de/d10/object_8h" startline="45">MUTABOR_CLASS_FUNCTION</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" compoundref="d3/da3/mut_8c" startline="234">self</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d09/mutfile_8c_1ad6030d2832143b9a71842fe8ac8f086a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* MUTABOR_CLASS_FUNCTION</definition>
+        <argsstring>(mutfile, check_interval)</argsstring>
+        <name>MUTABOR_CLASS_FUNCTION</name>
+        <param>
+          <type>mutfile</type>
+        </param>
+        <param>
+          <type>check_interval</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutfile.c" line="186" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutfile.c" bodystart="186" bodyend="213"/>
+        <references refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" compoundref="de/d10/object_8h" startline="27">CHK_CLASS</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" compoundref="de/d10/object_8h" startline="33">MUT_CLASS</references>
+        <references refid="de/d10/object_8h_1a65851b9f91a4d9e49bf20401b28d7242" compoundref="de/d10/object_8h" startline="39">MUT_NEW</references>
+        <references refid="de/d10/object_8h_1a1f973b95970e98bf6f69c21b27b90018" compoundref="de/d10/object_8h" startline="37">MUT_VIRTCALL</references>
+        <references refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" compoundref="de/d10/object_8h" startline="45">MUTABOR_CLASS_FUNCTION</references>
+        <references refid="de/d10/object_8h_1ad3b722d501268b5e6614113662e57d46" compoundref="d0/de1/object_8c" startline="117" endline="121">mutabor_delete</references>
+        <references refid="de/d45/errors_8h_1a81746584e042799ac5860a57fc6b6a50" compoundref="de/d45/errors_8h" startline="100">MUTABOR_ERROR_INTERVAL_DEPENDENCY</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" compoundref="d3/da3/mut_8c" startline="234">self</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Identifier class. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="rcs"><title>Id:</title><para><ref refid="de/d09/mutfile_8c" kindref="compound">mutfile.c</ref>,v 1.3 2006/03/27 17:04:01 keinstein Exp </para></simplesect>
+<simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein@users.berlios.de">keinstein@users.berlios.de</ulink> </para></simplesect>
+<simplesect kind="date"><para></para></simplesect>
+<simplesect kind="rcs"><title>Date:</title><para>2006/03/27 17:04:01 </para></simplesect>
+<simplesect kind="version"><para></para></simplesect>
+<simplesect kind="rcs"><title>Revision:</title><para>1.3 </para></simplesect>
+</para><para><simplesect kind="rcs"><title>Log:</title><para><ref refid="de/d09/mutfile_8c" kindref="compound">mutfile.c</ref>,v </para></simplesect>
+Revision 1.3 2006/03/27 17:04:01 keinstein added lib-asprintf.h libintl.h</para><para>Revision 1.2 2005/11/10 16:17:00 keinstein working distcheck</para><para>Revision 1.1 2005/11/03 14:58:11 keinstein initial release </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="23"><highlight class="preprocessor">#ifdef<sp/>HAVE_CONFIG_H</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>include<sp/>&quot;config.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="26"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifdef<sp/>HAVE_STRING_H</highlight></codeline>
+<codeline lineno="27"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifdef<sp/>HAVE_STRINGS_H</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>include<sp/>&lt;strings.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;assert.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HAVE_ASPRINTF</highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>include<sp/>&quot;lib-asprintf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d5/de7/mutfile_8h" kindref="compound">mutabor/mutfile.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="db/da5/mutfile_8hh" kindref="compound">mutabor/mutfile.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="df/d8e/bad__decl_8h" kindref="compound">mutabor/bad_decl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d4/dfd/mut__tab_8h" kindref="compound">mutabor/mut_tab.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d8a/interval_8h" kindref="compound">mutabor/interval.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d7/d66/intervalPlaceholder_8h" kindref="compound">mutabor/intervalPlaceholder.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d4/d70/ptrlist_8h" kindref="compound">mutabor/ptrlist.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d45/errors_8h" kindref="compound">mutabor/errors.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dc/df5/mut_8h" kindref="compound">mut.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>self</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="da/d43/libmutabor_2mutlex_8h" kindref="compound">mutlex.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d4/d64/libintl_8h" kindref="compound">libintl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="de/d09/mutfile_8c_1a44d4609804f7dc554253feba5a40f8de" refkind="member"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">,constructor)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(mutfile,constructor)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" kindref="member">MUT_CLASS</ref>(mutfile)<sp/>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>=<sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">,constructor)(_self);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" kindref="member">CHK_CLASS</ref>(_self,mutfile);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;intervals=<ref refid="de/d10/object_8h_1a65851b9f91a4d9e49bf20401b28d7242" kindref="member">MUT_NEW</ref>(idlist);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;interval_placeholder=<ref refid="de/d10/object_8h_1a65851b9f91a4d9e49bf20401b28d7242" kindref="member">MUT_NEW</ref>(idlist);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;filename=NULL;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;descriptor=NULL;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;scanner=NULL;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(_self);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="de/d09/mutfile_8c_1ae8749c4841e35061fdd497165248a95f" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(mutfile,<sp/>destructor)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self)<sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" kindref="member">MUT_CLASS</ref>(mutfile)<sp/>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">=_self;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" kindref="member">CHK_CLASS</ref>(_self,mutfile);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1ad3b722d501268b5e6614113662e57d46" kindref="member">mutabor_delete</ref>(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;intervals);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1ad3b722d501268b5e6614113662e57d46" kindref="member">mutabor_delete</ref>(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;interval_placeholder);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;scanner)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/d4b/mutlex_8c_1a2657f9655f1d9e790296313089fdeb2b" kindref="member">mutabor_parser_lex_destroy</ref>(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;scanner);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;filename);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;<sp/>descriptor)<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fclose(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;descriptor))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(_self);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="de/d09/mutfile_8c_1a93abc50ff260bf50f927e9aea5050527" refkind="member"><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(mutfile,tostring)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a5bcd31da3e6b613992ef458459a10bbe" kindref="member">MUT_VIRTTABLE</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">)<sp/>**<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">=_self;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" kindref="member">MUT_CLASS</ref>(mutfile)<sp/>*<sp/>oself=_self;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>data,*s1,*s2;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" kindref="member">CHK_CLASS</ref>(_self,mutfile);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s1=<ref refid="de/d10/object_8h_1a1f973b95970e98bf6f69c21b27b90018" kindref="member">MUT_VIRTCALL</ref>(idlist,oself-&gt;intervals,tostring)(oself-&gt;intervals);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s2=<ref refid="de/d10/object_8h_1a1f973b95970e98bf6f69c21b27b90018" kindref="member">MUT_VIRTCALL</ref>(idlist,oself-&gt;interval_placeholder,tostring)(oself-&gt;interval_placeholder);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(asprintf(&amp;data,</highlight><highlight class="stringliteral">&quot;%s<sp/>(%p):<sp/>%s<sp/>%p\n-&gt;%s\n-&gt;%s&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*self)-&gt;name,<sp/></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)*</highlight><highlight class="keyword">self</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((<ref refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" kindref="member">MUT_CLASS</ref>(mutfile)*)<sp/>_self)-&gt;filename,</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_self,s1,s2)){</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(s1);free(s2);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(s1);free(s2);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="de/d09/mutfile_8c_1a1e79a29abb56e606c89a9aeb0ad5192f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(mutfile,setfilename)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self,</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>)</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" kindref="member">CHK_CLASS</ref>(_self,mutfile);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a26b0044f18a1161f76531febb946c1ec" kindref="member">MUT_VALUE</ref>(mutfile,_self)-&gt;filename=strdup(<ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="de/d09/mutfile_8c_1a4224c715b92d2a6e1ebe65c421834cad" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(mutfile,parse)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self)</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" kindref="member">MUT_CLASS</ref>(mutfile)<sp/>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">=_self;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FILE<sp/>*<sp/>table;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" kindref="member">CHK_CLASS</ref>(_self,mutfile);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>setting<sp/>up<sp/>Mutabor<sp/>file<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;filename);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;filename)<sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;descriptor)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;descriptor<sp/>=<sp/>fopen(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;filename,</highlight><highlight class="stringliteral">&quot;r&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;descriptor)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>setting<sp/>up<sp/>scanner<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;scanner)<sp/></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d5/d4b/mutlex_8c_1aa5c5c4efff83983c799a3fc6c2e922ba" kindref="member">mutabor_parser_lex_init</ref>((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)<sp/>&amp;(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;scanner)))<sp/></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((table=fopen(<ref refid="df/d8e/bad__decl_8h_1add06f7a8eedac3939367e696b477746f" kindref="member">mutabor_parser_get_table_filename</ref>(</highlight><highlight class="stringliteral">&quot;mutlex_de.tab&quot;</highlight><highlight class="normal">),</highlight><highlight class="stringliteral">&quot;r&quot;</highlight><highlight class="normal">)))<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/d4b/mutlex_8c_1aa63356936cc6758cd7c0bf591bef2aa8" kindref="member">mutabor_parser_tables_fload</ref>(table,<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;scanner);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fclose(table);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/d4b/mutlex_8c_1a439914e9f87dc1efd943191a3a932432" kindref="member">mutabor_parser_set_in</ref>(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;descriptor,<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;scanner);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d4/dfd/mut__tab_8h_1a65471dcacc7648c3ca8c28ba005e2314" kindref="member">mutabor_parser_parse</ref>(_self);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/d4b/mutlex_8c_1a45c2cfa859b01e6bbe6197132a3149e1" kindref="member">mutabor_parser_tables_destroy</ref>(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;scanner);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/d4b/mutlex_8c_1a2657f9655f1d9e790296313089fdeb2b" kindref="member">mutabor_parser_lex_destroy</ref>(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;scanner);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;scanner=NULL;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(feof(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;descriptor))<sp/></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fclose(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;descriptor))<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;descriptor=NULL;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152" refid="de/d09/mutfile_8c_1a14217002305cef55e5522f66850f5569" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(mutfile,insert_interval)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self,</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>interval)<sp/></highlight></codeline>
+<codeline lineno="153"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" kindref="member">MUT_CLASS</ref>(mutfile)<sp/>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">=_self;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" kindref="member">CHK_CLASS</ref>(_self,mutfile);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" kindref="member">CHK_CLASS</ref>(interval,interval);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a1f973b95970e98bf6f69c21b27b90018" kindref="member">MUT_VIRTCALL</ref>(idlist,<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;intervals,insert)(</highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;intervals,interval);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>interval;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="de/d09/mutfile_8c_1a132e98dd8f647b5283520d223c2dea82" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(mutfile,get_interval)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self,</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>)</highlight></codeline>
+<codeline lineno="167"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" kindref="member">MUT_CLASS</ref>(mutfile)<sp/>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">=_self;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>interval;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" kindref="member">CHK_CLASS</ref>(_self,mutfile);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((interval=<ref refid="de/d10/object_8h_1a1f973b95970e98bf6f69c21b27b90018" kindref="member">MUT_VIRTCALL</ref>(idlist,<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;intervals,find)</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;intervals,<ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>)))<sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>interval;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((interval=<ref refid="de/d10/object_8h_1a1f973b95970e98bf6f69c21b27b90018" kindref="member">MUT_VIRTCALL</ref>(idlist,<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;interval_placeholder,find)</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;interval_placeholder,<ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>)))<sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>interval;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>interval<sp/>=<sp/><ref refid="de/d10/object_8h_1a65851b9f91a4d9e49bf20401b28d7242" kindref="member">MUT_NEW</ref>(intervalPlaceholder);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(identifier,copy_name)(interval,<ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a1f973b95970e98bf6f69c21b27b90018" kindref="member">MUT_VIRTCALL</ref>(idlist,<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;interval_placeholder,insert)</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;interval_placeholder,interval);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>interval;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186" refid="de/d09/mutfile_8c_1ad6030d2832143b9a71842fe8ac8f086a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(mutfile,check_interval)</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self,</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_interval,</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>)</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" kindref="member">MUT_CLASS</ref>(mutfile)<sp/>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">=_self;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" kindref="member">MUT_CLASS</ref>(interval)<sp/>*<sp/>interval=_interval;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" kindref="member">MUT_CLASS</ref>(intervalPlaceholder)<sp/>*<sp/>placeholder;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" kindref="member">CHK_CLASS</ref>(_self,mutfile);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" kindref="member">CHK_CLASS</ref>(_interval,interval);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="de/d10/object_8h_1a1f973b95970e98bf6f69c21b27b90018" kindref="member">MUT_VIRTCALL</ref>(idlist,<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;intervals,find)(<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;intervals,<ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>)){</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>interval;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(identifier,set_name)(_interval,<ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(idlist,sortbyname)(</highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;intervals,1);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((placeholder=(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)<sp/></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a1f973b95970e98bf6f69c21b27b90018" kindref="member">MUT_VIRTCALL</ref>(idlist,<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;interval_placeholder,find)</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)<ref refid="d3/da3/mut_8c_1a211343b9c64dbd216c5bbd6c1409f11d" kindref="member">self</ref>-&gt;interval_placeholder,<ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>)))<sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" kindref="member">MUT_CLASS</ref>(ptrlist)<sp/>*<sp/>ptrlist=<ref refid="de/d10/object_8h_1a65851b9f91a4d9e49bf20401b28d7242" kindref="member">MUT_NEW</ref>(ptrlist);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!<ref refid="de/d10/object_8h_1a1f973b95970e98bf6f69c21b27b90018" kindref="member">MUT_VIRTCALL</ref>(identifier,interval,check_cycle)</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(interval,placeholder,ptrlist))<sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(intervalPlaceholder,</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>setreplacement)</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(placeholder,_interval);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><ref refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" kindref="member">fatal_error</ref>(<ref refid="de/d45/errors_8h_1a81746584e042799ac5860a57fc6b6a50" kindref="member">MUTABOR_ERROR_INTERVAL_DEPENDENCY</ref>,<ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>,<ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d10/object_8h_1ad3b722d501268b5e6614113662e57d46" kindref="member">mutabor_delete</ref>(ptrlist);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutfile.c"/>
+  </compounddef>
+</doxygen>

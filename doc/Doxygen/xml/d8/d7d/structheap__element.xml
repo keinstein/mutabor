@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d8/d7d/structheap__element" kind="struct" prot="public">
+    <compoundname>heap_element</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d8/d7d/structheap__element_1a9d0363d38f17c225cfc8b2bbedb11075" prot="public" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <definition>char heap_element::inhalt[HEAP_PORTION_SYNTAX]</definition>
+        <argsstring>[HEAP_PORTION_SYNTAX]</argsstring>
+        <name>inhalt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" line="133" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="133" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga9068a10d577105ad5306b8694f7b153b" compoundref="da/d02/Hilfs_8cpp" startline="154" endline="234">xmalloc</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga3aaf4c6fc990494645d2d7cc6b60d9ac" compoundref="da/d02/Hilfs_8cpp" startline="236" endline="267">xrealloc</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d8/d7d/structheap__element_1ab400a0aecbfd3e5d9062a8e71f1e242c" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t heap_element::anzahl_belegt</definition>
+        <argsstring></argsstring>
+        <name>anzahl_belegt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" line="134" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="134" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga9068a10d577105ad5306b8694f7b153b" compoundref="da/d02/Hilfs_8cpp" startline="154" endline="234">xmalloc</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga3aaf4c6fc990494645d2d7cc6b60d9ac" compoundref="da/d02/Hilfs_8cpp" startline="236" endline="267">xrealloc</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d8/d7d/structheap__element_1aca61a911850b68707daedd2e7206a3ec" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d8/d7d/structheap__element" kindref="compound">heap_element</ref> *</type>
+        <definition>struct heap_element* heap_element::next</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" line="136" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="136" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga6cdadb41b8ac72cc80f2bccd24b7fefc" compoundref="da/d02/Hilfs_8cpp" startline="287" endline="308">loesche_syntax_speicher</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9068a10d577105ad5306b8694f7b153b" compoundref="da/d02/Hilfs_8cpp" startline="154" endline="234">xmalloc</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3000">
+        <label>heap_element</label>
+        <link refid="d8/d7d/structheap__element"/>
+        <childnode refid="3000" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" line="132" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="131" bodyend="137"/>
+    <listofallmembers>
+      <member refid="d8/d7d/structheap__element_1ab400a0aecbfd3e5d9062a8e71f1e242c" prot="public" virt="non-virtual"><scope>heap_element</scope><name>anzahl_belegt</name></member>
+      <member refid="d8/d7d/structheap__element_1a9d0363d38f17c225cfc8b2bbedb11075" prot="public" virt="non-virtual"><scope>heap_element</scope><name>inhalt</name></member>
+      <member refid="d8/d7d/structheap__element_1aca61a911850b68707daedd2e7206a3ec" prot="public" virt="non-virtual"><scope>heap_element</scope><name>next</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

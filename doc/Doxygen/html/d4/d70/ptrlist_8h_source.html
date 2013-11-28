@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/includes/mutabor/ptrlist.h Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_bf59d41d727aac54882b42f236ae575e.html">includes</a></li><li class="navelem"><a class="el" href="../../dir_6db30062d01f5c3ec76e386385d23595.html">mutabor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ptrlist.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d4/d70/ptrlist_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef __MUTABOR_PTRLIST_H__</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __MUTABOR_PTRLIST_H__</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/d10/object_8h.html">mutabor/object.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">struct </span><a class="code" href="../../d6/d82/structmutabor__avl__node__ptr.html">mutabor_avl_node_ptr</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../d9/d2f/structmutabor__class__ptrlist.html">   29</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../d9/d2f/structmutabor__class__ptrlist.html">mutabor_class_ptrlist</a> {</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="../../d9/d2f/structmutabor__class__ptrlist.html#acef0b1751a5b7e649697239e8bef2f99">   30</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="../../d0/dff/structmutabor__class__object.html">mutabor_class_object</a> <a class="code" href="../../d9/d2f/structmutabor__class__ptrlist.html#acef0b1751a5b7e649697239e8bef2f99">_</a>; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../d9/d2f/structmutabor__class__ptrlist.html#a5cece6bc465334c7b34c430706bf852e">   31</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="../../d6/d82/structmutabor__avl__node__ptr.html">mutabor_avl_node_ptr</a> * <a class="code" href="../../d9/d2f/structmutabor__class__ptrlist.html#a5cece6bc465334c7b34c430706bf852e">root</a>; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../dc/de4/structmutabor__virttable__ptrlist.html">   34</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../dc/de4/structmutabor__virttable__ptrlist.html">mutabor_virttable_ptrlist</a> {</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../dc/de4/structmutabor__virttable__ptrlist.html#a86f99a58e2a09580ea7503ab424232d2">   35</a></span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="../../dc/de4/structmutabor__virttable__ptrlist.html#a86f99a58e2a09580ea7503ab424232d2">size</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../dc/de4/structmutabor__virttable__ptrlist.html#a065e03f1b8dcba8b9c0bee8190a9f764">   36</a></span>&#160;    <span class="keywordtype">char</span> * <a class="code" href="../../dc/de4/structmutabor__virttable__ptrlist.html#a065e03f1b8dcba8b9c0bee8190a9f764">name</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../dc/de4/structmutabor__virttable__ptrlist.html#a1251041f84a3f455687e2b5e4ca3c27c">   37</a></span>&#160;    <span class="keywordtype">void</span> ** <a class="code" href="../../dc/de4/structmutabor__virttable__ptrlist.html#a1251041f84a3f455687e2b5e4ca3c27c">parent</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../dc/de4/structmutabor__virttable__ptrlist.html#adf78ea53936936b59ccc3a002569b66b">   38</a></span>&#160;    <span class="keywordtype">void</span> * (*constructor)(<span class="keywordtype">void</span> * _self); </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../dc/de4/structmutabor__virttable__ptrlist.html#a001f15a54b6caa184b2a52b90d1b9a8e">   39</a></span>&#160;    <span class="keywordtype">void</span> * (*destructor)(<span class="keywordtype">void</span> * _self); </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../dc/de4/structmutabor__virttable__ptrlist.html#a6d17b956c88420d44e3dafbca25f0265">   40</a></span>&#160;    int (*<a class="code" href="../../dc/de4/structmutabor__virttable__ptrlist.html#a6d17b956c88420d44e3dafbca25f0265">compare</a>)(<span class="keywordtype">void</span> * one, <span class="keywordtype">void</span> * two); </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../dc/de4/structmutabor__virttable__ptrlist.html#aae00533897905225b2f46b3134b3f6df">   41</a></span>&#160;    <span class="keywordtype">char</span> * (*tostring)(<span class="keywordtype">void</span> * _self); </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../dc/de4/structmutabor__virttable__ptrlist.html#a82997874390c2881e886057539e6a68c">   42</a></span>&#160;    int (*<a class="code" href="../../dc/de4/structmutabor__virttable__ptrlist.html#a82997874390c2881e886057539e6a68c">insert</a>)(<span class="keywordtype">void</span> * _self,<span class="keyword">const</span> <span class="keywordtype">void</span> * ptr); </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../dc/de4/structmutabor__virttable__ptrlist.html#aa7c493296c4de0b11fa93f4874beda41">   43</a></span>&#160;    <span class="keywordtype">void</span> * (*find)(<span class="keywordtype">void</span> <span class="keyword">const</span> * _self, <span class="keywordtype">void</span> <span class="keyword">const</span> * ptr); </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">void</span> * <a class="code" href="../../d4/d70/ptrlist_8h.html#a3b8b80c120fd4c6297438eac5f0bd830">mutabor_object_ptrlist</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __MUTABOR_PTRLIST_H__ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="structmutabor__class__ptrlist_html"><div class="ttname"><a href="../../d9/d2f/structmutabor__class__ptrlist.html">mutabor_class_ptrlist</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d70/ptrlist_8h_source.html#l00029">ptrlist.h:29</a></div></div>
+<div class="ttc" id="ptrlist_8h_html_a3b8b80c120fd4c6297438eac5f0bd830"><div class="ttname"><a href="../../d4/d70/ptrlist_8h.html#a3b8b80c120fd4c6297438eac5f0bd830">mutabor_object_ptrlist</a></div><div class="ttdeci">const void * mutabor_object_ptrlist</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db0/ptrlist_8hh_source.html#l00019">ptrlist.hh:19</a></div></div>
+<div class="ttc" id="structmutabor__virttable__ptrlist_html_a82997874390c2881e886057539e6a68c"><div class="ttname"><a href="../../dc/de4/structmutabor__virttable__ptrlist.html#a82997874390c2881e886057539e6a68c">mutabor_virttable_ptrlist::insert</a></div><div class="ttdeci">int(* insert)(void *_self, const void *ptr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d70/ptrlist_8h_source.html#l00042">ptrlist.h:42</a></div></div>
+<div class="ttc" id="structmutabor__virttable__ptrlist_html_a6d17b956c88420d44e3dafbca25f0265"><div class="ttname"><a href="../../dc/de4/structmutabor__virttable__ptrlist.html#a6d17b956c88420d44e3dafbca25f0265">mutabor_virttable_ptrlist::compare</a></div><div class="ttdeci">int(* compare)(void *one, void *two)</div><div class="ttdoc">Simple comparison. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d70/ptrlist_8h_source.html#l00040">ptrlist.h:40</a></div></div>
+<div class="ttc" id="structmutabor__class__object_html"><div class="ttname"><a href="../../d0/dff/structmutabor__class__object.html">mutabor_class_object</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00049">object.h:49</a></div></div>
+<div class="ttc" id="structmutabor__virttable__ptrlist_html_a065e03f1b8dcba8b9c0bee8190a9f764"><div class="ttname"><a href="../../dc/de4/structmutabor__virttable__ptrlist.html#a065e03f1b8dcba8b9c0bee8190a9f764">mutabor_virttable_ptrlist::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d70/ptrlist_8h_source.html#l00036">ptrlist.h:36</a></div></div>
+<div class="ttc" id="structmutabor__virttable__ptrlist_html_a86f99a58e2a09580ea7503ab424232d2"><div class="ttname"><a href="../../dc/de4/structmutabor__virttable__ptrlist.html#a86f99a58e2a09580ea7503ab424232d2">mutabor_virttable_ptrlist::size</a></div><div class="ttdeci">size_t size</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d70/ptrlist_8h_source.html#l00035">ptrlist.h:35</a></div></div>
+<div class="ttc" id="structmutabor__class__ptrlist_html_a5cece6bc465334c7b34c430706bf852e"><div class="ttname"><a href="../../d9/d2f/structmutabor__class__ptrlist.html#a5cece6bc465334c7b34c430706bf852e">mutabor_class_ptrlist::root</a></div><div class="ttdeci">struct mutabor_avl_node_ptr * root</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d70/ptrlist_8h_source.html#l00031">ptrlist.h:31</a></div></div>
+<div class="ttc" id="structmutabor__virttable__ptrlist_html"><div class="ttname"><a href="../../dc/de4/structmutabor__virttable__ptrlist.html">mutabor_virttable_ptrlist</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d70/ptrlist_8h_source.html#l00034">ptrlist.h:34</a></div></div>
+<div class="ttc" id="object_8h_html"><div class="ttname"><a href="../../de/d10/object_8h.html">object.h</a></div><div class="ttdoc">Common definitions for object oriented programming and base class #object. </div></div>
+<div class="ttc" id="structmutabor__virttable__ptrlist_html_a1251041f84a3f455687e2b5e4ca3c27c"><div class="ttname"><a href="../../dc/de4/structmutabor__virttable__ptrlist.html#a1251041f84a3f455687e2b5e4ca3c27c">mutabor_virttable_ptrlist::parent</a></div><div class="ttdeci">void ** parent</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d70/ptrlist_8h_source.html#l00037">ptrlist.h:37</a></div></div>
+<div class="ttc" id="structmutabor__avl__node__ptr_html"><div class="ttname"><a href="../../d6/d82/structmutabor__avl__node__ptr.html">mutabor_avl_node_ptr</a></div><div class="ttdoc">Node type for AVL tree. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/dc2/ptrlist_8c_source.html#l00039">ptrlist.c:39</a></div></div>
+<div class="ttc" id="structmutabor__class__ptrlist_html_acef0b1751a5b7e649697239e8bef2f99"><div class="ttname"><a href="../../d9/d2f/structmutabor__class__ptrlist.html#acef0b1751a5b7e649697239e8bef2f99">mutabor_class_ptrlist::_</a></div><div class="ttdeci">struct mutabor_class_object _</div><div class="ttdoc">Parent class. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d70/ptrlist_8h_source.html#l00030">ptrlist.h:30</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:03:00 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/kernel/mutlex.h Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cbd7f246bdf7dc0a50281a272327e6ed.html">kernel</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">mutlex.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d3/d29/kernel_2mutlex_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// availlable groups: GUI, route, kernel, muwx, debug, docview, config, docview</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/* we guard a little bit complicated to ensure the references are set right</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#if (!defined(HEADERFILENAME) &amp;&amp; !defined(PRECOMPILE))  \</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">        || (!defined(HEADERFILENAME_PRECOMPILED))</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef PRECOMPILE</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../d9/d7c/group__kernel.html#gaf184f62bfda5323d1e6ba65aa8d02e94">   37</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define HEADERFILENAME</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">// headers</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d73/Defs_8h.html">src/kernel/Defs.h</a>&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">namespace </span>mutabor {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">namespace </span>hidden {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d6/d4e/mut_8hh.html">src/kernel/mut.hh</a>&quot;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#ifndef HEADERFILENAME_PRECOMPILED</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../d9/d7c/group__kernel.html#ga2215a79ef7c59d401e01e04571afc801">   54</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define HEADERFILENAME_PRECOMPILED</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">// system headers which do seldom change</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#if ! defined(yyFlexLexerOnce)</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef yyFlexLexer</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../d9/d7c/group__kernel.html#gaf699458ba5331ddec7e15a878f42f8f5">   60</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define yyFlexLexer mutabor_lexer_FlexLexer</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifdef HAVE_FLEXLEXER_H</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;FlexLexer.h&gt;</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;FlexLexer.h&quot;</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#undef  YY_DECL</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="../../d9/d7c/group__kernel.html#gae5b01ac2fa5a6ad5fb97559638abe686">   71</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define YY_DECL int  mutabor::mutabor_lexer::yylex()</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#ifdef __BORLANDC__</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#pragma hdrstop</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">namespace </span>mutabor {</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html">   80</a></span>&#160;        <span class="keyword">class </span><a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html">mutabor_lexer</a>: <span class="keyword">public</span> mutabor_lexer_FlexLexer {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a38ab406ad192735669c6cae757c30606">   82</a></span>&#160;                <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a38ab406ad192735669c6cae757c30606">mutabor_lexer</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keywordtype">string</span>, </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                              <span class="keywordtype">size_t</span> len):<a class="code" href="../../d9/d7c/group__kernel.html#gaf699458ba5331ddec7e15a878f42f8f5">yyFlexLexer</a>(),</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                          <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a80b2e1a787dad6637abc1b18c6def04e">buffer</a>(string),</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                          <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a4ffdf4abb2f1ab57e9118437e1b151f4">buflen</a>(len),</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                          <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a1a654a3e8d50e1f20602241c3601aad3">position</a>(0),</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                          <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a5df00819b0bf6341d610d9a753f794f2">report_parameters</a>(true),</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                          <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#af7c9ef0575906820d1363e98a0842ee5">yylval</a>(new mutabor::hidden::<a class="code" href="../../da/d7e/unionYYSTYPE.html">YYSTYPE</a>) {}</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#ab66f52f2ab91b63e4782ba749058e43b">   89</a></span>&#160;                <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#ab66f52f2ab91b63e4782ba749058e43b">~mutabor_lexer</a>() { <span class="keyword">delete</span> <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#af7c9ef0575906820d1363e98a0842ee5">yylval</a>; }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <span class="keywordtype">int</span> <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a6c1fb2469053ed3ef5bf7553b48147f2">yylex</a>();</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#af53e52611293bc67ba01ca619f90054a">   92</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#af53e52611293bc67ba01ca619f90054a">free_identifier</a>() { free(<a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#af7c9ef0575906820d1363e98a0842ee5">yylval</a>-&gt;identifier); <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#af7c9ef0575906820d1363e98a0842ee5">yylval</a>-&gt;identifier = NULL; }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#af2f4fede5bd9c57faf1bdf656ed12371">   94</a></span>&#160;                <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#af2f4fede5bd9c57faf1bdf656ed12371">LexerInput</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">int</span> max_size ) {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                        <span class="keywordtype">int</span> size = std::min(max_size, (<span class="keywordtype">int</span>)(<a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a4ffdf4abb2f1ab57e9118437e1b151f4">buflen</a> - <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a1a654a3e8d50e1f20602241c3601aad3">position</a>));</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                        memcpy(buf,<a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a80b2e1a787dad6637abc1b18c6def04e">buffer</a>,size);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                        <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a1a654a3e8d50e1f20602241c3601aad3">position</a> += size;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                        <span class="keywordflow">return</span> std::max(size,0);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                }</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a80b2e1a787dad6637abc1b18c6def04e">  100</a></span>&#160;                <span class="keyword">const</span> <span class="keywordtype">char</span> * <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a80b2e1a787dad6637abc1b18c6def04e">buffer</a>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a4ffdf4abb2f1ab57e9118437e1b151f4">  101</a></span>&#160;                <span class="keywordtype">size_t</span> <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a4ffdf4abb2f1ab57e9118437e1b151f4">buflen</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a1a654a3e8d50e1f20602241c3601aad3">  102</a></span>&#160;                <span class="keywordtype">size_t</span> <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a1a654a3e8d50e1f20602241c3601aad3">position</a>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a5df00819b0bf6341d610d9a753f794f2">  103</a></span>&#160;                <span class="keywordtype">bool</span> <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a5df00819b0bf6341d610d9a753f794f2">report_parameters</a>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#af7c9ef0575906820d1363e98a0842ee5">  104</a></span>&#160;                <a class="code" href="../../df/d33/mut_8cc.html#a09fb1f7c65e10ed0f0c1aa8ef7ce16b5">mutabor::hidden::YYSTYPE</a> * <a class="code" href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#af7c9ef0575906820d1363e98a0842ee5">yylval</a>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        };</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif // precompiled</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif // header loaded</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="ttc" id="mut_8hh_html"><div class="ttname"><a href="../../d6/d4e/mut_8hh.html">mut.hh</a></div></div>
+<div class="ttc" id="classmutabor_1_1mutabor__lexer_html_af2f4fede5bd9c57faf1bdf656ed12371"><div class="ttname"><a href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#af2f4fede5bd9c57faf1bdf656ed12371">mutabor::mutabor_lexer::LexerInput</a></div><div class="ttdeci">virtual int LexerInput(char *buf, int max_size)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d29/kernel_2mutlex_8h_source.html#l00094">mutlex.h:94</a></div></div>
+<div class="ttc" id="classmutabor_1_1mutabor__lexer_html_a80b2e1a787dad6637abc1b18c6def04e"><div class="ttname"><a href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a80b2e1a787dad6637abc1b18c6def04e">mutabor::mutabor_lexer::buffer</a></div><div class="ttdeci">const char * buffer</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d29/kernel_2mutlex_8h_source.html#l00100">mutlex.h:100</a></div></div>
+<div class="ttc" id="classmutabor_1_1mutabor__lexer_html_a5df00819b0bf6341d610d9a753f794f2"><div class="ttname"><a href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a5df00819b0bf6341d610d9a753f794f2">mutabor::mutabor_lexer::report_parameters</a></div><div class="ttdeci">bool report_parameters</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d29/kernel_2mutlex_8h_source.html#l00103">mutlex.h:103</a></div></div>
+<div class="ttc" id="group__kernel_html_gaf699458ba5331ddec7e15a878f42f8f5"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gaf699458ba5331ddec7e15a878f42f8f5">yyFlexLexer</a></div><div class="ttdeci">#define yyFlexLexer</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d29/kernel_2mutlex_8h_source.html#l00060">mutlex.h:60</a></div></div>
+<div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
+<div class="ttc" id="classmutabor_1_1mutabor__lexer_html_a6c1fb2469053ed3ef5bf7553b48147f2"><div class="ttname"><a href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a6c1fb2469053ed3ef5bf7553b48147f2">mutabor::mutabor_lexer::yylex</a></div><div class="ttdeci">int yylex()</div></div>
+<div class="ttc" id="classmutabor_1_1mutabor__lexer_html_a38ab406ad192735669c6cae757c30606"><div class="ttname"><a href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a38ab406ad192735669c6cae757c30606">mutabor::mutabor_lexer::mutabor_lexer</a></div><div class="ttdeci">mutabor_lexer(const char *string, size_t len)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d29/kernel_2mutlex_8h_source.html#l00082">mutlex.h:82</a></div></div>
+<div class="ttc" id="classmutabor_1_1mutabor__lexer_html_a1a654a3e8d50e1f20602241c3601aad3"><div class="ttname"><a href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a1a654a3e8d50e1f20602241c3601aad3">mutabor::mutabor_lexer::position</a></div><div class="ttdeci">size_t position</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d29/kernel_2mutlex_8h_source.html#l00102">mutlex.h:102</a></div></div>
+<div class="ttc" id="classmutabor_1_1mutabor__lexer_html"><div class="ttname"><a href="../../d0/df6/classmutabor_1_1mutabor__lexer.html">mutabor::mutabor_lexer</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d29/kernel_2mutlex_8h_source.html#l00080">mutlex.h:80</a></div></div>
+<div class="ttc" id="classmutabor_1_1mutabor__lexer_html_af53e52611293bc67ba01ca619f90054a"><div class="ttname"><a href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#af53e52611293bc67ba01ca619f90054a">mutabor::mutabor_lexer::free_identifier</a></div><div class="ttdeci">void free_identifier()</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d29/kernel_2mutlex_8h_source.html#l00092">mutlex.h:92</a></div></div>
+<div class="ttc" id="unionYYSTYPE_html"><div class="ttname"><a href="../../da/d7e/unionYYSTYPE.html">YYSTYPE</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/mut_8cc_source.html#l00213">mut.cc:213</a></div></div>
+<div class="ttc" id="mut_8cc_html_a09fb1f7c65e10ed0f0c1aa8ef7ce16b5"><div class="ttname"><a href="../../df/d33/mut_8cc.html#a09fb1f7c65e10ed0f0c1aa8ef7ce16b5">YYSTYPE</a></div><div class="ttdeci">union YYSTYPE YYSTYPE</div></div>
+<div class="ttc" id="classmutabor_1_1mutabor__lexer_html_a4ffdf4abb2f1ab57e9118437e1b151f4"><div class="ttname"><a href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#a4ffdf4abb2f1ab57e9118437e1b151f4">mutabor::mutabor_lexer::buflen</a></div><div class="ttdeci">size_t buflen</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d29/kernel_2mutlex_8h_source.html#l00101">mutlex.h:101</a></div></div>
+<div class="ttc" id="classmutabor_1_1mutabor__lexer_html_af7c9ef0575906820d1363e98a0842ee5"><div class="ttname"><a href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#af7c9ef0575906820d1363e98a0842ee5">mutabor::mutabor_lexer::yylval</a></div><div class="ttdeci">mutabor::hidden::YYSTYPE * yylval</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d29/kernel_2mutlex_8h_source.html#l00104">mutlex.h:104</a></div></div>
+<div class="ttc" id="classmutabor_1_1mutabor__lexer_html_ab66f52f2ab91b63e4782ba749058e43b"><div class="ttname"><a href="../../d0/df6/classmutabor_1_1mutabor__lexer.html#ab66f52f2ab91b63e4782ba749058e43b">mutabor::mutabor_lexer::~mutabor_lexer</a></div><div class="ttdeci">~mutabor_lexer()</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d29/kernel_2mutlex_8h_source.html#l00089">mutlex.h:89</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:03:01 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

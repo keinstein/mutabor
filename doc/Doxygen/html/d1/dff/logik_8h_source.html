@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/includes/mutabor/logik.h Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_bf59d41d727aac54882b42f236ae575e.html">includes</a></li><li class="navelem"><a class="el" href="../../dir_6db30062d01f5c3ec76e386385d23595.html">mutabor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">logik.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d1/dff/logik_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifndef __LOGIK_H_INCLUDED</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __LOGIK_H_INCLUDED</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/dfa/ausloeser_8h.html">mutabor/ausloeser.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dd/de4/aktion_8h.html">mutabor/aktion.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor"></span><span class="keyword">namespace </span>mutabor {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">/*********  Definition der Logiken als verkettete Liste ********/</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../db/d28/structlogik.html">   31</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="../../db/d28/structlogik.html">logik</a> {</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="../../db/d28/structlogik.html#a657099a85df9abcec074f46f7c0640b3">   32</a></span>&#160;      <span class="keywordtype">char</span> * <a class="code" href="../../db/d28/structlogik.html#a657099a85df9abcec074f46f7c0640b3">name</a>; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="../../db/d28/structlogik.html#a9220a60ca430902aad58a930d8f5e8f6">   33</a></span>&#160;      <span class="keyword">struct </span><a class="code" href="../../d9/de5/structausloeser.html">ausloeser</a> * <a class="code" href="../../db/d28/structlogik.html#a9220a60ca430902aad58a930d8f5e8f6">ausloeser</a>; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../db/d28/structlogik.html#a31836516d5c9d7d7c65ee0abc4c44324">   34</a></span>&#160;      <span class="keywordtype">char</span> * <a class="code" href="../../db/d28/structlogik.html#a31836516d5c9d7d7c65ee0abc4c44324">einstimmungs_name</a>;     </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../db/d28/structlogik.html#a65b45930b368455fcb255d827496dc2b">   35</a></span>&#160;      <span class="keyword">struct </span><a class="code" href="../../d0/dab/structanweisung.html">anweisung</a> * <a class="code" href="../../db/d28/structlogik.html#a65b45930b368455fcb255d827496dc2b">anweisungsliste</a>; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../db/d28/structlogik.html#a914e1adb949943bea4471b9f16a3e818">   36</a></span>&#160;      <span class="keyword">struct </span><a class="code" href="../../db/d28/structlogik.html">logik</a> * <a class="code" href="../../db/d28/structlogik.html#a914e1adb949943bea4471b9f16a3e818">next</a>; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    };</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d1/dff/logik_8h.html#ab5e543965245fb75ee545f4083b21039">vervollstaendige_logik</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d1/dff/logik_8h.html#a944f578df10044a1ec228eab60a8617a">get_new_logik</a> (<span class="keywordtype">char</span> * <a class="code" href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>, <span class="keywordtype">char</span> * <a class="code" href="../../db/d28/structlogik.html#a820e8ee0b32f8f6c1931eb84afa69474">einstimmung</a>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d1/dff/logik_8h.html#a1bf49a0b791eef42c75d45a8bca773f0">logik_list_laenge</a> (<span class="keyword">struct</span> <a class="code" href="../../db/d28/structlogik.html">logik</a> *list);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d1/dff/logik_8h.html#adb479f679345892536d7bcfaf145cec6">get_logik_nummer</a> (<span class="keywordtype">char</span> * <a class="code" href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>, <span class="keyword">struct</span> <a class="code" href="../../db/d28/structlogik.html">logik</a> * liste);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">struct </span><a class="code" href="../../db/d28/structlogik.html">logik</a> * <a class="code" href="../../d1/dff/logik_8h.html#aeac62519a6479ab36a94d3ad1937bb61">get_logik</a> (<span class="keywordtype">char</span> * <a class="code" href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>, <span class="keyword">struct</span> <a class="code" href="../../db/d28/structlogik.html">logik</a> * liste);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d1/dff/logik_8h.html#af4e510432930be6bebe8b280c36b8c12">setze_nummer_von_abstand_und_zentrum</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d1/dff/logik_8h.html#aed04795a6b7c21df1893c7bc845231e6">check_logik_konsistenz</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">struct </span><a class="code" href="../../d5/d8c/structdo__aktion.html">do_aktion</a> * <a class="code" href="../../d1/dff/logik_8h.html#adeba205c8988dbafa8226746ae29a639">expandiere_logik</a> (<span class="keyword">struct</span> <a class="code" href="../../db/d28/structlogik.html">logik</a> * the_logik);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">extern</span> <span class="keyword">struct </span><a class="code" href="../../db/d28/structlogik.html">logik</a>          *  <a class="code" href="../../d1/dff/logik_8h.html#a7f772804a850a0156f485df5f8cb1339">list_of_logiken</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#ifdef __cplusplus </span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor"></span>  } <span class="comment">// extern &quot;C&quot;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;} <span class="comment">// namespace mutabor</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __LOGIK_H_INCLUDED */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="structlogik_html"><div class="ttname"><a href="../../db/d28/structlogik.html">logik</a></div><div class="ttdoc">Logiken als einfach verkettete Liste. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dff/logik_8h_source.html#l00031">logik.h:31</a></div></div>
+<div class="ttc" id="structausloeser_html"><div class="ttname"><a href="../../d9/de5/structausloeser.html">ausloeser</a></div><div class="ttdoc">Einzelndes Ereignis, das Logik aktiviert. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dfa/ausloeser_8h_source.html#l00033">ausloeser.h:33</a></div></div>
+<div class="ttc" id="logik_8h_html_aed04795a6b7c21df1893c7bc845231e6"><div class="ttname"><a href="../../d1/dff/logik_8h.html#aed04795a6b7c21df1893c7bc845231e6">check_logik_konsistenz</a></div><div class="ttdeci">void check_logik_konsistenz(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6e/logik_8c_source.html#l00192">logik.c:192</a></div></div>
+<div class="ttc" id="structanweisung_html"><div class="ttname"><a href="../../d0/dab/structanweisung.html">anweisung</a></div><div class="ttdoc">Anweisungen als einfach verkettete Liste. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db7/anweisung_8h_source.html#l00036">anweisung.h:36</a></div></div>
+<div class="ttc" id="structlogik_html_a31836516d5c9d7d7c65ee0abc4c44324"><div class="ttname"><a href="../../db/d28/structlogik.html#a31836516d5c9d7d7c65ee0abc4c44324">logik::einstimmungs_name</a></div><div class="ttdeci">char * einstimmungs_name</div><div class="ttdoc">Name der Einstimmung. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dff/logik_8h_source.html#l00034">logik.h:34</a></div></div>
+<div class="ttc" id="structlogik_html_a65b45930b368455fcb255d827496dc2b"><div class="ttname"><a href="../../db/d28/structlogik.html#a65b45930b368455fcb255d827496dc2b">logik::anweisungsliste</a></div><div class="ttdeci">struct anweisung * anweisungsliste</div><div class="ttdoc">Liste der Einzel-Anweisungen. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dff/logik_8h_source.html#l00035">logik.h:35</a></div></div>
+<div class="ttc" id="logik_8h_html_adb479f679345892536d7bcfaf145cec6"><div class="ttname"><a href="../../d1/dff/logik_8h.html#adb479f679345892536d7bcfaf145cec6">get_logik_nummer</a></div><div class="ttdeci">int get_logik_nummer(char *name, struct logik *liste)</div><div class="ttdoc">Ermitteln der Position einer Logik. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6e/logik_8c_source.html#l00061">logik.c:61</a></div></div>
+<div class="ttc" id="logik_8h_html_aeac62519a6479ab36a94d3ad1937bb61"><div class="ttname"><a href="../../d1/dff/logik_8h.html#aeac62519a6479ab36a94d3ad1937bb61">get_logik</a></div><div class="ttdeci">struct logik * get_logik(char *name, struct logik *liste)</div><div class="ttdoc">Sucht eine Logik in einer Logikliste. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6e/logik_8c_source.html#l00078">logik.c:78</a></div></div>
+<div class="ttc" id="logik_8h_html_af4e510432930be6bebe8b280c36b8c12"><div class="ttname"><a href="../../d1/dff/logik_8h.html#af4e510432930be6bebe8b280c36b8c12">setze_nummer_von_abstand_und_zentrum</a></div><div class="ttdeci">void setze_nummer_von_abstand_und_zentrum(void)</div><div class="ttdoc">Setzt Paramater-Nummern von Abstand und Zentrum. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6e/logik_8c_source.html#l00092">logik.c:92</a></div></div>
+<div class="ttc" id="idlist_8hh_html_a8f8f80d37794cde9472343e4487ba3eb"><div class="ttname"><a href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a></div><div class="ttdeci">const char * name</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/idlist_8hh_source.html#l00006">idlist.hh:6</a></div></div>
+<div class="ttc" id="structlogik_html_a9220a60ca430902aad58a930d8f5e8f6"><div class="ttname"><a href="../../db/d28/structlogik.html#a9220a60ca430902aad58a930d8f5e8f6">logik::ausloeser</a></div><div class="ttdeci">struct ausloeser * ausloeser</div><div class="ttdoc">Auslösendes Ereignis. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dff/logik_8h_source.html#l00033">logik.h:33</a></div></div>
+<div class="ttc" id="structlogik_html_a657099a85df9abcec074f46f7c0640b3"><div class="ttname"><a href="../../db/d28/structlogik.html#a657099a85df9abcec074f46f7c0640b3">logik::name</a></div><div class="ttdeci">char * name</div><div class="ttdoc">Name der Logik. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dff/logik_8h_source.html#l00032">logik.h:32</a></div></div>
+<div class="ttc" id="structlogik_html_a914e1adb949943bea4471b9f16a3e818"><div class="ttname"><a href="../../db/d28/structlogik.html#a914e1adb949943bea4471b9f16a3e818">logik::next</a></div><div class="ttdeci">struct logik * next</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dff/logik_8h_source.html#l00036">logik.h:36</a></div></div>
+<div class="ttc" id="structdo__aktion_html"><div class="ttname"><a href="../../d5/d8c/structdo__aktion.html">do_aktion</a></div><div class="ttdoc">Nochmal Aktionen als einfach verkettete Liste für den Interpreter. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/de4/aktion_8h_source.html#l00075">aktion.h:75</a></div></div>
+<div class="ttc" id="ausloeser_8h_html"><div class="ttname"><a href="../../d1/dfa/ausloeser_8h.html">ausloeser.h</a></div><div class="ttdoc">Alles zu Auslösern. </div></div>
+<div class="ttc" id="logik_8h_html_a1bf49a0b791eef42c75d45a8bca773f0"><div class="ttname"><a href="../../d1/dff/logik_8h.html#a1bf49a0b791eef42c75d45a8bca773f0">logik_list_laenge</a></div><div class="ttdeci">int logik_list_laenge(struct logik *list)</div><div class="ttdoc">Zählen der Elemente einer einfach verketteten Logikliste. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6e/logik_8c_source.html#l00050">logik.c:50</a></div></div>
+<div class="ttc" id="structlogik_html_a820e8ee0b32f8f6c1931eb84afa69474"><div class="ttname"><a href="../../db/d28/structlogik.html#a820e8ee0b32f8f6c1931eb84afa69474">logik::einstimmung</a></div><div class="ttdeci">struct do_aktion * einstimmung</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d40/Global_8h_source.html#l00437">Global.h:437</a></div></div>
+<div class="ttc" id="logik_8h_html_ab5e543965245fb75ee545f4083b21039"><div class="ttname"><a href="../../d1/dff/logik_8h.html#ab5e543965245fb75ee545f4083b21039">vervollstaendige_logik</a></div><div class="ttdeci">void vervollstaendige_logik(void)</div><div class="ttdoc">Hängt die letzte eingelesene Anweisung in der letzten Logik von list_of_logiken ein. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6e/logik_8c_source.html#l00177">logik.c:177</a></div></div>
+<div class="ttc" id="aktion_8h_html"><div class="ttname"><a href="../../dd/de4/aktion_8h.html">aktion.h</a></div><div class="ttdoc">Alles zu Aktionen. </div></div>
+<div class="ttc" id="logik_8h_html_a7f772804a850a0156f485df5f8cb1339"><div class="ttname"><a href="../../d1/dff/logik_8h.html#a7f772804a850a0156f485df5f8cb1339">list_of_logiken</a></div><div class="ttdeci">struct logik * list_of_logiken</div><div class="ttdoc">Wurzel der Logiken. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6e/logik_8c_source.html#l00044">logik.c:44</a></div></div>
+<div class="ttc" id="logik_8h_html_a944f578df10044a1ec228eab60a8617a"><div class="ttname"><a href="../../d1/dff/logik_8h.html#a944f578df10044a1ec228eab60a8617a">get_new_logik</a></div><div class="ttdeci">void get_new_logik(char *name, char *einstimmung)</div><div class="ttdoc">Fügt eine neue Logik ans Ende von list_of_logiken an. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6e/logik_8c_source.html#l00153">logik.c:153</a></div></div>
+<div class="ttc" id="logik_8h_html_adeba205c8988dbafa8226746ae29a639"><div class="ttname"><a href="../../d1/dff/logik_8h.html#adeba205c8988dbafa8226746ae29a639">expandiere_logik</a></div><div class="ttdeci">struct do_aktion * expandiere_logik(struct logik *the_logik)</div><div class="ttdoc">Wandelt eine Logik in eine Aktion um. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6e/logik_8c_source.html#l00260">logik.c:260</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:03:00 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

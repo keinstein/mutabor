@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="dc/d50/structmutabor_1_1InputDeviceClass_1_1current__keys__type" kind="struct" prot="public">
+    <compoundname>mutabor::InputDeviceClass::current_keys_type</compoundname>
+    <includes refid="de/d05/Device_8h" local="no">Device.h</includes>
+    <innerclass refid="d1/d2b/structmutabor_1_1InputDeviceClass_1_1current__keys__type_1_1entry" prot="public">mutabor::InputDeviceClass::current_keys_type::entry</innerclass>
+    <innerclass refid="d7/d25/structmutabor_1_1InputDeviceClass_1_1current__keys__type_1_1hash__type" prot="public">mutabor::InputDeviceClass::current_keys_type::hash_type</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="d5/dee/group__route_1ga29742be645919e7dc51a018f28377afd" prot="public" static="no">
+        <type>boost::unordered_multiset&lt; <ref refid="d1/d2b/structmutabor_1_1InputDeviceClass_1_1current__keys__type_1_1entry" kindref="compound">entry</ref>, <ref refid="d7/d25/structmutabor_1_1InputDeviceClass_1_1current__keys__type_1_1hash__type" kindref="compound">hash_type</ref> &gt;</type>
+        <definition>typedef boost::unordered_multiset&lt;entry, hash_type&gt; mutabor::InputDeviceClass::current_keys_type::map_type</definition>
+        <argsstring></argsstring>
+        <name>map_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="852" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="852" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="d5/dee/group__route_1ga9dc4924041e297df8a23823be32c7e63" prot="public" static="no">
+        <type>map_type::iterator</type>
+        <definition>typedef map_type::iterator mutabor::InputDeviceClass::current_keys_type::iterator</definition>
+        <argsstring></argsstring>
+        <name>iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="853" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="853" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="d5/dee/group__route_1gab90674730831db317278dc9486c35dff" prot="public" static="no">
+        <type>map_type::const_iterator</type>
+        <definition>typedef map_type::const_iterator mutabor::InputDeviceClass::current_keys_type::const_iterator</definition>
+        <argsstring></argsstring>
+        <name>const_iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="854" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="854" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d5/dee/group__route_1ga9eb823358514d41552a756fd53c1046e" prot="protected" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1ga29742be645919e7dc51a018f28377afd" kindref="member">map_type</ref></type>
+        <definition>map_type mutabor::InputDeviceClass::current_keys_type::map</definition>
+        <argsstring></argsstring>
+        <name>map</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="883" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="883" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga3a786b7012a67df221d51392a837deec" compoundref="de/d05/Device_8h" startline="856" endline="861">add</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga20093f61916baa598c1ed6899fc6e0ee" compoundref="de/d05/Device_8h" startline="877" endline="877">begin</referencedby>
+        <referencedby refid="d5/dee/group__route_1gad19dacd14e10267a9275a70acde77bf3" compoundref="de/d05/Device_8h" startline="880" endline="880">end</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga5e13cc8cc989f36f96831ccef9835047" compoundref="de/d05/Device_8h" startline="863" endline="871">remove</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/dee/group__route_1ga3a786b7012a67df221d51392a837deec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::InputDeviceClass::current_keys_type::add</definition>
+        <argsstring>(int key, int velocity, int unique_id, Route &amp;R)</argsstring>
+        <name>add</name>
+        <param>
+          <type>int</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>velocity</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>unique_id</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">Route</ref> &amp;</type>
+          <declname>R</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="856" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="856" bodyend="861"/>
+        <references refid="d5/dee/group__route_1ga9eb823358514d41552a756fd53c1046e" compoundref="de/d05/Device_8h" startline="883">map</references>
+        <referencedby refid="d5/dee/group__route_1gacc20d37049923e4473fc0ff10fed282c" compoundref="de/d05/Device_8h" startline="968" endline="976">mutabor::InputDeviceClass::NoteOn</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga5e13cc8cc989f36f96831ccef9835047" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::InputDeviceClass::current_keys_type::remove</definition>
+        <argsstring>(int key, int velocity, int unique_id, Route &amp;R)</argsstring>
+        <name>remove</name>
+        <param>
+          <type>int</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>velocity</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>unique_id</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">Route</ref> &amp;</type>
+          <declname>R</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="863" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="863" bodyend="871"/>
+        <references refid="d5/dee/group__route_1ga9eb823358514d41552a756fd53c1046e" compoundref="de/d05/Device_8h" startline="883">map</references>
+        <referencedby refid="d5/dee/group__route_1gadab298f6643f7929782652b7a2764731" compoundref="de/d05/Device_8h" startline="978" endline="986">mutabor::InputDeviceClass::NoteOff</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga16e5549446e1eff905acfaa343ea254b" compoundref="d2/dc0/Device_8cpp" startline="321" endline="333">mutabor::InputDeviceClass::Panic</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga9f5fee3723bbf66c083bc81da52a8842" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::InputDeviceClass::current_keys_type::remove</definition>
+        <argsstring>(iterator i)</argsstring>
+        <name>remove</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga9dc4924041e297df8a23823be32c7e63" kindref="member">iterator</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="873" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="873" bodyend="875"/>
+        <references refid="d5/dee/group__route_1ga9eb823358514d41552a756fd53c1046e" compoundref="de/d05/Device_8h" startline="883">map</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga20093f61916baa598c1ed6899fc6e0ee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1ga9dc4924041e297df8a23823be32c7e63" kindref="member">iterator</ref></type>
+        <definition>iterator mutabor::InputDeviceClass::current_keys_type::begin</definition>
+        <argsstring>()</argsstring>
+        <name>begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="877" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="877" bodyend="877"/>
+        <references refid="d5/dee/group__route_1ga9eb823358514d41552a756fd53c1046e" compoundref="de/d05/Device_8h" startline="883">map</references>
+        <referencedby refid="d5/dee/group__route_1ga16e5549446e1eff905acfaa343ea254b" compoundref="d2/dc0/Device_8cpp" startline="321" endline="333">mutabor::InputDeviceClass::Panic</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga3e2341aa9a2efc92ab2230928e5ce143" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1gab90674730831db317278dc9486c35dff" kindref="member">const_iterator</ref></type>
+        <definition>const_iterator mutabor::InputDeviceClass::current_keys_type::begin</definition>
+        <argsstring>() const </argsstring>
+        <name>begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="878" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="878" bodyend="878"/>
+        <references refid="d5/dee/group__route_1ga9eb823358514d41552a756fd53c1046e" compoundref="de/d05/Device_8h" startline="883">map</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gad19dacd14e10267a9275a70acde77bf3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1ga9dc4924041e297df8a23823be32c7e63" kindref="member">iterator</ref></type>
+        <definition>iterator mutabor::InputDeviceClass::current_keys_type::end</definition>
+        <argsstring>()</argsstring>
+        <name>end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="880" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="880" bodyend="880"/>
+        <references refid="d5/dee/group__route_1ga9eb823358514d41552a756fd53c1046e" compoundref="de/d05/Device_8h" startline="883">map</references>
+        <referencedby refid="d5/dee/group__route_1ga16e5549446e1eff905acfaa343ea254b" compoundref="d2/dc0/Device_8cpp" startline="321" endline="333">mutabor::InputDeviceClass::Panic</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga1ae960922657ff2fee192f977313fb03" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1gab90674730831db317278dc9486c35dff" kindref="member">const_iterator</ref></type>
+        <definition>const_iterator mutabor::InputDeviceClass::current_keys_type::end</definition>
+        <argsstring>() const </argsstring>
+        <name>end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="881" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="881" bodyend="881"/>
+        <references refid="d5/dee/group__route_1ga9eb823358514d41552a756fd53c1046e" compoundref="de/d05/Device_8h" startline="883">map</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="826" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="826" bodyend="884"/>
+    <listofallmembers>
+      <member refid="d5/dee/group__route_1ga3a786b7012a67df221d51392a837deec" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass::current_keys_type</scope><name>add</name></member>
+      <member refid="d5/dee/group__route_1ga20093f61916baa598c1ed6899fc6e0ee" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass::current_keys_type</scope><name>begin</name></member>
+      <member refid="d5/dee/group__route_1ga3e2341aa9a2efc92ab2230928e5ce143" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass::current_keys_type</scope><name>begin</name></member>
+      <member refid="d5/dee/group__route_1gab90674730831db317278dc9486c35dff" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass::current_keys_type</scope><name>const_iterator</name></member>
+      <member refid="d5/dee/group__route_1gad19dacd14e10267a9275a70acde77bf3" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass::current_keys_type</scope><name>end</name></member>
+      <member refid="d5/dee/group__route_1ga1ae960922657ff2fee192f977313fb03" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass::current_keys_type</scope><name>end</name></member>
+      <member refid="d5/dee/group__route_1ga9dc4924041e297df8a23823be32c7e63" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass::current_keys_type</scope><name>iterator</name></member>
+      <member refid="d5/dee/group__route_1ga9eb823358514d41552a756fd53c1046e" prot="protected" virt="non-virtual"><scope>mutabor::InputDeviceClass::current_keys_type</scope><name>map</name></member>
+      <member refid="d5/dee/group__route_1ga29742be645919e7dc51a018f28377afd" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass::current_keys_type</scope><name>map_type</name></member>
+      <member refid="d5/dee/group__route_1ga5e13cc8cc989f36f96831ccef9835047" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass::current_keys_type</scope><name>remove</name></member>
+      <member refid="d5/dee/group__route_1ga9f5fee3723bbf66c083bc81da52a8842" prot="public" virt="non-virtual"><scope>mutabor::InputDeviceClass::current_keys_type</scope><name>remove</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

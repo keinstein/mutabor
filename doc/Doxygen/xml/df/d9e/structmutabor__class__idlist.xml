@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="df/d9e/structmutabor__class__idlist" kind="struct" prot="public">
+    <compoundname>mutabor_class_idlist</compoundname>
+    <includes refid="d9/d31/idlist_8h" local="no">idlist.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="df/d9e/structmutabor__class__idlist_1a5ecc1d1c8e2da9fe08f5a92678811fb2" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d0/dff/structmutabor__class__object" kindref="compound">mutabor_class_object</ref></type>
+        <definition>struct mutabor_class_object mutabor_class_idlist::_</definition>
+        <argsstring></argsstring>
+        <name>_</name>
+        <briefdescription>
+<para>Parent class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/idlist.h" line="50" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/idlist.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d9e/structmutabor__class__idlist_1aae200eb091a12d478111b69bd998f926" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t mutabor_class_idlist::number</definition>
+        <argsstring></argsstring>
+        <name>number</name>
+        <briefdescription>
+<para>Current number of entries. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/idlist.h" line="29" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/idlist.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d9e/structmutabor__class__idlist_1ac0cf64e549fbd26bff3175947a8a192f" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t mutabor_class_idlist::arraysize</definition>
+        <argsstring></argsstring>
+        <name>arraysize</name>
+        <briefdescription>
+<para>Maximum number of entries. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/idlist.h" line="30" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/idlist.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d9e/structmutabor__class__idlist_1a38f089f9c013d3a0b76f8ecce6ffe415" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor_class_idlist::status</definition>
+        <argsstring></argsstring>
+        <name>status</name>
+        <briefdescription>
+<para>1 sorted according name, 2 sorted according pointers </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/idlist.h" line="31" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/idlist.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="df/d9e/structmutabor__class__idlist_1a7ee8bdd8ffa2bd3d3b7507c643744ab5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mutabor_class_idlist::MUT_CLASS</definition>
+        <argsstring>(identifier)**array</argsstring>
+        <name>MUT_CLASS</name>
+        <param>
+          <type>identifier</type>
+        </param>
+        <briefdescription>
+<para>Entries of class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/idlist.h" line="32" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3632">
+        <label>mutabor_class_object</label>
+        <link refid="d0/dff/structmutabor__class__object"/>
+        <childnode refid="3633" relation="usage">
+          <edgelabel>virttable</edgelabel>
+        </childnode>
+      </node>
+      <node id="3631">
+        <label>mutabor_class_idlist</label>
+        <link refid="df/d9e/structmutabor__class__idlist"/>
+        <childnode refid="3632" relation="usage">
+          <edgelabel>_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3633">
+        <label>mutabor_virttable_object</label>
+        <link refid="d7/dc5/structmutabor__virttable__object"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/idlist.h" line="27" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/idlist.h" bodystart="27" bodyend="33"/>
+    <listofallmembers>
+      <member refid="df/d9e/structmutabor__class__idlist_1a5ecc1d1c8e2da9fe08f5a92678811fb2" prot="public" virt="non-virtual"><scope>mutabor_class_idlist</scope><name>_</name></member>
+      <member refid="df/d9e/structmutabor__class__idlist_1ac0cf64e549fbd26bff3175947a8a192f" prot="public" virt="non-virtual"><scope>mutabor_class_idlist</scope><name>arraysize</name></member>
+      <member refid="df/d9e/structmutabor__class__idlist_1a7ee8bdd8ffa2bd3d3b7507c643744ab5" prot="public" virt="non-virtual"><scope>mutabor_class_idlist</scope><name>MUT_CLASS</name></member>
+      <member refid="df/d9e/structmutabor__class__idlist_1aae200eb091a12d478111b69bd998f926" prot="public" virt="non-virtual"><scope>mutabor_class_idlist</scope><name>number</name></member>
+      <member refid="df/d9e/structmutabor__class__idlist_1a38f089f9c013d3a0b76f8ecce6ffe415" prot="public" virt="non-virtual"><scope>mutabor_class_idlist</scope><name>status</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

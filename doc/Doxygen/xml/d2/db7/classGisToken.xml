@@ -1,0 +1,268 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d2/db7/classGisToken" kind="class" prot="public">
+    <compoundname>GisToken</compoundname>
+    <derivedcompoundref refid="dd/d84/classGisComma" prot="public" virt="non-virtual">GisComma</derivedcompoundref>
+    <derivedcompoundref refid="d9/d18/classGisNote" prot="public" virt="non-virtual">GisNote</derivedcompoundref>
+    <derivedcompoundref refid="de/d07/classGisParaInt" prot="public" virt="non-virtual">GisParaInt</derivedcompoundref>
+    <derivedcompoundref refid="d2/dd5/classGisParaReal" prot="public" virt="non-virtual">GisParaReal</derivedcompoundref>
+    <derivedcompoundref refid="d1/dff/classGisParaStr" prot="public" virt="non-virtual">GisParaStr</derivedcompoundref>
+    <derivedcompoundref refid="d3/d6e/classGisSegment" prot="public" virt="non-virtual">GisSegment</derivedcompoundref>
+    <derivedcompoundref refid="d1/dab/classGisSequenz" prot="public" virt="non-virtual">GisSequenz</derivedcompoundref>
+    <derivedcompoundref refid="d2/d39/classGisTag" prot="public" virt="non-virtual">GisTag</derivedcompoundref>
+    <derivedcompoundref refid="d6/dd8/classGisTagEnd" prot="public" virt="non-virtual">GisTagEnd</derivedcompoundref>
+    <includes refid="dd/d4d/GIS_8h" local="no">GIS.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d2/db7/classGisToken_1a5ebe3590397490871cf0839a758e2449" prot="public" static="no" mutable="no">
+        <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+        <definition>GisToken* GisToken::Next</definition>
+        <argsstring></argsstring>
+        <name>Next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="136" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="136" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gab1e2df8df2924634f08785c6094a87fe" compoundref="dc/de7/GIS_8cpp" startline="604" endline="636">BeginRange</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga91f344ae323aa9bd419b2c09f0467fc8" compoundref="dc/de7/GIS_8cpp" startline="829" endline="842">CopyPara</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaba99a430e658d303cbc5307bb3abf644" compoundref="d7/da0/GIS__Head_8cpp" startline="265" endline="300">GisReadHead::CreateSegmentSubs</referencedby>
+        <referencedby refid="d9/d81/classGisReadHead_1ab58ced6bee32e0053fce7a446ba02198" compoundref="d1/db5/GIS__Head_8h" startline="106" endline="119">GisReadHead::CursorNext</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga0ab350614a42dc9bb9a1d6787d791873" compoundref="dc/de7/GIS_8cpp" startline="638" endline="655">EndRange</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4e761beabd436e637acce85eed23c0df" compoundref="dc/de7/GIS_8cpp" startline="534" endline="549">EndSegment</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga81a2c22667310abe6f1689bf9603c3c5" compoundref="dc/de7/GIS_8cpp" startline="568" endline="583">EndSequenz</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga30397720551d90c7b4c365e1b90ae468" compoundref="dc/de7/GIS_8cpp" startline="184" endline="197">GisTag::GetPara</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga82fc1da164f958f9a922e84608122be3" compoundref="dc/de7/GIS_8cpp" startline="166" endline="182">GisTag::GetParaType</referencedby>
+        <referencedby refid="d2/db7/classGisToken_1aa7d3797aec95b6fe33acf8c255fc1268" compoundref="dd/d4d/GIS_8h" startline="139" endline="144">GisToken</referencedby>
+        <referencedby refid="d6/daa/namespacemutabor_1a6c6dd4d41e9b8d75edcab3d4bce654d9" compoundref="db/d78/DevGIS_8cpp" startline="376" endline="395">mutabor::MutaborTag</referencedby>
+        <referencedby refid="d5/dee/group__route_1gae44f190b817baaaef925c168970fd0d3" compoundref="d7/da0/GIS__Head_8cpp" startline="963" endline="998">ChordNote::MutNoteOff</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga82dd2e1391c6d95b63414074ff83b8ad" compoundref="dc/de7/GIS_8cpp" startline="666" endline="687">Note</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4f2e1a9d69f1a8c5242c72a53783a5c9" compoundref="d7/da0/GIS__Head_8cpp" startline="1083" endline="1129">GisWriteHead::ReadyForBoss</referencedby>
+        <referencedby refid="d5/dee/group__route_1gacb80104f8924cb3e582b980e5aea8ef1" compoundref="d7/da0/GIS__Head_8cpp" startline="1131" endline="1147">GisWriteHead::RemoveComma</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaca5d2f6123a742c9dc4d52418021345d" compoundref="dc/de7/GIS_8cpp" startline="704" endline="717">TagParaInt</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga3a0cda9865ec382e1010912afcb02a26" compoundref="dc/de7/GIS_8cpp" startline="719" endline="732">TagParaReal</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga2c172af0fc0e8761bbb2085f6de2948f" compoundref="dc/de7/GIS_8cpp" startline="734" endline="747">TagParaStr</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga44f4256ba571040a38e77dafd05d367d" compoundref="dc/de7/GIS_8cpp" startline="766" endline="782">UnRavel</referencedby>
+        <referencedby refid="d2/db7/classGisToken_1ab3ec071213876b13b7ce9f9900cfec69" compoundref="dd/d4d/GIS_8h" startline="146" endline="152">~GisToken</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/db7/classGisToken_1a5987643937d79847fcd3f0dab8fe4b58" prot="public" static="no" mutable="no">
+        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+        <definition>mutString GisToken::Sep</definition>
+        <argsstring></argsstring>
+        <name>Sep</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="137" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="137" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gade7d82fdf052395a3d9a34b7d205508c" compoundref="d7/da0/GIS__Head_8cpp" startline="865" endline="871">ChordNote::AddGis</referencedby>
+        <referencedby refid="d5/dee/group__route_1gab1e2df8df2924634f08785c6094a87fe" compoundref="dc/de7/GIS_8cpp" startline="604" endline="636">BeginRange</referencedby>
+        <referencedby refid="d2/db7/classGisToken_1a699f4bc89b801908bd6178f6f144d645" compoundref="dd/d4d/GIS_8h" startline="159" endline="163">Copy</referencedby>
+        <referencedby refid="d2/d39/classGisTag_1a573aa9036bde802c46f070ebc65db841" compoundref="dd/d4d/GIS_8h" startline="340" endline="344">GisTag::Copy</referencedby>
+        <referencedby refid="d3/d63/classGisTagBegin_1abdbeee9c850147d848614da11b1da641" compoundref="dd/d4d/GIS_8h" startline="394" endline="398">GisTagBegin::Copy</referencedby>
+        <referencedby refid="de/d07/classGisParaInt_1af2011cf03ce93cd763dd31bad70647fd" compoundref="dd/d4d/GIS_8h" startline="525" endline="529">GisParaInt::Copy</referencedby>
+        <referencedby refid="d2/dd5/classGisParaReal_1a30099f7ffdd5e3519437df8606181ca5" compoundref="dd/d4d/GIS_8h" startline="563" endline="567">GisParaReal::Copy</referencedby>
+        <referencedby refid="d1/dff/classGisParaStr_1a926184f3252cf1283fd0bbd0a3ca210c" compoundref="dd/d4d/GIS_8h" startline="612" endline="616">GisParaStr::Copy</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4737d5b0189223544ed086af2ab92ceb" compoundref="dc/de7/GIS_8cpp" startline="592" endline="602">EndParameter</referencedby>
+        <referencedby refid="d2/db7/classGisToken_1aa7d3797aec95b6fe33acf8c255fc1268" compoundref="dd/d4d/GIS_8h" startline="139" endline="144">GisToken</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga01b0810f119d47c9a4909a3d2fc44921" compoundref="d7/da0/GIS__Head_8cpp" startline="935" endline="961">ChordNote::MutNoteOn</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a2b3ede588a224861e7a1810e983c6b45" compoundref="db/d78/DevGIS_8cpp" startline="399" endline="488">mutabor::InputGis::Proceed</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac73921011ef5b7af1c87336ca033f97c" compoundref="d7/da0/GIS__Head_8cpp" startline="1258" endline="1387">GisWriteHead::ProceedGis</referencedby>
+        <referencedby refid="d2/db7/classGisToken_1ab3ec071213876b13b7ce9f9900cfec69" compoundref="dd/d4d/GIS_8h" startline="146" endline="152">~GisToken</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d2/db7/classGisToken_1aa7d3797aec95b6fe33acf8c255fc1268" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GisToken::GisToken</definition>
+        <argsstring>(const mutString &amp;sep=mutEmptyString, GisToken *next=0)</argsstring>
+        <name>GisToken</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref> &amp;</type>
+          <declname>sep</declname>
+          <defval><ref refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" kindref="member">mutEmptyString</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+          <declname>next</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="139" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="139" bodyend="144"/>
+        <references refid="d5/dee/group__route_1gaa0037a2877aeb7d2658ae43bdff3b245" compoundref="dd/d4d/GIS_8h" startline="73">CHECKDUP</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d2/db7/classGisToken_1a5ebe3590397490871cf0839a758e2449" compoundref="dd/d4d/GIS_8h" startline="136">Next</references>
+        <references refid="d2/db7/classGisToken_1a5987643937d79847fcd3f0dab8fe4b58" compoundref="dd/d4d/GIS_8h" startline="137">Sep</references>
+        <referencedby refid="d2/db7/classGisToken_1a699f4bc89b801908bd6178f6f144d645" compoundref="dd/d4d/GIS_8h" startline="159" endline="163">Copy</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/db7/classGisToken_1ab3ec071213876b13b7ce9f9900cfec69" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual GisToken::~GisToken</definition>
+        <argsstring>()</argsstring>
+        <name>~GisToken</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="146" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="146" bodyend="152"/>
+        <references refid="d9/d7c/group__kernel_1gae1886fec5e1bc39af4e253f3508da561" compoundref="d1/d73/Defs_8h" startline="172">mutFreeString</references>
+        <references refid="d2/db7/classGisToken_1a5ebe3590397490871cf0839a758e2449" compoundref="dd/d4d/GIS_8h" startline="136">Next</references>
+        <references refid="d2/db7/classGisToken_1a5987643937d79847fcd3f0dab8fe4b58" compoundref="dd/d4d/GIS_8h" startline="137">Sep</references>
+      </memberdef>
+      <memberdef kind="function" id="d2/db7/classGisToken_1ae4d7f75c10842938ece11120d1665106" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d5/dee/group__route_1gaef354ea2f89281ef17c6735860c89861" kindref="member">GisType</ref></type>
+        <definition>virtual GisType GisToken::Type</definition>
+        <argsstring>() const </argsstring>
+        <name>Type</name>
+        <reimplementedby refid="d1/dab/classGisSequenz_1af9dfc7d8d2224bf45ff7b301d0a7638f">Type</reimplementedby>
+        <reimplementedby refid="d3/d6e/classGisSegment_1a4fc149b3027b0d6f40a52a3cc9c4167d">Type</reimplementedby>
+        <reimplementedby refid="d2/d39/classGisTag_1ae500ebda527c6983bb995b5b8667c86a">Type</reimplementedby>
+        <reimplementedby refid="d3/d63/classGisTagBegin_1a829e4ae0d73a445be44f797796786715">Type</reimplementedby>
+        <reimplementedby refid="d6/dd8/classGisTagEnd_1ad587f30e7c7d72b09030554ed764fb41">Type</reimplementedby>
+        <reimplementedby refid="d9/d18/classGisNote_1adb2dd88b6c75627ce670ab78fd560f92">Type</reimplementedby>
+        <reimplementedby refid="de/d07/classGisParaInt_1aaaa7fe52543778b8ff9dbaa960d35da6">Type</reimplementedby>
+        <reimplementedby refid="d2/dd5/classGisParaReal_1a4fc892d925936c27ea4597c609515af8">Type</reimplementedby>
+        <reimplementedby refid="d1/dff/classGisParaStr_1afd8206deec0f0d74749f7c02f70c19d1">Type</reimplementedby>
+        <reimplementedby refid="dd/d84/classGisComma_1a9f75b10a8fbf50c151eb777ca1144476">Type</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="154" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="154" bodyend="157"/>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861a2d3629aea860ee3797112abeb3918fbf" compoundref="dd/d4d/GIS_8h" startline="117">GTUnknown</references>
+        <referencedby refid="d5/dee/group__route_1ga6522b1d7d30fe61d96170fce084f9c68" compoundref="d7/da0/GIS__Head_8cpp" startline="778" endline="790">CmpNote</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaba99a430e658d303cbc5307bb3abf644" compoundref="d7/da0/GIS__Head_8cpp" startline="265" endline="300">GisReadHead::CreateSegmentSubs</referencedby>
+        <referencedby refid="d9/d81/classGisReadHead_1ab58ced6bee32e0053fce7a446ba02198" compoundref="d1/db5/GIS__Head_8h" startline="106" endline="119">GisReadHead::CursorNext</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga48508764452cf587dd6f5c57e6b877a2" compoundref="dc/de7/GIS_8cpp" startline="787" endline="793">GetGisType</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga82fc1da164f958f9a922e84608122be3" compoundref="dc/de7/GIS_8cpp" startline="166" endline="182">GisTag::GetParaType</referencedby>
+        <referencedby refid="d6/daa/namespacemutabor_1a6c6dd4d41e9b8d75edcab3d4bce654d9" compoundref="db/d78/DevGIS_8cpp" startline="376" endline="395">mutabor::MutaborTag</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac73921011ef5b7af1c87336ca033f97c" compoundref="d7/da0/GIS__Head_8cpp" startline="1258" endline="1387">GisWriteHead::ProceedGis</referencedby>
+        <referencedby refid="d5/dee/group__route_1gace29001e83c7545b74e6cd63c0a47bc6" compoundref="d7/da0/GIS__Head_8cpp" startline="319" endline="350">GisReadHead::Read</referencedby>
+        <referencedby refid="d5/dee/group__route_1gadd30cf551924b6e57607f265e6ac5d3d" compoundref="d7/da0/GIS__Head_8cpp" startline="516" endline="624">GisReadArtHead::Read</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4f2e1a9d69f1a8c5242c72a53783a5c9" compoundref="d7/da0/GIS__Head_8cpp" startline="1083" endline="1129">GisWriteHead::ReadyForBoss</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/db7/classGisToken_1a699f4bc89b801908bd6178f6f144d645" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+        <definition>virtual GisToken* GisToken::Copy</definition>
+        <argsstring>()</argsstring>
+        <name>Copy</name>
+        <reimplementedby refid="d2/d39/classGisTag_1a573aa9036bde802c46f070ebc65db841">Copy</reimplementedby>
+        <reimplementedby refid="d3/d63/classGisTagBegin_1abdbeee9c850147d848614da11b1da641">Copy</reimplementedby>
+        <reimplementedby refid="de/d07/classGisParaInt_1af2011cf03ce93cd763dd31bad70647fd">Copy</reimplementedby>
+        <reimplementedby refid="d2/dd5/classGisParaReal_1a30099f7ffdd5e3519437df8606181ca5">Copy</reimplementedby>
+        <reimplementedby refid="d1/dff/classGisParaStr_1a926184f3252cf1283fd0bbd0a3ca210c">Copy</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="159" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="159" bodyend="163"/>
+        <references refid="d2/db7/classGisToken_1aa7d3797aec95b6fe33acf8c255fc1268" compoundref="dd/d4d/GIS_8h" startline="139" endline="144">GisToken</references>
+        <references refid="d2/db7/classGisToken_1a5987643937d79847fcd3f0dab8fe4b58" compoundref="dd/d4d/GIS_8h" startline="137">Sep</references>
+        <referencedby refid="d5/dee/group__route_1ga91f344ae323aa9bd419b2c09f0467fc8" compoundref="dc/de7/GIS_8cpp" startline="829" endline="842">CopyPara</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac73921011ef5b7af1c87336ca033f97c" compoundref="d7/da0/GIS__Head_8cpp" startline="1258" endline="1387">GisWriteHead::ProceedGis</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2822">
+        <label>GisTagBegin</label>
+        <link refid="d3/d63/classGisTagBegin"/>
+        <childnode refid="2821" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2817">
+        <label>GisParaReal</label>
+        <link refid="d2/dd5/classGisParaReal"/>
+        <childnode refid="2813" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2819">
+        <label>GisSegment</label>
+        <link refid="d3/d6e/classGisSegment"/>
+        <childnode refid="2813" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2821">
+        <label>GisTag</label>
+        <link refid="d2/d39/classGisTag"/>
+        <childnode refid="2813" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2816">
+        <label>GisParaInt</label>
+        <link refid="de/d07/classGisParaInt"/>
+        <childnode refid="2813" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2815">
+        <label>GisNote</label>
+        <link refid="d9/d18/classGisNote"/>
+        <childnode refid="2813" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2814">
+        <label>GisComma</label>
+        <link refid="dd/d84/classGisComma"/>
+        <childnode refid="2813" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2818">
+        <label>GisParaStr</label>
+        <link refid="d1/dff/classGisParaStr"/>
+        <childnode refid="2813" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2820">
+        <label>GisSequenz</label>
+        <link refid="d1/dab/classGisSequenz"/>
+        <childnode refid="2813" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2823">
+        <label>GisTagEnd</label>
+        <link refid="d6/dd8/classGisTagEnd"/>
+        <childnode refid="2813" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2813">
+        <label>GisToken</label>
+        <link refid="d2/db7/classGisToken"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2824">
+        <label>GisToken</label>
+        <link refid="d2/db7/classGisToken"/>
+        <childnode refid="2824" relation="usage">
+          <edgelabel>Next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="133" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="132" bodyend="188"/>
+    <listofallmembers>
+      <member refid="d2/db7/classGisToken_1a699f4bc89b801908bd6178f6f144d645" prot="public" virt="virtual"><scope>GisToken</scope><name>Copy</name></member>
+      <member refid="d2/db7/classGisToken_1aa7d3797aec95b6fe33acf8c255fc1268" prot="public" virt="non-virtual"><scope>GisToken</scope><name>GisToken</name></member>
+      <member refid="d2/db7/classGisToken_1a5ebe3590397490871cf0839a758e2449" prot="public" virt="non-virtual"><scope>GisToken</scope><name>Next</name></member>
+      <member refid="d2/db7/classGisToken_1a5987643937d79847fcd3f0dab8fe4b58" prot="public" virt="non-virtual"><scope>GisToken</scope><name>Sep</name></member>
+      <member refid="d2/db7/classGisToken_1ae4d7f75c10842938ece11120d1665106" prot="public" virt="virtual"><scope>GisToken</scope><name>Type</name></member>
+      <member refid="d2/db7/classGisToken_1ab3ec071213876b13b7ce9f9900cfec69" prot="public" virt="virtual"><scope>GisToken</scope><name>~GisToken</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

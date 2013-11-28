@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d3/dfe/structChannel" kind="struct" prot="public">
+    <compoundname>Channel</compoundname>
+    <includes refid="d2/d71/mis_8h" local="no">mis.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d3/dfe/structChannel_1a27f174b2ee01796966771fb2d65630a5" prot="public" static="no" mutable="no">
+        <type>WORD</type>
+        <definition>WORD Channel::Pitch</definition>
+        <argsstring></argsstring>
+        <name>Pitch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="34" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" bodystart="34" bodyend="-1"/>
+        <referencedby refid="da/dd9/classMisTrack_1a694f02e7747bbf296cab639993f8527c" compoundref="d4/df2/mis_8cpp" startline="623" endline="647">MisTrack::AddNoteOn</referencedby>
+        <referencedby refid="d5/d67/classMisFile_1a8c89dbe3cf8c2699ebc1bff23fb68226" compoundref="d4/df2/mis_8cpp" startline="246" endline="257">MisFile::GetNote</referencedby>
+        <referencedby refid="d5/d67/classMisFile_1aa7384911209dce2e873193481e44e5e8" compoundref="d4/df2/mis_8cpp" startline="188" endline="209">MisFile::WriteInit</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dfe/structChannel_1af128cbb30a6bbfceb6aa6133608e49da" prot="public" static="no" mutable="no">
+        <type>signed <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <definition>signed char Channel::Sound</definition>
+        <argsstring></argsstring>
+        <name>Sound</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="35" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" bodystart="35" bodyend="-1"/>
+        <referencedby refid="da/dd9/classMisTrack_1a694f02e7747bbf296cab639993f8527c" compoundref="d4/df2/mis_8cpp" startline="623" endline="647">MisTrack::AddNoteOn</referencedby>
+        <referencedby refid="d5/d67/classMisFile_1aa7384911209dce2e873193481e44e5e8" compoundref="d4/df2/mis_8cpp" startline="188" endline="209">MisFile::WriteInit</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dfe/structChannel_1aa6d536be5f9f9481444df2b816ad6f6b" prot="public" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <definition>char Channel::Track</definition>
+        <argsstring></argsstring>
+        <name>Track</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="36" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" bodystart="36" bodyend="-1"/>
+        <referencedby refid="d5/d67/classMisFile_1aa7384911209dce2e873193481e44e5e8" compoundref="d4/df2/mis_8cpp" startline="188" endline="209">MisFile::WriteInit</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dfe/structChannel_1a7378c50b14adcc3529519765169af413" prot="public" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <definition>char Channel::nNotesOn</definition>
+        <argsstring></argsstring>
+        <name>nNotesOn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="37" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="d5/d67/classMisFile_1a2be093cb1ceb3ae8bc21471f4d952f10" compoundref="d4/df2/mis_8cpp" startline="259" endline="281">MisFile::GetChannel</referencedby>
+        <referencedby refid="d5/d67/classMisFile_1a1c3662b5cbdfd72092550ccd7161edd8" compoundref="d4/df2/mis_8cpp" startline="297" endline="316">MisFile::NoteOff</referencedby>
+        <referencedby refid="d5/d67/classMisFile_1afbfe568fd3c9cec8a7a72b10075ffea1" compoundref="d4/df2/mis_8cpp" startline="283" endline="295">MisFile::NoteOn</referencedby>
+        <referencedby refid="d5/d67/classMisFile_1aa7384911209dce2e873193481e44e5e8" compoundref="d4/df2/mis_8cpp" startline="188" endline="209">MisFile::WriteInit</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="33" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" bodystart="32" bodyend="38"/>
+    <listofallmembers>
+      <member refid="d3/dfe/structChannel_1a7378c50b14adcc3529519765169af413" prot="public" virt="non-virtual"><scope>Channel</scope><name>nNotesOn</name></member>
+      <member refid="d3/dfe/structChannel_1a27f174b2ee01796966771fb2d65630a5" prot="public" virt="non-virtual"><scope>Channel</scope><name>Pitch</name></member>
+      <member refid="d3/dfe/structChannel_1af128cbb30a6bbfceb6aa6133608e49da" prot="public" virt="non-virtual"><scope>Channel</scope><name>Sound</name></member>
+      <member refid="d3/dfe/structChannel_1aa6d536be5f9f9481444df2b816ad6f6b" prot="public" virt="non-virtual"><scope>Channel</scope><name>Track</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="de/deb/group__other" kind="group">
+    <compoundname>other</compoundname>
+    <title>Other</title>
+    <innerclass refid="de/dc3/classmhArray" prot="public">mhArray</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="de/deb/group__other_1ga4bf69bf7eafbfad9a587037107b24895" prot="public" static="no">
+        <name>DEF_MHARRAY</name>
+        <param><defname>T</defname></param>
+        <param><defname>name</defname></param>
+        <param><defname>baseType</defname></param>
+        <initializer>class <ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>							\
+	{								\
+	public:								\
+		baseType data;						\
+		<ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>(int WXUNUSED(i), int WXUNUSED(j), int WXUNUSED(k)) {}; \
+		~<ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>() {};						\
+		size_t GetItemsInContainer() <ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> { return data.GetCount(); } \
+		void Flush() { <ref refid="d5/dee/group__route_1gab2524a8fcb1ddb8058d406e9f3728a7f" kindref="member">data.Clear</ref>(); }				\
+		void Add(T t) { data.Add(t); }				\
+		T&amp; operator[](size_t uiIndex) <ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> { return data[uiIndex]; } \
+		void Destroy(size_t uiIndex) { data.RemoveAt(uiIndex); } \
+		void AddAt(T t, size_t uiIndex) { data.Insert(t, uiIndex); } \
+		void RemoveEntry(size_t uiIndex) { data.RemoveAt(uiIndex); } \
+	}								\</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" line="45" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/deb/group__other_1gac13eeba7e6b510bded3bbe21acb0bc38" prot="public" static="no">
+        <name>DEF_MHARRAYPTR</name>
+        <param><defname>T</defname></param>
+        <param><defname>name</defname></param>
+        <param><defname>baseType</defname></param>
+        <initializer>class <ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>							\
+	{								\
+	public:								\
+		baseType data;						\
+		<ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>(int WXUNUSED(i), int WXUNUSED(j), int WXUNUSED(k)) {}; \
+		~<ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>() {};						\
+		size_t GetItemsInContainer() <ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> { return data.GetCount(); } \
+		void Add(T t) { data.Add(new T(t)); }			\
+		void Flush() { <ref refid="d5/dee/group__route_1gab2524a8fcb1ddb8058d406e9f3728a7f" kindref="member">data.Clear</ref>(); }				\
+		void RemoveEntry(size_t i) { data.RemoveAt(i); }	\
+		T&amp; operator[](size_t uiIndex) <ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> { return *(data[uiIndex]); } \
+		void Destroy(size_t uiIndex) { /*delete data[uiIndex];*/ data.RemoveAt(uiIndex); } \
+		void AddAt(T t, size_t uiIndex) { data.Insert(new T(t), uiIndex); } \
+	};								\</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" line="63" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/deb/group__other_1gaa873f7f7e648721be916a5b924b94cce" prot="public" static="no">
+        <name>DEF_STACK</name>
+        <param><defname>T</defname></param>
+        <param><defname>name</defname></param>
+        <param><defname>baseType</defname></param>
+        <initializer>class <ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>															\
+{                                                                   \
+public:                                                             \
+	baseType data;												\
+    <ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>() {};                       \
+    <ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>(int WXUNUSED(i), int WXUNUSED(j), int WXUNUSED(k)) {};                       \
+	~<ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>() {};														\
+	void Push(T t) { data.Add(t); }									\
+	T Pop() { T <ref refid="d7/d76/mutgis_8h_1a26506d124b947beae862c007bc8195bb" kindref="member">h</ref> = data.Last(); data.RemoveAt(data.GetCount()-1); return <ref refid="d7/d76/mutgis_8h_1a26506d124b947beae862c007bc8195bb" kindref="member">h</ref>; } \
+	<ref refid="df/d8e/bad__decl_8h_1abb452686968e48b67397da5f97445f5b" kindref="member">bool</ref> IsEmpty() <ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> { return data.GetCount() == 0; }			\
+	T Top() <ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> { return data.Last(); }							\
+};																	\</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" line="79" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhArray.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

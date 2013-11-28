@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/kernel/routing/Box.cpp-Dateireferenz</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cbd7f246bdf7dc0a50281a272327e6ed.html">kernel</a></li><li class="navelem"><a class="el" href="../../dir_02be4fa82aae8ff4c4cc45bceb47856f.html">routing</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Klassen</a> &#124;
+<a href="#namespaces">Namensbereiche</a> &#124;
+<a href="#func-members">Funktionen</a>  </div>
+  <div class="headertitle">
+<div class="title">Box.cpp-Dateireferenz</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Devices for routing.  
+<a href="#details">Mehr ...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="../../de/d0f/Box_8h_source.html">src/kernel/routing/Box.h</a>&quot;</code><br/>
+<code>#include &lt;algorithm&gt;</code><br/>
+<code>#include &lt;queue&gt;</code><br/>
+<code>#include &quot;<a class="el" href="../../d6/d9a/Box-inlines_8h_source.html">src/kernel/routing/Box-inlines.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d2/d2c/Route-inlines_8h_source.html">src/kernel/routing/Route-inlines.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d1/d65/Route_8h_source.html">src/kernel/routing/Route.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../dc/d19/box_8h_source.html">src/kernel/box.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../dd/d40/Global_8h_source.html">src/kernel/Global.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d6/d68/TabGen_8h_source.html">src/kernel/TabGen.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d6/d0c/Parser_8h_source.html">src/kernel/Parser.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d5/d84/Runtime_8h_source.html">src/kernel/Runtime.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../de/d11/Execute_8h_source.html">src/kernel/Execute.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d2/dd8/Interpre_8h_source.html">src/kernel/Interpre.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d2/d32/Hilfs_8h_source.html">src/kernel/Hilfs.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d1/d55/Interval_8h_source.html">src/kernel/Interval.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Include-Abhängigkeitsdiagramm für Box.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/d76/Box_8cpp__incl.png" border="0" usemap="#src_2kernel_2routing_2Box_8cpp" alt=""/></div>
+<map name="src_2kernel_2routing_2Box_8cpp" id="src_2kernel_2routing_2Box_8cpp">
+<area shape="rect" id="node3" href="../../de/d0f/Box_8h.html" title="Mutabor Box for C++. " alt="" coords="1036,286,1169,330"/><area shape="rect" id="node17" href="../../d1/d65/Route_8h.html" title="Routing. " alt="" coords="1376,379,1509,423"/><area shape="rect" id="node36" href="../../de/d11/Execute_8h.html" title="Execute tuning changes. " alt="" coords="552,481,701,509"/><area shape="rect" id="node41" href="../../dc/d19/box_8h.html" title="Description: Collect all properties, which are used by boxes. " alt="" coords="304,387,427,415"/><area shape="rect" id="node44" href="../../dd/d40/Global_8h.html" title="Global definitions (formerly in mutabor DLL) " alt="" coords="101,574,176,602"/><area shape="rect" id="node55" href="../../d2/dd8/Interpre_8h.html" title="Interpreter for the logic at runtime. " alt="" coords="195,481,277,509"/><area shape="rect" id="node73" href="../../d6/d9a/Box-inlines_8h.html" title="src/kernel/routing\l/Box&#45;inlines.h" alt="" coords="799,99,932,143"/><area shape="rect" id="node78" href="../../d2/d2c/Route-inlines_8h.html" title="src/kernel/routing\l/Route&#45;inlines.h" alt="" coords="1245,193,1379,237"/><area shape="rect" id="node119" href="../../d6/d68/TabGen_8h.html" title="Table generators for the Mutabor engine. " alt="" coords="2155,201,2301,229"/><area shape="rect" id="node122" href="../../d6/d0c/Parser_8h.html" title="src/kernel/Parser.h" alt="" coords="91,294,229,322"/><area shape="rect" id="node129" href="../../d5/d84/Runtime_8h.html" title="Runtime functions of the (mainly C) old kernel of Mutabor. " alt="" coords="2665,107,2817,135"/><area shape="rect" id="node157" href="../../d2/d32/Hilfs_8h.html" title="Description. " alt="" coords="408,294,533,322"/><area shape="rect" id="node162" href="../../d1/d55/Interval_8h.html" title="Description. " alt="" coords="2341,107,2488,135"/><area shape="rect" id="node5" href="../../d1/d73/Defs_8h.html" title="Common definitions. " alt="" coords="1463,659,1591,687"/><area shape="rect" id="node11" href="../../db/dbe/treestorage_8h.html" title="abstract class for tree like storage " alt="" coords="1171,481,1344,509"/><area shape="rect" id="node14" href="../../db/dd5/thread_8h.html" title="src/kernel/routing\l/thread.h" alt="" coords="1512,566,1645,610"/><area shape="rect" id="node20" href="../../da/dfd/MidiKern_8h.html" title="Some MIDI macros. " alt="" coords="2051,481,2203,509"/><area shape="rect" id="node24" href="../../d1/da4/boost-interface_8h.html" title="Interface to the boost library. " alt="" coords="1419,481,1616,509"/><area shape="rect" id="node82" href="../../de/d05/Device_8h.html" title="Routing. " alt="" coords="1995,286,2128,330"/><area shape="rect" id="node85" href="../../dd/d4d/GIS_8h.html" title="Description. " alt="" coords="2419,473,2552,517"/><area shape="rect" id="node95" href="../../db/d41/timing_8h.html" title="src/kernel/routing\l/timing.h" alt="" coords="1891,379,2024,423"/><area shape="rect" id="node88" href="../../df/d4f/Frac_8h.html" title="Fraction class for Mutabor. " alt="" coords="2231,574,2356,602"/><area shape="rect" id="node132" href="../../d4/d7c/CompDlg_8h.html" title="Compilation dialog box. " alt="" coords="2779,201,2936,229"/><area shape="rect" id="node136" href="../../d3/daf/resourceload_8h.html" title="src/wxGUI/resourceload.h" alt="" coords="3056,294,3237,322"/></map>
+</div>
+</div>
+<p><a href="../../dd/dc6/Box_8cpp_source.html">gehe zum Quellcode dieser Datei</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Klassen</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dc4/structmutabor_1_1BoxClass__CallReset.html">mutabor::BoxClass_CallReset</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0d/structmutabor_1_1BoxClass__CallOpen.html">mutabor::BoxClass_CallOpen</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d22/structmutabor_1_1BoxClass__CallClose.html">mutabor::BoxClass_CallClose</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc8/structmutabor_1_1doexecute__flags.html">mutabor::doexecute_flags</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d36/structmutabor_1_1doexecute__action.html">mutabor::doexecute_action</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d4e/structmutabor_1_1BoxClass.html">mutabor::BoxClass</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d87/structmutabor_1_1dopanic__type.html">mutabor::dopanic_type</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namensbereiche</h2></td></tr>
+<tr class="memitem:d6/daa/namespacemutabor"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html">mutabor</a></td></tr>
+<tr class="memdesc:d6/daa/namespacemutabor"><td class="mdescLeft">&#160;</td><td class="mdescRight">not for headers <br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funktionen</h2></td></tr>
+<tr class="memitem:ga8376c87747866f9eb111644263144fc9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga8376c87747866f9eb111644263144fc9">mutabor::OpenAll</a> ()</td></tr>
+<tr class="separator:ga8376c87747866f9eb111644263144fc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35337f936c419173b816485e8a610643"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#a35337f936c419173b816485e8a610643">mutabor::append_triggers</a> (BoxClass::logic_list &amp;list, <a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct mutabor::hidden::logik *logic, struct <a class="el" href="../../d8/d8e/structkeyboard__ereignis.html">keyboard_ereignis</a> *keystrokes)</td></tr>
+<tr class="separator:a35337f936c419173b816485e8a610643"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa30b389dfd682214bbe90832609797be"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#aa30b389dfd682214bbe90832609797be">mutabor::append_triggers</a> (BoxClass::logic_list &amp;list, <a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct mutabor::hidden::logik *logic, struct <a class="el" href="../../d9/d5b/structharmonie__ereignis.html">harmonie_ereignis</a> *harmonies)</td></tr>
+<tr class="separator:aa30b389dfd682214bbe90832609797be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23f00ea48c3324de83a68ee1cf21e74f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#a23f00ea48c3324de83a68ee1cf21e74f">mutabor::append_triggers</a> (BoxClass::logic_list &amp;list, <a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct mutabor::hidden::logik *logic, struct <a class="el" href="../../d7/d77/structmidi__ereignis.html">midi_ereignis</a> *midis)</td></tr>
+<tr class="separator:a23f00ea48c3324de83a68ee1cf21e74f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cb895b86ad2f5aeef86f623f6e4c8c4"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#a9cb895b86ad2f5aeef86f623f6e4c8c4">mutabor::is_logic_key</a> (struct <a class="el" href="../../d8/d8e/structkeyboard__ereignis.html">keyboard_ereignis</a> *e, int key)</td></tr>
+<tr class="separator:a9cb895b86ad2f5aeef86f623f6e4c8c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a608cc1e9512743844d90a2be7c965165"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#a608cc1e9512743844d90a2be7c965165">mutabor::error_callback</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *b, error_type type, <a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> <a class="el" href="../../d5/dee/group__route.html#gafdffe3ab26a7d4cd9d6521731a6f396a">char</a> *message)</td></tr>
+<tr class="separator:a608cc1e9512743844d90a2be7c965165"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f92da7cc5bf11b6f35d7f0830cfa044"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#a4f92da7cc5bf11b6f35d7f0830cfa044">mutabor::lock_callback</a> (<a class="el" href="../../d7/d21/structmutabor__logic__parsed.html">mutabor_logic_parsed</a> *logic)</td></tr>
+<tr class="separator:a4f92da7cc5bf11b6f35d7f0830cfa044"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee406afa47a27ac0baadff2bf05b2794"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#aee406afa47a27ac0baadff2bf05b2794">mutabor::unlock_callback</a> (<a class="el" href="../../d7/d21/structmutabor__logic__parsed.html">mutabor_logic_parsed</a> *logic)</td></tr>
+<tr class="separator:aee406afa47a27ac0baadff2bf05b2794"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5b4ff2d84ebcfa5d31083f0b7df79c84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga5b4ff2d84ebcfa5d31083f0b7df79c84">mutabor::Panic</a> ()</td></tr>
+<tr class="separator:ga5b4ff2d84ebcfa5d31083f0b7df79c84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8f3424d939c6cfaff88e5d77b69baa04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga8f3424d939c6cfaff88e5d77b69baa04">mutabor::initialize_box_data</a> ()</td></tr>
+<tr class="separator:ga8f3424d939c6cfaff88e5d77b69baa04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
+<div class="textblock"><p>Devices for routing. </p>
+<p>Mutabor Core.</p>
+<dl class="section author"><dt>Autor</dt><dd>Rüdiger Krauße <a href="#" onclick="location.href='mai'+'lto:'+'kra'+'us'+'ze@'+'ma'+'il.'+'be'+'rli'+'os'+'.de'; return false;">kraus<span style="display: none;">.nosp@m.</span>ze@m<span style="display: none;">.nosp@m.</span>ail.b<span style="display: none;">.nosp@m.</span>erli<span style="display: none;">.nosp@m.</span>os.de</a>, Tobias Schlemmer <a href="#" onclick="location.href='mai'+'lto:'+'kei'+'ns'+'tei'+'n@'+'use'+'rs'+'.be'+'rl'+'ios'+'.d'+'e'; return false;">keins<span style="display: none;">.nosp@m.</span>tein<span style="display: none;">.nosp@m.</span>@user<span style="display: none;">.nosp@m.</span>s.be<span style="display: none;">.nosp@m.</span>rlios<span style="display: none;">.nosp@m.</span>.de</a>  GPL</dd></dl>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA </p>
+
+<p>Definiert in Datei <a class="el" href="../../dd/dc6/Box_8cpp_source.html">Box.cpp</a>.</p>
+</div></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:38:42 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

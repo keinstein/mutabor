@@ -1,0 +1,886 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d0/d68/mhDefs_8h" kind="file">
+    <compoundname>mhDefs.h</compoundname>
+    <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
+    <includes local="yes">wx/window.h</includes>
+    <includes local="yes">wx/stdpaths.h</includes>
+    <includes local="yes">wx/filename.h</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">typeinfo</includes>
+    <includes local="no">list</includes>
+    <includes refid="d9/d64/Mutabor_8rh" local="yes">src/wxGUI/Mutabor.rh</includes>
+    <includes local="yes">wx/image.h</includes>
+    <includes refid="de/de1/mutDebug_8h" local="yes">mutDebug.h</includes>
+    <includedby refid="d2/d2f/mxDefs_8cpp" local="yes">src/wxGUI/generic/mxDefs.cpp</includedby>
+    <includedby refid="d2/df9/MutChild_8h" local="yes">src/wxGUI/MutChild.h</includedby>
+    <includedby refid="d1/da4/MutEditFile_8cpp" local="yes">src/wxGUI/MutEditFile.cpp</includedby>
+    <includedby refid="dc/df3/MutFrame_8cpp" local="yes">src/wxGUI/MutFrame.cpp</includedby>
+    <includedby refid="dc/def/MutRouteWnd_8cpp" local="yes">src/wxGUI/MutRouteWnd.cpp</includedby>
+    <incdepgraph>
+      <node id="18490">
+        <label>list</label>
+      </node>
+      <node id="18483">
+        <label>stdarg.h</label>
+      </node>
+      <node id="18486">
+        <label>wx/stdpaths.h</label>
+      </node>
+      <node id="18482">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="18483" relation="include">
+        </childnode>
+        <childnode refid="18484" relation="include">
+        </childnode>
+      </node>
+      <node id="18492">
+        <label>wx/image.h</label>
+      </node>
+      <node id="18485">
+        <label>wx/window.h</label>
+      </node>
+      <node id="18491">
+        <label>src/wxGUI/Mutabor.rh</label>
+        <link refid="d9/d64/Mutabor_8rh"/>
+        <childnode refid="18482" relation="include">
+        </childnode>
+      </node>
+      <node id="18487">
+        <label>wx/filename.h</label>
+      </node>
+      <node id="18489">
+        <label>typeinfo</label>
+      </node>
+      <node id="18481">
+        <label>src/wxGUI/generic/mhDefs.h</label>
+        <link refid="mhDefs.h"/>
+        <childnode refid="18482" relation="include">
+        </childnode>
+        <childnode refid="18485" relation="include">
+        </childnode>
+        <childnode refid="18486" relation="include">
+        </childnode>
+        <childnode refid="18487" relation="include">
+        </childnode>
+        <childnode refid="18488" relation="include">
+        </childnode>
+        <childnode refid="18489" relation="include">
+        </childnode>
+        <childnode refid="18490" relation="include">
+        </childnode>
+        <childnode refid="18491" relation="include">
+        </childnode>
+        <childnode refid="18492" relation="include">
+        </childnode>
+        <childnode refid="18493" relation="include">
+        </childnode>
+      </node>
+      <node id="18493">
+        <label>mutDebug.h</label>
+        <link refid="de/de1/mutDebug_8h"/>
+      </node>
+      <node id="18488">
+        <label>iostream</label>
+      </node>
+      <node id="18484">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="18507">
+        <label>src/wxGUI/MutEditFile.cpp</label>
+        <link refid="d1/da4/MutEditFile_8cpp"/>
+      </node>
+      <node id="18508">
+        <label>src/wxGUI/MutRouteWnd.cpp</label>
+        <link refid="dc/def/MutRouteWnd_8cpp"/>
+      </node>
+      <node id="18511">
+        <label>src/wxGUI/MutLogicWnd.cpp</label>
+        <link refid="df/d11/MutLogicWnd_8cpp"/>
+      </node>
+      <node id="18512">
+        <label>src/wxGUI/MutTextBox.cpp</label>
+        <link refid="df/d3c/MutTextBox_8cpp"/>
+      </node>
+      <node id="18502">
+        <label>src/wxGUI/MutApp.h</label>
+        <link refid="db/dc1/MutApp_8h"/>
+        <childnode refid="18503" relation="include">
+        </childnode>
+        <childnode refid="18500" relation="include">
+        </childnode>
+        <childnode refid="18501" relation="include">
+        </childnode>
+        <childnode refid="18504" relation="include">
+        </childnode>
+        <childnode refid="18505" relation="include">
+        </childnode>
+        <childnode refid="18506" relation="include">
+        </childnode>
+        <childnode refid="18507" relation="include">
+        </childnode>
+        <childnode refid="18498" relation="include">
+        </childnode>
+        <childnode refid="18508" relation="include">
+        </childnode>
+        <childnode refid="18509" relation="include">
+        </childnode>
+        <childnode refid="18510" relation="include">
+        </childnode>
+      </node>
+      <node id="18514">
+        <label>src/wxGUI/MutDocManager.cpp</label>
+        <link refid="dd/db0/MutDocManager_8cpp"/>
+      </node>
+      <node id="18497">
+        <label>src/wxGUI/MutChild.cpp</label>
+        <link refid="da/d72/MutChild_8cpp"/>
+      </node>
+      <node id="18501">
+        <label>src/wxGUI/MutApp.cpp</label>
+        <link refid="d5/d1c/MutApp_8cpp"/>
+      </node>
+      <node id="18517">
+        <label>src/wxGUI/MutLogicWnd.h</label>
+        <link refid="d6/d81/MutLogicWnd_8h"/>
+        <childnode refid="18500" relation="include">
+        </childnode>
+        <childnode refid="18497" relation="include">
+        </childnode>
+        <childnode refid="18498" relation="include">
+        </childnode>
+        <childnode refid="18511" relation="include">
+        </childnode>
+      </node>
+      <node id="18506">
+        <label>src/wxGUI/MutDocument.cpp</label>
+        <link refid="d6/d3b/MutDocument_8cpp"/>
+      </node>
+      <node id="18505">
+        <label>src/wxGUI/MutConfDlg.h</label>
+        <link refid="d9/d8f/MutConfDlg_8h"/>
+        <childnode refid="18501" relation="include">
+        </childnode>
+      </node>
+      <node id="18515">
+        <label>src/wxGUI/Routing/DeviceShape.cpp</label>
+        <link refid="d9/d94/DeviceShape_8cpp"/>
+      </node>
+      <node id="18509">
+        <label>src/wxGUI/MutView.cpp</label>
+        <link refid="d8/d33/MutView_8cpp"/>
+      </node>
+      <node id="18494">
+        <label>src/wxGUI/generic/mhDefs.h</label>
+        <link refid="mhDefs.h"/>
+        <childnode refid="18495" relation="include">
+        </childnode>
+        <childnode refid="18496" relation="include">
+        </childnode>
+        <childnode refid="18507" relation="include">
+        </childnode>
+        <childnode refid="18498" relation="include">
+        </childnode>
+        <childnode refid="18508" relation="include">
+        </childnode>
+      </node>
+      <node id="18498">
+        <label>src/wxGUI/MutFrame.cpp</label>
+        <link refid="dc/df3/MutFrame_8cpp"/>
+      </node>
+      <node id="18510">
+        <label>src/wxGUI/Routing/RouteIcons.cpp</label>
+        <link refid="d1/d28/RouteIcons_8cpp"/>
+      </node>
+      <node id="18513">
+        <label>src/wxGUI/MutView.h</label>
+        <link refid="d0/d9e/MutView_8h"/>
+        <childnode refid="18501" relation="include">
+        </childnode>
+        <childnode refid="18514" relation="include">
+        </childnode>
+        <childnode refid="18506" relation="include">
+        </childnode>
+        <childnode refid="18507" relation="include">
+        </childnode>
+        <childnode refid="18498" relation="include">
+        </childnode>
+        <childnode refid="18509" relation="include">
+        </childnode>
+      </node>
+      <node id="18504">
+        <label>src/wxGUI/MutBitmaps.cpp</label>
+        <link refid="d7/db6/MutBitmaps_8cpp"/>
+      </node>
+      <node id="18516">
+        <label>src/wxGUI/Routing/GUIRoute.cpp</label>
+        <link refid="d4/dee/GUIRoute_8cpp"/>
+      </node>
+      <node id="18499">
+        <label>src/wxGUI/MutFrame.h</label>
+        <link refid="dd/db5/MutFrame_8h"/>
+        <childnode refid="18500" relation="include">
+        </childnode>
+        <childnode refid="18501" relation="include">
+        </childnode>
+        <childnode refid="18502" relation="include">
+        </childnode>
+        <childnode refid="18497" relation="include">
+        </childnode>
+        <childnode refid="18505" relation="include">
+        </childnode>
+        <childnode refid="18507" relation="include">
+        </childnode>
+        <childnode refid="18498" relation="include">
+        </childnode>
+        <childnode refid="18511" relation="include">
+        </childnode>
+        <childnode refid="18508" relation="include">
+        </childnode>
+        <childnode refid="18512" relation="include">
+        </childnode>
+        <childnode refid="18509" relation="include">
+        </childnode>
+        <childnode refid="18513" relation="include">
+        </childnode>
+        <childnode refid="18515" relation="include">
+        </childnode>
+        <childnode refid="18516" relation="include">
+        </childnode>
+      </node>
+      <node id="18503">
+        <label>src/wxGUI/generic/mutDebug.cpp</label>
+        <link refid="d4/dc0/mutDebug_8cpp"/>
+      </node>
+      <node id="18500">
+        <label>src/wxGUI/GUIBoxData.cpp</label>
+        <link refid="d2/dd3/GUIBoxData_8cpp"/>
+      </node>
+      <node id="18496">
+        <label>src/wxGUI/MutChild.h</label>
+        <link refid="d2/df9/MutChild_8h"/>
+        <childnode refid="18497" relation="include">
+        </childnode>
+        <childnode refid="18498" relation="include">
+        </childnode>
+        <childnode refid="18499" relation="include">
+        </childnode>
+        <childnode refid="18511" relation="include">
+        </childnode>
+        <childnode refid="18517" relation="include">
+        </childnode>
+      </node>
+      <node id="18495">
+        <label>src/wxGUI/generic/mxDefs.cpp</label>
+        <link refid="d2/d2f/mxDefs_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="dc/dd4/structMutFileDataType" prot="public">MutFileDataType</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="df/dd1/group__GUI_1ga3387b640a4f8ed7cc1b2fed8f16fc57a" prot="public" static="no">
+        <name>REUSE</name>
+        <param><defname>type</defname></param>
+        <initializer>type</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="47" column="16" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="df/dd1/group__GUI_1ga575c1c328e852b50c975ed6581902562" prot="public" static="no">
+        <name>ICON</name>
+        <param><defname>s</defname></param>
+        <initializer>wxIcon( s##_xpm )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="55" column="11" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" bodystart="55" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gaf462ef9b546ada58aab30393ba563ec8" compoundref="dc/df3/MutFrame_8cpp" startline="980" endline="1013">mutaborGUI::MutFrame::CmRoutes</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="df/dd1/group__GUI_1ga26322ca1613f09e983e5b67fbeeec6ea" prot="public" static="no">
+        <name>SSCANF</name>
+        <initializer>sscanf</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="62" column="10" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" bodystart="62" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga83268772461a3fb8219d0c9ce088f1cb" compoundref="dd/db8/RouteCompat_8cpp" startline="124" endline="323">compat30::LoadRoutes</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="df/dd1/group__GUI_1ga62ebd45aae156aceb68c6de7a4c3a81a" prot="public" static="no">
+        <name>STUBBASE</name>
+        <param><defname>stubtype</defname></param>
+        <param><defname>typestr</defname></param>
+        <initializer>do { \
+	std::cerr &lt;&lt; stubtype &lt;&lt; &quot; in &quot; ; \
+        std::cerr &lt;&lt; __FILE__ &lt;&lt; &quot;:&quot; &lt;&lt; __LINE__ &lt;&lt; &quot;: &quot; ;\
+	std::cerr &lt;&lt; typestr &lt;&lt; &quot;::&quot; ;\
+	std::cerr &lt;&lt; __WXFUNCTION__ &lt;&lt; std::endl;\
+	wxFAIL_MSG(wxString::Format(_T(&quot;\n\n%s\n\nin %s:%d:\n\n%s::%s\n\n&quot;), \
+				    muT(stubtype).c_str(), \
+				    _T(__FILE__), \
+				    __LINE__, \
+				    <ref refid="d5/dee/group__route_1ga850f9bf66734b7432b688b8e82f242a7" kindref="member">muT</ref>(typestr).c_str(), \
+				    <ref refid="d5/dee/group__route_1ga850f9bf66734b7432b688b8e82f242a7" kindref="member">muT</ref>(__WXFUNCTION__).c_str())); \
+} <ref refid="d0/dc8/mutlex_8cc_1a8fdafe3be7e00ce3d4f0cb50a9a5eb39" kindref="member">while</ref> (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="125" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="df/dd1/group__GUI_1ga06c750cbc293593a85009553cf6cfcc5" prot="public" static="no">
+        <name>STUB</name>
+        <initializer><ref refid="df/dd1/group__GUI_1ga62ebd45aae156aceb68c6de7a4c3a81a" kindref="member">STUBBASE</ref>(&quot;stub function&quot;,&quot;&quot;)</initializer>
+        <briefdescription>
+<para>functions or code that has to be written <ndash/> simple function </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="140" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" bodystart="140" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga83268772461a3fb8219d0c9ce088f1cb" compoundref="dd/db8/RouteCompat_8cpp" startline="124" endline="323">compat30::LoadRoutes</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga5c58701727fcbf758c71f89daac276f0" compoundref="dd/db8/RouteCompat_8cpp" startline="335" endline="474">compat30::SaveRoutes</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa1371b90e5aefdee1f7307e01db93f01" compoundref="dd/dc6/Box_8cpp" startline="301" endline="321">mutabor::BoxClass::TruncateBoxList</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga62782ee9bbed258704f22506993da782" compoundref="d2/dc0/Device_8cpp" startline="283" endline="303">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::TruncateDeviceList</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="df/dd1/group__GUI_1gaea1ff8a806f03f37937d1b38f2f41253" prot="public" static="no">
+        <name>STUBCT</name>
+        <param><defname>type</defname></param>
+        <initializer><ref refid="df/dd1/group__GUI_1ga62ebd45aae156aceb68c6de7a4c3a81a" kindref="member">STUBBASE</ref>(&quot;stub function&quot;,((const <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *) (typeid(type).name())))</initializer>
+        <briefdescription>
+<para>functions or code that has to be written <ndash/> use for static class members </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="142" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="df/dd1/group__GUI_1ga80c3080d0917e2078ecd401c6e4ad33a" prot="public" static="no">
+        <name>STUBC</name>
+        <initializer><ref refid="df/dd1/group__GUI_1gaea1ff8a806f03f37937d1b38f2f41253" kindref="member">STUBCT</ref>(*this)</initializer>
+        <briefdescription>
+<para>functions or code that has to be written <ndash/> use for normal class members </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="144" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" bodystart="144" bodyend="-1"/>
+        <referencedby refid="da/d79/group__docview_1ga113841024d2d545e8a68c7c7de47f144" compoundref="d6/d3b/MutDocument_8cpp" startline="55" endline="388">BEGIN_EVENT_TABLE</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga146b84c9401e3da843c148c5bcb697d1" compoundref="dc/df3/MutFrame_8cpp" startline="546" endline="564">mutaborGUI::MutFrame::CmFileNew</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga0bd91229d7dd30901944246960f0ac8f" compoundref="dc/df3/MutFrame_8cpp" startline="567" endline="614">mutaborGUI::MutFrame::CmFileOpen</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gac78b59c9d1da6d65097fda28cc100fa3" compoundref="d1/da4/MutEditFile_8cpp" startline="423" endline="431">mutaborGUI::MutEditFile::CmGetLine</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga15b38ef1636e873a5968c2255cc2fbd1" compoundref="d1/da4/MutEditFile_8cpp" startline="439" endline="473">mutaborGUI::MutEditFile::CmHelpContext</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga8d718ade598d537716599748e4819595" compoundref="dc/df3/MutFrame_8cpp" startline="1276" endline="1304">mutaborGUI::MutFrame::CmToggleCAW</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga17fa80177e2ebb6a2ded6989a2bcc31d" compoundref="dc/df3/MutFrame_8cpp" startline="1245" endline="1274">mutaborGUI::MutFrame::CmToggleOWM</referencedby>
+        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1a5d80ffad2e544b654abebfa19ec5636a" compoundref="db/d78/DevGIS_8cpp" startline="158" endline="162">mutabor::OutputGis::do_Gis</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4a53d2638e53503d6d0f437a55420ccf" compoundref="de/d05/Device_8h" startline="811" endline="811">mutabor::OutputDeviceClass::do_Panic</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga280eac776bd3847f009c0da3b25565ba" compoundref="dc/df3/MutFrame_8cpp" startline="1106" endline="1119">mutaborGUI::MutFrame::DoBoxWindowsOpen</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga61872ee987710fa4bfea1b7e9765c95a" compoundref="dd/dc6/Box_8cpp" startline="906" endline="909">mutabor::BoxFactory::DoLoadBoxes</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga04a22340c6dd6d54467411a1a57738fd" compoundref="d2/dc0/Device_8cpp" startline="546" endline="549">mutabor::DeviceFactory::DoLoadInputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga692dcac5350d964de28723c82fd64c09" compoundref="d2/dc0/Device_8cpp" startline="536" endline="539">mutabor::DeviceFactory::DoLoadOutputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga2a8492b403a5038af9d064546cf9a1c2" compoundref="dd/dc6/Box_8cpp" startline="911" endline="914">mutabor::BoxFactory::DoSaveBoxes</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga7e6111b88230c1c41c8b0e1a5a157382" compoundref="d2/dc0/Device_8cpp" startline="551" endline="554">mutabor::DeviceFactory::DoSaveInputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga023306868ca2f64d7047c193540178ca" compoundref="d2/dc0/Device_8cpp" startline="541" endline="544">mutabor::DeviceFactory::DoSaveOutputDevices</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1503">IMPLEMENT_APP</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1abf76e8f33bc6dd416c009b33fd8560b6" compoundref="d3/d2a/BoxDlg_8cpp" startline="144" endline="177">mutaborGUI::IMPLEMENT_DYNAMIC_CLASS</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaf1739c816bfd0b2d3a0f1946651be582" compoundref="dc/df3/MutFrame_8cpp" startline="525" endline="541">mutaborGUI::MutFrame::OnPaint</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga5f93d6d12658f3457841aef52e29d946" compoundref="dc/df3/MutFrame_8cpp" startline="622" endline="645">mutaborGUI::MutFrame::OpenFile</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="df/dd1/group__GUI_1ga3af99897b60119951af8961dbd52dd3f" prot="public" static="no">
+        <name>UNREACHABLE</name>
+        <initializer><ref refid="df/dd1/group__GUI_1ga62ebd45aae156aceb68c6de7a4c3a81a" kindref="member">STUBBASE</ref>(&quot;unreachable code&quot;,&quot;&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="146" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" bodystart="146" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1ga9f387b950a812c3815291654546e7249" compoundref="dc/df3/MutFrame_8cpp" startline="1872" endline="1909">mutaborGUI::CheckBoxesUsed</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga24bfe10e24a2431758a4ee4e8153291e" compoundref="dc/def/MutRouteWnd_8cpp" startline="422" endline="522">mutaborGUI::MutRouteWnd::CmRouteLoad</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga72bc8daeb27461bd51dda0a80baddae6" compoundref="dc/def/MutRouteWnd_8cpp" startline="524" endline="599">mutaborGUI::MutRouteWnd::CmRouteSave</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga6e292c98b7e68b4b9f846d186786e11d" compoundref="dc/def/MutRouteWnd_8cpp" startline="601" endline="633">mutaborGUI::MutRouteWnd::CmRouteSaveAs</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1a6d235c96041a62a550c3ec08c0b24008" compoundref="d5/d12/GUIBoxData-inlines_8h" startline="55" endline="92">mutaborGUI::connect</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1a8380faf990b9f66152ed4b57450ad3fe" compoundref="d2/d73/GUIRoute-inlines_8h" startline="115" endline="150">mutaborGUI::connect_device_shape</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1af9c3a082da5f2b4a0fb0770aad541af3" compoundref="d5/d12/GUIBoxData-inlines_8h" startline="94" endline="181">mutaborGUI::disconnect</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1aed362dfbc0b32468c9ec0ecd78c1f182" compoundref="d2/d73/GUIRoute-inlines_8h" startline="258" endline="296">mutaborGUI::disconnect_device_shape</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga50d4c338ce3a0c239468bd27be0b51e1" compoundref="da/d72/MutChild_8cpp" startline="303" endline="338">mutaborGUI::DontWant</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga00cc2a76cfd7714e7536fa1d1d523dce" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">execute_aktion</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga68aa37253345f4399f7fb07524fe840b" compoundref="df/d23/Execute_8cpp" startline="1077" endline="1111">generic_keyboard_analysis</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga1dfd6e0dc23881b42159d079963e4ab0" compoundref="df/d23/Execute_8cpp" startline="876" endline="908">HarmonyAnalysis</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga002fd1e45c16cfca2d52c7585fcad59f" compoundref="df/d23/Execute_8cpp" startline="735" endline="760">hoechste_taste</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga7ad6b2305e866ae3936c307f5f9f4c04" compoundref="da/d72/MutChild_8cpp" startline="228" endline="264">mutaborGUI::IsOpen</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaa27217b7463db6fd1afec3c485c9428d" compoundref="da/d72/MutChild_8cpp" startline="266" endline="301">mutaborGUI::IsWanted</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga83268772461a3fb8219d0c9ce088f1cb" compoundref="dd/db8/RouteCompat_8cpp" startline="124" endline="323">compat30::LoadRoutes</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga12a7a721463b39816b65d98359c986be" compoundref="df/d23/Execute_8cpp" startline="1019" endline="1053">MidiAnalysis</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaab6aec3dae497f4d0b26de1ba0a566f5" compoundref="dc/d19/box_8h" startline="314" endline="376">mutabor_create_key_in_box</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gad30ac6940847881b49405bfad519ad48" compoundref="dc/d19/box_8h" startline="257" endline="311">mutabor_delete_key_in_box</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1adac80ec99f5622c6a2e261e9a1e95b91" compoundref="d2/d73/GUIRoute-inlines_8h" startline="341" endline="352">mutaborGUI::reconnect</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga5c58701727fcbf758c71f89daac276f0" compoundref="dd/db8/RouteCompat_8cpp" startline="335" endline="474">compat30::SaveRoutes</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga0fd158f5d01ae1f96b7c58aae68d6b02" compoundref="df/d23/Execute_8cpp" startline="707" endline="732">tiefste_taste</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="df/dd1/group__GUI_1ga095007ba40aa91ee3979332ed9f40183" prot="public" static="no">
+        <name>UNREACHABLECT</name>
+        <param><defname>type</defname></param>
+        <initializer><ref refid="df/dd1/group__GUI_1ga62ebd45aae156aceb68c6de7a4c3a81a" kindref="member">STUBBASE</ref>(&quot;unreachable code&quot;,((const <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *) (typeid(type).name())))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="147" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" bodystart="147" bodyend="-1"/>
+        <referencedby refid="dc/d00/classmutaborGUI_1_1StatusBar_1a15bed87c5a0ef8e7f20b5a9d8fa53867" compoundref="d9/d6e/StatusBar_8h" startline="165" endline="196">mutaborGUI::StatusBar::AllSetPlaystate</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga8d88d311d475aa296fd6b9fd0a9289b4" compoundref="dd/dc6/Box_8cpp" startline="279" endline="289">mutabor::BoxClass::AppendToBoxList</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga0500b92557be2d528f6f75f4537f7b88" compoundref="d2/dc0/Device_8cpp" startline="259" endline="269">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::AppendToDeviceList</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga1b747523cf90d4b44b18f88512405445" compoundref="de/d0f/Box_8h" startline="737" endline="752">mutabor::BoxFactory::Create</referencedby>
+        <referencedby refid="dc/d58/classmutaborGUI_1_1GUIBoxFactory_1af2957a4f3be6647626c3f792ce2acddd" compoundref="d5/df7/GUIBoxData_8h" startline="329" endline="345">mutaborGUI::GUIBoxFactory::CreateBoxShape</referencedby>
+        <referencedby refid="d5/dee/group__route_1gae7f6e33308f9b52a914b383280a54068" compoundref="de/d05/Device_8h" startline="1066" endline="1079">mutabor::DeviceFactory::CreateInput</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga7d3885474af8ef38f69056fdff322654" compoundref="de/d05/Device_8h" startline="1049" endline="1063">mutabor::DeviceFactory::CreateOutput</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga7cb97f20cafd6ede064161b3d8362c58" compoundref="d9/d24/BoxChannelShape_8cpp" startline="250" endline="288">mutaborGUI::MutBoxChannelShape::CreateRoutePanel</referencedby>
+        <referencedby refid="d2/d9a/classmutaborGUI_1_1GUIDeviceFactory_1a6a137e06c4f10eb731d599afb456aafc" compoundref="d2/d73/GUIRoute-inlines_8h" startline="1229" endline="1245">mutaborGUI::GUIDeviceFactory::CreateShape</referencedby>
+        <referencedby refid="d5/dee/group__route_1gad0b8950e1e753801ccdb05296d4929d2" compoundref="de/d0f/Box_8h" startline="754" endline="765">mutabor::BoxFactory::Destroy</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga49be0ce7bff38d1a9aca119284f4ae08" compoundref="de/d05/Device_8h" startline="1086" endline="1097">mutabor::DeviceFactory::Destroy</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac05e39da29f9915758102a26aeadba8b" compoundref="dd/dc6/Box_8cpp" startline="227" endline="249">mutabor::BoxClass::GetBox</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga0003618beb50da006e94e57baf9f7afa" compoundref="d2/dc0/Device_8cpp" startline="191" endline="214">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::GetDevice</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga50118a6d5b807a40a6669746b8b30fce" compoundref="dd/dc6/Box_8cpp" startline="291" endline="299">mutabor::BoxClass::RemoveFromBoxList</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaea9507768e02eb39aa56acde9fbb0d75" compoundref="d2/dc0/Device_8cpp" startline="272" endline="280">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::RemoveFromDeviceList</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" prot="public" static="no">
+        <name>UNREACHABLEC</name>
+        <initializer><ref refid="df/dd1/group__GUI_1ga095007ba40aa91ee3979332ed9f40183" kindref="member">UNREACHABLECT</ref>(*this)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="148" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" bodystart="148" bodyend="-1"/>
+        <referencedby refid="dc/df2/group__GUIroute_1gafca62ea8b3b32cd29912202080c2df91" compoundref="d9/d49/BoxShape_8h" startline="154" endline="161">mutaborGUI::MutBoxShape::Add</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga67ffae440815ac0d18037732f32cb46c" compoundref="d9/d24/BoxChannelShape_8cpp" startline="153" endline="159">mutaborGUI::MutBoxChannelShape::Add</referencedby>
+        <referencedby refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1ae2d3e541841e8b2bda675661f225ef43" compoundref="d2/d73/GUIRoute-inlines_8h" startline="734" endline="740">mutaborGUI::GUIRouteBase::Add</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga873cdf44bc173c28d002677468308950" compoundref="d9/d4d/DeviceShape_8h" startline="175" endline="182">mutaborGUI::MutDeviceShape&lt; T &gt;::Add</referencedby>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1a6af1d678885084e2eb32f10f86db7fd9" compoundref="d5/d12/GUIBoxData-inlines_8h" startline="220" endline="226">mutaborGUI::BoxData::Add</referencedby>
+        <referencedby refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1ad71fa6d0b82317147f7e7e42be1c709c" compoundref="d2/d73/GUIRoute-inlines_8h" startline="1002" endline="1008">mutaborGUI::GUIOutputDeviceBase::Add</referencedby>
+        <referencedby refid="d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase_1a7e33d356ad217a7d6a73afa68bc8556b" compoundref="d2/d73/GUIRoute-inlines_8h" startline="1168" endline="1174">mutaborGUI::GUIInputDeviceBase::Add</referencedby>
+        <referencedby refid="df/d7d/classmutaborGUI_1_1BoxDlg_1aa491dde4a2eb4fe303690708edf4defa" compoundref="d3/d2a/BoxDlg_8cpp" startline="345" endline="359">mutaborGUI::BoxDlg::AddButtonPressed</referencedby>
+        <referencedby refid="d8/d51/classmutaborGUI_1_1InputFilterPanel_1afc800c2f45a843ea325d23f2e5fdcafd" compoundref="d3/d2a/BoxDlg_8cpp" startline="60" endline="75">mutaborGUI::InputFilterPanel::AddPage</referencedby>
+        <referencedby refid="d2/d39/classmutaborGUI_1_1OutputFilterPanel_1a69d05e0ea6aa7184d9d5ff1081f66fe4" compoundref="d3/d2a/BoxDlg_8cpp" startline="108" endline="117">mutaborGUI::OutputFilterPanel::AddPage</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gae91e1ff5ac7d0866e88220faba0a463b" compoundref="da/d72/MutChild_8cpp" startline="77" endline="148">mutaborGUI::BEGIN_EVENT_TABLE</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gabbf07bf091187a2d34c508eb6c9b9eaf" compoundref="df/d3c/MutTextBox_8cpp" startline="200" endline="236">MutTextBox::BoxChangedAction</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaea4c6f32d2f43774cd61f7ac5c1e8bb3" compoundref="dd/dc6/Box_8cpp" startline="839" endline="850">mutabor::BoxFactory::BoxFactory</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gae1c89fe3498f15f1d499e98d6cc26866" compoundref="dc/df3/MutFrame_8cpp" startline="1747" endline="1812">mutaborGUI::MutFrame::CloseAll</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga0bd91229d7dd30901944246960f0ac8f" compoundref="dc/df3/MutFrame_8cpp" startline="567" endline="614">mutaborGUI::MutFrame::CmFileOpen</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga4e736dad2725072d277cb24825cb2768" compoundref="d8/db4/BoxShape_8cpp" startline="656" endline="667">mutaborGUI::MutBoxShape::CmMoveIcon</referencedby>
+        <referencedby refid="dd/d65/classmutaborGUI_1_1MutLogicWnd_1a1c354ce66d8bdc8fea4e62445a78083b" compoundref="df/d11/MutLogicWnd_8cpp" startline="698" endline="713">mutaborGUI::MutLogicWnd::CmMutTag</referencedby>
+        <referencedby refid="dd/d65/classmutaborGUI_1_1MutLogicWnd_1a143b7a0f1252f8d90ddf34f19796c4f9" compoundref="df/d11/MutLogicWnd_8cpp" startline="483" endline="531">mutaborGUI::MutLogicWnd::CmTaste</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gad0fb85cd89914da2b0815a709d4a7750" compoundref="d9/d24/BoxChannelShape_8cpp" startline="108" endline="136">mutaborGUI::MutBoxChannelShape::Create</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga7f8aa71bcfc8c3f458fd39e26633bfd9" compoundref="dc/def/MutRouteWnd_8cpp" startline="308" endline="336">mutaborGUI::MutRouteWnd::createBoxes</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga1e39dcf4ea7183c737ed86b55bcf0d1b" compoundref="da/d72/MutChild_8cpp" startline="168" endline="204">mutaborGUI::MutChild::deleteFromWinAttrs</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga19b226cd21b128d41a3daeacb409b3a8" compoundref="d8/db4/BoxShape_8cpp" startline="313" endline="358">mutaborGUI::MutBoxShape::Detach</referencedby>
+        <referencedby refid="d5/dee/group__route_1gae02584b86238612dd6b2dc12ece6666c" compoundref="d2/dc0/Device_8cpp" startline="412" endline="422">mutabor::DeviceFactory::DeviceFactory</referencedby>
+        <referencedby refid="df/d7d/classmutaborGUI_1_1BoxDlg_1a48f2b429c9da48d0c5826e993a4cee42" compoundref="d9/dd2/BoxDlg_8h" startline="222" endline="227">mutaborGUI::BoxDlg::DisableRemove</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ac4ebdd04cc1b0b2ca5bddd9283d77464" compoundref="d3/d0f/midicmn_8cpp" startline="319" endline="374">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOff</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a23dfccd2e97e799cd8b32dea22306e5c" compoundref="d3/d0f/midicmn_8cpp" startline="239" endline="316">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOn</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ae068c3fe86a1c768f15c0249cdfb11ea" compoundref="d3/d0f/midicmn_8cpp" startline="377" endline="434">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateTones</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaac1a7d32f9f3800a5bfb690a5125e162" compoundref="dc/df3/MutFrame_8cpp" startline="1121" endline="1148">mutaborGUI::MutFrame::DoBoxWindowsClose</referencedby>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1a684ed3207623117eeab3befa6fa83dfb" compoundref="d2/dd3/GUIBoxData_8cpp" startline="314" endline="352">mutaborGUI::BoxData::DoClose</referencedby>
+        <referencedby refid="d8/df7/classmutabor_1_1GisFactory_1a82b06f0129934b22b0d70d4589384aee" compoundref="db/d78/DevGIS_8cpp" startline="750" endline="771">mutabor::GisFactory::DoCreateInput</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga9cff412769db7e55f0dafac64012bf34" compoundref="d8/db4/BoxShape_8cpp" startline="360" endline="443">mutaborGUI::MutBoxShape::DoLeftDblClick</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga095ea6c276b2d08e7dc8f6c5b1e023b3" compoundref="d9/d94/DeviceShape_8cpp" startline="405" endline="472">mutaborGUI::MutDeviceShape&lt; T &gt;::DoLeftDblClick</referencedby>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1ab26b4050180fd5202231f3588d3faf36" compoundref="d2/dd3/GUIBoxData_8cpp" startline="284" endline="312">mutaborGUI::BoxData::DoOpen</referencedby>
+        <referencedby refid="dd/db0/MutDocManager_8cpp_1a9e7a087c5c550acffcd802f4b40bd609" compoundref="dd/db0/MutDocManager_8cpp" startline="87" endline="181">END_EVENT_TABLE</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a5b08a59e389f73e83a21645cd7cc7167" compoundref="de/d21/midicmn_8h" startline="176" endline="192">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::free_channel</referencedby>
+        <referencedby refid="df/d7d/classmutaborGUI_1_1BoxDlg_1a2304a1ae83792321fb59d2b0eecd48de" compoundref="d3/d2a/BoxDlg_8cpp" startline="304" endline="313">mutaborGUI::BoxDlg::GetBoxType</referencedby>
+        <referencedby refid="d8/d51/classmutaborGUI_1_1InputFilterPanel_1a431a4171a0f80dccc48de2ee8f3e58c0" compoundref="d3/d2a/BoxDlg_8cpp" startline="82" endline="105">mutaborGUI::InputFilterPanel::GetCurrentSelection</referencedby>
+        <referencedby refid="d2/d39/classmutaborGUI_1_1OutputFilterPanel_1a6fb670f71eaabeaf562224b0e4b1dcf1" compoundref="d3/d2a/BoxDlg_8cpp" startline="124" endline="142">mutaborGUI::OutputFilterPanel::GetCurrentSelection</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga70652f612df9eddb7dc9accaf8b605ba" compoundref="d5/dba/NewInputDeviceShape_8h" startline="83" endline="87">mutaborGUI::MutNewInputDeviceShape::GetFilterPanel</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gac0a3b9046d30ea53f2335cf28c5cb2f6" compoundref="df/d7b/NewOutputDeviceShape_8h" startline="89" endline="93">mutaborGUI::MutNewOutputDeviceShape::GetFilterPanel</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga306df7b436dba9b49927fc63055c0805" compoundref="d9/d4d/DeviceShape_8h" startline="155" endline="164">mutaborGUI::MutDeviceShape&lt; T &gt;::getRoutes</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga5835730fe43f3995d009042beeedf878" compoundref="d8/da8/InputGuidoFileDeviceShape_8cpp" startline="105" endline="119">mutaborGUI::GisInputFilterPanel::GetRouteType</referencedby>
+        <referencedby refid="d3/d37/classmutaborGUI_1_1MidiInputFilterPanel_1a775416bb087111be9f8701e74677b6ad" compoundref="d3/d5e/InputMidiDeviceShape_8h" startline="116" endline="130">mutaborGUI::MidiInputFilterPanel::GetRouteType</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga4246c86978f3f1bb694d97d152d8f19f" compoundref="d1/da8/InputMidiFileDeviceShape_8h" startline="117" endline="131">mutaborGUI::MidiFileInputFilterPanel::GetRouteType</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1abf76e8f33bc6dd416c009b33fd8560b6" compoundref="d3/d2a/BoxDlg_8cpp" startline="144" endline="177">mutaborGUI::IMPLEMENT_DYNAMIC_CLASS</referencedby>
+        <referencedby refid="d5/dee/group__route_1gacbd44390712193cff5b6b59a97f8682a" compoundref="d1/d65/Route_8h" startline="202" endline="220">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::MidiAnalysis</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a0f561bb18a34e4637b61859c66c72e55" compoundref="de/d21/midicmn_8h" startline="245" endline="252">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::move_to_end</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a75cc72a7627ca023c30db1dbcb95ed65" compoundref="de/d21/midicmn_8h" startline="260" endline="267">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::move_to_front</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa214d6cc0d3c2776ba80711da094e1ac" compoundref="dd/dc6/Box_8cpp" startline="169" endline="187">mutabor::BoxClass::MoveRoutes</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga143bc287529a671195a80dc3fbf4d3d4" compoundref="d2/dc0/Device_8cpp" startline="148" endline="166">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::MoveRoutes</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gafa78b94fb498060f5dae3df4e0bb8a5c" compoundref="da/d72/MutChild_8cpp" startline="206" endline="226">mutaborGUI::MutChild::OnChar</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga34944c40a018673cfd06db1da64867f3" compoundref="df/d3c/MutTextBox_8cpp" startline="102" endline="145">MutTextBox::OnClose</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gabafe8aa54e795f4ef7eb5ef86b2f8049" compoundref="dc/def/MutRouteWnd_8cpp" startline="719" endline="736">mutaborGUI::MutRouteWnd::OnDraw</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga16f77278113ab7dc6cb0118a1b087824" compoundref="d1/da4/MutEditFile_8cpp" startline="654" endline="771">mutaborGUI::MutEditFile::OnFindDialog</referencedby>
+        <referencedby refid="d2/db3/classmutabor_1_1MidiPortOutputProvider_1aff9c075c9a9b5e784094b44018f6ac4b" compoundref="d4/da2/DevMidi_8h" startline="140" endline="152">mutabor::MidiPortOutputProvider::operator()</referencedby>
+        <referencedby refid="d3/d8e/classmutabor_1_1MidiFileOutputProvider_1aa2cbb324f62927ebd89a0e9b79ecb07d" compoundref="da/d3c/DevMidF_8h" startline="428" endline="440">mutabor::MidiFileOutputProvider::operator()</referencedby>
+        <referencedby refid="dc/d51/classmutabor_1_1CommonMidiInput_1af51274b95343ce7016ba7f5ac8e79d5c" compoundref="d3/d0f/midicmn_8cpp" startline="862" endline="888">mutabor::CommonMidiInput&lt; D &gt;::Proceed</referencedby>
+        <referencedby refid="dc/d51/classmutabor_1_1CommonMidiInput_1ae107babf2f46026dea5743d43d060e79" compoundref="d3/d0f/midicmn_8cpp" startline="691" endline="766">mutabor::CommonMidiInput&lt; D &gt;::ProceedRoute</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a2476082a0c5bdc67c3d0abf8b7d99a66" compoundref="de/d21/midicmn_8h" startline="630" endline="667">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::program_change</referencedby>
+        <referencedby refid="d3/dd6/classmutaborGUI_1_1NewMutBoxShape_1ab58b3e29e06de747c4f830babf3171f4" compoundref="d4/dcc/NewBoxShape_8h" startline="83" endline="88">mutaborGUI::NewMutBoxShape::readDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga9585bae39bfbc44ae0320a996b5faa2c" compoundref="d5/dba/NewInputDeviceShape_8h" startline="88" endline="91">mutaborGUI::MutNewInputDeviceShape::ReadFilterPanel</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga7a0ffa45185026cfa53aa68ff07de6f9" compoundref="d6/d68/OutputMidiDeviceShape_8cpp" startline="128" endline="140">mutaborGUI::MutOutputMidiDeviceShape::ReadFilterPanel</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gabd79ddab48f852900d54fff37d3e46b4" compoundref="df/d7b/NewOutputDeviceShape_8h" startline="94" endline="97">mutaborGUI::MutNewOutputDeviceShape::ReadFilterPanel</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gac6ea6e6b2b61b9533035b2a480866401" compoundref="d3/d21/OutputGuidoFileDeviceShape_8cpp" startline="76" endline="86">mutaborGUI::MutOutputGuidoFileDeviceShape::ReadFilterPanel</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gaa8d24dd26329cb9ef874d2908e2687e7" compoundref="d5/d00/OutputMidiFileDeviceShape_8cpp" startline="124" endline="136">mutaborGUI::MutOutputMidiFileDeviceShape::ReadFilterPanel</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga8050c5eb345fcf2bb9112b82415eb1b2" compoundref="d8/da8/InputGuidoFileDeviceShape_8cpp" startline="168" endline="195">mutaborGUI::MutInputGuidoFileDeviceShape::ReadFilterPanel</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga3b7f68aa39f4647c0bc4a54dc1566cfe" compoundref="d1/d14/InputMidiDeviceShape_8cpp" startline="90" endline="116">mutaborGUI::MutInputMidiDeviceShape::ReadFilterPanel</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gaa709c5fc8b8179d26519cbe9dbbd0bf2" compoundref="d3/de3/InputMidiFileDeviceShape_8cpp" startline="127" endline="153">mutaborGUI::MutInputMidiFileDeviceShape::ReadFilterPanel</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gae9ee118a5a1b3c79f29ab4069bea87b6" compoundref="d9/d94/DeviceShape_8cpp" startline="196" endline="228">mutaborGUI::MutDeviceShape&lt; T &gt;::ReadPanel</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga4f90260150415ed28bd6069cb7c1298a" compoundref="d9/d24/BoxChannelShape_8cpp" startline="444" endline="560">mutaborGUI::MutBoxChannelShape::ReadPanel</referencedby>
+        <referencedby refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a2529e947bd76b6445b8081b30bd291ee" compoundref="d2/d73/GUIRoute-inlines_8h" startline="741" endline="755">mutaborGUI::GUIRouteBase::Remove</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga428343a90a7ef6b35a847df8bf699359" compoundref="d9/d49/BoxShape_8h" startline="179" endline="190">mutaborGUI::MutBoxShape::Remove</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga319b533dacab1962dae03bda713c43cd" compoundref="d9/d24/BoxChannelShape_8cpp" startline="216" endline="223">mutaborGUI::MutBoxChannelShape::Remove</referencedby>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1a4ebd3f206c43e475f9d06f9f38296662" compoundref="d5/d12/GUIBoxData-inlines_8h" startline="227" endline="241">mutaborGUI::BoxData::Remove</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga1a956cff298c0db00ab9dd6084a79b41" compoundref="d9/d94/DeviceShape_8cpp" startline="162" endline="174">mutaborGUI::MutDeviceShape&lt; T &gt;::Remove</referencedby>
+        <referencedby refid="d5/dee/group__route_1gabe593703dd3b3f5f9dab86706ed202fa" compoundref="d8/dfb/Route_8cpp" startline="188" endline="195">mutabor::TRouteClass&lt; I, O, B &gt;::Remove</referencedby>
+        <referencedby refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1afea3064b511c8418e28a891dee4940b8" compoundref="d2/d73/GUIRoute-inlines_8h" startline="909" endline="943">mutaborGUI::GUIOutputDeviceBase::Remove</referencedby>
+        <referencedby refid="d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase_1aecb28ea97672d0f7493a84ca7db69e5e" compoundref="d2/d73/GUIRoute-inlines_8h" startline="1106" endline="1140">mutaborGUI::GUIInputDeviceBase::Remove</referencedby>
+        <referencedby refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1ac5617cbdba3df10d8191a1d7b36fc5f2" compoundref="d2/d73/GUIRoute-inlines_8h" startline="453" endline="504">mutaborGUI::GUIRouteBase::Replace</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga11510b077d7358c5072b978cbca20ead" compoundref="d9/d49/BoxShape_8h" startline="164" endline="176">mutaborGUI::MutBoxShape::Replace</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga27dabe878a00bd750c33b1cc06914ecb" compoundref="d9/d24/BoxChannelShape_8cpp" startline="177" endline="184">mutaborGUI::MutBoxChannelShape::Replace</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gafc010e19efa2c4f104df16604236c9d1" compoundref="d9/d4d/DeviceShape_8h" startline="185" endline="197">mutaborGUI::MutDeviceShape&lt; T &gt;::Replace</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga75d618c759f81823253484d9b17d3144" compoundref="d8/dfb/Route_8cpp" startline="157" endline="165">mutabor::TRouteClass&lt; I, O, B &gt;::Replace</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gac0314166c45df6658bf261ad34f7e011" compoundref="d1/d73/NewOutputDeviceShape_8cpp" startline="44" endline="51">mutaborGUI::MutNewOutputDeviceShape::replaceSelfBy</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga7727c91439e84a87903d8f5202621357" compoundref="d8/db4/BoxShape_8cpp" startline="586" endline="627">mutaborGUI::MutBoxShape::replaceSelfBy</referencedby>
+        <referencedby refid="dd/dbe/classmutabor_1_1Track_1aec1eb90f1be9f35316179b586f6f64cb" compoundref="da/d3c/DevMidF_8h" startline="278" endline="292">mutabor::Track::SendMeta</referencedby>
+        <referencedby refid="d2/db3/classmutabor_1_1MidiPortOutputProvider_1aaa5025cfeb84d53611ec495f3b46786c" compoundref="d4/da2/DevMidi_8h" startline="244" endline="262">mutabor::MidiPortOutputProvider::SendSysEx</referencedby>
+        <referencedby refid="dd/dbe/classmutabor_1_1Track_1a3aa019334bf529fa8c33bef640b5ef50" compoundref="da/d3c/DevMidF_8h" startline="295" endline="304">mutabor::Track::SendSysEx</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1af30d5680a5c740c23348d23588cf856d" compoundref="de/d21/midicmn_8h" startline="464" endline="480">mutabor::DebugMidiOutputProvider::SendSysEx</referencedby>
+        <referencedby refid="dc/d00/classmutaborGUI_1_1StatusBar_1a3ffe75b2356050dbc02ab9b45df74167" compoundref="d9/d6e/StatusBar_8h" startline="198" endline="225">mutaborGUI::StatusBar::SetPlaystate</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga689140bc0328ae8df58d478573fdb174" compoundref="d8/da8/InputGuidoFileDeviceShape_8cpp" startline="86" endline="103">mutaborGUI::GisInputFilterPanel::SetRouteType</referencedby>
+        <referencedby refid="d3/d37/classmutaborGUI_1_1MidiInputFilterPanel_1ac53a0a7402c3daa3795a32a243dfb4b7" compoundref="d3/d5e/InputMidiDeviceShape_8h" startline="96" endline="114">mutaborGUI::MidiInputFilterPanel::SetRouteType</referencedby>
+        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1a93aca9868a8c67142ea2d8c398ae9a4c" compoundref="df/d8f/DevMidi_8cpp" startline="466" endline="488">mutabor::InputMidiPort::shouldProceed</referencedby>
+        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a67a4bc1bfefd6bf6c691d7fcd592608c" compoundref="d0/d6b/DevMidF_8cpp" startline="852" endline="878">mutabor::InputMidiFile::shouldProceed</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a53b64b56b272d20e70998989a614298d" compoundref="de/d21/midicmn_8h" startline="211" endline="222">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::sustain_channel</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gad5b0693526e79475688bcb1ea0a679d5" compoundref="dc/df3/MutFrame_8cpp" startline="1152" endline="1228">mutaborGUI::MutFrame::TextBoxOpen</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1044" endline="1103">mutaborGUI::MutFrame::ToggleTextBox</referencedby>
+        <referencedby refid="d1/d44/group__config_1ga2c54863d019f420bff002cb76a4b519f" compoundref="d4/d26/configtree_8cpp" startline="86" endline="106">configtree::toLeaf</referencedby>
+        <referencedby refid="dd/d18/classmutaborGUI_1_1xmltree_1aeb5be86959fd571c18f9ce46c883f18b" compoundref="de/d4f/xmltree_8cpp" startline="191" endline="211">mutaborGUI::xmltree::toLeaf</referencedby>
+        <referencedby refid="d1/d44/group__config_1ga3b8d3fac8b8769cc93ead97d80ad0359" compoundref="d4/d26/configtree_8cpp" startline="195" endline="226">configtree::toParent</referencedby>
+        <referencedby refid="dd/d18/classmutaborGUI_1_1xmltree_1aa160b14a043dbfad6237702fefdcc9b4" compoundref="de/d4f/xmltree_8cpp" startline="337" endline="353">mutaborGUI::xmltree::toParent</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaa790c0385070ba353d78f1b5e4f680a2" compoundref="df/d3c/MutTextBox_8cpp" startline="149" endline="188">MutTextBox::UpdateUI</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga7980fb28940781d2b2cc6d4e4d201da6" compoundref="dd/dc6/Box_8cpp" startline="79" endline="94">mutabor::BoxClass::~BoxClass</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga35b63eeb3932c5e938f34239a57825cb" compoundref="d2/dc0/Device_8cpp" startline="84" endline="97">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::~CommonTypedDeviceAPI</referencedby>
+        <referencedby refid="dd/d65/classmutaborGUI_1_1MutLogicWnd_1a08879430599f7c41b7627a43dee58946" compoundref="d6/d81/MutLogicWnd_8h" startline="70" endline="77">mutaborGUI::MutLogicWnd::~MutLogicWnd</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="df/dd1/group__GUI_1ga97340c3535da400ec4866a98dd22f149" prot="public" static="no">
+        <name>ABSTRACT_FUNCTION</name>
+        <initializer><ref refid="df/dd1/group__GUI_1ga62ebd45aae156aceb68c6de7a4c3a81a" kindref="member">STUBBASE</ref>(&quot;unreachable function&quot;,&quot;&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="150" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="df/dd1/group__GUI_1ga3007ddc7ec4b0afd7dbdcc6accf80a19" prot="public" static="no">
+        <name>ABSTRACT_FUNCTIONCT</name>
+        <param><defname>type</defname></param>
+        <initializer><ref refid="df/dd1/group__GUI_1ga62ebd45aae156aceb68c6de7a4c3a81a" kindref="member">STUBBASE</ref>(&quot;unreachable function&quot;,((const <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *) (typeid(type).name())))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="151" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="df/dd1/group__GUI_1gadec2b53766d0997e0fb80c492003b8dd" prot="public" static="no">
+        <name>ABSTRACT_FUNCTIONC</name>
+        <initializer><ref refid="df/dd1/group__GUI_1ga3007ddc7ec4b0afd7dbdcc6accf80a19" kindref="member">ABSTRACT_FUNCTIONCT</ref>(*this)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="152" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" bodystart="152" bodyend="-1"/>
+        <referencedby refid="dc/df2/group__GUIroute_1ga148310c0b2b4d76597258475a51cf112" compoundref="d9/d94/DeviceShape_8cpp" startline="475" endline="478">mutaborGUI::MutDeviceShape&lt; T &gt;::ShowDeviceDialog</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="df/dd1/group__GUI_1ga28e9bd173a76d9590eece649cb49e2b2" prot="public" static="no">
+        <name>MDI_FORCE_EXTERN</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="175" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="df/dd1/group__GUI_1ga941e3630f4cd737a978421e590018ddf" prot="public" static="no">
+        <type>std::list&lt; wxPoint &gt;</type>
+        <definition>typedef std::list&lt;wxPoint&gt; mutpointlist</definition>
+        <argsstring></argsstring>
+        <name>mutpointlist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="178" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="df/dd1/group__GUI_1ga9bd8b7e561410bc26336fced6cafe697" prot="public" static="no" mutable="no">
+        <type>wxHtmlHelpController *</type>
+        <definition>wxHtmlHelpController* HelpController</definition>
+        <argsstring></argsstring>
+        <name>HelpController</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="71" column="1"/>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1503">IMPLEMENT_APP</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="df/dd1/group__GUI_1gaa4cd1dc8d3c14b92b0ed908f9dcb0b61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/dd4/structMutFileDataType" kindref="compound">MutFileDataType</ref></type>
+        <definition>MutFileDataType FileNameDialog</definition>
+        <argsstring>(wxWindow *parent, int Command=CM_FILEOPEN, wxString Filename=wxEmptyString)</argsstring>
+        <name>FileNameDialog</name>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>Command</declname>
+          <defval><ref refid="d9/d64/Mutabor_8rh_1a90e12f9eca1903822664d9b7759c2a4f" kindref="member">CM_FILEOPEN</ref></defval>
+        </param>
+        <param>
+          <type>wxString</type>
+          <declname>Filename</declname>
+          <defval>wxEmptyString</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="118" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mxDefs.cpp" bodystart="42" bodyend="148"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
+        <references refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da422ad6af89085a0e1201ff8dfd583b1b" compoundref="d0/d68/mhDefs_8h" startline="105">MutFileDataType::Canceled</references>
+        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a4a3ddde2676e7be85542c0a42c0db4ba" compoundref="d9/d64/Mutabor_8rh" startline="70">mutaborGUI::CM_EXECUTE</references>
+        <references refid="d9/d64/Mutabor_8rh_1a90e12f9eca1903822664d9b7759c2a4f" compoundref="d9/d64/Mutabor_8rh" startline="56">CM_FILEOPEN</references>
+        <references refid="d9/d64/Mutabor_8rh_1a3c5a2f14af5ee9c36d82c2a7c52bce9a" compoundref="d9/d64/Mutabor_8rh" startline="60">CM_FILESAVEAS</references>
+        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a8b860a934193b378226ea7c437f3202d" compoundref="d9/d64/Mutabor_8rh" startline="86">mutaborGUI::CM_ROUTELOAD</references>
+        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a7e2439fb70f07ce6cfc176fafb532f1a" compoundref="d9/d64/Mutabor_8rh" startline="87">mutaborGUI::CM_ROUTESAVE</references>
+        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34afec421310e3ec0444f8d12543477d41a" compoundref="d9/d64/Mutabor_8rh" startline="88">mutaborGUI::CM_ROUTESAVEAS</references>
+        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="de/de1/mutDebug_8h" startline="142">DEBUGLOG2</references>
+        <references refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da8b19c67db033830dd90a3bdffc7cab75" compoundref="d0/d68/mhDefs_8h" startline="110">MutFileDataType::LogicSource</references>
+        <references refid="dc/dd4/structMutFileDataType_1aeaadee03a788a9c3f071c423f484f046" compoundref="d0/d68/mhDefs_8h" startline="103">MutFileDataType::name</references>
+        <references refid="dc/dd4/structMutFileDataType_1a3d7e82f6091cfff9bd136bc1f41b4598">MutFileDataType::type</references>
+        <references refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da6f93dc737f54602ba83a37cb965daddf" compoundref="d0/d68/mhDefs_8h" startline="106">MutFileDataType::Unknown</references>
+        <references refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da053ea7a913becf1600f84b46fce2b26b" compoundref="d0/d68/mhDefs_8h" startline="108">MutFileDataType::UTF8TextRoute</references>
+        <references refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94daf88744e38f46c995394ca5027c84c5f6" compoundref="d0/d68/mhDefs_8h" startline="109">MutFileDataType::XMLRoute1</references>
+        <referencedby refid="df/dd1/group__GUI_1ga0bd91229d7dd30901944246960f0ac8f" compoundref="dc/df3/MutFrame_8cpp" startline="567" endline="614">mutaborGUI::MutFrame::CmFileOpen</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga32ac26aebb3a2368c60285b39b30422b" compoundref="d1/da4/MutEditFile_8cpp" startline="386" endline="404">mutaborGUI::MutEditFile::CmFileSaveAs</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga24bfe10e24a2431758a4ee4e8153291e" compoundref="dc/def/MutRouteWnd_8cpp" startline="422" endline="522">mutaborGUI::MutRouteWnd::CmRouteLoad</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga6e292c98b7e68b4b9f846d186786e11d" compoundref="dc/def/MutRouteWnd_8cpp" startline="601" endline="633">mutaborGUI::MutRouteWnd::CmRouteSaveAs</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1503">IMPLEMENT_APP</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="df/dd1/group__GUI_1ga2a872f3b72580721d229f33e169659e4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void UpdateRecursive</definition>
+        <argsstring>(wxWindow *win)</argsstring>
+        <name>UpdateRecursive</name>
+        <param>
+          <type>wxWindow *</type>
+          <declname>win</declname>
+        </param>
+        <briefdescription>
+<para>Call update on a Window hierarchy recursively. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>this function is very expensive. It should be called very rarly (as well as Update().</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>win</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parent window that shall be updated. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="161" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" bodystart="161" bodyend="169"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="28"><highlight class="preprocessor">#ifndef<sp/>mhDEFS_H</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>mhDEFS_H</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">src/kernel/Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/window.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/stdpaths.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/filename.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;typeinfo&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;list&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d9/d64/Mutabor_8rh" kindref="compound">src/wxGUI/Mutabor.rh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HAVE_CONFIG_H</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>ifdef<sp/>__WXMSW__</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>define<sp/>REUSE(type)</highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>else</highlight></codeline>
+<codeline lineno="47" refid="df/dd1/group__GUI_1ga3387b640a4f8ed7cc1b2fed8f16fc57a" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>define<sp/>REUSE(type)<sp/>type</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>endif</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/image.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__WXMSW__</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>ICON(s)<sp/>wxIcon(_T(#s)<sp/>_T(&quot;_icn&quot;))</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="55" refid="df/dd1/group__GUI_1ga575c1c328e852b50c975ed6581902562" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>ICON(s)<sp/>wxIcon(<sp/>s##_xpm<sp/>)</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(_UNICODE)<sp/>||<sp/>defined(UNICODE)</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SSCANF<sp/>swscanf</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="62" refid="df/dd1/group__GUI_1ga26322ca1613f09e983e5b67fbeeec6ea" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SSCANF<sp/>sscanf</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>VC8</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&lt;wx/html/helpctrl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">wxHtmlHelpController;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>wxHtmlHelpController<sp/>*<sp/><ref refid="df/dd1/group__GUI_1ga9bd8b7e561410bc26336fced6cafe697" kindref="member">HelpController</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>WX</highlight></codeline>
+<codeline lineno="74"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>wxString<sp/><ref refid="d5/dee/group__route_1ga850f9bf66734b7432b688b8e82f242a7" kindref="member">muT</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>x)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!x<sp/>||<sp/>!(*x))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxEmptyString;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/>retval<sp/>=<sp/>wxString::FromUTF8(x);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(retval.IsEmpty())<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>wxString(x,<sp/>wxConvISO8859_1);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>retval;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>wxString<sp/><ref refid="d5/dee/group__route_1ga850f9bf66734b7432b688b8e82f242a7" kindref="member">muT</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxChar<sp/>*<sp/>x)<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!x<sp/>||<sp/>!(*x))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxEmptyString;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxString(x);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>wxString<sp/><ref refid="d5/dee/group__route_1ga850f9bf66734b7432b688b8e82f242a7" kindref="member">muT</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>s)<sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ga850f9bf66734b7432b688b8e82f242a7" kindref="member">muT</ref>(s.c_str());</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(WX)<sp/>&amp;&amp;<sp/>(defined(UNICODE)<sp/>||<sp/>wxUSE_WCHAR_T)</highlight></codeline>
+<codeline lineno="92"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/strconv.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>wxCSConv<sp/>muCSConv;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>mumT(x)<sp/>_T(x)</highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="97"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>mumT(x)<sp/>_T(x)</highlight></codeline>
+<codeline lineno="98"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="99"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="100"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="101"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="dc/dd4/structMutFileDataType" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dc/dd4/structMutFileDataType" kindref="compound">MutFileDataType</ref><sp/>{</highlight></codeline>
+<codeline lineno="103" refid="dc/dd4/structMutFileDataType_1aeaadee03a788a9c3f071c423f484f046" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxFileName<sp/><ref refid="dc/dd4/structMutFileDataType_1aeaadee03a788a9c3f071c423f484f046" kindref="member">name</ref>;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{<sp/></highlight></codeline>
+<codeline lineno="105" refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da422ad6af89085a0e1201ff8dfd583b1b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da422ad6af89085a0e1201ff8dfd583b1b" kindref="member">Canceled</ref>,</highlight></codeline>
+<codeline lineno="106" refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da6f93dc737f54602ba83a37cb965daddf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da6f93dc737f54602ba83a37cb965daddf" kindref="member">Unknown</ref>,</highlight></codeline>
+<codeline lineno="107" refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da3a55ff7b025c54e97dfb9ac70a9c5369" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da3a55ff7b025c54e97dfb9ac70a9c5369" kindref="member">TextRoute</ref>,</highlight></codeline>
+<codeline lineno="108" refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da053ea7a913becf1600f84b46fce2b26b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da053ea7a913becf1600f84b46fce2b26b" kindref="member">UTF8TextRoute</ref>,</highlight></codeline>
+<codeline lineno="109" refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94daf88744e38f46c995394ca5027c84c5f6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94daf88744e38f46c995394ca5027c84c5f6" kindref="member">XMLRoute1</ref>,</highlight></codeline>
+<codeline lineno="110" refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da8b19c67db033830dd90a3bdffc7cab75" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da8b19c67db033830dd90a3bdffc7cab75" kindref="member">LogicSource</ref></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="dc/dd4/structMutFileDataType_1a3d7e82f6091cfff9bd136bc1f41b4598" kindref="member">type</ref>;</highlight></codeline>
+<codeline lineno="112" refid="dc/dd4/structMutFileDataType_1a98139d9b177fd4dec3a30b7389d14fe8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>wxString()<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/dd4/structMutFileDataType_1aeaadee03a788a9c3f071c423f484f046" kindref="member">name</ref>.GetPath();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115" refid="dc/dd4/structMutFileDataType_1a5f958fe0b3dc63fb9dabfe8d7b2ea453" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/dd4/structMutFileDataType_1a5f958fe0b3dc63fb9dabfe8d7b2ea453" kindref="member">MutFileDataType</ref>():<ref refid="dc/dd4/structMutFileDataType_1aeaadee03a788a9c3f071c423f484f046" kindref="member">name</ref>(),<ref refid="dc/dd4/structMutFileDataType_1a3d7e82f6091cfff9bd136bc1f41b4598" kindref="member">type</ref>(<ref refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da6f93dc737f54602ba83a37cb965daddf" kindref="member">Unknown</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><ref refid="dc/dd4/structMutFileDataType" kindref="compound">MutFileDataType</ref><sp/><ref refid="df/dd1/group__GUI_1gaa4cd1dc8d3c14b92b0ed908f9dcb0b61" kindref="member">FileNameDialog</ref>(wxWindow<sp/>*<sp/>parent,</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Command<sp/>=<sp/><ref refid="d9/d64/Mutabor_8rh_1a90e12f9eca1903822664d9b7759c2a4f" kindref="member">CM_FILEOPEN</ref>,</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/>Filename<sp/>=<sp/>wxEmptyString);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/de1/mutDebug_8h" kindref="compound">mutDebug.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="comment">//<sp/>STUBs<sp/>should<sp/>generate<sp/>error<sp/>messages<sp/>even<sp/>in<sp/>non-debug<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="df/dd1/group__GUI_1ga62ebd45aae156aceb68c6de7a4c3a81a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STUBBASE(stubtype,typestr)<sp/>\</highlight></codeline>
+<codeline lineno="126"><highlight class="preprocessor">do<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="127"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>stubtype<sp/>&lt;&lt;<sp/>&quot;<sp/>in<sp/>&quot;<sp/>;<sp/>\</highlight></codeline>
+<codeline lineno="128"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>__FILE__<sp/>&lt;&lt;<sp/>&quot;:&quot;<sp/>&lt;&lt;<sp/>__LINE__<sp/>&lt;&lt;<sp/>&quot;:<sp/>&quot;<sp/>;\</highlight></codeline>
+<codeline lineno="129"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>typestr<sp/>&lt;&lt;<sp/>&quot;::&quot;<sp/>;\</highlight></codeline>
+<codeline lineno="130"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>__WXFUNCTION__<sp/>&lt;&lt;<sp/>std::endl;\</highlight></codeline>
+<codeline lineno="131"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxFAIL_MSG(wxString::Format(_T(&quot;\n\n%s\n\nin<sp/>%s:%d:\n\n%s::%s\n\n&quot;),<sp/>\</highlight></codeline>
+<codeline lineno="132"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>muT(stubtype).c_str(),<sp/>\</highlight></codeline>
+<codeline lineno="133"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_T(__FILE__),<sp/>\</highlight></codeline>
+<codeline lineno="134"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__LINE__,<sp/>\</highlight></codeline>
+<codeline lineno="135"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>muT(typestr).c_str(),<sp/>\</highlight></codeline>
+<codeline lineno="136"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>muT(__WXFUNCTION__).c_str()));<sp/>\</highlight></codeline>
+<codeline lineno="137"><highlight class="preprocessor">}<sp/>while<sp/>(0)</highlight></codeline>
+<codeline lineno="138"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="140" refid="df/dd1/group__GUI_1ga06c750cbc293593a85009553cf6cfcc5" refkind="member"><highlight class="preprocessor">#define<sp/>STUB<sp/>STUBBASE(&quot;stub<sp/>function&quot;,&quot;&quot;)</highlight></codeline>
+<codeline lineno="141"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>STUBCT(type)<sp/>STUBBASE(&quot;stub<sp/>function&quot;,((const<sp/>char<sp/>*)<sp/>(typeid(type).name())))</highlight></codeline>
+<codeline lineno="143"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>STUBC<sp/>STUBCT(*this)</highlight></codeline>
+<codeline lineno="145"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="df/dd1/group__GUI_1ga3af99897b60119951af8961dbd52dd3f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UNREACHABLE<sp/>STUBBASE(&quot;unreachable<sp/>code&quot;,&quot;&quot;)</highlight></codeline>
+<codeline lineno="147" refid="df/dd1/group__GUI_1ga095007ba40aa91ee3979332ed9f40183" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNREACHABLECT(type)<sp/>STUBBASE(&quot;unreachable<sp/>code&quot;,((const<sp/>char<sp/>*)<sp/>(typeid(type).name())))</highlight></codeline>
+<codeline lineno="148" refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNREACHABLEC<sp/>UNREACHABLECT(*this)</highlight></codeline>
+<codeline lineno="149"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="df/dd1/group__GUI_1ga97340c3535da400ec4866a98dd22f149" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ABSTRACT_FUNCTION<sp/>STUBBASE(&quot;unreachable<sp/>function&quot;,&quot;&quot;)</highlight></codeline>
+<codeline lineno="151" refid="df/dd1/group__GUI_1ga3007ddc7ec4b0afd7dbdcc6accf80a19" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>ABSTRACT_FUNCTIONCT(type)<sp/>STUBBASE(&quot;unreachable<sp/>function&quot;,((const<sp/>char<sp/>*)<sp/>(typeid(type).name())))</highlight></codeline>
+<codeline lineno="152" refid="df/dd1/group__GUI_1gadec2b53766d0997e0fb80c492003b8dd" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>ABSTRACT_FUNCTIONC<sp/>ABSTRACT_FUNCTIONCT(*this)</highlight></codeline>
+<codeline lineno="153"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="df/dd1/group__GUI_1ga2a872f3b72580721d229f33e169659e4" refkind="member"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga2a872f3b72580721d229f33e169659e4" kindref="member">UpdateRecursive</ref><sp/>(wxWindow<sp/>*<sp/>win)<sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!win)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxWindowList<sp/>&amp;<sp/>list<sp/>=<sp/>win-&gt;GetChildren();</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(wxWindowList::iterator<sp/>i<sp/>=<sp/>list.begin();</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i<sp/>!=<sp/>list.end();</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i++)</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga2a872f3b72580721d229f33e169659e4" kindref="member">UpdateRecursive</ref>(*i);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>win-&gt;Update();</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>DEBUG</highlight></codeline>
+<codeline lineno="172"><highlight class="preprocessor"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga391d61b0297bf03db59dad4f6b8457ab" kindref="member">PRINTSIZER</ref><sp/>(wxSizer<sp/>*<sp/>sizer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString<sp/>&amp;<sp/>offset<sp/>=<sp/>_T<sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="174"><highlight class="preprocessor"></highlight><highlight class="comment">//#ifdef<sp/>__WXGTK__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175" refid="df/dd1/group__GUI_1ga28e9bd173a76d9590eece649cb49e2b2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MDI_FORCE_EXTERN</highlight></codeline>
+<codeline lineno="176"><highlight class="preprocessor"></highlight><highlight class="comment">//#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178" refid="df/dd1/group__GUI_1ga941e3630f4cd737a978421e590018ddf" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::list&lt;wxPoint&gt;<sp/><ref refid="df/dd1/group__GUI_1ga941e3630f4cd737a978421e590018ddf" kindref="member">mutpointlist</ref>;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="181"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h"/>
+  </compounddef>
+</doxygen>

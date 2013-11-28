@@ -1,0 +1,1012 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/libmutabor/heap.c-Dateireferenz</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_36b066032255252bd9de4e8c33341f8d.html">libmutabor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Klassen</a> &#124;
+<a href="#define-members">Makrodefinitionen</a> &#124;
+<a href="#func-members">Funktionen</a> &#124;
+<a href="#var-members">Variablen</a>  </div>
+  <div class="headertitle">
+<div class="title">heap.c-Dateireferenz</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Heapverwaltung.  
+<a href="#details">Mehr ...</a></p>
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &lt;string.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="../../da/ddb/heap_8h_source.html">mutabor/heap.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Include-Abhängigkeitsdiagramm für heap.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/d42/heap_8c__incl.png" border="0" usemap="#src_2libmutabor_2heap_8c" alt=""/></div>
+<map name="src_2libmutabor_2heap_8c" id="src_2libmutabor_2heap_8c">
+<area shape="rect" id="node7" href="../../da/ddb/heap_8h.html" title="Heapverwaltung. " alt="" coords="189,83,315,111"/><area shape="rect" id="node11" href="../../df/d8e/bad__decl_8h.html" title="Zu korrigierende Querabhängigkeiten zur GUI und sonstige komische Deklarationen. " alt="" coords="243,161,392,189"/></map>
+</div>
+</div>
+<p><a href="../../d2/d29/heap_8c_source.html">gehe zum Quellcode dieser Datei</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Klassen</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d7d/structheap__element.html">heap_element</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typ eines eigenen HEAPs.  <a href="../../d8/d7d/structheap__element.html#details">Mehr ...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0f/structmini__heap.html">mini_heap</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typ für den Laufzeit-Heap.  <a href="../../df/d0f/structmini__heap.html#details">Mehr ...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Makrodefinitionen</h2></td></tr>
+<tr class="memitem:a21005f9f4e2ce7597c5eb4351816d7e2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#a21005f9f4e2ce7597c5eb4351816d7e2">OFFSET</a>&#160;&#160;&#160;(sizeof(size_t))</td></tr>
+<tr class="memdesc:a21005f9f4e2ce7597c5eb4351816d7e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Größe eines Größentyps.  <a href="#a21005f9f4e2ce7597c5eb4351816d7e2">Mehr ...</a><br/></td></tr>
+<tr class="separator:a21005f9f4e2ce7597c5eb4351816d7e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funktionen</h2></td></tr>
+<tr class="memitem:a9a3f8e6ec3a617a7f957e75aaf48dfe7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#a9a3f8e6ec3a617a7f957e75aaf48dfe7">intern_fgetc</a> (FILE *stream)</td></tr>
+<tr class="memdesc:a9a3f8e6ec3a617a7f957e75aaf48dfe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spezielle Implementation von <code>fgetc</code>.  <a href="#a9a3f8e6ec3a617a7f957e75aaf48dfe7">Mehr ...</a><br/></td></tr>
+<tr class="separator:a9a3f8e6ec3a617a7f957e75aaf48dfe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cfd6bb0e826070880878722da07d0d6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#a0cfd6bb0e826070880878722da07d0d6">intern_ungetc</a> (int c, FILE *stream)</td></tr>
+<tr class="memdesc:a0cfd6bb0e826070880878722da07d0d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spezielle Implementation von <code>ungetc</code>.  <a href="#a0cfd6bb0e826070880878722da07d0d6">Mehr ...</a><br/></td></tr>
+<tr class="separator:a0cfd6bb0e826070880878722da07d0d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95116b44bc41d1e825e79c148ab7d0a6"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#a95116b44bc41d1e825e79c148ab7d0a6">xalloca</a> (size_t size)</td></tr>
+<tr class="memdesc:a95116b44bc41d1e825e79c148ab7d0a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allokiert einen Speicherbereich und erzeugt im Fehlerfall einen fatalen Fehler.  <a href="#a95116b44bc41d1e825e79c148ab7d0a6">Mehr ...</a><br/></td></tr>
+<tr class="separator:a95116b44bc41d1e825e79c148ab7d0a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga32c911fc6ec259d831549e90fbd9f00c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#ga32c911fc6ec259d831549e90fbd9f00c">xde_alloca</a> (void *pointer)</td></tr>
+<tr class="memdesc:ga32c911fc6ec259d831549e90fbd9f00c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gibt einen Speicherbereich wieder frei.  <a href="../../d9/d7c/group__kernel.html#ga32c911fc6ec259d831549e90fbd9f00c">Mehr ...</a><br/></td></tr>
+<tr class="separator:ga32c911fc6ec259d831549e90fbd9f00c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2a0a21b8d377742eac6cb1f7f3229e86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#ga2a0a21b8d377742eac6cb1f7f3229e86">xfree</a> (void *pointer)</td></tr>
+<tr class="memdesc:ga2a0a21b8d377742eac6cb1f7f3229e86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Freigeben oder auch nich.  <a href="../../d9/d7c/group__kernel.html#ga2a0a21b8d377742eac6cb1f7f3229e86">Mehr ...</a><br/></td></tr>
+<tr class="separator:ga2a0a21b8d377742eac6cb1f7f3229e86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42ccfa6fc49cc4ce90cc44cd05052490"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#a42ccfa6fc49cc4ce90cc44cd05052490">xmalloc</a> (size_t size)</td></tr>
+<tr class="memdesc:a42ccfa6fc49cc4ce90cc44cd05052490"><td class="mdescLeft">&#160;</td><td class="mdescRight">Belegt einen Speicherbereich in der einfach verketteten Liste <code>syntax_heap</code>.  <a href="#a42ccfa6fc49cc4ce90cc44cd05052490">Mehr ...</a><br/></td></tr>
+<tr class="separator:a42ccfa6fc49cc4ce90cc44cd05052490"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac56ae312aa3a8be7c32ffbd997fed591"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#ac56ae312aa3a8be7c32ffbd997fed591">xrealloc</a> (void *block, size_t newsize)</td></tr>
+<tr class="memdesc:ac56ae312aa3a8be7c32ffbd997fed591"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ändert die Größe eines aktuellen Speicherbereiches im privaten Syntax-Heap.  <a href="#ac56ae312aa3a8be7c32ffbd997fed591">Mehr ...</a><br/></td></tr>
+<tr class="separator:ac56ae312aa3a8be7c32ffbd997fed591"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0c7434dd1577c62500713d2508d89ce"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#ab0c7434dd1577c62500713d2508d89ce">xcalloc</a> (size_t anzahl, size_t size)</td></tr>
+<tr class="memdesc:ab0c7434dd1577c62500713d2508d89ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fordert einen Speicherbereich vom Syntax-Heap an, der <em>anzahl</em> * <em>size</em> Zeichen enthält.  <a href="#ab0c7434dd1577c62500713d2508d89ce">Mehr ...</a><br/></td></tr>
+<tr class="separator:ab0c7434dd1577c62500713d2508d89ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a422a5aa2850896c98dd2a5b52959a968"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#a422a5aa2850896c98dd2a5b52959a968">loesche_syntax_speicher</a> (void)</td></tr>
+<tr class="memdesc:a422a5aa2850896c98dd2a5b52959a968"><td class="mdescLeft">&#160;</td><td class="mdescRight">Löscht den gesamten Syntax-Heap.  <a href="#a422a5aa2850896c98dd2a5b52959a968">Mehr ...</a><br/></td></tr>
+<tr class="separator:a422a5aa2850896c98dd2a5b52959a968"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f918156b5c5fbb2fddf370f407292ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#a7f918156b5c5fbb2fddf370f407292ca">init_syntax_speicher</a> (void)</td></tr>
+<tr class="memdesc:a7f918156b5c5fbb2fddf370f407292ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisiert den Syntax-Heap.  <a href="#a7f918156b5c5fbb2fddf370f407292ca">Mehr ...</a><br/></td></tr>
+<tr class="separator:a7f918156b5c5fbb2fddf370f407292ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga59a78112aeea661097792d86d23ea657"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#ga59a78112aeea661097792d86d23ea657">yfree</a> (void *pointer)</td></tr>
+<tr class="memdesc:ga59a78112aeea661097792d86d23ea657"><td class="mdescLeft">&#160;</td><td class="mdescRight">Löscht <em>pointer</em> nicht vom Laufzeit-Heap.  <a href="../../d9/d7c/group__kernel.html#ga59a78112aeea661097792d86d23ea657">Mehr ...</a><br/></td></tr>
+<tr class="separator:ga59a78112aeea661097792d86d23ea657"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20022f7843438dccec544ebde6e6889b"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#a20022f7843438dccec544ebde6e6889b">ymalloc</a> (size_t size)</td></tr>
+<tr class="memdesc:a20022f7843438dccec544ebde6e6889b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fordert Speicher auf dem Laufzeit-Heap an.  <a href="#a20022f7843438dccec544ebde6e6889b">Mehr ...</a><br/></td></tr>
+<tr class="separator:a20022f7843438dccec544ebde6e6889b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a6ce40acee5db6621bace7d200296a9"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#a4a6ce40acee5db6621bace7d200296a9">yrealloc</a> (void *block, size_t newsize)</td></tr>
+<tr class="memdesc:a4a6ce40acee5db6621bace7d200296a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ändert die Größe eines Elementes auf dem Laufzeit-Heap.  <a href="#a4a6ce40acee5db6621bace7d200296a9">Mehr ...</a><br/></td></tr>
+<tr class="separator:a4a6ce40acee5db6621bace7d200296a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4012a6a8a0b3a9007cf8a440370076e"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#ad4012a6a8a0b3a9007cf8a440370076e">ycalloc</a> (size_t anzahl, size_t size)</td></tr>
+<tr class="memdesc:ad4012a6a8a0b3a9007cf8a440370076e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fordert eine Anzahl von Einheiten auf dem Laufzeit-Heap an.  <a href="#ad4012a6a8a0b3a9007cf8a440370076e">Mehr ...</a><br/></td></tr>
+<tr class="separator:ad4012a6a8a0b3a9007cf8a440370076e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1b46a2090e2218f2e85831fe4a5787f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#ac1b46a2090e2218f2e85831fe4a5787f">init_laufzeit_speicher</a> (void)</td></tr>
+<tr class="memdesc:ac1b46a2090e2218f2e85831fe4a5787f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisiert (Löscht) den Laufzeit-Speicher.  <a href="#ac1b46a2090e2218f2e85831fe4a5787f">Mehr ...</a><br/></td></tr>
+<tr class="separator:ac1b46a2090e2218f2e85831fe4a5787f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abeb3de8f1a02e90f536a351e3824d7da"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#abeb3de8f1a02e90f536a351e3824d7da">loesche_laufzeit_speicher</a> (void)</td></tr>
+<tr class="memdesc:abeb3de8f1a02e90f536a351e3824d7da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Löscht den Laufzeitspeicher.  <a href="#abeb3de8f1a02e90f536a351e3824d7da">Mehr ...</a><br/></td></tr>
+<tr class="separator:abeb3de8f1a02e90f536a351e3824d7da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variablen</h2></td></tr>
+<tr class="memitem:a9f4e64aebb64a7266779fa72435f0e84"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/dee/group__route.html#gafdffe3ab26a7d4cd9d6521731a6f396a">char</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#a9f4e64aebb64a7266779fa72435f0e84">SeRiEnNuMmEr</a> []</td></tr>
+<tr class="separator:a9f4e64aebb64a7266779fa72435f0e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6299a9e023124b7226ab405cc4c12c9e"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#a6299a9e023124b7226ab405cc4c12c9e">the_character</a></td></tr>
+<tr class="memdesc:a6299a9e023124b7226ab405cc4c12c9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zeichen und Flag, ob ein gecachetes Zeichen da ist.  <a href="#a6299a9e023124b7226ab405cc4c12c9e">Mehr ...</a><br/></td></tr>
+<tr class="separator:a6299a9e023124b7226ab405cc4c12c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ba613497814aa75f4d53254ddeaadf6"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#a3ba613497814aa75f4d53254ddeaadf6">is_valid</a></td></tr>
+<tr class="separator:a3ba613497814aa75f4d53254ddeaadf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e4fb1dd94e7d296424e04f403a90779"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="../../d8/d7d/structheap__element.html">heap_element</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#a4e4fb1dd94e7d296424e04f403a90779">syntax_heap</a> = NULL</td></tr>
+<tr class="memdesc:a4e4fb1dd94e7d296424e04f403a90779"><td class="mdescLeft">&#160;</td><td class="mdescRight">Syntax-Heap.  <a href="#a4e4fb1dd94e7d296424e04f403a90779">Mehr ...</a><br/></td></tr>
+<tr class="separator:a4e4fb1dd94e7d296424e04f403a90779"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fc7366cfc2292a9ee85f066c43e861a"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="../../d8/d7d/structheap__element.html">heap_element</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> = NULL</td></tr>
+<tr class="memdesc:a8fc7366cfc2292a9ee85f066c43e861a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zeiger auf Syntax-Heap-Elemente.  <a href="#a8fc7366cfc2292a9ee85f066c43e861a">Mehr ...</a><br/></td></tr>
+<tr class="separator:a8fc7366cfc2292a9ee85f066c43e861a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a124eb09d5e75b3f3c9d58ae26f6ac406"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="../../df/d0f/structmini__heap.html">mini_heap</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d29/heap_8c.html#a124eb09d5e75b3f3c9d58ae26f6ac406">laufzeit_heap</a> = NULL</td></tr>
+<tr class="memdesc:a124eb09d5e75b3f3c9d58ae26f6ac406"><td class="mdescLeft">&#160;</td><td class="mdescRight">Laufzeit-Heap.  <a href="#a124eb09d5e75b3f3c9d58ae26f6ac406">Mehr ...</a><br/></td></tr>
+<tr class="separator:a124eb09d5e75b3f3c9d58ae26f6ac406"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
+<div class="textblock"><p>Heapverwaltung. </p>
+<dl class="section rcs"><dt>Header:</dt><dd>/home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/heap.c,v 1.5 2005/07/20 11:51:59 keinstein Exp </dd></dl>
+<dl class="section author"><dt>Autor</dt><dd>R.Krauße <a href="#" onclick="location.href='mai'+'lto:'+'kra'+'us'+'ze@'+'us'+'ers'+'.b'+'erl'+'io'+'s.d'+'e'; return false;">kraus<span style="display: none;">.nosp@m.</span>ze@u<span style="display: none;">.nosp@m.</span>sers.<span style="display: none;">.nosp@m.</span>berl<span style="display: none;">.nosp@m.</span>ios.d<span style="display: none;">.nosp@m.</span>e</a> </dd></dl>
+<dl class="section date"><dt>Datum</dt><dd></dd></dl>
+<dl class="section rcs"><dt>Date:</dt><dd>2005/07/20 11:51:59 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd></dd></dl>
+<dl class="section rcs"><dt>Revision:</dt><dd>1.5 </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="../../de/da5/bug.html#_bug000003">Fehler:</a></b></dt><dd>fatal_error(...) muss von Oberfläche getrennt werden. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="../../dd/da0/todo.html#_todo000029">Noch zu erledigen:</a></b></dt><dd>Portabilisierung von: memmove</dd></dl>
+<dl class="section rcs"><dt>Log:</dt><dd><a class="el" href="../../d2/d29/heap_8c.html" title="Heapverwaltung. ">heap.c</a>,v </dd></dl>
+<p>Revision 1.5 2005/07/20 11:51:59 keinstein CVS-Kopf config.h</p>
+<p>Revision 1.4 2005/07/19 15:15:27 keinstein Using own Templates </p>
+
+<p>Definiert in Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+</div><h2 class="groupheader">Makro-Dokumentation</h2>
+<a class="anchor" id="a21005f9f4e2ce7597c5eb4351816d7e2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OFFSET&#160;&#160;&#160;(sizeof(size_t))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Größe eines Größentyps. </p>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00142">142</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d2/d29/heap_8c_source.html#l00166">xmalloc()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Funktionen</h2>
+<a class="anchor" id="ac1b46a2090e2218f2e85831fe4a5787f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int init_laufzeit_speicher </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialisiert (Löscht) den Laufzeit-Speicher. </p>
+<dl class="retval"><dt>Rückgabewerte</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">0</td><td>kein Fehler </td></tr>
+    <tr><td class="paramname">1</td><td>Fehler </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00385">385</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../d2/d29/heap_8c_source.html#l00394">loesche_laufzeit_speicher()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;{</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="../../da/ddb/heap_8h.html#abeb3de8f1a02e90f536a351e3824d7da">loesche_laufzeit_speicher</a> ();</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;}</div>
+<div class="ttc" id="heap_8h_html_abeb3de8f1a02e90f536a351e3824d7da"><div class="ttname"><a href="../../da/ddb/heap_8h.html#abeb3de8f1a02e90f536a351e3824d7da">loesche_laufzeit_speicher</a></div><div class="ttdeci">int loesche_laufzeit_speicher(void)</div><div class="ttdoc">Löscht den Laufzeitspeicher. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00394">heap.c:394</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a7f918156b5c5fbb2fddf370f407292ca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int init_syntax_speicher </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialisiert den Syntax-Heap. </p>
+<dl class="retval"><dt>Rückgabewerte</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Rückgabewert</td><td>vom Löschen. Siehe <code>loesche_syntax_speicher</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00298">298</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../d2/d29/heap_8c_source.html#l00276">loesche_syntax_speicher()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;{</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="../../da/ddb/heap_8h.html#a422a5aa2850896c98dd2a5b52959a968">loesche_syntax_speicher</a> ();</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;}</div>
+<div class="ttc" id="heap_8h_html_a422a5aa2850896c98dd2a5b52959a968"><div class="ttname"><a href="../../da/ddb/heap_8h.html#a422a5aa2850896c98dd2a5b52959a968">loesche_syntax_speicher</a></div><div class="ttdeci">int loesche_syntax_speicher(void)</div><div class="ttdoc">Löscht den gesamten Syntax-Heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00276">heap.c:276</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a9a3f8e6ec3a617a7f957e75aaf48dfe7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int intern_fgetc </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Spezielle Implementation von <code>fgetc</code>. </p>
+<p>Es wird getestet, ob sich noch ein Zeichen im Zwischenspeicher befindet. In diesem Fall wird das Zeichen zurückgegeben und der Zwischenspeicher geleert. Ansonsten wird ein neues Zeichen eingelesen. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>Datei, von der das Zeichen eingelesen werden soll. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Ein zeichen aus dem Eingabestrom. </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00053">53</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../d2/d29/heap_8c_source.html#l00044">is_valid</a> und <a class="el" href="../../d2/d29/heap_8c_source.html#l00044">the_character</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d1/de1/Mut__Tab_8cpp_source.html#l01600">yylex()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{ <span class="keywordtype">int</span> zeichen;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../d2/d29/heap_8c.html#a3ba613497814aa75f4d53254ddeaadf6">is_valid</a>) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <a class="code" href="../../d2/d29/heap_8c.html#a3ba613497814aa75f4d53254ddeaadf6">is_valid</a> = 0;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      <span class="keywordflow">return</span>  <a class="code" href="../../d2/d29/heap_8c.html#a6299a9e023124b7226ab405cc4c12c9e">the_character</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  zeichen = fgetc(stream);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordflow">return</span> zeichen;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<div class="ttc" id="heap_8c_html_a3ba613497814aa75f4d53254ddeaadf6"><div class="ttname"><a href="../../d2/d29/heap_8c.html#a3ba613497814aa75f4d53254ddeaadf6">is_valid</a></div><div class="ttdeci">static int is_valid</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00044">heap.c:44</a></div></div>
+<div class="ttc" id="heap_8c_html_a6299a9e023124b7226ab405cc4c12c9e"><div class="ttname"><a href="../../d2/d29/heap_8c.html#a6299a9e023124b7226ab405cc4c12c9e">the_character</a></div><div class="ttdeci">static int the_character</div><div class="ttdoc">Zeichen und Flag, ob ein gecachetes Zeichen da ist. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00044">heap.c:44</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a0cfd6bb0e826070880878722da07d0d6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int intern_ungetc </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>stream</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Spezielle Implementation von <code>ungetc</code>. </p>
+<p>Das Zeichen im Zwischenspeicher wird an Position 0 vom Seriennummer-Feld geschrieben und danach wird das übergebene Zeichen <em>c</em> in den Zwischenspeicher gelegt. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Zeichen, das ,,zurückgeschrieben`` werden soll. </td></tr>
+    <tr><td class="paramname">stream</td><td>Datei, für das das Zurückschreiben stattfinden soll. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Warnung</dt><dd>Das gesamte Programm kann auf diese Art und Weise maximal ein Zeichen zwischenspeichern. Bei weiteren Aufrufen wird das vorher gespeicherte Zeichen einfach überschrieben. </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00075">75</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../d2/d29/heap_8c_source.html#l00044">is_valid</a>, <a class="el" href="../../d2/d29/heap_8c_source.html#l00038">SeRiEnNuMmEr</a> und <a class="el" href="../../d2/d29/heap_8c_source.html#l00044">the_character</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d1/de1/Mut__Tab_8cpp_source.html#l01600">yylex()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{ </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;         <a class="code" href="../../d2/d29/heap_8c.html#a9f4e64aebb64a7266779fa72435f0e84">SeRiEnNuMmEr</a>[0] = <a class="code" href="../../d2/d29/heap_8c.html#a6299a9e023124b7226ab405cc4c12c9e">the_character</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;         <a class="code" href="../../d2/d29/heap_8c.html#a3ba613497814aa75f4d53254ddeaadf6">is_valid</a> = 1;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;         <a class="code" href="../../d2/d29/heap_8c.html#a6299a9e023124b7226ab405cc4c12c9e">the_character</a> = c;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;         <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="ttc" id="heap_8c_html_a9f4e64aebb64a7266779fa72435f0e84"><div class="ttname"><a href="../../d2/d29/heap_8c.html#a9f4e64aebb64a7266779fa72435f0e84">SeRiEnNuMmEr</a></div><div class="ttdeci">char SeRiEnNuMmEr[]</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00038">heap.c:38</a></div></div>
+<div class="ttc" id="heap_8c_html_a3ba613497814aa75f4d53254ddeaadf6"><div class="ttname"><a href="../../d2/d29/heap_8c.html#a3ba613497814aa75f4d53254ddeaadf6">is_valid</a></div><div class="ttdeci">static int is_valid</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00044">heap.c:44</a></div></div>
+<div class="ttc" id="heap_8c_html_a6299a9e023124b7226ab405cc4c12c9e"><div class="ttname"><a href="../../d2/d29/heap_8c.html#a6299a9e023124b7226ab405cc4c12c9e">the_character</a></div><div class="ttdeci">static int the_character</div><div class="ttdoc">Zeichen und Flag, ob ein gecachetes Zeichen da ist. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00044">heap.c:44</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="abeb3de8f1a02e90f536a351e3824d7da"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int loesche_laufzeit_speicher </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Löscht den Laufzeitspeicher. </p>
+<dl class="retval"><dt>Rückgabewerte</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">0</td><td>kein Fehler </td></tr>
+    <tr><td class="paramname">1</td><td>Fehler </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00394">394</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../d2/d29/heap_8c_source.html#l00316">laufzeit_heap</a>, <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00324">mini_heap::next</a> und <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00323">mini_heap::pointer</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00379">init_laufzeit_speicher()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;{</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    <span class="keyword">struct </span><a class="code" href="../../df/d0f/structmini__heap.html">mini_heap</a> * lauf = <a class="code" href="../../d2/d29/heap_8c.html#a124eb09d5e75b3f3c9d58ae26f6ac406">laufzeit_heap</a>;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    <span class="keywordflow">while</span> (lauf) {</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        <span class="keyword">struct </span><a class="code" href="../../df/d0f/structmini__heap.html">mini_heap</a> * help = lauf;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="preprocessor">#ifdef ACS_VERSION</span></div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="preprocessor"></span>      Ax_ifree (lauf -&gt; <a class="code" href="../../df/d0f/structmini__heap.html#aecfe0d88db686d1d6863c76d37b14099">pointer</a>);</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="preprocessor"></span>      free (lauf -&gt; <a class="code" href="../../df/d0f/structmini__heap.html#aecfe0d88db686d1d6863c76d37b14099">pointer</a>);</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        lauf = lauf -&gt; <a class="code" href="../../df/d0f/structmini__heap.html#a7a916371240bff53d356d1aa120457b3">next</a>;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;<span class="preprocessor">#ifdef ACS_VERSION</span></div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;<span class="preprocessor"></span>      Ax_ifree (help);</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;<span class="preprocessor"></span>      free (help);</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    }</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    </div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    <a class="code" href="../../d2/d29/heap_8c.html#a124eb09d5e75b3f3c9d58ae26f6ac406">laufzeit_heap</a> = NULL;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    <span class="keywordflow">return</span> 0; <span class="comment">/* 0=ok, 1=fehler */</span></div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;}</div>
+<div class="ttc" id="structmini__heap_html_a7a916371240bff53d356d1aa120457b3"><div class="ttname"><a href="../../df/d0f/structmini__heap.html#a7a916371240bff53d356d1aa120457b3">mini_heap::next</a></div><div class="ttdeci">struct mini_heap * next</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00324">Hilfs.cpp:324</a></div></div>
+<div class="ttc" id="structmini__heap_html"><div class="ttname"><a href="../../df/d0f/structmini__heap.html">mini_heap</a></div><div class="ttdoc">Typ für den Laufzeit-Heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00321">Hilfs.cpp:321</a></div></div>
+<div class="ttc" id="heap_8c_html_a124eb09d5e75b3f3c9d58ae26f6ac406"><div class="ttname"><a href="../../d2/d29/heap_8c.html#a124eb09d5e75b3f3c9d58ae26f6ac406">laufzeit_heap</a></div><div class="ttdeci">static struct mini_heap * laufzeit_heap</div><div class="ttdoc">Laufzeit-Heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00316">heap.c:316</a></div></div>
+<div class="ttc" id="structmini__heap_html_aecfe0d88db686d1d6863c76d37b14099"><div class="ttname"><a href="../../df/d0f/structmini__heap.html#aecfe0d88db686d1d6863c76d37b14099">mini_heap::pointer</a></div><div class="ttdeci">void * pointer</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00323">Hilfs.cpp:323</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a422a5aa2850896c98dd2a5b52959a968"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int loesche_syntax_speicher </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Löscht den gesamten Syntax-Heap. </p>
+<p>Anschließend werden die beiden Zeiger <code>syntax_heap</code> und <code>heap_to_use</code> auf <code>NULL</code> gesetzt. </p>
+<dl class="retval"><dt>Rückgabewerte</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">0</td><td>kein Fehler </td></tr>
+    <tr><td class="paramname">1</td><td>Fehler </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00276">276</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00136">heap_element::next</a> und <a class="el" href="../../d2/d29/heap_8c_source.html#l00136">syntax_heap</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00604">mutabor::BoxClass::Compile()</a>, <a class="el" href="../../d3/d14/gmut_8cpp_source.html#l00153">GMutCompile()</a>, <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00310">init_syntax_speicher()</a>, <a class="el" href="../../d1/dce/box_8cpp_source.html#l00050">mutabor_set_logic()</a>, <a class="el" href="../../d1/da7/boxTest_8cpp_source.html#l00331">boxTest::testBug1Permutation1()</a>, <a class="el" href="../../d1/da7/boxTest_8cpp_source.html#l00369">boxTest::testBug1Permutation2()</a> und <a class="el" href="../../d1/da7/boxTest_8cpp_source.html#l00283">boxTest::testFindKeyByKey()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;{</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;  <span class="keyword">struct </span><a class="code" href="../../d8/d7d/structheap__element.html">heap_element</a> * lauf = <a class="code" href="../../d2/d29/heap_8c.html#a4e4fb1dd94e7d296424e04f403a90779">syntax_heap</a>;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;  <span class="keywordflow">while</span> (lauf) {</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;      <span class="keyword">struct </span><a class="code" href="../../d8/d7d/structheap__element.html">heap_element</a> * help = lauf-&gt;<a class="code" href="../../d8/d7d/structheap__element.html#aceed2ed2415535fa5d77702aa5ec526a">next</a>;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="preprocessor">#ifdef ACS_VERSION</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="preprocessor"></span>      Ax_ifree (lauf);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="preprocessor"></span>      free (lauf);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="preprocessor"></span>      lauf = help;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;  }</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  <a class="code" href="../../d2/d29/heap_8c.html#a4e4fb1dd94e7d296424e04f403a90779">syntax_heap</a> = NULL;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  <a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> = NULL;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  <span class="keywordflow">return</span> 0; <span class="comment">/* 0=ok, 1=fehler */</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;}</div>
+<div class="ttc" id="structheap__element_html"><div class="ttname"><a href="../../d8/d7d/structheap__element.html">heap_element</a></div><div class="ttdoc">Typ eines eigenen HEAPs. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00131">Hilfs.cpp:131</a></div></div>
+<div class="ttc" id="heap_8c_html_a8fc7366cfc2292a9ee85f066c43e861a"><div class="ttname"><a href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a></div><div class="ttdeci">static struct heap_element * heap_to_use_syntax</div><div class="ttdoc">Zeiger auf Syntax-Heap-Elemente. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00139">heap.c:139</a></div></div>
+<div class="ttc" id="heap_8c_html_a4e4fb1dd94e7d296424e04f403a90779"><div class="ttname"><a href="../../d2/d29/heap_8c.html#a4e4fb1dd94e7d296424e04f403a90779">syntax_heap</a></div><div class="ttdeci">static struct heap_element * syntax_heap</div><div class="ttdoc">Syntax-Heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00136">heap.c:136</a></div></div>
+<div class="ttc" id="structheap__element_html_aceed2ed2415535fa5d77702aa5ec526a"><div class="ttname"><a href="../../d8/d7d/structheap__element.html#aceed2ed2415535fa5d77702aa5ec526a">heap_element::next</a></div><div class="ttdeci">struct heap_element * next</div><div class="ttdoc">Größe des belegten Bereiches. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00136">Hilfs.cpp:136</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a95116b44bc41d1e825e79c148ab7d0a6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* xalloca </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Allokiert einen Speicherbereich und erzeugt im Fehlerfall einen fatalen Fehler. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>Größe des benötigten Speicherbereiches in <code>chars</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Zeiger auf den Speicherbereich. </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00096">96</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../dd/dff/testidentifier_8c_source.html#l00012">fatal_error</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d3/dca/Interval_8cpp_source.html#l00237">berechne_intervalle_absolut()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02399">berechne_toene_absolut()</a> und <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02954">check_konsistenz()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                             {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#ifdef ACS_VERSION</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor"></span>         <span class="keywordtype">void</span> * help = Ax_malloc (size);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor"></span>    <span class="keywordtype">void</span> * help = malloc (size);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor"></span><span class="keywordflow">if</span> (help == NULL) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                  <a class="code" href="../../dd/dff/testidentifier_8c.html#a51c4524d98f03e6f3eed99caf26e5fff">fatal_error</a> (4);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                  <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;         }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;         <span class="keywordflow">return</span> help;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="ttc" id="testidentifier_8c_html_a51c4524d98f03e6f3eed99caf26e5fff"><div class="ttname"><a href="../../dd/dff/testidentifier_8c.html#a51c4524d98f03e6f3eed99caf26e5fff">fatal_error</a></div><div class="ttdeci">int fatal_error</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dff/testidentifier_8c_source.html#l00012">testidentifier.c:12</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ab0c7434dd1577c62500713d2508d89ce"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* xcalloc </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>anzahl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fordert einen Speicherbereich vom Syntax-Heap an, der <em>anzahl</em> * <em>size</em> Zeichen enthält. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">anzahl</td><td>Anzahl der Einheiten </td></tr>
+    <tr><td class="paramname">size</td><td>Größe einer Speichereinheit. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00258">258</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../dd/dff/testidentifier_8c_source.html#l00012">fatal_error</a> und <a class="el" href="../../d2/d29/heap_8c_source.html#l00166">xmalloc()</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02697">check_aktionen()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00924">create_midi_scan_liste()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l01291">expand_decition_tree()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00229">generate_argument_list()</a> und <a class="el" href="../../dc/d30/interpreter_8c_source.html#l00081">mutabor_tabellen_generator()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;{  <span class="keywordtype">void</span> * help = <a class="code" href="../../da/ddb/heap_8h.html#a42ccfa6fc49cc4ce90cc44cd05052490">xmalloc</a> (anzahl * size);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;   <span class="keywordflow">if</span> (help) {</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;       memset (help, 0, anzahl * size);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;       <span class="keywordflow">return</span> help;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;   }</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;   <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;       <a class="code" href="../../dd/dff/testidentifier_8c.html#a51c4524d98f03e6f3eed99caf26e5fff">fatal_error</a> (4);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;       <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;   }</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;}</div>
+<div class="ttc" id="testidentifier_8c_html_a51c4524d98f03e6f3eed99caf26e5fff"><div class="ttname"><a href="../../dd/dff/testidentifier_8c.html#a51c4524d98f03e6f3eed99caf26e5fff">fatal_error</a></div><div class="ttdeci">int fatal_error</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dff/testidentifier_8c_source.html#l00012">testidentifier.c:12</a></div></div>
+<div class="ttc" id="heap_8h_html_a42ccfa6fc49cc4ce90cc44cd05052490"><div class="ttname"><a href="../../da/ddb/heap_8h.html#a42ccfa6fc49cc4ce90cc44cd05052490">xmalloc</a></div><div class="ttdeci">void * xmalloc(size_t size)</div><div class="ttdoc">Belegt einen Speicherbereich in der einfach verketteten Liste syntax_heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00166">heap.c:166</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a42ccfa6fc49cc4ce90cc44cd05052490"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* xmalloc </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Belegt einen Speicherbereich in der einfach verketteten Liste <code>syntax_heap</code>. </p>
+<p>Gegebenenfalls wird ein neues Element angelegt. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>Anzahl der Zeichen (<code>char</code>), die belegt werden sollen. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00166">166</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00134">heap_element::anzahl_belegt</a>, <a class="el" href="../../dd/dff/testidentifier_8c_source.html#l00012">fatal_error</a>, <a class="el" href="../../da/ddb/heap_8h_source.html#l00032">HEAP_PORTION_SYNTAX</a>, <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00133">heap_element::inhalt</a>, <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00136">heap_element::next</a>, <a class="el" href="../../d2/d29/heap_8c_source.html#l00142">OFFSET</a> und <a class="el" href="../../d2/d29/heap_8c_source.html#l00136">syntax_heap</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00070">allgemeine_initialisierungen()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00626">expand_case_liste()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00908">expand_harmony_analysis()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00941">expand_pattern()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00396">expand_tonliste()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00514">expandiere_logik()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00891">expandiere_midi()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00464">expandiere_tonsystem()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00672">expandiere_umstimmung()</a>, <a class="el" href="../../d7/d2d/parameter_8c_source.html#l00116">gen_parameter_liste()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00229">generate_argument_list()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02102">get_ausloeser_default()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02111">get_ausloeser_harmonie()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02122">get_ausloeser_harmonie_form()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02150">get_ausloeser_midi_in()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02133">get_ausloeser_taste()</a>, <a class="el" href="../../dc/d30/interpreter_8c_source.html#l00061">get_cache_konstante()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02238">get_instrument_dekl()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00424">get_new_aktion_aufruf_element()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00457">get_new_aktion_harmony_analysis()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00442">get_new_aktion_midi_out_element()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00393">get_new_anchor_in_argument_list()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02180">get_new_anweisung()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00380">get_new_distance_in_argument_list()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00483">get_new_faktor_anteil()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02016">get_new_harmonie()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00232">get_new_integer_in_integersequenz()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01083">get_new_intervall()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01111">get_new_intervall_komplex()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02197">get_new_logik()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00364">get_new_name_in_argument_list()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00265">get_new_name_in_parameterlist()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00348">get_new_number_in_argument_list()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01996">get_new_taste()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01140">get_new_ton_absolut()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01241">get_new_ton_in_tonsystem()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01189">get_new_ton_komplex_negative()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01164">get_new_ton_komplex_positive()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01258">get_new_tonsystem()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01283">get_new_tonsystem_negative()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01480">get_new_umstimm_expression()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01531">get_new_umstimm_expression_negative()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01506">get_new_umstimm_expression_positive()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01814">get_umstimmungs_case_default_element()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01796">get_umstimmungs_case_zahl_element()</a>, <a class="el" href="../../df/de8/ton_8c_source.html#l00045">init_nullton()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01333">init_umstimmung()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00978">insert_in_globale_liste()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l01087">insert_in_lokale_liste()</a>, <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00270">xcalloc()</a>, <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00236">xrealloc()</a> und <a class="el" href="../../df/d33/mut_8cc_source.html#l03443">yylex()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;{  </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">if</span> (size + <a class="code" href="../../d2/d29/heap_8c.html#a21005f9f4e2ce7597c5eb4351816d7e2">OFFSET</a> &gt; <a class="code" href="../../da/ddb/heap_8h.html#aa93f2514a0844adf4ff82a3853148266">HEAP_PORTION_SYNTAX</a>) {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <a class="code" href="../../dd/dff/testidentifier_8c.html#a51c4524d98f03e6f3eed99caf26e5fff">fatal_error</a> (4);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d2/d29/heap_8c.html#a4e4fb1dd94e7d296424e04f403a90779">syntax_heap</a> == NULL) {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">#ifdef ACS_VERSION</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor"></span>                  <a class="code" href="../../d2/d29/heap_8c.html#a4e4fb1dd94e7d296424e04f403a90779">syntax_heap</a> = Ax_malloc (<span class="keyword">sizeof</span> (<span class="keyword">struct</span> <a class="code" href="../../d8/d7d/structheap__element.html">heap_element</a>));</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        memset(<a class="code" href="../../d2/d29/heap_8c.html#a4e4fb1dd94e7d296424e04f403a90779">syntax_heap</a>,0,<span class="keyword">sizeof</span> (<span class="keyword">struct</span> <a class="code" href="../../d8/d7d/structheap__element.html">heap_element</a>));</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor"></span>                  <a class="code" href="../../d2/d29/heap_8c.html#a4e4fb1dd94e7d296424e04f403a90779">syntax_heap</a> = (<span class="keyword">struct </span><a class="code" href="../../d8/d7d/structheap__element.html">heap_element</a>*) calloc (1,<span class="keyword">sizeof</span> (<span class="keyword">struct</span> <a class="code" href="../../d8/d7d/structheap__element.html">heap_element</a>));</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor"></span>                  <span class="keywordflow">if</span> (<a class="code" href="../../d2/d29/heap_8c.html#a4e4fb1dd94e7d296424e04f403a90779">syntax_heap</a> == NULL) {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                                <a class="code" href="../../dd/dff/testidentifier_8c.html#a51c4524d98f03e6f3eed99caf26e5fff">fatal_error</a> (4);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                                <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                  }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                  <a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> = <a class="code" href="../../d2/d29/heap_8c.html#a4e4fb1dd94e7d296424e04f403a90779">syntax_heap</a>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                  <a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; <a class="code" href="../../d8/d7d/structheap__element.html#ab400a0aecbfd3e5d9062a8e71f1e242c">anzahl_belegt</a> = 0;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                  <a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; <a class="code" href="../../d8/d7d/structheap__element.html#aceed2ed2415535fa5d77702aa5ec526a">next</a> = NULL;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;         }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">/**** Jetzt ist zumindest ein Block da ******/</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; <a class="code" href="../../d8/d7d/structheap__element.html#ab400a0aecbfd3e5d9062a8e71f1e242c">anzahl_belegt</a> + size + <a class="code" href="../../d2/d29/heap_8c.html#a21005f9f4e2ce7597c5eb4351816d7e2">OFFSET</a></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;              &lt; <a class="code" href="../../da/ddb/heap_8h.html#aa93f2514a0844adf4ff82a3853148266">HEAP_PORTION_SYNTAX</a>) {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keywordtype">void</span> * help = &amp; <a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                <a class="code" href="../../d8/d7d/structheap__element.html#a78a964bd6d98bcf45a5007a308d56876">inhalt</a> [ <a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; <a class="code" href="../../d8/d7d/structheap__element.html#ab400a0aecbfd3e5d9062a8e71f1e242c">anzahl_belegt</a> + <a class="code" href="../../d2/d29/heap_8c.html#a21005f9f4e2ce7597c5eb4351816d7e2">OFFSET</a> ] ;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; <a class="code" href="../../d8/d7d/structheap__element.html#ab400a0aecbfd3e5d9062a8e71f1e242c">anzahl_belegt</a> += size + <a class="code" href="../../d2/d29/heap_8c.html#a21005f9f4e2ce7597c5eb4351816d7e2">OFFSET</a>;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        ((<span class="keywordtype">size_t</span> *)help) [ - 1 ] = size;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordflow">return</span> help;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor">#ifdef ACS_VERSION</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor"></span>        <a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; <a class="code" href="../../d8/d7d/structheap__element.html#aceed2ed2415535fa5d77702aa5ec526a">next</a> = Ax_malloc (<span class="keyword">sizeof</span> (<span class="keyword">struct</span> <a class="code" href="../../d8/d7d/structheap__element.html">heap_element</a>));</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        memset(<a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; <a class="code" href="../../d8/d7d/structheap__element.html#aceed2ed2415535fa5d77702aa5ec526a">next</a>,0,<span class="keyword">sizeof</span> (<span class="keyword">struct</span> <a class="code" href="../../d8/d7d/structheap__element.html">heap_element</a>));</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="preprocessor"></span>        <a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; <a class="code" href="../../d8/d7d/structheap__element.html#aceed2ed2415535fa5d77702aa5ec526a">next</a> = (<span class="keyword">struct </span><a class="code" href="../../d8/d7d/structheap__element.html">heap_element</a>*) </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                  calloc (1,<span class="keyword">sizeof</span> (<span class="keyword">struct</span> <a class="code" href="../../d8/d7d/structheap__element.html">heap_element</a>));</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="preprocessor"></span>        <span class="keywordflow">if</span> (<a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; <a class="code" href="../../d8/d7d/structheap__element.html#aceed2ed2415535fa5d77702aa5ec526a">next</a> == NULL) {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <a class="code" href="../../dd/dff/testidentifier_8c.html#a51c4524d98f03e6f3eed99caf26e5fff">fatal_error</a> (4);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> = <a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; <a class="code" href="../../d8/d7d/structheap__element.html#aceed2ed2415535fa5d77702aa5ec526a">next</a>;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; <a class="code" href="../../d8/d7d/structheap__element.html#aceed2ed2415535fa5d77702aa5ec526a">next</a> = NULL;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; <a class="code" href="../../d8/d7d/structheap__element.html#ab400a0aecbfd3e5d9062a8e71f1e242c">anzahl_belegt</a> = size + <a class="code" href="../../d2/d29/heap_8c.html#a21005f9f4e2ce7597c5eb4351816d7e2">OFFSET</a>;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        *(<span class="keywordtype">size_t</span> *)&amp;(<a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; <a class="code" href="../../d8/d7d/structheap__element.html#a78a964bd6d98bcf45a5007a308d56876">inhalt</a> [ 0 ]) = size;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <span class="keywordflow">return</span> &amp; <a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; <a class="code" href="../../d8/d7d/structheap__element.html#a78a964bd6d98bcf45a5007a308d56876">inhalt</a> [ <a class="code" href="../../d2/d29/heap_8c.html#a21005f9f4e2ce7597c5eb4351816d7e2">OFFSET</a> ] ;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    }</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;}</div>
+<div class="ttc" id="structheap__element_html"><div class="ttname"><a href="../../d8/d7d/structheap__element.html">heap_element</a></div><div class="ttdoc">Typ eines eigenen HEAPs. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00131">Hilfs.cpp:131</a></div></div>
+<div class="ttc" id="structheap__element_html_a78a964bd6d98bcf45a5007a308d56876"><div class="ttname"><a href="../../d8/d7d/structheap__element.html#a78a964bd6d98bcf45a5007a308d56876">heap_element::inhalt</a></div><div class="ttdeci">char inhalt[HEAP_PORTION_SYNTAX]</div><div class="ttdoc">Datenbereich. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00133">Hilfs.cpp:133</a></div></div>
+<div class="ttc" id="structheap__element_html_ab400a0aecbfd3e5d9062a8e71f1e242c"><div class="ttname"><a href="../../d8/d7d/structheap__element.html#ab400a0aecbfd3e5d9062a8e71f1e242c">heap_element::anzahl_belegt</a></div><div class="ttdeci">size_t anzahl_belegt</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00134">Hilfs.cpp:134</a></div></div>
+<div class="ttc" id="heap_8h_html_aa93f2514a0844adf4ff82a3853148266"><div class="ttname"><a href="../../da/ddb/heap_8h.html#aa93f2514a0844adf4ff82a3853148266">HEAP_PORTION_SYNTAX</a></div><div class="ttdeci">#define HEAP_PORTION_SYNTAX</div><div class="ttdoc">Größe eines Syntax-Heap-Elementes. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/ddb/heap_8h_source.html#l00032">heap.h:32</a></div></div>
+<div class="ttc" id="heap_8c_html_a8fc7366cfc2292a9ee85f066c43e861a"><div class="ttname"><a href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a></div><div class="ttdeci">static struct heap_element * heap_to_use_syntax</div><div class="ttdoc">Zeiger auf Syntax-Heap-Elemente. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00139">heap.c:139</a></div></div>
+<div class="ttc" id="testidentifier_8c_html_a51c4524d98f03e6f3eed99caf26e5fff"><div class="ttname"><a href="../../dd/dff/testidentifier_8c.html#a51c4524d98f03e6f3eed99caf26e5fff">fatal_error</a></div><div class="ttdeci">int fatal_error</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dff/testidentifier_8c_source.html#l00012">testidentifier.c:12</a></div></div>
+<div class="ttc" id="heap_8c_html_a4e4fb1dd94e7d296424e04f403a90779"><div class="ttname"><a href="../../d2/d29/heap_8c.html#a4e4fb1dd94e7d296424e04f403a90779">syntax_heap</a></div><div class="ttdeci">static struct heap_element * syntax_heap</div><div class="ttdoc">Syntax-Heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00136">heap.c:136</a></div></div>
+<div class="ttc" id="structheap__element_html_aceed2ed2415535fa5d77702aa5ec526a"><div class="ttname"><a href="../../d8/d7d/structheap__element.html#aceed2ed2415535fa5d77702aa5ec526a">heap_element::next</a></div><div class="ttdeci">struct heap_element * next</div><div class="ttdoc">Größe des belegten Bereiches. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00136">Hilfs.cpp:136</a></div></div>
+<div class="ttc" id="heap_8c_html_a21005f9f4e2ce7597c5eb4351816d7e2"><div class="ttname"><a href="../../d2/d29/heap_8c.html#a21005f9f4e2ce7597c5eb4351816d7e2">OFFSET</a></div><div class="ttdeci">#define OFFSET</div><div class="ttdoc">Größe eines Größentyps. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00142">heap.c:142</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ac56ae312aa3a8be7c32ffbd997fed591"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* xrealloc </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>block</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>newsize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ändert die Größe eines aktuellen Speicherbereiches im privaten Syntax-Heap. </p>
+<p>Im Fehlerfall wird ein fataler Fehler ausgelöst. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">block</td><td>Zeiger auf den Block, dessen Größe geändert werden soll. </td></tr>
+    <tr><td class="paramname">newsize</td><td>Neue Größe für den Block. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00224">224</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00134">heap_element::anzahl_belegt</a>, <a class="el" href="../../dd/dff/testidentifier_8c_source.html#l00012">fatal_error</a>, <a class="el" href="../../da/ddb/heap_8h_source.html#l00032">HEAP_PORTION_SYNTAX</a>, <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00133">heap_element::inhalt</a> und <a class="el" href="../../d2/d29/heap_8c_source.html#l00166">xmalloc()</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../df/d33/mut_8cc_source.html#l03443">yylex()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;{</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordflow">if</span> ( ((<span class="keywordtype">size_t</span> *)block) [ - 1 ] + (<span class="keywordtype">char</span>*)block</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;         == &amp; <a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                 <a class="code" href="../../d8/d7d/structheap__element.html#a78a964bd6d98bcf45a5007a308d56876">inhalt</a> [<a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; <a class="code" href="../../d8/d7d/structheap__element.html#ab400a0aecbfd3e5d9062a8e71f1e242c">anzahl_belegt</a>]</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;      &amp;&amp;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;          (<span class="keywordtype">char</span>*)block + newsize &lt; </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;             &amp;(<a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; <a class="code" href="../../d8/d7d/structheap__element.html#a78a964bd6d98bcf45a5007a308d56876">inhalt</a> [ <a class="code" href="../../da/ddb/heap_8h.html#aa93f2514a0844adf4ff82a3853148266">HEAP_PORTION_SYNTAX</a> ])) {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">/* Dann war block der vorherige xmalloc und es passt noch rein */</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;      <a class="code" href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a> -&gt; <a class="code" href="../../d8/d7d/structheap__element.html#ab400a0aecbfd3e5d9062a8e71f1e242c">anzahl_belegt</a> += </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                  newsize - ((<span class="keywordtype">size_t</span> *)block) [ - 1 ] ;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;      ((<span class="keywordtype">size_t</span> *)block) [ - 1 ] = newsize;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;      <span class="keywordflow">return</span> block;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;       <span class="keywordtype">void</span> * help = <a class="code" href="../../da/ddb/heap_8h.html#a42ccfa6fc49cc4ce90cc44cd05052490">xmalloc</a> (newsize);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;       <span class="keywordflow">if</span> (help) {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;           memmove (help, block, newsize);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;           <span class="keywordflow">return</span> help;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;       }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;       <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;           <a class="code" href="../../dd/dff/testidentifier_8c.html#a51c4524d98f03e6f3eed99caf26e5fff">fatal_error</a> (4);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;           <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;       }</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;   }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;}</div>
+<div class="ttc" id="structheap__element_html_a78a964bd6d98bcf45a5007a308d56876"><div class="ttname"><a href="../../d8/d7d/structheap__element.html#a78a964bd6d98bcf45a5007a308d56876">heap_element::inhalt</a></div><div class="ttdeci">char inhalt[HEAP_PORTION_SYNTAX]</div><div class="ttdoc">Datenbereich. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00133">Hilfs.cpp:133</a></div></div>
+<div class="ttc" id="structheap__element_html_ab400a0aecbfd3e5d9062a8e71f1e242c"><div class="ttname"><a href="../../d8/d7d/structheap__element.html#ab400a0aecbfd3e5d9062a8e71f1e242c">heap_element::anzahl_belegt</a></div><div class="ttdeci">size_t anzahl_belegt</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00134">Hilfs.cpp:134</a></div></div>
+<div class="ttc" id="heap_8h_html_aa93f2514a0844adf4ff82a3853148266"><div class="ttname"><a href="../../da/ddb/heap_8h.html#aa93f2514a0844adf4ff82a3853148266">HEAP_PORTION_SYNTAX</a></div><div class="ttdeci">#define HEAP_PORTION_SYNTAX</div><div class="ttdoc">Größe eines Syntax-Heap-Elementes. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/ddb/heap_8h_source.html#l00032">heap.h:32</a></div></div>
+<div class="ttc" id="heap_8c_html_a8fc7366cfc2292a9ee85f066c43e861a"><div class="ttname"><a href="../../d2/d29/heap_8c.html#a8fc7366cfc2292a9ee85f066c43e861a">heap_to_use_syntax</a></div><div class="ttdeci">static struct heap_element * heap_to_use_syntax</div><div class="ttdoc">Zeiger auf Syntax-Heap-Elemente. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00139">heap.c:139</a></div></div>
+<div class="ttc" id="testidentifier_8c_html_a51c4524d98f03e6f3eed99caf26e5fff"><div class="ttname"><a href="../../dd/dff/testidentifier_8c.html#a51c4524d98f03e6f3eed99caf26e5fff">fatal_error</a></div><div class="ttdeci">int fatal_error</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dff/testidentifier_8c_source.html#l00012">testidentifier.c:12</a></div></div>
+<div class="ttc" id="heap_8h_html_a42ccfa6fc49cc4ce90cc44cd05052490"><div class="ttname"><a href="../../da/ddb/heap_8h.html#a42ccfa6fc49cc4ce90cc44cd05052490">xmalloc</a></div><div class="ttdeci">void * xmalloc(size_t size)</div><div class="ttdoc">Belegt einen Speicherbereich in der einfach verketteten Liste syntax_heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00166">heap.c:166</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ad4012a6a8a0b3a9007cf8a440370076e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* ycalloc </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>anzahl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fordert eine Anzahl von Einheiten auf dem Laufzeit-Heap an. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">anzahl</td><td>Anzahl der Speichereinheiten. </td></tr>
+    <tr><td class="paramname">size</td><td>Größe einer Einheit. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Speicherbereich. </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00373">373</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../d2/d29/heap_8c_source.html#l00335">ymalloc()</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00193">call_actions()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                                            {</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <span class="keywordtype">void</span> * help = <a class="code" href="../../da/ddb/heap_8h.html#a20022f7843438dccec544ebde6e6889b">ymalloc</a> ( anzahl * size );</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    memset (help, 0, anzahl * size);</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="keywordflow">return</span> help;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;}</div>
+<div class="ttc" id="heap_8h_html_a20022f7843438dccec544ebde6e6889b"><div class="ttname"><a href="../../da/ddb/heap_8h.html#a20022f7843438dccec544ebde6e6889b">ymalloc</a></div><div class="ttdeci">void * ymalloc(size_t size)</div><div class="ttdoc">Fordert Speicher auf dem Laufzeit-Heap an. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00335">heap.c:335</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a20022f7843438dccec544ebde6e6889b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* ymalloc </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fordert Speicher auf dem Laufzeit-Heap an. </p>
+<p>Dabei wird auf der Liste ein neues Element angelegt. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>Größe des Speicherbereiches in <code>char-Einheiten</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Zeiger auf den Speicherbereich. </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00335">335</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../dd/dff/testidentifier_8c_source.html#l00012">fatal_error</a>, <a class="el" href="../../d2/d29/heap_8c_source.html#l00316">laufzeit_heap</a>, <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00324">mini_heap::next</a> und <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00323">mini_heap::pointer</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00193">call_actions()</a>, <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00369">ycalloc()</a> und <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00361">yrealloc()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                             {</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="preprocessor">#ifdef ACS_VERSION</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="preprocessor"></span>    <span class="keywordtype">void</span> * help1 = Ax_malloc (size);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="preprocessor"></span>    <span class="keywordtype">void</span> * help1 = malloc (size);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="preprocessor"></span>    <span class="keyword">struct </span><a class="code" href="../../df/d0f/structmini__heap.html">mini_heap</a> * help2 = (<span class="keyword">struct </span><a class="code" href="../../df/d0f/structmini__heap.html">mini_heap</a>*) malloc (<span class="keyword">sizeof</span> (<span class="keyword">struct</span> <a class="code" href="../../df/d0f/structmini__heap.html">mini_heap</a>));</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordflow">if</span> (help1 == NULL || help2 == NULL) {</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <a class="code" href="../../dd/dff/testidentifier_8c.html#a51c4524d98f03e6f3eed99caf26e5fff">fatal_error</a> (4);</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    }</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    </div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    help2 -&gt; <a class="code" href="../../df/d0f/structmini__heap.html#aecfe0d88db686d1d6863c76d37b14099">pointer</a> = help1;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    help2 -&gt; <a class="code" href="../../df/d0f/structmini__heap.html#a7a916371240bff53d356d1aa120457b3">next</a> = <a class="code" href="../../d2/d29/heap_8c.html#a124eb09d5e75b3f3c9d58ae26f6ac406">laufzeit_heap</a>;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <a class="code" href="../../d2/d29/heap_8c.html#a124eb09d5e75b3f3c9d58ae26f6ac406">laufzeit_heap</a> = help2;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="keywordflow">return</span> help1;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;}</div>
+<div class="ttc" id="structmini__heap_html_a7a916371240bff53d356d1aa120457b3"><div class="ttname"><a href="../../df/d0f/structmini__heap.html#a7a916371240bff53d356d1aa120457b3">mini_heap::next</a></div><div class="ttdeci">struct mini_heap * next</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00324">Hilfs.cpp:324</a></div></div>
+<div class="ttc" id="structmini__heap_html"><div class="ttname"><a href="../../df/d0f/structmini__heap.html">mini_heap</a></div><div class="ttdoc">Typ für den Laufzeit-Heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00321">Hilfs.cpp:321</a></div></div>
+<div class="ttc" id="heap_8c_html_a124eb09d5e75b3f3c9d58ae26f6ac406"><div class="ttname"><a href="../../d2/d29/heap_8c.html#a124eb09d5e75b3f3c9d58ae26f6ac406">laufzeit_heap</a></div><div class="ttdeci">static struct mini_heap * laufzeit_heap</div><div class="ttdoc">Laufzeit-Heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00316">heap.c:316</a></div></div>
+<div class="ttc" id="testidentifier_8c_html_a51c4524d98f03e6f3eed99caf26e5fff"><div class="ttname"><a href="../../dd/dff/testidentifier_8c.html#a51c4524d98f03e6f3eed99caf26e5fff">fatal_error</a></div><div class="ttdeci">int fatal_error</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dff/testidentifier_8c_source.html#l00012">testidentifier.c:12</a></div></div>
+<div class="ttc" id="structmini__heap_html_aecfe0d88db686d1d6863c76d37b14099"><div class="ttname"><a href="../../df/d0f/structmini__heap.html#aecfe0d88db686d1d6863c76d37b14099">mini_heap::pointer</a></div><div class="ttdeci">void * pointer</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00323">Hilfs.cpp:323</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a4a6ce40acee5db6621bace7d200296a9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* yrealloc </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>block</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>newsize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ändert die Größe eines Elementes auf dem Laufzeit-Heap. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">block</td><td>Zeiger auf das zu ändernde Element. </td></tr>
+    <tr><td class="paramname">newsize</td><td>neue Größe </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Zeiger auf das neue Element. </dd></dl>
+<dl class="section warning"><dt>Warnung</dt><dd>es wird nicht geprüft, ob der neue Speicherbereich größer, als der alte ist. Das kann gegebenenfalls zu Speicherüberlauf-Fehlern führen. </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00362">362</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../d2/d29/heap_8c_source.html#l00335">ymalloc()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                                               {</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="keywordtype">void</span> * help = <a class="code" href="../../da/ddb/heap_8h.html#a20022f7843438dccec544ebde6e6889b">ymalloc</a> (newsize);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    memmove (help, block, newsize);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="keywordflow">return</span> help; </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;}</div>
+<div class="ttc" id="heap_8h_html_a20022f7843438dccec544ebde6e6889b"><div class="ttname"><a href="../../da/ddb/heap_8h.html#a20022f7843438dccec544ebde6e6889b">ymalloc</a></div><div class="ttdeci">void * ymalloc(size_t size)</div><div class="ttdoc">Fordert Speicher auf dem Laufzeit-Heap an. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d29/heap_8c_source.html#l00335">heap.c:335</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Variablen-Dokumentation</h2>
+<a class="anchor" id="a8fc7366cfc2292a9ee85f066c43e861a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="../../d8/d7d/structheap__element.html">heap_element</a>* heap_to_use_syntax = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zeiger auf Syntax-Heap-Elemente. </p>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00139">139</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00154">xmalloc()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3ba613497814aa75f4d53254ddeaadf6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int is_valid</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00044">44</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d2/d29/heap_8c_source.html#l00053">intern_fgetc()</a> und <a class="el" href="../../d2/d29/heap_8c_source.html#l00075">intern_ungetc()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a124eb09d5e75b3f3c9d58ae26f6ac406"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="../../df/d0f/structmini__heap.html">mini_heap</a>* laufzeit_heap = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Laufzeit-Heap. </p>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00316">316</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d2/d29/heap_8c_source.html#l00394">loesche_laufzeit_speicher()</a> und <a class="el" href="../../d2/d29/heap_8c_source.html#l00335">ymalloc()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9f4e64aebb64a7266779fa72435f0e84"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/dee/group__route.html#gafdffe3ab26a7d4cd9d6521731a6f396a">char</a> SeRiEnNuMmEr[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initialisierung:</b><div class="fragment"><div class="line">= { 4,3,70,2,11,61,</div>
+<div class="line">                        127</div>
+<div class="line">                      }</div>
+</div><!-- fragment -->
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00038">38</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d2/d29/heap_8c_source.html#l00075">intern_ungetc()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4e4fb1dd94e7d296424e04f403a90779"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="../../d8/d7d/structheap__element.html">heap_element</a>* syntax_heap = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Syntax-Heap. </p>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00136">136</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d2/d29/heap_8c_source.html#l00276">loesche_syntax_speicher()</a> und <a class="el" href="../../d2/d29/heap_8c_source.html#l00166">xmalloc()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6299a9e023124b7226ab405cc4c12c9e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int the_character</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zeichen und Flag, ob ein gecachetes Zeichen da ist. </p>
+
+<p>Definiert in Zeile <a class="el" href="../../d2/d29/heap_8c_source.html#l00044">44</a> der Datei <a class="el" href="../../d2/d29/heap_8c_source.html">heap.c</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d2/d29/heap_8c_source.html#l00053">intern_fgetc()</a> und <a class="el" href="../../d2/d29/heap_8c_source.html#l00075">intern_ungetc()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:03:03 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

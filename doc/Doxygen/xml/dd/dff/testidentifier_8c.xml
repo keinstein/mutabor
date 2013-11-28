@@ -1,0 +1,200 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="dd/dff/testidentifier_8c" kind="file">
+    <compoundname>testidentifier.c</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">assert.h</includes>
+    <includes refid="d7/da7/identifier_8h" local="yes">mutabor/identifier.h</includes>
+    <incdepgraph>
+      <node id="21135">
+        <label>assert.h</label>
+      </node>
+      <node id="21137">
+        <label>mutabor/object.h</label>
+        <link refid="de/d10/object_8h"/>
+      </node>
+      <node id="21136">
+        <label>mutabor/identifier.h</label>
+        <link refid="d7/da7/identifier_8h"/>
+        <childnode refid="21137" relation="include">
+        </childnode>
+      </node>
+      <node id="21133">
+        <label>src/libmutabor/tests/testidentifier.c</label>
+        <link refid="testidentifier.c"/>
+        <childnode refid="21134" relation="include">
+        </childnode>
+        <childnode refid="21135" relation="include">
+        </childnode>
+        <childnode refid="21136" relation="include">
+        </childnode>
+      </node>
+      <node id="21134">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="dd/dff/testidentifier_8c_1a1fe74b812c5d894887b237a16c95f640" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int compiler_warning</definition>
+        <argsstring></argsstring>
+        <name>compiler_warning</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/tests/testidentifier.c" line="11" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/tests/testidentifier.c" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int fatal_error</definition>
+        <argsstring></argsstring>
+        <name>fatal_error</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/tests/testidentifier.c" line="12" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/tests/testidentifier.c" bodystart="12" bodyend="-1"/>
+        <referencedby refid="d5/d28/interval_8c_1a8ae424678558c07e6565784acdc63e9b" compoundref="d5/d28/interval_8c" startline="312" endline="340">berechne_intervall_endgueltig</referencedby>
+        <referencedby refid="d5/d28/interval_8c_1aaf64925d429496057cd72c2b8e2c7cd1" compoundref="d5/d28/interval_8c" startline="350" endline="459">berechne_intervalle_absolut</referencedby>
+        <referencedby refid="df/de8/ton_8c_1a8a1cbd01124a07669fa2b5fb4d1a49ee" compoundref="df/de8/ton_8c" startline="338" endline="438">berechne_toene_absolut</referencedby>
+        <referencedby refid="df/de8/ton_8c_1a9ee68d12698d887ee5970f589f228937" compoundref="df/de8/ton_8c" startline="291" endline="330">berechne_ton_endgueltig</referencedby>
+        <referencedby refid="dd/d21/group__Parser_1gaa415e8810b15cf168d92015c1bae5a9e" compoundref="d8/dc3/aktion_8c" startline="133" endline="205">check_aktionen</referencedby>
+        <referencedby refid="dd/d21/group__Parser_1ga513256ed0bc6682cb3e6c2f5e86d8bef" compoundref="d6/dcc/ausloeser_8c" startline="187" endline="282">check_ausloeser</referencedby>
+        <referencedby refid="d5/d28/interval_8c_1af03f22aa6ae635e4805c481975608935" compoundref="d5/d28/interval_8c" startline="470" endline="484">check_komplex_intervall</referencedby>
+        <referencedby refid="d7/d6e/logik_8c_1aed04795a6b7c21df1893c7bc845231e6" compoundref="d7/d6e/logik_8c" startline="192" endline="251">check_logik_konsistenz</referencedby>
+        <referencedby refid="da/dd2/tonsystem_8c_1aedcfdecbf7dd48ab19a6830732fa982e" compoundref="da/dd2/tonsystem_8c" startline="151" endline="169">check_tonsystem_konsistenz</referencedby>
+        <referencedby refid="d2/d4a/umstimmung_8c_1a9fc87f323f75b7afaef30c37c78af7c6" compoundref="d2/d4a/umstimmung_8c" startline="538" endline="732">check_umstimmungs_konsistenz</referencedby>
+        <referencedby refid="dc/ddd/classInFile_1af324cb1bae0b218ca7dae2aa923428fa" compoundref="d9/dc1/infile_8cpp" startline="98" endline="119">InFile::CheckNewToken</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1ga8cbfd2aaf66a3d281ae8d25e374c78f2" compoundref="d8/dc3/aktion_8c" startline="326" endline="354">expand_aktions_liste</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1ga04fa5cd297957f96749cf608f126b9c4" compoundref="dd/d35/harmonie_8c" startline="128" endline="153">expand_pattern</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1gac14268034c5788ccce35a8cd5d7e6c79" compoundref="d8/dc3/aktion_8c" startline="215" endline="270">expand_tonliste</referencedby>
+        <referencedby refid="d7/d6e/logik_8c_1adeba205c8988dbafa8226746ae29a639" compoundref="d7/d6e/logik_8c" startline="260" endline="299">expandiere_logik</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1ga78114178682e1b11d830e325a46787c8" compoundref="d8/dc3/aktion_8c" startline="482" endline="524">expandiere_name</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1ga6140e72fda79613ca5af30a3832c286c" compoundref="d8/dc3/aktion_8c" startline="360" endline="470">expandiere_umstimmung</referencedby>
+        <referencedby refid="d3/d14/argument_8c_1a9f1a1fd957442e20194467be52bbbddf" compoundref="d3/d14/argument_8c" startline="142" endline="152">fprint_argument</referencedby>
+        <referencedby refid="d7/d2d/parameter_8c_1a493a3f825cf92358363ce341cbf1c4cb" compoundref="d7/d2d/parameter_8c" startline="116" endline="148">gen_parameter_liste</referencedby>
+        <referencedby refid="dd/d21/group__Parser_1ga4ff9b641b4464848704cbd7746627cc8" compoundref="d6/dcc/ausloeser_8c" startline="115" endline="125">get_ausloeser_taste</referencedby>
+        <referencedby refid="d8/d3d/instrument_8c_1a17e64de3a93012931ac31d74adb77e21" compoundref="d8/d3d/instrument_8c" startline="42" endline="86">get_instrument_dekl</referencedby>
+        <referencedby refid="d5/d28/interval_8c_1a58b0b6b48ae973a06bcdab2f6b3d10fe" compoundref="d5/d28/interval_8c" startline="104" endline="144">get_intervall_wert</referencedby>
+        <referencedby refid="d5/d28/interval_8c_1a0812e04f17c515d5e3a639dd51e5801c" compoundref="d5/d28/interval_8c" startline="190" endline="204">get_komplex_faktor</referencedby>
+        <referencedby refid="d7/d6e/logik_8c_1adb479f679345892536d7bcfaf145cec6" compoundref="d7/d6e/logik_8c" startline="61" endline="70">get_logik_nummer</referencedby>
+        <referencedby refid="dd/d21/group__Parser_1gaedc5966bb91f8d4a84fbe5062adac38d" compoundref="dd/d35/harmonie_8c" startline="82" endline="101">get_new_harmonie</referencedby>
+        <referencedby refid="d5/d28/interval_8c_1abb18e2ce884c58d7c66452df23ed4f74" compoundref="d5/d28/interval_8c" startline="562" endline="580">get_new_intervall</referencedby>
+        <referencedby refid="d5/d28/interval_8c_1ad725872f467c05dd9e238c94acd3d891" compoundref="d5/d28/interval_8c" startline="589" endline="605">get_new_intervall_komplex</referencedby>
+        <referencedby refid="d7/d6e/logik_8c_1a944f578df10044a1ec228eab60a8617a" compoundref="d7/d6e/logik_8c" startline="153" endline="169">get_new_logik</referencedby>
+        <referencedby refid="d3/d14/argument_8c_1a3e53b3376ecf5bc777e3137e1d0707fa" compoundref="d3/d14/argument_8c" startline="95" endline="111">get_new_name_in_argument_list</referencedby>
+        <referencedby refid="d7/d2d/parameter_8c_1a462d977d88b25ccee516c1d59b17ce1e" compoundref="d7/d2d/parameter_8c" startline="70" endline="82">get_new_name_in_parameterlist</referencedby>
+        <referencedby refid="df/de8/ton_8c_1aa3e79c7164fb84b3e03a95afd2d865ee" compoundref="df/de8/ton_8c" startline="122" endline="137">get_new_ton_absolut</referencedby>
+        <referencedby refid="df/de8/ton_8c_1abfa0d4b34c0225bf1824b777238e6f98" compoundref="df/de8/ton_8c" startline="175" endline="200">get_new_ton_komplex_negative</referencedby>
+        <referencedby refid="df/de8/ton_8c_1aa8f91addbbc92af1bfe65133d0b80605" compoundref="df/de8/ton_8c" startline="148" endline="164">get_new_ton_komplex_positive</referencedby>
+        <referencedby refid="da/dd2/tonsystem_8c_1a3aa1f9ff0a7fed7ee943702d47b09080" compoundref="da/dd2/tonsystem_8c" startline="98" endline="114">get_new_tonsystem</referencedby>
+        <referencedby refid="da/dd2/tonsystem_8c_1ae870d0c6b8f30b16e8e79c7122066ba7" compoundref="da/dd2/tonsystem_8c" startline="122" endline="144">get_new_tonsystem_negative</referencedby>
+        <referencedby refid="d2/d4a/umstimmung_8c_1ad8499c071050f3b6019724cf95efa94a" compoundref="d2/d4a/umstimmung_8c" startline="213" endline="238">get_umstimmung_breite_abs</referencedby>
+        <referencedby refid="d2/d4a/umstimmung_8c_1aad31037efd9d8c14f2d878eb043cf13f" compoundref="d2/d4a/umstimmung_8c" startline="251" endline="278">get_umstimmung_breite_rel</referencedby>
+        <referencedby refid="d2/d4a/umstimmung_8c_1a5a1870d4265d8a69e50128c2c512045d" compoundref="d2/d4a/umstimmung_8c" startline="137" endline="162">get_umstimmung_taste_abs</referencedby>
+        <referencedby refid="d2/d4a/umstimmung_8c_1a4840da992a8fa2aee65208814dd40fe0" compoundref="d2/d4a/umstimmung_8c" startline="175" endline="202">get_umstimmung_taste_rel</referencedby>
+        <referencedby refid="dd/da8/group__parser_1gaffd00a427bdc135041aff69245ec4667" compoundref="dc/d54/case__liste_8c" startline="156" endline="225">get_umstimmung_umstimm_case_parameter</referencedby>
+        <referencedby refid="dd/da8/group__parser_1gae037a4769c7d049fcb409abbefad4df9" compoundref="dc/d54/case__liste_8c" startline="96" endline="147">get_umstimmung_umstimm_case_zahl</referencedby>
+        <referencedby refid="d2/d4a/umstimmung_8c_1ab1380991dbff53d19cba283ab8262b54" compoundref="d2/d4a/umstimmung_8c" startline="452" endline="492">get_umstimmung_umstimmungs_bund</referencedby>
+        <referencedby refid="d2/d4a/umstimmung_8c_1ab57a7023da290e2f0ce623f04bf38f3b" compoundref="d2/d4a/umstimmung_8c" startline="400" endline="412">get_umstimmung_wiederholung_abs_negative</referencedby>
+        <referencedby refid="d5/d28/interval_8c_1aacf88ad309137961680bd044bd79d095" compoundref="d5/d28/interval_8c" startline="153" endline="183">get_wert_komplex_intervall</referencedby>
+        <referencedby refid="d3/d14/argument_8c_1af636a1e8393f27b82c5c10e8c0120f04" compoundref="d3/d14/argument_8c" startline="159" endline="189">get_wert_of_argument</referencedby>
+        <referencedby refid="d2/d4a/umstimmung_8c_1a3b3284aff323f2b2176c03f72e071113" compoundref="d2/d4a/umstimmung_8c" startline="83" endline="96">init_umstimmung</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1ga69baa9919250669cbe29d4a4fa4bf9ca" compoundref="d6/dcc/ausloeser_8c" startline="295" endline="379">insert_in_globale_liste</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1gadd38444278d5ab45b8fed1d6683d16b1" compoundref="d6/dcc/ausloeser_8c" startline="420" endline="524">insert_in_lokale_liste</referencedby>
+        <referencedby refid="d5/d28/interval_8c_1a8fa2f0dba0ca28da08eda7d5619a4000" compoundref="d5/d28/interval_8c" startline="271" endline="285">intervall_nummer</referencedby>
+        <referencedby refid="de/d09/mutfile_8c_1ad6030d2832143b9a71842fe8ac8f086a" compoundref="de/d09/mutfile_8c" startline="186" endline="213">MUTABOR_CLASS_FUNCTION</referencedby>
+        <referencedby refid="d2/d72/parser_8c_1afa88ae69a747f2c139bf6161d9b2d82d" compoundref="d2/d72/parser_8c" startline="85" endline="386">mutabor_programm_einlesen</referencedby>
+        <referencedby refid="dd/d21/group__Parser_1gac0676abdb811f08267cf9372f32ca690" compoundref="d6/dcc/ausloeser_8c" startline="142" endline="179">print_ausloeser</referencedby>
+        <referencedby refid="dc/ddd/classInFile_1aaadb642faf0c2ad1231f6e2b4ad88d07" compoundref="d9/dc1/infile_8cpp" startline="19" endline="84">InFile::ReadToken</referencedby>
+        <referencedby refid="d7/d6e/logik_8c_1af4e510432930be6bebe8b280c36b8c12" compoundref="d7/d6e/logik_8c" startline="92" endline="145">setze_nummer_von_abstand_und_zentrum</referencedby>
+        <referencedby refid="d5/d28/interval_8c_1ac3dbc291054ffea9750cedc4e760bbd4" compoundref="d5/d28/interval_8c" startline="291" endline="305">test_zyklen</referencedby>
+        <referencedby refid="d2/d72/parser_8c_1a02c3d262203b17156b3e020a8390342a" compoundref="d2/d72/parser_8c" startline="537" endline="552">test_zyklen_nummer</referencedby>
+        <referencedby refid="df/de8/ton_8c_1a184008ed76f721b551b35fba839272f1" compoundref="df/de8/ton_8c" startline="257" endline="266">ton_nummer</referencedby>
+        <referencedby refid="d2/d72/parser_8c_1af9379465fa45492b0483f66a8bd78187" compoundref="d2/d72/parser_8c" startline="557" endline="576">u_test_zyklen</referencedby>
+        <referencedby refid="d5/d4b/mutlex_8c_1a8fdafe3be7e00ce3d4f0cb50a9a5eb39" compoundref="d5/d4b/mutlex_8c" startline="1026" endline="1373">while</referencedby>
+        <referencedby refid="d2/d29/heap_8c_1a95116b44bc41d1e825e79c148ab7d0a6" compoundref="d2/d29/heap_8c" startline="96" endline="107">xalloca</referencedby>
+        <referencedby refid="d2/d29/heap_8c_1ab0c7434dd1577c62500713d2508d89ce" compoundref="d2/d29/heap_8c" startline="258" endline="268">xcalloc</referencedby>
+        <referencedby refid="d2/d29/heap_8c_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</referencedby>
+        <referencedby refid="d2/d29/heap_8c_1ac56ae312aa3a8be7c32ffbd997fed591" compoundref="d2/d29/heap_8c" startline="224" endline="251">xrealloc</referencedby>
+        <referencedby refid="d2/d29/heap_8c_1a20022f7843438dccec544ebde6e6889b" compoundref="d2/d29/heap_8c" startline="335" endline="353">ymalloc</referencedby>
+        <referencedby refid="d1/de1/Mut__Tab_8cpp_1a9a7bd1b3d14701eb97c03f3ef34deff1" compoundref="d1/de1/Mut__Tab_8cpp" startline="1600" endline="1819">yylex</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="dd/dff/testidentifier_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>()</argsstring>
+        <name>main</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/tests/testidentifier.c" line="14" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/tests/testidentifier.c" bodystart="14" bodyend="42"/>
+        <references refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" compoundref="de/d10/object_8h" startline="33">MUT_CLASS</references>
+        <references refid="de/d10/object_8h_1a65851b9f91a4d9e49bf20401b28d7242" compoundref="de/d10/object_8h" startline="39">MUT_NEW</references>
+        <references refid="de/d10/object_8h_1a5bcd31da3e6b613992ef458459a10bbe" compoundref="de/d10/object_8h" startline="35">MUT_VIRTTABLE</references>
+        <references refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" compoundref="de/d10/object_8h" startline="45">MUTABOR_CLASS_FUNCTION</references>
+        <references refid="de/d10/object_8h_1ad3b722d501268b5e6614113662e57d46" compoundref="d0/de1/object_8c" startline="117" endline="121">mutabor_delete</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifdef<sp/>HAVE_CONFIG_H</highlight></codeline>
+<codeline lineno="2"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;config.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="4"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifdef<sp/>HAVE_MCHECK_H</highlight></codeline>
+<codeline lineno="5"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>include<sp/>&lt;mcheck.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="7"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;assert.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d7/da7/identifier_8h" kindref="compound">mutabor/identifier.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="dd/dff/testidentifier_8c_1a1fe74b812c5d894887b237a16c95f640" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ggafeebd36c5713e8438dcf17e926f8ad96a053ee5ee8425fcbcd4c51b3637254eb5" kindref="member">compiler_warning</ref>;</highlight></codeline>
+<codeline lineno="12" refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" kindref="member">fatal_error</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="dd/dff/testidentifier_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/d21/gmn2midi_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>s1,*s2;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><ref refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" kindref="member">MUT_CLASS</ref>(identifier)*<sp/>o1,*o2;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAVE_MCHECK_H</highlight></codeline>
+<codeline lineno="18"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>mtrace();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="20"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>fprintf(stderr,</highlight><highlight class="stringliteral">&quot;Beginn...\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/>fprintf(stderr,</highlight><highlight class="stringliteral">&quot;o1\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>o1=<ref refid="de/d10/object_8h_1a65851b9f91a4d9e49bf20401b28d7242" kindref="member">MUT_NEW</ref>(identifier);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/>assert(o1);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>fprintf(stderr,</highlight><highlight class="stringliteral">&quot;o1-&gt;copyname\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(identifier,copy_name)(o1,</highlight><highlight class="stringliteral">&quot;id1&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>fprintf(stderr,</highlight><highlight class="stringliteral">&quot;o2\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>o2=<ref refid="de/d10/object_8h_1a65851b9f91a4d9e49bf20401b28d7242" kindref="member">MUT_NEW</ref>(identifier);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>assert(o2);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(identifier,copy_name)(o2,</highlight><highlight class="stringliteral">&quot;Id2&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%s\n%s\n&quot;</highlight><highlight class="normal">,s1=(*(<ref refid="de/d10/object_8h_1a5bcd31da3e6b613992ef458459a10bbe" kindref="member">MUT_VIRTTABLE</ref>(identifier)**)<sp/>o1)-&gt;tostring(o1),</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>s2=(*(<ref refid="de/d10/object_8h_1a5bcd31da3e6b613992ef458459a10bbe" kindref="member">MUT_VIRTTABLE</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">)**)<sp/>o2)-&gt;tostring(o2));</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>free(s1);free(s2);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Compare:<sp/>%d\n&quot;</highlight><highlight class="normal">,(*(<ref refid="de/d10/object_8h_1a5bcd31da3e6b613992ef458459a10bbe" kindref="member">MUT_VIRTTABLE</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">)**)<sp/>o1)-&gt;compare(o1,o2));</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Deleting<sp/>o1...\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><ref refid="de/d10/object_8h_1ad3b722d501268b5e6614113662e57d46" kindref="member">mutabor_delete</ref>(o1);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Deleting<sp/>o2...\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="de/d10/object_8h_1ad3b722d501268b5e6614113662e57d46" kindref="member">mutabor_delete</ref>(o2);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAVE_MCHECK_H</highlight></codeline>
+<codeline lineno="39"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>muntrace();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/tests/testidentifier.c"/>
+  </compounddef>
+</doxygen>

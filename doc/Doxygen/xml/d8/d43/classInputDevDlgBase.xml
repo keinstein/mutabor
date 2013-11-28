@@ -1,0 +1,227 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d8/d43/classInputDevDlgBase" kind="class" prot="public">
+    <compoundname>InputDevDlgBase</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">wxDialog</basecompoundref>
+    <derivedcompoundref refid="d2/dcc/classmutaborGUI_1_1InputDevDlg" prot="public" virt="non-virtual">mutaborGUI::InputDevDlg</derivedcompoundref>
+    <includes refid="d2/dc0/wxresource_8h" local="no">wxresource.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d8/d43/classInputDevDlgBase_1a0736e4730352df1088f34708b12ed54d" prot="protected" static="no" mutable="no">
+        <type>wxChoice *</type>
+        <definition>wxChoice* InputDevDlgBase::DeviceChoice</definition>
+        <argsstring></argsstring>
+        <name>DeviceChoice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" line="141" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" bodystart="141" bodyend="-1"/>
+        <referencedby refid="d2/dcc/classmutaborGUI_1_1InputDevDlg_1a33d525b7563e25fb844d9764a67579db" compoundref="d9/d12/InputDevDlg_8h" startline="166" endline="176">mutaborGUI::InputDevDlg::GetType</referencedby>
+        <referencedby refid="d8/d43/classInputDevDlgBase_1ad150cb2406e8292fc73ba6bc3859c95c" compoundref="d2/dc0/wxresource_8h" startline="151" endline="161">InitWidgetsFromXRC</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d8/d43/classInputDevDlgBase_1af3de8d4a8a464e0523752bf5bcb78663" prot="protected" static="no" mutable="no">
+        <type>wxChoice *</type>
+        <definition>wxChoice* InputDevDlgBase::PortChoice</definition>
+        <argsstring></argsstring>
+        <name>PortChoice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" line="142" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" bodystart="142" bodyend="-1"/>
+        <referencedby refid="d2/dcc/classmutaborGUI_1_1InputDevDlg_1a72254646ea433a8fda05da58d71b4e64" compoundref="d9/d12/InputDevDlg_8h" startline="191" endline="194">mutaborGUI::InputDevDlg::AppendPortChoice</referencedby>
+        <referencedby refid="d2/dcc/classmutaborGUI_1_1InputDevDlg_1a078aaa4285dfb82f3fa9b3e2f1f6fa06" compoundref="d9/d12/InputDevDlg_8h" startline="126" endline="129">mutaborGUI::InputDevDlg::GetMidiDevice</referencedby>
+        <referencedby refid="d2/dcc/classmutaborGUI_1_1InputDevDlg_1a7c8dc3158502a84150e32589e3323bde" compoundref="d9/d12/InputDevDlg_8h" startline="186" endline="189">mutaborGUI::InputDevDlg::GetPortString</referencedby>
+        <referencedby refid="d8/d43/classInputDevDlgBase_1ad150cb2406e8292fc73ba6bc3859c95c" compoundref="d2/dc0/wxresource_8h" startline="151" endline="161">InitWidgetsFromXRC</referencedby>
+        <referencedby refid="d2/dcc/classmutaborGUI_1_1InputDevDlg_1ab3f1e5a4c6764d5aad513dd409dc2e8c" compoundref="d9/d12/InputDevDlg_8h" startline="131" endline="137">mutaborGUI::InputDevDlg::SetMidiDevice</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d8/d43/classInputDevDlgBase_1ac7c2085386dfb40fae60b4463c4c51ab" prot="protected" static="no" mutable="no">
+        <type>wxFilePickerCtrl *</type>
+        <definition>wxFilePickerCtrl* InputDevDlgBase::MidiFilePicker</definition>
+        <argsstring></argsstring>
+        <name>MidiFilePicker</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" line="143" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" bodystart="143" bodyend="-1"/>
+        <referencedby refid="d2/dcc/classmutaborGUI_1_1InputDevDlg_1a10fb414b1cafdd09d0bacfc49d37bf59" compoundref="d9/d12/InputDevDlg_8h" startline="139" endline="142">mutaborGUI::InputDevDlg::GetMidiFile</referencedby>
+        <referencedby refid="d8/d43/classInputDevDlgBase_1ad150cb2406e8292fc73ba6bc3859c95c" compoundref="d2/dc0/wxresource_8h" startline="151" endline="161">InitWidgetsFromXRC</referencedby>
+        <referencedby refid="d2/dcc/classmutaborGUI_1_1InputDevDlg_1abf6cb6251ad95e1d8853e5822cc5fad4" compoundref="d9/d12/InputDevDlg_8h" startline="144" endline="151">mutaborGUI::InputDevDlg::SetMidiFile</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d8/d43/classInputDevDlgBase_1a51d44c84339d8016d8d51357f86fff90" prot="protected" static="no" mutable="no">
+        <type>wxFilePickerCtrl *</type>
+        <definition>wxFilePickerCtrl* InputDevDlgBase::GuidoFilePicker</definition>
+        <argsstring></argsstring>
+        <name>GuidoFilePicker</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" line="144" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" bodystart="144" bodyend="-1"/>
+        <referencedby refid="d2/dcc/classmutaborGUI_1_1InputDevDlg_1a49363262a76f2e41de3e13542cddd5d2" compoundref="d9/d12/InputDevDlg_8h" startline="153" endline="156">mutaborGUI::InputDevDlg::GetGUIDOFile</referencedby>
+        <referencedby refid="d8/d43/classInputDevDlgBase_1ad150cb2406e8292fc73ba6bc3859c95c" compoundref="d2/dc0/wxresource_8h" startline="151" endline="161">InitWidgetsFromXRC</referencedby>
+        <referencedby refid="d2/dcc/classmutaborGUI_1_1InputDevDlg_1a1c3e9a042e91fcb9b44ca3f0eb43edba" compoundref="d9/d12/InputDevDlg_8h" startline="158" endline="164">mutaborGUI::InputDevDlg::SetGUIDOFile</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d8/d43/classInputDevDlgBase_1a07dd9fce2f018f1e3d7f5259bdfd5bdb" prot="protected" static="no" mutable="no">
+        <type>wxButton *</type>
+        <definition>wxButton* InputDevDlgBase::wxID_OK</definition>
+        <argsstring></argsstring>
+        <name>wxID_OK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" line="145" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" bodystart="145" bodyend="-1"/>
+        <referencedby refid="d8/d43/classInputDevDlgBase_1ad150cb2406e8292fc73ba6bc3859c95c" compoundref="d2/dc0/wxresource_8h" startline="151" endline="161">InitWidgetsFromXRC</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d8/d43/classInputDevDlgBase_1a15f1aacbe615fc3d94628ee568a98de2" prot="protected" static="no" mutable="no">
+        <type>wxButton *</type>
+        <definition>wxButton* InputDevDlgBase::wxID_CANCEL</definition>
+        <argsstring></argsstring>
+        <name>wxID_CANCEL</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" line="146" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" bodystart="146" bodyend="-1"/>
+        <referencedby refid="d8/d43/classInputDevDlgBase_1ad150cb2406e8292fc73ba6bc3859c95c" compoundref="d2/dc0/wxresource_8h" startline="151" endline="161">InitWidgetsFromXRC</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d8/d43/classInputDevDlgBase_1a96fca21227ac76a78889b1256e7856a4" prot="protected" static="no" mutable="no">
+        <type>wxButton *</type>
+        <definition>wxButton* InputDevDlgBase::wxID_REMOVE</definition>
+        <argsstring></argsstring>
+        <name>wxID_REMOVE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" line="147" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" bodystart="147" bodyend="-1"/>
+        <referencedby refid="d2/dcc/classmutaborGUI_1_1InputDevDlg_1a9a812d8ef7626a9ad4eb505c0368985a" compoundref="d9/d12/InputDevDlg_8h" startline="196" endline="200">mutaborGUI::InputDevDlg::DisableRemove</referencedby>
+        <referencedby refid="d8/d43/classInputDevDlgBase_1ad150cb2406e8292fc73ba6bc3859c95c" compoundref="d2/dc0/wxresource_8h" startline="151" endline="161">InitWidgetsFromXRC</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d8/d43/classInputDevDlgBase_1ae537b3fe3b3d3712f150dbc56e5b793f" prot="protected" static="no" mutable="no">
+        <type>wxButton *</type>
+        <definition>wxButton* InputDevDlgBase::wxID_HELP</definition>
+        <argsstring></argsstring>
+        <name>wxID_HELP</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" line="148" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" bodystart="148" bodyend="-1"/>
+        <referencedby refid="d8/d43/classInputDevDlgBase_1ad150cb2406e8292fc73ba6bc3859c95c" compoundref="d2/dc0/wxresource_8h" startline="151" endline="161">InitWidgetsFromXRC</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="d8/d43/classInputDevDlgBase_1ad150cb2406e8292fc73ba6bc3859c95c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void InputDevDlgBase::InitWidgetsFromXRC</definition>
+        <argsstring>(wxWindow *parent)</argsstring>
+        <name>InitWidgetsFromXRC</name>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" line="151" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" bodystart="151" bodyend="161"/>
+        <references refid="d8/d43/classInputDevDlgBase_1a0736e4730352df1088f34708b12ed54d" compoundref="d2/dc0/wxresource_8h" startline="141">DeviceChoice</references>
+        <references refid="d8/d43/classInputDevDlgBase_1a51d44c84339d8016d8d51357f86fff90" compoundref="d2/dc0/wxresource_8h" startline="144">GuidoFilePicker</references>
+        <references refid="d8/d43/classInputDevDlgBase_1ac7c2085386dfb40fae60b4463c4c51ab" compoundref="d2/dc0/wxresource_8h" startline="143">MidiFilePicker</references>
+        <references refid="d8/d43/classInputDevDlgBase_1af3de8d4a8a464e0523752bf5bcb78663" compoundref="d2/dc0/wxresource_8h" startline="142">PortChoice</references>
+        <references refid="d8/d43/classInputDevDlgBase_1a15f1aacbe615fc3d94628ee568a98de2" compoundref="d2/dc0/wxresource_8h" startline="146">wxID_CANCEL</references>
+        <references refid="d8/d43/classInputDevDlgBase_1ae537b3fe3b3d3712f150dbc56e5b793f" compoundref="d2/dc0/wxresource_8h" startline="148">wxID_HELP</references>
+        <references refid="d8/d43/classInputDevDlgBase_1a07dd9fce2f018f1e3d7f5259bdfd5bdb" compoundref="d2/dc0/wxresource_8h" startline="145">wxID_OK</references>
+        <references refid="d8/d43/classInputDevDlgBase_1a96fca21227ac76a78889b1256e7856a4" compoundref="d2/dc0/wxresource_8h" startline="147">wxID_REMOVE</references>
+        <referencedby refid="d8/d43/classInputDevDlgBase_1a5e288cda94c6999b8dcaed576c2b9aa8" compoundref="d2/dc0/wxresource_8h" startline="163" endline="165">InputDevDlgBase</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d8/d43/classInputDevDlgBase_1a5e288cda94c6999b8dcaed576c2b9aa8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>InputDevDlgBase::InputDevDlgBase</definition>
+        <argsstring>(wxWindow *parent=NULL)</argsstring>
+        <name>InputDevDlgBase</name>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+          <defval>NULL</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" line="163" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" bodystart="163" bodyend="165"/>
+        <references refid="d8/d43/classInputDevDlgBase_1ad150cb2406e8292fc73ba6bc3859c95c" compoundref="d2/dc0/wxresource_8h" startline="151" endline="161">InitWidgetsFromXRC</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3016">
+        <label>InputDevDlgBase</label>
+        <link refid="d8/d43/classInputDevDlgBase"/>
+        <childnode refid="3017" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3017">
+        <label>wxDialog</label>
+      </node>
+      <node id="3018">
+        <label>mutaborGUI::InputDevDlg</label>
+        <link refid="d2/dcc/classmutaborGUI_1_1InputDevDlg"/>
+        <childnode refid="3016" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3019">
+        <label>InputDevDlgBase</label>
+        <link refid="d8/d43/classInputDevDlgBase"/>
+        <childnode refid="3020" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3020">
+        <label>wxDialog</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" line="139" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" bodystart="139" bodyend="166"/>
+    <listofallmembers>
+      <member refid="d8/d43/classInputDevDlgBase_1a0736e4730352df1088f34708b12ed54d" prot="protected" virt="non-virtual"><scope>InputDevDlgBase</scope><name>DeviceChoice</name></member>
+      <member refid="d8/d43/classInputDevDlgBase_1a51d44c84339d8016d8d51357f86fff90" prot="protected" virt="non-virtual"><scope>InputDevDlgBase</scope><name>GuidoFilePicker</name></member>
+      <member refid="d8/d43/classInputDevDlgBase_1ad150cb2406e8292fc73ba6bc3859c95c" prot="private" virt="non-virtual"><scope>InputDevDlgBase</scope><name>InitWidgetsFromXRC</name></member>
+      <member refid="d8/d43/classInputDevDlgBase_1a5e288cda94c6999b8dcaed576c2b9aa8" prot="public" virt="non-virtual"><scope>InputDevDlgBase</scope><name>InputDevDlgBase</name></member>
+      <member refid="d8/d43/classInputDevDlgBase_1ac7c2085386dfb40fae60b4463c4c51ab" prot="protected" virt="non-virtual"><scope>InputDevDlgBase</scope><name>MidiFilePicker</name></member>
+      <member refid="d8/d43/classInputDevDlgBase_1af3de8d4a8a464e0523752bf5bcb78663" prot="protected" virt="non-virtual"><scope>InputDevDlgBase</scope><name>PortChoice</name></member>
+      <member refid="d8/d43/classInputDevDlgBase_1a15f1aacbe615fc3d94628ee568a98de2" prot="protected" virt="non-virtual"><scope>InputDevDlgBase</scope><name>wxID_CANCEL</name></member>
+      <member refid="d8/d43/classInputDevDlgBase_1ae537b3fe3b3d3712f150dbc56e5b793f" prot="protected" virt="non-virtual"><scope>InputDevDlgBase</scope><name>wxID_HELP</name></member>
+      <member refid="d8/d43/classInputDevDlgBase_1a07dd9fce2f018f1e3d7f5259bdfd5bdb" prot="protected" virt="non-virtual"><scope>InputDevDlgBase</scope><name>wxID_OK</name></member>
+      <member refid="d8/d43/classInputDevDlgBase_1a96fca21227ac76a78889b1256e7856a4" prot="protected" virt="non-virtual"><scope>InputDevDlgBase</scope><name>wxID_REMOVE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,859 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="df/d8e/bad__decl_8h" kind="file">
+    <compoundname>bad_decl.h</compoundname>
+    <includes local="no">math.h</includes>
+    <includedby refid="d1/d63/harmonie_8h" local="yes">src/includes/mutabor/harmonie.h</includedby>
+    <includedby refid="da/ddb/heap_8h" local="yes">src/includes/mutabor/heap.h</includedby>
+    <includedby refid="d3/d97/interpreter_8h" local="yes">src/includes/mutabor/interpreter.h</includedby>
+    <includedby refid="d2/d8a/interval_8h" local="yes">src/includes/mutabor/interval.h</includedby>
+    <includedby refid="dd/da7/intervalInv_8h" local="yes">src/includes/mutabor/intervalInv.h</includedby>
+    <includedby refid="d7/d66/intervalPlaceholder_8h" local="yes">src/includes/mutabor/intervalPlaceholder.h</includedby>
+    <includedby refid="de/d0d/intervalStretch_8h" local="yes">src/includes/mutabor/intervalStretch.h</includedby>
+    <includedby refid="d2/d2a/parameter_8h" local="yes">src/includes/mutabor/parameter.h</includedby>
+    <includedby refid="d8/d39/tonsystem_8h" local="yes">src/includes/mutabor/tonsystem.h</includedby>
+    <includedby refid="d5/d4b/mutlex_8c" local="yes">src/libmutabor/mutlex.c</includedby>
+    <includedby refid="d8/d84/identifier_8c" local="yes">src/libmutabor/identifier.c</includedby>
+    <includedby refid="d5/df1/idlist_8c" local="yes">src/libmutabor/idlist.c</includedby>
+    <includedby refid="d3/da3/mut_8c" local="yes">src/libmutabor/mut.c</includedby>
+    <includedby refid="de/d09/mutfile_8c" local="yes">src/libmutabor/mutfile.c</includedby>
+    <includedby refid="d0/de1/object_8c" local="yes">src/libmutabor/object.c</includedby>
+    <includedby refid="df/dc2/ptrlist_8c" local="yes">src/libmutabor/ptrlist.c</includedby>
+    <incdepgraph>
+      <node id="14452">
+        <label>math.h</label>
+      </node>
+      <node id="14451">
+        <label>src/includes/mutabor/bad_decl.h</label>
+        <link refid="bad_decl.h"/>
+        <childnode refid="14452" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="14489">
+        <label>src/libmutabor/mutfile.c</label>
+        <link refid="de/d09/mutfile_8c"/>
+      </node>
+      <node id="14459">
+        <label>src/libmutabor/anweisung.c</label>
+        <link refid="d5/dfe/anweisung_8c"/>
+      </node>
+      <node id="14482">
+        <label>src/libmutabor/tonsystem.c</label>
+        <link refid="da/dd2/tonsystem_8c"/>
+      </node>
+      <node id="14472">
+        <label>src/libmutabor/interpreter.c</label>
+        <link refid="dc/d30/interpreter_8c"/>
+      </node>
+      <node id="14473">
+        <label>src/libmutabor/harmonie.c</label>
+        <link refid="dd/d35/harmonie_8c"/>
+      </node>
+      <node id="14465">
+        <label>src/includes/mutabor/case_liste.h</label>
+        <link refid="db/d99/case__liste_8h"/>
+        <childnode refid="14466" relation="include">
+        </childnode>
+      </node>
+      <node id="14487">
+        <label>src/libmutabor/intervalInv.c</label>
+        <link refid="d9/d49/intervalInv_8c"/>
+      </node>
+      <node id="14484">
+        <label>src/includes/mutabor/interval.h</label>
+        <link refid="d2/d8a/interval_8h"/>
+        <childnode refid="14454" relation="include">
+        </childnode>
+        <childnode refid="14485" relation="include">
+        </childnode>
+        <childnode refid="14491" relation="include">
+        </childnode>
+        <childnode refid="14494" relation="include">
+        </childnode>
+        <childnode refid="14501" relation="include">
+        </childnode>
+        <childnode refid="14502" relation="include">
+        </childnode>
+        <childnode refid="14478" relation="include">
+        </childnode>
+        <childnode refid="14489" relation="include">
+        </childnode>
+        <childnode refid="14481" relation="include">
+        </childnode>
+        <childnode refid="14482" relation="include">
+        </childnode>
+      </node>
+      <node id="14500">
+        <label>src/libmutabor/intervalSum.c</label>
+        <link refid="d5/da9/intervalSum_8c"/>
+      </node>
+      <node id="14458">
+        <label>src/gmut/gmutdos.cpp</label>
+        <link refid="dd/d15/gmutdos_8cpp"/>
+      </node>
+      <node id="14461">
+        <label>src/libmutabor/logik.c</label>
+        <link refid="d7/d6e/logik_8c"/>
+      </node>
+      <node id="14493">
+        <label>src/libmutabor/tests/testinterval.c</label>
+        <link refid="db/d57/testinterval_8c"/>
+      </node>
+      <node id="14478">
+        <label>src/libmutabor/interval.c</label>
+        <link refid="d5/d28/interval_8c"/>
+      </node>
+      <node id="14491">
+        <label>src/includes/mutabor/intervalStretch.h</label>
+        <link refid="de/d0d/intervalStretch_8h"/>
+        <childnode refid="14492" relation="include">
+        </childnode>
+        <childnode refid="14462" relation="include">
+        </childnode>
+        <childnode refid="14493" relation="include">
+        </childnode>
+      </node>
+      <node id="14511">
+        <label>src/libmutabor/idlist.c</label>
+        <link refid="d5/df1/idlist_8c"/>
+      </node>
+      <node id="14504">
+        <label>src/includes/mutabor/argument.h</label>
+        <link refid="db/d1e/argument_8h"/>
+        <childnode refid="14464" relation="include">
+        </childnode>
+        <childnode refid="14503" relation="include">
+        </childnode>
+        <childnode refid="14505" relation="include">
+        </childnode>
+        <childnode refid="14475" relation="include">
+        </childnode>
+        <childnode refid="14462" relation="include">
+        </childnode>
+      </node>
+      <node id="14483">
+        <label>src/includes/mutabor/interpreter.h</label>
+        <link refid="d3/d97/interpreter_8h"/>
+        <childnode refid="14475" relation="include">
+        </childnode>
+        <childnode refid="14472" relation="include">
+        </childnode>
+        <childnode refid="14479" relation="include">
+        </childnode>
+      </node>
+      <node id="14464">
+        <label>src/includes/mutabor/aktion.h</label>
+        <link refid="dd/de4/aktion_8h"/>
+        <childnode refid="14456" relation="include">
+        </childnode>
+        <childnode refid="14465" relation="include">
+        </childnode>
+        <childnode refid="14463" relation="include">
+        </childnode>
+        <childnode refid="14461" relation="include">
+        </childnode>
+      </node>
+      <node id="14488">
+        <label>src/libmutabor/intervalPlaceholder.c</label>
+        <link refid="dc/d22/intervalPlaceholder_8c"/>
+      </node>
+      <node id="14466">
+        <label>src/includes/mutabor/umstimmung.h</label>
+        <link refid="da/d7f/umstimmung_8h"/>
+        <childnode refid="14464" relation="include">
+        </childnode>
+        <childnode refid="14457" relation="include">
+        </childnode>
+        <childnode refid="14467" relation="include">
+        </childnode>
+        <childnode refid="14468" relation="include">
+        </childnode>
+        <childnode refid="14461" relation="include">
+        </childnode>
+        <childnode refid="14469" relation="include">
+        </childnode>
+        <childnode refid="14462" relation="include">
+        </childnode>
+        <childnode refid="14470" relation="include">
+        </childnode>
+        <childnode refid="14471" relation="include">
+        </childnode>
+      </node>
+      <node id="14510">
+        <label>src/libmutabor/identifier.c</label>
+        <link refid="d8/d84/identifier_8c"/>
+      </node>
+      <node id="14502">
+        <label>src/includes/mutabor/tonsystem.h</label>
+        <link refid="d8/d39/tonsystem_8h"/>
+        <childnode refid="14464" relation="include">
+        </childnode>
+        <childnode refid="14457" relation="include">
+        </childnode>
+        <childnode refid="14467" relation="include">
+        </childnode>
+        <childnode refid="14461" relation="include">
+        </childnode>
+        <childnode refid="14462" relation="include">
+        </childnode>
+        <childnode refid="14470" relation="include">
+        </childnode>
+        <childnode refid="14482" relation="include">
+        </childnode>
+        <childnode refid="14471" relation="include">
+        </childnode>
+      </node>
+      <node id="14485">
+        <label>src/includes/mutabor/intervalPlaceholder.h</label>
+        <link refid="d7/d66/intervalPlaceholder_8h"/>
+        <childnode refid="14486" relation="include">
+        </childnode>
+        <childnode refid="14488" relation="include">
+        </childnode>
+        <childnode refid="14462" relation="include">
+        </childnode>
+        <childnode refid="14489" relation="include">
+        </childnode>
+        <childnode refid="14490" relation="include">
+        </childnode>
+      </node>
+      <node id="14494">
+        <label>src/includes/mutabor/intervalSum.h</label>
+        <link refid="db/d51/intervalSum_8h"/>
+        <childnode refid="14495" relation="include">
+        </childnode>
+        <childnode refid="14500" relation="include">
+        </childnode>
+      </node>
+      <node id="14513">
+        <label>src/libmutabor/ptrlist.c</label>
+        <link refid="df/dc2/ptrlist_8c"/>
+      </node>
+      <node id="14469">
+        <label>src/libmutabor/midicalc.c</label>
+        <link refid="d8/dff/midicalc_8c"/>
+      </node>
+      <node id="14479">
+        <label>src/libmutabor/parameter.c</label>
+        <link refid="d7/d2d/parameter_8c"/>
+      </node>
+      <node id="14495">
+        <label>src/includes/mutabor/intervalDiff.h</label>
+        <link refid="d4/d5e/intervalDiff_8h"/>
+        <childnode refid="14496" relation="include">
+        </childnode>
+        <childnode refid="14462" relation="include">
+        </childnode>
+        <childnode refid="14497" relation="include">
+        </childnode>
+        <childnode refid="14498" relation="include">
+        </childnode>
+        <childnode refid="14493" relation="include">
+        </childnode>
+        <childnode refid="14499" relation="include">
+        </childnode>
+      </node>
+      <node id="14455">
+        <label>src/includes/mutabor/ausloeser.h</label>
+        <link refid="d1/dfa/ausloeser_8h"/>
+        <childnode refid="14456" relation="include">
+        </childnode>
+        <childnode refid="14463" relation="include">
+        </childnode>
+        <childnode refid="14460" relation="include">
+        </childnode>
+        <childnode refid="14472" relation="include">
+        </childnode>
+      </node>
+      <node id="14501">
+        <label>src/includes/mutabor/ton.h</label>
+        <link refid="d4/d12/ton_8h"/>
+        <childnode refid="14502" relation="include">
+        </childnode>
+        <childnode refid="14466" relation="include">
+        </childnode>
+        <childnode refid="14481" relation="include">
+        </childnode>
+      </node>
+      <node id="14481">
+        <label>src/libmutabor/ton.c</label>
+        <link refid="df/de8/ton_8c"/>
+      </node>
+      <node id="14471">
+        <label>src/libmutabor/umstimmung.c</label>
+        <link refid="d2/d4a/umstimmung_8c"/>
+      </node>
+      <node id="14507">
+        <label>src/libmutabor/tests/testparser.c</label>
+        <link refid="d3/d47/testparser_8c"/>
+      </node>
+      <node id="14467">
+        <label>src/libmutabor/aktion.c</label>
+        <link refid="d8/dc3/aktion_8c"/>
+      </node>
+      <node id="14497">
+        <label>src/libmutabor/tests/testchkobject.c</label>
+        <link refid="d5/d48/testchkobject_8c"/>
+      </node>
+      <node id="14477">
+        <label>src/libmutabor/instrument.c</label>
+        <link refid="d8/d3d/instrument_8c"/>
+      </node>
+      <node id="14460">
+        <label>src/libmutabor/ausloeser.c</label>
+        <link refid="d6/dcc/ausloeser_8c"/>
+      </node>
+      <node id="14506">
+        <label>src/libmutabor/tests/testmutfile.c</label>
+        <link refid="d8/d9b/testmutfile_8c"/>
+      </node>
+      <node id="14468">
+        <label>src/libmutabor/case_liste.c</label>
+        <link refid="dc/d54/case__liste_8c"/>
+      </node>
+      <node id="14457">
+        <label>src/includes/mutabor/global.h</label>
+        <link refid="d2/d49/global_8h"/>
+        <childnode refid="14458" relation="include">
+        </childnode>
+      </node>
+      <node id="14462">
+        <label>src/libmutabor/mut.c</label>
+        <link refid="d3/da3/mut_8c"/>
+      </node>
+      <node id="14476">
+        <label>src/libmutabor/heap.c</label>
+        <link refid="d2/d29/heap_8c"/>
+      </node>
+      <node id="14492">
+        <label>src/libmutabor/intervalStretch.c</label>
+        <link refid="d4/dc6/intervalStretch_8c"/>
+      </node>
+      <node id="14454">
+        <label>src/includes/mutabor/harmonie.h</label>
+        <link refid="d1/d63/harmonie_8h"/>
+        <childnode refid="14455" relation="include">
+        </childnode>
+        <childnode refid="14457" relation="include">
+        </childnode>
+        <childnode refid="14460" relation="include">
+        </childnode>
+        <childnode refid="14473" relation="include">
+        </childnode>
+        <childnode refid="14462" relation="include">
+        </childnode>
+        <childnode refid="14470" relation="include">
+        </childnode>
+      </node>
+      <node id="14474">
+        <label>src/includes/mutabor/heap.h</label>
+        <link refid="da/ddb/heap_8h"/>
+        <childnode refid="14457" relation="include">
+        </childnode>
+        <childnode refid="14467" relation="include">
+        </childnode>
+        <childnode refid="14459" relation="include">
+        </childnode>
+        <childnode refid="14475" relation="include">
+        </childnode>
+        <childnode refid="14460" relation="include">
+        </childnode>
+        <childnode refid="14468" relation="include">
+        </childnode>
+        <childnode refid="14473" relation="include">
+        </childnode>
+        <childnode refid="14476" relation="include">
+        </childnode>
+        <childnode refid="14477" relation="include">
+        </childnode>
+        <childnode refid="14472" relation="include">
+        </childnode>
+        <childnode refid="14478" relation="include">
+        </childnode>
+        <childnode refid="14461" relation="include">
+        </childnode>
+        <childnode refid="14469" relation="include">
+        </childnode>
+        <childnode refid="14479" relation="include">
+        </childnode>
+        <childnode refid="14470" relation="include">
+        </childnode>
+        <childnode refid="14480" relation="include">
+        </childnode>
+        <childnode refid="14481" relation="include">
+        </childnode>
+        <childnode refid="14482" relation="include">
+        </childnode>
+        <childnode refid="14471" relation="include">
+        </childnode>
+      </node>
+      <node id="14470">
+        <label>src/libmutabor/parser.c</label>
+        <link refid="d2/d72/parser_8c"/>
+      </node>
+      <node id="14463">
+        <label>src/includes/mutabor/logik.h</label>
+        <link refid="d1/dff/logik_8h"/>
+        <childnode refid="14464" relation="include">
+        </childnode>
+        <childnode refid="14457" relation="include">
+        </childnode>
+        <childnode refid="14467" relation="include">
+        </childnode>
+        <childnode refid="14460" relation="include">
+        </childnode>
+        <childnode refid="14472" relation="include">
+        </childnode>
+        <childnode refid="14461" relation="include">
+        </childnode>
+        <childnode refid="14462" relation="include">
+        </childnode>
+        <childnode refid="14470" relation="include">
+        </childnode>
+        <childnode refid="14471" relation="include">
+        </childnode>
+      </node>
+      <node id="14509">
+        <label>src/libmutabor/cmutlex.c</label>
+        <link refid="d6/d05/cmutlex_8c"/>
+      </node>
+      <node id="14486">
+        <label>src/includes/mutabor/intervalInv.h</label>
+        <link refid="dd/da7/intervalInv_8h"/>
+        <childnode refid="14487" relation="include">
+        </childnode>
+        <childnode refid="14462" relation="include">
+        </childnode>
+      </node>
+      <node id="14508">
+        <label>src/libmutabor/mutlex.c</label>
+        <link refid="d5/d4b/mutlex_8c"/>
+        <childnode refid="14509" relation="include">
+        </childnode>
+      </node>
+      <node id="14475">
+        <label>src/libmutabor/argument.c</label>
+        <link refid="d3/d14/argument_8c"/>
+      </node>
+      <node id="14512">
+        <label>src/libmutabor/object.c</label>
+        <link refid="d0/de1/object_8c"/>
+      </node>
+      <node id="14499">
+        <label>src/libmutabor/tests/testptrlist.c</label>
+        <link refid="dc/dd2/testptrlist_8c"/>
+      </node>
+      <node id="14490">
+        <label>src/libmutabor/tests/testplaceholder.c</label>
+        <link refid="dd/dd4/testplaceholder_8c"/>
+      </node>
+      <node id="14498">
+        <label>src/libmutabor/tests/testidlist.c</label>
+        <link refid="d0/dce/testidlist_8c"/>
+      </node>
+      <node id="14480">
+        <label>src/libmutabor/taste.c</label>
+        <link refid="d6/dc9/taste_8c"/>
+      </node>
+      <node id="14496">
+        <label>src/libmutabor/intervalDiff.c</label>
+        <link refid="d4/d37/intervalDiff_8c"/>
+      </node>
+      <node id="14503">
+        <label>src/includes/mutabor/parameter.h</label>
+        <link refid="d2/d2a/parameter_8h"/>
+        <childnode refid="14464" relation="include">
+        </childnode>
+        <childnode refid="14504" relation="include">
+        </childnode>
+        <childnode refid="14457" relation="include">
+        </childnode>
+        <childnode refid="14467" relation="include">
+        </childnode>
+        <childnode refid="14468" relation="include">
+        </childnode>
+        <childnode refid="14472" relation="include">
+        </childnode>
+        <childnode refid="14461" relation="include">
+        </childnode>
+        <childnode refid="14462" relation="include">
+        </childnode>
+        <childnode refid="14479" relation="include">
+        </childnode>
+        <childnode refid="14470" relation="include">
+        </childnode>
+        <childnode refid="14471" relation="include">
+        </childnode>
+      </node>
+      <node id="14505">
+        <label>src/includes/mutabor/parser.h</label>
+        <link refid="d5/d36/parser_8h"/>
+        <childnode refid="14457" relation="include">
+        </childnode>
+        <childnode refid="14478" relation="include">
+        </childnode>
+        <childnode refid="14462" relation="include">
+        </childnode>
+        <childnode refid="14470" relation="include">
+        </childnode>
+        <childnode refid="14506" relation="include">
+        </childnode>
+        <childnode refid="14507" relation="include">
+        </childnode>
+      </node>
+      <node id="14453">
+        <label>src/includes/mutabor/bad_decl.h</label>
+        <link refid="bad_decl.h"/>
+        <childnode refid="14454" relation="include">
+        </childnode>
+        <childnode refid="14474" relation="include">
+        </childnode>
+        <childnode refid="14483" relation="include">
+        </childnode>
+        <childnode refid="14484" relation="include">
+        </childnode>
+        <childnode refid="14486" relation="include">
+        </childnode>
+        <childnode refid="14485" relation="include">
+        </childnode>
+        <childnode refid="14491" relation="include">
+        </childnode>
+        <childnode refid="14503" relation="include">
+        </childnode>
+        <childnode refid="14502" relation="include">
+        </childnode>
+        <childnode refid="14508" relation="include">
+        </childnode>
+        <childnode refid="14510" relation="include">
+        </childnode>
+        <childnode refid="14511" relation="include">
+        </childnode>
+        <childnode refid="14462" relation="include">
+        </childnode>
+        <childnode refid="14489" relation="include">
+        </childnode>
+        <childnode refid="14512" relation="include">
+        </childnode>
+        <childnode refid="14513" relation="include">
+        </childnode>
+      </node>
+      <node id="14456">
+        <label>src/includes/mutabor/anweisung.h</label>
+        <link refid="d0/db7/anweisung_8h"/>
+        <childnode refid="14455" relation="include">
+        </childnode>
+        <childnode refid="14457" relation="include">
+        </childnode>
+        <childnode refid="14459" relation="include">
+        </childnode>
+        <childnode refid="14460" relation="include">
+        </childnode>
+        <childnode refid="14461" relation="include">
+        </childnode>
+        <childnode refid="14462" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="df/d8e/bad__decl_8h_1abb452686968e48b67397da5f97445f5b" prot="public" static="no">
+        <name>bool</name>
+        <initializer>unsigned int</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" line="51" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" prot="public" static="no">
+        <name>MAX_BOX</name>
+        <initializer>256</initializer>
+        <briefdescription>
+<para>Maximale Anzahl der Boxen/Instumente. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" line="52" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" bodystart="52" bodyend="-1"/>
+        <referencedby refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a68866b89d808ed81697756a2a41b6ae1" compoundref="d2/d73/GUIRoute-inlines_8h" startline="415" endline="451">mutaborGUI::GUIRouteBase::Add</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga9f387b950a812c3815291654546e7249" compoundref="dc/df3/MutFrame_8cpp" startline="1872" endline="1909">mutaborGUI::CheckBoxesUsed</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="699" endline="831">mutaborGUI::MutFrame::CmDoActivate</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1ga49fcfc4930df7019571296f7c2c9d320" compoundref="d6/dcc/ausloeser_8c" startline="530" endline="592">expandiere_in_globale_liste</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a97e40f66eb0949a7a12b20cc142bb401" compoundref="dc/d30/interpreter_8c" startline="61" endline="75">get_cache_konstante</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+        <referencedby refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1ad72e7341fc6cc6eaf2242e5bafa038df" compoundref="d2/d73/GUIRoute-inlines_8h" startline="697" endline="732">mutaborGUI::GUIRouteBase::Remove</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" compoundref="dc/df3/MutFrame_8cpp" startline="1814" endline="1860">mutaborGUI::MutFrame::UpdateBoxMenu</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga4271382d5a1f4fbe46214f4f35305166" compoundref="d1/da7/boxTest_8cpp" startline="75" endline="86">boxTest::verifyLastKey</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="df/d8e/bad__decl_8h_1a373e10fa526ba34b5a4ad44bd5c01015" prot="public" static="no">
+        <name>GERMAN</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" line="60" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="df/d8e/bad__decl_8h_1af0566e83c6445f2a84c21406ca24d8e8" prot="public" static="no">
+        <name>MAX_BREITE</name>
+        <initializer>72</initializer>
+        <briefdescription>
+<para>Maximale Breite eines Tonsystems. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" line="63" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" bodystart="63" bodyend="-1"/>
+        <referencedby refid="d2/d1c/group__Interpreter_1ga04fa5cd297957f96749cf608f126b9c4" compoundref="dd/d35/harmonie_8c" startline="128" endline="153">expand_pattern</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="df/d8e/bad__decl_8h_1ab4c864041198a40c01ead0b0ae4c8ccf" prot="public" static="no">
+        <name>MAX_MIDI</name>
+        <initializer>32</initializer>
+        <briefdescription>
+<para>Maximale Anzahl Bytes in MIDIOUT / MIDIIN. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" line="66" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="df/d8e/bad__decl_8h_1a2d76b933f0d0d53675e29488c87e1c8a" prot="public" static="no">
+        <name>MUTABOR_FLOAT</name>
+        <initializer>double</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" line="68" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="df/d8e/bad__decl_8h_1ad03ac8cefe336046a2b7487507351075" prot="public" static="no">
+        <name>MUTABOR_FLOAT_FACTOR_COMPARE</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>(a&gt;b?1:a==b?0:-1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" line="69" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" bodystart="69" bodyend="-1"/>
+        <referencedby refid="d5/d28/interval_8c_1a714113c1d0e2529368804e77c9f7db3f" compoundref="d5/d28/interval_8c" startline="49" endline="54">MUTABOR_CLASS_FUNCTION</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="df/d8e/bad__decl_8h_1a1d50225e1354fac8c51f26b993068658" prot="public" static="no">
+        <name>MUTABOR_FLOAT_DIVIDE</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>((<ref refid="df/d8e/bad__decl_8h_1a2d76b933f0d0d53675e29488c87e1c8a" kindref="member">MUTABOR_FLOAT</ref>)a / (<ref refid="df/d8e/bad__decl_8h_1a2d76b933f0d0d53675e29488c87e1c8a" kindref="member">MUTABOR_FLOAT</ref>)b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" line="70" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" bodystart="70" bodyend="-1"/>
+        <referencedby refid="d9/d49/intervalInv_8c_1a75693049ffa6b092ba8e61522db6c4de" compoundref="d9/d49/intervalInv_8c" startline="39" endline="47">MUTABOR_CLASS_FUNCTION</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1ac4d240833fc56f366d0606998a0845b1" compoundref="d3/da3/mut_8c" startline="942" endline="1670">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="df/d8e/bad__decl_8h_1a526a0ab32721e0c316031b998ce48f92" prot="public" static="no">
+        <name>MUTABOR_FLOAT_MULTIPLY</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>((<ref refid="df/d8e/bad__decl_8h_1a2d76b933f0d0d53675e29488c87e1c8a" kindref="member">MUTABOR_FLOAT</ref>)a / (<ref refid="df/d8e/bad__decl_8h_1a2d76b933f0d0d53675e29488c87e1c8a" kindref="member">MUTABOR_FLOAT</ref>)b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" line="71" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="df/d8e/bad__decl_8h_1a97c4774d97115599ea99829843f5193f" prot="public" static="no">
+        <name>MUTABOR_FLOAT_POW</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>(pow((<ref refid="df/d8e/bad__decl_8h_1a2d76b933f0d0d53675e29488c87e1c8a" kindref="member">MUTABOR_FLOAT</ref>)a,(<ref refid="df/d8e/bad__decl_8h_1a2d76b933f0d0d53675e29488c87e1c8a" kindref="member">MUTABOR_FLOAT</ref>)b))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" line="72" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" bodystart="72" bodyend="-1"/>
+        <referencedby refid="d4/dc6/intervalStretch_8c_1aa32ba4540e9eaee6a580918a929897db" compoundref="d4/dc6/intervalStretch_8c" startline="84" endline="93">MUTABOR_CLASS_FUNCTION</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1ac4d240833fc56f366d0606998a0845b1" compoundref="d3/da3/mut_8c" startline="942" endline="1670">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="df/d8e/bad__decl_8h_1add06f7a8eedac3939367e696b477746f" prot="public" static="no">
+        <name>mutabor_parser_get_table_filename</name>
+        <param><defname>a</defname></param>
+        <initializer>&quot;../&quot; a</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" line="74" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" bodystart="74" bodyend="-1"/>
+        <referencedby refid="de/d09/mutfile_8c_1a4224c715b92d2a6e1ebe65c421834cad" compoundref="de/d09/mutfile_8c" startline="121" endline="150">MUTABOR_CLASS_FUNCTION</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="df/d8e/bad__decl_8h_1abc0ff578a550575217d0b10e204b8e6d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int keys_changed[MAX_BOX]</definition>
+        <argsstring>[MAX_BOX]</argsstring>
+        <name>keys_changed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" line="58" column="1"/>
+        <referencedby refid="d9/d7c/group__kernel_1gafcc43122e77ad12403856afa0db0013e" compoundref="d1/da7/boxTest_8cpp" startline="218" endline="281">boxTest::test_init</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="df/d8e/bad__decl_8h_1a8cf1694e6bc6592b5f2bf0306fc2f245" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fatal_error</definition>
+        <argsstring>(int nummer,...)</argsstring>
+        <name>fatal_error</name>
+        <param>
+          <type>int</type>
+          <declname>nummer</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" line="54" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/tests/testchkobject.c" bodystart="11" bodyend="12"/>
+        <references refid="d9/d7c/group__kernel_1ga9728df5840723c08b5def4e7d1966476" compoundref="d1/da2/Errors_8cpp" startline="150">Error_text</references>
+        <references refid="de/d45/errors_8h_1ae2387ffc56e4c38de349dcd17ce78865" compoundref="d0/d15/errors_8c" startline="20">mutabor_debug_level</references>
+      </memberdef>
+      <memberdef kind="function" id="df/d8e/bad__decl_8h_1a6346450bcae521fd4caf35df64aee748" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void show_line_number</definition>
+        <argsstring>(int n)</argsstring>
+        <name>show_line_number</name>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" line="55" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/tests/testchkobject.c" bodystart="14" bodyend="15"/>
+        <referencedby refid="df/d33/mut_8cc_1a875c3b1a93cbaaa7dd8d0c8780825a71" compoundref="df/d33/mut_8cc" startline="3443" endline="3674">yylex</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="df/d8e/bad__decl_8h_1a25ec254be03f5cad114bbda96c63d51c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void compiler_warning</definition>
+        <argsstring>(int nummer,...)</argsstring>
+        <name>compiler_warning</name>
+        <param>
+          <type>int</type>
+          <declname>nummer</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h" line="56" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/tests/testchkobject.c" bodystart="17" bodyend="18"/>
+        <references refid="d9/d7c/group__kernel_1gaf8efbc9f57f10f6c6e914c5e86122486" compoundref="d1/da2/Errors_8cpp" startline="252">Warning_text</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Zu korrigierende Querabhängigkeiten zur GUI und sonstige komische Deklarationen. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="rcs"><title>Id:</title><para>bad_decl.h,v 1.3 2005/11/03 14:27:26 keinstein Exp </para></simplesect>
+<simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein_junior@gmx.net">keinstein_junior@gmx.net</ulink> </para></simplesect>
+<simplesect kind="date"><para></para></simplesect>
+<simplesect kind="rcs"><title>Date:</title><para>2005/11/03 14:27:26 </para></simplesect>
+<simplesect kind="version"><para></para></simplesect>
+<simplesect kind="rcs"><title>Revision:</title><para>1.3 </para></simplesect>
+</para><para><simplesect kind="rcs"><title>Log:</title><para>bad_decl.h,v </para></simplesect>
+Revision 1.3 2005/11/03 14:27:26 keinstein new file header includes corrected MUTABOR_FLOAT isnan asprintf strdup stpcpy fileno defined if strict ANSI on GCC </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="20"><highlight class="preprocessor">#ifndef<sp/>__BAD_DECL_H_INCLUDED</highlight></codeline>
+<codeline lineno="21"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>__BAD_DECL_H_INCLUDED</highlight></codeline>
+<codeline lineno="22"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__STRICT_ANSI__</highlight></codeline>
+<codeline lineno="25"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifdef<sp/>__GNUC__</highlight></codeline>
+<codeline lineno="26"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>isnan(a)<sp/>(a==log(-1))</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>asprintf<sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**__restrict<sp/>__ptr,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*__restrict<sp/>__fmt,<sp/>...)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>__THROW<sp/><ref refid="df/d33/mut_8cc_1abcbef469be555eac2ee4891044b0e302" kindref="member">__attribute__</ref><sp/>((__format__<sp/>(__printf__,<sp/>2,<sp/>3)));</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Duplicate<sp/>S,<sp/>returning<sp/>an<sp/>identical<sp/>malloc&apos;d<sp/>string.<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">extern<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*strdup<sp/>(__const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*__s)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>__THROW<sp/>__attribute_malloc__<sp/>__nonnull<sp/>((1));</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Copy<sp/>SRC<sp/>to<sp/>DEST,<sp/>returning<sp/>the<sp/>address<sp/>of<sp/>the<sp/>terminating<sp/>&apos;\0&apos;<sp/>in<sp/>DEST.<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">extern<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*__stpcpy<sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*__restrict<sp/>__dest,<sp/>__const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*__restrict<sp/>__src)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>__THROW<sp/>__nonnull<sp/>((1,<sp/>2));</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">extern<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*stpcpy<sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*__restrict<sp/>__dest,<sp/>__const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*__restrict<sp/>__src)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>__THROW<sp/>__nonnull<sp/>((1,<sp/>2));</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Return<sp/>the<sp/>system<sp/>file<sp/>descriptor<sp/>for<sp/>STREAM.<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal">extern<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>fileno<sp/>(FILE<sp/>*__stream)<sp/>__THROW;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="df/d8e/bad__decl_8h_1abb452686968e48b67397da5f97445f5b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>bool<sp/>unsigned<sp/>int</highlight></codeline>
+<codeline lineno="52" refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MAX_BOX<sp/>256<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>void<sp/>fatal_error(<sp/>int<sp/>nummer,<sp/>...<sp/>);</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/d8e/bad__decl_8h_1a6346450bcae521fd4caf35df64aee748" kindref="member">show_line_number</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ggafeebd36c5713e8438dcf17e926f8ad96a053ee5ee8425fcbcd4c51b3637254eb5" kindref="member">compiler_warning</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nummer,<sp/>...<sp/>);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d8e/bad__decl_8h_1abc0ff578a550575217d0b10e204b8e6d" kindref="member">keys_changed</ref>[<ref refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" kindref="member">MAX_BOX</ref>];</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="df/d8e/bad__decl_8h_1a373e10fa526ba34b5a4ad44bd5c01015" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>GERMAN</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="63" refid="df/d8e/bad__decl_8h_1af0566e83c6445f2a84c21406ca24d8e8" refkind="member"><highlight class="preprocessor">#define<sp/>MAX_BREITE<sp/>72</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="66" refid="df/d8e/bad__decl_8h_1ab4c864041198a40c01ead0b0ae4c8ccf" refkind="member"><highlight class="preprocessor">#define<sp/>MAX_MIDI<sp/>32</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="df/d8e/bad__decl_8h_1a2d76b933f0d0d53675e29488c87e1c8a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MUTABOR_FLOAT<sp/>double</highlight></codeline>
+<codeline lineno="69" refid="df/d8e/bad__decl_8h_1ad03ac8cefe336046a2b7487507351075" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MUTABOR_FLOAT_FACTOR_COMPARE(a,b)<sp/>(a&gt;b?1:a==b?0:-1)</highlight></codeline>
+<codeline lineno="70" refid="df/d8e/bad__decl_8h_1a1d50225e1354fac8c51f26b993068658" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MUTABOR_FLOAT_DIVIDE(a,b)<sp/>((MUTABOR_FLOAT)a<sp/>/<sp/>(MUTABOR_FLOAT)b)</highlight></codeline>
+<codeline lineno="71" refid="df/d8e/bad__decl_8h_1a526a0ab32721e0c316031b998ce48f92" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MUTABOR_FLOAT_MULTIPLY(a,b)<sp/>((MUTABOR_FLOAT)a<sp/>/<sp/>(MUTABOR_FLOAT)b)</highlight></codeline>
+<codeline lineno="72" refid="df/d8e/bad__decl_8h_1a97c4774d97115599ea99829843f5193f" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MUTABOR_FLOAT_POW(a,b)<sp/>(pow((MUTABOR_FLOAT)a,(MUTABOR_FLOAT)b))</highlight></codeline>
+<codeline lineno="73"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="74" refid="df/d8e/bad__decl_8h_1add06f7a8eedac3939367e696b477746f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>mutabor_parser_get_table_filename(a)<sp/>&quot;../&quot;<sp/>a</highlight></codeline>
+<codeline lineno="75"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus<sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__BAD_DECL_H_INCLUDED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/bad_decl.h"/>
+  </compounddef>
+</doxygen>

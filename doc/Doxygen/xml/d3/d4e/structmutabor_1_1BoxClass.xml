@@ -1,0 +1,2258 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d3/d4e/structmutabor_1_1BoxClass" kind="class" prot="public">
+    <compoundname>mutabor::BoxClass</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">backend_callbacks</basecompoundref>
+    <derivedcompoundref refid="df/d08/classmutaborGUI_1_1BoxData" prot="public" virt="non-virtual">mutaborGUI::BoxData</derivedcompoundref>
+    <includes refid="de/d0f/Box_8h" local="no">Box.h</includes>
+    <innerclass refid="d4/d26/structmutabor_1_1BoxClass_1_1BoxLock" prot="protected">mutabor::BoxClass::BoxLock</innerclass>
+    <innerclass refid="da/dd8/structmutabor_1_1BoxClass_1_1ChangedCallback" prot="public">mutabor::BoxClass::ChangedCallback</innerclass>
+    <innerclass refid="d2/def/structmutabor_1_1BoxClass_1_1CompileCallback" prot="public">mutabor::BoxClass::CompileCallback</innerclass>
+    <innerclass refid="d3/d00/structmutabor_1_1BoxClass_1_1current__tone__entry" prot="public">mutabor::BoxClass::current_tone_entry</innerclass>
+    <innerclass refid="da/d9b/structmutabor_1_1BoxClass_1_1logic__entry" prot="public">mutabor::BoxClass::logic_entry</innerclass>
+    <innerclass refid="dd/d9f/classmutabor_1_1BoxClass_1_1set__callback" prot="protected">mutabor::BoxClass::set_callback</innerclass>
+    <innerclass refid="dd/d1c/structmutabor_1_1BoxClass_1_1tone__entry" prot="public">mutabor::BoxClass::tone_entry</innerclass>
+    <innerclass refid="de/db2/structmutabor_1_1BoxClass_1_1tone__system" prot="public">mutabor::BoxClass::tone_system</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="d5/dee/group__route_1ga59ad356edc8b877f64e9a02df6f5560c" prot="public" static="no">
+        <name>boxidtype</name>
+        <enumvalue id="d5/dee/group__route_1gga59ad356edc8b877f64e9a02df6f5560ca83cfb0dfc6cb4daaf8dd7db3f6e116a6" prot="public">
+          <name>IDTypeSession</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dee/group__route_1gga59ad356edc8b877f64e9a02df6f5560ca67adbcea09886c9c80ed988c5cecb9f1" prot="public">
+          <name>IDTypeFile</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="126" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="126" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="enum" id="d5/dee/group__route_1ga90c978f72ae20c1d0c9ab6c9303acc98" prot="public" static="no">
+        <name>KeyboardFlags</name>
+        <enumvalue id="d5/dee/group__route_1gga90c978f72ae20c1d0c9ab6c9303acc98a407a5cbfbca17568e36e5ba66b79ac9e" prot="public">
+          <name>KeyboardNoLogic</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dee/group__route_1gga90c978f72ae20c1d0c9ab6c9303acc98a4d6ecee702c9e2d10ce86b955f912c09" prot="public">
+          <name>KeyboardLogic</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dee/group__route_1gga90c978f72ae20c1d0c9ab6c9303acc98a17cd5bcd91e2d4bddb147fd7013deeb0" prot="public">
+          <name>KeyboardAny</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="494" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="494" bodyend="498"/>
+      </memberdef>
+      <memberdef kind="typedef" id="d5/dee/group__route_1gab295b96374e495ce19aa3945d61ff6ba" prot="public" static="no">
+        <type><ref refid="d5/dee/group__route_1ga5ffb1b1d7e011648e2997ebfb7f7d6d2" kindref="member">BoxListType</ref></type>
+        <definition>typedef BoxListType mutabor::BoxClass::listtype</definition>
+        <argsstring></argsstring>
+        <name>listtype</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="159" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="d5/dee/group__route_1ga94e0b34744fd4089112ac8b8796884d0" prot="public" static="no">
+        <type>std::list&lt; <ref refid="da/d9b/structmutabor_1_1BoxClass_1_1logic__entry" kindref="compound">logic_entry</ref> &gt;</type>
+        <definition>typedef std::list&lt;logic_entry&gt; mutabor::BoxClass::logic_list</definition>
+        <argsstring></argsstring>
+        <name>logic_list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="393" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="393" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="d5/dee/group__route_1ga75db15d6d2221874e52c4ea1d74d39e9" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="dd/d1c/structmutabor_1_1BoxClass_1_1tone__entry" kindref="compound">tone_entry</ref> &gt;</type>
+        <definition>typedef std::vector&lt;tone_entry&gt; mutabor::BoxClass::tone_list</definition>
+        <argsstring></argsstring>
+        <name>tone_list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="411" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="411" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="d5/dee/group__route_1ga07f2931fa5c87a00c71afc0799fc3f96" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="d3/d00/structmutabor_1_1BoxClass_1_1current__tone__entry" kindref="compound">current_tone_entry</ref> &gt;</type>
+        <definition>typedef std::vector&lt;current_tone_entry&gt; mutabor::BoxClass::current_tone_list</definition>
+        <argsstring></argsstring>
+        <name>current_tone_list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="436" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="436" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d3/d4e/structmutabor_1_1BoxClass_1a977750d8c44225073288d3eb354962cb" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>mutabor::BoxClass::error_callback</definition>
+        <argsstring></argsstring>
+        <name>error_callback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" line="828" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="826" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/d4e/structmutabor_1_1BoxClass_1aecdc568ab330790ad98e0791079265af" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>void mutabor::BoxClass::log_action</definition>
+        <argsstring></argsstring>
+        <name>log_action</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" line="830" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="826" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/d4e/structmutabor_1_1BoxClass_1a6fe3e638952a1faa0d67fb6782327141" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>mutabor::BoxClass::lock_callback</definition>
+        <argsstring></argsstring>
+        <name>lock_callback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" line="831" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="826" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="d5/dee/group__route_1gac04be31fb0688ece777a775591d73269" prot="protected" static="yes" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gab295b96374e495ce19aa3945d61ff6ba" kindref="member">listtype</ref></type>
+        <definition>BoxListType mutabor::BoxClass::boxList</definition>
+        <argsstring></argsstring>
+        <name>boxList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="645" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="645" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gaf902f52cc92b92c56c800871fb2a4593" compoundref="de/d0f/Box_8h" startline="303" endline="314">ClearBoxList</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga5830a23962fce59292be56d8c961dba5" compoundref="de/d0f/Box_8h" startline="696" endline="702">FindInBoxList</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac71327653b27bcbd7f4eee505629e847" compoundref="de/d0f/Box_8h" startline="269" endline="271">GetBoxList</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga78e891a06e443ab16be23854c62b357c" compoundref="de/d0f/Box_8h" startline="703" endline="705">IsInBoxList</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1gae29f0c045cb1e9573fede2b86c6b1981" prot="protected" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::BoxClass::nextboxid</definition>
+        <argsstring></argsstring>
+        <name>nextboxid</name>
+        <initializer>= <ref refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9" kindref="member">Box0</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="646" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="646" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga654c8d02aae488f8ff6f6d0f62b08f7d" compoundref="de/d0f/Box_8h" startline="217" endline="219">GetNextFreeBox</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1gafeb629b6487485ab77055218f5ad43ba" prot="protected" static="yes" mutable="no">
+        <type>mutabor::hidden::mutabor_callback_type</type>
+        <definition>mutabor::hidden::mutabor_callback_type mutabor::BoxClass::backend_callbacks</definition>
+        <argsstring></argsstring>
+        <name>backend_callbacks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="673" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="673" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga8f3424d939c6cfaff88e5d77b69baa04" compoundref="dd/dc6/Box_8cpp" startline="944" endline="947">mutabor::initialize_box_data</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="d5/dee/group__route_1ga6b63398bab6e4473b3c8ba562b62fdfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class ::mutaborGUI::BoxData</definition>
+        <argsstring></argsstring>
+        <name>::mutaborGUI::BoxData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="647" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="647" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="d5/dee/group__route_1ga6e7ba64a9cf99cbf58a40ee8341d6ce7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class BoxFactory</definition>
+        <argsstring></argsstring>
+        <name>BoxFactory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="648" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="648" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="d5/dee/group__route_1ga12c67335d58738374c2ddd24f4d1ece1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend void</type>
+        <definition>void initialize_box_data</definition>
+        <argsstring>()</argsstring>
+        <name>initialize_box_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="649" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="944" bodyend="947"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d5/dee/group__route_1ga97b1747f1037294dbbd843438889af4e" prot="protected" static="no" mutable="no">
+        <type>struct <ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+        <definition>struct mutabor_box_type* mutabor::BoxClass::box</definition>
+        <argsstring></argsstring>
+        <name>box</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="650" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="650" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gaf49b892320f04368a2e91e58da93e0ef" compoundref="de/d0f/Box_8h" startline="484" endline="487">AddNote</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga8b63dc63967b2bc17752ba3ef1c26d60" compoundref="de/d0f/Box_8h" startline="489" endline="492">DeleteNote</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga8ec141db1f4950cd151e8f179c51b4be" compoundref="de/d0f/Box_8h" startline="509" endline="520">KeyboardAnalysis</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaf9f3bc477eea05b4251df8658a1394f0" compoundref="de/d0f/Box_8h" startline="457" endline="460">MidiAnalysis</referencedby>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1ae4571bdbcb0bc425d2d9ef8f88a5c605" compoundref="d2/dd3/GUIBoxData_8cpp" startline="69" endline="101">mutaborGUI::BoxData::set_routefile_id</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga52872f74de2779bc1608a8b340f9d2ba" compoundref="de/d0f/Box_8h" startline="539" endline="541">SetLogic</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1ga0d09d3c26580b4f293047b956c0495fb" prot="protected" static="no" mutable="no">
+        <type><ref refid="d7/dce/classmutabor_1_1idtype" kindref="compound">idtype</ref>&lt; <ref refid="d3/d4e/structmutabor_1_1BoxClass" kindref="compound">BoxClass</ref> &gt;</type>
+        <definition>idtype&lt;BoxClass&gt; mutabor::BoxClass::session_id</definition>
+        <argsstring></argsstring>
+        <name>session_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="651" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="651" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gafde4c70fda7dfa45db95455196936148" compoundref="de/d0f/Box_8h" startline="163" endline="165">get_session_id</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1ga584a8d6cf9fbebb29d6fe80623550efc" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::BoxClass::routefile_id</definition>
+        <argsstring></argsstring>
+        <name>routefile_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="652" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="652" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gaac7f20b287fc3a75e8c2f477a7a87884" compoundref="de/d0f/Box_8h" startline="211" endline="213">get_routefile_id</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga603b0a2a201271f15c2f8df8f265ae92" compoundref="de/d0f/Box_8h" startline="167" endline="169">GetType</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga8bc1ae082ba9907da1f66b3dedac1282" compoundref="de/d0f/Box_8h" startline="207" endline="209">IsNormal</referencedby>
+        <referencedby refid="d5/dee/group__route_1gab545d676be2909325e6616d4595a6fb9" compoundref="de/d0f/Box_8h" startline="678" endline="680">set_file_id</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1gae7eacacdd1297cd728fd53bc4c466d34" prot="protected" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1ga2467e9b2b92e759b6c5e5911545c09f1" kindref="member">routeListType</ref></type>
+        <definition>routeListType mutabor::BoxClass::routes</definition>
+        <argsstring></argsstring>
+        <name>routes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="653" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="653" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga62fd87e9a500c9ba71165e660d2be344" compoundref="d6/d9a/Box-inlines_8h" startline="68" endline="81">DisconnectFromAll</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga66fcf44c6bba7fff5ef563e4f0bacc40" compoundref="dd/dc6/Box_8cpp" startline="672" endline="684">GetChannel</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga8d96b0a6a7c3d5da07bf641d7f9f6acf" compoundref="de/d0f/Box_8h" startline="260" endline="262">GetRoutes</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa36f1adad3a94ce3eb7463d81b7e408c" compoundref="dd/dc6/Box_8cpp" startline="647" endline="661">MidiOut</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaef1fb011a1dbf7f08376fc5650ead5e1" compoundref="dd/dc6/Box_8cpp" startline="663" endline="669">UpdateTones</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1ga016356fd5ef831df33f1ffcf1fd9f668" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool mutabor::BoxClass::open</definition>
+        <argsstring></argsstring>
+        <name>open</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="654" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="654" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gac51da01c9500d5d626289e46d7e288d7" compoundref="de/d0f/Box_8h" startline="348" endline="353">Close</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga1b8f2a466bac599d219133d7fe48b0bd" compoundref="de/d0f/Box_8h" startline="357" endline="357">IsOpen</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga730e807272ce83137086c2a54fafea3a" compoundref="de/d0f/Box_8h" startline="341" endline="346">Open</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1ga40b96c1354cc297d12184df53595936c" prot="protected" static="no" mutable="no">
+        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+        <definition>mutString mutabor::BoxClass::current_logic</definition>
+        <argsstring></argsstring>
+        <name>current_logic</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="655" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="655" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1ga404054ef2dceedabf479f8f884a365bb" prot="protected" static="no" mutable="no">
+        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+        <definition>mutString mutabor::BoxClass::current_tonesystem</definition>
+        <argsstring></argsstring>
+        <name>current_tonesystem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="656" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="656" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1ga86b1676009e69b53eddc96e180419767" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::BoxClass::current_key_tonesystem</definition>
+        <argsstring></argsstring>
+        <name>current_key_tonesystem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="657" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="657" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1gad1c1a6b193edea22b11e3dddd78e0c99" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::BoxClass::current_key_logic</definition>
+        <argsstring></argsstring>
+        <name>current_key_logic</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="658" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="658" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1ga2ceaf34ae3592a5753c0dd5a97ecd274" prot="protected" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mutabor::BoxClass::updateflags</definition>
+        <argsstring></argsstring>
+        <name>updateflags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="659" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="659" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga7319c973bb7970e7477d1d32f68e5294" compoundref="dd/dc6/Box_8cpp" startline="776" endline="783">UpdateCallback</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1ga2983780f85a472812ba326e14864d4f3" prot="protected" static="no" mutable="no">
+        <type>std::list&lt; <ref refid="da/dd8/structmutabor_1_1BoxClass_1_1ChangedCallback" kindref="compound">ChangedCallback</ref> * &gt;</type>
+        <definition>std::list&lt;ChangedCallback *&gt; mutabor::BoxClass::callbacks</definition>
+        <argsstring></argsstring>
+        <name>callbacks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="660" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="660" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga8544606a19a57f34066130c6e47e5923" compoundref="dd/dc6/Box_8cpp" startline="758" endline="761">ExecuteCallbacks</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga1684a9460b312c8c16e975b9418b5465" compoundref="de/d0f/Box_8h" startline="682" endline="684">Register</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga941642ea585a6e900fd6b83892fad7ef" compoundref="de/d0f/Box_8h" startline="685" endline="687">Unregister</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1ga3081a34c1d0980b4247bd20a532d624e" prot="protected" static="no" mutable="no">
+        <type><ref refid="d2/def/structmutabor_1_1BoxClass_1_1CompileCallback" kindref="compound">CompileCallback</ref> *</type>
+        <definition>CompileCallback* mutabor::BoxClass::current_compile_callback</definition>
+        <argsstring></argsstring>
+        <name>current_compile_callback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="672" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="672" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga6dd51d0efa3bea935d7fb57bfa884da9" compoundref="dd/dc6/Box_8cpp" startline="793" endline="798">compile_callback</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac1ae595ebe8819c13893d725e51115b1" compoundref="de/d0f/Box_8h" startline="664" endline="667">mutabor::BoxClass::set_callback::set_callback</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa63774ec7552c354c47a5ed09196d4bd" compoundref="de/d0f/Box_8h" startline="668" endline="670">mutabor::BoxClass::set_callback::~set_callback</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1gade526d5206be7ae3a2eb715268995e05" prot="protected" static="no" mutable="no">
+        <type>Mutex</type>
+        <definition>Mutex mutabor::BoxClass::mutex</definition>
+        <argsstring></argsstring>
+        <name>mutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="674" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="674" bodyend="-1"/>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1ab26b4050180fd5202231f3588d3faf36" compoundref="d2/dd3/GUIBoxData_8cpp" startline="284" endline="312">mutaborGUI::BoxData::DoOpen</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa2b81d8bd01eac8f20abd086ee8eaf88" compoundref="dd/dc6/Box_8cpp" startline="566" endline="602">GetCurrentTones</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga5fbfe9126390dc61fa0f4795cc68e0b4" compoundref="dd/dc6/Box_8cpp" startline="511" endline="529">GetLogics</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4c9c4d1277fb78585bb2471863214fbb" compoundref="dd/dc6/Box_8cpp" startline="531" endline="564">GetToneSystem</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d5/dee/group__route_1ga24fcc89dd9f95465f355a2428f6e4ec0" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>mutabor::BoxClass::REFPTR_INTERFACE</definition>
+        <argsstring></argsstring>
+        <name>REFPTR_INTERFACE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="710" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="710" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/dee/group__route_1ga7980fb28940781d2b2cc6d4e4d201da6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>mutabor::BoxClass::~BoxClass</definition>
+        <argsstring>()</argsstring>
+        <name>~BoxClass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="161" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="79" bodyend="94"/>
+        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
+        <references refid="de/db7/group__debug_1gad832f7644d01ea65a5de5dc9ba942d11" compoundref="de/de1/mutDebug_8h" startline="222" endline="222">debug_destruct_class</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gafde4c70fda7dfa45db95455196936148" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t mutabor::BoxClass::get_session_id</definition>
+        <argsstring>() const </argsstring>
+        <name>get_session_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="163" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="163" bodyend="165"/>
+        <references refid="d5/dee/group__route_1ga0d09d3c26580b4f293047b956c0495fb" compoundref="de/d0f/Box_8h" startline="651">session_id</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga603b0a2a201271f15c2f8df8f265ae92" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d5/dee/group__route_1ga2d0d16a891b0f8895c418e112b6ad542" kindref="member">BoxType</ref></type>
+        <definition>virtual BoxType mutabor::BoxClass::GetType</definition>
+        <argsstring>()</argsstring>
+        <name>GetType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="167" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="167" bodyend="169"/>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9" compoundref="de/d0f/Box_8h" startline="115">mutabor::Box0</references>
+        <references refid="d5/dee/group__route_1ga584a8d6cf9fbebb29d6fe80623550efc" compoundref="de/d0f/Box_8h" startline="652">routefile_id</references>
+        <referencedby refid="d5/dee/group__route_1ga7655d7b74fd453625564c40c8b3db065" compoundref="de/d0f/Box_8h" startline="189" endline="205">GetLabel</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga06fc85ea4d73f6eb73754d29bf2fdb00" compoundref="de/d0f/Box_8h" startline="171" endline="187">GetTypeName</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga06fc85ea4d73f6eb73754d29bf2fdb00" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+        <definition>virtual mutString mutabor::BoxClass::GetTypeName</definition>
+        <argsstring>()</argsstring>
+        <name>GetTypeName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="171" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="171" bodyend="187"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9" compoundref="de/d0f/Box_8h" startline="115">mutabor::Box0</references>
+        <references refid="d5/dee/group__route_1ga603b0a2a201271f15c2f8df8f265ae92" compoundref="de/d0f/Box_8h" startline="167" endline="169">GetType</references>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542a29a2e5ffb6fc2f93b5c1eff689bf2468" compoundref="de/d0f/Box_8h" startline="114">mutabor::GmnBox</references>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542a008b0c2008d3e4d3de80ce133d699f41" compoundref="de/d0f/Box_8h" startline="112">mutabor::NewBox</references>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542aeb2ddcbaa727016dcb5229fc6dacc23f" compoundref="de/d0f/Box_8h" startline="113">mutabor::NoBox</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga7655d7b74fd453625564c40c8b3db065" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+        <definition>virtual mutString mutabor::BoxClass::GetLabel</definition>
+        <argsstring>()</argsstring>
+        <name>GetLabel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="189" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="189" bodyend="205"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9" compoundref="de/d0f/Box_8h" startline="115">mutabor::Box0</references>
+        <references refid="d5/dee/group__route_1gaac7f20b287fc3a75e8c2f477a7a87884" compoundref="de/d0f/Box_8h" startline="211" endline="213">get_routefile_id</references>
+        <references refid="d5/dee/group__route_1ga603b0a2a201271f15c2f8df8f265ae92" compoundref="de/d0f/Box_8h" startline="167" endline="169">GetType</references>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542a29a2e5ffb6fc2f93b5c1eff689bf2468" compoundref="de/d0f/Box_8h" startline="114">mutabor::GmnBox</references>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542a008b0c2008d3e4d3de80ce133d699f41" compoundref="de/d0f/Box_8h" startline="112">mutabor::NewBox</references>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542aeb2ddcbaa727016dcb5229fc6dacc23f" compoundref="de/d0f/Box_8h" startline="113">mutabor::NoBox</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga8bc1ae082ba9907da1f66b3dedac1282" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::BoxClass::IsNormal</definition>
+        <argsstring>()</argsstring>
+        <name>IsNormal</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="207" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="207" bodyend="209"/>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9" compoundref="de/d0f/Box_8h" startline="115">mutabor::Box0</references>
+        <references refid="d5/dee/group__route_1ga584a8d6cf9fbebb29d6fe80623550efc" compoundref="de/d0f/Box_8h" startline="652">routefile_id</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaac7f20b287fc3a75e8c2f477a7a87884" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutabor::BoxClass::get_routefile_id</definition>
+        <argsstring>() const </argsstring>
+        <name>get_routefile_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="211" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="211" bodyend="213"/>
+        <references refid="d5/dee/group__route_1ga584a8d6cf9fbebb29d6fe80623550efc" compoundref="de/d0f/Box_8h" startline="652">routefile_id</references>
+        <referencedby refid="d5/dee/group__route_1ga7655d7b74fd453625564c40c8b3db065" compoundref="de/d0f/Box_8h" startline="189" endline="205">GetLabel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga76f0aef39bc81c389c6202f7f6cf3864" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::set_routefile_id</definition>
+        <argsstring>(int id)</argsstring>
+        <name>set_routefile_id</name>
+        <reimplementedby refid="df/d08/classmutaborGUI_1_1BoxData_1ae4571bdbcb0bc425d2d9ef8f88a5c605">set_routefile_id</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="215" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="96" bodyend="107"/>
+        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
+        <references refid="d0/d33/structmutabor__box__type_1a49b61c74d15d1b8943264eedf48168b7" compoundref="dc/d19/box_8h" startline="117">mutabor_box_type::id</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542a008b0c2008d3e4d3de80ce133d699f41" compoundref="de/d0f/Box_8h" startline="112">mutabor::NewBox</references>
+        <referencedby refid="d5/dee/group__route_1ga6eb42c00125e3001f785e9298acd29cc" compoundref="dd/dc6/Box_8cpp" startline="722" endline="741">BoxClass</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gad865785fdbeab2031284f8758add5f23" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::Save</definition>
+        <argsstring>(tree_storage &amp;config)</argsstring>
+        <name>Save</name>
+        <reimplementedby refid="df/d08/classmutaborGUI_1_1BoxData_1a89d8f42074f02083df8327976c6d2700">Save</reimplementedby>
+        <param>
+          <type><ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">tree_storage</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Save current device settings in a tree storage. </para>        </briefdescription>
+        <detaileddescription>
+<para>config (<ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">tree_storage</ref>) storage class, where the data will be saved. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="224" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="109" bodyend="110"/>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1a89d8f42074f02083df8327976c6d2700" compoundref="d2/dd3/GUIBoxData_8cpp" startline="231" endline="239">mutaborGUI::BoxData::Save</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga19c0856dcfeb9cc16d434987e5b2a7f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::Save</definition>
+        <argsstring>(tree_storage &amp;config, const RouteClass *route)</argsstring>
+        <name>Save</name>
+        <param>
+          <type><ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">tree_storage</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1ga1883da1b1be8d9e8d11d091c04a37521" kindref="member">RouteClass</ref> *</type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+<para>Save route settings (filter settings) for a given route. </para>        </briefdescription>
+        <detaileddescription>
+<para>Some route settings (e.g. filter settings) are device type specific. This function saves them in a tree storage.  config (<ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">tree_storage</ref> *) Storage class, where the data will be saved.  route (Route) Route whos data shall be saved. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="232" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="112" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga59743f6f78c7f7c0e9124893d708b86b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::Load</definition>
+        <argsstring>(tree_storage &amp;config)</argsstring>
+        <name>Load</name>
+        <reimplementedby refid="df/d08/classmutaborGUI_1_1BoxData_1a952a6448ed833fabf227d2dea6d809cb">Load</reimplementedby>
+        <param>
+          <type><ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">tree_storage</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Load current device settings from a tree storage. </para>        </briefdescription>
+        <detaileddescription>
+<para>config (<ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">tree_storage</ref>) storage class, where the data will be loaded from. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="238" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="116" bodyend="117"/>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1a952a6448ed833fabf227d2dea6d809cb" compoundref="d2/dd3/GUIBoxData_8cpp" startline="241" endline="251">mutaborGUI::BoxData::Load</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga0f764b8b5843f5d5393f9591d38034cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::Load</definition>
+        <argsstring>(tree_storage &amp;config, RouteClass *route)</argsstring>
+        <name>Load</name>
+        <param>
+          <type><ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">tree_storage</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga1883da1b1be8d9e8d11d091c04a37521" kindref="member">RouteClass</ref> *</type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+<para>Load route settings (filter settings) for a given route. </para>        </briefdescription>
+        <detaileddescription>
+<para>Some route settings (e.g. filter settings) are device type specific. This function loads them from a tree storage.  config (<ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">tree_storage</ref> *) Storage class, where the data will be restored from.  route (Route) Route whos data shall be loaded. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="246" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="119" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga98e55db8b2a412d4162932b13d7e04ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::Add</definition>
+        <argsstring>(Route &amp;route)</argsstring>
+        <name>Add</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">Route</ref> &amp;</type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+<para>add a route </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="251" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="123" bodyend="135"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga5d8ae12bbd63fa47a65380f9b074d1bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutabor::BoxClass::Replace</definition>
+        <argsstring>(Route &amp;oldRoute, Route &amp;newRoute)</argsstring>
+        <name>Replace</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">Route</ref> &amp;</type>
+          <declname>oldRoute</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">Route</ref> &amp;</type>
+          <declname>newRoute</declname>
+        </param>
+        <briefdescription>
+<para>replace a route </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="253" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="137" bodyend="148"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga1152cffd18fd59bae2c11df3a694f106" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutabor::BoxClass::Remove</definition>
+        <argsstring>(Route &amp;route)</argsstring>
+        <name>Remove</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">Route</ref> &amp;</type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+<para>remove a route </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="255" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="150" bodyend="167"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga929b9e3b3d2ed10ebd92110d49320603" compoundref="d1/da4/boost-interface_8h" startline="107" endline="111">intrusive_ptr_get_refcount</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaa214d6cc0d3c2776ba80711da094e1ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutabor::BoxClass::MoveRoutes</definition>
+        <argsstring>(Box &amp;newclass)</argsstring>
+        <name>MoveRoutes</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">Box</ref> &amp;</type>
+          <declname>newclass</declname>
+        </param>
+        <briefdescription>
+<para>Move routes to another device. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="257" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="169" bodyend="187"/>
+        <references refid="df/dd1/group__GUI_1ga7ad6b2305e866ae3936c307f5f9f4c04" compoundref="da/d72/MutChild_8cpp" startline="228" endline="264">mutaborGUI::IsOpen</references>
+        <references refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" compoundref="d2/d2c/Route-inlines_8h" startline="110" endline="124">mutabor::reconnect</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga8d96b0a6a7c3d5da07bf641d7f9f6acf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1ga2467e9b2b92e759b6c5e5911545c09f1" kindref="member">routeListType</ref> &amp;</type>
+        <definition>const routeListType&amp; mutabor::BoxClass::GetRoutes</definition>
+        <argsstring>() const </argsstring>
+        <name>GetRoutes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="260" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="260" bodyend="262"/>
+        <references refid="d5/dee/group__route_1gae7eacacdd1297cd728fd53bc4c466d34" compoundref="de/d0f/Box_8h" startline="653">routes</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga8941bc1b906a3e3124fb1d5a490d3ce9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1ga2467e9b2b92e759b6c5e5911545c09f1" kindref="member">routeListType</ref> &amp;</type>
+        <definition>routeListType&amp; mutabor::BoxClass::GetRoutes</definition>
+        <argsstring>()</argsstring>
+        <name>GetRoutes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="264" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="264" bodyend="266"/>
+        <references refid="d5/dee/group__route_1gae7eacacdd1297cd728fd53bc4c466d34" compoundref="de/d0f/Box_8h" startline="653">routes</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga88ade0720a7c8243fd96bc928f1502f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int mutabor::BoxClass::MoveInList</definition>
+        <argsstring>(int count)</argsstring>
+        <name>MoveInList</name>
+        <reimplementedby refid="df/d08/classmutaborGUI_1_1BoxData_1a8ec1d4b9e38792a399ada9f88eae7706">MoveInList</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+<para>Move the box in the box list. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of places the box should be moved up. Negative values indicate downwards direction.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>new position in the box list. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="301" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="252" bodyend="275"/>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1a8ec1d4b9e38792a399ada9f88eae7706" compoundref="d5/d12/GUIBoxData-inlines_8h" startline="214" endline="218">mutaborGUI::BoxData::MoveInList</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga62fd87e9a500c9ba71165e660d2be344" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::DisconnectFromAll</definition>
+        <argsstring>()</argsstring>
+        <name>DisconnectFromAll</name>
+        <briefdescription>
+<para>Disconnect the device from all pairings with routes GUI data or something else. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function should be extended in subclasses so that after calling it only temporary pointers (variables in functions or temporary objects) point to the object. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="324" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box-inlines.h" bodystart="68" bodyend="81"/>
+        <references refid="d6/daa/namespacemutabor_1adb9659c6b97b933b1997d17e5e790296" compoundref="d2/d2c/Route-inlines_8h" startline="77" endline="84">mutabor::disconnect</references>
+        <references refid="d5/dee/group__route_1gae7eacacdd1297cd728fd53bc4c466d34" compoundref="de/d0f/Box_8h" startline="653">routes</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <referencedby refid="d5/dee/group__route_1gac1413fcb540634c438e90e26dc835920" compoundref="d6/d9a/Box-inlines_8h" startline="54" endline="66">Destroy</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaf9dc832e91a28da7a19382beddb8edaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::Panic</definition>
+        <argsstring>()</argsstring>
+        <name>Panic</name>
+        <briefdescription>
+<para>reset the device if requested </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="328" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="324" bodyend="328"/>
+        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
+        <references refid="d9/d7c/group__kernel_1ga86f16f8947d969c3c8f4632d25b6e146" compoundref="d1/dce/box_8cpp" startline="72" endline="94">mutabor_reset_keys</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gacde207de41abe9defd55468078513aab" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::Reset</definition>
+        <argsstring>()</argsstring>
+        <name>Reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="329" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="330" bodyend="335"/>
+        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
+        <references refid="d9/d7c/group__kernel_1ga0dda3f2e2a4d66c46d93cfaa44ae3aa5" compoundref="d1/dce/box_8cpp" startline="100" endline="126">mutabor_reset_box</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga48f59ed7caa9d9713eac1a405913d8da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void mutabor::BoxClass::ReadData</definition>
+        <argsstring>(wxConfigBase *config)</argsstring>
+        <name>ReadData</name>
+        <param>
+          <type>wxConfigBase *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="335" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="335" bodyend="335"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga5bac9d0deca309d7279421eab132fda3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void mutabor::BoxClass::WriteData</definition>
+        <argsstring>(wxConfigBase *config)</argsstring>
+        <name>WriteData</name>
+        <param>
+          <type>wxConfigBase *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="336" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="336" bodyend="336"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga730e807272ce83137086c2a54fafea3a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::BoxClass::Open</definition>
+        <argsstring>()</argsstring>
+        <name>Open</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="341" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="341" bodyend="346"/>
+        <references refid="d5/dee/group__route_1ga426dea1ed908146b65db35ff73d169a1" compoundref="dd/dc6/Box_8cpp" startline="338" endline="342">DoOpen</references>
+        <references refid="d5/dee/group__route_1ga016356fd5ef831df33f1ffcf1fd9f668" compoundref="de/d0f/Box_8h" startline="654">open</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gac51da01c9500d5d626289e46d7e288d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::Close</definition>
+        <argsstring>()</argsstring>
+        <name>Close</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="348" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="348" bodyend="353"/>
+        <references refid="d5/dee/group__route_1ga2cb0ec2ffc3dae5bc21639e1a0249bc8" compoundref="dd/dc6/Box_8cpp" startline="344" endline="346">DoClose</references>
+        <references refid="d5/dee/group__route_1ga016356fd5ef831df33f1ffcf1fd9f668" compoundref="de/d0f/Box_8h" startline="654">open</references>
+        <referencedby refid="d5/dee/group__route_1gac1413fcb540634c438e90e26dc835920" compoundref="d6/d9a/Box-inlines_8h" startline="54" endline="66">Destroy</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga426dea1ed908146b65db35ff73d169a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutabor::BoxClass::DoOpen</definition>
+        <argsstring>()</argsstring>
+        <name>DoOpen</name>
+        <reimplementedby refid="df/d08/classmutaborGUI_1_1BoxData_1ab26b4050180fd5202231f3588d3faf36">DoOpen</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="355" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="338" bodyend="342"/>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1ab26b4050180fd5202231f3588d3faf36" compoundref="d2/dd3/GUIBoxData_8cpp" startline="284" endline="312">mutaborGUI::BoxData::DoOpen</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga730e807272ce83137086c2a54fafea3a" compoundref="de/d0f/Box_8h" startline="341" endline="346">Open</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga2cb0ec2ffc3dae5bc21639e1a0249bc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::DoClose</definition>
+        <argsstring>()</argsstring>
+        <name>DoClose</name>
+        <reimplementedby refid="df/d08/classmutaborGUI_1_1BoxData_1a684ed3207623117eeab3befa6fa83dfb">DoClose</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="356" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="344" bodyend="346"/>
+        <referencedby refid="d5/dee/group__route_1gac51da01c9500d5d626289e46d7e288d7" compoundref="de/d0f/Box_8h" startline="348" endline="353">Close</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga1b8f2a466bac599d219133d7fe48b0bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::BoxClass::IsOpen</definition>
+        <argsstring>()</argsstring>
+        <name>IsOpen</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="357" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="357" bodyend="357"/>
+        <references refid="d5/dee/group__route_1ga016356fd5ef831df33f1ffcf1fd9f668" compoundref="de/d0f/Box_8h" startline="654">open</references>
+        <referencedby refid="d5/dee/group__route_1gac1413fcb540634c438e90e26dc835920" compoundref="d6/d9a/Box-inlines_8h" startline="54" endline="66">Destroy</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga5fbfe9126390dc61fa0f4795cc68e0b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1ga94e0b34744fd4089112ac8b8796884d0" kindref="member">logic_list</ref></type>
+        <definition>BoxClass::logic_list mutabor::BoxClass::GetLogics</definition>
+        <argsstring>()</argsstring>
+        <name>GetLogics</name>
+        <briefdescription>
+<para>Get a list of currently defined logics. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>: this function replaces GetMutTag() from <ref refid="db/d80/Runtime_8cpp" kindref="compound">Runtime.cpp</ref></para></simplesect>
+<simplesect kind="return"><para>List of logic descriptions. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="401" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="511" bodyend="529"/>
+        <references refid="d6/daa/namespacemutabor_1a35337f936c419173b816485e8a610643" compoundref="dd/dc6/Box_8cpp" startline="431" endline="454">mutabor::append_triggers</references>
+        <references refid="d7/d21/structmutabor__logic__parsed_1a92f6da553c3fe5aed3fb2fd5ab78e6de" compoundref="d6/d0c/Parser_8h" startline="140">mutabor_logic_parsed::global_harmonies</references>
+        <references refid="d7/d21/structmutabor__logic__parsed_1a8c26a3037e55c333cb3b0d8d3edb820e" compoundref="d6/d0c/Parser_8h" startline="141">mutabor_logic_parsed::global_keystrokes</references>
+        <references refid="d7/d21/structmutabor__logic__parsed_1a936d8d6ac7f8d28654b9fa605508e693" compoundref="d6/d0c/Parser_8h" startline="142">mutabor_logic_parsed::global_midi_inputs</references>
+        <references refid="d5/dee/group__route_1gade526d5206be7ae3a2eb715268995e05" compoundref="de/d0f/Box_8h" startline="674">mutex</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga4c9c4d1277fb78585bb2471863214fbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/db2/structmutabor_1_1BoxClass_1_1tone__system" kindref="compound">tone_system</ref></type>
+        <definition>BoxClass::tone_system mutabor::BoxClass::GetToneSystem</definition>
+        <argsstring>()</argsstring>
+        <name>GetToneSystem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="419" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="531" bodyend="564"/>
+        <references refid="d5/dee/group__route_1ga31c4a50f6efcffa6136300b3a393cde4" compoundref="de/d0f/Box_8h" startline="414">mutabor::BoxClass::tone_system::anchor</references>
+        <references refid="d5/dee/group__route_1gga1730c713032ffd9f2b594fd2cf0d16c9abe9aeecc537a7e1498e63b08619affc0" compoundref="de/d0f/Box_8h" startline="405">mutabor::BoxClass::tone_entry::invalid</references>
+        <references refid="d9/d7c/group__kernel_1gadeeda97bc012799b0f0f0a42e1af480d" compoundref="d2/dd8/Interpre_8h" startline="88" endline="91">mutabor_convert_interval_to_pitch</references>
+        <references refid="d9/d7c/group__kernel_1ga548d58d7ce5fdbcdbc15d71ddb4eadd9" compoundref="d2/dd8/Interpre_8h" startline="115" endline="118">mutabor_convert_tone_to_pitch</references>
+        <references refid="d9/d7c/group__kernel_1gafd2f4edd210a29c2100df3505dff9808" compoundref="dd/d40/Global_8h" startline="89">MUTABOR_INVALID_KEY</references>
+        <references refid="d9/d7c/group__kernel_1ga72d1445b7ffb591bc81d73f0382be6ae" compoundref="dd/d40/Global_8h" startline="72">MUTABOR_KEYRANGE_MAX_WIDTH</references>
+        <references refid="d9/d7c/group__kernel_1gaad2cd013247926c47e2422077bed03e4" compoundref="dd/d40/Global_8h" startline="88">MUTABOR_NO_KEY</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d5/dee/group__route_1gade526d5206be7ae3a2eb715268995e05" compoundref="de/d0f/Box_8h" startline="674">mutex</references>
+        <references refid="d5/dee/group__route_1ga59119812ac8300de5eae37717051cf5b" compoundref="de/d0f/Box_8h" startline="415">mutabor::BoxClass::tone_system::period</references>
+        <references refid="d5/dee/group__route_1ga097aceae78a2d99dd582afbc7e99661b" compoundref="de/d0f/Box_8h" startline="416">mutabor::BoxClass::tone_system::tones</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaa2b81d8bd01eac8f20abd086ee8eaf88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1ga07f2931fa5c87a00c71afc0799fc3f96" kindref="member">current_tone_list</ref></type>
+        <definition>BoxClass::current_tone_list mutabor::BoxClass::GetCurrentTones</definition>
+        <argsstring>()</argsstring>
+        <name>GetCurrentTones</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="438" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="566" bodyend="602"/>
+        <references refid="d5/dee/group__route_1ga34a007f07b9c1f771e2169efcdd37dd0" compoundref="dd/dc6/Box_8cpp" startline="702" endline="705">get_frequency</references>
+        <references refid="d5/dee/group__route_1ga66fcf44c6bba7fff5ef563e4f0bacc40" compoundref="dd/dc6/Box_8cpp" startline="672" endline="684">GetChannel</references>
+        <references refid="d5/dee/group__route_1gga1730c713032ffd9f2b594fd2cf0d16c9abe9aeecc537a7e1498e63b08619affc0" compoundref="de/d0f/Box_8h" startline="405">mutabor::BoxClass::tone_entry::invalid</references>
+        <references refid="d9/d7c/group__kernel_1ga548d58d7ce5fdbcdbc15d71ddb4eadd9" compoundref="d2/dd8/Interpre_8h" startline="115" endline="118">mutabor_convert_tone_to_pitch</references>
+        <references refid="d9/d7c/group__kernel_1ga1ebbd525ea538e57d912eaedcb2f2423" compoundref="dc/d19/box_8h" startline="215" endline="227">mutabor_find_key_in_box</references>
+        <references refid="d9/d7c/group__kernel_1gafd2f4edd210a29c2100df3505dff9808" compoundref="dd/d40/Global_8h" startline="89">MUTABOR_INVALID_KEY</references>
+        <references refid="d9/d7c/group__kernel_1gaad2cd013247926c47e2422077bed03e4" compoundref="dd/d40/Global_8h" startline="88">MUTABOR_NO_KEY</references>
+        <references refid="d5/dee/group__route_1gade526d5206be7ae3a2eb715268995e05" compoundref="de/d0f/Box_8h" startline="674">mutex</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::BoxClass::Compile</definition>
+        <argsstring>(CompileCallback *callback, const char *logic)</argsstring>
+        <name>Compile</name>
+        <param>
+          <type><ref refid="d2/def/structmutabor_1_1BoxClass_1_1CompileCallback" kindref="compound">CompileCallback</ref> *</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>logic</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="454" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="604" bodyend="645"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
+        <references refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" compoundref="d3/da0/TabGen_8cpp" startline="1291" endline="1368">expand_decition_tree</references>
+        <references refid="d5/dee/group__route_1ga6183af3dea2aa4ced430c7d2e1cdd87b" compoundref="de/d0f/Box_8h" startline="626" endline="629">get_errors</references>
+        <references refid="d9/d7c/group__kernel_1ga546f912a52c53482f4d3e5d9dcc44427" compoundref="d3/dca/Interval_8cpp" startline="143" endline="148">intervall_list_laenge</references>
+        <references refid="d9/d7c/group__kernel_1ga6cdadb41b8ac72cc80f2bccd24b7fefc" compoundref="da/d02/Hilfs_8cpp" startline="287" endline="308">loesche_syntax_speicher</references>
+        <references refid="d9/d7c/group__kernel_1ga754b5ff0318d70968a739e883a56e291" compoundref="dc/df5/Parser_8cpp" startline="111" endline="119">logik_list_laenge</references>
+        <references refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</references>
+        <references refid="d5/dee/group__route_1ga4331ac23a6fc11b3a70bd95645b85e95">mutabor::BoxClass::CompileCallback::Refresh</references>
+        <references refid="d5/dee/group__route_1gad008c418037d5072939e7863da9f66b9">mutabor::BoxClass::CompileCallback::SetMessage</references>
+        <references refid="d5/dee/group__route_1gaa8eac0fc32217334c0a62f70453429a1">mutabor::BoxClass::CompileCallback::SetStatus</references>
+        <references refid="d9/d7c/group__kernel_1ga11107176c8bda02877753f2043404850" compoundref="dc/df5/Parser_8cpp" startline="80" endline="89">ton_list_laenge</references>
+        <references refid="d9/d7c/group__kernel_1ga3cb97735e4589096165901121fae9e0b" compoundref="dc/df5/Parser_8cpp" startline="91" endline="99">tonsystem_list_laenge</references>
+        <references refid="d9/d7c/group__kernel_1ga6fdda4db5c05a892ad88261cf4f93a09" compoundref="dc/df5/Parser_8cpp" startline="101" endline="109">umstimmungs_list_laenge</references>
+        <references refid="dc/d7e/group__runtime_1ga1faa8705b3fd5029a295edfdcdf1a67f" compoundref="d3/d14/gmut_8cpp" startline="28">weiter_gehts_nach_compilerfehler</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaf9f3bc477eea05b4251df8658a1394f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::MidiAnalysis</definition>
+        <argsstring>(uint8_t midiByte)</argsstring>
+        <name>MidiAnalysis</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>midiByte</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="457" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="457" bodyend="460"/>
+        <references refid="d5/dee/group__route_1ga97b1747f1037294dbbd843438889af4e" compoundref="de/d0f/Box_8h" startline="650">box</references>
+        <references refid="d9/d7c/group__kernel_1ga12a7a721463b39816b65d98359c986be" compoundref="df/d23/Execute_8cpp" startline="1019" endline="1053">MidiAnalysis</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaa36f1adad3a94ce3eb7463d81b7e408c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::MidiOut</definition>
+        <argsstring>(struct midiliste *outliste)</argsstring>
+        <name>MidiOut</name>
+        <param>
+          <type>struct <ref refid="df/df2/structmidiliste" kindref="compound">midiliste</ref> *</type>
+          <declname>outliste</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="462" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="647" bodyend="661"/>
+        <references refid="d9/d7c/group__kernel_1ga71e40a8fa179db06019b11efc748a6c1" compoundref="dc/df5/Parser_8cpp" startline="121" endline="130">midi_list_laenge</references>
+        <references refid="df/df2/structmidiliste_1a1e856e62ad0137a763b4f1a0910e4c5c" compoundref="dd/d40/Global_8h" startline="142">midiliste::next</references>
+        <references refid="d5/dee/group__route_1gae7eacacdd1297cd728fd53bc4c466d34" compoundref="de/d0f/Box_8h" startline="653">routes</references>
+        <referencedby refid="d5/dee/group__route_1ga1ead7debf611b236f40819e3013cbad1" compoundref="dd/dc6/Box_8cpp" startline="786" endline="791">MidiOutCallback</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaef1fb011a1dbf7f08376fc5650ead5e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::UpdateTones</definition>
+        <argsstring>()</argsstring>
+        <name>UpdateTones</name>
+        <briefdescription>
+<para>Update the currently playing tones to the current tone system. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>this function was formerly defined as <computeroutput>NotesCorrect</computeroutput> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="470" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="663" bodyend="669"/>
+        <references refid="d5/dee/group__route_1gae7eacacdd1297cd728fd53bc4c466d34" compoundref="de/d0f/Box_8h" startline="653">routes</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga66fcf44c6bba7fff5ef563e4f0bacc40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutabor::BoxClass::GetChannel</definition>
+        <argsstring>(int key, size_t channel, size_t id)</argsstring>
+        <name>GetChannel</name>
+        <param>
+          <type>int</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Get the MIDI channel of a given tone. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>note</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Note that has been received </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Internal unique channel id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Internal unique Note id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>MIDI channel of the note </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="481" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="672" bodyend="684"/>
+        <references refid="d5/dee/group__route_1gae7eacacdd1297cd728fd53bc4c466d34" compoundref="de/d0f/Box_8h" startline="653">routes</references>
+        <references refid="de/db7/group__debug_1gaad9cc64d45a76ba0d37c00f8cd9caa37" compoundref="de/de1/mutDebug_8h" startline="145">TRACE</references>
+        <referencedby refid="d5/dee/group__route_1gaa2b81d8bd01eac8f20abd086ee8eaf88" compoundref="dd/dc6/Box_8cpp" startline="566" endline="602">GetCurrentTones</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaf49b892320f04368a2e91e58da93e0ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::AddNote</definition>
+        <argsstring>(int note, size_t id, size_t channel, void *userdata)</argsstring>
+        <name>AddNote</name>
+        <param>
+          <type>int</type>
+          <declname>note</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>userdata</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="484" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="484" bodyend="487"/>
+        <references refid="d9/d7c/group__kernel_1ga17c35205680376b470ae8755204d01ae" compoundref="df/d23/Execute_8cpp" startline="912" endline="925">AddKey</references>
+        <references refid="d5/dee/group__route_1ga97b1747f1037294dbbd843438889af4e" compoundref="de/d0f/Box_8h" startline="650">box</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga8b63dc63967b2bc17752ba3ef1c26d60" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::DeleteNote</definition>
+        <argsstring>(int note, size_t id, int channel)</argsstring>
+        <name>DeleteNote</name>
+        <param>
+          <type>int</type>
+          <declname>note</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="489" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="489" bodyend="492"/>
+        <references refid="d5/dee/group__route_1ga97b1747f1037294dbbd843438889af4e" compoundref="de/d0f/Box_8h" startline="650">box</references>
+        <references refid="d9/d7c/group__kernel_1gaa43a0d5278ac3924e28098ffbfbc8ea5" compoundref="df/d23/Execute_8cpp" startline="928" endline="962">DeleteKey</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaa14a856b5e9347dde97d417efbb5dfc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::BoxClass::IsLogicKey</definition>
+        <argsstring>(int key)</argsstring>
+        <name>IsLogicKey</name>
+        <param>
+          <type>int</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="500" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="695" bodyend="699"/>
+        <references refid="d6/daa/namespacemutabor_1a9cb895b86ad2f5aeef86f623f6e4c8c4" compoundref="dd/dc6/Box_8cpp" startline="686" endline="693">mutabor::is_logic_key</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga8ec141db1f4950cd151e8f179c51b4be" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::KeyboardAnalysis</definition>
+        <argsstring>(int key, KeyboardFlags flags)</argsstring>
+        <name>KeyboardAnalysis</name>
+        <param>
+          <type>int</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga90c978f72ae20c1d0c9ab6c9303acc98" kindref="member">KeyboardFlags</ref></type>
+          <declname>flags</declname>
+        </param>
+        <briefdescription>
+<para>Execute the action associated with a key that is pressed on the computer keyboard. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Key that has been pressed. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flags which type of action should be taken. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="509" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="509" bodyend="520"/>
+        <references refid="d5/dee/group__route_1ga97b1747f1037294dbbd843438889af4e" compoundref="de/d0f/Box_8h" startline="650">box</references>
+        <references refid="d9/d7c/group__kernel_1gab12ec0ab98ad6f873e3608deedd5d0d5" compoundref="df/d23/Execute_8cpp" startline="1113" endline="1116">KeyboardAnalyse</references>
+        <references refid="d9/d7c/group__kernel_1ga3ea426ec82d9e80416645f00639bc3f2" compoundref="df/d23/Execute_8cpp" startline="1118" endline="1121">KeyboardAnalyseSimple</references>
+        <references refid="d5/dee/group__route_1gga90c978f72ae20c1d0c9ab6c9303acc98a17cd5bcd91e2d4bddb147fd7013deeb0" compoundref="de/d0f/Box_8h" startline="497">KeyboardAny</references>
+        <references refid="d5/dee/group__route_1gga90c978f72ae20c1d0c9ab6c9303acc98a4d6ecee702c9e2d10ce86b955f912c09" compoundref="de/d0f/Box_8h" startline="496">KeyboardLogic</references>
+        <references refid="d5/dee/group__route_1gga90c978f72ae20c1d0c9ab6c9303acc98a407a5cbfbca17568e36e5ba66b79ac9e" compoundref="de/d0f/Box_8h" startline="495">KeyboardNoLogic</references>
+        <referencedby refid="dd/d65/classmutaborGUI_1_1MutLogicWnd_1a3bf84995a51856f957a56fed9c9bc63f" compoundref="df/d11/MutLogicWnd_8cpp" startline="604" endline="695">mutaborGUI::MutLogicWnd::UpDate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga13107b8947c626559e972a2676816097" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::KeyboardAnalysis</definition>
+        <argsstring>(const mutStringRef keys)</argsstring>
+        <name>KeyboardAnalysis</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <declname>keys</declname>
+        </param>
+        <briefdescription>
+<para>Execute the actions that are associated with the characters of a string. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>: The character “&amp;” denotes that the following character will not be a logic.</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>keys</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="530" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="530" bodyend="533"/>
+        <references refid="d5/dee/group__route_1ga97b1747f1037294dbbd843438889af4e" compoundref="de/d0f/Box_8h" startline="650">box</references>
+        <references refid="dd/d15/gmutdos_8cpp_1ac5486a878ff37e3a05545f509f3aafe6" compoundref="dd/d15/gmutdos_8cpp" startline="70" endline="89">KeyboardIn</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga34a007f07b9c1f771e2169efcdd37dd0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>long</type>
+        <definition>long mutabor::BoxClass::get_frequency</definition>
+        <argsstring>(int note)</argsstring>
+        <name>get_frequency</name>
+        <param>
+          <type>int</type>
+          <declname>note</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="535" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="702" bodyend="705"/>
+        <references refid="d9/d7c/group__kernel_1ga3c62b0038eb6f3e82bb934e4ee54208c" compoundref="dc/d19/box_8h" startline="88" endline="93">mutabor_get_note_frequency</references>
+        <referencedby refid="d5/dee/group__route_1gaa2b81d8bd01eac8f20abd086ee8eaf88" compoundref="dd/dc6/Box_8cpp" startline="566" endline="602">GetCurrentTones</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga8259475f32e7e28bb648b2487fd6cae4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutabor::BoxClass::get_index</definition>
+        <argsstring>(int note)</argsstring>
+        <name>get_index</name>
+        <param>
+          <type>int</type>
+          <declname>note</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="536" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="708" bodyend="711"/>
+        <references refid="d9/d7c/group__kernel_1ga3fd83af6606781513a465c525097aa62" compoundref="dc/d19/box_8h" startline="75" endline="79">mutabor_get_note_index</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga8451265d7e461f9b0e8ad0a4a28e4758" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutabor::BoxClass::get_distance</definition>
+        <argsstring>(int note)</argsstring>
+        <name>get_distance</name>
+        <param>
+          <type>int</type>
+          <declname>note</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="537" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="713" bodyend="716"/>
+        <references refid="d9/d7c/group__kernel_1gaeca2b79472a3b3928278b99ab050ed8b" compoundref="dc/d19/box_8h" startline="81" endline="86">mutabor_get_note_distance</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga52872f74de2779bc1608a8b340f9d2ba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::SetLogic</definition>
+        <argsstring>(Box b)</argsstring>
+        <name>SetLogic</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">Box</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="539" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="539" bodyend="541"/>
+        <references refid="d5/dee/group__route_1ga97b1747f1037294dbbd843438889af4e" compoundref="de/d0f/Box_8h" startline="650">box</references>
+        <references refid="d9/d7c/group__kernel_1gada2c15aa7cb554aa175109fcb3771be9" compoundref="d1/dce/box_8cpp" startline="50" endline="69">mutabor_set_logic</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga22d3bd70df8886cfbd5a9ed870834b27" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void mutabor::BoxClass::Activate</definition>
+        <argsstring>()</argsstring>
+        <name>Activate</name>
+        <reimplementedby refid="df/d08/classmutaborGUI_1_1BoxData_1a6d3bce4d0850cf412353906b3fbb9f8b">Activate</reimplementedby>
+        <briefdescription>
+<para>Activate the current box. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method is called when a box is being activated. Its implementation should be done in the user code. Otherwise its just a no-op function. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="591" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="591" bodyend="591"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gac1413fcb540634c438e90e26dc835920" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::Destroy</definition>
+        <argsstring>()</argsstring>
+        <name>Destroy</name>
+        <reimplementedby refid="df/d08/classmutaborGUI_1_1BoxData_1aab98069a58059b61a7e9321babc285d8">Destroy</reimplementedby>
+        <briefdescription>
+<para>Destroy the current object. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function is called when an object shall be deleted. It clears up all references to itself so that it will be deleted if it is not needed anymore.</para><para>This functions detatches the device from all routes and calls DoDestroy() afterwards. Finally the <ref refid="db/db4/classmutabor_1_1Device" kindref="compound">Device</ref> is going to removed from the device list. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="602" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box-inlines.h" bodystart="54" bodyend="66"/>
+        <references refid="d5/dee/group__route_1gac51da01c9500d5d626289e46d7e288d7" compoundref="de/d0f/Box_8h" startline="348" endline="353">Close</references>
+        <references refid="de/db7/group__debug_1ga33e4d2337c0d8d97f3f9527159d490a0" compoundref="de/de1/mutDebug_8h" startline="221" endline="221">debug_destroy_class</references>
+        <references refid="d5/dee/group__route_1ga62fd87e9a500c9ba71165e660d2be344" compoundref="d6/d9a/Box-inlines_8h" startline="68" endline="81">DisconnectFromAll</references>
+        <references refid="d5/dee/group__route_1ga1b8f2a466bac599d219133d7fe48b0bd" compoundref="de/d0f/Box_8h" startline="357" endline="357">IsOpen</references>
+        <references refid="d5/dee/group__route_1ga50118a6d5b807a40a6669746b8b30fce" compoundref="dd/dc6/Box_8cpp" startline="291" endline="299">RemoveFromBoxList</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1aab98069a58059b61a7e9321babc285d8" compoundref="d2/dd3/GUIBoxData_8cpp" startline="103" endline="115">mutaborGUI::BoxData::Destroy</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga49ccb60b5a16eade2e1e2d6cf10954ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::runtime_error</definition>
+        <argsstring>(error_type type, const char *message)</argsstring>
+        <name>runtime_error</name>
+        <reimplementedby refid="df/d08/classmutaborGUI_1_1BoxData_1addce439fad640ac7061e43047009f55d">runtime_error</reimplementedby>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga58575fa303bb8ac995a68d88344a01a9" kindref="member">error_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Process an error message (doing the real work) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="616" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="718" bodyend="720"/>
+        <references refid="d5/dee/group__route_1gab2c9f697ef8d670d83423330ed46235b" compoundref="de/d0f/Box_8h" startline="104" endline="106">mutabor::to_string</references>
+        <referencedby refid="d2/d7d/group__tests_1gae179f3c8b61831696bb28b2551b3a749" compoundref="db/d0a/BoxTest_8cpp" startline="42" endline="48">error_callback</referencedby>
+        <referencedby refid="d6/daa/namespacemutabor_1a608cc1e9512743844d90a2be7c965165" compoundref="dd/dc6/Box_8cpp" startline="800" endline="805">mutabor::error_callback</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga6183af3dea2aa4ced430c7d2e1cdd87b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+        <definition>virtual const mutStringRef mutabor::BoxClass::get_errors</definition>
+        <argsstring>()</argsstring>
+        <name>get_errors</name>
+        <briefdescription>
+<para>Return the collected errors and warnings. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function is a prototype for potential error message collection in the GUI part.</para><para><simplesect kind="return"><para>a string containing the collected error messages </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="626" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="626" bodyend="629"/>
+        <references refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" compoundref="d1/d73/Defs_8h" startline="171">mutEmptyString</references>
+        <references refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" compoundref="d1/d73/Defs_8h" startline="169">mutString</references>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="604" endline="645">Compile</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaf339df5eedc62b5ce3a0f82fa4419124" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string mutabor::BoxClass::ActionToString</definition>
+        <argsstring>(ChangedCallback::action *action)</argsstring>
+        <name>ActionToString</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga7f52967e436a1c8174d9570a23279afa" kindref="member">ChangedCallback::action</ref> *</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="630" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="769" bodyend="772"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="d5/dee/group__route_1ga654c8d02aae488f8ff6f6d0f62b08f7d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int mutabor::BoxClass::GetNextFreeBox</definition>
+        <argsstring>()</argsstring>
+        <name>GetNextFreeBox</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="217" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="217" bodyend="219"/>
+        <references refid="d5/dee/group__route_1gae29f0c045cb1e9573fede2b86c6b1981" compoundref="de/d0f/Box_8h" startline="646">nextboxid</references>
+        <referencedby refid="dc/df2/group__GUIroute_1ga9d64270fb543fc0bf3a19aeeba441cff" compoundref="d8/dba/NewBoxShape_8cpp" startline="58" endline="65">mutaborGUI::NewMutBoxShape::InitializeDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga15f862043e3c700673846806e35b1740" compoundref="d8/db4/BoxShape_8cpp" startline="512" endline="520">mutaborGUI::MutBoxShape::InitializeDialog</referencedby>
+        <referencedby refid="d2/d7d/group__tests_1ga7a8ce5acf63f317de2a364c32952f7b0" compoundref="db/d0a/BoxTest_8cpp" startline="158" endline="202">BoxTest::testCopyPLay</referencedby>
+        <referencedby refid="d6/d87/classBoxTest_1a320130480c0c016a2b2a564aee0bf59d" compoundref="df/d01/BoxTest_8h" startline="64" endline="90">BoxTest::testGetNextFreeBox</referencedby>
+        <referencedby refid="d2/d7d/group__tests_1ga32a139229966103ec0a23d04843ba944" compoundref="db/d0a/BoxTest_8cpp" startline="135" endline="156">BoxTest::testParser</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gac71327653b27bcbd7f4eee505629e847" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gab295b96374e495ce19aa3945d61ff6ba" kindref="member">listtype</ref> &amp;</type>
+        <definition>static const listtype&amp; mutabor::BoxClass::GetBoxList</definition>
+        <argsstring>()</argsstring>
+        <name>GetBoxList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="269" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="269" bodyend="271"/>
+        <references refid="d5/dee/group__route_1gac04be31fb0688ece777a775591d73269" compoundref="de/d0f/Box_8h" startline="645">boxList</references>
+        <referencedby refid="d5/dee/group__route_1ga4a259200e6f0fb39029b6e317c8a185b" compoundref="de/d0f/Box_8h" startline="827" endline="833">mutabor::BoxClose</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gad8d275b990dbe699c497559a918b5a13" compoundref="d1/da4/MutEditFile_8cpp" startline="222" endline="317">mutaborGUI::MutEditFile::Compile</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga7f8aa71bcfc8c3f458fd39e26633bfd9" compoundref="dc/def/MutRouteWnd_8cpp" startline="308" endline="336">mutaborGUI::MutRouteWnd::createBoxes</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga08e6dc46a984309820088a110e40c83e" compoundref="d9/d24/BoxChannelShape_8cpp" startline="351" endline="393">mutaborGUI::MutBoxChannelShape::InitializeRoute</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga8376c87747866f9eb111644263144fc9" compoundref="dd/dc6/Box_8cpp" startline="370" endline="398">mutabor::OpenAll</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga5b4ff2d84ebcfa5d31083f0b7df79c84" compoundref="dd/dc6/Box_8cpp" startline="929" endline="940">mutabor::Panic</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac12082bf0a070d44b66f36e28cfa11bd" compoundref="dd/dc6/Box_8cpp" startline="876" endline="897">mutabor::BoxFactory::SaveBoxes</referencedby>
+        <referencedby refid="d0/d04/classInputMidiFileTest_1a1b57db5ffa5605092d8f5e5b146db201" compoundref="da/d0f/DevMidFTest_8h" startline="91" endline="105">InputMidiFileTest::setUp</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga96c19cd7db194e3a5a9461b4807120b1" compoundref="d8/d59/midicmnTest_8cpp" startline="37" endline="60">CommonMidiOutputTest::setUp</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga5e841fb7390a573b6356f2d267c2f9ec" compoundref="d8/d59/midicmnTest_8cpp" startline="544" endline="573">CommonMidiInputTest::setUp</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga8969e9d17a1c0ce4d54ea0a78bdfb0a3" compoundref="d9/d99/DevMidFTest_8cpp" startline="1318" endline="1355">OutputMidiFileTest::setUp</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga33476fdb1a3eeeccb70648c5a48219a0" compoundref="d8/d59/midicmnTest_8cpp" startline="62" endline="80">CommonMidiOutputTest::tearDown</referencedby>
+        <referencedby refid="d5/dee/group__route_1gab231bf032e21a8f7dc38509089aa8d43" compoundref="d9/d99/DevMidFTest_8cpp" startline="1357" endline="1376">OutputMidiFileTest::tearDown</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga2a92d096b48cecf841988b6c1263ca31" compoundref="d9/d99/DevMidFTest_8cpp" startline="43" endline="602">InputMidiFileTest::testBatchPlay1</referencedby>
+        <referencedby refid="d5/dee/group__route_1gab68c1c36d9a962246c5f1363d25e3aa7" compoundref="d9/d99/DevMidFTest_8cpp" startline="946" endline="1287">InputMidiFileTest::testBug019010</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4c70a75c2ee66f5074b6db03f318347b" compoundref="d9/d99/DevMidFTest_8cpp" startline="605" endline="943">InputMidiFileTest::testBug019010_2</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gac05e39da29f9915758102a26aeadba8b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">Box</ref></type>
+        <definition>Box mutabor::BoxClass::GetBox</definition>
+        <argsstring>(int id, boxidtype kind)</argsstring>
+        <name>GetBox</name>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga59ad356edc8b877f64e9a02df6f5560c" kindref="member">boxidtype</ref></type>
+          <declname>kind</declname>
+        </param>
+        <briefdescription>
+<para>Scan the list of Boxes for a given id. </para>        </briefdescription>
+        <detaileddescription>
+<para>id (int) id to scan for <simplesect kind="return"><para>(Box) pointer to the input device with the given id if found, NULL else. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="279" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="227" bodyend="249"/>
+        <references refid="df/dd1/group__GUI_1ga095007ba40aa91ee3979332ed9f40183" compoundref="d0/d68/mhDefs_8h" startline="147">UNREACHABLECT</references>
+        <referencedby refid="df/d7d/classmutaborGUI_1_1BoxDlg_1aa491dde4a2eb4fe303690708edf4defa" compoundref="d3/d2a/BoxDlg_8cpp" startline="345" endline="359">mutaborGUI::BoxDlg::AddButtonPressed</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga9f387b950a812c3815291654546e7249" compoundref="dc/df3/MutFrame_8cpp" startline="1872" endline="1909">mutaborGUI::CheckBoxesUsed</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="699" endline="831">mutaborGUI::MutFrame::CmDoActivate</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga9cff412769db7e55f0dafac64012bf34" compoundref="d8/db4/BoxShape_8cpp" startline="360" endline="443">mutaborGUI::MutBoxShape::DoLeftDblClick</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga9e68bd379bba25f75661d7cf4d3c38be" compoundref="de/d0f/Box_8h" startline="817" endline="823">GetOrCreateBox</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gacbd37538b85e160a339c48e2dac82cb7" compoundref="d8/db4/BoxShape_8cpp" startline="522" endline="584">mutaborGUI::MutBoxShape::readDialog</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga9e68bd379bba25f75661d7cf4d3c38be" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">Box</ref></type>
+        <definition>Box mutabor::BoxClass::GetOrCreateBox</definition>
+        <argsstring>(int id)</argsstring>
+        <name>GetOrCreateBox</name>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Return the box that is associated with the corrent id. </para>        </briefdescription>
+        <detaileddescription>
+<para>In case such a box does not exist the box is created</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id to be fetched.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Box that has been found or created </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="290" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="817" bodyend="823"/>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9" compoundref="de/d0f/Box_8h" startline="115">mutabor::Box0</references>
+        <references refid="d5/dee/group__route_1ga1b747523cf90d4b44b18f88512405445" compoundref="de/d0f/Box_8h" startline="737" endline="752">mutabor::BoxFactory::Create</references>
+        <references refid="d5/dee/group__route_1gac05e39da29f9915758102a26aeadba8b" compoundref="dd/dc6/Box_8cpp" startline="227" endline="249">GetBox</references>
+        <references refid="d5/dee/group__route_1gga59ad356edc8b877f64e9a02df6f5560ca67adbcea09886c9c80ed988c5cecb9f1" compoundref="de/d0f/Box_8h" startline="128">IDTypeFile</references>
+        <referencedby refid="dc/df2/group__GUIroute_1ga374d8bfbca7ba97b2da54620fc8a3a1c" compoundref="dc/def/MutRouteWnd_8cpp" startline="201" endline="246">mutaborGUI::MutRouteWnd::InitShapes</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa1eefe81dfc1036f5f7dd578dfb2aff8" compoundref="d8/dfb/Route_8cpp" startline="91" endline="103">mutabor::TRouteClass&lt; I, O, B &gt;::Load</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga83268772461a3fb8219d0c9ce088f1cb" compoundref="dd/db8/RouteCompat_8cpp" startline="124" endline="323">compat30::LoadRoutes</referencedby>
+        <referencedby refid="d6/daa/namespacemutabor_1a6c6dd4d41e9b8d75edcab3d4bce654d9" compoundref="db/d78/DevGIS_8cpp" startline="376" endline="395">mutabor::MutaborTag</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gacbd37538b85e160a339c48e2dac82cb7" compoundref="d8/db4/BoxShape_8cpp" startline="522" endline="584">mutaborGUI::MutBoxShape::readDialog</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaf902f52cc92b92c56c800871fb2a4593" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void mutabor::BoxClass::ClearBoxList</definition>
+        <argsstring>()</argsstring>
+        <name>ClearBoxList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="303" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="303" bodyend="314"/>
+        <references refid="d5/dee/group__route_1gac04be31fb0688ece777a775591d73269" compoundref="de/d0f/Box_8h" startline="645">boxList</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <referencedby refid="dc/df2/group__GUIroute_1ga24bfe10e24a2431758a4ee4e8153291e" compoundref="dc/def/MutRouteWnd_8cpp" startline="422" endline="522">mutaborGUI::MutRouteWnd::CmRouteLoad</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1503">IMPLEMENT_APP</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga83268772461a3fb8219d0c9ce088f1cb" compoundref="dd/db8/RouteCompat_8cpp" startline="124" endline="323">compat30::LoadRoutes</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gad11bbfc4f27a984b9f8f666d0ed7f14b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::CloseAll</definition>
+        <argsstring>()</argsstring>
+        <name>CloseAll</name>
+        <briefdescription>
+<para>Close all boxes. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function deactivates all boxes. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="364" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="400" bodyend="403"/>
+        <referencedby refid="d5/dee/group__route_1ga8376c87747866f9eb111644263144fc9" compoundref="dd/dc6/Box_8cpp" startline="370" endline="398">mutabor::OpenAll</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga78fd6677b66302ae6305c6b9fa99d35c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::BoxClass::ActivateAll</definition>
+        <argsstring>(bool isRealtime)</argsstring>
+        <name>ActivateAll</name>
+        <param>
+          <type>bool</type>
+          <declname>isRealtime</declname>
+        </param>
+        <briefdescription>
+<para>Activate all boxes. </para>        </briefdescription>
+        <detaileddescription>
+<para>This resets the action traces of all boxes. <simplesect kind="note"><para>Code should be taken from MutFrame::DoActivate</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>isRealtime</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Shall non-realtime devices (e.g., file devices) act in realtime mode or not</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>true</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if Activation succeeded </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>false</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>otherwise </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="376" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="406" bodyend="422"/>
+        <references refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" compoundref="d1/dca/timing_8cpp" startline="43">mutabor::CurrentTime</references>
+        <references refid="d5/dee/group__route_1ga8376c87747866f9eb111644263144fc9" compoundref="dd/dc6/Box_8cpp" startline="370" endline="398">mutabor::OpenAll</references>
+        <references refid="d7/dda/classmutabor_1_1CurrentTimer_1aaaae9a6186045cd8ef28f1d24bcf081d" compoundref="db/d41/timing_8h" startline="458" endline="467">mutabor::CurrentTimer::UseRealtime</references>
+        <referencedby refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="699" endline="831">mutaborGUI::MutFrame::CmDoActivate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga5c1bd0ee999d45e7de7fd7cd5b5128a8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::StopAll</definition>
+        <argsstring>()</argsstring>
+        <name>StopAll</name>
+        <briefdescription>
+<para>Stop all boxes. </para>        </briefdescription>
+        <detaileddescription>
+<para>This resets the action traces of all boxes. <simplesect kind="note"><para>Code should be taken from Stop() </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="382" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="424" bodyend="429"/>
+        <references refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" compoundref="d1/dca/timing_8cpp" startline="43">mutabor::CurrentTime</references>
+        <references refid="d5/dee/group__route_1gabdcdbd5c4e38b64953fe0f9437b0728c" compoundref="d2/dc0/Device_8cpp" startline="624" endline="632">mutabor::InClose</references>
+        <references refid="d5/dee/group__route_1ga9cb4f84d3ef2e5a1b33d74bd62e7c803" compoundref="d2/dc0/Device_8cpp" startline="588" endline="594">mutabor::OutClose</references>
+        <references refid="d7/dda/classmutabor_1_1CurrentTimer_1ac786e3b69adfb260915c39886e4673de" compoundref="db/d41/timing_8h" startline="505" endline="505">mutabor::CurrentTimer::Stop</references>
+        <referencedby refid="df/dd1/group__GUI_1gaa1bf774bdb8339a85aedd19958ec5e2e" compoundref="dc/df3/MutFrame_8cpp" startline="912" endline="943">mutaborGUI::MutFrame::DoStop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga6dd51d0efa3bea935d7fb57bfa884da9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::compile_callback</definition>
+        <argsstring>(struct mutabor_box_type *b, int line_number)</argsstring>
+        <name>compile_callback</name>
+        <param>
+          <type>struct <ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>line_number</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="455" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="793" bodyend="798"/>
+        <references refid="d5/dee/group__route_1ga3081a34c1d0980b4247bd20a532d624e" compoundref="de/d0f/Box_8h" startline="672">current_compile_callback</references>
+        <references refid="d5/dee/group__route_1gac20524bf504a3831df1dead1d4ae3c1c">mutabor::BoxClass::CompileCallback::SetLine</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga1ead7debf611b236f40819e3013cbad1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::MidiOutCallback</definition>
+        <argsstring>(struct mutabor::hidden::mutabor_box_type *b, struct mutabor::hidden::midiliste *outliste)</argsstring>
+        <name>MidiOutCallback</name>
+        <param>
+          <type>struct <ref refid="d9/d7c/group__kernel_1ga57323e3b28383e1a7b145a4db34db975" kindref="member">mutabor::hidden::mutabor_box_type</ref> *</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>struct mutabor::hidden::midiliste *</type>
+          <declname>outliste</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="463" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="786" bodyend="791"/>
+        <references refid="d5/dee/group__route_1gaa36f1adad3a94ce3eb7463d81b7e408c" compoundref="dd/dc6/Box_8cpp" startline="647" endline="661">MidiOut</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gae92be7160bb954f3b10b7221f2c4a03a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::InitializeIds</definition>
+        <argsstring>()</argsstring>
+        <name>InitializeIds</name>
+        <briefdescription>
+<para>Initialize the internal device identifiers. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function sets the internal device ids of all output devices, starting from 0 and incrementing by 1 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="609" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="189" bodyend="225"/>
+        <references refid="de/db7/group__debug_1ga556434a0102a112e3dd0c2849d5e36fd" compoundref="de/de1/mutDebug_8h" startline="147">TRACET</references>
+        <referencedby refid="d5/dee/group__route_1ga515a0c5a4a5ea6a001feed50127364d7" compoundref="d8/dfb/Route_8cpp" startline="217" endline="227">mutabor::TRouteClass&lt; I, O, B &gt;::InitializeIds</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga154761cfe43378a24650d64204e7db34" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void mutabor::BoxClass::log_action</definition>
+        <argsstring>(mutabor_box_type *box, const char *action)</argsstring>
+        <name>log_action</name>
+        <param>
+          <type><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="631" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga7319c973bb7970e7477d1d32f68e5294" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::UpdateCallback</definition>
+        <argsstring>(struct mutabor_box_type *b, unsigned int flags)</argsstring>
+        <name>UpdateCallback</name>
+        <param>
+          <type>struct <ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>flags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="632" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="776" bodyend="783"/>
+        <references refid="d5/dee/group__route_1gga16bf6a2a128bd229e3183e7036cda229aeac573e7f46391680597913e8b6ecd12" compoundref="de/d0f/Box_8h" startline="138">mutabor::BoxClass::ChangedCallback::ActionChanged</references>
+        <references refid="d5/dee/group__route_1gga16bf6a2a128bd229e3183e7036cda229a8d4c7fcf6b13969657a329e1e4f12d5c" compoundref="de/d0f/Box_8h" startline="135">mutabor::BoxClass::ChangedCallback::BoxChanged</references>
+        <references refid="d5/dee/group__route_1gga16bf6a2a128bd229e3183e7036cda229a1374047d5c950d21731594934cc7ceca" compoundref="de/d0f/Box_8h" startline="137">mutabor::BoxClass::ChangedCallback::KeysChanged</references>
+        <references refid="d5/dee/group__route_1gga16bf6a2a128bd229e3183e7036cda229a086a8ed943f58f3fd704dae834ff01bf" compoundref="de/d0f/Box_8h" startline="136">mutabor::BoxClass::ChangedCallback::LogicChanged</references>
+        <references refid="d9/d7c/group__kernel_1gga2f10f240eb13cb8a21aa3c0a03c14cd3a92a580287e41282e8420596343b66201" compoundref="de/d11/Execute_8h" startline="72">mutabor_action_changed</references>
+        <references refid="d9/d7c/group__kernel_1gga2f10f240eb13cb8a21aa3c0a03c14cd3a5063d0fbc669a8aea3ae7c8c808822b4" compoundref="de/d11/Execute_8h" startline="69">mutabor_box_changed</references>
+        <references refid="d9/d7c/group__kernel_1gga2f10f240eb13cb8a21aa3c0a03c14cd3a2745792c147e1f0c6ab709fb5a552738" compoundref="de/d11/Execute_8h" startline="71">mutabor_keys_changed</references>
+        <references refid="d9/d7c/group__kernel_1gga2f10f240eb13cb8a21aa3c0a03c14cd3adbb8bfa3ed3e213e49558abea0b05105" compoundref="de/d11/Execute_8h" startline="70">mutabor_logic_changed</references>
+        <references refid="d5/dee/group__route_1ga2ceaf34ae3592a5753c0dd5a97ecd274" compoundref="de/d0f/Box_8h" startline="659">updateflags</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="d5/dee/group__route_1ga6eb42c00125e3001f785e9298acd29cc" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::BoxClass::BoxClass</definition>
+        <argsstring>(int id=-1)</argsstring>
+        <name>BoxClass</name>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="676" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="722" bodyend="741"/>
+        <references refid="d5/dee/group__route_1ga8d88d311d475aa296fd6b9fd0a9289b4" compoundref="dd/dc6/Box_8cpp" startline="279" endline="289">AppendToBoxList</references>
+        <references refid="d9/d7c/group__kernel_1gac8bbab79a2ec35f146d66578ff02ec09" compoundref="d1/dce/box_8cpp" startline="129" endline="154">mutabor_initialize_box</references>
+        <references refid="d5/dee/group__route_1ga76f0aef39bc81c389c6202f7f6cf3864" compoundref="dd/dc6/Box_8cpp" startline="96" endline="107">set_routefile_id</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gab545d676be2909325e6616d4595a6fb9" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void mutabor::BoxClass::set_file_id</definition>
+        <argsstring>(int id)</argsstring>
+        <name>set_file_id</name>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="678" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="678" bodyend="680"/>
+        <references refid="d5/dee/group__route_1ga584a8d6cf9fbebb29d6fe80623550efc" compoundref="de/d0f/Box_8h" startline="652">routefile_id</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga1684a9460b312c8c16e975b9418b5465" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::Register</definition>
+        <argsstring>(ChangedCallback *callback)</argsstring>
+        <name>Register</name>
+        <param>
+          <type><ref refid="da/dd8/structmutabor_1_1BoxClass_1_1ChangedCallback" kindref="compound">ChangedCallback</ref> *</type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="682" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="682" bodyend="684"/>
+        <references refid="d5/dee/group__route_1ga2983780f85a472812ba326e14864d4f3" compoundref="de/d0f/Box_8h" startline="660">callbacks</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga941642ea585a6e900fd6b83892fad7ef" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::Unregister</definition>
+        <argsstring>(ChangedCallback *callback)</argsstring>
+        <name>Unregister</name>
+        <param>
+          <type><ref refid="da/dd8/structmutabor_1_1BoxClass_1_1ChangedCallback" kindref="compound">ChangedCallback</ref> *</type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="685" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="685" bodyend="687"/>
+        <references refid="d5/dee/group__route_1ga2983780f85a472812ba326e14864d4f3" compoundref="de/d0f/Box_8h" startline="660">callbacks</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga8544606a19a57f34066130c6e47e5923" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::ExecuteCallbacks</definition>
+        <argsstring>(unsigned int flags)</argsstring>
+        <name>ExecuteCallbacks</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>flags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="689" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="758" bodyend="761"/>
+        <references refid="d5/dee/group__route_1ga2983780f85a472812ba326e14864d4f3" compoundref="de/d0f/Box_8h" startline="660">callbacks</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gabba193be2c6cb9bee9da4ad394d5e091" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::ExecuteCallbacks</definition>
+        <argsstring>(const char *action)</argsstring>
+        <name>ExecuteCallbacks</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="690" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="763" bodyend="766"/>
+        <references refid="d5/dee/group__route_1ga2983780f85a472812ba326e14864d4f3" compoundref="de/d0f/Box_8h" startline="660">callbacks</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="d5/dee/group__route_1ga8d88d311d475aa296fd6b9fd0a9289b4" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::AppendToBoxList</definition>
+        <argsstring>(Box dev)</argsstring>
+        <name>AppendToBoxList</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">Box</ref></type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="694" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="279" bodyend="289"/>
+        <references refid="df/dd1/group__GUI_1ga095007ba40aa91ee3979332ed9f40183" compoundref="d0/d68/mhDefs_8h" startline="147">UNREACHABLECT</references>
+        <referencedby refid="d5/dee/group__route_1ga6eb42c00125e3001f785e9298acd29cc" compoundref="dd/dc6/Box_8cpp" startline="722" endline="741">BoxClass</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga50118a6d5b807a40a6669746b8b30fce" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::RemoveFromBoxList</definition>
+        <argsstring>(Box dev)</argsstring>
+        <name>RemoveFromBoxList</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">Box</ref></type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="695" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="291" bodyend="299"/>
+        <references refid="df/dd1/group__GUI_1ga095007ba40aa91ee3979332ed9f40183" compoundref="d0/d68/mhDefs_8h" startline="147">UNREACHABLECT</references>
+        <referencedby refid="d5/dee/group__route_1gac1413fcb540634c438e90e26dc835920" compoundref="d6/d9a/Box-inlines_8h" startline="54" endline="66">Destroy</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga5830a23962fce59292be56d8c961dba5" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>listtype::iterator</type>
+        <definition>static listtype::iterator mutabor::BoxClass::FindInBoxList</definition>
+        <argsstring>(Box b)</argsstring>
+        <name>FindInBoxList</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">Box</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="696" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="696" bodyend="702"/>
+        <references refid="d5/dee/group__route_1gac04be31fb0688ece777a775591d73269" compoundref="de/d0f/Box_8h" startline="645">boxList</references>
+        <referencedby refid="d5/dee/group__route_1ga78e891a06e443ab16be23854c62b357c" compoundref="de/d0f/Box_8h" startline="703" endline="705">IsInBoxList</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga78e891a06e443ab16be23854c62b357c" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool mutabor::BoxClass::IsInBoxList</definition>
+        <argsstring>(const Box b)</argsstring>
+        <name>IsInBoxList</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">Box</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="703" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="703" bodyend="705"/>
+        <references refid="d5/dee/group__route_1gac04be31fb0688ece777a775591d73269" compoundref="de/d0f/Box_8h" startline="645">boxList</references>
+        <references refid="d5/dee/group__route_1ga5830a23962fce59292be56d8c961dba5" compoundref="de/d0f/Box_8h" startline="696" endline="702">FindInBoxList</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaa1371b90e5aefdee1f7307e01db93f01" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::BoxClass::TruncateBoxList</definition>
+        <argsstring>(Box dev)</argsstring>
+        <name>TruncateBoxList</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">Box</ref></type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="706" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="301" bodyend="321"/>
+        <references refid="df/dd1/group__GUI_1ga06c750cbc293593a85009553cf6cfcc5" compoundref="d0/d68/mhDefs_8h" startline="140">STUB</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2237">
+        <label>mutaborGUI::BoxData</label>
+        <link refid="df/d08/classmutaborGUI_1_1BoxData"/>
+        <childnode refid="2235" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2236">
+        <label>backend_callbacks</label>
+      </node>
+      <node id="2235">
+        <label>mutabor::BoxClass</label>
+        <link refid="d3/d4e/structmutabor_1_1BoxClass"/>
+        <childnode refid="2236" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2247">
+        <label>mutabor::BoxClass::ChangedCallback</label>
+        <link refid="da/dd8/structmutabor_1_1BoxClass_1_1ChangedCallback"/>
+      </node>
+      <node id="2244">
+        <label>T</label>
+      </node>
+      <node id="2246">
+        <label>std::list&lt; mutabor::BoxClass::ChangedCallback * &gt;</label>
+        <childnode refid="2247" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2242">
+        <label>mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;</label>
+        <link refid="db/d05/classmutabor_1_1TRouteClass"/>
+        <childnode refid="2243" relation="usage">
+          <edgelabel>routeList</edgelabel>
+        </childnode>
+        <childnode refid="2245" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="2249">
+        <label>std::vector&lt; T &gt;</label>
+        <childnode refid="2244" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2245">
+        <label>mutabor::idtype&lt; mutabor::TRouteClass&lt; InputDevice, OutputDevice &gt; &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="2239">
+        <label>backend_callbacks</label>
+      </node>
+      <node id="2243">
+        <label>std::list&lt; T &gt;</label>
+        <childnode refid="2244" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2238">
+        <label>mutabor::BoxClass</label>
+        <link refid="d3/d4e/structmutabor_1_1BoxClass"/>
+        <childnode refid="2239" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2240" relation="usage">
+          <edgelabel>current_compile_callback</edgelabel>
+        </childnode>
+        <childnode refid="2241" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+        <childnode refid="2242" relation="usage">
+          <edgelabel>routes</edgelabel>
+        </childnode>
+        <childnode refid="2246" relation="usage">
+          <edgelabel>callbacks</edgelabel>
+        </childnode>
+        <childnode refid="2248" relation="usage">
+          <edgelabel>box</edgelabel>
+        </childnode>
+        <childnode refid="2249" relation="usage">
+          <edgelabel>boxList</edgelabel>
+        </childnode>
+      </node>
+      <node id="2248">
+        <label>mutabor_box_type</label>
+      </node>
+      <node id="2241">
+        <label>mutabor::idtype&lt; mutabor::BoxClass &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="2240">
+        <label>mutabor::BoxClass::CompileCallback</label>
+        <link refid="d2/def/structmutabor_1_1BoxClass_1_1CompileCallback"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" line="825" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" bodystart="825" bodyend="833"/>
+    <listofallmembers>
+      <member refid="d5/dee/group__route_1ga6b63398bab6e4473b3c8ba562b62fdfb" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>::mutaborGUI::BoxData</name></member>
+      <member refid="d5/dee/group__route_1gaf339df5eedc62b5ce3a0f82fa4419124" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>ActionToString</name></member>
+      <member refid="d5/dee/group__route_1ga22d3bd70df8886cfbd5a9ed870834b27" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>Activate</name></member>
+      <member refid="d5/dee/group__route_1ga78fd6677b66302ae6305c6b9fa99d35c" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>ActivateAll</name></member>
+      <member refid="d5/dee/group__route_1ga98e55db8b2a412d4162932b13d7e04ea" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>Add</name></member>
+      <member refid="d5/dee/group__route_1gaf49b892320f04368a2e91e58da93e0ef" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>AddNote</name></member>
+      <member refid="d5/dee/group__route_1ga8d88d311d475aa296fd6b9fd0a9289b4" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>AppendToBoxList</name></member>
+      <member refid="d5/dee/group__route_1gafeb629b6487485ab77055218f5ad43ba" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>backend_callbacks</name></member>
+      <member refid="d5/dee/group__route_1ga97b1747f1037294dbbd843438889af4e" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>box</name></member>
+      <member refid="d5/dee/group__route_1ga6eb42c00125e3001f785e9298acd29cc" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>BoxClass</name></member>
+      <member refid="d5/dee/group__route_1ga6e7ba64a9cf99cbf58a40ee8341d6ce7" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>BoxFactory</name></member>
+      <member refid="d5/dee/group__route_1ga59ad356edc8b877f64e9a02df6f5560c" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>boxidtype</name></member>
+      <member refid="d5/dee/group__route_1gac04be31fb0688ece777a775591d73269" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>boxList</name></member>
+      <member refid="d5/dee/group__route_1ga2983780f85a472812ba326e14864d4f3" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>callbacks</name></member>
+      <member refid="d5/dee/group__route_1gaf902f52cc92b92c56c800871fb2a4593" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>ClearBoxList</name></member>
+      <member refid="d5/dee/group__route_1gac51da01c9500d5d626289e46d7e288d7" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>Close</name></member>
+      <member refid="d5/dee/group__route_1gad11bbfc4f27a984b9f8f666d0ed7f14b" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>CloseAll</name></member>
+      <member refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>Compile</name></member>
+      <member refid="d5/dee/group__route_1ga6dd51d0efa3bea935d7fb57bfa884da9" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>compile_callback</name></member>
+      <member refid="d5/dee/group__route_1ga3081a34c1d0980b4247bd20a532d624e" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>current_compile_callback</name></member>
+      <member refid="d5/dee/group__route_1gad1c1a6b193edea22b11e3dddd78e0c99" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>current_key_logic</name></member>
+      <member refid="d5/dee/group__route_1ga86b1676009e69b53eddc96e180419767" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>current_key_tonesystem</name></member>
+      <member refid="d5/dee/group__route_1ga40b96c1354cc297d12184df53595936c" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>current_logic</name></member>
+      <member refid="d5/dee/group__route_1ga07f2931fa5c87a00c71afc0799fc3f96" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>current_tone_list</name></member>
+      <member refid="d5/dee/group__route_1ga404054ef2dceedabf479f8f884a365bb" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>current_tonesystem</name></member>
+      <member refid="d5/dee/group__route_1ga8b63dc63967b2bc17752ba3ef1c26d60" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>DeleteNote</name></member>
+      <member refid="d5/dee/group__route_1gac1413fcb540634c438e90e26dc835920" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>Destroy</name></member>
+      <member refid="d5/dee/group__route_1ga62fd87e9a500c9ba71165e660d2be344" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>DisconnectFromAll</name></member>
+      <member refid="d5/dee/group__route_1ga2cb0ec2ffc3dae5bc21639e1a0249bc8" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>DoClose</name></member>
+      <member refid="d5/dee/group__route_1ga426dea1ed908146b65db35ff73d169a1" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>DoOpen</name></member>
+      <member refid="d3/d4e/structmutabor_1_1BoxClass_1a977750d8c44225073288d3eb354962cb" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>error_callback</name></member>
+      <member refid="d5/dee/group__route_1ga8544606a19a57f34066130c6e47e5923" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>ExecuteCallbacks</name></member>
+      <member refid="d5/dee/group__route_1gabba193be2c6cb9bee9da4ad394d5e091" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>ExecuteCallbacks</name></member>
+      <member refid="d5/dee/group__route_1ga5830a23962fce59292be56d8c961dba5" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>FindInBoxList</name></member>
+      <member refid="d5/dee/group__route_1ga8451265d7e461f9b0e8ad0a4a28e4758" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>get_distance</name></member>
+      <member refid="d5/dee/group__route_1ga6183af3dea2aa4ced430c7d2e1cdd87b" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>get_errors</name></member>
+      <member refid="d5/dee/group__route_1ga34a007f07b9c1f771e2169efcdd37dd0" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>get_frequency</name></member>
+      <member refid="d5/dee/group__route_1ga8259475f32e7e28bb648b2487fd6cae4" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>get_index</name></member>
+      <member refid="d5/dee/group__route_1gaac7f20b287fc3a75e8c2f477a7a87884" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>get_routefile_id</name></member>
+      <member refid="d5/dee/group__route_1gafde4c70fda7dfa45db95455196936148" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>get_session_id</name></member>
+      <member refid="d5/dee/group__route_1gac05e39da29f9915758102a26aeadba8b" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>GetBox</name></member>
+      <member refid="d5/dee/group__route_1gac71327653b27bcbd7f4eee505629e847" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>GetBoxList</name></member>
+      <member refid="d5/dee/group__route_1ga66fcf44c6bba7fff5ef563e4f0bacc40" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>GetChannel</name></member>
+      <member refid="d5/dee/group__route_1gaa2b81d8bd01eac8f20abd086ee8eaf88" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>GetCurrentTones</name></member>
+      <member refid="d5/dee/group__route_1ga7655d7b74fd453625564c40c8b3db065" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>GetLabel</name></member>
+      <member refid="d5/dee/group__route_1ga5fbfe9126390dc61fa0f4795cc68e0b4" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>GetLogics</name></member>
+      <member refid="d5/dee/group__route_1ga654c8d02aae488f8ff6f6d0f62b08f7d" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>GetNextFreeBox</name></member>
+      <member refid="d5/dee/group__route_1ga9e68bd379bba25f75661d7cf4d3c38be" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>GetOrCreateBox</name></member>
+      <member refid="d5/dee/group__route_1ga8d96b0a6a7c3d5da07bf641d7f9f6acf" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>GetRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga8941bc1b906a3e3124fb1d5a490d3ce9" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>GetRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga4c9c4d1277fb78585bb2471863214fbb" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>GetToneSystem</name></member>
+      <member refid="d5/dee/group__route_1ga603b0a2a201271f15c2f8df8f265ae92" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>GetType</name></member>
+      <member refid="d5/dee/group__route_1ga06fc85ea4d73f6eb73754d29bf2fdb00" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>GetTypeName</name></member>
+      <member refid="d5/dee/group__route_1gga59ad356edc8b877f64e9a02df6f5560ca67adbcea09886c9c80ed988c5cecb9f1" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>IDTypeFile</name></member>
+      <member refid="d5/dee/group__route_1gga59ad356edc8b877f64e9a02df6f5560ca83cfb0dfc6cb4daaf8dd7db3f6e116a6" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>IDTypeSession</name></member>
+      <member refid="d5/dee/group__route_1ga12c67335d58738374c2ddd24f4d1ece1" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>initialize_box_data</name></member>
+      <member refid="d5/dee/group__route_1gae92be7160bb954f3b10b7221f2c4a03a" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>InitializeIds</name></member>
+      <member refid="d5/dee/group__route_1ga78e891a06e443ab16be23854c62b357c" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>IsInBoxList</name></member>
+      <member refid="d5/dee/group__route_1gaa14a856b5e9347dde97d417efbb5dfc8" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>IsLogicKey</name></member>
+      <member refid="d5/dee/group__route_1ga8bc1ae082ba9907da1f66b3dedac1282" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>IsNormal</name></member>
+      <member refid="d5/dee/group__route_1ga1b8f2a466bac599d219133d7fe48b0bd" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>IsOpen</name></member>
+      <member refid="d5/dee/group__route_1ga8ec141db1f4950cd151e8f179c51b4be" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>KeyboardAnalysis</name></member>
+      <member refid="d5/dee/group__route_1ga13107b8947c626559e972a2676816097" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>KeyboardAnalysis</name></member>
+      <member refid="d5/dee/group__route_1gga90c978f72ae20c1d0c9ab6c9303acc98a17cd5bcd91e2d4bddb147fd7013deeb0" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>KeyboardAny</name></member>
+      <member refid="d5/dee/group__route_1ga90c978f72ae20c1d0c9ab6c9303acc98" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>KeyboardFlags</name></member>
+      <member refid="d5/dee/group__route_1gga90c978f72ae20c1d0c9ab6c9303acc98a4d6ecee702c9e2d10ce86b955f912c09" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>KeyboardLogic</name></member>
+      <member refid="d5/dee/group__route_1gga90c978f72ae20c1d0c9ab6c9303acc98a407a5cbfbca17568e36e5ba66b79ac9e" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>KeyboardNoLogic</name></member>
+      <member refid="d5/dee/group__route_1gab295b96374e495ce19aa3945d61ff6ba" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>listtype</name></member>
+      <member refid="d5/dee/group__route_1ga59743f6f78c7f7c0e9124893d708b86b" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>Load</name></member>
+      <member refid="d5/dee/group__route_1ga0f764b8b5843f5d5393f9591d38034cb" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>Load</name></member>
+      <member refid="d3/d4e/structmutabor_1_1BoxClass_1a6fe3e638952a1faa0d67fb6782327141" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>lock_callback</name></member>
+      <member refid="d3/d4e/structmutabor_1_1BoxClass_1aecdc568ab330790ad98e0791079265af" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>log_action</name></member>
+      <member refid="d5/dee/group__route_1ga154761cfe43378a24650d64204e7db34" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>log_action</name></member>
+      <member refid="d5/dee/group__route_1ga94e0b34744fd4089112ac8b8796884d0" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>logic_list</name></member>
+      <member refid="d5/dee/group__route_1gaf9f3bc477eea05b4251df8658a1394f0" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>MidiAnalysis</name></member>
+      <member refid="d5/dee/group__route_1gaa36f1adad3a94ce3eb7463d81b7e408c" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>MidiOut</name></member>
+      <member refid="d5/dee/group__route_1ga1ead7debf611b236f40819e3013cbad1" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>MidiOutCallback</name></member>
+      <member refid="d5/dee/group__route_1ga88ade0720a7c8243fd96bc928f1502f7" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>MoveInList</name></member>
+      <member refid="d5/dee/group__route_1gaa214d6cc0d3c2776ba80711da094e1ac" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>MoveRoutes</name></member>
+      <member refid="d5/dee/group__route_1gade526d5206be7ae3a2eb715268995e05" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>mutex</name></member>
+      <member refid="d5/dee/group__route_1gae29f0c045cb1e9573fede2b86c6b1981" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>nextboxid</name></member>
+      <member refid="d5/dee/group__route_1ga730e807272ce83137086c2a54fafea3a" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>Open</name></member>
+      <member refid="d5/dee/group__route_1ga016356fd5ef831df33f1ffcf1fd9f668" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>open</name></member>
+      <member refid="d5/dee/group__route_1gaf9dc832e91a28da7a19382beddb8edaf" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>Panic</name></member>
+      <member refid="d5/dee/group__route_1ga48f59ed7caa9d9713eac1a405913d8da" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>ReadData</name></member>
+      <member refid="d5/dee/group__route_1ga24fcc89dd9f95465f355a2428f6e4ec0" prot="private" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>REFPTR_INTERFACE</name></member>
+      <member refid="d5/dee/group__route_1ga1684a9460b312c8c16e975b9418b5465" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>Register</name></member>
+      <member refid="d5/dee/group__route_1ga1152cffd18fd59bae2c11df3a694f106" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>Remove</name></member>
+      <member refid="d5/dee/group__route_1ga50118a6d5b807a40a6669746b8b30fce" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>RemoveFromBoxList</name></member>
+      <member refid="d5/dee/group__route_1ga5d8ae12bbd63fa47a65380f9b074d1bd" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>Replace</name></member>
+      <member refid="d5/dee/group__route_1gacde207de41abe9defd55468078513aab" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>Reset</name></member>
+      <member refid="d5/dee/group__route_1ga584a8d6cf9fbebb29d6fe80623550efc" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>routefile_id</name></member>
+      <member refid="d5/dee/group__route_1gae7eacacdd1297cd728fd53bc4c466d34" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>routes</name></member>
+      <member refid="d5/dee/group__route_1ga49ccb60b5a16eade2e1e2d6cf10954ef" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>runtime_error</name></member>
+      <member refid="d5/dee/group__route_1gad865785fdbeab2031284f8758add5f23" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>Save</name></member>
+      <member refid="d5/dee/group__route_1ga19c0856dcfeb9cc16d434987e5b2a7f5" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>Save</name></member>
+      <member refid="d5/dee/group__route_1ga0d09d3c26580b4f293047b956c0495fb" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>session_id</name></member>
+      <member refid="d5/dee/group__route_1gab545d676be2909325e6616d4595a6fb9" prot="protected" virt="virtual"><scope>mutabor::BoxClass</scope><name>set_file_id</name></member>
+      <member refid="d5/dee/group__route_1ga76f0aef39bc81c389c6202f7f6cf3864" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>set_routefile_id</name></member>
+      <member refid="d5/dee/group__route_1ga52872f74de2779bc1608a8b340f9d2ba" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>SetLogic</name></member>
+      <member refid="d5/dee/group__route_1ga5c1bd0ee999d45e7de7fd7cd5b5128a8" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>StopAll</name></member>
+      <member refid="d5/dee/group__route_1ga75db15d6d2221874e52c4ea1d74d39e9" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>tone_list</name></member>
+      <member refid="d5/dee/group__route_1gaa1371b90e5aefdee1f7307e01db93f01" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>TruncateBoxList</name></member>
+      <member refid="d5/dee/group__route_1ga941642ea585a6e900fd6b83892fad7ef" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>Unregister</name></member>
+      <member refid="d5/dee/group__route_1ga7319c973bb7970e7477d1d32f68e5294" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>UpdateCallback</name></member>
+      <member refid="d5/dee/group__route_1ga2ceaf34ae3592a5753c0dd5a97ecd274" prot="protected" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>updateflags</name></member>
+      <member refid="d5/dee/group__route_1gaef1fb011a1dbf7f08376fc5650ead5e1" prot="public" virt="non-virtual"><scope>mutabor::BoxClass</scope><name>UpdateTones</name></member>
+      <member refid="d5/dee/group__route_1ga5bac9d0deca309d7279421eab132fda3" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>WriteData</name></member>
+      <member refid="d5/dee/group__route_1ga7980fb28940781d2b2cc6d4e4d201da6" prot="public" virt="virtual"><scope>mutabor::BoxClass</scope><name>~BoxClass</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

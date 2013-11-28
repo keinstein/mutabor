@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/includes/mutabor/midicalc.h Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_bf59d41d727aac54882b42f236ae575e.html">includes</a></li><li class="navelem"><a class="el" href="../../dir_6db30062d01f5c3ec76e386385d23595.html">mutabor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">midicalc.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d0/d24/midicalc_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __MIDICALC_H_INCLUDED</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __MIDICALC_H_INCLUDED</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#ifdef HAVE_MATH_H</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># include&lt;math.h&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/* Zur Umrechnung in die Midi-Darstellung</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">   als Gleitpunktzahl in long.</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">   Erstes Byte Vorkommastellen, drei Bytes Nachkommastellen. */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../d0/d24/midicalc_8h.html#a0ce82fc5bcce51924e0aaf286582ef7d">   28</a></span>&#160;<span class="preprocessor">#define DOUBLE_TO_LONG(x) ((long int) ((x) * (1L&lt;&lt;24)))</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../d0/d24/midicalc_8h.html#a2218d4cc1662a2a7147ec7ad9cb90ae1">   35</a></span>&#160;<span class="preprocessor">#define FREQUENZ_TO_MIDI(x) (log((x)/440.0)/0.05776226504666210908 + 69)</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../d0/d24/midicalc_8h.html#a29cffdaab2019075e978c1459d4d0b14">   42</a></span>&#160;<span class="preprocessor">#define FAKTOR_TO_MIDI(x) (17.31234049066756089 * log(x))</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span><span class="keyword">namespace </span>mutabor {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../df/df2/structmidiliste.html">   50</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="../../df/df2/structmidiliste.html">midiliste</a> {</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="../../df/df2/structmidiliste.html#a39c148af3f0e5556a71412b94958a30f">   51</a></span>&#160;      <span class="keywordtype">int</span> <a class="code" href="../../df/df2/structmidiliste.html#a39c148af3f0e5556a71412b94958a30f">midi_code</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="../../df/df2/structmidiliste.html#a6a0c42708eebd22168563a38ca00a02c">   52</a></span>&#160;      <span class="keyword">struct </span><a class="code" href="../../df/df2/structmidiliste.html">midiliste</a> * <a class="code" href="../../df/df2/structmidiliste.html#a6a0c42708eebd22168563a38ca00a02c">next</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    };</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d0/d24/midicalc_8h.html#affb194d6f7f27751fc2736a390859f6c">init_integersequenz</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d0/d24/midicalc_8h.html#adec7190766843b0d781da08b7100323f">get_new_integer_in_integersequenz</a> (<span class="keywordtype">int</span> wert);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d0/d24/midicalc_8h.html#a211bbae54c64209cb0fdcc8754e02394">midi_list_laenge</a> (<span class="keyword">struct</span> <a class="code" href="../../df/df2/structmidiliste.html">midiliste</a> *list);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">struct </span><a class="code" href="../../df/df2/structmidiliste.html">midiliste</a> * <a class="code" href="../../d0/d24/midicalc_8h.html#a39abbf3b6344eda62f537b164f21fb24">get_last_integersequenz</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">int</span> * <a class="code" href="../../d2/d1c/group__Interpreter.html#ga9d00fa30c4b5542162e707c060daec77">create_midi_scan_liste</a> (<span class="keyword">struct</span> <a class="code" href="../../df/df2/structmidiliste.html">midiliste</a> * lauf);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#gae0f2e4ab4ba734abcdd1679382fe08e0">print_integersequenz</a> (<span class="keyword">struct</span> <a class="code" href="../../df/df2/structmidiliste.html">midiliste</a> * this_);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#ifdef __cplusplus </span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor"></span>  }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __MIDICALC_H_INCLUDED */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="midicalc_8h_html_a39abbf3b6344eda62f537b164f21fb24"><div class="ttname"><a href="../../d0/d24/midicalc_8h.html#a39abbf3b6344eda62f537b164f21fb24">get_last_integersequenz</a></div><div class="ttdeci">struct midiliste * get_last_integersequenz(void)</div><div class="ttdoc">Gibt die Wurzel von list_of_integers zurück. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dff/midicalc_8c_source.html#l00079">midicalc.c:79</a></div></div>
+<div class="ttc" id="structmidiliste_html"><div class="ttname"><a href="../../df/df2/structmidiliste.html">midiliste</a></div><div class="ttdoc">Einfach verkettete Liste mit ganzzahligen Midi-Codes. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d24/midicalc_8h_source.html#l00050">midicalc.h:50</a></div></div>
+<div class="ttc" id="structmidiliste_html_a6a0c42708eebd22168563a38ca00a02c"><div class="ttname"><a href="../../df/df2/structmidiliste.html#a6a0c42708eebd22168563a38ca00a02c">midiliste::next</a></div><div class="ttdeci">struct midiliste * next</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d24/midicalc_8h_source.html#l00052">midicalc.h:52</a></div></div>
+<div class="ttc" id="midicalc_8h_html_a211bbae54c64209cb0fdcc8754e02394"><div class="ttname"><a href="../../d0/d24/midicalc_8h.html#a211bbae54c64209cb0fdcc8754e02394">midi_list_laenge</a></div><div class="ttdeci">int midi_list_laenge(struct midiliste *list)</div><div class="ttdoc">Zählen der Elemente einer einfach verketteten MIDI-Liste. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dff/midicalc_8c_source.html#l00041">midicalc.c:41</a></div></div>
+<div class="ttc" id="structmidiliste_html_a39c148af3f0e5556a71412b94958a30f"><div class="ttname"><a href="../../df/df2/structmidiliste.html#a39c148af3f0e5556a71412b94958a30f">midiliste::midi_code</a></div><div class="ttdeci">int midi_code</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d24/midicalc_8h_source.html#l00051">midicalc.h:51</a></div></div>
+<div class="ttc" id="group__Interpreter_html_ga9d00fa30c4b5542162e707c060daec77"><div class="ttname"><a href="../../d2/d1c/group__Interpreter.html#ga9d00fa30c4b5542162e707c060daec77">create_midi_scan_liste</a></div><div class="ttdeci">int * create_midi_scan_liste(struct midiliste *lauf)</div><div class="ttdoc">Wandelt eine einfach verkettete MIDI-Liste in ein Ganzzahlen-(int)-Feld um. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dff/midicalc_8c_source.html#l00116">midicalc.c:116</a></div></div>
+<div class="ttc" id="midicalc_8h_html_adec7190766843b0d781da08b7100323f"><div class="ttname"><a href="../../d0/d24/midicalc_8h.html#adec7190766843b0d781da08b7100323f">get_new_integer_in_integersequenz</a></div><div class="ttdeci">void get_new_integer_in_integersequenz(int wert)</div><div class="ttdoc">Hängt einen Wert an list_of_integers an. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dff/midicalc_8c_source.html#l00066">midicalc.c:66</a></div></div>
+<div class="ttc" id="group__kernel_html_gae0f2e4ab4ba734abcdd1679382fe08e0"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gae0f2e4ab4ba734abcdd1679382fe08e0">print_integersequenz</a></div><div class="ttdeci">void print_integersequenz(struct midiliste *this_)</div><div class="ttdoc">Gibt eine Integersequenz aus. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/df5/Parser_8cpp_source.html#l01005">Parser.cpp:1005</a></div></div>
+<div class="ttc" id="midicalc_8h_html_affb194d6f7f27751fc2736a390859f6c"><div class="ttname"><a href="../../d0/d24/midicalc_8h.html#affb194d6f7f27751fc2736a390859f6c">init_integersequenz</a></div><div class="ttdeci">void init_integersequenz(void)</div><div class="ttdoc">Setzt Integersequenz auf NULL. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dff/midicalc_8c_source.html#l00057">midicalc.c:57</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:03:00 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

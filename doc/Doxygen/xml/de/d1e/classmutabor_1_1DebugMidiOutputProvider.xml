@@ -1,0 +1,594 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="de/d1e/classmutabor_1_1DebugMidiOutputProvider" kind="class" prot="public">
+    <compoundname>mutabor::DebugMidiOutputProvider</compoundname>
+    <includes refid="de/d21/midicmn_8h" local="no">midicmn.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a49673200f15ebb9b23b22d79b9b8cc1e" prot="protected" static="no" mutable="no">
+        <type><ref refid="db/db4/classmutabor_1_1Device" kindref="compound">Device</ref> *</type>
+        <definition>Device* mutabor::DebugMidiOutputProvider::device</definition>
+        <argsstring></argsstring>
+        <name>device</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="485" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="485" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a201ed1e3ae048b5ee2a0d73f710c9e3b" prot="protected" static="no" mutable="no">
+        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+        <definition>mutString mutabor::DebugMidiOutputProvider::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="487" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="487" bodyend="-1"/>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1ab5a9dfd1b091ffe8a1448b6d9ca7d7b0" compoundref="de/d21/midicmn_8h" startline="483" endline="483">ClearData</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a740abd9128e6155e4ba35a25976390c6" compoundref="de/d21/midicmn_8h" startline="342" endline="348">Close</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a70295054393d3ceb243329441b95bfb2" compoundref="de/d21/midicmn_8h" startline="323" endline="330">Open</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a6a7aeb9824f357b7d22dd2a18e46b565" compoundref="de/d21/midicmn_8h" startline="482" endline="482">operator mutString</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a25946baf8b9c92fa776da100b5994404" compoundref="de/d21/midicmn_8h" startline="379" endline="391">RawMsg</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1af30d5680a5c740c23348d23588cf856d" compoundref="de/d21/midicmn_8h" startline="464" endline="480">SendSysEx</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1aacee4f09f66d204d9c7052abbcefa6ad" compoundref="de/d21/midicmn_8h" startline="491" endline="497">WriteTime</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a6203705bf120350478a03a988aee072e" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool mutabor::DebugMidiOutputProvider::open</definition>
+        <argsstring></argsstring>
+        <name>open</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="489" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="489" bodyend="-1"/>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a740abd9128e6155e4ba35a25976390c6" compoundref="de/d21/midicmn_8h" startline="342" endline="348">Close</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a70295054393d3ceb243329441b95bfb2" compoundref="de/d21/midicmn_8h" startline="323" endline="330">Open</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a1418861b5292fd8add9ee1056b22e1ca" compoundref="de/d21/midicmn_8h" startline="360" endline="368">operator()</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a25946baf8b9c92fa776da100b5994404" compoundref="de/d21/midicmn_8h" startline="379" endline="391">RawMsg</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1af30d5680a5c740c23348d23588cf856d" compoundref="de/d21/midicmn_8h" startline="464" endline="480">SendSysEx</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a8dd5a3f05194e9cfb9ded6668271092b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::DebugMidiOutputProvider::DebugMidiOutputProvider</definition>
+        <argsstring>(Device *d)</argsstring>
+        <name>DebugMidiOutputProvider</name>
+        <param>
+          <type><ref refid="db/db4/classmutabor_1_1Device" kindref="compound">Device</ref> *</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="311" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="311" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a70295054393d3ceb243329441b95bfb2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::DebugMidiOutputProvider::Open</definition>
+        <argsstring>()</argsstring>
+        <name>Open</name>
+        <briefdescription>
+<para>Opens the output. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>true</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>on success. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>false</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if an error occurred. In that case assume that everything below this function has been restored to closed state. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="323" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="323" bodyend="330"/>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a201ed1e3ae048b5ee2a0d73f710c9e3b" compoundref="de/d21/midicmn_8h" startline="487">data</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a6203705bf120350478a03a988aee072e" compoundref="de/d21/midicmn_8h" startline="489">open</references>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1aacee4f09f66d204d9c7052abbcefa6ad" compoundref="de/d21/midicmn_8h" startline="491" endline="497">WriteTime</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a740abd9128e6155e4ba35a25976390c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::DebugMidiOutputProvider::Close</definition>
+        <argsstring>()</argsstring>
+        <name>Close</name>
+        <briefdescription>
+<para>Opens the output. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>true</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>on success. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>false</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if an error occurred. In that case assume that everything below this function has been restored to closed state. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="342" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="342" bodyend="348"/>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a201ed1e3ae048b5ee2a0d73f710c9e3b" compoundref="de/d21/midicmn_8h" startline="487">data</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a6203705bf120350478a03a988aee072e" compoundref="de/d21/midicmn_8h" startline="489">open</references>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1aacee4f09f66d204d9c7052abbcefa6ad" compoundref="de/d21/midicmn_8h" startline="491" endline="497">WriteTime</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a1418861b5292fd8add9ee1056b22e1ca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider" kindref="compound">DebugMidiOutputProvider</ref> &amp;</type>
+        <definition>DebugMidiOutputProvider&amp; mutabor::DebugMidiOutputProvider::operator()</definition>
+        <argsstring>(int channel, uint8_t byte1, uint8_t byte2, uint8_t byte3)</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte1</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte2</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte3</declname>
+        </param>
+        <briefdescription>
+<para>Outputs a three-byte message merging the channel into the data. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>channel to which data shall be sent to. How channels are split into tracks or subdevices is managed by the OutputProvider </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>1st byte </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>2nd byte </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte3</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>3rd byte </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="360" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="360" bodyend="368"/>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a6203705bf120350478a03a988aee072e" compoundref="de/d21/midicmn_8h" startline="489">open</references>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a25946baf8b9c92fa776da100b5994404" compoundref="de/d21/midicmn_8h" startline="379" endline="391">RawMsg</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a25946baf8b9c92fa776da100b5994404" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider" kindref="compound">DebugMidiOutputProvider</ref> &amp;</type>
+        <definition>DebugMidiOutputProvider&amp; mutabor::DebugMidiOutputProvider::RawMsg</definition>
+        <argsstring>(int channel, uint8_t byte1, uint8_t byte2, uint8_t byte3)</argsstring>
+        <name>RawMsg</name>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte1</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte2</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte3</declname>
+        </param>
+        <briefdescription>
+<para>Outputs a raw three-byte message. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>channel to which data shall be sent to. How channels are split into tracks or subdevices is managed by the OutputProvider </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>1st byte </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>2nd byte </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte3</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>3rd byte </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="379" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="379" bodyend="391"/>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a201ed1e3ae048b5ee2a0d73f710c9e3b" compoundref="de/d21/midicmn_8h" startline="487">data</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" compoundref="d1/d73/Defs_8h" startline="169">mutString</references>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a6203705bf120350478a03a988aee072e" compoundref="de/d21/midicmn_8h" startline="489">open</references>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1aacee4f09f66d204d9c7052abbcefa6ad" compoundref="de/d21/midicmn_8h" startline="491" endline="497">WriteTime</references>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a1418861b5292fd8add9ee1056b22e1ca" compoundref="de/d21/midicmn_8h" startline="360" endline="368">operator()</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1ae9d94122f2df443f1d15938ca41fb604" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider" kindref="compound">DebugMidiOutputProvider</ref> &amp;</type>
+        <definition>DebugMidiOutputProvider&amp; mutabor::DebugMidiOutputProvider::operator()</definition>
+        <argsstring>(int channel, uint8_t byte1, uint8_t byte2)</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte1</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte2</declname>
+        </param>
+        <briefdescription>
+<para>Outputs a two-byte message merging the channel into the message. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>channel to which data shall be sent to. How channels are split into tracks or subdevices is managed by the OutputProvider </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>1st byte </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>2nd byte </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="402" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="402" bodyend="409"/>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a6203705bf120350478a03a988aee072e" compoundref="de/d21/midicmn_8h" startline="489">open</references>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a25946baf8b9c92fa776da100b5994404" compoundref="de/d21/midicmn_8h" startline="379" endline="391">RawMsg</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1afe40f90b3e7796d9767611e289733298" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider" kindref="compound">DebugMidiOutputProvider</ref> &amp;</type>
+        <definition>DebugMidiOutputProvider&amp; mutabor::DebugMidiOutputProvider::RawMsg</definition>
+        <argsstring>(int channel, uint8_t byte1, uint8_t byte2)</argsstring>
+        <name>RawMsg</name>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte1</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte2</declname>
+        </param>
+        <briefdescription>
+<para>Outputs a two-byte message. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>channel to which data shall be sent to. How channels are split into tracks or subdevices is managed by the OutputProvider </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>1st byte </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>2nd byte </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="419" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="419" bodyend="430"/>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a201ed1e3ae048b5ee2a0d73f710c9e3b" compoundref="de/d21/midicmn_8h" startline="487">data</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" compoundref="d1/d73/Defs_8h" startline="169">mutString</references>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a6203705bf120350478a03a988aee072e" compoundref="de/d21/midicmn_8h" startline="489">open</references>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1aacee4f09f66d204d9c7052abbcefa6ad" compoundref="de/d21/midicmn_8h" startline="491" endline="497">WriteTime</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a3ffa601616284c2b635e536f04698775" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider" kindref="compound">DebugMidiOutputProvider</ref> &amp;</type>
+        <definition>DebugMidiOutputProvider&amp; mutabor::DebugMidiOutputProvider::RawMsg</definition>
+        <argsstring>(int channel, uint8_t byte1)</argsstring>
+        <name>RawMsg</name>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte1</declname>
+        </param>
+        <briefdescription>
+<para>Outputs a one-byte message. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>channel to which data shall be sent to. How channels are split into tracks or subdevices is managed by the OutputProvider </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>byte </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="440" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="440" bodyend="450"/>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a201ed1e3ae048b5ee2a0d73f710c9e3b" compoundref="de/d21/midicmn_8h" startline="487">data</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" compoundref="d1/d73/Defs_8h" startline="169">mutString</references>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a6203705bf120350478a03a988aee072e" compoundref="de/d21/midicmn_8h" startline="489">open</references>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1aacee4f09f66d204d9c7052abbcefa6ad" compoundref="de/d21/midicmn_8h" startline="491" endline="497">WriteTime</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1af30d5680a5c740c23348d23588cf856d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class i</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider" kindref="compound">DebugMidiOutputProvider</ref> &amp;</type>
+        <definition>DebugMidiOutputProvider&amp; mutabor::DebugMidiOutputProvider::SendSysEx</definition>
+        <argsstring>(int channel, i from, i to)</argsstring>
+        <name>SendSysEx</name>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>i</type>
+          <declname>from</declname>
+        </param>
+        <param>
+          <type>i</type>
+          <declname>to</declname>
+        </param>
+        <briefdescription>
+<para>Outputs a System Exclusive Message. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>channel to which data shall be sent to. How channels are split into tracks or subdevices is managed by the OutputProvider </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>byte array containang the message </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of bytes to be sent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="464" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="464" bodyend="480"/>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a201ed1e3ae048b5ee2a0d73f710c9e3b" compoundref="de/d21/midicmn_8h" startline="487">data</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" compoundref="d1/d73/Defs_8h" startline="169">mutString</references>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a6203705bf120350478a03a988aee072e" compoundref="de/d21/midicmn_8h" startline="489">open</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1aacee4f09f66d204d9c7052abbcefa6ad" compoundref="de/d21/midicmn_8h" startline="491" endline="497">WriteTime</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a6a7aeb9824f357b7d22dd2a18e46b565" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::DebugMidiOutputProvider::operator mutString</definition>
+        <argsstring>()</argsstring>
+        <name>operator mutString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="482" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="482" bodyend="482"/>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a201ed1e3ae048b5ee2a0d73f710c9e3b" compoundref="de/d21/midicmn_8h" startline="487">data</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1ab5a9dfd1b091ffe8a1448b6d9ca7d7b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::DebugMidiOutputProvider::ClearData</definition>
+        <argsstring>()</argsstring>
+        <name>ClearData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="483" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="483" bodyend="483"/>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a201ed1e3ae048b5ee2a0d73f710c9e3b" compoundref="de/d21/midicmn_8h" startline="487">data</references>
+        <referencedby refid="d7/df5/classmidicmnOutputDevice_1a06022e0b9a4696860bb03ce8a57c0171" compoundref="dd/d56/midicmnTest_8h" startline="84" endline="94">midicmnOutputDevice::Check</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1aacee4f09f66d204d9c7052abbcefa6ad" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::DebugMidiOutputProvider::WriteTime</definition>
+        <argsstring>()</argsstring>
+        <name>WriteTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="491" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="491" bodyend="497"/>
+        <references refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" compoundref="d1/dca/timing_8cpp" startline="43">mutabor::CurrentTime</references>
+        <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a201ed1e3ae048b5ee2a0d73f710c9e3b" compoundref="de/d21/midicmn_8h" startline="487">data</references>
+        <references refid="d7/dda/classmutabor_1_1CurrentTimer_1a7df1d50b0b51dd10a6cd2d59fd97581e" compoundref="db/d41/timing_8h" startline="496" endline="496">mutabor::CurrentTimer::Get</references>
+        <references refid="d7/dda/classmutabor_1_1CurrentTimer_1a14c65fde17d030dfd6b5380573475ca4" compoundref="db/d41/timing_8h" startline="475" endline="475">mutabor::CurrentTimer::isRealtime</references>
+        <references refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" compoundref="d1/d73/Defs_8h" startline="169">mutString</references>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a740abd9128e6155e4ba35a25976390c6" compoundref="de/d21/midicmn_8h" startline="342" endline="348">Close</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a70295054393d3ceb243329441b95bfb2" compoundref="de/d21/midicmn_8h" startline="323" endline="330">Open</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a25946baf8b9c92fa776da100b5994404" compoundref="de/d21/midicmn_8h" startline="379" endline="391">RawMsg</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1af30d5680a5c740c23348d23588cf856d" compoundref="de/d21/midicmn_8h" startline="464" endline="480">SendSysEx</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A simple MIDI output provider describing the API and providing simple means for debugging. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2613">
+        <label>T</label>
+      </node>
+      <node id="2611">
+        <label>mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;</label>
+        <link refid="db/d05/classmutabor_1_1TRouteClass"/>
+        <childnode refid="2612" relation="usage">
+          <edgelabel>routeList</edgelabel>
+        </childnode>
+        <childnode refid="2614" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="2614">
+        <label>mutabor::idtype&lt; mutabor::TRouteClass&lt; InputDevice, OutputDevice &gt; &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="2615">
+        <label>mutabor::idtype&lt; mutabor::Device &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="2610">
+        <label>mutabor::Device</label>
+        <link refid="db/db4/classmutabor_1_1Device"/>
+        <childnode refid="2611" relation="usage">
+          <edgelabel>routes</edgelabel>
+        </childnode>
+        <childnode refid="2615" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="2612">
+        <label>std::list&lt; T &gt;</label>
+        <childnode refid="2613" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2609">
+        <label>mutabor::DebugMidiOutputProvider</label>
+        <link refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider"/>
+        <childnode refid="2610" relation="usage">
+          <edgelabel>device</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="307" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="307" bodyend="498"/>
+    <listofallmembers>
+      <member refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1ab5a9dfd1b091ffe8a1448b6d9ca7d7b0" prot="public" virt="non-virtual"><scope>mutabor::DebugMidiOutputProvider</scope><name>ClearData</name></member>
+      <member refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a740abd9128e6155e4ba35a25976390c6" prot="public" virt="non-virtual"><scope>mutabor::DebugMidiOutputProvider</scope><name>Close</name></member>
+      <member refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a201ed1e3ae048b5ee2a0d73f710c9e3b" prot="protected" virt="non-virtual"><scope>mutabor::DebugMidiOutputProvider</scope><name>data</name></member>
+      <member refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a8dd5a3f05194e9cfb9ded6668271092b" prot="public" virt="non-virtual"><scope>mutabor::DebugMidiOutputProvider</scope><name>DebugMidiOutputProvider</name></member>
+      <member refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a49673200f15ebb9b23b22d79b9b8cc1e" prot="protected" virt="non-virtual"><scope>mutabor::DebugMidiOutputProvider</scope><name>device</name></member>
+      <member refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a70295054393d3ceb243329441b95bfb2" prot="public" virt="non-virtual"><scope>mutabor::DebugMidiOutputProvider</scope><name>Open</name></member>
+      <member refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a6203705bf120350478a03a988aee072e" prot="protected" virt="non-virtual"><scope>mutabor::DebugMidiOutputProvider</scope><name>open</name></member>
+      <member refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a6a7aeb9824f357b7d22dd2a18e46b565" prot="public" virt="non-virtual"><scope>mutabor::DebugMidiOutputProvider</scope><name>operator mutString</name></member>
+      <member refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a1418861b5292fd8add9ee1056b22e1ca" prot="public" virt="non-virtual"><scope>mutabor::DebugMidiOutputProvider</scope><name>operator()</name></member>
+      <member refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1ae9d94122f2df443f1d15938ca41fb604" prot="public" virt="non-virtual"><scope>mutabor::DebugMidiOutputProvider</scope><name>operator()</name></member>
+      <member refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a25946baf8b9c92fa776da100b5994404" prot="public" virt="non-virtual"><scope>mutabor::DebugMidiOutputProvider</scope><name>RawMsg</name></member>
+      <member refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1afe40f90b3e7796d9767611e289733298" prot="public" virt="non-virtual"><scope>mutabor::DebugMidiOutputProvider</scope><name>RawMsg</name></member>
+      <member refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a3ffa601616284c2b635e536f04698775" prot="public" virt="non-virtual"><scope>mutabor::DebugMidiOutputProvider</scope><name>RawMsg</name></member>
+      <member refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1af30d5680a5c740c23348d23588cf856d" prot="public" virt="non-virtual"><scope>mutabor::DebugMidiOutputProvider</scope><name>SendSysEx</name></member>
+      <member refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1aacee4f09f66d204d9c7052abbcefa6ad" prot="protected" virt="non-virtual"><scope>mutabor::DebugMidiOutputProvider</scope><name>WriteTime</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

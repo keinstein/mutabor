@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d2/dd5/classGisParaReal" kind="class" prot="public">
+    <compoundname>GisParaReal</compoundname>
+    <basecompoundref refid="d2/db7/classGisToken" prot="public" virt="non-virtual">GisToken</basecompoundref>
+    <includes refid="dd/d4d/GIS_8h" local="no">GIS.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d2/dd5/classGisParaReal_1a0786c03d53ed97d089cbbeb08b5efaf2" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double GisParaReal::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="550" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="550" bodyend="-1"/>
+        <referencedby refid="d2/dd5/classGisParaReal_1a30099f7ffdd5e3519437df8606181ca5" compoundref="dd/d4d/GIS_8h" startline="563" endline="567">Copy</referencedby>
+        <referencedby refid="d2/dd5/classGisParaReal_1a98370d4a25e6d33b15cb107817a517c4" compoundref="dd/d4d/GIS_8h" startline="552" endline="556">GisParaReal</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d2/dd5/classGisParaReal_1a98370d4a25e6d33b15cb107817a517c4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GisParaReal::GisParaReal</definition>
+        <argsstring>(double value=0, mutString sep=mutEmptyString, GisToken *next=0)</argsstring>
+        <name>GisParaReal</name>
+        <param>
+          <type>double</type>
+          <declname>value</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+          <declname>sep</declname>
+          <defval><ref refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" kindref="member">mutEmptyString</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+          <declname>next</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="552" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="552" bodyend="556"/>
+        <references refid="d2/dd5/classGisParaReal_1a0786c03d53ed97d089cbbeb08b5efaf2" compoundref="dd/d4d/GIS_8h" startline="550">x</references>
+        <referencedby refid="d2/dd5/classGisParaReal_1a30099f7ffdd5e3519437df8606181ca5" compoundref="dd/d4d/GIS_8h" startline="563" endline="567">Copy</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/dd5/classGisParaReal_1a4fc892d925936c27ea4597c609515af8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d5/dee/group__route_1gaef354ea2f89281ef17c6735860c89861" kindref="member">GisType</ref></type>
+        <definition>virtual GisType GisParaReal::Type</definition>
+        <argsstring>() const </argsstring>
+        <name>Type</name>
+        <reimplements refid="d2/db7/classGisToken_1ae4d7f75c10842938ece11120d1665106">Type</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="558" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="558" bodyend="561"/>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861a5486bdc5c92f8e85d3f05b810eb17d2c" compoundref="dd/d4d/GIS_8h" startline="125">GTParaReal</references>
+      </memberdef>
+      <memberdef kind="function" id="d2/dd5/classGisParaReal_1a30099f7ffdd5e3519437df8606181ca5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+        <definition>virtual GisToken* GisParaReal::Copy</definition>
+        <argsstring>()</argsstring>
+        <name>Copy</name>
+        <reimplements refid="d2/db7/classGisToken_1a699f4bc89b801908bd6178f6f144d645">Copy</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="563" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="563" bodyend="567"/>
+        <references refid="d2/dd5/classGisParaReal_1a98370d4a25e6d33b15cb107817a517c4" compoundref="dd/d4d/GIS_8h" startline="552" endline="556">GisParaReal</references>
+        <references refid="d2/db7/classGisToken_1a5987643937d79847fcd3f0dab8fe4b58" compoundref="dd/d4d/GIS_8h" startline="137">GisToken::Sep</references>
+        <references refid="d2/dd5/classGisParaReal_1a0786c03d53ed97d089cbbeb08b5efaf2" compoundref="dd/d4d/GIS_8h" startline="550">x</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2766">
+        <label>GisParaReal</label>
+        <link refid="d2/dd5/classGisParaReal"/>
+        <childnode refid="2767" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2767">
+        <label>GisToken</label>
+        <link refid="d2/db7/classGisToken"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2768">
+        <label>GisParaReal</label>
+        <link refid="d2/dd5/classGisParaReal"/>
+        <childnode refid="2769" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2769">
+        <label>GisToken</label>
+        <link refid="d2/db7/classGisToken"/>
+        <childnode refid="2769" relation="usage">
+          <edgelabel>Next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="547" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="546" bodyend="580"/>
+    <listofallmembers>
+      <member refid="d2/dd5/classGisParaReal_1a30099f7ffdd5e3519437df8606181ca5" prot="public" virt="virtual"><scope>GisParaReal</scope><name>Copy</name></member>
+      <member refid="d2/dd5/classGisParaReal_1a98370d4a25e6d33b15cb107817a517c4" prot="public" virt="non-virtual"><scope>GisParaReal</scope><name>GisParaReal</name></member>
+      <member refid="d2/db7/classGisToken_1aa7d3797aec95b6fe33acf8c255fc1268" prot="public" virt="non-virtual"><scope>GisParaReal</scope><name>GisToken</name></member>
+      <member refid="d2/db7/classGisToken_1a5ebe3590397490871cf0839a758e2449" prot="public" virt="non-virtual"><scope>GisParaReal</scope><name>Next</name></member>
+      <member refid="d2/db7/classGisToken_1a5987643937d79847fcd3f0dab8fe4b58" prot="public" virt="non-virtual"><scope>GisParaReal</scope><name>Sep</name></member>
+      <member refid="d2/dd5/classGisParaReal_1a4fc892d925936c27ea4597c609515af8" prot="public" virt="virtual"><scope>GisParaReal</scope><name>Type</name></member>
+      <member refid="d2/dd5/classGisParaReal_1a0786c03d53ed97d089cbbeb08b5efaf2" prot="public" virt="non-virtual"><scope>GisParaReal</scope><name>x</name></member>
+      <member refid="d2/db7/classGisToken_1ab3ec071213876b13b7ce9f9900cfec69" prot="public" virt="virtual"><scope>GisParaReal</scope><name>~GisToken</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

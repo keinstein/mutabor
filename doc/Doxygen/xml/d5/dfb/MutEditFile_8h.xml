@@ -1,0 +1,923 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d5/dfb/MutEditFile_8h" kind="file">
+    <compoundname>MutEditFile.h</compoundname>
+    <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
+    <includes refid="d1/de5/stclanguage_8h" local="yes">src/wxGUI/stclanguage.h</includes>
+    <includes refid="d1/dcd/muconvauto_8h" local="yes">src/wxGUI/generic/muconvauto.h</includes>
+    <includes local="no">vector</includes>
+    <includes local="yes">wx/textctrl.h</includes>
+    <includes local="yes">wx/docview.h</includes>
+    <includes local="yes">wx/stc/stc.h</includes>
+    <includes local="yes">wx/fontdlg.h</includes>
+    <includedby refid="d5/df7/GUIBoxData_8h" local="yes">src/wxGUI/GUIBoxData.h</includedby>
+    <includedby refid="da/d72/MutChild_8cpp" local="yes">src/wxGUI/MutChild.cpp</includedby>
+    <includedby refid="d1/da4/MutEditFile_8cpp" local="yes">src/wxGUI/MutEditFile.cpp</includedby>
+    <includedby refid="dd/db5/MutFrame_8h" local="yes">src/wxGUI/MutFrame.h</includedby>
+    <incdepgraph>
+      <node id="20246">
+        <label>stdarg.h</label>
+      </node>
+      <node id="20250">
+        <label>src/wxGUI/generic/muconvauto.h</label>
+        <link refid="d1/dcd/muconvauto_8h"/>
+        <childnode refid="20251" relation="include">
+        </childnode>
+        <childnode refid="20252" relation="include">
+        </childnode>
+      </node>
+      <node id="20245">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="20246" relation="include">
+        </childnode>
+        <childnode refid="20247" relation="include">
+        </childnode>
+      </node>
+      <node id="20249">
+        <label>wx/stc/stc.h</label>
+      </node>
+      <node id="20244">
+        <label>src/wxGUI/MutEditFile.h</label>
+        <link refid="MutEditFile.h"/>
+        <childnode refid="20245" relation="include">
+        </childnode>
+        <childnode refid="20248" relation="include">
+        </childnode>
+        <childnode refid="20250" relation="include">
+        </childnode>
+        <childnode refid="20253" relation="include">
+        </childnode>
+        <childnode refid="20254" relation="include">
+        </childnode>
+        <childnode refid="20255" relation="include">
+        </childnode>
+        <childnode refid="20249" relation="include">
+        </childnode>
+        <childnode refid="20256" relation="include">
+        </childnode>
+      </node>
+      <node id="20251">
+        <label>wx/convauto.h</label>
+      </node>
+      <node id="20253">
+        <label>vector</label>
+      </node>
+      <node id="20256">
+        <label>wx/fontdlg.h</label>
+      </node>
+      <node id="20252">
+        <label>wx/strconv.h</label>
+      </node>
+      <node id="20247">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+      <node id="20254">
+        <label>wx/textctrl.h</label>
+      </node>
+      <node id="20248">
+        <label>src/wxGUI/stclanguage.h</label>
+        <link refid="d1/de5/stclanguage_8h"/>
+        <childnode refid="20245" relation="include">
+        </childnode>
+        <childnode refid="20249" relation="include">
+        </childnode>
+      </node>
+      <node id="20255">
+        <label>wx/docview.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="20298">
+        <label>src/wxGUI/Routing/BoxDlg.h</label>
+        <link refid="d9/dd2/BoxDlg_8h"/>
+        <childnode refid="20261" relation="include">
+        </childnode>
+        <childnode refid="20262" relation="include">
+        </childnode>
+        <childnode refid="20285" relation="include">
+        </childnode>
+        <childnode refid="20263" relation="include">
+        </childnode>
+        <childnode refid="20284" relation="include">
+        </childnode>
+        <childnode refid="20286" relation="include">
+        </childnode>
+      </node>
+      <node id="20310">
+        <label>src/wxGUI/Routing/tests/main.cpp</label>
+        <link refid="da/dee/wxGUI_2Routing_2tests_2main_8cpp"/>
+      </node>
+      <node id="20288">
+        <label>src/wxGUI/Routing/NewOutputDeviceShape.cpp</label>
+        <link refid="d1/d73/NewOutputDeviceShape_8cpp"/>
+      </node>
+      <node id="20306">
+        <label>src/wxGUI/Routing/NewOutputDeviceShape.h</label>
+        <link refid="df/d7b/NewOutputDeviceShape_8h"/>
+        <childnode refid="20261" relation="include">
+        </childnode>
+        <childnode refid="20288" relation="include">
+        </childnode>
+      </node>
+      <node id="20279">
+        <label>src/wxGUI/MutEditFile.cpp</label>
+        <link refid="d1/da4/MutEditFile_8cpp"/>
+      </node>
+      <node id="20311">
+        <label>src/wxGUI/tests/main.cpp</label>
+        <link refid="d9/d27/wxGUI_2tests_2main_8cpp"/>
+      </node>
+      <node id="20261">
+        <label>src/wxGUI/MutRouteWnd.cpp</label>
+        <link refid="dc/def/MutRouteWnd_8cpp"/>
+      </node>
+      <node id="20305">
+        <label>src/wxGUI/Routing/NewInputDeviceShape.h</label>
+        <link refid="d5/dba/NewInputDeviceShape_8h"/>
+        <childnode refid="20261" relation="include">
+        </childnode>
+        <childnode refid="20287" relation="include">
+        </childnode>
+      </node>
+      <node id="20285">
+        <label>src/wxGUI/Routing/BoxDlg.cpp</label>
+        <link refid="d3/d2a/BoxDlg_8cpp"/>
+      </node>
+      <node id="20286">
+        <label>src/wxGUI/Routing/NewBoxShape.cpp</label>
+        <link refid="d8/dba/NewBoxShape_8cpp"/>
+      </node>
+      <node id="20268">
+        <label>src/wxGUI/MutLogicWnd.cpp</label>
+        <link refid="df/d11/MutLogicWnd_8cpp"/>
+      </node>
+      <node id="20292">
+        <label>src/wxGUI/Routing/OutputMidiDeviceShape.cpp</label>
+        <link refid="d6/d68/OutputMidiDeviceShape_8cpp"/>
+      </node>
+      <node id="20291">
+        <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp</label>
+        <link refid="d3/d21/OutputGuidoFileDeviceShape_8cpp"/>
+      </node>
+      <node id="20274">
+        <label>src/wxGUI/MutApp.h</label>
+        <link refid="db/dc1/MutApp_8h"/>
+        <childnode refid="20275" relation="include">
+        </childnode>
+        <childnode refid="20260" relation="include">
+        </childnode>
+        <childnode refid="20273" relation="include">
+        </childnode>
+        <childnode refid="20276" relation="include">
+        </childnode>
+        <childnode refid="20277" relation="include">
+        </childnode>
+        <childnode refid="20278" relation="include">
+        </childnode>
+        <childnode refid="20279" relation="include">
+        </childnode>
+        <childnode refid="20265" relation="include">
+        </childnode>
+        <childnode refid="20261" relation="include">
+        </childnode>
+        <childnode refid="20280" relation="include">
+        </childnode>
+        <childnode refid="20281" relation="include">
+        </childnode>
+      </node>
+      <node id="20269">
+        <label>src/wxGUI/MutTextBox.cpp</label>
+        <link refid="df/d3c/MutTextBox_8cpp"/>
+      </node>
+      <node id="20297">
+        <label>src/wxGUI/Routing/DeviceShape.h</label>
+        <link refid="d9/d4d/DeviceShape_8h"/>
+        <childnode refid="20271" relation="include">
+        </childnode>
+        <childnode refid="20262" relation="include">
+        </childnode>
+        <childnode refid="20285" relation="include">
+        </childnode>
+        <childnode refid="20298" relation="include">
+        </childnode>
+        <childnode refid="20263" relation="include">
+        </childnode>
+        <childnode refid="20284" relation="include">
+        </childnode>
+        <childnode refid="20290" relation="include">
+        </childnode>
+        <childnode refid="20264" relation="include">
+        </childnode>
+        <childnode refid="20299" relation="include">
+        </childnode>
+        <childnode refid="20303" relation="include">
+        </childnode>
+        <childnode refid="20305" relation="include">
+        </childnode>
+        <childnode refid="20306" relation="include">
+        </childnode>
+        <childnode refid="20307" relation="include">
+        </childnode>
+        <childnode refid="20308" relation="include">
+        </childnode>
+        <childnode refid="20309" relation="include">
+        </childnode>
+      </node>
+      <node id="20295">
+        <label>src/wxGUI/Routing/GUIRoute.h</label>
+        <link refid="d6/dfa/GUIRoute_8h"/>
+        <childnode refid="20273" relation="include">
+        </childnode>
+        <childnode refid="20296" relation="include">
+        </childnode>
+        <childnode refid="20270" relation="include">
+        </childnode>
+        <childnode refid="20284" relation="include">
+        </childnode>
+        <childnode refid="20297" relation="include">
+        </childnode>
+        <childnode refid="20290" relation="include">
+        </childnode>
+        <childnode refid="20264" relation="include">
+        </childnode>
+        <childnode refid="20299" relation="include">
+        </childnode>
+        <childnode refid="20310" relation="include">
+        </childnode>
+        <childnode refid="20311" relation="include">
+        </childnode>
+      </node>
+      <node id="20283">
+        <label>src/wxGUI/MutDocManager.cpp</label>
+        <link refid="dd/db0/MutDocManager_8cpp"/>
+      </node>
+      <node id="20267">
+        <label>src/wxGUI/MutChild.cpp</label>
+        <link refid="da/d72/MutChild_8cpp"/>
+      </node>
+      <node id="20273">
+        <label>src/wxGUI/MutApp.cpp</label>
+        <link refid="d5/d1c/MutApp_8cpp"/>
+      </node>
+      <node id="20308">
+        <label>src/wxGUI/Routing/OutputMidiDeviceShape.h</label>
+        <link refid="d8/dcb/OutputMidiDeviceShape_8h"/>
+        <childnode refid="20264" relation="include">
+        </childnode>
+        <childnode refid="20292" relation="include">
+        </childnode>
+      </node>
+      <node id="20307">
+        <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.h</label>
+        <link refid="db/d77/OutputGuidoFileDeviceShape_8h"/>
+        <childnode refid="20264" relation="include">
+        </childnode>
+        <childnode refid="20291" relation="include">
+        </childnode>
+      </node>
+      <node id="20294">
+        <label>src/wxGUI/Routing/NewBoxShape.h</label>
+        <link refid="d4/dcc/NewBoxShape_8h"/>
+        <childnode refid="20260" relation="include">
+        </childnode>
+        <childnode refid="20261" relation="include">
+        </childnode>
+        <childnode refid="20264" relation="include">
+        </childnode>
+        <childnode refid="20286" relation="include">
+        </childnode>
+      </node>
+      <node id="20266">
+        <label>src/wxGUI/MutLogicWnd.h</label>
+        <link refid="d6/d81/MutLogicWnd_8h"/>
+        <childnode refid="20260" relation="include">
+        </childnode>
+        <childnode refid="20267" relation="include">
+        </childnode>
+        <childnode refid="20265" relation="include">
+        </childnode>
+        <childnode refid="20268" relation="include">
+        </childnode>
+      </node>
+      <node id="20278">
+        <label>src/wxGUI/MutDocument.cpp</label>
+        <link refid="d6/d3b/MutDocument_8cpp"/>
+      </node>
+      <node id="20271">
+        <label>src/wxGUI/MutRouteWnd.h</label>
+        <link refid="d3/dd7/MutRouteWnd_8h"/>
+        <childnode refid="20265" relation="include">
+        </childnode>
+        <childnode refid="20272" relation="include">
+        </childnode>
+        <childnode refid="20268" relation="include">
+        </childnode>
+        <childnode refid="20261" relation="include">
+        </childnode>
+        <childnode refid="20262" relation="include">
+        </childnode>
+        <childnode refid="20285" relation="include">
+        </childnode>
+        <childnode refid="20263" relation="include">
+        </childnode>
+        <childnode refid="20264" relation="include">
+        </childnode>
+        <childnode refid="20286" relation="include">
+        </childnode>
+        <childnode refid="20287" relation="include">
+        </childnode>
+        <childnode refid="20288" relation="include">
+        </childnode>
+        <childnode refid="20289" relation="include">
+        </childnode>
+      </node>
+      <node id="20257">
+        <label>src/wxGUI/MutEditFile.h</label>
+        <link refid="MutEditFile.h"/>
+        <childnode refid="20258" relation="include">
+        </childnode>
+        <childnode refid="20267" relation="include">
+        </childnode>
+        <childnode refid="20279" relation="include">
+        </childnode>
+        <childnode refid="20272" relation="include">
+        </childnode>
+      </node>
+      <node id="20277">
+        <label>src/wxGUI/MutConfDlg.h</label>
+        <link refid="d9/d8f/MutConfDlg_8h"/>
+        <childnode refid="20273" relation="include">
+        </childnode>
+      </node>
+      <node id="20284">
+        <label>src/wxGUI/Routing/DeviceShape.cpp</label>
+        <link refid="d9/d94/DeviceShape_8cpp"/>
+      </node>
+      <node id="20280">
+        <label>src/wxGUI/MutView.cpp</label>
+        <link refid="d8/d33/MutView_8cpp"/>
+      </node>
+      <node id="20309">
+        <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.h</label>
+        <link refid="d4/de8/OutputMidiFileDeviceShape_8h"/>
+        <childnode refid="20264" relation="include">
+        </childnode>
+        <childnode refid="20293" relation="include">
+        </childnode>
+      </node>
+      <node id="20302">
+        <label>src/wxGUI/Routing/InputMidiDeviceShape.cpp</label>
+        <link refid="d1/d14/InputMidiDeviceShape_8cpp"/>
+      </node>
+      <node id="20262">
+        <label>src/wxGUI/Routing/BoxChannelShape.cpp</label>
+        <link refid="d9/d24/BoxChannelShape_8cpp"/>
+      </node>
+      <node id="20265">
+        <label>src/wxGUI/MutFrame.cpp</label>
+        <link refid="dc/df3/MutFrame_8cpp"/>
+      </node>
+      <node id="20304">
+        <label>src/wxGUI/Routing/InputMidiFileDeviceShape.cpp</label>
+        <link refid="d3/de3/InputMidiFileDeviceShape_8cpp"/>
+      </node>
+      <node id="20281">
+        <label>src/wxGUI/Routing/RouteIcons.cpp</label>
+        <link refid="d1/d28/RouteIcons_8cpp"/>
+      </node>
+      <node id="20301">
+        <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.cpp</label>
+        <link refid="d8/da8/InputGuidoFileDeviceShape_8cpp"/>
+      </node>
+      <node id="20300">
+        <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.h</label>
+        <link refid="d9/d0d/InputGuidoFileDeviceShape_8h"/>
+        <childnode refid="20264" relation="include">
+        </childnode>
+        <childnode refid="20301" relation="include">
+        </childnode>
+      </node>
+      <node id="20282">
+        <label>src/wxGUI/MutView.h</label>
+        <link refid="d0/d9e/MutView_8h"/>
+        <childnode refid="20273" relation="include">
+        </childnode>
+        <childnode refid="20283" relation="include">
+        </childnode>
+        <childnode refid="20278" relation="include">
+        </childnode>
+        <childnode refid="20279" relation="include">
+        </childnode>
+        <childnode refid="20265" relation="include">
+        </childnode>
+        <childnode refid="20280" relation="include">
+        </childnode>
+      </node>
+      <node id="20276">
+        <label>src/wxGUI/MutBitmaps.cpp</label>
+        <link refid="d7/db6/MutBitmaps_8cpp"/>
+      </node>
+      <node id="20264">
+        <label>src/wxGUI/Routing/GUIRoute.cpp</label>
+        <link refid="d4/dee/GUIRoute_8cpp"/>
+      </node>
+      <node id="20258">
+        <label>src/wxGUI/GUIBoxData.h</label>
+        <link refid="d5/df7/GUIBoxData_8h"/>
+        <childnode refid="20259" relation="include">
+        </childnode>
+        <childnode refid="20260" relation="include">
+        </childnode>
+        <childnode refid="20265" relation="include">
+        </childnode>
+        <childnode refid="20266" relation="include">
+        </childnode>
+        <childnode refid="20269" relation="include">
+        </childnode>
+        <childnode refid="20263" relation="include">
+        </childnode>
+        <childnode refid="20270" relation="include">
+        </childnode>
+        <childnode refid="20295" relation="include">
+        </childnode>
+      </node>
+      <node id="20289">
+        <label>src/wxGUI/Routing/tests/GUIRouteTest.cpp</label>
+        <link refid="d9/d20/GUIRouteTest_8cpp"/>
+      </node>
+      <node id="20303">
+        <label>src/wxGUI/Routing/InputMidiFileDeviceShape.h</label>
+        <link refid="d1/da8/InputMidiFileDeviceShape_8h"/>
+        <childnode refid="20264" relation="include">
+        </childnode>
+        <childnode refid="20304" relation="include">
+        </childnode>
+      </node>
+      <node id="20290">
+        <label>src/wxGUI/Routing/GUIRoute-inlines.h</label>
+        <link refid="d2/d73/GUIRoute-inlines_8h"/>
+        <childnode refid="20261" relation="include">
+        </childnode>
+        <childnode refid="20262" relation="include">
+        </childnode>
+        <childnode refid="20285" relation="include">
+        </childnode>
+        <childnode refid="20263" relation="include">
+        </childnode>
+        <childnode refid="20284" relation="include">
+        </childnode>
+        <childnode refid="20264" relation="include">
+        </childnode>
+        <childnode refid="20286" relation="include">
+        </childnode>
+        <childnode refid="20287" relation="include">
+        </childnode>
+        <childnode refid="20288" relation="include">
+        </childnode>
+        <childnode refid="20291" relation="include">
+        </childnode>
+        <childnode refid="20292" relation="include">
+        </childnode>
+        <childnode refid="20293" relation="include">
+        </childnode>
+      </node>
+      <node id="20272">
+        <label>src/wxGUI/MutFrame.h</label>
+        <link refid="dd/db5/MutFrame_8h"/>
+        <childnode refid="20260" relation="include">
+        </childnode>
+        <childnode refid="20273" relation="include">
+        </childnode>
+        <childnode refid="20274" relation="include">
+        </childnode>
+        <childnode refid="20267" relation="include">
+        </childnode>
+        <childnode refid="20277" relation="include">
+        </childnode>
+        <childnode refid="20279" relation="include">
+        </childnode>
+        <childnode refid="20265" relation="include">
+        </childnode>
+        <childnode refid="20268" relation="include">
+        </childnode>
+        <childnode refid="20261" relation="include">
+        </childnode>
+        <childnode refid="20269" relation="include">
+        </childnode>
+        <childnode refid="20280" relation="include">
+        </childnode>
+        <childnode refid="20282" relation="include">
+        </childnode>
+        <childnode refid="20284" relation="include">
+        </childnode>
+        <childnode refid="20264" relation="include">
+        </childnode>
+      </node>
+      <node id="20275">
+        <label>src/wxGUI/generic/mutDebug.cpp</label>
+        <link refid="d4/dc0/mutDebug_8cpp"/>
+      </node>
+      <node id="20259">
+        <label>src/wxGUI/GUIBoxData-inlines.h</label>
+        <link refid="d5/d12/GUIBoxData-inlines_8h"/>
+        <childnode refid="20260" relation="include">
+        </childnode>
+        <childnode refid="20261" relation="include">
+        </childnode>
+        <childnode refid="20262" relation="include">
+        </childnode>
+        <childnode refid="20263" relation="include">
+        </childnode>
+        <childnode refid="20264" relation="include">
+        </childnode>
+      </node>
+      <node id="20293">
+        <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp</label>
+        <link refid="d5/d00/OutputMidiFileDeviceShape_8cpp"/>
+      </node>
+      <node id="20299">
+        <label>src/wxGUI/Routing/InputMidiDeviceShape.h</label>
+        <link refid="d3/d5e/InputMidiDeviceShape_8h"/>
+        <childnode refid="20264" relation="include">
+        </childnode>
+        <childnode refid="20300" relation="include">
+        </childnode>
+        <childnode refid="20302" relation="include">
+        </childnode>
+      </node>
+      <node id="20260">
+        <label>src/wxGUI/GUIBoxData.cpp</label>
+        <link refid="d2/dd3/GUIBoxData_8cpp"/>
+      </node>
+      <node id="20270">
+        <label>src/wxGUI/Routing/BoxShape.h</label>
+        <link refid="d9/d49/BoxShape_8h"/>
+        <childnode refid="20259" relation="include">
+        </childnode>
+        <childnode refid="20271" relation="include">
+        </childnode>
+        <childnode refid="20269" relation="include">
+        </childnode>
+        <childnode refid="20262" relation="include">
+        </childnode>
+        <childnode refid="20285" relation="include">
+        </childnode>
+        <childnode refid="20263" relation="include">
+        </childnode>
+        <childnode refid="20290" relation="include">
+        </childnode>
+        <childnode refid="20264" relation="include">
+        </childnode>
+        <childnode refid="20286" relation="include">
+        </childnode>
+        <childnode refid="20294" relation="include">
+        </childnode>
+        <childnode refid="20287" relation="include">
+        </childnode>
+        <childnode refid="20281" relation="include">
+        </childnode>
+      </node>
+      <node id="20296">
+        <label>src/wxGUI/Routing/BoxChannelShape.h</label>
+        <link refid="d6/d68/BoxChannelShape_8h"/>
+        <childnode refid="20262" relation="include">
+        </childnode>
+        <childnode refid="20263" relation="include">
+        </childnode>
+        <childnode refid="20270" relation="include">
+        </childnode>
+        <childnode refid="20284" relation="include">
+        </childnode>
+        <childnode refid="20264" relation="include">
+        </childnode>
+        <childnode refid="20286" relation="include">
+        </childnode>
+        <childnode refid="20287" relation="include">
+        </childnode>
+      </node>
+      <node id="20263">
+        <label>src/wxGUI/Routing/BoxShape.cpp</label>
+        <link refid="d8/db4/BoxShape_8cpp"/>
+      </node>
+      <node id="20287">
+        <label>src/wxGUI/Routing/NewInputDeviceShape.cpp</label>
+        <link refid="df/d62/NewInputDeviceShape_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="de/dfe/classmutaborGUI_1_1MutEditFile" prot="public">mutaborGUI::MutEditFile</innerclass>
+    <innerclass refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags" prot="public">mutaborGUI::MutEditFile::FindFlags</innerclass>
+    <innerclass refid="db/d86/classmutaborGUI_1_1MutEditProperties" prot="public">mutaborGUI::MutEditProperties</innerclass>
+    <innernamespace refid="db/d94/namespacemutaborGUI">mutaborGUI</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="df/dd1/group__GUI_1ga5bc98d729791a45573a9279b7c8b5e07" prot="public" static="no">
+        <name>MUWX_MUTEDITFILE_H</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutEditFile.h" line="31" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutEditFile.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="df/dd1/group__GUI_1ga9ebf3a53664535b1d9afa239313b3386" prot="public" static="no">
+        <name>MUWX_MUTEDITFILE_H_PRECOMPILED</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutEditFile.h" line="43" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutEditFile.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="28"><highlight class="preprocessor">#if<sp/>(!defined(MUWX_MUTEDITFILE_H)<sp/>&amp;&amp;<sp/>!defined(PRECOMPILE))<sp/>\</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>(!defined(MUWX_MUTEDITFILE_H_PRECOMPILED))</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifndef<sp/>PRECOMPILE</highlight></codeline>
+<codeline lineno="31" refid="df/dd1/group__GUI_1ga5bc98d729791a45573a9279b7c8b5e07" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MUWX_MUTEDITFILE_H</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="33"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">src/kernel/Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/de5/stclanguage_8h" kindref="compound">src/wxGUI/stclanguage.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/dcd/muconvauto_8h" kindref="compound">src/wxGUI/generic/muconvauto.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MUWX_MUTEDITFILE_H_PRECOMPILED</highlight></codeline>
+<codeline lineno="43" refid="df/dd1/group__GUI_1ga9ebf3a53664535b1d9afa239313b3386" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MUWX_MUTEDITFILE_H_PRECOMPILED</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/textctrl.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/docview.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/stc/stc.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/fontdlg.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>wxUSE_FINDREPLDLG</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#include<sp/>&quot;wx/fdrepdlg.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>wxUSE_FINDREPLDLG</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutaborGUI<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">MutView;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">MutEditPrint;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">MutEditProperties;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="de/dfe/classmutaborGUI_1_1MutEditFile" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile" kindref="compound">MutEditFile</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>wxStyledTextCtrl</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="64" refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a045bdedbdbdda4794be279dd5472407f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="db/d86/classmutaborGUI_1_1MutEditProperties" kindref="compound">MutEditProperties</ref>;</highlight></codeline>
+<codeline lineno="65" refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a6820ea21db419f98043b8fe6526f75ff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a6820ea21db419f98043b8fe6526f75ff" kindref="member">MutEditPrint</ref>;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags" kindref="compound">FindFlags</ref><sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="70" refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1a7c50e2449470d02d8f74b8dea8aadf32" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1a7c50e2449470d02d8f74b8dea8aadf32" kindref="member">down</ref>:1;</highlight></codeline>
+<codeline lineno="71" refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1a7ffcfb7e0b43689331346303683d222e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1a7ffcfb7e0b43689331346303683d222e" kindref="member">askCircular</ref>:1;</highlight></codeline>
+<codeline lineno="72" refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1abc896aa7ffd8c1fc326636eea2571180" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1abc896aa7ffd8c1fc326636eea2571180" kindref="member">showNotFound</ref>:1;</highlight></codeline>
+<codeline lineno="73" refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1ac1c48629b092eba1bfca64c600466c58" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1ac1c48629b092eba1bfca64c600466c58" kindref="member">useCaret</ref>:1;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1a1d79fdeff57f31b5a5ba428eb8365b53" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1a1d79fdeff57f31b5a5ba428eb8365b53" kindref="member">FindFlags</ref>()<sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1a7c50e2449470d02d8f74b8dea8aadf32" kindref="member">down</ref><sp/>=<sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1a7ffcfb7e0b43689331346303683d222e" kindref="member">askCircular</ref><sp/>=<sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1abc896aa7ffd8c1fc326636eea2571180" kindref="member">showNotFound</ref><sp/>=<sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1ac1c48629b092eba1bfca64c600466c58" kindref="member">useCaret</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="80" refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1a28bf6c4f6cbb0c55068c1bd4486916b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags" kindref="compound">FindFlags</ref><sp/>&amp;<sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1a28bf6c4f6cbb0c55068c1bd4486916b5" kindref="member">Down</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>d<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1a7c50e2449470d02d8f74b8dea8aadf32" kindref="member">down</ref><sp/>=<sp/>d;<sp/><sp/></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85" refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1ac6786c8dabd9b8bbbd10d013a6aebb20" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags" kindref="compound">FindFlags</ref><sp/>&amp;<sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1ac6786c8dabd9b8bbbd10d013a6aebb20" kindref="member">Up</ref><sp/>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>up<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1a7c50e2449470d02d8f74b8dea8aadf32" kindref="member">down</ref><sp/>=<sp/>!up;<sp/></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90" refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1a236e1904923c62c625653c2141e9e1c0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags" kindref="compound">FindFlags</ref><sp/>&amp;<sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1a236e1904923c62c625653c2141e9e1c0" kindref="member">AskCircular</ref><sp/>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>a<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1a7ffcfb7e0b43689331346303683d222e" kindref="member">askCircular</ref><sp/>=<sp/>a;<sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95" refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1a2aedd19460d613618d5ffaa50d68e666" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags" kindref="compound">FindFlags</ref><sp/>&amp;<sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1a2aedd19460d613618d5ffaa50d68e666" kindref="member">ShowNotFound</ref><sp/>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>s<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1abc896aa7ffd8c1fc326636eea2571180" kindref="member">showNotFound</ref><sp/>=<sp/>s;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100" refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1adb4a86e9d532bc9a899291011157370f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags" kindref="compound">FindFlags</ref><sp/>&amp;<sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1adb4a86e9d532bc9a899291011157370f" kindref="member">UseCaret</ref><sp/>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>s<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/db4/structmutaborGUI_1_1MutEditFile_1_1FindFlags_1ac1c48629b092eba1bfca64c600466c58" kindref="member">useCaret</ref><sp/>=<sp/>s;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a4a837e086a266403ae250792eaf9f76f" kindref="member">MutEditFile</ref>(wxWindow*<sp/>parent,<sp/></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxPoint&amp;<sp/>pos<sp/>=<sp/>wxDefaultPosition,<sp/></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxSize&amp;<sp/>size<sp/>=<sp/>wxDefaultSize,<sp/></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>value<sp/>=<sp/>wxEmptyString,<sp/></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>name<sp/>=<sp/>wxTextCtrlNameStr);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a4a837e086a266403ae250792eaf9f76f" kindref="member">MutEditFile</ref>(<ref refid="d8/dd6/classmutaborGUI_1_1MutView" kindref="compound">MutView</ref><sp/>*<sp/>v,</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxWindow*<sp/>parent,<sp/></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxPoint&amp;<sp/>pos<sp/>=<sp/>wxDefaultPosition,<sp/></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxSize&amp;<sp/>size<sp/>=<sp/>wxDefaultSize,<sp/></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>value<sp/>=<sp/>wxEmptyString,<sp/></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>name<sp/>=<sp/>wxTextCtrlNameStr);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gae695a8906050edfa64dddeef8c206219" kindref="member">~MutEditFile</ref>();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="de/dfe/classmutaborGUI_1_1MutEditFile_1ab2e836884c6aca9a1da3c4fb7c14218f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1ab2e836884c6aca9a1da3c4fb7c14218f" kindref="member">SetView</ref>(<ref refid="d8/dd6/classmutaborGUI_1_1MutView" kindref="compound">MutView</ref><sp/>*<sp/>v)<sp/>{<sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a0badb9d94eea0a02a0d4562a1b41ba2a" kindref="member">view</ref><sp/>=<sp/>v;<sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga9d9b6afb78d26764fb9c2e024e062974" kindref="member">OnSize</ref>(<sp/>wxSizeEvent<sp/>&amp;event<sp/>);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>edit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga064b6cdf026059cef5b20868a7834b27" kindref="member">OnEditRedo</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gad9a38fce93a858952aaf98a0d6841dbb" kindref="member">OnEditUndo</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gae6db7329b5c48bb31aa739453ae98c96" kindref="member">OnEditClear</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga989978114021e0b70ed87e434d3c1080" kindref="member">OnEditCut</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga7884370b5fcd6fb43bf6ac7baadab5d0" kindref="member">OnEditCopy</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga46c104fd319fa36373e136ae5327416f" kindref="member">OnEditPaste</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga6b76be857696a9e067d4155d94e77470" kindref="member">OnEditRedoUI</ref><sp/>(wxUpdateUIEvent&amp;<sp/>event);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gae95925ffc9b0e8fa10f86a184fed1b3b" kindref="member">OnEditUndoUI</ref><sp/>(wxUpdateUIEvent&amp;<sp/>event);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>find</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga97d9e545af31274f357dad051b3c9737" kindref="member">OnFind</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gae1a2329ac30a8271ebd20feb6dc78763" kindref="member">OnFindNext</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga16f77278113ab7dc6cb0118a1b087824" kindref="member">OnFindDialog</ref><sp/>(wxFindDialogEvent&amp;<sp/>event);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga1461d752177136a6afde4b08fbebfc16" kindref="member">DoFind</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString<sp/>&amp;<sp/>pattern,<sp/>FindFlags<sp/>flags);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gaddc4bd0e1e90ff0350ffa0978a2c96bc" kindref="member">OnReplace</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga70fa9d3ed4af035e558f0f1ec12d65fd" kindref="member">OnReplaceNext</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gaec9f52bf08e1b74c6ef01f7c87d81f89" kindref="member">OnBraceMatch</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga77797ea209aa8ff7606e1f31bbb0e387" kindref="member">OnGoto</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga0fc5538a3101832d184e48ac5b5b688b" kindref="member">OnEditIndentInc</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gad1d966caf256d085095e45e0cdde9f60" kindref="member">OnEditIndentRed</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga2d4c5a55ddd9c6150a0edb1dd0855468" kindref="member">OnEditSelectAll</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga84ab07118e08c16f2bd59817b2bf445f" kindref="member">OnEditSelectLine</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga47cc01b023113c89070c75139a80f6ca" kindref="member">OnHilightLang</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gaca68b73037a8dd66ed1d86711568fe7c" kindref="member">OnDisplayEOL</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga2095ea170cbefb1d88a53afc7c3c70aa" kindref="member">OnIndentGuide</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga8bc8c0664ab22cf07abff55448a50fb7" kindref="member">OnLineNumber</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gad59ad3c6b8da66928aebbd27625d2ca0" kindref="member">OnLongLineOn</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga5388e4a2b9fe1db1682e9ac5da4ea3cb" kindref="member">OnWhiteSpace</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gaf0309a3c72070665d89b780d445c8cb5" kindref="member">OnFoldToggle</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gaee8ae10a2b75fe44e9e21821010f2df6" kindref="member">OnSetOverType</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga6d304678aad43abbfea17c42f4510430" kindref="member">OnSetReadOnly</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga58934e0e95f75f15da7c11a26e00271f" kindref="member">OnWrapmodeOn</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga68038a22676ed140d789f0d31d57fb27" kindref="member">OnUseCharset</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gacbe70d597f95b90e2c3f018e58828a00" kindref="member">OnChangeCase</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga3a1edd876fae4bd3320c6d8d6a5aec79" kindref="member">OnConvertEOL</ref><sp/>(wxCommandEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>stc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gaff685d4c32c86443e88a5612f2eb2d37" kindref="member">OnMarginClick</ref><sp/>(wxStyledTextEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga9fabcd1412ba7792daaa89ef40ea7d86" kindref="member">OnCharAdded</ref><sp/><sp/>(wxStyledTextEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga2e1e2c5dea8e42fcc858b701007349ed" kindref="member">OnStyleNeeded</ref><sp/><sp/>(wxStyledTextEvent<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gab9c852bf92a349af4702bdc8cdeb7ea9" kindref="member">OnUpdateStcUI</ref>(wxStyledTextEvent<sp/>&amp;<sp/>event);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gab1f0200519e2d57cd4ccaa4865c7b871" kindref="member">OnProperties</ref><sp/>(wxCommandEvent<sp/>&amp;WXUNUSED(event));</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/><ref refid="df/dd1/group__GUI_1ga5424cb1b183868d55e3049d0c4353c41" kindref="member">DeterminePrefs</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString<sp/>&amp;filename);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" kindref="member">InitializePrefs</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString<sp/>&amp;filename);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a75763114729124dca58636161f7fb5b4" kindref="member">UserSettings</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString<sp/>&amp;filename);</highlight></codeline>
+<codeline lineno="176" refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a4ff6df1ccc001bbf87412bfbe0044d7b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d4/d4a/structmutaborGUI_1_1LanguageInfo" kindref="compound">LanguageInfo</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">*<sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a4ff6df1ccc001bbf87412bfbe0044d7b" kindref="member">GetLanguageInfo</ref><sp/>()<sp/>{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a9cfba03ead7a9e9dc85008c960dc11a3" kindref="member">m_language</ref>;};</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga8cf6088f1fd98447ede66e3113898189" kindref="member">LoadFile</ref><sp/>();</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga8cf6088f1fd98447ede66e3113898189" kindref="member">LoadFile</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString<sp/>&amp;filename);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gad9a57faab7467bf135565362072f911d" kindref="member">SaveFile</ref><sp/>();</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gad9a57faab7467bf135565362072f911d" kindref="member">SaveFile</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString<sp/>&amp;filename);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga79bd1503d406544675a55aa6aa097afd" kindref="member">IsModified</ref><sp/>();</highlight></codeline>
+<codeline lineno="184" refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a1c154d22699d818442b10e7857b7e29c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a1c154d22699d818442b10e7857b7e29c" kindref="member">GetFilename</ref><sp/>()<sp/>{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a3342f39a48c0b60d4163172e870bac1b" kindref="member">m_filename</ref>;};</highlight></codeline>
+<codeline lineno="185" refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a31de6d20a9290406dcfda2e8234b482a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a31de6d20a9290406dcfda2e8234b482a" kindref="member">SetFilename</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString<sp/>&amp;filename)<sp/>{<ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a3342f39a48c0b60d4163172e870bac1b" kindref="member">m_filename</ref><sp/>=<sp/>filename;};</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="preprocessor">#if<sp/>!wxCHECK_VERSION(2,9,0)</highlight></codeline>
+<codeline lineno="189" refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a6b49f51c9015102a6ca58d40e8b7a245" refkind="member"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>wxString<sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a6b49f51c9015102a6ca58d40e8b7a245" kindref="member">GetValue</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>GetText();<sp/>}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="191"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gac75a3b4b31efb3651b5562f0d5e448c1" kindref="member">Init</ref>();</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga6cd58b50a5711a6777317d34eb331e50" kindref="member">SaveSearchData</ref>();</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>SetupWindow();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gad8d275b990dbe699c497559a918b5a13" kindref="member">Compile</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>activate);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gaa607052d5a13ae7f51384e9b251d6a76" kindref="member">DoLoadFile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString<sp/>&amp;filename,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>WXUNUSED(fileType));</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gade223aa7d8da62c8b90f49c0f48312e8" kindref="member">DoSaveFile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>filename,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>WXUNUSED(fileType));</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga5624f57bc82be199ee05b4534009a7f2" kindref="member">CmFileSave</ref>(wxCommandEvent&amp;<sp/>WXUNUSED(event));</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga32ac26aebb3a2368c60285b39b30422b" kindref="member">CmFileSaveAs</ref>(wxCommandEvent&amp;<sp/>event);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga310ed105c078ad274d850e51cb1081be" kindref="member">CmCompile</ref>(wxCommandEvent&amp;<sp/>WXUNUSED(event));</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gaeab4883a0ccfd8f9fcdbed7a534a6c94" kindref="member">CmCompAct</ref>(wxCommandEvent&amp;<sp/>WXUNUSED(event));</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gac78b59c9d1da6d65097fda28cc100fa3" kindref="member">CmGetLine</ref>(wxCommandEvent&amp;<sp/>WXUNUSED(event));</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga15b38ef1636e873a5968c2255cc2fbd1" kindref="member">CmHelpContext</ref>(wxCommandEvent&amp;<sp/>WXUNUSED(event));</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga458cef3fdfa5c50ae2b634065180e3bf" kindref="member">GoToErrorLine</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Line);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight></codeline>
+<codeline lineno="219"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#if<sp/>defined(__WXMSW__)<sp/>&amp;&amp;<sp/>!(wxUSE_UNICODE<sp/>||<sp/>wxUSE_WCHAR_T)</highlight></codeline>
+<codeline lineno="220"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a6b49f51c9015102a6ca58d40e8b7a245" kindref="member">GetValue</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/>GetRange(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>from,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>to)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>wxUSE_RICHEDIT<sp/>&amp;&amp;<sp/>(!(wxUSE_UNICODE<sp/>||<sp/>wxUSE_WCHAR_T)<sp/>||<sp/>wxUSE_UNICODE_MSLU)</highlight></codeline>
+<codeline lineno="225"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>replace<sp/>the<sp/>selection<sp/>or<sp/>the<sp/>entire<sp/>control<sp/>contents<sp/>with<sp/>the<sp/>given<sp/>text</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>in<sp/>the<sp/>specified<sp/>encoding</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>StreamIn(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>value,<sp/>wxFontEncoding<sp/>encoding,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>selOnly);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>the<sp/>contents<sp/>of<sp/>the<sp/>control<sp/>out<sp/>as<sp/>text<sp/>in<sp/>the<sp/>given<sp/>encoding</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/>StreamOut(wxFontEncoding<sp/>encoding,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>selOnly<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>wxUSE_RICHEDIT</highlight></codeline>
+<codeline lineno="233"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="234"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="235"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238" refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a3342f39a48c0b60d4163172e870bac1b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a3342f39a48c0b60d4163172e870bac1b" kindref="member">m_filename</ref>;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>lanugage<sp/>properties</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241" refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a9cfba03ead7a9e9dc85008c960dc11a3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d4/d4a/structmutaborGUI_1_1LanguageInfo" kindref="compound">LanguageInfo</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">*<sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a9cfba03ead7a9e9dc85008c960dc11a3" kindref="member">m_language</ref>;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>margin<sp/>variables</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244" refid="de/dfe/classmutaborGUI_1_1MutEditFile_1af0adb13afac4c426061cdbd6811e0610" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1af0adb13afac4c426061cdbd6811e0610" kindref="member">m_LineNrID</ref>;</highlight></codeline>
+<codeline lineno="245" refid="de/dfe/classmutaborGUI_1_1MutEditFile_1afa41d02497de4ef0d67a92d39f0a425d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1afa41d02497de4ef0d67a92d39f0a425d" kindref="member">m_LineNrMargin</ref>;</highlight></codeline>
+<codeline lineno="246" refid="de/dfe/classmutaborGUI_1_1MutEditFile_1aa7e79f66864e950c67fbf2d0ddb6a3ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1aa7e79f66864e950c67fbf2d0ddb6a3ed" kindref="member">m_FoldingID</ref>;</highlight></codeline>
+<codeline lineno="247" refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a73fc4cf98dcc47a9eeae611a8dfbd3bb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a73fc4cf98dcc47a9eeae611a8dfbd3bb" kindref="member">m_FoldingMargin</ref>;</highlight></codeline>
+<codeline lineno="248" refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a4c581ab2a77fe54c4d099d59aa41df81" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a4c581ab2a77fe54c4d099d59aa41df81" kindref="member">m_DividerID</ref>;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>wxUSE_FINDREPLDLG</highlight></codeline>
+<codeline lineno="251"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxFindReplaceData<sp/>m_findData;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxFindReplaceDialog<sp/>*m_dlgFind,</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*m_dlgReplace;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>wxUSE_FINDREPLDLG</highlight></codeline>
+<codeline lineno="256"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257" refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a0badb9d94eea0a02a0d4562a1b41ba2a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/dd6/classmutaborGUI_1_1MutView" kindref="compound">MutView</ref><sp/>*<sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1a0badb9d94eea0a02a0d4562a1b41ba2a" kindref="member">view</ref>;</highlight></codeline>
+<codeline lineno="258" refid="de/dfe/classmutaborGUI_1_1MutEditFile_1ad015b7ecc68f45fdeaea76ec2d59fedf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga2f9056ab092c15f0a40251ebd9ea1f67" kindref="member">muConvAuto</ref><sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1ad015b7ecc68f45fdeaea76ec2d59fedf" kindref="member">autoConverter</ref>;</highlight></codeline>
+<codeline lineno="259" refid="de/dfe/classmutaborGUI_1_1MutEditFile_1aabd24c8d7475640b2a64fe2ac129392e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer" kindref="compound">MutSTCLexer</ref><sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile_1aabd24c8d7475640b2a64fe2ac129392e" kindref="member">lexer</ref>;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DECLARE_EVENT_TABLE()</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//---------------------------------------------------------------------</highlight></codeline>
+<codeline lineno="267" refid="db/d86/classmutaborGUI_1_1MutEditProperties" refkind="compound"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="db/d86/classmutaborGUI_1_1MutEditProperties" kindref="compound">MutEditProperties</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>wxDialog<sp/>{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1gaf1a2ce3ab46ff790ca712c98ac1fa578" kindref="member">MutEditProperties</ref><sp/>(<ref refid="de/dfe/classmutaborGUI_1_1MutEditFile" kindref="compound">MutEditFile</ref><sp/>*edit,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>style<sp/>=<sp/>0);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>wxUSE_PRINTING_ARCHITECTURE</highlight></codeline>
+<codeline lineno="279"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//---------------------------------------------------------------------</highlight></codeline>
+<codeline lineno="282"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">MutEditPrint:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>wxDocPrintout<sp/>{</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MutEditPrint<sp/>(<ref refid="d8/dd6/classmutaborGUI_1_1MutView" kindref="compound">MutView</ref><sp/>*<sp/>view,<sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile" kindref="compound">MutEditFile</ref><sp/>*edit,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString<sp/>&amp;<sp/>title<sp/>=<sp/>_T(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>OnPrintPage<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>page);</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>OnBeginDocument<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>startPage,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>endPage);</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>HasPage<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>page);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>GetPageInfo<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*minPage,<sp/></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*maxPage,<sp/></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*selPageFrom,<sp/></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*selPageTo);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/dfe/classmutaborGUI_1_1MutEditFile" kindref="compound">MutEditFile</ref><sp/>*m_edit;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxRect<sp/>m_pageRect;</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxRect<sp/>m_printRect;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::pair<sp/>&lt;<sp/>int,<sp/>int<sp/>&gt;<sp/>&gt;<sp/>m_ranges;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>PrintScaling<sp/>(wxDC<sp/>*dc);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>wxUSE_PRINTING_ARCHITECTURE#endif<sp/>//<sp/>wxUSE_PRINTING_ARCHITECTURE</highlight></codeline>
+<codeline lineno="312"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>__MUTEDITFILE_H<sp/>precompiled</highlight></codeline>
+<codeline lineno="317"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>__MUTEDITFILE_H_INCLUDED__</highlight></codeline>
+<codeline lineno="318"><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutEditFile.h"/>
+  </compounddef>
+</doxygen>

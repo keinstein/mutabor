@@ -1,0 +1,401 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/kernel/Runtime.cpp Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cbd7f246bdf7dc0a50281a272327e6ed.html">kernel</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Runtime.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../db/d80/Runtime_8cpp.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d73/Defs_8h.html">src/kernel/Defs.h</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dd/d40/Global_8h.html">src/kernel/Global.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d6/d0c/Parser_8h.html">src/kernel/Parser.h</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d32/Hilfs_8h.html">src/kernel/Hilfs.h</a>&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/d47/GrafKern_8h.html">src/kernel/GrafKern.h</a>&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d5/d84/Runtime_8h.html">src/kernel/Runtime.h</a>&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/d11/Execute_8h.html">src/kernel/Execute.h</a>&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">//#include &quot;Mutabor.rh&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;setjmp.h&gt;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/d05/Device_8h.html">src/kernel/routing/Device.h</a>&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d2c/Route-inlines_8h.html">src/kernel/routing/Route-inlines.h</a>&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../da/d81/DevGIS_8h.html">src/kernel/routing/gmn/DevGIS.h</a>&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/da2/DevMidi_8h.html">src/kernel/routing/midi/DevMidi.h</a>&quot;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../da/d3c/DevMidF_8h.html">src/kernel/routing/midi/DevMidF.h</a>&quot;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &quot;wx/msgdlg.h&quot;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor"></span><span class="keyword">namespace </span>mutabor {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">namespace </span>hidden {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../dc/d7e/group__runtime.html#ga1faa8705b3fd5029a295edfdcdf1a67f">   55</a></span>&#160;jmp_buf <a class="code" href="../../dc/d7e/group__runtime.html#ga1faa8705b3fd5029a295edfdcdf1a67f">weiter_gehts_nach_compilerfehler</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor"></span><span class="comment">// NoRealTime - Aktionen</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">void</span> NRT_Play() {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#pragma warning &quot;NRT_Play() must be revised&quot;</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="comment">// start all devices</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d5/dee/group__route.html#ga02733c08ce3d21e93299856a09a43d77">mutabor::InputDeviceList</a> &amp; list = </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <a class="code" href="../../d5/dee/group__route.html#gace9fecda6356ed76c33f9fd7858275b7">mutabor::InputDeviceClass::GetDeviceList</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">for</span> (mutabor::InputDeviceList::const_iterator In = list.begin();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;             In != list.end(); In++)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                boost::const_pointer_cast&lt;InputDeviceClass&gt;(*In)-&gt;Play();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="comment">// time slices</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">bool</span> Working = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">while</span> ( Working ) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                Working = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="keywordflow">for</span> (mutabor::InputDeviceList::const_iterator In =  list.begin();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                     In != list.end(); In++)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        <span class="keywordflow">if</span> ( (*In)-&gt;GetMode() == 1 </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                             &amp;&amp; (*In)-&gt;GetType() == <a class="code" href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011">DTMidiFile</a> ) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                <a class="code" href="../../df/dd1/group__GUI.html#ga06c750cbc293593a85009553cf6cfcc5">STUB</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">//                              boost::const_pointer_cast&lt;InputDeviceClass&gt;(*In)</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">//                                      -&gt;IncDelta();</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                Working = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <a class="code" href="../../d6/daa/namespacemutabor.html#ab2acff956460e39a59c206fc02dc4c99">CurrentTime</a>.Notify();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">for</span> (mutabor::InputDeviceList::const_iterator In =  list.begin();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;             In != list.end(); In++)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                boost::const_pointer_cast&lt;InputDeviceClass&gt;(*In)-&gt;<a class="code" href="../../d7/dda/classmutabor_1_1CurrentTimer.html#ac786e3b69adfb260915c39886e4673de">Stop</a>();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">//      InDevChanged = 1;</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">void</span>  InDeviceAction(<span class="keywordtype">int</span> inDevNr, <span class="keyword">enum</span> <a class="code" href="../../d5/dee/group__route.html#gaa3d7d1e712c727d12c3b60c8dc04b484">MutaborModeType</a> action) {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">//  return; entkoppeln (zum debuggen)</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">if</span> ( !RealTime ) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                NRT_Play();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d5/dee/group__route.html#ga02733c08ce3d21e93299856a09a43d77">InputDeviceList</a> &amp; list = </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <a class="code" href="../../d5/dee/group__route.html#gace9fecda6356ed76c33f9fd7858275b7">InputDeviceClass::GetDeviceList</a>();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        InputDeviceList::const_iterator In = </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                list.begin();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">while</span> ( In != list.end() &amp;&amp; inDevNr-- ) In++;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">if</span> ( In == list.end() </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;             || (*In)-&gt;GetMode() == <a class="code" href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8">DeviceCompileError</a> ) </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">switch</span> ( action ) {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649">DeviceStop</a>:</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                boost::const_pointer_cast&lt;InputDeviceClass&gt;(*In)-&gt;Stop();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8">DevicePlay</a>:</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                boost::const_pointer_cast&lt;InputDeviceClass&gt;(*In)-&gt;Play();</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484a86530be4e7e984649e049f17857b8e5e">DevicePause</a>:</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                boost::const_pointer_cast&lt;InputDeviceClass&gt;(*In)-&gt;Pause();</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484a4fd9ce6cf94e3605cc2122e7aecd4dea">DeviceUnregistered</a>:</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                std::cerr &lt;&lt; <span class="stringliteral">&quot;Device is unregistered. Aborting.&quot;</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                abort();</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8">DeviceCompileError</a>:</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                std::cerr &lt;&lt; <span class="stringliteral">&quot;Unhandled compile error. Aborting.&quot;</span>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                abort();</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484a04f0b919edf40d45442ee6153b4e512e">DeviceTimingError</a>:</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                std::cerr &lt;&lt; <span class="stringliteral">&quot;Unhandled timing error. Aborting.&quot;</span>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                abort();</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keywordtype">bool</span>  CheckNeedsRealTime() {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d5/dee/group__route.html#ga0d3410de3b825f475daa3575bb3816a6">NeedsRealTime</a>();</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="../../dc/d7e/group__runtime.html#ga3d20277bede54ba5cb6ef270236a2361">  149</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../d8/d8e/structkeyboard__ereignis.html">keyboard_ereignis</a> *<a class="code" href="../../dc/d7e/group__runtime.html#ga3d20277bede54ba5cb6ef270236a2361">last</a>;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">#if 0 </span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#warning Use dynamic string management for GetMutTag</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="preprocessor"></span><span class="keywordtype">char</span>  GetMutTag(<span class="keywordtype">char</span> &amp;isLogic, </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                              <span class="keywordtype">char</span> **text, </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                              <span class="keywordtype">char</span> *einsttext, </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                              <span class="keywordtype">char</span> &amp;key, </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                              <a class="code" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> * <a class="code" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>) {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keywordflow">if</span> (!box || box == NULL) {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                <span class="keywordflow">if</span> ( last ) last = last-&gt;<a class="code" href="../../d8/d8e/structkeyboard__ereignis.html#af1b2473a78f0e30c9ef3826b6a5f90ae">next</a>;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        } <span class="keywordflow">else</span>  {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                last = box-&gt;first_keyboard;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keywordflow">if</span> ( !last ) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        key = last-&gt;<a class="code" href="../../d8/d8e/structkeyboard__ereignis.html#acabc546ce1e8683b487ec2592a7685ff">taste</a>;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        *text = mutabor_do_aktion_to_string(last-&gt;<a class="code" href="../../d8/d8e/structkeyboard__ereignis.html#a07f91d2e322e2b40b13f37004918d73b">aktion</a>,<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        isLogic = ( last-&gt;<a class="code" href="../../d8/d8e/structkeyboard__ereignis.html#a1aa8c10e2398f0a5917a9f9fb01f85cb">the_logik_to_expand</a> != NULL );</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">if</span> ( isLogic &amp;&amp; last-&gt;<a class="code" href="../../d8/d8e/structkeyboard__ereignis.html#a1aa8c10e2398f0a5917a9f9fb01f85cb">the_logik_to_expand</a>-&gt;<a class="code" href="../../db/d28/structlogik.html#a1f22a147c3f7718cb46800af526b083b">einstimmungs_name</a> ) {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                strncpy(einsttext, last-&gt;<a class="code" href="../../d8/d8e/structkeyboard__ereignis.html#a1aa8c10e2398f0a5917a9f9fb01f85cb">the_logik_to_expand</a>-&gt;<a class="code" href="../../db/d28/structlogik.html#a1f22a147c3f7718cb46800af526b083b">einstimmungs_name</a>, 199);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                einsttext[199]=0;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                einsttext[0] = 0;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;}</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keywordtype">char</span> IsLogicKey(<a class="code" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> * <a class="code" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, <span class="keywordtype">char</span> key) {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="keyword">struct </span><a class="code" href="../../d8/d8e/structkeyboard__ereignis.html">keyboard_ereignis</a> *last = box-&gt;first_keyboard;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">while</span> ( last ) {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                <span class="keywordflow">if</span> ( key == last-&gt;<a class="code" href="../../d8/d8e/structkeyboard__ereignis.html#acabc546ce1e8683b487ec2592a7685ff">taste</a> )</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                        <span class="keywordflow">return</span> last-&gt;<a class="code" href="../../d8/d8e/structkeyboard__ereignis.html#a1aa8c10e2398f0a5917a9f9fb01f85cb">the_logik_to_expand</a> != NULL;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                last = last-&gt;<a class="code" href="../../d8/d8e/structkeyboard__ereignis.html#af1b2473a78f0e30c9ef3826b6a5f90ae">next</a>;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;}</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor"></span><span class="keywordtype">bool</span> KeyChanged(<a class="code" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> * box) {</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordtype">int</span> flag = box-&gt;keys_changed;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        box-&gt;keys_changed = 0;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keywordflow">return</span> flag;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;}</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">//tone_system last_tonsystem[MAX_BOX]; moved to box</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
+<div class="line"><a name="l00206"></a><span class="lineno"><a class="line" href="../../dc/d7e/group__runtime.html#gabcf963f3b449cab5ee813f93e577f777">  206</a></span>&#160;<span class="keywordtype">bool</span>  <a class="code" href="../../dc/d7e/group__runtime.html#gabcf963f3b449cab5ee813f93e577f777">TSChanged</a>(<a class="code" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> * box) {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keywordtype">int</span> flag = memcmp(&amp;(box-&gt;<a class="code" href="../../d0/d33/structmutabor__box__type.html#a950c0883d38d396f04837b5999d812d7">last_tonesystem</a>),</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                          box-&gt;<a class="code" href="../../d0/d33/structmutabor__box__type.html#a055c695aa5bc8ce01b64e4598ca77e8f">tonesystem</a>,</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                          (2*<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>)) + <span class="keyword">sizeof</span>(<span class="keywordtype">long</span>) +</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                          (box-&gt;<a class="code" href="../../d0/d33/structmutabor__box__type.html#a055c695aa5bc8ce01b64e4598ca77e8f">tonesystem</a>-&gt;<a class="code" href="../../d4/d2a/structTSYS.html#a40b61cf1ffb61fee185a714d0ad3cb5e">breite</a>*</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                           <span class="keyword">sizeof</span>(<span class="keywordtype">long</span>)) );</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        box-&gt;<a class="code" href="../../d0/d33/structmutabor__box__type.html#a950c0883d38d396f04837b5999d812d7">last_tonesystem</a> = *(box-&gt;<a class="code" href="../../d0/d33/structmutabor__box__type.html#a055c695aa5bc8ce01b64e4598ca77e8f">tonesystem</a>);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordflow">return</span> flag;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;}</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="preprocessor"></span><span class="keywordtype">bool</span>  InDevicesChanged() {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">//      char flag = InDevChanged;</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <a class="code" href="../../d5/dee/group__route.html#ga74d244d6867e380692618601581d5e4d">InDevChanged</a> = 0;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keywordflow">return</span> flag;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;}</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00224"></a><span class="lineno"><a class="line" href="../../dc/d7e/group__runtime.html#ga5e01376e7205f06ada8473bceab22bed">  224</a></span>&#160;<span class="keywordtype">void</span>  <a class="code" href="../../dc/d7e/group__runtime.html#ga5e01376e7205f06ada8473bceab22bed">GetInDevicesMode</a>(<span class="keyword">enum</span> <a class="code" href="../../d5/dee/group__route.html#gaa3d7d1e712c727d12c3b60c8dc04b484">MutaborModeType</a> *mode) {</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="keywordtype">int</span> nr = 0;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d5/dee/group__route.html#ga02733c08ce3d21e93299856a09a43d77">InputDeviceList</a> &amp; list = </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                <a class="code" href="../../d5/dee/group__route.html#gace9fecda6356ed76c33f9fd7858275b7">InputDeviceClass::GetDeviceList</a>(); </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <span class="keywordflow">for</span> (InputDeviceList::const_iterator In = list.begin();</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;             In != list.end(); In++)</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                mode[nr] = (*In)-&gt;GetMode();</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;}</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
+<div class="line"><a name="l00235"></a><span class="lineno"><a class="line" href="../../dc/d7e/group__runtime.html#gacd1e984f955655cb7d57b37569685bed">  235</a></span>&#160;<span class="keywordtype">char</span>  <a class="code" href="../../dc/d7e/group__runtime.html#gacd1e984f955655cb7d57b37569685bed">GetChannels</a>(<a class="code" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> * box, <span class="keywordtype">char</span> start, <span class="keywordtype">int</span> &amp;base, <span class="keywordtype">int</span> &amp;from, <span class="keywordtype">int</span> &amp;to, <span class="keywordtype">int</span> &amp;thru) {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keywordflow">if</span> ( start )</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                box-&gt;<a class="code" href="../../d0/d33/structmutabor__box__type.html#adaff5b982df1fe1a858d7e322601a7f7">file</a>-&gt;<a class="code" href="../../d7/d21/structmutabor__logic__parsed.html#a17f55cfb3cf4e4aec46cd9e5b0425040">lauf_instrument</a> = box-&gt;<a class="code" href="../../d0/d33/structmutabor__box__type.html#adaff5b982df1fe1a858d7e322601a7f7">file</a>-&gt;<a class="code" href="../../d7/d21/structmutabor__logic__parsed.html#adb7b6cc1ab5fe4fd2fd24d2f94623ce8">list_of_config_instrumente</a>;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( box-&gt;<a class="code" href="../../d0/d33/structmutabor__box__type.html#adaff5b982df1fe1a858d7e322601a7f7">file</a>-&gt;<a class="code" href="../../d7/d21/structmutabor__logic__parsed.html#a17f55cfb3cf4e4aec46cd9e5b0425040">lauf_instrument</a> )</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                box-&gt;<a class="code" href="../../d0/d33/structmutabor__box__type.html#adaff5b982df1fe1a858d7e322601a7f7">file</a>-&gt;<a class="code" href="../../d7/d21/structmutabor__logic__parsed.html#a17f55cfb3cf4e4aec46cd9e5b0425040">lauf_instrument</a> = box-&gt;<a class="code" href="../../d0/d33/structmutabor__box__type.html#adaff5b982df1fe1a858d7e322601a7f7">file</a>-&gt;<a class="code" href="../../d7/d21/structmutabor__logic__parsed.html#a17f55cfb3cf4e4aec46cd9e5b0425040">lauf_instrument</a> -&gt; <a class="code" href="../../d8/d8e/structkeyboard__ereignis.html#af1b2473a78f0e30c9ef3826b6a5f90ae">next</a>;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="keywordflow">if</span> ( !box-&gt;<a class="code" href="../../d0/d33/structmutabor__box__type.html#adaff5b982df1fe1a858d7e322601a7f7">file</a>-&gt;<a class="code" href="../../d7/d21/structmutabor__logic__parsed.html#a17f55cfb3cf4e4aec46cd9e5b0425040">lauf_instrument</a> ) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        base = box-&gt;<a class="code" href="../../d0/d33/structmutabor__box__type.html#adaff5b982df1fe1a858d7e322601a7f7">file</a>-&gt;<a class="code" href="../../d7/d21/structmutabor__logic__parsed.html#a17f55cfb3cf4e4aec46cd9e5b0425040">lauf_instrument</a> -&gt; midi_in;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        from = box-&gt;<a class="code" href="../../d0/d33/structmutabor__box__type.html#adaff5b982df1fe1a858d7e322601a7f7">file</a>-&gt;<a class="code" href="../../d7/d21/structmutabor__logic__parsed.html#a17f55cfb3cf4e4aec46cd9e5b0425040">lauf_instrument</a> -&gt; midi_von;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        to       = box-&gt;<a class="code" href="../../d0/d33/structmutabor__box__type.html#adaff5b982df1fe1a858d7e322601a7f7">file</a>-&gt;<a class="code" href="../../d7/d21/structmutabor__logic__parsed.html#a17f55cfb3cf4e4aec46cd9e5b0425040">lauf_instrument</a> -&gt; midi_bis;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        thru = box-&gt;<a class="code" href="../../d0/d33/structmutabor__box__type.html#adaff5b982df1fe1a858d7e322601a7f7">file</a>-&gt;<a class="code" href="../../d7/d21/structmutabor__logic__parsed.html#a17f55cfb3cf4e4aec46cd9e5b0425040">lauf_instrument</a> -&gt; midi_umleit;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;}</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
+<div class="line"><a name="l00254"></a><span class="lineno"><a class="line" href="../../dc/d7e/group__runtime.html#ga67e4c654aa6bfe3944304471e91956d0">  254</a></span>&#160;<span class="keywordtype">void</span>  <a class="code" href="../../dc/d7e/group__runtime.html#ga67e4c654aa6bfe3944304471e91956d0">SetChannels</a>(<a class="code" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> * box, <span class="keywordtype">int</span> base, <span class="keywordtype">int</span> from, <span class="keywordtype">int</span> to, <span class="keywordtype">int</span> thru) {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <a class="code" href="../../d9/d7c/group__kernel.html#ga30c24ac2380ae3f51495f58ebc70dacc">get_instrument_dekl</a> (box, base, from, to, thru, &amp;box-&gt;<a class="code" href="../../d0/d33/structmutabor__box__type.html#adaff5b982df1fe1a858d7e322601a7f7">file</a>-&gt;<a class="code" href="../../d7/d21/structmutabor__logic__parsed.html#adb7b6cc1ab5fe4fd2fd24d2f94623ce8">list_of_config_instrumente</a>);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;}</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment">// scan-Hilfsfunktionen ---------------------------------------------</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../dc/d7e/group__runtime.html#ga8bf27a28fe26e2709084705600715834">GetELine</a>(<span class="keyword">const</span> wxString&amp; p, <span class="keywordtype">size_t</span>&amp; i, wxString &amp;s);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<a class="code" href="../../d5/dee/group__route.html#ga84f84d78781fc500cd66ee58b0efc83a">DevType</a> <a class="code" href="../../dc/d7e/group__runtime.html#gadec35174fd85c6cbe34d8103b026532a">Str2DT</a>(<span class="keyword">const</span> wxString&amp; type);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment">// aus p eine Zeile in s lesen, p wird verschoben</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno"><a class="line" href="../../dc/d7e/group__runtime.html#gaaa5aa8190692f01ca59c4828320b4cc6">  266</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../dc/d7e/group__runtime.html#gaaa5aa8190692f01ca59c4828320b4cc6">GetLine</a>(<span class="keywordtype">char</span> **p, <span class="keywordtype">char</span> *s) {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        <span class="keywordflow">if</span> ( !p || !(*p)[0] )</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <span class="keywordflow">while</span> ( (*p)[0] == <span class="charliteral">&#39; &#39;</span> || (*p)[0] == <span class="charliteral">&#39;\n&#39;</span> || (*p)[0] == <span class="charliteral">&#39;\r&#39;</span> )</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                *p = &amp;(*p)[1];</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keywordflow">if</span> ( !(*p)[0] )</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <span class="keywordtype">char</span> *p1 = *p;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        *p = strchr(p1, <span class="charliteral">&#39;\n&#39;</span>);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <span class="keywordflow">if</span> ( !p )</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                *p = &amp;p1[strlen(p1)];</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        <span class="keywordtype">int</span> i = (*p)-p1;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        strncpy(s, p1, i);</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        s[i] = 0;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;}</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
+<div class="line"><a name="l00292"></a><span class="lineno"><a class="line" href="../../dc/d7e/group__runtime.html#gaaa9c8dc328349cf18c6a068a6cdfcd85">  292</a></span>&#160;<span class="preprocessor">#define GETLINE                                 \</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="preprocessor">        if ( !GetELine(config, i, s) )          \</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="preprocessor">                return</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="comment">// das nr-ste Output Device</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="comment">// TODO Nr from 0 or 1?</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="comment">OutputDevice *GetOut(int nr) {</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="comment">        DEBUGLOG2(other,_T(&quot;Nr.: %d&quot;),nr);</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="comment">        if ( nr &lt; 0 )</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="comment">                return 0;</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="comment">        OutDevice *Out = OutDevice::GetDeviceList();</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="comment">        while ( Out ) {</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="comment">                if (Out-&gt;GetDevId() == nr) break;</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="comment">                Out = Out-&gt;GetNext();</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="comment">                DEBUGLOG2(other,_T(&quot;Nr.: %d, Out: %x&quot;),nr, Out);</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="comment">        return Out;</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="comment">}</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="comment">// Timerdaten</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno"><a class="line" href="../../dc/d7e/group__runtime.html#gaad640d15310e214fe9dfaa45bb2baa52">  321</a></span>&#160;<span class="keywordtype">void</span>  <a class="code" href="../../dc/d7e/group__runtime.html#gaad640d15310e214fe9dfaa45bb2baa52">GetTimerData</a>(<a class="code" href="../../dc/d7e/group__runtime.html#ga45c20c14d3d8790a22153d08ab2eb2ff">UINT</a> &amp;min, <a class="code" href="../../dc/d7e/group__runtime.html#ga45c20c14d3d8790a22153d08ab2eb2ff">UINT</a> &amp;max) {</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="preprocessor">#if !defined(WX) || defined(__WXMSW__)</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="preprocessor"></span>        TIMECAPS TimeCaps;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        timeGetDevCaps(&amp;TimeCaps, <span class="keyword">sizeof</span>(TIMECAPS));</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        min = TimeCaps.wPeriodMin;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        max = TimeCaps.wPeriodMax;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="preprocessor"></span>        <span class="comment">//TODO</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;<span class="preprocessor"></span>                }</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        }</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;}</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment">/* \} */</span></div>
+<div class="ttc" id="structkeyboard__ereignis_html_af1b2473a78f0e30c9ef3826b6a5f90ae"><div class="ttname"><a href="../../d8/d8e/structkeyboard__ereignis.html#af1b2473a78f0e30c9ef3826b6a5f90ae">keyboard_ereignis::next</a></div><div class="ttdeci">struct keyboard_ereignis * next</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dd8/Interpre_8h_source.html#l00370">Interpre.h:370</a></div></div>
+<div class="ttc" id="classmutabor_1_1CurrentTimer_html_ac786e3b69adfb260915c39886e4673de"><div class="ttname"><a href="../../d7/dda/classmutabor_1_1CurrentTimer.html#ac786e3b69adfb260915c39886e4673de">mutabor::CurrentTimer::Stop</a></div><div class="ttdeci">void Stop()</div><div class="ttdoc">Dummy function for stopping the timer. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d41/timing_8h_source.html#l00505">timing.h:505</a></div></div>
+<div class="ttc" id="structmutabor__box__type_html_a055c695aa5bc8ce01b64e4598ca77e8f"><div class="ttname"><a href="../../d0/d33/structmutabor__box__type.html#a055c695aa5bc8ce01b64e4598ca77e8f">mutabor_box_type::tonesystem</a></div><div class="ttdeci">tone_system * tonesystem</div><div class="ttdoc">tone system. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d19/box_8h_source.html#l00152">box.h:152</a></div></div>
+<div class="ttc" id="group__route_html_ga84f84d78781fc500cd66ee58b0efc83a"><div class="ttname"><a href="../../d5/dee/group__route.html#ga84f84d78781fc500cd66ee58b0efc83a">mutabor::DevType</a></div><div class="ttdeci">DevType</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00087">Device.h:87</a></div></div>
+<div class="ttc" id="group__runtime_html_gacd1e984f955655cb7d57b37569685bed"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#gacd1e984f955655cb7d57b37569685bed">GetChannels</a></div><div class="ttdeci">char GetChannels(mutabor_box_type *box, char start, int &amp;base, int &amp;from, int &amp;to, int &amp;thru)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d80/Runtime_8cpp_source.html#l00235">Runtime.cpp:235</a></div></div>
+<div class="ttc" id="group__GUI_html_ga06c750cbc293593a85009553cf6cfcc5"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga06c750cbc293593a85009553cf6cfcc5">STUB</a></div><div class="ttdeci">#define STUB</div><div class="ttdoc">functions or code that has to be written – simple function </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00140">mhDefs.h:140</a></div></div>
+<div class="ttc" id="group__runtime_html_gadec35174fd85c6cbe34d8103b026532a"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#gadec35174fd85c6cbe34d8103b026532a">Str2DT</a></div><div class="ttdeci">DevType Str2DT(const wxString &amp;type)</div></div>
+<div class="ttc" id="group__runtime_html_gaad640d15310e214fe9dfaa45bb2baa52"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#gaad640d15310e214fe9dfaa45bb2baa52">GetTimerData</a></div><div class="ttdeci">void GetTimerData(UINT &amp;min, UINT &amp;max)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d80/Runtime_8cpp_source.html#l00321">Runtime.cpp:321</a></div></div>
+<div class="ttc" id="group__route_html_ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8"><div class="ttname"><a href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8">mutabor::DevicePlay</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00078">Device.h:78</a></div></div>
+<div class="ttc" id="structmutabor__logic__parsed_html_adb7b6cc1ab5fe4fd2fd24d2f94623ce8"><div class="ttname"><a href="../../d7/d21/structmutabor__logic__parsed.html#adb7b6cc1ab5fe4fd2fd24d2f94623ce8">mutabor_logic_parsed::list_of_config_instrumente</a></div><div class="ttdeci">struct instrument * list_of_config_instrumente</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d0c/Parser_8h_source.html#l00109">Parser.h:109</a></div></div>
+<div class="ttc" id="group__route_html_ggaa3d7d1e712c727d12c3b60c8dc04b484a04f0b919edf40d45442ee6153b4e512e"><div class="ttname"><a href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484a04f0b919edf40d45442ee6153b4e512e">mutabor::DeviceTimingError</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00081">Device.h:81</a></div></div>
+<div class="ttc" id="group__runtime_html_gabcf963f3b449cab5ee813f93e577f777"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#gabcf963f3b449cab5ee813f93e577f777">TSChanged</a></div><div class="ttdeci">bool TSChanged(mutabor_box_type *box)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d80/Runtime_8cpp_source.html#l00206">Runtime.cpp:206</a></div></div>
+<div class="ttc" id="group__route_html_gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011"><div class="ttname"><a href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011">mutabor::DTMidiFile</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00089">Device.h:89</a></div></div>
+<div class="ttc" id="Route-inlines_8h_html"><div class="ttname"><a href="../../d2/d2c/Route-inlines_8h.html">Route-inlines.h</a></div></div>
+<div class="ttc" id="Parser_8h_html"><div class="ttname"><a href="../../d6/d0c/Parser_8h.html">Parser.h</a></div></div>
+<div class="ttc" id="Hilfs_8h_html"><div class="ttname"><a href="../../d2/d32/Hilfs_8h.html">Hilfs.h</a></div><div class="ttdoc">Description. </div></div>
+<div class="ttc" id="group__route_html_ggaa3d7d1e712c727d12c3b60c8dc04b484a4fd9ce6cf94e3605cc2122e7aecd4dea"><div class="ttname"><a href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484a4fd9ce6cf94e3605cc2122e7aecd4dea">mutabor::DeviceUnregistered</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00075">Device.h:75</a></div></div>
+<div class="ttc" id="group__route_html_ggaa3d7d1e712c727d12c3b60c8dc04b484a86530be4e7e984649e049f17857b8e5e"><div class="ttname"><a href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484a86530be4e7e984649e049f17857b8e5e">mutabor::DevicePause</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00079">Device.h:79</a></div></div>
+<div class="ttc" id="group__route_html_gaa3d7d1e712c727d12c3b60c8dc04b484"><div class="ttname"><a href="../../d5/dee/group__route.html#gaa3d7d1e712c727d12c3b60c8dc04b484">mutabor::MutaborModeType</a></div><div class="ttdeci">MutaborModeType</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00074">Device.h:74</a></div></div>
+<div class="ttc" id="group__runtime_html_ga3d20277bede54ba5cb6ef270236a2361"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#ga3d20277bede54ba5cb6ef270236a2361">last</a></div><div class="ttdeci">struct keyboard_ereignis * last</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d80/Runtime_8cpp_source.html#l00149">Runtime.cpp:149</a></div></div>
+<div class="ttc" id="Runtime_8h_html"><div class="ttname"><a href="../../d5/d84/Runtime_8h.html">Runtime.h</a></div><div class="ttdoc">Runtime functions of the (mainly C) old kernel of Mutabor. </div></div>
+<div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
+<div class="ttc" id="group__runtime_html_ga5e01376e7205f06ada8473bceab22bed"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#ga5e01376e7205f06ada8473bceab22bed">GetInDevicesMode</a></div><div class="ttdeci">void GetInDevicesMode(enum MutaborModeType *mode)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d80/Runtime_8cpp_source.html#l00224">Runtime.cpp:224</a></div></div>
+<div class="ttc" id="DevMidF_8h_html"><div class="ttname"><a href="../../da/d3c/DevMidF_8h.html">DevMidF.h</a></div></div>
+<div class="ttc" id="group__runtime_html_ga8bf27a28fe26e2709084705600715834"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#ga8bf27a28fe26e2709084705600715834">GetELine</a></div><div class="ttdeci">bool GetELine(const wxString &amp;p, size_t &amp;i, wxString &amp;s)</div></div>
+<div class="ttc" id="structlogik_html_a1f22a147c3f7718cb46800af526b083b"><div class="ttname"><a href="../../db/d28/structlogik.html#a1f22a147c3f7718cb46800af526b083b">logik::einstimmungs_name</a></div><div class="ttdeci">const char * einstimmungs_name</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d40/Global_8h_source.html#l00434">Global.h:434</a></div></div>
+<div class="ttc" id="group__route_html_ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649"><div class="ttname"><a href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649">mutabor::DeviceStop</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00077">Device.h:77</a></div></div>
+<div class="ttc" id="GrafKern_8h_html"><div class="ttname"><a href="../../d4/d47/GrafKern_8h.html">GrafKern.h</a></div><div class="ttdoc">Output functions. </div></div>
+<div class="ttc" id="Global_8h_html"><div class="ttname"><a href="../../dd/d40/Global_8h.html">Global.h</a></div><div class="ttdoc">Global definitions (formerly in mutabor DLL) </div></div>
+<div class="ttc" id="group__runtime_html_ga1faa8705b3fd5029a295edfdcdf1a67f"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#ga1faa8705b3fd5029a295edfdcdf1a67f">weiter_gehts_nach_compilerfehler</a></div><div class="ttdeci">jmp_buf weiter_gehts_nach_compilerfehler</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d14/gmut_8cpp_source.html#l00028">gmut.cpp:28</a></div></div>
+<div class="ttc" id="structmutabor__logic__parsed_html_a17f55cfb3cf4e4aec46cd9e5b0425040"><div class="ttname"><a href="../../d7/d21/structmutabor__logic__parsed.html#a17f55cfb3cf4e4aec46cd9e5b0425040">mutabor_logic_parsed::lauf_instrument</a></div><div class="ttdeci">struct instrument * lauf_instrument</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d0c/Parser_8h_source.html#l00133">Parser.h:133</a></div></div>
+<div class="ttc" id="group__route_html_ga02733c08ce3d21e93299856a09a43d77"><div class="ttname"><a href="../../d5/dee/group__route.html#ga02733c08ce3d21e93299856a09a43d77">mutabor::InputDeviceList</a></div><div class="ttdeci">CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::listtype InputDeviceList</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00821">Device.h:821</a></div></div>
+<div class="ttc" id="structkeyboard__ereignis_html"><div class="ttname"><a href="../../d8/d8e/structkeyboard__ereignis.html">keyboard_ereignis</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dd8/Interpre_8h_source.html#l00364">Interpre.h:364</a></div></div>
+<div class="ttc" id="group__route_html_ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8"><div class="ttname"><a href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8">mutabor::DeviceCompileError</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00080">Device.h:80</a></div></div>
+<div class="ttc" id="structkeyboard__ereignis_html_a07f91d2e322e2b40b13f37004918d73b"><div class="ttname"><a href="../../d8/d8e/structkeyboard__ereignis.html#a07f91d2e322e2b40b13f37004918d73b">keyboard_ereignis::aktion</a></div><div class="ttdeci">struct do_aktion * aktion</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dd8/Interpre_8h_source.html#l00368">Interpre.h:368</a></div></div>
+<div class="ttc" id="structkeyboard__ereignis_html_a1aa8c10e2398f0a5917a9f9fb01f85cb"><div class="ttname"><a href="../../d8/d8e/structkeyboard__ereignis.html#a1aa8c10e2398f0a5917a9f9fb01f85cb">keyboard_ereignis::the_logik_to_expand</a></div><div class="ttdeci">struct logik * the_logik_to_expand</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dd8/Interpre_8h_source.html#l00369">Interpre.h:369</a></div></div>
+<div class="ttc" id="DevGIS_8h_html"><div class="ttname"><a href="../../da/d81/DevGIS_8h.html">DevGIS.h</a></div></div>
+<div class="ttc" id="structkeyboard__ereignis_html_acabc546ce1e8683b487ec2592a7685ff"><div class="ttname"><a href="../../d8/d8e/structkeyboard__ereignis.html#acabc546ce1e8683b487ec2592a7685ff">keyboard_ereignis::taste</a></div><div class="ttdeci">char taste</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dd8/Interpre_8h_source.html#l00366">Interpre.h:366</a></div></div>
+<div class="ttc" id="structmutabor__box__type_html_adaff5b982df1fe1a858d7e322601a7f7"><div class="ttname"><a href="../../d0/d33/structmutabor__box__type.html#adaff5b982df1fe1a858d7e322601a7f7">mutabor_box_type::file</a></div><div class="ttdeci">struct mutabor_logic_parsed * file</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d19/box_8h_source.html#l00180">box.h:180</a></div></div>
+<div class="ttc" id="structTSYS_html_a40b61cf1ffb61fee185a714d0ad3cb5e"><div class="ttname"><a href="../../d4/d2a/structTSYS.html#a40b61cf1ffb61fee185a714d0ad3cb5e">TSYS::breite</a></div><div class="ttdeci">int breite</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dd8/Interpre_8h_source.html#l00074">Interpre.h:74</a></div></div>
+<div class="ttc" id="Execute_8h_html"><div class="ttname"><a href="../../de/d11/Execute_8h.html">Execute.h</a></div><div class="ttdoc">Execute tuning changes. </div></div>
+<div class="ttc" id="Device_8h_html"><div class="ttname"><a href="../../de/d05/Device_8h.html">Device.h</a></div><div class="ttdoc">Routing. </div></div>
+<div class="ttc" id="structmutabor__box__type_html"><div class="ttname"><a href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a></div><div class="ttdoc">Mutabor box type. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d19/box_8h_source.html#l00116">box.h:116</a></div></div>
+<div class="ttc" id="mut_8cc_html_abffd7f9eb60ee7a611664ca2804eec8f"><div class="ttname"><a href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a></div><div class="ttdeci">mutabor_box_type * box</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/mut_8cc_source.html#l01633">mut.cc:1633</a></div></div>
+<div class="ttc" id="group__route_html_ga0d3410de3b825f475daa3575bb3816a6"><div class="ttname"><a href="../../d5/dee/group__route.html#ga0d3410de3b825f475daa3575bb3816a6">mutabor::NeedsRealTime</a></div><div class="ttdeci">bool NeedsRealTime()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc0/Device_8cpp_source.html#l00634">Device.cpp:634</a></div></div>
+<div class="ttc" id="DevMidi_8h_html"><div class="ttname"><a href="../../d4/da2/DevMidi_8h.html">DevMidi.h</a></div><div class="ttdoc">Classes for midi port. </div></div>
+<div class="ttc" id="group__route_html_ga74d244d6867e380692618601581d5e4d"><div class="ttname"><a href="../../d5/dee/group__route.html#ga74d244d6867e380692618601581d5e4d">mutabor::InDevChanged</a></div><div class="ttdeci">char InDevChanged</div></div>
+<div class="ttc" id="group__runtime_html_ga45c20c14d3d8790a22153d08ab2eb2ff"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#ga45c20c14d3d8790a22153d08ab2eb2ff">UINT</a></div><div class="ttdeci">#define UINT</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d84/Runtime_8h_source.html#l00059">Runtime.h:59</a></div></div>
+<div class="ttc" id="group__runtime_html_gaaa5aa8190692f01ca59c4828320b4cc6"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#gaaa5aa8190692f01ca59c4828320b4cc6">GetLine</a></div><div class="ttdeci">bool GetLine(char **p, char *s)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d80/Runtime_8cpp_source.html#l00266">Runtime.cpp:266</a></div></div>
+<div class="ttc" id="group__route_html_gace9fecda6356ed76c33f9fd7858275b7"><div class="ttname"><a href="../../d5/dee/group__route.html#gace9fecda6356ed76c33f9fd7858275b7">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::GetDeviceList</a></div><div class="ttdeci">static const listtype &amp; GetDeviceList()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00604">Device.h:604</a></div></div>
+<div class="ttc" id="structmutabor__box__type_html_a950c0883d38d396f04837b5999d812d7"><div class="ttname"><a href="../../d0/d33/structmutabor__box__type.html#a950c0883d38d396f04837b5999d812d7">mutabor_box_type::last_tonesystem</a></div><div class="ttdeci">tone_system last_tonesystem</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d19/box_8h_source.html#l00154">box.h:154</a></div></div>
+<div class="ttc" id="group__kernel_html_ga30c24ac2380ae3f51495f58ebc70dacc"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga30c24ac2380ae3f51495f58ebc70dacc">get_instrument_dekl</a></div><div class="ttdeci">void get_instrument_dekl(mutabor_box_type *box, int midi_in, int midi_von, int midi_bis, int midi_umleit, struct instrument **list_to_insert)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/df5/Parser_8cpp_source.html#l02238">Parser.cpp:2238</a></div></div>
+<div class="ttc" id="group__runtime_html_ga67e4c654aa6bfe3944304471e91956d0"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#ga67e4c654aa6bfe3944304471e91956d0">SetChannels</a></div><div class="ttdeci">void SetChannels(mutabor_box_type *box, int base, int from, int to, int thru)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d80/Runtime_8cpp_source.html#l00254">Runtime.cpp:254</a></div></div>
+<div class="ttc" id="namespacemutabor_html_ab2acff956460e39a59c206fc02dc4c99"><div class="ttname"><a href="../../d6/daa/namespacemutabor.html#ab2acff956460e39a59c206fc02dc4c99">mutabor::CurrentTime</a></div><div class="ttdeci">CurrentTimer CurrentTime</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dca/timing_8cpp_source.html#l00043">timing.cpp:43</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:38:41 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

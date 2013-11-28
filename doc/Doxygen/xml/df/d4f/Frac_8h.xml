@@ -1,0 +1,1290 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="df/d4f/Frac_8h" kind="file">
+    <compoundname>Frac.h</compoundname>
+    <includes refid="d1/d73/Defs_8h" local="yes">Defs.h</includes>
+    <includes local="yes">wx/string.h</includes>
+    <includes local="no">iostream</includes>
+    <includedby refid="d5/d04/Frac_8cpp" local="yes">src/kernel/Frac.cpp</includedby>
+    <includedby refid="dc/de7/GIS_8cpp" local="yes">src/kernel/routing/gmn/GIS.cpp</includedby>
+    <includedby refid="dd/d4d/GIS_8h" local="yes">src/kernel/routing/gmn/GIS.h</includedby>
+    <includedby refid="dd/da2/GSP_8h" local="yes">src/kernel/routing/gmn/GSP.h</includedby>
+    <incdepgraph>
+      <node id="13462">
+        <label>stdarg.h</label>
+      </node>
+      <node id="13461">
+        <label>Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="13462" relation="include">
+        </childnode>
+        <childnode refid="13463" relation="include">
+        </childnode>
+      </node>
+      <node id="13464">
+        <label>wx/string.h</label>
+      </node>
+      <node id="13465">
+        <label>iostream</label>
+      </node>
+      <node id="13460">
+        <label>src/kernel/Frac.h</label>
+        <link refid="Frac.h"/>
+        <childnode refid="13461" relation="include">
+        </childnode>
+        <childnode refid="13464" relation="include">
+        </childnode>
+        <childnode refid="13465" relation="include">
+        </childnode>
+      </node>
+      <node id="13463">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="13567">
+        <label>src/wxGUI/Routing/InputDevDlg.h</label>
+        <link refid="d9/d12/InputDevDlg_8h"/>
+        <childnode refid="13513" relation="include">
+        </childnode>
+        <childnode refid="13530" relation="include">
+        </childnode>
+        <childnode refid="13565" relation="include">
+        </childnode>
+        <childnode refid="13545" relation="include">
+        </childnode>
+        <childnode refid="13546" relation="include">
+        </childnode>
+        <childnode refid="13548" relation="include">
+        </childnode>
+        <childnode refid="13533" relation="include">
+        </childnode>
+      </node>
+      <node id="13570">
+        <label>src/kernel/routing/gmn/GIS_Head.h</label>
+        <link refid="d1/db5/GIS__Head_8h"/>
+        <childnode refid="13502" relation="include">
+        </childnode>
+        <childnode refid="13571" relation="include">
+        </childnode>
+      </node>
+      <node id="13542">
+        <label>src/wxGUI/Routing/BoxDlg.h</label>
+        <link refid="d9/dd2/BoxDlg_8h"/>
+        <childnode refid="13513" relation="include">
+        </childnode>
+        <childnode refid="13508" relation="include">
+        </childnode>
+        <childnode refid="13531" relation="include">
+        </childnode>
+        <childnode refid="13509" relation="include">
+        </childnode>
+        <childnode refid="13530" relation="include">
+        </childnode>
+        <childnode refid="13532" relation="include">
+        </childnode>
+      </node>
+      <node id="13554">
+        <label>src/wxGUI/Routing/tests/main.cpp</label>
+        <link refid="da/dee/wxGUI_2Routing_2tests_2main_8cpp"/>
+      </node>
+      <node id="13534">
+        <label>src/wxGUI/Routing/NewOutputDeviceShape.cpp</label>
+        <link refid="d1/d73/NewOutputDeviceShape_8cpp"/>
+      </node>
+      <node id="13503">
+        <label>src/kernel/routing/Device.cpp</label>
+        <link refid="d2/dc0/Device_8cpp"/>
+      </node>
+      <node id="13550">
+        <label>src/wxGUI/Routing/NewOutputDeviceShape.h</label>
+        <link refid="df/d7b/NewOutputDeviceShape_8h"/>
+        <childnode refid="13513" relation="include">
+        </childnode>
+        <childnode refid="13534" relation="include">
+        </childnode>
+      </node>
+      <node id="13482">
+        <label>src/kernel/routing/tests/main.cpp</label>
+        <link refid="d1/de6/kernel_2routing_2tests_2main_8cpp"/>
+      </node>
+      <node id="13522">
+        <label>src/wxGUI/MutEditFile.cpp</label>
+        <link refid="d1/da4/MutEditFile_8cpp"/>
+      </node>
+      <node id="13490">
+        <label>src/kernel/routing/midi/tests/midicmnTest.h</label>
+        <link refid="dd/d56/midicmnTest_8h"/>
+        <childnode refid="13487" relation="include">
+        </childnode>
+        <childnode refid="13489" relation="include">
+        </childnode>
+        <childnode refid="13491" relation="include">
+        </childnode>
+      </node>
+      <node id="13563">
+        <label>src/kernel/routing/Box-inlines.h</label>
+        <link refid="d6/d9a/Box-inlines_8h"/>
+        <childnode refid="13474" relation="include">
+        </childnode>
+      </node>
+      <node id="13555">
+        <label>src/wxGUI/tests/main.cpp</label>
+        <link refid="d9/d27/wxGUI_2tests_2main_8cpp"/>
+      </node>
+      <node id="13513">
+        <label>src/wxGUI/MutRouteWnd.cpp</label>
+        <link refid="dc/def/MutRouteWnd_8cpp"/>
+      </node>
+      <node id="13569">
+        <label>src/wxGUI/StatusBar.cpp</label>
+        <link refid="d5/de4/StatusBar_8cpp"/>
+      </node>
+      <node id="13484">
+        <label>src/kernel/routing/midi/DevMidF.cpp</label>
+        <link refid="d0/d6b/DevMidF_8cpp"/>
+      </node>
+      <node id="13549">
+        <label>src/wxGUI/Routing/NewInputDeviceShape.h</label>
+        <link refid="d5/dba/NewInputDeviceShape_8h"/>
+        <childnode refid="13513" relation="include">
+        </childnode>
+        <childnode refid="13533" relation="include">
+        </childnode>
+      </node>
+      <node id="13498">
+        <label>src/kernel/tests/boxTest.h</label>
+        <link refid="dc/d2f/boxTest_8h"/>
+        <childnode refid="13497" relation="include">
+        </childnode>
+        <childnode refid="13499" relation="include">
+        </childnode>
+      </node>
+      <node id="13531">
+        <label>src/wxGUI/Routing/BoxDlg.cpp</label>
+        <link refid="d3/d2a/BoxDlg_8cpp"/>
+      </node>
+      <node id="13560">
+        <label>src/kernel/routing/midi/midicmn.h</label>
+        <link refid="de/d21/midicmn_8h"/>
+        <childnode refid="13556" relation="include">
+        </childnode>
+        <childnode refid="13559" relation="include">
+        </childnode>
+        <childnode refid="13561" relation="include">
+        </childnode>
+        <childnode refid="13485" relation="include">
+        </childnode>
+        <childnode refid="13490" relation="include">
+        </childnode>
+      </node>
+      <node id="13532">
+        <label>src/wxGUI/Routing/NewBoxShape.cpp</label>
+        <link refid="d8/dba/NewBoxShape_8cpp"/>
+      </node>
+      <node id="13526">
+        <label>src/wxGUI/MutLogicWnd.cpp</label>
+        <link refid="df/d11/MutLogicWnd_8cpp"/>
+      </node>
+      <node id="13538">
+        <label>src/wxGUI/Routing/OutputMidiDeviceShape.cpp</label>
+        <link refid="d6/d68/OutputMidiDeviceShape_8cpp"/>
+      </node>
+      <node id="13472">
+        <label>src/kernel/Runtime.h</label>
+        <link refid="d5/d84/Runtime_8h"/>
+        <childnode refid="13471" relation="include">
+        </childnode>
+        <childnode refid="13473" relation="include">
+        </childnode>
+        <childnode refid="13474" relation="include">
+        </childnode>
+        <childnode refid="13475" relation="include">
+        </childnode>
+        <childnode refid="13484" relation="include">
+        </childnode>
+        <childnode refid="13485" relation="include">
+        </childnode>
+        <childnode refid="13487" relation="include">
+        </childnode>
+        <childnode refid="13488" relation="include">
+        </childnode>
+        <childnode refid="13490" relation="include">
+        </childnode>
+        <childnode refid="13492" relation="include">
+        </childnode>
+        <childnode refid="13494" relation="include">
+        </childnode>
+        <childnode refid="13496" relation="include">
+        </childnode>
+        <childnode refid="13497" relation="include">
+        </childnode>
+        <childnode refid="13498" relation="include">
+        </childnode>
+        <childnode refid="13500" relation="include">
+        </childnode>
+      </node>
+      <node id="13501">
+        <label>src/kernel/routing/CommonFileDevice.h</label>
+        <link refid="d9/d17/CommonFileDevice_8h"/>
+        <childnode refid="13475" relation="include">
+        </childnode>
+        <childnode refid="13476" relation="include">
+        </childnode>
+        <childnode refid="13502" relation="include">
+        </childnode>
+        <childnode refid="13556" relation="include">
+        </childnode>
+      </node>
+      <node id="13537">
+        <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp</label>
+        <link refid="d3/d21/OutputGuidoFileDeviceShape_8cpp"/>
+      </node>
+      <node id="13491">
+        <label>src/kernel/routing/midi/tests/midicmnTest.cpp</label>
+        <link refid="d8/d59/midicmnTest_8cpp"/>
+      </node>
+      <node id="13527">
+        <label>src/wxGUI/MutTextBox.cpp</label>
+        <link refid="df/d3c/MutTextBox_8cpp"/>
+      </node>
+      <node id="13517">
+        <label>src/wxGUI/MutApp.h</label>
+        <link refid="db/dc1/MutApp_8h"/>
+        <childnode refid="13518" relation="include">
+        </childnode>
+        <childnode refid="13512" relation="include">
+        </childnode>
+        <childnode refid="13506" relation="include">
+        </childnode>
+        <childnode refid="13519" relation="include">
+        </childnode>
+        <childnode refid="13520" relation="include">
+        </childnode>
+        <childnode refid="13521" relation="include">
+        </childnode>
+        <childnode refid="13522" relation="include">
+        </childnode>
+        <childnode refid="13500" relation="include">
+        </childnode>
+        <childnode refid="13513" relation="include">
+        </childnode>
+        <childnode refid="13523" relation="include">
+        </childnode>
+        <childnode refid="13524" relation="include">
+        </childnode>
+      </node>
+      <node id="13497">
+        <label>src/kernel/tests/boxTest.cpp</label>
+        <link refid="d1/da7/boxTest_8cpp"/>
+      </node>
+      <node id="13573">
+        <label>src/kernel/routing/gmn/GSP.cpp</label>
+        <link refid="d3/d9e/GSP_8cpp"/>
+      </node>
+      <node id="13541">
+        <label>src/wxGUI/Routing/DeviceShape.h</label>
+        <link refid="d9/d4d/DeviceShape_8h"/>
+        <childnode refid="13515" relation="include">
+        </childnode>
+        <childnode refid="13508" relation="include">
+        </childnode>
+        <childnode refid="13531" relation="include">
+        </childnode>
+        <childnode refid="13542" relation="include">
+        </childnode>
+        <childnode refid="13509" relation="include">
+        </childnode>
+        <childnode refid="13530" relation="include">
+        </childnode>
+        <childnode refid="13536" relation="include">
+        </childnode>
+        <childnode refid="13514" relation="include">
+        </childnode>
+        <childnode refid="13543" relation="include">
+        </childnode>
+        <childnode refid="13547" relation="include">
+        </childnode>
+        <childnode refid="13549" relation="include">
+        </childnode>
+        <childnode refid="13550" relation="include">
+        </childnode>
+        <childnode refid="13551" relation="include">
+        </childnode>
+        <childnode refid="13552" relation="include">
+        </childnode>
+        <childnode refid="13553" relation="include">
+        </childnode>
+      </node>
+      <node id="13476">
+        <label>src/kernel/routing/CommonFileDevice.cpp</label>
+        <link refid="dc/d72/CommonFileDevice_8cpp"/>
+      </node>
+      <node id="13505">
+        <label>src/wxGUI/Routing/GUIRoute.h</label>
+        <link refid="d6/dfa/GUIRoute_8h"/>
+        <childnode refid="13506" relation="include">
+        </childnode>
+        <childnode refid="13507" relation="include">
+        </childnode>
+        <childnode refid="13510" relation="include">
+        </childnode>
+        <childnode refid="13530" relation="include">
+        </childnode>
+        <childnode refid="13541" relation="include">
+        </childnode>
+        <childnode refid="13536" relation="include">
+        </childnode>
+        <childnode refid="13514" relation="include">
+        </childnode>
+        <childnode refid="13543" relation="include">
+        </childnode>
+        <childnode refid="13554" relation="include">
+        </childnode>
+        <childnode refid="13555" relation="include">
+        </childnode>
+      </node>
+      <node id="13529">
+        <label>src/wxGUI/MutDocManager.cpp</label>
+        <link refid="dd/db0/MutDocManager_8cpp"/>
+      </node>
+      <node id="13556">
+        <label>src/kernel/routing/midi/DevMidF.h</label>
+        <link refid="da/d3c/DevMidF_8h"/>
+        <childnode refid="13503" relation="include">
+        </childnode>
+        <childnode refid="13484" relation="include">
+        </childnode>
+        <childnode refid="13488" relation="include">
+        </childnode>
+        <childnode refid="13479" relation="include">
+        </childnode>
+        <childnode refid="13480" relation="include">
+        </childnode>
+        <childnode refid="13557" relation="include">
+        </childnode>
+        <childnode refid="13495" relation="include">
+        </childnode>
+        <childnode refid="13496" relation="include">
+        </childnode>
+        <childnode refid="13505" relation="include">
+        </childnode>
+        <childnode refid="13539" relation="include">
+        </childnode>
+      </node>
+      <node id="13525">
+        <label>src/wxGUI/MutChild.cpp</label>
+        <link refid="da/d72/MutChild_8cpp"/>
+      </node>
+      <node id="13494">
+        <label>src/kernel/routing/tests/RouteTest.h</label>
+        <link refid="dc/d45/RouteTest_8h"/>
+        <childnode refid="13482" relation="include">
+        </childnode>
+        <childnode refid="13495" relation="include">
+        </childnode>
+      </node>
+      <node id="13506">
+        <label>src/wxGUI/MutApp.cpp</label>
+        <link refid="d5/d1c/MutApp_8cpp"/>
+      </node>
+      <node id="13552">
+        <label>src/wxGUI/Routing/OutputMidiDeviceShape.h</label>
+        <link refid="d8/dcb/OutputMidiDeviceShape_8h"/>
+        <childnode refid="13514" relation="include">
+        </childnode>
+        <childnode refid="13538" relation="include">
+        </childnode>
+      </node>
+      <node id="13475">
+        <label>src/kernel/routing/CommonFileDevice-inlines.h</label>
+        <link refid="d9/d6a/CommonFileDevice-inlines_8h"/>
+        <childnode refid="13476" relation="include">
+        </childnode>
+        <childnode refid="13477" relation="include">
+        </childnode>
+        <childnode refid="13478" relation="include">
+        </childnode>
+        <childnode refid="13479" relation="include">
+        </childnode>
+        <childnode refid="13480" relation="include">
+        </childnode>
+        <childnode refid="13481" relation="include">
+        </childnode>
+        <childnode refid="13483" relation="include">
+        </childnode>
+      </node>
+      <node id="13485">
+        <label>src/kernel/routing/midi/midicmn.cpp</label>
+        <link refid="d3/d0f/midicmn_8cpp"/>
+        <childnode refid="13484" relation="include">
+        </childnode>
+        <childnode refid="13486" relation="include">
+        </childnode>
+        <childnode refid="13487" relation="include">
+        </childnode>
+      </node>
+      <node id="13557">
+        <label>src/kernel/routing/RouteCompat.cpp</label>
+        <link refid="dd/db8/RouteCompat_8cpp"/>
+      </node>
+      <node id="13551">
+        <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.h</label>
+        <link refid="db/d77/OutputGuidoFileDeviceShape_8h"/>
+        <childnode refid="13514" relation="include">
+        </childnode>
+        <childnode refid="13537" relation="include">
+        </childnode>
+      </node>
+      <node id="13479">
+        <label>src/kernel/routing/midi/tests/midiopenfail1.cpp</label>
+        <link refid="da/ddb/midiopenfail1_8cpp"/>
+      </node>
+      <node id="13473">
+        <label>src/kernel/Interval.cpp</label>
+        <link refid="d3/dca/Interval_8cpp"/>
+      </node>
+      <node id="13540">
+        <label>src/wxGUI/Routing/NewBoxShape.h</label>
+        <link refid="d4/dcc/NewBoxShape_8h"/>
+        <childnode refid="13512" relation="include">
+        </childnode>
+        <childnode refid="13513" relation="include">
+        </childnode>
+        <childnode refid="13514" relation="include">
+        </childnode>
+        <childnode refid="13532" relation="include">
+        </childnode>
+      </node>
+      <node id="13487">
+        <label>src/kernel/routing/midi/tests/DevMidFTest.cpp</label>
+        <link refid="d9/d99/DevMidFTest_8cpp"/>
+      </node>
+      <node id="13521">
+        <label>src/wxGUI/MutDocument.cpp</label>
+        <link refid="d6/d3b/MutDocument_8cpp"/>
+      </node>
+      <node id="13515">
+        <label>src/wxGUI/MutRouteWnd.h</label>
+        <link refid="d3/dd7/MutRouteWnd_8h"/>
+        <childnode refid="13500" relation="include">
+        </childnode>
+        <childnode refid="13516" relation="include">
+        </childnode>
+        <childnode refid="13526" relation="include">
+        </childnode>
+        <childnode refid="13513" relation="include">
+        </childnode>
+        <childnode refid="13508" relation="include">
+        </childnode>
+        <childnode refid="13531" relation="include">
+        </childnode>
+        <childnode refid="13509" relation="include">
+        </childnode>
+        <childnode refid="13514" relation="include">
+        </childnode>
+        <childnode refid="13532" relation="include">
+        </childnode>
+        <childnode refid="13533" relation="include">
+        </childnode>
+        <childnode refid="13534" relation="include">
+        </childnode>
+        <childnode refid="13535" relation="include">
+        </childnode>
+      </node>
+      <node id="13564">
+        <label>src/kernel/routing/Route.cpp</label>
+        <link refid="d8/dfb/Route_8cpp"/>
+      </node>
+      <node id="13520">
+        <label>src/wxGUI/MutConfDlg.h</label>
+        <link refid="d9/d8f/MutConfDlg_8h"/>
+        <childnode refid="13506" relation="include">
+        </childnode>
+      </node>
+      <node id="13496">
+        <label>src/kernel/Runtime.cpp</label>
+        <link refid="db/d80/Runtime_8cpp"/>
+        <childnode refid="13491" relation="include">
+        </childnode>
+      </node>
+      <node id="13488">
+        <label>src/kernel/routing/midi/tests/DevMidFTest.h</label>
+        <link refid="da/d0f/DevMidFTest_8h"/>
+        <childnode refid="13487" relation="include">
+        </childnode>
+        <childnode refid="13489" relation="include">
+        </childnode>
+      </node>
+      <node id="13530">
+        <label>src/wxGUI/Routing/DeviceShape.cpp</label>
+        <link refid="d9/d94/DeviceShape_8cpp"/>
+      </node>
+      <node id="13477">
+        <label>src/kernel/routing/gmn/tests/gmnopenfail1.cpp</label>
+        <link refid="d0/dd6/gmnopenfail1_8cpp"/>
+      </node>
+      <node id="13523">
+        <label>src/wxGUI/MutView.cpp</label>
+        <link refid="d8/d33/MutView_8cpp"/>
+      </node>
+      <node id="13553">
+        <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.h</label>
+        <link refid="d4/de8/OutputMidiFileDeviceShape_8h"/>
+        <childnode refid="13514" relation="include">
+        </childnode>
+        <childnode refid="13539" relation="include">
+        </childnode>
+      </node>
+      <node id="13481">
+        <label>src/kernel/routing/tests/CommonFileDeviceTest.h</label>
+        <link refid="d4/d70/CommonFileDeviceTest_8h"/>
+        <childnode refid="13482" relation="include">
+        </childnode>
+      </node>
+      <node id="13565">
+        <label>src/wxGUI/Routing/InputDevDlg.cpp</label>
+        <link refid="d4/d8f/InputDevDlg_8cpp"/>
+      </node>
+      <node id="13558">
+        <label>src/kernel/routing/Device-inlines.h</label>
+        <link refid="d8/d4d/Device-inlines_8h"/>
+        <childnode refid="13503" relation="include">
+        </childnode>
+      </node>
+      <node id="13546">
+        <label>src/wxGUI/Routing/InputMidiDeviceShape.cpp</label>
+        <link refid="d1/d14/InputMidiDeviceShape_8cpp"/>
+      </node>
+      <node id="13508">
+        <label>src/wxGUI/Routing/BoxChannelShape.cpp</label>
+        <link refid="d9/d24/BoxChannelShape_8cpp"/>
+      </node>
+      <node id="13571">
+        <label>src/kernel/routing/gmn/GIS_Head.cpp</label>
+        <link refid="d7/da0/GIS__Head_8cpp"/>
+      </node>
+      <node id="13500">
+        <label>src/wxGUI/MutFrame.cpp</label>
+        <link refid="dc/df3/MutFrame_8cpp"/>
+      </node>
+      <node id="13467">
+        <label>src/kernel/Frac.cpp</label>
+        <link refid="d5/d04/Frac_8cpp"/>
+      </node>
+      <node id="13480">
+        <label>src/kernel/routing/midi/tests/playmidi1.cpp</label>
+        <link refid="d9/dfe/playmidi1_8cpp"/>
+      </node>
+      <node id="13548">
+        <label>src/wxGUI/Routing/InputMidiFileDeviceShape.cpp</label>
+        <link refid="d3/de3/InputMidiFileDeviceShape_8cpp"/>
+      </node>
+      <node id="13502">
+        <label>src/kernel/routing/gmn/DevGIS.h</label>
+        <link refid="da/d81/DevGIS_8h"/>
+        <childnode refid="13503" relation="include">
+        </childnode>
+        <childnode refid="13504" relation="include">
+        </childnode>
+        <childnode refid="13477" relation="include">
+        </childnode>
+        <childnode refid="13478" relation="include">
+        </childnode>
+        <childnode refid="13496" relation="include">
+        </childnode>
+        <childnode refid="13505" relation="include">
+        </childnode>
+      </node>
+      <node id="13499">
+        <label>src/kernel/tests/main.cpp</label>
+        <link refid="d5/dd0/kernel_2tests_2main_8cpp"/>
+      </node>
+      <node id="13524">
+        <label>src/wxGUI/Routing/RouteIcons.cpp</label>
+        <link refid="d1/d28/RouteIcons_8cpp"/>
+      </node>
+      <node id="13469">
+        <label>src/kernel/routing/gmn/GIS.h</label>
+        <link refid="dd/d4d/GIS_8h"/>
+        <childnode refid="13470" relation="include">
+        </childnode>
+        <childnode refid="13468" relation="include">
+        </childnode>
+        <childnode refid="13570" relation="include">
+        </childnode>
+        <childnode refid="13572" relation="include">
+        </childnode>
+      </node>
+      <node id="13559">
+        <label>src/kernel/routing/midi/DevMidi.h</label>
+        <link refid="d4/da2/DevMidi_8h"/>
+        <childnode refid="13503" relation="include">
+        </childnode>
+        <childnode refid="13484" relation="include">
+        </childnode>
+        <childnode refid="13486" relation="include">
+        </childnode>
+        <childnode refid="13557" relation="include">
+        </childnode>
+        <childnode refid="13496" relation="include">
+        </childnode>
+        <childnode refid="13506" relation="include">
+        </childnode>
+        <childnode refid="13505" relation="include">
+        </childnode>
+        <childnode refid="13546" relation="include">
+        </childnode>
+        <childnode refid="13538" relation="include">
+        </childnode>
+      </node>
+      <node id="13495">
+        <label>src/kernel/routing/tests/RouteTest.cpp</label>
+        <link refid="d2/dba/RouteTest_8cpp"/>
+      </node>
+      <node id="13545">
+        <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.cpp</label>
+        <link refid="d8/da8/InputGuidoFileDeviceShape_8cpp"/>
+      </node>
+      <node id="13486">
+        <label>src/kernel/routing/midi/DevMidi.cpp</label>
+        <link refid="df/d8f/DevMidi_8cpp"/>
+      </node>
+      <node id="13492">
+        <label>src/kernel/routing/tests/BoxTest.h</label>
+        <link refid="df/d01/BoxTest_8h"/>
+        <childnode refid="13493" relation="include">
+        </childnode>
+        <childnode refid="13482" relation="include">
+        </childnode>
+      </node>
+      <node id="13544">
+        <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.h</label>
+        <link refid="d9/d0d/InputGuidoFileDeviceShape_8h"/>
+        <childnode refid="13514" relation="include">
+        </childnode>
+        <childnode refid="13545" relation="include">
+        </childnode>
+      </node>
+      <node id="13562">
+        <label>src/kernel/routing/Route-inlines.h</label>
+        <link refid="d2/d2c/Route-inlines_8h"/>
+        <childnode refid="13471" relation="include">
+        </childnode>
+        <childnode refid="13563" relation="include">
+        </childnode>
+        <childnode refid="13474" relation="include">
+        </childnode>
+        <childnode refid="13476" relation="include">
+        </childnode>
+        <childnode refid="13503" relation="include">
+        </childnode>
+        <childnode refid="13504" relation="include">
+        </childnode>
+        <childnode refid="13478" relation="include">
+        </childnode>
+        <childnode refid="13484" relation="include">
+        </childnode>
+        <childnode refid="13486" relation="include">
+        </childnode>
+        <childnode refid="13487" relation="include">
+        </childnode>
+        <childnode refid="13491" relation="include">
+        </childnode>
+        <childnode refid="13564" relation="include">
+        </childnode>
+        <childnode refid="13557" relation="include">
+        </childnode>
+        <childnode refid="13481" relation="include">
+        </childnode>
+        <childnode refid="13482" relation="include">
+        </childnode>
+        <childnode refid="13495" relation="include">
+        </childnode>
+        <childnode refid="13483" relation="include">
+        </childnode>
+        <childnode refid="13496" relation="include">
+        </childnode>
+        <childnode refid="13497" relation="include">
+        </childnode>
+        <childnode refid="13498" relation="include">
+        </childnode>
+        <childnode refid="13512" relation="include">
+        </childnode>
+        <childnode refid="13506" relation="include">
+        </childnode>
+        <childnode refid="13519" relation="include">
+        </childnode>
+        <childnode refid="13525" relation="include">
+        </childnode>
+        <childnode refid="13529" relation="include">
+        </childnode>
+        <childnode refid="13521" relation="include">
+        </childnode>
+        <childnode refid="13522" relation="include">
+        </childnode>
+        <childnode refid="13500" relation="include">
+        </childnode>
+        <childnode refid="13526" relation="include">
+        </childnode>
+        <childnode refid="13513" relation="include">
+        </childnode>
+        <childnode refid="13527" relation="include">
+        </childnode>
+        <childnode refid="13523" relation="include">
+        </childnode>
+        <childnode refid="13508" relation="include">
+        </childnode>
+        <childnode refid="13531" relation="include">
+        </childnode>
+        <childnode refid="13509" relation="include">
+        </childnode>
+        <childnode refid="13536" relation="include">
+        </childnode>
+        <childnode refid="13514" relation="include">
+        </childnode>
+        <childnode refid="13565" relation="include">
+        </childnode>
+        <childnode refid="13545" relation="include">
+        </childnode>
+        <childnode refid="13546" relation="include">
+        </childnode>
+        <childnode refid="13548" relation="include">
+        </childnode>
+        <childnode refid="13532" relation="include">
+        </childnode>
+        <childnode refid="13533" relation="include">
+        </childnode>
+        <childnode refid="13534" relation="include">
+        </childnode>
+        <childnode refid="13566" relation="include">
+        </childnode>
+        <childnode refid="13537" relation="include">
+        </childnode>
+        <childnode refid="13538" relation="include">
+        </childnode>
+        <childnode refid="13539" relation="include">
+        </childnode>
+        <childnode refid="13524" relation="include">
+        </childnode>
+        <childnode refid="13535" relation="include">
+        </childnode>
+        <childnode refid="13554" relation="include">
+        </childnode>
+        <childnode refid="13555" relation="include">
+        </childnode>
+      </node>
+      <node id="13528">
+        <label>src/wxGUI/MutView.h</label>
+        <link refid="d0/d9e/MutView_8h"/>
+        <childnode refid="13506" relation="include">
+        </childnode>
+        <childnode refid="13529" relation="include">
+        </childnode>
+        <childnode refid="13521" relation="include">
+        </childnode>
+        <childnode refid="13522" relation="include">
+        </childnode>
+        <childnode refid="13500" relation="include">
+        </childnode>
+        <childnode refid="13523" relation="include">
+        </childnode>
+      </node>
+      <node id="13572">
+        <label>src/kernel/routing/gmn/GSP.h</label>
+        <link refid="dd/da2/GSP_8h"/>
+        <childnode refid="13504" relation="include">
+        </childnode>
+        <childnode refid="13468" relation="include">
+        </childnode>
+        <childnode refid="13573" relation="include">
+        </childnode>
+        <childnode refid="13574" relation="include">
+        </childnode>
+      </node>
+      <node id="13575">
+        <label>src/kernel/routing/gmn/GSP_File.cpp</label>
+        <link refid="d8/d2f/GSP__File_8cpp"/>
+      </node>
+      <node id="13466">
+        <label>src/kernel/Frac.h</label>
+        <link refid="Frac.h"/>
+        <childnode refid="13467" relation="include">
+        </childnode>
+        <childnode refid="13468" relation="include">
+        </childnode>
+        <childnode refid="13469" relation="include">
+        </childnode>
+        <childnode refid="13572" relation="include">
+        </childnode>
+      </node>
+      <node id="13574">
+        <label>src/kernel/routing/gmn/GSP_File.h</label>
+        <link refid="dc/ddd/GSP__File_8h"/>
+        <childnode refid="13573" relation="include">
+        </childnode>
+        <childnode refid="13575" relation="include">
+        </childnode>
+      </node>
+      <node id="13493">
+        <label>src/kernel/routing/tests/BoxTest.cpp</label>
+        <link refid="db/d0a/BoxTest_8cpp"/>
+      </node>
+      <node id="13519">
+        <label>src/wxGUI/MutBitmaps.cpp</label>
+        <link refid="d7/db6/MutBitmaps_8cpp"/>
+      </node>
+      <node id="13514">
+        <label>src/wxGUI/Routing/GUIRoute.cpp</label>
+        <link refid="d4/dee/GUIRoute_8cpp"/>
+      </node>
+      <node id="13535">
+        <label>src/wxGUI/Routing/tests/GUIRouteTest.cpp</label>
+        <link refid="d9/d20/GUIRouteTest_8cpp"/>
+      </node>
+      <node id="13568">
+        <label>src/wxGUI/Routing/OutputDevDlg.h</label>
+        <link refid="de/d50/OutputDevDlg_8h"/>
+        <childnode refid="13513" relation="include">
+        </childnode>
+        <childnode refid="13530" relation="include">
+        </childnode>
+        <childnode refid="13534" relation="include">
+        </childnode>
+        <childnode refid="13566" relation="include">
+        </childnode>
+        <childnode refid="13537" relation="include">
+        </childnode>
+        <childnode refid="13538" relation="include">
+        </childnode>
+        <childnode refid="13539" relation="include">
+        </childnode>
+      </node>
+      <node id="13483">
+        <label>src/kernel/routing/tests/timer1.cpp</label>
+        <link refid="d9/d9a/timer1_8cpp"/>
+      </node>
+      <node id="13547">
+        <label>src/wxGUI/Routing/InputMidiFileDeviceShape.h</label>
+        <link refid="d1/da8/InputMidiFileDeviceShape_8h"/>
+        <childnode refid="13514" relation="include">
+        </childnode>
+        <childnode refid="13548" relation="include">
+        </childnode>
+      </node>
+      <node id="13536">
+        <label>src/wxGUI/Routing/GUIRoute-inlines.h</label>
+        <link refid="d2/d73/GUIRoute-inlines_8h"/>
+        <childnode refid="13513" relation="include">
+        </childnode>
+        <childnode refid="13508" relation="include">
+        </childnode>
+        <childnode refid="13531" relation="include">
+        </childnode>
+        <childnode refid="13509" relation="include">
+        </childnode>
+        <childnode refid="13530" relation="include">
+        </childnode>
+        <childnode refid="13514" relation="include">
+        </childnode>
+        <childnode refid="13532" relation="include">
+        </childnode>
+        <childnode refid="13533" relation="include">
+        </childnode>
+        <childnode refid="13534" relation="include">
+        </childnode>
+        <childnode refid="13537" relation="include">
+        </childnode>
+        <childnode refid="13538" relation="include">
+        </childnode>
+        <childnode refid="13539" relation="include">
+        </childnode>
+      </node>
+      <node id="13504">
+        <label>src/kernel/routing/gmn/DevGIS.cpp</label>
+        <link refid="db/d78/DevGIS_8cpp"/>
+      </node>
+      <node id="13516">
+        <label>src/wxGUI/MutFrame.h</label>
+        <link refid="dd/db5/MutFrame_8h"/>
+        <childnode refid="13512" relation="include">
+        </childnode>
+        <childnode refid="13506" relation="include">
+        </childnode>
+        <childnode refid="13517" relation="include">
+        </childnode>
+        <childnode refid="13525" relation="include">
+        </childnode>
+        <childnode refid="13520" relation="include">
+        </childnode>
+        <childnode refid="13522" relation="include">
+        </childnode>
+        <childnode refid="13500" relation="include">
+        </childnode>
+        <childnode refid="13526" relation="include">
+        </childnode>
+        <childnode refid="13513" relation="include">
+        </childnode>
+        <childnode refid="13527" relation="include">
+        </childnode>
+        <childnode refid="13523" relation="include">
+        </childnode>
+        <childnode refid="13528" relation="include">
+        </childnode>
+        <childnode refid="13530" relation="include">
+        </childnode>
+        <childnode refid="13514" relation="include">
+        </childnode>
+      </node>
+      <node id="13468">
+        <label>src/kernel/routing/gmn/GIS.cpp</label>
+        <link refid="dc/de7/GIS_8cpp"/>
+      </node>
+      <node id="13566">
+        <label>src/wxGUI/Routing/OutputDevDlg.cpp</label>
+        <link refid="da/dd8/OutputDevDlg_8cpp"/>
+      </node>
+      <node id="13471">
+        <label>src/kernel/Execute.cpp</label>
+        <link refid="df/d23/Execute_8cpp"/>
+      </node>
+      <node id="13518">
+        <label>src/wxGUI/generic/mutDebug.cpp</label>
+        <link refid="d4/dc0/mutDebug_8cpp"/>
+      </node>
+      <node id="13511">
+        <label>src/wxGUI/GUIBoxData-inlines.h</label>
+        <link refid="d5/d12/GUIBoxData-inlines_8h"/>
+        <childnode refid="13512" relation="include">
+        </childnode>
+        <childnode refid="13513" relation="include">
+        </childnode>
+        <childnode refid="13508" relation="include">
+        </childnode>
+        <childnode refid="13509" relation="include">
+        </childnode>
+        <childnode refid="13514" relation="include">
+        </childnode>
+      </node>
+      <node id="13539">
+        <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp</label>
+        <link refid="d5/d00/OutputMidiFileDeviceShape_8cpp"/>
+      </node>
+      <node id="13561">
+        <label>src/kernel/routing/midi/midicmn-inlines.h</label>
+        <link refid="d9/d34/midicmn-inlines_8h"/>
+        <childnode refid="13484" relation="include">
+        </childnode>
+        <childnode refid="13486" relation="include">
+        </childnode>
+        <childnode refid="13487" relation="include">
+        </childnode>
+        <childnode refid="13491" relation="include">
+        </childnode>
+      </node>
+      <node id="13543">
+        <label>src/wxGUI/Routing/InputMidiDeviceShape.h</label>
+        <link refid="d3/d5e/InputMidiDeviceShape_8h"/>
+        <childnode refid="13514" relation="include">
+        </childnode>
+        <childnode refid="13544" relation="include">
+        </childnode>
+        <childnode refid="13546" relation="include">
+        </childnode>
+      </node>
+      <node id="13512">
+        <label>src/wxGUI/GUIBoxData.cpp</label>
+        <link refid="d2/dd3/GUIBoxData_8cpp"/>
+      </node>
+      <node id="13470">
+        <label>src/kernel/routing/Device.h</label>
+        <link refid="de/d05/Device_8h"/>
+        <childnode refid="13471" relation="include">
+        </childnode>
+        <childnode refid="13472" relation="include">
+        </childnode>
+        <childnode refid="13501" relation="include">
+        </childnode>
+        <childnode refid="13558" relation="include">
+        </childnode>
+        <childnode refid="13503" relation="include">
+        </childnode>
+        <childnode refid="13559" relation="include">
+        </childnode>
+        <childnode refid="13560" relation="include">
+        </childnode>
+        <childnode refid="13562" relation="include">
+        </childnode>
+        <childnode refid="13564" relation="include">
+        </childnode>
+        <childnode refid="13557" relation="include">
+        </childnode>
+        <childnode refid="13496" relation="include">
+        </childnode>
+        <childnode refid="13513" relation="include">
+        </childnode>
+        <childnode refid="13510" relation="include">
+        </childnode>
+        <childnode refid="13541" relation="include">
+        </childnode>
+        <childnode refid="13505" relation="include">
+        </childnode>
+        <childnode refid="13567" relation="include">
+        </childnode>
+        <childnode refid="13543" relation="include">
+        </childnode>
+        <childnode refid="13568" relation="include">
+        </childnode>
+        <childnode refid="13569" relation="include">
+        </childnode>
+      </node>
+      <node id="13474">
+        <label>src/kernel/routing/Box.cpp</label>
+        <link refid="dd/dc6/Box_8cpp"/>
+      </node>
+      <node id="13510">
+        <label>src/wxGUI/Routing/BoxShape.h</label>
+        <link refid="d9/d49/BoxShape_8h"/>
+        <childnode refid="13511" relation="include">
+        </childnode>
+        <childnode refid="13515" relation="include">
+        </childnode>
+        <childnode refid="13527" relation="include">
+        </childnode>
+        <childnode refid="13508" relation="include">
+        </childnode>
+        <childnode refid="13531" relation="include">
+        </childnode>
+        <childnode refid="13509" relation="include">
+        </childnode>
+        <childnode refid="13536" relation="include">
+        </childnode>
+        <childnode refid="13514" relation="include">
+        </childnode>
+        <childnode refid="13532" relation="include">
+        </childnode>
+        <childnode refid="13540" relation="include">
+        </childnode>
+        <childnode refid="13533" relation="include">
+        </childnode>
+        <childnode refid="13524" relation="include">
+        </childnode>
+      </node>
+      <node id="13507">
+        <label>src/wxGUI/Routing/BoxChannelShape.h</label>
+        <link refid="d6/d68/BoxChannelShape_8h"/>
+        <childnode refid="13508" relation="include">
+        </childnode>
+        <childnode refid="13509" relation="include">
+        </childnode>
+        <childnode refid="13510" relation="include">
+        </childnode>
+        <childnode refid="13530" relation="include">
+        </childnode>
+        <childnode refid="13514" relation="include">
+        </childnode>
+        <childnode refid="13532" relation="include">
+        </childnode>
+        <childnode refid="13533" relation="include">
+        </childnode>
+      </node>
+      <node id="13509">
+        <label>src/wxGUI/Routing/BoxShape.cpp</label>
+        <link refid="d8/db4/BoxShape_8cpp"/>
+      </node>
+      <node id="13478">
+        <label>src/kernel/routing/gmn/tests/playgmn1.cpp</label>
+        <link refid="d3/d06/playgmn1_8cpp"/>
+      </node>
+      <node id="13489">
+        <label>src/kernel/routing/midi/tests/main.cpp</label>
+        <link refid="df/d72/kernel_2routing_2midi_2tests_2main_8cpp"/>
+      </node>
+      <node id="13533">
+        <label>src/wxGUI/Routing/NewInputDeviceShape.cpp</label>
+        <link refid="df/d62/NewInputDeviceShape_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d7/dcc/classfrac" prot="public">frac</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="d9/d7c/group__kernel_1ga95dfd7cd758823f01147360213369431" prot="public" static="no">
+        <name>MU32_FRAC_H</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Frac.h" line="28" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Frac.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d9/d7c/group__kernel_1ga01dcfc1b7b51a841e5fa12baa02095f0" prot="public" static="no">
+        <name>MU32_FRAC_H_PRECOMPILED</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Frac.h" line="38" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Frac.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Fraction class for Mutabor. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright: (c) 2008 TU Dresden <simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein@users.berlios.de">keinstein@users.berlios.de</ulink> </para></simplesect>
+<simplesect kind="date"><para></para></simplesect>
+<simplesect kind="rcs"><title>Date:</title><para>2011/09/27 20:13:21 </para></simplesect>
+<simplesect kind="version"><para></para></simplesect>
+<simplesect kind="rcs"><title>Revision:</title><para>1.9 </para></simplesect>
+GPL </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="18"><highlight class="comment">//<sp/>##################################################################</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>frac<sp/>...<sp/>calculating<sp/>with<sp/>fractions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>##################################################################</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>we<sp/>guard<sp/>a<sp/>little<sp/>bit<sp/>complicated<sp/>to<sp/>ensure<sp/>the<sp/>references<sp/>are<sp/>set<sp/>right</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(!defined(MU32_FRAC_H)<sp/>&amp;&amp;<sp/>!defined(PRECOMPILE))<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="26"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>(!defined(MU32_FRAC_H_PRECOMPILED))</highlight></codeline>
+<codeline lineno="27"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifndef<sp/>PRECOMPILE</highlight></codeline>
+<codeline lineno="28" refid="d9/d7c/group__kernel_1ga95dfd7cd758823f01147360213369431" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MU32_FRAC_H</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MU32_FRAC_H_PRECOMPILED</highlight></codeline>
+<codeline lineno="38" refid="d9/d7c/group__kernel_1ga01dcfc1b7b51a841e5fa12baa02095f0" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MU32_FRAC_H_PRECOMPILED</highlight></codeline>
+<codeline lineno="39"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>system<sp/>headers<sp/>which<sp/>do<sp/>seldom<sp/>change</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/string.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAVE_BOOST_RATIONAL_HPP</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/rational.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>boost::rational&lt;mutint64&gt;<sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>wxString<sp/>TowxString(<ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>f)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxString::Format(_T(</highlight><highlight class="stringliteral">&quot;%ld/%ld&quot;</highlight><highlight class="normal">),f.<ref refid="d7/dcc/classfrac_1af128afd240a2fdf80a7c0ddf502abec1" kindref="member">numerator</ref>(),f.<ref refid="d7/dcc/classfrac_1af37948b8426f3235f1e3bea7a208af22" kindref="member">denominator</ref>());</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="d7/dcc/classfrac" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref></highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="64" refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutint64<sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>,<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="67" refid="d7/dcc/classfrac_1a54386a010d92f1a7090610b8454506f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a54386a010d92f1a7090610b8454506f1" kindref="member">frac</ref>()</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="d7/dcc/classfrac_1a9a282cfcec0c2b9330f10f4fea646a19" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a9a282cfcec0c2b9330f10f4fea646a19" kindref="member">frac</ref>(mutint64<sp/>integerval)<sp/></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>=<sp/>integerval;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="79" refid="d7/dcc/classfrac_1a5465c3ee867436b9c4ffa90c67972968" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a5465c3ee867436b9c4ffa90c67972968" kindref="member">frac</ref>(mutint64<sp/><ref refid="d7/dcc/classfrac_1af128afd240a2fdf80a7c0ddf502abec1" kindref="member">numerator</ref>,<sp/>mutint64<sp/><ref refid="d7/dcc/classfrac_1af37948b8426f3235f1e3bea7a208af22" kindref="member">denominator</ref>)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>=<sp/><ref refid="d7/dcc/classfrac_1af128afd240a2fdf80a7c0ddf502abec1" kindref="member">numerator</ref>;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>=<sp/><ref refid="d7/dcc/classfrac_1af37948b8426f3235f1e3bea7a208af22" kindref="member">denominator</ref>;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="d7/dcc/classfrac_1af128afd240a2fdf80a7c0ddf502abec1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutint64<sp/><ref refid="d7/dcc/classfrac_1af128afd240a2fdf80a7c0ddf502abec1" kindref="member">numerator</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>;}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="d7/dcc/classfrac_1af37948b8426f3235f1e3bea7a208af22" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutint64<sp/><ref refid="d7/dcc/classfrac_1af37948b8426f3235f1e3bea7a208af22" kindref="member">denominator</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>;}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/><ref refid="d9/d7c/group__kernel_1ga45977bface0368528c916e649c6d036d" kindref="member">operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/>f);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/><ref refid="d9/d7c/group__kernel_1ga217b4855498dd93fdb263179916c3494" kindref="member">operator +=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/>f);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/><ref refid="d9/d7c/group__kernel_1ga1851e7965f04fefceefc286f756e39a6" kindref="member">operator -=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/>f);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/><ref refid="d9/d7c/group__kernel_1ga523f425ff9825fed2be80a6a7c68d828" kindref="member">operator *=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/>f);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/><ref refid="d9/d7c/group__kernel_1ga42d3ce49e7e181c29e80bc0982398ea9" kindref="member">operator /=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/>f);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/><ref refid="d9/d7c/group__kernel_1gac2a4e69bff48f41fd10fdc3c3244ba7e" kindref="member">operator +</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>s);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/><ref refid="d9/d7c/group__kernel_1gabba1cdb301c907aa8c87b598b774fac1" kindref="member">operator -</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>s);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/><ref refid="d9/d7c/group__kernel_1ga26a3005e8a5371920b8a962a2872e982" kindref="member">operator *</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>s);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/><ref refid="d9/d7c/group__kernel_1ga2908f66490e4905c34f2b17f8643ead0" kindref="member">operator /</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>s);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gacb303dc7bb2e710d15777c4d7db2fb55" kindref="member">operator &lt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>&amp;f);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga63d78875d28eb2aacb2e48f705452fa8" kindref="member">operator &lt;=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>&amp;f);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga9f51aaf2bce310b8ce20621e652340b0" kindref="member">operator ==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>&amp;f);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga27fb4be870bf99b464613639629591be" kindref="member">operator !=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>&amp;f);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gad024a834eef61012e7192c1f32f49c38" kindref="member">operator &gt;=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>&amp;f);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gac22bd5d74dea23a64816c10a769b2a4e" kindref="member">operator &gt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>&amp;f);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="d7/dcc/classfrac_1afc94eb0c692e74fabd9fa4321ec0782f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>bool()</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="d7/dcc/classfrac_1a516b3ec9d4434cfa41611bf23072d653" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a516b3ec9d4434cfa41611bf23072d653" kindref="member">operator !</ref>()</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/><ref refid="d9/d7c/group__kernel_1ga45977bface0368528c916e649c6d036d" kindref="member">operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;i);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutint64<sp/><ref refid="d9/d7c/group__kernel_1gaa754b647e99e092970847d6da64d7389" kindref="member">gcd</ref>(mutint64<sp/>a,<sp/>mutint64<sp/>b);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>STD_PRE::ostream&amp;<sp/><ref refid="d7/dcc/classfrac_1a8da14a4f1a5bf5e6eaa2c8cbe55128a2" kindref="member">operator &lt;&lt; </ref>(STD_PRE::ostream&amp;<sp/>os,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>f);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>WX</highlight></codeline>
+<codeline lineno="137"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>wxString()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="138"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxString::Format(_T(</highlight><highlight class="stringliteral">&quot;%ld/%ld&quot;</highlight><highlight class="normal">),<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>,<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="143"><highlight class="preprocessor"></highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>WX</highlight></codeline>
+<codeline lineno="146"><highlight class="preprocessor"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>wxString<sp/>TowxString(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>&amp;f)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(wxString)<sp/>f;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>STD_PRE::ostream&amp;<sp/>operator&lt;&lt;(STD_PRE::ostream&amp;<sp/>os,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>f)</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;(&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>f.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="156"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAVE_BOOST_RATIONAL_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="158"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PRECOMPILED</highlight></codeline>
+<codeline lineno="160"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+<codeline lineno="161"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Frac.h"/>
+  </compounddef>
+</doxygen>

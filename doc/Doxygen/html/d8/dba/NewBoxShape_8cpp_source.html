@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/wxGUI/Routing/NewBoxShape.cpp Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_eaae7e9da1b31c6b329e928d72e0e61a.html">wxGUI</a></li><li class="navelem"><a class="el" href="../../dir_589b0311d58a74617a532121d489d9c2.html">Routing</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">NewBoxShape.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d8/dba/NewBoxShape_8cpp.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// -*-C++ -*-</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d73/Defs_8h.html">src/kernel/Defs.h</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d2c/Route-inlines_8h.html">src/kernel/routing/Route-inlines.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/dcc/NewBoxShape_8h.html">src/wxGUI/Routing/NewBoxShape.h</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d9/dd2/BoxDlg_8h.html">src/wxGUI/Routing/BoxDlg.h</a>&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d3/dd7/MutRouteWnd_8h.html">src/wxGUI/MutRouteWnd.h</a>&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d73/GUIRoute-inlines_8h.html">src/wxGUI/Routing/GUIRoute-inlines.h</a>&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d6/d68/BoxChannelShape_8h.html">src/wxGUI/Routing/BoxChannelShape.h</a>&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d9/d49/BoxShape_8h.html">src/wxGUI/Routing/BoxShape.h</a>&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">//#include &quot;MutApp.h&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">//#include &quot;MutIcon.h&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">//#include &quot;InputDevDlg.h&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">//#include &quot;Device.h&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">using namespace </span>mutabor;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">namespace </span>mutaborGUI {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#gac56ad39fecbb8d6207794d9d94bcd4bd">   48</a></span>&#160;        <a class="code" href="../../dc/df2/group__GUIroute.html#ga2fb7addaa6036c13acd23ac730a3b48f">IMPLEMENT_CLASS</a>(<a class="code" href="../../d3/dd6/classmutaborGUI_1_1NewMutBoxShape.html">NewMutBoxShape</a>, <a class="code" href="../../d5/d72/classmutaborGUI_1_1MutBoxShape.html">MutBoxShape</a>)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="../../df/dd1/group__GUI.html#gae2013faeca4cd6cae1c6098bd574f854">MutIcon</a>&amp; <a class="code" href="../../d3/dd6/classmutaborGUI_1_1NewMutBoxShape.html">NewMutBoxShape</a>::GetMutIcon()</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;Checking icon&quot;</span>));</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(<a class="code" href="../../dc/df2/group__GUIroute.html#gaf3866c0fb3191a2c9f759ece0ef09e08">NewBoxBitmap</a>.IsOk ());</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="../../dc/df2/group__GUIroute.html#gaf3866c0fb3191a2c9f759ece0ef09e08">NewBoxBitmap</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#ga9d64270fb543fc0bf3a19aeeba441cff">   58</a></span>&#160;        <span class="keywordtype">void</span> NewMutBoxShape::InitializeDialog(<a class="code" href="../../df/d7d/classmutaborGUI_1_1BoxDlg.html">BoxDlg</a> * dlg)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(dlg);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(<a class="code" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a> == NULL);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                dlg-&gt;<a class="code" href="../../df/d7d/classmutaborGUI_1_1BoxDlg.html#add3353f6c9ee7c99f34446729ea58b66">SetBoxType</a>(<a class="code" href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">Box0</a>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                dlg-&gt;<a class="code" href="../../df/d7d/classmutaborGUI_1_1BoxDlg.html#ad63d59141a1f8fac3e7b8c08c86274f4">SetBoxNumber</a>(<a class="code" href="../../d5/dee/group__route.html#ga654c8d02aae488f8ff6f6d0f62b08f7d">BoxClass::GetNextFreeBox</a>());</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                dlg-&gt;SetTitle(<a class="code" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>(<span class="stringliteral">&quot;Create Box&quot;</span>));</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                dlg-&gt;<a class="code" href="../../df/d7d/classmutaborGUI_1_1BoxDlg.html#a48f2b429c9da48d0c5826e993a4cee42">DisableRemove</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#gaf197019e836f6fbb61bd7192732dd61b">   67</a></span>&#160;        <span class="keywordtype">bool</span> NewMutBoxShape::replaceSelfBy (<a class="code" href="../../d5/d72/classmutaborGUI_1_1MutBoxShape.html">MutBoxShape</a>  * newshape)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <a class="code" href="../../dc/d06/classmutaborGUI_1_1MutRouteWnd.html">MutRouteWnd</a> * p = <span class="keyword">dynamic_cast&lt;</span><a class="code" href="../../dc/d06/classmutaborGUI_1_1MutRouteWnd.html">MutRouteWnd</a> *<span class="keyword">&gt;</span> (m_parent);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(p);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="comment">/* make shure the shape has the correct size.  this</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">                   must be done here, as we could have added some</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">                   content to the control (e.g. BoxChannelShapes) */</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="comment">// newshape -&gt; Layout(); // we call SetSize() from Fit(), and Layout() from OnSize();</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                newshape -&gt; Fit();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="comment">// the &quot;New device&quot; icon won&#39;t be replaced, so we just append the device</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                p-&gt;<a class="code" href="../../dc/d06/classmutaborGUI_1_1MutRouteWnd.html#a1b62a9db129f1f62e8d69a83a125ea52">AddBox</a>(newshape,sizerFlags);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment"> * \}</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"> */</span></div>
+<div class="ttc" id="classmutaborGUI_1_1MutRouteWnd_html_a1b62a9db129f1f62e8d69a83a125ea52"><div class="ttname"><a href="../../dc/d06/classmutaborGUI_1_1MutRouteWnd.html#a1b62a9db129f1f62e8d69a83a125ea52">mutaborGUI::MutRouteWnd::AddBox</a></div><div class="ttdeci">bool AddBox(MutBoxShape *box, const wxSizerFlags &amp;flags)</div><div class="ttdoc">Adds a box shape. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dd7/MutRouteWnd_8h_source.html#l00194">MutRouteWnd.h:194</a></div></div>
+<div class="ttc" id="group__GUI_html_gae2013faeca4cd6cae1c6098bd574f854"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gae2013faeca4cd6cae1c6098bd574f854">MutIcon</a></div><div class="ttdeci">#define MutIcon</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d37/MutIcon_8h_source.html#l00170">MutIcon.h:170</a></div></div>
+<div class="ttc" id="group__GUIroute_html_gaf3866c0fb3191a2c9f759ece0ef09e08"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#gaf3866c0fb3191a2c9f759ece0ef09e08">mutaborGUI::NewBoxBitmap</a></div><div class="ttdeci">MutIcon NewBoxBitmap</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d28/RouteIcons_8cpp_source.html#l00047">RouteIcons.cpp:47</a></div></div>
+<div class="ttc" id="BoxDlg_8h_html"><div class="ttname"><a href="../../d9/dd2/BoxDlg_8h.html">BoxDlg.h</a></div></div>
+<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00141">mutDebug.h:141</a></div></div>
+<div class="ttc" id="MutRouteWnd_8h_html"><div class="ttname"><a href="../../d3/dd7/MutRouteWnd_8h.html">MutRouteWnd.h</a></div></div>
+<div class="ttc" id="BoxShape_8h_html"><div class="ttname"><a href="../../d9/d49/BoxShape_8h.html">BoxShape.h</a></div><div class="ttdoc">Box shape for route window. </div></div>
+<div class="ttc" id="classmutaborGUI_1_1BoxDlg_html_add3353f6c9ee7c99f34446729ea58b66"><div class="ttname"><a href="../../df/d7d/classmutaborGUI_1_1BoxDlg.html#add3353f6c9ee7c99f34446729ea58b66">mutaborGUI::BoxDlg::SetBoxType</a></div><div class="ttdeci">bool SetBoxType(int type)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d2a/BoxDlg_8cpp_source.html#l00315">BoxDlg.cpp:315</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1BoxDlg_html_a48f2b429c9da48d0c5826e993a4cee42"><div class="ttname"><a href="../../df/d7d/classmutaborGUI_1_1BoxDlg.html#a48f2b429c9da48d0c5826e993a4cee42">mutaborGUI::BoxDlg::DisableRemove</a></div><div class="ttdeci">void DisableRemove(bool disable=true)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd2/BoxDlg_8h_source.html#l00222">BoxDlg.h:222</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1BoxDlg_html"><div class="ttname"><a href="../../df/d7d/classmutaborGUI_1_1BoxDlg.html">mutaborGUI::BoxDlg</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd2/BoxDlg_8h_source.html#l00190">BoxDlg.h:190</a></div></div>
+<div class="ttc" id="Route-inlines_8h_html"><div class="ttname"><a href="../../d2/d2c/Route-inlines_8h.html">Route-inlines.h</a></div></div>
+<div class="ttc" id="group__route_html_gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9"><div class="ttname"><a href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">mutabor::Box0</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00115">Box.h:115</a></div></div>
+<div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
+<div class="ttc" id="classmutaborGUI_1_1BoxDlg_html_ad63d59141a1f8fac3e7b8c08c86274f4"><div class="ttname"><a href="../../df/d7d/classmutaborGUI_1_1BoxDlg.html#ad63d59141a1f8fac3e7b8c08c86274f4">mutaborGUI::BoxDlg::SetBoxNumber</a></div><div class="ttdeci">void SetBoxNumber(int nr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd2/BoxDlg_8h_source.html#l00208">BoxDlg.h:208</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1MutRouteWnd_html"><div class="ttname"><a href="../../dc/d06/classmutaborGUI_1_1MutRouteWnd.html">mutaborGUI::MutRouteWnd</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dd7/MutRouteWnd_8h_source.html#l00061">MutRouteWnd.h:61</a></div></div>
+<div class="ttc" id="group__route_html_ga654c8d02aae488f8ff6f6d0f62b08f7d"><div class="ttname"><a href="../../d5/dee/group__route.html#ga654c8d02aae488f8ff6f6d0f62b08f7d">mutabor::BoxClass::GetNextFreeBox</a></div><div class="ttdeci">static int GetNextFreeBox()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00217">Box.h:217</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1MutBoxShape_html"><div class="ttname"><a href="../../d5/d72/classmutaborGUI_1_1MutBoxShape.html">mutaborGUI::MutBoxShape</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d49/BoxShape_8h_source.html#l00074">BoxShape.h:74</a></div></div>
+<div class="ttc" id="group__kernel_html_ga77bd8e5b959213dd8bcd48dc513f6013"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a></div><div class="ttdeci">#define mutASSERT(cond)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00223">Defs.h:223</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1NewMutBoxShape_html"><div class="ttname"><a href="../../d3/dd6/classmutaborGUI_1_1NewMutBoxShape.html">mutaborGUI::NewMutBoxShape</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dcc/NewBoxShape_8h_source.html#l00063">NewBoxShape.h:63</a></div></div>
+<div class="ttc" id="group__kernel_html_gae4dfd7b0d66121016d6466d2ff10e8ba"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a></div><div class="ttdeci">#define _</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/Execute_8cpp_source.html#l00057">Execute.cpp:57</a></div></div>
+<div class="ttc" id="BoxChannelShape_8h_html"><div class="ttname"><a href="../../d6/d68/BoxChannelShape_8h.html">BoxChannelShape.h</a></div><div class="ttdoc">Box shape for route window. </div></div>
+<div class="ttc" id="NewBoxShape_8h_html"><div class="ttname"><a href="../../d4/dcc/NewBoxShape_8h.html">NewBoxShape.h</a></div><div class="ttdoc">New box shape for route window. </div></div>
+<div class="ttc" id="GUIRoute-inlines_8h_html"><div class="ttname"><a href="../../d2/d73/GUIRoute-inlines_8h.html">GUIRoute-inlines.h</a></div></div>
+<div class="ttc" id="mut_8cc_html_abffd7f9eb60ee7a611664ca2804eec8f"><div class="ttname"><a href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a></div><div class="ttdeci">mutabor_box_type * box</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/mut_8cc_source.html#l01633">mut.cc:1633</a></div></div>
+<div class="ttc" id="group__GUIroute_html_ga2fb7addaa6036c13acd23ac730a3b48f"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#ga2fb7addaa6036c13acd23ac730a3b48f">mutaborGUI::IMPLEMENT_CLASS</a></div><div class="ttdeci">IMPLEMENT_CLASS(MutBoxShape, MutBoxIconShape) BEGIN_EVENT_TABLE(MutBoxShape</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:38:42 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

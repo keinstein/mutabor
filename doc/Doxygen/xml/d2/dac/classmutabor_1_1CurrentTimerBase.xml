@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d2/dac/classmutabor_1_1CurrentTimerBase" kind="class" prot="public">
+    <compoundname>mutabor::CurrentTimerBase</compoundname>
+    <basecompoundref prot="protected" virt="non-virtual">wxStopWatch</basecompoundref>
+    <derivedcompoundref refid="d7/dda/classmutabor_1_1CurrentTimer" prot="public" virt="non-virtual">mutabor::CurrentTimer</derivedcompoundref>
+    <includes refid="db/d41/timing_8h" local="no">timing.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d2/dac/classmutabor_1_1CurrentTimerBase_1a0cd874d4bd083b25211f1ad4472bbe5f" prot="protected" static="no" mutable="no">
+        <type>struct timespec start</type>
+        <definition>struct timespec start mutabor::CurrentTimerBase::resolution</definition>
+        <argsstring></argsstring>
+        <name>resolution</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="402" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="410" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="d2/dac/classmutabor_1_1CurrentTimerBase_1ac3f53b788d28fa79572471ecd336f482" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void mutabor::CurrentTimerBase::Sleep</definition>
+        <argsstring>(mutint64 time)</argsstring>
+        <name>Sleep</name>
+        <param>
+          <type>mutint64</type>
+          <declname>time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="402" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="402" bodyend="408"/>
+        <references refid="de/db7/group__debug_1ga9de22df51e7efa23154a04eab9e66cad" compoundref="de/de1/mutDebug_8h" startline="143">DEBUGLOGTYPE</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="d2/dac/classmutabor_1_1CurrentTimerBase_1a164e00a1afcbdcfd612d3cb5ebe1984e" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CurrentTimerBase::Start</definition>
+        <argsstring>(mutint64 t=0)</argsstring>
+        <name>Start</name>
+        <param>
+          <type>mutint64</type>
+          <declname>t</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="413" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="413" bodyend="415"/>
+        <referencedby refid="d7/dda/classmutabor_1_1CurrentTimer_1a211dcb9e9885c4a6c4bd442a0f313fc2" compoundref="db/d41/timing_8h" startline="443" endline="446">mutabor::CurrentTimer::CurrentTimer</referencedby>
+        <referencedby refid="d7/dda/classmutabor_1_1CurrentTimer_1a72898125fe093e7e1b2f91119cdb794b" compoundref="db/d41/timing_8h" startline="482" endline="488">mutabor::CurrentTimer::Set</referencedby>
+        <referencedby refid="d7/dda/classmutabor_1_1CurrentTimer_1aaaae9a6186045cd8ef28f1d24bcf081d" compoundref="db/d41/timing_8h" startline="458" endline="467">mutabor::CurrentTimer::UseRealtime</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/dac/classmutabor_1_1CurrentTimerBase_1a0453878c1f9b9f1403af4d52d3859229" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>mutint64</type>
+        <definition>mutint64 mutabor::CurrentTimerBase::Time</definition>
+        <argsstring>()</argsstring>
+        <name>Time</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="417" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="417" bodyend="419"/>
+        <referencedby refid="d7/dda/classmutabor_1_1CurrentTimer_1a7df1d50b0b51dd10a6cd2d59fd97581e" compoundref="db/d41/timing_8h" startline="496" endline="496">mutabor::CurrentTimer::Get</referencedby>
+        <referencedby refid="d7/dda/classmutabor_1_1CurrentTimer_1aaaae9a6186045cd8ef28f1d24bcf081d" compoundref="db/d41/timing_8h" startline="458" endline="467">mutabor::CurrentTimer::UseRealtime</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2602">
+        <label>wxStopWatch</label>
+      </node>
+      <node id="2601">
+        <label>mutabor::CurrentTimerBase</label>
+        <link refid="d2/dac/classmutabor_1_1CurrentTimerBase"/>
+        <childnode refid="2602" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="2603">
+        <label>mutabor::CurrentTimer</label>
+        <link refid="d7/dda/classmutabor_1_1CurrentTimer"/>
+        <childnode refid="2601" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2605">
+        <label>wxStopWatch</label>
+      </node>
+      <node id="2604">
+        <label>mutabor::CurrentTimerBase</label>
+        <link refid="d2/dac/classmutabor_1_1CurrentTimerBase"/>
+        <childnode refid="2605" relation="protected-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="401" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="401" bodyend="421"/>
+    <listofallmembers>
+      <member refid="d2/dac/classmutabor_1_1CurrentTimerBase_1a0cd874d4bd083b25211f1ad4472bbe5f" prot="protected" virt="non-virtual"><scope>mutabor::CurrentTimerBase</scope><name>resolution</name></member>
+      <member refid="d2/dac/classmutabor_1_1CurrentTimerBase_1ac3f53b788d28fa79572471ecd336f482" prot="private" virt="non-virtual"><scope>mutabor::CurrentTimerBase</scope><name>Sleep</name></member>
+      <member refid="d2/dac/classmutabor_1_1CurrentTimerBase_1a164e00a1afcbdcfd612d3cb5ebe1984e" prot="protected" virt="non-virtual"><scope>mutabor::CurrentTimerBase</scope><name>Start</name></member>
+      <member refid="d2/dac/classmutabor_1_1CurrentTimerBase_1a0453878c1f9b9f1403af4d52d3859229" prot="protected" virt="non-virtual"><scope>mutabor::CurrentTimerBase</scope><name>Time</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

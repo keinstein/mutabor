@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/kernel/routing/Device-inlines.h Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cbd7f246bdf7dc0a50281a272327e6ed.html">kernel</a></li><li class="navelem"><a class="el" href="../../dir_02be4fa82aae8ff4c4cc45bceb47856f.html">routing</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Device-inlines.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d8/d4d/Device-inlines_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/* we guard a little bit complicated to ensure the references are set right</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#if (!defined(ROUTING_DEVICE_INLINES) &amp;&amp; !defined(PRECOMPILE))  \</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">        || (!defined(ROUTING_DEVICE_INLINES_PRECOMPILED))</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef PRECOMPILE</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../d5/dee/group__route.html#ga6681c36d41c352f10f9665c978cc7f93">   35</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define ROUTING_DEVICE_INLINES</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">// headers</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d73/Defs_8h.html">src/kernel/Defs.h</a>&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/d05/Device_8h.html">src/kernel/routing/Device.h</a>&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#ifndef ROUTING_DEVICE_INLINES_PRECOMPILED</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../d5/dee/group__route.html#ga8b7f2bf0ab3a81a8f3dfd840ef395206">   46</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define ROUTING_DEVICE_INLINES_PRECOMPILED</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">// system headers which do seldom change</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">namespace </span>mutabor {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keyword">class</span> P, <span class="keyword">class</span> L&gt;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d5/dee/group__route.html#gad212bd763c21f167dc9c6523033d2b62">   53</a></span>&#160;        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d5/dee/group__route.html#gad212bd763c21f167dc9c6523033d2b62">CommonTypedDeviceAPI&lt;T,P,L&gt;::Destroy</a>()  {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <a class="code" href="../../d5/dee/group__route.html#gaebc414494d4db2ad9f687eb2b3d43a14">DevicePtr</a> <span class="keyword">self</span>(<span class="keyword">static_cast&lt;</span><a class="code" href="../../d5/dee/group__route.html#gae62e6954f27bdff3e405f60aa3a12235">thistype</a> *<span class="keyword">&gt;</span>(<span class="keyword">this</span>));</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="../../df/dd1/group__GUI.html#ga7ad6b2305e866ae3936c307f5f9f4c04">IsOpen</a>()) Close();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                DisconnectFromAll();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga33e4d2337c0d8d97f3f9527159d490a0">debug_destroy_class</a>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                RemoveFromDeviceList(static_cast&lt;thistype *&gt;(<span class="keyword">this</span>));</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keyword">class</span> P, <span class="keyword">class</span> L&gt;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="../../d5/dee/group__route.html#ga3ff0800ee50f8cf48a2d991365e56e0b">   68</a></span>&#160;        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d5/dee/group__route.html#ga3ff0800ee50f8cf48a2d991365e56e0b">CommonTypedDeviceAPI&lt;T,P,L&gt;::DisconnectFromAll</a>()  {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <a class="code" href="../../d5/dee/group__route.html#gae5927f0f6043b271d1bd1c493e2505e4">Route</a> route (NULL);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <a class="code" href="../../d5/dee/group__route.html#gaebc414494d4db2ad9f687eb2b3d43a14">DevicePtr</a> <span class="keyword">self</span>(<span class="keyword">static_cast&lt;</span><a class="code" href="../../d5/dee/group__route.html#gae62e6954f27bdff3e405f60aa3a12235">thistype</a> *<span class="keyword">&gt;</span>(<span class="keyword">this</span>));</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                routeListType::iterator R;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordflow">while</span> ( (R = routes.begin()) != routes.end() ) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        route = (*R);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                        <a class="code" href="../../d6/daa/namespacemutabor.html#adb9659c6b97b933b1997d17e5e790296">disconnect</a>(route,<span class="keyword">self</span>);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                route = NULL;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#endif // precompiled</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif // header loaded</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="ttc" id="group__GUI_html_ga7ad6b2305e866ae3936c307f5f9f4c04"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga7ad6b2305e866ae3936c307f5f9f4c04">mutaborGUI::IsOpen</a></div><div class="ttdeci">bool IsOpen(WinKind kind, mutabor::Box &amp;box)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d72/MutChild_8cpp_source.html#l00228">MutChild.cpp:228</a></div></div>
+<div class="ttc" id="group__debug_html_ga86acd9c1c30c8cb1831b46da11b1ec62"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a></div><div class="ttdeci">#define TRACEC</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00146">mutDebug.h:146</a></div></div>
+<div class="ttc" id="group__route_html_gae62e6954f27bdff3e405f60aa3a12235"><div class="ttname"><a href="../../d5/dee/group__route.html#gae62e6954f27bdff3e405f60aa3a12235">mutabor::CommonTypedDeviceAPI::thistype</a></div><div class="ttdeci">T thistype</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00542">Device.h:542</a></div></div>
+<div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
+<div class="ttc" id="group__route_html_ga3ff0800ee50f8cf48a2d991365e56e0b"><div class="ttname"><a href="../../d5/dee/group__route.html#ga3ff0800ee50f8cf48a2d991365e56e0b">mutabor::CommonTypedDeviceAPI::DisconnectFromAll</a></div><div class="ttdeci">virtual void DisconnectFromAll()</div><div class="ttdoc">Disconnect the device from all pairings with routes GUI data or something else. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4d/Device-inlines_8h_source.html#l00068">Device-inlines.h:68</a></div></div>
+<div class="ttc" id="group__route_html_gae5927f0f6043b271d1bd1c493e2505e4"><div class="ttname"><a href="../../d5/dee/group__route.html#gae5927f0f6043b271d1bd1c493e2505e4">mutabor::Route</a></div><div class="ttdeci">TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::Route Route</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00521">Route.h:521</a></div></div>
+<div class="ttc" id="group__route_html_gad212bd763c21f167dc9c6523033d2b62"><div class="ttname"><a href="../../d5/dee/group__route.html#gad212bd763c21f167dc9c6523033d2b62">mutabor::CommonTypedDeviceAPI::Destroy</a></div><div class="ttdeci">virtual void Destroy()</div><div class="ttdoc">Destroy the current object. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4d/Device-inlines_8h_source.html#l00053">Device-inlines.h:53</a></div></div>
+<div class="ttc" id="Device_8h_html"><div class="ttname"><a href="../../de/d05/Device_8h.html">Device.h</a></div><div class="ttdoc">Routing. </div></div>
+<div class="ttc" id="group__route_html_gaebc414494d4db2ad9f687eb2b3d43a14"><div class="ttname"><a href="../../d5/dee/group__route.html#gaebc414494d4db2ad9f687eb2b3d43a14">mutabor::CommonTypedDeviceAPI::DevicePtr</a></div><div class="ttdeci">P DevicePtr</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00543">Device.h:543</a></div></div>
+<div class="ttc" id="namespacemutabor_html_adb9659c6b97b933b1997d17e5e790296"><div class="ttname"><a href="../../d6/daa/namespacemutabor.html#adb9659c6b97b933b1997d17e5e790296">mutabor::disconnect</a></div><div class="ttdeci">bool disconnect(Route r, OutputDevice out)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d2c/Route-inlines_8h_source.html#l00077">Route-inlines.h:77</a></div></div>
+<div class="ttc" id="group__debug_html_ga33e4d2337c0d8d97f3f9527159d490a0"><div class="ttname"><a href="../../de/db7/group__debug.html#ga33e4d2337c0d8d97f3f9527159d490a0">debug_destroy_class</a></div><div class="ttdeci">void debug_destroy_class(void *ptr, std::string file, int l)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00221">mutDebug.h:221</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:38:41 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

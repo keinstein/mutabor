@@ -1,0 +1,546 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/libmutabor/mutfile.c-Dateireferenz</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_36b066032255252bd9de4e8c33341f8d.html">libmutabor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funktionen</a>  </div>
+  <div class="headertitle">
+<div class="title">mutfile.c-Dateireferenz</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Identifier class.  
+<a href="#details">Mehr ...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;assert.h&gt;</code><br/>
+<code>#include &quot;lib-asprintf.h&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d5/de7/mutfile_8h_source.html">mutabor/mutfile.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../db/da5/mutfile_8hh_source.html">mutabor/mutfile.hh</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../df/d8e/bad__decl_8h_source.html">mutabor/bad_decl.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d4/dfd/mut__tab_8h_source.html">mutabor/mut_tab.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d2/d8a/interval_8h_source.html">mutabor/interval.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d7/d66/intervalPlaceholder_8h_source.html">mutabor/intervalPlaceholder.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d4/d70/ptrlist_8h_source.html">mutabor/ptrlist.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../de/d45/errors_8h_source.html">mutabor/errors.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../dc/df5/mut_8h_source.html">mut.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../da/d43/libmutabor_2mutlex_8h_source.html">mutlex.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d4/d64/libintl_8h_source.html">libintl.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Include-Abhängigkeitsdiagramm für mutfile.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/dea/mutfile_8c__incl.png" border="0" usemap="#src_2libmutabor_2mutfile_8c" alt=""/></div>
+<map name="src_2libmutabor_2mutfile_8c" id="src_2libmutabor_2mutfile_8c">
+<area shape="rect" id="node9" href="../../d5/de7/mutfile_8h.html" title="Mutabor File class. " alt="" coords="254,83,390,111"/><area shape="rect" id="node17" href="../../db/da5/mutfile_8hh.html" title="mutabor/mutfile.hh" alt="" coords="414,83,558,111"/><area shape="rect" id="node19" href="../../df/d8e/bad__decl_8h.html" title="Zu korrigierende Querabhängigkeiten zur GUI und sonstige komische Deklarationen. " alt="" coords="886,238,1035,266"/><area shape="rect" id="node23" href="../../d4/dfd/mut__tab_8h.html" title="Kopfdatei zu mut.c, welche aus mut.y erstellt wird. " alt="" coords="632,83,779,111"/><area shape="rect" id="node25" href="../../dc/df5/mut_8h.html" title="mut.h" alt="" coords="622,161,680,189"/><area shape="rect" id="node27" href="../../d2/d8a/interval_8h.html" title="Interval calculations. " alt="" coords="772,161,911,189"/><area shape="rect" id="node31" href="../../d7/d66/intervalPlaceholder_8h.html" title="Placeholder objects for not yet specified identifiers. " alt="" coords="854,83,1067,111"/><area shape="rect" id="node35" href="../../d4/d70/ptrlist_8h.html" title="List of identifiers. " alt="" coords="14,238,142,266"/><area shape="rect" id="node38" href="../../de/d45/errors_8h.html" title="Fehlermeldungen. " alt="" coords="1192,83,1323,111"/><area shape="rect" id="node41" href="../../da/d43/libmutabor_2mutlex_8h.html" title="mutlex.h" alt="" coords="1347,83,1424,111"/><area shape="rect" id="node54" href="../../d4/d64/libintl_8h.html" title="libintl.h" alt="" coords="1598,83,1664,111"/><area shape="rect" id="node11" href="../../d9/d31/idlist_8h.html" title="List of identifiers. " alt="" coords="260,161,383,189"/><area shape="rect" id="node13" href="../../d7/da7/identifier_8h.html" title="Identifier class. " alt="" coords="248,238,395,266"/><area shape="rect" id="node15" href="../../de/d10/object_8h.html" title="Common definitions for object oriented programming and base class #object. " alt="" coords="135,315,266,343"/><area shape="rect" id="node50" href="../../d1/d10/in_8h.html" title="replacement for netinet/in.h used by flex lexers. " alt="" coords="1230,161,1323,189"/><area shape="rect" id="node56" href="../../d1/d73/Defs_8h.html" title="Common definitions. " alt="" coords="1718,161,1846,189"/></map>
+</div>
+</div>
+<p><a href="../../de/d09/mutfile_8c_source.html">gehe zum Quellcode dieser Datei</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funktionen</h2></td></tr>
+<tr class="memitem:a44d4609804f7dc554253feba5a40f8de"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d09/mutfile_8c.html#a44d4609804f7dc554253feba5a40f8de">MUTABOR_CLASS_FUNCTION</a> (object, constructor)</td></tr>
+<tr class="memdesc:a44d4609804f7dc554253feba5a40f8de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for class object.  <a href="#a44d4609804f7dc554253feba5a40f8de">Mehr ...</a><br/></td></tr>
+<tr class="separator:a44d4609804f7dc554253feba5a40f8de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8749c4841e35061fdd497165248a95f"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d09/mutfile_8c.html#ae8749c4841e35061fdd497165248a95f">MUTABOR_CLASS_FUNCTION</a> (mutfile, destructor)</td></tr>
+<tr class="memdesc:ae8749c4841e35061fdd497165248a95f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for class object.  <a href="#ae8749c4841e35061fdd497165248a95f">Mehr ...</a><br/></td></tr>
+<tr class="separator:ae8749c4841e35061fdd497165248a95f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93abc50ff260bf50f927e9aea5050527"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/dee/group__route.html#gafdffe3ab26a7d4cd9d6521731a6f396a">char</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d09/mutfile_8c.html#a93abc50ff260bf50f927e9aea5050527">MUTABOR_CLASS_FUNCTION</a> (mutfile, tostring)</td></tr>
+<tr class="memdesc:a93abc50ff260bf50f927e9aea5050527"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats Class content as string.  <a href="#a93abc50ff260bf50f927e9aea5050527">Mehr ...</a><br/></td></tr>
+<tr class="separator:a93abc50ff260bf50f927e9aea5050527"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e79a29abb56e606c89a9aeb0ad5192f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d09/mutfile_8c.html#a1e79a29abb56e606c89a9aeb0ad5192f">MUTABOR_CLASS_FUNCTION</a> (mutfile, setfilename)</td></tr>
+<tr class="separator:a1e79a29abb56e606c89a9aeb0ad5192f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4224c715b92d2a6e1ebe65c421834cad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d09/mutfile_8c.html#a4224c715b92d2a6e1ebe65c421834cad">MUTABOR_CLASS_FUNCTION</a> (mutfile, parse)</td></tr>
+<tr class="separator:a4224c715b92d2a6e1ebe65c421834cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14217002305cef55e5522f66850f5569"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d09/mutfile_8c.html#a14217002305cef55e5522f66850f5569">MUTABOR_CLASS_FUNCTION</a> (mutfile, insert_interval)</td></tr>
+<tr class="separator:a14217002305cef55e5522f66850f5569"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a132e98dd8f647b5283520d223c2dea82"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d09/mutfile_8c.html#a132e98dd8f647b5283520d223c2dea82">MUTABOR_CLASS_FUNCTION</a> (mutfile, get_interval)</td></tr>
+<tr class="memdesc:a132e98dd8f647b5283520d223c2dea82"><td class="mdescLeft">&#160;</td><td class="mdescRight">searches the interval list for a given identifier.  <a href="#a132e98dd8f647b5283520d223c2dea82">Mehr ...</a><br/></td></tr>
+<tr class="separator:a132e98dd8f647b5283520d223c2dea82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6030d2832143b9a71842fe8ac8f086a"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d09/mutfile_8c.html#ad6030d2832143b9a71842fe8ac8f086a">MUTABOR_CLASS_FUNCTION</a> (mutfile, check_interval)</td></tr>
+<tr class="separator:ad6030d2832143b9a71842fe8ac8f086a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
+<div class="textblock"><p>Identifier class. </p>
+<dl class="section rcs"><dt>Id:</dt><dd><a class="el" href="../../de/d09/mutfile_8c.html" title="Identifier class. ">mutfile.c</a>,v 1.3 2006/03/27 17:04:01 keinstein Exp </dd></dl>
+<dl class="section author"><dt>Autor</dt><dd>Tobias Schlemmer <a href="#" onclick="location.href='mai'+'lto:'+'kei'+'ns'+'tei'+'n@'+'use'+'rs'+'.be'+'rl'+'ios'+'.d'+'e'; return false;">keins<span style="display: none;">.nosp@m.</span>tein<span style="display: none;">.nosp@m.</span>@user<span style="display: none;">.nosp@m.</span>s.be<span style="display: none;">.nosp@m.</span>rlios<span style="display: none;">.nosp@m.</span>.de</a> </dd></dl>
+<dl class="section date"><dt>Datum</dt><dd></dd></dl>
+<dl class="section rcs"><dt>Date:</dt><dd>2006/03/27 17:04:01 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd></dd></dl>
+<dl class="section rcs"><dt>Revision:</dt><dd>1.3 </dd></dl>
+<dl class="section rcs"><dt>Log:</dt><dd><a class="el" href="../../de/d09/mutfile_8c.html" title="Identifier class. ">mutfile.c</a>,v </dd></dl>
+<p>Revision 1.3 2006/03/27 17:04:01 keinstein added lib-asprintf.h libintl.h</p>
+<p>Revision 1.2 2005/11/10 16:17:00 keinstein working distcheck</p>
+<p>Revision 1.1 2005/11/03 14:58:11 keinstein initial release </p>
+
+<p>Definiert in Datei <a class="el" href="../../de/d09/mutfile_8c_source.html">mutfile.c</a>.</p>
+</div><h2 class="groupheader">Dokumentation der Funktionen</h2>
+<a class="anchor" id="a44d4609804f7dc554253feba5a40f8de"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* MUTABOR_CLASS_FUNCTION </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">constructor&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor for class object. </p>
+<p>Does nothing than error checking. </p>
+
+<p>Definiert in Zeile <a class="el" href="../../de/d09/mutfile_8c_source.html#l00051">51</a> der Datei <a class="el" href="../../de/d09/mutfile_8c_source.html">mutfile.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../de/d10/object_8h_source.html#l00027">CHK_CLASS</a>, <a class="el" href="../../de/d10/object_8h_source.html#l00033">MUT_CLASS</a>, <a class="el" href="../../de/d10/object_8h_source.html#l00039">MUT_NEW</a> und <a class="el" href="../../de/d10/object_8h_source.html#l00045">MUTABOR_CLASS_FUNCTION</a>.</p>
+<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a>(mutfile) * <span class="keyword">self</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">self</span> = <a class="code" href="../../de/d10/object_8h.html#a45c0adf625f480b9850f45fa892bcf7b">MUTABOR_CLASS_FUNCTION</a>(<span class="keywordtype">object</span>,constructor)(_self);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a>(_self,mutfile);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">self</span>-&gt;intervals=<a class="code" href="../../de/d10/object_8h.html#a65851b9f91a4d9e49bf20401b28d7242">MUT_NEW</a>(idlist);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">self</span>-&gt;interval_placeholder=<a class="code" href="../../de/d10/object_8h.html#a65851b9f91a4d9e49bf20401b28d7242">MUT_NEW</a>(idlist);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keyword">self</span>-&gt;filename=NULL;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keyword">self</span>-&gt;descriptor=NULL;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">self</span>-&gt;scanner=NULL;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">return</span> (_self);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+<div class="ttc" id="object_8h_html_a65851b9f91a4d9e49bf20401b28d7242"><div class="ttname"><a href="../../de/d10/object_8h.html#a65851b9f91a4d9e49bf20401b28d7242">MUT_NEW</a></div><div class="ttdeci">#define MUT_NEW(object)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00039">object.h:39</a></div></div>
+<div class="ttc" id="object_8h_html_a45c0adf625f480b9850f45fa892bcf7b"><div class="ttname"><a href="../../de/d10/object_8h.html#a45c0adf625f480b9850f45fa892bcf7b">MUTABOR_CLASS_FUNCTION</a></div><div class="ttdeci">#define MUTABOR_CLASS_FUNCTION(classname, name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00045">object.h:45</a></div></div>
+<div class="ttc" id="object_8h_html_a51fa8bfba0223bb5cddd9b3db2b2f55c"><div class="ttname"><a href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a></div><div class="ttdeci">#define MUT_CLASS(name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00033">object.h:33</a></div></div>
+<div class="ttc" id="object_8h_html_a2029811b604bd2de63a2d593bc4433e0"><div class="ttname"><a href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a></div><div class="ttdeci">#define CHK_CLASS(object, class)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00027">object.h:27</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ae8749c4841e35061fdd497165248a95f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* MUTABOR_CLASS_FUNCTION </td>
+          <td>(</td>
+          <td class="paramtype">mutfile&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">destructor&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destructor for class object. </p>
+<p>Does nothing than error checking. </p>
+
+<p>Definiert in Zeile <a class="el" href="../../de/d09/mutfile_8c_source.html#l00070">70</a> der Datei <a class="el" href="../../de/d09/mutfile_8c_source.html">mutfile.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../de/d10/object_8h_source.html#l00027">CHK_CLASS</a>, <a class="el" href="../../de/d10/object_8h_source.html#l00033">MUT_CLASS</a>, <a class="el" href="../../d0/de1/object_8c_source.html#l00117">mutabor_delete()</a>, <a class="el" href="../../d5/d4b/mutlex_8c_source.html#l02435">mutabor_parser_lex_destroy()</a> und <a class="el" href="../../d3/da3/mut_8c_source.html#l00234">self</a>.</p>
+<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a>(mutfile) * <span class="keyword">self</span>=_self;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a>(_self,mutfile);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#ad3b722d501268b5e6614113662e57d46">mutabor_delete</a>(<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;intervals);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#ad3b722d501268b5e6614113662e57d46">mutabor_delete</a>(<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;interval_placeholder);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;scanner) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;          <a class="code" href="../../d5/d4b/mutlex_8c.html#a2657f9655f1d9e790296313089fdeb2b">mutabor_parser_lex_destroy</a>(<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;scanner);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        free(<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;filename);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt; descriptor) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="keywordflow">if</span> (fclose(<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;descriptor)) <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">return</span> (_self);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
+<div class="ttc" id="mut_8c_html_a211343b9c64dbd216c5bbd6c1409f11d"><div class="ttname"><a href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a></div><div class="ttdeci">#define self</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/da3/mut_8c_source.html#l00234">mut.c:234</a></div></div>
+<div class="ttc" id="object_8h_html_ad3b722d501268b5e6614113662e57d46"><div class="ttname"><a href="../../de/d10/object_8h.html#ad3b722d501268b5e6614113662e57d46">mutabor_delete</a></div><div class="ttdeci">void mutabor_delete(void *_object)</div><div class="ttdoc">Deletes an object from the heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de1/object_8c_source.html#l00117">object.c:117</a></div></div>
+<div class="ttc" id="object_8h_html_a51fa8bfba0223bb5cddd9b3db2b2f55c"><div class="ttname"><a href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a></div><div class="ttdeci">#define MUT_CLASS(name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00033">object.h:33</a></div></div>
+<div class="ttc" id="mutlex_8c_html_a2657f9655f1d9e790296313089fdeb2b"><div class="ttname"><a href="../../d5/d4b/mutlex_8c.html#a2657f9655f1d9e790296313089fdeb2b">mutabor_parser_lex_destroy</a></div><div class="ttdeci">int mutabor_parser_lex_destroy(yyscan_t yyscanner)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d4b/mutlex_8c_source.html#l02435">mutlex.c:2435</a></div></div>
+<div class="ttc" id="object_8h_html_a2029811b604bd2de63a2d593bc4433e0"><div class="ttname"><a href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a></div><div class="ttdeci">#define CHK_CLASS(object, class)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00027">object.h:27</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a93abc50ff260bf50f927e9aea5050527"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/dee/group__route.html#gafdffe3ab26a7d4cd9d6521731a6f396a">char</a>* MUTABOR_CLASS_FUNCTION </td>
+          <td>(</td>
+          <td class="paramtype">mutfile&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">tostring&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Formats Class content as string. </p>
+<p>Intented exspecially for debugging. </p>
+
+<p>Definiert in Zeile <a class="el" href="../../de/d09/mutfile_8c_source.html#l00091">91</a> der Datei <a class="el" href="../../de/d09/mutfile_8c_source.html">mutfile.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../de/d10/object_8h_source.html#l00027">CHK_CLASS</a>, <a class="el" href="../../de/d10/object_8h_source.html#l00033">MUT_CLASS</a>, <a class="el" href="../../de/d10/object_8h_source.html#l00037">MUT_VIRTCALL</a> und <a class="el" href="../../de/d10/object_8h_source.html#l00035">MUT_VIRTTABLE</a>.</p>
+<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;{</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a5bcd31da3e6b613992ef458459a10bbe">MUT_VIRTTABLE</a>(<span class="keywordtype">object</span>) ** <span class="keyword">self</span>=_self;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a>(mutfile) * oself=_self;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordtype">char</span> * data,*s1,*s2;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a>(_self,mutfile);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        s1=<a class="code" href="../../de/d10/object_8h.html#a1f973b95970e98bf6f69c21b27b90018">MUT_VIRTCALL</a>(idlist,oself-&gt;intervals,tostring)(oself-&gt;intervals);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        s2=<a class="code" href="../../de/d10/object_8h.html#a1f973b95970e98bf6f69c21b27b90018">MUT_VIRTCALL</a>(idlist,oself-&gt;interval_placeholder,tostring)(oself-&gt;interval_placeholder);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">if</span> (asprintf(&amp;data,<span class="stringliteral">&quot;%s (%p): %s %p\n-&gt;%s\n-&gt;%s&quot;</span>,</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                     (*self)-&gt;name, </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                     (<span class="keywordtype">void</span> *)*<span class="keyword">self</span>,</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                     ((<a class="code" href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a>(mutfile)*) _self)-&gt;filename,</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                     _self,s1,s2)){</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                free(s1);free(s2);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <span class="keywordflow">return</span> data;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                free(s1);free(s2);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
+<div class="ttc" id="object_8h_html_a5bcd31da3e6b613992ef458459a10bbe"><div class="ttname"><a href="../../de/d10/object_8h.html#a5bcd31da3e6b613992ef458459a10bbe">MUT_VIRTTABLE</a></div><div class="ttdeci">#define MUT_VIRTTABLE(name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00035">object.h:35</a></div></div>
+<div class="ttc" id="object_8h_html_a51fa8bfba0223bb5cddd9b3db2b2f55c"><div class="ttname"><a href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a></div><div class="ttdeci">#define MUT_CLASS(name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00033">object.h:33</a></div></div>
+<div class="ttc" id="object_8h_html_a2029811b604bd2de63a2d593bc4433e0"><div class="ttname"><a href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a></div><div class="ttdeci">#define CHK_CLASS(object, class)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00027">object.h:27</a></div></div>
+<div class="ttc" id="object_8h_html_a1f973b95970e98bf6f69c21b27b90018"><div class="ttname"><a href="../../de/d10/object_8h.html#a1f973b95970e98bf6f69c21b27b90018">MUT_VIRTCALL</a></div><div class="ttdeci">#define MUT_VIRTCALL(class, object, name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00037">object.h:37</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a1e79a29abb56e606c89a9aeb0ad5192f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MUTABOR_CLASS_FUNCTION </td>
+          <td>(</td>
+          <td class="paramtype">mutfile&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">setfilename&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/d09/mutfile_8c_source.html#l00115">115</a> der Datei <a class="el" href="../../de/d09/mutfile_8c_source.html">mutfile.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../de/d10/object_8h_source.html#l00027">CHK_CLASS</a>, <a class="el" href="../../de/d10/object_8h_source.html#l00034">MUT_VALUE</a> und <a class="el" href="../../dc/ddf/idlist_8hh_source.html#l00006">name</a>.</p>
+<div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a>(_self,mutfile);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a26b0044f18a1161f76531febb946c1ec">MUT_VALUE</a>(mutfile,_self)-&gt;filename=strdup(<a class="code" href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+<div class="ttc" id="idlist_8hh_html_a8f8f80d37794cde9472343e4487ba3eb"><div class="ttname"><a href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a></div><div class="ttdeci">const char * name</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/idlist_8hh_source.html#l00006">idlist.hh:6</a></div></div>
+<div class="ttc" id="object_8h_html_a26b0044f18a1161f76531febb946c1ec"><div class="ttname"><a href="../../de/d10/object_8h.html#a26b0044f18a1161f76531febb946c1ec">MUT_VALUE</a></div><div class="ttdeci">#define MUT_VALUE(class, object)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00034">object.h:34</a></div></div>
+<div class="ttc" id="object_8h_html_a2029811b604bd2de63a2d593bc4433e0"><div class="ttname"><a href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a></div><div class="ttdeci">#define CHK_CLASS(object, class)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00027">object.h:27</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a4224c715b92d2a6e1ebe65c421834cad"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MUTABOR_CLASS_FUNCTION </td>
+          <td>(</td>
+          <td class="paramtype">mutfile&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">parse&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/d09/mutfile_8c_source.html#l00121">121</a> der Datei <a class="el" href="../../de/d09/mutfile_8c_source.html">mutfile.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../de/d10/object_8h_source.html#l00027">CHK_CLASS</a>, <a class="el" href="../../de/d10/object_8h_source.html#l00033">MUT_CLASS</a>, <a class="el" href="../../df/d8e/bad__decl_8h_source.html#l00074">mutabor_parser_get_table_filename</a>, <a class="el" href="../../d5/d4b/mutlex_8c_source.html#l02435">mutabor_parser_lex_destroy()</a>, <a class="el" href="../../d5/d4b/mutlex_8c_source.html#l02411">mutabor_parser_lex_init()</a>, <a class="el" href="../../d4/dfd/mut__tab_8h.html#a65471dcacc7648c3ca8c28ba005e2314">mutabor_parser_parse()</a>, <a class="el" href="../../d5/d4b/mutlex_8c_source.html#l02316">mutabor_parser_set_in()</a>, <a class="el" href="../../d5/d4b/mutlex_8c_source.html#l02945">mutabor_parser_tables_destroy()</a>, <a class="el" href="../../d5/d4b/mutlex_8c_source.html#l02936">mutabor_parser_tables_fload()</a> und <a class="el" href="../../d3/da3/mut_8c_source.html#l00234">self</a>.</p>
+<div class="fragment"><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;{</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a>(mutfile) * <span class="keyword">self</span>=_self;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        FILE * table;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a>(_self,mutfile);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="comment">/* setting up Mutabor file */</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        assert(<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;filename);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">if</span>(!<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;filename) </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;descriptor) {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;          <span class="keyword">self</span>-&gt;descriptor = fopen(<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;filename,<span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;          <span class="keywordflow">if</span> (!<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;descriptor) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="comment">/* setting up scanner */</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">if</span>(!<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;scanner) </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="../../d5/d4b/mutlex_8c.html#aa5c5c4efff83983c799a3fc6c2e922ba">mutabor_parser_lex_init</a>((<span class="keywordtype">void</span> *) &amp;(<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;scanner))) </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordflow">if</span> ((table=fopen(<a class="code" href="../../df/d8e/bad__decl_8h.html#add06f7a8eedac3939367e696b477746f">mutabor_parser_get_table_filename</a>(<span class="stringliteral">&quot;mutlex_de.tab&quot;</span>),<span class="stringliteral">&quot;r&quot;</span>))) {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                <a class="code" href="../../d5/d4b/mutlex_8c.html#aa63356936cc6758cd7c0bf591bef2aa8">mutabor_parser_tables_fload</a>(table,<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;scanner);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                fclose(table);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <a class="code" href="../../d5/d4b/mutlex_8c.html#a439914e9f87dc1efd943191a3a932432">mutabor_parser_set_in</a>(<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;descriptor,<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;scanner);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <a class="code" href="../../d4/dfd/mut__tab_8h.html#a65471dcacc7648c3ca8c28ba005e2314">mutabor_parser_parse</a>(_self);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <a class="code" href="../../d5/d4b/mutlex_8c.html#a45c2cfa859b01e6bbe6197132a3149e1">mutabor_parser_tables_destroy</a>(<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;scanner);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <a class="code" href="../../d5/d4b/mutlex_8c.html#a2657f9655f1d9e790296313089fdeb2b">mutabor_parser_lex_destroy</a>(<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;scanner);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keyword">self</span>-&gt;scanner=NULL;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">if</span> (feof(<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;descriptor)) </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;          <span class="keywordflow">if</span> (!fclose(<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;descriptor)) <span class="keyword">self</span>-&gt;descriptor=NULL;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div>
+<div class="ttc" id="mutlex_8c_html_a45c2cfa859b01e6bbe6197132a3149e1"><div class="ttname"><a href="../../d5/d4b/mutlex_8c.html#a45c2cfa859b01e6bbe6197132a3149e1">mutabor_parser_tables_destroy</a></div><div class="ttdeci">int mutabor_parser_tables_destroy(yyscan_t yyscanner)</div><div class="ttdoc">Destroy the loaded tables, freeing memory, etc. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d4b/mutlex_8c_source.html#l02945">mutlex.c:2945</a></div></div>
+<div class="ttc" id="mutlex_8c_html_a439914e9f87dc1efd943191a3a932432"><div class="ttname"><a href="../../d5/d4b/mutlex_8c.html#a439914e9f87dc1efd943191a3a932432">mutabor_parser_set_in</a></div><div class="ttdeci">void mutabor_parser_set_in(FILE *in_str, yyscan_t yyscanner)</div><div class="ttdoc">Set the input stream. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d4b/mutlex_8c_source.html#l02316">mutlex.c:2316</a></div></div>
+<div class="ttc" id="mut__tab_8h_html_a65471dcacc7648c3ca8c28ba005e2314"><div class="ttname"><a href="../../d4/dfd/mut__tab_8h.html#a65471dcacc7648c3ca8c28ba005e2314">mutabor_parser_parse</a></div><div class="ttdeci">int mutabor_parser_parse(void *_self)</div></div>
+<div class="ttc" id="mut_8c_html_a211343b9c64dbd216c5bbd6c1409f11d"><div class="ttname"><a href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a></div><div class="ttdeci">#define self</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/da3/mut_8c_source.html#l00234">mut.c:234</a></div></div>
+<div class="ttc" id="bad__decl_8h_html_add06f7a8eedac3939367e696b477746f"><div class="ttname"><a href="../../df/d8e/bad__decl_8h.html#add06f7a8eedac3939367e696b477746f">mutabor_parser_get_table_filename</a></div><div class="ttdeci">#define mutabor_parser_get_table_filename(a)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d8e/bad__decl_8h_source.html#l00074">bad_decl.h:74</a></div></div>
+<div class="ttc" id="mutlex_8c_html_aa63356936cc6758cd7c0bf591bef2aa8"><div class="ttname"><a href="../../d5/d4b/mutlex_8c.html#aa63356936cc6758cd7c0bf591bef2aa8">mutabor_parser_tables_fload</a></div><div class="ttdeci">int mutabor_parser_tables_fload(FILE *fp, yyscan_t yyscanner)</div><div class="ttdoc">Load the DFA tables for this scanner from the given stream. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d4b/mutlex_8c_source.html#l02936">mutlex.c:2936</a></div></div>
+<div class="ttc" id="mutlex_8c_html_aa5c5c4efff83983c799a3fc6c2e922ba"><div class="ttname"><a href="../../d5/d4b/mutlex_8c.html#aa5c5c4efff83983c799a3fc6c2e922ba">mutabor_parser_lex_init</a></div><div class="ttdeci">int mutabor_parser_lex_init(yyscan_t *scanner)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d4b/mutlex_8c_source.html#l02411">mutlex.c:2411</a></div></div>
+<div class="ttc" id="object_8h_html_a51fa8bfba0223bb5cddd9b3db2b2f55c"><div class="ttname"><a href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a></div><div class="ttdeci">#define MUT_CLASS(name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00033">object.h:33</a></div></div>
+<div class="ttc" id="mutlex_8c_html_a2657f9655f1d9e790296313089fdeb2b"><div class="ttname"><a href="../../d5/d4b/mutlex_8c.html#a2657f9655f1d9e790296313089fdeb2b">mutabor_parser_lex_destroy</a></div><div class="ttdeci">int mutabor_parser_lex_destroy(yyscan_t yyscanner)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d4b/mutlex_8c_source.html#l02435">mutlex.c:2435</a></div></div>
+<div class="ttc" id="object_8h_html_a2029811b604bd2de63a2d593bc4433e0"><div class="ttname"><a href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a></div><div class="ttdeci">#define CHK_CLASS(object, class)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00027">object.h:27</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a14217002305cef55e5522f66850f5569"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* MUTABOR_CLASS_FUNCTION </td>
+          <td>(</td>
+          <td class="paramtype">mutfile&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">insert_interval&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/d09/mutfile_8c_source.html#l00152">152</a> der Datei <a class="el" href="../../de/d09/mutfile_8c_source.html">mutfile.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../de/d10/object_8h_source.html#l00027">CHK_CLASS</a>, <a class="el" href="../../de/d10/object_8h_source.html#l00033">MUT_CLASS</a>, <a class="el" href="../../de/d10/object_8h_source.html#l00037">MUT_VIRTCALL</a> und <a class="el" href="../../d3/da3/mut_8c_source.html#l00234">self</a>.</p>
+<div class="fragment"><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;{</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a>(mutfile) * <span class="keyword">self</span>=_self;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a>(_self,mutfile);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a>(interval,interval);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a1f973b95970e98bf6f69c21b27b90018">MUT_VIRTCALL</a>(idlist,<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;intervals,insert)(<span class="keyword">self</span>-&gt;intervals,interval);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keywordflow">return</span> interval;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;}</div>
+<div class="ttc" id="mut_8c_html_a211343b9c64dbd216c5bbd6c1409f11d"><div class="ttname"><a href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a></div><div class="ttdeci">#define self</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/da3/mut_8c_source.html#l00234">mut.c:234</a></div></div>
+<div class="ttc" id="object_8h_html_a51fa8bfba0223bb5cddd9b3db2b2f55c"><div class="ttname"><a href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a></div><div class="ttdeci">#define MUT_CLASS(name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00033">object.h:33</a></div></div>
+<div class="ttc" id="object_8h_html_a2029811b604bd2de63a2d593bc4433e0"><div class="ttname"><a href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a></div><div class="ttdeci">#define CHK_CLASS(object, class)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00027">object.h:27</a></div></div>
+<div class="ttc" id="object_8h_html_a1f973b95970e98bf6f69c21b27b90018"><div class="ttname"><a href="../../de/d10/object_8h.html#a1f973b95970e98bf6f69c21b27b90018">MUT_VIRTCALL</a></div><div class="ttdeci">#define MUT_VIRTCALL(class, object, name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00037">object.h:37</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a132e98dd8f647b5283520d223c2dea82"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* MUTABOR_CLASS_FUNCTION </td>
+          <td>(</td>
+          <td class="paramtype">mutfile&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">get_interval&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>searches the interval list for a given identifier. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_self</td><td>current <code>mutfile</code> class. </td></tr>
+    <tr><td class="paramname">name</td><td>name of the intervall to search. It won't be deleted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>interval or new created alias to the interval if interval doesn't exist yet. </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="../../de/d09/mutfile_8c_source.html#l00166">166</a> der Datei <a class="el" href="../../de/d09/mutfile_8c_source.html">mutfile.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../de/d10/object_8h_source.html#l00027">CHK_CLASS</a>, <a class="el" href="../../de/d10/object_8h_source.html#l00033">MUT_CLASS</a>, <a class="el" href="../../de/d10/object_8h_source.html#l00039">MUT_NEW</a>, <a class="el" href="../../de/d10/object_8h_source.html#l00037">MUT_VIRTCALL</a>, <a class="el" href="../../de/d10/object_8h_source.html#l00045">MUTABOR_CLASS_FUNCTION</a>, <a class="el" href="../../dc/ddf/idlist_8hh_source.html#l00006">name</a> und <a class="el" href="../../d3/da3/mut_8c_source.html#l00234">self</a>.</p>
+<div class="fragment"><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;{</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a>(mutfile) * <span class="keyword">self</span>=_self;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keywordtype">void</span> * interval;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a>(_self,mutfile);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keywordflow">if</span> ((interval=<a class="code" href="../../de/d10/object_8h.html#a1f973b95970e98bf6f69c21b27b90018">MUT_VIRTCALL</a>(idlist,<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;intervals,find)</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;             (<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;intervals,<a class="code" href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>))) {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                <span class="keywordflow">return</span> interval;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">if</span> ((interval=<a class="code" href="../../de/d10/object_8h.html#a1f973b95970e98bf6f69c21b27b90018">MUT_VIRTCALL</a>(idlist,<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;interval_placeholder,find)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;             (<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;interval_placeholder,<a class="code" href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>))) {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                <span class="keywordflow">return</span> interval;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        interval = <a class="code" href="../../de/d10/object_8h.html#a65851b9f91a4d9e49bf20401b28d7242">MUT_NEW</a>(intervalPlaceholder);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a45c0adf625f480b9850f45fa892bcf7b">MUTABOR_CLASS_FUNCTION</a>(identifier,copy_name)(interval,<a class="code" href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a1f973b95970e98bf6f69c21b27b90018">MUT_VIRTCALL</a>(idlist,<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;interval_placeholder,insert)</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                (<span class="keyword">self</span>-&gt;interval_placeholder,interval);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="keywordflow">return</span> interval;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div>
+<div class="ttc" id="mut_8c_html_a211343b9c64dbd216c5bbd6c1409f11d"><div class="ttname"><a href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a></div><div class="ttdeci">#define self</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/da3/mut_8c_source.html#l00234">mut.c:234</a></div></div>
+<div class="ttc" id="object_8h_html_a65851b9f91a4d9e49bf20401b28d7242"><div class="ttname"><a href="../../de/d10/object_8h.html#a65851b9f91a4d9e49bf20401b28d7242">MUT_NEW</a></div><div class="ttdeci">#define MUT_NEW(object)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00039">object.h:39</a></div></div>
+<div class="ttc" id="idlist_8hh_html_a8f8f80d37794cde9472343e4487ba3eb"><div class="ttname"><a href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a></div><div class="ttdeci">const char * name</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/idlist_8hh_source.html#l00006">idlist.hh:6</a></div></div>
+<div class="ttc" id="object_8h_html_a45c0adf625f480b9850f45fa892bcf7b"><div class="ttname"><a href="../../de/d10/object_8h.html#a45c0adf625f480b9850f45fa892bcf7b">MUTABOR_CLASS_FUNCTION</a></div><div class="ttdeci">#define MUTABOR_CLASS_FUNCTION(classname, name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00045">object.h:45</a></div></div>
+<div class="ttc" id="object_8h_html_a51fa8bfba0223bb5cddd9b3db2b2f55c"><div class="ttname"><a href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a></div><div class="ttdeci">#define MUT_CLASS(name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00033">object.h:33</a></div></div>
+<div class="ttc" id="object_8h_html_a2029811b604bd2de63a2d593bc4433e0"><div class="ttname"><a href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a></div><div class="ttdeci">#define CHK_CLASS(object, class)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00027">object.h:27</a></div></div>
+<div class="ttc" id="object_8h_html_a1f973b95970e98bf6f69c21b27b90018"><div class="ttname"><a href="../../de/d10/object_8h.html#a1f973b95970e98bf6f69c21b27b90018">MUT_VIRTCALL</a></div><div class="ttdeci">#define MUT_VIRTCALL(class, object, name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00037">object.h:37</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ad6030d2832143b9a71842fe8ac8f086a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* MUTABOR_CLASS_FUNCTION </td>
+          <td>(</td>
+          <td class="paramtype">mutfile&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">check_interval&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/d09/mutfile_8c_source.html#l00186">186</a> der Datei <a class="el" href="../../de/d09/mutfile_8c_source.html">mutfile.c</a>.</p>
+
+<p>Benutzt <a class="el" href="../../de/d10/object_8h_source.html#l00027">CHK_CLASS</a>, <a class="el" href="../../dd/dff/testidentifier_8c_source.html#l00012">fatal_error</a>, <a class="el" href="../../de/d10/object_8h_source.html#l00033">MUT_CLASS</a>, <a class="el" href="../../de/d10/object_8h_source.html#l00039">MUT_NEW</a>, <a class="el" href="../../de/d10/object_8h_source.html#l00037">MUT_VIRTCALL</a>, <a class="el" href="../../de/d10/object_8h_source.html#l00045">MUTABOR_CLASS_FUNCTION</a>, <a class="el" href="../../d0/de1/object_8c_source.html#l00117">mutabor_delete()</a>, <a class="el" href="../../de/d45/errors_8h_source.html#l00100">MUTABOR_ERROR_INTERVAL_DEPENDENCY</a>, <a class="el" href="../../dc/ddf/idlist_8hh_source.html#l00006">name</a> und <a class="el" href="../../d3/da3/mut_8c_source.html#l00234">self</a>.</p>
+<div class="fragment"><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;{</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a>(mutfile) * <span class="keyword">self</span>=_self;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a>(interval) * interval=_interval;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a>(intervalPlaceholder) * placeholder;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a>(_self,mutfile);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a>(_interval,interval);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../de/d10/object_8h.html#a1f973b95970e98bf6f69c21b27b90018">MUT_VIRTCALL</a>(idlist,<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;intervals,find)(<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;intervals,<a class="code" href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>)){</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                <span class="keywordflow">return</span> interval;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a45c0adf625f480b9850f45fa892bcf7b">MUTABOR_CLASS_FUNCTION</a>(identifier,set_name)(_interval,<a class="code" href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <a class="code" href="../../de/d10/object_8h.html#a45c0adf625f480b9850f45fa892bcf7b">MUTABOR_CLASS_FUNCTION</a>(idlist,sortbyname)(<span class="keyword">self</span>-&gt;intervals,1);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">if</span> ((placeholder=(<span class="keywordtype">void</span> *) </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;             <a class="code" href="../../de/d10/object_8h.html#a1f973b95970e98bf6f69c21b27b90018">MUT_VIRTCALL</a>(idlist,<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;interval_placeholder,find)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;             ((<span class="keywordtype">void</span> *)<a class="code" href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a>-&gt;interval_placeholder,<a class="code" href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>))) {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                <a class="code" href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a>(ptrlist) * ptrlist=<a class="code" href="../../de/d10/object_8h.html#a65851b9f91a4d9e49bf20401b28d7242">MUT_NEW</a>(ptrlist);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                <span class="keywordflow">if</span>(!<a class="code" href="../../de/d10/object_8h.html#a1f973b95970e98bf6f69c21b27b90018">MUT_VIRTCALL</a>(identifier,interval,check_cycle)</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                   (interval,placeholder,ptrlist)) {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                        <a class="code" href="../../de/d10/object_8h.html#a45c0adf625f480b9850f45fa892bcf7b">MUTABOR_CLASS_FUNCTION</a>(intervalPlaceholder,</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                                               setreplacement)</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                        (placeholder,_interval);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                }</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                <span class="keywordflow">else</span> <a class="code" href="../../dd/dff/testidentifier_8c.html#a51c4524d98f03e6f3eed99caf26e5fff">fatal_error</a>(<a class="code" href="../../de/d45/errors_8h.html#a81746584e042799ac5860a57fc6b6a50">MUTABOR_ERROR_INTERVAL_DEPENDENCY</a>,<a class="code" href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>,<a class="code" href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                <a class="code" href="../../de/d10/object_8h.html#ad3b722d501268b5e6614113662e57d46">mutabor_delete</a>(ptrlist);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;}</div>
+<div class="ttc" id="errors_8h_html_a81746584e042799ac5860a57fc6b6a50"><div class="ttname"><a href="../../de/d45/errors_8h.html#a81746584e042799ac5860a57fc6b6a50">MUTABOR_ERROR_INTERVAL_DEPENDENCY</a></div><div class="ttdeci">#define MUTABOR_ERROR_INTERVAL_DEPENDENCY</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d45/errors_8h_source.html#l00100">errors.h:100</a></div></div>
+<div class="ttc" id="mut_8c_html_a211343b9c64dbd216c5bbd6c1409f11d"><div class="ttname"><a href="../../d3/da3/mut_8c.html#a211343b9c64dbd216c5bbd6c1409f11d">self</a></div><div class="ttdeci">#define self</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/da3/mut_8c_source.html#l00234">mut.c:234</a></div></div>
+<div class="ttc" id="object_8h_html_a65851b9f91a4d9e49bf20401b28d7242"><div class="ttname"><a href="../../de/d10/object_8h.html#a65851b9f91a4d9e49bf20401b28d7242">MUT_NEW</a></div><div class="ttdeci">#define MUT_NEW(object)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00039">object.h:39</a></div></div>
+<div class="ttc" id="idlist_8hh_html_a8f8f80d37794cde9472343e4487ba3eb"><div class="ttname"><a href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a></div><div class="ttdeci">const char * name</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/idlist_8hh_source.html#l00006">idlist.hh:6</a></div></div>
+<div class="ttc" id="object_8h_html_ad3b722d501268b5e6614113662e57d46"><div class="ttname"><a href="../../de/d10/object_8h.html#ad3b722d501268b5e6614113662e57d46">mutabor_delete</a></div><div class="ttdeci">void mutabor_delete(void *_object)</div><div class="ttdoc">Deletes an object from the heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de1/object_8c_source.html#l00117">object.c:117</a></div></div>
+<div class="ttc" id="object_8h_html_a45c0adf625f480b9850f45fa892bcf7b"><div class="ttname"><a href="../../de/d10/object_8h.html#a45c0adf625f480b9850f45fa892bcf7b">MUTABOR_CLASS_FUNCTION</a></div><div class="ttdeci">#define MUTABOR_CLASS_FUNCTION(classname, name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00045">object.h:45</a></div></div>
+<div class="ttc" id="object_8h_html_a51fa8bfba0223bb5cddd9b3db2b2f55c"><div class="ttname"><a href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a></div><div class="ttdeci">#define MUT_CLASS(name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00033">object.h:33</a></div></div>
+<div class="ttc" id="testidentifier_8c_html_a51c4524d98f03e6f3eed99caf26e5fff"><div class="ttname"><a href="../../dd/dff/testidentifier_8c.html#a51c4524d98f03e6f3eed99caf26e5fff">fatal_error</a></div><div class="ttdeci">int fatal_error</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dff/testidentifier_8c_source.html#l00012">testidentifier.c:12</a></div></div>
+<div class="ttc" id="object_8h_html_a2029811b604bd2de63a2d593bc4433e0"><div class="ttname"><a href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a></div><div class="ttdeci">#define CHK_CLASS(object, class)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00027">object.h:27</a></div></div>
+<div class="ttc" id="object_8h_html_a1f973b95970e98bf6f69c21b27b90018"><div class="ttname"><a href="../../de/d10/object_8h.html#a1f973b95970e98bf6f69c21b27b90018">MUT_VIRTCALL</a></div><div class="ttdeci">#define MUT_VIRTCALL(class, object, name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00037">object.h:37</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:03:03 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

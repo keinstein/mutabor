@@ -1,0 +1,1368 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="df/d3c/MutTextBox_8cpp" kind="file">
+    <compoundname>MutTextBox.cpp</compoundname>
+    <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
+    <includes local="no">iostream</includes>
+    <includes local="yes">wx/tokenzr.h</includes>
+    <includes local="yes">wx/log.h</includes>
+    <includes refid="de/d3b/MutTextBox_8h" local="yes">src/wxGUI/MutTextBox.h</includes>
+    <includes refid="dd/db5/MutFrame_8h" local="yes">src/wxGUI/MutFrame.h</includes>
+    <includes refid="d5/df7/GUIBoxData_8h" local="yes">src/wxGUI/GUIBoxData.h</includes>
+    <includes refid="d9/d49/BoxShape_8h" local="yes">src/wxGUI/Routing/BoxShape.h</includes>
+    <includes refid="d2/d2c/Route-inlines_8h" local="yes">src/kernel/routing/Route-inlines.h</includes>
+    <includes refid="da/dfd/MidiKern_8h" local="yes">src/kernel/MidiKern.h</includes>
+    <includes refid="d7/db9/Action_8h" local="yes">src/wxGUI/Action.h</includes>
+    <incdepgraph>
+      <node id="21079">
+        <label>list</label>
+      </node>
+      <node id="21152">
+        <label>src/kernel/routing/gmn/GIS_Head.h</label>
+        <link refid="d1/db5/GIS__Head_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21072" relation="include">
+        </childnode>
+        <childnode refid="21130" relation="include">
+        </childnode>
+        <childnode refid="21153" relation="include">
+        </childnode>
+      </node>
+      <node id="21072">
+        <label>src/kernel/routing/Box.h</label>
+        <link refid="de/d0f/Box_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21073" relation="include">
+        </childnode>
+        <childnode refid="21074" relation="include">
+        </childnode>
+        <childnode refid="21075" relation="include">
+        </childnode>
+        <childnode refid="21082" relation="include">
+        </childnode>
+        <childnode refid="21084" relation="include">
+        </childnode>
+        <childnode refid="21078" relation="include">
+        </childnode>
+        <childnode refid="21080" relation="include">
+        </childnode>
+        <childnode refid="21091" relation="include">
+        </childnode>
+        <childnode refid="21092" relation="include">
+        </childnode>
+        <childnode refid="21066" relation="include">
+        </childnode>
+        <childnode refid="21083" relation="include">
+        </childnode>
+      </node>
+      <node id="21066">
+        <label>stdarg.h</label>
+      </node>
+      <node id="21134">
+        <label>src/kernel/routing/timing.h</label>
+        <link refid="db/d41/timing_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21076" relation="include">
+        </childnode>
+        <childnode refid="21135" relation="include">
+        </childnode>
+        <childnode refid="21136" relation="include">
+        </childnode>
+        <childnode refid="21081" relation="include">
+        </childnode>
+        <childnode refid="21137" relation="include">
+        </childnode>
+        <childnode refid="21074" relation="include">
+        </childnode>
+      </node>
+      <node id="21135">
+        <label>limits</label>
+      </node>
+      <node id="21082">
+        <label>src/kernel/Execute.h</label>
+        <link refid="de/d11/Execute_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21083" relation="include">
+        </childnode>
+      </node>
+      <node id="21078">
+        <label>boost/intrusive_ptr.hpp</label>
+      </node>
+      <node id="21098">
+        <label>wx/stdpaths.h</label>
+      </node>
+      <node id="21142">
+        <label>src/kernel/routing/midi/midicmn.h</label>
+        <link refid="de/d21/midicmn_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21129" relation="include">
+        </childnode>
+        <childnode refid="21080" relation="include">
+        </childnode>
+      </node>
+      <node id="21111">
+        <label>src/wxGUI/generic/muconvauto.h</label>
+        <link refid="d1/dcd/muconvauto_8h"/>
+        <childnode refid="21112" relation="include">
+        </childnode>
+        <childnode refid="21113" relation="include">
+        </childnode>
+      </node>
+      <node id="21065">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="21066" relation="include">
+        </childnode>
+        <childnode refid="21067" relation="include">
+        </childnode>
+      </node>
+      <node id="21164">
+        <label>src/wxGUI/StatusBar.h</label>
+        <link refid="d9/d6e/StatusBar_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21165" relation="include">
+        </childnode>
+        <childnode refid="21167" relation="include">
+        </childnode>
+        <childnode refid="21128" relation="include">
+        </childnode>
+        <childnode refid="21168" relation="include">
+        </childnode>
+        <childnode refid="21169" relation="include">
+        </childnode>
+        <childnode refid="21097" relation="include">
+        </childnode>
+      </node>
+      <node id="21104">
+        <label>wx/toolbar.h</label>
+      </node>
+      <node id="21153">
+        <label>stdint.h</label>
+      </node>
+      <node id="21124">
+        <label>wx/containr.h</label>
+      </node>
+      <node id="21086">
+        <label>stdlib.h</label>
+      </node>
+      <node id="21102">
+        <label>wx/image.h</label>
+      </node>
+      <node id="21118">
+        <label>src/wxGUI/Routing/RouteLists.h</label>
+        <link refid="d4/d70/RouteLists_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21079" relation="include">
+        </childnode>
+      </node>
+      <node id="21147">
+        <label>src/kernel/routing/CommonFileDevice.h</label>
+        <link refid="d9/d17/CommonFileDevice_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21129" relation="include">
+        </childnode>
+        <childnode refid="21074" relation="include">
+        </childnode>
+        <childnode refid="21135" relation="include">
+        </childnode>
+        <childnode refid="21148" relation="include">
+        </childnode>
+        <childnode refid="21138" relation="include">
+        </childnode>
+      </node>
+      <node id="21169">
+        <label>wx/frame.h</label>
+      </node>
+      <node id="21144">
+        <label>cassert</label>
+      </node>
+      <node id="21125">
+        <label>src/wxGUI/MutIcon.h</label>
+        <link refid="df/d37/MutIcon_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+      </node>
+      <node id="21064">
+        <label>src/wxGUI/MutTextBox.cpp</label>
+        <link refid="MutTextBox.cpp"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21068" relation="include">
+        </childnode>
+        <childnode refid="21069" relation="include">
+        </childnode>
+        <childnode refid="21070" relation="include">
+        </childnode>
+        <childnode refid="21071" relation="include">
+        </childnode>
+        <childnode refid="21094" relation="include">
+        </childnode>
+        <childnode refid="21154" relation="include">
+        </childnode>
+        <childnode refid="21158" relation="include">
+        </childnode>
+        <childnode refid="21170" relation="include">
+        </childnode>
+        <childnode refid="21076" relation="include">
+        </childnode>
+        <childnode refid="21171" relation="include">
+        </childnode>
+      </node>
+      <node id="21081">
+        <label>stdexcept</label>
+      </node>
+      <node id="21090">
+        <label>malloc.h</label>
+      </node>
+      <node id="21119">
+        <label>src/wxGUI/Routing/DeviceShape.h</label>
+        <link refid="d9/d4d/DeviceShape_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21120" relation="include">
+        </childnode>
+        <childnode refid="21075" relation="include">
+        </childnode>
+        <childnode refid="21129" relation="include">
+        </childnode>
+        <childnode refid="21140" relation="include">
+        </childnode>
+        <childnode refid="21118" relation="include">
+        </childnode>
+        <childnode refid="21156" relation="include">
+        </childnode>
+        <childnode refid="21157" relation="include">
+        </childnode>
+      </node>
+      <node id="21143">
+        <label>src/kernel/GrafKern.h</label>
+        <link refid="d4/d47/GrafKern_8h"/>
+      </node>
+      <node id="21150">
+        <label>wx/timer.h</label>
+      </node>
+      <node id="21087">
+        <label>string</label>
+      </node>
+      <node id="21140">
+        <label>src/wxGUI/Routing/GUIRoute.h</label>
+        <link refid="d6/dfa/GUIRoute_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21129" relation="include">
+        </childnode>
+        <childnode refid="21141" relation="include">
+        </childnode>
+        <childnode refid="21146" relation="include">
+        </childnode>
+        <childnode refid="21151" relation="include">
+        </childnode>
+        <childnode refid="21075" relation="include">
+        </childnode>
+        <childnode refid="21154" relation="include">
+        </childnode>
+        <childnode refid="21118" relation="include">
+        </childnode>
+        <childnode refid="21091" relation="include">
+        </childnode>
+      </node>
+      <node id="21156">
+        <label>map</label>
+      </node>
+      <node id="21160">
+        <label>src/wxGUI/Routing/BoxIconShape.h</label>
+        <link refid="d2/de0/BoxIconShape_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21120" relation="include">
+        </childnode>
+        <childnode refid="21161" relation="include">
+        </childnode>
+      </node>
+      <node id="21146">
+        <label>src/kernel/routing/midi/DevMidF.h</label>
+        <link refid="da/d3c/DevMidF_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21147" relation="include">
+        </childnode>
+        <childnode refid="21142" relation="include">
+        </childnode>
+        <childnode refid="21149" relation="include">
+        </childnode>
+        <childnode refid="21150" relation="include">
+        </childnode>
+      </node>
+      <node id="21128">
+        <label>wx/stattext.h</label>
+      </node>
+      <node id="21136">
+        <label>exception</label>
+      </node>
+      <node id="21123">
+        <label>wx/control.h</label>
+      </node>
+      <node id="21149">
+        <label>fstream</label>
+      </node>
+      <node id="21171">
+        <label>src/wxGUI/Action.h</label>
+        <link refid="d7/db9/Action_8h"/>
+      </node>
+      <node id="21126">
+        <label>wx/defs.h</label>
+      </node>
+      <node id="21097">
+        <label>wx/window.h</label>
+      </node>
+      <node id="21089">
+        <label>Interpre.h</label>
+        <link refid="d2/dd8/Interpre_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21085" relation="include">
+        </childnode>
+      </node>
+      <node id="21084">
+        <label>src/kernel/box.h</label>
+        <link refid="dc/d19/box_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21085" relation="include">
+        </childnode>
+        <childnode refid="21089" relation="include">
+        </childnode>
+        <childnode refid="21082" relation="include">
+        </childnode>
+        <childnode refid="21090" relation="include">
+        </childnode>
+      </node>
+      <node id="21117">
+        <label>src/wxGUI/MutRouteWnd.h</label>
+        <link refid="d3/dd7/MutRouteWnd_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21118" relation="include">
+        </childnode>
+        <childnode refid="21111" relation="include">
+        </childnode>
+        <childnode refid="21119" relation="include">
+        </childnode>
+        <childnode refid="21158" relation="include">
+        </childnode>
+        <childnode refid="21163" relation="include">
+        </childnode>
+      </node>
+      <node id="21110">
+        <label>wx/stc/stc.h</label>
+      </node>
+      <node id="21108">
+        <label>src/wxGUI/MutEditFile.h</label>
+        <link refid="d5/dfb/MutEditFile_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21109" relation="include">
+        </childnode>
+        <childnode refid="21111" relation="include">
+        </childnode>
+        <childnode refid="21080" relation="include">
+        </childnode>
+        <childnode refid="21114" relation="include">
+        </childnode>
+        <childnode refid="21115" relation="include">
+        </childnode>
+        <childnode refid="21110" relation="include">
+        </childnode>
+        <childnode refid="21116" relation="include">
+        </childnode>
+      </node>
+      <node id="21121">
+        <label>src/wxGUI/Panel.h</label>
+        <link refid="d0/d1d/Panel_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21122" relation="include">
+        </childnode>
+        <childnode refid="21123" relation="include">
+        </childnode>
+        <childnode refid="21124" relation="include">
+        </childnode>
+      </node>
+      <node id="21101">
+        <label>src/wxGUI/Mutabor.rh</label>
+        <link refid="d9/d64/Mutabor_8rh"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+      </node>
+      <node id="21099">
+        <label>wx/filename.h</label>
+      </node>
+      <node id="21162">
+        <label>wx/colour.h</label>
+      </node>
+      <node id="21076">
+        <label>src/kernel/MidiKern.h</label>
+        <link refid="da/dfd/MidiKern_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+      </node>
+      <node id="21133">
+        <label>string.h</label>
+      </node>
+      <node id="21100">
+        <label>typeinfo</label>
+      </node>
+      <node id="21069">
+        <label>wx/tokenzr.h</label>
+      </node>
+      <node id="21148">
+        <label>cstdio</label>
+      </node>
+      <node id="21112">
+        <label>wx/convauto.h</label>
+      </node>
+      <node id="21096">
+        <label>src/wxGUI/generic/mhDefs.h</label>
+        <link refid="d0/d68/mhDefs_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21097" relation="include">
+        </childnode>
+        <childnode refid="21098" relation="include">
+        </childnode>
+        <childnode refid="21099" relation="include">
+        </childnode>
+        <childnode refid="21068" relation="include">
+        </childnode>
+        <childnode refid="21100" relation="include">
+        </childnode>
+        <childnode refid="21079" relation="include">
+        </childnode>
+        <childnode refid="21101" relation="include">
+        </childnode>
+        <childnode refid="21102" relation="include">
+        </childnode>
+        <childnode refid="21103" relation="include">
+        </childnode>
+      </node>
+      <node id="21163">
+        <label>wx/scrolwin.h</label>
+      </node>
+      <node id="21165">
+        <label>src/wxGUI/MutBitmaps.h</label>
+        <link refid="d6/dfc/MutBitmaps_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21166" relation="include">
+        </childnode>
+      </node>
+      <node id="21080">
+        <label>vector</label>
+      </node>
+      <node id="21103">
+        <label>mutDebug.h</label>
+        <link refid="de/de1/mutDebug_8h"/>
+      </node>
+      <node id="21075">
+        <label>src/kernel/routing/Route.h</label>
+        <link refid="d1/d65/Route_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21076" relation="include">
+        </childnode>
+        <childnode refid="21073" relation="include">
+        </childnode>
+        <childnode refid="21077" relation="include">
+        </childnode>
+        <childnode refid="21078" relation="include">
+        </childnode>
+        <childnode refid="21079" relation="include">
+        </childnode>
+        <childnode refid="21080" relation="include">
+        </childnode>
+        <childnode refid="21081" relation="include">
+        </childnode>
+      </node>
+      <node id="21139">
+        <label>boost/unordered_set.hpp</label>
+      </node>
+      <node id="21105">
+        <label>wx/dynarray.h</label>
+      </node>
+      <node id="21092">
+        <label>sstream</label>
+      </node>
+      <node id="21116">
+        <label>wx/fontdlg.h</label>
+      </node>
+      <node id="21151">
+        <label>src/kernel/routing/gmn/DevGIS.h</label>
+        <link refid="da/d81/DevGIS_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21147" relation="include">
+        </childnode>
+        <childnode refid="21152" relation="include">
+        </childnode>
+        <childnode refid="21150" relation="include">
+        </childnode>
+      </node>
+      <node id="21132">
+        <label>wx/string.h</label>
+      </node>
+      <node id="21130">
+        <label>src/kernel/routing/gmn/GIS.h</label>
+        <link refid="dd/d4d/GIS_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21131" relation="include">
+        </childnode>
+        <childnode refid="21133" relation="include">
+        </childnode>
+        <childnode refid="21086" relation="include">
+        </childnode>
+      </node>
+      <node id="21141">
+        <label>src/kernel/routing/midi/DevMidi.h</label>
+        <link refid="d4/da2/DevMidi_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21142" relation="include">
+        </childnode>
+        <childnode refid="21129" relation="include">
+        </childnode>
+        <childnode refid="21143" relation="include">
+        </childnode>
+        <childnode refid="21144" relation="include">
+        </childnode>
+        <childnode refid="21145" relation="include">
+        </childnode>
+      </node>
+      <node id="21093">
+        <label>wx/listbox.h</label>
+      </node>
+      <node id="21085">
+        <label>Global.h</label>
+        <link refid="dd/d40/Global_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21083" relation="include">
+        </childnode>
+        <childnode refid="21086" relation="include">
+        </childnode>
+        <childnode refid="21066" relation="include">
+        </childnode>
+        <childnode refid="21087" relation="include">
+        </childnode>
+        <childnode refid="21088" relation="include">
+        </childnode>
+      </node>
+      <node id="21070">
+        <label>wx/log.h</label>
+      </node>
+      <node id="21170">
+        <label>src/kernel/routing/Route-inlines.h</label>
+        <link refid="d2/d2c/Route-inlines_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21075" relation="include">
+        </childnode>
+        <childnode refid="21129" relation="include">
+        </childnode>
+        <childnode refid="21072" relation="include">
+        </childnode>
+      </node>
+      <node id="21088">
+        <label>math.h</label>
+      </node>
+      <node id="21155">
+        <label>wx/config.h</label>
+      </node>
+      <node id="21068">
+        <label>iostream</label>
+      </node>
+      <node id="21131">
+        <label>src/kernel/Frac.h</label>
+        <link refid="df/d4f/Frac_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21132" relation="include">
+        </childnode>
+        <childnode refid="21068" relation="include">
+        </childnode>
+      </node>
+      <node id="21113">
+        <label>wx/strconv.h</label>
+      </node>
+      <node id="21157">
+        <label>wx/sizer.h</label>
+      </node>
+      <node id="21145">
+        <label>mmsystem.h</label>
+      </node>
+      <node id="21067">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+      <node id="21107">
+        <label>wx/aui/aui.h</label>
+      </node>
+      <node id="21154">
+        <label>src/wxGUI/GUIBoxData.h</label>
+        <link refid="d5/df7/GUIBoxData_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21073" relation="include">
+        </childnode>
+        <childnode refid="21072" relation="include">
+        </childnode>
+        <childnode refid="21118" relation="include">
+        </childnode>
+        <childnode refid="21108" relation="include">
+        </childnode>
+        <childnode refid="21080" relation="include">
+        </childnode>
+        <childnode refid="21081" relation="include">
+        </childnode>
+        <childnode refid="21155" relation="include">
+        </childnode>
+      </node>
+      <node id="21138">
+        <label>wx/thread.h</label>
+      </node>
+      <node id="21094">
+        <label>src/wxGUI/MutFrame.h</label>
+        <link refid="dd/db5/MutFrame_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21095" relation="include">
+        </childnode>
+        <childnode refid="21108" relation="include">
+        </childnode>
+        <childnode refid="21117" relation="include">
+        </childnode>
+        <childnode refid="21164" relation="include">
+        </childnode>
+        <childnode refid="21107" relation="include">
+        </childnode>
+        <childnode refid="21104" relation="include">
+        </childnode>
+        <childnode refid="21115" relation="include">
+        </childnode>
+      </node>
+      <node id="21167">
+        <label>wx/statusbr.h</label>
+      </node>
+      <node id="21168">
+        <label>wx/statbmp.h</label>
+      </node>
+      <node id="21074">
+        <label>src/kernel/routing/thread.h</label>
+        <link refid="db/dd5/thread_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+      </node>
+      <node id="21077">
+        <label>src/kernel/boost-interface.h</label>
+        <link refid="d1/da4/boost-interface_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21074" relation="include">
+        </childnode>
+      </node>
+      <node id="21120">
+        <label>src/wxGUI/IconShape.h</label>
+        <link refid="d5/d6f/IconShape_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21121" relation="include">
+        </childnode>
+        <childnode refid="21125" relation="include">
+        </childnode>
+        <childnode refid="21126" relation="include">
+        </childnode>
+        <childnode refid="21127" relation="include">
+        </childnode>
+        <childnode refid="21128" relation="include">
+        </childnode>
+      </node>
+      <node id="21161">
+        <label>src/wxGUI/Routing/RouteIcons.h</label>
+        <link refid="df/d40/RouteIcons_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21125" relation="include">
+        </childnode>
+      </node>
+      <node id="21122">
+        <label>wx/panel.h</label>
+      </node>
+      <node id="21137">
+        <label>wx/stopwatch.h</label>
+      </node>
+      <node id="21166">
+        <label>wx/bitmap.h</label>
+      </node>
+      <node id="21095">
+        <label>src/wxGUI/MutChild.h</label>
+        <link refid="d2/df9/MutChild_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21096" relation="include">
+        </childnode>
+        <childnode refid="21071" relation="include">
+        </childnode>
+        <childnode refid="21104" relation="include">
+        </childnode>
+        <childnode refid="21105" relation="include">
+        </childnode>
+        <childnode refid="21106" relation="include">
+        </childnode>
+        <childnode refid="21107" relation="include">
+        </childnode>
+      </node>
+      <node id="21091">
+        <label>algorithm</label>
+      </node>
+      <node id="21129">
+        <label>src/kernel/routing/Device.h</label>
+        <link refid="de/d05/Device_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21130" relation="include">
+        </childnode>
+        <childnode refid="21075" relation="include">
+        </childnode>
+        <childnode refid="21134" relation="include">
+        </childnode>
+        <childnode refid="21076" relation="include">
+        </childnode>
+        <childnode refid="21080" relation="include">
+        </childnode>
+        <childnode refid="21079" relation="include">
+        </childnode>
+        <childnode refid="21091" relation="include">
+        </childnode>
+        <childnode refid="21092" relation="include">
+        </childnode>
+        <childnode refid="21066" relation="include">
+        </childnode>
+        <childnode refid="21138" relation="include">
+        </childnode>
+        <childnode refid="21137" relation="include">
+        </childnode>
+        <childnode refid="21139" relation="include">
+        </childnode>
+      </node>
+      <node id="21127">
+        <label>wx/icon.h</label>
+      </node>
+      <node id="21083">
+        <label>stdio.h</label>
+      </node>
+      <node id="21114">
+        <label>wx/textctrl.h</label>
+      </node>
+      <node id="21109">
+        <label>src/wxGUI/stclanguage.h</label>
+        <link refid="d1/de5/stclanguage_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21110" relation="include">
+        </childnode>
+      </node>
+      <node id="21158">
+        <label>src/wxGUI/Routing/BoxShape.h</label>
+        <link refid="d9/d49/BoxShape_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21154" relation="include">
+        </childnode>
+        <childnode refid="21140" relation="include">
+        </childnode>
+        <childnode refid="21159" relation="include">
+        </childnode>
+        <childnode refid="21160" relation="include">
+        </childnode>
+        <childnode refid="21129" relation="include">
+        </childnode>
+        <childnode refid="21162" relation="include">
+        </childnode>
+        <childnode refid="21157" relation="include">
+        </childnode>
+      </node>
+      <node id="21115">
+        <label>wx/docview.h</label>
+      </node>
+      <node id="21159">
+        <label>src/wxGUI/Routing/BoxChannelShape.h</label>
+        <link refid="d6/d68/BoxChannelShape_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21140" relation="include">
+        </childnode>
+        <childnode refid="21120" relation="include">
+        </childnode>
+        <childnode refid="21157" relation="include">
+        </childnode>
+      </node>
+      <node id="21073">
+        <label>src/kernel/treestorage.h</label>
+        <link refid="db/dbe/treestorage_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+      </node>
+      <node id="21106">
+        <label>wx/arrimpl.cpp</label>
+      </node>
+      <node id="21071">
+        <label>src/wxGUI/MutTextBox.h</label>
+        <link refid="de/d3b/MutTextBox_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21072" relation="include">
+        </childnode>
+        <childnode refid="21093" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="df/dd1/group__GUI_1gaef7578c73f5f64e62e28382d77539b0d" prot="public" static="no" mutable="no">
+        <type>wxString</type>
+        <definition>wxString TextBoxTitle[]</definition>
+        <argsstring>[]</argsstring>
+        <name>TextBoxTitle</name>
+        <initializer>=
+        { <ref refid="de/db7/group__debug_1ga63719beeefaec831a72724b660b44f59" kindref="member">N_</ref>(&quot;Current keys&quot;), N_(&quot;Tone system&quot;), N_(&quot;Actions&quot;) }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutTextBox.cpp" line="64" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutTextBox.cpp" bodystart="64" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1ga7b96d8dc59c81190829d8361f00cdc66" compoundref="df/d3c/MutTextBox_8cpp" startline="446" endline="454">MutTextBox::MakeTitle</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="df/dd1/group__GUI_1ga7d5049be38d611b9390620677f78b514" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BEGIN_EVENT_TABLE</definition>
+        <argsstring>(MutTextBox, wxListBox) EVT_MENU(CM_UPDATEUI</argsstring>
+        <name>BEGIN_EVENT_TABLE</name>
+        <param>
+          <type><ref refid="d6/deb/classMutTextBox" kindref="compound">MutTextBox</ref></type>
+        </param>
+        <param>
+          <type>wxListBox</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutTextBox.cpp" line="68" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dd1/group__GUI_1ga3172b533466b3b7072766137094d89ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="df/dd1/group__GUI_1gaa790c0385070ba353d78f1b5e4f680a2" kindref="member">MutTextBox::UpdateUI</ref></type>
+        <definition>MutTextBox::UpdateUI EVT_CLOSE</definition>
+        <argsstring>(MutTextBox::OnClose) END_EVENT_TABLE() wxString ListInit[1]</argsstring>
+        <name>EVT_CLOSE</name>
+        <param>
+          <type><ref refid="df/dd1/group__GUI_1ga34944c40a018673cfd06db1da64867f3" kindref="member">MutTextBox::OnClose</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutTextBox.cpp" line="70" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Textbox for Lists. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright: (c) 2008-2011 TU Dresden changes after 2011/11 (c) by the authors <simplesect kind="author"><para>R. Krauße Tobias Schlemmer <ulink url="mailto:keinstein@users.berlios.de">keinstein@users.berlios.de</ulink>  GPL</para></simplesect>
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</para><para>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</para><para>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="32"><highlight class="comment">//<sp/>===========================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>===========================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">src/kernel/Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/tokenzr.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d3b/MutTextBox_8h" kindref="compound">src/wxGUI/MutTextBox.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dd/db5/MutFrame_8h" kindref="compound">src/wxGUI/MutFrame.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d5/df7/GUIBoxData_8h" kindref="compound">src/wxGUI/GUIBoxData.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d9/d49/BoxShape_8h" kindref="compound">src/wxGUI/Routing/BoxShape.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d2c/Route-inlines_8h" kindref="compound">src/kernel/routing/Route-inlines.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//#include<sp/>&quot;src/kernel/GrafKern.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="da/dfd/MidiKern_8h" kindref="compound">src/kernel/MidiKern.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d7/db9/Action_8h" kindref="compound">src/wxGUI/Action.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__BORLANDC__</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#pragma<sp/>hdrstop</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="df/d08/classmutaborGUI_1_1BoxData" kindref="compound">mutaborGUI::BoxData</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">mutaborGUI;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="df/dd1/group__GUI_1gaef7578c73f5f64e62e28382d77539b0d" refkind="member"><highlight class="normal">wxString<sp/><ref refid="df/dd1/group__GUI_1gaef7578c73f5f64e62e28382d77539b0d" kindref="member">TextBoxTitle</ref>[]<sp/>=</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><ref refid="d9/d7c/group__kernel_1gad948c0166cda5a0e7b02f24043302638" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Current<sp/>keys&quot;</highlight><highlight class="normal">),<sp/><ref refid="d9/d7c/group__kernel_1gad948c0166cda5a0e7b02f24043302638" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Tone<sp/>system&quot;</highlight><highlight class="normal">),<sp/><ref refid="d9/d7c/group__kernel_1gad948c0166cda5a0e7b02f24043302638" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Actions&quot;</highlight><highlight class="normal">)<sp/>};</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>needs<sp/>wxGetTranslation();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><ref refid="df/dd1/group__GUI_1gae91e1ff5ac7d0866e88220faba0a463b" kindref="member">BEGIN_EVENT_TABLE</ref>(<ref refid="d6/deb/classMutTextBox" kindref="compound">MutTextBox</ref>,<sp/>wxListBox)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1gad55fc6bb312f54a3c5b462e193777bb1" kindref="member">EVT_MENU</ref>(<ref refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a2365859e1b4d736bfccbd83edcc5268a" kindref="member">CM_UPDATEUI</ref>,<sp/><ref refid="d6/deb/classMutTextBox" kindref="compound">MutTextBox</ref>::UpdateUI)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga3172b533466b3b7072766137094d89ff" kindref="member">EVT_CLOSE</ref>(<ref refid="d6/deb/classMutTextBox" kindref="compound">MutTextBox</ref>::OnClose)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><ref refid="db/d94/namespacemutaborGUI_1a37d3feae1753b9fb403dcfc972b9c5f1" kindref="member">END_EVENT_TABLE</ref>()</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal">wxString<sp/>ListInit[1]<sp/>=<sp/>{<sp/><ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;&lt;init&gt;&quot;</highlight><highlight class="normal">)<sp/>};</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="df/dd1/group__GUI_1ga5a31515fd8bd5f65cc0f5e1412ad88ec" refkind="member"><highlight class="normal"><ref refid="df/dd1/group__GUI_1ga5a31515fd8bd5f65cc0f5e1412ad88ec" kindref="member">MutTextBox::MutTextBox</ref>(<ref refid="df/dd1/group__GUI_1ga855392e978305d8c7a4bf5f1c78be1ce" kindref="member">WinKind</ref><sp/>k,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">mutabor::Box</ref><sp/>&amp;<sp/>b,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxWindow*<sp/>parent,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxWindowID<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxPoint&amp;<sp/>pos,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxSize&amp;<sp/>size):</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxListBox(parent,<sp/>id,<sp/>pos,<sp/>size,<sp/>1,<sp/>ListInit),</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ChangedCallback(b),</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>winKind(k),</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>(b)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>wxCHECK_VERSION(2,9,0)</highlight></codeline>
+<codeline lineno="89"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SetBackgroundStyle(wxBG_STYLE_ERASE);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="91"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SetBackgroundStyle(wxBG_STYLE_COLOUR);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="93"><highlight class="preprocessor"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>SetBackgroundColour(*wxWHITE);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d6/deb/classMutTextBox_1a395c1a5fa04d1cfe2c2bce26dfb823d0" kindref="member">box</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/d08/classmutaborGUI_1_1BoxData" kindref="compound">BoxData</ref><sp/>*<sp/>guibox<sp/>=<sp/><ref refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" kindref="member">ToGUIBase</ref>(<ref refid="d6/deb/classMutTextBox_1a395c1a5fa04d1cfe2c2bce26dfb823d0" kindref="member">box</ref>);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SetForegroundColour(guibox-&gt;<ref refid="df/d08/classmutaborGUI_1_1BoxData_1ad200e8e9a445d554ba104f669357683e" kindref="member">GetTextColour</ref>());</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SetBackgroundColour(guibox-&gt;<ref refid="df/d08/classmutaborGUI_1_1BoxData_1ac6eb9d3426d4cd18b7bc4976898efc01" kindref="member">GetBackgroundColour</ref>());</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="df/dd1/group__GUI_1ga34944c40a018673cfd06db1da64867f3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga34944c40a018673cfd06db1da64867f3" kindref="member">MutTextBox::OnClose</ref>(wxCloseEvent&amp;<sp/>event)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gaedf3113729faf15522da4884cc137733" kindref="member">mutUnused</ref>(event);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" kindref="member">mutASSERT</ref>(<ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" kindref="member">WK_KEY</ref><sp/>&lt;=<sp/><ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref><sp/>&amp;&amp;<sp/><ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref><sp/>&lt;<sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" kindref="member">WK_NULL</ref>);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref><sp/>(other,<sp/>_T(</highlight><highlight class="stringliteral">&quot;winKind:<sp/>%d&quot;</highlight><highlight class="normal">),<sp/><ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref>);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/d08/classmutaborGUI_1_1BoxData" kindref="compound">BoxData</ref><sp/>*<sp/>boxdata<sp/>=<sp/><ref refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" kindref="member">ToGUIBase</ref>(<ref refid="d6/deb/classMutTextBox_1a395c1a5fa04d1cfe2c2bce26dfb823d0" kindref="member">box</ref>);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" kindref="member">LogicOn</ref><sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" kindref="member">WK_KEY</ref>:</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" kindref="member">mutASSERT</ref>(dynamic_cast&lt;MutTextBox<sp/>*&gt;<sp/>(boxdata-&gt;<ref refid="df/d08/classmutaborGUI_1_1BoxData_1a300e019613d78652e08d6adfa02b31da" kindref="member">GetKeyWindow</ref>())<sp/>==<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boxdata-&gt;<ref refid="df/d08/classmutaborGUI_1_1BoxData_1a2f3d064c29331dbf1caaa81c95ba36a6" kindref="member">WantKeyWindow</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceaae61f5d40072b5edcdc2fc86c21cab88" kindref="member">WK_TS</ref>:</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" kindref="member">mutASSERT</ref>(dynamic_cast&lt;MutTextBox<sp/>*&gt;<sp/>(boxdata-&gt;<ref refid="df/d08/classmutaborGUI_1_1BoxData_1adfd56a8e8aa8ac6418b81975c0e39089" kindref="member">GetTonesystemWindow</ref>())<sp/>==<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boxdata-&gt;<ref refid="df/d08/classmutaborGUI_1_1BoxData_1a794008e16f0266b85708b349122a804f" kindref="member">WantTonesystemWindow</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceae937307bc58d33519881b7c7c1504b8d" kindref="member">WK_ACT</ref>:</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" kindref="member">mutASSERT</ref>(dynamic_cast&lt;MutTextBox<sp/>*&gt;<sp/>(boxdata-&gt;<ref refid="df/d08/classmutaborGUI_1_1BoxData_1ae64c30ac35e87ed79add141a2c860977" kindref="member">GetActionsWindow</ref>())<sp/>==<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boxdata-&gt;<ref refid="df/d08/classmutaborGUI_1_1BoxData_1aec62ec4dcdb53aaf5361454e48599b63" kindref="member">WantActionsWindow</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceaa12e862056f06f45044d2b04195ad582" kindref="member">WK_LOGIC</ref>:</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxLogWarning(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Unexpected<sp/>value:<sp/>WK_LOGIC&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" kindref="member">UNREACHABLEC</ref>;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea4c2189084175f9895cc08b5fbfa1aaac" kindref="member">WK_ROUTE</ref>:</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxLogWarning(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Unexpected<sp/>value:<sp/>WK_ROUTE&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" kindref="member">UNREACHABLEC</ref>;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea1d665d031d51cb0ef5c5ac4d8f4f7921" kindref="member">WK_EDIT</ref>:</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxLogWarning(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Unexpected<sp/>value:<sp/>WK_EDIT&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" kindref="member">UNREACHABLEC</ref>;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" kindref="member">WK_NULL</ref>:</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxLogWarning(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Unexpected<sp/>value:<sp/>WK_NULL&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" kindref="member">UNREACHABLEC</ref>;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxLogError(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Unexpected<sp/>window<sp/>kind:<sp/>%d&quot;</highlight><highlight class="normal">),<sp/><ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref>);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" kindref="member">UNREACHABLEC</ref>;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Destroy();</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Updaten</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="df/dd1/group__GUI_1gaa790c0385070ba353d78f1b5e4f680a2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gaa790c0385070ba353d78f1b5e4f680a2" kindref="member">MutTextBox::UpdateUI</ref>(wxCommandEvent&amp;<sp/>event)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d6/deb/classMutTextBox_1a2caca60231eb01a70028d43163d86f21" kindref="member">Ok</ref><sp/>&amp;&amp;<sp/><ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref><sp/>!=<sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceae937307bc58d33519881b7c7c1504b8d" kindref="member">WK_ACT</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/deb/classMutTextBox_1a2caca60231eb01a70028d43163d86f21" kindref="member">Ok</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" kindref="member">WK_KEY</ref>:</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1gaf4c49c1e3274833700ecb454d72c2b96" kindref="member">GetKeys</ref>(<ref refid="df/dd1/group__GUI_1ga381c4b3a1684d0fd1db89edc9ae3490e" kindref="member">asTS</ref>);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceaae61f5d40072b5edcdc2fc86c21cab88" kindref="member">WK_TS</ref>:</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga4b4fe68712431b7ed40d699cd1b9155f" kindref="member">GetToneSystem</ref>(<ref refid="df/dd1/group__GUI_1ga381c4b3a1684d0fd1db89edc9ae3490e" kindref="member">asTS</ref>);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceae937307bc58d33519881b7c7c1504b8d" kindref="member">WK_ACT</ref>:<sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/><ref refid="d5/dee/group__route_1ga7f52967e436a1c8174d9570a23279afa" kindref="member">action</ref><sp/>=<sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal">.GetString();</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!action.IsEmpty())<sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Append(action);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SetSelection(GetCount()-1);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceaa12e862056f06f45044d2b04195ad582" kindref="member">WK_LOGIC</ref>:</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxLogWarning(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Unexpected<sp/>value:<sp/>WK_ROUTE&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" kindref="member">UNREACHABLEC</ref>;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea4c2189084175f9895cc08b5fbfa1aaac" kindref="member">WK_ROUTE</ref>:</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxLogWarning(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Unexpected<sp/>value:<sp/>WK_ROUTE&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" kindref="member">UNREACHABLEC</ref>;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea1d665d031d51cb0ef5c5ac4d8f4f7921" kindref="member">WK_EDIT</ref>:</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxLogWarning(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Unexpected<sp/>value:<sp/>WK_EDIT&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" kindref="member">UNREACHABLEC</ref>;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" kindref="member">WK_NULL</ref>:</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxLogWarning(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Unexpected<sp/>value:<sp/>WK_NULL&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" kindref="member">UNREACHABLEC</ref>;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxLogError(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Unexpected<sp/>window<sp/>kind:<sp/>%d&quot;</highlight><highlight class="normal">),<sp/><ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref>);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" kindref="member">UNREACHABLEC</ref>;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="df/dd1/group__GUI_1ga6618e6b8c310bdd7c45a0acec1b1bfa0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gabbf07bf091187a2d34c508eb6c9b9eaf" kindref="member">MutTextBox::BoxChangedAction</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>a)<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref><sp/>!=<sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceae937307bc58d33519881b7c7c1504b8d" kindref="member">WK_ACT</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxCommandEvent<sp/>event(wxEVT_COMMAND_MENU_SELECTED,</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a2365859e1b4d736bfccbd83edcc5268a" kindref="member">CM_UPDATEUI</ref>);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal">.SetString(a);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxPostEvent(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,event);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200" refid="df/dd1/group__GUI_1gabbf07bf091187a2d34c508eb6c9b9eaf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gabbf07bf091187a2d34c508eb6c9b9eaf" kindref="member">MutTextBox::BoxChangedAction</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flags)<sp/>{</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>sendflags<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" kindref="member">WK_KEY</ref>:</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sendflags<sp/>=<sp/>flags<sp/>&amp;<sp/>ChangedCallback::KeysChanged;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceaae61f5d40072b5edcdc2fc86c21cab88" kindref="member">WK_TS</ref>:</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sendflags<sp/>=<sp/>flags<sp/>&amp;<sp/>ChangedCallback::BoxChanged;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceae937307bc58d33519881b7c7c1504b8d" kindref="member">WK_ACT</ref>:</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sendflags<sp/>=<sp/>flags<sp/>&amp;<sp/>ChangedCallback::ActionChanged;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceaa12e862056f06f45044d2b04195ad582" kindref="member">WK_LOGIC</ref>:</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxLogWarning(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Unexpected<sp/>value:<sp/>WK_LOGIC&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" kindref="member">UNREACHABLEC</ref>;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea4c2189084175f9895cc08b5fbfa1aaac" kindref="member">WK_ROUTE</ref>:</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxLogWarning(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Unexpected<sp/>value:<sp/>WK_ROUTE&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" kindref="member">UNREACHABLEC</ref>;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea1d665d031d51cb0ef5c5ac4d8f4f7921" kindref="member">WK_EDIT</ref>:</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxLogWarning(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Unexpected<sp/>value:<sp/>WK_EDIT&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" kindref="member">UNREACHABLEC</ref>;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" kindref="member">WK_NULL</ref>:</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxLogWarning(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Unexpected<sp/>value:<sp/>WK_NULL&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" kindref="member">UNREACHABLEC</ref>;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sendflags)<sp/>{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/deb/classMutTextBox_1a2caca60231eb01a70028d43163d86f21" kindref="member">Ok</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxCommandEvent<sp/>event(wxEVT_COMMAND_MENU_SELECTED,</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a2365859e1b4d736bfccbd83edcc5268a" kindref="member">CM_UPDATEUI</ref>);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxPostEvent(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,event);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight></codeline>
+<codeline lineno="241"><highlight class="preprocessor"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>get_frequency<sp/>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>key,<sp/><ref refid="d4/d2a/structTSYS" kindref="compound">tone_system</ref><sp/>*<sp/>tonesys)<sp/>{</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!tonesys)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>retval<sp/>=<sp/>tonesys-&gt;<ref refid="d4/d2a/structTSYS_1a8e6c51d7cbd7d65a0ed6e9b4d061f3f5" kindref="member">ton</ref>[GET_INDEX(key,tonesys)];</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!retval)<sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((</highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)<sp/>tonesys-&gt;<ref refid="d4/d2a/structTSYS_1a12c5a2eb2e3fe53f5715bfdfd86a15d4" kindref="member">periode</ref>)<sp/>*<sp/>GET_ABSTAND(key,tonesys)<sp/><sp/>+<sp/>retval;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="248"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249" refid="df/dd1/group__GUI_1gaf4c49c1e3274833700ecb454d72c2b96" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gaf4c49c1e3274833700ecb454d72c2b96" kindref="member">MutTextBox::GetKeys</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga381c4b3a1684d0fd1db89edc9ae3490e" kindref="member">asTS</ref>)</highlight></codeline>
+<codeline lineno="250"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/>keys;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d6/deb/classMutTextBox_1a395c1a5fa04d1cfe2c2bce26dfb823d0" kindref="member">box</ref><sp/>==<sp/>NULL<sp/>||<sp/>!<ref refid="d6/deb/classMutTextBox_1a395c1a5fa04d1cfe2c2bce26dfb823d0" kindref="member">box</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Freeze();</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1gab2524a8fcb1ddb8058d406e9f3728a7f" kindref="member">Clear</ref>();</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1ga07f2931fa5c87a00c71afc0799fc3f96" kindref="member">mutabor::BoxClass::current_tone_list</ref><sp/>tones<sp/>=<sp/><ref refid="d6/deb/classMutTextBox_1a395c1a5fa04d1cfe2c2bce26dfb823d0" kindref="member">box</ref>-&gt;GetCurrentTones();</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>tones.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(tones[i].flag)<sp/>{</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1gga1730c713032ffd9f2b594fd2cf0d16c9ab2f85d85a0db04e6595b46dea684fce9" kindref="member">mutabor::BoxClass::tone_entry::sounding</ref>:</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight></codeline>
+<codeline lineno="262"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>we<sp/>cant<sp/>use<sp/>%z<sp/>for<sp/>now.<sp/>See<sp/>http://trac.wxwidgets.org/ticket/14311<sp/>for<sp/>details<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>keys.Printf(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;%2z<sp/>:<sp/>%8.1lf<sp/>Hz<sp/>(%6.2lf<sp/>HT)<sp/>[ch:<sp/>%d,<sp/>id:<sp/>%z]&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i,</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d7e/group__runtime_1ga1e59191746ae9cbf6887d301df07de08" kindref="member">mutabor_convert_pitch_to_frequency</ref>(tones[i].pitch),</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tones[i].pitch,</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tones[i].channel,</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)tones[i].</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="270"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>implement<sp/>multiple<sp/>channels<sp/>for<sp/>each<sp/>route<sp/>one<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>keys.Printf(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;%3d<sp/>:<sp/>%8.1lf<sp/>Hz<sp/>(%6.2lf<sp/>HT)<sp/>[ch:<sp/>%d,<sp/>id:<sp/>%lu]&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tones[i].index,</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d7e/group__runtime_1ga1e59191746ae9cbf6887d301df07de08" kindref="member">mutabor_convert_pitch_to_frequency</ref>(tones[i].pitch),</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tones[i].pitch,</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tones[i].channel,</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)tones[i].</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="278"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1gga1730c713032ffd9f2b594fd2cf0d16c9a610febdc58313bdc7ae224ff7dab3520" kindref="member">mutabor::BoxClass::tone_entry::silent</ref>:</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>keys.Printf(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;%2d<sp/>:<sp/>empty&quot;</highlight><highlight class="normal">),i);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1gga1730c713032ffd9f2b594fd2cf0d16c9abe9aeecc537a7e1498e63b08619affc0" kindref="member">mutabor::BoxClass::tone_entry::invalid</ref>:</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>keys.Printf(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;%2d<sp/>:<sp/>invalid<sp/>tone&quot;</highlight><highlight class="normal">),i);</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>keys.Printf(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;%2d<sp/>:<sp/>(unknown<sp/>type<sp/>%d)&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i,tones[i].flag);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Append(keys);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Thaw();</highlight></codeline>
+<codeline lineno="292"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294" refid="df/dd1/group__GUI_1ga4b4fe68712431b7ed40d699cd1b9155f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga4b4fe68712431b7ed40d699cd1b9155f" kindref="member">MutTextBox::GetToneSystem</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga381c4b3a1684d0fd1db89edc9ae3490e" kindref="member">asTS</ref>)</highlight></codeline>
+<codeline lineno="295"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/>keys;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db2/structmutabor_1_1BoxClass_1_1tone__system" kindref="compound">mutabor::BoxClass::tone_system</ref><sp/>tonesys<sp/>=<sp/><ref refid="d6/deb/classMutTextBox_1a395c1a5fa04d1cfe2c2bce26dfb823d0" kindref="member">box</ref>-&gt;GetToneSystem();</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Freeze();</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1gab2524a8fcb1ddb8058d406e9f3728a7f" kindref="member">Clear</ref>();</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>keys.Printf(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Anchor<sp/>=<sp/>%d&quot;</highlight><highlight class="normal">),<sp/>tonesys.<ref refid="d5/dee/group__route_1ga31c4a50f6efcffa6136300b3a393cde4" kindref="member">anchor</ref>);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Append(keys);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>keys.Printf(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Width<sp/>=<sp/>%u&quot;</highlight><highlight class="normal">),<sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal">)tonesys.<ref refid="d5/dee/group__route_1ga097aceae78a2d99dd582afbc7e99661b" kindref="member">tones</ref>.size());</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Append(keys);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>keys.Printf(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Period<sp/>=<sp/>%.1f<sp/>HT&quot;</highlight><highlight class="normal">),<sp/>tonesys.<ref refid="d5/dee/group__route_1ga59119812ac8300de5eae37717051cf5b" kindref="member">period</ref>);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Append(keys);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tonesys.<ref refid="d5/dee/group__route_1ga097aceae78a2d99dd582afbc7e99661b" kindref="member">tones</ref>.size()<sp/>&lt;<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Append(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;No<sp/>tones.&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Thaw();</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>reference<sp/>=<sp/>0.0l;</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!asTS)<sp/>{</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>tonesys.<ref refid="d5/dee/group__route_1ga097aceae78a2d99dd582afbc7e99661b" kindref="member">tones</ref>.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tonesys.<ref refid="d5/dee/group__route_1ga097aceae78a2d99dd582afbc7e99661b" kindref="member">tones</ref>[i].flag<sp/>==</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1gga1730c713032ffd9f2b594fd2cf0d16c9ab2f85d85a0db04e6595b46dea684fce9" kindref="member">mutabor::BoxClass::tone_entry::sounding</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reference<sp/>=<sp/>tonesys.<ref refid="d5/dee/group__route_1ga097aceae78a2d99dd582afbc7e99661b" kindref="member">tones</ref>[i].pitch;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>keys.Printf(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Reference<sp/>=<sp/>%d<sp/>HT&quot;</highlight><highlight class="normal">),i);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Append(keys);</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>tonesys.<ref refid="d5/dee/group__route_1ga097aceae78a2d99dd582afbc7e99661b" kindref="member">tones</ref>.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>pitch,<sp/>frequency;</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(tonesys.<ref refid="d5/dee/group__route_1ga097aceae78a2d99dd582afbc7e99661b" kindref="member">tones</ref>[i].flag)<sp/>{</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1gga1730c713032ffd9f2b594fd2cf0d16c9ab2f85d85a0db04e6595b46dea684fce9" kindref="member">mutabor::BoxClass::tone_entry::sounding</ref>:</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pitch<sp/>=<sp/>tonesys.<ref refid="d5/dee/group__route_1ga097aceae78a2d99dd582afbc7e99661b" kindref="member">tones</ref>[i].pitch;</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frequency<sp/>=</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d7e/group__runtime_1ga1e59191746ae9cbf6887d301df07de08" kindref="member">mutabor_convert_pitch_to_frequency</ref>(pitch);</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!asTS)<sp/>pitch<sp/>-=<sp/>reference;</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>keys.Printf(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;%2u<sp/>:<sp/>%8.1lf<sp/>Hz<sp/>(%6.2lf<sp/>HT)&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal">)i,</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frequency,</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pitch<sp/>);</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1gga1730c713032ffd9f2b594fd2cf0d16c9a610febdc58313bdc7ae224ff7dab3520" kindref="member">mutabor::BoxClass::tone_entry::silent</ref>:</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>keys.Printf(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;%2d<sp/>:<sp/>empty&quot;</highlight><highlight class="normal">),i);</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1gga1730c713032ffd9f2b594fd2cf0d16c9abe9aeecc537a7e1498e63b08619affc0" kindref="member">mutabor::BoxClass::tone_entry::invalid</ref>:</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>keys.Printf(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;%2d<sp/>:<sp/>invalid<sp/>tone&quot;</highlight><highlight class="normal">),i);</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>keys.Printf(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;%2d<sp/>:<sp/>(unknown<sp/>type<sp/>%d)&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i,tonesys.<ref refid="d5/dee/group__route_1ga097aceae78a2d99dd582afbc7e99661b" kindref="member">tones</ref>[i].flag);</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Append(keys);</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Thaw();</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight></codeline>
+<codeline lineno="359" refid="df/dd1/group__GUI_1ga57d4206b3b320a19253627c553bb9e73" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga57d4206b3b320a19253627c553bb9e73" kindref="member">MutTextBox::GetAllActions</ref><sp/>()</highlight></codeline>
+<codeline lineno="360"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight><highlight class="preprocessor">#warning<sp/>write<sp/>this<sp/>code</highlight></codeline>
+<codeline lineno="362"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#if<sp/>0</highlight></codeline>
+<codeline lineno="363"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1gaa0d04547db6e973fa4d4aab0c9bfd951" kindref="member">NewText</ref>(GenerateCAWString());</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="366"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight></codeline>
+<codeline lineno="368" refid="df/dd1/group__GUI_1ga258706178cefc7956890d984d3921b8d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga258706178cefc7956890d984d3921b8d" kindref="member">MutTextBox::GetBoxActions</ref>()</highlight></codeline>
+<codeline lineno="369"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight><highlight class="preprocessor">#warning<sp/>write<sp/>this<sp/>code</highlight></codeline>
+<codeline lineno="371"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#if<sp/>0</highlight></codeline>
+<codeline lineno="372"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1gaa0d04547db6e973fa4d4aab0c9bfd951" kindref="member">NewText</ref>(GenerateACTString(<ref refid="d6/deb/classMutTextBox_1a395c1a5fa04d1cfe2c2bce26dfb823d0" kindref="member">box</ref>));</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="375"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"></highlight></codeline>
+<codeline lineno="377" refid="df/dd1/group__GUI_1gaa0d04547db6e973fa4d4aab0c9bfd951" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gaa0d04547db6e973fa4d4aab0c9bfd951" kindref="member">MutTextBox::NewText</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>newTitle)</highlight></codeline>
+<codeline lineno="378"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" kindref="member">mutASSERT</ref>(<ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" kindref="member">WK_KEY</ref><sp/>&lt;=<sp/><ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref><sp/>&amp;&amp;<sp/><ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref><sp/>&lt;<sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" kindref="member">WK_NULL</ref>);</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Text<sp/>in<sp/>Liste</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1gab2524a8fcb1ddb8058d406e9f3728a7f" kindref="member">Clear</ref>();</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>s1[2000];</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>j<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<sp/>s[i]<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>s[i]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;\r&apos;</highlight><highlight class="normal"><sp/>||<sp/>s[i]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s1[j]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"></highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>j<sp/>)</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Append(wxString(<ref refid="d5/dee/group__route_1ga850f9bf66734b7432b688b8e82f242a7" kindref="member">muT</ref>(s1)));</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"></highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>j<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"></highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i++;</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s1[j++]<sp/>=<sp/>s[i++];</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="399"><highlight class="normal"></highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s1[j]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"></highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>j<sp/>)</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Append(wxString(<ref refid="d5/dee/group__route_1ga850f9bf66734b7432b688b8e82f242a7" kindref="member">muT</ref>(s1)));</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Scrollen,<sp/>falls<sp/>Aktion-Window</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref><sp/>==<sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceae937307bc58d33519881b7c7c1504b8d" kindref="member">WK_ACT</ref><sp/>)</highlight></codeline>
+<codeline lineno="407"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SetSelection(GetCount()-1);</highlight></codeline>
+<codeline lineno="408"><highlight class="normal"></highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Farbbalken<sp/>ggf.<sp/>korrigieren</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>if<sp/>(<sp/>GetTopIndex()<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>PARENT_KIND<sp/>!=<sp/>WK_ACT<sp/>)</highlight></codeline>
+<codeline lineno="411"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="412"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ColorBar1-&gt;MoveWindow(1,<sp/>1,<sp/>1000,<sp/>1,<sp/>true);</highlight></codeline>
+<codeline lineno="413"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ColorBar2-&gt;MoveWindow(1,<sp/>1,<sp/>1,<sp/>1000,<sp/>true);</highlight></codeline>
+<codeline lineno="414"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="415"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="416"><highlight class="normal"></highlight></codeline>
+<codeline lineno="417" refid="df/dd1/group__GUI_1ga99be8fc6f28f8c429ff797de3e119606" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gaa0d04547db6e973fa4d4aab0c9bfd951" kindref="member">MutTextBox::NewText</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString<sp/>&amp;s,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>newTitle)</highlight></codeline>
+<codeline lineno="418"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref><sp/>(other,<sp/>_T(</highlight><highlight class="stringliteral">&quot;s=%s;<sp/>newTitle=%d;<sp/>winKind=%d&quot;</highlight><highlight class="normal">),s.c_str(),newTitle,<ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref>);</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" kindref="member">mutASSERT</ref>(<ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" kindref="member">WK_KEY</ref><sp/>&lt;=<sp/><ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref><sp/>&amp;&amp;<sp/><ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref><sp/>&lt;<sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" kindref="member">WK_NULL</ref>);</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"></highlight></codeline>
+<codeline lineno="422"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Freeze();</highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Text<sp/>in<sp/>Liste</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1gab2524a8fcb1ddb8058d406e9f3728a7f" kindref="member">Clear</ref>();</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"></highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxStringTokenizer<sp/>tokenizer(s,_T(</highlight><highlight class="stringliteral">&quot;\r\n&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"></highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(tokenizer.HasMoreTokens())</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Append(tokenizer.GetNextToken());</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Thaw();</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"></highlight></codeline>
+<codeline lineno="432"><highlight class="normal"></highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Scrollen,<sp/>falls<sp/>Aktion-Window</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="434"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref><sp/>==<sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceae937307bc58d33519881b7c7c1504b8d" kindref="member">WK_ACT</ref><sp/>)</highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SetSelection(GetCount()-1);</highlight></codeline>
+<codeline lineno="436"><highlight class="normal"></highlight></codeline>
+<codeline lineno="437"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Farbbalken<sp/>ggf.<sp/>korrigieren</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="438"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>if<sp/>(<sp/>GetTopIndex()<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>PARENT_KIND<sp/>!=<sp/>WK_ACT<sp/>)</highlight></codeline>
+<codeline lineno="439"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="440"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ColorBar1-&gt;MoveWindow(1,<sp/>1,<sp/>1000,<sp/>1,<sp/>true);</highlight></codeline>
+<codeline lineno="441"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ColorBar2-&gt;MoveWindow(1,<sp/>1,<sp/>1,<sp/>1000,<sp/>true);</highlight></codeline>
+<codeline lineno="442"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="443"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="444"><highlight class="normal"></highlight></codeline>
+<codeline lineno="445"><highlight class="normal"></highlight></codeline>
+<codeline lineno="446" refid="df/dd1/group__GUI_1ga7b96d8dc59c81190829d8361f00cdc66" refkind="member"><highlight class="normal">wxString<sp/><ref refid="df/dd1/group__GUI_1ga7b96d8dc59c81190829d8361f00cdc66" kindref="member">MutTextBox::MakeTitle</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref><sp/>==<sp/><ref refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceae937307bc58d33519881b7c7c1504b8d" kindref="member">WK_ACT</ref><sp/>&amp;&amp;<sp/><ref refid="df/dd1/group__GUI_1ga23f4645d6693c0a2b3fc0e29ca79a3d3" kindref="member">CAW</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="448"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Actions<sp/>-<sp/>all<sp/>boxes&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="449"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="450"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxString::Format(wxGetTranslation(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;%s<sp/>-<sp/>%s&quot;</highlight><highlight class="normal">)),</highlight></codeline>
+<codeline lineno="451"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxChar<sp/>*)wxGetTranslation(<ref refid="df/dd1/group__GUI_1gaef7578c73f5f64e62e28382d77539b0d" kindref="member">TextBoxTitle</ref>[<ref refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" kindref="member">winKind</ref>]),</highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxChar<sp/>*)(<ref refid="d6/deb/classMutTextBox_1a395c1a5fa04d1cfe2c2bce26dfb823d0" kindref="member">box</ref>?<ref refid="d6/deb/classMutTextBox_1a395c1a5fa04d1cfe2c2bce26dfb823d0" kindref="member">box</ref>-&gt;GetLabel():wxString(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;unknown&quot;</highlight><highlight class="normal">))));</highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="454"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="455"><highlight class="normal"></highlight></codeline>
+<codeline lineno="456"><highlight class="normal"></highlight></codeline>
+<codeline lineno="457"><highlight class="normal"></highlight><highlight class="comment">/*wx<sp/>void<sp/>MutTextBox::EvSize(uint<sp/>sizeType,<sp/>TSize<sp/>&amp;size)</highlight></codeline>
+<codeline lineno="458"><highlight class="comment">{</highlight></codeline>
+<codeline lineno="459"><highlight class="comment"><sp/><sp/>TListBox::EvSize(sizeType,<sp/>size);</highlight></codeline>
+<codeline lineno="460"><highlight class="comment"><sp/><sp/>TRect<sp/>R<sp/>=<sp/>GetWindowRect();</highlight></codeline>
+<codeline lineno="461"><highlight class="comment"><sp/><sp/>TRect<sp/>RC<sp/>=<sp/>ColorBar1-&gt;GetWindowRect();</highlight></codeline>
+<codeline lineno="462"><highlight class="comment"><sp/><sp/>if<sp/>(<sp/>GetTopIndex()<sp/>==<sp/>0<sp/>)</highlight></codeline>
+<codeline lineno="463"><highlight class="comment"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="464"><highlight class="comment"><sp/><sp/><sp/><sp/>ColorBar1-&gt;MoveWindow(1,<sp/>1,<sp/>1000,<sp/>1,<sp/>true);</highlight></codeline>
+<codeline lineno="465"><highlight class="comment"><sp/><sp/><sp/><sp/>ColorBar2-&gt;MoveWindow(1,<sp/>1,<sp/>1,<sp/>1000,<sp/>true);</highlight></codeline>
+<codeline lineno="466"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="467"><highlight class="comment">}</highlight></codeline>
+<codeline lineno="468"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="469"><highlight class="normal"></highlight></codeline>
+<codeline lineno="470"><highlight class="normal"></highlight><highlight class="comment">/*wx<sp/>void<sp/>MutTextBox::EvChar(uint<sp/>key,<sp/>uint<sp/>repeatCount,<sp/>uint<sp/>flags)</highlight></codeline>
+<codeline lineno="471"><highlight class="comment">{</highlight></codeline>
+<codeline lineno="472"><highlight class="comment"><sp/><sp/>TListBox::EvChar(key,<sp/>repeatCount,<sp/>flags);</highlight></codeline>
+<codeline lineno="473"><highlight class="comment"><sp/><sp/>if<sp/>(<sp/>&apos;A&apos;<sp/>&lt;=<sp/>key<sp/>&amp;&amp;<sp/>key<sp/>&lt;=<sp/>&apos;z&apos;<sp/>||<sp/>key<sp/>==<sp/>VK_TAB</highlight></codeline>
+<codeline lineno="474"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>key<sp/>==<sp/>VK_UP<sp/>||<sp/>key<sp/>==<sp/>VK_DOWN</highlight></codeline>
+<codeline lineno="475"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>key<sp/>==<sp/>VK_LEFT<sp/>||<sp/>key<sp/>==<sp/>VK_RIGHT<sp/>)</highlight></codeline>
+<codeline lineno="476"><highlight class="comment"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="477"><highlight class="comment"><sp/><sp/><sp/><sp/>pubTaste<sp/>=<sp/>key;</highlight></codeline>
+<codeline lineno="478"><highlight class="comment"><sp/><sp/><sp/><sp/>if<sp/>(<sp/>IsOpen(WK_LOGIC,<sp/>Box())<sp/>)</highlight></codeline>
+<codeline lineno="479"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>GetWinAttr(WK_LOGIC,<sp/>Box())-&gt;Win-&gt;SendMessage(WM_COMMAND,<sp/>CM_TASTE);</highlight></codeline>
+<codeline lineno="480"><highlight class="comment"><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline lineno="481"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>KeyboardAnalyseSimple(Box(),<sp/>key);</highlight></codeline>
+<codeline lineno="482"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="483"><highlight class="comment">}*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="484"><highlight class="normal"></highlight></codeline>
+<codeline lineno="485"><highlight class="normal"></highlight><highlight class="comment">/*wx<sp/>void<sp/>MutTextBox::EvSetFocus(HWND<sp/>hWndLostFocus)</highlight></codeline>
+<codeline lineno="486"><highlight class="comment">{</highlight></codeline>
+<codeline lineno="487"><highlight class="comment"><sp/><sp/>TListBox::EvSetFocus(hWndLostFocus);</highlight></codeline>
+<codeline lineno="488"><highlight class="comment">}</highlight></codeline>
+<codeline lineno="489"><highlight class="comment"></highlight></codeline>
+<codeline lineno="490"><highlight class="comment">void</highlight></codeline>
+<codeline lineno="491"><highlight class="comment">MutTextBox::EvRButtonDown(uint,<sp/>TPoint&amp;<sp/>point)</highlight></codeline>
+<codeline lineno="492"><highlight class="comment">{</highlight></codeline>
+<codeline lineno="493"><highlight class="comment"><sp/><sp/>RightButtonMenu(this,<sp/>point);</highlight></codeline>
+<codeline lineno="494"><highlight class="comment">}*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="495"><highlight class="normal"></highlight></codeline>
+<codeline lineno="496"><highlight class="normal"></highlight></codeline>
+<codeline lineno="497"><highlight class="normal"></highlight></codeline>
+<codeline lineno="498"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutTextBox.cpp"/>
+  </compounddef>
+</doxygen>

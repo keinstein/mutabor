@@ -1,0 +1,801 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="dc/da1/classmutabor_1_1InputGis" kind="class" prot="public">
+    <compoundname>mutabor::InputGis</compoundname>
+    <basecompoundref refid="dd/d3c/classmutabor_1_1CommonFileInputDevice" prot="public" virt="non-virtual">mutabor::CommonFileInputDevice</basecompoundref>
+    <derivedcompoundref refid="d4/d1a/classmyDevice" prot="public" virt="non-virtual">myDevice</derivedcompoundref>
+    <derivedcompoundref refid="d4/d1a/classmyDevice" prot="public" virt="non-virtual">myDevice</derivedcompoundref>
+    <includes refid="da/d81/DevGIS_8h" local="no">DevGIS.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="dc/da1/classmutabor_1_1InputGis_1a5efd6af0e8267171c2713158351ec113" prot="public" static="no">
+        <type><ref refid="dd/d3c/classmutabor_1_1CommonFileInputDevice" kindref="compound">CommonFileInputDevice</ref></type>
+        <definition>typedef CommonFileInputDevice mutabor::InputGis::base</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="234" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" bodystart="234" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="dc/da1/classmutabor_1_1InputGis_1a99aa770db16e0cac059d6f2695149031" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class GisFactory</definition>
+        <argsstring></argsstring>
+        <name>GisFactory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="217" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="dc/da1/classmutabor_1_1InputGis_1a6bec369061e1b1924e11672a65b5e258" prot="protected" static="no" mutable="no">
+        <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+        <definition>GisToken* mutabor::InputGis::Data</definition>
+        <argsstring></argsstring>
+        <name>Data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="220" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" bodystart="220" bodyend="-1"/>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ab14a7743d1cf4f74e06608c113ac4463" compoundref="db/d78/DevGIS_8cpp" startline="309" endline="327">Close</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ad19a9b45eea1005ba0862b290cdb21c4" compoundref="da/d81/DevGIS_8h" startline="223" endline="231">InputGis</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a5f9cd24f25454fe7cbbc87918fe06ab3" compoundref="db/d78/DevGIS_8cpp" startline="270" endline="307">Open</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a602dd53cc86c2dbf91bf290b169f00a0" compoundref="db/d78/DevGIS_8cpp" startline="329" endline="355">Stop</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/da1/classmutabor_1_1InputGis_1a8c7b5ab5e77df085557d7c97d228b2eb" prot="protected" static="no" mutable="no">
+        <type><ref refid="d4/d4c/classGisReadArtHead" kindref="compound">GisReadArtHead</ref> *</type>
+        <definition>GisReadArtHead* mutabor::InputGis::Head</definition>
+        <argsstring></argsstring>
+        <name>Head</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="221" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" bodystart="221" bodyend="-1"/>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ab14a7743d1cf4f74e06608c113ac4463" compoundref="db/d78/DevGIS_8cpp" startline="309" endline="327">Close</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ad19a9b45eea1005ba0862b290cdb21c4" compoundref="da/d81/DevGIS_8h" startline="223" endline="231">InputGis</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a5f9cd24f25454fe7cbbc87918fe06ab3" compoundref="db/d78/DevGIS_8cpp" startline="270" endline="307">Open</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" compoundref="db/d78/DevGIS_8cpp" startline="571" endline="737">ReadOn</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a602dd53cc86c2dbf91bf290b169f00a0" compoundref="db/d78/DevGIS_8cpp" startline="329" endline="355">Stop</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="dc/da1/classmutabor_1_1InputGis_1abf6a0494638bcbeadf0a87f21de89f39" prot="private" static="no" mutable="no">
+        <type>mutint64</type>
+        <definition>mutint64 mutabor::InputGis::minDelta</definition>
+        <argsstring></argsstring>
+        <name>minDelta</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="291" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" bodystart="291" bodyend="-1"/>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a257cb27d407cd7c29ee8c7636c8f85db" compoundref="db/d78/DevGIS_8cpp" startline="362" endline="374">PrepareNextEvent</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a602dd53cc86c2dbf91bf290b169f00a0" compoundref="db/d78/DevGIS_8cpp" startline="329" endline="355">Stop</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="dc/da1/classmutabor_1_1InputGis_1ad19a9b45eea1005ba0862b290cdb21c4" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::InputGis::InputGis</definition>
+        <argsstring>(const mutStringRef name=mutEmptyString, mutabor::MutaborModeType mode=mutabor::DeviceStop, int id=-1)</argsstring>
+        <name>InputGis</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <declname>name</declname>
+          <defval><ref refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" kindref="member">mutEmptyString</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gaa3d7d1e712c727d12c3b60c8dc04b484" kindref="member">mutabor::MutaborModeType</ref></type>
+          <declname>mode</declname>
+          <defval><ref refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649" kindref="member">mutabor::DeviceStop</ref></defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="223" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" bodystart="223" bodyend="231"/>
+        <references refid="dc/da1/classmutabor_1_1InputGis_1a6bec369061e1b1924e11672a65b5e258" compoundref="da/d81/DevGIS_8h" startline="220">Data</references>
+        <references refid="dc/da1/classmutabor_1_1InputGis_1a8c7b5ab5e77df085557d7c97d228b2eb" compoundref="da/d81/DevGIS_8h" startline="221">Head</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/da1/classmutabor_1_1InputGis_1ad1305f90dfd6ef7fe85b43d6fe70a5ae" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual mutabor::InputGis::~InputGis</definition>
+        <argsstring>()</argsstring>
+        <name>~InputGis</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="236" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" bodystart="236" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/da1/classmutabor_1_1InputGis_1ac8990a1c448400d582db2fc4b9262169" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::InputGis::Save</definition>
+        <argsstring>(tree_storage &amp;config, const RouteClass *route)</argsstring>
+        <name>Save</name>
+        <reimplements refid="d5/dee/group__route_1ga3e5d36bc704b3de28f788e011fd19c73">Save</reimplements>
+        <param>
+          <type><ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">tree_storage</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1ga1883da1b1be8d9e8d11d091c04a37521" kindref="member">RouteClass</ref> *</type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+<para>Save route settings (filter settings) for a given route. </para>        </briefdescription>
+        <detaileddescription>
+<para>Some route settings (e.g. filter settings) are device type specific. This function saves them in a tree storage.  config (<ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">tree_storage</ref> *) Storage class, where the data will be saved.  route (Route ) Route whos data shall be saved. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="244" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.cpp" bodystart="241" bodyend="250"/>
+        <references refid="da/de5/classmutabor_1_1tree__storage_1a56fd0890515d0b39ae35acb7c0682339">mutabor::tree_storage::GetPath</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="da/de5/classmutabor_1_1tree__storage_1afb9a095fbd779e53fde69e0a0df4a7b3">mutabor::tree_storage::toLeaf</references>
+        <references refid="da/de5/classmutabor_1_1tree__storage_1ac745edc6daafaae2b2fee856bfd4ecdb">mutabor::tree_storage::toParent</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/da1/classmutabor_1_1InputGis_1ac67841f0c9bae7577c4260994e0135fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::InputGis::Load</definition>
+        <argsstring>(tree_storage &amp;config, RouteClass *route)</argsstring>
+        <name>Load</name>
+        <reimplements refid="d5/dee/group__route_1ga4af91d72a0b616012d29405fb7fc9b50">Load</reimplements>
+        <param>
+          <type><ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">tree_storage</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga1883da1b1be8d9e8d11d091c04a37521" kindref="member">RouteClass</ref> *</type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+<para>Loade route settings (filter settings) for a given route. </para>        </briefdescription>
+        <detaileddescription>
+<para>Load route settings (filter settings) for a given route.</para><para>Some route settings (e.g. filter settings) are device type specific. This function loads them from a tree storage.  config (<ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">tree_storage</ref> *) Storage class, where the data will be restored from.  route (Route) Route whos data shall be loaded.</para><para>Some route settings (e.g. filter settings) are device type specific. This function loads them from a tree storage.  config (<ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">tree_storage</ref> *) Storage class, where the data will be restored from.  route (Route ) Route whos data shall be loaded. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="253" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.cpp" bodystart="258" bodyend="267"/>
+        <references refid="da/de5/classmutabor_1_1tree__storage_1a56fd0890515d0b39ae35acb7c0682339">mutabor::tree_storage::GetPath</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="da/de5/classmutabor_1_1tree__storage_1afb9a095fbd779e53fde69e0a0df4a7b3">mutabor::tree_storage::toLeaf</references>
+        <references refid="da/de5/classmutabor_1_1tree__storage_1ac745edc6daafaae2b2fee856bfd4ecdb">mutabor::tree_storage::toParent</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/da1/classmutabor_1_1InputGis_1ab14a7743d1cf4f74e06608c113ac4463" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::InputGis::Close</definition>
+        <argsstring>()</argsstring>
+        <name>Close</name>
+        <reimplements refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aa69af4fd6fa82b1aef79985433de8929">Close</reimplements>
+        <reimplementedby refid="d4/d1a/classmyDevice_1adce8cc9a06cc92297ca67055db730b0a">Close</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1adce8cc9a06cc92297ca67055db730b0a">Close</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1adce8cc9a06cc92297ca67055db730b0a">Close</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1adce8cc9a06cc92297ca67055db730b0a">Close</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="255" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.cpp" bodystart="309" bodyend="327"/>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aa69af4fd6fa82b1aef79985433de8929" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="207" endline="251">mutabor::CommonFileInputDevice::Close</references>
+        <references refid="dc/da1/classmutabor_1_1InputGis_1a6bec369061e1b1924e11672a65b5e258" compoundref="da/d81/DevGIS_8h" startline="220">Data</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8" compoundref="de/d05/Device_8h" startline="80">mutabor::DeviceCompileError</references>
+        <references refid="dc/da1/classmutabor_1_1InputGis_1a8c7b5ab5e77df085557d7c97d228b2eb" compoundref="da/d81/DevGIS_8h" startline="221">Head</references>
+        <references refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" compoundref="de/d05/Device_8h" startline="504">mutabor::Device::Mode</references>
+        <referencedby refid="d4/d1a/classmyDevice_1adce8cc9a06cc92297ca67055db730b0a" compoundref="d0/dd6/gmnopenfail1_8cpp" startline="121" endline="125">myDevice::Close</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/da1/classmutabor_1_1InputGis_1a602dd53cc86c2dbf91bf290b169f00a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::InputGis::Stop</definition>
+        <argsstring>()</argsstring>
+        <name>Stop</name>
+        <reimplements refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1af61d4ef16eefc0fddf312d1e92eeff2f">Stop</reimplements>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a4e7101bdfd3d0061f8991c7d1e44eb5c">Stop</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a4e7101bdfd3d0061f8991c7d1e44eb5c">Stop</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a4e7101bdfd3d0061f8991c7d1e44eb5c">Stop</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a4e7101bdfd3d0061f8991c7d1e44eb5c">Stop</reimplementedby>
+        <briefdescription>
+<para>Stop playback or recording of the device. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>hier muﬂ noch was hin </para>        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="256" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.cpp" bodystart="329" bodyend="355"/>
+        <references refid="d4/d4c/classGisReadArtHead_1a4270eb4364404e24ece163271c040b2b" compoundref="d1/db5/GIS__Head_8h" startline="168">GisReadArtHead::Box</references>
+        <references refid="dc/da1/classmutabor_1_1InputGis_1a6bec369061e1b1924e11672a65b5e258" compoundref="da/d81/DevGIS_8h" startline="220">Data</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8" compoundref="de/d05/Device_8h" startline="80">mutabor::DeviceCompileError</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649" compoundref="de/d05/Device_8h" startline="77">mutabor::DeviceStop</references>
+        <references refid="dc/da1/classmutabor_1_1InputGis_1a8c7b5ab5e77df085557d7c97d228b2eb" compoundref="da/d81/DevGIS_8h" startline="221">Head</references>
+        <references refid="dc/da1/classmutabor_1_1InputGis_1abf6a0494638bcbeadf0a87f21de89f39" compoundref="da/d81/DevGIS_8h" startline="291">minDelta</references>
+        <references refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" compoundref="de/d05/Device_8h" startline="504">mutabor::Device::Mode</references>
+        <references refid="d5/dee/group__route_1ga86a80a0d59ab5740c7f0eb708c1b6e76" compoundref="de/d05/Device_8h" startline="501">mutabor::Device::Name</references>
+        <references refid="dc/da1/classmutabor_1_1InputGis_1a2c639ab63ae9f31104ef179646b77a45" compoundref="db/d78/DevGIS_8cpp" startline="357" endline="359">Panic</references>
+        <references refid="d9/d81/classGisReadHead_1a397ead2657ffe0343cc0825fd61ca6cf" compoundref="d1/db5/GIS__Head_8h" startline="67">GisReadHead::PrevPtr</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1af61d4ef16eefc0fddf312d1e92eeff2f" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="253" endline="266">mutabor::CommonFileInputDevice::Stop</references>
+        <referencedby refid="d4/d1a/classmyDevice_1a4e7101bdfd3d0061f8991c7d1e44eb5c" compoundref="d0/dd6/gmnopenfail1_8cpp" startline="110" endline="114">myDevice::Stop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/da1/classmutabor_1_1InputGis_1a5f9cd24f25454fe7cbbc87918fe06ab3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutabor::InputGis::Open</definition>
+        <argsstring>()</argsstring>
+        <name>Open</name>
+        <reimplements refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3415f4a6ff1dac5d6436689cde87a136">Open</reimplements>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a6a333f73d085c18478973f1bddff8865">Open</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a6a333f73d085c18478973f1bddff8865">Open</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a6a333f73d085c18478973f1bddff8865">Open</reimplementedby>
+        <reimplementedby refid="d4/d1a/classmyDevice_1a6a333f73d085c18478973f1bddff8865">Open</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="258" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.cpp" bodystart="270" bodyend="307"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
+        <references refid="d9/d7c/group__kernel_1ga933dca24e2c56954a629981727727cbf" compoundref="d1/d73/Defs_8h" startline="181">C_STR</references>
+        <references refid="dc/da1/classmutabor_1_1InputGis_1a6bec369061e1b1924e11672a65b5e258" compoundref="da/d81/DevGIS_8h" startline="220">Data</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8" compoundref="de/d05/Device_8h" startline="80">mutabor::DeviceCompileError</references>
+        <references refid="d5/dee/group__route_1gab095232f6f6d76781fd5603d4b453306" compoundref="dc/de7/GIS_8cpp" startline="844" endline="864">GisParse</references>
+        <references refid="d5/dee/group__route_1gaccb293565ac1505218ca2cb37a75b696" compoundref="d3/d9e/GSP_8cpp" startline="51">GspError</references>
+        <references refid="d5/dee/group__route_1ga171f5381bbd5e457d35c7fb9d96658ed" compoundref="d3/d9e/GSP_8cpp" startline="48">GspErrorLineNr</references>
+        <references refid="d5/dee/group__route_1ga0a8cafd3bcd5e0e04dfa8610f5e5fbae" compoundref="d3/d9e/GSP_8cpp" startline="49">GspErrorPos</references>
+        <references refid="d5/dee/group__route_1ga4f0f62ff19812efd72a38e6acb062a9c" compoundref="d3/de1/GSP__Err_8cpp" startline="31">GspErrorText</references>
+        <references refid="dc/da1/classmutabor_1_1InputGis_1a8c7b5ab5e77df085557d7c97d228b2eb" compoundref="da/d81/DevGIS_8h" startline="221">Head</references>
+        <references refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" compoundref="de/d05/Device_8h" startline="504">mutabor::Device::Mode</references>
+        <references refid="d9/d7c/group__kernel_1ga03fd6d6d3ce7ddc54ddd11791f304a41" compoundref="d1/d73/Defs_8h" startline="182">mutC_STR</references>
+        <references refid="d5/dee/group__route_1ga86a80a0d59ab5740c7f0eb708c1b6e76" compoundref="de/d05/Device_8h" startline="501">mutabor::Device::Name</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3415f4a6ff1dac5d6436689cde87a136" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="143" endline="205">mutabor::CommonFileInputDevice::Open</references>
+        <references refid="d5/dee/group__route_1ga01c3f19123c1f42d8f1a2d405c3d21e2" compoundref="de/d05/Device_8h" startline="432" endline="436">mutabor::Device::runtime_error</references>
+        <referencedby refid="d4/d1a/classmyDevice_1a6a333f73d085c18478973f1bddff8865" compoundref="d0/dd6/gmnopenfail1_8cpp" startline="115" endline="120">myDevice::Open</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/da1/classmutabor_1_1InputGis_1a2c639ab63ae9f31104ef179646b77a45" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutabor::InputGis::Panic</definition>
+        <argsstring>()</argsstring>
+        <name>Panic</name>
+        <reimplements refid="d5/dee/group__route_1ga4c7c24c48255adddc767a745ed3c8e1c">Panic</reimplements>
+        <briefdescription>
+<para>reset the device if requested </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="259" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.cpp" bodystart="357" bodyend="359"/>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a602dd53cc86c2dbf91bf290b169f00a0" compoundref="db/d78/DevGIS_8cpp" startline="329" endline="355">Stop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/da1/classmutabor_1_1InputGis_1a2b3ede588a224861e7a1810e983c6b45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::InputGis::Proceed</definition>
+        <argsstring>(GisReadArtHead *h, char turn, Route route)</argsstring>
+        <name>Proceed</name>
+        <param>
+          <type><ref refid="d4/d4c/classGisReadArtHead" kindref="compound">GisReadArtHead</ref> *</type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <declname>turn</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">Route</ref></type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="dd/da0/todo_1_todo000007"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>provide working GIS note id. Currently Mutabor outputs only MIDI so it&apos;s no problem </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="261" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.cpp" bodystart="399" bodyend="488"/>
+        <references refid="d4/d4c/classGisReadArtHead_1a4270eb4364404e24ece163271c040b2b" compoundref="d1/db5/GIS__Head_8h" startline="168">GisReadArtHead::Box</references>
+        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
+        <references refid="d6/daa/namespacemutabor_1a695bbcf2d29d97f8479ea976355b158c">mutabor::Cd</references>
+        <references refid="d6/daa/namespacemutabor_1a4708f3916e1e8355fa28885fd303ba5a" compoundref="db/d78/DevGIS_8cpp" startline="50">mutabor::CurrentId</references>
+        <references refid="d6/daa/namespacemutabor_1a4ef5f0f070b71ab372c13049eeb29804" compoundref="db/d78/DevGIS_8cpp" startline="51">mutabor::CurrentSep</references>
+        <references refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" compoundref="d1/db5/GIS__Head_8h" startline="70">GisReadHead::Cursor</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d5/dee/group__route_1ga48508764452cf587dd6f5c57e6b877a2" compoundref="dc/de7/GIS_8cpp" startline="787" endline="793">GetGisType</references>
+        <references refid="d4/d4c/classGisReadArtHead_1ae3cb40534f4e1e3f1a8c49102498ec73" compoundref="d1/db5/GIS__Head_8h" startline="267" endline="273">GisReadArtHead::GetInstr</references>
+        <references refid="d4/d4c/classGisReadArtHead_1ae85369c6a4620fda2195bccc6df769d6" compoundref="d1/db5/GIS__Head_8h" startline="236" endline="249">GisReadArtHead::GetIntensity</references>
+        <references refid="d4/d4c/classGisReadArtHead_1a91c3ad947f585525ef47ebeb16fc00f3" compoundref="d1/db5/GIS__Head_8h" startline="251" endline="257">GisReadArtHead::GetOctave</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861a4b64e411111d6f015cd6421b13889b9e" compoundref="dd/d4d/GIS_8h" startline="123">GTNote</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861aebc8ed1642dd35c57de5b08b246474a3" compoundref="dd/d4d/GIS_8h" startline="120">GTTag</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861ad2428dfed3f60a34a6646960c0125e5b" compoundref="dd/d4d/GIS_8h" startline="121">GTTagBegin</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861a13ee82f1595618a8cd46e0dc181436cc" compoundref="dd/d4d/GIS_8h" startline="122">GTTagEnd</references>
+        <references refid="d9/d81/classGisReadHead_1a93327a7ddcec6f05512dfb41a06f2a84" compoundref="d1/db5/GIS__Head_8h" startline="72">GisReadHead::Id</references>
+        <references refid="d6/daa/namespacemutabor_1a6c6dd4d41e9b8d75edcab3d4bce654d9" compoundref="db/d78/DevGIS_8cpp" startline="376" endline="395">mutabor::MutaborTag</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542aeb2ddcbaa727016dcb5229fc6dacc23f" compoundref="de/d0f/Box_8h" startline="113">mutabor::NoBox</references>
+        <references refid="d5/dee/group__route_1gac0653ce9e6eb54a49b97285978043f83" compoundref="de/d05/Device_8h" startline="303" endline="309">mutabor::ChannelData::program_change</references>
+        <references refid="d2/db7/classGisToken_1a5987643937d79847fcd3f0dab8fe4b58" compoundref="dd/d4d/GIS_8h" startline="137">GisToken::Sep</references>
+        <references refid="d5/dee/group__route_1ga2b6f6f7163e51d7504cf4ce2ad53d82b" compoundref="dd/d4d/GIS_8h" startline="100">TTalter</references>
+        <references refid="d5/dee/group__route_1ga4d7e5d74fec05d4c817a3c6b58067ea2" compoundref="dd/d4d/GIS_8h" startline="101">TTmutabor</references>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ab1fd97ac67b58b0a4627308223f52c6b" compoundref="db/d78/DevGIS_8cpp" startline="490" endline="533">ProceedRoute</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/da1/classmutabor_1_1InputGis_1ab1fd97ac67b58b0a4627308223f52c6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::InputGis::ProceedRoute</definition>
+        <argsstring>(GisReadArtHead *h, char turn)</argsstring>
+        <name>ProceedRoute</name>
+        <param>
+          <type><ref refid="d4/d4c/classGisReadArtHead" kindref="compound">GisReadArtHead</ref> *</type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <declname>turn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="262" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.cpp" bodystart="490" bodyend="533"/>
+        <references refid="d4/d4c/classGisReadArtHead_1a4270eb4364404e24ece163271c040b2b" compoundref="d1/db5/GIS__Head_8h" startline="168">GisReadArtHead::Box</references>
+        <references refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" compoundref="d1/db5/GIS__Head_8h" startline="70">GisReadHead::Cursor</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d81/classGisReadHead_1a93327a7ddcec6f05512dfb41a06f2a84" compoundref="d1/db5/GIS__Head_8h" startline="72">GisReadHead::Id</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d7c/group__kernel_1ga13c03a937e32254ea17154104db5208a" compoundref="d1/d73/Defs_8h" startline="168">mutChar</references>
+        <references refid="d5/dee/group__route_1ga86a80a0d59ab5740c7f0eb708c1b6e76" compoundref="de/d05/Device_8h" startline="501">mutabor::Device::Name</references>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542aeb2ddcbaa727016dcb5229fc6dacc23f" compoundref="de/d0f/Box_8h" startline="113">mutabor::NoBox</references>
+        <references refid="dc/da1/classmutabor_1_1InputGis_1a2b3ede588a224861e7a1810e983c6b45" compoundref="db/d78/DevGIS_8cpp" startline="399" endline="488">Proceed</references>
+        <references refid="d5/dee/group__route_1ga0050f060be5dcbdaa7473c97e675140c" compoundref="de/d05/Device_8h" startline="505">mutabor::Device::routes</references>
+        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45eaf43f088132d41bd9b008a37e561bb218" compoundref="d1/d65/Route_8h" startline="79">mutabor::RTall</references>
+        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45ea50bfca9bacf204a403c6f37b47af802c" compoundref="d1/d65/Route_8h" startline="81">mutabor::RTchannel</references>
+        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45eac3c8aee25fc8afe5bafcb3de4a403bd9" compoundref="d1/d65/Route_8h" startline="80">mutabor::RTelse</references>
+        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45eaa42b7d5ee257d648d6469bbcb456a723" compoundref="d1/d65/Route_8h" startline="82">mutabor::RTstaff</references>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" compoundref="db/d78/DevGIS_8cpp" startline="571" endline="737">ReadOn</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>mutint64</type>
+        <definition>mutint64 mutabor::InputGis::ReadOn</definition>
+        <argsstring>(mutint64 delta)</argsstring>
+        <name>ReadOn</name>
+        <param>
+          <type>mutint64</type>
+          <declname>delta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="263" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.cpp" bodystart="571" bodyend="737"/>
+        <references refid="d9/d81/classGisReadHead_1a82feb8a2bc183115b5670a72ebfe96f7" compoundref="d1/db5/GIS__Head_8h" startline="68">GisReadHead::Boss</references>
+        <references refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" compoundref="d1/db5/GIS__Head_8h" startline="70">GisReadHead::Cursor</references>
+        <references refid="d9/d81/classGisReadHead_1ab58ced6bee32e0053fce7a446ba02198" compoundref="d1/db5/GIS__Head_8h" startline="106" endline="119">GisReadHead::CursorNext</references>
+        <references refid="d5/dee/group__route_1ga2d15f81e4fff876bc86dadc798f3db04" compoundref="d7/da0/GIS__Head_8cpp" startline="216" endline="262">GisReadHead::CutOut</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="de/de1/mutDebug_8h" startline="142">DEBUGLOG2</references>
+        <references refid="d4/d4c/classGisReadArtHead_1a9e0f94ec7920d86aa9804f1bb05e661a" compoundref="d1/db5/GIS__Head_8h" startline="167">GisReadArtHead::Delta</references>
+        <references refid="d7/dcc/classfrac_1af37948b8426f3235f1e3bea7a208af22" compoundref="df/d4f/Frac_8h" startline="87" endline="87">frac::denominator</references>
+        <references refid="d5/dee/group__route_1gab552cc7e2033cc34840644adee86699f" compoundref="de/d05/Device_8h" startline="1002" endline="1004">mutabor::InputDeviceClass::GetNO_DELTA</references>
+        <references refid="d4/d4c/classGisReadArtHead_1a2398475263e13f032b9f52080d196102" compoundref="d1/db5/GIS__Head_8h" startline="275" endline="285">GisReadArtHead::GetSpeedFactor</references>
+        <references refid="d3/d26/mutgis_8cpp_1a26506d124b947beae862c007bc8195bb" compoundref="d3/d26/mutgis_8cpp" startline="5">h</references>
+        <references refid="dc/da1/classmutabor_1_1InputGis_1a8c7b5ab5e77df085557d7c97d228b2eb" compoundref="da/d81/DevGIS_8h" startline="221">Head</references>
+        <references refid="d5/dee/group__route_1ga33c4a77081b2d1b31f0153cd442d597a" compoundref="de/d05/Device_8h" startline="1006" endline="1008">mutabor::InputDeviceClass::IsDelta</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d81/classGisReadHead_1a7d7ecded97c79a3859c4312540f139ad" compoundref="d1/db5/GIS__Head_8h" startline="67">GisReadHead::Next</references>
+        <references refid="d9/d81/classGisReadHead_1a0b7f1958ead3a1142f4895a77062328c" compoundref="d1/db5/GIS__Head_8h" startline="69">GisReadHead::nSub</references>
+        <references refid="d7/dcc/classfrac_1af128afd240a2fdf80a7c0ddf502abec1" compoundref="df/d4f/Frac_8h" startline="85" endline="85">frac::numerator</references>
+        <references refid="dc/da1/classmutabor_1_1InputGis_1ab1fd97ac67b58b0a4627308223f52c6b" compoundref="db/d78/DevGIS_8cpp" startline="490" endline="533">ProceedRoute</references>
+        <references refid="d5/dee/group__route_1gadd30cf551924b6e57607f265e6ac5d3d" compoundref="d7/da0/GIS__Head_8cpp" startline="516" endline="624">GisReadArtHead::Read</references>
+        <references refid="d9/d81/classGisReadHead_1a3593ef5641e761c24e59f5b33c8a58fe" compoundref="d1/db5/GIS__Head_8h" startline="71">GisReadHead::Time</references>
+        <references refid="d4/d4c/classGisReadArtHead_1ad3ddd80782850560c1ec5a25a3f5d89c" compoundref="d1/db5/GIS__Head_8h" startline="166">GisReadArtHead::Time2</references>
+        <references refid="d9/d81/classGisReadHead_1abc1b3f496f4d0770cfc2f3fdd4495a38" compoundref="d1/db5/GIS__Head_8h" startline="73">GisReadHead::Turn</references>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a257cb27d407cd7c29ee8c7636c8f85db" compoundref="db/d78/DevGIS_8cpp" startline="362" endline="374">PrepareNextEvent</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/da1/classmutabor_1_1InputGis_1a7c417adaf61127aa63fe2ead5b3b8959" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d5/dee/group__route_1ga84f84d78781fc500cd66ee58b0efc83a" kindref="member">DevType</ref></type>
+        <definition>virtual DevType mutabor::InputGis::GetType</definition>
+        <argsstring>() const </argsstring>
+        <name>GetType</name>
+        <reimplements refid="d5/dee/group__route_1ga0c8207244321c9d72913ae24fbad4be5">GetType</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="268" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" bodystart="268" bodyend="271"/>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa2b2fa6564c9620ec4de6c1440688c984" compoundref="de/d05/Device_8h" startline="89">mutabor::DTGis</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/da1/classmutabor_1_1InputGis_1a257cb27d407cd7c29ee8c7636c8f85db" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>mutint64</type>
+        <definition>mutint64 mutabor::InputGis::PrepareNextEvent</definition>
+        <argsstring>()</argsstring>
+        <name>PrepareNextEvent</name>
+        <reimplements refid="d5/dee/group__route_1ga77179da20d4bb3a5cd8d03fc90435ddb">PrepareNextEvent</reimplements>
+        <briefdescription>
+<para>Go on to the next event. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function must be provided by the device. It is asked to prepare the next event and return the time to wait in microseconds from the start of the piece. Though the timer has only milliseconds resolution, the errors will sum up so that we need a much higher resolution, here.</para><para>Here, we use the measure that is used in the SMF standard. It has been designed to reduce the deviation of a 4 minutes piece at 120 bpm to 500μs. If it were 500ms it would be unusable.</para><para><simplesect kind="return"><para>uint_fast64_t Absolute temporal position of the next event in the piece in μs. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="273" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.cpp" bodystart="362" bodyend="374"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="dc/da1/classmutabor_1_1InputGis_1abf6a0494638bcbeadf0a87f21de89f39" compoundref="da/d81/DevGIS_8h" startline="291">minDelta</references>
+        <references refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" compoundref="db/d78/DevGIS_8cpp" startline="571" endline="737">ReadOn</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/da1/classmutabor_1_1InputGis_1a4249fc25714d8c8112337b3d77298774" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+        <definition>virtual mutString mutabor::InputGis::GetTypeName</definition>
+        <argsstring>() const </argsstring>
+        <name>GetTypeName</name>
+        <reimplements refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a74e4547dec81508d986a01c8c0bf0967">GetTypeName</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="275" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" bodystart="275" bodyend="277"/>
+        <references refid="d9/d7c/group__kernel_1gad948c0166cda5a0e7b02f24043302638" compoundref="d1/da2/Errors_8cpp" startline="22">N_</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3063">
+        <label>mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;</label>
+        <link refid="d9/dbf/classmutabor_1_1CommonTypedDeviceAPI"/>
+        <childnode refid="3064" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3062">
+        <label>mutabor::InputDeviceClass</label>
+        <link refid="d4/d18/classmutabor_1_1InputDeviceClass"/>
+        <childnode refid="3063" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3064">
+        <label>mutabor::Device</label>
+        <link refid="db/db4/classmutabor_1_1Device"/>
+      </node>
+      <node id="3061">
+        <label>mutabor::CommonFileInputDevice</label>
+        <link refid="dd/d3c/classmutabor_1_1CommonFileInputDevice"/>
+        <childnode refid="3062" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3060">
+        <label>mutabor::InputGis</label>
+        <link refid="dc/da1/classmutabor_1_1InputGis"/>
+        <childnode refid="3061" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3065">
+        <label>myDevice</label>
+        <link refid="d4/d1a/classmyDevice"/>
+        <childnode refid="3060" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3060" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3076">
+        <label>mutabor::InputDeviceClass::current_keys_type</label>
+        <link refid="dc/d50/structmutabor_1_1InputDeviceClass_1_1current__keys__type"/>
+      </node>
+      <node id="3073">
+        <label>T</label>
+      </node>
+      <node id="3079">
+        <label>mutabor::timing_params</label>
+        <link refid="d9/de0/classmutabor_1_1timing__params"/>
+      </node>
+      <node id="3081">
+        <label>GisReadArtHead</label>
+        <link refid="d4/d4c/classGisReadArtHead"/>
+        <childnode refid="3082" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3084" relation="usage">
+          <edgelabel>Alter</edgelabel>
+          <edgelabel>Octave</edgelabel>
+          <edgelabel>Intensity</edgelabel>
+          <edgelabel>Tempo</edgelabel>
+          <edgelabel>Instr</edgelabel>
+          <edgelabel>Articulation</edgelabel>
+        </childnode>
+        <childnode refid="3083" relation="usage">
+          <edgelabel>Time2</edgelabel>
+        </childnode>
+      </node>
+      <node id="3071">
+        <label>mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;</label>
+        <link refid="db/d05/classmutabor_1_1TRouteClass"/>
+        <childnode refid="3072" relation="usage">
+          <edgelabel>routeList</edgelabel>
+        </childnode>
+        <childnode refid="3074" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="3084">
+        <label>TagListData</label>
+        <link refid="d5/d11/structTagListData"/>
+        <childnode refid="3084" relation="usage">
+          <edgelabel>Next</edgelabel>
+        </childnode>
+        <childnode refid="3085" relation="usage">
+          <edgelabel>Data</edgelabel>
+        </childnode>
+        <childnode refid="3086" relation="usage">
+          <edgelabel>Tag</edgelabel>
+        </childnode>
+      </node>
+      <node id="3074">
+        <label>mutabor::idtype&lt; mutabor::TRouteClass&lt; InputDevice, OutputDevice &gt; &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="3069">
+        <label>mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;</label>
+        <link refid="d9/dbf/classmutabor_1_1CommonTypedDeviceAPI"/>
+        <childnode refid="3070" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3075">
+        <label>mutabor::idtype&lt; mutabor::Device &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="3085">
+        <label>TagListData::data</label>
+        <link refid="de/d04/unionTagListData_1_1data"/>
+      </node>
+      <node id="3068">
+        <label>mutabor::InputDeviceClass</label>
+        <link refid="d4/d18/classmutabor_1_1InputDeviceClass"/>
+        <childnode refid="3069" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3076" relation="usage">
+          <edgelabel>current_keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="3070">
+        <label>mutabor::Device</label>
+        <link refid="db/db4/classmutabor_1_1Device"/>
+        <childnode refid="3071" relation="usage">
+          <edgelabel>routes</edgelabel>
+        </childnode>
+        <childnode refid="3075" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="3072">
+        <label>std::list&lt; T &gt;</label>
+        <childnode refid="3073" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="3082">
+        <label>GisReadHead</label>
+        <link refid="d9/d81/classGisReadHead"/>
+        <childnode refid="3082" relation="usage">
+          <edgelabel>Prev</edgelabel>
+          <edgelabel>Next</edgelabel>
+          <edgelabel>Boss</edgelabel>
+          <edgelabel>PrevPtr</edgelabel>
+        </childnode>
+        <childnode refid="3080" relation="usage">
+          <edgelabel>Cursor</edgelabel>
+        </childnode>
+        <childnode refid="3083" relation="usage">
+          <edgelabel>Time</edgelabel>
+        </childnode>
+      </node>
+      <node id="3086">
+        <label>GisTag</label>
+        <link refid="d2/d39/classGisTag"/>
+        <childnode refid="3080" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3080" relation="usage">
+          <edgelabel>Para</edgelabel>
+        </childnode>
+      </node>
+      <node id="3067">
+        <label>mutabor::CommonFileInputDevice</label>
+        <link refid="dd/d3c/classmutabor_1_1CommonFileInputDevice"/>
+        <childnode refid="3068" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3077" relation="usage">
+          <edgelabel>timer</edgelabel>
+        </childnode>
+        <childnode refid="3079" relation="usage">
+          <edgelabel>timing</edgelabel>
+        </childnode>
+      </node>
+      <node id="3083">
+        <label>frac</label>
+        <link refid="d7/dcc/classfrac"/>
+      </node>
+      <node id="3078">
+        <label>Thread</label>
+      </node>
+      <node id="3066">
+        <label>mutabor::InputGis</label>
+        <link refid="dc/da1/classmutabor_1_1InputGis"/>
+        <childnode refid="3067" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3080" relation="usage">
+          <edgelabel>Data</edgelabel>
+        </childnode>
+        <childnode refid="3081" relation="usage">
+          <edgelabel>Head</edgelabel>
+        </childnode>
+      </node>
+      <node id="3077">
+        <label>mutabor::CommonFileInputDevice::FileTimer</label>
+        <link refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer"/>
+        <childnode refid="3078" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3080">
+        <label>GisToken</label>
+        <link refid="d2/db7/classGisToken"/>
+        <childnode refid="3080" relation="usage">
+          <edgelabel>Next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="216" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" bodystart="215" bodyend="296"/>
+    <listofallmembers>
+      <member refid="d5/dee/group__route_1ga310387a6e3aebf00b508887391d82b3d" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>Add</name></member>
+      <member refid="d5/dee/group__route_1ga0500b92557be2d528f6f75f4537f7b88" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>AppendToDeviceList</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1a5efd6af0e8267171c2713158351ec113" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>base</name></member>
+      <member refid="d5/dee/group__route_1ga2e005c6f49a1547b9b3b011a940879be" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>BatchPlay</name></member>
+      <member refid="d5/dee/group__route_1ga6a549b9131f3f5f7322b89bfa941de4a" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>ClearDeviceList</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1ab14a7743d1cf4f74e06608c113ac4463" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>Close</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a5e793bf4b7c203da99489ff869190455" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>CommonFileInputDevice</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a8b0fe1766ca08c7ed8b963d43f27ed91" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>CommonFileInputDevice</name></member>
+      <member refid="d5/dee/group__route_1ga9787ad2f4d97cd1c4e616a433d284b13" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>CommonTypedDeviceAPI</name></member>
+      <member refid="d5/dee/group__route_1ga3d9ec96127224d9c481d207a2a315f0e" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>CommonTypedDeviceAPI</name></member>
+      <member refid="d5/dee/group__route_1gabd5333b4904bd05f4d82ee7f3e259530" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>current_keys</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1a6bec369061e1b1924e11672a65b5e258" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>Data</name></member>
+      <member refid="d5/dee/group__route_1gad212bd763c21f167dc9c6523033d2b62" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>Destroy</name></member>
+      <member refid="d5/dee/group__route_1ga5a34853b39a1fe85e2420e262dfb0f6a" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>Device</name></member>
+      <member refid="d5/dee/group__route_1gad6aa54a6af79287ce009e35bc448da2b" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>deviceList</name></member>
+      <member refid="d5/dee/group__route_1gaebc414494d4db2ad9f687eb2b3d43a14" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>DevicePtr</name></member>
+      <member refid="d5/dee/group__route_1ga1274fa7f3bc0cd8f6d2a44aac8e42bb3" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>devidtype</name></member>
+      <member refid="d5/dee/group__route_1gabb922714830f90c1af5bb9f5fe4ce615" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>dirty</name></member>
+      <member refid="d5/dee/group__route_1ga76cdbc43252351386362bfd14c62cf45" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>Dirty</name></member>
+      <member refid="d5/dee/group__route_1ga3ff0800ee50f8cf48a2d991365e56e0b" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>DisconnectFromAll</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a08cdc253422eb5f4a333d75891faa245" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>exitLock</name></member>
+      <member refid="d5/dee/group__route_1ga40c9efe47aabb03bc924cdec9aff95fc" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>FindInDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga6d853cde85216e56f3d74d20ff9556b2" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>get_routefile_id</name></member>
+      <member refid="d5/dee/group__route_1ga48afafba127beb4c42f6a1a9bceb2148" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>get_session_id</name></member>
+      <member refid="d5/dee/group__route_1ga0003618beb50da006e94e57baf9f7afa" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>GetDevice</name></member>
+      <member refid="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>GetDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga85133d32c2a68f1a343aeab80bbd92f4" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>GetMode</name></member>
+      <member refid="d5/dee/group__route_1gabacd3a9aa739a6e21a737feeb9b9e9c9" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>GetName</name></member>
+      <member refid="d5/dee/group__route_1gab552cc7e2033cc34840644adee86699f" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>GetNO_DELTA</name></member>
+      <member refid="d5/dee/group__route_1ga88774ccf4e5c5dfb2646e1a95c1719d6" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>GetRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga15e9894fe4909c6aadff876f323d3384" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>GetRoutes</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1a7c417adaf61127aa63fe2ead5b3b8959" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>GetType</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1a4249fc25714d8c8112337b3d77298774" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>GetTypeName</name></member>
+      <member refid="d5/dee/group__route_1ga6b40f3affafc4ecaf39ac957e2c74cd3" prot="protected" virt="virtual"><scope>mutabor::InputGis</scope><name>getUserData</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1a99aa770db16e0cac059d6f2695149031" prot="private" virt="non-virtual"><scope>mutabor::InputGis</scope><name>GisFactory</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1a8c7b5ab5e77df085557d7c97d228b2eb" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>Head</name></member>
+      <member refid="d5/dee/group__route_1gga1274fa7f3bc0cd8f6d2a44aac8e42bb3aa5dc2f5a43d36c391b773a6adc16e948" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>IDTypeFile</name></member>
+      <member refid="d5/dee/group__route_1gga1274fa7f3bc0cd8f6d2a44aac8e42bb3a57119faede41f9f36b4547aa812e42aa" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>IDTypeHardware</name></member>
+      <member refid="d5/dee/group__route_1gga1274fa7f3bc0cd8f6d2a44aac8e42bb3af953940c733081b6e3dad32c6d807943" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>IDTypeSession</name></member>
+      <member refid="d5/dee/group__route_1ga0129007d64b3aaf687dc34665d14b399" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>InitializeIds</name></member>
+      <member refid="d5/dee/group__route_1ga2a95987d1056dd6fb4a0706d9eb894a5" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>InputDeviceClass</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1ad19a9b45eea1005ba0862b290cdb21c4" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>InputGis</name></member>
+      <member refid="d5/dee/group__route_1ga33c4a77081b2d1b31f0153cd442d597a" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>IsDelta</name></member>
+      <member refid="d5/dee/group__route_1ga479bbdd0212790e89bf71dc227ab2303" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>IsDirty</name></member>
+      <member refid="d5/dee/group__route_1ga60c8451e058e88b0a5e8bc932e66089f" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>IsInDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga219acefe8692f1b3e00181f97c9c866f" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>IsOpen</name></member>
+      <member refid="d5/dee/group__route_1ga1cdc51c75faaeaec8d2b4cbb40d36e3b" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>isOpen</name></member>
+      <member refid="d5/dee/group__route_1gab0ae031e02b18ee00f5794736fc135dd" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>listtype</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1ac67841f0c9bae7577c4260994e0135fc" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>Load</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a1f853e58525a5ff67937c48a208b7670" prot="public" virt="virtual" ambiguityscope="mutabor::CommonFileInputDevice::"><scope>mutabor::InputGis</scope><name>Load</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac521d166de1b0559a7edfac31cd6addd" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>lockMode</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1abf6a0494638bcbeadf0a87f21de89f39" prot="private" virt="non-virtual"><scope>mutabor::InputGis</scope><name>minDelta</name></member>
+      <member refid="d5/dee/group__route_1ga1b6edb6590810f736cda075418276a0c" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>Mode</name></member>
+      <member refid="d5/dee/group__route_1ga1e90f04620e908e170e66539c8f9b47a" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>MoveInList</name></member>
+      <member refid="d5/dee/group__route_1ga143bc287529a671195a80dc3fbf4d3d4" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>MoveRoutes</name></member>
+      <member refid="d5/dee/group__route_1ga86a80a0d59ab5740c7f0eb708c1b6e76" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>Name</name></member>
+      <member refid="d5/dee/group__route_1ga7940967ce95f17bf1c79c6928cd732e7" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>NeedsRealTime</name></member>
+      <member refid="d5/dee/group__route_1gadab298f6643f7929782652b7a2764731" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>NoteOff</name></member>
+      <member refid="d5/dee/group__route_1gacc20d37049923e4473fc0ff10fed282c" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>NoteOn</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59adc14982a14900cbbd72e493540eec7a2" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>Nothing</name></member>
+      <member refid="d5/dee/group__route_1ga121ded40710df3f74a6150082999597b" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>nRoutes</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1a5f9cd24f25454fe7cbbc87918fe06ab3" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>Open</name></member>
+      <member refid="d5/dee/group__route_1ga7cafe18237e838d40bbb9efe90484066" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>operator const thistype &amp;</name></member>
+      <member refid="d5/dee/group__route_1gad379062646f2315b58267c314cdf1c49" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>operator thistype &amp;</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1a2c639ab63ae9f31104ef179646b77a45" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>Panic</name></member>
+      <member refid="d5/dee/group__route_1ga16e5549446e1eff905acfaa343ea254b" prot="public" virt="non-virtual" ambiguityscope="mutabor::CommonFileInputDevice::"><scope>mutabor::InputGis</scope><name>Panic</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ab981fd4cdd68dc456a97889ddc851736" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>Pause</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9e446c5f5386b6ee6b8d014448a8dfad" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>pauseTime</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9678c9f5b289630497c3d88ed0e8d359" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>Play</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1a257cb27d407cd7c29ee8c7636c8f85db" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>PrepareNextEvent</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1a2b3ede588a224861e7a1810e983c6b45" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>Proceed</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1ab1fd97ac67b58b0a4627308223f52c6b" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>ProceedRoute</name></member>
+      <member refid="d5/dee/group__route_1ga005dc1a3518ecb0bfb408cf058319d7a" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>ReadData</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>ReadOn</name></member>
+      <member refid="d5/dee/group__route_1gacb751971284f0b211abb68ae3dafd4b4" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>RealtimePlay</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aad7425149e4ec19d09f47636572478bd" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>referenceTime</name></member>
+      <member refid="d5/dee/group__route_1ga75c2c1c9312c7fd3b0ac67482bc3f3b7" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>Remove</name></member>
+      <member refid="d5/dee/group__route_1gaea9507768e02eb39aa56acde9fbb0d75" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>RemoveFromDeviceList</name></member>
+      <member refid="d5/dee/group__route_1ga2875373929d294d6c51991238407f542" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>Replace</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59a36c6fdc406fe47d6f70581062fc282d9" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>RequestExit</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59a6163594cb2510bbd2b8a32fcf7806062" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>RequestPause</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59aeedaf6a8fa478c488bd205f15396d3f9" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>ResetTime</name></member>
+      <member refid="d5/dee/group__route_1gaa9515535e69b65e614b048f0c417024e" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>routefile_id</name></member>
+      <member refid="d5/dee/group__route_1ga0050f060be5dcbdaa7473c97e675140c" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>routes</name></member>
+      <member refid="d5/dee/group__route_1ga01c3f19123c1f42d8f1a2d405c3d21e2" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>runtime_error</name></member>
+      <member refid="d5/dee/group__route_1gac5f5412fc2ea0b0b5edbd199353309c9" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>runtime_error</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1ac8990a1c448400d582db2fc4b9262169" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>Save</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aebd2d366f92f7fcb3fda5c3ffd7fa2a3" prot="public" virt="virtual" ambiguityscope="mutabor::CommonFileInputDevice::"><scope>mutabor::InputGis</scope><name>Save</name></member>
+      <member refid="d5/dee/group__route_1ga25dab27656e5e9960b90178f5365c890" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>session_id</name></member>
+      <member refid="d5/dee/group__route_1ga33283f3fbd5c5a384980e320223fca94" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>set_file_id</name></member>
+      <member refid="d5/dee/group__route_1ga67e80dc8dd7ecc105020ae37eed4bf63" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>SetMode</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a13c581ebc0d885e53cb8e134c97a4421" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>SetName</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a8e75010c7d81cae7464c19e768a174b6" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>SetThreadKind</name></member>
+      <member refid="d5/dee/group__route_1gaf4269c12f276f471046dd60a6034322f" prot="protected" virt="virtual"><scope>mutabor::InputGis</scope><name>setUserData</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1a602dd53cc86c2dbf91bf290b169f00a0" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>Stop</name></member>
+      <member refid="d5/dee/group__route_1gaf592e59b9c1a9cdcc036f6a5a4f197eb" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>thisptr</name></member>
+      <member refid="d5/dee/group__route_1gae86c4bcadc561ffa2ba18b641a7dc667" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>thisptr</name></member>
+      <member refid="d5/dee/group__route_1gae62e6954f27bdff3e405f60aa3a12235" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>thistype</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>ThreadCommunication</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a2a0b84c4c0f09a39a704333eedd64528" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>threadkind</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a423d3eece573e61472d6ec5f1c782486" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>ThreadPlay</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a159e75656d4a16408957610f4bc2d352" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>threadReady</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac2397d62a5481190fc22e64132f17781" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>threadsignal</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac12acf2139170dc37a1432f25affd4f2" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>timer</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a1e0e69b99ef30bfdf94edbf55b0beda7" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>timing</name></member>
+      <member refid="d5/dee/group__route_1ga62782ee9bbed258704f22506993da782" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>TruncateDeviceList</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a722c2de3e9fd386e48c80eca1f18597b" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>waitCondition</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a0e07f85298f243526c07a976c7a44faa" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>WaitForDeviceFinish</name></member>
+      <member refid="d5/dee/group__route_1ga53918898ee641c62d9ab122f0d0712aa" prot="public" virt="virtual" ambiguityscope="mutabor::InputDeviceClass::"><scope>mutabor::InputGis</scope><name>WaitForDeviceFinish</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3c551fc40d8b76855d59f00b6d82622e" prot="protected" virt="non-virtual"><scope>mutabor::InputGis</scope><name>waitMutex</name></member>
+      <member refid="d5/dee/group__route_1gae75382843673e90f40cf3d216faffe42" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>WriteData</name></member>
+      <member refid="d5/dee/group__route_1ggac2bb84d1f1e0c5c42e57cf8ac9992996a5300617fee0bea844062acc80df5306d" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>wxTHREAD_WAIT_BLOCK</name></member>
+      <member refid="d5/dee/group__route_1ggac2bb84d1f1e0c5c42e57cf8ac9992996a39530c962f92d84a1b55f32be3f5f0fd" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>wxTHREAD_WAIT_DEFAULT</name></member>
+      <member refid="d5/dee/group__route_1ggac2bb84d1f1e0c5c42e57cf8ac9992996a3662ffee8d8864568801818c1e4cde10" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>wxTHREAD_WAIT_YIELD</name></member>
+      <member refid="d5/dee/group__route_1gac2bb84d1f1e0c5c42e57cf8ac9992996" prot="public" virt="non-virtual"><scope>mutabor::InputGis</scope><name>wxThreadWait</name></member>
+      <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a0ff99f1e190f67f0293e772bf1aafaa7" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>~CommonFileInputDevice</name></member>
+      <member refid="d5/dee/group__route_1ga35b63eeb3932c5e938f34239a57825cb" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>~CommonTypedDeviceAPI</name></member>
+      <member refid="d5/dee/group__route_1gaeb8df260fe37691b9c990e5a2eef42fe" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>~Device</name></member>
+      <member refid="d5/dee/group__route_1gab96d961196f9b390aba6a647a2c3602e" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>~InputDeviceClass</name></member>
+      <member refid="dc/da1/classmutabor_1_1InputGis_1ad1305f90dfd6ef7fe85b43d6fe70a5ae" prot="public" virt="virtual"><scope>mutabor::InputGis</scope><name>~InputGis</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

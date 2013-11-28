@@ -1,0 +1,721 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="da/dd9/classMisTrack" kind="class" prot="public">
+    <compoundname>MisTrack</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">TByteArray</basecompoundref>
+    <includes refid="d2/d71/mis_8h" local="no">mis.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="da/dd9/classMisTrack_1a47a8b892d8f4c2ebd8478fab84b77112" prot="public" static="no" mutable="no">
+        <type><ref refid="da/dd9/classMisTrack" kindref="compound">MisTrack</ref> *</type>
+        <definition>MisTrack* MisTrack::Next</definition>
+        <argsstring></argsstring>
+        <name>Next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="96" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" bodystart="96" bodyend="-1"/>
+        <referencedby refid="da/dd9/classMisTrack_1ae03095dfdd39d030c14a6ec65e49b3eb" compoundref="d4/df2/mis_8cpp" startline="616" endline="621">CountOnDeltaTime</referencedby>
+        <referencedby refid="d5/d67/classMisFile_1afa339295ef76fa5a96312ae9abb1bf4e" compoundref="d4/df2/mis_8cpp" startline="105" endline="141">MisFile::Load</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1ab6a48ab8de54f63b3e789cdfe11dd8c0" compoundref="d2/d71/mis_8h" startline="104" endline="113">MisTrack</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1a03eb67880de1c5d066b414945f7d2554" compoundref="d4/df2/mis_8cpp" startline="529" endline="535">ReadInit</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1acfb9380c509bb5d179df56ea2be4f562" compoundref="d4/df2/mis_8cpp" startline="538" endline="561">ReadOn</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1abd2d94ec58b936bdab44739a708fec4e" compoundref="d4/df2/mis_8cpp" startline="368" endline="384">Save</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1a8404ea998dfa37de5b32477857335892" compoundref="d2/d71/mis_8h" startline="114" endline="117">~MisTrack</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="da/dd9/classMisTrack_1a952a31855710f37600c906e0b6557157" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MisTrack::Id</definition>
+        <argsstring></argsstring>
+        <name>Id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="97" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" bodystart="97" bodyend="-1"/>
+        <referencedby refid="da/dd9/classMisTrack_1ab6a48ab8de54f63b3e789cdfe11dd8c0" compoundref="d2/d71/mis_8h" startline="104" endline="113">MisTrack</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="da/dd9/classMisTrack_1ad74151572405d64dcfd80158ed763030" prot="public" static="no" mutable="no">
+        <type><ref refid="d5/d67/classMisFile" kindref="compound">MisFile</ref> *</type>
+        <definition>MisFile* MisTrack::File</definition>
+        <argsstring></argsstring>
+        <name>File</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="98" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" bodystart="98" bodyend="-1"/>
+        <referencedby refid="da/dd9/classMisTrack_1a694f02e7747bbf296cab639993f8527c" compoundref="d4/df2/mis_8cpp" startline="623" endline="647">AddNoteOn</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1ab6a48ab8de54f63b3e789cdfe11dd8c0" compoundref="d2/d71/mis_8h" startline="104" endline="113">MisTrack</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="da/dd9/classMisTrack_1a68e11e2fa3e0306fd971c9157108b729" prot="public" static="no" mutable="no">
+        <type>DWORD</type>
+        <definition>DWORD MisTrack::EventLength</definition>
+        <argsstring></argsstring>
+        <name>EventLength</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="99" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" bodystart="99" bodyend="-1"/>
+        <referencedby refid="da/dd9/classMisTrack_1a7ed0e8d7b1c1f405a02919c12a5e4e40" compoundref="d4/df2/mis_8cpp" startline="468" endline="509">ReadMidi</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1aa40fe2189066190df5c89dc099aabf54" compoundref="d4/df2/mis_8cpp" startline="564" endline="614">WriteMis</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="da/dd9/classMisTrack_1ad8f04a1a15fa62188e335391def5c59a" prot="public" static="no" mutable="no">
+        <type>DWORD</type>
+        <definition>DWORD MisTrack::EventPos</definition>
+        <argsstring></argsstring>
+        <name>EventPos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="100" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" bodystart="100" bodyend="-1"/>
+        <referencedby refid="da/dd9/classMisTrack_1a7ed0e8d7b1c1f405a02919c12a5e4e40" compoundref="d4/df2/mis_8cpp" startline="468" endline="509">ReadMidi</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1aa40fe2189066190df5c89dc099aabf54" compoundref="d4/df2/mis_8cpp" startline="564" endline="614">WriteMis</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="da/dd9/classMisTrack_1ac2c971b88cbe51592e585b582df8af7f" prot="public" static="no" mutable="no">
+        <type>DWORD</type>
+        <definition>DWORD MisTrack::Pos</definition>
+        <argsstring></argsstring>
+        <name>Pos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="101" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" bodystart="101" bodyend="-1"/>
+        <referencedby refid="da/dd9/classMisTrack_1ac3cd696a8208cca03fff5f830eceaea0" compoundref="d4/df2/mis_8cpp" startline="341" endline="365">Load</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1a03eb67880de1c5d066b414945f7d2554" compoundref="d4/df2/mis_8cpp" startline="529" endline="535">ReadInit</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1acfb9380c509bb5d179df56ea2be4f562" compoundref="d4/df2/mis_8cpp" startline="538" endline="561">ReadOn</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1aa40fe2189066190df5c89dc099aabf54" compoundref="d4/df2/mis_8cpp" startline="564" endline="614">WriteMis</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="da/dd9/classMisTrack_1a5ed70943d7f87314e4a9b246228b12a6" prot="public" static="no" mutable="no">
+        <type>BYTE</type>
+        <definition>BYTE MisTrack::StatusByte</definition>
+        <argsstring></argsstring>
+        <name>StatusByte</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="102" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" bodystart="102" bodyend="-1"/>
+        <referencedby refid="da/dd9/classMisTrack_1a306a2cddb29b699a1143b9ba60996aac" compoundref="d4/df2/mis_8cpp" startline="413" endline="434">AddMidi</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1a62b9fe0bd197676768de7acdfcee2595" compoundref="d4/df2/mis_8cpp" startline="436" endline="446">AddMidi3</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1ab6a48ab8de54f63b3e789cdfe11dd8c0" compoundref="d2/d71/mis_8h" startline="104" endline="113">MisTrack</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1a7ed0e8d7b1c1f405a02919c12a5e4e40" compoundref="d4/df2/mis_8cpp" startline="468" endline="509">ReadMidi</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1aa40fe2189066190df5c89dc099aabf54" compoundref="d4/df2/mis_8cpp" startline="564" endline="614">WriteMis</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="da/dd9/classMisTrack_1ae3b45444cb329fd872881509d82f1b94" prot="public" static="no" mutable="no">
+        <type>DWORD</type>
+        <definition>DWORD MisTrack::CurrentTime</definition>
+        <argsstring></argsstring>
+        <name>CurrentTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="103" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" bodystart="103" bodyend="-1"/>
+        <referencedby refid="da/dd9/classMisTrack_1a651af3feca8a406402742b4cc2866cfc" compoundref="d4/df2/mis_8cpp" startline="649" endline="657">AddNoteOff</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1a694f02e7747bbf296cab639993f8527c" compoundref="d4/df2/mis_8cpp" startline="623" endline="647">AddNoteOn</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1ae03095dfdd39d030c14a6ec65e49b3eb" compoundref="d4/df2/mis_8cpp" startline="616" endline="621">CountOnDeltaTime</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1ab6a48ab8de54f63b3e789cdfe11dd8c0" compoundref="d2/d71/mis_8h" startline="104" endline="113">MisTrack</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1a03eb67880de1c5d066b414945f7d2554" compoundref="d4/df2/mis_8cpp" startline="529" endline="535">ReadInit</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1acfb9380c509bb5d179df56ea2be4f562" compoundref="d4/df2/mis_8cpp" startline="538" endline="561">ReadOn</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1aa40fe2189066190df5c89dc099aabf54" compoundref="d4/df2/mis_8cpp" startline="564" endline="614">WriteMis</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="da/dd9/classMisTrack_1ab6a48ab8de54f63b3e789cdfe11dd8c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MisTrack::MisTrack</definition>
+        <argsstring>(MisFile *file, int id, MisTrack *next=0)</argsstring>
+        <name>MisTrack</name>
+        <param>
+          <type><ref refid="d5/d67/classMisFile" kindref="compound">MisFile</ref> *</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type><ref refid="da/dd9/classMisTrack" kindref="compound">MisTrack</ref> *</type>
+          <declname>next</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="104" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" bodystart="104" bodyend="113"/>
+        <references refid="da/dd9/classMisTrack_1ae3b45444cb329fd872881509d82f1b94" compoundref="d2/d71/mis_8h" startline="103">CurrentTime</references>
+        <references refid="da/dd9/classMisTrack_1ad74151572405d64dcfd80158ed763030" compoundref="d2/d71/mis_8h" startline="98">File</references>
+        <references refid="da/dd9/classMisTrack_1a952a31855710f37600c906e0b6557157" compoundref="d2/d71/mis_8h" startline="97">Id</references>
+        <references refid="da/dd9/classMisTrack_1a47a8b892d8f4c2ebd8478fab84b77112" compoundref="d2/d71/mis_8h" startline="96">Next</references>
+        <references refid="d5/d67/classMisFile_1a1b345a78b8cd3eb8a69a29ceb1c2af2e" compoundref="d2/d71/mis_8h" startline="50">MisFile::nTrack</references>
+        <references refid="da/dd9/classMisTrack_1a5ed70943d7f87314e4a9b246228b12a6" compoundref="d2/d71/mis_8h" startline="102">StatusByte</references>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1a8404ea998dfa37de5b32477857335892" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MisTrack::~MisTrack</definition>
+        <argsstring>()</argsstring>
+        <name>~MisTrack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="114" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" bodystart="114" bodyend="117"/>
+        <references refid="da/dd9/classMisTrack_1a47a8b892d8f4c2ebd8478fab84b77112" compoundref="d2/d71/mis_8h" startline="96">Next</references>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1a5e251ee26893f8ecb23413e119fb3a4b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>BYTE</type>
+        <definition>BYTE MisTrack::Get</definition>
+        <argsstring>(int i)</argsstring>
+        <name>Get</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="118" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" bodystart="118" bodyend="118"/>
+        <referencedby refid="da/dd9/classMisTrack_1a2f92d68d919ee1697e08419b5b98ce31" compoundref="d4/df2/mis_8cpp" startline="454" endline="465">ReadDeltaTime</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1a7ed0e8d7b1c1f405a02919c12a5e4e40" compoundref="d4/df2/mis_8cpp" startline="468" endline="509">ReadMidi</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1abd2d94ec58b936bdab44739a708fec4e" compoundref="d4/df2/mis_8cpp" startline="368" endline="384">Save</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1ac3cd696a8208cca03fff5f830eceaea0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int MisTrack::Load</definition>
+        <argsstring>(ifstream &amp;is)</argsstring>
+        <name>Load</name>
+        <param>
+          <type>ifstream &amp;</type>
+          <declname>is</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="119" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="341" bodyend="365"/>
+        <references refid="da/dd9/classMisTrack_1a2e3aa60b73ef7e19c9d31324f5a3ed5b" compoundref="d4/df2/mis_8cpp" startline="512" endline="526">NextMeta</references>
+        <references refid="da/dd9/classMisTrack_1ac2c971b88cbe51592e585b582df8af7f" compoundref="d2/d71/mis_8h" startline="101">Pos</references>
+        <references refid="d4/df2/mis_8cpp_1a26cb06e647f72c1f728a65970fbd0a62" compoundref="d4/df2/mis_8cpp" startline="27" endline="33">ReadLength</references>
+        <referencedby refid="d5/d67/classMisFile_1afa339295ef76fa5a96312ae9abb1bf4e" compoundref="d4/df2/mis_8cpp" startline="105" endline="141">MisFile::Load</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1abd2d94ec58b936bdab44739a708fec4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int MisTrack::Save</definition>
+        <argsstring>(ofstream &amp;os)</argsstring>
+        <name>Save</name>
+        <param>
+          <type>ofstream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="120" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="368" bodyend="384"/>
+        <references refid="da/dd9/classMisTrack_1a5e251ee26893f8ecb23413e119fb3a4b" compoundref="d2/d71/mis_8h" startline="118" endline="118">Get</references>
+        <references refid="da/dd9/classMisTrack_1a47a8b892d8f4c2ebd8478fab84b77112" compoundref="d2/d71/mis_8h" startline="96">Next</references>
+        <references refid="da/dd9/classMisTrack_1abd2d94ec58b936bdab44739a708fec4e" compoundref="d4/df2/mis_8cpp" startline="368" endline="384">Save</references>
+        <references refid="d4/df2/mis_8cpp_1a3259b43da528318989730caeb66a18a9" compoundref="d4/df2/mis_8cpp" startline="35" endline="41">WriteLength</references>
+        <referencedby refid="d5/d67/classMisFile_1a6549dce9ca746ba9832699d92cf85ebb" compoundref="d4/df2/mis_8cpp" startline="144" endline="168">MisFile::Save</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1abd2d94ec58b936bdab44739a708fec4e" compoundref="d4/df2/mis_8cpp" startline="368" endline="384">Save</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1a16c107397b6959386df7c53585e4fd90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MisTrack::AddMidiText</definition>
+        <argsstring>(char MidiNr, char *Text)</argsstring>
+        <name>AddMidiText</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <declname>MidiNr</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>Text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="121" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="386" bodyend="395"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1acdf856eff1409b34ce0a75725058199e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MisTrack::AddDeltaTime</definition>
+        <argsstring>(DWORD delta)</argsstring>
+        <name>AddDeltaTime</name>
+        <param>
+          <type>DWORD</type>
+          <declname>delta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="122" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="397" bodyend="411"/>
+        <referencedby refid="da/dd9/classMisTrack_1a651af3feca8a406402742b4cc2866cfc" compoundref="d4/df2/mis_8cpp" startline="649" endline="657">AddNoteOff</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1a694f02e7747bbf296cab639993f8527c" compoundref="d4/df2/mis_8cpp" startline="623" endline="647">AddNoteOn</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1aa40fe2189066190df5c89dc099aabf54" compoundref="d4/df2/mis_8cpp" startline="564" endline="614">WriteMis</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1a306a2cddb29b699a1143b9ba60996aac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MisTrack::AddMidi</definition>
+        <argsstring>(DWORD para, int length=-1)</argsstring>
+        <name>AddMidi</name>
+        <param>
+          <type>DWORD</type>
+          <declname>para</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>length</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="123" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="413" bodyend="434"/>
+        <references refid="d4/df2/mis_8cpp_1af4e179460e6fad22c55cb2174a75019b" compoundref="d4/df2/mis_8cpp" startline="22">lMidiCode</references>
+        <references refid="da/dd9/classMisTrack_1a5ed70943d7f87314e4a9b246228b12a6" compoundref="d2/d71/mis_8h" startline="102">StatusByte</references>
+        <referencedby refid="da/dd9/classMisTrack_1a651af3feca8a406402742b4cc2866cfc" compoundref="d4/df2/mis_8cpp" startline="649" endline="657">AddNoteOff</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1a694f02e7747bbf296cab639993f8527c" compoundref="d4/df2/mis_8cpp" startline="623" endline="647">AddNoteOn</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1a62b9fe0bd197676768de7acdfcee2595" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MisTrack::AddMidi3</definition>
+        <argsstring>(BYTE a1, BYTE a2, BYTE a3)</argsstring>
+        <name>AddMidi3</name>
+        <param>
+          <type>BYTE</type>
+          <declname>a1</declname>
+        </param>
+        <param>
+          <type>BYTE</type>
+          <declname>a2</declname>
+        </param>
+        <param>
+          <type>BYTE</type>
+          <declname>a3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="124" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="436" bodyend="446"/>
+        <references refid="da/dd9/classMisTrack_1a5ed70943d7f87314e4a9b246228b12a6" compoundref="d2/d71/mis_8h" startline="102">StatusByte</references>
+        <referencedby refid="da/dd9/classMisTrack_1a694f02e7747bbf296cab639993f8527c" compoundref="d4/df2/mis_8cpp" startline="623" endline="647">AddNoteOn</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1ade99f299609c2103aeed6a8fb84c83e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MisTrack::Copy</definition>
+        <argsstring>(MisTrack *from, int &amp;position, int length)</argsstring>
+        <name>Copy</name>
+        <param>
+          <type><ref refid="da/dd9/classMisTrack" kindref="compound">MisTrack</ref> *</type>
+          <declname>from</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="125" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="448" bodyend="452"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1a2f92d68d919ee1697e08419b5b98ce31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>DWORD</type>
+        <definition>DWORD MisTrack::ReadDeltaTime</definition>
+        <argsstring>(DWORD &amp;pos)</argsstring>
+        <name>ReadDeltaTime</name>
+        <param>
+          <type>DWORD &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="126" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="454" bodyend="465"/>
+        <references refid="da/dd9/classMisTrack_1a5e251ee26893f8ecb23413e119fb3a4b" compoundref="d2/d71/mis_8h" startline="118" endline="118">Get</references>
+        <referencedby refid="da/dd9/classMisTrack_1a2e3aa60b73ef7e19c9d31324f5a3ed5b" compoundref="d4/df2/mis_8cpp" startline="512" endline="526">NextMeta</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1a03eb67880de1c5d066b414945f7d2554" compoundref="d4/df2/mis_8cpp" startline="529" endline="535">ReadInit</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1a7ed0e8d7b1c1f405a02919c12a5e4e40" compoundref="d4/df2/mis_8cpp" startline="468" endline="509">ReadMidi</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1acfb9380c509bb5d179df56ea2be4f562" compoundref="d4/df2/mis_8cpp" startline="538" endline="561">ReadOn</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1a7ed0e8d7b1c1f405a02919c12a5e4e40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>DWORD</type>
+        <definition>DWORD MisTrack::ReadMidi</definition>
+        <argsstring>(DWORD &amp;pos)</argsstring>
+        <name>ReadMidi</name>
+        <param>
+          <type>DWORD &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="127" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="468" bodyend="509"/>
+        <references refid="da/dd9/classMisTrack_1a68e11e2fa3e0306fd971c9157108b729" compoundref="d2/d71/mis_8h" startline="99">EventLength</references>
+        <references refid="da/dd9/classMisTrack_1ad8f04a1a15fa62188e335391def5c59a" compoundref="d2/d71/mis_8h" startline="100">EventPos</references>
+        <references refid="da/dd9/classMisTrack_1a5e251ee26893f8ecb23413e119fb3a4b" compoundref="d2/d71/mis_8h" startline="118" endline="118">Get</references>
+        <references refid="d4/df2/mis_8cpp_1af4e179460e6fad22c55cb2174a75019b" compoundref="d4/df2/mis_8cpp" startline="22">lMidiCode</references>
+        <references refid="da/dd9/classMisTrack_1a2f92d68d919ee1697e08419b5b98ce31" compoundref="d4/df2/mis_8cpp" startline="454" endline="465">ReadDeltaTime</references>
+        <references refid="da/dd9/classMisTrack_1a5ed70943d7f87314e4a9b246228b12a6" compoundref="d2/d71/mis_8h" startline="102">StatusByte</references>
+        <referencedby refid="da/dd9/classMisTrack_1a2e3aa60b73ef7e19c9d31324f5a3ed5b" compoundref="d4/df2/mis_8cpp" startline="512" endline="526">NextMeta</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1acfb9380c509bb5d179df56ea2be4f562" compoundref="d4/df2/mis_8cpp" startline="538" endline="561">ReadOn</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1a2e3aa60b73ef7e19c9d31324f5a3ed5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <definition>char MisTrack::NextMeta</definition>
+        <argsstring>(DWORD &amp;pos, BYTE &amp;nr, DWORD &amp;startPos)</argsstring>
+        <name>NextMeta</name>
+        <param>
+          <type>DWORD &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>BYTE &amp;</type>
+          <declname>nr</declname>
+        </param>
+        <param>
+          <type>DWORD &amp;</type>
+          <declname>startPos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="128" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="512" bodyend="526"/>
+        <references refid="da/dd9/classMisTrack_1a2f92d68d919ee1697e08419b5b98ce31" compoundref="d4/df2/mis_8cpp" startline="454" endline="465">ReadDeltaTime</references>
+        <references refid="da/dd9/classMisTrack_1a7ed0e8d7b1c1f405a02919c12a5e4e40" compoundref="d4/df2/mis_8cpp" startline="468" endline="509">ReadMidi</references>
+        <referencedby refid="da/dd9/classMisTrack_1ac3cd696a8208cca03fff5f830eceaea0" compoundref="d4/df2/mis_8cpp" startline="341" endline="365">Load</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1a03eb67880de1c5d066b414945f7d2554" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MisTrack::ReadInit</definition>
+        <argsstring>()</argsstring>
+        <name>ReadInit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="129" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="529" bodyend="535"/>
+        <references refid="da/dd9/classMisTrack_1ae3b45444cb329fd872881509d82f1b94" compoundref="d2/d71/mis_8h" startline="103">CurrentTime</references>
+        <references refid="da/dd9/classMisTrack_1a47a8b892d8f4c2ebd8478fab84b77112" compoundref="d2/d71/mis_8h" startline="96">Next</references>
+        <references refid="da/dd9/classMisTrack_1ac2c971b88cbe51592e585b582df8af7f" compoundref="d2/d71/mis_8h" startline="101">Pos</references>
+        <references refid="da/dd9/classMisTrack_1a2f92d68d919ee1697e08419b5b98ce31" compoundref="d4/df2/mis_8cpp" startline="454" endline="465">ReadDeltaTime</references>
+        <references refid="da/dd9/classMisTrack_1a03eb67880de1c5d066b414945f7d2554" compoundref="d4/df2/mis_8cpp" startline="529" endline="535">ReadInit</references>
+        <referencedby refid="d5/d67/classMisFile_1a09081bf939abacb333b68f777acbdfb9" compoundref="d4/df2/mis_8cpp" startline="171" endline="176">MisFile::ReadInit</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1a03eb67880de1c5d066b414945f7d2554" compoundref="d4/df2/mis_8cpp" startline="529" endline="535">ReadInit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1acfb9380c509bb5d179df56ea2be4f562" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>DWORD</type>
+        <definition>DWORD MisTrack::ReadOn</definition>
+        <argsstring>(DWORD deltaTime, MisReadProceed *proceed)</argsstring>
+        <name>ReadOn</name>
+        <param>
+          <type>DWORD</type>
+          <declname>deltaTime</declname>
+        </param>
+        <param>
+          <type><ref refid="d2/d71/mis_8h_1ac13ddd406c24b2d5f4fb6a37be095f33" kindref="member">MisReadProceed</ref> *</type>
+          <declname>proceed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="130" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="538" bodyend="561"/>
+        <references refid="da/dd9/classMisTrack_1ae3b45444cb329fd872881509d82f1b94" compoundref="d2/d71/mis_8h" startline="103">CurrentTime</references>
+        <references refid="d4/d21/gmn2midi_8cpp_1a19cebc05ca7f1e3466303ce766f27bf6" compoundref="d4/d21/gmn2midi_8cpp" startline="12">Midi</references>
+        <references refid="da/dd9/classMisTrack_1a47a8b892d8f4c2ebd8478fab84b77112" compoundref="d2/d71/mis_8h" startline="96">Next</references>
+        <references refid="da/dd9/classMisTrack_1ac2c971b88cbe51592e585b582df8af7f" compoundref="d2/d71/mis_8h" startline="101">Pos</references>
+        <references refid="da/dd9/classMisTrack_1a2f92d68d919ee1697e08419b5b98ce31" compoundref="d4/df2/mis_8cpp" startline="454" endline="465">ReadDeltaTime</references>
+        <references refid="da/dd9/classMisTrack_1a7ed0e8d7b1c1f405a02919c12a5e4e40" compoundref="d4/df2/mis_8cpp" startline="468" endline="509">ReadMidi</references>
+        <references refid="da/dd9/classMisTrack_1acfb9380c509bb5d179df56ea2be4f562" compoundref="d4/df2/mis_8cpp" startline="538" endline="561">ReadOn</references>
+        <referencedby refid="d5/d67/classMisFile_1a0d0597ab24ad139932d2ee6838a8a4fc" compoundref="d4/df2/mis_8cpp" startline="179" endline="186">MisFile::ReadOn</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1acfb9380c509bb5d179df56ea2be4f562" compoundref="d4/df2/mis_8cpp" startline="538" endline="561">ReadOn</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1aa40fe2189066190df5c89dc099aabf54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int MisTrack::WriteMis</definition>
+        <argsstring>(DWORD midi, MisTrack *track)</argsstring>
+        <name>WriteMis</name>
+        <param>
+          <type>DWORD</type>
+          <declname>midi</declname>
+        </param>
+        <param>
+          <type><ref refid="da/dd9/classMisTrack" kindref="compound">MisTrack</ref> *</type>
+          <declname>track</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="131" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="564" bodyend="614"/>
+        <references refid="da/dd9/classMisTrack_1acdf856eff1409b34ce0a75725058199e" compoundref="d4/df2/mis_8cpp" startline="397" endline="411">AddDeltaTime</references>
+        <references refid="da/dd9/classMisTrack_1ae3b45444cb329fd872881509d82f1b94" compoundref="d2/d71/mis_8h" startline="103">CurrentTime</references>
+        <references refid="da/dd9/classMisTrack_1a68e11e2fa3e0306fd971c9157108b729" compoundref="d2/d71/mis_8h" startline="99">EventLength</references>
+        <references refid="da/dd9/classMisTrack_1ad8f04a1a15fa62188e335391def5c59a" compoundref="d2/d71/mis_8h" startline="100">EventPos</references>
+        <references refid="d4/df2/mis_8cpp_1af4e179460e6fad22c55cb2174a75019b" compoundref="d4/df2/mis_8cpp" startline="22">lMidiCode</references>
+        <references refid="da/dd9/classMisTrack_1ac2c971b88cbe51592e585b582df8af7f" compoundref="d2/d71/mis_8h" startline="101">Pos</references>
+        <references refid="da/dd9/classMisTrack_1a5ed70943d7f87314e4a9b246228b12a6" compoundref="d2/d71/mis_8h" startline="102">StatusByte</references>
+        <referencedby refid="d5/d67/classMisFile_1ab0a0366129172fb6b9a3133b2713b860" compoundref="d4/df2/mis_8cpp" startline="229" endline="232">MisFile::WriteMis</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1ae03095dfdd39d030c14a6ec65e49b3eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MisTrack::CountOnDeltaTime</definition>
+        <argsstring>(DWORD deltaTime)</argsstring>
+        <name>CountOnDeltaTime</name>
+        <param>
+          <type>DWORD</type>
+          <declname>deltaTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="132" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="616" bodyend="621"/>
+        <references refid="da/dd9/classMisTrack_1ae03095dfdd39d030c14a6ec65e49b3eb" compoundref="d4/df2/mis_8cpp" startline="616" endline="621">CountOnDeltaTime</references>
+        <references refid="da/dd9/classMisTrack_1ae3b45444cb329fd872881509d82f1b94" compoundref="d2/d71/mis_8h" startline="103">CurrentTime</references>
+        <references refid="da/dd9/classMisTrack_1a47a8b892d8f4c2ebd8478fab84b77112" compoundref="d2/d71/mis_8h" startline="96">Next</references>
+        <referencedby refid="d5/d67/classMisFile_1a590394931571e25dbaa7ade302cd9801" compoundref="d4/df2/mis_8cpp" startline="234" endline="239">MisFile::CountOnDeltaTime</referencedby>
+        <referencedby refid="da/dd9/classMisTrack_1ae03095dfdd39d030c14a6ec65e49b3eb" compoundref="d4/df2/mis_8cpp" startline="616" endline="621">CountOnDeltaTime</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1a694f02e7747bbf296cab639993f8527c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int MisTrack::AddNoteOn</definition>
+        <argsstring>(char channel, int key, int pitch, char intensity, signed char sound)</argsstring>
+        <name>AddNoteOn</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pitch</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <declname>intensity</declname>
+        </param>
+        <param>
+          <type>signed <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <declname>sound</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="133" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="623" bodyend="647"/>
+        <references refid="da/dd9/classMisTrack_1acdf856eff1409b34ce0a75725058199e" compoundref="d4/df2/mis_8cpp" startline="397" endline="411">AddDeltaTime</references>
+        <references refid="da/dd9/classMisTrack_1a306a2cddb29b699a1143b9ba60996aac" compoundref="d4/df2/mis_8cpp" startline="413" endline="434">AddMidi</references>
+        <references refid="da/dd9/classMisTrack_1a62b9fe0bd197676768de7acdfcee2595" compoundref="d4/df2/mis_8cpp" startline="436" endline="446">AddMidi3</references>
+        <references refid="d4/df2/mis_8cpp_1a87ecfc26e24cc11f48ba33b48bcfe9b3" compoundref="d4/df2/mis_8cpp" startline="16">ADDPITCH</references>
+        <references refid="d5/d67/classMisFile_1a3c6e1054bd9542909c7933649c23ebb7" compoundref="d2/d71/mis_8h" startline="56">MisFile::Channels</references>
+        <references refid="da/dd9/classMisTrack_1ae3b45444cb329fd872881509d82f1b94" compoundref="d2/d71/mis_8h" startline="103">CurrentTime</references>
+        <references refid="da/dd9/classMisTrack_1ad74151572405d64dcfd80158ed763030" compoundref="d2/d71/mis_8h" startline="98">File</references>
+        <references refid="d3/dfe/structChannel_1a27f174b2ee01796966771fb2d65630a5" compoundref="d2/d71/mis_8h" startline="34">Channel::Pitch</references>
+        <references refid="d3/dfe/structChannel_1af128cbb30a6bbfceb6aa6133608e49da" compoundref="d2/d71/mis_8h" startline="35">Channel::Sound</references>
+        <referencedby refid="d5/d67/classMisFile_1afbfe568fd3c9cec8a7a72b10075ffea1" compoundref="d4/df2/mis_8cpp" startline="283" endline="295">MisFile::NoteOn</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="da/dd9/classMisTrack_1a651af3feca8a406402742b4cc2866cfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int MisTrack::AddNoteOff</definition>
+        <argsstring>(char channel, int key, char intensity)</argsstring>
+        <name>AddNoteOff</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <declname>intensity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="134" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="649" bodyend="657"/>
+        <references refid="da/dd9/classMisTrack_1acdf856eff1409b34ce0a75725058199e" compoundref="d4/df2/mis_8cpp" startline="397" endline="411">AddDeltaTime</references>
+        <references refid="da/dd9/classMisTrack_1a306a2cddb29b699a1143b9ba60996aac" compoundref="d4/df2/mis_8cpp" startline="413" endline="434">AddMidi</references>
+        <references refid="da/dd9/classMisTrack_1ae3b45444cb329fd872881509d82f1b94" compoundref="d2/d71/mis_8h" startline="103">CurrentTime</references>
+        <referencedby refid="d5/d67/classMisFile_1a1c3662b5cbdfd72092550ccd7161edd8" compoundref="d4/df2/mis_8cpp" startline="297" endline="316">MisFile::NoteOff</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3396">
+        <label>MisTrack</label>
+        <link refid="da/dd9/classMisTrack"/>
+        <childnode refid="3397" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3397">
+        <label>TByteArray</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3403">
+        <label>Channel</label>
+        <link refid="d3/dfe/structChannel"/>
+      </node>
+      <node id="3398">
+        <label>MisTrack</label>
+        <link refid="da/dd9/classMisTrack"/>
+        <childnode refid="3399" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3398" relation="usage">
+          <edgelabel>Next</edgelabel>
+        </childnode>
+        <childnode refid="3400" relation="usage">
+          <edgelabel>File</edgelabel>
+        </childnode>
+      </node>
+      <node id="3401">
+        <label>Instrument</label>
+        <link refid="d5/dc6/classInstrument"/>
+        <childnode refid="3401" relation="usage">
+          <edgelabel>Next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3399">
+        <label>TByteArray</label>
+      </node>
+      <node id="3400">
+        <label>MisFile</label>
+        <link refid="d5/d67/classMisFile"/>
+        <childnode refid="3399" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3401" relation="usage">
+          <edgelabel>Instruments</edgelabel>
+        </childnode>
+        <childnode refid="3402" relation="usage">
+          <edgelabel>Notes</edgelabel>
+        </childnode>
+        <childnode refid="3398" relation="usage">
+          <edgelabel>Tracks</edgelabel>
+        </childnode>
+        <childnode refid="3403" relation="usage">
+          <edgelabel>Channels</edgelabel>
+        </childnode>
+      </node>
+      <node id="3402">
+        <label>MisNote</label>
+        <link refid="db/dfb/classMisNote"/>
+        <childnode refid="3402" relation="usage">
+          <edgelabel>Next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="94" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" bodystart="93" bodyend="136"/>
+    <listofallmembers>
+      <member refid="da/dd9/classMisTrack_1acdf856eff1409b34ce0a75725058199e" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>AddDeltaTime</name></member>
+      <member refid="da/dd9/classMisTrack_1a306a2cddb29b699a1143b9ba60996aac" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>AddMidi</name></member>
+      <member refid="da/dd9/classMisTrack_1a62b9fe0bd197676768de7acdfcee2595" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>AddMidi3</name></member>
+      <member refid="da/dd9/classMisTrack_1a16c107397b6959386df7c53585e4fd90" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>AddMidiText</name></member>
+      <member refid="da/dd9/classMisTrack_1a651af3feca8a406402742b4cc2866cfc" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>AddNoteOff</name></member>
+      <member refid="da/dd9/classMisTrack_1a694f02e7747bbf296cab639993f8527c" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>AddNoteOn</name></member>
+      <member refid="da/dd9/classMisTrack_1ade99f299609c2103aeed6a8fb84c83e5" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>Copy</name></member>
+      <member refid="da/dd9/classMisTrack_1ae03095dfdd39d030c14a6ec65e49b3eb" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>CountOnDeltaTime</name></member>
+      <member refid="da/dd9/classMisTrack_1ae3b45444cb329fd872881509d82f1b94" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>CurrentTime</name></member>
+      <member refid="da/dd9/classMisTrack_1a68e11e2fa3e0306fd971c9157108b729" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>EventLength</name></member>
+      <member refid="da/dd9/classMisTrack_1ad8f04a1a15fa62188e335391def5c59a" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>EventPos</name></member>
+      <member refid="da/dd9/classMisTrack_1ad74151572405d64dcfd80158ed763030" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>File</name></member>
+      <member refid="da/dd9/classMisTrack_1a5e251ee26893f8ecb23413e119fb3a4b" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>Get</name></member>
+      <member refid="da/dd9/classMisTrack_1a952a31855710f37600c906e0b6557157" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>Id</name></member>
+      <member refid="da/dd9/classMisTrack_1ac3cd696a8208cca03fff5f830eceaea0" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>Load</name></member>
+      <member refid="da/dd9/classMisTrack_1ab6a48ab8de54f63b3e789cdfe11dd8c0" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>MisTrack</name></member>
+      <member refid="da/dd9/classMisTrack_1a47a8b892d8f4c2ebd8478fab84b77112" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>Next</name></member>
+      <member refid="da/dd9/classMisTrack_1a2e3aa60b73ef7e19c9d31324f5a3ed5b" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>NextMeta</name></member>
+      <member refid="da/dd9/classMisTrack_1ac2c971b88cbe51592e585b582df8af7f" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>Pos</name></member>
+      <member refid="da/dd9/classMisTrack_1a2f92d68d919ee1697e08419b5b98ce31" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>ReadDeltaTime</name></member>
+      <member refid="da/dd9/classMisTrack_1a03eb67880de1c5d066b414945f7d2554" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>ReadInit</name></member>
+      <member refid="da/dd9/classMisTrack_1a7ed0e8d7b1c1f405a02919c12a5e4e40" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>ReadMidi</name></member>
+      <member refid="da/dd9/classMisTrack_1acfb9380c509bb5d179df56ea2be4f562" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>ReadOn</name></member>
+      <member refid="da/dd9/classMisTrack_1abd2d94ec58b936bdab44739a708fec4e" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>Save</name></member>
+      <member refid="da/dd9/classMisTrack_1a5ed70943d7f87314e4a9b246228b12a6" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>StatusByte</name></member>
+      <member refid="da/dd9/classMisTrack_1aa40fe2189066190df5c89dc099aabf54" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>WriteMis</name></member>
+      <member refid="da/dd9/classMisTrack_1a8404ea998dfa37de5b32477857335892" prot="public" virt="non-virtual"><scope>MisTrack</scope><name>~MisTrack</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

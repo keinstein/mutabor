@@ -1,0 +1,680 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="da/ddb/midiopenfail1_8cpp" kind="file">
+    <compoundname>midiopenfail1.cpp</compoundname>
+    <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
+    <includes refid="da/d3c/DevMidF_8h" local="yes">src/kernel/routing/midi/DevMidF.h</includes>
+    <includes refid="d9/d6a/CommonFileDevice-inlines_8h" local="yes">src/kernel/routing/CommonFileDevice-inlines.h</includes>
+    <includes local="no">cstdlib</includes>
+    <includes local="no">wx/app.h</includes>
+    <includes refid="d9/d27/DebugRoute_8cpp" local="yes">src/wxGUI/Routing/DebugRoute.cpp</includes>
+    <incdepgraph>
+      <node id="16794">
+        <label>src/xrc/wxresource.h</label>
+        <link refid="d2/dc0/wxresource_8h"/>
+      </node>
+      <node id="16752">
+        <label>list</label>
+      </node>
+      <node id="16773">
+        <label>src/kernel/routing/Box.h</label>
+        <link refid="de/d0f/Box_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16748" relation="include">
+        </childnode>
+        <childnode refid="16750" relation="include">
+        </childnode>
+        <childnode refid="16746" relation="include">
+        </childnode>
+        <childnode refid="16768" relation="include">
+        </childnode>
+        <childnode refid="16774" relation="include">
+        </childnode>
+        <childnode refid="16751" relation="include">
+        </childnode>
+        <childnode refid="16753" relation="include">
+        </childnode>
+        <childnode refid="16759" relation="include">
+        </childnode>
+        <childnode refid="16760" relation="include">
+        </childnode>
+        <childnode refid="16735" relation="include">
+        </childnode>
+        <childnode refid="16769" relation="include">
+        </childnode>
+      </node>
+      <node id="16735">
+        <label>stdarg.h</label>
+      </node>
+      <node id="16786">
+        <label>wx/html/htmlwin.h</label>
+      </node>
+      <node id="16755">
+        <label>src/kernel/routing/timing.h</label>
+        <link refid="db/d41/timing_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16747" relation="include">
+        </childnode>
+        <childnode refid="16756" relation="include">
+        </childnode>
+        <childnode refid="16757" relation="include">
+        </childnode>
+        <childnode refid="16754" relation="include">
+        </childnode>
+        <childnode refid="16758" relation="include">
+        </childnode>
+        <childnode refid="16750" relation="include">
+        </childnode>
+      </node>
+      <node id="16756">
+        <label>limits</label>
+      </node>
+      <node id="16787">
+        <label>wx/radiobox.h</label>
+      </node>
+      <node id="16768">
+        <label>src/kernel/Execute.h</label>
+        <link refid="de/d11/Execute_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16769" relation="include">
+        </childnode>
+      </node>
+      <node id="16801">
+        <label>wx/app.h</label>
+      </node>
+      <node id="16751">
+        <label>boost/intrusive_ptr.hpp</label>
+      </node>
+      <node id="16764">
+        <label>src/kernel/routing/midi/midicmn.h</label>
+        <link refid="de/d21/midicmn_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16739" relation="include">
+        </childnode>
+        <childnode refid="16753" relation="include">
+        </childnode>
+      </node>
+      <node id="16734">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="16735" relation="include">
+        </childnode>
+        <childnode refid="16736" relation="include">
+        </childnode>
+      </node>
+      <node id="16745">
+        <label>stdlib.h</label>
+      </node>
+      <node id="16796">
+        <label>wx/wxchar.h</label>
+      </node>
+      <node id="16797">
+        <label>setjmp.h</label>
+      </node>
+      <node id="16771">
+        <label>src/kernel/Runtime.h</label>
+        <link refid="d5/d84/Runtime_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16772" relation="include">
+        </childnode>
+        <childnode refid="16739" relation="include">
+        </childnode>
+        <childnode refid="16796" relation="include">
+        </childnode>
+        <childnode refid="16797" relation="include">
+        </childnode>
+      </node>
+      <node id="16785">
+        <label>wx/filepicker.h</label>
+      </node>
+      <node id="16738">
+        <label>src/kernel/routing/CommonFileDevice.h</label>
+        <link refid="d9/d17/CommonFileDevice_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16739" relation="include">
+        </childnode>
+        <childnode refid="16750" relation="include">
+        </childnode>
+        <childnode refid="16756" relation="include">
+        </childnode>
+        <childnode refid="16763" relation="include">
+        </childnode>
+        <childnode refid="16761" relation="include">
+        </childnode>
+      </node>
+      <node id="16754">
+        <label>stdexcept</label>
+      </node>
+      <node id="16779">
+        <label>malloc.h</label>
+      </node>
+      <node id="16802">
+        <label>src/wxGUI/Routing/DebugRoute.cpp</label>
+        <link refid="d9/d27/DebugRoute_8cpp"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+      </node>
+      <node id="16783">
+        <label>wx/choicebk.h</label>
+      </node>
+      <node id="16770">
+        <label>src/kernel/GrafKern.h</label>
+        <link refid="d4/d47/GrafKern_8h"/>
+      </node>
+      <node id="16766">
+        <label>wx/timer.h</label>
+      </node>
+      <node id="16776">
+        <label>string</label>
+      </node>
+      <node id="16737">
+        <label>src/kernel/routing/midi/DevMidF.h</label>
+        <link refid="da/d3c/DevMidF_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16738" relation="include">
+        </childnode>
+        <childnode refid="16764" relation="include">
+        </childnode>
+        <childnode refid="16765" relation="include">
+        </childnode>
+        <childnode refid="16766" relation="include">
+        </childnode>
+      </node>
+      <node id="16790">
+        <label>wx/stattext.h</label>
+      </node>
+      <node id="16767">
+        <label>src/kernel/routing/CommonFileDevice-inlines.h</label>
+        <link refid="d9/d6a/CommonFileDevice-inlines_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16738" relation="include">
+        </childnode>
+        <childnode refid="16768" relation="include">
+        </childnode>
+        <childnode refid="16770" relation="include">
+        </childnode>
+        <childnode refid="16771" relation="include">
+        </childnode>
+        <childnode refid="16798" relation="include">
+        </childnode>
+        <childnode refid="16799" relation="include">
+        </childnode>
+        <childnode refid="16766" relation="include">
+        </childnode>
+      </node>
+      <node id="16757">
+        <label>exception</label>
+      </node>
+      <node id="16765">
+        <label>fstream</label>
+      </node>
+      <node id="16733">
+        <label>src/kernel/routing/midi/tests/midiopenfail1.cpp</label>
+        <link refid="midiopenfail1.cpp"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16737" relation="include">
+        </childnode>
+        <childnode refid="16767" relation="include">
+        </childnode>
+        <childnode refid="16800" relation="include">
+        </childnode>
+        <childnode refid="16801" relation="include">
+        </childnode>
+        <childnode refid="16802" relation="include">
+        </childnode>
+      </node>
+      <node id="16798">
+        <label>wx/wfstream.h</label>
+      </node>
+      <node id="16782">
+        <label>wx/checkbox.h</label>
+      </node>
+      <node id="16792">
+        <label>wx/window.h</label>
+      </node>
+      <node id="16788">
+        <label>wx/radiobut.h</label>
+      </node>
+      <node id="16778">
+        <label>Interpre.h</label>
+        <link refid="d2/dd8/Interpre_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16775" relation="include">
+        </childnode>
+      </node>
+      <node id="16774">
+        <label>src/kernel/box.h</label>
+        <link refid="dc/d19/box_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16775" relation="include">
+        </childnode>
+        <childnode refid="16778" relation="include">
+        </childnode>
+        <childnode refid="16768" relation="include">
+        </childnode>
+        <childnode refid="16779" relation="include">
+        </childnode>
+      </node>
+      <node id="16784">
+        <label>wx/dialog.h</label>
+      </node>
+      <node id="16747">
+        <label>src/kernel/MidiKern.h</label>
+        <link refid="da/dfd/MidiKern_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+      </node>
+      <node id="16744">
+        <label>string.h</label>
+      </node>
+      <node id="16763">
+        <label>cstdio</label>
+      </node>
+      <node id="16793">
+        <label>wx/xrc/xmlres.h</label>
+      </node>
+      <node id="16753">
+        <label>vector</label>
+      </node>
+      <node id="16746">
+        <label>src/kernel/routing/Route.h</label>
+        <link refid="d1/d65/Route_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16747" relation="include">
+        </childnode>
+        <childnode refid="16748" relation="include">
+        </childnode>
+        <childnode refid="16749" relation="include">
+        </childnode>
+        <childnode refid="16751" relation="include">
+        </childnode>
+        <childnode refid="16752" relation="include">
+        </childnode>
+        <childnode refid="16753" relation="include">
+        </childnode>
+        <childnode refid="16754" relation="include">
+        </childnode>
+      </node>
+      <node id="16762">
+        <label>boost/unordered_set.hpp</label>
+      </node>
+      <node id="16760">
+        <label>sstream</label>
+      </node>
+      <node id="16742">
+        <label>wx/string.h</label>
+      </node>
+      <node id="16740">
+        <label>src/kernel/routing/gmn/GIS.h</label>
+        <link refid="dd/d4d/GIS_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16741" relation="include">
+        </childnode>
+        <childnode refid="16744" relation="include">
+        </childnode>
+        <childnode refid="16745" relation="include">
+        </childnode>
+      </node>
+      <node id="16775">
+        <label>Global.h</label>
+        <link refid="dd/d40/Global_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16769" relation="include">
+        </childnode>
+        <childnode refid="16745" relation="include">
+        </childnode>
+        <childnode refid="16735" relation="include">
+        </childnode>
+        <childnode refid="16776" relation="include">
+        </childnode>
+        <childnode refid="16777" relation="include">
+        </childnode>
+      </node>
+      <node id="16799">
+        <label>wx/msgdlg.h</label>
+      </node>
+      <node id="16777">
+        <label>math.h</label>
+      </node>
+      <node id="16800">
+        <label>cstdlib</label>
+      </node>
+      <node id="16743">
+        <label>iostream</label>
+      </node>
+      <node id="16741">
+        <label>src/kernel/Frac.h</label>
+        <link refid="df/d4f/Frac_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16742" relation="include">
+        </childnode>
+        <childnode refid="16743" relation="include">
+        </childnode>
+      </node>
+      <node id="16736">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+      <node id="16780">
+        <label>src/wxGUI/resourceload.h</label>
+        <link refid="d3/daf/resourceload_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16781" relation="include">
+        </childnode>
+        <childnode refid="16782" relation="include">
+        </childnode>
+        <childnode refid="16783" relation="include">
+        </childnode>
+        <childnode refid="16784" relation="include">
+        </childnode>
+        <childnode refid="16785" relation="include">
+        </childnode>
+        <childnode refid="16786" relation="include">
+        </childnode>
+        <childnode refid="16787" relation="include">
+        </childnode>
+        <childnode refid="16788" relation="include">
+        </childnode>
+        <childnode refid="16789" relation="include">
+        </childnode>
+        <childnode refid="16790" relation="include">
+        </childnode>
+        <childnode refid="16791" relation="include">
+        </childnode>
+        <childnode refid="16792" relation="include">
+        </childnode>
+        <childnode refid="16793" relation="include">
+        </childnode>
+        <childnode refid="16794" relation="include">
+        </childnode>
+      </node>
+      <node id="16761">
+        <label>wx/thread.h</label>
+      </node>
+      <node id="16750">
+        <label>src/kernel/routing/thread.h</label>
+        <link refid="db/dd5/thread_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+      </node>
+      <node id="16781">
+        <label>wx/button.h</label>
+      </node>
+      <node id="16789">
+        <label>wx/spinctrl.h</label>
+      </node>
+      <node id="16749">
+        <label>src/kernel/boost-interface.h</label>
+        <link refid="d1/da4/boost-interface_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16750" relation="include">
+        </childnode>
+      </node>
+      <node id="16758">
+        <label>wx/stopwatch.h</label>
+      </node>
+      <node id="16772">
+        <label>src/wxGUI/CompDlg.h</label>
+        <link refid="d4/d7c/CompDlg_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16773" relation="include">
+        </childnode>
+        <childnode refid="16780" relation="include">
+        </childnode>
+        <childnode refid="16795" relation="include">
+        </childnode>
+        <childnode refid="16785" relation="include">
+        </childnode>
+        <childnode refid="16793" relation="include">
+        </childnode>
+        <childnode refid="16786" relation="include">
+        </childnode>
+      </node>
+      <node id="16759">
+        <label>algorithm</label>
+      </node>
+      <node id="16739">
+        <label>src/kernel/routing/Device.h</label>
+        <link refid="de/d05/Device_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+        <childnode refid="16740" relation="include">
+        </childnode>
+        <childnode refid="16746" relation="include">
+        </childnode>
+        <childnode refid="16755" relation="include">
+        </childnode>
+        <childnode refid="16747" relation="include">
+        </childnode>
+        <childnode refid="16753" relation="include">
+        </childnode>
+        <childnode refid="16752" relation="include">
+        </childnode>
+        <childnode refid="16759" relation="include">
+        </childnode>
+        <childnode refid="16760" relation="include">
+        </childnode>
+        <childnode refid="16735" relation="include">
+        </childnode>
+        <childnode refid="16761" relation="include">
+        </childnode>
+        <childnode refid="16758" relation="include">
+        </childnode>
+        <childnode refid="16762" relation="include">
+        </childnode>
+      </node>
+      <node id="16795">
+        <label>wx/statline.h</label>
+      </node>
+      <node id="16769">
+        <label>stdio.h</label>
+      </node>
+      <node id="16791">
+        <label>wx/textctrl.h</label>
+      </node>
+      <node id="16748">
+        <label>src/kernel/treestorage.h</label>
+        <link refid="db/dbe/treestorage_8h"/>
+        <childnode refid="16734" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="d4/d1a/classmyDevice" prot="public">myDevice</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="d2/d7d/group__tests_1gab23797a472d73f3c4dc79d7a3b65ceff" prot="public" static="no">
+        <name>no_wxGUI</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midiopenfail1.cpp" line="44" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midiopenfail1.cpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d2/d7d/group__tests_1ga3c04138a5bfe5d72780bb7e82a18e627" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>(int argc, char **argv)</argsstring>
+        <name>main</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> **</type>
+          <declname>argv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/tests/gmnopenfail1.cpp" line="140" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/tests/gmnopenfail1.cpp" bodystart="140" bodyend="177"/>
+        <references refid="d5/dee/group__route_1gaa237fcc1d0baa5e21ceb53b44a991683" compoundref="d2/dc0/Device_8cpp" startline="557" endline="563">mutabor::InitDeviceFactories</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="34"><highlight class="comment">//<sp/>availlable<sp/>groups:<sp/>GUI,<sp/>route,<sp/>kernel,<sp/>muwx,<sp/>debug,<sp/>docview</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">src/kernel/Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="da/d3c/DevMidF_8h" kindref="compound">src/kernel/routing/midi/DevMidF.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d9/d6a/CommonFileDevice-inlines_8h" kindref="compound">src/kernel/routing/CommonFileDevice-inlines.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;wx/app.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Skip<sp/>the<sp/>GUI<sp/>related<sp/>checks<sp/>from<sp/>DebugRoute.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="d2/d7d/group__tests_1gab23797a472d73f3c4dc79d7a3b65ceff" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>no_wxGUI<sp/>1</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d9/d27/DebugRoute_8cpp" kindref="compound">src/wxGUI/Routing/DebugRoute.cpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>no_wxGUI</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor">#ifdef<sp/>__BORLANDC__</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#pragma<sp/>hdrstop</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__WXMSW__</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>sleep(x)<sp/>Sleep(1000*x)</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="59"><highlight class="comment">class<sp/>testCommonFileDeviceTimer:<sp/>public<sp/>mutabor::CommonFileInputDevice<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="comment">protected:</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxStopWatch<sp/>sw;</highlight></codeline>
+<codeline lineno="62"><highlight class="comment">public:</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>long<sp/>i;</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>long<sp/>max;</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>long<sp/>min;</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>testCommonFileDeviceTimer():CommonFileInputDevice(),i(0),sw()<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>virtual<sp/>~testCommonFileDeviceTimer()<sp/>{}</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>Play()<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RealTime<sp/>=<sp/>true;</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>max<sp/>=<sp/>0;<sp/>min<sp/>=<sp/>100000;</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CommonFileInputDevice::Play(wxTHREAD_JOINABLE<sp/>);</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sw.Start();</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"></highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>Stop()<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CommonFileInputDevice::Stop();</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(sw.Time()<sp/>&gt;<sp/>30)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/>&quot;Played<sp/>too<sp/>long!&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit<sp/>(1);</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sw.Pause();</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(0);</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutint64<sp/>PrepareNextEvent()<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutint64<sp/>tmp<sp/>=<sp/>wxGetLocalTimeMillis();</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tmp<sp/>=<sp/>tmp<sp/>-<sp/>(referenceTime<sp/>+<sp/>mutint64((i*(i+1))/2));</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>int<sp/>tl<sp/>=<sp/>tmp.GetLo();</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(max<sp/>&lt;<sp/>tl)<sp/><sp/>max<sp/>=<sp/>tl;</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(min<sp/>&gt;<sp/>tl<sp/>||<sp/>min<sp/>==<sp/>0)<sp/>min<sp/>=<sp/>tl;</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(tmp.GetHi()<sp/>||<sp/>tmp.GetLo()<sp/>&gt;<sp/>10)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>&quot;Too<sp/>slow:<sp/>(&quot;<sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/>&quot;^2<sp/>+<sp/>&quot;<sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/>&quot;)<sp/>/<sp/>2<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>(i*(i+1))/2<sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>&quot;<sp/>Runtime:<sp/>&quot;<sp/>&lt;&lt;<sp/>tmp.GetHi()<sp/>&lt;&lt;<sp/>&quot;,&quot;<sp/>&lt;&lt;<sp/>tmp.GetLo()<sp/>&lt;&lt;<sp/>&quot;ms&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(3);</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++i;</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(i&lt;100)<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>(i*(i+1))/2;</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>GetNO_DELTA();</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"></highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>Save(tree_storage&amp;,<sp/>const<sp/>mutabor::RouteClass*){}</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>Load(tree_storage&amp;,<sp/>mutabor::RouteClass*){}</highlight></codeline>
+<codeline lineno="105"><highlight class="comment">};</highlight></codeline>
+<codeline lineno="106"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d4/d1a/classmyDevice" kindref="compound">myDevice</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="d6/d12/classmutabor_1_1InputMidiFile" kindref="compound">mutabor::InputMidiFile</ref><sp/>{</highlight></codeline>
+<codeline lineno="109" refid="d4/d1a/classmyDevice_1a4e7101bdfd3d0061f8991c7d1e44eb5c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/d1a/classmyDevice_1a4e7101bdfd3d0061f8991c7d1e44eb5c" kindref="member">Stop</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Stopping...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d12/classmutabor_1_1InputMidiFile_1af01cb3bb180e5f6f08ceeb8f7543c995" kindref="member">mutabor::InputMidiFile::Stop</ref>();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Stopped&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="114" refid="d4/d1a/classmyDevice_1a6a333f73d085c18478973f1bddff8865" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d4/d1a/classmyDevice_1a6a333f73d085c18478973f1bddff8865" kindref="member">Open</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Opening...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="d6/d12/classmutabor_1_1InputMidiFile_1aa7848ecf7c1cdd9ee118105da426b3c9" kindref="member">mutabor::InputMidiFile::Open</ref>();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Opened.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="120" refid="d4/d1a/classmyDevice_1adce8cc9a06cc92297ca67055db730b0a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/d1a/classmyDevice_1adce8cc9a06cc92297ca67055db730b0a" kindref="member">Close</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Closing...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d12/classmutabor_1_1InputMidiFile_1a28c0387b456dbd7ed53bbf3204fa2e1c" kindref="member">mutabor::InputMidiFile::Close</ref>();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Closed.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="125" refid="d4/d1a/classmyDevice_1a609add9eb24aa2033a6126fd4c563a5d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/d1a/classmyDevice_1a609add9eb24aa2033a6126fd4c563a5d" kindref="member">Play</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Starting...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" kindref="member">mutabor::CurrentTime</ref>.<ref refid="d7/dda/classmutabor_1_1CurrentTimer_1aaaae9a6186045cd8ef28f1d24bcf081d" kindref="member">UseRealtime</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9678c9f5b289630497c3d88ed0e8d359" kindref="member">mutabor::InputMidiFile::Play</ref>();</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Started.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131" refid="d4/d1a/classmyDevice_1aeebcdc9b48e0355f8af30bd4a7a42123" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/d1a/classmyDevice_1aeebcdc9b48e0355f8af30bd4a7a42123" kindref="member">Pause</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Pausing...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ab981fd4cdd68dc456a97889ddc851736" kindref="member">mutabor::InputMidiFile::Pause</ref>();</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Paused.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/d21/gmn2midi_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**argv)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>DEBUG</highlight></codeline>
+<codeline lineno="142"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>debugFlags::flags.timer<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>debugFlags::flags.midifile<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="145"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE,<sp/></highlight><highlight class="stringliteral">&quot;program&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxInitializer<sp/>initializer;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!initializer<sp/>)</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(stderr,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>initialize<sp/>the<sp/>wxWidgets<sp/>library,<sp/>aborting.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1gaa237fcc1d0baa5e21ceb53b44a991683" kindref="member">mutabor::InitDeviceFactories</ref>();</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1gaa07c845228719e7505615a18d241734d" kindref="member">mutabor::InputDevice</ref><sp/>in(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="d4/d1a/classmyDevice" kindref="compound">myDevice</ref>());</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>mutabor::InputDevice<sp/>in(mutabor::DeviceFactory::CreateInput(mutabor::DTMidiFile));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!in)<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Class<sp/>construction<sp/>failed.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(-1);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>in<sp/>-&gt;<sp/>SetName(_T(</highlight><highlight class="stringliteral">&quot;+-*”„“&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>mutabor::InputDevice<sp/>prevent_from_deletion(in);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(in<sp/>-&gt;<sp/>Open()))<sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Open<sp/>faild.<sp/>Exiting.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(0);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;<sp/></highlight></codeline>
+<codeline lineno="168"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midiopenfail1.cpp"/>
+  </compounddef>
+</doxygen>

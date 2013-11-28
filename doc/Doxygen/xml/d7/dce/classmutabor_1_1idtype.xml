@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d7/dce/classmutabor_1_1idtype" kind="class" prot="public">
+    <compoundname>mutabor::idtype</compoundname>
+    <includes refid="d1/d73/Defs_8h" local="no">Defs.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="d7/dce/classmutabor_1_1idtype_1a32433823662e2a1aba63b17b23d3f1ca" prot="public" static="no">
+        <type>T</type>
+        <definition>typedef T mutabor::idtype&lt; T &gt;::referenceing_type</definition>
+        <argsstring></argsstring>
+        <name>referenceing_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Defs.h" line="245" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Defs.h" bodystart="245" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d7/dce/classmutabor_1_1idtype_1a1bc24f725b40a8bfa976c46e21714161" prot="protected" static="no" mutable="no">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> size_t</type>
+        <definition>const size_t mutabor::idtype&lt; T &gt;::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Defs.h" line="252" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Defs.h" bodystart="252" bodyend="-1"/>
+        <referencedby refid="d7/dce/classmutabor_1_1idtype_1a50237a34eb4a381e80db53a456ef275a" compoundref="d1/d73/Defs_8h" startline="250" endline="250">mutabor::idtype&lt; mutabor::BoxClass &gt;::operator int</referencedby>
+        <referencedby refid="d7/dce/classmutabor_1_1idtype_1a173f2e803ed1c7449254622dcdf6764b" compoundref="d1/d73/Defs_8h" startline="249" endline="249">mutabor::idtype&lt; mutabor::BoxClass &gt;::operator size_t</referencedby>
+        <referencedby refid="d7/dce/classmutabor_1_1idtype_1aed068c5a789d4b46217cbf318d75b22c" compoundref="d1/d73/Defs_8h" startline="248" endline="248">mutabor::idtype&lt; mutabor::BoxClass &gt;::operator()</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="d7/dce/classmutabor_1_1idtype_1a5b8db5880bf795ea5aefc6fac54c7b52" prot="protected" static="yes" mutable="no">
+        <type>size_t</type>
+        <definition>size_t mutabor::idtype&lt; T &gt;::idpool</definition>
+        <argsstring></argsstring>
+        <name>idpool</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Defs.h" line="253" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Defs.h" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d7/dce/classmutabor_1_1idtype_1a8d1cb9210967947115e8ec258ac4f575" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::idtype&lt; T &gt;::idtype</definition>
+        <argsstring>()</argsstring>
+        <name>idtype</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Defs.h" line="246" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Defs.h" bodystart="246" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dce/classmutabor_1_1idtype_1aed068c5a789d4b46217cbf318d75b22c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t mutabor::idtype&lt; T &gt;::operator()</definition>
+        <argsstring>() const </argsstring>
+        <name>operator()</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Defs.h" line="248" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Defs.h" bodystart="248" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dce/classmutabor_1_1idtype_1a173f2e803ed1c7449254622dcdf6764b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::idtype&lt; T &gt;::operator size_t</definition>
+        <argsstring>() const </argsstring>
+        <name>operator size_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Defs.h" line="249" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Defs.h" bodystart="249" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dce/classmutabor_1_1idtype_1a50237a34eb4a381e80db53a456ef275a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::idtype&lt; T &gt;::operator int</definition>
+        <argsstring>() const </argsstring>
+        <name>operator int</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Defs.h" line="250" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Defs.h" bodystart="250" bodyend="250"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="d7/dce/classmutabor_1_1idtype_1a417f828348f2f31609f49040713ec6b0" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>size_t</type>
+        <definition>size_t mutabor::idtype&lt; BoxClass &gt;::idpool</definition>
+        <argsstring>(0)</argsstring>
+        <name>idpool</name>
+        <param>
+          <type>0</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.cpp" line="53" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dce/classmutabor_1_1idtype_1aaae916001b0b22a221df7d734cb3adba" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>size_t</type>
+        <definition>size_t mutabor::idtype&lt; Device &gt;::idpool</definition>
+        <argsstring>(0)</argsstring>
+        <name>idpool</name>
+        <param>
+          <type>0</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.cpp" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dce/classmutabor_1_1idtype_1a0fbe0d9c8bdd72ea601410044dff6ce2" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>size_t</type>
+        <definition>size_t mutabor::idtype&lt; RouteClass &gt;::idpool</definition>
+        <argsstring>(0)</argsstring>
+        <name>idpool</name>
+        <param>
+          <type>0</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Route.cpp" line="43" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Defs.h" line="243" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Defs.h" bodystart="243" bodyend="254"/>
+    <listofallmembers>
+      <member refid="d7/dce/classmutabor_1_1idtype_1a1bc24f725b40a8bfa976c46e21714161" prot="protected" virt="non-virtual"><scope>mutabor::idtype</scope><name>id</name></member>
+      <member refid="d7/dce/classmutabor_1_1idtype_1a5b8db5880bf795ea5aefc6fac54c7b52" prot="protected" virt="non-virtual"><scope>mutabor::idtype</scope><name>idpool</name></member>
+      <member refid="d7/dce/classmutabor_1_1idtype_1a417f828348f2f31609f49040713ec6b0" prot="protected" virt="non-virtual"><scope>mutabor::idtype</scope><name>idpool</name></member>
+      <member refid="d7/dce/classmutabor_1_1idtype_1aaae916001b0b22a221df7d734cb3adba" prot="protected" virt="non-virtual"><scope>mutabor::idtype</scope><name>idpool</name></member>
+      <member refid="d7/dce/classmutabor_1_1idtype_1a0fbe0d9c8bdd72ea601410044dff6ce2" prot="protected" virt="non-virtual"><scope>mutabor::idtype</scope><name>idpool</name></member>
+      <member refid="d7/dce/classmutabor_1_1idtype_1a8d1cb9210967947115e8ec258ac4f575" prot="public" virt="non-virtual"><scope>mutabor::idtype</scope><name>idtype</name></member>
+      <member refid="d7/dce/classmutabor_1_1idtype_1a50237a34eb4a381e80db53a456ef275a" prot="public" virt="non-virtual"><scope>mutabor::idtype</scope><name>operator int</name></member>
+      <member refid="d7/dce/classmutabor_1_1idtype_1a173f2e803ed1c7449254622dcdf6764b" prot="public" virt="non-virtual"><scope>mutabor::idtype</scope><name>operator size_t</name></member>
+      <member refid="d7/dce/classmutabor_1_1idtype_1aed068c5a789d4b46217cbf318d75b22c" prot="public" virt="non-virtual"><scope>mutabor::idtype</scope><name>operator()</name></member>
+      <member refid="d7/dce/classmutabor_1_1idtype_1a32433823662e2a1aba63b17b23d3f1ca" prot="public" virt="non-virtual"><scope>mutabor::idtype</scope><name>referenceing_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,455 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d9/d7a/classmutaborGUI_1_1MutChild" kind="class" prot="public">
+    <compoundname>mutaborGUI::MutChild</compoundname>
+    <basecompoundref refid="d6/deb/classMutTextBox" prot="public" virt="non-virtual">MutTextBox</basecompoundref>
+    <basecompoundref refid="dd/dfa/structmutaborGUI_1_1MutChildApi" prot="public" virt="non-virtual">mutaborGUI::MutChildApi</basecompoundref>
+    <includes refid="d2/df9/MutChild_8h" local="no">MutChild.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/d7a/classmutaborGUI_1_1MutChild_1adb10abe93c6cd7ddbb9b5f187636a2d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mutaborGUI::MutChild::MutChild</definition>
+        <argsstring>(WinKind winkind, mutabor::Box b, wxWindow *parent=NULL, wxWindowID id=-1, const wxPoint &amp;pos=wxDefaultPosition, const wxSize &amp;size=wxDefaultSize)</argsstring>
+        <name>MutChild</name>
+        <param>
+          <type><ref refid="df/dd1/group__GUI_1ga855392e978305d8c7a4bf5f1c78be1ce" kindref="member">WinKind</ref></type>
+          <declname>winkind</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">mutabor::Box</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+          <defval>NULL</defval>
+        </param>
+        <param>
+          <type>wxWindowID</type>
+          <declname>id</declname>
+          <defval>-1</defval>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxPoint &amp;</type>
+          <declname>pos</declname>
+          <defval>wxDefaultPosition</defval>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxSize &amp;</type>
+          <declname>size</declname>
+          <defval>wxDefaultSize</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="59" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dd1/group__GUI_1ga3933ab909bb2d07ccd37eaf64d026e84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mutaborGUI::MutChild::~MutChild</definition>
+        <argsstring>()</argsstring>
+        <name>~MutChild</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="67" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.cpp" bodystart="150" bodyend="155"/>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_KEY</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_NULL</references>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7a/classmutaborGUI_1_1MutChild_1a168e8b6a612c129526281f21b44bb3c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>wxString</type>
+        <definition>virtual wxString mutaborGUI::MutChild::MakeTitle</definition>
+        <argsstring>()</argsstring>
+        <name>MakeTitle</name>
+        <reimplements refid="dd/dfa/structmutaborGUI_1_1MutChildApi_1a19c57aea01db04bee9ff272a99c06267">MakeTitle</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="69" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" bodystart="69" bodyend="71"/>
+        <references refid="df/dd1/group__GUI_1ga7b96d8dc59c81190829d8361f00cdc66" compoundref="df/d3c/MutTextBox_8cpp" startline="446" endline="454">MutTextBox::MakeTitle</references>
+        <referencedby refid="df/dd1/group__GUI_1gad5b0693526e79475688bcb1ea0a679d5" compoundref="dc/df3/MutFrame_8cpp" startline="1152" endline="1228">mutaborGUI::MutFrame::TextBoxOpen</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="df/dd1/group__GUI_1ga40bf9dbffab44d62f1453bfe4bd1121a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutChild::OnActivate</definition>
+        <argsstring>(wxActivateEvent &amp;event)</argsstring>
+        <name>OnActivate</name>
+        <param>
+          <type>wxActivateEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="73" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.cpp" bodystart="157" bodyend="166"/>
+        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d7c/group__kernel_1gaedf3113729faf15522da4884cc137733" compoundref="d1/d73/Defs_8h" startline="79">mutUnused</references>
+        <references refid="db/d94/namespacemutaborGUI_1afb35365f69e843a5384e16a6d361ab88" compoundref="d5/df7/GUIBoxData_8h" startline="375" endline="377">mutaborGUI::SetCurrentBox</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_KEY</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_NULL</references>
+      </memberdef>
+      <memberdef kind="function" id="df/dd1/group__GUI_1ga1e39dcf4ea7183c737ed86b55bcf0d1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutChild::deleteFromWinAttrs</definition>
+        <argsstring>()</argsstring>
+        <name>deleteFromWinAttrs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="81" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.cpp" bodystart="168" bodyend="204"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
+        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1a812dd94418fca18cd54ed2aeb1011ae5" compoundref="d5/df7/GUIBoxData_8h" startline="137" endline="141">mutaborGUI::BoxData::SetActionsWindow</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1ab6fa714ef787281288273e5d951d296f" compoundref="d5/df7/GUIBoxData_8h" startline="115" endline="119">mutaborGUI::BoxData::SetKeyWindow</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1aaa5e600aa38f46e8b61381dd93507870" compoundref="d5/df7/GUIBoxData_8h" startline="126" endline="130">mutaborGUI::BoxData::SetTonesystemWindow</references>
+        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="309" endline="312">mutaborGUI::ToGUIBase</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceae937307bc58d33519881b7c7c1504b8d" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_ACT</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea1d665d031d51cb0ef5c5ac4d8f4f7921" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_EDIT</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_KEY</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceaa12e862056f06f45044d2b04195ad582" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_LOGIC</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_NULL</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea4c2189084175f9895cc08b5fbfa1aaac" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_ROUTE</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceaae61f5d40072b5edcdc2fc86c21cab88" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_TS</references>
+        <referencedby refid="d9/d7a/classmutaborGUI_1_1MutChild_1a876c8fa3614dd7d69307ff372eb06e99" compoundref="d2/df9/MutChild_8h" startline="92" endline="99">OnAuiClose</referencedby>
+        <referencedby refid="d9/d7a/classmutaborGUI_1_1MutChild_1ac5d09bd56aa953efd1c8dfc035c7edc5" compoundref="d2/df9/MutChild_8h" startline="83" endline="89">OnClose</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7a/classmutaborGUI_1_1MutChild_1ac5d09bd56aa953efd1c8dfc035c7edc5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutChild::OnClose</definition>
+        <argsstring>(wxCloseEvent &amp;event)</argsstring>
+        <name>OnClose</name>
+        <param>
+          <type>wxCloseEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="83" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" bodystart="83" bodyend="89"/>
+        <references refid="df/dd1/group__GUI_1ga1e39dcf4ea7183c737ed86b55bcf0d1b" compoundref="da/d72/MutChild_8cpp" startline="168" endline="204">deleteFromWinAttrs</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="df/dd1/group__GUI_1ga34944c40a018673cfd06db1da64867f3" compoundref="df/d3c/MutTextBox_8cpp" startline="102" endline="145">MutTextBox::OnClose</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <references refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" compoundref="de/d3b/MutTextBox_8h" startline="162">MutTextBox::winKind</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_KEY</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_NULL</references>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7a/classmutaborGUI_1_1MutChild_1a876c8fa3614dd7d69307ff372eb06e99" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutChild::OnAuiClose</definition>
+        <argsstring>(wxAuiManagerEvent &amp;event)</argsstring>
+        <name>OnAuiClose</name>
+        <param>
+          <type>wxAuiManagerEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="92" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" bodystart="92" bodyend="99"/>
+        <references refid="df/dd1/group__GUI_1ga1e39dcf4ea7183c737ed86b55bcf0d1b" compoundref="da/d72/MutChild_8cpp" startline="168" endline="204">deleteFromWinAttrs</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d7c/group__kernel_1gaedf3113729faf15522da4884cc137733" compoundref="d1/d73/Defs_8h" startline="79">mutUnused</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <references refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" compoundref="de/d3b/MutTextBox_8h" startline="162">MutTextBox::winKind</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_KEY</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_NULL</references>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7a/classmutaborGUI_1_1MutChild_1a2219dc9056217c979e8c142bc517cdce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutChild::GetClientSize</definition>
+        <argsstring>(int *width, int *height)</argsstring>
+        <name>GetClientSize</name>
+        <param>
+          <type>int *</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="103" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" bodystart="103" bodyend="111"/>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" compoundref="de/d3b/MutTextBox_8h" startline="162">MutTextBox::winKind</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_KEY</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_NULL</references>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7a/classmutaborGUI_1_1MutChild_1aed36641445441cf1a4113643acdfc6c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutChild::SetClientSize</definition>
+        <argsstring>(int width, int height)</argsstring>
+        <name>SetClientSize</name>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="113" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" bodystart="113" bodyend="117"/>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" compoundref="de/d3b/MutTextBox_8h" startline="162">MutTextBox::winKind</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_KEY</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_NULL</references>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7a/classmutaborGUI_1_1MutChild_1ae66d55946bbfaf4711c15b18ea2a6462" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutChild::SetClientSize</definition>
+        <argsstring>(const wxSize &amp;size)</argsstring>
+        <name>SetClientSize</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxSize &amp;</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="119" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" bodystart="119" bodyend="125"/>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" compoundref="de/d3b/MutTextBox_8h" startline="162">MutTextBox::winKind</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_KEY</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_NULL</references>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7a/classmutaborGUI_1_1MutChild_1ae1560ba68f0edb0049a64a9ded76660d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutChild::ClientToScreen</definition>
+        <argsstring>(int *x, int *y)</argsstring>
+        <name>ClientToScreen</name>
+        <param>
+          <type>int *</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="127" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" bodystart="127" bodyend="134"/>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" compoundref="de/d3b/MutTextBox_8h" startline="162">MutTextBox::winKind</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_KEY</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_NULL</references>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7a/classmutaborGUI_1_1MutChild_1a79a55836c87b7a10cad7407ed60d96f0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>wxPoint</type>
+        <definition>wxPoint mutaborGUI::MutChild::ClientToScreen</definition>
+        <argsstring>(const wxPoint &amp;pt) const </argsstring>
+        <name>ClientToScreen</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxPoint &amp;</type>
+          <declname>pt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="136" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" bodystart="136" bodyend="140"/>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" compoundref="de/d3b/MutTextBox_8h" startline="162">MutTextBox::winKind</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_KEY</references>
+        <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_NULL</references>
+      </memberdef>
+      <memberdef kind="function" id="df/dd1/group__GUI_1gafa78b94fb498060f5dae3df4e0bb8a5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutChild::OnChar</definition>
+        <argsstring>(wxKeyEvent &amp;event)</argsstring>
+        <name>OnChar</name>
+        <param>
+          <type>wxKeyEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="143" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.cpp" bodystart="206" bodyend="226"/>
+        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1ae374c75a2de6e38f0fed2ea50a2af2a1" compoundref="d5/df7/GUIBoxData_8h" startline="174" endline="176">mutaborGUI::BoxData::GetLogicWindow</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="db/d94/namespacemutaborGUI_1afb35365f69e843a5384e16a6d361ab88" compoundref="d5/df7/GUIBoxData_8h" startline="375" endline="377">mutaborGUI::SetCurrentBox</references>
+        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="309" endline="312">mutaborGUI::ToGUIBase</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+      </memberdef>
+      <memberdef kind="function" id="df/dd1/group__GUI_1gac59eab7cd99dea02f305f3beabf37870" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutChild::OnGetFocus</definition>
+        <argsstring>(wxFocusEvent &amp;event)</argsstring>
+        <name>OnGetFocus</name>
+        <param>
+          <type>wxFocusEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="145" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.cpp" bodystart="395" bodyend="400"/>
+        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
+        <references refid="db/d94/namespacemutaborGUI_1afb35365f69e843a5384e16a6d361ab88" compoundref="d5/df7/GUIBoxData_8h" startline="375" endline="377">mutaborGUI::SetCurrentBox</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3559">
+        <label>wxListBox</label>
+      </node>
+      <node id="3560">
+        <label>mutabor::BoxClass::ChangedCallback</label>
+        <link refid="da/dd8/structmutabor_1_1BoxClass_1_1ChangedCallback"/>
+      </node>
+      <node id="3558">
+        <label>MutTextBox</label>
+        <link refid="d6/deb/classMutTextBox"/>
+        <childnode refid="3559" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3560" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3561">
+        <label>mutaborGUI::MutChildApi</label>
+        <link refid="dd/dfa/structmutaborGUI_1_1MutChildApi"/>
+      </node>
+      <node id="3557">
+        <label>mutaborGUI::MutChild</label>
+        <link refid="d9/d7a/classmutaborGUI_1_1MutChild"/>
+        <childnode refid="3558" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3561" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3564">
+        <label>wxListBox</label>
+      </node>
+      <node id="3565">
+        <label>mutabor::BoxClass::ChangedCallback</label>
+        <link refid="da/dd8/structmutabor_1_1BoxClass_1_1ChangedCallback"/>
+      </node>
+      <node id="3563">
+        <label>MutTextBox</label>
+        <link refid="d6/deb/classMutTextBox"/>
+        <childnode refid="3564" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3565" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3566">
+        <label>mutaborGUI::MutChildApi</label>
+        <link refid="dd/dfa/structmutaborGUI_1_1MutChildApi"/>
+      </node>
+      <node id="3562">
+        <label>mutaborGUI::MutChild</label>
+        <link refid="d9/d7a/classmutaborGUI_1_1MutChild"/>
+        <childnode refid="3563" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3566" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="56" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" bodystart="54" bodyend="151"/>
+    <listofallmembers>
+      <member refid="d5/dee/group__route_1ga7f52967e436a1c8174d9570a23279afa" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>action</name></member>
+      <member refid="d5/dee/group__route_1gga16bf6a2a128bd229e3183e7036cda229aeac573e7f46391680597913e8b6ecd12" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>ActionChanged</name></member>
+      <member refid="d6/deb/classMutTextBox_1a395c1a5fa04d1cfe2c2bce26dfb823d0" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>box</name></member>
+      <member refid="d6/deb/classMutTextBox_1aa6f50a826abc74a99c3f6b2b3d8a33c0" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>Box</name></member>
+      <member refid="d5/dee/group__route_1gga16bf6a2a128bd229e3183e7036cda229a8d4c7fcf6b13969657a329e1e4f12d5c" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>BoxChanged</name></member>
+      <member refid="df/dd1/group__GUI_1gabbf07bf091187a2d34c508eb6c9b9eaf" prot="public" virt="virtual"><scope>mutaborGUI::MutChild</scope><name>BoxChangedAction</name></member>
+      <member refid="df/dd1/group__GUI_1ga6618e6b8c310bdd7c45a0acec1b1bfa0" prot="public" virt="virtual"><scope>mutaborGUI::MutChild</scope><name>BoxChangedAction</name></member>
+      <member refid="d5/dee/group__route_1gaad87f299c9c7cb877774c9ef936a001f" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>ChangedCallback</name></member>
+      <member refid="d5/dee/group__route_1ga16bf6a2a128bd229e3183e7036cda229" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>ChangedFlags</name></member>
+      <member refid="d9/d7a/classmutaborGUI_1_1MutChild_1ae1560ba68f0edb0049a64a9ded76660d" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>ClientToScreen</name></member>
+      <member refid="d9/d7a/classmutaborGUI_1_1MutChild_1a79a55836c87b7a10cad7407ed60d96f0" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>ClientToScreen</name></member>
+      <member refid="d6/deb/classMutTextBox_1a94d8191d531bf878b43c29c0fe5e277b" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>ColorBox</name></member>
+      <member refid="df/dd1/group__GUI_1ga1e39dcf4ea7183c737ed86b55bcf0d1b" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>deleteFromWinAttrs</name></member>
+      <member refid="df/dd1/group__GUI_1ga57d4206b3b320a19253627c553bb9e73" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>GetAllActions</name></member>
+      <member refid="df/dd1/group__GUI_1ga258706178cefc7956890d984d3921b8d" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>GetBoxActions</name></member>
+      <member refid="d9/d7a/classmutaborGUI_1_1MutChild_1a2219dc9056217c979e8c142bc517cdce" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>GetClientSize</name></member>
+      <member refid="df/dd1/group__GUI_1gaf4c49c1e3274833700ecb454d72c2b96" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>GetKeys</name></member>
+      <member refid="d6/deb/classMutTextBox_1a0609465680f5fb63dfedfa503f39fed3" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>GetKind</name></member>
+      <member refid="df/dd1/group__GUI_1ga4b4fe68712431b7ed40d699cd1b9155f" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>GetToneSystem</name></member>
+      <member refid="d5/dee/group__route_1gga16bf6a2a128bd229e3183e7036cda229a1374047d5c950d21731594934cc7ceca" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>KeysChanged</name></member>
+      <member refid="d5/dee/group__route_1gga16bf6a2a128bd229e3183e7036cda229a086a8ed943f58f3fd704dae834ff01bf" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>LogicChanged</name></member>
+      <member refid="d9/d7a/classmutaborGUI_1_1MutChild_1a168e8b6a612c129526281f21b44bb3c0" prot="public" virt="virtual"><scope>mutaborGUI::MutChild</scope><name>MakeTitle</name></member>
+      <member refid="df/dd1/group__GUI_1ga7b96d8dc59c81190829d8361f00cdc66" prot="public" virt="non-virtual" ambiguityscope="MutTextBox::"><scope>mutaborGUI::MutChild</scope><name>MakeTitle</name></member>
+      <member refid="d9/d7a/classmutaborGUI_1_1MutChild_1adb10abe93c6cd7ddbb9b5f187636a2d8" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>MutChild</name></member>
+      <member refid="df/dd1/group__GUI_1ga5a31515fd8bd5f65cc0f5e1412ad88ec" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>MutTextBox</name></member>
+      <member refid="df/dd1/group__GUI_1gaa0d04547db6e973fa4d4aab0c9bfd951" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>NewText</name></member>
+      <member refid="df/dd1/group__GUI_1ga99be8fc6f28f8c429ff797de3e119606" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>NewText</name></member>
+      <member refid="d6/deb/classMutTextBox_1a2caca60231eb01a70028d43163d86f21" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>Ok</name></member>
+      <member refid="df/dd1/group__GUI_1ga40bf9dbffab44d62f1453bfe4bd1121a" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>OnActivate</name></member>
+      <member refid="d9/d7a/classmutaborGUI_1_1MutChild_1a876c8fa3614dd7d69307ff372eb06e99" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>OnAuiClose</name></member>
+      <member refid="df/dd1/group__GUI_1gafa78b94fb498060f5dae3df4e0bb8a5c" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>OnChar</name></member>
+      <member refid="d9/d7a/classmutaborGUI_1_1MutChild_1ac5d09bd56aa953efd1c8dfc035c7edc5" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>OnClose</name></member>
+      <member refid="df/dd1/group__GUI_1gac59eab7cd99dea02f305f3beabf37870" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>OnGetFocus</name></member>
+      <member refid="d5/dee/group__route_1ga102abb4163fa91613b1759518ce121d7" prot="public" virt="virtual"><scope>mutaborGUI::MutChild</scope><name>SetBox</name></member>
+      <member refid="d9/d7a/classmutaborGUI_1_1MutChild_1aed36641445441cf1a4113643acdfc6c6" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>SetClientSize</name></member>
+      <member refid="d9/d7a/classmutaborGUI_1_1MutChild_1ae66d55946bbfaf4711c15b18ea2a6462" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>SetClientSize</name></member>
+      <member refid="df/dd1/group__GUI_1gaa790c0385070ba353d78f1b5e4f680a2" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>UpdateUI</name></member>
+      <member refid="d6/deb/classMutTextBox_1a4831a237152b03fb605b56565d1a4be5" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>winKind</name></member>
+      <member refid="d5/dee/group__route_1ga4689b0d8ed0882e80a1699e717e5b3a8" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>~ChangedCallback</name></member>
+      <member refid="df/dd1/group__GUI_1ga3933ab909bb2d07ccd37eaf64d026e84" prot="public" virt="non-virtual"><scope>mutaborGUI::MutChild</scope><name>~MutChild</name></member>
+      <member refid="dd/dfa/structmutaborGUI_1_1MutChildApi_1a8b9a24d91911a88037bb0485997e13f2" prot="public" virt="virtual"><scope>mutaborGUI::MutChild</scope><name>~MutChildApi</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

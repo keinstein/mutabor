@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d3/d63/classGisTagBegin" kind="class" prot="public">
+    <compoundname>GisTagBegin</compoundname>
+    <basecompoundref refid="d2/d39/classGisTag" prot="public" virt="non-virtual">GisTag</basecompoundref>
+    <includes refid="dd/d4d/GIS_8h" local="no">GIS.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d3/d63/classGisTagBegin_1ac93eea4ef8ecd11d679dd5c4aae5d9f1" prot="public" static="no" mutable="no">
+        <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+        <definition>GisToken* GisTagBegin::End</definition>
+        <argsstring></argsstring>
+        <name>End</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="373" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="373" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gab1e2df8df2924634f08785c6094a87fe" compoundref="dc/de7/GIS_8cpp" startline="604" endline="636">BeginRange</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga0ab350614a42dc9bb9a1d6787d791873" compoundref="dc/de7/GIS_8cpp" startline="638" endline="655">EndRange</referencedby>
+        <referencedby refid="d3/d63/classGisTagBegin_1a585f439fb1fb2d1320219d92e76faa3e" compoundref="dd/d4d/GIS_8h" startline="375" endline="380">GisTagBegin</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d3/d63/classGisTagBegin_1a585f439fb1fb2d1320219d92e76faa3e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GisTagBegin::GisTagBegin</definition>
+        <argsstring>(mutString name=mutEmptyString, GisToken *para=0, mutString sep=mutEmptyString, GisToken *next=0)</argsstring>
+        <name>GisTagBegin</name>
+        <param>
+          <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+          <declname>name</declname>
+          <defval><ref refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" kindref="member">mutEmptyString</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+          <declname>para</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+          <declname>sep</declname>
+          <defval><ref refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" kindref="member">mutEmptyString</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+          <declname>next</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="375" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="375" bodyend="380"/>
+        <references refid="d3/d63/classGisTagBegin_1ac93eea4ef8ecd11d679dd5c4aae5d9f1" compoundref="dd/d4d/GIS_8h" startline="373">End</references>
+        <referencedby refid="d3/d63/classGisTagBegin_1abdbeee9c850147d848614da11b1da641" compoundref="dd/d4d/GIS_8h" startline="394" endline="398">Copy</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d3/d63/classGisTagBegin_1a5eaf07688edb08a1d0a3c6946f73b99c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GisTagBegin::GisTagBegin</definition>
+        <argsstring>(int id, char shortForm, GisToken *para=0, mutString sep=mutEmptyString, GisToken *next=0)</argsstring>
+        <name>GisTagBegin</name>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <declname>shortForm</declname>
+        </param>
+        <param>
+          <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+          <declname>para</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+          <declname>sep</declname>
+          <defval><ref refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" kindref="member">mutEmptyString</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+          <declname>next</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="382" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="382" bodyend="387"/>
+        <references refid="d3/d63/classGisTagBegin_1ac93eea4ef8ecd11d679dd5c4aae5d9f1" compoundref="dd/d4d/GIS_8h" startline="373">End</references>
+      </memberdef>
+      <memberdef kind="function" id="d3/d63/classGisTagBegin_1a829e4ae0d73a445be44f797796786715" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d5/dee/group__route_1gaef354ea2f89281ef17c6735860c89861" kindref="member">GisType</ref></type>
+        <definition>virtual GisType GisTagBegin::Type</definition>
+        <argsstring>() const </argsstring>
+        <name>Type</name>
+        <reimplements refid="d2/d39/classGisTag_1ae500ebda527c6983bb995b5b8667c86a">Type</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="389" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="389" bodyend="392"/>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861ad2428dfed3f60a34a6646960c0125e5b" compoundref="dd/d4d/GIS_8h" startline="121">GTTagBegin</references>
+      </memberdef>
+      <memberdef kind="function" id="d3/d63/classGisTagBegin_1abdbeee9c850147d848614da11b1da641" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+        <definition>virtual GisToken* GisTagBegin::Copy</definition>
+        <argsstring>()</argsstring>
+        <name>Copy</name>
+        <reimplements refid="d2/d39/classGisTag_1a573aa9036bde802c46f070ebc65db841">Copy</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="394" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="394" bodyend="398"/>
+        <references refid="d5/dee/group__route_1ga91f344ae323aa9bd419b2c09f0467fc8" compoundref="dc/de7/GIS_8cpp" startline="829" endline="842">CopyPara</references>
+        <references refid="d3/d63/classGisTagBegin_1a585f439fb1fb2d1320219d92e76faa3e" compoundref="dd/d4d/GIS_8h" startline="375" endline="380">GisTagBegin</references>
+        <references refid="d2/d39/classGisTag_1aa7c306d6a4b3afa9164f758ba814fe62" compoundref="dd/d4d/GIS_8h" startline="298">GisTag::Name</references>
+        <references refid="d2/d39/classGisTag_1a9db95b208b144989b64df6a6cf90685a" compoundref="dd/d4d/GIS_8h" startline="299">GisTag::Para</references>
+        <references refid="d2/db7/classGisToken_1a5987643937d79847fcd3f0dab8fe4b58" compoundref="dd/d4d/GIS_8h" startline="137">GisToken::Sep</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2801">
+        <label>GisTagBegin</label>
+        <link refid="d3/d63/classGisTagBegin"/>
+        <childnode refid="2802" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2802">
+        <label>GisTag</label>
+        <link refid="d2/d39/classGisTag"/>
+        <childnode refid="2803" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2803">
+        <label>GisToken</label>
+        <link refid="d2/db7/classGisToken"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2804">
+        <label>GisTagBegin</label>
+        <link refid="d3/d63/classGisTagBegin"/>
+        <childnode refid="2805" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2806" relation="usage">
+          <edgelabel>End</edgelabel>
+        </childnode>
+      </node>
+      <node id="2805">
+        <label>GisTag</label>
+        <link refid="d2/d39/classGisTag"/>
+        <childnode refid="2806" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2806" relation="usage">
+          <edgelabel>Para</edgelabel>
+        </childnode>
+      </node>
+      <node id="2806">
+        <label>GisToken</label>
+        <link refid="d2/db7/classGisToken"/>
+        <childnode refid="2806" relation="usage">
+          <edgelabel>Next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="370" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="369" bodyend="416"/>
+    <listofallmembers>
+      <member refid="d3/d63/classGisTagBegin_1abdbeee9c850147d848614da11b1da641" prot="public" virt="virtual"><scope>GisTagBegin</scope><name>Copy</name></member>
+      <member refid="d3/d63/classGisTagBegin_1ac93eea4ef8ecd11d679dd5c4aae5d9f1" prot="public" virt="non-virtual"><scope>GisTagBegin</scope><name>End</name></member>
+      <member refid="d5/dee/group__route_1ga30397720551d90c7b4c365e1b90ae468" prot="public" virt="non-virtual"><scope>GisTagBegin</scope><name>GetPara</name></member>
+      <member refid="d5/dee/group__route_1ga82fc1da164f958f9a922e84608122be3" prot="public" virt="non-virtual"><scope>GisTagBegin</scope><name>GetParaType</name></member>
+      <member refid="d2/d39/classGisTag_1a3356f7426ff3a2c177d5a9615b56f8db" prot="public" virt="non-virtual"><scope>GisTagBegin</scope><name>GisTag</name></member>
+      <member refid="d2/d39/classGisTag_1a2d0d8d79fdb89899ca56040885702f2a" prot="public" virt="non-virtual"><scope>GisTagBegin</scope><name>GisTag</name></member>
+      <member refid="d3/d63/classGisTagBegin_1a585f439fb1fb2d1320219d92e76faa3e" prot="public" virt="non-virtual"><scope>GisTagBegin</scope><name>GisTagBegin</name></member>
+      <member refid="d3/d63/classGisTagBegin_1a5eaf07688edb08a1d0a3c6946f73b99c" prot="public" virt="non-virtual"><scope>GisTagBegin</scope><name>GisTagBegin</name></member>
+      <member refid="d2/db7/classGisToken_1aa7d3797aec95b6fe33acf8c255fc1268" prot="public" virt="non-virtual"><scope>GisTagBegin</scope><name>GisToken</name></member>
+      <member refid="d2/d39/classGisTag_1a080493f0b1c1ce39166d3d1d15bc4bbb" prot="public" virt="non-virtual"><scope>GisTagBegin</scope><name>Id</name></member>
+      <member refid="d2/d39/classGisTag_1aa7c306d6a4b3afa9164f758ba814fe62" prot="public" virt="non-virtual"><scope>GisTagBegin</scope><name>Name</name></member>
+      <member refid="d2/db7/classGisToken_1a5ebe3590397490871cf0839a758e2449" prot="public" virt="non-virtual"><scope>GisTagBegin</scope><name>Next</name></member>
+      <member refid="d2/d39/classGisTag_1a9db95b208b144989b64df6a6cf90685a" prot="public" virt="non-virtual"><scope>GisTagBegin</scope><name>Para</name></member>
+      <member refid="d2/db7/classGisToken_1a5987643937d79847fcd3f0dab8fe4b58" prot="public" virt="non-virtual"><scope>GisTagBegin</scope><name>Sep</name></member>
+      <member refid="d3/d63/classGisTagBegin_1a829e4ae0d73a445be44f797796786715" prot="public" virt="virtual"><scope>GisTagBegin</scope><name>Type</name></member>
+      <member refid="d2/d39/classGisTag_1a730e5cf2c65646e9000816c0eecc48cc" prot="public" virt="non-virtual"><scope>GisTagBegin</scope><name>~GisTag</name></member>
+      <member refid="d2/db7/classGisToken_1ab3ec071213876b13b7ce9f9900cfec69" prot="public" virt="virtual"><scope>GisTagBegin</scope><name>~GisToken</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

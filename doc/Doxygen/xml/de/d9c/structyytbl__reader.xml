@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="de/d9c/structyytbl__reader" kind="struct" prot="public">
+    <compoundname>yytbl_reader</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="de/d9c/structyytbl__reader_1a80d494bdd272dccd39b94bee93e15bd5" prot="public" static="no" mutable="no">
+        <type>FILE *</type>
+        <definition>FILE* yytbl_reader::fp</definition>
+        <argsstring></argsstring>
+        <name>fp</name>
+        <briefdescription>
+<para>input stream </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" line="928" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" bodystart="928" bodyend="-1"/>
+        <referencedby refid="d5/d4b/mutlex_8c_1a9b5b30fa12c45cbaa0b865b79fc9fe6a" compoundref="d5/d4b/mutlex_8c" startline="2887" endline="2933">yytbl_fload</referencedby>
+        <referencedby refid="d5/d4b/mutlex_8c_1a59401513bf899d38d02624c209900136" compoundref="d5/d4b/mutlex_8c" startline="2617" endline="2657">yytbl_hdr_read</referencedby>
+        <referencedby refid="d5/d4b/mutlex_8c_1ae41d811b290edae2b86efab7e66ec0dd" compoundref="d5/d4b/mutlex_8c" startline="2592" endline="2602">yytbl_read16</referencedby>
+        <referencedby refid="d5/d4b/mutlex_8c_1a52881ab7ff00634a1e975731bb6d53e4" compoundref="d5/d4b/mutlex_8c" startline="2604" endline="2614">yytbl_read32</referencedby>
+        <referencedby refid="d5/d4b/mutlex_8c_1aa1e022cff3ef99494890a73a663a157c" compoundref="d5/d4b/mutlex_8c" startline="2581" endline="2590">yytbl_read8</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/d9c/structyytbl__reader_1addbad2e0a3fbee5f2b70b21bac8cf906" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t yytbl_reader::bread</definition>
+        <argsstring></argsstring>
+        <name>bread</name>
+        <briefdescription>
+<para>bytes read since beginning of current tableset </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" line="929" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" bodystart="929" bodyend="-1"/>
+        <referencedby refid="d5/d4b/mutlex_8c_1a53bcdbf8647191e35ac4f83d19715edf" compoundref="d5/d4b/mutlex_8c" startline="2677" endline="2881">yytbl_data_load</referencedby>
+        <referencedby refid="d5/d4b/mutlex_8c_1a9b5b30fa12c45cbaa0b865b79fc9fe6a" compoundref="d5/d4b/mutlex_8c" startline="2887" endline="2933">yytbl_fload</referencedby>
+        <referencedby refid="d5/d4b/mutlex_8c_1a59401513bf899d38d02624c209900136" compoundref="d5/d4b/mutlex_8c" startline="2617" endline="2657">yytbl_hdr_read</referencedby>
+        <referencedby refid="d5/d4b/mutlex_8c_1ae41d811b290edae2b86efab7e66ec0dd" compoundref="d5/d4b/mutlex_8c" startline="2592" endline="2602">yytbl_read16</referencedby>
+        <referencedby refid="d5/d4b/mutlex_8c_1a52881ab7ff00634a1e975731bb6d53e4" compoundref="d5/d4b/mutlex_8c" startline="2604" endline="2614">yytbl_read32</referencedby>
+        <referencedby refid="d5/d4b/mutlex_8c_1aa1e022cff3ef99494890a73a663a157c" compoundref="d5/d4b/mutlex_8c" startline="2581" endline="2590">yytbl_read8</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A tables-reader object to maintain some state in the read. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" line="927" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/mutlex.c" bodystart="927" bodyend="930"/>
+    <listofallmembers>
+      <member refid="de/d9c/structyytbl__reader_1addbad2e0a3fbee5f2b70b21bac8cf906" prot="public" virt="non-virtual"><scope>yytbl_reader</scope><name>bread</name></member>
+      <member refid="de/d9c/structyytbl__reader_1a80d494bdd272dccd39b94bee93e15bd5" prot="public" virt="non-virtual"><scope>yytbl_reader</scope><name>fp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

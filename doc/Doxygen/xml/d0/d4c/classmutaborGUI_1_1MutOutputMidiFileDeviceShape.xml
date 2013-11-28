@@ -1,0 +1,468 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d0/d4c/classmutaborGUI_1_1MutOutputMidiFileDeviceShape" kind="class" prot="public">
+    <compoundname>mutaborGUI::MutOutputMidiFileDeviceShape</compoundname>
+    <basecompoundref refid="d3/d4c/classmutaborGUI_1_1MutDeviceShape" prot="public" virt="non-virtual">mutaborGUI::MutDeviceShape&lt; outputdevicetypes &gt;</basecompoundref>
+    <includes refid="d4/de8/OutputMidiFileDeviceShape_8h" local="no">OutputMidiFileDeviceShape.h</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="dc/df2/group__GUIroute_1ga2b90776d12b35841e521621c0f11653f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class GUIMidiFileFactory</definition>
+        <argsstring></argsstring>
+        <name>GUIMidiFileFactory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" line="64" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="dc/df2/group__GUIroute_1ga732e5cbbd9017ffcc6487df060ce0206" prot="protected" static="no" mutable="no">
+        <type>wxFileName</type>
+        <definition>wxFileName mutaborGUI::MutOutputMidiFileDeviceShape::fileName</definition>
+        <argsstring></argsstring>
+        <name>fileName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" line="107" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" bodystart="107" bodyend="-1"/>
+        <referencedby refid="dc/df2/group__GUIroute_1ga529ec1e5b2b0bdd2c03983395aa67c89" compoundref="d4/de8/OutputMidiFileDeviceShape_8h" startline="89" endline="93">SetLabel</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga4ee704f4dcbd24cb05813f4c71b48d52" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutaborGUI::MutOutputMidiFileDeviceShape::MutOutputMidiFileDeviceShape</definition>
+        <argsstring>()</argsstring>
+        <name>MutOutputMidiFileDeviceShape</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" line="66" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" bodystart="66" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gabe82adeff71fbb9e5054b72a75c5f7e5" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutaborGUI::MutOutputMidiFileDeviceShape::MutOutputMidiFileDeviceShape</definition>
+        <argsstring>(wxWindow *parent, wxWindowID id, mutabor::OutputDevice d)</argsstring>
+        <name>MutOutputMidiFileDeviceShape</name>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>wxWindowID</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gaa9af06d2b801f5fbf129acc683bb764d" kindref="member">mutabor::OutputDevice</ref></type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" line="67" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" bodystart="67" bodyend="73"/>
+        <references refid="dc/df2/group__GUIroute_1ga6cc76de44f3e32ec4486ee232b602ec1" compoundref="d4/de8/OutputMidiFileDeviceShape_8h" startline="75" endline="81">Create</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga36d3c286adbb3b8a440f9782f9e65e17" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutOutputMidiFileDeviceShape::InitializeDialog</definition>
+        <argsstring>(OutputDevDlg *out) const </argsstring>
+        <name>InitializeDialog</name>
+        <param>
+          <type><ref refid="d2/d81/classmutaborGUI_1_1OutputDevDlg" kindref="compound">OutputDevDlg</ref> *</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" line="101" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp" bodystart="78" bodyend="87"/>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" compoundref="de/d05/Device_8h" startline="89">mutabor::DTMidiFile</references>
+        <references refid="d5/dee/group__route_1gabacd3a9aa739a6e21a737feeb9b9e9c9" compoundref="de/d05/Device_8h" startline="442" endline="444">mutabor::Device::GetName</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga70153cca84c5decea4580575013edf2e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::MutOutputMidiFileDeviceShape::readDialog</definition>
+        <argsstring>(OutputDevDlg *out)</argsstring>
+        <name>readDialog</name>
+        <param>
+          <type><ref refid="d2/d81/classmutaborGUI_1_1OutputDevDlg" kindref="compound">OutputDevDlg</ref> *</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" line="102" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp" bodystart="89" bodyend="101"/>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" compoundref="de/d05/Device_8h" startline="89">mutabor::DTMidiFile</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a78638ba70064acde4f70314d807d08ef" compoundref="de/d21/midicmn_8h" startline="539" endline="547">mutabor::CommonMidiOutput&lt; T, D &gt;::SetBendingRange</references>
+        <references refid="d5/d5f/classmutabor_1_1OutputMidiFile_1aacee2325e867bd35a8ef28583de9da0a" compoundref="da/d3c/DevMidF_8h" startline="603" endline="615">mutabor::OutputMidiFile::SetName</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga79dc2f2401aec16f6ff9ae4a4846a639" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool mutaborGUI::MutOutputMidiFileDeviceShape::CanHandleType</definition>
+        <argsstring>(mutabor::DevType type)</argsstring>
+        <name>CanHandleType</name>
+        <reimplements refid="dc/df2/group__GUIroute_1gaec41f522f6bcf2a3b501755b10fed6ac">CanHandleType</reimplements>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga84f84d78781fc500cd66ee58b0efc83a" kindref="member">mutabor::DevType</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" line="103" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" bodystart="103" bodyend="105"/>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" compoundref="de/d05/Device_8h" startline="89">mutabor::DTMidiFile</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga6cc76de44f3e32ec4486ee232b602ec1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::MutOutputMidiFileDeviceShape::Create</definition>
+        <argsstring>(wxWindow *parent, wxWindowID id, mutabor::OutputDevice d)</argsstring>
+        <name>Create</name>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>wxWindowID</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gaa9af06d2b801f5fbf129acc683bb764d" kindref="member">mutabor::OutputDevice</ref></type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" line="75" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" bodystart="75" bodyend="81"/>
+        <references refid="dc/df2/group__GUIroute_1ga5951cd9069dbdecb5f709fda9e98380e" compoundref="d9/d4d/DeviceShape_8h" startline="132" endline="139">mutaborGUI::MutDeviceShape&lt; T &gt;::Create</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <referencedby refid="dc/df2/group__GUIroute_1gabe82adeff71fbb9e5054b72a75c5f7e5" compoundref="d4/de8/OutputMidiFileDeviceShape_8h" startline="67" endline="73">MutOutputMidiFileDeviceShape</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga3c5030a17a76f30a72c614b28371228c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="df/dd1/group__GUI_1gae2013faeca4cd6cae1c6098bd574f854" kindref="member">MutIcon</ref> &amp;</type>
+        <definition>virtual MutIcon&amp; mutaborGUI::MutOutputMidiFileDeviceShape::GetMutIcon</definition>
+        <argsstring>()</argsstring>
+        <name>GetMutIcon</name>
+        <reimplements refid="df/dd1/group__GUI_1ga8215907089e23dc8af4ba9621dd26af7">GetMutIcon</reimplements>
+        <briefdescription>
+<para>Calculates the Icon to be used. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" line="83" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" bodystart="83" bodyend="87"/>
+        <references refid="dc/df2/group__GUIroute_1gad2f55d2cd1875a58975df0c1862e1c7d" compoundref="d1/d28/RouteIcons_8cpp" startline="44">mutaborGUI::MidiFileBitmap</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga529ec1e5b2b0bdd2c03983395aa67c89" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutOutputMidiFileDeviceShape::SetLabel</definition>
+        <argsstring>(const wxString &amp;st)</argsstring>
+        <name>SetLabel</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxString &amp;</type>
+          <declname>st</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" line="89" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" bodystart="89" bodyend="93"/>
+        <references refid="dc/df2/group__GUIroute_1ga732e5cbbd9017ffcc6487df060ce0206" compoundref="d4/de8/OutputMidiFileDeviceShape_8h" startline="107">fileName</references>
+        <references refid="df/dd1/group__GUI_1ga9c38263d8d0e9374e1e5df15192cdf84" compoundref="d5/d6f/IconShape_8h" startline="103" endline="111">MutIconShapeClass&lt; T &gt;::SetLabel</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1ga36ff3017a8f1e3610788caf6dffe4f9b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>wxPanel *</type>
+        <definition>wxPanel * mutaborGUI::MutOutputMidiFileDeviceShape::GetFilterPanel</definition>
+        <argsstring>(wxWindow *parent, mutabor::Route &amp;route) const </argsstring>
+        <name>GetFilterPanel</name>
+        <reimplements refid="dc/df2/group__GUIroute_1ga31728cc8cc217bc9b775a7d08d0d7179">GetFilterPanel</reimplements>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">mutabor::Route</ref> &amp;</type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" line="95" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp" bodystart="103" bodyend="122"/>
+        <references refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a40c1df2c9ab41650f350d3f16f92c78f" compoundref="da/d3c/DevMidF_8h" startline="624" endline="624">mutabor::OutputMidiFile::GetMaxChannel</references>
+        <references refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a31778d9e61056188c54be6fb5b78a5b0" compoundref="da/d3c/DevMidF_8h" startline="625" endline="625">mutabor::OutputMidiFile::GetMinChannel</references>
+        <references refid="dc/df2/group__GUIroute_1ga60ec6fd8e652f7f62e67c87993f9f525" compoundref="d5/d00/OutputMidiFileDeviceShape_8cpp" startline="67" endline="69">mutaborGUI::MidiFileOutputFilterPanel::SetAvoidDrumChannel</references>
+        <references refid="dc/df2/group__GUIroute_1gaf3a289c990ec61006bebced5f7696b3e" compoundref="d5/d00/OutputMidiFileDeviceShape_8cpp" startline="49" endline="52">mutaborGUI::MidiFileOutputFilterPanel::SetFromChannel</references>
+        <references refid="dc/df2/group__GUIroute_1ga5bf9d065c0e7d389df0e73f5839ded46" compoundref="d5/d00/OutputMidiFileDeviceShape_8cpp" startline="58" endline="61">mutaborGUI::MidiFileOutputFilterPanel::SetToChannel</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/df2/group__GUIroute_1gaa8d24dd26329cb9ef874d2908e2687e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutOutputMidiFileDeviceShape::ReadFilterPanel</definition>
+        <argsstring>(wxWindow *panel, mutabor::Route &amp;route)</argsstring>
+        <name>ReadFilterPanel</name>
+        <reimplements refid="dc/df2/group__GUIroute_1gaa6246905db33c6402f5b9df791e2039e">ReadFilterPanel</reimplements>
+        <param>
+          <type>wxWindow *</type>
+          <declname>panel</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">mutabor::Route</ref> &amp;</type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" line="97" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp" bodystart="124" bodyend="136"/>
+        <references refid="dc/df2/group__GUIroute_1gabc61f54dea9d9ccb1d37b68be5b3d5e6" compoundref="d5/d00/OutputMidiFileDeviceShape_8cpp" startline="70" endline="73">mutaborGUI::MidiFileOutputFilterPanel::GetAvoidDrumChannel</references>
+        <references refid="dc/df2/group__GUIroute_1ga3833845c28c8246a401d703e3e73b4ae" compoundref="d5/d00/OutputMidiFileDeviceShape_8cpp" startline="53" endline="56">mutaborGUI::MidiFileOutputFilterPanel::GetFromChannel</references>
+        <references refid="dc/df2/group__GUIroute_1ga88dc4ca8efc9007480252b7bead0d9b6" compoundref="d5/d00/OutputMidiFileDeviceShape_8cpp" startline="62" endline="65">mutaborGUI::MidiFileOutputFilterPanel::GetToChannel</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3762">
+        <label>T</label>
+      </node>
+      <node id="3761">
+        <label>MutIconShape</label>
+        <link refid="d5/d12/classMutIconShapeClass"/>
+        <childnode refid="3762" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3759">
+        <label>mutaborGUI::MutOutputMidiFileDeviceShape</label>
+        <link refid="d0/d4c/classmutaborGUI_1_1MutOutputMidiFileDeviceShape"/>
+        <childnode refid="3760" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3760">
+        <label>MutOutputDeviceShape</label>
+        <link refid="d3/d4c/classmutaborGUI_1_1MutDeviceShape"/>
+        <childnode refid="3761" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3766">
+        <label>T</label>
+      </node>
+      <node id="3767">
+        <label>std::list&lt; wxPoint &gt;</label>
+      </node>
+      <node id="3770">
+        <label>mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;</label>
+        <link refid="db/d05/classmutabor_1_1TRouteClass"/>
+        <childnode refid="3771" relation="usage">
+          <edgelabel>routeList</edgelabel>
+        </childnode>
+        <childnode refid="3772" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="3772">
+        <label>mutabor::idtype&lt; mutabor::TRouteClass&lt; InputDevice, OutputDevice &gt; &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="3765">
+        <label>MutIconShape</label>
+        <link refid="d5/d12/classMutIconShapeClass"/>
+        <childnode refid="3766" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3767" relation="usage">
+          <edgelabel>usedperimeterpoints</edgelabel>
+        </childnode>
+      </node>
+      <node id="3771">
+        <label>std::list&lt; T &gt;</label>
+        <childnode refid="3766" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="3769">
+        <label>mutaborGUI::MutBoxChannelShape</label>
+        <link refid="d8/d8e/classmutaborGUI_1_1MutBoxChannelShape"/>
+        <childnode refid="3765" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3770" relation="usage">
+          <edgelabel>route</edgelabel>
+        </childnode>
+        <childnode refid="3773" relation="usage">
+          <edgelabel>output</edgelabel>
+          <edgelabel>input</edgelabel>
+        </childnode>
+      </node>
+      <node id="3763">
+        <label>mutaborGUI::MutOutputMidiFileDeviceShape</label>
+        <link refid="d0/d4c/classmutaborGUI_1_1MutOutputMidiFileDeviceShape"/>
+        <childnode refid="3764" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3768">
+        <label>std::list&lt; MutBoxChannelShape * &gt;</label>
+        <childnode refid="3769" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="3773">
+        <label>mutaborGUI::MutDeviceShape&lt; T &gt;</label>
+        <link refid="d3/d4c/classmutaborGUI_1_1MutDeviceShape"/>
+        <childnode refid="3765" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3768" relation="usage">
+          <edgelabel>routes</edgelabel>
+        </childnode>
+      </node>
+      <node id="3764">
+        <label>MutOutputDeviceShape</label>
+        <link refid="d3/d4c/classmutaborGUI_1_1MutDeviceShape"/>
+        <childnode refid="3765" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3768" relation="usage">
+          <edgelabel>routes</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" line="63" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/OutputMidiFileDeviceShape.h" bodystart="62" bodyend="112"/>
+    <listofallmembers>
+      <member refid="df/dd1/group__GUI_1gab25386f2189c0a3989cfa9011e71a113" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>AcceptsFocus</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga873cdf44bc173c28d002677468308950" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>Add</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga2ecd01f8051a6d75426493539c48f3c4" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>Add</name></member>
+      <member refid="df/dd1/group__GUI_1gac00e57523cc2af20feb520a4d2fa7faf" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>borderOffset</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga79dc2f2401aec16f6ff9ae4a4846a639" prot="protected" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>CanHandleType</name></member>
+      <member refid="df/dd1/group__GUI_1ga6af37d42c1d2765b07320e60ba1b2ea4" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>ClearPerimeterPoints</name></member>
+      <member refid="dc/df2/group__GUIroute_1gaa8a13fe7ea14dd44084fab3930c8f307" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>CmDeviceNotification</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga6e4a80eacd737ca3258868cc308d56bc" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>CmLeftDblClick</name></member>
+      <member refid="dc/df2/group__GUIroute_1gace8bca3335012555219fd4d0dc6effe2" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>CmMoveIcon</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga6cc76de44f3e32ec4486ee232b602ec1" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>Create</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga5951cd9069dbdecb5f709fda9e98380e" prot="public" virt="non-virtual" ambiguityscope="mutaborGUI::MutDeviceShape::"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>Create</name></member>
+      <member refid="dc/df2/group__GUIroute_1gac28205df760882ad9288729db6db31a6" prot="public" virt="non-virtual" ambiguityscope="mutaborGUI::MutDeviceShape::"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>Create</name></member>
+      <member refid="df/dd1/group__GUI_1ga71dee3d35d05fe5d111de6d82b4f3bb0" prot="public" virt="non-virtual" ambiguityscope="MutIconShapeClass::"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>Create</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga25ac222d32b7b93c9adcafb6cf1a5120" prot="protected" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>createPauseButton</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga3c40a9d7ce68de43e26580e6be8bbd4c" prot="protected" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>createPlayButtons</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga9e7b47016edd33498ccab2438a030eee" prot="protected" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>createRecordButtons</name></member>
+      <member refid="df/dd1/group__GUI_1ga6a32ece47417189c5f20868fbb6600c2" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>DeleteSelf</name></member>
+      <member refid="df/dd1/group__GUI_1ga527a2125bd392d9b54aa7abaa0968c11" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>DeleteSelfEvent</name></member>
+      <member refid="df/dd1/group__GUI_1ga6fa093d611e95444ae1b2a60aebf6ec6" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>Destroy</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga7b8e069ce41f3b35f0448a4277f69776" prot="protected" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>DetachDevice</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga925eace37dc28f0cc75ba1c001d2e845" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>device</name></member>
+      <member refid="dc/df2/group__GUIroute_1gab7f3e0ba623cac33326ffd52ed326584" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>DeviceClass</name></member>
+      <member refid="dc/df2/group__GUIroute_1gaef034b16d029d3a189399bcc9bb68376" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>DeviceDialog</name></member>
+      <member refid="dc/df2/group__GUIroute_1gaca2b723384eb53df8a1391da4a2309c2" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>devicetype</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga0f3a0a2519aaaba80219355f20192246" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>DoDeviceNotification</name></member>
+      <member refid="df/dd1/group__GUI_1gafb111fbc128036409103a64b8f106cec" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>DoGetBestSize</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga095ea6c276b2d08e7dc8f6c5b1e023b3" prot="protected" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>DoLeftDblClick</name></member>
+      <member refid="df/dd1/group__GUI_1gaff550c99aecc9d9fc9989bef770f791b" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>DrawPerimeterPoint</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga732e5cbbd9017ffcc6487df060ce0206" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>fileName</name></member>
+      <member refid="dc/df2/group__GUIroute_1gab6e186deb45120be067e298ddfc8d86d" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>FilterPanel</name></member>
+      <member refid="df/dd1/group__GUI_1gab5b40ff9e8b7fe6966fc99a1dbce7615" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>Fit</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga70600bf2b7f86590fc34b7f512db8bb7" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>GetChannels</name></member>
+      <member refid="dc/df2/group__GUIroute_1gae65d99fd6ae7060bc8562915390c643b" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>GetDevice</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga3bca8ea481ddee51c540c8f0350abb26" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>GetDevice</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga36ff3017a8f1e3610788caf6dffe4f9b" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>GetFilterPanel</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga1785799666e3b2e025b35adefc4e882e" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>GetGUIDevice</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga6d580cce18ddaf1f8397b9a495733df8" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>GetGUIDevice</name></member>
+      <member refid="df/dd1/group__GUI_1ga34042c921771c02dc1e418cb80d11a39" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>GetIcon</name></member>
+      <member refid="df/dd1/group__GUI_1ga8c961a7c136dd837d106fa36ca406434" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>GetIconRect</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga3c5030a17a76f30a72c614b28371228c" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>GetMutIcon</name></member>
+      <member refid="df/dd1/group__GUI_1gafb46b285ddfcaf567dadb66d6abafc53" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>GetPerimeterPoint</name></member>
+      <member refid="df/dd1/group__GUI_1gaa81293c8ad433bd7799ff6886da801c8" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>GetPositionInWindow</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga306df7b436dba9b49927fc63055c0805" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>getRoutes</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga2f4a5c253814f588b6c0a87aa89e42b1" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>GetSizerFlags</name></member>
+      <member refid="df/dd1/group__GUI_1ga370557a6690e8f868b6244a50e5f5607" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>GotFocus</name></member>
+      <member refid="dc/df2/group__GUIroute_1gab7e54e1d89f3f4baac409b8058e898ea" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>GUIDeviceBase</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga2b90776d12b35841e521621c0f11653f" prot="private" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>GUIMidiFileFactory</name></member>
+      <member refid="df/dd1/group__GUI_1gac2e20ca0916f1fe5079b4fdb521bf753" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>Icon</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga36d3c286adbb3b8a440f9782f9e65e17" prot="protected" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>InitializeDialog</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga7b5af9103665d56b516868693da22667" prot="protected" virt="virtual" ambiguityscope="mutaborGUI::MutDeviceShape::"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>InitializeDialog</name></member>
+      <member refid="df/dd1/group__GUI_1ga71692d75ec3c362f4bcb53c75d57b4c2" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>Layout</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga340f741eb87e5d82487232c895bf58ed" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>LeftDblClickEvent</name></member>
+      <member refid="df/dd1/group__GUI_1ga902ef06d34f93cfeec3d2920e5c11b22" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>LineTo</name></member>
+      <member refid="df/dd1/group__GUI_1gadba3c3c1619d41c27ec47e150e9aefcc" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>LostFocus</name></member>
+      <member refid="df/dd1/group__GUI_1ga50ed5eb477a319c6a2e1d5a489886c88" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>maxBorderSize</name></member>
+      <member refid="dc/df2/group__GUIroute_1gaee636c2a52b62b5fbc54103e6cbe046e" prot="protected" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>MoveDevice</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga7ce5639e8664967732e75dc9ef3a7931" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>MoveRoutes</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga6f62370a00daf98380be0c8fbc2d1029" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>MutDeviceShape</name></member>
+      <member refid="dc/df2/group__GUIroute_1gaf004a2931397fc05a7c5a07ebc8b6419" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>MutDeviceShape</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga8299175c50dcf97a15ce82c8410cbcb2" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>MutDeviceShape</name></member>
+      <member refid="df/dd1/group__GUI_1ga6c60085fcaf257e014f23011bd314689" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>MutIconShapeClass</name></member>
+      <member refid="df/dd1/group__GUI_1ga67a1e855645d1c2caace1d5755c00ed4" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>MutIconShapeClass</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga4ee704f4dcbd24cb05813f4c71b48d52" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>MutOutputMidiFileDeviceShape</name></member>
+      <member refid="dc/df2/group__GUIroute_1gabe82adeff71fbb9e5054b72a75c5f7e5" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>MutOutputMidiFileDeviceShape</name></member>
+      <member refid="df/dd1/group__GUI_1ga51e3d99a30d436db152030e42a36afee" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>OnDraw</name></member>
+      <member refid="df/dd1/group__GUI_1gaddcd0a2c19d082c4ab3e7fb17ec9d316" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>OnGetFocus</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga7bfa75e25dc16cf93653d78337a44faa" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>OnKeyDown</name></member>
+      <member refid="df/dd1/group__GUI_1ga9d72cf755410c0f9e357ab6dd04cc02c" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>OnKillFocus</name></member>
+      <member refid="df/dd1/group__GUI_1ga7e20bf5dd47deb647e8458e0ab985521" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>OnMouseClick</name></member>
+      <member refid="df/dd1/group__GUI_1ga7f1d22cc86025045416ba687dee7f41f" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>OnMove</name></member>
+      <member refid="df/dd1/group__GUI_1ga2db78f04d6d7a26ab29da7faa0954def" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>OnPaint</name></member>
+      <member refid="df/dd1/group__GUI_1ga013ce0ee08027e1344b6310c98a3e432" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>OnSize</name></member>
+      <member refid="df/dd1/group__GUI_1gace19200ba44b40bef0d6e12e82d28036" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>parenttype</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga3ef08dd1fc8755c2d998fa4c5e4681c8" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>PlayButtonPressed</name></member>
+      <member refid="dc/df2/group__GUIroute_1gac160fb5b517b36c792139ae8c38a8659" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>playbuttons</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga70153cca84c5decea4580575013edf2e" prot="protected" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>readDialog</name></member>
+      <member refid="dc/df2/group__GUIroute_1gaa79f1671fe006269006802c11e853b3a" prot="protected" virt="virtual" ambiguityscope="mutaborGUI::MutDeviceShape::"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>readDialog</name></member>
+      <member refid="dc/df2/group__GUIroute_1gaa8d24dd26329cb9ef874d2908e2687e7" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>ReadFilterPanel</name></member>
+      <member refid="dc/df2/group__GUIroute_1gae9ee118a5a1b3c79f29ab4069bea87b6" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>ReadPanel</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga38cf0366e869a1992e938aef97993872" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>Recompute</name></member>
+      <member refid="dc/df2/group__GUIroute_1gadc38259eab8dcd703999236b3419cf60" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>Remove</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga1a956cff298c0db00ab9dd6084a79b41" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>Remove</name></member>
+      <member refid="dc/df2/group__GUIroute_1gafc010e19efa2c4f104df16604236c9d1" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>Replace</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga6ae93f5190a9dccf6a000a3ae7986a0e" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>Replace</name></member>
+      <member refid="dc/df2/group__GUIroute_1gab5acbf0b0cc8d599bb2389213dd09774" prot="protected" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>replaceSelfBy</name></member>
+      <member refid="dc/df2/group__GUIroute_1gaf6decba27144ffcaa7d767d39406bce4" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>routes</name></member>
+      <member refid="df/dd1/group__GUI_1gaa2391577a1074831747407069db8256e" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>SetIcon</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga529ec1e5b2b0bdd2c03983395aa67c89" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>SetLabel</name></member>
+      <member refid="dc/df2/group__GUIroute_1gac17bfc73232e9458750542496218a40d" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>SetSizerFlags</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga148310c0b2b4d76597258475a51cf112" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>ShowDeviceDialog</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga04373497ed4270eebf3c59acd77bdbe8" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>sizerFlags</name></member>
+      <member refid="df/dd1/group__GUI_1ga251ccb86f70128425f9e1b4677017e8e" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>staticText</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga84151a562ef47cede3c983c4c1e839eb" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>stringmapiterator</name></member>
+      <member refid="dc/df2/group__GUIroute_1gaa3b79ac9fc2c086c9ff46047d752bf8a" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>stringmaptype</name></member>
+      <member refid="dc/df2/group__GUIroute_1ga7566125c06b3a1667f51016270d43645" prot="public" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>thistype</name></member>
+      <member refid="df/dd1/group__GUI_1gac4fa33b7ec3b0cdd4e7007c836fbcf00" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>UpdateBorder</name></member>
+      <member refid="df/dd1/group__GUI_1ga00bc4210cf2d668fb7bf5c57d9c21a1f" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>usedperimeterpoints</name></member>
+      <member refid="dc/df2/group__GUIroute_1gaa2c66e71c454f07bf14cda62ccf3656b" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>~MutDeviceShape</name></member>
+      <member refid="df/dd1/group__GUI_1ga84fce5f40e796c9790e0375e250df937" prot="public" virt="virtual"><scope>mutaborGUI::MutOutputMidiFileDeviceShape</scope><name>~MutIconShapeClass</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

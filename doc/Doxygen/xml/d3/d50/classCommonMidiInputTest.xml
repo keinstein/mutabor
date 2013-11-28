@@ -1,0 +1,544 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d3/d50/classCommonMidiInputTest" kind="class" prot="public">
+    <compoundname>CommonMidiInputTest</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">TestFixture</basecompoundref>
+    <includes refid="dd/d56/midicmnTest_8h" local="no">midicmnTest.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d3/d50/classCommonMidiInputTest_1a79e7ac070da6aaa1b2c393cd202d5b7c" prot="protected" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gaa07c845228719e7505615a18d241734d" kindref="member">mutabor::InputDevice</ref></type>
+        <definition>mutabor::InputDevice CommonMidiInputTest::guard</definition>
+        <argsstring></argsstring>
+        <name>guard</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="191" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="191" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga5e841fb7390a573b6356f2d267c2f9ec" compoundref="d8/d59/midicmnTest_8cpp" startline="544" endline="573">setUp</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa0a6460204073d8707e5e5a8de8f6e8b" compoundref="d8/d59/midicmnTest_8cpp" startline="575" endline="596">tearDown</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d3/d50/classCommonMidiInputTest_1ab42cdf13b11d5ea92bfb7048ee0786b0" prot="protected" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gaa9af06d2b801f5fbf129acc683bb764d" kindref="member">mutabor::OutputDevice</ref></type>
+        <definition>mutabor::OutputDevice CommonMidiInputTest::outguard</definition>
+        <argsstring></argsstring>
+        <name>outguard</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="192" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="192" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga5e841fb7390a573b6356f2d267c2f9ec" compoundref="d8/d59/midicmnTest_8cpp" startline="544" endline="573">setUp</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d3/d50/classCommonMidiInputTest_1a6cd2c2d4edf005554bfd5dce75a942d1" prot="protected" static="no" mutable="no">
+        <type><ref refid="d7/df5/classmidicmnOutputDevice" kindref="compound">midicmnOutputDevice</ref> *</type>
+        <definition>midicmnOutputDevice* CommonMidiInputTest::out</definition>
+        <argsstring></argsstring>
+        <name>out</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="193" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="193" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga5e841fb7390a573b6356f2d267c2f9ec" compoundref="d8/d59/midicmnTest_8cpp" startline="544" endline="573">setUp</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa0a6460204073d8707e5e5a8de8f6e8b" compoundref="d8/d59/midicmnTest_8cpp" startline="575" endline="596">tearDown</referencedby>
+        <referencedby refid="d5/dee/group__route_1gacbc442186afd2221606b8c9178bc5094" compoundref="d8/d59/midicmnTest_8cpp" startline="955" endline="1325">testGlobalPanic</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga28763107ca50051640ed4834f627ffdc" compoundref="d8/d59/midicmnTest_8cpp" startline="599" endline="953">testPanic</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d3/d50/classCommonMidiInputTest_1a20b83f2f89193a5a2d1923ad7dfb0552" prot="protected" static="no" mutable="no">
+        <type><ref refid="d2/dce/classmidicmnInputDevice" kindref="compound">midicmnInputDevice</ref> *</type>
+        <definition>midicmnInputDevice* CommonMidiInputTest::in</definition>
+        <argsstring></argsstring>
+        <name>in</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="194" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="194" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga5e841fb7390a573b6356f2d267c2f9ec" compoundref="d8/d59/midicmnTest_8cpp" startline="544" endline="573">setUp</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa0a6460204073d8707e5e5a8de8f6e8b" compoundref="d8/d59/midicmnTest_8cpp" startline="575" endline="596">tearDown</referencedby>
+        <referencedby refid="d5/dee/group__route_1gacbc442186afd2221606b8c9178bc5094" compoundref="d8/d59/midicmnTest_8cpp" startline="955" endline="1325">testGlobalPanic</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga28763107ca50051640ed4834f627ffdc" compoundref="d8/d59/midicmnTest_8cpp" startline="599" endline="953">testPanic</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d3/d50/classCommonMidiInputTest_1a6abf5904582d5f312cb7eee80d356633" prot="protected" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">mutabor::Route</ref></type>
+        <definition>mutabor::Route CommonMidiInputTest::route</definition>
+        <argsstring></argsstring>
+        <name>route</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="195" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="195" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga5e841fb7390a573b6356f2d267c2f9ec" compoundref="d8/d59/midicmnTest_8cpp" startline="544" endline="573">setUp</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa0a6460204073d8707e5e5a8de8f6e8b" compoundref="d8/d59/midicmnTest_8cpp" startline="575" endline="596">tearDown</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d3/d50/classCommonMidiInputTest_1a26ca027231947b8f253af91d756fe24c" prot="protected" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">mutabor::Box</ref></type>
+        <definition>mutabor::Box CommonMidiInputTest::box</definition>
+        <argsstring></argsstring>
+        <name>box</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="196" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="196" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga5e841fb7390a573b6356f2d267c2f9ec" compoundref="d8/d59/midicmnTest_8cpp" startline="544" endline="573">setUp</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa0a6460204073d8707e5e5a8de8f6e8b" compoundref="d8/d59/midicmnTest_8cpp" startline="575" endline="596">tearDown</referencedby>
+        <referencedby refid="d5/dee/group__route_1gacbc442186afd2221606b8c9178bc5094" compoundref="d8/d59/midicmnTest_8cpp" startline="955" endline="1325">testGlobalPanic</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga28763107ca50051640ed4834f627ffdc" compoundref="d8/d59/midicmnTest_8cpp" startline="599" endline="953">testPanic</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d3/d50/classCommonMidiInputTest_1a71b2612613f12d1a96a33486af9371d4" prot="protected" static="no" mutable="no">
+        <type><ref refid="d4/d4a/classmutabor_1_1ChannelData" kindref="compound">mutabor::ChannelData</ref></type>
+        <definition>mutabor::ChannelData CommonMidiInputTest::cd</definition>
+        <argsstring></argsstring>
+        <name>cd</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="197" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="d3/d50/classCommonMidiInputTest_1a10b586bd0ff1115578db97d0eded7ee6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CommonMidiInputTest::CPPUNIT_TEST_SUITE</definition>
+        <argsstring>(CommonMidiInputTest)</argsstring>
+        <name>CPPUNIT_TEST_SUITE</name>
+        <param>
+          <type><ref refid="d3/d50/classCommonMidiInputTest" kindref="compound">CommonMidiInputTest</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="163" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d50/classCommonMidiInputTest_1a2730389a90f496e9bde803a191a4a1a8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CommonMidiInputTest::CPPUNIT_TEST</definition>
+        <argsstring>(testPanic)</argsstring>
+        <name>CPPUNIT_TEST</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga28763107ca50051640ed4834f627ffdc" kindref="member">testPanic</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="164" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d50/classCommonMidiInputTest_1a0f12cef91bcb96631c2072284cb29901" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CommonMidiInputTest::CPPUNIT_TEST</definition>
+        <argsstring>(testGlobalPanic)</argsstring>
+        <name>CPPUNIT_TEST</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gacbc442186afd2221606b8c9178bc5094" kindref="member">testGlobalPanic</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="165" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d50/classCommonMidiInputTest_1a664e60760c5c018091ff156183d55d73" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CommonMidiInputTest::CPPUNIT_TEST_SUITE_END</definition>
+        <argsstring>()</argsstring>
+        <name>CPPUNIT_TEST_SUITE_END</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="166" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d3/d50/classCommonMidiInputTest_1aa7f1cc47182642af32816862af37e41a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CommonMidiInputTest::CommonMidiInputTest</definition>
+        <argsstring>()</argsstring>
+        <name>CommonMidiInputTest</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="170" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="170" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d50/classCommonMidiInputTest_1ab510c68c051f967cd0c77a6aecfe2833" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual CommonMidiInputTest::~CommonMidiInputTest</definition>
+        <argsstring>()</argsstring>
+        <name>~CommonMidiInputTest</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="174" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="174" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d50/classCommonMidiInputTest_1a86aa6de4171b4a2da61100590661bfe0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CommonMidiInputTest::countTestCases</definition>
+        <argsstring>() const </argsstring>
+        <name>countTestCases</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="178" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="178" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga5e841fb7390a573b6356f2d267c2f9ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CommonMidiInputTest::setUp</definition>
+        <argsstring>()</argsstring>
+        <name>setUp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="184" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.cpp" bodystart="544" bodyend="573"/>
+        <references refid="d3/d50/classCommonMidiInputTest_1a26ca027231947b8f253af91d756fe24c" compoundref="dd/d56/midicmnTest_8h" startline="196">box</references>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9" compoundref="de/d0f/Box_8h" startline="115">mutabor::Box0</references>
+        <references refid="d6/daa/namespacemutabor_1a65c68128daf0c3feda58f55b7aca2e05" compoundref="d2/d2c/Route-inlines_8h" startline="58" endline="61">mutabor::connect</references>
+        <references refid="d5/dee/group__route_1gaf8817ebce7a0d0d9fecacf9bdeff028c" compoundref="d1/d65/Route_8h" startline="571" endline="577">mutabor::RouteFactory::Create</references>
+        <references refid="d5/dee/group__route_1ga1b747523cf90d4b44b18f88512405445" compoundref="de/d0f/Box_8h" startline="737" endline="752">mutabor::BoxFactory::Create</references>
+        <references refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" compoundref="d1/dca/timing_8cpp" startline="43">mutabor::CurrentTime</references>
+        <references refid="d5/dee/group__route_1gac71327653b27bcbd7f4eee505629e847" compoundref="de/d0f/Box_8h" startline="269" endline="271">mutabor::BoxClass::GetBoxList</references>
+        <references refid="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" compoundref="de/d05/Device_8h" startline="604" endline="606">mutabor::CommonTypedDeviceAPI&lt; OutputDeviceClass &gt;::GetDeviceList</references>
+        <references refid="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" compoundref="de/d05/Device_8h" startline="604" endline="606">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::GetDeviceList</references>
+        <references refid="d5/dee/group__route_1ga1410c3e711df6efc60399207a8d0c8df" compoundref="d1/d65/Route_8h" startline="377" endline="379">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::GetRouteList</references>
+        <references refid="d3/d50/classCommonMidiInputTest_1a79e7ac070da6aaa1b2c393cd202d5b7c" compoundref="dd/d56/midicmnTest_8h" startline="191">guard</references>
+        <references refid="d3/d50/classCommonMidiInputTest_1a20b83f2f89193a5a2d1923ad7dfb0552" compoundref="dd/d56/midicmnTest_8h" startline="194">in</references>
+        <references refid="d3/d50/classCommonMidiInputTest_1a6cd2c2d4edf005554bfd5dce75a942d1" compoundref="dd/d56/midicmnTest_8h" startline="193">out</references>
+        <references refid="d3/d50/classCommonMidiInputTest_1ab42cdf13b11d5ea92bfb7048ee0786b0" compoundref="dd/d56/midicmnTest_8h" startline="192">outguard</references>
+        <references refid="d3/d50/classCommonMidiInputTest_1a6abf5904582d5f312cb7eee80d356633" compoundref="dd/d56/midicmnTest_8h" startline="195">route</references>
+        <references refid="d7/dda/classmutabor_1_1CurrentTimer_1aaaae9a6186045cd8ef28f1d24bcf081d" compoundref="db/d41/timing_8h" startline="458" endline="467">mutabor::CurrentTimer::UseRealtime</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaa0a6460204073d8707e5e5a8de8f6e8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CommonMidiInputTest::tearDown</definition>
+        <argsstring>()</argsstring>
+        <name>tearDown</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="185" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.cpp" bodystart="575" bodyend="596"/>
+        <references refid="d3/d50/classCommonMidiInputTest_1a26ca027231947b8f253af91d756fe24c" compoundref="dd/d56/midicmnTest_8h" startline="196">box</references>
+        <references refid="d5/dee/group__route_1gad212bd763c21f167dc9c6523033d2b62" compoundref="d8/d4d/Device-inlines_8h" startline="53" endline="65">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Destroy</references>
+        <references refid="d3/d50/classCommonMidiInputTest_1a79e7ac070da6aaa1b2c393cd202d5b7c" compoundref="dd/d56/midicmnTest_8h" startline="191">guard</references>
+        <references refid="d3/d50/classCommonMidiInputTest_1a20b83f2f89193a5a2d1923ad7dfb0552" compoundref="dd/d56/midicmnTest_8h" startline="194">in</references>
+        <references refid="d3/d50/classCommonMidiInputTest_1a6cd2c2d4edf005554bfd5dce75a942d1" compoundref="dd/d56/midicmnTest_8h" startline="193">out</references>
+        <references refid="d3/d50/classCommonMidiInputTest_1a6abf5904582d5f312cb7eee80d356633" compoundref="dd/d56/midicmnTest_8h" startline="195">route</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga28763107ca50051640ed4834f627ffdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CommonMidiInputTest::testPanic</definition>
+        <argsstring>()</argsstring>
+        <name>testPanic</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="187" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.cpp" bodystart="599" bodyend="953"/>
+        <references refid="d3/d50/classCommonMidiInputTest_1a26ca027231947b8f253af91d756fe24c" compoundref="dd/d56/midicmnTest_8h" startline="196">box</references>
+        <references refid="d7/df5/classmidicmnOutputDevice_1a06022e0b9a4696860bb03ce8a57c0171" compoundref="dd/d56/midicmnTest_8h" startline="84" endline="94">midicmnOutputDevice::Check</references>
+        <references refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab263ae394691352ce2878bedc397edae" compoundref="d3/d0f/midicmn_8cpp" startline="99" endline="116">mutabor::CommonMidiOutput&lt; T, D &gt;::Close</references>
+        <references refid="d5/dee/group__route_1ga74c7ff321332ac230d3696c91559dbcf" compoundref="de/d05/Device_8h" startline="888" endline="890">mutabor::InputDeviceClass::Close</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d7/df5/classmidicmnOutputDevice_1a058cd6eda4c96426e7f8e2ff50bce793" compoundref="dd/d56/midicmnTest_8h" startline="74" endline="74">midicmnOutputDevice::getOut</references>
+        <references refid="d3/d50/classCommonMidiInputTest_1a20b83f2f89193a5a2d1923ad7dfb0552" compoundref="dd/d56/midicmnTest_8h" startline="194">in</references>
+        <references refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" compoundref="d1/d73/Defs_8h" startline="169">mutString</references>
+        <references refid="d2/dce/classmidicmnInputDevice_1a7a4fe0aa7a4e2d0dcc4a81f7bbcd39a0" compoundref="dd/d56/midicmnTest_8h" startline="155" endline="157">midicmnInputDevice::NoteOff</references>
+        <references refid="d2/dce/classmidicmnInputDevice_1a62494bb2f7284dda3c91292ae792775f" compoundref="dd/d56/midicmnTest_8h" startline="152" endline="154">midicmnInputDevice::NoteOn</references>
+        <references refid="d2/dce/classmidicmnInputDevice_1a4b3575a6f77f82f081c1db562c27225d" compoundref="dd/d56/midicmnTest_8h" startline="146" endline="146">midicmnInputDevice::Open</references>
+        <references refid="d5/dee/group__route_1ga1e7ff931fc0fbd026f00d07b11924c7d" compoundref="de/d05/Device_8h" startline="755" endline="758">mutabor::OutputDeviceClass::Open</references>
+        <references refid="d3/d50/classCommonMidiInputTest_1a6cd2c2d4edf005554bfd5dce75a942d1" compoundref="dd/d56/midicmnTest_8h" startline="193">out</references>
+        <references refid="d5/dee/group__route_1ga4c7c24c48255adddc767a745ed3c8e1c" compoundref="de/d05/Device_8h" startline="989" endline="989">mutabor::InputDeviceClass::Panic</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gacbc442186afd2221606b8c9178bc5094" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CommonMidiInputTest::testGlobalPanic</definition>
+        <argsstring>()</argsstring>
+        <name>testGlobalPanic</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="188" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.cpp" bodystart="955" bodyend="1325"/>
+        <references refid="d3/d50/classCommonMidiInputTest_1a26ca027231947b8f253af91d756fe24c" compoundref="dd/d56/midicmnTest_8h" startline="196">box</references>
+        <references refid="d7/df5/classmidicmnOutputDevice_1a06022e0b9a4696860bb03ce8a57c0171" compoundref="dd/d56/midicmnTest_8h" startline="84" endline="94">midicmnOutputDevice::Check</references>
+        <references refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab263ae394691352ce2878bedc397edae" compoundref="d3/d0f/midicmn_8cpp" startline="99" endline="116">mutabor::CommonMidiOutput&lt; T, D &gt;::Close</references>
+        <references refid="d5/dee/group__route_1ga74c7ff321332ac230d3696c91559dbcf" compoundref="de/d05/Device_8h" startline="888" endline="890">mutabor::InputDeviceClass::Close</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d7/df5/classmidicmnOutputDevice_1a058cd6eda4c96426e7f8e2ff50bce793" compoundref="dd/d56/midicmnTest_8h" startline="74" endline="74">midicmnOutputDevice::getOut</references>
+        <references refid="d3/d50/classCommonMidiInputTest_1a20b83f2f89193a5a2d1923ad7dfb0552" compoundref="dd/d56/midicmnTest_8h" startline="194">in</references>
+        <references refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" compoundref="d1/d73/Defs_8h" startline="169">mutString</references>
+        <references refid="d2/dce/classmidicmnInputDevice_1a7a4fe0aa7a4e2d0dcc4a81f7bbcd39a0" compoundref="dd/d56/midicmnTest_8h" startline="155" endline="157">midicmnInputDevice::NoteOff</references>
+        <references refid="d2/dce/classmidicmnInputDevice_1a62494bb2f7284dda3c91292ae792775f" compoundref="dd/d56/midicmnTest_8h" startline="152" endline="154">midicmnInputDevice::NoteOn</references>
+        <references refid="d2/dce/classmidicmnInputDevice_1a4b3575a6f77f82f081c1db562c27225d" compoundref="dd/d56/midicmnTest_8h" startline="146" endline="146">midicmnInputDevice::Open</references>
+        <references refid="d5/dee/group__route_1ga1e7ff931fc0fbd026f00d07b11924c7d" compoundref="de/d05/Device_8h" startline="755" endline="758">mutabor::OutputDeviceClass::Open</references>
+        <references refid="d3/d50/classCommonMidiInputTest_1a6cd2c2d4edf005554bfd5dce75a942d1" compoundref="dd/d56/midicmnTest_8h" startline="193">out</references>
+        <references refid="d5/dee/group__route_1ga5b4ff2d84ebcfa5d31083f0b7df79c84" compoundref="dd/dc6/Box_8cpp" startline="929" endline="940">mutabor::Panic</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2488">
+        <label>TestFixture</label>
+      </node>
+      <node id="2487">
+        <label>CommonMidiInputTest</label>
+        <link refid="d3/d50/classCommonMidiInputTest"/>
+        <childnode refid="2488" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2501">
+        <label>mutabor::InputDeviceClass::current_keys_type</label>
+        <link refid="dc/d50/structmutabor_1_1InputDeviceClass_1_1current__keys__type"/>
+      </node>
+      <node id="2504">
+        <label>mutabor::CommonTypedDeviceAPI&lt; OutputDeviceClass &gt;</label>
+        <link refid="d9/dbf/classmutabor_1_1CommonTypedDeviceAPI"/>
+        <childnode refid="2499" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2510">
+        <label>mutabor::channel_queue_template&lt; unsigned char, 16 &gt;</label>
+        <link refid="d3/d85/classmutabor_1_1channel__queue__template"/>
+        <childnode refid="2511" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2512" relation="usage">
+          <edgelabel>last_sustained</edgelabel>
+          <edgelabel>first_free</edgelabel>
+        </childnode>
+      </node>
+      <node id="2508">
+        <label>mutabor::TAK</label>
+        <link refid="d9/d2a/structmutabor_1_1TAK"/>
+        <childnode refid="2509" relation="usage">
+          <edgelabel>outkey</edgelabel>
+        </childnode>
+      </node>
+      <node id="2493">
+        <label>T</label>
+      </node>
+      <node id="2491">
+        <label>mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;</label>
+        <link refid="db/d05/classmutabor_1_1TRouteClass"/>
+        <childnode refid="2492" relation="usage">
+          <edgelabel>routeList</edgelabel>
+        </childnode>
+        <childnode refid="2494" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="2494">
+        <label>mutabor::idtype&lt; mutabor::TRouteClass&lt; InputDevice, OutputDevice &gt; &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="2490">
+        <label>TestFixture</label>
+      </node>
+      <node id="2498">
+        <label>mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;</label>
+        <link refid="d9/dbf/classmutabor_1_1CommonTypedDeviceAPI"/>
+        <childnode refid="2499" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2507">
+        <label>mutabor::OutputDeviceClass</label>
+        <link refid="d2/d2f/classmutabor_1_1OutputDeviceClass"/>
+        <childnode refid="2504" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2500">
+        <label>mutabor::idtype&lt; mutabor::Device &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="2497">
+        <label>mutabor::InputDeviceClass</label>
+        <link refid="d4/d18/classmutabor_1_1InputDeviceClass"/>
+        <childnode refid="2498" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2501" relation="usage">
+          <edgelabel>current_keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="2499">
+        <label>mutabor::Device</label>
+        <link refid="db/db4/classmutabor_1_1Device"/>
+        <childnode refid="2491" relation="usage">
+          <edgelabel>routes</edgelabel>
+        </childnode>
+        <childnode refid="2500" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="2492">
+        <label>std::list&lt; T &gt;</label>
+        <childnode refid="2493" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2506">
+        <label>mutabor::CommonMidiOutput&lt; mutabor::DebugMidiOutputProvider, mutabor::OutputDeviceClass &gt;</label>
+        <link refid="dd/df5/classmutabor_1_1CommonMidiOutput"/>
+        <childnode refid="2507" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2508" relation="usage">
+          <edgelabel>ton_auf_kanal</edgelabel>
+        </childnode>
+        <childnode refid="2502" relation="usage">
+          <edgelabel>Cd</edgelabel>
+        </childnode>
+        <childnode refid="2510" relation="usage">
+          <edgelabel>channel_queue</edgelabel>
+        </childnode>
+        <childnode refid="2513" relation="usage">
+          <edgelabel>Out</edgelabel>
+        </childnode>
+      </node>
+      <node id="2495">
+        <label>midicmnInputDevice</label>
+        <link refid="d2/dce/classmidicmnInputDevice"/>
+        <childnode refid="2496" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2509">
+        <label>mutabor::pitch_bend_type</label>
+        <link refid="dd/d7d/classmutabor_1_1pitch__bend__type"/>
+      </node>
+      <node id="2502">
+        <label>mutabor::ChannelData</label>
+        <link refid="d4/d4a/classmutabor_1_1ChannelData"/>
+        <childnode refid="2503" relation="usage">
+          <edgelabel>controller_changed</edgelabel>
+          <edgelabel>controller</edgelabel>
+        </childnode>
+      </node>
+      <node id="2489">
+        <label>CommonMidiInputTest</label>
+        <link refid="d3/d50/classCommonMidiInputTest"/>
+        <childnode refid="2490" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2491" relation="usage">
+          <edgelabel>route</edgelabel>
+        </childnode>
+        <childnode refid="2495" relation="usage">
+          <edgelabel>in</edgelabel>
+        </childnode>
+        <childnode refid="2502" relation="usage">
+          <edgelabel>cd</edgelabel>
+        </childnode>
+        <childnode refid="2504" relation="usage">
+          <edgelabel>outguard</edgelabel>
+        </childnode>
+        <childnode refid="2505" relation="usage">
+          <edgelabel>out</edgelabel>
+        </childnode>
+        <childnode refid="2498" relation="usage">
+          <edgelabel>guard</edgelabel>
+        </childnode>
+      </node>
+      <node id="2512">
+        <label>std::vector&lt; T &gt;::iterator</label>
+      </node>
+      <node id="2511">
+        <label>std::vector&lt; unsigned char &gt;</label>
+        <childnode refid="2493" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2513">
+        <label>mutabor::DebugMidiOutputProvider</label>
+        <link refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider"/>
+        <childnode refid="2499" relation="usage">
+          <edgelabel>device</edgelabel>
+        </childnode>
+      </node>
+      <node id="2496">
+        <label>mutabor::CommonMidiInput&lt; mutabor::InputDeviceClass &gt;</label>
+        <link refid="dc/d51/classmutabor_1_1CommonMidiInput"/>
+        <childnode refid="2497" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2502" relation="usage">
+          <edgelabel>Cd</edgelabel>
+        </childnode>
+      </node>
+      <node id="2505">
+        <label>midicmnOutputDevice</label>
+        <link refid="d7/df5/classmidicmnOutputDevice"/>
+        <childnode refid="2506" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2503">
+        <label>std::vector&lt; int &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="162" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="161" bodyend="198"/>
+    <listofallmembers>
+      <member refid="d3/d50/classCommonMidiInputTest_1a26ca027231947b8f253af91d756fe24c" prot="protected" virt="non-virtual"><scope>CommonMidiInputTest</scope><name>box</name></member>
+      <member refid="d3/d50/classCommonMidiInputTest_1a71b2612613f12d1a96a33486af9371d4" prot="protected" virt="non-virtual"><scope>CommonMidiInputTest</scope><name>cd</name></member>
+      <member refid="d3/d50/classCommonMidiInputTest_1aa7f1cc47182642af32816862af37e41a" prot="public" virt="non-virtual"><scope>CommonMidiInputTest</scope><name>CommonMidiInputTest</name></member>
+      <member refid="d3/d50/classCommonMidiInputTest_1a86aa6de4171b4a2da61100590661bfe0" prot="public" virt="non-virtual"><scope>CommonMidiInputTest</scope><name>countTestCases</name></member>
+      <member refid="d3/d50/classCommonMidiInputTest_1a2730389a90f496e9bde803a191a4a1a8" prot="private" virt="non-virtual"><scope>CommonMidiInputTest</scope><name>CPPUNIT_TEST</name></member>
+      <member refid="d3/d50/classCommonMidiInputTest_1a0f12cef91bcb96631c2072284cb29901" prot="private" virt="non-virtual"><scope>CommonMidiInputTest</scope><name>CPPUNIT_TEST</name></member>
+      <member refid="d3/d50/classCommonMidiInputTest_1a10b586bd0ff1115578db97d0eded7ee6" prot="private" virt="non-virtual"><scope>CommonMidiInputTest</scope><name>CPPUNIT_TEST_SUITE</name></member>
+      <member refid="d3/d50/classCommonMidiInputTest_1a664e60760c5c018091ff156183d55d73" prot="private" virt="non-virtual"><scope>CommonMidiInputTest</scope><name>CPPUNIT_TEST_SUITE_END</name></member>
+      <member refid="d3/d50/classCommonMidiInputTest_1a79e7ac070da6aaa1b2c393cd202d5b7c" prot="protected" virt="non-virtual"><scope>CommonMidiInputTest</scope><name>guard</name></member>
+      <member refid="d3/d50/classCommonMidiInputTest_1a20b83f2f89193a5a2d1923ad7dfb0552" prot="protected" virt="non-virtual"><scope>CommonMidiInputTest</scope><name>in</name></member>
+      <member refid="d3/d50/classCommonMidiInputTest_1a6cd2c2d4edf005554bfd5dce75a942d1" prot="protected" virt="non-virtual"><scope>CommonMidiInputTest</scope><name>out</name></member>
+      <member refid="d3/d50/classCommonMidiInputTest_1ab42cdf13b11d5ea92bfb7048ee0786b0" prot="protected" virt="non-virtual"><scope>CommonMidiInputTest</scope><name>outguard</name></member>
+      <member refid="d3/d50/classCommonMidiInputTest_1a6abf5904582d5f312cb7eee80d356633" prot="protected" virt="non-virtual"><scope>CommonMidiInputTest</scope><name>route</name></member>
+      <member refid="d5/dee/group__route_1ga5e841fb7390a573b6356f2d267c2f9ec" prot="public" virt="non-virtual"><scope>CommonMidiInputTest</scope><name>setUp</name></member>
+      <member refid="d5/dee/group__route_1gaa0a6460204073d8707e5e5a8de8f6e8b" prot="public" virt="non-virtual"><scope>CommonMidiInputTest</scope><name>tearDown</name></member>
+      <member refid="d5/dee/group__route_1gacbc442186afd2221606b8c9178bc5094" prot="public" virt="non-virtual"><scope>CommonMidiInputTest</scope><name>testGlobalPanic</name></member>
+      <member refid="d5/dee/group__route_1ga28763107ca50051640ed4834f627ffdc" prot="public" virt="non-virtual"><scope>CommonMidiInputTest</scope><name>testPanic</name></member>
+      <member refid="d3/d50/classCommonMidiInputTest_1ab510c68c051f967cd0c77a6aecfe2833" prot="public" virt="virtual"><scope>CommonMidiInputTest</scope><name>~CommonMidiInputTest</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,640 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="db/d99/case__liste_8h" kind="file">
+    <compoundname>case_liste.h</compoundname>
+    <includes refid="dd/de4/aktion_8h" local="yes">mutabor/aktion.h</includes>
+    <includedby refid="da/d7f/umstimmung_8h" local="yes">src/includes/mutabor/umstimmung.h</includedby>
+    <incdepgraph>
+      <node id="14514">
+        <label>src/includes/mutabor/case_liste.h</label>
+        <link refid="case_liste.h"/>
+        <childnode refid="14515" relation="include">
+        </childnode>
+      </node>
+      <node id="14523">
+        <label>mutabor/interval.h</label>
+        <link refid="d2/d8a/interval_8h"/>
+        <childnode refid="14524" relation="include">
+        </childnode>
+        <childnode refid="14519" relation="include">
+        </childnode>
+      </node>
+      <node id="14525">
+        <label>mutabor/object.h</label>
+        <link refid="de/d10/object_8h"/>
+      </node>
+      <node id="14517">
+        <label>mutabor/argument.h</label>
+        <link refid="db/d1e/argument_8h"/>
+        <childnode refid="14518" relation="include">
+        </childnode>
+      </node>
+      <node id="14515">
+        <label>mutabor/aktion.h</label>
+        <link refid="dd/de4/aktion_8h"/>
+        <childnode refid="14516" relation="include">
+        </childnode>
+        <childnode refid="14517" relation="include">
+        </childnode>
+        <childnode refid="14521" relation="include">
+        </childnode>
+        <childnode refid="14526" relation="include">
+        </childnode>
+        <childnode refid="14518" relation="include">
+        </childnode>
+        <childnode refid="14527" relation="include">
+        </childnode>
+      </node>
+      <node id="14521">
+        <label>mutabor/umstimmung.h</label>
+        <link refid="da/d7f/umstimmung_8h"/>
+        <childnode refid="14522" relation="include">
+        </childnode>
+        <childnode refid="14514" relation="include">
+        </childnode>
+      </node>
+      <node id="14524">
+        <label>mutabor/identifier.h</label>
+        <link refid="d7/da7/identifier_8h"/>
+        <childnode refid="14525" relation="include">
+        </childnode>
+      </node>
+      <node id="14526">
+        <label>mutabor/tonsystem.h</label>
+        <link refid="d8/d39/tonsystem_8h"/>
+        <childnode refid="14522" relation="include">
+        </childnode>
+        <childnode refid="14523" relation="include">
+        </childnode>
+        <childnode refid="14519" relation="include">
+        </childnode>
+      </node>
+      <node id="14528">
+        <label>mutabor/ausloeser.h</label>
+        <link refid="d1/dfa/ausloeser_8h"/>
+        <childnode refid="14516" relation="include">
+        </childnode>
+        <childnode refid="14529" relation="include">
+        </childnode>
+        <childnode refid="14530" relation="include">
+        </childnode>
+      </node>
+      <node id="14522">
+        <label>mutabor/ton.h</label>
+        <link refid="d4/d12/ton_8h"/>
+        <childnode refid="14523" relation="include">
+        </childnode>
+      </node>
+      <node id="14520">
+        <label>math.h</label>
+      </node>
+      <node id="14529">
+        <label>mutabor/harmonie.h</label>
+        <link refid="d1/d63/harmonie_8h"/>
+        <childnode refid="14523" relation="include">
+        </childnode>
+        <childnode refid="14519" relation="include">
+        </childnode>
+      </node>
+      <node id="14527">
+        <label>mutabor/logik.h</label>
+        <link refid="d1/dff/logik_8h"/>
+        <childnode refid="14528" relation="include">
+        </childnode>
+        <childnode refid="14515" relation="include">
+        </childnode>
+      </node>
+      <node id="14516">
+        <label>mutabor/midicalc.h</label>
+        <link refid="d0/d24/midicalc_8h"/>
+      </node>
+      <node id="14518">
+        <label>mutabor/parameter.h</label>
+        <link refid="d2/d2a/parameter_8h"/>
+        <childnode refid="14517" relation="include">
+        </childnode>
+        <childnode refid="14519" relation="include">
+        </childnode>
+      </node>
+      <node id="14519">
+        <label>mutabor/bad_decl.h</label>
+        <link refid="df/d8e/bad__decl_8h"/>
+        <childnode refid="14520" relation="include">
+        </childnode>
+      </node>
+      <node id="14530">
+        <label>mutabor/anweisung.h</label>
+        <link refid="d0/db7/anweisung_8h"/>
+        <childnode refid="14528" relation="include">
+        </childnode>
+        <childnode refid="14515" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="14546">
+        <label>src/libmutabor/anweisung.c</label>
+        <link refid="d5/dfe/anweisung_8c"/>
+      </node>
+      <node id="14541">
+        <label>src/libmutabor/interpreter.c</label>
+        <link refid="dc/d30/interpreter_8c"/>
+      </node>
+      <node id="14531">
+        <label>src/includes/mutabor/case_liste.h</label>
+        <link refid="case_liste.h"/>
+        <childnode refid="14532" relation="include">
+        </childnode>
+      </node>
+      <node id="14538">
+        <label>src/gmut/gmutdos.cpp</label>
+        <link refid="dd/d15/gmutdos_8cpp"/>
+      </node>
+      <node id="14542">
+        <label>src/libmutabor/logik.c</label>
+        <link refid="d7/d6e/logik_8c"/>
+      </node>
+      <node id="14533">
+        <label>src/includes/mutabor/aktion.h</label>
+        <link refid="dd/de4/aktion_8h"/>
+        <childnode refid="14534" relation="include">
+        </childnode>
+        <childnode refid="14531" relation="include">
+        </childnode>
+        <childnode refid="14536" relation="include">
+        </childnode>
+        <childnode refid="14542" relation="include">
+        </childnode>
+      </node>
+      <node id="14532">
+        <label>src/includes/mutabor/umstimmung.h</label>
+        <link refid="da/d7f/umstimmung_8h"/>
+        <childnode refid="14533" relation="include">
+        </childnode>
+        <childnode refid="14537" relation="include">
+        </childnode>
+        <childnode refid="14539" relation="include">
+        </childnode>
+        <childnode refid="14547" relation="include">
+        </childnode>
+        <childnode refid="14542" relation="include">
+        </childnode>
+        <childnode refid="14548" relation="include">
+        </childnode>
+        <childnode refid="14543" relation="include">
+        </childnode>
+        <childnode refid="14544" relation="include">
+        </childnode>
+        <childnode refid="14545" relation="include">
+        </childnode>
+      </node>
+      <node id="14548">
+        <label>src/libmutabor/midicalc.c</label>
+        <link refid="d8/dff/midicalc_8c"/>
+      </node>
+      <node id="14535">
+        <label>src/includes/mutabor/ausloeser.h</label>
+        <link refid="d1/dfa/ausloeser_8h"/>
+        <childnode refid="14534" relation="include">
+        </childnode>
+        <childnode refid="14536" relation="include">
+        </childnode>
+        <childnode refid="14540" relation="include">
+        </childnode>
+        <childnode refid="14541" relation="include">
+        </childnode>
+      </node>
+      <node id="14545">
+        <label>src/libmutabor/umstimmung.c</label>
+        <link refid="d2/d4a/umstimmung_8c"/>
+      </node>
+      <node id="14539">
+        <label>src/libmutabor/aktion.c</label>
+        <link refid="d8/dc3/aktion_8c"/>
+      </node>
+      <node id="14540">
+        <label>src/libmutabor/ausloeser.c</label>
+        <link refid="d6/dcc/ausloeser_8c"/>
+      </node>
+      <node id="14547">
+        <label>src/libmutabor/case_liste.c</label>
+        <link refid="dc/d54/case__liste_8c"/>
+      </node>
+      <node id="14537">
+        <label>src/includes/mutabor/global.h</label>
+        <link refid="d2/d49/global_8h"/>
+        <childnode refid="14538" relation="include">
+        </childnode>
+      </node>
+      <node id="14543">
+        <label>src/libmutabor/mut.c</label>
+        <link refid="d3/da3/mut_8c"/>
+      </node>
+      <node id="14544">
+        <label>src/libmutabor/parser.c</label>
+        <link refid="d2/d72/parser_8c"/>
+      </node>
+      <node id="14536">
+        <label>src/includes/mutabor/logik.h</label>
+        <link refid="d1/dff/logik_8h"/>
+        <childnode refid="14533" relation="include">
+        </childnode>
+        <childnode refid="14537" relation="include">
+        </childnode>
+        <childnode refid="14539" relation="include">
+        </childnode>
+        <childnode refid="14540" relation="include">
+        </childnode>
+        <childnode refid="14541" relation="include">
+        </childnode>
+        <childnode refid="14542" relation="include">
+        </childnode>
+        <childnode refid="14543" relation="include">
+        </childnode>
+        <childnode refid="14544" relation="include">
+        </childnode>
+        <childnode refid="14545" relation="include">
+        </childnode>
+      </node>
+      <node id="14534">
+        <label>src/includes/mutabor/anweisung.h</label>
+        <link refid="d0/db7/anweisung_8h"/>
+        <childnode refid="14535" relation="include">
+        </childnode>
+        <childnode refid="14537" relation="include">
+        </childnode>
+        <childnode refid="14546" relation="include">
+        </childnode>
+        <childnode refid="14540" relation="include">
+        </childnode>
+        <childnode refid="14542" relation="include">
+        </childnode>
+        <childnode refid="14543" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d0/d45/structcase__liste" prot="public">case_liste</innerclass>
+    <innerclass refid="dc/da0/structcase__element" prot="public">case_element</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="dd/da8/group__parser_1ga80019958d5bbc53f956a1f1836bd7656" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_umstimmungs_case_liste</definition>
+        <argsstring>(void)</argsstring>
+        <name>init_umstimmungs_case_liste</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Setzt <computeroutput>tmp_umstimmungs_case_liste</computeroutput> auf <computeroutput>NULL</computeroutput>. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>Die Liste wird nicht gelöscht. Das muss gegebenenfalls vor der Initialiserung manuell erledigt werden. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/case_liste.h" line="50" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/case_liste.c" bodystart="85" bodyend="88"/>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/da8/group__parser_1gae037a4769c7d049fcb409abbefad4df9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_umstimmung_umstimm_case_zahl</definition>
+        <argsstring>(int selector)</argsstring>
+        <name>get_umstimmung_umstimm_case_zahl</name>
+        <param>
+          <type>int</type>
+          <declname>selector</declname>
+        </param>
+        <briefdescription>
+<para>Baut <computeroutput>tmp_umstimmung</computeroutput> zu einer Zahlgesteuerten Case-Umstimmung aus. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei wird die letzte eingelesene Umstimmungs-Case-Liste verwendet. Falls darin ein unbekannter Parameter gefunden wird, wird ein fataler Fehler ausgelöst. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>selector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Wert für die Case-Anweisung </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/case_liste.h" line="51" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/case_liste.c" bodystart="96" bodyend="147"/>
+        <references refid="da/d7f/umstimmung_8h_1a825a2d7cb8bc82c2e30098d1b3c1dc6e" compoundref="da/d7f/umstimmung_8h" startline="118">tmp_umstimmung</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa6762ebe62dfd2cb6d4a659f6a840e2a4" compoundref="da/d7f/umstimmung_8h" startline="35">umstimmung_umstimmungs_case</references>
+        <references refid="d2/d1c/structumstimmung_1a152278390f21c75ae6180c7a7c738e81">umstimmung::umstimmung_umstimmungs_case</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a47e9a84a3f91507862a3baa02e1a05b6" compoundref="db/d1e/argument_8h" startline="30">zahl</references>
+        <references refid="dd/da8/group__parser_1ga4bf82fcb6035c44b578d2659e99af5ef" compoundref="dc/d54/case__liste_8c" startline="37">tmp_umstimmungs_case_liste</references>
+        <references refid="d0/d45/structcase__liste_1a290cbd2723599508d118f507c3528c03" compoundref="db/d99/case__liste_8h" startline="39">case_liste::next</references>
+        <references refid="d5/def/structaktions__liste_1a7db6137d5e8695b72d1a51e787d286f2" compoundref="dd/de4/aktion_8h" startline="69">aktions_liste::next</references>
+        <references refid="d9/d7c/group__kernel_1gga4640ca6a739d886d48063bab20c0a6bda3199b6eb05486b74e1ba3242b42f7985" compoundref="dd/de4/aktion_8h" startline="36">aktion_aufruf</references>
+        <references refid="d5/def/structaktions__liste_1aa0db71fd64685d582c7d8c1efa2a7afc">aktions_liste::aktion_aufruf</references>
+        <references refid="dd/d7c/structargument__liste_1a17fc5968b0581a9d61d426e3185533c7" compoundref="db/d1e/argument_8h" startline="50">argument_liste::next</references>
+        <references refid="d2/d74/structargument_1aebffb910f9535b2c61aaf2629909a524" compoundref="db/d1e/argument_8h" startline="34">argument::argument_typ</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" compoundref="db/d1e/argument_8h" startline="30">parameter</references>
+        <references refid="d2/d2a/parameter_8h_1a5bf29214dc54ea66a905c8b8b67fb54f" compoundref="d7/d2d/parameter_8c" startline="98" endline="106">parameter_nummer</references>
+        <references refid="dd/d7c/structargument__liste_1a62205ad94c3fb485ffc1c8d599fdf3d1" compoundref="db/d1e/argument_8h" startline="49">argument_liste::argument</references>
+        <references refid="d2/d74/structargument_1a3ccccc4ff00127c5d4731a94768c8cd8">argument::u</references>
+        <references refid="d2/d74/structargument_1ae6f70084cffab08980e51bba6aa80856">argument::parameter</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/da8/group__parser_1gaffd00a427bdc135041aff69245ec4667" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_umstimmung_umstimm_case_parameter</definition>
+        <argsstring>(char *selector)</argsstring>
+        <name>get_umstimmung_umstimm_case_parameter</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>selector</declname>
+        </param>
+        <briefdescription>
+<para>Baut <computeroutput>tmp_umstimmung</computeroutput> zu einer Parametergesteuerten Case-Umstimmung aus. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei wird die letzte eingelesene Umstimmungs-Case-Liste verwendet. Falls darin ein unbekannter Parameter gefunden wird, wird ein fataler Fehler ausgelöst. Dies geschieht auch, falls <emphasis>selector</emphasis> nicht definiert ist. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>selector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameter für die Case-Anweisung </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/case_liste.h" line="52" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/case_liste.c" bodystart="156" bodyend="225"/>
+        <references refid="da/d7f/umstimmung_8h_1a825a2d7cb8bc82c2e30098d1b3c1dc6e" compoundref="da/d7f/umstimmung_8h" startline="118">tmp_umstimmung</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa6762ebe62dfd2cb6d4a659f6a840e2a4" compoundref="da/d7f/umstimmung_8h" startline="35">umstimmung_umstimmungs_case</references>
+        <references refid="d2/d1c/structumstimmung_1a152278390f21c75ae6180c7a7c738e81">umstimmung::umstimmung_umstimmungs_case</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" compoundref="db/d1e/argument_8h" startline="30">parameter</references>
+        <references refid="d2/d2a/parameter_8h_1a5bf29214dc54ea66a905c8b8b67fb54f" compoundref="d7/d2d/parameter_8c" startline="98" endline="106">parameter_nummer</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d2/d1c/structumstimmung_1abd217ffce7f0666151e53606789705cf" compoundref="da/d7f/umstimmung_8h" startline="43">umstimmung::name</references>
+        <references refid="dd/da8/group__parser_1ga4bf82fcb6035c44b578d2659e99af5ef" compoundref="dc/d54/case__liste_8c" startline="37">tmp_umstimmungs_case_liste</references>
+        <references refid="d0/d45/structcase__liste_1a290cbd2723599508d118f507c3528c03" compoundref="db/d99/case__liste_8h" startline="39">case_liste::next</references>
+        <references refid="d5/def/structaktions__liste_1a7db6137d5e8695b72d1a51e787d286f2" compoundref="dd/de4/aktion_8h" startline="69">aktions_liste::next</references>
+        <references refid="d9/d7c/group__kernel_1gga4640ca6a739d886d48063bab20c0a6bda3199b6eb05486b74e1ba3242b42f7985" compoundref="dd/de4/aktion_8h" startline="36">aktion_aufruf</references>
+        <references refid="d5/def/structaktions__liste_1aa0db71fd64685d582c7d8c1efa2a7afc">aktions_liste::aktion_aufruf</references>
+        <references refid="dd/d7c/structargument__liste_1a17fc5968b0581a9d61d426e3185533c7" compoundref="db/d1e/argument_8h" startline="50">argument_liste::next</references>
+        <references refid="d2/d74/structargument_1aebffb910f9535b2c61aaf2629909a524" compoundref="db/d1e/argument_8h" startline="34">argument::argument_typ</references>
+        <references refid="dd/d7c/structargument__liste_1a62205ad94c3fb485ffc1c8d599fdf3d1" compoundref="db/d1e/argument_8h" startline="49">argument_liste::argument</references>
+        <references refid="d2/d74/structargument_1a3ccccc4ff00127c5d4731a94768c8cd8">argument::u</references>
+        <references refid="d2/d74/structargument_1ae6f70084cffab08980e51bba6aa80856">argument::parameter</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="db/d99/case__liste_8h_1a7c45365298cdb6eaa5d45a34703fc322" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_umstimmungs_case_aktions_liste</definition>
+        <argsstring>(void)</argsstring>
+        <name>init_umstimmungs_case_aktions_liste</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/case_liste.h" line="53" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/da8/group__parser_1gac95ea01e1f2e9fadcd54c8d6cf2133db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_umstimmungs_case_zahl_element</definition>
+        <argsstring>(int konstante)</argsstring>
+        <name>get_umstimmungs_case_zahl_element</name>
+        <param>
+          <type>int</type>
+          <declname>konstante</declname>
+        </param>
+        <briefdescription>
+<para>Fügt einen Fall ans Ende von <emphasis>tmp_umstimmungs_case_liste</emphasis> an. </para>        </briefdescription>
+        <detaileddescription>
+<para>Der Aufruf erhält die letzte eingelesene Argumentliste. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>konstante</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bezeichnung der Konstante für Fall, der angefügt werden soll </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Es wird immer die gesamte Liste durchsucht. Effektivität? </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/case_liste.h" line="54" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/case_liste.c" bodystart="45" bodyend="58"/>
+        <references refid="d0/d45/structcase__liste_1a290cbd2723599508d118f507c3528c03" compoundref="db/d99/case__liste_8h" startline="39">case_liste::next</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <references refid="d0/d45/structcase__liste_1a0e3632823354b944bcd041c08dd6c2af" compoundref="db/d99/case__liste_8h" startline="36">case_liste::case_label</references>
+        <references refid="d0/d45/structcase__liste_1abd47924362217e6214412632178c9952" compoundref="db/d99/case__liste_8h" startline="37">case_liste::is_default</references>
+        <references refid="d0/d45/structcase__liste_1a561cc7f23132a4e8c9ca5626a6edc5c3" compoundref="db/d99/case__liste_8h" startline="38">case_liste::case_aktion</references>
+        <references refid="dd/d21/group__Parser_1gab57972c0331c7a5aff6f7f8ee0edbab7" compoundref="d8/dc3/aktion_8c" startline="99" endline="102">get_last_aktions_liste</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/da8/group__parser_1ga7b30df8980e85ea50428778c2af3aa0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_umstimmungs_case_default_element</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_umstimmungs_case_default_element</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Fügt einen Standardfall ans Ende von <emphasis>tmp_umstimmungs_case_liste</emphasis> an. </para>        </briefdescription>
+        <detaileddescription>
+<para>Der Aufruf erhält die letzte eingelesene Argumentliste. <simplesect kind="note"><para>Es wird immer die gesamte Liste durchsucht. Effektivität? </para></simplesect>
+<xrefsect id="dd/da0/todo_1_todo000027"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>Typkonvertierung von <computeroutput>doube</computeroutput> nach <computeroutput>int</computeroutput> prüfen. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/case_liste.h" line="55" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/case_liste.c" bodystart="65" bodyend="78"/>
+        <references refid="d0/d45/structcase__liste_1a290cbd2723599508d118f507c3528c03" compoundref="db/d99/case__liste_8h" startline="39">case_liste::next</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <references refid="d0/d45/structcase__liste_1a0e3632823354b944bcd041c08dd6c2af" compoundref="db/d99/case__liste_8h" startline="36">case_liste::case_label</references>
+        <references refid="d0/d45/structcase__liste_1abd47924362217e6214412632178c9952" compoundref="db/d99/case__liste_8h" startline="37">case_liste::is_default</references>
+        <references refid="d0/d45/structcase__liste_1a561cc7f23132a4e8c9ca5626a6edc5c3" compoundref="db/d99/case__liste_8h" startline="38">case_liste::case_aktion</references>
+        <references refid="dd/d21/group__Parser_1gab57972c0331c7a5aff6f7f8ee0edbab7" compoundref="d8/dc3/aktion_8c" startline="99" endline="102">get_last_aktions_liste</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="db/d99/case__liste_8h_1acb4659e95efbbe2a474bddcf6d100f90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_umstimmungs_case_aktions_element</definition>
+        <argsstring>(char *aktion)</argsstring>
+        <name>get_umstimmungs_case_aktions_element</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>aktion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/case_liste.h" line="56" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga5c5c3b8746ca5c9a6a199e3f7894288d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int case_label_enthalten_in_case_liste</definition>
+        <argsstring>(double case_label, struct case_liste *lauf)</argsstring>
+        <name>case_label_enthalten_in_case_liste</name>
+        <param>
+          <type>double</type>
+          <declname>case_label</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="d0/d45/structcase__liste" kindref="compound">case_liste</ref> *</type>
+          <declname>lauf</declname>
+        </param>
+        <briefdescription>
+<para>Sucht ein Case-Label in einer entsprechenden Liste. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">case_label</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Zu suchendes Label </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">lauf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Liste, in der gesucht wird </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Label wurde gefunden </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Label wurde nicht gefunden </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/case_liste.h" line="57" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.cpp" bodystart="2535" bodyend="2545"/>
+        <references refid="de/db7/group__debug_1gaad9cc64d45a76ba0d37c00f8cd9caa37" compoundref="de/de1/mutDebug_8h" startline="144">TRACE</references>
+        <references refid="d9/d7c/group__kernel_1ga5c5c3b8746ca5c9a6a199e3f7894288d" compoundref="dc/df5/Parser_8cpp" startline="2535" endline="2545">case_label_enthalten_in_case_liste</references>
+        <references refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" compoundref="d1/dff/logik_8h" startline="36">logik::next</references>
+        <references refid="dd/d7c/structargument__liste_1a17fc5968b0581a9d61d426e3185533c7" compoundref="db/d1e/argument_8h" startline="50">argument_liste::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga5c5c3b8746ca5c9a6a199e3f7894288d" compoundref="dc/df5/Parser_8cpp" startline="2535" endline="2545">case_label_enthalten_in_case_liste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d2/d4a/umstimmung_8c_1a9fc87f323f75b7afaef30c37c78af7c6" compoundref="d2/d4a/umstimmung_8c" startline="538" endline="732">check_umstimmungs_konsistenz</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1ga959ca7312a401abde94d3485683cbc72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="dc/da0/structcase__element" kindref="compound">case_element</ref> *</type>
+        <definition>struct case_element* expand_case_liste</definition>
+        <argsstring>(struct case_liste *the_liste, struct interpreter_parameter_liste *aktuelle_parameter)</argsstring>
+        <name>expand_case_liste</name>
+        <param>
+          <type>struct <ref refid="d0/d45/structcase__liste" kindref="compound">case_liste</ref> *</type>
+          <declname>the_liste</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="d2/d46/structinterpreter__parameter__liste" kindref="compound">interpreter_parameter_liste</ref> *</type>
+          <declname>aktuelle_parameter</declname>
+        </param>
+        <briefdescription>
+<para>Sortiert die Default-Zweige von Case-Listen ans Ende und expandiert die Paramater der einzelnen Aktionen. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the_liste</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Case-Liste, die bearbeitet werden soll. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>aktuelle_parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Aktuelle Parameter, die ersetzt werden können. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<xrefsect id="dd/da0/todo_1_todo000028"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>Vereinigen beider Schleifen duch hinzufügen einer neuen temporären default-ende-liste. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/case_liste.h" line="58" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/case_liste.c" bodystart="317" bodyend="354"/>
+        <references refid="d0/d45/structcase__liste_1a290cbd2723599508d118f507c3528c03" compoundref="db/d99/case__liste_8h" startline="39">case_liste::next</references>
+        <references refid="d0/d45/structcase__liste_1abd47924362217e6214412632178c9952" compoundref="db/d99/case__liste_8h" startline="37">case_liste::is_default</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <references refid="dc/da0/structcase__element_1a94f286e8b9d1bbed19b02f5fb7a91dcc" compoundref="db/d99/case__liste_8h" startline="44">case_element::case_wert</references>
+        <references refid="dc/da0/structcase__element_1a77b70c758a112626833f4943117e8411" compoundref="db/d99/case__liste_8h" startline="45">case_element::is_default</references>
+        <references refid="dc/da0/structcase__element_1ab798f2d7434e4bd56d70264f42b61ff3" compoundref="db/d99/case__liste_8h" startline="46">case_element::case_aktion</references>
+        <references refid="d2/d1c/group__Interpreter_1ga8cbfd2aaf66a3d281ae8d25e374c78f2" compoundref="d8/dc3/aktion_8c" startline="326" endline="354">expand_aktions_liste</references>
+        <references refid="dc/da0/structcase__element_1a5bc187c889ab8af5193a66e1657d2ad6" compoundref="db/d99/case__liste_8h" startline="47">case_element::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga17b03e17223aab80aa95d596a74bdc2d" compoundref="d3/da0/TabGen_8cpp" startline="672" endline="831">expandiere_umstimmung</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Verzweigungsliste für Umstimmungen und ähnliches. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="rcs"><title>Header:</title><para>/home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/includes/mutabor/case_liste.h,v 1.3 2005/11/03 14:29:58 keinstein Exp </para></simplesect>
+<simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein_junior@gmx.net">keinstein_junior@gmx.net</ulink> </para></simplesect>
+<simplesect kind="date"><para></para></simplesect>
+<simplesect kind="rcs"><title>Date:</title><para>2005/11/03 14:29:58 </para></simplesect>
+<simplesect kind="version"><para></para></simplesect>
+<simplesect kind="rcs"><title>Revision:</title><para>1.3 </para></simplesect>
+<xrefsect id="dd/da0/todo_1_todo000004"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>Beide <ref refid="d0/d45/structcase__liste" kindref="compound">case_liste</ref> und <ref refid="dc/da0/structcase__element" kindref="compound">case_element</ref> vereinigen.</para></xrefdescription></xrefsect></para><para><simplesect kind="rcs"><title>Log:</title><para>case_liste.h,v </para></simplesect>
+Revision 1.3 2005/11/03 14:29:58 keinstein interpeter data structures</para><para>Revision 1.2 2005/07/08 14:51:41 keinstein Neu: Kopf case_label_enthalten_in_case_liste Abhängig von aktion.h </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="23"><highlight class="preprocessor">#ifndef<sp/>__CASE_LISTE_H_INCLUDED</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>__CASE_LISTE_H_INCLUDED</highlight></codeline>
+<codeline lineno="25"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dd/de4/aktion_8h" kindref="compound">mutabor/aktion.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="d0/d45/structcase__liste" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/d45/structcase__liste" kindref="compound">case_liste</ref><sp/>{</highlight></codeline>
+<codeline lineno="36" refid="d0/d45/structcase__liste_1a0e3632823354b944bcd041c08dd6c2af" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d0/d45/structcase__liste_1a0e3632823354b944bcd041c08dd6c2af" kindref="member">case_label</ref>;<sp/></highlight></codeline>
+<codeline lineno="37" refid="d0/d45/structcase__liste_1abd47924362217e6214412632178c9952" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="d0/d45/structcase__liste_1abd47924362217e6214412632178c9952" kindref="member">is_default</ref>;<sp/></highlight></codeline>
+<codeline lineno="38" refid="d0/d45/structcase__liste_1a561cc7f23132a4e8c9ca5626a6edc5c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d5/def/structaktions__liste" kindref="compound">aktions_liste</ref><sp/>*<sp/><ref refid="d0/d45/structcase__liste_1a561cc7f23132a4e8c9ca5626a6edc5c3" kindref="member">case_aktion</ref>;<sp/></highlight></codeline>
+<codeline lineno="39" refid="d0/d45/structcase__liste_1a290cbd2723599508d118f507c3528c03" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/d45/structcase__liste" kindref="compound">case_liste</ref><sp/>*<sp/><ref refid="d0/d45/structcase__liste_1a290cbd2723599508d118f507c3528c03" kindref="member">next</ref>;<sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="dc/da0/structcase__element" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dc/da0/structcase__element" kindref="compound">case_element</ref><sp/>{</highlight></codeline>
+<codeline lineno="44" refid="dc/da0/structcase__element_1a94f286e8b9d1bbed19b02f5fb7a91dcc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dc/da0/structcase__element_1a94f286e8b9d1bbed19b02f5fb7a91dcc" kindref="member">case_wert</ref>;<sp/></highlight></codeline>
+<codeline lineno="45" refid="dc/da0/structcase__element_1a77b70c758a112626833f4943117e8411" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="dc/da0/structcase__element_1a77b70c758a112626833f4943117e8411" kindref="member">is_default</ref>;<sp/></highlight></codeline>
+<codeline lineno="46" refid="dc/da0/structcase__element_1ab798f2d7434e4bd56d70264f42b61ff3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d5/d8c/structdo__aktion" kindref="compound">do_aktion</ref><sp/>*<sp/><ref refid="dc/da0/structcase__element_1ab798f2d7434e4bd56d70264f42b61ff3" kindref="member">case_aktion</ref>;<sp/></highlight></codeline>
+<codeline lineno="47" refid="dc/da0/structcase__element_1a5bc187c889ab8af5193a66e1657d2ad6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dc/da0/structcase__element" kindref="compound">case_element</ref><sp/>*<sp/><ref refid="dc/da0/structcase__element_1a5bc187c889ab8af5193a66e1657d2ad6" kindref="member">next</ref>;<sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/da8/group__parser_1ga80019958d5bbc53f956a1f1836bd7656" kindref="member">init_umstimmungs_case_liste</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/da8/group__parser_1gae037a4769c7d049fcb409abbefad4df9" kindref="member">get_umstimmung_umstimm_case_zahl</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>selector);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/da8/group__parser_1gaffd00a427bdc135041aff69245ec4667" kindref="member">get_umstimmung_umstimm_case_parameter</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>selector);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="db/d99/case__liste_8h_1a7c45365298cdb6eaa5d45a34703fc322" kindref="member">init_umstimmungs_case_aktions_liste</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/da8/group__parser_1gac95ea01e1f2e9fadcd54c8d6cf2133db" kindref="member">get_umstimmungs_case_zahl_element</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>konstante);<sp/></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/da8/group__parser_1ga7b30df8980e85ea50428778c2af3aa0d" kindref="member">get_umstimmungs_case_default_element</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="db/d99/case__liste_8h_1acb4659e95efbbe2a474bddcf6d100f90" kindref="member">get_umstimmungs_case_aktions_element</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>aktion);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga5c5c3b8746ca5c9a6a199e3f7894288d" kindref="member">case_label_enthalten_in_case_liste</ref><sp/>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>case_label,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d0/d45/structcase__liste" kindref="compound">case_liste</ref><sp/>*<sp/>lauf);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dc/da0/structcase__element" kindref="compound">case_element</ref><sp/>*<sp/><ref refid="d2/d1c/group__Interpreter_1ga959ca7312a401abde94d3485683cbc72" kindref="member">expand_case_liste</ref><sp/>(</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d0/d45/structcase__liste" kindref="compound">case_liste</ref><sp/>*<sp/>the_liste,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d2/d46/structinterpreter__parameter__liste" kindref="compound">interpreter_parameter_liste</ref><sp/>*<sp/>aktuelle_parameter);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus<sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>extern<sp/>&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mutabor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__CASE_LISTE_H_INCLUDED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/case_liste.h"/>
+  </compounddef>
+</doxygen>

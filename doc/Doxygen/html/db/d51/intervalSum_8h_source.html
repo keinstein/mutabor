@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/includes/mutabor/intervalSum.h Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_bf59d41d727aac54882b42f236ae575e.html">includes</a></li><li class="navelem"><a class="el" href="../../dir_6db30062d01f5c3ec76e386385d23595.html">mutabor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">intervalSum.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../db/d51/intervalSum_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#if ! defined (__MUTABOR_INTERVALSUM_H_INCLUDED__)</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="../../db/d51/intervalSum_8h.html#a02ddaa13d5b09f127dd8d5e56acb9ede">   23</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __MUTABOR_INTERVASUML_H_INCLUDED__</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#ifdef __cplusplus </span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span><span class="keyword">namespace </span>mutabor {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d8a/interval_8h.html">mutabor/interval.h</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/* %virtual int compare (void * one, void * two) */</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../d8/db0/structmutabor__class__intervalSum.html">   35</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../d8/db0/structmutabor__class__intervalSum.html">mutabor_class_intervalSum</a> {</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../d8/db0/structmutabor__class__intervalSum.html#a7565e6ed95bf621f559fbd3c6e32ec3b">   36</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="../../df/d95/structmutabor__class__interval.html">mutabor_class_interval</a> <a class="code" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a>(interval)* left; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a>(interval)* right; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../db/d7d/structmutabor__virttable__intervalSum.html">   41</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../db/d7d/structmutabor__virttable__intervalSum.html">mutabor_virttable_intervalSum</a> {</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../db/d7d/structmutabor__virttable__intervalSum.html#ab2a9024f4ae7850dbc9f3fdbeb9abd88">   42</a></span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="../../db/d7d/structmutabor__virttable__intervalSum.html#ab2a9024f4ae7850dbc9f3fdbeb9abd88">size</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../db/d7d/structmutabor__virttable__intervalSum.html#a2c0dba262ead060914f4150ce3bc3479">   43</a></span>&#160;    <span class="keywordtype">char</span> * <a class="code" href="../../db/d7d/structmutabor__virttable__intervalSum.html#a2c0dba262ead060914f4150ce3bc3479">name</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../db/d7d/structmutabor__virttable__intervalSum.html#adb04bd1341fc5d584b87156296eaa0b9">   44</a></span>&#160;    <span class="keywordtype">void</span> ** <a class="code" href="../../db/d7d/structmutabor__virttable__intervalSum.html#adb04bd1341fc5d584b87156296eaa0b9">parent</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../db/d7d/structmutabor__virttable__intervalSum.html#a25c4919d2ed9533ca99c10de0ed6b1e3">   45</a></span>&#160;    <span class="keywordtype">void</span> * (*constructor)(<span class="keywordtype">void</span> * _self); </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../db/d7d/structmutabor__virttable__intervalSum.html#a8302cfd28c6f38f46141c1d7b3202257">   46</a></span>&#160;    <span class="keywordtype">void</span> * (*destructor)(<span class="keywordtype">void</span> * _self); </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../db/d7d/structmutabor__virttable__intervalSum.html#a0ab7be4ce64bd50f52259c42c05ea728">   47</a></span>&#160;    int (*compare)(<span class="keywordtype">void</span> * one, <span class="keywordtype">void</span> * two); </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../db/d7d/structmutabor__virttable__intervalSum.html#aac9ee427b384bce4c9054e31f8d5001b">   48</a></span>&#160;    <span class="keywordtype">char</span> * (*tostring)(<span class="keywordtype">void</span> * _self); </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../db/d7d/structmutabor__virttable__intervalSum.html#ac7b27acd9bdf4b0da767d0f5d08e4ff5">   49</a></span>&#160;    <span class="keywordtype">void</span> * (*check_cycle)(<span class="keyword">register</span> <span class="keywordtype">void</span> * _self, <span class="keyword">register</span> <span class="keywordtype">void</span> * _identifier,  <span class="keyword">register</span> <a class="code" href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a>(ptrlist) * list); </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../db/d7d/structmutabor__virttable__intervalSum.html#afd73ec484507d956c594ace447e35a9f">   50</a></span>&#160;    void (*precalculate)(<span class="keywordtype">void</span> * _self); </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">void</span> * <a class="code" href="../../db/d51/intervalSum_8h.html#add6100a23588e8c4f7b8b338134b658c">mutabor_object_intervalSum</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../db/d51/intervalSum_8h.html#a50deafa64895ecbb7cdcb0a77bfdcf61">   56</a></span>&#160;<span class="preprocessor">#define mutabor_cls_intervalSum_copy_name mutabor_cls_identifier_copy_name</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../db/d51/intervalSum_8h.html#a78a0ee05b9a7e9eb4a738c093c6147ce">   58</a></span>&#160;<span class="preprocessor">#define mutabor_cls_intervalSum_set_name mutabor_cls_identifier_set_name</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../db/d51/intervalSum_8h.html#a15d8f9147ae45921c451a0bc40e0458f">   60</a></span>&#160;<span class="preprocessor">#define mutabor_cls_intervalSum_get_name mutabor_cls_identifier_get_name</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="../../db/d51/intervalSum_8h.html#afc6965c9adb69d1719e768993567f51e">   62</a></span>&#160;<span class="preprocessor">#define mutabor_cls_intervalSum_set_factor mutabor_cls_interval_set_factor</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../db/d51/intervalSum_8h.html#a95562878dbab2b1cb7a99a171da6a6b9">mutabor_cls_intervalSum_setleft</a>(<span class="keywordtype">void</span> * _self,<span class="keywordtype">void</span> * _interval);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../db/d51/intervalSum_8h.html#adfee77a92c2583b84146983abf12a685">mutabor_cls_intervalSum_setright</a>(<span class="keywordtype">void</span> * _self,<span class="keywordtype">void</span> * _interval);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor"></span>  }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __MUTABOR_INTERVALSUM_H_INCLUDED__ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="structmutabor__virttable__intervalSum_html_adb04bd1341fc5d584b87156296eaa0b9"><div class="ttname"><a href="../../db/d7d/structmutabor__virttable__intervalSum.html#adb04bd1341fc5d584b87156296eaa0b9">mutabor_virttable_intervalSum::parent</a></div><div class="ttdeci">void ** parent</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d51/intervalSum_8h_source.html#l00044">intervalSum.h:44</a></div></div>
+<div class="ttc" id="structmutabor__class__intervalSum_html"><div class="ttname"><a href="../../d8/db0/structmutabor__class__intervalSum.html">mutabor_class_intervalSum</a></div><div class="ttdoc">Interval class. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d51/intervalSum_8h_source.html#l00035">intervalSum.h:35</a></div></div>
+<div class="ttc" id="intervalSum_8h_html_add6100a23588e8c4f7b8b338134b658c"><div class="ttname"><a href="../../db/d51/intervalSum_8h.html#add6100a23588e8c4f7b8b338134b658c">mutabor_object_intervalSum</a></div><div class="ttdeci">const void * mutabor_object_intervalSum</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dfa/intervalSum_8hh_source.html#l00019">intervalSum.hh:19</a></div></div>
+<div class="ttc" id="structmutabor__virttable__intervalSum_html_ab2a9024f4ae7850dbc9f3fdbeb9abd88"><div class="ttname"><a href="../../db/d7d/structmutabor__virttable__intervalSum.html#ab2a9024f4ae7850dbc9f3fdbeb9abd88">mutabor_virttable_intervalSum::size</a></div><div class="ttdeci">size_t size</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d51/intervalSum_8h_source.html#l00042">intervalSum.h:42</a></div></div>
+<div class="ttc" id="group__kernel_html_gae4dfd7b0d66121016d6466d2ff10e8ba"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a></div><div class="ttdeci">#define _</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/Execute_8cpp_source.html#l00057">Execute.cpp:57</a></div></div>
+<div class="ttc" id="object_8h_html_a51fa8bfba0223bb5cddd9b3db2b2f55c"><div class="ttname"><a href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a></div><div class="ttdeci">#define MUT_CLASS(name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00033">object.h:33</a></div></div>
+<div class="ttc" id="intervalSum_8h_html_adfee77a92c2583b84146983abf12a685"><div class="ttname"><a href="../../db/d51/intervalSum_8h.html#adfee77a92c2583b84146983abf12a685">mutabor_cls_intervalSum_setright</a></div><div class="ttdeci">void mutabor_cls_intervalSum_setright(void *_self, void *_interval)</div></div>
+<div class="ttc" id="intervalSum_8h_html_a95562878dbab2b1cb7a99a171da6a6b9"><div class="ttname"><a href="../../db/d51/intervalSum_8h.html#a95562878dbab2b1cb7a99a171da6a6b9">mutabor_cls_intervalSum_setleft</a></div><div class="ttdeci">void mutabor_cls_intervalSum_setleft(void *_self, void *_interval)</div></div>
+<div class="ttc" id="structmutabor__virttable__intervalSum_html"><div class="ttname"><a href="../../db/d7d/structmutabor__virttable__intervalSum.html">mutabor_virttable_intervalSum</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d51/intervalSum_8h_source.html#l00041">intervalSum.h:41</a></div></div>
+<div class="ttc" id="structmutabor__virttable__intervalSum_html_a2c0dba262ead060914f4150ce3bc3479"><div class="ttname"><a href="../../db/d7d/structmutabor__virttable__intervalSum.html#a2c0dba262ead060914f4150ce3bc3479">mutabor_virttable_intervalSum::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d51/intervalSum_8h_source.html#l00043">intervalSum.h:43</a></div></div>
+<div class="ttc" id="structmutabor__class__interval_html"><div class="ttname"><a href="../../df/d95/structmutabor__class__interval.html">mutabor_class_interval</a></div><div class="ttdoc">Interval class. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/interval_8h_source.html#l00036">interval.h:36</a></div></div>
+<div class="ttc" id="interval_8h_html"><div class="ttname"><a href="../../d2/d8a/interval_8h.html">interval.h</a></div><div class="ttdoc">Interval calculations. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:03:00 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

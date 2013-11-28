@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/wxGUI/Routing/tests/GUIRouteTest.h Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_eaae7e9da1b31c6b329e928d72e0e61a.html">wxGUI</a></li><li class="navelem"><a class="el" href="../../dir_589b0311d58a74617a532121d489d9c2.html">Routing</a></li><li class="navelem"><a class="el" href="../../dir_6fbe68fbf050b3de1ac09e0ff17be9c0.html">tests</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">GUIRouteTest.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d0/d8b/GUIRouteTest_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#ifndef __TESTS_GUIROUTETEST_H__</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __TESTS_GUIROUTETEST_H__</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;cppunit/extensions/HelperMacros.h&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;cppunit/portability/Stream.h&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d65/Route_8h.html">src/kernel/routing/Route.h</a>&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">//#include &quot;src/kernel/Runtime.h&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../d4/dd8/classGUIRouteTest.html">   39</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d4/dd8/classGUIRouteTest.html">GUIRouteTest</a> : <span class="keyword">public</span> CPPUNIT_NS::TestFixture </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="../../d2/d7d/group__tests.html#ga9e2b7fb21e74ddb0e7b66b3b2c0ba7b3">CPPUNIT_TEST_SUITE</a>( <a class="code" href="../../d4/dd8/classGUIRouteTest.html">GUIRouteTest</a> );</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="../../d2/d7d/group__tests.html#gaf71be56fa404716d46ea88a33baeb484">CPPUNIT_TEST</a>( <a class="code" href="../../d2/d7d/group__tests.html#ga18ee48c61ebf6e4dfe52cf111ac07d22">testConnect</a> );</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="../../d2/d7d/group__tests.html#ga72e6a9a0c40f4e801cb5ea5886bd07e4">CPPUNIT_TEST_SUITE_END</a>();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">//      mutabor::Route route;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../d2/d7d/group__tests.html#ga0ed9198dcce623b9a0b5d3d52c8b74c5">   49</a></span>&#160;        <a class="code" href="../../d2/d7d/group__tests.html#ga0ed9198dcce623b9a0b5d3d52c8b74c5">GUIRouteTest</a>()</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d2/d7d/group__tests.html#gab98be262742a6dc27c334f188817fa95">   53</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="../../d2/d7d/group__tests.html#gab98be262742a6dc27c334f188817fa95">~GUIRouteTest</a>()</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../d2/d7d/group__tests.html#gafca3f14dba7bd713fc99723597f54327">   57</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="../../d2/d7d/group__tests.html#gafca3f14dba7bd713fc99723597f54327">countTestCases</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">        </span>{ </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="keywordflow">return</span> 1; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d2/d7d/group__tests.html#ga93fe40e1f8011610ac2cbc370213b609">setUp</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d2/d7d/group__tests.html#ga929bcfaa1bfb560bfd3660800e64cee8">tearDown</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d2/d7d/group__tests.html#ga18ee48c61ebf6e4dfe52cf111ac07d22">testConnect</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="group__tests_html_ga18ee48c61ebf6e4dfe52cf111ac07d22"><div class="ttname"><a href="../../d2/d7d/group__tests.html#ga18ee48c61ebf6e4dfe52cf111ac07d22">GUIRouteTest::testConnect</a></div><div class="ttdeci">void testConnect()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d20/GUIRouteTest_8cpp_source.html#l00062">GUIRouteTest.cpp:62</a></div></div>
+<div class="ttc" id="group__tests_html_gaf71be56fa404716d46ea88a33baeb484"><div class="ttname"><a href="../../d2/d7d/group__tests.html#gaf71be56fa404716d46ea88a33baeb484">GUIRouteTest::CPPUNIT_TEST</a></div><div class="ttdeci">CPPUNIT_TEST(testConnect)</div></div>
+<div class="ttc" id="group__tests_html_gab98be262742a6dc27c334f188817fa95"><div class="ttname"><a href="../../d2/d7d/group__tests.html#gab98be262742a6dc27c334f188817fa95">GUIRouteTest::~GUIRouteTest</a></div><div class="ttdeci">virtual ~GUIRouteTest()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/GUIRouteTest_8h_source.html#l00053">GUIRouteTest.h:53</a></div></div>
+<div class="ttc" id="group__tests_html_ga93fe40e1f8011610ac2cbc370213b609"><div class="ttname"><a href="../../d2/d7d/group__tests.html#ga93fe40e1f8011610ac2cbc370213b609">GUIRouteTest::setUp</a></div><div class="ttdeci">void setUp()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d20/GUIRouteTest_8cpp_source.html#l00043">GUIRouteTest.cpp:43</a></div></div>
+<div class="ttc" id="classGUIRouteTest_html"><div class="ttname"><a href="../../d4/dd8/classGUIRouteTest.html">GUIRouteTest</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/GUIRouteTest_8h_source.html#l00039">GUIRouteTest.h:39</a></div></div>
+<div class="ttc" id="group__tests_html_ga9e2b7fb21e74ddb0e7b66b3b2c0ba7b3"><div class="ttname"><a href="../../d2/d7d/group__tests.html#ga9e2b7fb21e74ddb0e7b66b3b2c0ba7b3">GUIRouteTest::CPPUNIT_TEST_SUITE</a></div><div class="ttdeci">CPPUNIT_TEST_SUITE(GUIRouteTest)</div></div>
+<div class="ttc" id="Route_8h_html"><div class="ttname"><a href="../../d1/d65/Route_8h.html">Route.h</a></div><div class="ttdoc">Routing. </div></div>
+<div class="ttc" id="group__tests_html_ga72e6a9a0c40f4e801cb5ea5886bd07e4"><div class="ttname"><a href="../../d2/d7d/group__tests.html#ga72e6a9a0c40f4e801cb5ea5886bd07e4">GUIRouteTest::CPPUNIT_TEST_SUITE_END</a></div><div class="ttdeci">CPPUNIT_TEST_SUITE_END()</div></div>
+<div class="ttc" id="group__tests_html_gafca3f14dba7bd713fc99723597f54327"><div class="ttname"><a href="../../d2/d7d/group__tests.html#gafca3f14dba7bd713fc99723597f54327">GUIRouteTest::countTestCases</a></div><div class="ttdeci">int countTestCases() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/GUIRouteTest_8h_source.html#l00057">GUIRouteTest.h:57</a></div></div>
+<div class="ttc" id="group__tests_html_ga929bcfaa1bfb560bfd3660800e64cee8"><div class="ttname"><a href="../../d2/d7d/group__tests.html#ga929bcfaa1bfb560bfd3660800e64cee8">GUIRouteTest::tearDown</a></div><div class="ttdeci">void tearDown()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d20/GUIRouteTest_8cpp_source.html#l00053">GUIRouteTest.cpp:53</a></div></div>
+<div class="ttc" id="group__tests_html_ga0ed9198dcce623b9a0b5d3d52c8b74c5"><div class="ttname"><a href="../../d2/d7d/group__tests.html#ga0ed9198dcce623b9a0b5d3d52c8b74c5">GUIRouteTest::GUIRouteTest</a></div><div class="ttdeci">GUIRouteTest()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/GUIRouteTest_8h_source.html#l00049">GUIRouteTest.h:49</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:38:42 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

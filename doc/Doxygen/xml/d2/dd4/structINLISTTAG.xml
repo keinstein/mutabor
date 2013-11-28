@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d2/dd4/structINLISTTAG" kind="struct" prot="public">
+    <compoundname>INLISTTAG</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d2/dd4/structINLISTTAG_1a37c0ab3d1d0fa49f9560bda7bea26803" prot="public" static="no" mutable="no">
+        <type><ref refid="d2/dd4/structINLISTTAG" kindref="compound">INLISTTAG</ref> *</type>
+        <definition>INLISTTAG* INLISTTAG::Next</definition>
+        <argsstring></argsstring>
+        <name>Next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="32" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="32" bodyend="-1"/>
+        <referencedby refid="d3/d14/gmut_8cpp_1a6925268de67bc04207c5ebd990b88b0f" compoundref="d3/d14/gmut_8cpp" startline="54" endline="82">GetInFile</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/dd4/structINLISTTAG_1a3b157259cb5738a3eace370f8cc115f4" prot="public" static="no" mutable="no">
+        <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+        <definition>GisToken* INLISTTAG::Data</definition>
+        <argsstring></argsstring>
+        <name>Data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="33" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="33" bodyend="-1"/>
+        <referencedby refid="d3/d14/gmut_8cpp_1a6925268de67bc04207c5ebd990b88b0f" compoundref="d3/d14/gmut_8cpp" startline="54" endline="82">GetInFile</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/dd4/structINLISTTAG_1a6804b2cd80eb1bc5accc787c58f57754" prot="public" static="no" mutable="no">
+        <type>InDevice *</type>
+        <definition>InDevice* INLISTTAG::Device</definition>
+        <argsstring></argsstring>
+        <name>Device</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="34" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/dd4/structINLISTTAG_1a326f712c0d5f560fa0ecc7afdd4a7170" prot="public" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <definition>char* INLISTTAG::Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="35" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3008">
+        <label>INLISTTAG</label>
+        <link refid="d2/dd4/structINLISTTAG"/>
+        <childnode refid="3008" relation="usage">
+          <edgelabel>Next</edgelabel>
+        </childnode>
+        <childnode refid="3009" relation="usage">
+          <edgelabel>Data</edgelabel>
+        </childnode>
+      </node>
+      <node id="3009">
+        <label>GisToken</label>
+        <link refid="d2/db7/classGisToken"/>
+        <childnode refid="3009" relation="usage">
+          <edgelabel>Next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="31" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="30" bodyend="36"/>
+    <listofallmembers>
+      <member refid="d2/dd4/structINLISTTAG_1a3b157259cb5738a3eace370f8cc115f4" prot="public" virt="non-virtual"><scope>INLISTTAG</scope><name>Data</name></member>
+      <member refid="d2/dd4/structINLISTTAG_1a6804b2cd80eb1bc5accc787c58f57754" prot="public" virt="non-virtual"><scope>INLISTTAG</scope><name>Device</name></member>
+      <member refid="d2/dd4/structINLISTTAG_1a326f712c0d5f560fa0ecc7afdd4a7170" prot="public" virt="non-virtual"><scope>INLISTTAG</scope><name>Name</name></member>
+      <member refid="d2/dd4/structINLISTTAG_1a37c0ab3d1d0fa49f9560bda7bea26803" prot="public" virt="non-virtual"><scope>INLISTTAG</scope><name>Next</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

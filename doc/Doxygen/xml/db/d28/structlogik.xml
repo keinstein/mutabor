@@ -1,0 +1,444 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="db/d28/structlogik" kind="struct" prot="public">
+    <compoundname>logik</compoundname>
+    <includes refid="dd/d40/Global_8h" local="no">Global.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="db/d28/structlogik_1abf8a525df5f9eff49b58f2ffaf404104" prot="public" static="no" mutable="no">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <definition>const char* logik::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="432" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="432" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" compoundref="d3/da0/TabGen_8cpp" startline="1291" endline="1368">expand_decition_tree</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga4435b938cf511e37f88d2deeca470566" compoundref="dc/df5/Parser_8cpp" startline="211" endline="217">get_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga6c15884af93bf4afba6690d84a9eef77" compoundref="dc/df5/Parser_8cpp" startline="132" endline="145">get_logik_nummer</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga580f12d4669345b7a4c3e340395d4fd5" compoundref="dc/df5/Parser_8cpp" startline="2197" endline="2222">get_new_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gabebfd8538aae475e3a2ba47f95d7d2c3" compoundref="d3/da0/TabGen_8cpp" startline="978" endline="1085">insert_in_globale_liste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaa32d94398d0aa7cb0b2f2bf3b2308c30" compoundref="d3/da0/TabGen_8cpp" startline="1087" endline="1214">insert_in_lokale_liste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga81c6796af89ddcfeeb86805300f4bd71" compoundref="dc/df5/Parser_8cpp" startline="2902" endline="2921">test_zyklen_nummer</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga38234272caea541bf58444b32a79c998" compoundref="dc/df5/Parser_8cpp" startline="2923" endline="2948">u_test_zyklen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="db/d28/structlogik_1ad13c483cce0141a78b2425cc7dfd41b8" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d9/de5/structausloeser" kindref="compound">ausloeser</ref> *</type>
+        <definition>struct ausloeser* logik::ausloeser</definition>
+        <argsstring></argsstring>
+        <name>ausloeser</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="433" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="433" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gabebfd8538aae475e3a2ba47f95d7d2c3" compoundref="d3/da0/TabGen_8cpp" startline="978" endline="1085">insert_in_globale_liste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="db/d28/structlogik_1a1f22a147c3f7718cb46800af526b083b" prot="public" static="no" mutable="no">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <definition>const char* logik::einstimmungs_name</definition>
+        <argsstring></argsstring>
+        <name>einstimmungs_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="434" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="434" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga4ea14e5284c0840695599141a22e95c7" compoundref="d3/da0/TabGen_8cpp" startline="514" endline="583">expandiere_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga580f12d4669345b7a4c3e340395d4fd5" compoundref="dc/df5/Parser_8cpp" startline="2197" endline="2222">get_new_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="db/d28/structlogik_1a58ef30390a1806c7e0eb4478dc4fef02" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d0/dab/structanweisung" kindref="compound">anweisung</ref> *</type>
+        <definition>struct anweisung* logik::anweisungsliste</definition>
+        <argsstring></argsstring>
+        <name>anweisungsliste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="435" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="435" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" compoundref="d3/da0/TabGen_8cpp" startline="1291" endline="1368">expand_decition_tree</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga4ea14e5284c0840695599141a22e95c7" compoundref="d3/da0/TabGen_8cpp" startline="514" endline="583">expandiere_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga580f12d4669345b7a4c3e340395d4fd5" compoundref="dc/df5/Parser_8cpp" startline="2197" endline="2222">get_new_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga2a6e085001c19d61cf49636ab9ec78a7" compoundref="dc/df5/Parser_8cpp" startline="2224" endline="2234">vervollstaendige_logik</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="db/d28/structlogik_1a42396331f5ffd2e29837bf1244cc84bb" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="db/d28/structlogik" kindref="compound">logik</ref> *</type>
+        <definition>struct logik* logik::next</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="436" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="436" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga821be4accaf8b4641f9fcb8c7b4bd047" compoundref="dc/df5/Parser_8cpp" startline="2878" endline="2900">belege_zyklenfeld</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga5c5c3b8746ca5c9a6a199e3f7894288d" compoundref="dc/df5/Parser_8cpp" startline="2535" endline="2545">case_label_enthalten_in_case_liste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga8cb1d2c54ae07b13d345a7e3966c4079" compoundref="dc/df5/Parser_8cpp" startline="2522" endline="2532">enthalten_in_tastenliste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" compoundref="d3/da0/TabGen_8cpp" startline="1291" endline="1368">expand_decition_tree</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga30c24ac2380ae3f51495f58ebc70dacc" compoundref="dc/df5/Parser_8cpp" startline="2238" endline="2309">get_instrument_dekl</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga4435b938cf511e37f88d2deeca470566" compoundref="dc/df5/Parser_8cpp" startline="211" endline="217">get_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga6c15884af93bf4afba6690d84a9eef77" compoundref="dc/df5/Parser_8cpp" startline="132" endline="145">get_logik_nummer</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga580f12d4669345b7a4c3e340395d4fd5" compoundref="dc/df5/Parser_8cpp" startline="2197" endline="2222">get_new_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga754b5ff0318d70968a739e883a56e291" compoundref="dc/df5/Parser_8cpp" startline="111" endline="119">logik_list_laenge</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga2a6e085001c19d61cf49636ab9ec78a7" compoundref="dc/df5/Parser_8cpp" startline="2224" endline="2234">vervollstaendige_logik</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="db/d28/structlogik_1a820e8ee0b32f8f6c1931eb84afa69474" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d5/d8c/structdo__aktion" kindref="compound">do_aktion</ref> *</type>
+        <definition>struct do_aktion* logik::einstimmung</definition>
+        <argsstring></argsstring>
+        <name>einstimmung</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="437" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="437" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga00cc2a76cfd7714e7536fa1d1d523dce" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">execute_aktion</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga580f12d4669345b7a4c3e340395d4fd5" compoundref="dc/df5/Parser_8cpp" startline="2197" endline="2222">get_new_logik</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="db/d28/structlogik_1ac7264f480f35617141dab1eba55cd258" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d9/d5b/structharmonie__ereignis" kindref="compound">harmonie_ereignis</ref> *</type>
+        <definition>struct harmonie_ereignis* logik::harmony_list</definition>
+        <argsstring></argsstring>
+        <name>harmony_list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="438" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="438" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga4ea14e5284c0840695599141a22e95c7" compoundref="d3/da0/TabGen_8cpp" startline="514" endline="583">expandiere_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga580f12d4669345b7a4c3e340395d4fd5" compoundref="dc/df5/Parser_8cpp" startline="2197" endline="2222">get_new_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga1dfd6e0dc23881b42159d079963e4ab0" compoundref="df/d23/Execute_8cpp" startline="876" endline="908">HarmonyAnalysis</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaa32d94398d0aa7cb0b2f2bf3b2308c30" compoundref="d3/da0/TabGen_8cpp" startline="1087" endline="1214">insert_in_lokale_liste</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="db/d28/structlogik_1a1653d7c9e1259cf7724a327893cbd2c0" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d8/d8e/structkeyboard__ereignis" kindref="compound">keyboard_ereignis</ref> *</type>
+        <definition>struct keyboard_ereignis* logik::keystroke_list</definition>
+        <argsstring></argsstring>
+        <name>keystroke_list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="439" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="439" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga4ea14e5284c0840695599141a22e95c7" compoundref="d3/da0/TabGen_8cpp" startline="514" endline="583">expandiere_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga68aa37253345f4399f7fb07524fe840b" compoundref="df/d23/Execute_8cpp" startline="1077" endline="1111">generic_keyboard_analysis</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga580f12d4669345b7a4c3e340395d4fd5" compoundref="dc/df5/Parser_8cpp" startline="2197" endline="2222">get_new_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaa32d94398d0aa7cb0b2f2bf3b2308c30" compoundref="d3/da0/TabGen_8cpp" startline="1087" endline="1214">insert_in_lokale_liste</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="db/d28/structlogik_1ad8a678e112b821eb846c4261b8797b3f" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d7/d77/structmidi__ereignis" kindref="compound">midi_ereignis</ref> *</type>
+        <definition>struct midi_ereignis* logik::midi_input_list</definition>
+        <argsstring></argsstring>
+        <name>midi_input_list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="440" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="440" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga4ea14e5284c0840695599141a22e95c7" compoundref="d3/da0/TabGen_8cpp" startline="514" endline="583">expandiere_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga580f12d4669345b7a4c3e340395d4fd5" compoundref="dc/df5/Parser_8cpp" startline="2197" endline="2222">get_new_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaa32d94398d0aa7cb0b2f2bf3b2308c30" compoundref="d3/da0/TabGen_8cpp" startline="1087" endline="1214">insert_in_lokale_liste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga12a7a721463b39816b65d98359c986be" compoundref="df/d23/Execute_8cpp" startline="1019" endline="1053">MidiAnalysis</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3218">
+        <label>argument</label>
+        <link refid="d2/d74/structargument"/>
+        <childnode refid="3219" relation="usage">
+          <edgelabel>parameter</edgelabel>
+        </childnode>
+      </node>
+      <node id="3221">
+        <label>komplex_intervall</label>
+        <link refid="d7/dc9/structkomplex__intervall"/>
+        <childnode refid="3221" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3216">
+        <label>aktions_liste</label>
+        <link refid="d5/def/structaktions__liste"/>
+        <childnode refid="3216" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3217" relation="usage">
+          <edgelabel>argument_liste</edgelabel>
+        </childnode>
+        <childnode refid="3220" relation="usage">
+          <edgelabel>midi_code</edgelabel>
+        </childnode>
+      </node>
+      <node id="3223">
+        <label>case_element</label>
+        <link refid="dc/da0/structcase__element"/>
+        <childnode refid="3223" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3213" relation="usage">
+          <edgelabel>case_aktion</edgelabel>
+        </childnode>
+      </node>
+      <node id="3219">
+        <label>parameter_list</label>
+        <link refid="d8/d28/structparameter__list"/>
+        <childnode refid="3219" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3211">
+        <label>logik</label>
+        <link refid="db/d28/structlogik"/>
+        <childnode refid="3211" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3212" relation="usage">
+          <edgelabel>midi_input_list</edgelabel>
+        </childnode>
+        <childnode refid="3228" relation="usage">
+          <edgelabel>ausloeser</edgelabel>
+        </childnode>
+        <childnode refid="3213" relation="usage">
+          <edgelabel>einstimmung</edgelabel>
+        </childnode>
+        <childnode refid="3229" relation="usage">
+          <edgelabel>harmony_list</edgelabel>
+        </childnode>
+        <childnode refid="3231" relation="usage">
+          <edgelabel>keystroke_list</edgelabel>
+        </childnode>
+        <childnode refid="3232" relation="usage">
+          <edgelabel>anweisungsliste</edgelabel>
+        </childnode>
+      </node>
+      <node id="3224">
+        <label>interpreter_argument_list</label>
+        <link refid="dc/d87/structinterpreter__argument__list"/>
+        <childnode refid="3225" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+      </node>
+      <node id="3222">
+        <label>ton</label>
+        <link refid="dd/da3/structton"/>
+        <childnode refid="3221" relation="usage">
+          <edgelabel>komplex_liste</edgelabel>
+        </childnode>
+        <childnode refid="3222" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3215">
+        <label>case_liste</label>
+        <link refid="d0/d45/structcase__liste"/>
+        <childnode refid="3215" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3216" relation="usage">
+          <edgelabel>case_aktion</edgelabel>
+        </childnode>
+      </node>
+      <node id="3227">
+        <label>ton_einstell</label>
+        <link refid="d4/dd8/structton__einstell"/>
+        <childnode refid="3227" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3230">
+        <label>PTRN</label>
+        <link refid="d3/dc4/structPTRN"/>
+      </node>
+      <node id="3213">
+        <label>do_aktion</label>
+        <link refid="d5/d8c/structdo__aktion"/>
+        <childnode refid="3214" relation="usage">
+          <edgelabel>retuning</edgelabel>
+        </childnode>
+        <childnode refid="3211" relation="usage">
+          <edgelabel>logic</edgelabel>
+        </childnode>
+        <childnode refid="3223" relation="usage">
+          <edgelabel>umst_case</edgelabel>
+        </childnode>
+        <childnode refid="3224" relation="usage">
+          <edgelabel>secondary_arguments</edgelabel>
+          <edgelabel>arguments</edgelabel>
+        </childnode>
+        <childnode refid="3213" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3226" relation="usage">
+          <edgelabel>tonsystem</edgelabel>
+        </childnode>
+        <childnode refid="3227" relation="usage">
+          <edgelabel>tonliste</edgelabel>
+        </childnode>
+        <childnode refid="3220" relation="usage">
+          <edgelabel>out_liste</edgelabel>
+        </childnode>
+      </node>
+      <node id="3226">
+        <label>TSYS</label>
+        <link refid="d4/d2a/structTSYS"/>
+      </node>
+      <node id="3229">
+        <label>harmonie_ereignis</label>
+        <link refid="d9/d5b/structharmonie__ereignis"/>
+        <childnode refid="3211" relation="usage">
+          <edgelabel>the_logik_to_expand</edgelabel>
+        </childnode>
+        <childnode refid="3230" relation="usage">
+          <edgelabel>pattern</edgelabel>
+        </childnode>
+        <childnode refid="3213" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+        <childnode refid="3229" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3231">
+        <label>keyboard_ereignis</label>
+        <link refid="d8/d8e/structkeyboard__ereignis"/>
+        <childnode refid="3211" relation="usage">
+          <edgelabel>the_logik_to_expand</edgelabel>
+        </childnode>
+        <childnode refid="3213" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+        <childnode refid="3231" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3225">
+        <label>interpreter_argument</label>
+        <link refid="dc/d4e/unioninterpreter__argument"/>
+      </node>
+      <node id="3212">
+        <label>midi_ereignis</label>
+        <link refid="d7/d77/structmidi__ereignis"/>
+        <childnode refid="3211" relation="usage">
+          <edgelabel>the_logik_to_expand</edgelabel>
+        </childnode>
+        <childnode refid="3212" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3213" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+      </node>
+      <node id="3214">
+        <label>umstimmung</label>
+        <link refid="d2/d1c/structumstimmung"/>
+        <childnode refid="3214" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3215" relation="usage">
+          <edgelabel>umstimmungs_case_liste</edgelabel>
+        </childnode>
+        <childnode refid="3221" relation="usage">
+          <edgelabel>komplex_liste</edgelabel>
+        </childnode>
+        <childnode refid="3219" relation="usage">
+          <edgelabel>parameter_liste</edgelabel>
+        </childnode>
+        <childnode refid="3216" relation="usage">
+          <edgelabel>aktions_liste</edgelabel>
+        </childnode>
+        <childnode refid="3217" relation="usage">
+          <edgelabel>argument_liste</edgelabel>
+        </childnode>
+        <childnode refid="3222" relation="usage">
+          <edgelabel>tonliste</edgelabel>
+        </childnode>
+        <childnode refid="3220" relation="usage">
+          <edgelabel>out_liste</edgelabel>
+        </childnode>
+      </node>
+      <node id="3232">
+        <label>anweisung</label>
+        <link refid="d0/dab/structanweisung"/>
+        <childnode refid="3228" relation="usage">
+          <edgelabel>ausloeser</edgelabel>
+        </childnode>
+        <childnode refid="3216" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+        <childnode refid="3232" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3220">
+        <label>midiliste</label>
+        <link refid="df/df2/structmidiliste"/>
+        <childnode refid="3220" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3228">
+        <label>ausloeser</label>
+        <link refid="d9/de5/structausloeser"/>
+        <childnode refid="3220" relation="usage">
+          <edgelabel>midi_code</edgelabel>
+        </childnode>
+      </node>
+      <node id="3217">
+        <label>argument_list</label>
+        <link refid="d2/d3f/structargument__list"/>
+        <childnode refid="3218" relation="usage">
+          <edgelabel>argument</edgelabel>
+        </childnode>
+        <childnode refid="3217" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="431" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="430" bodyend="441"/>
+    <listofallmembers>
+      <member refid="db/d28/structlogik_1a58ef30390a1806c7e0eb4478dc4fef02" prot="public" virt="non-virtual"><scope>logik</scope><name>anweisungsliste</name></member>
+      <member refid="db/d28/structlogik_1ad13c483cce0141a78b2425cc7dfd41b8" prot="public" virt="non-virtual"><scope>logik</scope><name>ausloeser</name></member>
+      <member refid="db/d28/structlogik_1a820e8ee0b32f8f6c1931eb84afa69474" prot="public" virt="non-virtual"><scope>logik</scope><name>einstimmung</name></member>
+      <member refid="db/d28/structlogik_1a1f22a147c3f7718cb46800af526b083b" prot="public" virt="non-virtual"><scope>logik</scope><name>einstimmungs_name</name></member>
+      <member refid="db/d28/structlogik_1ac7264f480f35617141dab1eba55cd258" prot="public" virt="non-virtual"><scope>logik</scope><name>harmony_list</name></member>
+      <member refid="db/d28/structlogik_1a1653d7c9e1259cf7724a327893cbd2c0" prot="public" virt="non-virtual"><scope>logik</scope><name>keystroke_list</name></member>
+      <member refid="db/d28/structlogik_1ad8a678e112b821eb846c4261b8797b3f" prot="public" virt="non-virtual"><scope>logik</scope><name>midi_input_list</name></member>
+      <member refid="db/d28/structlogik_1abf8a525df5f9eff49b58f2ffaf404104" prot="public" virt="non-virtual"><scope>logik</scope><name>name</name></member>
+      <member refid="db/d28/structlogik_1a42396331f5ffd2e29837bf1244cc84bb" prot="public" virt="non-virtual"><scope>logik</scope><name>next</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

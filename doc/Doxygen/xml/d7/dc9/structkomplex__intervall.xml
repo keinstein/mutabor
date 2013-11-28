@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d7/dc9/structkomplex__intervall" kind="struct" prot="public">
+    <compoundname>komplex_intervall</compoundname>
+    <includes refid="dd/d40/Global_8h" local="no">Global.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d7/dc9/structkomplex__intervall_1aafd0c9431aec7e190f7bf33577794bef" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double komplex_intervall::faktor</definition>
+        <argsstring></argsstring>
+        <name>faktor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="192" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="192" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga59661c7f2229507f939b3e24d885e47e" compoundref="d3/da0/TabGen_8cpp" startline="87" endline="124">get_komplex_faktor</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga6702b7c0515398c40056999e7f01b93f" compoundref="dc/df5/Parser_8cpp" startline="483" endline="501">get_new_faktor_anteil</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga85cef92c0aca3d10afb617641a96e509" compoundref="dc/df5/Parser_8cpp" startline="1189" endline="1230">get_new_ton_komplex_negative</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga222cc37160dba48895df75b250feb72e" compoundref="dc/df5/Parser_8cpp" startline="1283" endline="1321">get_new_tonsystem_negative</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gab3521eb93946052c58c53570c54ea025" compoundref="dc/df5/Parser_8cpp" startline="1531" endline="1558">get_new_umstimm_expression_negative</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gae365d9fc17f26940f87797ae065a0aea" compoundref="dc/df5/Parser_8cpp" startline="1576" endline="1595">get_umstimmung_wiederholung_abs_negative</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga2130e3011fa915900b213ee4b2d22163" compoundref="dc/df5/Parser_8cpp" startline="1606" endline="1615">get_umstimmung_wiederholung_rel_negative</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d7/dc9/structkomplex__intervall_1ae86be71a24c1b624da658a422cdb958b" prot="public" static="no" mutable="no">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <definition>const char* komplex_intervall::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="193" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="193" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga4145fc3b258a3ca6c307355c0e972a20" compoundref="d3/dca/Interval_8cpp" startline="199" endline="235">berechne_intervall_endgueltig</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga2ea71bbe5f870f057780e2a023da84ab" compoundref="d3/dca/Interval_8cpp" startline="237" endline="348">berechne_intervalle_absolut</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga59661c7f2229507f939b3e24d885e47e" compoundref="d3/da0/TabGen_8cpp" startline="87" endline="124">get_komplex_faktor</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga6702b7c0515398c40056999e7f01b93f" compoundref="dc/df5/Parser_8cpp" startline="483" endline="501">get_new_faktor_anteil</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d7/dc9/structkomplex__intervall_1a605749326013f56fca74b87161155dbf" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d7/dc9/structkomplex__intervall" kindref="compound">komplex_intervall</ref> *</type>
+        <definition>struct komplex_intervall* komplex_intervall::next</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="194" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="194" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga4145fc3b258a3ca6c307355c0e972a20" compoundref="d3/dca/Interval_8cpp" startline="199" endline="235">berechne_intervall_endgueltig</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga2ea71bbe5f870f057780e2a023da84ab" compoundref="d3/dca/Interval_8cpp" startline="237" endline="348">berechne_intervalle_absolut</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga308dccbb03ecf89669b0baeff27bbb03" compoundref="d3/dca/Interval_8cpp" startline="352" endline="380">check_komplex_intervall</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga6702b7c0515398c40056999e7f01b93f" compoundref="dc/df5/Parser_8cpp" startline="483" endline="501">get_new_faktor_anteil</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga85cef92c0aca3d10afb617641a96e509" compoundref="dc/df5/Parser_8cpp" startline="1189" endline="1230">get_new_ton_komplex_negative</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga222cc37160dba48895df75b250feb72e" compoundref="dc/df5/Parser_8cpp" startline="1283" endline="1321">get_new_tonsystem_negative</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gab3521eb93946052c58c53570c54ea025" compoundref="dc/df5/Parser_8cpp" startline="1531" endline="1558">get_new_umstimm_expression_negative</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3204">
+        <label>komplex_intervall</label>
+        <link refid="d7/dc9/structkomplex__intervall"/>
+        <childnode refid="3204" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="191" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="190" bodyend="195"/>
+    <listofallmembers>
+      <member refid="d7/dc9/structkomplex__intervall_1aafd0c9431aec7e190f7bf33577794bef" prot="public" virt="non-virtual"><scope>komplex_intervall</scope><name>faktor</name></member>
+      <member refid="d7/dc9/structkomplex__intervall_1ae86be71a24c1b624da658a422cdb958b" prot="public" virt="non-virtual"><scope>komplex_intervall</scope><name>name</name></member>
+      <member refid="d7/dc9/structkomplex__intervall_1a605749326013f56fca74b87161155dbf" prot="public" virt="non-virtual"><scope>komplex_intervall</scope><name>next</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

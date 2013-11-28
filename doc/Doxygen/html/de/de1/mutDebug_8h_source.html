@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/wxGUI/generic/mutDebug.h Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_eaae7e9da1b31c6b329e928d72e0e61a.html">wxGUI</a></li><li class="navelem"><a class="el" href="../../dir_6feab0a044d0e418755c87751896293d.html">generic</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">mutDebug.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../de/de1/mutDebug_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> *  mutDebug.h</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> *  Mutabor</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> *  Created by Tobias Schlemmer on 25.03.10.</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> *  Copyright 2010 TU Dresden. All rights reserved.</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#ifndef __MUTDEBUGFLAGS__</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __MUTDEBUGFLAGS__</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &lt;bitset&gt;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#include &lt;cstdio&gt;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#include &quot;wx/cmdline.h&quot;</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#include &quot;wx/string.h&quot;</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#include &quot;wx/debug.h&quot;</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#pragma GCC diagnostic ignored &quot;-Wvariadic-macros&quot;</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#ifdef WX</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;wx/thread.h&quot;</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">typedef</span> wxMutex debugMutex;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">typedef</span> wxMutexLocker debugScopedLock;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/db7/group__debug.html#gae7c707573d355e5f9014404f474678c5">MutInitConsole</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">struct </span>debugFlags {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keyword">struct </span>flagtype {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                flagtype();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#       define DEBUGFLAG(flag,description) bool flag:1;</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#       include &quot;<a class="code" href="../../d7/d49/mutDebugFlags_8h.html">mutDebugFlags.h</a>&quot;</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#       undef DEBUGFLAG</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor"></span>        };</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">struct </span><a class="code" href="../../d2/d82/structnogetflag.html">nogetflag</a> {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="keywordtype">bool</span> operator()()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        };</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keyword">struct </span>nosetflag {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordtype">void</span> operator()(<span class="keywordtype">bool</span>) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        };</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#       define DEBUGFLAG(flag,description)                      \</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">        struct get ## flag {                                    \</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">                bool operator()() const { return flags.flag; }  \</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">        };                                                      \</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">        struct set ## flag {                                    \</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">                void operator()(bool value=true) const {        \</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">                        flags.flag = value;                     \</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">                }                                               \</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">        };</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#       include &quot;<a class="code" href="../../d7/d49/mutDebugFlags_8h.html">mutDebugFlags.h</a>&quot;</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#       undef DEBUGFLAG</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor"></span>        </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keyword">static</span> flagtype flags;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> InitCommandLine(wxCmdLineParser&amp;  parser);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> ProcessCommandLine(wxCmdLineParser&amp;  parser);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">extern</span> debugMutex debugmutex;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#define isDebugFlag(level) (debugFlags::flags.level)</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define DEBUGLOGBASEINT(level,strlevel, type,...)                      \</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">        do {                                                            \</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">                if (level) {                                            \</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">                        debugScopedLock lock(debugmutex);               \</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">                        if (!std::clog.good()) MutInitConsole();        \</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">                        wxASSERT(std::clog.good());                     \</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">                        std::clog &lt;&lt; __FILE__ &lt;&lt; &quot;:&quot; &lt;&lt; __LINE__        \</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">                                  &lt;&lt; &quot;: &quot; &lt;&lt; ((const char *) type)      \</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">                                  &lt;&lt; &quot;::&quot; &lt;&lt; __WXFUNCTION__ &lt;&lt; &quot;: &quot;;    \</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">                        std::clog &lt;&lt; (const char *)(wxString::Format( __VA_ARGS__ ).ToUTF8()) \</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">                                  &lt;&lt; &quot; (&quot; &lt;&lt; strlevel &lt;&lt; &quot;)&quot;    \</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">                                  &lt;&lt; std::endl;                         \</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">                        std::clog.flush();                              \</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">                }                                                       \</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">        } while (false)</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define DEBUGLOGBASE(level,type,...) DEBUGLOGBASEINT(debugFlags::flags.level,#level,type,__VA_ARGS__)</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define mutRefCast(type,value) dynamic_cast&lt;type &amp;&gt;(value)</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define mutPtrCast(type,value) (wxASSERT(dynamic_cast&lt;type *&gt;(value)), dynamic_cast&lt;type *&gt;(value))</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define mutPtrDynCast mutPtrCast</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="../../d2/d82/structnogetflag.html">  126</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../d2/d82/structnogetflag.html">nogetflag</a> {</div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="../../d2/d82/structnogetflag.html#afbe19035f3cebb579079e9901f475bba">  127</a></span>&#160;                <span class="keywordtype">bool</span> <a class="code" href="../../d2/d82/structnogetflag.html#afbe19035f3cebb579079e9901f475bba">operator()</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;};</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#gad51281d5c23e4daa2d7f85fc94935239">  130</a></span>&#160;<span class="preprocessor">#define isDebugFlag(level) false</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#ga7c13600c17b7e363d86333bfc6aa54f3">  131</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define DEBUGLOGBASEINT(...) do {} while (0)</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#ga3afe596b4b512260d559f255fb3bf1ac">  132</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define DEBUGLOGBASE(...) do {} while (0)</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#ga391d61b0297bf03db59dad4f6b8457ab">  133</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define PRINTSIZER(X) do {} while (0)</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#ga0191db36d7964b7c93f9e7b540a48db2">  135</a></span>&#160;<span class="preprocessor">#define mutRefCast(type,value) static_cast&lt;type &amp;&gt;(value)</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#ga9aed8740f47ad4601d8252e4e77fc46b">  136</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define mutPtrCast(type,value) static_cast&lt;type *&gt;(value)</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#ga1cb0494257f81c4e6622c0502ab0059b">  137</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define mutPtrDynCast(type,value) dynamic_cast&lt;type *&gt;(value)</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">  141</a></span>&#160;<span class="preprocessor">#define DEBUGLOG(level,...) DEBUGLOGBASE(level, typeid(*this).name(),__VA_ARGS__)</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#gad0fa697ccfdac1d20857a4359add2996">  142</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define DEBUGLOG2(level,...) DEBUGLOGBASE(level, _T(&quot;&quot;),__VA_ARGS__)</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#ga9de22df51e7efa23154a04eab9e66cad">  143</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define DEBUGLOGTYPE(level, type,...) DEBUGLOGBASE(level, typeid(type).name(), __VA_ARGS__)</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#ga9f7c0ab5b0db6d8abc460bd962667633">  144</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define DEBUGLOGTYPEINT(level, strlevel,type,...) DEBUGLOGBASEINT(level, strlevel, typeid(type).name(), __VA_ARGS__)</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#gaad9cc64d45a76ba0d37c00f8cd9caa37">  145</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define TRACE DEBUGLOGBASE(trace,_T(&quot;&quot;),_T(&quot;.&quot;))</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">  146</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define TRACEC DEBUGLOG(trace,_T(&quot;.&quot;))</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#ga556434a0102a112e3dd0c2849d5e36fd">  147</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define TRACET(type) DEBUGLOGTYPE(trace,type,_T(&quot;.&quot;))</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T,<span class="keyword">class</span> flag, <span class="keyword">class</span> P&gt;</div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="../../dd/d82/classwatchedPtr.html">  150</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../dd/d82/classwatchedPtr.html">watchedPtr</a> {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="../../dd/d82/classwatchedPtr.html#af43497953f9b0a73e549a1eda239a5ca">  152</a></span>&#160;        <span class="keyword">typedef</span> T <a class="code" href="../../dd/d82/classwatchedPtr.html#af43497953f9b0a73e549a1eda239a5ca">datatype</a>;</div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="../../dd/d82/classwatchedPtr.html#a7d0706fb729ba70ab6f3f9ca2db02beb">  153</a></span>&#160;        <span class="keyword">typedef</span> T* <a class="code" href="../../dd/d82/classwatchedPtr.html#a7d0706fb729ba70ab6f3f9ca2db02beb">dataptr</a>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="../../dd/d82/classwatchedPtr.html#a21d14ee51821efaf5997151a349f347f">  154</a></span>&#160;        <span class="keyword">typedef</span> P <a class="code" href="../../dd/d82/classwatchedPtr.html#a21d14ee51821efaf5997151a349f347f">parenttype</a>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="../../dd/d82/classwatchedPtr.html#ae924b0925299689dfa2658af190a01f2">  155</a></span>&#160;        <a class="code" href="../../dd/d82/classwatchedPtr.html#af43497953f9b0a73e549a1eda239a5ca">datatype</a> * <a class="code" href="../../dd/d82/classwatchedPtr.html#ae924b0925299689dfa2658af190a01f2">data</a>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="preprocessor"></span><span class="comment">//      static const flag myflag;</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <a class="code" href="../../dd/d82/classwatchedPtr.html#a21d14ee51821efaf5997151a349f347f">parenttype</a> * parent;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        wxString name;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor"></span><span class="keyword">public</span>:</div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="../../dd/d82/classwatchedPtr.html#a0fb3331bfe2601e7a0de36d6fabb0a93">  162</a></span>&#160;        <a class="code" href="../../dd/d82/classwatchedPtr.html#a0fb3331bfe2601e7a0de36d6fabb0a93">watchedPtr</a>(<a class="code" href="../../dd/d82/classwatchedPtr.html#a21d14ee51821efaf5997151a349f347f">parenttype</a> * p, <span class="keyword">const</span> wxString &amp; varname = _T(<span class="stringliteral">&quot;watchedPtr&quot;</span>), <a class="code" href="../../dd/d82/classwatchedPtr.html#af43497953f9b0a73e549a1eda239a5ca">datatype</a> * d = NULL)</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor"></span>                parent = p;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                name = varname;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor"></span>                (*this) = d;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        </div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="../../dd/d82/classwatchedPtr.html#a65e123b1ae76d3233f7f2164b60762f7">  171</a></span>&#160;        <a class="code" href="../../dd/d82/classwatchedPtr.html">watchedPtr&lt;T,flag,P&gt;</a> &amp;<a class="code" href="../../dd/d82/classwatchedPtr.html#a65e123b1ae76d3233f7f2164b60762f7">operator= </a>(<a class="code" href="../../dd/d82/classwatchedPtr.html#af43497953f9b0a73e549a1eda239a5ca">datatype</a> * d)</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga9f7c0ab5b0db6d8abc460bd962667633">DEBUGLOGTYPEINT</a>(flag()(),<span class="stringliteral">&quot;???&quot;</span>,<a class="code" href="../../dd/d82/classwatchedPtr.html#a21d14ee51821efaf5997151a349f347f">parenttype</a>,</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                                _T(<span class="stringliteral">&quot;Setting %s in %p from %p to %p&quot;</span>),</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                                name.c_str(),(<span class="keywordtype">void</span>*)parent,(<span class="keywordtype">void</span>*)<a class="code" href="../../dd/d82/classwatchedPtr.html#ae924b0925299689dfa2658af190a01f2">data</a>,d);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                <a class="code" href="../../dd/d82/classwatchedPtr.html#ae924b0925299689dfa2658af190a01f2">data</a> = d;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        </div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="../../dd/d82/classwatchedPtr.html#a77c595ba7f91c3b065478daa9d389374">  181</a></span>&#160;        <span class="keyword">operator</span> <a class="code" href="../../dd/d82/classwatchedPtr.html#a7d0706fb729ba70ab6f3f9ca2db02beb">dataptr</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="../../dd/d82/classwatchedPtr.html#ae924b0925299689dfa2658af190a01f2">data</a>;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        }</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor"></span>        <a class="code" href="../../dd/d82/classwatchedPtr.html#af43497953f9b0a73e549a1eda239a5ca">datatype</a> &amp; operator -&gt; ()</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                <span class="keywordflow">return</span> *<a class="code" href="../../dd/d82/classwatchedPtr.html#ae924b0925299689dfa2658af190a01f2">data</a>;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../dd/d82/classwatchedPtr.html#af43497953f9b0a73e549a1eda239a5ca">datatype</a> &amp; operator -&gt; ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                <span class="keywordflow">return</span> *<a class="code" href="../../dd/d82/classwatchedPtr.html#ae924b0925299689dfa2658af190a01f2">data</a>;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor"></span>};</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">//template &lt;class T,class flag, class P&gt;</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">//        const flag watchedPtr&lt;T,flag,P&gt;::myflag;</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="preprocessor">#define WATCHEDPTR(T,f,P) watchedPtr&lt;T,debugFlags::get##f,P&gt;</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define DEFWATCHEDPTR </span><span class="comment">/* template &lt;class T,class flag, class P&gt; \</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">                         const flag watchedPtr&lt;T,flag,P&gt;::myflag;</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">                      */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#gaab4d9ab34f40c3e65ae4b48e25aec5d0">  210</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define WATCHEDPTR(T,f,P) watchedPtr&lt;T,nogetflag,P&gt;</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#gac36bf26db9b8eee44c2ecf1aedd244c6">  211</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define DEFWATCHEDPTR</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="preprocessor"></span><span class="keywordtype">void</span> <a class="code" href="../../de/db7/group__debug.html#ga69f1fd7d0d4f34dbea0acff2e92b7460">debug_destroy_class</a>(<span class="keywordtype">void</span> * ptr, std::string file, <span class="keywordtype">int</span> l);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/db7/group__debug.html#gad832f7644d01ea65a5de5dc9ba942d11">debug_destruct_class</a>(<span class="keywordtype">void</span> * ptr);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/db7/group__debug.html#ga15f8c412cd184d3b64d2deac2e3f74e8">debug_print_pointers</a>();</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../de/db7/group__debug.html#ga886d7604932ac35111800f57ea4a5a43">debug_is_all_deleted</a>();</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="preprocessor">#else </span></div>
+<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#ga33e4d2337c0d8d97f3f9527159d490a0">  221</a></span>&#160;<span class="preprocessor"></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../de/db7/group__debug.html#ga69f1fd7d0d4f34dbea0acff2e92b7460">debug_destroy_class</a>(<span class="keywordtype">void</span> * ptr, std::string file, <span class="keywordtype">int</span> l) {}</div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#gad832f7644d01ea65a5de5dc9ba942d11">  222</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../de/db7/group__debug.html#gad832f7644d01ea65a5de5dc9ba942d11">debug_destruct_class</a>(<span class="keywordtype">void</span> * ptr) {}</div>
+<div class="line"><a name="l00223"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#ga15f8c412cd184d3b64d2deac2e3f74e8">  223</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../de/db7/group__debug.html#ga15f8c412cd184d3b64d2deac2e3f74e8">debug_print_pointers</a>() {}</div>
+<div class="line"><a name="l00224"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#ga886d7604932ac35111800f57ea4a5a43">  224</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="../../de/db7/group__debug.html#ga886d7604932ac35111800f57ea4a5a43">debug_is_all_deleted</a>() { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno"><a class="line" href="../../de/db7/group__debug.html#ga69f1fd7d0d4f34dbea0acff2e92b7460">  226</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define debug_destroy_class(ptr) debug_destroy_class(ptr,__FILE__,__LINE__)</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/db7/group__debug.html#ga711968cbebc4d3b87c0c9f765213bbd4">mutAssertFailure</a>(<span class="keyword">const</span> wxChar *file,</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                      <span class="keywordtype">int</span> line,</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                      <span class="keyword">const</span> wxChar *func,</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                      <span class="keyword">const</span> wxChar *cond,</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                      <span class="keyword">const</span> wxChar *msg);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="preprocessor">#ifdef MUTABOR_TEST</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="keyword">const</span> wxChar * srcdir;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> wxChar * top_srcdir;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> wxChar * top_builddir;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;wxString StreamToHex(wxStreamBuffer * buf);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="preprocessor"></span></div>
+<div class="ttc" id="classwatchedPtr_html_a65e123b1ae76d3233f7f2164b60762f7"><div class="ttname"><a href="../../dd/d82/classwatchedPtr.html#a65e123b1ae76d3233f7f2164b60762f7">watchedPtr::operator=</a></div><div class="ttdeci">watchedPtr&lt; T, flag, P &gt; &amp; operator=(datatype *d)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00171">mutDebug.h:171</a></div></div>
+<div class="ttc" id="group__debug_html_gae7c707573d355e5f9014404f474678c5"><div class="ttname"><a href="../../de/db7/group__debug.html#gae7c707573d355e5f9014404f474678c5">MutInitConsole</a></div><div class="ttdeci">void MutInitConsole()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dc0/mutDebug_8cpp_source.html#l00146">mutDebug.cpp:146</a></div></div>
+<div class="ttc" id="group__debug_html_gad832f7644d01ea65a5de5dc9ba942d11"><div class="ttname"><a href="../../de/db7/group__debug.html#gad832f7644d01ea65a5de5dc9ba942d11">debug_destruct_class</a></div><div class="ttdeci">void debug_destruct_class(void *ptr)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00222">mutDebug.h:222</a></div></div>
+<div class="ttc" id="classwatchedPtr_html_a21d14ee51821efaf5997151a349f347f"><div class="ttname"><a href="../../dd/d82/classwatchedPtr.html#a21d14ee51821efaf5997151a349f347f">watchedPtr::parenttype</a></div><div class="ttdeci">P parenttype</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00154">mutDebug.h:154</a></div></div>
+<div class="ttc" id="classwatchedPtr_html_a7d0706fb729ba70ab6f3f9ca2db02beb"><div class="ttname"><a href="../../dd/d82/classwatchedPtr.html#a7d0706fb729ba70ab6f3f9ca2db02beb">watchedPtr::dataptr</a></div><div class="ttdeci">T * dataptr</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00153">mutDebug.h:153</a></div></div>
+<div class="ttc" id="classwatchedPtr_html_ae924b0925299689dfa2658af190a01f2"><div class="ttname"><a href="../../dd/d82/classwatchedPtr.html#ae924b0925299689dfa2658af190a01f2">watchedPtr::data</a></div><div class="ttdeci">datatype * data</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00155">mutDebug.h:155</a></div></div>
+<div class="ttc" id="classwatchedPtr_html_af43497953f9b0a73e549a1eda239a5ca"><div class="ttname"><a href="../../dd/d82/classwatchedPtr.html#af43497953f9b0a73e549a1eda239a5ca">watchedPtr::datatype</a></div><div class="ttdeci">T datatype</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00152">mutDebug.h:152</a></div></div>
+<div class="ttc" id="group__debug_html_ga711968cbebc4d3b87c0c9f765213bbd4"><div class="ttname"><a href="../../de/db7/group__debug.html#ga711968cbebc4d3b87c0c9f765213bbd4">mutAssertFailure</a></div><div class="ttdeci">void mutAssertFailure(const wxChar *file, int line, const wxChar *func, const wxChar *cond, const wxChar *msg)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dc0/mutDebug_8cpp_source.html#l00243">mutDebug.cpp:243</a></div></div>
+<div class="ttc" id="structnogetflag_html"><div class="ttname"><a href="../../d2/d82/structnogetflag.html">nogetflag</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00126">mutDebug.h:126</a></div></div>
+<div class="ttc" id="group__debug_html_ga69f1fd7d0d4f34dbea0acff2e92b7460"><div class="ttname"><a href="../../de/db7/group__debug.html#ga69f1fd7d0d4f34dbea0acff2e92b7460">debug_destroy_class</a></div><div class="ttdeci">#define debug_destroy_class(ptr)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00226">mutDebug.h:226</a></div></div>
+<div class="ttc" id="group__debug_html_ga15f8c412cd184d3b64d2deac2e3f74e8"><div class="ttname"><a href="../../de/db7/group__debug.html#ga15f8c412cd184d3b64d2deac2e3f74e8">debug_print_pointers</a></div><div class="ttdeci">void debug_print_pointers()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00223">mutDebug.h:223</a></div></div>
+<div class="ttc" id="group__debug_html_ga9f7c0ab5b0db6d8abc460bd962667633"><div class="ttname"><a href="../../de/db7/group__debug.html#ga9f7c0ab5b0db6d8abc460bd962667633">DEBUGLOGTYPEINT</a></div><div class="ttdeci">#define DEBUGLOGTYPEINT(level, strlevel, type,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00144">mutDebug.h:144</a></div></div>
+<div class="ttc" id="classwatchedPtr_html"><div class="ttname"><a href="../../dd/d82/classwatchedPtr.html">watchedPtr</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00150">mutDebug.h:150</a></div></div>
+<div class="ttc" id="classwatchedPtr_html_a0fb3331bfe2601e7a0de36d6fabb0a93"><div class="ttname"><a href="../../dd/d82/classwatchedPtr.html#a0fb3331bfe2601e7a0de36d6fabb0a93">watchedPtr::watchedPtr</a></div><div class="ttdeci">watchedPtr(parenttype *p, const wxString &amp;varname=_T(&quot;watchedPtr&quot;), datatype *d=NULL)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00162">mutDebug.h:162</a></div></div>
+<div class="ttc" id="group__debug_html_ga886d7604932ac35111800f57ea4a5a43"><div class="ttname"><a href="../../de/db7/group__debug.html#ga886d7604932ac35111800f57ea4a5a43">debug_is_all_deleted</a></div><div class="ttdeci">bool debug_is_all_deleted()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00224">mutDebug.h:224</a></div></div>
+<div class="ttc" id="structnogetflag_html_afbe19035f3cebb579079e9901f475bba"><div class="ttname"><a href="../../d2/d82/structnogetflag.html#afbe19035f3cebb579079e9901f475bba">nogetflag::operator()</a></div><div class="ttdeci">bool operator()() const </div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00127">mutDebug.h:127</a></div></div>
+<div class="ttc" id="mutDebugFlags_8h_html"><div class="ttname"><a href="../../d7/d49/mutDebugFlags_8h.html">mutDebugFlags.h</a></div><div class="ttdoc">Debug flags for mutabor debug mode. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:38:41 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

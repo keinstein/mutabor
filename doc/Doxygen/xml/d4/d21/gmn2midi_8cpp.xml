@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d4/d21/gmn2midi_8cpp" kind="file">
+    <compoundname>gmn2midi.cpp</compoundname>
+    <includes refid="d9/d63/ext_8h" local="yes">ext.h</includes>
+    <includes local="yes">gsp.h</includes>
+    <includes local="yes">gis.h</includes>
+    <includes local="yes">gis_head.h</includes>
+    <includes local="no">iostream.h</includes>
+    <includes refid="d2/d71/mis_8h" local="yes">mis.h</includes>
+    <incdepgraph>
+      <node id="12740">
+        <label>gsp.h</label>
+      </node>
+      <node id="12746">
+        <label>classlib\arrays.h</label>
+      </node>
+      <node id="12741">
+        <label>gis.h</label>
+      </node>
+      <node id="12739">
+        <label>ext.h</label>
+        <link refid="d9/d63/ext_8h"/>
+      </node>
+      <node id="12745">
+        <label>fstream.h</label>
+      </node>
+      <node id="12743">
+        <label>iostream.h</label>
+      </node>
+      <node id="12738">
+        <label>src/gmut/gmn2midi.cpp</label>
+        <link refid="gmn2midi.cpp"/>
+        <childnode refid="12739" relation="include">
+        </childnode>
+        <childnode refid="12740" relation="include">
+        </childnode>
+        <childnode refid="12741" relation="include">
+        </childnode>
+        <childnode refid="12742" relation="include">
+        </childnode>
+        <childnode refid="12743" relation="include">
+        </childnode>
+        <childnode refid="12744" relation="include">
+        </childnode>
+      </node>
+      <node id="12742">
+        <label>gis_head.h</label>
+      </node>
+      <node id="12744">
+        <label>mis.h</label>
+        <link refid="d2/d71/mis_8h"/>
+        <childnode refid="12745" relation="include">
+        </childnode>
+        <childnode refid="12746" relation="include">
+        </childnode>
+        <childnode refid="12741" relation="include">
+        </childnode>
+        <childnode refid="12742" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="d4/d21/gmn2midi_8cpp_1a19cebc05ca7f1e3466303ce766f27bf6" prot="public" static="no" mutable="no">
+        <type><ref refid="d5/d67/classMisFile" kindref="compound">MisFile</ref> *</type>
+        <definition>MisFile* Midi</definition>
+        <argsstring></argsstring>
+        <name>Midi</name>
+        <initializer>= new <ref refid="d5/d67/classMisFile" kindref="compound">MisFile</ref>(&quot;&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmn2midi.cpp" line="12" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmn2midi.cpp" bodystart="12" bodyend="-1"/>
+        <referencedby refid="da/dd9/classMisTrack_1acfb9380c509bb5d179df56ea2be4f562" compoundref="d4/df2/mis_8cpp" startline="538" endline="561">MisTrack::ReadOn</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d4/d21/gmn2midi_8cpp_1a89f6a2d3b6f126bbc51071b02df8c753" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void far</type>
+        <definition>void far Write</definition>
+        <argsstring>(GisReadArtHead *h, char turn)</argsstring>
+        <name>Write</name>
+        <param>
+          <type><ref refid="d4/d4c/classGisReadArtHead" kindref="compound">GisReadArtHead</ref> *</type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <declname>turn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmn2midi.cpp" line="14" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmn2midi.cpp" bodystart="14" bodyend="19"/>
+        <references refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" compoundref="d1/db5/GIS__Head_8h" startline="70">GisReadHead::Cursor</references>
+        <references refid="d5/d67/classMisFile_1ad543409220be90f8265eef24627a5946" compoundref="d4/df2/mis_8cpp" startline="318" endline="337">MisFile::WriteGis</references>
+        <referencedby refid="d4/d21/gmn2midi_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="d4/d21/gmn2midi_8cpp" startline="23" endline="74">main</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga6cd58b50a5711a6777317d34eb331e50" compoundref="d1/da4/MutEditFile_8cpp" startline="560" endline="579">mutaborGUI::MutEditFile::SaveSearchData</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/gmn2midi_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>(int argc, char *argv[])</argsstring>
+        <name>main</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>argv</declname>
+          <array>[]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>cout &lt;&lt; &quot; &quot; &lt;&lt; z &lt;&lt; &quot; &quot;; </para>        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmn2midi.cpp" line="23" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmn2midi.cpp" bodystart="23" bodyend="74"/>
+        <references refid="d5/d67/classMisFile_1a0660ab1a9fbebe235a34460f477deb1c" compoundref="d4/df2/mis_8cpp" startline="241" endline="244">MisFile::AddInstrument</references>
+        <references refid="d5/d67/classMisFile_1a590394931571e25dbaa7ade302cd9801" compoundref="d4/df2/mis_8cpp" startline="234" endline="239">MisFile::CountOnDeltaTime</references>
+        <references refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" compoundref="df/d4f/Frac_8h" startline="64">frac::d</references>
+        <references refid="d4/d5b/ext_8cpp_1a2c9a92e9d0453b44d948fe9522f6733c" compoundref="d4/d5b/ext_8cpp" startline="41" endline="50">ExtChange</references>
+        <references refid="d4/d5b/ext_8cpp_1a3c3f9179b542575b1a4a011ebf30a6cb" compoundref="d4/d5b/ext_8cpp" startline="20" endline="29">ExtCheck</references>
+        <references refid="d5/dee/group__route_1gab095232f6f6d76781fd5603d4b453306" compoundref="dc/de7/GIS_8cpp" startline="844" endline="864">GisParse</references>
+        <references refid="d5/dee/group__route_1ga18fbf3c45269dd19a140358c3e6441f8" compoundref="d7/da0/GIS__Head_8cpp" startline="656" endline="748">GisReadArtHeadOn</references>
+        <references refid="d5/dee/group__route_1gaccb293565ac1505218ca2cb37a75b696" compoundref="d3/d9e/GSP_8cpp" startline="51">GspError</references>
+        <references refid="d5/dee/group__route_1gad6532c6916f8eab5ddcd1e3cc7a1eb73" compoundref="d3/d9e/GSP_8cpp" startline="50">GspErrorLine</references>
+        <references refid="d5/dee/group__route_1ga171f5381bbd5e457d35c7fb9d96658ed" compoundref="d3/d9e/GSP_8cpp" startline="48">GspErrorLineNr</references>
+        <references refid="d5/dee/group__route_1ga0a8cafd3bcd5e0e04dfa8610f5e5fbae" compoundref="d3/d9e/GSP_8cpp" startline="49">GspErrorPos</references>
+        <references refid="d5/dee/group__route_1ga4f0f62ff19812efd72a38e6acb062a9c" compoundref="d3/de1/GSP__Err_8cpp" startline="31">GspErrorText</references>
+        <references refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" compoundref="df/d4f/Frac_8h" startline="64">frac::n</references>
+        <references refid="d9/d81/classGisReadHead_1a797b336a3149c1e51f4bdad05519def2" compoundref="d1/db5/GIS__Head_8h" startline="67">GisReadHead::Prev</references>
+        <references refid="d5/d67/classMisFile_1a6549dce9ca746ba9832699d92cf85ebb" compoundref="d4/df2/mis_8cpp" startline="144" endline="168">MisFile::Save</references>
+        <references refid="d4/d21/gmn2midi_8cpp_1a89f6a2d3b6f126bbc51071b02df8c753" compoundref="d4/d21/gmn2midi_8cpp" startline="14" endline="19">Write</references>
+        <references refid="d5/d67/classMisFile_1aa7384911209dce2e873193481e44e5e8" compoundref="d4/df2/mis_8cpp" startline="188" endline="209">MisFile::WriteInit</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>##################################################################</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GMN2MIDI<sp/>(GMN-MIDI-Converter)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>##################################################################</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d9/d63/ext_8h" kindref="compound">ext.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;gsp.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;gis.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;gis_head.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d71/mis_8h" kindref="compound">mis.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="d4/d21/gmn2midi_8cpp_1a19cebc05ca7f1e3466303ce766f27bf6" refkind="member"><highlight class="normal"><ref refid="d5/d67/classMisFile" kindref="compound">MisFile</ref><sp/>*<ref refid="d4/d21/gmn2midi_8cpp_1a19cebc05ca7f1e3466303ce766f27bf6" kindref="member">Midi</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="d5/d67/classMisFile" kindref="compound">MisFile</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="d4/d21/gmn2midi_8cpp_1a89f6a2d3b6f126bbc51071b02df8c753" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>far<sp/><ref refid="d4/d21/gmn2midi_8cpp_1a89f6a2d3b6f126bbc51071b02df8c753" kindref="member">Write</ref>(<ref refid="d4/d4c/classGisReadArtHead" kindref="compound">GisReadArtHead</ref><sp/>*<ref refid="d3/d26/mutgis_8cpp_1a26506d124b947beae862c007bc8195bb" kindref="member">h</ref>,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>turn)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">/*<sp/><sp/>cout<sp/>&lt;&lt;<sp/>&quot;[&quot;&lt;&lt;<sp/>(int)turn<sp/>&lt;&lt;&quot;]&quot;;</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/><sp/>h-&gt;Cursor-&gt;Echo();<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/>Midi-&gt;<ref refid="d5/d67/classMisFile_1ad543409220be90f8265eef24627a5946" kindref="member">WriteGis</ref>(h,<sp/>h-&gt;<ref refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" kindref="member">Cursor</ref>,<sp/>turn,<sp/>0);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>##################################################################</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="d4/d21/gmn2midi_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/d21/gmn2midi_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>argv<sp/>[])</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;GMN2MIDI<sp/>-<sp/>GUIDO<sp/>MIDI<sp/>converter,<sp/>R.K.<sp/>1998,<sp/>Version<sp/>0.5\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>argc<sp/>&lt;<sp/>2<sp/>)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;This<sp/>is<sp/>a<sp/>very<sp/>rough<sp/>tool<sp/>for<sp/>testing<sp/>GMut.&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;For<sp/>more<sp/>information<sp/>please<sp/>visit:\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>http://rcswww.urz.tu-dresden.de/~rkrausse/gmut.htm\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;A<sp/>real<sp/>good<sp/>converter<sp/>by<sp/>L.Martin<sp/>will<sp/>be<sp/>soon<sp/>accessible<sp/>anyhow<sp/>via:\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>http://www.informatik.tu-darmstadt.de/AFS/CM/GUIDO/index.html\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Usage:<sp/><sp/><sp/>gmn2midi<sp/>gmnfile[.gmn]<sp/>[midfile[.mid]]\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Parsing<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="d4/d5b/ext_8cpp_1a3c3f9179b542575b1a4a011ebf30a6cb" kindref="member">ExtCheck</ref>(argv[1],<sp/></highlight><highlight class="stringliteral">&quot;gmn&quot;</highlight><highlight class="normal">)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>...&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref><sp/>*Gis=<sp/><ref refid="d5/dee/group__route_1gab095232f6f6d76781fd5603d4b453306" kindref="member">GisParse</ref>(<ref refid="d4/d5b/ext_8cpp_1a3c3f9179b542575b1a4a011ebf30a6cb" kindref="member">ExtCheck</ref>(argv[1],<sp/></highlight><highlight class="stringliteral">&quot;gmn&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Result<sp/>=<sp/><ref refid="d5/dee/group__route_1gaccb293565ac1505218ca2cb37a75b696" kindref="member">GspError</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>Result<sp/>)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Error.\nErrorNr:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>Result<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="d5/dee/group__route_1ga4f0f62ff19812efd72a38e6acb062a9c" kindref="member">GspErrorText</ref>[Result]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Line:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="d5/dee/group__route_1ga171f5381bbd5e457d35c7fb9d96658ed" kindref="member">GspErrorLineNr</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="d5/dee/group__route_1ga0a8cafd3bcd5e0e04dfa8610f5e5fbae" kindref="member">GspErrorPos</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/><ref refid="d5/dee/group__route_1gad6532c6916f8eab5ddcd1e3cc7a1eb73" kindref="member">GspErrorLine</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="d5/dee/group__route_1ga0a8cafd3bcd5e0e04dfa8610f5e5fbae" kindref="member">GspErrorPos</ref>;<sp/>i++)<sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;^&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>OK\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Translating<sp/>to<sp/>MIDI<sp/>...&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><ref refid="d4/d4c/classGisReadArtHead" kindref="compound">GisReadArtHead</ref><sp/>*RHead<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="d4/d4c/classGisReadArtHead" kindref="compound">GisReadArtHead</ref>(0,<sp/>Gis,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>(<ref refid="d9/d81/classGisReadHead" kindref="compound">GisReadHead</ref>**)RHead-&gt;<ref refid="d9/d81/classGisReadHead_1a797b336a3149c1e51f4bdad05519def2" kindref="member">Prev</ref><sp/>=<sp/>(<ref refid="d9/d81/classGisReadHead" kindref="compound">GisReadHead</ref>**)&amp;RHead;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>z<sp/>=<sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>(0,1);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>Midi-&gt;<ref refid="d5/d67/classMisFile_1aa7384911209dce2e873193481e44e5e8" kindref="member">WriteInit</ref>();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>Midi-&gt;<ref refid="d5/d67/classMisFile_1a0660ab1a9fbebe235a34460f477deb1c" kindref="member">AddInstrument</ref>(0,<sp/>0,<sp/>15);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<sp/>z<sp/>&gt;=<sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>(0,1)<sp/>)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>=<sp/><ref refid="d5/dee/group__route_1ga18fbf3c45269dd19a140358c3e6441f8" kindref="member">GisReadArtHeadOn</ref>(&amp;RHead,<sp/>z,<sp/><ref refid="d4/d21/gmn2midi_8cpp_1a89f6a2d3b6f126bbc51071b02df8c753" kindref="member">Write</ref>);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>z<sp/>&gt;<sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>(0,1)<sp/>)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Midi-&gt;<ref refid="d5/d67/classMisFile_1a590394931571e25dbaa7ade302cd9801" kindref="member">CountOnDeltaTime</ref>(z.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>*24*16/z.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>OK\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>FileName[120];</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>argc<sp/>&gt;<sp/>2<sp/>)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcpy(FileName,<sp/><ref refid="d4/d5b/ext_8cpp_1a3c3f9179b542575b1a4a011ebf30a6cb" kindref="member">ExtCheck</ref>(argv[2],<sp/></highlight><highlight class="stringliteral">&quot;mid&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcpy(FileName,<sp/><ref refid="d4/d5b/ext_8cpp_1a2c9a92e9d0453b44d948fe9522f6733c" kindref="member">ExtChange</ref>(argv[1],<sp/></highlight><highlight class="stringliteral">&quot;mid&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Saving<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>FileName<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>...&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>Midi-&gt;<ref refid="d5/d67/classMisFile_1a6549dce9ca746ba9832699d92cf85ebb" kindref="member">Save</ref>(FileName);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>OK\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>Gis;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmn2midi.cpp"/>
+  </compounddef>
+</doxygen>

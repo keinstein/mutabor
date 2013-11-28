@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="de/da5/bug" kind="page">
+    <compoundname>bug</compoundname>
+    <title>Liste der bekannten Fehler</title>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term><anchor id="de/da5/bug_1_bug000002"/>Element <ref refid="d9/d63/ext_8h_1a2c9a92e9d0453b44d948fe9522f6733c" kindref="member">ExtChange</ref>  (char *fileName, char *extension)</term></varlistentry>
+<listitem><para>possible buffer overflow for sHelp (no length check) </para><para>first dot in filename used to detect extension, but not last one.  </para></listitem>
+<varlistentry><term><anchor id="de/da5/bug_1_bug000001"/>Element <ref refid="d9/d63/ext_8h_1a3c3f9179b542575b1a4a011ebf30a6cb" kindref="member">ExtCheck</ref>  (char *fileName, char *extension)</term></varlistentry>
+<listitem><para>possible buffer overflow for sHelp (no length check) </para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

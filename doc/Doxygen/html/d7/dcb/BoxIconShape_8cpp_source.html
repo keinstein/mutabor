@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/wxGUI/Routing/BoxIconShape.cpp Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_eaae7e9da1b31c6b329e928d72e0e61a.html">wxGUI</a></li><li class="navelem"><a class="el" href="../../dir_589b0311d58a74617a532121d489d9c2.html">Routing</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">BoxIconShape.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d7/dcb/BoxIconShape_8cpp.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// -*-C++ -*-</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"></span><span class="preprocessor">#include &quot;<a class="code" href="../../d1/d73/Defs_8h.html">src/kernel/Defs.h</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/de0/BoxIconShape_8h.html">src/wxGUI/Routing/BoxIconShape.h</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;wx/dc.h&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">//#include &quot;MutApp.h&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">//#include &quot;MutIcon.h&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">//#include &quot;MutRouteWnd.h&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">//#include &quot;InputDevDlg.h&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">//#include &quot;Device.h&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span>mutaborGUI {</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#gabf74d0d4d5c04c371a85b3822365240e">   39</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../dc/df2/group__GUIroute.html#gabf74d0d4d5c04c371a85b3822365240e">MutBoxIconShape::GetBordersForSizer</a>(<span class="keywordtype">int</span> &amp;borderTop, <span class="keywordtype">int</span> &amp;borderOther)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                wxSize s = <a class="code" href="../../df/dd1/group__GUI.html#gafb111fbc128036409103a64b8f106cec">DoGetBestSize</a>();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;Best Size: %dx%d&quot;</span>),s.x,s.y);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                borderTop = s.y;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                borderOther = 0;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#gac98659fabee7bb37593baa24df17a84f">   47</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../dc/df2/group__GUIroute.html#gac98659fabee7bb37593baa24df17a84f">MutBoxIconShape::OnDraw</a> (wxDC &amp; dc) </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;Checking icon&quot;</span>));</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="keywordflow">if</span> (!<a class="code" href="../../df/dd1/group__GUI.html#ga34042c921771c02dc1e418cb80d11a39">GetIcon</a>().IsOk()) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                        <a class="code" href="../../df/dd1/group__GUI.html#gaa2391577a1074831747407069db8256e">SetIcon</a>(<a class="code" href="../../dc/df2/group__GUIroute.html#ga02073f2d3d273764a6e4b703d4517163">GetMutIcon</a>());</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;Checking icon again&quot;</span>));</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;Icon ok.&quot;</span>));</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="keywordtype">int</span> x, y;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                x = 0;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                y = 0;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                wxRect size = GetRect();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#if __WXMSW__ </span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor"></span>                <span class="keywordflow">if</span> (wxWindow::FindFocus() == <span class="keyword">this</span>) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                        <span class="comment">// MSW doesn&#39;t allow to change the border</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0 ; i &lt; <a class="code" href="../../df/dd1/group__GUI.html#ga50ed5eb477a319c6a2e1d5a489886c88">maxBorderSize</a>.x - 1 ; i++) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                dc.DrawLine(i,i,size.width-i,i);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                dc.DrawLine(i,size.height-i,size.width-i,size.height-i);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                        }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0 ; i &lt; <a class="code" href="../../df/dd1/group__GUI.html#ga50ed5eb477a319c6a2e1d5a489886c88">maxBorderSize</a>.y - 1 ; i++) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                dc.DrawLine(size.width-i,i,size.width-i,size.height-i);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                dc.DrawLine(i,i,i,size.height-i);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif </span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                y += <a class="code" href="../../df/dd1/group__GUI.html#gac00e57523cc2af20feb520a4d2fa7faf">borderOffset</a>.y;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="../../df/dd1/group__GUI.html#ga251ccb86f70128425f9e1b4677017e8e">staticText</a>) y += <a class="code" href="../../df/dd1/group__GUI.html#ga251ccb86f70128425f9e1b4677017e8e">staticText</a>-&gt;GetSize().y;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="../../df/dd1/group__GUI.html#ga34042c921771c02dc1e418cb80d11a39">GetIcon</a>().IsOk()) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;Size: %dx%d&quot;</span>),<a class="code" href="../../df/dd1/group__GUI.html#ga34042c921771c02dc1e418cb80d11a39">GetIcon</a>().GetHeight(),</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                  <a class="code" href="../../df/dd1/group__GUI.html#ga34042c921771c02dc1e418cb80d11a39">GetIcon</a>().GetWidth());</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                        x = (size.width-<a class="code" href="../../df/dd1/group__GUI.html#ga34042c921771c02dc1e418cb80d11a39">GetIcon</a>().GetWidth())/2;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#ifdef __WXMAC__ </span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor"></span>                        x -= <a class="code" href="../../df/dd1/group__GUI.html#ga50ed5eb477a319c6a2e1d5a489886c88">maxBorderSize</a>.x - <a class="code" href="../../df/dd1/group__GUI.html#gac00e57523cc2af20feb520a4d2fa7faf">borderOffset</a>.x;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor"></span>                        dc.DrawIcon(<a class="code" href="../../df/dd1/group__GUI.html#ga34042c921771c02dc1e418cb80d11a39">GetIcon</a>(), x, y);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                size.width -= 2* <a class="code" href="../../df/dd1/group__GUI.html#gac00e57523cc2af20feb520a4d2fa7faf">borderOffset</a>.x;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                size.height -= 2* <a class="code" href="../../df/dd1/group__GUI.html#gac00e57523cc2af20feb520a4d2fa7faf">borderOffset</a>.y;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#if 0 // done by changing border</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor"></span>                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;Focus %p and this %p&quot;</span>),FindFocus(),<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keywordflow">if</span> (FindFocus() == <span class="keyword">this</span>) {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;Painting Box&quot;</span>));</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                        dc.SetPen(*wxBLACK_PEN);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                        dc.SetBrush(*wxTRANSPARENT_BRUSH);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                        dc.DrawRectangle(<a class="code" href="../../df/dd1/group__GUI.html#gac00e57523cc2af20feb520a4d2fa7faf">borderOffset</a>.x,</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                         <a class="code" href="../../df/dd1/group__GUI.html#gac00e57523cc2af20feb520a4d2fa7faf">borderOffset</a>.y,</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                         size.width,</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                                         size.height);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor"></span>        }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#gad51f231a3ac834a8afeecd657fb30ad0">  107</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="../../dc/df2/group__GUIroute.html#gad51f231a3ac834a8afeecd657fb30ad0">MutBoxIconShape::Layout</a>() {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keywordflow">if</span> (!<a class="code" href="../../d5/d12/classMutIconShapeClass.html">MutIconShapeClass&lt;MutPanel&gt;::Layout</a>()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="../../df/dd1/group__GUI.html#ga251ccb86f70128425f9e1b4677017e8e">staticText</a>) {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                        <a class="code" href="../../df/dd1/group__GUI.html#ga251ccb86f70128425f9e1b4677017e8e">staticText</a>-&gt;Move(<a class="code" href="../../df/dd1/group__GUI.html#gac00e57523cc2af20feb520a4d2fa7faf">borderOffset</a>.x,<a class="code" href="../../df/dd1/group__GUI.html#gac00e57523cc2af20feb520a4d2fa7faf">borderOffset</a>.y);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                        <a class="code" href="../../df/dd1/group__GUI.html#ga251ccb86f70128425f9e1b4677017e8e">staticText</a>-&gt;CentreOnParent(wxHORIZONTAL);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment"> * \}</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment"> */</span></div>
+<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00141">mutDebug.h:141</a></div></div>
+<div class="ttc" id="classMutIconShapeClass_html"><div class="ttname"><a href="../../d5/d12/classMutIconShapeClass.html">MutIconShapeClass</a></div><div class="ttdoc">An icon control with static text. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d6f/IconShape_8h_source.html#l00068">IconShape.h:68</a></div></div>
+<div class="ttc" id="group__GUIroute_html_gabf74d0d4d5c04c371a85b3822365240e"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#gabf74d0d4d5c04c371a85b3822365240e">mutaborGUI::MutBoxIconShape::GetBordersForSizer</a></div><div class="ttdeci">void GetBordersForSizer(int &amp;borderTop, int &amp;borderOther) const </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dcb/BoxIconShape_8cpp_source.html#l00039">BoxIconShape.cpp:39</a></div></div>
+<div class="ttc" id="group__debug_html_ga86acd9c1c30c8cb1831b46da11b1ec62"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a></div><div class="ttdeci">#define TRACEC</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00146">mutDebug.h:146</a></div></div>
+<div class="ttc" id="group__GUI_html_ga34042c921771c02dc1e418cb80d11a39"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga34042c921771c02dc1e418cb80d11a39">MutIconShapeClass&lt; MutPanel &gt;::GetIcon</a></div><div class="ttdeci">const MutIcon &amp; GetIcon() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d6f/IconShape_8h_source.html#l00099">IconShape.h:99</a></div></div>
+<div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
+<div class="ttc" id="group__GUIroute_html_ga02073f2d3d273764a6e4b703d4517163"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#ga02073f2d3d273764a6e4b703d4517163">mutaborGUI::MutBoxIconShape::GetMutIcon</a></div><div class="ttdeci">MutIcon &amp; GetMutIcon()</div><div class="ttdoc">Calculates the Icon to be used. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/de0/BoxIconShape_8h_source.html#l00098">BoxIconShape.h:98</a></div></div>
+<div class="ttc" id="BoxIconShape_8h_html"><div class="ttname"><a href="../../d2/de0/BoxIconShape_8h.html">BoxIconShape.h</a></div><div class="ttdoc">Box icon shape for route window. </div></div>
+<div class="ttc" id="group__GUI_html_gac00e57523cc2af20feb520a4d2fa7faf"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gac00e57523cc2af20feb520a4d2fa7faf">MutIconShapeClass&lt; MutPanel &gt;::borderOffset</a></div><div class="ttdeci">wxSize borderOffset</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d6f/IconShape_8h_source.html#l00075">IconShape.h:75</a></div></div>
+<div class="ttc" id="group__GUI_html_gaa2391577a1074831747407069db8256e"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gaa2391577a1074831747407069db8256e">MutIconShapeClass&lt; MutPanel &gt;::SetIcon</a></div><div class="ttdeci">void SetIcon(const MutIcon &amp;icon)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d6f/IconShape_8h_source.html#l00095">IconShape.h:95</a></div></div>
+<div class="ttc" id="group__GUIroute_html_gac98659fabee7bb37593baa24df17a84f"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#gac98659fabee7bb37593baa24df17a84f">mutaborGUI::MutBoxIconShape::OnDraw</a></div><div class="ttdeci">virtual void OnDraw(wxDC &amp;dc)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dcb/BoxIconShape_8cpp_source.html#l00047">BoxIconShape.cpp:47</a></div></div>
+<div class="ttc" id="group__GUI_html_ga251ccb86f70128425f9e1b4677017e8e"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga251ccb86f70128425f9e1b4677017e8e">MutIconShapeClass&lt; MutPanel &gt;::staticText</a></div><div class="ttdeci">wxStaticText * staticText</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d6f/IconShape_8h_source.html#l00074">IconShape.h:74</a></div></div>
+<div class="ttc" id="group__GUI_html_gafb111fbc128036409103a64b8f106cec"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gafb111fbc128036409103a64b8f106cec">MutIconShapeClass&lt; MutPanel &gt;::DoGetBestSize</a></div><div class="ttdeci">virtual wxSize DoGetBestSize() const</div></div>
+<div class="ttc" id="group__GUI_html_ga50ed5eb477a319c6a2e1d5a489886c88"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga50ed5eb477a319c6a2e1d5a489886c88">MutIconShapeClass&lt; MutPanel &gt;::maxBorderSize</a></div><div class="ttdeci">wxSize maxBorderSize</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d6f/IconShape_8h_source.html#l00075">IconShape.h:75</a></div></div>
+<div class="ttc" id="group__GUIroute_html_gad51f231a3ac834a8afeecd657fb30ad0"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#gad51f231a3ac834a8afeecd657fb30ad0">mutaborGUI::MutBoxIconShape::Layout</a></div><div class="ttdeci">virtual bool Layout()</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dcb/BoxIconShape_8cpp_source.html#l00107">BoxIconShape.cpp:107</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:38:42 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

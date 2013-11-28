@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d7/dc5/structmutabor__virttable__object" kind="struct" prot="public">
+    <compoundname>mutabor_virttable_object</compoundname>
+    <includes refid="de/d10/object_8h" local="no">object.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d7/dc5/structmutabor__virttable__object_1a793e081ac9a8fbe73ea3149253b9a175" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t mutabor_virttable_object::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.h" line="54" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/dc5/structmutabor__virttable__object_1aab39793b2006774b60c590cd1ef441aa" prot="public" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <definition>char* mutabor_virttable_object::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.h" line="55" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/dc5/structmutabor__virttable__object_1a3092c4fccc6dd6fa8d3236143f853ff2" prot="public" static="no" mutable="no">
+        <type>void **</type>
+        <definition>void** mutabor_virttable_object::parent</definition>
+        <argsstring></argsstring>
+        <name>parent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.h" line="56" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/dc5/structmutabor__virttable__object_1a618cfaafc17c5309982b4501b03e78d7" prot="public" static="no" mutable="no">
+        <type>void *(*</type>
+        <definition>void*(* mutabor_virttable_object::constructor)(void *_self)</definition>
+        <argsstring>)(void *_self)</argsstring>
+        <name>constructor</name>
+        <briefdescription>
+<para>Constructor for creating an object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.h" line="57" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/dc5/structmutabor__virttable__object_1a8ebba3c15af5b230d1947dae89a166a2" prot="public" static="no" mutable="no">
+        <type>void *(*</type>
+        <definition>void*(* mutabor_virttable_object::destructor)(void *_self)</definition>
+        <argsstring>)(void *_self)</argsstring>
+        <name>destructor</name>
+        <briefdescription>
+<para>Destructor for deleting an object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.h" line="58" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.h" bodystart="58" bodyend="-1"/>
+        <referencedby refid="d0/de1/object_8c_1ad3b722d501268b5e6614113662e57d46" compoundref="d0/de1/object_8c" startline="117" endline="121">mutabor_delete</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d7/dc5/structmutabor__virttable__object_1a894097492139ed922c6cdda5a824ad6d" prot="public" static="no" mutable="no">
+        <type>int(*</type>
+        <definition>int(* mutabor_virttable_object::compare)(void *one, void *two)</definition>
+        <argsstring>)(void *one, void *two)</argsstring>
+        <name>compare</name>
+        <briefdescription>
+<para>Simple comparison. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.h" line="59" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/dc5/structmutabor__virttable__object_1ae2242fa3b957fee14fda21f2fcb94ce9" prot="public" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *(*</type>
+        <definition>char*(* mutabor_virttable_object::tostring)(void *_self)</definition>
+        <argsstring>)(void *_self)</argsstring>
+        <name>tostring</name>
+        <briefdescription>
+<para>Stringify for data output. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.h" line="60" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.h" line="53" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.h" bodystart="53" bodyend="61"/>
+    <listofallmembers>
+      <member refid="d7/dc5/structmutabor__virttable__object_1a894097492139ed922c6cdda5a824ad6d" prot="public" virt="non-virtual"><scope>mutabor_virttable_object</scope><name>compare</name></member>
+      <member refid="d7/dc5/structmutabor__virttable__object_1a618cfaafc17c5309982b4501b03e78d7" prot="public" virt="non-virtual"><scope>mutabor_virttable_object</scope><name>constructor</name></member>
+      <member refid="d7/dc5/structmutabor__virttable__object_1a8ebba3c15af5b230d1947dae89a166a2" prot="public" virt="non-virtual"><scope>mutabor_virttable_object</scope><name>destructor</name></member>
+      <member refid="d7/dc5/structmutabor__virttable__object_1aab39793b2006774b60c590cd1ef441aa" prot="public" virt="non-virtual"><scope>mutabor_virttable_object</scope><name>name</name></member>
+      <member refid="d7/dc5/structmutabor__virttable__object_1a3092c4fccc6dd6fa8d3236143f853ff2" prot="public" virt="non-virtual"><scope>mutabor_virttable_object</scope><name>parent</name></member>
+      <member refid="d7/dc5/structmutabor__virttable__object_1a793e081ac9a8fbe73ea3149253b9a175" prot="public" virt="non-virtual"><scope>mutabor_virttable_object</scope><name>size</name></member>
+      <member refid="d7/dc5/structmutabor__virttable__object_1ae2242fa3b957fee14fda21f2fcb94ce9" prot="public" virt="non-virtual"><scope>mutabor_virttable_object</scope><name>tostring</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,768 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d7/d6e/logik_8c" kind="file">
+    <compoundname>logik.c</compoundname>
+    <includes local="no">string.h</includes>
+    <includes refid="d1/dff/logik_8h" local="yes">mutabor/logik.h</includes>
+    <includes refid="d0/db7/anweisung_8h" local="yes">mutabor/anweisung.h</includes>
+    <includes refid="da/ddb/heap_8h" local="yes">mutabor/heap.h</includes>
+    <includes refid="d8/d39/tonsystem_8h" local="yes">mutabor/tonsystem.h</includes>
+    <includes refid="da/d7f/umstimmung_8h" local="yes">mutabor/umstimmung.h</includes>
+    <includes refid="d2/d2a/parameter_8h" local="yes">mutabor/parameter.h</includes>
+    <includes refid="dd/de4/aktion_8h" local="yes">mutabor/aktion.h</includes>
+    <incdepgraph>
+      <node id="20941">
+        <label>mutabor/case_liste.h</label>
+        <link refid="db/d99/case__liste_8h"/>
+        <childnode refid="20936" relation="include">
+        </childnode>
+      </node>
+      <node id="20930">
+        <label>mutabor/interval.h</label>
+        <link refid="d2/d8a/interval_8h"/>
+        <childnode refid="20931" relation="include">
+        </childnode>
+        <childnode refid="20933" relation="include">
+        </childnode>
+      </node>
+      <node id="20932">
+        <label>mutabor/object.h</label>
+        <link refid="de/d10/object_8h"/>
+      </node>
+      <node id="20924">
+        <label>src/libmutabor/logik.c</label>
+        <link refid="logik.c"/>
+        <childnode refid="20925" relation="include">
+        </childnode>
+        <childnode refid="20926" relation="include">
+        </childnode>
+        <childnode refid="20935" relation="include">
+        </childnode>
+        <childnode refid="20943" relation="include">
+        </childnode>
+        <childnode refid="20942" relation="include">
+        </childnode>
+        <childnode refid="20939" relation="include">
+        </childnode>
+        <childnode refid="20938" relation="include">
+        </childnode>
+        <childnode refid="20936" relation="include">
+        </childnode>
+      </node>
+      <node id="20937">
+        <label>mutabor/argument.h</label>
+        <link refid="db/d1e/argument_8h"/>
+        <childnode refid="20938" relation="include">
+        </childnode>
+      </node>
+      <node id="20936">
+        <label>mutabor/aktion.h</label>
+        <link refid="dd/de4/aktion_8h"/>
+        <childnode refid="20928" relation="include">
+        </childnode>
+        <childnode refid="20937" relation="include">
+        </childnode>
+        <childnode refid="20939" relation="include">
+        </childnode>
+        <childnode refid="20942" relation="include">
+        </childnode>
+        <childnode refid="20938" relation="include">
+        </childnode>
+        <childnode refid="20926" relation="include">
+        </childnode>
+      </node>
+      <node id="20939">
+        <label>mutabor/umstimmung.h</label>
+        <link refid="da/d7f/umstimmung_8h"/>
+        <childnode refid="20940" relation="include">
+        </childnode>
+        <childnode refid="20941" relation="include">
+        </childnode>
+      </node>
+      <node id="20931">
+        <label>mutabor/identifier.h</label>
+        <link refid="d7/da7/identifier_8h"/>
+        <childnode refid="20932" relation="include">
+        </childnode>
+      </node>
+      <node id="20942">
+        <label>mutabor/tonsystem.h</label>
+        <link refid="d8/d39/tonsystem_8h"/>
+        <childnode refid="20940" relation="include">
+        </childnode>
+        <childnode refid="20930" relation="include">
+        </childnode>
+        <childnode refid="20933" relation="include">
+        </childnode>
+      </node>
+      <node id="20925">
+        <label>string.h</label>
+      </node>
+      <node id="20927">
+        <label>mutabor/ausloeser.h</label>
+        <link refid="d1/dfa/ausloeser_8h"/>
+        <childnode refid="20928" relation="include">
+        </childnode>
+        <childnode refid="20929" relation="include">
+        </childnode>
+        <childnode refid="20935" relation="include">
+        </childnode>
+      </node>
+      <node id="20940">
+        <label>mutabor/ton.h</label>
+        <link refid="d4/d12/ton_8h"/>
+        <childnode refid="20930" relation="include">
+        </childnode>
+      </node>
+      <node id="20934">
+        <label>math.h</label>
+      </node>
+      <node id="20929">
+        <label>mutabor/harmonie.h</label>
+        <link refid="d1/d63/harmonie_8h"/>
+        <childnode refid="20930" relation="include">
+        </childnode>
+        <childnode refid="20933" relation="include">
+        </childnode>
+      </node>
+      <node id="20943">
+        <label>mutabor/heap.h</label>
+        <link refid="da/ddb/heap_8h"/>
+        <childnode refid="20944" relation="include">
+        </childnode>
+        <childnode refid="20933" relation="include">
+        </childnode>
+      </node>
+      <node id="20926">
+        <label>mutabor/logik.h</label>
+        <link refid="d1/dff/logik_8h"/>
+        <childnode refid="20927" relation="include">
+        </childnode>
+        <childnode refid="20936" relation="include">
+        </childnode>
+      </node>
+      <node id="20928">
+        <label>mutabor/midicalc.h</label>
+        <link refid="d0/d24/midicalc_8h"/>
+      </node>
+      <node id="20944">
+        <label>stdio.h</label>
+      </node>
+      <node id="20938">
+        <label>mutabor/parameter.h</label>
+        <link refid="d2/d2a/parameter_8h"/>
+        <childnode refid="20937" relation="include">
+        </childnode>
+        <childnode refid="20933" relation="include">
+        </childnode>
+      </node>
+      <node id="20933">
+        <label>mutabor/bad_decl.h</label>
+        <link refid="df/d8e/bad__decl_8h"/>
+        <childnode refid="20934" relation="include">
+        </childnode>
+      </node>
+      <node id="20935">
+        <label>mutabor/anweisung.h</label>
+        <link refid="d0/db7/anweisung_8h"/>
+        <childnode refid="20927" relation="include">
+        </childnode>
+        <childnode refid="20936" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="d7/d6e/logik_8c_1a7f772804a850a0156f485df5f8cb1339" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="db/d28/structlogik" kindref="compound">logik</ref> *</type>
+        <definition>struct logik* list_of_logiken</definition>
+        <argsstring></argsstring>
+        <name>list_of_logiken</name>
+        <briefdescription>
+<para>Wurzel der Logiken. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" line="44" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" bodystart="44" bodyend="-1"/>
+        <referencedby refid="dd/d21/group__Parser_1gaa415e8810b15cf168d92015c1bae5a9e" compoundref="d8/dc3/aktion_8c" startline="133" endline="205">check_aktionen</referencedby>
+        <referencedby refid="d2/d72/parser_8c_1a5a40f6b2e81f6ff497b18880102fbecb" compoundref="d2/d72/parser_8c" startline="597" endline="777">check_konsistenz</referencedby>
+        <referencedby refid="d2/d4a/umstimmung_8c_1a9fc87f323f75b7afaef30c37c78af7c6" compoundref="d2/d4a/umstimmung_8c" startline="538" endline="732">check_umstimmungs_konsistenz</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1ga78114178682e1b11d830e325a46787c8" compoundref="d8/dc3/aktion_8c" startline="482" endline="524">expandiere_name</referencedby>
+        <referencedby refid="d2/d72/parser_8c_1afa88ae69a747f2c139bf6161d9b2d82d" compoundref="d2/d72/parser_8c" startline="85" endline="386">mutabor_programm_einlesen</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d7/d6e/logik_8c_1a1bf49a0b791eef42c75d45a8bca773f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int logik_list_laenge</definition>
+        <argsstring>(struct logik *list)</argsstring>
+        <name>logik_list_laenge</name>
+        <param>
+          <type>struct <ref refid="db/d28/structlogik" kindref="compound">logik</ref> *</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+<para>Zählen der Elemente einer einfach verketteten Logikliste. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Liste der Logiken </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Anzahl der Elemente von <emphasis>list</emphasis> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" line="50" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" bodystart="50" bodyend="53"/>
+        <references refid="d1/dff/logik_8h_1a1bf49a0b791eef42c75d45a8bca773f0" compoundref="d7/d6e/logik_8c" startline="50" endline="53">logik_list_laenge</references>
+        <references refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" compoundref="d1/dff/logik_8h" startline="36">logik::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="604" endline="645">mutabor::BoxClass::Compile</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" compoundref="d3/da0/TabGen_8cpp" startline="1291" endline="1368">expand_decition_tree</referencedby>
+        <referencedby refid="d7/d6e/logik_8c_1a1bf49a0b791eef42c75d45a8bca773f0" compoundref="d7/d6e/logik_8c" startline="50" endline="53">logik_list_laenge</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d7/d6e/logik_8c_1adb479f679345892536d7bcfaf145cec6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int get_logik_nummer</definition>
+        <argsstring>(char *name, struct logik *liste)</argsstring>
+        <name>get_logik_nummer</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="db/d28/structlogik" kindref="compound">logik</ref> *</type>
+          <declname>liste</declname>
+        </param>
+        <briefdescription>
+<para>Ermitteln der Position einer Logik. </para>        </briefdescription>
+        <detaileddescription>
+<para>Falls <emphasis>liste</emphasis> leer wird eine Fehlermeldung ausgegeben. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name der zu suchenden Logik </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">liste</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Liste, in der die Logik gesucht wird </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Nummer der Logik in der Liste </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" line="61" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" bodystart="61" bodyend="70"/>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d1/dff/logik_8h_1adb479f679345892536d7bcfaf145cec6" compoundref="d7/d6e/logik_8c" startline="61" endline="70">get_logik_nummer</references>
+        <references refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" compoundref="d1/dff/logik_8h" startline="32">logik::name</references>
+        <references refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" compoundref="d1/dff/logik_8h" startline="36">logik::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga4ea14e5284c0840695599141a22e95c7" compoundref="d3/da0/TabGen_8cpp" startline="514" endline="583">expandiere_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga6c15884af93bf4afba6690d84a9eef77" compoundref="dc/df5/Parser_8cpp" startline="132" endline="145">get_logik_nummer</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d7/d6e/logik_8c_1aeac62519a6479ab36a94d3ad1937bb61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="db/d28/structlogik" kindref="compound">logik</ref> *</type>
+        <definition>struct logik* get_logik</definition>
+        <argsstring>(char *name, struct logik *liste)</argsstring>
+        <name>get_logik</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="db/d28/structlogik" kindref="compound">logik</ref> *</type>
+          <declname>liste</declname>
+        </param>
+        <briefdescription>
+<para>Sucht eine Logik in einer Logikliste. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name der gesuchten Logik </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>liste</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Liste der Logiken, in der gesucht wird </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>NULL</parametername>
+<parametername>falls</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Logik nicht in <emphasis>liste</emphasis> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Logik</parametername>
+<parametername>sonst.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" line="78" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" bodystart="78" bodyend="83"/>
+        <references refid="d1/dff/logik_8h_1aeac62519a6479ab36a94d3ad1937bb61" compoundref="d7/d6e/logik_8c" startline="78" endline="83">get_logik</references>
+        <references refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" compoundref="d1/dff/logik_8h" startline="32">logik::name</references>
+        <references refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" compoundref="d1/dff/logik_8h" startline="36">logik::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga905a1b74bbe8c62344795da1a2a07c3a" compoundref="dc/df5/Parser_8cpp" startline="2697" endline="2862">check_aktionen</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d2/d4a/umstimmung_8c_1a9fc87f323f75b7afaef30c37c78af7c6" compoundref="d2/d4a/umstimmung_8c" startline="538" endline="732">check_umstimmungs_konsistenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gac450e7eec8ccc0dfa7bdd4e816e1be0b" compoundref="d3/da0/TabGen_8cpp" startline="835" endline="889">expandiere_name</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga4435b938cf511e37f88d2deeca470566" compoundref="dc/df5/Parser_8cpp" startline="211" endline="217">get_logik</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d7/d6e/logik_8c_1af4e510432930be6bebe8b280c36b8c12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setze_nummer_von_abstand_und_zentrum</definition>
+        <argsstring>(void)</argsstring>
+        <name>setze_nummer_von_abstand_und_zentrum</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Setzt Paramater-Nummern von Abstand und Zentrum. </para>        </briefdescription>
+        <detaileddescription>
+<para>Durchsucht die Logikliste <emphasis>list_of_logiken</emphasis> und setzt bei jedem Argument jeder Aktion jeder anweisung die Parameter-Nummer auf <itemizedlist>
+<listitem><para>0, wenn der Parameter-Name ,,ABSTAND<computeroutput>heißt, und \li 1, wenn der Parameter-Name ,,ZENTRUM</computeroutput> heißt. </para></listitem>
+</itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" line="92" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" bodystart="92" bodyend="145"/>
+        <references refid="d0/dab/structanweisung_1affb7b32738f8c88cac91baaab9ad3383" compoundref="d0/db7/anweisung_8h" startline="38">anweisung::aktion</references>
+        <references refid="d9/d7c/group__kernel_1gga4640ca6a739d886d48063bab20c0a6bda3199b6eb05486b74e1ba3242b42f7985" compoundref="dd/de4/aktion_8h" startline="36">aktion_aufruf</references>
+        <references refid="d5/def/structaktions__liste_1aa0db71fd64685d582c7d8c1efa2a7afc">aktions_liste::aktion_aufruf</references>
+        <references refid="d5/def/structaktions__liste_1a9d816210692ffebc7728e41ab9715bc3" compoundref="dd/de4/aktion_8h" startline="58">aktions_liste::aktions_typ</references>
+        <references refid="db/d28/structlogik_1a65b45930b368455fcb255d827496dc2b" compoundref="d1/dff/logik_8h" startline="35">logik::anweisungsliste</references>
+        <references refid="dd/d7c/structargument__liste_1a62205ad94c3fb485ffc1c8d599fdf3d1" compoundref="db/d1e/argument_8h" startline="49">argument_liste::argument</references>
+        <references refid="d2/d74/structargument_1aebffb910f9535b2c61aaf2629909a524" compoundref="db/d1e/argument_8h" startline="34">argument::argument_typ</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" compoundref="d1/dff/logik_8h" startline="32">logik::name</references>
+        <references refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" compoundref="d1/dff/logik_8h" startline="36">logik::next</references>
+        <references refid="d0/dab/structanweisung_1ac2f1fdc2202ad29c50dbdc676fdc9a6a" compoundref="d0/db7/anweisung_8h" startline="39">anweisung::next</references>
+        <references refid="dd/d7c/structargument__liste_1a17fc5968b0581a9d61d426e3185533c7" compoundref="db/d1e/argument_8h" startline="50">argument_liste::next</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" compoundref="db/d1e/argument_8h" startline="30">parameter</references>
+        <references refid="d2/d74/structargument_1ae6f70084cffab08980e51bba6aa80856">argument::parameter</references>
+        <references refid="d2/d74/structargument_1a3ccccc4ff00127c5d4731a94768c8cd8">argument::u</references>
+        <references refid="d5/def/structaktions__liste_1a552bd3733146d7edcbbbabd254302f29">aktions_liste::u</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a47e9a84a3f91507862a3baa02e1a05b6" compoundref="db/d1e/argument_8h" startline="30">zahl</references>
+        <referencedby refid="d2/d72/parser_8c_1afa88ae69a747f2c139bf6161d9b2d82d" compoundref="d2/d72/parser_8c" startline="85" endline="386">mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d7/d6e/logik_8c_1a944f578df10044a1ec228eab60a8617a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_new_logik</definition>
+        <argsstring>(char *name, char *einstimmung)</argsstring>
+        <name>get_new_logik</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>einstimmung</declname>
+        </param>
+        <briefdescription>
+<para>Fügt eine neue Logik ans Ende von <emphasis>list_of_logiken</emphasis> an. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei wird der letzte eingelesene Auslöser verwendet. Die Anweisungsliste wird zunächst als Leer deklariert. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name der Logik </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>einstimmung</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name der Einstimmnug der Logik </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Es wird immer die gesamte Liste durchsucht. Effektivität? </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" line="153" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" bodystart="153" bodyend="169"/>
+        <references refid="db/d28/structlogik_1a65b45930b368455fcb255d827496dc2b" compoundref="d1/dff/logik_8h" startline="35">logik::anweisungsliste</references>
+        <references refid="db/d28/structlogik_1a820e8ee0b32f8f6c1931eb84afa69474" compoundref="dd/d40/Global_8h" startline="437">logik::einstimmung</references>
+        <references refid="db/d28/structlogik_1a31836516d5c9d7d7c65ee0abc4c44324" compoundref="d1/dff/logik_8h" startline="34">logik::einstimmungs_name</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="dd/d21/group__Parser_1ga1e505704cb9a70800ee05786127a8cef" compoundref="d6/dcc/ausloeser_8c" startline="75" endline="78">get_last_ausloeser</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" compoundref="d1/dff/logik_8h" startline="36">logik::next</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d7/d6e/logik_8c_1ab5e543965245fb75ee545f4083b21039" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void vervollstaendige_logik</definition>
+        <argsstring>(void)</argsstring>
+        <name>vervollstaendige_logik</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Hängt die letzte eingelesene Anweisung in der letzten Logik von <computeroutput>list_of_logiken</computeroutput> ein. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Es wird immer die gesamte Liste durchsucht. Effektivität? </para></simplesect>
+<simplesect kind="warning"><para>Die Anweisungsliste wird nicht gelöscht. Das muss gegebenenfalls vorher extra getan werden. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" line="177" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" bodystart="177" bodyend="184"/>
+        <references refid="db/d28/structlogik_1a65b45930b368455fcb255d827496dc2b" compoundref="d1/dff/logik_8h" startline="35">logik::anweisungsliste</references>
+        <references refid="d0/db7/anweisung_8h_1a69a9cc9b2f12873daad5f0fa8da3d40d" compoundref="d5/dfe/anweisung_8c" startline="44" endline="47">get_last_anweisungs_liste</references>
+        <references refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" compoundref="d1/dff/logik_8h" startline="36">logik::next</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d7/d6e/logik_8c_1aed04795a6b7c21df1893c7bc845231e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void check_logik_konsistenz</definition>
+        <argsstring>(void)</argsstring>
+        <name>check_logik_konsistenz</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" line="192" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" bodystart="192" bodyend="251"/>
+        <references refid="db/d28/structlogik_1a65b45930b368455fcb255d827496dc2b" compoundref="d1/dff/logik_8h" startline="35">logik::anweisungsliste</references>
+        <references refid="db/d28/structlogik_1a9220a60ca430902aad58a930d8f5e8f6" compoundref="d1/dff/logik_8h" startline="33">logik::ausloeser</references>
+        <references refid="d0/dab/structanweisung_1a8712e41a0c226c692407c6933b6b2ab2" compoundref="d0/db7/anweisung_8h" startline="37">anweisung::ausloeser</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a06ceaf3e37d0994c0e6b5f5c87855443" compoundref="d1/dfa/ausloeser_8h" startline="29">ausloeser_default</references>
+        <references refid="d9/de5/structausloeser_1a50378b5f0c1480af565b7aaccd128a40" compoundref="d1/dfa/ausloeser_8h" startline="34">ausloeser::ausloeser_typ</references>
+        <references refid="dd/d21/group__Parser_1gaa415e8810b15cf168d92015c1bae5a9e" compoundref="d8/dc3/aktion_8c" startline="133" endline="205">check_aktionen</references>
+        <references refid="dd/d21/group__Parser_1ga513256ed0bc6682cb3e6c2f5e86d8bef" compoundref="d6/dcc/ausloeser_8c" startline="187" endline="282">check_ausloeser</references>
+        <references refid="d9/d7c/group__kernel_1ggafeebd36c5713e8438dcf17e926f8ad96a053ee5ee8425fcbcd4c51b3637254eb5" compoundref="de/d11/Execute_8h" startline="77">compiler_warning</references>
+        <references refid="db/d28/structlogik_1a31836516d5c9d7d7c65ee0abc4c44324" compoundref="d1/dff/logik_8h" startline="34">logik::einstimmungs_name</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="da/d7f/umstimmung_8h_1ae60de5ad4f8f7e1954cf3105b34d21bc" compoundref="d2/d4a/umstimmung_8c" startline="60" endline="66">get_umstimmung</references>
+        <references refid="d8/d39/tonsystem_8h_1a1c6d9a9da675102ad666d5da4ad167ca" compoundref="d8/d39/tonsystem_8h" startline="66">list_of_tonsysteme</references>
+        <references refid="da/d7f/umstimmung_8h_1a96aa4405f944de769b350336489cf56e" compoundref="da/d7f/umstimmung_8h" startline="117">list_of_umstimmungen</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" compoundref="d1/dff/logik_8h" startline="32">logik::name</references>
+        <references refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" compoundref="d1/dff/logik_8h" startline="36">logik::next</references>
+        <references refid="d0/dab/structanweisung_1ac2f1fdc2202ad29c50dbdc676fdc9a6a" compoundref="d0/db7/anweisung_8h" startline="39">anweisung::next</references>
+        <references refid="d2/d1c/structumstimmung_1ae67b979d3d4d8dbbf5d36515bd58d6c7" compoundref="da/d7f/umstimmung_8h" startline="81">umstimmung::next</references>
+        <references refid="d2/d2a/parameter_8h_1a21fc3bfc074c82c17e2ae9240f8029eb" compoundref="d7/d2d/parameter_8c" startline="43" endline="46">parameter_list_laenge</references>
+        <references refid="d8/d39/tonsystem_8h_1a4563750267670ae068cbd8f00d5a7796" compoundref="da/dd2/tonsystem_8c" startline="50" endline="56">parser_get_tonsystem</references>
+        <referencedby refid="d2/d72/parser_8c_1a5a40f6b2e81f6ff497b18880102fbecb" compoundref="d2/d72/parser_8c" startline="597" endline="777">check_konsistenz</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d7/d6e/logik_8c_1adeba205c8988dbafa8226746ae29a639" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="d5/d8c/structdo__aktion" kindref="compound">do_aktion</ref> *</type>
+        <definition>struct do_aktion* expandiere_logik</definition>
+        <argsstring>(struct logik *the_logik)</argsstring>
+        <name>expandiere_logik</name>
+        <param>
+          <type>struct <ref refid="db/d28/structlogik" kindref="compound">logik</ref> *</type>
+          <declname>the_logik</declname>
+        </param>
+        <briefdescription>
+<para>Wandelt eine Logik in eine Aktion um. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dabei werden die Namen der entsprechenden Bezeichner der Logik durch die zugehörigen Werte ersetzt. Anschließend werden lokale Harmonie, Klaviatur und Midiwerte auf die ersten der Logik initialisiert. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the_logik</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Logik, die expandiert werden soll. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" line="260" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c" bodystart="260" bodyend="299"/>
+        <references refid="d9/d7c/group__kernel_1ggad274f7c459bd092f365be1c95b5973eaa5acd3612de4355aaa66be7057bd9f0e0" compoundref="dd/de4/aktion_8h" startline="42">aufruf_logik</references>
+        <references refid="db/d28/structlogik_1a31836516d5c9d7d7c65ee0abc4c44324" compoundref="d1/dff/logik_8h" startline="34">logik::einstimmungs_name</references>
+        <references refid="d2/d1c/group__Interpreter_1ga624187681a6783c21bd14e86fc82a929" compoundref="d8/dc3/aktion_8c" startline="276" endline="319">expandiere_tonsystem</references>
+        <references refid="d2/d1c/group__Interpreter_1ga6140e72fda79613ca5af30a3832c286c" compoundref="d8/dc3/aktion_8c" startline="360" endline="470">expandiere_umstimmung</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="dd/d21/group__Parser_1gaa539e63152f2a354b62a0b98490e2293" compoundref="d6/dcc/ausloeser_8c" startline="50">first_lokal_harmonie</references>
+        <references refid="dd/d21/group__Parser_1gac413ef20e141cd76dd18c44e99df1ba4" compoundref="d6/dcc/ausloeser_8c" startline="56">first_lokal_keyboard</references>
+        <references refid="dd/d21/group__Parser_1gaa4d5de4a97f2396dd4c30ac78285d6bf" compoundref="d6/dcc/ausloeser_8c" startline="62">first_lokal_midi</references>
+        <references refid="d1/dff/logik_8h_1adb479f679345892536d7bcfaf145cec6" compoundref="d7/d6e/logik_8c" startline="61" endline="70">get_logik_nummer</references>
+        <references refid="da/d7f/umstimmung_8h_1ae60de5ad4f8f7e1954cf3105b34d21bc" compoundref="d2/d4a/umstimmung_8c" startline="60" endline="66">get_umstimmung</references>
+        <references refid="d8/d39/tonsystem_8h_1a1c6d9a9da675102ad666d5da4ad167ca" compoundref="d8/d39/tonsystem_8h" startline="66">list_of_tonsysteme</references>
+        <references refid="da/d7f/umstimmung_8h_1a96aa4405f944de769b350336489cf56e" compoundref="da/d7f/umstimmung_8h" startline="117">list_of_umstimmungen</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="d2/d1c/structumstimmung_1ae67b979d3d4d8dbbf5d36515bd58d6c7" compoundref="da/d7f/umstimmung_8h" startline="81">umstimmung::next</references>
+        <references refid="d8/d39/tonsystem_8h_1a4563750267670ae068cbd8f00d5a7796" compoundref="da/dd2/tonsystem_8c" startline="50" endline="56">parser_get_tonsystem</references>
+        <references refid="d2/d1c/structumstimmung_1af6c0515f9099f9d765cedd86762d9c6b">umstimmung::u</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="d9/d7c/group__kernel_1gaedad3c39090670b392bd5bc072af9139" compoundref="d3/da0/TabGen_8cpp" startline="1217" endline="1258">expandiere_in_globale_liste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gac450e7eec8ccc0dfa7bdd4e816e1be0b" compoundref="d3/da0/TabGen_8cpp" startline="835" endline="889">expandiere_name</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Alles zu Logiken. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="rcs"><title>Header:</title><para>/home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/logik.c,v 1.4 2005/11/03 14:50:27 keinstein Exp </para></simplesect>
+<simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein_junior@gmx.net">keinstein_junior@gmx.net</ulink> </para></simplesect>
+<simplesect kind="date"><para></para></simplesect>
+<simplesect kind="rcs"><title>Date:</title><para>2005/11/03 14:50:27 </para></simplesect>
+<simplesect kind="version"><para></para></simplesect>
+<simplesect kind="rcs"><title>Revision:</title><para>1.4 </para></simplesect>
+</para><para><simplesect kind="rcs"><title>Log:</title><para><ref refid="d7/d6e/logik_8c" kindref="compound">logik.c</ref>,v </para></simplesect>
+Revision 1.4 2005/11/03 14:50:27 keinstein new includes interpreter functions</para><para>Revision 1.3 2005/07/20 12:01:01 keinstein Kopf korrigiert Includes bereinigt. config.h</para><para>Revision 1.2 2005/07/19 15:15:27 keinstein Using own Templates</para><para>Revision 1.1 2005/07/08 14:44:20 keinstein Neue Datei. Aus <ref refid="d2/d72/parser_8c" kindref="compound">parser.c</ref> herausgelöst. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="28"><highlight class="preprocessor">#ifdef<sp/>HAVE_CONFIG_H</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>include<sp/>&quot;config.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifdef<sp/>HAVE_STDDEF_H</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/dff/logik_8h" kindref="compound">mutabor/logik.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d0/db7/anweisung_8h" kindref="compound">mutabor/anweisung.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="da/ddb/heap_8h" kindref="compound">mutabor/heap.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d8/d39/tonsystem_8h" kindref="compound">mutabor/tonsystem.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="da/d7f/umstimmung_8h" kindref="compound">mutabor/umstimmung.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d2a/parameter_8h" kindref="compound">mutabor/parameter.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dd/de4/aktion_8h" kindref="compound">mutabor/aktion.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="d7/d6e/logik_8c_1a7f772804a850a0156f485df5f8cb1339" refkind="member"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d28/structlogik" kindref="compound">logik</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d1/dff/logik_8h_1a7f772804a850a0156f485df5f8cb1339" kindref="member">list_of_logiken</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="d7/d6e/logik_8c_1a1bf49a0b791eef42c75d45a8bca773f0" refkind="member"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d1/dff/logik_8h_1a1bf49a0b791eef42c75d45a8bca773f0" kindref="member">logik_list_laenge</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="db/d28/structlogik" kindref="compound">logik</ref><sp/>*list)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(list)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1<sp/>+<sp/><ref refid="d1/dff/logik_8h_1a1bf49a0b791eef42c75d45a8bca773f0" kindref="member">logik_list_laenge</ref><sp/>(list<sp/>-&gt;<sp/><ref refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" kindref="member">next</ref>);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="d7/d6e/logik_8c_1adb479f679345892536d7bcfaf145cec6" refkind="member"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d1/dff/logik_8h_1adb479f679345892536d7bcfaf145cec6" kindref="member">get_logik_nummer</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="db/d28/structlogik" kindref="compound">logik</ref><sp/>*<sp/>liste)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{<sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(liste<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" kindref="member">fatal_error</ref><sp/>(0,<sp/>__FILE__,<sp/>__LINE__);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<sp/>strcmp<sp/>(name,<sp/>liste-&gt;<ref refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" kindref="member">name</ref>))</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1<sp/>+<sp/><ref refid="d1/dff/logik_8h_1adb479f679345892536d7bcfaf145cec6" kindref="member">get_logik_nummer</ref><sp/>(name,<sp/>liste-&gt;<ref refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" kindref="member">next</ref>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="d7/d6e/logik_8c_1aeac62519a6479ab36a94d3ad1937bb61" refkind="member"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d28/structlogik" kindref="compound">logik</ref><sp/>*<sp/><ref refid="d1/dff/logik_8h_1aeac62519a6479ab36a94d3ad1937bb61" kindref="member">get_logik</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="db/d28/structlogik" kindref="compound">logik</ref><sp/>*<sp/>liste)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(liste<sp/>==<sp/>NULL)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<sp/>strcmp<sp/>(name,<sp/>liste-&gt;<ref refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" kindref="member">name</ref>))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>liste;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d1/dff/logik_8h_1aeac62519a6479ab36a94d3ad1937bb61" kindref="member">get_logik</ref><sp/>(name,<sp/>liste-&gt;<ref refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" kindref="member">next</ref>);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="d7/d6e/logik_8c_1af4e510432930be6bebe8b280c36b8c12" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d1/dff/logik_8h_1af4e510432930be6bebe8b280c36b8c12" kindref="member">setze_nummer_von_abstand_und_zentrum</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d28/structlogik" kindref="compound">logik</ref><sp/>*<sp/>lauf;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(lauf=list_of_logiken;<sp/>lauf;<sp/>lauf=lauf-&gt;<ref refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" kindref="member">next</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/dab/structanweisung" kindref="compound">anweisung</ref><sp/>*<sp/>lauf_anw;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(lauf_anw=lauf-&gt;<ref refid="db/d28/structlogik_1a65b45930b368455fcb255d827496dc2b" kindref="member">anweisungsliste</ref>;<sp/>lauf_anw;<sp/>lauf_anw=lauf_anw-&gt;<ref refid="d0/dab/structanweisung_1ac2f1fdc2202ad29c50dbdc676fdc9a6a" kindref="member">next</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(lauf_anw-&gt;<ref refid="d0/dab/structanweisung_1affb7b32738f8c88cac91baaab9ad3383" kindref="member">aktion</ref>-&gt;<ref refid="d5/def/structaktions__liste_1a9d816210692ffebc7728e41ab9715bc3" kindref="member">aktions_typ</ref><sp/>==<sp/><ref refid="d9/d7c/group__kernel_1gga4640ca6a739d886d48063bab20c0a6bda3199b6eb05486b74e1ba3242b42f7985" kindref="member">aktion_aufruf</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dd/d7c/structargument__liste" kindref="compound">argument_liste</ref><sp/>*<sp/>lauf_arg;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(lauf_arg=lauf_anw-&gt;<ref refid="d0/dab/structanweisung_1affb7b32738f8c88cac91baaab9ad3383" kindref="member">aktion</ref>-&gt;<ref refid="d5/def/structaktions__liste_1a552bd3733146d7edcbbbabd254302f29" kindref="member">u</ref>.<ref refid="d5/def/structaktions__liste_1aa0db71fd64685d582c7d8c1efa2a7afc" kindref="member">aktion_aufruf</ref>.argument_liste;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf_arg;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf_arg=lauf_arg-&gt;<ref refid="dd/d7c/structargument__liste_1a17fc5968b0581a9d61d426e3185533c7" kindref="member">next</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(lauf_arg-&gt;<ref refid="dd/d7c/structargument__liste_1a62205ad94c3fb485ffc1c8d599fdf3d1" kindref="member">argument</ref>.<ref refid="d2/d74/structargument_1aebffb910f9535b2c61aaf2629909a524" kindref="member">argument_typ</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a47e9a84a3f91507862a3baa02e1a05b6" kindref="member">zahl</ref>:</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>OK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" kindref="member">parameter</ref>:</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<sp/>strcmp<sp/>(lauf_arg-&gt;<ref refid="dd/d7c/structargument__liste_1a62205ad94c3fb485ffc1c8d599fdf3d1" kindref="member">argument</ref>.<ref refid="d2/d74/structargument_1a3ccccc4ff00127c5d4731a94768c8cd8" kindref="member">u</ref>.<ref refid="d2/d74/structargument_1ae6f70084cffab08980e51bba6aa80856" kindref="member">parameter</ref>.parameter_name,</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ABSTAND&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf_arg-&gt;<ref refid="dd/d7c/structargument__liste_1a62205ad94c3fb485ffc1c8d599fdf3d1" kindref="member">argument</ref>.<ref refid="d2/d74/structargument_1a3ccccc4ff00127c5d4731a94768c8cd8" kindref="member">u</ref>.<ref refid="d2/d74/structargument_1ae6f70084cffab08980e51bba6aa80856" kindref="member">parameter</ref>.parameter_nummer<sp/></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<sp/>strcmp<sp/>(lauf_arg-&gt;<ref refid="dd/d7c/structargument__liste_1a62205ad94c3fb485ffc1c8d599fdf3d1" kindref="member">argument</ref>.<ref refid="d2/d74/structargument_1a3ccccc4ff00127c5d4731a94768c8cd8" kindref="member">u</ref>.<ref refid="d2/d74/structargument_1ae6f70084cffab08980e51bba6aa80856" kindref="member">parameter</ref>.parameter_name,</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;DISTANCE&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf_arg-&gt;<ref refid="dd/d7c/structargument__liste_1a62205ad94c3fb485ffc1c8d599fdf3d1" kindref="member">argument</ref>.<ref refid="d2/d74/structargument_1a3ccccc4ff00127c5d4731a94768c8cd8" kindref="member">u</ref>.<ref refid="d2/d74/structargument_1ae6f70084cffab08980e51bba6aa80856" kindref="member">parameter</ref>.parameter_nummer<sp/></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<sp/>strcmp<sp/>(lauf_arg-&gt;<ref refid="dd/d7c/structargument__liste_1a62205ad94c3fb485ffc1c8d599fdf3d1" kindref="member">argument</ref>.<ref refid="d2/d74/structargument_1a3ccccc4ff00127c5d4731a94768c8cd8" kindref="member">u</ref>.<ref refid="d2/d74/structargument_1ae6f70084cffab08980e51bba6aa80856" kindref="member">parameter</ref>.parameter_name,</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ZENTRUM&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf_arg-&gt;<ref refid="dd/d7c/structargument__liste_1a62205ad94c3fb485ffc1c8d599fdf3d1" kindref="member">argument</ref>.<ref refid="d2/d74/structargument_1a3ccccc4ff00127c5d4731a94768c8cd8" kindref="member">u</ref>.<ref refid="d2/d74/structargument_1ae6f70084cffab08980e51bba6aa80856" kindref="member">parameter</ref>.parameter_nummer<sp/></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<sp/>strcmp<sp/>(lauf_arg-&gt;<ref refid="dd/d7c/structargument__liste_1a62205ad94c3fb485ffc1c8d599fdf3d1" kindref="member">argument</ref>.<ref refid="d2/d74/structargument_1a3ccccc4ff00127c5d4731a94768c8cd8" kindref="member">u</ref>.<ref refid="d2/d74/structargument_1ae6f70084cffab08980e51bba6aa80856" kindref="member">parameter</ref>.parameter_name,</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;CENTER&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf_arg-&gt;<ref refid="dd/d7c/structargument__liste_1a62205ad94c3fb485ffc1c8d599fdf3d1" kindref="member">argument</ref>.<ref refid="d2/d74/structargument_1a3ccccc4ff00127c5d4731a94768c8cd8" kindref="member">u</ref>.<ref refid="d2/d74/structargument_1ae6f70084cffab08980e51bba6aa80856" kindref="member">parameter</ref>.parameter_nummer<sp/></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" kindref="member">fatal_error</ref><sp/>(39,</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf_arg-&gt;<ref refid="dd/d7c/structargument__liste_1a62205ad94c3fb485ffc1c8d599fdf3d1" kindref="member">argument</ref>.<ref refid="d2/d74/structargument_1a3ccccc4ff00127c5d4731a94768c8cd8" kindref="member">u</ref>.<ref refid="d2/d74/structargument_1ae6f70084cffab08980e51bba6aa80856" kindref="member">parameter</ref>.parameter_name,</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf_anw-&gt;<ref refid="d0/dab/structanweisung_1affb7b32738f8c88cac91baaab9ad3383" kindref="member">aktion</ref>-&gt;<ref refid="d5/def/structaktions__liste_1a552bd3733146d7edcbbbabd254302f29" kindref="member">u</ref>.<ref refid="d5/def/structaktions__liste_1aa0db71fd64685d582c7d8c1efa2a7afc" kindref="member">aktion_aufruf</ref>.name,</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf-&gt;<ref refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" kindref="member">fatal_error</ref><sp/>(0,<sp/>__FILE__,<sp/>__LINE__);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="153" refid="d7/d6e/logik_8c_1a944f578df10044a1ec228eab60a8617a" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d1/dff/logik_8h_1a944f578df10044a1ec228eab60a8617a" kindref="member">get_new_logik</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>einstimmung)</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d28/structlogik" kindref="compound">logik</ref><sp/>*<sp/>*<sp/>lauf;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(lauf=<sp/>&amp;<sp/>list_of_logiken;<sp/>*<sp/>lauf;<sp/>lauf=<sp/>&amp;<sp/>(*lauf)-&gt;<ref refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" kindref="member">next</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<sp/>strcmp<sp/>(name,<sp/>(*lauf)-&gt;name))<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" kindref="member">fatal_error</ref>(15,name);<sp/></highlight><highlight class="comment">/*<sp/>Logikname<sp/>doppelt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>(*<sp/>lauf)<sp/>=<sp/>(</highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d28/structlogik" kindref="compound">logik</ref>*)<sp/><ref refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" kindref="member">xmalloc</ref><sp/>(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="db/d28/structlogik" kindref="compound">logik</ref>));</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>(*<sp/>lauf)<sp/>-&gt;<sp/>name<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>(*<sp/>lauf)<sp/>-&gt;<sp/><ref refid="d9/de5/structausloeser" kindref="compound">ausloeser</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="dd/d21/group__Parser_1ga1e505704cb9a70800ee05786127a8cef" kindref="member">get_last_ausloeser</ref><sp/>();</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>(*<sp/>lauf)<sp/>-&gt;<sp/><ref refid="db/d28/structlogik_1a31836516d5c9d7d7c65ee0abc4c44324" kindref="member">einstimmungs_name</ref><sp/><sp/><sp/>=<sp/><ref refid="db/d28/structlogik_1a820e8ee0b32f8f6c1931eb84afa69474" kindref="member">einstimmung</ref>;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>(*<sp/>lauf)<sp/>-&gt;<sp/><ref refid="db/d28/structlogik_1a65b45930b368455fcb255d827496dc2b" kindref="member">anweisungsliste</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>(*<sp/>lauf)<sp/>-&gt;<sp/><ref refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" kindref="member">next</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177" refid="d7/d6e/logik_8c_1ab5e543965245fb75ee545f4083b21039" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d1/dff/logik_8h_1ab5e543965245fb75ee545f4083b21039" kindref="member">vervollstaendige_logik</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d28/structlogik" kindref="compound">logik</ref><sp/>*<sp/>lauf;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(lauf<sp/>=<sp/>list_of_logiken;<sp/>lauf<sp/>-&gt;<sp/><ref refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" kindref="member">next</ref>;<sp/>lauf<sp/>=<sp/>lauf-&gt;<ref refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" kindref="member">next</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>lauf<sp/>-&gt;<sp/><ref refid="db/d28/structlogik_1a65b45930b368455fcb255d827496dc2b" kindref="member">anweisungsliste</ref><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="d0/db7/anweisung_8h_1a69a9cc9b2f12873daad5f0fa8da3d40d" kindref="member">get_last_anweisungs_liste</ref><sp/>();</highlight></codeline>
+<codeline lineno="184"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Logiken:<sp/></highlight></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>überprüfen,<sp/>ob<sp/>Einstimmung<sp/>deklariert<sp/>ist</highlight></codeline>
+<codeline lineno="188"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>und<sp/>ob<sp/>die<sp/>Anweisungen<sp/>korrekt<sp/>deklariert<sp/>sind.</highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192" refid="d7/d6e/logik_8c_1aed04795a6b7c21df1893c7bc845231e6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d1/dff/logik_8h_1aed04795a6b7c21df1893c7bc845231e6" kindref="member">check_logik_konsistenz</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d28/structlogik" kindref="compound">logik</ref><sp/>*<sp/>lauf;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/dab/structanweisung" kindref="compound">anweisung</ref><sp/>*<sp/>anweisungs_lauf;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>anzahl_default_ausloeser;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(lauf<sp/>=<sp/>list_of_logiken;<sp/>lauf;<sp/>lauf<sp/>=<sp/>lauf-&gt;<ref refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" kindref="member">next</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d1c/structumstimmung" kindref="compound">umstimmung</ref><sp/>*<sp/>help_umstimmung;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d21/group__Parser_1ga513256ed0bc6682cb3e6c2f5e86d8bef" kindref="member">check_ausloeser</ref><sp/>(lauf-&gt;<ref refid="db/d28/structlogik_1a9220a60ca430902aad58a930d8f5e8f6" kindref="member">ausloeser</ref>,<sp/>lauf-&gt;<ref refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Eine<sp/>Logik<sp/>darf<sp/>nicht<sp/>mit<sp/>dem<sp/>DEFAULT-Auslöser<sp/>aufgerufen<sp/>werden<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(lauf-&gt;<ref refid="db/d28/structlogik_1a9220a60ca430902aad58a930d8f5e8f6" kindref="member">ausloeser</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(lauf-&gt;<ref refid="db/d28/structlogik_1a9220a60ca430902aad58a930d8f5e8f6" kindref="member">ausloeser</ref>-&gt;<ref refid="d9/de5/structausloeser_1a50378b5f0c1480af565b7aaccd128a40" kindref="member">ausloeser_typ</ref><sp/>==<sp/><ref refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a06ceaf3e37d0994c0e6b5f5c87855443" kindref="member">ausloeser_default</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" kindref="member">fatal_error</ref><sp/>(51,<sp/>lauf-&gt;<ref refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(lauf-&gt;<ref refid="db/d28/structlogik_1a31836516d5c9d7d7c65ee0abc4c44324" kindref="member">einstimmungs_name</ref>!=NULL)<sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d8/d39/tonsystem_8h_1a4563750267670ae068cbd8f00d5a7796" kindref="member">parser_get_tonsystem</ref><sp/>(lauf-&gt;<ref refid="db/d28/structlogik_1a31836516d5c9d7d7c65ee0abc4c44324" kindref="member">einstimmungs_name</ref>,<sp/><ref refid="d8/d39/tonsystem_8h_1a1c6d9a9da675102ad666d5da4ad167ca" kindref="member">list_of_tonsysteme</ref>)<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((help_umstimmung=<ref refid="da/d7f/umstimmung_8h_1ae60de5ad4f8f7e1954cf3105b34d21bc" kindref="member">get_umstimmung</ref><sp/>(lauf-&gt;<ref refid="db/d28/structlogik_1a31836516d5c9d7d7c65ee0abc4c44324" kindref="member">einstimmungs_name</ref>,<sp/><ref refid="da/d7f/umstimmung_8h_1a96aa4405f944de769b350336489cf56e" kindref="member">list_of_umstimmungen</ref>))<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" kindref="member">fatal_error</ref>(37,lauf-&gt;<ref refid="db/d28/structlogik_1a31836516d5c9d7d7c65ee0abc4c44324" kindref="member">einstimmungs_name</ref>,lauf-&gt;<ref refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Einst.<sp/>in<sp/>Logik<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d2/d2a/parameter_8h_1a21fc3bfc074c82c17e2ae9240f8029eb" kindref="member">parameter_list_laenge</ref><sp/>(help_umstimmung<sp/>-&gt;<sp/><ref refid="d2/d86/structparameter__liste" kindref="compound">parameter_liste</ref>)<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" kindref="member">fatal_error</ref>(62,lauf-&gt;<ref refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" kindref="member">name</ref>,<sp/>lauf-&gt;<ref refid="db/d28/structlogik_1a31836516d5c9d7d7c65ee0abc4c44324" kindref="member">einstimmungs_name</ref>);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(anweisungs_lauf<sp/>=<sp/>lauf-&gt;<ref refid="db/d28/structlogik_1a65b45930b368455fcb255d827496dc2b" kindref="member">anweisungsliste</ref>,</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>anzahl_default_ausloeser<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>anweisungs_lauf;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>anweisungs_lauf<sp/>=<sp/>anweisungs_lauf-&gt;<ref refid="d0/dab/structanweisung_1ac2f1fdc2202ad29c50dbdc676fdc9a6a" kindref="member">next</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d21/group__Parser_1ga513256ed0bc6682cb3e6c2f5e86d8bef" kindref="member">check_ausloeser</ref><sp/>(anweisungs_lauf-&gt;<ref refid="d0/dab/structanweisung_1a8712e41a0c226c692407c6933b6b2ab2" kindref="member">ausloeser</ref>,<sp/>lauf-&gt;<ref refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(anweisungs_lauf-&gt;<ref refid="d0/dab/structanweisung_1a8712e41a0c226c692407c6933b6b2ab2" kindref="member">ausloeser</ref><sp/>==<sp/>NULL)</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" kindref="member">fatal_error</ref><sp/>(0,<sp/>__FILE__,<sp/>__LINE__);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(anweisungs_lauf-&gt;<ref refid="d0/dab/structanweisung_1a8712e41a0c226c692407c6933b6b2ab2" kindref="member">ausloeser</ref>-&gt;<ref refid="d9/de5/structausloeser_1a50378b5f0c1480af565b7aaccd128a40" kindref="member">ausloeser_typ</ref></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>==<sp/><ref refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a06ceaf3e37d0994c0e6b5f5c87855443" kindref="member">ausloeser_default</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>anzahl_default_ausloeser<sp/>++;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(anzahl_default_ausloeser<sp/>&gt;<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" kindref="member">fatal_error</ref><sp/>(20,<sp/>lauf<sp/>-&gt;<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(anweisungs_lauf<sp/>-&gt;<sp/><ref refid="d2/d1c/structumstimmung_1ae67b979d3d4d8dbbf5d36515bd58d6c7" kindref="member">next</ref><sp/>!=(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d0/dab/structanweisung" kindref="compound">anweisung</ref><sp/>*)<sp/>NULL)</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ggafeebd36c5713e8438dcf17e926f8ad96a053ee5ee8425fcbcd4c51b3637254eb5" kindref="member">compiler_warning</ref><sp/>(4,<sp/>lauf<sp/>-&gt;<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d21/group__Parser_1gaa415e8810b15cf168d92015c1bae5a9e" kindref="member">check_aktionen</ref><sp/>(anweisungs_lauf<sp/>-&gt;<sp/>aktion,<sp/>lauf-&gt;<ref refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260" refid="d7/d6e/logik_8c_1adeba205c8988dbafa8226746ae29a639" refkind="member"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d5/d8c/structdo__aktion" kindref="compound">do_aktion</ref><sp/>*<sp/><ref refid="d1/dff/logik_8h_1adeba205c8988dbafa8226746ae29a639" kindref="member">expandiere_logik</ref><sp/>(</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="db/d28/structlogik" kindref="compound">logik</ref><sp/>*<sp/>the_logik)</highlight></codeline>
+<codeline lineno="262"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d5/d8c/structdo__aktion" kindref="compound">do_aktion</ref><sp/>*<sp/>help;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/>help<sp/>=<sp/>(</highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d5/d8c/structdo__aktion" kindref="compound">do_aktion</ref>*)<sp/><ref refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" kindref="member">xmalloc</ref><sp/>(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d5/d8c/structdo__aktion" kindref="compound">do_aktion</ref>));</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>help<sp/>-&gt;<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref><sp/>=<sp/>the_logik<sp/>-&gt;<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>;</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>help<sp/>-&gt;<sp/><ref refid="dd/de4/aktion_8h_1ad274f7c459bd092f365be1c95b5973ea" kindref="member">aufruf_typ</ref><sp/>=<sp/><ref refid="d9/d7c/group__kernel_1ggad274f7c459bd092f365be1c95b5973eaa5acd3612de4355aaa66be7057bd9f0e0" kindref="member">aufruf_logik</ref>;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(the_logik<sp/>-&gt;<sp/>einstimmungs_name)<sp/>{</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dc/dba/structtonsystem" kindref="compound">tonsystem</ref><sp/>*<sp/>help_tonsystem;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d1c/structumstimmung" kindref="compound">umstimmung</ref><sp/>*<sp/>help_umstimmung;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>help_tonsystem<sp/>=<sp/><ref refid="d8/d39/tonsystem_8h_1a4563750267670ae068cbd8f00d5a7796" kindref="member">parser_get_tonsystem</ref><sp/>(the_logik-&gt;<ref refid="db/d28/structlogik_1a31836516d5c9d7d7c65ee0abc4c44324" kindref="member">einstimmungs_name</ref>,</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d39/tonsystem_8h_1a1c6d9a9da675102ad666d5da4ad167ca" kindref="member">list_of_tonsysteme</ref>);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(help_tonsystem)<sp/>{</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>help<sp/>-&gt;<sp/><ref refid="d2/d1c/structumstimmung_1af6c0515f9099f9d765cedd86762d9c6b" kindref="member">u</ref>.aufruf_logik.einstimmung<sp/>=<sp/><ref refid="d2/d1c/group__Interpreter_1ga624187681a6783c21bd14e86fc82a929" kindref="member">expandiere_tonsystem</ref><sp/>(help_tonsystem);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>help_umstimmung<sp/>=<sp/><ref refid="da/d7f/umstimmung_8h_1ae60de5ad4f8f7e1954cf3105b34d21bc" kindref="member">get_umstimmung</ref><sp/>(the_logik-&gt;<ref refid="db/d28/structlogik_1a31836516d5c9d7d7c65ee0abc4c44324" kindref="member">einstimmungs_name</ref>,</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="da/d7f/umstimmung_8h_1a96aa4405f944de769b350336489cf56e" kindref="member">list_of_umstimmungen</ref>);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(help_umstimmung)<sp/>{</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>help<sp/>-&gt;<sp/><ref refid="d2/d1c/structumstimmung_1af6c0515f9099f9d765cedd86762d9c6b" kindref="member">u</ref>.aufruf_logik.einstimmung<sp/>=<sp/><ref refid="d2/d1c/group__Interpreter_1ga6140e72fda79613ca5af30a3832c286c" kindref="member">expandiere_umstimmung</ref><sp/>(help_umstimmung,<sp/>NULL);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" kindref="member">fatal_error</ref><sp/>(0,<sp/>__FILE__,<sp/>__LINE__);</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>help<sp/>-&gt;<sp/><ref refid="d2/d1c/structumstimmung_1af6c0515f9099f9d765cedd86762d9c6b" kindref="member">u</ref>.aufruf_logik.einstimmung<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>help<sp/>-&gt;<sp/><ref refid="d2/d1c/structumstimmung_1af6c0515f9099f9d765cedd86762d9c6b" kindref="member">u</ref>.aufruf_logik.einstimmung<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>i<sp/>=<sp/><ref refid="d1/dff/logik_8h_1adb479f679345892536d7bcfaf145cec6" kindref="member">get_logik_nummer</ref><sp/>(the_logik<sp/>-&gt;<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>,<sp/>list_of_logiken);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/>help<sp/>-&gt;<sp/><ref refid="d2/d1c/structumstimmung_1af6c0515f9099f9d765cedd86762d9c6b" kindref="member">u</ref>.aufruf_logik.lokal_harmonie<sp/>=<sp/>&amp;<sp/><ref refid="dd/d21/group__Parser_1gaa539e63152f2a354b62a0b98490e2293" kindref="member">first_lokal_harmonie</ref><sp/>[i];</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/>help<sp/>-&gt;<sp/><ref refid="d2/d1c/structumstimmung_1af6c0515f9099f9d765cedd86762d9c6b" kindref="member">u</ref>.aufruf_logik.lokal_keyboard<sp/>=<sp/>&amp;<sp/><ref refid="dd/d21/group__Parser_1gac413ef20e141cd76dd18c44e99df1ba4" kindref="member">first_lokal_keyboard</ref><sp/>[i];</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>help<sp/>-&gt;<sp/><ref refid="d2/d1c/structumstimmung_1af6c0515f9099f9d765cedd86762d9c6b" kindref="member">u</ref>.aufruf_logik.lokal_midi<sp/><sp/><sp/><sp/><sp/>=<sp/>&amp;<sp/><ref refid="dd/d21/group__Parser_1gaa4d5de4a97f2396dd4c30ac78285d6bf" kindref="member">first_lokal_midi</ref><sp/><sp/><sp/><sp/><sp/>[i];</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/>help<sp/>-&gt;<sp/><ref refid="d2/d1c/structumstimmung_1ae67b979d3d4d8dbbf5d36515bd58d6c7" kindref="member">next</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>help;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/logik.c"/>
+  </compounddef>
+</doxygen>

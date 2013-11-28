@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d8/d28/structparameter__list" kind="struct" prot="public">
+    <compoundname>parameter_list</compoundname>
+    <includes refid="dd/d40/Global_8h" local="no">Global.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d8/d28/structparameter__list_1ab18cf1941ff9af628aceb090bf90e450" prot="public" static="no" mutable="no">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <definition>const char* parameter_list::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="97" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="97" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1gadc4980347039ec33dd18e1f5f330b9c5" compoundref="dc/df5/Parser_8cpp" startline="364" endline="377">get_new_name_in_argument_list</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gab187cd483b295cabc2e95aaca88d6c1d" compoundref="dc/df5/Parser_8cpp" startline="265" endline="275">get_new_name_in_parameterlist</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga59ad48642a0310e7fe8bed6228b4f5b3" compoundref="dc/df5/Parser_8cpp" startline="296" endline="307">get_parameter_by_name</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gac9853aaefee300523f45c37bed9d59e2" compoundref="dc/df5/Parser_8cpp" startline="1841" endline="1905">get_umstimmung_umstimm_case</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga282aa00fefad24666fa0f5b66e0171a4" compoundref="dc/df5/Parser_8cpp" startline="1672" endline="1729">get_umstimmung_umstimmungs_bund</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga1314d80a242f8d6fac2563e32412923b" compoundref="dc/df5/Parser_8cpp" startline="309" endline="335">print_argumentliste</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d8/d28/structparameter__list_1a804c6438ad0557fae9fcae9c1a5c0e1b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int parameter_list::index</definition>
+        <argsstring></argsstring>
+        <name>index</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="98" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="98" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1gacc15b09292dc40226ea71ed52d227c57" compoundref="dc/df5/Parser_8cpp" startline="277" endline="285">enumerate_parameters</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d8/d28/structparameter__list_1aeedc2e64502f4fa29a18d4f405f073ad" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d8/d28/structparameter__list" kindref="compound">parameter_list</ref> *</type>
+        <definition>struct parameter_list* parameter_list::next</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="99" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="99" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1gacc15b09292dc40226ea71ed52d227c57" compoundref="dc/df5/Parser_8cpp" startline="277" endline="285">enumerate_parameters</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gab187cd483b295cabc2e95aaca88d6c1d" compoundref="dc/df5/Parser_8cpp" startline="265" endline="275">get_new_name_in_parameterlist</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga59ad48642a0310e7fe8bed6228b4f5b3" compoundref="dc/df5/Parser_8cpp" startline="296" endline="307">get_parameter_by_name</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga1314d80a242f8d6fac2563e32412923b" compoundref="dc/df5/Parser_8cpp" startline="309" endline="335">print_argumentliste</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4068">
+        <label>parameter_list</label>
+        <link refid="d8/d28/structparameter__list"/>
+        <childnode refid="4068" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="96" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="95" bodyend="100"/>
+    <listofallmembers>
+      <member refid="d8/d28/structparameter__list_1a804c6438ad0557fae9fcae9c1a5c0e1b" prot="public" virt="non-virtual"><scope>parameter_list</scope><name>index</name></member>
+      <member refid="d8/d28/structparameter__list_1ab18cf1941ff9af628aceb090bf90e450" prot="public" virt="non-virtual"><scope>parameter_list</scope><name>name</name></member>
+      <member refid="d8/d28/structparameter__list_1aeedc2e64502f4fa29a18d4f405f073ad" prot="public" virt="non-virtual"><scope>parameter_list</scope><name>next</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

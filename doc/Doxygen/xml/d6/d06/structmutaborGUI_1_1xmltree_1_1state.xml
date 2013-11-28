@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d6/d06/structmutaborGUI_1_1xmltree_1_1state" kind="struct" prot="private">
+    <compoundname>mutaborGUI::xmltree::state</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1afd223f40d100e64c722330ed7448d03b" prot="public" static="no" mutable="no">
+        <type><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa933d64b433f892549b871ea75b9416c" kindref="member">node_type</ref> *</type>
+        <definition>node_type* mutaborGUI::xmltree::state::node</definition>
+        <argsstring></argsstring>
+        <name>node</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" line="66" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" bodystart="66" bodyend="-1"/>
+        <referencedby refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a8e13a24d2f4097d01b0490a706f0faf5" compoundref="d8/d53/xmltree_8h" startline="69" endline="74">operator==</referencedby>
+        <referencedby refid="dd/d18/classmutaborGUI_1_1xmltree_1aeb5be86959fd571c18f9ce46c883f18b" compoundref="de/d4f/xmltree_8cpp" startline="191" endline="211">mutaborGUI::xmltree::toLeaf</referencedby>
+        <referencedby refid="dd/d18/classmutaborGUI_1_1xmltree_1adb85dde37cf2aa275491c6b4752064fb" compoundref="de/d4f/xmltree_8cpp" startline="307" endline="334">mutaborGUI::xmltree::toNextLeaf</referencedby>
+        <referencedby refid="dd/d18/classmutaborGUI_1_1xmltree_1aa160b14a043dbfad6237702fefdcc9b4" compoundref="de/d4f/xmltree_8cpp" startline="337" endline="353">mutaborGUI::xmltree::toParent</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1ace84c20c5adfbf4dbdf865c760cf058b" prot="public" static="no" mutable="no">
+        <type>wxString</type>
+        <definition>wxString mutaborGUI::xmltree::state::path</definition>
+        <argsstring></argsstring>
+        <name>path</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" line="67" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" bodystart="67" bodyend="-1"/>
+        <referencedby refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a8e13a24d2f4097d01b0490a706f0faf5" compoundref="d8/d53/xmltree_8h" startline="69" endline="74">operator==</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a869465823cc04fd35bf1b1505ad4b184" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutaborGUI::xmltree::state::state</definition>
+        <argsstring>(node_type *n, wxString p)</argsstring>
+        <name>state</name>
+        <param>
+          <type><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa933d64b433f892549b871ea75b9416c" kindref="member">node_type</ref> *</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>wxString</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" line="62" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" bodystart="62" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a8e13a24d2f4097d01b0490a706f0faf5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::xmltree::state::operator==</definition>
+        <argsstring>(const state &amp;s) const </argsstring>
+        <name>operator==</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state" kindref="compound">state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" line="69" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" bodystart="69" bodyend="74"/>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1afd223f40d100e64c722330ed7448d03b" compoundref="d8/d53/xmltree_8h" startline="66">node</references>
+        <references refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1ace84c20c5adfbf4dbdf865c760cf058b" compoundref="d8/d53/xmltree_8h" startline="67">path</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>structure describing the current state </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" line="61" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" bodystart="61" bodyend="75"/>
+    <listofallmembers>
+      <member refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1afd223f40d100e64c722330ed7448d03b" prot="public" virt="non-virtual"><scope>mutaborGUI::xmltree::state</scope><name>node</name></member>
+      <member refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a8e13a24d2f4097d01b0490a706f0faf5" prot="public" virt="non-virtual"><scope>mutaborGUI::xmltree::state</scope><name>operator==</name></member>
+      <member refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1ace84c20c5adfbf4dbdf865c760cf058b" prot="public" virt="non-virtual"><scope>mutaborGUI::xmltree::state</scope><name>path</name></member>
+      <member refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a869465823cc04fd35bf1b1505ad4b184" prot="public" virt="non-virtual"><scope>mutaborGUI::xmltree::state</scope><name>state</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

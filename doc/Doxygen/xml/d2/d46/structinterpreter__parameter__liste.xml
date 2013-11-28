@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d2/d46/structinterpreter__parameter__liste" kind="struct" prot="public">
+    <compoundname>interpreter_parameter_liste</compoundname>
+    <includes refid="d2/d2a/parameter_8h" local="no">parameter.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d2/d46/structinterpreter__parameter__liste_1ac9e40372bb579351da7e2aed8c135cac" prot="public" static="no" mutable="no">
+        <type>int(*</type>
+        <definition>int(* interpreter_parameter_liste::werte_feld)[MAX_BOX]</definition>
+        <argsstring>)[MAX_BOX]</argsstring>
+        <name>werte_feld</name>
+        <briefdescription>
+<para>Werte für jede Box. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/parameter.h" line="37" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/parameter.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="d7/d2d/parameter_8c_1a493a3f825cf92358363ce341cbf1c4cb" compoundref="d7/d2d/parameter_8c" startline="116" endline="148">gen_parameter_liste</referencedby>
+        <referencedby refid="d3/d14/argument_8c_1af636a1e8393f27b82c5c10e8c0120f04" compoundref="d3/d14/argument_8c" startline="159" endline="189">get_wert_of_argument</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d46/structinterpreter__parameter__liste_1ae1d46c921924f5caf79971e65c3630a7" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d2/d46/structinterpreter__parameter__liste" kindref="compound">interpreter_parameter_liste</ref> *</type>
+        <definition>struct interpreter_parameter_liste* interpreter_parameter_liste::next</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <briefdescription>
+<para>Nächster Parameter. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/parameter.h" line="38" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/parameter.h" bodystart="38" bodyend="-1"/>
+        <referencedby refid="d7/d2d/parameter_8c_1a493a3f825cf92358363ce341cbf1c4cb" compoundref="d7/d2d/parameter_8c" startline="116" endline="148">gen_parameter_liste</referencedby>
+        <referencedby refid="d3/d14/argument_8c_1af636a1e8393f27b82c5c10e8c0120f04" compoundref="d3/d14/argument_8c" startline="159" endline="189">get_wert_of_argument</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Einfach verkettete Liste mit Parametern. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3325">
+        <label>interpreter_parameter_liste</label>
+        <link refid="d2/d46/structinterpreter__parameter__liste"/>
+        <childnode refid="3325" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/parameter.h" line="36" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/parameter.h" bodystart="36" bodyend="39"/>
+    <listofallmembers>
+      <member refid="d2/d46/structinterpreter__parameter__liste_1ae1d46c921924f5caf79971e65c3630a7" prot="public" virt="non-virtual"><scope>interpreter_parameter_liste</scope><name>next</name></member>
+      <member refid="d2/d46/structinterpreter__parameter__liste_1ac9e40372bb579351da7e2aed8c135cac" prot="public" virt="non-virtual"><scope>interpreter_parameter_liste</scope><name>werte_feld</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

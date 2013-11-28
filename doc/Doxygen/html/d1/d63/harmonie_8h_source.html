@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/includes/mutabor/harmonie.h Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_bf59d41d727aac54882b42f236ae575e.html">includes</a></li><li class="navelem"><a class="el" href="../../dir_6db30062d01f5c3ec76e386385d23595.html">mutabor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">harmonie.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d1/d63/harmonie_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __HARMONIE_H_INCLUDED</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __HARMONIE_H_INCLUDED</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d8a/interval_8h.html">mutabor/interval.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../df/d8e/bad__decl_8h.html">mutabor/bad_decl.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span><span class="keyword">namespace </span>mutabor {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">/*********  Definition der Harmonien als verkettete Liste ********/</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="../../d4/dcb/structharmonie.html">   32</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="../../d4/dcb/structharmonie.html">harmonie</a> {</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="../../d4/dcb/structharmonie.html#a035df76b4b2f8488c41bd25fb5bd90a5">   33</a></span>&#160;      <span class="keywordtype">char</span> * <a class="code" href="../../d4/dcb/structharmonie.html#a035df76b4b2f8488c41bd25fb5bd90a5">name</a>;                   </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../d4/dcb/structharmonie.html#a4191b16d8e944a7aba7a51d27724eaf1">   34</a></span>&#160;      <span class="keyword">struct </span><a class="code" href="../../d1/db5/structtaste.html">taste</a> * <a class="code" href="../../d4/dcb/structharmonie.html#a4191b16d8e944a7aba7a51d27724eaf1">tastenliste</a>;    </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../d4/dcb/structharmonie.html#ac9cf4eb0267c33f5fd003b080445978a">   35</a></span>&#160;      <span class="keywordtype">int</span> <a class="code" href="../../d4/dcb/structharmonie.html#ac9cf4eb0267c33f5fd003b080445978a">bezugstaste</a>;               </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../d4/dcb/structharmonie.html#a80634228728c4f5be8953164b80b7df3">   36</a></span>&#160;      <span class="keyword">struct </span><a class="code" href="../../d4/dcb/structharmonie.html">harmonie</a> * <a class="code" href="../../d4/dcb/structharmonie.html#a80634228728c4f5be8953164b80b7df3">next</a>;        </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    };</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../d3/dc4/structPTRN.html">   40</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="../../d3/dc4/structPTRN.html">PTRN</a> {</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../d3/dc4/structPTRN.html#a4aef63c21f5b59f074fa88c6140f55fa">   41</a></span>&#160;      <span class="keywordtype">int</span> tonigkeit[<a class="code" href="../../df/d8e/bad__decl_8h.html#af0566e83c6445f2a84c21406ca24d8e8">MAX_BREITE</a>]; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    } <a class="code" href="../../d1/d63/harmonie_8h.html#a267d883cd4bbaaa3f808d018cbb72bdd">PATTERNN</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/d21/group__Parser.html#gaa1b9ac58a9b49f9bdc1d72ba58ffe070">drucke_harmonie</a> (<span class="keyword">struct</span> <a class="code" href="../../d4/dcb/structharmonie.html">harmonie</a> * this_);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/d21/group__Parser.html#gaedc5966bb91f8d4a84fbe5062adac38d">get_new_harmonie</a> (<span class="keywordtype">char</span> * <a class="code" href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>, <span class="keywordtype">int</span> bezugstaste);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/d21/group__Parser.html#gaaf48ed50c785bd80b889c98eb4ff4094">get_harmoniebezeichner</a> (<span class="keywordtype">int</span> vor_taste,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                 <span class="keywordtype">char</span> * <a class="code" href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                 <span class="keywordtype">int</span> nach_taste);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">struct </span><a class="code" href="../../d4/dcb/structharmonie.html">harmonie</a> * <a class="code" href="../../dd/d21/group__Parser.html#ga915c1bf69d511fa274ddbc6cc8fa0c87">get_harmonie</a> (<span class="keywordtype">char</span> * <a class="code" href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>, <span class="keyword">struct</span> <a class="code" href="../../d4/dcb/structharmonie.html">harmonie</a> * liste);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="../../d3/dc4/structPTRN.html">PATTERNN</a> * <a class="code" href="../../d2/d1c/group__Interpreter.html#ga04fa5cd297957f96749cf608f126b9c4">expand_pattern</a> (<span class="keywordtype">char</span> * harmonie_name);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">extern</span> <span class="keyword">struct </span><a class="code" href="../../d4/dcb/structharmonie.html">harmonie</a>       *  <a class="code" href="../../dd/d21/group__Parser.html#ga3f2f9506513cddd0cef78847058f51f3">list_of_harmonien</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../d1/d63/harmonie_8h.html#ad85d75600efd7da89f5974312a13ca9c">   55</a></span>&#160;    <span class="keywordtype">int</span>        <a class="code" href="../../d1/d63/harmonie_8h.html#ad85d75600efd7da89f5974312a13ca9c">tmp_vor_taste</a>; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../d1/d63/harmonie_8h.html#a785ba1f06c9f45123085019e98239a34">   56</a></span>&#160;    <span class="keywordtype">char</span> *     <a class="code" href="../../d1/d63/harmonie_8h.html#a785ba1f06c9f45123085019e98239a34">tmp_name</a>; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../d1/d63/harmonie_8h.html#afedd171c4ce9636705c759e529d8d22a">   57</a></span>&#160;    <span class="keywordtype">int</span>        <a class="code" href="../../d1/d63/harmonie_8h.html#afedd171c4ce9636705c759e529d8d22a">tmp_nach_taste</a>; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#ifdef __cplusplus </span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor"></span>  } <span class="comment">// extern &quot;C&quot;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;} <span class="comment">// namespace mutabor</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __HARMONIE_H_INCLUDED */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="harmonie_8h_html_ad85d75600efd7da89f5974312a13ca9c"><div class="ttname"><a href="../../d1/d63/harmonie_8h.html#ad85d75600efd7da89f5974312a13ca9c">tmp_vor_taste</a></div><div class="ttdeci">int tmp_vor_taste</div><div class="ttdoc">Zwischenspeicher für tiefste Taste einer Harmonie. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d63/harmonie_8h_source.html#l00055">harmonie.h:55</a></div></div>
+<div class="ttc" id="group__Interpreter_html_ga04fa5cd297957f96749cf608f126b9c4"><div class="ttname"><a href="../../d2/d1c/group__Interpreter.html#ga04fa5cd297957f96749cf608f126b9c4">expand_pattern</a></div><div class="ttdeci">PATTERNN * expand_pattern(char *harmonie_name)</div><div class="ttdoc">Erzeugt eine Suchmaske für die Suche nach Harmonien. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d35/harmonie_8c_source.html#l00128">harmonie.c:128</a></div></div>
+<div class="ttc" id="structharmonie_html"><div class="ttname"><a href="../../d4/dcb/structharmonie.html">harmonie</a></div><div class="ttdoc">Harmonien als einfach verkettette Liste. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d63/harmonie_8h_source.html#l00032">harmonie.h:32</a></div></div>
+<div class="ttc" id="bad__decl_8h_html"><div class="ttname"><a href="../../df/d8e/bad__decl_8h.html">bad_decl.h</a></div><div class="ttdoc">Zu korrigierende Querabhängigkeiten zur GUI und sonstige komische Deklarationen. </div></div>
+<div class="ttc" id="group__Parser_html_gaaf48ed50c785bd80b889c98eb4ff4094"><div class="ttname"><a href="../../dd/d21/group__Parser.html#gaaf48ed50c785bd80b889c98eb4ff4094">get_harmoniebezeichner</a></div><div class="ttdeci">void get_harmoniebezeichner(int vor_taste, char *name, int nach_taste)</div><div class="ttdoc">Sichert die Daten eines Harmoniebezeichners im globalen Zwischenspeicher. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d35/harmonie_8c_source.html#l00110">harmonie.c:110</a></div></div>
+<div class="ttc" id="structharmonie_html_a80634228728c4f5be8953164b80b7df3"><div class="ttname"><a href="../../d4/dcb/structharmonie.html#a80634228728c4f5be8953164b80b7df3">harmonie::next</a></div><div class="ttdeci">struct harmonie * next</div><div class="ttdoc">Nächste Harmonie. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d63/harmonie_8h_source.html#l00036">harmonie.h:36</a></div></div>
+<div class="ttc" id="idlist_8hh_html_a8f8f80d37794cde9472343e4487ba3eb"><div class="ttname"><a href="../../dc/ddf/idlist_8hh.html#a8f8f80d37794cde9472343e4487ba3eb">name</a></div><div class="ttdeci">const char * name</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/idlist_8hh_source.html#l00006">idlist.hh:6</a></div></div>
+<div class="ttc" id="structharmonie_html_ac9cf4eb0267c33f5fd003b080445978a"><div class="ttname"><a href="../../d4/dcb/structharmonie.html#ac9cf4eb0267c33f5fd003b080445978a">harmonie::bezugstaste</a></div><div class="ttdeci">int bezugstaste</div><div class="ttdoc">Bezugstaste der Harmonie. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d63/harmonie_8h_source.html#l00035">harmonie.h:35</a></div></div>
+<div class="ttc" id="structharmonie_html_a035df76b4b2f8488c41bd25fb5bd90a5"><div class="ttname"><a href="../../d4/dcb/structharmonie.html#a035df76b4b2f8488c41bd25fb5bd90a5">harmonie::name</a></div><div class="ttdeci">char * name</div><div class="ttdoc">Name der Harmonie. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d63/harmonie_8h_source.html#l00033">harmonie.h:33</a></div></div>
+<div class="ttc" id="harmonie_8h_html_afedd171c4ce9636705c759e529d8d22a"><div class="ttname"><a href="../../d1/d63/harmonie_8h.html#afedd171c4ce9636705c759e529d8d22a">tmp_nach_taste</a></div><div class="ttdeci">int tmp_nach_taste</div><div class="ttdoc">Zwischenspeicher für höchste Taste einer Harmonie. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d63/harmonie_8h_source.html#l00057">harmonie.h:57</a></div></div>
+<div class="ttc" id="structtaste_html"><div class="ttname"><a href="../../d1/db5/structtaste.html">taste</a></div><div class="ttdoc">Einzelne Tasten als einfach verkettete Liste. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/taste_8h_source.html#l00019">taste.h:19</a></div></div>
+<div class="ttc" id="group__Parser_html_ga3f2f9506513cddd0cef78847058f51f3"><div class="ttname"><a href="../../dd/d21/group__Parser.html#ga3f2f9506513cddd0cef78847058f51f3">list_of_harmonien</a></div><div class="ttdeci">struct harmonie * list_of_harmonien</div><div class="ttdoc">Wurzel der Harmonien. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d35/harmonie_8c_source.html#l00045">harmonie.c:45</a></div></div>
+<div class="ttc" id="harmonie_8h_html_a785ba1f06c9f45123085019e98239a34"><div class="ttname"><a href="../../d1/d63/harmonie_8h.html#a785ba1f06c9f45123085019e98239a34">tmp_name</a></div><div class="ttdeci">char * tmp_name</div><div class="ttdoc">Zwischenspeicher für Name einer Harmonie. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d63/harmonie_8h_source.html#l00056">harmonie.h:56</a></div></div>
+<div class="ttc" id="group__Parser_html_gaa1b9ac58a9b49f9bdc1d72ba58ffe070"><div class="ttname"><a href="../../dd/d21/group__Parser.html#gaa1b9ac58a9b49f9bdc1d72ba58ffe070">drucke_harmonie</a></div><div class="ttdeci">void drucke_harmonie(struct harmonie *this_)</div><div class="ttdoc">Gibt eine Harmonie auf der Standardausgabe aus. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d35/harmonie_8c_source.html#l00064">harmonie.c:64</a></div></div>
+<div class="ttc" id="bad__decl_8h_html_af0566e83c6445f2a84c21406ca24d8e8"><div class="ttname"><a href="../../df/d8e/bad__decl_8h.html#af0566e83c6445f2a84c21406ca24d8e8">MAX_BREITE</a></div><div class="ttdeci">#define MAX_BREITE</div><div class="ttdoc">Maximale Breite eines Tonsystems. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d8e/bad__decl_8h_source.html#l00063">bad_decl.h:63</a></div></div>
+<div class="ttc" id="group__Parser_html_ga915c1bf69d511fa274ddbc6cc8fa0c87"><div class="ttname"><a href="../../dd/d21/group__Parser.html#ga915c1bf69d511fa274ddbc6cc8fa0c87">get_harmonie</a></div><div class="ttdeci">struct harmonie * get_harmonie(char *name, struct harmonie *liste)</div><div class="ttdoc">Sucht eine Harmonie in einer Harmonieliste. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d35/harmonie_8c_source.html#l00054">harmonie.c:54</a></div></div>
+<div class="ttc" id="structharmonie_html_a4191b16d8e944a7aba7a51d27724eaf1"><div class="ttname"><a href="../../d4/dcb/structharmonie.html#a4191b16d8e944a7aba7a51d27724eaf1">harmonie::tastenliste</a></div><div class="ttdeci">struct taste * tastenliste</div><div class="ttdoc">Angeschlagene Töne. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d63/harmonie_8h_source.html#l00034">harmonie.h:34</a></div></div>
+<div class="ttc" id="structPTRN_html"><div class="ttname"><a href="../../d3/dc4/structPTRN.html">PTRN</a></div><div class="ttdoc">Pattern-Struktur für Analyse der Harmonieformen. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d63/harmonie_8h_source.html#l00040">harmonie.h:40</a></div></div>
+<div class="ttc" id="harmonie_8h_html_a267d883cd4bbaaa3f808d018cbb72bdd"><div class="ttname"><a href="../../d1/d63/harmonie_8h.html#a267d883cd4bbaaa3f808d018cbb72bdd">PATTERNN</a></div><div class="ttdeci">struct PTRN PATTERNN</div><div class="ttdoc">Pattern-Struktur für Analyse der Harmonieformen. </div></div>
+<div class="ttc" id="group__Parser_html_gaedc5966bb91f8d4a84fbe5062adac38d"><div class="ttname"><a href="../../dd/d21/group__Parser.html#gaedc5966bb91f8d4a84fbe5062adac38d">get_new_harmonie</a></div><div class="ttdeci">void get_new_harmonie(char *name, int bezugstaste)</div><div class="ttdoc">Fügt eine Harmonie ans Ende von list_of_harmonien an. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d35/harmonie_8c_source.html#l00082">harmonie.c:82</a></div></div>
+<div class="ttc" id="interval_8h_html"><div class="ttname"><a href="../../d2/d8a/interval_8h.html">interval.h</a></div><div class="ttdoc">Interval calculations. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:03:00 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

@@ -1,0 +1,1142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="dd/df5/classmutabor_1_1CommonMidiOutput" kind="class" prot="public" abstract="yes">
+    <compoundname>mutabor::CommonMidiOutput</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">D</basecompoundref>
+    <includes refid="de/d21/midicmn_8h" local="no">midicmn.h</includes>
+    <innerclass refid="de/d8a/classmutabor_1_1CommonMidiOutput_1_1TooHighPitchBend" prot="public">mutabor::CommonMidiOutput::TooHighPitchBend</innerclass>
+    <innerclass refid="d4/d5c/classmutabor_1_1CommonMidiOutput_1_1TooSmallPitchBend" prot="public">mutabor::CommonMidiOutput::TooSmallPitchBend</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+      <param>
+        <type>class</type>
+        <declname>D</declname>
+        <defname>D</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="dd/df5/classmutabor_1_1CommonMidiOutput_1affbbcda1dbbe3827830cbc52a306f3ef" prot="public" static="no">
+        <name>bank_type</name>
+        <enumvalue id="dd/df5/classmutabor_1_1CommonMidiOutput_1affbbcda1dbbe3827830cbc52a306f3efa2655c11b15f302ba2faa29a30b4c81bb" prot="public">
+          <name>lsb_first</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dd/df5/classmutabor_1_1CommonMidiOutput_1affbbcda1dbbe3827830cbc52a306f3efae05b8567ceb4fdad6893771c706c1c97" prot="public">
+          <name>lsb_only</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dd/df5/classmutabor_1_1CommonMidiOutput_1affbbcda1dbbe3827830cbc52a306f3efa775048a28fc3f4070e18289b94b452e7" prot="public">
+          <name>msb_only</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dd/df5/classmutabor_1_1CommonMidiOutput_1affbbcda1dbbe3827830cbc52a306f3efa5255d59593d4d4bf8918aff6f03300cf" prot="public">
+          <name>msb_first</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="510" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="510" bodyend="515"/>
+      </memberdef>
+      <memberdef kind="typedef" id="dd/df5/classmutabor_1_1CommonMidiOutput_1ab44eec9359669a42b6430b31fea22192" prot="public" static="no">
+        <type>T</type>
+        <definition>typedef T mutabor::CommonMidiOutput&lt; T, D &gt;::midiprovider</definition>
+        <argsstring></argsstring>
+        <name>midiprovider</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="507" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="507" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a3f0929c46de77f98f6dd2ba94b60972c" prot="public" static="no">
+        <type>D</type>
+        <definition>typedef D mutabor::CommonMidiOutput&lt; T, D &gt;::base</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="508" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="508" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="dd/df5/classmutabor_1_1CommonMidiOutput_1ab9e21db48481b66774b6f439d964601d" prot="protected" static="no" mutable="no">
+        <type><ref refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab44eec9359669a42b6430b31fea22192" kindref="member">midiprovider</ref></type>
+        <definition>midiprovider mutabor::CommonMidiOutput&lt; T, D &gt;::Out</definition>
+        <argsstring></argsstring>
+        <name>Out</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="753" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="753" bodyend="-1"/>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ac6472e7bef2ea2f15f78c44f45916e9e" compoundref="de/d21/midicmn_8h" startline="669" endline="672">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::controller</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ac007ddc222a589470ec39707ceac8759" compoundref="de/d21/midicmn_8h" startline="678" endline="680">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::note_off</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1af0aae5f498d21afaad760bbce5cc0c33" compoundref="de/d21/midicmn_8h" startline="674" endline="676">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::note_on</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a34906a20e5c41af5979db58656b6a181" compoundref="de/d21/midicmn_8h" startline="610" endline="628">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::pitch_bend</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a2476082a0c5bdc67c3d0abf8b7d99a66" compoundref="de/d21/midicmn_8h" startline="630" endline="667">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::program_change</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a42b4b2d9d7b54c091549df13b162e143" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::CommonMidiOutput&lt; T, D &gt;::bending_range</definition>
+        <argsstring></argsstring>
+        <name>bending_range</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="754" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="754" bodyend="-1"/>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a8295cae4cc60dc36db5fb23c69218b94" compoundref="de/d21/midicmn_8h" startline="582" endline="590">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::do_SendBendingRange</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a735ce2918b5b6c2542c754d6db1a504e" compoundref="de/d21/midicmn_8h" startline="685" endline="715">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::fix_bend</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab2f6cee54c89bc6c52c1ee5746cb6613" compoundref="de/d21/midicmn_8h" startline="548" endline="548">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::GetBendingRange</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a2cfe10d2dd44591bbcf715873fe9ce45" compoundref="de/d21/midicmn_8h" startline="733" endline="746">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::pitch_and_bend</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a78638ba70064acde4f70314d807d08ef" compoundref="de/d21/midicmn_8h" startline="539" endline="547">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::SetBendingRange</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/df5/classmutabor_1_1CommonMidiOutput_1ae895c695b6a7d73a5b2f85c6810ded48" prot="protected" static="no" mutable="no">
+        <type><ref refid="dd/df5/classmutabor_1_1CommonMidiOutput_1affbbcda1dbbe3827830cbc52a306f3ef" kindref="member">bank_type</ref></type>
+        <definition>bank_type mutabor::CommonMidiOutput&lt; T, D &gt;::bank_mode</definition>
+        <argsstring></argsstring>
+        <name>bank_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="755" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="755" bodyend="-1"/>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a2476082a0c5bdc67c3d0abf8b7d99a66" compoundref="de/d21/midicmn_8h" startline="630" endline="667">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::program_change</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/df5/classmutabor_1_1CommonMidiOutput_1ae6dd4208656f4d3a2777d44b2aebd0ac" prot="protected" static="no" mutable="no">
+        <type><ref refid="d4/d4a/classmutabor_1_1ChannelData" kindref="compound">ChannelData</ref></type>
+        <definition>ChannelData mutabor::CommonMidiOutput&lt; T, D &gt;::Cd[16]</definition>
+        <argsstring>[16]</argsstring>
+        <name>Cd</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="756" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="756" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a22cd500e998cebb59515880fcacbbc9d" prot="protected" static="no" mutable="no">
+        <type><ref refid="d6/daa/namespacemutabor_1a078ab8198c742bb749b9bc386b69eb33" kindref="member">channel_queue_type</ref></type>
+        <definition>channel_queue_type mutabor::CommonMidiOutput&lt; T, D &gt;::channel_queue</definition>
+        <argsstring></argsstring>
+        <name>channel_queue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="758" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="758" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/df5/classmutabor_1_1CommonMidiOutput_1ad8064aed93c4e5ed23bb5e8dd75f7083" prot="protected" static="no" mutable="no">
+        <type><ref refid="d6/daa/namespacemutabor_1a2058734d4d782db0c5859bace77737cf" kindref="member">TonAufKanal</ref></type>
+        <definition>TonAufKanal mutabor::CommonMidiOutput&lt; T, D &gt;::ton_auf_kanal[16]</definition>
+        <argsstring>[16]</argsstring>
+        <name>ton_auf_kanal</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="759" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="759" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a4ba17d91065117deb53669556036910c" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::CommonMidiOutput&lt; T, D &gt;::nKeyOn</definition>
+        <argsstring></argsstring>
+        <name>nKeyOn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="760" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="760" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1ab263ae394691352ce2878bedc397edae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::Close</definition>
+        <argsstring>()</argsstring>
+        <name>Close</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="517" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="99" bodyend="116"/>
+        <references refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" compoundref="d1/dca/timing_8cpp" startline="43">mutabor::CurrentTime</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <referencedby refid="d5/dee/group__route_1ga2a92d096b48cecf841988b6c1263ca31" compoundref="d9/d99/DevMidFTest_8cpp" startline="43" endline="602">InputMidiFileTest::testBatchPlay1</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4c70a75c2ee66f5074b6db03f318347b" compoundref="d9/d99/DevMidFTest_8cpp" startline="605" endline="943">InputMidiFileTest::testBug019010_2</referencedby>
+        <referencedby refid="d5/dee/group__route_1gacbc442186afd2221606b8c9178bc5094" compoundref="d8/d59/midicmnTest_8cpp" startline="955" endline="1325">CommonMidiInputTest::testGlobalPanic</referencedby>
+        <referencedby refid="d5/dee/group__route_1gabcdead0d5b9631a98363a3df4fe63f89" compoundref="d8/d59/midicmnTest_8cpp" startline="329" endline="541">CommonMidiOutputTest::testMoreNotesThanChannels</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga1e95b1be14158e0e6848202acec95977" compoundref="d8/d59/midicmnTest_8cpp" startline="83" endline="327">CommonMidiOutputTest::testNoteOnOff</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga28763107ca50051640ed4834f627ffdc" compoundref="d8/d59/midicmnTest_8cpp" startline="599" endline="953">CommonMidiInputTest::testPanic</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1abf8c289438dc78db52b32f807ad5d0b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d3/d85/classmutabor_1_1channel__queue__template_1aa6c55eeafed419b40dfb9248cc22560f" kindref="member">channel_queue_type::const_iterator</ref></type>
+        <definition>channel_queue_type::const_iterator mutabor::CommonMidiOutput&lt; T, D &gt;::EmergencyFindChannel</definition>
+        <argsstring>(RouteClass *r)</argsstring>
+        <name>EmergencyFindChannel</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga1883da1b1be8d9e8d11d091c04a37521" kindref="member">RouteClass</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="518" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="140" bodyend="163"/>
+        <references refid="dc/d7e/group__runtime_1gad4cd3246197199ef9c3d5d299b2d9393" compoundref="da/dfd/MidiKern_8h" startline="53">DRUMCHANNEL</references>
+        <references refid="d5/dee/group__route_1ga9ccc83af0c146ab61d12a9efa7a4266b" compoundref="d1/d65/Route_8h" startline="328" endline="330">mutabor::TRouteClass&lt; I, O, B &gt;::GetOutputFrom</references>
+        <references refid="d5/dee/group__route_1ga0cde2c00cc341621b8e04809bc50a0fc" compoundref="d1/d65/Route_8h" startline="344" endline="346">mutabor::TRouteClass&lt; I, O, B &gt;::GetOutputTo</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d5/dee/group__route_1gab9643dec82601c2a36c76bae383bc1cb" compoundref="d1/d65/Route_8h" startline="353" endline="355">mutabor::TRouteClass&lt; I, O, B &gt;::OutputAvoidDrumChannel</references>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a8faf145f94e16dbe8c0504a18eb83895" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::UpdateControllers</definition>
+        <argsstring>(int channel, const ChannelData &amp;input_channel_data)</argsstring>
+        <name>UpdateControllers</name>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d4/d4a/classmutabor_1_1ChannelData" kindref="compound">ChannelData</ref> &amp;</type>
+          <declname>input_channel_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="519" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="519" bodyend="522"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1aa34679ed2cc18306c52adf05acef66c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::CopyProgramChange</definition>
+        <argsstring>(const ChannelData &amp;input_channel_data, ChannelData &amp;output_data, int channel)</argsstring>
+        <name>CopyProgramChange</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d4/d4a/classmutabor_1_1ChannelData" kindref="compound">ChannelData</ref> &amp;</type>
+          <declname>input_channel_data</declname>
+        </param>
+        <param>
+          <type><ref refid="d4/d4a/classmutabor_1_1ChannelData" kindref="compound">ChannelData</ref> &amp;</type>
+          <declname>output_data</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+<para>Copies the program change and bank data from the input channel to the output choannel and issues the corresponding bank change and prgoram change messages. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>input_channel_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>input to be copied from </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>output_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>output to be copied to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MIDI channel to output the data to </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="532" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="207" bodyend="236"/>
+        <references refid="d5/dee/group__route_1ga246a5cf06548ca07b1e08c3160d92c27" compoundref="de/d05/Device_8h" startline="337" endline="337">mutabor::ChannelData::get_bank_coarse</references>
+        <references refid="d5/dee/group__route_1ga2120ef1bfdd7394fe05e24f72678c901" compoundref="de/d05/Device_8h" startline="338" endline="338">mutabor::ChannelData::get_bank_fine</references>
+        <references refid="d5/dee/group__route_1gacf1581956238415fa24a12e2881e11dc" compoundref="de/d05/Device_8h" startline="336" endline="336">mutabor::ChannelData::get_program</references>
+        <references refid="d5/dee/group__route_1gac0653ce9e6eb54a49b97285978043f83" compoundref="de/d05/Device_8h" startline="303" endline="309">mutabor::ChannelData::program_change</references>
+        <references refid="d5/dee/group__route_1gaa303e404aa1315f4c9a53179e74e804f" compoundref="de/d05/Device_8h" startline="136" endline="214">mutabor::ChannelData::set_controller</references>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a78638ba70064acde4f70314d807d08ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::SetBendingRange</definition>
+        <argsstring>(int br)</argsstring>
+        <name>SetBendingRange</name>
+        <param>
+          <type>int</type>
+          <declname>br</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="539" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="539" bodyend="547"/>
+        <referencedby refid="dc/df2/group__GUIroute_1ga32e7dd9a817e947821d3eca7c60ca2a9" compoundref="d6/d68/OutputMidiDeviceShape_8cpp" startline="87" endline="101">mutaborGUI::MutOutputMidiDeviceShape::readDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga70153cca84c5decea4580575013edf2e" compoundref="d5/d00/OutputMidiFileDeviceShape_8cpp" startline="89" endline="101">mutaborGUI::MutOutputMidiFileDeviceShape::readDialog</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga8969e9d17a1c0ce4d54ea0a78bdfb0a3" compoundref="d9/d99/DevMidFTest_8cpp" startline="1318" endline="1355">OutputMidiFileTest::setUp</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga2a92d096b48cecf841988b6c1263ca31" compoundref="d9/d99/DevMidFTest_8cpp" startline="43" endline="602">InputMidiFileTest::testBatchPlay1</referencedby>
+        <referencedby refid="d5/dee/group__route_1gab68c1c36d9a962246c5f1363d25e3aa7" compoundref="d9/d99/DevMidFTest_8cpp" startline="946" endline="1287">InputMidiFileTest::testBug019010</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4c70a75c2ee66f5074b6db03f318347b" compoundref="d9/d99/DevMidFTest_8cpp" startline="605" endline="943">InputMidiFileTest::testBug019010_2</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1ab2f6cee54c89bc6c52c1ee5746cb6613" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutabor::CommonMidiOutput&lt; T, D &gt;::GetBendingRange</definition>
+        <argsstring>() const </argsstring>
+        <name>GetBendingRange</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="548" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="548" bodyend="548"/>
+        <referencedby refid="d5/dee/group__route_1ga5c58701727fcbf758c71f89daac276f0" compoundref="dd/db8/RouteCompat_8cpp" startline="335" endline="474">compat30::SaveRoutes</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a1a3c73aed338a413e51e993a52d72842" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int mutabor::CommonMidiOutput&lt; T, D &gt;::GetMaxChannel</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetMaxChannel</name>
+        <reimplementedby refid="d7/df5/classmidicmnOutputDevice_1a6cecbe585b2de6190283752976e306c2">GetMaxChannel</reimplementedby>
+        <reimplementedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1acf3cf8382c5886dfd0f4ec91a85747db">GetMaxChannel</reimplementedby>
+        <reimplementedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a40c1df2c9ab41650f350d3f16f92c78f">GetMaxChannel</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="550" column="1"/>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a78638ba70064acde4f70314d807d08ef" compoundref="de/d21/midicmn_8h" startline="539" endline="547">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::SetBendingRange</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1aae9f66b57cda634544bbcd5c903936c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int mutabor::CommonMidiOutput&lt; T, D &gt;::GetMinChannel</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetMinChannel</name>
+        <reimplementedby refid="d7/df5/classmidicmnOutputDevice_1a31c37690874a0b090b0747fd0e821464">GetMinChannel</reimplementedby>
+        <reimplementedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1a66a2f91144ff7ff2ec4c62a768d0d4ae">GetMinChannel</reimplementedby>
+        <reimplementedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a31778d9e61056188c54be6fb5b78a5b0">GetMinChannel</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="551" column="1"/>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a78638ba70064acde4f70314d807d08ef" compoundref="de/d21/midicmn_8h" startline="539" endline="547">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::SetBendingRange</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a23d53d4afb4118ec6bbf370ba9a5eee4" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::CommonMidiOutput&lt; T, D &gt;::CommonMidiOutput</definition>
+        <argsstring>(int b)</argsstring>
+        <name>CommonMidiOutput</name>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="554" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="554" bodyend="558"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a70648241a951d4f79aa3eb3aa9f83122" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::CommonMidiOutput&lt; T, D &gt;::do_Open</definition>
+        <argsstring>()</argsstring>
+        <name>do_Open</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="560" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="50" bodyend="96"/>
+        <references refid="d6/daa/namespacemutabor_1a695bbcf2d29d97f8479ea976355b158c">mutabor::Cd</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d5/dee/group__route_1gaa7087f8a29fabab2fe24b733bc0506fb" compoundref="de/d05/Device_8h" startline="118" endline="134">mutabor::ChannelData::Reset</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a23dfccd2e97e799cd8b32dea22306e5c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOn</definition>
+        <argsstring>(Box box, int inkey, int velocity, RouteClass *r, size_t id, const ChannelData &amp;input_channel_data)</argsstring>
+        <name>do_NoteOn</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">Box</ref></type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>inkey</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>velocity</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga1883da1b1be8d9e8d11d091c04a37521" kindref="member">RouteClass</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d4/d4a/classmutabor_1_1ChannelData" kindref="compound">ChannelData</ref> &amp;</type>
+          <declname>input_channel_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="561" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="239" bodyend="316"/>
+        <references refid="dd/d7d/classmutabor_1_1pitch__bend__type_1a00eca1f14f275dd0a8ac71b6d33e2cc4" compoundref="de/d21/midicmn_8h" startline="275">mutabor::pitch_bend_type::bend</references>
+        <references refid="d6/daa/namespacemutabor_1a695bbcf2d29d97f8479ea976355b158c">mutabor::Cd</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d5/dee/group__route_1ga7876084833965594290c1f421b45d813" compoundref="de/d05/Device_8h" startline="333" endline="333">mutabor::ChannelData::get_bend</references>
+        <references refid="d5/dee/group__route_1ga7278599abf7488ad9522ff9b2335a6cb" compoundref="de/d05/Device_8h" startline="269" endline="272">mutabor::ChannelData::get_controller</references>
+        <references refid="d5/dee/group__route_1ga72c5f430758db8d9cc373da286e73349" compoundref="d1/d65/Route_8h" startline="373" endline="375">mutabor::TRouteClass&lt; I, O, B &gt;::get_session_id</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="dd/d7d/classmutabor_1_1pitch__bend__type_1aedc38536976943c5141d2c715725f62b" compoundref="de/d21/midicmn_8h" startline="274">mutabor::pitch_bend_type::pitch</references>
+        <references refid="d5/dee/group__route_1ga3ed3861d94c7deddc4f9b9ed03249cd3" compoundref="de/d05/Device_8h" startline="334" endline="334">mutabor::ChannelData::set_bend</references>
+        <references refid="d5/dee/group__route_1gaa303e404aa1315f4c9a53179e74e804f" compoundref="de/d05/Device_8h" startline="136" endline="214">mutabor::ChannelData::set_controller</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1ac4ebdd04cc1b0b2ca5bddd9283d77464" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOff</definition>
+        <argsstring>(Box box, int inkey, int velo, RouteClass *r, size_t id, bool is_note_on)</argsstring>
+        <name>do_NoteOff</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">Box</ref></type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>inkey</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>velo</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga1883da1b1be8d9e8d11d091c04a37521" kindref="member">RouteClass</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>is_note_on</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="568" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="319" bodyend="374"/>
+        <references refid="d6/daa/namespacemutabor_1a695bbcf2d29d97f8479ea976355b158c">mutabor::Cd</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="dc/d7e/group__runtime_1gad4cd3246197199ef9c3d5d299b2d9393" compoundref="da/dfd/MidiKern_8h" startline="53">DRUMCHANNEL</references>
+        <references refid="d5/dee/group__route_1ga72c5f430758db8d9cc373da286e73349" compoundref="d1/d65/Route_8h" startline="373" endline="375">mutabor::TRouteClass&lt; I, O, B &gt;::get_session_id</references>
+        <references refid="d5/dee/group__route_1ga9ccc83af0c146ab61d12a9efa7a4266b" compoundref="d1/d65/Route_8h" startline="328" endline="330">mutabor::TRouteClass&lt; I, O, B &gt;::GetOutputFrom</references>
+        <references refid="d5/dee/group__route_1ga0cde2c00cc341621b8e04809bc50a0fc" compoundref="d1/d65/Route_8h" startline="344" endline="346">mutabor::TRouteClass&lt; I, O, B &gt;::GetOutputTo</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d5/dee/group__route_1gab9643dec82601c2a36c76bae383bc1cb" compoundref="d1/d65/Route_8h" startline="353" endline="355">mutabor::TRouteClass&lt; I, O, B &gt;::OutputAvoidDrumChannel</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1ae068c3fe86a1c768f15c0249cdfb11ea" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateTones</definition>
+        <argsstring>(RouteClass *route)</argsstring>
+        <name>do_UpdateTones</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga1883da1b1be8d9e8d11d091c04a37521" kindref="member">RouteClass</ref> *</type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="575" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="377" bodyend="434"/>
+        <references refid="dd/d7d/classmutabor_1_1pitch__bend__type_1a00eca1f14f275dd0a8ac71b6d33e2cc4" compoundref="de/d21/midicmn_8h" startline="275">mutabor::pitch_bend_type::bend</references>
+        <references refid="d6/daa/namespacemutabor_1a695bbcf2d29d97f8479ea976355b158c">mutabor::Cd</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d5/dee/group__route_1ga7876084833965594290c1f421b45d813" compoundref="de/d05/Device_8h" startline="333" endline="333">mutabor::ChannelData::get_bend</references>
+        <references refid="d5/dee/group__route_1ga7278599abf7488ad9522ff9b2335a6cb" compoundref="de/d05/Device_8h" startline="269" endline="272">mutabor::ChannelData::get_controller</references>
+        <references refid="d5/dee/group__route_1ga72c5f430758db8d9cc373da286e73349" compoundref="d1/d65/Route_8h" startline="373" endline="375">mutabor::TRouteClass&lt; I, O, B &gt;::get_session_id</references>
+        <references refid="d5/dee/group__route_1ga29f8cb885d5ffd5901fb0eb649559f17" compoundref="d1/d65/Route_8h" startline="300" endline="302">mutabor::TRouteClass&lt; I, O, B &gt;::GetBox</references>
+        <references refid="d9/d2a/structmutabor_1_1TAK_1ab9bb8ec6b2d8abf81e42c4dd1310663e" compoundref="de/d21/midicmn_8h" startline="291">mutabor::TAK::inkey</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d2a/structmutabor_1_1TAK_1a98f2395a6ed107d2fc527e743493ef0f" compoundref="de/d21/midicmn_8h" startline="293">mutabor::TAK::outkey</references>
+        <references refid="dd/d7d/classmutabor_1_1pitch__bend__type_1aedc38536976943c5141d2c715725f62b" compoundref="de/d21/midicmn_8h" startline="274">mutabor::pitch_bend_type::pitch</references>
+        <references refid="d5/dee/group__route_1ga3ed3861d94c7deddc4f9b9ed03249cd3" compoundref="de/d05/Device_8h" startline="334" endline="334">mutabor::ChannelData::set_bend</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <references refid="d9/d2a/structmutabor_1_1TAK_1a334b9ca5f320d59d963a61575ef4533f" compoundref="de/d21/midicmn_8h" startline="297">mutabor::TAK::tuned_key</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+        <references refid="d9/d2a/structmutabor_1_1TAK_1ad318acaea1b9bdf3343a8665e5a2237d" compoundref="de/d21/midicmn_8h" startline="292">mutabor::TAK::velocity</references>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a1090b361f27e9e68e40437012f82ec3b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::do_Controller</definition>
+        <argsstring>(int mutabor_channel, int controller, int value)</argsstring>
+        <name>do_Controller</name>
+        <param>
+          <type>int</type>
+          <declname>mutabor_channel</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>controller</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="576" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="437" bodyend="495"/>
+        <references refid="d6/daa/namespacemutabor_1a695bbcf2d29d97f8479ea976355b158c">mutabor::Cd</references>
+        <references refid="d5/dee/group__route_1ga055c8f325a90077e67390547f3fe1e54" compoundref="de/d05/Device_8h" startline="216" endline="267">mutabor::ChannelData::get_index</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d5/dee/group__route_1gaa303e404aa1315f4c9a53179e74e804f" compoundref="de/d05/Device_8h" startline="136" endline="214">mutabor::ChannelData::set_controller</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a8295cae4cc60dc36db5fb23c69218b94" compoundref="de/d21/midicmn_8h" startline="582" endline="590">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::do_SendBendingRange</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a695084d69d0dd0b194bac47b74cfa21f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutabor::CommonMidiOutput&lt; T, D &gt;::do_GetChannel</definition>
+        <argsstring>(int inkey, size_t channel, size_t id)</argsstring>
+        <name>do_GetChannel</name>
+        <param>
+          <type>int</type>
+          <declname>inkey</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="578" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="513" bodyend="526"/>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a3317040cafaa0eaf568c263dd19ad7d9" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::do_SplitOut</definition>
+        <argsstring>(BYTE *p, size_t n)</argsstring>
+        <name>do_SplitOut</name>
+        <param>
+          <type>BYTE *</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="579" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="529" bodyend="653"/>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1acffddd2d43ce718f15b4901a33d4a09f" compoundref="de/d21/midicmn_8h" startline="597" endline="599">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::do_MidiOut</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a3e9beb053705ae8a01aee1866f7d1304" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::do_Quiet</definition>
+        <argsstring>(RouteClass *r)</argsstring>
+        <name>do_Quiet</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga1883da1b1be8d9e8d11d091c04a37521" kindref="member">RouteClass</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="580" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="656" bodyend="666"/>
+        <references refid="d5/dee/group__route_1ga72c5f430758db8d9cc373da286e73349" compoundref="d1/d65/Route_8h" startline="373" endline="375">mutabor::TRouteClass&lt; I, O, B &gt;::get_session_id</references>
+        <references refid="d5/dee/group__route_1ga29f8cb885d5ffd5901fb0eb649559f17" compoundref="d1/d65/Route_8h" startline="300" endline="302">mutabor::TRouteClass&lt; I, O, B &gt;::GetBox</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1af8efd78cfb3c9f9f744f49d899a77bc4" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::do_Panic</definition>
+        <argsstring>()</argsstring>
+        <name>do_Panic</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="581" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="669" bodyend="688"/>
+        <references refid="d6/daa/namespacemutabor_1a695bbcf2d29d97f8479ea976355b158c">mutabor::Cd</references>
+        <references refid="d5/dee/group__route_1gaa7087f8a29fabab2fe24b733bc0506fb" compoundref="de/d05/Device_8h" startline="118" endline="134">mutabor::ChannelData::Reset</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a8295cae4cc60dc36db5fb23c69218b94" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::do_SendBendingRange</definition>
+        <argsstring>(int channel)</argsstring>
+        <name>do_SendBendingRange</name>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="582" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="582" bodyend="590"/>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a78638ba70064acde4f70314d807d08ef" compoundref="de/d21/midicmn_8h" startline="539" endline="547">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::SetBendingRange</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a1763508a1c9abc965829cd1f0793f00d" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::do_Gis</definition>
+        <argsstring>(GisToken *, char)</argsstring>
+        <name>do_Gis</name>
+        <param>
+          <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        </param>
+        <briefdescription>
+<para>Gis output is unimplemented. </para>        </briefdescription>
+        <detaileddescription>
+<para>Ignore GIS tokens. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="596" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="596" bodyend="596"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1acffddd2d43ce718f15b4901a33d4a09f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::do_MidiOut</definition>
+        <argsstring>(BYTE *p, size_t n)</argsstring>
+        <name>do_MidiOut</name>
+        <param>
+          <type>BYTE *</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="597" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="597" bodyend="599"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a17b57dcfadf7b6b599799d58e8b87620" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::do_MidiOut</definition>
+        <argsstring>(mutabor::Box box, midi_string data)</argsstring>
+        <name>do_MidiOut</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">mutabor::Box</ref></type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafc91101ae9641c4249af3b3e3c9e6e26" kindref="member">midi_string</ref></type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="600" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="600" bodyend="602"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a219c31648d7a9a7e425ee57bb7873e59" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateControllers</definition>
+        <argsstring>(int channel, const ChannelData &amp;input_channel_data)</argsstring>
+        <name>do_UpdateControllers</name>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d4/d4a/classmutabor_1_1ChannelData" kindref="compound">ChannelData</ref> &amp;</type>
+          <declname>input_channel_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="603" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="166" bodyend="202"/>
+        <references refid="d6/daa/namespacemutabor_1a695bbcf2d29d97f8479ea976355b158c">mutabor::Cd</references>
+        <references refid="d5/dee/group__route_1ga7278599abf7488ad9522ff9b2335a6cb" compoundref="de/d05/Device_8h" startline="269" endline="272">mutabor::ChannelData::get_controller</references>
+        <references refid="d5/dee/group__route_1gaf4973df23802dca8d1f8d9f9be982ad2" compoundref="de/d05/Device_8h" startline="274" endline="279">mutabor::ChannelData::get_first_changed_controller</references>
+        <references refid="d5/dee/group__route_1ga055c8f325a90077e67390547f3fe1e54" compoundref="de/d05/Device_8h" startline="216" endline="267">mutabor::ChannelData::get_index</references>
+        <references refid="d5/dee/group__route_1ga8cb74609cdd9a293be8d2ab4fb287cef" compoundref="de/d05/Device_8h" startline="280" endline="291">mutabor::ChannelData::get_next_changed_controller</references>
+        <references refid="d5/dee/group__route_1ga9acebb2cce4e38f90431f7c8d254afd9" compoundref="de/d05/Device_8h" startline="293" endline="301">mutabor::ChannelData::is_changed_controller</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d5/dee/group__route_1gaa303e404aa1315f4c9a53179e74e804f" compoundref="de/d05/Device_8h" startline="136" endline="214">mutabor::ChannelData::set_controller</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a8faf145f94e16dbe8c0504a18eb83895" compoundref="de/d21/midicmn_8h" startline="519" endline="522">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::UpdateControllers</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a34906a20e5c41af5979db58656b6a181" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::pitch_bend</definition>
+        <argsstring>(int channel, int value)</argsstring>
+        <name>pitch_bend</name>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sends a pitchbend signal. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="d3/dfe/structChannel" kindref="compound">Channel</ref> on which the data shall be sent. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data to be sent range has already been honoured Center is at 0. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="610" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="610" bodyend="628"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a2476082a0c5bdc67c3d0abf8b7d99a66" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::program_change</definition>
+        <argsstring>(int channel, int sound, int lsb, int msb)</argsstring>
+        <name>program_change</name>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>sound</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lsb</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>msb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="630" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="630" bodyend="667"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1ac6472e7bef2ea2f15f78c44f45916e9e" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::controller</definition>
+        <argsstring>(int channel, int controller, int value)</argsstring>
+        <name>controller</name>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>controller</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="669" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="669" bodyend="672"/>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a8295cae4cc60dc36db5fb23c69218b94" compoundref="de/d21/midicmn_8h" startline="582" endline="590">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::do_SendBendingRange</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a2476082a0c5bdc67c3d0abf8b7d99a66" compoundref="de/d21/midicmn_8h" startline="630" endline="667">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::program_change</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1af0aae5f498d21afaad760bbce5cc0c33" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::note_on</definition>
+        <argsstring>(int channel, int pitch, int velocity)</argsstring>
+        <name>note_on</name>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pitch</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="674" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="674" bodyend="676"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1ac007ddc222a589470ec39707ceac8759" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonMidiOutput&lt; T, D &gt;::note_off</definition>
+        <argsstring>(int channel, int pitch, int velocity)</argsstring>
+        <name>note_off</name>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pitch</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="678" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="678" bodyend="680"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a735ce2918b5b6c2542c754d6db1a504e" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>long</type>
+        <definition>long mutabor::CommonMidiOutput&lt; T, D &gt;::fix_bend</definition>
+        <argsstring>(long bend)</argsstring>
+        <name>fix_bend</name>
+        <param>
+          <type>long</type>
+          <declname>bend</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="685" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="685" bodyend="715"/>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a61000ffa761d3b1ca8a1bb3156c83db1" compoundref="de/d21/midicmn_8h" startline="717" endline="731">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::pitch_and_bend</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a61000ffa761d3b1ca8a1bb3156c83db1" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="dd/d7d/classmutabor_1_1pitch__bend__type" kindref="compound">pitch_bend_type</ref></type>
+        <definition>pitch_bend_type mutabor::CommonMidiOutput&lt; T, D &gt;::pitch_and_bend</definition>
+        <argsstring>(long tuned_note)</argsstring>
+        <name>pitch_and_bend</name>
+        <param>
+          <type>long</type>
+          <declname>tuned_note</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="717" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="717" bodyend="731"/>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a2cfe10d2dd44591bbcf715873fe9ce45" compoundref="de/d21/midicmn_8h" startline="733" endline="746">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::pitch_and_bend</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a2cfe10d2dd44591bbcf715873fe9ce45" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="dd/d7d/classmutabor_1_1pitch__bend__type" kindref="compound">pitch_bend_type</ref></type>
+        <definition>pitch_bend_type mutabor::CommonMidiOutput&lt; T, D &gt;::pitch_and_bend</definition>
+        <argsstring>(long tuned_note, const pitch_bend_type &amp;old)</argsstring>
+        <name>pitch_and_bend</name>
+        <param>
+          <type>long</type>
+          <declname>tuned_note</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="dd/d7d/classmutabor_1_1pitch__bend__type" kindref="compound">pitch_bend_type</ref> &amp;</type>
+          <declname>old</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="733" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="733" bodyend="746"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a8195e1e24a9333701d628185ea89a1f1" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::CommonMidiOutput&lt; T, D &gt;::CommonMidiOutput</definition>
+        <argsstring>()</argsstring>
+        <name>CommonMidiOutput</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="762" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="762" bodyend="766"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/df5/classmutabor_1_1CommonMidiOutput_1a8cf3412e4458875039ecab71e676066b" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::CommonMidiOutput&lt; T, D &gt;::CommonMidiOutput</definition>
+        <argsstring>(wxString name, int id=-1, int bendingRange=2)</argsstring>
+        <name>CommonMidiOutput</name>
+        <param>
+          <type>wxString</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+          <defval>-1</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>bendingRange</declname>
+          <defval>2</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="768" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="768" bodyend="778"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2515">
+        <label>D</label>
+      </node>
+      <node id="2514">
+        <label>mutabor::CommonMidiOutput&lt; T, D &gt;</label>
+        <link refid="dd/df5/classmutabor_1_1CommonMidiOutput"/>
+        <childnode refid="2515" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2522">
+        <label>mutabor::channel_queue_template&lt; unsigned char, 16 &gt;</label>
+        <link refid="d3/d85/classmutabor_1_1channel__queue__template"/>
+        <childnode refid="2523" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2525" relation="usage">
+          <edgelabel>last_sustained</edgelabel>
+          <edgelabel>first_free</edgelabel>
+        </childnode>
+      </node>
+      <node id="2518">
+        <label>mutabor::TAK</label>
+        <link refid="d9/d2a/structmutabor_1_1TAK"/>
+        <childnode refid="2519" relation="usage">
+          <edgelabel>outkey</edgelabel>
+        </childnode>
+      </node>
+      <node id="2517">
+        <label>D</label>
+      </node>
+      <node id="2524">
+        <label>T</label>
+      </node>
+      <node id="2519">
+        <label>mutabor::pitch_bend_type</label>
+        <link refid="dd/d7d/classmutabor_1_1pitch__bend__type"/>
+      </node>
+      <node id="2516">
+        <label>mutabor::CommonMidiOutput&lt; T, D &gt;</label>
+        <link refid="dd/df5/classmutabor_1_1CommonMidiOutput"/>
+        <childnode refid="2517" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2518" relation="usage">
+          <edgelabel>ton_auf_kanal</edgelabel>
+        </childnode>
+        <childnode refid="2520" relation="usage">
+          <edgelabel>Cd</edgelabel>
+        </childnode>
+        <childnode refid="2522" relation="usage">
+          <edgelabel>channel_queue</edgelabel>
+        </childnode>
+        <childnode refid="2524" relation="usage">
+          <edgelabel>Out</edgelabel>
+        </childnode>
+      </node>
+      <node id="2520">
+        <label>mutabor::ChannelData</label>
+        <link refid="d4/d4a/classmutabor_1_1ChannelData"/>
+        <childnode refid="2521" relation="usage">
+          <edgelabel>controller_changed</edgelabel>
+          <edgelabel>controller</edgelabel>
+        </childnode>
+      </node>
+      <node id="2525">
+        <label>std::vector&lt; T &gt;::iterator</label>
+      </node>
+      <node id="2523">
+        <label>std::vector&lt; unsigned char &gt;</label>
+        <childnode refid="2524" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2521">
+        <label>std::vector&lt; int &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="502" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="502" bodyend="779"/>
+    <listofallmembers>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ae895c695b6a7d73a5b2f85c6810ded48" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>bank_mode</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1affbbcda1dbbe3827830cbc52a306f3ef" prot="public" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>bank_type</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a3f0929c46de77f98f6dd2ba94b60972c" prot="public" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>base</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a42b4b2d9d7b54c091549df13b162e143" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>bending_range</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ae6dd4208656f4d3a2777d44b2aebd0ac" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>Cd</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a22cd500e998cebb59515880fcacbbc9d" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>channel_queue</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab263ae394691352ce2878bedc397edae" prot="public" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>Close</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a23d53d4afb4118ec6bbf370ba9a5eee4" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>CommonMidiOutput</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a8195e1e24a9333701d628185ea89a1f1" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>CommonMidiOutput</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a8cf3412e4458875039ecab71e676066b" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>CommonMidiOutput</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ac6472e7bef2ea2f15f78c44f45916e9e" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>controller</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1aa34679ed2cc18306c52adf05acef66c5" prot="public" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>CopyProgramChange</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a1090b361f27e9e68e40437012f82ec3b" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>do_Controller</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a695084d69d0dd0b194bac47b74cfa21f" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>do_GetChannel</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a1763508a1c9abc965829cd1f0793f00d" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>do_Gis</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1acffddd2d43ce718f15b4901a33d4a09f" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>do_MidiOut</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a17b57dcfadf7b6b599799d58e8b87620" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>do_MidiOut</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ac4ebdd04cc1b0b2ca5bddd9283d77464" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>do_NoteOff</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a23dfccd2e97e799cd8b32dea22306e5c" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>do_NoteOn</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a70648241a951d4f79aa3eb3aa9f83122" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>do_Open</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1af8efd78cfb3c9f9f744f49d899a77bc4" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>do_Panic</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a3e9beb053705ae8a01aee1866f7d1304" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>do_Quiet</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a8295cae4cc60dc36db5fb23c69218b94" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>do_SendBendingRange</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a3317040cafaa0eaf568c263dd19ad7d9" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>do_SplitOut</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a219c31648d7a9a7e425ee57bb7873e59" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>do_UpdateControllers</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ae068c3fe86a1c768f15c0249cdfb11ea" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>do_UpdateTones</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1abf8c289438dc78db52b32f807ad5d0b7" prot="public" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>EmergencyFindChannel</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a735ce2918b5b6c2542c754d6db1a504e" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>fix_bend</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab2f6cee54c89bc6c52c1ee5746cb6613" prot="public" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>GetBendingRange</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a1a3c73aed338a413e51e993a52d72842" prot="public" virt="pure-virtual"><scope>mutabor::CommonMidiOutput</scope><name>GetMaxChannel</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1aae9f66b57cda634544bbcd5c903936c1" prot="public" virt="pure-virtual"><scope>mutabor::CommonMidiOutput</scope><name>GetMinChannel</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1affbbcda1dbbe3827830cbc52a306f3efa2655c11b15f302ba2faa29a30b4c81bb" prot="public" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>lsb_first</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1affbbcda1dbbe3827830cbc52a306f3efae05b8567ceb4fdad6893771c706c1c97" prot="public" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>lsb_only</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab44eec9359669a42b6430b31fea22192" prot="public" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>midiprovider</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1affbbcda1dbbe3827830cbc52a306f3efa5255d59593d4d4bf8918aff6f03300cf" prot="public" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>msb_first</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1affbbcda1dbbe3827830cbc52a306f3efa775048a28fc3f4070e18289b94b452e7" prot="public" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>msb_only</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a4ba17d91065117deb53669556036910c" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>nKeyOn</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ac007ddc222a589470ec39707ceac8759" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>note_off</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1af0aae5f498d21afaad760bbce5cc0c33" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>note_on</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab9e21db48481b66774b6f439d964601d" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>Out</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a61000ffa761d3b1ca8a1bb3156c83db1" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>pitch_and_bend</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a2cfe10d2dd44591bbcf715873fe9ce45" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>pitch_and_bend</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a34906a20e5c41af5979db58656b6a181" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>pitch_bend</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a2476082a0c5bdc67c3d0abf8b7d99a66" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>program_change</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a78638ba70064acde4f70314d807d08ef" prot="public" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>SetBendingRange</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ad8064aed93c4e5ed23bb5e8dd75f7083" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>ton_auf_kanal</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a8faf145f94e16dbe8c0504a18eb83895" prot="public" virt="non-virtual"><scope>mutabor::CommonMidiOutput</scope><name>UpdateControllers</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

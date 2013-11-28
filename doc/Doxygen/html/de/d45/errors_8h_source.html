@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/includes/mutabor/errors.h Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_bf59d41d727aac54882b42f236ae575e.html">includes</a></li><li class="navelem"><a class="el" href="../../dir_6db30062d01f5c3ec76e386385d23595.html">mutabor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">errors.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../de/d45/errors_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef __ERRORS_H_INCLUDED</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __ERRORS_H_INCLUDED</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span><span class="keyword">namespace </span>mutabor {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="../../de/d45/errors_8h.html#ae2387ffc56e4c38de349dcd17ce78865">mutabor_debug_level</a>; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">char</span> * <a class="code" href="../../d9/d7c/group__kernel.html#ga9728df5840723c08b5def4e7d1966476">Error_text</a>[]; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">char</span> * <a class="code" href="../../d9/d7c/group__kernel.html#gaf8efbc9f57f10f6c6e914c5e86122486">Warning_text</a>[]; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#ac61fd91ca8958e4e3c181d39f4fb4b1b">   33</a></span>&#160;<span class="preprocessor">#define MUTABOR_ERROR_UNDEFINED           0</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#ad4ac9869d13129bb9d2480c64ed1b692">   34</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_SYNTAX_COMMON       1</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#ab615e559221eb77c7f5e823cf482eb4a">   35</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_INVALID_CHARACTOR   2</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a66441ebef5cea6b7ca8dc753ddf6cecd">   36</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_FILE_OPEN           3</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a025450b7ab5cfcbd37baf2ad5585eb50">   37</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_MEMORY_LOW          4</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a3ea456ed1da73d517f520013ebb8431a">   38</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_UNFINISHED_COMMENT  5</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a5fff74c976e5a1d2af58b21510a44f9c">   39</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_UNREACHABLE_CODE    6</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a457eabcba6376327c4b47a413012eb83">   43</a></span>&#160;<span class="preprocessor">#define MUTABOR_ERROR_DOUBLE_INTERVAL     10</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#ac91ca224a742daad8279db6aa025c193">   44</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_DOUBLE_TONE         11</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a6d28c75435a2cd30f690980f71672372">   45</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_DOUBLE_TONE_SYSTEM  12</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#aa91022c0390698f0c461ca7682a22ac5">   46</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_DOUBLE_RETUNING     13</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#ae4ee2830557eda4b3813199607e28469">   47</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_DOUBLE_HARMONY      14</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a38b34446050b29baef8b3baf5ac4693a">   48</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_DOUBLE_LOGIK        15</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#ad26ec92ad6a5ccc06801c991cf28a025">   50</a></span>&#160;<span class="preprocessor">#define MUTABOR_ERROR_DOUBLE_PARAMETER    17</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#ad6ed3187ae02aa9e408349903e856002">   51</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_DOUBLE_MIDI_INSTRUMENT 18</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#aeb7b91c7f3108076b413c04217e60d0e">   52</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_OVERLAPPING_MIDI_RANGE 19</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a7f2c6fdff8d0d139445e1d4327096308">   53</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_MULTIPLE_DEFAULT_TRIGGER 20</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a5016bdee7c7f2985e4688af25c462e52">   54</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_MULTIPLE_DEFAULT_RETUNING 21</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#ae82f61bacbc58ba00dcf5abdbb225c82">   55</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_DOUBLE_ALTERNATIVE  22</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#af4d582b506ec1f906dc24c6597a545b8">   58</a></span>&#160;<span class="preprocessor">#define MUTABOR_ERROR_UNDEFINED_SYMBOL    25</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#afb6b9f1e37879e66d32d3f65e0c6f824">   59</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_UNDEFINED_INTERVAL  26</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a4d7a8c20279406a0070b8b46a038abdb">   60</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_UNDEFINED_TONE      27</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#ab97f0516bb241a4cfb166507f26031f7">   61</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_UNDEFINED_TONE_SYSTEM 28</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a0a7409d419a46443393aa74089a8aa50">   62</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_UNDEFINED_RETUNING  29</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#adb3b8afa2a24a45316c26bdea610541a">   63</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_UNDEFINED_HARMONY   30</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a6eec181d6ad66ac844ecfaa4cf39e16f">   64</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_UNDEFINED_PARAMETER 31</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a75fbf7b688faca45be5f788921772d0d">   65</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_UNDEFINED_INTERVAL_IN  32</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#afd09a9f86c7987b3309b3eac6b237327">   66</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_UNDEFINED_TONE_IN_SYSTEM  33</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a4cb7ffe18126a0ee6fa63b8631167c7c">   67</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_UNDEFINED_TONE_IN_RETUNING 34</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a41c42eca543a3717eeae47e147ae3e87">   69</a></span>&#160;<span class="preprocessor">#define MUTABOR_ERROR_UNDEFINED_RETUNING_IN_RETUNING 36</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#aa9e5db5c95b267addb18ea2975d03019">   70</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_UNDEFINED_TUNING_IN_LOGIK 37</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a6cd9620aa8e910011929f12d7ddd3d93">   71</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_UNDEFINED_ACTION_IN_LOGIK 38</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a096220b6487037bf99d86cd49045b200">   72</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_UNDEFINED_PARAMETER_IN_LOGIK 39</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#ac143e7b144995a827d40f1036864b0d9">   78</a></span>&#160;<span class="preprocessor">#define MUTABOR_ERROR_INVALID_MIDI_CHANNEL 45</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#ac93a240baceeb4e70d40990adbad1155">   79</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_INVALID_INTERVAL_VALUE 46</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a5c43330e1bc1a94209df4515afd782f7">   80</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_INVALID_KEY_IN_SYSTEM 47</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a6c2e3cfc0e14ee30ec343efb17afdc80">   81</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_NON_COMPLEX_TONE_IN_RETUNING 48</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a95328d9de876343dd7151cc3c5a3bf07">   82</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_INVALID_VALUE       49</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a7f0f0352bda21106cfdfc9dc58177b35">   83</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_INVALID_MIDI_CODE_IN_LOGIK 50</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a9334475c2bb8ba66b96ba7ed8ee2b668">   84</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_INVALID_LOGIK_DEFAULT_CALL 51</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a8bd3946ad4e4d62d4e4a53303ea6a016">   85</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_INVALID_KEY_TRIGGER 52</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a81bb0ee16398def2286a293dc97ec3b7">   86</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_NEARLY_DIVISION_BY_ZERO 53</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#abd8b5aa6f113156a09993590f2b89472">   93</a></span>&#160;<span class="preprocessor">#define MUTABOR_ERROR_INVALID_PARAMETERS_IN_RETUNING_BOUND 60</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a0c065c97e5e2cdc295636118908c8bd3">   94</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_INVALID_PARAMETER_NUMBER_IN_LOGIK 61</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a1f97c566b0cdfb88bc51d0c78ede22a0">   95</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_TUNING_WITH_INVALID_PARAMETER 62</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#ae1cd3ba74fb3a36a6e8d12775989ca82">   96</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_TUNING_BOUND_WITH_INVALID_PARAMETER 63</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#aea2a0d46c7a684dc3ada7043be197c17">   97</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_CASE_WITH_INVALID_PARAMETER 64</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a6d916866296a81118bc83077ad70a593">   98</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_TONE_DEPENDENCY 65</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a40de836bb71c0e1618ef5805275860f5">   99</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_CIRCLE_RETUNINGS_AND_LOGICS 66</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a81746584e042799ac5860a57fc6b6a50">  100</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_INTERVAL_DEPENDENCY 67</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#ac6f498f9cfeb19943b8926c3c9276081">  101</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_MIDI_CHANNEL_DEPENDENCY 68</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#afa6e4e11724f41a9976aa13f9ccb0524">  103</a></span>&#160;<span class="preprocessor">#define MUTABOR_ERROR_B_INVALID_CHARACTER   70</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a0361ca2590ee9cd9ffcf7a851dc7c3f6">  104</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_B_INVALID_INTERVAL    71</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#aa18acc4a7cf336810614abafb37964e3">  105</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_B_INVALID_TONE        72</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a9a03202178a979619782b33b0a87c8ee">  106</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_B_INVALID_TONE_SYSTEM 73</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a17e0a076ef64c4f84661ff2a49df1aec">  107</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_B_INVALID_PARAMETER_LIST 74</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a2a32840f4bd9497c13319eb4e88c2fd0">  108</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_B_INVALID_RETUNING    75</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#ad9b738539ac28a9703478f7f1ca6fbbd">  109</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_B_INVALID_HARMONY     76</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#aaa0c4e34d09ff751c4fb699af96ac3d7">  110</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_B_INVALID_MIDI_LIST   77</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#af611cba68720b2b193c27a43d4d25898">  111</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_B_INVALID_HEX_NUMBER  78</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#afa4fe7c49b7137a4d1c188cb62a8ba88">  112</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_B_DECL_EXPECTED       79</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a5c6ef09357a3380bfee76c4aa3898026">  113</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_B_MULTIPLE_DOT_IN_NUMBER 80</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a974bd11ce503a92265f572ace6413ff3">  114</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_B_ONLY_INTEGER_ALLOWED 81</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a23e6296c35a882ace892b8dbc364ed0b">  115</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_ERROR_B_MISSING_OPERAND      82</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a640b33738aac4a8c86dcec0d8aae2ea9">  123</a></span>&#160;<span class="preprocessor">#define MUTABOR_WARNING_UNDEFINED             0</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a3c9ef5f84ccf438ee55cfbf2070f4369">  124</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_WARNING_ZERO_MIDI_CHANNEL     1</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a7a84bfc021771ae7eeaca11d6ca6972c">  125</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_WARNING_INVALID_TRIGGER       2</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#a730d387440c57b769981228a886ddada">  126</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_WARNING_UNCLEAR_TRIGGER       3</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#ac7e4030ce32ba3f0f3190f0889f3cdc4">  127</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_WARNING_DEFAULT_TRIGGER_NOT_LAST 4</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#aa28a031de8e456ec92dd7965f8e97362">  128</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_WARNING_MIDI_CHANNEL_WASTE    5</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#ada5303165a4c8632f19c7b58706fdff3">  129</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_WARNING_NO_FILE               6</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#aa7227d1ab5fba0ccc497db25899b9dc8">  130</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_WARNING_INVALID_CONFIGURATION 7</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#afbb3debe90b3757e67458f53b61ddeae">  131</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_WARNING_CHANNEL_OVERLAPPING   8</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="../../de/d45/errors_8h.html#acc6c7c8959046cbc9bd2ccd75cb1e005">  132</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUTABOR_WARNING_GMN_ERROR             9</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#ifdef __cplusplus </span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor"></span>  } <span class="comment">// extern &quot;C&quot;</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;} <span class="comment">// namespace mutabor</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __ERRORS_H_INCLUDED */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="group__kernel_html_gaf8efbc9f57f10f6c6e914c5e86122486"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gaf8efbc9f57f10f6c6e914c5e86122486">Warning_text</a></div><div class="ttdeci">char * Warning_text[]</div><div class="ttdoc">Liste der Warnungen. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da2/Errors_8cpp_source.html#l00252">Errors.cpp:252</a></div></div>
+<div class="ttc" id="group__kernel_html_ga9728df5840723c08b5def4e7d1966476"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga9728df5840723c08b5def4e7d1966476">Error_text</a></div><div class="ttdeci">char * Error_text[]</div><div class="ttdoc">Liste der Warnungen. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da2/Errors_8cpp_source.html#l00150">Errors.cpp:150</a></div></div>
+<div class="ttc" id="errors_8h_html_ae2387ffc56e4c38de349dcd17ce78865"><div class="ttname"><a href="../../de/d45/errors_8h.html#ae2387ffc56e4c38de349dcd17ce78865">mutabor_debug_level</a></div><div class="ttdeci">int mutabor_debug_level</div><div class="ttdoc">Debuglevel für die Bibliothek. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d15/errors_8c_source.html#l00020">errors.c:20</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:03:00 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/libmutabor/object.c Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_36b066032255252bd9de4e8c33341f8d.html">libmutabor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">object.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d0/de1/object_8c.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifdef HAVE_CONFIG_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;config.h&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="comment">/* Relevante Variablen für diese Datei:</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">   * HAVE_MEMMOVE </span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">   * malloc</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">   * size_t</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifdef HAVE_STDLIB_H</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  include&lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifdef HAVE_STRING_H</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  include&lt;string.h&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#elif HAVE_STRINGS_H</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  include&lt;strings.h&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include&lt;assert.h&gt;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;lib-asprintf.h&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/d10/object_8h.html">mutabor/object.h</a>&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dd/d07/object_8hh.html">mutabor/object.hh</a>&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../df/d8e/bad__decl_8h.html">mutabor/bad_decl.h</a>&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../d0/de1/object_8c.html#a44d4609804f7dc554253feba5a40f8de">   46</a></span>&#160;<span class="keywordtype">void</span> * <a class="code" href="../../de/d10/object_8h.html#a45c0adf625f480b9850f45fa892bcf7b">MUTABOR_CLASS_FUNCTION</a>(<span class="keywordtype">object</span>,constructor) (<span class="keywordtype">void</span> * _self){</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a>(_self,<span class="keywordtype">object</span>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">return</span> (_self);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d0/de1/object_8c.html#a726623015854e956cb996c7471f7da75">   53</a></span>&#160;<span class="keywordtype">void</span> * <a class="code" href="../../de/d10/object_8h.html#a45c0adf625f480b9850f45fa892bcf7b">MUTABOR_CLASS_FUNCTION</a>(<span class="keywordtype">object</span>,destructor)(<span class="keywordtype">void</span> * _self) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a>(_self,<span class="keywordtype">object</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">return</span> (_self);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../d0/de1/object_8c.html#aea59a8cbeaa74d1d31ddf3b715d299ac">   60</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../de/d10/object_8h.html#a45c0adf625f480b9850f45fa892bcf7b">MUTABOR_CLASS_FUNCTION</a>(<span class="keywordtype">object</span>,compare)(<span class="keywordtype">void</span> * one, <span class="keywordtype">void</span> * two){</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a>(one,<span class="keywordtype">object</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a>(two,<span class="keywordtype">object</span>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordflow">return</span> (one != two);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="../../d0/de1/object_8c.html#a59c0b97752844bba764727d1e2afece1">   68</a></span>&#160;<span class="keywordtype">char</span>* <a class="code" href="../../de/d10/object_8h.html#a45c0adf625f480b9850f45fa892bcf7b">MUTABOR_CLASS_FUNCTION</a>(<span class="keywordtype">object</span>,tostring)(<span class="keywordtype">void</span> * _self){</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="../../de/d10/object_8h.html#a5bcd31da3e6b613992ef458459a10bbe">MUT_VIRTTABLE</a>(<span class="keywordtype">object</span>) ** <span class="keyword">self</span>=_self;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">char</span> * data;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a>(_self,<span class="keywordtype">object</span>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordflow">if</span> (data) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">if</span> (asprintf(&amp;data,<span class="stringliteral">&quot;%s (%p): %p&quot;</span>,</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                 (*self)-&gt;name, </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                 (<span class="keywordtype">void</span> *)*<span class="keyword">self</span>,</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                 _self)){</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <span class="keywordflow">return</span> data;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">else</span> </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#ifdef OLD_MUTABOR_CLASSES</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;MUTABOR_INITIALIZE_CLASS(<span class="keywordtype">object</span>)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="../../d0/de1/object_8c.html#ac6f27aef514361ec3ac2b805fc55e6b2">   97</a></span>&#160;<span class="keywordtype">void</span> * <a class="code" href="../../de/d10/object_8h.html#ac6f27aef514361ec3ac2b805fc55e6b2">mutabor_new</a>(<span class="keywordtype">void</span> * _type) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <a class="code" href="../../de/d10/object_8h.html#a5bcd31da3e6b613992ef458459a10bbe">MUT_VIRTTABLE</a>(<span class="keywordtype">object</span>) * type=_type;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#ifdef OLD_MUTABOR_CLASSES</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor"></span>  assert(type-&gt;init_virttable);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordflow">if</span> (!type-&gt;parent) type-&gt;init_virttable();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor"></span>  <a class="code" href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a>(<span class="keywordtype">object</span>) * data;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <a class="code" href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a>(&amp;_type,<span class="keywordtype">object</span>);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  data=(<span class="keyword">struct </span><a class="code" href="../../d0/dff/structmutabor__class__object.html">mutabor_class_object</a> *) malloc(type-&gt;size);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">if</span> (data) {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    data-&gt;virttable=_type;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    type-&gt;constructor(data);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keywordflow">return</span> (data);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="../../d0/de1/object_8c.html#ad3b722d501268b5e6614113662e57d46">  117</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d10/object_8h.html#ad3b722d501268b5e6614113662e57d46">mutabor_delete</a>(<span class="keywordtype">void</span> * _object) {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="keyword">struct </span><a class="code" href="../../d0/dff/structmutabor__class__object.html">mutabor_class_object</a> * <span class="keywordtype">object</span>=_object;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <a class="code" href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a>(_object,<span class="keywordtype">object</span>);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  free(object-&gt;<a class="code" href="../../d0/dff/structmutabor__class__object.html#a7c8a4fe6e1de2458369f3bd583434faf">virttable</a>-&gt;<a class="code" href="../../d7/dc5/structmutabor__virttable__object.html#a8ebba3c15af5b230d1947dae89a166a2">destructor</a>(_object));</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="../../d0/de1/object_8c.html#afc2ddb50c7104d39b8e9d6c9d4bff3c6">  134</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../de/d10/object_8h.html#afc2ddb50c7104d39b8e9d6c9d4bff3c6">mutabor_check_class</a>(<span class="keywordtype">void</span> * _self, <span class="keywordtype">void</span> * <span class="keywordtype">object</span>){</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <span class="keywordflow">if</span> (!(_self &amp;&amp; <span class="keywordtype">object</span> &amp;&amp; *(<span class="keywordtype">void</span> **)<span class="keywordtype">object</span> &amp;&amp; *(<span class="keywordtype">void</span>**)_self)) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="keywordflow">if</span> (*(<span class="keywordtype">void</span> **)_self == <span class="keywordtype">object</span>) <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(*(<span class="keywordtype">void</span> **)_self==*(<a class="code" href="../../de/d10/object_8h.html#a1f973b95970e98bf6f69c21b27b90018">MUT_VIRTCALL</a>(<span class="keywordtype">object</span>,_self,parent))) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">return</span> <a class="code" href="../../de/d10/object_8h.html#afc2ddb50c7104d39b8e9d6c9d4bff3c6">mutabor_check_class</a>(<a class="code" href="../../de/d10/object_8h.html#a1f973b95970e98bf6f69c21b27b90018">MUT_VIRTCALL</a>(<span class="keywordtype">object</span>,_self,parent),<span class="keywordtype">object</span>);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
+<div class="ttc" id="bad__decl_8h_html"><div class="ttname"><a href="../../df/d8e/bad__decl_8h.html">bad_decl.h</a></div><div class="ttdoc">Zu korrigierende Querabhängigkeiten zur GUI und sonstige komische Deklarationen. </div></div>
+<div class="ttc" id="object_8h_html_a5bcd31da3e6b613992ef458459a10bbe"><div class="ttname"><a href="../../de/d10/object_8h.html#a5bcd31da3e6b613992ef458459a10bbe">MUT_VIRTTABLE</a></div><div class="ttdeci">#define MUT_VIRTTABLE(name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00035">object.h:35</a></div></div>
+<div class="ttc" id="structmutabor__class__object_html_a7c8a4fe6e1de2458369f3bd583434faf"><div class="ttname"><a href="../../d0/dff/structmutabor__class__object.html#a7c8a4fe6e1de2458369f3bd583434faf">mutabor_class_object::virttable</a></div><div class="ttdeci">struct mutabor_virttable_object * virttable</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00050">object.h:50</a></div></div>
+<div class="ttc" id="structmutabor__class__object_html"><div class="ttname"><a href="../../d0/dff/structmutabor__class__object.html">mutabor_class_object</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00049">object.h:49</a></div></div>
+<div class="ttc" id="object_8h_html_ad3b722d501268b5e6614113662e57d46"><div class="ttname"><a href="../../de/d10/object_8h.html#ad3b722d501268b5e6614113662e57d46">mutabor_delete</a></div><div class="ttdeci">void mutabor_delete(void *_object)</div><div class="ttdoc">Deletes an object from the heap. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de1/object_8c_source.html#l00117">object.c:117</a></div></div>
+<div class="ttc" id="object_8h_html_afc2ddb50c7104d39b8e9d6c9d4bff3c6"><div class="ttname"><a href="../../de/d10/object_8h.html#afc2ddb50c7104d39b8e9d6c9d4bff3c6">mutabor_check_class</a></div><div class="ttdeci">int mutabor_check_class(void *_self, void *object)</div><div class="ttdoc">Checks, if a pointer is a subclass of a given class. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de1/object_8c_source.html#l00134">object.c:134</a></div></div>
+<div class="ttc" id="object_8h_html_ac6f27aef514361ec3ac2b805fc55e6b2"><div class="ttname"><a href="../../de/d10/object_8h.html#ac6f27aef514361ec3ac2b805fc55e6b2">mutabor_new</a></div><div class="ttdeci">void * mutabor_new(void *_type)</div><div class="ttdoc">Creates a new object in Heap space. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de1/object_8c_source.html#l00097">object.c:97</a></div></div>
+<div class="ttc" id="object_8h_html_a45c0adf625f480b9850f45fa892bcf7b"><div class="ttname"><a href="../../de/d10/object_8h.html#a45c0adf625f480b9850f45fa892bcf7b">MUTABOR_CLASS_FUNCTION</a></div><div class="ttdeci">#define MUTABOR_CLASS_FUNCTION(classname, name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00045">object.h:45</a></div></div>
+<div class="ttc" id="object_8h_html_a51fa8bfba0223bb5cddd9b3db2b2f55c"><div class="ttname"><a href="../../de/d10/object_8h.html#a51fa8bfba0223bb5cddd9b3db2b2f55c">MUT_CLASS</a></div><div class="ttdeci">#define MUT_CLASS(name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00033">object.h:33</a></div></div>
+<div class="ttc" id="structmutabor__virttable__object_html_a8ebba3c15af5b230d1947dae89a166a2"><div class="ttname"><a href="../../d7/dc5/structmutabor__virttable__object.html#a8ebba3c15af5b230d1947dae89a166a2">mutabor_virttable_object::destructor</a></div><div class="ttdeci">void *(* destructor)(void *_self)</div><div class="ttdoc">Destructor for deleting an object. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00058">object.h:58</a></div></div>
+<div class="ttc" id="object_8h_html"><div class="ttname"><a href="../../de/d10/object_8h.html">object.h</a></div><div class="ttdoc">Common definitions for object oriented programming and base class #object. </div></div>
+<div class="ttc" id="object_8hh_html"><div class="ttname"><a href="../../dd/d07/object_8hh.html">object.hh</a></div></div>
+<div class="ttc" id="object_8h_html_a2029811b604bd2de63a2d593bc4433e0"><div class="ttname"><a href="../../de/d10/object_8h.html#a2029811b604bd2de63a2d593bc4433e0">CHK_CLASS</a></div><div class="ttdeci">#define CHK_CLASS(object, class)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00027">object.h:27</a></div></div>
+<div class="ttc" id="object_8h_html_a1f973b95970e98bf6f69c21b27b90018"><div class="ttname"><a href="../../de/d10/object_8h.html#a1f973b95970e98bf6f69c21b27b90018">MUT_VIRTCALL</a></div><div class="ttdeci">#define MUT_VIRTCALL(class, object, name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00037">object.h:37</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:03:01 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

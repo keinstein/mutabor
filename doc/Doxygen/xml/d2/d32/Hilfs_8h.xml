@@ -1,0 +1,711 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d2/d32/Hilfs_8h" kind="file">
+    <compoundname>Hilfs.h</compoundname>
+    <includes refid="d1/d73/Defs_8h" local="yes">Defs.h</includes>
+    <includes refid="dc/d19/box_8h" local="yes">box.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includedby refid="d1/dce/box_8cpp" local="yes">src/kernel/box.cpp</includedby>
+    <includedby refid="df/d23/Execute_8cpp" local="yes">src/kernel/Execute.cpp</includedby>
+    <includedby refid="da/d02/Hilfs_8cpp" local="yes">src/kernel/Hilfs.cpp</includedby>
+    <includedby refid="d3/dca/Interval_8cpp" local="yes">src/kernel/Interval.cpp</includedby>
+    <includedby refid="df/d33/mut_8cc" local="yes">src/kernel/mut.cc</includedby>
+    <includedby refid="d1/de1/Mut__Tab_8cpp" local="yes">src/kernel/Mut_Tab.cpp</includedby>
+    <includedby refid="dc/df5/Parser_8cpp" local="yes">src/kernel/Parser.cpp</includedby>
+    <includedby refid="dd/dc6/Box_8cpp" local="yes">src/kernel/routing/Box.cpp</includedby>
+    <includedby refid="db/d80/Runtime_8cpp" local="yes">src/kernel/Runtime.cpp</includedby>
+    <includedby refid="d3/da0/TabGen_8cpp" local="yes">src/kernel/TabGen.cpp</includedby>
+    <includedby refid="d1/da7/boxTest_8cpp" local="yes">src/kernel/tests/boxTest.cpp</includedby>
+    <incdepgraph>
+      <node id="13798">
+        <label>stdarg.h</label>
+      </node>
+      <node id="13807">
+        <label>Execute.h</label>
+        <link refid="de/d11/Execute_8h"/>
+        <childnode refid="13797" relation="include">
+        </childnode>
+        <childnode refid="13802" relation="include">
+        </childnode>
+      </node>
+      <node id="13797">
+        <label>Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="13798" relation="include">
+        </childnode>
+        <childnode refid="13799" relation="include">
+        </childnode>
+      </node>
+      <node id="13803">
+        <label>stdlib.h</label>
+      </node>
+      <node id="13808">
+        <label>malloc.h</label>
+      </node>
+      <node id="13804">
+        <label>string</label>
+      </node>
+      <node id="13806">
+        <label>Interpre.h</label>
+        <link refid="d2/dd8/Interpre_8h"/>
+        <childnode refid="13797" relation="include">
+        </childnode>
+        <childnode refid="13801" relation="include">
+        </childnode>
+      </node>
+      <node id="13800">
+        <label>box.h</label>
+        <link refid="dc/d19/box_8h"/>
+        <childnode refid="13797" relation="include">
+        </childnode>
+        <childnode refid="13801" relation="include">
+        </childnode>
+        <childnode refid="13806" relation="include">
+        </childnode>
+        <childnode refid="13807" relation="include">
+        </childnode>
+        <childnode refid="13808" relation="include">
+        </childnode>
+      </node>
+      <node id="13796">
+        <label>src/kernel/Hilfs.h</label>
+        <link refid="Hilfs.h"/>
+        <childnode refid="13797" relation="include">
+        </childnode>
+        <childnode refid="13800" relation="include">
+        </childnode>
+        <childnode refid="13802" relation="include">
+        </childnode>
+      </node>
+      <node id="13801">
+        <label>Global.h</label>
+        <link refid="dd/d40/Global_8h"/>
+        <childnode refid="13797" relation="include">
+        </childnode>
+        <childnode refid="13802" relation="include">
+        </childnode>
+        <childnode refid="13803" relation="include">
+        </childnode>
+        <childnode refid="13798" relation="include">
+        </childnode>
+        <childnode refid="13804" relation="include">
+        </childnode>
+        <childnode refid="13805" relation="include">
+        </childnode>
+      </node>
+      <node id="13805">
+        <label>math.h</label>
+      </node>
+      <node id="13799">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+      <node id="13802">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="13820">
+        <label>src/kernel/TabGen.cpp</label>
+        <link refid="d3/da0/TabGen_8cpp"/>
+      </node>
+      <node id="13819">
+        <label>src/kernel/routing/midi/tests/midicmnTest.cpp</label>
+        <link refid="d8/d59/midicmnTest_8cpp"/>
+      </node>
+      <node id="13821">
+        <label>src/kernel/tests/boxTest.cpp</label>
+        <link refid="d1/da7/boxTest_8cpp"/>
+      </node>
+      <node id="13813">
+        <label>src/kernel/Interval.cpp</label>
+        <link refid="d3/dca/Interval_8cpp"/>
+      </node>
+      <node id="13815">
+        <label>src/kernel/Mut_Tab.cpp</label>
+        <link refid="d1/de1/Mut__Tab_8cpp"/>
+      </node>
+      <node id="13818">
+        <label>src/kernel/Runtime.cpp</label>
+        <link refid="db/d80/Runtime_8cpp"/>
+        <childnode refid="13819" relation="include">
+        </childnode>
+      </node>
+      <node id="13812">
+        <label>src/kernel/Hilfs.cpp</label>
+        <link refid="da/d02/Hilfs_8cpp"/>
+      </node>
+      <node id="13816">
+        <label>src/kernel/Parser.cpp</label>
+        <link refid="dc/df5/Parser_8cpp"/>
+      </node>
+      <node id="13809">
+        <label>src/kernel/Hilfs.h</label>
+        <link refid="Hilfs.h"/>
+        <childnode refid="13810" relation="include">
+        </childnode>
+        <childnode refid="13811" relation="include">
+        </childnode>
+        <childnode refid="13812" relation="include">
+        </childnode>
+        <childnode refid="13813" relation="include">
+        </childnode>
+        <childnode refid="13814" relation="include">
+        </childnode>
+        <childnode refid="13815" relation="include">
+        </childnode>
+        <childnode refid="13816" relation="include">
+        </childnode>
+        <childnode refid="13817" relation="include">
+        </childnode>
+        <childnode refid="13818" relation="include">
+        </childnode>
+        <childnode refid="13820" relation="include">
+        </childnode>
+        <childnode refid="13821" relation="include">
+        </childnode>
+      </node>
+      <node id="13810">
+        <label>src/kernel/box.cpp</label>
+        <link refid="d1/dce/box_8cpp"/>
+      </node>
+      <node id="13814">
+        <label>src/kernel/mut.cc</label>
+        <link refid="df/d33/mut_8cc"/>
+      </node>
+      <node id="13811">
+        <label>src/kernel/Execute.cpp</label>
+        <link refid="df/d23/Execute_8cpp"/>
+      </node>
+      <node id="13817">
+        <label>src/kernel/routing/Box.cpp</label>
+        <link refid="dd/dc6/Box_8cpp"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="d9/d7c/group__kernel_1gabc5d9755cd2497a19f7e704b84867761" prot="public" static="no">
+        <name>MU32_Hilfs_H</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" line="35" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d9/d7c/group__kernel_1gae4ff2f67ed5a782777877235f39669e9" prot="public" static="no">
+        <name>MU32_Hilfs_H_PRECOMPILED</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" line="46" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d9/d7c/group__kernel_1gaa93f2514a0844adf4ff82a3853148266" prot="public" static="no">
+        <name>HEAP_PORTION_SYNTAX</name>
+        <initializer>/*65536L*/ 64000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" line="57" column="10" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" bodystart="57" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga9068a10d577105ad5306b8694f7b153b" compoundref="da/d02/Hilfs_8cpp" startline="154" endline="234">xmalloc</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga3aaf4c6fc990494645d2d7cc6b60d9ac" compoundref="da/d02/Hilfs_8cpp" startline="236" endline="267">xrealloc</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="d9/d7c/group__kernel_1ga2ed983b16ea3bd4d726f9c5a2a36cc7d" prot="public" static="no">
+        <name>HEAP_PORTION_LAUFZEIT</name>
+        <initializer>/*65536L*/ 64000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" line="58" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga2a0a21b8d377742eac6cb1f7f3229e86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void xfree</definition>
+        <argsstring>(void *pointer)</argsstring>
+        <name>xfree</name>
+        <param>
+          <type>void *</type>
+          <declname>pointer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="455" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="145" bodyend="150"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga17b03e17223aab80aa95d596a74bdc2d" compoundref="d3/da0/TabGen_8cpp" startline="672" endline="831">expandiere_umstimmung</referencedby>
+        <referencedby refid="df/d33/mut_8cc_1a875c3b1a93cbaaa7dd8d0c8780825a71" compoundref="df/d33/mut_8cc" startline="3443" endline="3674">yylex</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga9068a10d577105ad5306b8694f7b153b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * xmalloc</definition>
+        <argsstring>(mutabor_box_type *box, size_t size)</argsstring>
+        <name>xmalloc</name>
+        <param>
+          <type><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" line="154" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="154" bodyend="234"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
+        <references refid="d8/d7d/structheap__element_1ab400a0aecbfd3e5d9062a8e71f1e242c" compoundref="da/d02/Hilfs_8cpp" startline="134">heap_element::anzahl_belegt</references>
+        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="de/de1/mutDebug_8h" startline="142">DEBUGLOG2</references>
+        <references refid="d9/d7c/group__kernel_1ggafeebd36c5713e8438dcf17e926f8ad96ad606e435413ea0944dd00d49e901e4ed" compoundref="de/d11/Execute_8h" startline="79">error</references>
+        <references refid="d0/d33/structmutabor__box__type_1adaff5b982df1fe1a858d7e322601a7f7" compoundref="dc/d19/box_8h" startline="180">mutabor_box_type::file</references>
+        <references refid="d7/d21/structmutabor__logic__parsed_1a05d38c58b261055221f1de59a1ed89d6" compoundref="d6/d0c/Parser_8h" startline="144">mutabor_logic_parsed::heap</references>
+        <references refid="d9/d7c/group__kernel_1gaa93f2514a0844adf4ff82a3853148266" compoundref="d2/d32/Hilfs_8h" startline="57">HEAP_PORTION_SYNTAX</references>
+        <references refid="d1/d3a/structmutabor__syntax__heap_1ad03b9c03bdf4f614ace08df805f7dddf" compoundref="d6/d0c/Parser_8h" startline="84">mutabor_syntax_heap::heap_to_use_syntax</references>
+        <references refid="d8/d7d/structheap__element_1a9d0363d38f17c225cfc8b2bbedb11075" compoundref="da/d02/Hilfs_8cpp" startline="133">heap_element::inhalt</references>
+        <references refid="d9/d7c/group__kernel_1ga9d81b91a7880501d533b04331ba8e9f8" compoundref="de/d11/Execute_8h" startline="144" endline="159">mutabor_error_message</references>
+        <references refid="d8/d7d/structheap__element_1aca61a911850b68707daedd2e7206a3ec" compoundref="da/d02/Hilfs_8cpp" startline="136">heap_element::next</references>
+        <references refid="d9/d7c/group__kernel_1ga21005f9f4e2ce7597c5eb4351816d7e2" compoundref="da/d02/Hilfs_8cpp" startline="139">OFFSET</references>
+        <references refid="d1/d3a/structmutabor__syntax__heap_1a819c5540e520ba3f682616f3d00eae35" compoundref="d6/d0c/Parser_8h" startline="83">mutabor_syntax_heap::syntax_heap</references>
+        <referencedby refid="d9/d7c/group__kernel_1gaebaf2be9983d7f1f5d2acc6cf38700e1" compoundref="dc/df5/Parser_8cpp" startline="70" endline="78">allgemeine_initialisierungen</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaa10f85957a81a404a0e77ba2a44fa842" compoundref="d3/da0/TabGen_8cpp" startline="626" endline="669">expand_case_liste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga43fbf0e36cd0c7d9dae03b69ea03b63f" compoundref="d3/da0/TabGen_8cpp" startline="908" endline="922">expand_harmony_analysis</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga6885699d369c7b002988534b86e3ed8f" compoundref="d3/da0/TabGen_8cpp" startline="941" endline="975">expand_pattern</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga2c6a360c780adc8cdda172a1a26c164b" compoundref="d3/da0/TabGen_8cpp" startline="396" endline="461">expand_tonliste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga4ea14e5284c0840695599141a22e95c7" compoundref="d3/da0/TabGen_8cpp" startline="514" endline="583">expandiere_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaf4476d0bff62a06cb82f3b86fcbb6d83" compoundref="d3/da0/TabGen_8cpp" startline="891" endline="906">expandiere_midi</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga13b966770b2c6d5e64470a014a958058" compoundref="d3/da0/TabGen_8cpp" startline="464" endline="511">expandiere_tonsystem</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga17b03e17223aab80aa95d596a74bdc2d" compoundref="d3/da0/TabGen_8cpp" startline="672" endline="831">expandiere_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga4aa808146d17fbd47d95c6418dd3960f" compoundref="d3/da0/TabGen_8cpp" startline="229" endline="290">generate_argument_list</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga148efdc716078d3b564c1062a69deb3c" compoundref="dc/df5/Parser_8cpp" startline="2102" endline="2109">get_ausloeser_default</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga855c893191c840601388c01e299ff059" compoundref="dc/df5/Parser_8cpp" startline="2111" endline="2120">get_ausloeser_harmonie</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9206f5349aab04f1b7aefb3589024307" compoundref="dc/df5/Parser_8cpp" startline="2122" endline="2131">get_ausloeser_harmonie_form</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gac5911d354b6baa70038c11be48c0cf0c" compoundref="dc/df5/Parser_8cpp" startline="2150" endline="2159">get_ausloeser_midi_in</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaff7c507c9fd047741dfed2964d85f17f" compoundref="dc/df5/Parser_8cpp" startline="2133" endline="2148">get_ausloeser_taste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga30c24ac2380ae3f51495f58ebc70dacc" compoundref="dc/df5/Parser_8cpp" startline="2238" endline="2309">get_instrument_dekl</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga4b4e6fa6e9c893d4e8a3e82510c13449" compoundref="dc/df5/Parser_8cpp" startline="424" endline="440">get_new_aktion_aufruf_element</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gad8049d5c41cf517976c697869fdfc672" compoundref="dc/df5/Parser_8cpp" startline="457" endline="467">get_new_aktion_harmony_analysis</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gafebabb9473c10d702661104df0815209" compoundref="dc/df5/Parser_8cpp" startline="442" endline="455">get_new_aktion_midi_out_element</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga4f8bc460d3beda0be5775b24fae8f678" compoundref="dc/df5/Parser_8cpp" startline="393" endline="404">get_new_anchor_in_argument_list</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaa7e7939d922025be8735fddb04b9f215" compoundref="dc/df5/Parser_8cpp" startline="2180" endline="2195">get_new_anweisung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga81c47402f3c0b31e7dbd019f2c5af1c8" compoundref="dc/df5/Parser_8cpp" startline="380" endline="391">get_new_distance_in_argument_list</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga6702b7c0515398c40056999e7f01b93f" compoundref="dc/df5/Parser_8cpp" startline="483" endline="501">get_new_faktor_anteil</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaf562e38749d4e20abf301035ee953c44" compoundref="dc/df5/Parser_8cpp" startline="2016" endline="2037">get_new_harmonie</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gab7cf631c5930ce9ddf9e329da44aa6f2" compoundref="dc/df5/Parser_8cpp" startline="232" endline="243">get_new_integer_in_integersequenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga61598ecf20cc7599cb2d021d760ffadd" compoundref="dc/df5/Parser_8cpp" startline="1083" endline="1109">get_new_intervall</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gad7e891a43f3a300d99b05cf242dad0be" compoundref="dc/df5/Parser_8cpp" startline="1111" endline="1134">get_new_intervall_komplex</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga580f12d4669345b7a4c3e340395d4fd5" compoundref="dc/df5/Parser_8cpp" startline="2197" endline="2222">get_new_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gadc4980347039ec33dd18e1f5f330b9c5" compoundref="dc/df5/Parser_8cpp" startline="364" endline="377">get_new_name_in_argument_list</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gab187cd483b295cabc2e95aaca88d6c1d" compoundref="dc/df5/Parser_8cpp" startline="265" endline="275">get_new_name_in_parameterlist</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaba74e6342106000f15b6eadccf6058f9" compoundref="dc/df5/Parser_8cpp" startline="348" endline="361">get_new_number_in_argument_list</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga19a887bf353aae8a6c596bbe041452f5" compoundref="dc/df5/Parser_8cpp" startline="1996" endline="2014">get_new_taste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga419f9d8798edbc09103018f1ccdc94cd" compoundref="dc/df5/Parser_8cpp" startline="1140" endline="1161">get_new_ton_absolut</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga496f8bf3d3d68895fb6c45618266a706" compoundref="dc/df5/Parser_8cpp" startline="1241" endline="1256">get_new_ton_in_tonsystem</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga85cef92c0aca3d10afb617641a96e509" compoundref="dc/df5/Parser_8cpp" startline="1189" endline="1230">get_new_ton_komplex_negative</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga62f7dae14d0fa62fc8e73c9d23626cce" compoundref="dc/df5/Parser_8cpp" startline="1164" endline="1187">get_new_ton_komplex_positive</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga3f399562d17d09e745afb2151179e858" compoundref="dc/df5/Parser_8cpp" startline="1258" endline="1281">get_new_tonsystem</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga222cc37160dba48895df75b250feb72e" compoundref="dc/df5/Parser_8cpp" startline="1283" endline="1321">get_new_tonsystem_negative</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gad473a0797f8565fe09658bc2cb38479f" compoundref="dc/df5/Parser_8cpp" startline="1480" endline="1503">get_new_umstimm_expression</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gab3521eb93946052c58c53570c54ea025" compoundref="dc/df5/Parser_8cpp" startline="1531" endline="1558">get_new_umstimm_expression_negative</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gad7b624da5d90c205e4ac8fee7ad62c76" compoundref="dc/df5/Parser_8cpp" startline="1506" endline="1528">get_new_umstimm_expression_positive</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga7c4bc803e0c04cff4be9f9a29085ace4" compoundref="dc/df5/Parser_8cpp" startline="1814" endline="1831">get_umstimmungs_case_default_element</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaa0421cb00e952d3312c20c38aae8634b" compoundref="dc/df5/Parser_8cpp" startline="1796" endline="1812">get_umstimmungs_case_zahl_element</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga6ef5bbd2b9807cdd773166c9824e2a11" compoundref="dc/df5/Parser_8cpp" startline="1333" endline="1353">init_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gabebfd8538aae475e3a2ba47f95d7d2c3" compoundref="d3/da0/TabGen_8cpp" startline="978" endline="1085">insert_in_globale_liste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaa32d94398d0aa7cb0b2f2bf3b2308c30" compoundref="d3/da0/TabGen_8cpp" startline="1087" endline="1214">insert_in_lokale_liste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga958b1662c140766c29406d4b67446861" compoundref="da/d02/Hilfs_8cpp" startline="270" endline="285">xcalloc</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga3aaf4c6fc990494645d2d7cc6b60d9ac" compoundref="da/d02/Hilfs_8cpp" startline="236" endline="267">xrealloc</referencedby>
+        <referencedby refid="df/d33/mut_8cc_1a875c3b1a93cbaaa7dd8d0c8780825a71" compoundref="df/d33/mut_8cc" startline="3443" endline="3674">yylex</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga3aaf4c6fc990494645d2d7cc6b60d9ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * xrealloc</definition>
+        <argsstring>(mutabor_box_type *box, void *block, size_t newsize)</argsstring>
+        <name>xrealloc</name>
+        <param>
+          <type><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>block</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>newsize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" line="236" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="236" bodyend="267"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
+        <references refid="d8/d7d/structheap__element_1ab400a0aecbfd3e5d9062a8e71f1e242c" compoundref="da/d02/Hilfs_8cpp" startline="134">heap_element::anzahl_belegt</references>
+        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="de/de1/mutDebug_8h" startline="142">DEBUGLOG2</references>
+        <references refid="d9/d7c/group__kernel_1ggafeebd36c5713e8438dcf17e926f8ad96ad606e435413ea0944dd00d49e901e4ed" compoundref="de/d11/Execute_8h" startline="79">error</references>
+        <references refid="d0/d33/structmutabor__box__type_1adaff5b982df1fe1a858d7e322601a7f7" compoundref="dc/d19/box_8h" startline="180">mutabor_box_type::file</references>
+        <references refid="d7/d21/structmutabor__logic__parsed_1a05d38c58b261055221f1de59a1ed89d6" compoundref="d6/d0c/Parser_8h" startline="144">mutabor_logic_parsed::heap</references>
+        <references refid="d9/d7c/group__kernel_1gaa93f2514a0844adf4ff82a3853148266" compoundref="d2/d32/Hilfs_8h" startline="57">HEAP_PORTION_SYNTAX</references>
+        <references refid="d1/d3a/structmutabor__syntax__heap_1ad03b9c03bdf4f614ace08df805f7dddf" compoundref="d6/d0c/Parser_8h" startline="84">mutabor_syntax_heap::heap_to_use_syntax</references>
+        <references refid="d8/d7d/structheap__element_1a9d0363d38f17c225cfc8b2bbedb11075" compoundref="da/d02/Hilfs_8cpp" startline="133">heap_element::inhalt</references>
+        <references refid="d9/d7c/group__kernel_1ga9d81b91a7880501d533b04331ba8e9f8" compoundref="de/d11/Execute_8h" startline="144" endline="159">mutabor_error_message</references>
+        <references refid="d9/d7c/group__kernel_1ga9068a10d577105ad5306b8694f7b153b" compoundref="da/d02/Hilfs_8cpp" startline="154" endline="234">xmalloc</references>
+        <referencedby refid="df/d33/mut_8cc_1a875c3b1a93cbaaa7dd8d0c8780825a71" compoundref="df/d33/mut_8cc" startline="3443" endline="3674">yylex</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga958b1662c140766c29406d4b67446861" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * xcalloc</definition>
+        <argsstring>(mutabor_box_type *box, size_t anzahl, size_t size)</argsstring>
+        <name>xcalloc</name>
+        <param>
+          <type><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>anzahl</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" line="270" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="270" bodyend="285"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
+        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="de/de1/mutDebug_8h" startline="142">DEBUGLOG2</references>
+        <references refid="d9/d7c/group__kernel_1ggafeebd36c5713e8438dcf17e926f8ad96ad606e435413ea0944dd00d49e901e4ed" compoundref="de/d11/Execute_8h" startline="79">error</references>
+        <references refid="d9/d7c/group__kernel_1ga9d81b91a7880501d533b04331ba8e9f8" compoundref="de/d11/Execute_8h" startline="144" endline="159">mutabor_error_message</references>
+        <references refid="d9/d7c/group__kernel_1ga9068a10d577105ad5306b8694f7b153b" compoundref="da/d02/Hilfs_8cpp" startline="154" endline="234">xmalloc</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga905a1b74bbe8c62344795da1a2a07c3a" compoundref="dc/df5/Parser_8cpp" startline="2697" endline="2862">check_aktionen</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gab3424f2af7bcb85b065de642ca1d1105" compoundref="d3/da0/TabGen_8cpp" startline="924" endline="939">create_midi_scan_liste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" compoundref="d3/da0/TabGen_8cpp" startline="1291" endline="1368">expand_decition_tree</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga4aa808146d17fbd47d95c6418dd3960f" compoundref="d3/da0/TabGen_8cpp" startline="229" endline="290">generate_argument_list</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga59a78112aeea661097792d86d23ea657" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void yfree</definition>
+        <argsstring>(void *pointer)</argsstring>
+        <name>yfree</name>
+        <param>
+          <type>void *</type>
+          <declname>pointer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" line="328" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="328" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga174e62d9074ba74562beaf303ab4b645" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * ymalloc</definition>
+        <argsstring>(mutabor_box_type *box, size_t size)</argsstring>
+        <name>ymalloc</name>
+        <param>
+          <type><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" line="335" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="335" bodyend="359"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
+        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="de/de1/mutDebug_8h" startline="142">DEBUGLOG2</references>
+        <references refid="d9/d7c/group__kernel_1ggafeebd36c5713e8438dcf17e926f8ad96ad606e435413ea0944dd00d49e901e4ed" compoundref="de/d11/Execute_8h" startline="79">error</references>
+        <references refid="d9/d7c/group__kernel_1ga9d81b91a7880501d533b04331ba8e9f8" compoundref="de/d11/Execute_8h" startline="144" endline="159">mutabor_error_message</references>
+        <references refid="df/d0f/structmini__heap_1a97f3b95991f2f8eae640e7bcbcc1ba3e" compoundref="da/d02/Hilfs_8cpp" startline="324">mini_heap::next</references>
+        <references refid="df/d0f/structmini__heap_1aa068c2cd9d8d22ead12d5d1542b8c8d4" compoundref="da/d02/Hilfs_8cpp" startline="323">mini_heap::pointer</references>
+        <references refid="d0/d33/structmutabor__box__type_1acd67388727a90ccb6bceb31cb09c7397" compoundref="dc/d19/box_8h" startline="178">mutabor_box_type::runtime_heap</references>
+        <referencedby refid="d9/d7c/group__kernel_1gad0e9c82241b92358c5780470413b11bf" compoundref="df/d23/Execute_8cpp" startline="193" endline="268">call_actions</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga430cfed4b852ea878d1290f72c19067c" compoundref="da/d02/Hilfs_8cpp" startline="369" endline="374">ycalloc</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga340ad3544d1a04a566089bb9a6a2ecc1" compoundref="da/d02/Hilfs_8cpp" startline="361" endline="367">yrealloc</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga340ad3544d1a04a566089bb9a6a2ecc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * yrealloc</definition>
+        <argsstring>(mutabor_box_type *box, void *block, size_t newsize)</argsstring>
+        <name>yrealloc</name>
+        <param>
+          <type><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>block</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>newsize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" line="361" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="361" bodyend="367"/>
+        <references refid="d9/d7c/group__kernel_1ga174e62d9074ba74562beaf303ab4b645" compoundref="da/d02/Hilfs_8cpp" startline="335" endline="359">ymalloc</references>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga430cfed4b852ea878d1290f72c19067c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * ycalloc</definition>
+        <argsstring>(mutabor_box_type *box, size_t anzahl, size_t size)</argsstring>
+        <name>ycalloc</name>
+        <param>
+          <type><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>anzahl</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" line="369" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="369" bodyend="374"/>
+        <references refid="d9/d7c/group__kernel_1ga174e62d9074ba74562beaf303ab4b645" compoundref="da/d02/Hilfs_8cpp" startline="335" endline="359">ymalloc</references>
+        <referencedby refid="d9/d7c/group__kernel_1gad0e9c82241b92358c5780470413b11bf" compoundref="df/d23/Execute_8cpp" startline="193" endline="268">call_actions</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga6cdadb41b8ac72cc80f2bccd24b7fefc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int loesche_syntax_speicher</definition>
+        <argsstring>(mutabor_box_type *box)</argsstring>
+        <name>loesche_syntax_speicher</name>
+        <param>
+          <type><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" line="287" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="287" bodyend="308"/>
+        <references refid="d0/d33/structmutabor__box__type_1adaff5b982df1fe1a858d7e322601a7f7" compoundref="dc/d19/box_8h" startline="180">mutabor_box_type::file</references>
+        <references refid="d7/d21/structmutabor__logic__parsed_1a05d38c58b261055221f1de59a1ed89d6" compoundref="d6/d0c/Parser_8h" startline="144">mutabor_logic_parsed::heap</references>
+        <references refid="d1/d3a/structmutabor__syntax__heap_1ad03b9c03bdf4f614ace08df805f7dddf" compoundref="d6/d0c/Parser_8h" startline="84">mutabor_syntax_heap::heap_to_use_syntax</references>
+        <references refid="d8/d7d/structheap__element_1aca61a911850b68707daedd2e7206a3ec" compoundref="da/d02/Hilfs_8cpp" startline="136">heap_element::next</references>
+        <references refid="d1/d3a/structmutabor__syntax__heap_1a819c5540e520ba3f682616f3d00eae35" compoundref="d6/d0c/Parser_8h" startline="83">mutabor_syntax_heap::syntax_heap</references>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="604" endline="645">mutabor::BoxClass::Compile</referencedby>
+        <referencedby refid="d3/d14/gmut_8cpp_1aa4fbd34cae8e303c82cf546234111c10" compoundref="d3/d14/gmut_8cpp" startline="153" endline="185">GMutCompile</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga53723dd27d3674c2853505bcf0e41b6e" compoundref="da/d02/Hilfs_8cpp" startline="310" endline="313">init_syntax_speicher</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gada2c15aa7cb554aa175109fcb3771be9" compoundref="d1/dce/box_8cpp" startline="50" endline="69">mutabor_set_logic</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga71f10b089581270382caaf7219946a1f" compoundref="d1/da7/boxTest_8cpp" startline="331" endline="366">boxTest::testBug1Permutation1</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gacd9628c16629b6a3989ef814becb55be" compoundref="d1/da7/boxTest_8cpp" startline="369" endline="457">boxTest::testBug1Permutation2</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gae5cd429df106dae578f5e9bca96fdcce" compoundref="d1/da7/boxTest_8cpp" startline="283" endline="329">boxTest::testFindKeyByKey</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga53723dd27d3674c2853505bcf0e41b6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int init_syntax_speicher</definition>
+        <argsstring>(mutabor_box_type *box)</argsstring>
+        <name>init_syntax_speicher</name>
+        <param>
+          <type><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" line="310" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="310" bodyend="313"/>
+        <references refid="d9/d7c/group__kernel_1ga6cdadb41b8ac72cc80f2bccd24b7fefc" compoundref="da/d02/Hilfs_8cpp" startline="287" endline="308">loesche_syntax_speicher</references>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga7a7a804f48564180fc2987db7859dd62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int init_laufzeit_speicher</definition>
+        <argsstring>(mutabor_box_type *box)</argsstring>
+        <name>init_laufzeit_speicher</name>
+        <param>
+          <type><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" line="379" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="379" bodyend="382"/>
+        <references refid="d9/d7c/group__kernel_1ga768c0fbefe3c4048d0374e03c0fe5a21" compoundref="da/d02/Hilfs_8cpp" startline="384" endline="411">loesche_laufzeit_speicher</references>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga768c0fbefe3c4048d0374e03c0fe5a21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int loesche_laufzeit_speicher</definition>
+        <argsstring>(mutabor_box_type *box)</argsstring>
+        <name>loesche_laufzeit_speicher</name>
+        <param>
+          <type><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" line="384" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="384" bodyend="411"/>
+        <references refid="df/d0f/structmini__heap_1a97f3b95991f2f8eae640e7bcbcc1ba3e" compoundref="da/d02/Hilfs_8cpp" startline="324">mini_heap::next</references>
+        <references refid="df/d0f/structmini__heap_1aa068c2cd9d8d22ead12d5d1542b8c8d4" compoundref="da/d02/Hilfs_8cpp" startline="323">mini_heap::pointer</references>
+        <references refid="d0/d33/structmutabor__box__type_1acd67388727a90ccb6bceb31cb09c7397" compoundref="dc/d19/box_8h" startline="178">mutabor_box_type::runtime_heap</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga7a7a804f48564180fc2987db7859dd62" compoundref="da/d02/Hilfs_8cpp" startline="379" endline="382">init_laufzeit_speicher</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1gad4d4f5e226aaddbb738e75ef7e23988c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * xalloca</definition>
+        <argsstring>(mutabor_box_type *box, size_t size)</argsstring>
+        <name>xalloca</name>
+        <param>
+          <type><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" line="94" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="94" bodyend="112"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
+        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="de/de1/mutDebug_8h" startline="142">DEBUGLOG2</references>
+        <references refid="d9/d7c/group__kernel_1ggafeebd36c5713e8438dcf17e926f8ad96ad606e435413ea0944dd00d49e901e4ed" compoundref="de/d11/Execute_8h" startline="79">error</references>
+        <references refid="d9/d7c/group__kernel_1ga9d81b91a7880501d533b04331ba8e9f8" compoundref="de/d11/Execute_8h" startline="144" endline="159">mutabor_error_message</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga2ea71bbe5f870f057780e2a023da84ab" compoundref="d3/dca/Interval_8cpp" startline="237" endline="348">berechne_intervalle_absolut</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga12d23ae1832242b2dc02810fe94b1d9b" compoundref="dc/df5/Parser_8cpp" startline="2399" endline="2510">berechne_toene_absolut</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga32c911fc6ec259d831549e90fbd9f00c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void xde_alloca</definition>
+        <argsstring>(void *pointer)</argsstring>
+        <name>xde_alloca</name>
+        <param>
+          <type>void *</type>
+          <declname>pointer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" line="114" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.cpp" bodystart="114" bodyend="122"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga2ea71bbe5f870f057780e2a023da84ab" compoundref="d3/dca/Interval_8cpp" startline="237" endline="348">berechne_intervalle_absolut</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga12d23ae1832242b2dc02810fe94b1d9b" compoundref="dc/df5/Parser_8cpp" startline="2399" endline="2510">berechne_toene_absolut</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Description. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright: (c) 2008 TU Dresden <simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein@users.berlios.de">keinstein@users.berlios.de</ulink>  GPL</para></simplesect>
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</para><para>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</para><para>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="comment">/*<sp/>we<sp/>guard<sp/>a<sp/>little<sp/>bit<sp/>complicated<sp/>to<sp/>ensure<sp/>the<sp/>references<sp/>are<sp/>set<sp/>right</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(!defined(MU32_Hilfs_H)<sp/>&amp;&amp;<sp/>!defined(PRECOMPILE))<sp/>\</highlight></codeline>
+<codeline lineno="33"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>(!defined(MU32_Hilfs_H_PRECOMPILED))</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifndef<sp/>PRECOMPILE</highlight></codeline>
+<codeline lineno="35" refid="d9/d7c/group__kernel_1gabc5d9755cd2497a19f7e704b84867761" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MU32_Hilfs_H</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dc/d19/box_8h" kindref="compound">box.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MU32_Hilfs_H_PRECOMPILED</highlight></codeline>
+<codeline lineno="46" refid="d9/d7c/group__kernel_1gae4ff2f67ed5a782777877235f39669e9" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MU32_Hilfs_H_PRECOMPILED</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>system<sp/>headers<sp/>which<sp/>do<sp/>seldom<sp/>change</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus<sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">hidden<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="57" refid="d9/d7c/group__kernel_1gaa93f2514a0844adf4ff82a3853148266" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>HEAP_PORTION_SYNTAX<sp/><sp/><sp/></highlight><highlight class="comment">/*65536L*/</highlight><highlight class="preprocessor"><sp/>64000</highlight></codeline>
+<codeline lineno="58" refid="d9/d7c/group__kernel_1ga2ed983b16ea3bd4d726f9c5a2a36cc7d" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>HEAP_PORTION_LAUFZEIT<sp/></highlight><highlight class="comment">/*65536L*/</highlight><highlight class="preprocessor"><sp/>64000</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga2a0a21b8d377742eac6cb1f7f3229e86" kindref="member">xfree</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>pointer);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d7c/group__kernel_1ga9068a10d577105ad5306b8694f7b153b" kindref="member">xmalloc</ref><sp/>(<ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d7c/group__kernel_1ga3aaf4c6fc990494645d2d7cc6b60d9ac" kindref="member">xrealloc</ref><sp/>(<ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>block,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>newsize);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d7c/group__kernel_1ga958b1662c140766c29406d4b67446861" kindref="member">xcalloc</ref><sp/>(<ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>anzahl,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga59a78112aeea661097792d86d23ea657" kindref="member">yfree</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>pointer);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d7c/group__kernel_1ga174e62d9074ba74562beaf303ab4b645" kindref="member">ymalloc</ref><sp/>(<ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d7c/group__kernel_1ga340ad3544d1a04a566089bb9a6a2ecc1" kindref="member">yrealloc</ref><sp/>(<ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>block,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>newsize);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d7c/group__kernel_1ga430cfed4b852ea878d1290f72c19067c" kindref="member">ycalloc</ref><sp/>(<ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>anzahl,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga6cdadb41b8ac72cc80f2bccd24b7fefc" kindref="member">loesche_syntax_speicher</ref><sp/>(<ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga53723dd27d3674c2853505bcf0e41b6e" kindref="member">init_syntax_speicher</ref><sp/>(<ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga7a7a804f48564180fc2987db7859dd62" kindref="member">init_laufzeit_speicher</ref><sp/>(<sp/><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref><sp/>);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga768c0fbefe3c4048d0374e03c0fe5a21" kindref="member">loesche_laufzeit_speicher</ref><sp/>(<sp/><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref><sp/>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d7c/group__kernel_1gad4d4f5e226aaddbb738e75ef7e23988c" kindref="member">xalloca</ref><sp/>(<ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga32c911fc6ec259d831549e90fbd9f00c" kindref="member">xde_alloca</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>pointer);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="84"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>MU32_HILFS_H_PRECOMPILED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="86"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>MU32_HILFS_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="88"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h"/>
+  </compounddef>
+</doxygen>

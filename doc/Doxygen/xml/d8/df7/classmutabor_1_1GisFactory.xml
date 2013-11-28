@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d8/df7/classmutabor_1_1GisFactory" kind="class" prot="public">
+    <compoundname>mutabor::GisFactory</compoundname>
+    <basecompoundref refid="d7/d57/classmutabor_1_1DeviceFactory" prot="public" virt="non-virtual">mutabor::DeviceFactory</basecompoundref>
+    <includes refid="da/d81/DevGIS_8h" local="no">DevGIS.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d8/df7/classmutabor_1_1GisFactory_1adadc5e607ee5d57bd453ac01a371e8a8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::GisFactory::GisFactory</definition>
+        <argsstring>(size_t id=DTGis)</argsstring>
+        <name>GisFactory</name>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+          <defval><ref refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa2b2fa6564c9620ec4de6c1440688c984" kindref="member">DTGis</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="300" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" bodystart="300" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/df7/classmutabor_1_1GisFactory_1a498ac2bc515942f3b4e846abe471b406" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>mutabor::GisFactory::~GisFactory</definition>
+        <argsstring>()</argsstring>
+        <name>~GisFactory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="302" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.cpp" bodystart="740" bodyend="740"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="d8/df7/classmutabor_1_1GisFactory_1a76a4b9c6b0512c509bc1fe15844179f1" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>virtual size_t mutabor::GisFactory::GetType</definition>
+        <argsstring>() const </argsstring>
+        <name>GetType</name>
+        <reimplements refid="d5/dee/group__route_1gac4c814a10fc4e723a9bae9ea6d2b3de5">GetType</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="305" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" bodystart="305" bodyend="308"/>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" compoundref="de/d05/Device_8h" startline="89">mutabor::DTMidiFile</references>
+      </memberdef>
+      <memberdef kind="function" id="d8/df7/classmutabor_1_1GisFactory_1a7e5629fe1f092794c0166179ab7b5044" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="d2/d2f/classmutabor_1_1OutputDeviceClass" kindref="compound">mutabor::OutputDeviceClass</ref> *</type>
+        <definition>OutputDeviceClass * mutabor::GisFactory::DoCreateOutput</definition>
+        <argsstring>(const mutStringRef name, int id=-1) const </argsstring>
+        <name>DoCreateOutput</name>
+        <reimplements refid="d5/dee/group__route_1ga61576f6d9de13465e22e95d8812e4dbb">DoCreateOutput</reimplements>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="311" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.cpp" bodystart="742" bodyend="746"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/df7/classmutabor_1_1GisFactory_1a82b06f0129934b22b0d70d4589384aee" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="d4/d18/classmutabor_1_1InputDeviceClass" kindref="compound">mutabor::InputDeviceClass</ref> *</type>
+        <definition>InputDeviceClass * mutabor::GisFactory::DoCreateInput</definition>
+        <argsstring>(const mutStringRef name, mutabor::MutaborModeType mode, int id=-1) const </argsstring>
+        <name>DoCreateInput</name>
+        <reimplements refid="d5/dee/group__route_1ga0e03803358cbd110a42c878f73e1eeed">DoCreateInput</reimplements>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gaa3d7d1e712c727d12c3b60c8dc04b484" kindref="member">mutabor::MutaborModeType</ref></type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="314" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.cpp" bodystart="750" bodyend="771"/>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8" compoundref="de/d05/Device_8h" startline="80">mutabor::DeviceCompileError</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a86530be4e7e984649e049f17857b8e5e" compoundref="de/d05/Device_8h" startline="79">mutabor::DevicePause</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8" compoundref="de/d05/Device_8h" startline="78">mutabor::DevicePlay</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649" compoundref="de/d05/Device_8h" startline="77">mutabor::DeviceStop</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a04f0b919edf40d45442ee6153b4e512e" compoundref="de/d05/Device_8h" startline="81">mutabor::DeviceTimingError</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a4fd9ce6cf94e3605cc2122e7aecd4dea" compoundref="de/d05/Device_8h" startline="75">mutabor::DeviceUnregistered</references>
+        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2736">
+        <label>mutabor::GisFactory</label>
+        <link refid="d8/df7/classmutabor_1_1GisFactory"/>
+        <childnode refid="2737" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2737">
+        <label>mutabor::DeviceFactory</label>
+        <link refid="d7/d57/classmutabor_1_1DeviceFactory"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2741">
+        <label>T</label>
+      </node>
+      <node id="2740">
+        <label>std::vector&lt; T &gt;</label>
+        <childnode refid="2741" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2738">
+        <label>mutabor::GisFactory</label>
+        <link refid="d8/df7/classmutabor_1_1GisFactory"/>
+        <childnode refid="2739" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2739">
+        <label>mutabor::DeviceFactory</label>
+        <link refid="d7/d57/classmutabor_1_1DeviceFactory"/>
+        <childnode refid="2740" relation="usage">
+          <edgelabel>factories</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" line="298" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/DevGIS.h" bodystart="298" bodyend="317"/>
+    <listofallmembers>
+      <member refid="d5/dee/group__route_1ga793ed58c40cc42bfff473f9597376708" prot="public" virt="non-virtual"><scope>mutabor::GisFactory</scope><name>Create</name></member>
+      <member refid="d5/dee/group__route_1ga2e95b010dd0736aa4d315f81ec86b59f" prot="public" virt="non-virtual"><scope>mutabor::GisFactory</scope><name>Create</name></member>
+      <member refid="d7/d57/classmutabor_1_1DeviceFactory_1ga2e95b010dd0736aa4d315f81ec86b59f" prot="public" virt="non-virtual"><scope>mutabor::GisFactory</scope><name>Create</name></member>
+      <member refid="d5/dee/group__route_1gae7f6e33308f9b52a914b383280a54068" prot="public" virt="non-virtual"><scope>mutabor::GisFactory</scope><name>CreateInput</name></member>
+      <member refid="d5/dee/group__route_1ga7d3885474af8ef38f69056fdff322654" prot="public" virt="non-virtual"><scope>mutabor::GisFactory</scope><name>CreateOutput</name></member>
+      <member refid="d5/dee/group__route_1ga49be0ce7bff38d1a9aca119284f4ae08" prot="public" virt="non-virtual"><scope>mutabor::GisFactory</scope><name>Destroy</name></member>
+      <member refid="d5/dee/group__route_1gae02584b86238612dd6b2dc12ece6666c" prot="public" virt="non-virtual"><scope>mutabor::GisFactory</scope><name>DeviceFactory</name></member>
+      <member refid="d8/df7/classmutabor_1_1GisFactory_1a82b06f0129934b22b0d70d4589384aee" prot="protected" virt="virtual"><scope>mutabor::GisFactory</scope><name>DoCreateInput</name></member>
+      <member refid="d8/df7/classmutabor_1_1GisFactory_1a7e5629fe1f092794c0166179ab7b5044" prot="protected" virt="virtual"><scope>mutabor::GisFactory</scope><name>DoCreateOutput</name></member>
+      <member refid="d5/dee/group__route_1ga04a22340c6dd6d54467411a1a57738fd" prot="protected" virt="virtual"><scope>mutabor::GisFactory</scope><name>DoLoadInputDevices</name></member>
+      <member refid="d5/dee/group__route_1ga692dcac5350d964de28723c82fd64c09" prot="protected" virt="virtual"><scope>mutabor::GisFactory</scope><name>DoLoadOutputDevices</name></member>
+      <member refid="d5/dee/group__route_1ga7e6111b88230c1c41c8b0e1a5a157382" prot="protected" virt="virtual"><scope>mutabor::GisFactory</scope><name>DoSaveInputDevices</name></member>
+      <member refid="d5/dee/group__route_1ga023306868ca2f64d7047c193540178ca" prot="protected" virt="virtual"><scope>mutabor::GisFactory</scope><name>DoSaveOutputDevices</name></member>
+      <member refid="d5/dee/group__route_1ga892c67a33ce0300143018e6c82b56ffb" prot="protected" virt="non-virtual"><scope>mutabor::GisFactory</scope><name>factories</name></member>
+      <member refid="d5/dee/group__route_1ga4aa4c35092b59b3182ace726b9243e41" prot="protected" virt="non-virtual"><scope>mutabor::GisFactory</scope><name>factorylist</name></member>
+      <member refid="d8/df7/classmutabor_1_1GisFactory_1a76a4b9c6b0512c509bc1fe15844179f1" prot="protected" virt="virtual"><scope>mutabor::GisFactory</scope><name>GetType</name></member>
+      <member refid="d8/df7/classmutabor_1_1GisFactory_1adadc5e607ee5d57bd453ac01a371e8a8" prot="public" virt="non-virtual"><scope>mutabor::GisFactory</scope><name>GisFactory</name></member>
+      <member refid="d5/dee/group__route_1ga258cd4bc238074cb6834c10248c0f3fa" prot="public" virt="non-virtual"><scope>mutabor::GisFactory</scope><name>LoadInputDevices</name></member>
+      <member refid="d5/dee/group__route_1gabd6e84a77a79c3ca0960442ed17f6b51" prot="public" virt="non-virtual"><scope>mutabor::GisFactory</scope><name>LoadOutputDevices</name></member>
+      <member refid="d5/dee/group__route_1gae8161f3d5d3a0cbb02c724b6d8515e53" prot="public" virt="non-virtual"><scope>mutabor::GisFactory</scope><name>SaveInputDevices</name></member>
+      <member refid="d5/dee/group__route_1ga4e80ba5e5d5fb69eba97cd43d9ffbd95" prot="public" virt="non-virtual"><scope>mutabor::GisFactory</scope><name>SaveOutputDevices</name></member>
+      <member refid="d5/dee/group__route_1ga82cd1842215e59339d43199a03f2517a" prot="public" virt="virtual"><scope>mutabor::GisFactory</scope><name>~DeviceFactory</name></member>
+      <member refid="d8/df7/classmutabor_1_1GisFactory_1a498ac2bc515942f3b4e846abe471b406" prot="public" virt="virtual"><scope>mutabor::GisFactory</scope><name>~GisFactory</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,290 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/libmutabor/errors.c Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_36b066032255252bd9de4e8c33341f8d.html">libmutabor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">errors.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d0/d15/errors_8c.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#ifdef HAVE_CONFIG_H</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  include &quot;config.h&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="../../de/d45/errors_8h.html">mutabor/errors.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="../../d0/d15/errors_8c.html#ae2387ffc56e4c38de349dcd17ce78865">   20</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../de/d45/errors_8h.html#ae2387ffc56e4c38de349dcd17ce78865">mutabor_debug_level</a>=0;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../d0/d15/errors_8c.html#a373e10fa526ba34b5a4ad44bd5c01015">   22</a></span>&#160;<span class="preprocessor">#define GERMAN</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifdef GERMAN</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="../../d9/d7c/group__kernel.html#ga9728df5840723c08b5def4e7d1966476">   24</a></span>&#160;<span class="preprocessor"></span><span class="keywordtype">char</span> *<a class="code" href="../../d9/d7c/group__kernel.html#ga9728df5840723c08b5def4e7d1966476">Error_text</a>[] =</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/* 0 */</span> <span class="stringliteral">&quot;Undefinierter Fehler in %s   Zeile %d !&quot;</span>, <span class="comment">/* allgemeinster Fehler */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/* Datei- und Systemfehler */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/* 1 */</span> <span class="stringliteral">&quot;Syntaktischer Fehler, nicht näher spezifiziert. (Zeile %d, Spalte %d)&quot;</span> ,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <span class="stringliteral">&quot;Ungültiges Zeichen im Quelltext: asc=%x (Zeile %d)&quot;</span>,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <span class="stringliteral">&quot;Kann Datei nicht öffnen: %s&quot;</span>,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                <span class="stringliteral">&quot;Speichermangel oder zu wenig Daten für Mutabor in Quelldatei.&quot;</span>,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="stringliteral">&quot;Kommentar am Dateiende nicht abgeschlossen.&quot;</span>,</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <span class="stringliteral">&quot;Dieser Punkt darf nicht aufgerufen werden (%f: %d)!\n&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <span class="stringliteral">&quot;Fehlerbericht bitte an : &quot;</span> PACKAGE_BUGREPORT,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">/* Doppeldeklarationen */</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/* 10 */</span> <span class="stringliteral">&quot;Der Intervallname %s wurde doppelt benutzt&quot;</span>,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;         <span class="stringliteral">&quot;Der Tonname %s wurde doppelt benutzt&quot;</span>,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;         <span class="stringliteral">&quot;Der Tonsystemname %s wurde doppelt benutzt&quot;</span>,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;         <span class="stringliteral">&quot;Der Umstimmungsname %s wurde doppelt benutzt&quot;</span>,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                        <span class="stringliteral">&quot;Der Harmoniename %s wurde doppelt benutzt&quot;</span>,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;         <span class="stringliteral">&quot;Der Logikname %s wurde doppelt benutzt&quot;</span>,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;         <span class="stringliteral">&quot;(unbenutzt)&quot;</span>,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;         <span class="stringliteral">&quot;Der Parametername %s wurde doppelt benutzt&quot;</span>,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;         <span class="stringliteral">&quot;Das MIDI-Instrument %d wurde doppelt benutzt&quot;</span>,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;         <span class="stringliteral">&quot;Überlappungsfehler bei der MIDI-Zuordnung: Kanal %d wurde doppelt benutzt&quot;</span>,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;         <span class="stringliteral">&quot;Mehr als ein ANSONSTEN-Auslöser in Logik %s&quot;</span>,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;         <span class="stringliteral">&quot;Mehr als ein ANSONSTEN in Umstimmung %s&quot;</span>,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;         <span class="stringliteral">&quot;Die Alternative %d ist doppelt in %s&quot;</span>,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">/* Undefinierte Symbole */</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">/* 25 */</span> <span class="stringliteral">&quot;Unbekanntes Symbol: %s&quot;</span>,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;         <span class="stringliteral">&quot;Unbekanntes Intervall: %s&quot;</span>,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;         <span class="stringliteral">&quot;Unbekannter Ton: %s&quot;</span>,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;         <span class="stringliteral">&quot;Unbekanntes Tonsystem: %s&quot;</span>,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;         <span class="stringliteral">&quot;Unbekannte Umstimmung: %s&quot;</span>,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;         <span class="stringliteral">&quot;Unbekannte Harmonie: %s (in Logik %s)&quot;</span>,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;         <span class="stringliteral">&quot;Unbekannter Parametername: %s in %s&quot;</span>,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;         <span class="stringliteral">&quot;Unbekanntes Intervall: %s (in %s)&quot;</span>,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;         <span class="stringliteral">&quot;Unbekannter Ton: %s (in Tonsystem %s)&quot;</span>,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                        <span class="stringliteral">&quot;Unbekannter Ton: %s (in Umstimmung %s)&quot;</span>,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/* 35 */</span> <span class="stringliteral">&quot;(to be reused)&quot;</span>,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;         <span class="stringliteral">&quot;Unbekannte Umstimmung: %s (in Umstimmung %s)&quot;</span>,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;         <span class="stringliteral">&quot;Unbekannte Einstimmung: %s (in Logik %s)&quot;</span>,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;         <span class="stringliteral">&quot;Unbekannte Aktion: %s (in Logik %s)&quot;</span>,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;         <span class="stringliteral">&quot;Unbekannter Parameter: %s (in Aufruf %s von Logik %s)&quot;</span>,</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/* Bereichsüber- bzw. unterschreitungen */</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">/* 45 */</span> <span class="stringliteral">&quot;MIDI-Kanal ungültig (zulässig: 1 bis 16)&quot;</span>,</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;         <span class="stringliteral">&quot;Unzulässiger Wert von Intervall %s&quot;</span>,</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;         <span class="stringliteral">&quot;Taste %d liegt außerhalb des Wertebereichs 24..108 (in Tonsystem %s)&quot;</span>,</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;         <span class="stringliteral">&quot;In Umstimmung %s ist der Ton %s nicht komplex&quot;</span>,</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;         <span class="stringliteral">&quot;Unzulässiger Wert in %s&quot;</span>, <span class="comment">/* (allgemein) */</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;         <span class="stringliteral">&quot;Unzulässiger MIDI-Code in Logik %s (erwarte %s)&quot;</span>,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;         <span class="stringliteral">&quot;Logik %s darf nicht mit ANSONSTEN aufgerufen werden&quot;</span>,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;         <span class="stringliteral">&quot;Als Taste eines Auslösers wurde kein einzelner Buchstabe angegeben TASTE %s&quot;</span>,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;         <span class="stringliteral">&quot;Division durch (fast) 0 in Zeile %d&quot;</span>,</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                           <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">/* Parameterfehler */</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">/* 60 */</span> <span class="stringliteral">&quot;In Umstimmungsbund/case %s stimmen in Umstimmung %s die Parameter nicht&quot;</span>,</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;         <span class="stringliteral">&quot;In Logik %s stimmt die Parameter- anzahl von %s nicht&quot;</span>,</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;         <span class="stringliteral">&quot;In Logik %s ist die Einstimmung %s nicht parameterlos&quot;</span>,</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                        <span class="stringliteral">&quot;in Umstimmungsbund %s ist der Aufruf %s nicht parameterlos&quot;</span>,</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;         <span class="stringliteral">&quot;in Umstimmungs_case %s ist der Aufruf %s nicht parameterlos&quot;</span>,</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">/* Abhängigkeiten */</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">/* 65 */</span> <span class="stringliteral">&quot;Die Töne %s und %s hängen gegenseitig voneinander ab&quot;</span>,</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;         <span class="stringliteral">&quot;Die Umstimmungen/Logiken %s und %s hängen gegenseitig voneinander ab&quot;</span>,</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;         <span class="stringliteral">&quot;Die Intervalle %s und %s hängen gegenseitig voneinander ab&quot;</span>,</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;         <span class="stringliteral">&quot;Die MIDI-Kanäle hängen gegenseitig voneinander ab&quot;</span>,</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">/* Syntaxfehler (vom BISON-Parser aufgerufen) */</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">/* 70 */</span> <span class="stringliteral">&quot;Falsches Zeichen! Erwarte %s (Zeile %d)&quot;</span>,</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;         <span class="stringliteral">&quot;Fehlerhafte Intervall- deklaration (Zeile %d)&quot;</span>,</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;         <span class="stringliteral">&quot;Fehlerhafte Tondeklaration von Ton %s.&quot;</span>,</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;         <span class="stringliteral">&quot;Fehlerhafte Tonsystem- deklaration. (Zeile %d)&quot;</span>,</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;         <span class="stringliteral">&quot;Ungültige Pameterliste in Zeile %d&quot;</span>,</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;         <span class="stringliteral">&quot;Ungültige Umstimmung in Zeile %d&quot;</span>,</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;         <span class="stringliteral">&quot;Ungültige Harmoniedekl. bei %s&quot;</span>,</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;         <span class="stringliteral">&quot;Fehlerhafte MIDI-Liste in Zeile %d&quot;</span>,</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;         <span class="stringliteral">&quot;Nach einem # folgt keine Hex-Ziffer (Zeile %d)&quot;</span>,</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">/* 79 */</span> <span class="stringliteral">&quot;Deklaration erwartet. (Zeile %d)&quot;</span>,</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;         <span class="stringliteral">&quot;Zwei Punkte (.) in einer Zahl. (Zeile %d)&quot;</span>,</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;         <span class="stringliteral">&quot;Hier nur Integer statt Gleitkommazahl erlaubt (Zeile %d)&quot;</span>,</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;         <span class="stringliteral">&quot;Operand fehlt ? (Zeile %d)&quot;</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;};</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="../../d9/d7c/group__kernel.html#gaf8efbc9f57f10f6c6e914c5e86122486">  128</a></span>&#160;<span class="keywordtype">char</span> * <a class="code" href="../../d9/d7c/group__kernel.html#gaf8efbc9f57f10f6c6e914c5e86122486">Warning_text</a>[] =</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;{</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">/*  0 */</span> <span class="stringliteral">&quot;Undefinierte Compilerwarnung&quot;</span>,</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;         <span class="stringliteral">&quot;MIDI-Auslöser in Logik %s beginnt nicht mit Kanal 0- Statusbyte. &quot;</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                 <span class="stringliteral">&quot;Wert wurde korrigiert!&quot;</span>,</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;         <span class="stringliteral">&quot;Unmöglicher Harmonieauslöser in Logik %s&quot;</span>,</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;         <span class="stringliteral">&quot;Mehrdeutiger Auslöser %s in Logik %s&quot;</span>,</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;         <span class="stringliteral">&quot;Auslöser ANSONSTEN ist nicht der letzte in Logik %s&quot;</span>,</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">/*  5 */</span> <span class="stringliteral">&quot;Verschwendung bei der Kanalzuordnung&quot;</span>,</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                        <span class="stringliteral">&quot;Keine Datei angegeben, versuche TEST.MUS&quot;</span>,</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;         <span class="stringliteral">&quot;Konfigurationsdatei fehlerhaft&quot;</span>,</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;         <span class="stringliteral">&quot;Echte Überschneidung bei der MIDI-Zuordnung: Kanäle %d und %d&quot;</span>,</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;       <span class="stringliteral">&quot;Fehler in GMN-Datei %s Position(%d, %d): %s&quot;</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;         };</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">/* ====================================== ENGLISH ... ========= */</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keywordtype">char</span> *<a class="code" href="../../d9/d7c/group__kernel.html#ga9728df5840723c08b5def4e7d1966476">Error_text</a>[] =</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;{</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">/* 0 */</span> <span class="stringliteral">&quot;Unknown error in %s , line %d !&quot;</span>, <span class="comment">/* allgemeinster Fehler */</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">/* Datei- und Systemfehler */</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">/* 1 */</span> <span class="stringliteral">&quot;Syntax error, not specified. (line %d)&quot;</span> ,</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                <span class="stringliteral">&quot;Non-valid character: asc=%d (line %d)&quot;</span>,</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                <span class="stringliteral">&quot;Can&#39;t open file: %s&quot;</span>,</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <span class="stringliteral">&quot;Not enough memory or to few datas for mutabor in source file&quot;</span>,</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">/* Doppeldeklarationen */</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">/* 10 */</span> <span class="stringliteral">&quot;The interval name %s was used twice&quot;</span>,</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;         <span class="stringliteral">&quot;The tone name %s was used twice&quot;</span>,</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                        <span class="stringliteral">&quot;The tonesystem name %s was used twice&quot;</span>,</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;         <span class="stringliteral">&quot;The retuning name %s was used twice&quot;</span>,</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;         <span class="stringliteral">&quot;The pattern name %s was used twice&quot;</span>,</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;         <span class="stringliteral">&quot;The logic name %s was used twice&quot;</span>,</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;         <span class="stringliteral">&quot;(unused)&quot;</span>,</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;         <span class="stringliteral">&quot;The parameter name %s was used twice&quot;</span>,</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;         <span class="stringliteral">&quot;The MIDI-Instrument %d was used twice&quot;</span>,</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;         <span class="stringliteral">&quot;MIDI-Mapping: Channel %d was used twice&quot;</span>,</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;         <span class="stringliteral">&quot;Logik %s contains more than one ELSE statement&quot;</span>,</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;         <span class="stringliteral">&quot;Retuning %s contains more than one ELSE statement&quot;</span>,</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;         <span class="stringliteral">&quot;The alternative %d is ued twice in %s&quot;</span>,</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                        <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">/* Undefinierte Symbole */</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">/* 25 */</span> <span class="stringliteral">&quot;Undefined symbol: %s&quot;</span>,</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;         <span class="stringliteral">&quot;Undefined interval: %s&quot;</span>,</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;         <span class="stringliteral">&quot;Undefined tone: %s&quot;</span>,</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;         <span class="stringliteral">&quot;Undefined tonesystem: %s&quot;</span>,</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;         <span class="stringliteral">&quot;Undefined retuning: %s&quot;</span>,</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;         <span class="stringliteral">&quot;Undefined pattern: %s (in logic %s)&quot;</span>,</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;         <span class="stringliteral">&quot;Undefined parameter name: %s in %s&quot;</span>,</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                        <span class="stringliteral">&quot;Undefined interval: %s (in %s)&quot;</span>,</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;         <span class="stringliteral">&quot;Undefined tone: %s (in tone system %s)&quot;</span>,</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;         <span class="stringliteral">&quot;Undefined tone: %s (in retuning %s)&quot;</span>,</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">/* 35 */</span> <span class="stringliteral">&quot;(to be reused)&quot;</span>,</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;         <span class="stringliteral">&quot;Undefined retuning: %s (in retuning %s)&quot;</span>,</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;         <span class="stringliteral">&quot;Undefined initial tuning: %s (in logic %s)&quot;</span>,</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;         <span class="stringliteral">&quot;Undefined action: %s (in logic %s)&quot;</span>,</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;         <span class="stringliteral">&quot;Undefined parameter: %s (in call %s from logic %s)&quot;</span>,</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                        <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;         </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">/* Bereichsüber- bzw. unterschreitungen */</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">/* 45 */</span> <span class="stringliteral">&quot;Bad MIDI-Channel (valid: 1 .. 16)&quot;</span>,</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                        <span class="stringliteral">&quot;Bad interval value in %s&quot;</span>,</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;         <span class="stringliteral">&quot;Bad key %d (valid: 36..96 (in tonesystem %s)&quot;</span>,</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;         <span class="stringliteral">&quot;Not-complex tone in retuning %s ( %s )&quot;</span>,</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;         <span class="stringliteral">&quot;Bad value in %s&quot;</span>, <span class="comment">/* (allgemein) */</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;         <span class="stringliteral">&quot;Bad MIDI-Code in logic %s (expecting %s )&quot;</span>,</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;         <span class="stringliteral">&quot;Logic %s must not be called by ELSE&quot;</span>,</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                        <span class="stringliteral">&quot;A Key needs to be a single character ( %s )&quot;</span>,</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;         <span class="stringliteral">&quot;Division by (nearly) 0 in line %d&quot;</span>,</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                        <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;     </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">/* Parameterfehler */</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">/* 60 */</span> <span class="stringliteral">&quot;In retuning %s and %s : Bad parameters&quot;</span>,</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                        <span class="stringliteral">&quot;In logic %s : Bad number of parameters ( %s )&quot;</span>,</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;         <span class="stringliteral">&quot;In logik %s : initial tuning %s mustn&#39;t have parameters&quot;</span>,</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;         <span class="stringliteral">&quot;In collection %s : call to %s mustn&#39;t have parameters&quot;</span>,</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;         <span class="stringliteral">&quot;In case %s : call to %s mustn&#39;t have parameters&quot;</span>,</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">/* Abhängigkeiten */</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">/* 65 */</span> <span class="stringliteral">&quot;Tones %s and %s are dependent&quot;</span>,</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;         <span class="stringliteral">&quot;Retunings/logics %s and %s are dependent&quot;</span>,</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;         <span class="stringliteral">&quot;Intervals %s and %s are dependent&quot;</span>,</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;         <span class="stringliteral">&quot;MIDI-channels are dependent&quot;</span>,</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;         <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">/* Syntaxfehler (vom BISON-Parser aufgerufen) */</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">/* 70 */</span> <span class="stringliteral">&quot;Wrong character ! Expecting %s (line %d)&quot;</span>,</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;         <span class="stringliteral">&quot;Bad interval declaration of intervall %s&quot;</span>,</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;         <span class="stringliteral">&quot;Bad tone declaration of tone %s&quot;</span>,</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;         <span class="stringliteral">&quot;Bad tonesystem declaration. (line %d)&quot;</span>,</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;         <span class="stringliteral">&quot;Bad parameter list in call to %s in line %d&quot;</span>,</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;         <span class="stringliteral">&quot;Bad retuning in line %d&quot;</span>,</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;         <span class="stringliteral">&quot;bad pattern decl. at %s&quot;</span>,</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;         <span class="stringliteral">&quot;Bad MIDI list in line %d&quot;</span>,</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;         <span class="stringliteral">&quot;No hex number after # (line %d)&quot;</span>,</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                        <span class="stringliteral">&quot; &quot;</span>,</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;};</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="keywordtype">char</span> * <a class="code" href="../../d9/d7c/group__kernel.html#gaf8efbc9f57f10f6c6e914c5e86122486">Warning_text</a>[] =</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;{</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment">/*  0 */</span> <span class="stringliteral">&quot;Undefined compiler warning&quot;</span>,</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;         <span class="stringliteral">&quot;MIDI-Auslöser in Logik %s beginnt nicht mit Kanal 0- Statusbyte. &quot;</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                 <span class="stringliteral">&quot;Wert wurde korrigiert!&quot;</span>,</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;         <span class="stringliteral">&quot;Unmöglicher Harmonieauslöser in Logik %s&quot;</span>,</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;         <span class="stringliteral">&quot;Mehrdeutiger Auslöser %s in Logik %s&quot;</span>,</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                        <span class="stringliteral">&quot;Auslöser ANSONSTEN ist nicht der letzte in Logik %s&quot;</span>,</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="comment">/*  5 */</span> <span class="stringliteral">&quot;Verschwendung bei der Kanalzuordnung&quot;</span>,</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;         <span class="stringliteral">&quot;Keine Datei angegeben, versuche TEST.MUS&quot;</span>,</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;         <span class="stringliteral">&quot;Konfigurationsdatei fehlerhaft&quot;</span>,</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;         <span class="stringliteral">&quot;Überschneidung bei der MIDI-Zuordnung: Kanäle %d und %d&quot;</span>,</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;       <span class="stringliteral">&quot;Error in GMN-File %s position(%d, %d): %s&quot;</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;};</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="errors_8h_html"><div class="ttname"><a href="../../de/d45/errors_8h.html">errors.h</a></div><div class="ttdoc">Fehlermeldungen. </div></div>
+<div class="ttc" id="group__kernel_html_gaf8efbc9f57f10f6c6e914c5e86122486"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gaf8efbc9f57f10f6c6e914c5e86122486">Warning_text</a></div><div class="ttdeci">char * Warning_text[]</div><div class="ttdoc">Liste der Warnungen. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da2/Errors_8cpp_source.html#l00252">Errors.cpp:252</a></div></div>
+<div class="ttc" id="group__kernel_html_ga9728df5840723c08b5def4e7d1966476"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga9728df5840723c08b5def4e7d1966476">Error_text</a></div><div class="ttdeci">char * Error_text[]</div><div class="ttdoc">Liste der Warnungen. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da2/Errors_8cpp_source.html#l00150">Errors.cpp:150</a></div></div>
+<div class="ttc" id="errors_8h_html_ae2387ffc56e4c38de349dcd17ce78865"><div class="ttname"><a href="../../de/d45/errors_8h.html#ae2387ffc56e4c38de349dcd17ce78865">mutabor_debug_level</a></div><div class="ttdeci">int mutabor_debug_level</div><div class="ttdoc">Debuglevel für die Bibliothek. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d15/errors_8c_source.html#l00020">errors.c:20</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:03:01 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

@@ -1,0 +1,1322 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d6/d3b/MutDocument_8cpp" kind="file">
+    <compoundname>MutDocument.cpp</compoundname>
+    <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
+    <includes refid="db/d00/MutDocument_8h" local="yes">src/wxGUI/MutDocument.h</includes>
+    <includes refid="d0/d9e/MutView_8h" local="yes">src/wxGUI/MutView.h</includes>
+    <includes refid="db/dc1/MutApp_8h" local="yes">src/wxGUI/MutApp.h</includes>
+    <includes local="no">wx/debug.h</includes>
+    <includes refid="d2/d2c/Route-inlines_8h" local="yes">src/kernel/routing/Route-inlines.h</includes>
+    <includes local="no">cstdio</includes>
+    <includes local="no">iostream</includes>
+    <incdepgraph>
+      <node id="20003">
+        <label>list</label>
+      </node>
+      <node id="20076">
+        <label>src/kernel/routing/gmn/GIS_Head.h</label>
+        <link refid="d1/db5/GIS__Head_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20008" relation="include">
+        </childnode>
+        <childnode refid="20054" relation="include">
+        </childnode>
+        <childnode refid="20077" relation="include">
+        </childnode>
+      </node>
+      <node id="20008">
+        <label>src/kernel/routing/Box.h</label>
+        <link refid="de/d0f/Box_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20009" relation="include">
+        </childnode>
+        <childnode refid="20010" relation="include">
+        </childnode>
+        <childnode refid="20011" relation="include">
+        </childnode>
+        <childnode refid="20017" relation="include">
+        </childnode>
+        <childnode refid="20019" relation="include">
+        </childnode>
+        <childnode refid="20014" relation="include">
+        </childnode>
+        <childnode refid="20015" relation="include">
+        </childnode>
+        <childnode refid="20026" relation="include">
+        </childnode>
+        <childnode refid="20027" relation="include">
+        </childnode>
+        <childnode refid="19989" relation="include">
+        </childnode>
+        <childnode refid="20018" relation="include">
+        </childnode>
+      </node>
+      <node id="19989">
+        <label>stdarg.h</label>
+      </node>
+      <node id="20058">
+        <label>src/kernel/routing/timing.h</label>
+        <link refid="db/d41/timing_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20012" relation="include">
+        </childnode>
+        <childnode refid="20059" relation="include">
+        </childnode>
+        <childnode refid="20060" relation="include">
+        </childnode>
+        <childnode refid="20016" relation="include">
+        </childnode>
+        <childnode refid="20061" relation="include">
+        </childnode>
+        <childnode refid="20010" relation="include">
+        </childnode>
+      </node>
+      <node id="20059">
+        <label>limits</label>
+      </node>
+      <node id="20017">
+        <label>src/kernel/Execute.h</label>
+        <link refid="de/d11/Execute_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20018" relation="include">
+        </childnode>
+      </node>
+      <node id="20098">
+        <label>wx/app.h</label>
+      </node>
+      <node id="20014">
+        <label>boost/intrusive_ptr.hpp</label>
+      </node>
+      <node id="20097">
+        <label>wx/event.h</label>
+      </node>
+      <node id="19999">
+        <label>wx/stdpaths.h</label>
+      </node>
+      <node id="20066">
+        <label>src/kernel/routing/midi/midicmn.h</label>
+        <link refid="de/d21/midicmn_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20053" relation="include">
+        </childnode>
+        <childnode refid="20015" relation="include">
+        </childnode>
+      </node>
+      <node id="20036">
+        <label>src/wxGUI/generic/muconvauto.h</label>
+        <link refid="d1/dcd/muconvauto_8h"/>
+        <childnode refid="20037" relation="include">
+        </childnode>
+        <childnode refid="20038" relation="include">
+        </childnode>
+      </node>
+      <node id="19988">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="19989" relation="include">
+        </childnode>
+        <childnode refid="19990" relation="include">
+        </childnode>
+      </node>
+      <node id="20088">
+        <label>src/wxGUI/StatusBar.h</label>
+        <link refid="d9/d6e/StatusBar_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20089" relation="include">
+        </childnode>
+        <childnode refid="20091" relation="include">
+        </childnode>
+        <childnode refid="20052" relation="include">
+        </childnode>
+        <childnode refid="20092" relation="include">
+        </childnode>
+        <childnode refid="20093" relation="include">
+        </childnode>
+        <childnode refid="19998" relation="include">
+        </childnode>
+      </node>
+      <node id="20029">
+        <label>wx/toolbar.h</label>
+      </node>
+      <node id="20077">
+        <label>stdint.h</label>
+      </node>
+      <node id="20048">
+        <label>wx/containr.h</label>
+      </node>
+      <node id="20021">
+        <label>stdlib.h</label>
+      </node>
+      <node id="20005">
+        <label>wx/image.h</label>
+      </node>
+      <node id="20042">
+        <label>src/wxGUI/Routing/RouteLists.h</label>
+        <link refid="d4/d70/RouteLists_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20003" relation="include">
+        </childnode>
+      </node>
+      <node id="20071">
+        <label>src/kernel/routing/CommonFileDevice.h</label>
+        <link refid="d9/d17/CommonFileDevice_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20053" relation="include">
+        </childnode>
+        <childnode refid="20010" relation="include">
+        </childnode>
+        <childnode refid="20059" relation="include">
+        </childnode>
+        <childnode refid="20072" relation="include">
+        </childnode>
+        <childnode refid="20062" relation="include">
+        </childnode>
+      </node>
+      <node id="20093">
+        <label>wx/frame.h</label>
+      </node>
+      <node id="20068">
+        <label>cassert</label>
+      </node>
+      <node id="20095">
+        <label>src/wxGUI/MutApp.h</label>
+        <link refid="db/dc1/MutApp_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="19995" relation="include">
+        </childnode>
+        <childnode refid="20096" relation="include">
+        </childnode>
+        <childnode refid="20098" relation="include">
+        </childnode>
+      </node>
+      <node id="20049">
+        <label>src/wxGUI/MutIcon.h</label>
+        <link refid="df/d37/MutIcon_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+      </node>
+      <node id="20016">
+        <label>stdexcept</label>
+      </node>
+      <node id="20025">
+        <label>malloc.h</label>
+      </node>
+      <node id="20043">
+        <label>src/wxGUI/Routing/DeviceShape.h</label>
+        <link refid="d9/d4d/DeviceShape_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20044" relation="include">
+        </childnode>
+        <childnode refid="20011" relation="include">
+        </childnode>
+        <childnode refid="20053" relation="include">
+        </childnode>
+        <childnode refid="20064" relation="include">
+        </childnode>
+        <childnode refid="20042" relation="include">
+        </childnode>
+        <childnode refid="20080" relation="include">
+        </childnode>
+        <childnode refid="20081" relation="include">
+        </childnode>
+      </node>
+      <node id="20067">
+        <label>src/kernel/GrafKern.h</label>
+        <link refid="d4/d47/GrafKern_8h"/>
+      </node>
+      <node id="20074">
+        <label>wx/timer.h</label>
+      </node>
+      <node id="20022">
+        <label>string</label>
+      </node>
+      <node id="20064">
+        <label>src/wxGUI/Routing/GUIRoute.h</label>
+        <link refid="d6/dfa/GUIRoute_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20053" relation="include">
+        </childnode>
+        <childnode refid="20065" relation="include">
+        </childnode>
+        <childnode refid="20070" relation="include">
+        </childnode>
+        <childnode refid="20075" relation="include">
+        </childnode>
+        <childnode refid="20011" relation="include">
+        </childnode>
+        <childnode refid="20078" relation="include">
+        </childnode>
+        <childnode refid="20042" relation="include">
+        </childnode>
+        <childnode refid="20026" relation="include">
+        </childnode>
+      </node>
+      <node id="20080">
+        <label>map</label>
+      </node>
+      <node id="20084">
+        <label>src/wxGUI/Routing/BoxIconShape.h</label>
+        <link refid="d2/de0/BoxIconShape_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20044" relation="include">
+        </childnode>
+        <childnode refid="20085" relation="include">
+        </childnode>
+      </node>
+      <node id="20070">
+        <label>src/kernel/routing/midi/DevMidF.h</label>
+        <link refid="da/d3c/DevMidF_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20071" relation="include">
+        </childnode>
+        <childnode refid="20066" relation="include">
+        </childnode>
+        <childnode refid="20073" relation="include">
+        </childnode>
+        <childnode refid="20074" relation="include">
+        </childnode>
+      </node>
+      <node id="20052">
+        <label>wx/stattext.h</label>
+      </node>
+      <node id="20060">
+        <label>exception</label>
+      </node>
+      <node id="20047">
+        <label>wx/control.h</label>
+      </node>
+      <node id="20073">
+        <label>fstream</label>
+      </node>
+      <node id="19987">
+        <label>src/wxGUI/MutDocument.cpp</label>
+        <link refid="MutDocument.cpp"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="19991" relation="include">
+        </childnode>
+        <childnode refid="19994" relation="include">
+        </childnode>
+        <childnode refid="20095" relation="include">
+        </childnode>
+        <childnode refid="20099" relation="include">
+        </childnode>
+        <childnode refid="20100" relation="include">
+        </childnode>
+        <childnode refid="20072" relation="include">
+        </childnode>
+        <childnode refid="20001" relation="include">
+        </childnode>
+      </node>
+      <node id="20050">
+        <label>wx/defs.h</label>
+      </node>
+      <node id="19998">
+        <label>wx/window.h</label>
+      </node>
+      <node id="20024">
+        <label>Interpre.h</label>
+        <link refid="d2/dd8/Interpre_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20020" relation="include">
+        </childnode>
+      </node>
+      <node id="20019">
+        <label>src/kernel/box.h</label>
+        <link refid="dc/d19/box_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20020" relation="include">
+        </childnode>
+        <childnode refid="20024" relation="include">
+        </childnode>
+        <childnode refid="20017" relation="include">
+        </childnode>
+        <childnode refid="20025" relation="include">
+        </childnode>
+      </node>
+      <node id="20041">
+        <label>src/wxGUI/MutRouteWnd.h</label>
+        <link refid="d3/dd7/MutRouteWnd_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20042" relation="include">
+        </childnode>
+        <childnode refid="20036" relation="include">
+        </childnode>
+        <childnode refid="20043" relation="include">
+        </childnode>
+        <childnode refid="20082" relation="include">
+        </childnode>
+        <childnode refid="20087" relation="include">
+        </childnode>
+      </node>
+      <node id="19991">
+        <label>src/wxGUI/MutDocument.h</label>
+        <link refid="db/d00/MutDocument_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="19992" relation="include">
+        </childnode>
+        <childnode refid="19993" relation="include">
+        </childnode>
+      </node>
+      <node id="20035">
+        <label>wx/stc/stc.h</label>
+      </node>
+      <node id="20033">
+        <label>src/wxGUI/MutEditFile.h</label>
+        <link refid="d5/dfb/MutEditFile_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20034" relation="include">
+        </childnode>
+        <childnode refid="20036" relation="include">
+        </childnode>
+        <childnode refid="20015" relation="include">
+        </childnode>
+        <childnode refid="20039" relation="include">
+        </childnode>
+        <childnode refid="19992" relation="include">
+        </childnode>
+        <childnode refid="20035" relation="include">
+        </childnode>
+        <childnode refid="20040" relation="include">
+        </childnode>
+      </node>
+      <node id="20045">
+        <label>src/wxGUI/Panel.h</label>
+        <link refid="d0/d1d/Panel_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20046" relation="include">
+        </childnode>
+        <childnode refid="20047" relation="include">
+        </childnode>
+        <childnode refid="20048" relation="include">
+        </childnode>
+      </node>
+      <node id="20004">
+        <label>src/wxGUI/Mutabor.rh</label>
+        <link refid="d9/d64/Mutabor_8rh"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+      </node>
+      <node id="20000">
+        <label>wx/filename.h</label>
+      </node>
+      <node id="20086">
+        <label>wx/colour.h</label>
+      </node>
+      <node id="20012">
+        <label>src/kernel/MidiKern.h</label>
+        <link refid="da/dfd/MidiKern_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+      </node>
+      <node id="20057">
+        <label>string.h</label>
+      </node>
+      <node id="20002">
+        <label>typeinfo</label>
+      </node>
+      <node id="20099">
+        <label>wx/debug.h</label>
+      </node>
+      <node id="20072">
+        <label>cstdio</label>
+      </node>
+      <node id="20037">
+        <label>wx/convauto.h</label>
+      </node>
+      <node id="19997">
+        <label>src/wxGUI/generic/mhDefs.h</label>
+        <link refid="d0/d68/mhDefs_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="19998" relation="include">
+        </childnode>
+        <childnode refid="19999" relation="include">
+        </childnode>
+        <childnode refid="20000" relation="include">
+        </childnode>
+        <childnode refid="20001" relation="include">
+        </childnode>
+        <childnode refid="20002" relation="include">
+        </childnode>
+        <childnode refid="20003" relation="include">
+        </childnode>
+        <childnode refid="20004" relation="include">
+        </childnode>
+        <childnode refid="20005" relation="include">
+        </childnode>
+        <childnode refid="20006" relation="include">
+        </childnode>
+      </node>
+      <node id="20087">
+        <label>wx/scrolwin.h</label>
+      </node>
+      <node id="20089">
+        <label>src/wxGUI/MutBitmaps.h</label>
+        <link refid="d6/dfc/MutBitmaps_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20090" relation="include">
+        </childnode>
+      </node>
+      <node id="20015">
+        <label>vector</label>
+      </node>
+      <node id="20006">
+        <label>mutDebug.h</label>
+        <link refid="de/de1/mutDebug_8h"/>
+      </node>
+      <node id="20011">
+        <label>src/kernel/routing/Route.h</label>
+        <link refid="d1/d65/Route_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20012" relation="include">
+        </childnode>
+        <childnode refid="20009" relation="include">
+        </childnode>
+        <childnode refid="20013" relation="include">
+        </childnode>
+        <childnode refid="20014" relation="include">
+        </childnode>
+        <childnode refid="20003" relation="include">
+        </childnode>
+        <childnode refid="20015" relation="include">
+        </childnode>
+        <childnode refid="20016" relation="include">
+        </childnode>
+      </node>
+      <node id="20063">
+        <label>boost/unordered_set.hpp</label>
+      </node>
+      <node id="20030">
+        <label>wx/dynarray.h</label>
+      </node>
+      <node id="20027">
+        <label>sstream</label>
+      </node>
+      <node id="20040">
+        <label>wx/fontdlg.h</label>
+      </node>
+      <node id="20075">
+        <label>src/kernel/routing/gmn/DevGIS.h</label>
+        <link refid="da/d81/DevGIS_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20071" relation="include">
+        </childnode>
+        <childnode refid="20076" relation="include">
+        </childnode>
+        <childnode refid="20074" relation="include">
+        </childnode>
+      </node>
+      <node id="20056">
+        <label>wx/string.h</label>
+      </node>
+      <node id="20054">
+        <label>src/kernel/routing/gmn/GIS.h</label>
+        <link refid="dd/d4d/GIS_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20055" relation="include">
+        </childnode>
+        <childnode refid="20057" relation="include">
+        </childnode>
+        <childnode refid="20021" relation="include">
+        </childnode>
+      </node>
+      <node id="20065">
+        <label>src/kernel/routing/midi/DevMidi.h</label>
+        <link refid="d4/da2/DevMidi_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20066" relation="include">
+        </childnode>
+        <childnode refid="20053" relation="include">
+        </childnode>
+        <childnode refid="20067" relation="include">
+        </childnode>
+        <childnode refid="20068" relation="include">
+        </childnode>
+        <childnode refid="20069" relation="include">
+        </childnode>
+      </node>
+      <node id="20028">
+        <label>wx/listbox.h</label>
+      </node>
+      <node id="20020">
+        <label>Global.h</label>
+        <link refid="dd/d40/Global_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20018" relation="include">
+        </childnode>
+        <childnode refid="20021" relation="include">
+        </childnode>
+        <childnode refid="19989" relation="include">
+        </childnode>
+        <childnode refid="20022" relation="include">
+        </childnode>
+        <childnode refid="20023" relation="include">
+        </childnode>
+      </node>
+      <node id="20100">
+        <label>src/kernel/routing/Route-inlines.h</label>
+        <link refid="d2/d2c/Route-inlines_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20011" relation="include">
+        </childnode>
+        <childnode refid="20053" relation="include">
+        </childnode>
+        <childnode refid="20008" relation="include">
+        </childnode>
+      </node>
+      <node id="20023">
+        <label>math.h</label>
+      </node>
+      <node id="19994">
+        <label>src/wxGUI/MutView.h</label>
+        <link refid="d0/d9e/MutView_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="19995" relation="include">
+        </childnode>
+        <childnode refid="20094" relation="include">
+        </childnode>
+        <childnode refid="19992" relation="include">
+        </childnode>
+      </node>
+      <node id="20079">
+        <label>wx/config.h</label>
+      </node>
+      <node id="20001">
+        <label>iostream</label>
+      </node>
+      <node id="20055">
+        <label>src/kernel/Frac.h</label>
+        <link refid="df/d4f/Frac_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20056" relation="include">
+        </childnode>
+        <childnode refid="20001" relation="include">
+        </childnode>
+      </node>
+      <node id="20038">
+        <label>wx/strconv.h</label>
+      </node>
+      <node id="20096">
+        <label>src/wxGUI/MutDocManager.h</label>
+        <link refid="df/d7f/MutDocManager_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="19992" relation="include">
+        </childnode>
+        <childnode refid="20097" relation="include">
+        </childnode>
+      </node>
+      <node id="20081">
+        <label>wx/sizer.h</label>
+      </node>
+      <node id="20069">
+        <label>mmsystem.h</label>
+      </node>
+      <node id="19990">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+      <node id="20032">
+        <label>wx/aui/aui.h</label>
+      </node>
+      <node id="20094">
+        <label>wx/wx.h</label>
+      </node>
+      <node id="20078">
+        <label>src/wxGUI/GUIBoxData.h</label>
+        <link refid="d5/df7/GUIBoxData_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20009" relation="include">
+        </childnode>
+        <childnode refid="20008" relation="include">
+        </childnode>
+        <childnode refid="20042" relation="include">
+        </childnode>
+        <childnode refid="20033" relation="include">
+        </childnode>
+        <childnode refid="20015" relation="include">
+        </childnode>
+        <childnode refid="20016" relation="include">
+        </childnode>
+        <childnode refid="20079" relation="include">
+        </childnode>
+      </node>
+      <node id="19993">
+        <label>wx/cmdproc.h</label>
+      </node>
+      <node id="20062">
+        <label>wx/thread.h</label>
+      </node>
+      <node id="19995">
+        <label>src/wxGUI/MutFrame.h</label>
+        <link refid="dd/db5/MutFrame_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="19996" relation="include">
+        </childnode>
+        <childnode refid="20033" relation="include">
+        </childnode>
+        <childnode refid="20041" relation="include">
+        </childnode>
+        <childnode refid="20088" relation="include">
+        </childnode>
+        <childnode refid="20032" relation="include">
+        </childnode>
+        <childnode refid="20029" relation="include">
+        </childnode>
+        <childnode refid="19992" relation="include">
+        </childnode>
+      </node>
+      <node id="20091">
+        <label>wx/statusbr.h</label>
+      </node>
+      <node id="20092">
+        <label>wx/statbmp.h</label>
+      </node>
+      <node id="20010">
+        <label>src/kernel/routing/thread.h</label>
+        <link refid="db/dd5/thread_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+      </node>
+      <node id="20013">
+        <label>src/kernel/boost-interface.h</label>
+        <link refid="d1/da4/boost-interface_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20010" relation="include">
+        </childnode>
+      </node>
+      <node id="20044">
+        <label>src/wxGUI/IconShape.h</label>
+        <link refid="d5/d6f/IconShape_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20045" relation="include">
+        </childnode>
+        <childnode refid="20049" relation="include">
+        </childnode>
+        <childnode refid="20050" relation="include">
+        </childnode>
+        <childnode refid="20051" relation="include">
+        </childnode>
+        <childnode refid="20052" relation="include">
+        </childnode>
+      </node>
+      <node id="20085">
+        <label>src/wxGUI/Routing/RouteIcons.h</label>
+        <link refid="df/d40/RouteIcons_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20049" relation="include">
+        </childnode>
+      </node>
+      <node id="20046">
+        <label>wx/panel.h</label>
+      </node>
+      <node id="20061">
+        <label>wx/stopwatch.h</label>
+      </node>
+      <node id="20090">
+        <label>wx/bitmap.h</label>
+      </node>
+      <node id="19996">
+        <label>src/wxGUI/MutChild.h</label>
+        <link refid="d2/df9/MutChild_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="19997" relation="include">
+        </childnode>
+        <childnode refid="20007" relation="include">
+        </childnode>
+        <childnode refid="20029" relation="include">
+        </childnode>
+        <childnode refid="20030" relation="include">
+        </childnode>
+        <childnode refid="20031" relation="include">
+        </childnode>
+        <childnode refid="20032" relation="include">
+        </childnode>
+      </node>
+      <node id="20026">
+        <label>algorithm</label>
+      </node>
+      <node id="20053">
+        <label>src/kernel/routing/Device.h</label>
+        <link refid="de/d05/Device_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20054" relation="include">
+        </childnode>
+        <childnode refid="20011" relation="include">
+        </childnode>
+        <childnode refid="20058" relation="include">
+        </childnode>
+        <childnode refid="20012" relation="include">
+        </childnode>
+        <childnode refid="20015" relation="include">
+        </childnode>
+        <childnode refid="20003" relation="include">
+        </childnode>
+        <childnode refid="20026" relation="include">
+        </childnode>
+        <childnode refid="20027" relation="include">
+        </childnode>
+        <childnode refid="19989" relation="include">
+        </childnode>
+        <childnode refid="20062" relation="include">
+        </childnode>
+        <childnode refid="20061" relation="include">
+        </childnode>
+        <childnode refid="20063" relation="include">
+        </childnode>
+      </node>
+      <node id="20051">
+        <label>wx/icon.h</label>
+      </node>
+      <node id="20018">
+        <label>stdio.h</label>
+      </node>
+      <node id="20039">
+        <label>wx/textctrl.h</label>
+      </node>
+      <node id="20034">
+        <label>src/wxGUI/stclanguage.h</label>
+        <link refid="d1/de5/stclanguage_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20035" relation="include">
+        </childnode>
+      </node>
+      <node id="20082">
+        <label>src/wxGUI/Routing/BoxShape.h</label>
+        <link refid="d9/d49/BoxShape_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20078" relation="include">
+        </childnode>
+        <childnode refid="20064" relation="include">
+        </childnode>
+        <childnode refid="20083" relation="include">
+        </childnode>
+        <childnode refid="20084" relation="include">
+        </childnode>
+        <childnode refid="20053" relation="include">
+        </childnode>
+        <childnode refid="20086" relation="include">
+        </childnode>
+        <childnode refid="20081" relation="include">
+        </childnode>
+      </node>
+      <node id="19992">
+        <label>wx/docview.h</label>
+      </node>
+      <node id="20083">
+        <label>src/wxGUI/Routing/BoxChannelShape.h</label>
+        <link refid="d6/d68/BoxChannelShape_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20064" relation="include">
+        </childnode>
+        <childnode refid="20044" relation="include">
+        </childnode>
+        <childnode refid="20081" relation="include">
+        </childnode>
+      </node>
+      <node id="20009">
+        <label>src/kernel/treestorage.h</label>
+        <link refid="db/dbe/treestorage_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+      </node>
+      <node id="20031">
+        <label>wx/arrimpl.cpp</label>
+      </node>
+      <node id="20007">
+        <label>src/wxGUI/MutTextBox.h</label>
+        <link refid="de/d3b/MutTextBox_8h"/>
+        <childnode refid="19988" relation="include">
+        </childnode>
+        <childnode refid="20008" relation="include">
+        </childnode>
+        <childnode refid="20028" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="da/d79/group__docview_1ga6ec13dcf56fb697ed3fc3f815657c4fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>IMPLEMENT_DYNAMIC_CLASS</definition>
+        <argsstring>(MutCommandProcessor, wxCommandProcessor) IMPLEMENT_DYNAMIC_CLASS(MutDocument</argsstring>
+        <name>IMPLEMENT_DYNAMIC_CLASS</name>
+        <param>
+          <type><ref refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor" kindref="compound">MutCommandProcessor</ref></type>
+        </param>
+        <param>
+          <type>wxCommandProcessor</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocument.cpp" line="52" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d79/group__docview_1ga113841024d2d545e8a68c7c7de47f144" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>wxDocument</type>
+        <definition>wxDocument BEGIN_EVENT_TABLE</definition>
+        <argsstring>(MutDocument, wxDocument) END_EVENT_TABLE() namespace mutaborGUI</argsstring>
+        <name>BEGIN_EVENT_TABLE</name>
+        <param>
+          <type><ref refid="de/dd5/classmutaborGUI_1_1MutDocument" kindref="compound">MutDocument</ref></type>
+        </param>
+        <param>
+          <type>wxDocument</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocument.cpp" line="55" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocument.cpp" bodystart="55" bodyend="388"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
+        <references refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1a2cf6aa167c9afe94e47cca9cb8d62a5a">mutaborGUI::MutCommandProcessor::CanRedo</references>
+        <references refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1a75ea62ff74ccb24aa55d1209f45167a8">mutaborGUI::MutCommandProcessor::CanUndo</references>
+        <references refid="de/dd5/classmutaborGUI_1_1MutDocument_1adaa1eddb6e8df0305ef6a81c83f9d74a">mutaborGUI::MutDocument::CheckLogic</references>
+        <references refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1ab670f87ddb191ccd3c25a4172095f3a5">mutaborGUI::MutCommandProcessor::ClearCommands</references>
+        <references refid="de/dd5/classmutaborGUI_1_1MutDocument_1a8792d30665780235188b69d991b12146">mutaborGUI::MutDocument::CmdNewView</references>
+        <references refid="de/dd5/classmutaborGUI_1_1MutDocument_1a490e710446b18715a05337f7bcbc4448">mutaborGUI::MutDocument::CmdUpdateAllViews</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1ad0fac7e94d5e64f7fa898108f440ab37">mutaborGUI::MutCommandProcessor::DoCommand</references>
+        <references refid="de/dd5/classmutaborGUI_1_1MutDocument_1a1ee4b2c09b0e8dfd9be7a7bea91d9568">mutaborGUI::MutDocument::DoOpenDocument</references>
+        <references refid="de/dd5/classmutaborGUI_1_1MutDocument_1adef89ac29d9db1f140333cc4c393838c">mutaborGUI::MutDocument::DoSaveDocument</references>
+        <references refid="df/dd1/group__GUI_1gaa4448e4dc73ad9a152ae506a3d251860" compoundref="dd/db5/MutFrame_8h" startline="289" endline="291">mutaborGUI::MutFrame::GetActiveWindow</references>
+        <references refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1a31c5d029ee4d179ed8b6157df4a6ef3a">mutaborGUI::MutCommandProcessor::Initialize</references>
+        <references refid="de/dd5/classmutaborGUI_1_1MutDocument_1ad6c4d1b5eb04e9c1800a6092bfc6bc07">mutaborGUI::MutDocument::IsModified</references>
+        <references refid="de/dd5/classmutaborGUI_1_1MutDocument_1a0b2288b27ec2854aca82c92d59662e3f">mutaborGUI::MutDocument::LoadObject</references>
+        <references refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" compoundref="dc/df3/MutFrame_8cpp" startline="119">mutaborGUI::LogicOn</references>
+        <references refid="de/dd5/classmutaborGUI_1_1MutDocument_1a7691fdfe3d97fe24e17f3121db82a528">mutaborGUI::MutDocument::Modify</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d7c/group__kernel_1gaedf3113729faf15522da4884cc137733" compoundref="d1/d73/Defs_8h" startline="79">mutUnused</references>
+        <references refid="de/dd5/classmutaborGUI_1_1MutDocument_1afd97521388f1f8abb9cb78eea825c7bb">mutaborGUI::MutDocument::OnCreate</references>
+        <references refid="de/dd5/classmutaborGUI_1_1MutDocument_1aee72588019bd3c8bf88aa01bdc0aa83a">mutaborGUI::MutDocument::OnCreateCommandProcessor</references>
+        <references refid="de/dd5/classmutaborGUI_1_1MutDocument_1a5c9f73610cc1813b1c3182b95db7a433">mutaborGUI::MutDocument::OnNewDocument</references>
+        <references refid="de/dd5/classmutaborGUI_1_1MutDocument_1a6b7e12b94c03e330316bffe2e1ee62b0">mutaborGUI::MutDocument::OnNewViewUpdateUI</references>
+        <references refid="de/dd5/classmutaborGUI_1_1MutDocument_1a2aeef16565b348ad82729499636ee80d">mutaborGUI::MutDocument::OnSaveModified</references>
+        <references refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1a14b06750cf14ad3c51fcda9dd559708e">mutaborGUI::MutCommandProcessor::Redo</references>
+        <references refid="de/dd5/classmutaborGUI_1_1MutDocument_1aa513d8f561f6df01c40cdc41cf3b95ce">mutaborGUI::MutDocument::SaveObject</references>
+        <references refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1afecce395376a2990b53a24878f0e90d6">mutaborGUI::MutCommandProcessor::SetMenuStrings</references>
+        <references refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1a49723c9207c632b0b8bf8d2b97856af1">mutaborGUI::MutCommandProcessor::Store</references>
+        <references refid="df/dd1/group__GUI_1ga80c3080d0917e2078ecd401c6e4ad33a" compoundref="d0/d68/mhDefs_8h" startline="144">STUBC</references>
+        <references refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1a9084896c007febd351164804a9378bc1">mutaborGUI::MutCommandProcessor::Submit</references>
+        <references refid="de/dd5/classmutaborGUI_1_1MutDocument_1a6a01dbca75ed8f64f713fd952b84b655">mutaborGUI::MutDocument::TryParent</references>
+        <references refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1aba60259b136b8b945f67155b4cdc03a9">mutaborGUI::MutCommandProcessor::Undo</references>
+        <references refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1a97fb933002397363da07e56580bdb377">mutaborGUI::MutCommandProcessor::UndoCommand</references>
+        <references refid="de/dd5/classmutaborGUI_1_1MutDocument_1a1cd01159b4536f0d095a9d70425a9e41">mutaborGUI::MutDocument::~MutDocument</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Document/View Document class for Mutabor source files. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright: (c) 2011 TU Dresden <simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein@users.berlios.de">keinstein@users.berlios.de</ulink>  GPL</para></simplesect>
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</para><para>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</para><para>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="comment">//<sp/>availlable<sp/>groups:<sp/>GUI,<sp/>route,<sp/>kernel,<sp/>src/wxGUI,<sp/>debug</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">src/kernel/Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="db/d00/MutDocument_8h" kindref="compound">src/wxGUI/MutDocument.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d0/d9e/MutView_8h" kindref="compound">src/wxGUI/MutView.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="db/dc1/MutApp_8h" kindref="compound">src/wxGUI/MutApp.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;wx/debug.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d2c/Route-inlines_8h" kindref="compound">src/kernel/routing/Route-inlines.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdio&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__BORLANDC__</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#pragma<sp/>hdrstop</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor" kindref="compound">mutaborGUI::MutCommandProcessor</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument" kindref="compound">mutaborGUI::MutDocument</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><ref refid="da/d79/group__docview_1ga6ec13dcf56fb697ed3fc3f815657c4fa" kindref="member">IMPLEMENT_DYNAMIC_CLASS</ref>(<ref refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor" kindref="compound">MutCommandProcessor</ref>,<sp/>wxCommandProcessor)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><ref refid="da/d79/group__docview_1ga6ec13dcf56fb697ed3fc3f815657c4fa" kindref="member">IMPLEMENT_DYNAMIC_CLASS</ref>(<ref refid="de/dd5/classmutaborGUI_1_1MutDocument" kindref="compound">MutDocument</ref>,<sp/>wxDocument)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="da/d79/group__docview_1ga113841024d2d545e8a68c7c7de47f144" refkind="member"><highlight class="normal"><ref refid="df/dd1/group__GUI_1gae91e1ff5ac7d0866e88220faba0a463b" kindref="member">BEGIN_EVENT_TABLE</ref>(MutDocument,<sp/>wxDocument)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>EVT_MENU(ID_NewViewFrame,<sp/>MutDocument::CmdNewView)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>EVT_UPDATE_UI(ID_NewViewFrame,<sp/>MutDocument::OnNewViewUpdateUI)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>EVT_MENU(ID_UpdateAllViews,<sp/>MutDocument::CmdUpdateAllViews)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><ref refid="dd/db0/MutDocManager_8cpp_1a9e7a087c5c550acffcd802f4b40bd609" kindref="member">END_EVENT_TABLE</ref>()</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal">namespace<sp/>mutaborGUI<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MutCommandProcessor::MutCommandProcessor(MutDocument<sp/>*<sp/>doc,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>maxCommands):</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxCommandProcessor(maxCommands)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_undoAccelerator<sp/>=<sp/>wxT(</highlight><highlight class="stringliteral">&quot;\tCtrl+Z&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_redoAccelerator<sp/>=<sp/>wxT(</highlight><highlight class="stringliteral">&quot;\tShift+Ctrl+Z&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>document<sp/>=<sp/>doc;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MutCommandProcessor::~MutCommandProcessor()</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1ad0fac7e94d5e64f7fa898108f440ab37" kindref="member">MutCommandProcessor::DoCommand</ref>(wxCommand&amp;<sp/>cmd)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(editor,_T(</highlight><highlight class="stringliteral">&quot;doing<sp/>Command:<sp/>%s&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxChar*)cmd.GetName().c_str());</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cmd.Do();</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1a97fb933002397363da07e56580bdb377" kindref="member">MutCommandProcessor::UndoCommand</ref>(wxCommand&amp;<sp/>cmd)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(editor,_T(</highlight><highlight class="stringliteral">&quot;undoing<sp/>Command:<sp/>%s&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxChar*)cmd.GetName().c_str());</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cmd.Undo();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Pass<sp/>a<sp/>command<sp/>to<sp/>the<sp/>processor.<sp/>The<sp/>processor<sp/>calls<sp/>Do();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//<sp/>if<sp/>successful,<sp/>is<sp/>appended<sp/>to<sp/>the<sp/>command<sp/>history<sp/>unless</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">//<sp/>storeIt<sp/>is<sp/>false.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1a9084896c007febd351164804a9378bc1" kindref="member">MutCommandProcessor::Submit</ref>(wxCommand<sp/>*command,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>storeIt)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(editor,_T(</highlight><highlight class="stringliteral">&quot;Submitted<sp/>command<sp/>(storeIt<sp/>=<sp/>%d):<sp/>%s&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>storeIt,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(command?(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxChar*)command-&gt;GetName().c_str():_T(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxCommandProcessor::Submit(command,</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1a49723c9207c632b0b8bf8d2b97856af1" kindref="member">MutCommandProcessor::Store</ref>(wxCommand<sp/>*command)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(editor,_T(</highlight><highlight class="stringliteral">&quot;storing<sp/>command:<sp/>%s&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(command?(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxChar*)command-&gt;GetName().c_str():_T(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxCommandProcessor::Store(command);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1aba60259b136b8b945f67155b4cdc03a9" kindref="member">MutCommandProcessor::Undo</ref>()</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(editor,_T(</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga80c3080d0917e2078ecd401c6e4ad33a" kindref="member">STUBC</ref>;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxCommandProcessor::Undo();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1a14b06750cf14ad3c51fcda9dd559708e" kindref="member">MutCommandProcessor::Redo</ref>()</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(editor,_T(</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga80c3080d0917e2078ecd401c6e4ad33a" kindref="member">STUBC</ref>;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxCommandProcessor::Redo();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1a75ea62ff74ccb24aa55d1209f45167a8" kindref="member">MutCommandProcessor::CanUndo</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="125"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(editor,_T(</highlight><highlight class="stringliteral">&quot;Can<sp/>undo?&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga80c3080d0917e2078ecd401c6e4ad33a" kindref="member">STUBC</ref>;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1a2cf6aa167c9afe94e47cca9cb8d62a5a" kindref="member">MutCommandProcessor::CanRedo</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="132"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(editor,_T(</highlight><highlight class="stringliteral">&quot;Can<sp/>redo?&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga80c3080d0917e2078ecd401c6e4ad33a" kindref="member">STUBC</ref>;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1a31c5d029ee4d179ed8b6157df4a6ef3a" kindref="member">MutCommandProcessor::Initialize</ref>()</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(editor,_T(</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxCommandProcessor::Initialize();</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1afecce395376a2990b53a24878f0e90d6" kindref="member">MutCommandProcessor::SetMenuStrings</ref>()</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(editor,_T(</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxCommandProcessor::SetMenuStrings();</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor_1ab670f87ddb191ccd3c25a4172095f3a5" kindref="member">MutCommandProcessor::ClearCommands</ref>()</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(editor,_T(</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxCommandProcessor::ClearCommands();</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MutDocument::MutDocument():wxDocument()</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1a1cd01159b4536f0d095a9d70425a9e41" kindref="member">MutDocument::~MutDocument</ref>()</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxCommandProcessor*<sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1aee72588019bd3c8bf88aa01bdc0aa83a" kindref="member">MutDocument::OnCreateCommandProcessor</ref>()</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1adef89ac29d9db1f140333cc4c393838c" kindref="member">MutDocument::DoSaveDocument</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>filename)</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MutView<sp/>*view<sp/>=<sp/>(MutView<sp/>*)GetFirstView();</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!view-&gt;GetTextsw()-&gt;SaveFile(filename))</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SetTitle(GetDocumentManager()-&gt;MakeFrameTitle(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SetFilename(filename,</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1a1ee4b2c09b0e8dfd9be7a7bea91d9568" kindref="member">MutDocument::DoOpenDocument</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>filename)</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MutView<sp/>*view<sp/>=<sp/>(MutView<sp/>*)GetFirstView();</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" kindref="member">mutASSERT</ref>(view);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!view-&gt;GetTextsw()-&gt;LoadFile(filename))</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(docview,_T(</highlight><highlight class="stringliteral">&quot;New<sp/>title:<sp/>&quot;</highlight><highlight class="normal">)+GetDocumentManager()-&gt;MakeFrameTitle(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SetTitle(GetDocumentManager()-&gt;MakeFrameTitle(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SetFilename(filename,</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1a5c9f73610cc1813b1c3182b95db7a433" kindref="member">MutDocument::OnNewDocument</ref>()<sp/></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!wxDocument::OnNewDocument())<sp/></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(docview,_T(</highlight><highlight class="stringliteral">&quot;New<sp/>title:<sp/>&quot;</highlight><highlight class="normal">)+GetDocumentManager()-&gt;MakeFrameTitle(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MutView<sp/>*view<sp/>=<sp/>(MutView<sp/>*)GetFirstView();</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(view)<sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MutFrame<sp/>*<sp/>frame<sp/>=<sp/>view<sp/>-&gt;<sp/>GetMutFrame();</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(frame)</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frame<sp/>-&gt;<sp/>SetTitle(GetDocumentManager()-&gt;MakeFrameTitle(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1adaa1eddb6e8df0305ef6a81c83f9d74a" kindref="member">MutDocument::CheckLogic</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" kindref="member">LogicOn</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MutFrame<sp/>*<sp/>frame<sp/>=<sp/><ref refid="df/dd1/group__GUI_1gaa4448e4dc73ad9a152ae506a3d251860" kindref="member">MutFrame::GetActiveWindow</ref>();</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(frame<sp/>&amp;&amp;<sp/>frame-&gt;GetDocument()<sp/>==<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref><sp/>(other,<sp/>_T(</highlight><highlight class="stringliteral">&quot;We<sp/>are<sp/>the<sp/>active<sp/>window.&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/>msg;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.Printf(<ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;This<sp/>logic<sp/>is<sp/>currently<sp/>active.<sp/>On<sp/>closing<sp/>it<sp/>will<sp/>be<sp/>deactivated.<sp/>Really<sp/>close<sp/>this<sp/>window?&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>wxMessageBox(msg,<sp/><ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Please<sp/>confirm<sp/>closing.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxICON_QUESTION<sp/>|<sp/>wxYES_NO)<sp/>!=<sp/>wxYES<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frame<sp/>-&gt;<sp/>DoStop();</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1a2aeef16565b348ad82729499636ee80d" kindref="member">MutDocument::OnSaveModified</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1adaa1eddb6e8df0305ef6a81c83f9d74a" kindref="member">CheckLogic</ref>())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxDocument::OnSaveModified();</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>wxUSE_STD_IOSTREAM</highlight></codeline>
+<codeline lineno="241"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxSTD<sp/>ostream&amp;<sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1aa513d8f561f6df01c40cdc41cf3b95ce" kindref="member">MutDocument::SaveObject</ref>(wxSTD<sp/>ostream&amp;<sp/>stream)</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;cmydoc::saveobject\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/>5;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;j&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stream;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxSTD<sp/>istream&amp;<sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1a0b2288b27ec2854aca82c92d59662e3f" kindref="member">MutDocument::LoadObject</ref>(wxSTD<sp/>istream&amp;<sp/>stream)</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(docview,_T(</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bOK(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nA(0);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>ch(0);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stream<sp/>&gt;&gt;<sp/>nA;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stream<sp/>&gt;&gt;<sp/>ch;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(stream.good())</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(docview,_T(</highlight><highlight class="stringliteral">&quot;num<sp/>is<sp/>%d<sp/>and<sp/>char<sp/>is<sp/>%c&quot;</highlight><highlight class="normal">),<sp/>nA,<sp/>ch);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bOK<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(bOK<sp/>==<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(docview,_T(</highlight><highlight class="stringliteral">&quot;load<sp/>error&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>tell<sp/>the<sp/>framework<sp/>to<sp/>abort<sp/>the<sp/>load<sp/>procedure</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stream.clear(std::ios_base::badbit);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stream;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="276"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxOutputStream&amp;<sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1aa513d8f561f6df01c40cdc41cf3b95ce" kindref="member">MutDocument::SaveObject</ref>(wxOutputStream&amp;<sp/>stream)</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;mydoc::saveobject()\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stream;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxInputStream&amp;<sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1a0b2288b27ec2854aca82c92d59662e3f" kindref="member">MutDocument::LoadObject</ref>(wxInputStream&amp;<sp/>stream)</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;mydoc::loadobject()\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stream;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="290"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1afd97521388f1f8abb9cb78eea825c7bb" kindref="member">MutDocument::OnCreate</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>path,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>flags)</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>you<sp/>should<sp/>call<sp/>the<sp/>one<sp/>in<sp/>the<sp/>superclass</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxDocument::OnCreate(path,<sp/>flags);</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1ad6c4d1b5eb04e9c1800a6092bfc6bc07" kindref="member">MutDocument::IsModified</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="299"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MutView<sp/>*view<sp/>=<sp/>(MutView<sp/>*)GetFirstView();</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(view<sp/>&amp;&amp;<sp/>view<sp/>-&gt;<sp/>GetTextsw())</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(wxDocument::IsModified()<sp/>||<sp/>view-&gt;GetTextsw()-&gt;IsModified());</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxDocument::IsModified();</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1a7691fdfe3d97fe24e17f3121db82a528" kindref="member">MutDocument::Modify</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>mod)</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MutView<sp/>*view<sp/>=<sp/>(MutView<sp/>*)GetFirstView();</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxDocument::Modify(mod);</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!mod<sp/>&amp;&amp;<sp/>view<sp/>&amp;&amp;<sp/>view-&gt;GetTextsw())</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>view-&gt;GetTextsw()-&gt;SetSavePoint();</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1a8792d30665780235188b69d991b12146" kindref="member">MutDocument::CmdNewView</ref>(wxCommandEvent&amp;<sp/>event)</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gaedf3113729faf15522da4884cc137733" kindref="member">mutUnused</ref>(event);</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//wxMessageBox(wxT(&quot;doc<sp/>newview<sp/>1&quot;),<sp/>_T(&quot;dialog&quot;),<sp/>wxOK<sp/>|<sp/>wxICON_INFORMATION,<sp/>NULL);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>we<sp/>manually<sp/>create<sp/>a<sp/>view,<sp/>and<sp/>register<sp/>it<sp/>with<sp/>the<sp/>document.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>view<sp/>needs<sp/>to<sp/>create<sp/>a<sp/>window<sp/>for<sp/>itself,<sp/>which<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>it<sp/>can<sp/>do<sp/>in<sp/>OnCreate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MutView*<sp/>pview<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>MutView();</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bKeep<sp/>=<sp/>pview-&gt;OnCreate(NULL,<sp/>0);</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(bKeep)</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>AddView(pview);</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>could<sp/>set<sp/>the<sp/>title<sp/>of<sp/>the<sp/>view&apos;s<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>AddView()<sp/>does<sp/>not<sp/>set<sp/>the<sp/>document<sp/>in<sp/>the<sp/>view,<sp/>so<sp/>we<sp/>do<sp/>that<sp/>now</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pview-&gt;SetDocument(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>kill<sp/>the<sp/>view<sp/>and<sp/>its<sp/>window.<sp/>Hopefully<sp/>nothing<sp/>else.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pview-&gt;Close(TRUE);</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>I<sp/>don&apos;t<sp/>think<sp/>the<sp/>Close<sp/>function<sp/>works</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxFAIL;</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>wxMessageBox(wxT(&quot;doc<sp/>newview<sp/>2&quot;),<sp/>_T(&quot;dialog&quot;),<sp/>wxOK<sp/>|<sp/>wxICON_INFORMATION,<sp/>NULL);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1a490e710446b18715a05337f7bcbc4448" kindref="member">MutDocument::CmdUpdateAllViews</ref>(wxCommandEvent&amp;<sp/>event)</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gaedf3113729faf15522da4884cc137733" kindref="member">mutUnused</ref>(event);</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UpdateAllViews();</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1a6b7e12b94c03e330316bffe2e1ee62b0" kindref="member">MutDocument::OnNewViewUpdateUI</ref>(wxUpdateUIEvent&amp;<sp/>event)</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal">.Enable(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>printf(&quot;MutDocument::OnNewViewUpdateUI\n&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/dd5/classmutaborGUI_1_1MutDocument_1a6a01dbca75ed8f64f713fd952b84b655" kindref="member">MutDocument::TryParent</ref>(wxEvent&amp;<sp/>event)</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gaedf3113729faf15522da4884cc137733" kindref="member">mutUnused</ref>(event);</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(eventqueue,_T(</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>we<sp/>must<sp/>pass<sp/>some<sp/>events<sp/>to<sp/>the<sp/>Application,<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>they<sp/>must<sp/>be<sp/>handled<sp/>here<sp/>somehow<sp/>replacing<sp/>false</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight></codeline>
+<codeline lineno="370"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Implementation<sp/>in<sp/>Event.cpp:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>wxTheApp<sp/>&amp;&amp;<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Special<sp/>case:<sp/>don&apos;t<sp/>pass<sp/>wxEVT_IDLE<sp/>to<sp/>wxApp,<sp/>since<sp/>it&apos;ll<sp/>always</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>swallow<sp/>it.<sp/>wxEVT_IDLE<sp/>is<sp/>sent<sp/>explicitly<sp/>to<sp/>wxApp<sp/>so<sp/>it<sp/>will<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>processed<sp/>appropriately<sp/>via<sp/>SearchEventTable.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>event.GetEventType()<sp/>!=<sp/>wxEVT_IDLE<sp/>)</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>wxTheApp-&gt;ProcessEvent(event)<sp/>)</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="384"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="388"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"></highlight></codeline>
+<codeline lineno="390"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocument.cpp"/>
+  </compounddef>
+</doxygen>

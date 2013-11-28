@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="db/d3c/classInputFilterPanelBase" kind="class" prot="public">
+    <compoundname>InputFilterPanelBase</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">wxPanel</basecompoundref>
+    <derivedcompoundref refid="d8/d51/classmutaborGUI_1_1InputFilterPanel" prot="public" virt="non-virtual">mutaborGUI::InputFilterPanel</derivedcompoundref>
+    <includes refid="d2/dc0/wxresource_8h" local="no">wxresource.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="db/d3c/classInputFilterPanelBase_1a7ffebedd73947f67b88ca8494a98c6e7" prot="protected" static="no" mutable="no">
+        <type>wxChoicebook *</type>
+        <definition>wxChoicebook* InputFilterPanelBase::inputDevice</definition>
+        <argsstring></argsstring>
+        <name>inputDevice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" line="271" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" bodystart="271" bodyend="-1"/>
+        <referencedby refid="d8/d51/classmutaborGUI_1_1InputFilterPanel_1a00b2714680b7c1b1f0e731b5a7bd9fde" compoundref="d9/dd2/BoxDlg_8h" startline="85" endline="85">mutaborGUI::InputFilterPanel::GetInputDeviceBook</referencedby>
+        <referencedby refid="db/d3c/classInputFilterPanelBase_1a4a621a6f034ae59919e09c357fd60783" compoundref="d2/dc0/wxresource_8h" startline="274" endline="277">InitWidgetsFromXRC</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="db/d3c/classInputFilterPanelBase_1a4a621a6f034ae59919e09c357fd60783" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void InputFilterPanelBase::InitWidgetsFromXRC</definition>
+        <argsstring>(wxWindow *parent)</argsstring>
+        <name>InitWidgetsFromXRC</name>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" line="274" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" bodystart="274" bodyend="277"/>
+        <references refid="db/d3c/classInputFilterPanelBase_1a7ffebedd73947f67b88ca8494a98c6e7" compoundref="d2/dc0/wxresource_8h" startline="271">inputDevice</references>
+        <referencedby refid="db/d3c/classInputFilterPanelBase_1aaf860c79a14c25831e31362b346d75bf" compoundref="d2/dc0/wxresource_8h" startline="279" endline="281">InputFilterPanelBase</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/d3c/classInputFilterPanelBase_1aaf860c79a14c25831e31362b346d75bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>InputFilterPanelBase::InputFilterPanelBase</definition>
+        <argsstring>(wxWindow *parent=NULL)</argsstring>
+        <name>InputFilterPanelBase</name>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+          <defval>NULL</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" line="279" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" bodystart="279" bodyend="281"/>
+        <references refid="db/d3c/classInputFilterPanelBase_1a4a621a6f034ae59919e09c357fd60783" compoundref="d2/dc0/wxresource_8h" startline="274" endline="277">InitWidgetsFromXRC</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3055">
+        <label>InputFilterPanelBase</label>
+        <link refid="db/d3c/classInputFilterPanelBase"/>
+        <childnode refid="3056" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3056">
+        <label>wxPanel</label>
+      </node>
+      <node id="3057">
+        <label>mutaborGUI::InputFilterPanel</label>
+        <link refid="d8/d51/classmutaborGUI_1_1InputFilterPanel"/>
+        <childnode refid="3055" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3058">
+        <label>InputFilterPanelBase</label>
+        <link refid="db/d3c/classInputFilterPanelBase"/>
+        <childnode refid="3059" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3059">
+        <label>wxPanel</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" line="269" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" bodystart="269" bodyend="282"/>
+    <listofallmembers>
+      <member refid="db/d3c/classInputFilterPanelBase_1a4a621a6f034ae59919e09c357fd60783" prot="private" virt="non-virtual"><scope>InputFilterPanelBase</scope><name>InitWidgetsFromXRC</name></member>
+      <member refid="db/d3c/classInputFilterPanelBase_1a7ffebedd73947f67b88ca8494a98c6e7" prot="protected" virt="non-virtual"><scope>InputFilterPanelBase</scope><name>inputDevice</name></member>
+      <member refid="db/d3c/classInputFilterPanelBase_1aaf860c79a14c25831e31362b346d75bf" prot="public" virt="non-virtual"><scope>InputFilterPanelBase</scope><name>InputFilterPanelBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

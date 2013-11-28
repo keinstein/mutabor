@@ -1,0 +1,1033 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="de/d4d/classmutaborGUI_1_1MutApp" kind="class" prot="public">
+    <compoundname>mutaborGUI::MutApp</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">wxApp</basecompoundref>
+    <includes refid="db/dc1/MutApp_8h" local="no">MutApp.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="de/d4d/classmutaborGUI_1_1MutApp_1a0d883de6f9ce01ae15c82e819ff1a645" prot="public" static="no">
+        <name>MenuType</name>
+        <enumvalue id="de/d4d/classmutaborGUI_1_1MutApp_1a0d883de6f9ce01ae15c82e819ff1a645a592cda871431acc6d1ce28c267a6090a" prot="public">
+          <name>ProgramMenu</name>
+          <briefdescription>
+<para>Mac: common application menu. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="de/d4d/classmutaborGUI_1_1MutApp_1a0d883de6f9ce01ae15c82e819ff1a645a16f908fc61a6acf3565ac008180051bf" prot="public">
+          <name>EditorMenu</name>
+          <briefdescription>
+<para>File editor menu. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="de/d4d/classmutaborGUI_1_1MutApp_1a0d883de6f9ce01ae15c82e819ff1a645aaa11199d1ef70aa26b22190e4d3254e7" prot="public">
+          <name>RouteMenu</name>
+          <briefdescription>
+<para>Route editor menu. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Some configuration help for Menu generation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="99" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" bodystart="99" bodyend="103"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="de/d4d/classmutaborGUI_1_1MutApp_1ae72468eafd76aef2ba3bef5c9fa0c3d3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class AppAbout</definition>
+        <argsstring></argsstring>
+        <name>AppAbout</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="95" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="de/d4d/classmutaborGUI_1_1MutApp_1a958a85a703fb573978d40dfe4f19772e" prot="protected" static="no" mutable="no">
+        <type>wxLocale</type>
+        <definition>wxLocale mutaborGUI::MutApp::m_locale</definition>
+        <argsstring></argsstring>
+        <name>m_locale</name>
+        <briefdescription>
+<para>locale data to be used inside the application </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="329" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" bodystart="329" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d4d/classmutaborGUI_1_1MutApp_1a82a3e504d1d214516b914b3c67988db2" prot="protected" static="no" mutable="no">
+        <type><ref refid="d5/d75/classmutaborGUI_1_1MutDocManager" kindref="compound">mutaborGUI::MutDocManager</ref> *</type>
+        <definition>mutaborGUI::MutDocManager* mutaborGUI::MutApp::document_manager</definition>
+        <argsstring></argsstring>
+        <name>document_manager</name>
+        <briefdescription>
+<para>Document manager. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="332" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" bodystart="332" bodyend="-1"/>
+        <referencedby refid="de/d4d/classmutaborGUI_1_1MutApp_1a65df8940349cf68d49443fdc6ef879ca" compoundref="db/dc1/MutApp_8h" startline="272" endline="272">GetDocumentManager</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/d4d/classmutaborGUI_1_1MutApp_1a3576ec0b6573cd7907a086bbb86ced3e" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool mutaborGUI::MutApp::quitting</definition>
+        <argsstring></argsstring>
+        <name>quitting</name>
+        <briefdescription>
+<para>flag indicating, that we are in quitting mode. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="335" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" bodystart="335" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a7c124308201906016fc79a2de5cc18df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::MutApp::OnInit</definition>
+        <argsstring>()</argsstring>
+        <name>OnInit</name>
+        <briefdescription>
+<para>Initialization. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function does the common setup. <itemizedlist>
+<listitem><para>Application name </para></listitem>
+<listitem><para>Locale </para></listitem>
+<listitem><para>Help system </para></listitem>
+<listitem><para>Settings </para></listitem>
+<listitem><para>Main window </para></listitem>
+</itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="113" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a26eafa4baced00bb8fc70163c9e1204c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::OnInitCmdLine</definition>
+        <argsstring>(wxCmdLineParser &amp;parser)</argsstring>
+        <name>OnInitCmdLine</name>
+        <param>
+          <type>wxCmdLineParser &amp;</type>
+          <declname>parser</declname>
+        </param>
+        <briefdescription>
+<para>Initialize command line arguments. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="116" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1ab38d002781e4c2a0d91a0c71641d601d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::MutApp::OnCmdLineParsed</definition>
+        <argsstring>(wxCmdLineParser &amp;parser)</argsstring>
+        <name>OnCmdLineParsed</name>
+        <param>
+          <type>wxCmdLineParser &amp;</type>
+          <declname>parser</declname>
+        </param>
+        <briefdescription>
+<para>Process command line arguments. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="118" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a9dcf6028bb14b6421f0a5d5a693f3f0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::OnUnhandledException</definition>
+        <argsstring>()</argsstring>
+        <name>OnUnhandledException</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="120" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a61a02abda1a4cfaf850f261cc7c33e01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::MutApp::OnExceptionInMainLoop</definition>
+        <argsstring>()</argsstring>
+        <name>OnExceptionInMainLoop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="121" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a0e867fc44733333aa40ebda7ca6e74f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::OnFatalException</definition>
+        <argsstring>()</argsstring>
+        <name>OnFatalException</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="122" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1aa24dc84db1e1ad6ddcb2e84de62b6be7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool mutaborGUI::MutApp::ProcessEvent</definition>
+        <argsstring>(wxEvent &amp;event)</argsstring>
+        <name>ProcessEvent</name>
+        <param>
+          <type>wxEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="131" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a53fda4093651a47d851f002f573a6e21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::PassEventToDocManagerCMD</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>PassEventToDocManagerCMD</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Pass event to document manager. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="135" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a83be2c6f08fba243df1607b4e9cb0686" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::PassEventToDocManagerUPD</definition>
+        <argsstring>(wxUpdateUIEvent &amp;event)</argsstring>
+        <name>PassEventToDocManagerUPD</name>
+        <param>
+          <type>wxUpdateUIEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="136" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1ab8a8a7863cb5b37490e2565a722c5d74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::OnMRUFile</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>OnMRUFile</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>add handling of last files. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="139" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a38f89b19f67ce1683b51c9d2c7ee89a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::CmAbout</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>CmAbout</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Display an about dialog box. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="142" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a64cc840223f6a9c80c298261c6319f38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::CmSetup</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>CmSetup</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Display and handle setup dialog. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="144" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a31287e30f087cf6ff4ddb3a45bec1a7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::CmFileNew</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>CmFileNew</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Create an editor file. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="146" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a501093e6ab3b751375d2c73541d3e017" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::CmFileOpen</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>CmFileOpen</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Open a new editor file. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="148" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1aa431a7368eafe4023d7fe482f187ca98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::OnPrintSetup</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>OnPrintSetup</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Edit printing settings. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="150" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a1210131757703b02b68fba9c7784cb2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::CmRoutes</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>CmRoutes</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Open a new route editor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="153" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a7aa1cfcbd0a6be43c2b826ac4fbfe1f5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::CmRouteLoad</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>CmRouteLoad</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Load a Route. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="155" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" bodystart="155" bodyend="158"/>
+        <references refid="dc/df2/group__GUIroute_1ga24bfe10e24a2431758a4ee4e8153291e" compoundref="dc/def/MutRouteWnd_8cpp" startline="422" endline="522">mutaborGUI::MutRouteWnd::CmRouteLoad</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a980c145fc91b97ea89833fa66927bb89" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::CmRouteSave</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>CmRouteSave</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Save a Route. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="161" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" bodystart="161" bodyend="164"/>
+        <references refid="dc/df2/group__GUIroute_1ga72bc8daeb27461bd51dda0a80baddae6" compoundref="dc/def/MutRouteWnd_8cpp" startline="524" endline="599">mutaborGUI::MutRouteWnd::CmRouteSave</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1ac05532f5dd346b753b42fdf9b6e63c09" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::CmRouteSaveAs</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>CmRouteSaveAs</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Save a Route under a new name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="167" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" bodystart="167" bodyend="170"/>
+        <references refid="dc/df2/group__GUIroute_1ga6e292c98b7e68b4b9f846d186786e11d" compoundref="dc/def/MutRouteWnd_8cpp" startline="601" endline="633">mutaborGUI::MutRouteWnd::CmRouteSaveAs</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a9407de07c44a0545e0a64f3a75773a37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::CmHelp</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>CmHelp</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Read help about a certain topic. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="173" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1ae33eceb11bc9a0c4d02b50f86d526fc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::ShowHelp</definition>
+        <argsstring>(int commandId)</argsstring>
+        <name>ShowHelp</name>
+        <param>
+          <type>int</type>
+          <declname>commandId</declname>
+        </param>
+        <briefdescription>
+<para>Show the helpwindow on the page associated with a certain command id. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function opens a help window according to the current command id. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>commandId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>wxWidgets command id to open help window for. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="178" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1afab30573b0faed30a59a0b762e2e240e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::CmError</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>CmError</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Show an error message from somewhere in the program. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="181" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a7f50b54644fb11d1211268cc63642213" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::CmQuit</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>CmQuit</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Exit the program. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="184" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1aa3cb7184058bca09bc4b408914b84ff8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d63/classmutaborGUI_1_1MutFrame" kindref="compound">MutFrame</ref> *</type>
+        <definition>MutFrame* mutaborGUI::MutApp::CreateMainFrame</definition>
+        <argsstring>(MenuType type, wxWindowID id=wxID_ANY)</argsstring>
+        <name>CreateMainFrame</name>
+        <param>
+          <type><ref refid="de/d4d/classmutaborGUI_1_1MutApp_1a0d883de6f9ce01ae15c82e819ff1a645" kindref="member">MenuType</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>wxWindowID</type>
+          <declname>id</declname>
+          <defval>wxID_ANY</defval>
+        </param>
+        <briefdescription>
+<para>Create a main frame. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function create a new Top Level Frame. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flag indicating which parts the menu bar shall contain. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Window id </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="200" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a85c5e77b8e924708cabedc5e50a8ef00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d63/classmutaborGUI_1_1MutFrame" kindref="compound">MutFrame</ref> *</type>
+        <definition>MutFrame* mutaborGUI::MutApp::InitMainFrame</definition>
+        <argsstring>(MenuType type, MutFrame *frame)</argsstring>
+        <name>InitMainFrame</name>
+        <param>
+          <type><ref refid="de/d4d/classmutaborGUI_1_1MutApp_1a0d883de6f9ce01ae15c82e819ff1a645" kindref="member">MenuType</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="d6/d63/classmutaborGUI_1_1MutFrame" kindref="compound">MutFrame</ref> *</type>
+          <declname>frame</declname>
+        </param>
+        <briefdescription>
+<para>Initialize a main frame. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function initialises a freshly created Top Level Frame. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>frame</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>frame that will be created </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="206" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1aad30ae7d9fe424caf158e0480a11212c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::RegisterFrame</definition>
+        <argsstring>(wxFrame *f)</argsstring>
+        <name>RegisterFrame</name>
+        <param>
+          <type>wxFrame *</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>Registers a frame. </para>        </briefdescription>
+        <detaileddescription>
+<para>Register the frame in the application specific frame list. Though wxWidgets handles its own <computeroutput>wxTopLevelWindows</computeroutput>, it is not documented and its usage seems not to be encouraged. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>f</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Frame to be added. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="de/d4d/classmutaborGUI_1_1MutApp_1a61f4bdc367d0416bdee55d2c22210b7b" kindref="member">UnregisterFrame</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="215" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a61f4bdc367d0416bdee55d2c22210b7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::UnregisterFrame</definition>
+        <argsstring>(wxFrame *f)</argsstring>
+        <name>UnregisterFrame</name>
+        <param>
+          <type>wxFrame *</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>Unregisters a frame. </para>        </briefdescription>
+        <detaileddescription>
+<para>Removes the frame f from the application specific frame list. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>f</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Frame to be removed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="de/d4d/classmutaborGUI_1_1MutApp_1aad30ae7d9fe424caf158e0480a11212c" kindref="member">RegisterFrame</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="221" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a0352b835edadd00811c5a5fa6029b3d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>virtual int mutaborGUI::MutApp::OnExit</definition>
+        <argsstring>()</argsstring>
+        <name>OnExit</name>
+        <briefdescription>
+<para>Callback for program quitting. </para>        </briefdescription>
+        <detaileddescription>
+<para>While quitting wxWidgets calls this virtual function. We use it to save the current setup. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="242" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1af7561339894a4d378d98e5418e6d293c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::SaveState</definition>
+        <argsstring>()</argsstring>
+        <name>SaveState</name>
+        <briefdescription>
+<para>Save global state. </para>        </briefdescription>
+        <detaileddescription>
+<para>Save the current global settings in the registry or configuration file. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="252" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1aac1806796f8bdf0efb2314f814164818" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::RestoreState</definition>
+        <argsstring>()</argsstring>
+        <name>RestoreState</name>
+        <briefdescription>
+<para>Load global state. </para>        </briefdescription>
+        <detaileddescription>
+<para>Load the current global settings in the registry or configuration file. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="257" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a65df8940349cf68d49443fdc6ef879ca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxDocManager *</type>
+        <definition>const wxDocManager* mutaborGUI::MutApp::GetDocumentManager</definition>
+        <argsstring>() const </argsstring>
+        <name>GetDocumentManager</name>
+        <briefdescription>
+<para>Allow access to the document manager. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="272" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" bodystart="272" bodyend="272"/>
+        <references refid="de/d4d/classmutaborGUI_1_1MutApp_1a82a3e504d1d214516b914b3c67988db2" compoundref="db/dc1/MutApp_8h" startline="332">document_manager</references>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a777ea507c80dd26c3e929bd0c8471dde" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>wxDocManager *</type>
+        <definition>wxDocManager* mutaborGUI::MutApp::GetDocumentManager</definition>
+        <argsstring>()</argsstring>
+        <name>GetDocumentManager</name>
+        <briefdescription>
+<para>Allow write access to the document manager. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="275" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" bodystart="275" bodyend="275"/>
+        <references refid="de/d4d/classmutaborGUI_1_1MutApp_1a82a3e504d1d214516b914b3c67988db2" compoundref="db/dc1/MutApp_8h" startline="332">document_manager</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a25b212c235ff83dae9bc68000155dc69" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>wxString</type>
+        <definition>static wxString mutaborGUI::MutApp::GetResourceName</definition>
+        <argsstring>(const wxString &amp;file)</argsstring>
+        <name>GetResourceName</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxString &amp;</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+<para>Get a possibly localized resource file name. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function tries to find the file given by <computeroutput>file</computeroutput> in a localized version before returning it unlocalized if that is impossible.</para><para>For example, the file help.zip is searched for <itemizedlist>
+<listitem><para>first in <computeroutput>/usr/share/mutabor/de_DE/help</computeroutput>.zip, </para></listitem>
+<listitem><para>otherwise in <computeroutput>/usr/share/mutabor/de/help</computeroutput>.zip. </para></listitem>
+<listitem><para>If that fails <computeroutput>/usr/share/mutabor/help</computeroutput>.zip is returned unchecked. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File name to be searched for. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>localized file name. </para></simplesect>
+</para></listitem>
+</itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="237" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a26c0f93b277560c1289cc4cbb5422f21" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool mutaborGUI::MutApp::MustOpenFrame</definition>
+        <argsstring>(MutFrame *frame)</argsstring>
+        <name>MustOpenFrame</name>
+        <param>
+          <type><ref refid="d6/d63/classmutaborGUI_1_1MutFrame" kindref="compound">MutFrame</ref> *</type>
+          <declname>frame</declname>
+        </param>
+        <briefdescription>
+<para>determine if new frame must be opened </para>        </briefdescription>
+        <detaileddescription>
+<para>Determine we have an empty frame or we must open a new one </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="262" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" bodystart="262" bodyend="269"/>
+        <references refid="df/dd1/group__GUI_1gaf8ced57287d870cf59d79766ba10c431" compoundref="dd/db5/MutFrame_8h" startline="260" endline="263">mutaborGUI::MutFrame::HasClient</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a39feb727e7feb9c7e43702210cb496ea" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>wxMenu *</type>
+        <definition>wxMenu* mutaborGUI::MutApp::MakeFileMenu</definition>
+        <argsstring>(wxMenuBar *menuBar, MenuType type)</argsstring>
+        <name>MakeFileMenu</name>
+        <param>
+          <type>wxMenuBar *</type>
+          <declname>menuBar</declname>
+        </param>
+        <param>
+          <type><ref refid="de/d4d/classmutaborGUI_1_1MutApp_1a0d883de6f9ce01ae15c82e819ff1a645" kindref="member">MenuType</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Creates a file menu. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function creates the file menu. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>menuBar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Menu bar, where the file menu is to be appended </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flags indicating, which menus shall be created. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="285" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a0282476f629d2ad700b74214f1d98029" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::MakeEditMenu</definition>
+        <argsstring>(wxMenuBar *menuBar, MenuType type)</argsstring>
+        <name>MakeEditMenu</name>
+        <param>
+          <type>wxMenuBar *</type>
+          <declname>menuBar</declname>
+        </param>
+        <param>
+          <type><ref refid="de/d4d/classmutaborGUI_1_1MutApp_1a0d883de6f9ce01ae15c82e819ff1a645" kindref="member">MenuType</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Creates an edit menu. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function creates the editor menu. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>menuBar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Menu bar, where the file menu is to be appended </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flags indicating, which menus shall be created. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="292" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a7fef7fd5100043f573fbe9e92e63acdf" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::MakeLogicMenu</definition>
+        <argsstring>(wxMenuBar *menuBar)</argsstring>
+        <name>MakeLogicMenu</name>
+        <param>
+          <type>wxMenuBar *</type>
+          <declname>menuBar</declname>
+        </param>
+        <briefdescription>
+<para>Creates a mutabor logic menu. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function creates the logic menu. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>menuBar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Menu bar, where the file menu is to be appended </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="298" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a3816fbc4116ce902dd74a87dfab482ef" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::MakeRoutesMenu</definition>
+        <argsstring>(wxMenuBar *menuBar, MenuType type)</argsstring>
+        <name>MakeRoutesMenu</name>
+        <param>
+          <type>wxMenuBar *</type>
+          <declname>menuBar</declname>
+        </param>
+        <param>
+          <type><ref refid="de/d4d/classmutaborGUI_1_1MutApp_1a0d883de6f9ce01ae15c82e819ff1a645" kindref="member">MenuType</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Creates a mutabor routes menu. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function creates the roues menu. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>menuBar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Menu bar, where the file menu is to be appended </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="304" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1ae3e15c9261df7e580c9eec59452e28bb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::MakeViewMenu</definition>
+        <argsstring>(wxMenuBar *menuBar, MenuType type)</argsstring>
+        <name>MakeViewMenu</name>
+        <param>
+          <type>wxMenuBar *</type>
+          <declname>menuBar</declname>
+        </param>
+        <param>
+          <type><ref refid="de/d4d/classmutaborGUI_1_1MutApp_1a0d883de6f9ce01ae15c82e819ff1a645" kindref="member">MenuType</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Creates a View menu. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function creates the view menu. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>menuBar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Menu bar, where the file menu is to be appended </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flags indicating, which menus shall be created. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="311" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a044d0505590b6beff4d527a390d99e8b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::MakeSequencerMenu</definition>
+        <argsstring>(wxMenuBar *menuBar)</argsstring>
+        <name>MakeSequencerMenu</name>
+        <param>
+          <type>wxMenuBar *</type>
+          <declname>menuBar</declname>
+        </param>
+        <briefdescription>
+<para>Creates a mutabor sequencer menu. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function creates the sequencer menu. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>menuBar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Menu bar, where the file menu is to be appended </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="317" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1af5cd47f22fe0e9ece04b5966d3dc6b7e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::MakeHelpMenu</definition>
+        <argsstring>(wxMenuBar *menuBar)</argsstring>
+        <name>MakeHelpMenu</name>
+        <param>
+          <type>wxMenuBar *</type>
+          <declname>menuBar</declname>
+        </param>
+        <briefdescription>
+<para>Creates a mutabor help menu. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function creates the help menu. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>menuBar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Menu bar, where the file menu is to be appended </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="323" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Mutabor application class. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class is the main application class of Mutabor. It handles initialization, exiting and on Mac OS also the application menu. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="3516">
+        <label>mutaborGUI::MutApp</label>
+        <link refid="de/d4d/classmutaborGUI_1_1MutApp"/>
+        <childnode refid="3517" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3517">
+        <label>wxApp</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3518">
+        <label>mutaborGUI::MutApp</label>
+        <link refid="de/d4d/classmutaborGUI_1_1MutApp"/>
+        <childnode refid="3519" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3520" relation="usage">
+          <edgelabel>document_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="3520">
+        <label>mutaborGUI::MutDocManager</label>
+        <link refid="d5/d75/classmutaborGUI_1_1MutDocManager"/>
+        <childnode refid="3521" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3519">
+        <label>wxApp</label>
+      </node>
+      <node id="3521">
+        <label>wxDocManager</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="93" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" bodystart="92" bodyend="340"/>
+    <listofallmembers>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1ae72468eafd76aef2ba3bef5c9fa0c3d3" prot="private" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>AppAbout</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a38f89b19f67ce1683b51c9d2c7ee89a2" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>CmAbout</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1afab30573b0faed30a59a0b762e2e240e" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>CmError</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a31287e30f087cf6ff4ddb3a45bec1a7a" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>CmFileNew</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a501093e6ab3b751375d2c73541d3e017" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>CmFileOpen</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a9407de07c44a0545e0a64f3a75773a37" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>CmHelp</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a7f50b54644fb11d1211268cc63642213" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>CmQuit</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a7aa1cfcbd0a6be43c2b826ac4fbfe1f5" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>CmRouteLoad</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a1210131757703b02b68fba9c7784cb2e" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>CmRoutes</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a980c145fc91b97ea89833fa66927bb89" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>CmRouteSave</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1ac05532f5dd346b753b42fdf9b6e63c09" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>CmRouteSaveAs</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a64cc840223f6a9c80c298261c6319f38" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>CmSetup</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1aa3cb7184058bca09bc4b408914b84ff8" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>CreateMainFrame</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a82a3e504d1d214516b914b3c67988db2" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>document_manager</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a0d883de6f9ce01ae15c82e819ff1a645a16f908fc61a6acf3565ac008180051bf" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>EditorMenu</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a65df8940349cf68d49443fdc6ef879ca" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>GetDocumentManager</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a777ea507c80dd26c3e929bd0c8471dde" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>GetDocumentManager</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a25b212c235ff83dae9bc68000155dc69" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>GetResourceName</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a85c5e77b8e924708cabedc5e50a8ef00" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>InitMainFrame</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a958a85a703fb573978d40dfe4f19772e" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>m_locale</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a0282476f629d2ad700b74214f1d98029" prot="private" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>MakeEditMenu</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a39feb727e7feb9c7e43702210cb496ea" prot="private" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>MakeFileMenu</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1af5cd47f22fe0e9ece04b5966d3dc6b7e" prot="private" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>MakeHelpMenu</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a7fef7fd5100043f573fbe9e92e63acdf" prot="private" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>MakeLogicMenu</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a3816fbc4116ce902dd74a87dfab482ef" prot="private" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>MakeRoutesMenu</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a044d0505590b6beff4d527a390d99e8b" prot="private" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>MakeSequencerMenu</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1ae3e15c9261df7e580c9eec59452e28bb" prot="private" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>MakeViewMenu</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a0d883de6f9ce01ae15c82e819ff1a645" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>MenuType</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a26c0f93b277560c1289cc4cbb5422f21" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>MustOpenFrame</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1ab38d002781e4c2a0d91a0c71641d601d" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>OnCmdLineParsed</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a61a02abda1a4cfaf850f261cc7c33e01" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>OnExceptionInMainLoop</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a0352b835edadd00811c5a5fa6029b3d9" prot="public" virt="virtual"><scope>mutaborGUI::MutApp</scope><name>OnExit</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a0e867fc44733333aa40ebda7ca6e74f9" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>OnFatalException</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a7c124308201906016fc79a2de5cc18df" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>OnInit</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a26eafa4baced00bb8fc70163c9e1204c" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>OnInitCmdLine</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1ab8a8a7863cb5b37490e2565a722c5d74" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>OnMRUFile</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1aa431a7368eafe4023d7fe482f187ca98" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>OnPrintSetup</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a9dcf6028bb14b6421f0a5d5a693f3f0e" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>OnUnhandledException</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a53fda4093651a47d851f002f573a6e21" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>PassEventToDocManagerCMD</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a83be2c6f08fba243df1607b4e9cb0686" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>PassEventToDocManagerUPD</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1aa24dc84db1e1ad6ddcb2e84de62b6be7" prot="public" virt="virtual"><scope>mutaborGUI::MutApp</scope><name>ProcessEvent</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a0d883de6f9ce01ae15c82e819ff1a645a592cda871431acc6d1ce28c267a6090a" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>ProgramMenu</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a3576ec0b6573cd7907a086bbb86ced3e" prot="protected" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>quitting</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1aad30ae7d9fe424caf158e0480a11212c" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>RegisterFrame</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1aac1806796f8bdf0efb2314f814164818" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>RestoreState</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a0d883de6f9ce01ae15c82e819ff1a645aaa11199d1ef70aa26b22190e4d3254e7" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>RouteMenu</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1af7561339894a4d378d98e5418e6d293c" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>SaveState</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1ae33eceb11bc9a0c4d02b50f86d526fc0" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>ShowHelp</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a61f4bdc367d0416bdee55d2c22210b7b" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>UnregisterFrame</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

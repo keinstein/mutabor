@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer" kind="class" prot="public">
+    <compoundname>mutabor::CommonFileInputDevice::FileTimer</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Thread</basecompoundref>
+    <includes refid="d9/d17/CommonFileDevice_8h" local="no">CommonFileDevice.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1a5bd8b57fdd94dcc5fe6e79a3f64da78a" prot="private" static="no" mutable="no">
+        <type>boost::intrusive_ptr&lt; <ref refid="dd/d3c/classmutabor_1_1CommonFileInputDevice" kindref="compound">CommonFileInputDevice</ref> &gt;</type>
+        <definition>boost::intrusive_ptr&lt;CommonFileInputDevice&gt; mutabor::CommonFileInputDevice::FileTimer::file</definition>
+        <argsstring></argsstring>
+        <name>file</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="127" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="127" bodyend="-1"/>
+        <referencedby refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1a99cb79ee974f21379ab938659ca47521" compoundref="d9/d17/CommonFileDevice_8h" startline="157" endline="159">ClearFile</referencedby>
+        <referencedby refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1a44a1c766d740910e146ee576ac469b7f" compoundref="d9/d17/CommonFileDevice_8h" startline="143" endline="146">Entry</referencedby>
+        <referencedby refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1af7a33f994ce97b3e0ebf85e9320b8499" compoundref="d9/d17/CommonFileDevice_8h" startline="161" endline="163">HasFile</referencedby>
+        <referencedby refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1af0f260d3c21578002d95f1b1eac5fae1" compoundref="d9/d17/CommonFileDevice_8h" startline="148" endline="155">OnExit</referencedby>
+        <referencedby refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1add1c80ab7fafc2dc054de0d3b453342b" compoundref="d9/d17/CommonFileDevice_8h" startline="134" endline="141">~FileTimer</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1a5802b5763382138c84cf3fe19a9b2f7b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::CommonFileInputDevice::FileTimer::FileTimer</definition>
+        <argsstring>(CommonFileInputDevice *f, ThreadKind kind=wxTHREAD_DETACHED)</argsstring>
+        <name>FileTimer</name>
+        <param>
+          <type><ref refid="dd/d3c/classmutabor_1_1CommonFileInputDevice" kindref="compound">CommonFileInputDevice</ref> *</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>ThreadKind</type>
+          <declname>kind</declname>
+          <defval>wxTHREAD_DETACHED</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="129" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="129" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1add1c80ab7fafc2dc054de0d3b453342b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual mutabor::CommonFileInputDevice::FileTimer::~FileTimer</definition>
+        <argsstring>()</argsstring>
+        <name>~FileTimer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="134" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="134" bodyend="141"/>
+        <references refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1a5bd8b57fdd94dcc5fe6e79a3f64da78a" compoundref="d9/d17/CommonFileDevice_8h" startline="127">file</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac12acf2139170dc37a1432f25affd4f2" compoundref="d9/d17/CommonFileDevice_8h" startline="271">mutabor::CommonFileInputDevice::timer</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1a44a1c766d740910e146ee576ac469b7f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ExitCode</type>
+        <definition>ExitCode mutabor::CommonFileInputDevice::FileTimer::Entry</definition>
+        <argsstring>()</argsstring>
+        <name>Entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="143" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="143" bodyend="146"/>
+        <references refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1a5bd8b57fdd94dcc5fe6e79a3f64da78a" compoundref="d9/d17/CommonFileDevice_8h" startline="127">file</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1af0f260d3c21578002d95f1b1eac5fae1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonFileInputDevice::FileTimer::OnExit</definition>
+        <argsstring>()</argsstring>
+        <name>OnExit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="148" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="148" bodyend="155"/>
+        <references refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1a5bd8b57fdd94dcc5fe6e79a3f64da78a" compoundref="d9/d17/CommonFileDevice_8h" startline="127">file</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac12acf2139170dc37a1432f25affd4f2" compoundref="d9/d17/CommonFileDevice_8h" startline="271">mutabor::CommonFileInputDevice::timer</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1a99cb79ee974f21379ab938659ca47521" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::CommonFileInputDevice::FileTimer::ClearFile</definition>
+        <argsstring>()</argsstring>
+        <name>ClearFile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="157" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="157" bodyend="159"/>
+        <references refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1a5bd8b57fdd94dcc5fe6e79a3f64da78a" compoundref="d9/d17/CommonFileDevice_8h" startline="127">file</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1af7a33f994ce97b3e0ebf85e9320b8499" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::CommonFileInputDevice::FileTimer::HasFile</definition>
+        <argsstring>(CommonFileInputDevice *f)</argsstring>
+        <name>HasFile</name>
+        <param>
+          <type><ref refid="dd/d3c/classmutabor_1_1CommonFileInputDevice" kindref="compound">CommonFileInputDevice</ref> *</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="161" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="161" bodyend="163"/>
+        <references refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1a5bd8b57fdd94dcc5fe6e79a3f64da78a" compoundref="d9/d17/CommonFileDevice_8h" startline="127">file</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2725">
+        <label>Thread</label>
+      </node>
+      <node id="2724">
+        <label>mutabor::CommonFileInputDevice::FileTimer</label>
+        <link refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer"/>
+        <childnode refid="2725" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2727">
+        <label>Thread</label>
+      </node>
+      <node id="2726">
+        <label>mutabor::CommonFileInputDevice::FileTimer</label>
+        <link refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer"/>
+        <childnode refid="2727" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" line="125" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/CommonFileDevice.h" bodystart="124" bodyend="165"/>
+    <listofallmembers>
+      <member refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1a99cb79ee974f21379ab938659ca47521" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice::FileTimer</scope><name>ClearFile</name></member>
+      <member refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1a44a1c766d740910e146ee576ac469b7f" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice::FileTimer</scope><name>Entry</name></member>
+      <member refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1a5bd8b57fdd94dcc5fe6e79a3f64da78a" prot="private" virt="non-virtual"><scope>mutabor::CommonFileInputDevice::FileTimer</scope><name>file</name></member>
+      <member refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1a5802b5763382138c84cf3fe19a9b2f7b" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice::FileTimer</scope><name>FileTimer</name></member>
+      <member refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1af7a33f994ce97b3e0ebf85e9320b8499" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice::FileTimer</scope><name>HasFile</name></member>
+      <member refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1af0f260d3c21578002d95f1b1eac5fae1" prot="public" virt="non-virtual"><scope>mutabor::CommonFileInputDevice::FileTimer</scope><name>OnExit</name></member>
+      <member refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1add1c80ab7fafc2dc054de0d3b453342b" prot="public" virt="virtual"><scope>mutabor::CommonFileInputDevice::FileTimer</scope><name>~FileTimer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

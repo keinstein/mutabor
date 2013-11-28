@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="dd/d9f/classmutabor_1_1BoxClass_1_1set__callback" kind="class" prot="protected">
+    <compoundname>mutabor::BoxClass::set_callback</compoundname>
+    <includes refid="de/d0f/Box_8h" local="no">Box.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d5/dee/group__route_1ga4fe72b4b7d7724a82644a603e1d0cc6e" prot="private" static="no" mutable="no">
+        <type><ref refid="d3/d4e/structmutabor_1_1BoxClass" kindref="compound">BoxClass</ref> *</type>
+        <definition>BoxClass* mutabor::BoxClass::set_callback::box</definition>
+        <argsstring></argsstring>
+        <name>box</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="662" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="662" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gac1ae595ebe8819c13893d725e51115b1" compoundref="de/d0f/Box_8h" startline="664" endline="667">set_callback</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa63774ec7552c354c47a5ed09196d4bd" compoundref="de/d0f/Box_8h" startline="668" endline="670">~set_callback</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/dee/group__route_1gac1ae595ebe8819c13893d725e51115b1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::BoxClass::set_callback::set_callback</definition>
+        <argsstring>(BoxClass *b, CompileCallback *callback)</argsstring>
+        <name>set_callback</name>
+        <param>
+          <type><ref refid="d3/d4e/structmutabor_1_1BoxClass" kindref="compound">BoxClass</ref> *</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="d2/def/structmutabor_1_1BoxClass_1_1CompileCallback" kindref="compound">CompileCallback</ref> *</type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="664" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="664" bodyend="667"/>
+        <references refid="d5/dee/group__route_1ga4fe72b4b7d7724a82644a603e1d0cc6e" compoundref="de/d0f/Box_8h" startline="662">box</references>
+        <references refid="d5/dee/group__route_1ga3081a34c1d0980b4247bd20a532d624e" compoundref="de/d0f/Box_8h" startline="672">mutabor::BoxClass::current_compile_callback</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaa63774ec7552c354c47a5ed09196d4bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::BoxClass::set_callback::~set_callback</definition>
+        <argsstring>()</argsstring>
+        <name>~set_callback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="668" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="668" bodyend="670"/>
+        <references refid="d5/dee/group__route_1ga4fe72b4b7d7724a82644a603e1d0cc6e" compoundref="de/d0f/Box_8h" startline="662">box</references>
+        <references refid="d5/dee/group__route_1ga3081a34c1d0980b4247bd20a532d624e" compoundref="de/d0f/Box_8h" startline="672">mutabor::BoxClass::current_compile_callback</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4157">
+        <label>mutabor::BoxClass::ChangedCallback</label>
+        <link refid="da/dd8/structmutabor_1_1BoxClass_1_1ChangedCallback"/>
+      </node>
+      <node id="4154">
+        <label>T</label>
+      </node>
+      <node id="4156">
+        <label>std::list&lt; mutabor::BoxClass::ChangedCallback * &gt;</label>
+        <childnode refid="4157" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="4152">
+        <label>mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;</label>
+        <link refid="db/d05/classmutabor_1_1TRouteClass"/>
+        <childnode refid="4153" relation="usage">
+          <edgelabel>routeList</edgelabel>
+        </childnode>
+        <childnode refid="4155" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="4159">
+        <label>std::vector&lt; T &gt;</label>
+        <childnode refid="4154" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="4155">
+        <label>mutabor::idtype&lt; mutabor::TRouteClass&lt; InputDevice, OutputDevice &gt; &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="4149">
+        <label>backend_callbacks</label>
+      </node>
+      <node id="4147">
+        <label>mutabor::BoxClass::set_callback</label>
+        <link refid="dd/d9f/classmutabor_1_1BoxClass_1_1set__callback"/>
+        <childnode refid="4148" relation="usage">
+          <edgelabel>box</edgelabel>
+        </childnode>
+      </node>
+      <node id="4153">
+        <label>std::list&lt; T &gt;</label>
+        <childnode refid="4154" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="4148">
+        <label>mutabor::BoxClass</label>
+        <link refid="d3/d4e/structmutabor_1_1BoxClass"/>
+        <childnode refid="4149" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4150" relation="usage">
+          <edgelabel>current_compile_callback</edgelabel>
+        </childnode>
+        <childnode refid="4151" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+        <childnode refid="4152" relation="usage">
+          <edgelabel>routes</edgelabel>
+        </childnode>
+        <childnode refid="4156" relation="usage">
+          <edgelabel>callbacks</edgelabel>
+        </childnode>
+        <childnode refid="4158" relation="usage">
+          <edgelabel>box</edgelabel>
+        </childnode>
+        <childnode refid="4159" relation="usage">
+          <edgelabel>boxList</edgelabel>
+        </childnode>
+      </node>
+      <node id="4158">
+        <label>mutabor_box_type</label>
+      </node>
+      <node id="4151">
+        <label>mutabor::idtype&lt; mutabor::BoxClass &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+      <node id="4150">
+        <label>mutabor::BoxClass::CompileCallback</label>
+        <link refid="d2/def/structmutabor_1_1BoxClass_1_1CompileCallback"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="661" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="661" bodyend="671"/>
+    <listofallmembers>
+      <member refid="d5/dee/group__route_1ga4fe72b4b7d7724a82644a603e1d0cc6e" prot="private" virt="non-virtual"><scope>mutabor::BoxClass::set_callback</scope><name>box</name></member>
+      <member refid="d5/dee/group__route_1gac1ae595ebe8819c13893d725e51115b1" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::set_callback</scope><name>set_callback</name></member>
+      <member refid="d5/dee/group__route_1gaa63774ec7552c354c47a5ed09196d4bd" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::set_callback</scope><name>~set_callback</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

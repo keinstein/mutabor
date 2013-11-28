@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/wxGUI/Routing/NewInputDeviceShape.h Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_eaae7e9da1b31c6b329e928d72e0e61a.html">wxGUI</a></li><li class="navelem"><a class="el" href="../../dir_589b0311d58a74617a532121d489d9c2.html">Routing</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">NewInputDeviceShape.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d5/dba/NewInputDeviceShape_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// -*- C++ -*-</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"></span><span class="comment">/* we guard a little bit complicated to ensure the references are set right</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#if (!defined(MUWX_ROUTING_NEWINPUTDEVICESHAPE_H) &amp;&amp; !defined(PRECOMPILE)) \</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">        || (!defined(MUWX_ROUTING_NEWINPUTDEVICESHAPE_H_PRECOMPILED))</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef PRECOMPILE</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#gae0e0bc250f08b05e0f74cb54f627849c">   36</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUWX_ROUTING_NEWINPUTDEVICESHAPE_H</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// headers</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d73/Defs_8h.html">src/kernel/Defs.h</a>&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../df/d40/RouteIcons_8h.html">src/wxGUI/Routing/RouteIcons.h</a>&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d9/d4d/DeviceShape_8h.html">src/wxGUI/Routing/DeviceShape.h</a>&quot;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">//#include &quot;Device.h&quot;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#ifndef MUWX_ROUTING_NEWINPUTDEVICESHAPE_H_PRECOMPILED</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#ga3a3aebbcf0c4d1646fc39df54ab6669e">   49</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUWX_ROUTING_NEWINPUTDEVICESHAPE_H_PRECOMPILED</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">// system headers which do seldom change</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">//#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">//#include &quot;wx/defs.h&quot;</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">//#include &quot;wx/icon.h&quot;</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">//#include &quot;wx/stattext.h&quot;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">namespace </span>mutaborGUI {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="../../d5/d81/classmutaborGUI_1_1MutNewInputDeviceShape.html">   62</a></span>&#160;        <span class="keyword">class </span><a class="code" href="../../d5/d81/classmutaborGUI_1_1MutNewInputDeviceShape.html">MutNewInputDeviceShape</a>:<span class="keyword">public</span> <a class="code" href="../../d3/d4c/classmutaborGUI_1_1MutDeviceShape.html">MutInputDeviceShape</a></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#gabe382025a0b5130ce6eb3a86789e21a4">   66</a></span>&#160;                <a class="code" href="../../dc/df2/group__GUIroute.html#gabe382025a0b5130ce6eb3a86789e21a4">MutNewInputDeviceShape</a>():<a class="code" href="../../d3/d4c/classmutaborGUI_1_1MutDeviceShape.html">MutInputDeviceShape</a>() {}</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#gaf148111b084f0e90055fd354ac9de76b">   68</a></span>&#160;                <a class="code" href="../../dc/df2/group__GUIroute.html#gaf148111b084f0e90055fd354ac9de76b">MutNewInputDeviceShape</a> (wxWindow * parent, wxWindowID <span class="keywordtype">id</span>):<a class="code" href="../../d3/d4c/classmutaborGUI_1_1MutDeviceShape.html">MutInputDeviceShape</a>() </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                        {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                <a class="code" href="../../dc/df2/group__GUIroute.html#gab4c1c14826d933ab4b09e8ab137caa96">Create</a>(parent, <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#gab4c1c14826d933ab4b09e8ab137caa96">   73</a></span>&#160;                <span class="keywordtype">bool</span> <a class="code" href="../../dc/df2/group__GUIroute.html#gab4c1c14826d933ab4b09e8ab137caa96">Create</a> (wxWindow * parent, wxWindowID <span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                <span class="keywordflow">return</span> <a class="code" href="../../dc/df2/group__GUIroute.html#ga5951cd9069dbdecb5f709fda9e98380e">MutInputDeviceShape::Create</a> (parent,<span class="keywordtype">id</span>,<a class="code" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>(<span class="stringliteral">&quot;New Input device&quot;</span>));</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                        }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#ga35d8d1c8dfa9402be168684a597092e7">   78</a></span>&#160;                <a class="code" href="../../df/dd1/group__GUI.html#gae2013faeca4cd6cae1c6098bd574f854">MutIcon</a> &amp; <a class="code" href="../../dc/df2/group__GUIroute.html#ga35d8d1c8dfa9402be168684a597092e7">GetMutIcon</a> ()</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                <span class="keywordflow">return</span> <a class="code" href="../../dc/df2/group__GUIroute.html#ga97c80287feccd432b1765c7faae7f305">NewInputDevBitmap</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#ga70652f612df9eddb7dc9accaf8b605ba">   83</a></span>&#160;                <span class="keyword">virtual</span> wxPanel * <a class="code" href="../../dc/df2/group__GUIroute.html#ga70652f612df9eddb7dc9accaf8b605ba">GetFilterPanel</a>(wxWindow * parent, </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                                 <a class="code" href="../../d5/dee/group__route.html#gae5927f0f6043b271d1bd1c493e2505e4">mutabor::Route</a> &amp; route)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        <a class="code" href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">new</span> wxPanel(parent);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                }</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#ga9585bae39bfbc44ae0320a996b5faa2c">   88</a></span>&#160;                <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/df2/group__GUIroute.html#ga9585bae39bfbc44ae0320a996b5faa2c">ReadFilterPanel</a>(wxWindow * panel, </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                             <a class="code" href="../../d5/dee/group__route.html#gae5927f0f6043b271d1bd1c493e2505e4">mutabor::Route</a> &amp; route) {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                        <a class="code" href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/df2/group__GUIroute.html#ga9947fa8e7095f8ec23c3a8a7bacf4154">InitializeDialog</a>(<a class="code" href="../../d2/dcc/classmutaborGUI_1_1InputDevDlg.html">InputDevDlg</a> * in) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../dc/df2/group__GUIroute.html#ga0d08040e0353a0525e25f52d0dc7ebcd">replaceSelfBy</a> (<a class="code" href="../../d3/d4c/classmutaborGUI_1_1MutDeviceShape.html">MutInputDeviceShape</a>  * newshape);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                DECLARE_DYNAMIC_CLASS(<a class="code" href="../../d3/d4c/classmutaborGUI_1_1MutDeviceShape.html">MutInputDeviceShape</a>)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        };</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#endif                          </span><span class="comment">/* NEWINPUTDEVICESHAPE_H_PRECOMPILED */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif                          </span><span class="comment">/* NEWINPUTDEVICESHAPE_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor"></span><span class="comment">/*</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment"> * \}</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment"> */</span></div>
+<div class="ttc" id="group__GUIroute_html_ga5951cd9069dbdecb5f709fda9e98380e"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#ga5951cd9069dbdecb5f709fda9e98380e">mutaborGUI::MutDeviceShape::Create</a></div><div class="ttdeci">bool Create(wxWindow *parent, wxWindowID id, const wxString &amp;name=wxEmptyString)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d4d/DeviceShape_8h_source.html#l00132">DeviceShape.h:132</a></div></div>
+<div class="ttc" id="group__GUIroute_html_ga9585bae39bfbc44ae0320a996b5faa2c"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#ga9585bae39bfbc44ae0320a996b5faa2c">mutaborGUI::MutNewInputDeviceShape::ReadFilterPanel</a></div><div class="ttdeci">virtual void ReadFilterPanel(wxWindow *panel, mutabor::Route &amp;route)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dba/NewInputDeviceShape_8h_source.html#l00088">NewInputDeviceShape.h:88</a></div></div>
+<div class="ttc" id="group__GUI_html_gae2013faeca4cd6cae1c6098bd574f854"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gae2013faeca4cd6cae1c6098bd574f854">MutIcon</a></div><div class="ttdeci">#define MutIcon</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d37/MutIcon_8h_source.html#l00170">MutIcon.h:170</a></div></div>
+<div class="ttc" id="DeviceShape_8h_html"><div class="ttname"><a href="../../d9/d4d/DeviceShape_8h.html">DeviceShape.h</a></div><div class="ttdoc">Device shape base class for route window. </div></div>
+<div class="ttc" id="group__GUIroute_html_gab4c1c14826d933ab4b09e8ab137caa96"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#gab4c1c14826d933ab4b09e8ab137caa96">mutaborGUI::MutNewInputDeviceShape::Create</a></div><div class="ttdeci">bool Create(wxWindow *parent, wxWindowID id)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dba/NewInputDeviceShape_8h_source.html#l00073">NewInputDeviceShape.h:73</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1MutDeviceShape_html"><div class="ttname"><a href="../../d3/d4c/classmutaborGUI_1_1MutDeviceShape.html">mutaborGUI::MutDeviceShape</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d4d/DeviceShape_8h_source.html#l00105">DeviceShape.h:105</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1InputDevDlg_html"><div class="ttname"><a href="../../d2/dcc/classmutaborGUI_1_1InputDevDlg.html">mutaborGUI::InputDevDlg</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/InputDevDlg_8h_source.html#l00080">InputDevDlg.h:80</a></div></div>
+<div class="ttc" id="group__GUIroute_html_gaf148111b084f0e90055fd354ac9de76b"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#gaf148111b084f0e90055fd354ac9de76b">mutaborGUI::MutNewInputDeviceShape::MutNewInputDeviceShape</a></div><div class="ttdeci">MutNewInputDeviceShape(wxWindow *parent, wxWindowID id)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dba/NewInputDeviceShape_8h_source.html#l00068">NewInputDeviceShape.h:68</a></div></div>
+<div class="ttc" id="group__GUIroute_html_gabe382025a0b5130ce6eb3a86789e21a4"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#gabe382025a0b5130ce6eb3a86789e21a4">mutaborGUI::MutNewInputDeviceShape::MutNewInputDeviceShape</a></div><div class="ttdeci">MutNewInputDeviceShape()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dba/NewInputDeviceShape_8h_source.html#l00066">NewInputDeviceShape.h:66</a></div></div>
+<div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
+<div class="ttc" id="group__GUIroute_html_ga9947fa8e7095f8ec23c3a8a7bacf4154"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#ga9947fa8e7095f8ec23c3a8a7bacf4154">mutaborGUI::MutNewInputDeviceShape::InitializeDialog</a></div><div class="ttdeci">virtual void InitializeDialog(InputDevDlg *in) const </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d62/NewInputDeviceShape_8cpp_source.html#l00044">NewInputDeviceShape.cpp:44</a></div></div>
+<div class="ttc" id="group__route_html_gae5927f0f6043b271d1bd1c493e2505e4"><div class="ttname"><a href="../../d5/dee/group__route.html#gae5927f0f6043b271d1bd1c493e2505e4">mutabor::Route</a></div><div class="ttdeci">TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::Route Route</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00521">Route.h:521</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1MutNewInputDeviceShape_html"><div class="ttname"><a href="../../d5/d81/classmutaborGUI_1_1MutNewInputDeviceShape.html">mutaborGUI::MutNewInputDeviceShape</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dba/NewInputDeviceShape_8h_source.html#l00062">NewInputDeviceShape.h:62</a></div></div>
+<div class="ttc" id="group__GUIroute_html_ga0d08040e0353a0525e25f52d0dc7ebcd"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#ga0d08040e0353a0525e25f52d0dc7ebcd">mutaborGUI::MutNewInputDeviceShape::replaceSelfBy</a></div><div class="ttdeci">virtual bool replaceSelfBy(MutInputDeviceShape *newshape)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d62/NewInputDeviceShape_8cpp_source.html#l00050">NewInputDeviceShape.cpp:50</a></div></div>
+<div class="ttc" id="group__kernel_html_gae4dfd7b0d66121016d6466d2ff10e8ba"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a></div><div class="ttdeci">#define _</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/Execute_8cpp_source.html#l00057">Execute.cpp:57</a></div></div>
+<div class="ttc" id="group__GUIroute_html_ga70652f612df9eddb7dc9accaf8b605ba"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#ga70652f612df9eddb7dc9accaf8b605ba">mutaborGUI::MutNewInputDeviceShape::GetFilterPanel</a></div><div class="ttdeci">virtual wxPanel * GetFilterPanel(wxWindow *parent, mutabor::Route &amp;route) const </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dba/NewInputDeviceShape_8h_source.html#l00083">NewInputDeviceShape.h:83</a></div></div>
+<div class="ttc" id="RouteIcons_8h_html"><div class="ttname"><a href="../../df/d40/RouteIcons_8h.html">RouteIcons.h</a></div><div class="ttdoc">Devices base classes. </div></div>
+<div class="ttc" id="group__GUIroute_html_ga97c80287feccd432b1765c7faae7f305"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#ga97c80287feccd432b1765c7faae7f305">mutaborGUI::NewInputDevBitmap</a></div><div class="ttdeci">MutIcon NewInputDevBitmap</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d28/RouteIcons_8cpp_source.html#l00041">RouteIcons.cpp:41</a></div></div>
+<div class="ttc" id="group__GUI_html_ga21a35e4a9e56bbe15aded747eb5a7147"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a></div><div class="ttdeci">#define UNREACHABLEC</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00148">mhDefs.h:148</a></div></div>
+<div class="ttc" id="group__GUIroute_html_ga35d8d1c8dfa9402be168684a597092e7"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#ga35d8d1c8dfa9402be168684a597092e7">mutaborGUI::MutNewInputDeviceShape::GetMutIcon</a></div><div class="ttdeci">MutIcon &amp; GetMutIcon()</div><div class="ttdoc">Calculates the Icon to be used. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dba/NewInputDeviceShape_8h_source.html#l00078">NewInputDeviceShape.h:78</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:38:42 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

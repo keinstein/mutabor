@@ -1,0 +1,456 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d2/d1c/structumstimmung" kind="struct" prot="public">
+    <compoundname>umstimmung</compoundname>
+    <includes refid="dd/d40/Global_8h" local="no">Global.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1ae0c662e9d0530cc74e8cfbf6fada427a" prot="public" static="no" mutable="no">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <definition>const char* umstimmung::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="267" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="267" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga8e9c1d3756a03475a24e906160a792f7" compoundref="dc/df5/Parser_8cpp" startline="193" endline="200">get_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gac9853aaefee300523f45c37bed9d59e2" compoundref="dc/df5/Parser_8cpp" startline="1841" endline="1905">get_umstimmung_umstimm_case</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga282aa00fefad24666fa0f5b66e0171a4" compoundref="dc/df5/Parser_8cpp" startline="1672" endline="1729">get_umstimmung_umstimmungs_bund</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga6ef5bbd2b9807cdd773166c9824e2a11" compoundref="dc/df5/Parser_8cpp" startline="1333" endline="1353">init_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga3ec20e22a4f0a32e32969fe537be1844" compoundref="dc/df5/Parser_8cpp" startline="1355" endline="1391">link_arguments_to_parameters</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga81c6796af89ddcfeeb86805300f4bd71" compoundref="dc/df5/Parser_8cpp" startline="2902" endline="2921">test_zyklen_nummer</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga38234272caea541bf58444b32a79c998" compoundref="dc/df5/Parser_8cpp" startline="2923" endline="2948">u_test_zyklen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1ad3993e11b84836edf3b80a328f3b5204" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d8/d28/structparameter__list" kindref="compound">parameter_list</ref> *</type>
+        <definition>struct parameter_list* umstimmung::parameter_liste</definition>
+        <argsstring></argsstring>
+        <name>parameter_liste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="268" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="268" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga905a1b74bbe8c62344795da1a2a07c3a" compoundref="dc/df5/Parser_8cpp" startline="2697" endline="2862">check_aktionen</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga73e5c53430ff13828abb405eb3f0a22f" compoundref="dc/df5/Parser_8cpp" startline="1412" endline="1418">eintrage_parameterliste_in_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga877aeb89b9a07418c16d895f33123058" compoundref="dc/df5/Parser_8cpp" startline="1393" endline="1406">get_new_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga6ef5bbd2b9807cdd773166c9824e2a11" compoundref="dc/df5/Parser_8cpp" startline="1333" endline="1353">init_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1a0bc3f5c0d32a1bdb18034383a2897fcb" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d2/d3f/structargument__list" kindref="compound">argument_list</ref> *</type>
+        <definition>struct argument_list* umstimmung::argument_liste</definition>
+        <argsstring></argsstring>
+        <name>argument_liste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="269" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="269" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga17b03e17223aab80aa95d596a74bdc2d" compoundref="d3/da0/TabGen_8cpp" startline="672" endline="831">expandiere_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga877aeb89b9a07418c16d895f33123058" compoundref="dc/df5/Parser_8cpp" startline="1393" endline="1406">get_new_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gadc606f154ed05fa2e49236c2629d4a8a" compoundref="dc/df5/Parser_8cpp" startline="1448" endline="1455">get_umstimmung_breite_abs</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaed7bf792d734cd7c32b331653d6cb12b" compoundref="dc/df5/Parser_8cpp" startline="1457" endline="1467">get_umstimmung_breite_rel</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga4efa20952d2fdfae82c9082a42d37059" compoundref="dc/df5/Parser_8cpp" startline="1428" endline="1435">get_umstimmung_taste_abs</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga1c92bb54f8fe5afc316382815889dc9d" compoundref="dc/df5/Parser_8cpp" startline="1437" endline="1446">get_umstimmung_taste_rel</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1ac1a99dc1f0c6491fb14d5973cb4462ea" prot="public" static="no" mutable="no">
+        <type>enum <ref refid="d9/d7c/group__kernel_1gae4a3d9bbce90258ea2550ced0e649d0a" kindref="member">umstimmung_typ</ref></type>
+        <definition>enum umstimmung_typ umstimmung::umstimmung_typ</definition>
+        <argsstring></argsstring>
+        <name>umstimmung_typ</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="269" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="270" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1ade2516e0f40c702ab08dbaab91e2e530" prot="public" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <definition>char umstimmung::rechenzeichen</definition>
+        <argsstring></argsstring>
+        <name>rechenzeichen</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="285" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="285" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1a504f09cc49fcd34e071acb6beee34811" prot="public" static="no" mutable="no">
+        <type>struct umstimmung::@13::@14</type>
+        <definition>struct umstimmung::@13::@14  umstimmung::umstimmung_taste_rel</definition>
+        <argsstring></argsstring>
+        <name>umstimmung_taste_rel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="286" column="1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga17b03e17223aab80aa95d596a74bdc2d" compoundref="d3/da0/TabGen_8cpp" startline="672" endline="831">expandiere_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1a3b5e477e7d0a9b584353acb1ceee5ff5" prot="public" static="no" mutable="no">
+        <type>struct umstimmung::@13::@15</type>
+        <definition>struct umstimmung::@13::@15  umstimmung::umstimmung_breite_rel</definition>
+        <argsstring></argsstring>
+        <name>umstimmung_breite_rel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="299" column="1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga17b03e17223aab80aa95d596a74bdc2d" compoundref="d3/da0/TabGen_8cpp" startline="672" endline="831">expandiere_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1ac787a233e8d474ce39345bcdc4643bf5" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="dd/da3/structton" kindref="compound">ton</ref> *</type>
+        <definition>struct ton* umstimmung::tonliste</definition>
+        <argsstring></argsstring>
+        <name>tonliste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="302" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="302" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1ae900fca4980470dd06c375686720caf5" prot="public" static="no" mutable="no">
+        <type>struct umstimmung::@13::@16</type>
+        <definition>struct umstimmung::@13::@16  umstimmung::umstimmung_toene_veraendert</definition>
+        <argsstring></argsstring>
+        <name>umstimmung_toene_veraendert</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="303" column="1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga17b03e17223aab80aa95d596a74bdc2d" compoundref="d3/da0/TabGen_8cpp" startline="672" endline="831">expandiere_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaa6f9d247b3303cfa2f2b534231174b4f" compoundref="dc/df5/Parser_8cpp" startline="1561" endline="1567">get_umstimmung_tonhoehe_veraendert</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1a47392b3f5c1477b6ae9ec3a8a6b7b6c7" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d7/dc9/structkomplex__intervall" kindref="compound">komplex_intervall</ref> *</type>
+        <definition>struct komplex_intervall* umstimmung::komplex_liste</definition>
+        <argsstring></argsstring>
+        <name>komplex_liste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="306" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="306" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1a7ccb68f9ef18cc04c3264ca2baf0c489" prot="public" static="no" mutable="no">
+        <type>struct umstimmung::@13::@17</type>
+        <definition>struct umstimmung::@13::@17  umstimmung::umstimmung_wiederholung_abs</definition>
+        <argsstring></argsstring>
+        <name>umstimmung_wiederholung_abs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="307" column="1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga17b03e17223aab80aa95d596a74bdc2d" compoundref="d3/da0/TabGen_8cpp" startline="672" endline="831">expandiere_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gac9a25c0ee8b5afce20cb89a2728a12b8" compoundref="dc/df5/Parser_8cpp" startline="1569" endline="1574">get_umstimmung_wiederholung_abs</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gae365d9fc17f26940f87797ae065a0aea" compoundref="dc/df5/Parser_8cpp" startline="1576" endline="1595">get_umstimmung_wiederholung_abs_negative</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1a116d0403484c09291439cd2f89082828" prot="public" static="no" mutable="no">
+        <type>struct umstimmung::@13::@18</type>
+        <definition>struct umstimmung::@13::@18  umstimmung::umstimmung_wiederholung_rel</definition>
+        <argsstring></argsstring>
+        <name>umstimmung_wiederholung_rel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="311" column="1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga2130e3011fa915900b213ee4b2d22163" compoundref="dc/df5/Parser_8cpp" startline="1606" endline="1615">get_umstimmung_wiederholung_rel_negative</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga7b39a7067558b50c9f21d357c3877868" compoundref="dc/df5/Parser_8cpp" startline="1598" endline="1604">get_umstimmung_wiederholung_rel_positive</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1a2b315fc621a2b6caf40cd9a3bb0e3f72" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d5/def/structaktions__liste" kindref="compound">aktions_liste</ref> *</type>
+        <definition>struct aktions_liste* umstimmung::aktions_liste</definition>
+        <argsstring></argsstring>
+        <name>aktions_liste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="314" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="314" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1a6d512ccb69e18be7065a91aef23e16dc" prot="public" static="no" mutable="no">
+        <type>struct umstimmung::@13::@19</type>
+        <definition>struct umstimmung::@13::@19  umstimmung::umstimmung_umstimmungsbund</definition>
+        <argsstring></argsstring>
+        <name>umstimmung_umstimmungsbund</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="315" column="1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga17b03e17223aab80aa95d596a74bdc2d" compoundref="d3/da0/TabGen_8cpp" startline="672" endline="831">expandiere_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga282aa00fefad24666fa0f5b66e0171a4" compoundref="dc/df5/Parser_8cpp" startline="1672" endline="1729">get_umstimmung_umstimmungs_bund</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1a48257a8377736ae4cb706035d71c9088" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d0/d45/structcase__liste" kindref="compound">case_liste</ref> *</type>
+        <definition>struct case_liste* umstimmung::umstimmungs_case_liste</definition>
+        <argsstring></argsstring>
+        <name>umstimmungs_case_liste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="321" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="321" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1a04d41f58497bf5aa88f6df7c43b5bc30" prot="public" static="no" mutable="no">
+        <type>struct umstimmung::@13::@20</type>
+        <definition>struct umstimmung::@13::@20  umstimmung::umstimmung_umstimmungs_case</definition>
+        <argsstring></argsstring>
+        <name>umstimmung_umstimmungs_case</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="322" column="1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga17b03e17223aab80aa95d596a74bdc2d" compoundref="d3/da0/TabGen_8cpp" startline="672" endline="831">expandiere_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gac9853aaefee300523f45c37bed9d59e2" compoundref="dc/df5/Parser_8cpp" startline="1841" endline="1905">get_umstimmung_umstimm_case</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1a2c649d9ad163c353d7b4a8562df63ace" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="df/df2/structmidiliste" kindref="compound">midiliste</ref> *</type>
+        <definition>struct midiliste* umstimmung::out_liste</definition>
+        <argsstring></argsstring>
+        <name>out_liste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="325" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="325" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1ac760ed79513e9f6e80ef7da6de0b2c75" prot="public" static="no" mutable="no">
+        <type>struct umstimmung::@13::@21</type>
+        <definition>struct umstimmung::@13::@21  umstimmung::umstimmung_midi_out</definition>
+        <argsstring></argsstring>
+        <name>umstimmung_midi_out</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="326" column="1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga17b03e17223aab80aa95d596a74bdc2d" compoundref="d3/da0/TabGen_8cpp" startline="672" endline="831">expandiere_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga7cbd491f1577c0861068f0a49d0dd979" compoundref="dc/df5/Parser_8cpp" startline="1974" endline="1981">get_umstimmung_midi_out</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1ac0c5446debf0662bb5181f1600181282" prot="public" static="no" mutable="no">
+        <type>union umstimmung::@13</type>
+        <definition>union umstimmung::@13  umstimmung::u</definition>
+        <argsstring></argsstring>
+        <name>u</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="327" column="1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga17b03e17223aab80aa95d596a74bdc2d" compoundref="d3/da0/TabGen_8cpp" startline="672" endline="831">expandiere_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaed7bf792d734cd7c32b331653d6cb12b" compoundref="dc/df5/Parser_8cpp" startline="1457" endline="1467">get_umstimmung_breite_rel</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga1c92bb54f8fe5afc316382815889dc9d" compoundref="dc/df5/Parser_8cpp" startline="1437" endline="1446">get_umstimmung_taste_rel</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d1c/structumstimmung_1a8dbc86b18a73c6227815dbb5776051ca" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d2/d1c/structumstimmung" kindref="compound">umstimmung</ref> *</type>
+        <definition>struct umstimmung* umstimmung::next</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="329" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="329" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga821be4accaf8b4641f9fcb8c7b4bd047" compoundref="dc/df5/Parser_8cpp" startline="2878" endline="2900">belege_zyklenfeld</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga877aeb89b9a07418c16d895f33123058" compoundref="dc/df5/Parser_8cpp" startline="1393" endline="1406">get_new_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga8e9c1d3756a03475a24e906160a792f7" compoundref="dc/df5/Parser_8cpp" startline="193" endline="200">get_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga6ef5bbd2b9807cdd773166c9824e2a11" compoundref="dc/df5/Parser_8cpp" startline="1333" endline="1353">init_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga3ec20e22a4f0a32e32969fe537be1844" compoundref="dc/df5/Parser_8cpp" startline="1355" endline="1391">link_arguments_to_parameters</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga6fdda4db5c05a892ad88261cf4f93a09" compoundref="dc/df5/Parser_8cpp" startline="101" endline="109">umstimmungs_list_laenge</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4288">
+        <label>argument</label>
+        <link refid="d2/d74/structargument"/>
+        <childnode refid="4289" relation="usage">
+          <edgelabel>parameter</edgelabel>
+        </childnode>
+      </node>
+      <node id="4291">
+        <label>komplex_intervall</label>
+        <link refid="d7/dc9/structkomplex__intervall"/>
+        <childnode refid="4291" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="4286">
+        <label>aktions_liste</label>
+        <link refid="d5/def/structaktions__liste"/>
+        <childnode refid="4286" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="4287" relation="usage">
+          <edgelabel>argument_liste</edgelabel>
+        </childnode>
+        <childnode refid="4290" relation="usage">
+          <edgelabel>midi_code</edgelabel>
+        </childnode>
+      </node>
+      <node id="4289">
+        <label>parameter_list</label>
+        <link refid="d8/d28/structparameter__list"/>
+        <childnode refid="4289" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="4292">
+        <label>ton</label>
+        <link refid="dd/da3/structton"/>
+        <childnode refid="4291" relation="usage">
+          <edgelabel>komplex_liste</edgelabel>
+        </childnode>
+        <childnode refid="4292" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="4285">
+        <label>case_liste</label>
+        <link refid="d0/d45/structcase__liste"/>
+        <childnode refid="4285" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="4286" relation="usage">
+          <edgelabel>case_aktion</edgelabel>
+        </childnode>
+      </node>
+      <node id="4284">
+        <label>umstimmung</label>
+        <link refid="d2/d1c/structumstimmung"/>
+        <childnode refid="4284" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="4285" relation="usage">
+          <edgelabel>umstimmungs_case_liste</edgelabel>
+        </childnode>
+        <childnode refid="4291" relation="usage">
+          <edgelabel>komplex_liste</edgelabel>
+        </childnode>
+        <childnode refid="4289" relation="usage">
+          <edgelabel>parameter_liste</edgelabel>
+        </childnode>
+        <childnode refid="4286" relation="usage">
+          <edgelabel>aktions_liste</edgelabel>
+        </childnode>
+        <childnode refid="4287" relation="usage">
+          <edgelabel>argument_liste</edgelabel>
+        </childnode>
+        <childnode refid="4292" relation="usage">
+          <edgelabel>tonliste</edgelabel>
+        </childnode>
+        <childnode refid="4290" relation="usage">
+          <edgelabel>out_liste</edgelabel>
+        </childnode>
+      </node>
+      <node id="4290">
+        <label>midiliste</label>
+        <link refid="df/df2/structmidiliste"/>
+        <childnode refid="4290" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="4287">
+        <label>argument_list</label>
+        <link refid="d2/d3f/structargument__list"/>
+        <childnode refid="4288" relation="usage">
+          <edgelabel>argument</edgelabel>
+        </childnode>
+        <childnode refid="4287" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="266" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="265" bodyend="330"/>
+    <listofallmembers>
+      <member refid="d2/d1c/structumstimmung_1a2b315fc621a2b6caf40cd9a3bb0e3f72" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>aktions_liste</name></member>
+      <member refid="d2/d1c/structumstimmung_1a0bc3f5c0d32a1bdb18034383a2897fcb" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>argument_liste</name></member>
+      <member refid="d2/d1c/structumstimmung_1a47392b3f5c1477b6ae9ec3a8a6b7b6c7" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>komplex_liste</name></member>
+      <member refid="d2/d1c/structumstimmung_1ae0c662e9d0530cc74e8cfbf6fada427a" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>name</name></member>
+      <member refid="d2/d1c/structumstimmung_1a8dbc86b18a73c6227815dbb5776051ca" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>next</name></member>
+      <member refid="d2/d1c/structumstimmung_1a2c649d9ad163c353d7b4a8562df63ace" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>out_liste</name></member>
+      <member refid="d2/d1c/structumstimmung_1ad3993e11b84836edf3b80a328f3b5204" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>parameter_liste</name></member>
+      <member refid="d2/d1c/structumstimmung_1ade2516e0f40c702ab08dbaab91e2e530" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>rechenzeichen</name></member>
+      <member refid="d2/d1c/structumstimmung_1ac787a233e8d474ce39345bcdc4643bf5" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>tonliste</name></member>
+      <member refid="d2/d1c/structumstimmung_1ac0c5446debf0662bb5181f1600181282" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>u</name></member>
+      <member refid="d2/d1c/structumstimmung_1a3b5e477e7d0a9b584353acb1ceee5ff5" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>umstimmung_breite_rel</name></member>
+      <member refid="d2/d1c/structumstimmung_1ac760ed79513e9f6e80ef7da6de0b2c75" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>umstimmung_midi_out</name></member>
+      <member refid="d2/d1c/structumstimmung_1a504f09cc49fcd34e071acb6beee34811" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>umstimmung_taste_rel</name></member>
+      <member refid="d2/d1c/structumstimmung_1ae900fca4980470dd06c375686720caf5" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>umstimmung_toene_veraendert</name></member>
+      <member refid="d2/d1c/structumstimmung_1ac1a99dc1f0c6491fb14d5973cb4462ea" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>umstimmung_typ</name></member>
+      <member refid="d2/d1c/structumstimmung_1a04d41f58497bf5aa88f6df7c43b5bc30" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>umstimmung_umstimmungs_case</name></member>
+      <member refid="d2/d1c/structumstimmung_1a6d512ccb69e18be7065a91aef23e16dc" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>umstimmung_umstimmungsbund</name></member>
+      <member refid="d2/d1c/structumstimmung_1a7ccb68f9ef18cc04c3264ca2baf0c489" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>umstimmung_wiederholung_abs</name></member>
+      <member refid="d2/d1c/structumstimmung_1a116d0403484c09291439cd2f89082828" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>umstimmung_wiederholung_rel</name></member>
+      <member refid="d2/d1c/structumstimmung_1a48257a8377736ae4cb706035d71c9088" prot="public" virt="non-virtual"><scope>umstimmung</scope><name>umstimmungs_case_liste</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

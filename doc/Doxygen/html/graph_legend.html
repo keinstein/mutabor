@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>Erklärung des Graphen</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="modules.html"><span>Module</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Klassen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Erklärung des Graphen</div>  </div>
+</div><!--header-->
+<div class="contents">
+<p>Diese Seite erklärt die Interpretation der von doxygen erzeugten Graphen.</p>
+<p>Beispiel: </p>
+<div class="fragment"><div class="line"><span class="comment">/*! Wegen Verkürzung unsichtbare Klasse */</span></div>
+<div class="line"><span class="keyword">class </span>Invisible { };</div>
+<div class="line"><span class="comment"></span></div>
+<div class="line"><span class="comment">/*! Klasse verkürzt dargestellt, Vererbungsbeziehung ist versteckt */</span></div>
+<div class="line"><span class="keyword">class </span>Truncated : <span class="keyword">public</span> Invisible { };</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* Nicht mit doxygen-Kommentaren dokumentierte Klasse */</span></div>
+<div class="line"><span class="keyword">class </span>Undocumented { };</div>
+<div class="line"><span class="comment"></span></div>
+<div class="line"><span class="comment">/*! Mithilfe öffentlicher Vererbung vererbte Klasse */</span></div>
+<div class="line"><span class="keyword">class </span>PublicBase : <span class="keyword">public</span> Truncated { };</div>
+<div class="line"><span class="comment"></span></div>
+<div class="line"><span class="comment">/*! Eine Template-Klasse */</span></div>
+<div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="keyword">class </span>Templ { };</div>
+<div class="line"><span class="comment"></span></div>
+<div class="line"><span class="comment">/*! Mithilfe geschützter Vererbung vererbte Klasse */</span></div>
+<div class="line"><span class="keyword">class </span>ProtectedBase { };</div>
+<div class="line"><span class="comment"></span></div>
+<div class="line"><span class="comment">/*! Mithilfe privater Vererbung vererbte Klasse */</span></div>
+<div class="line"><span class="keyword">class </span>PrivateBase { };</div>
+<div class="line"><span class="comment"></span></div>
+<div class="line"><span class="comment">/*! Von der Klasse Inherited benutzte Klasse */</span></div>
+<div class="line"><span class="keyword">class </span>Used { };</div>
+<div class="line"><span class="comment"></span></div>
+<div class="line"><span class="comment">/*! Superklasse, die von mehreren anderen Klassen erbt */</span></div>
+<div class="line"><span class="keyword">class </span>Inherited : <span class="keyword">public</span> PublicBase,</div>
+<div class="line">                  <span class="keyword">protected</span> ProtectedBase,</div>
+<div class="line">                  <span class="keyword">private</span> PrivateBase,</div>
+<div class="line">                  <span class="keyword">public</span> Undocumented,</div>
+<div class="line">                  <span class="keyword">public</span> Templ&lt;int&gt;</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">private</span>:</div>
+<div class="line">    Used *m_usedClass;</div>
+<div class="line">};</div>
+</div><!-- fragment --><p> Dies liefert den folgenden Graphen:</p>
+<center><div class="image">
+<img src="../../graph_legend.png" />
+</div>
+</center><p>Die Rechtecke in obigem Graphen bedeuten: </p>
+<ul>
+<li>
+Ein grau gefülltes Rechteck stellt die Struktur oder Klasse dar, für die der Graph erzeugt wurde. </li>
+<li>
+Ein Rechteck mit schwarzem Rahmen kennzeichnet eine dokumentierte Struktur oder Klasse. </li>
+<li>
+Ein Rechteck mit grauem Rahmen kennzeichnet eine undokumentierte Struktur oder Klasse. </li>
+<li>
+Ein Rechteck mit rotem Rahmen kennzeichnet eine dokumentierte Struktur oder Klasse, für die nicht alle Vererbungs-/Enthaltenseinsbeziehungen dargestellt werden. Ein Graph wird gekürzt, wenn er nicht in die angegebenen Schranken passt. </li>
+</ul>
+<p>Die Pfeile bedeuten: </p>
+<ul>
+<li>
+Ein dunkelblauer Pfeil stellt eine öffentliche Vererbungsbeziehung zwischen zwei Klassen dar. </li>
+<li>
+Ein dunkelgrüner Pfeil stellt geschützte Vererbung dar. </li>
+<li>
+Ein dunkelroter Pfeil stellt private Vererbung dar. </li>
+<li>
+Ein gestrichelter violetter Pfeil bedeutet, dass eine Klasse in einer anderen enthalten ist oder von einer anderen benutzt wird. Am Pfeil stehen die Variable(n), mit deren Hilfe auf die Struktur oder Klasse an der Pfeilspitze zugegriffen werden kann. </li>
+<li>
+Ein gestrichelter gelber Pfeil kennzeichnet eine Verknüpfung zwischen einer Template-Instanz und der Template-Klasse von welcher es abstammt. Neben dem Pfeil sind die Template-Parameter aufgeführt. </li>
+</ul>
+</div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:38:46 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

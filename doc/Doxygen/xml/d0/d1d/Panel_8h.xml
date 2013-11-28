@@ -1,0 +1,689 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d0/d1d/Panel_8h" kind="file">
+    <compoundname>Panel.h</compoundname>
+    <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
+    <includes local="yes">wx/panel.h</includes>
+    <includes local="yes">wx/control.h</includes>
+    <includes local="yes">wx/containr.h</includes>
+    <includedby refid="d5/d6f/IconShape_8h" local="yes">src/wxGUI/IconShape.h</includedby>
+    <includedby refid="d5/d10/Panel_8cpp" local="yes">src/wxGUI/Panel.cpp</includedby>
+    <incdepgraph>
+      <node id="21465">
+        <label>stdarg.h</label>
+      </node>
+      <node id="21464">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="21465" relation="include">
+        </childnode>
+        <childnode refid="21466" relation="include">
+        </childnode>
+      </node>
+      <node id="21469">
+        <label>wx/containr.h</label>
+      </node>
+      <node id="21468">
+        <label>wx/control.h</label>
+      </node>
+      <node id="21463">
+        <label>src/wxGUI/Panel.h</label>
+        <link refid="Panel.h"/>
+        <childnode refid="21464" relation="include">
+        </childnode>
+        <childnode refid="21467" relation="include">
+        </childnode>
+        <childnode refid="21468" relation="include">
+        </childnode>
+        <childnode refid="21469" relation="include">
+        </childnode>
+      </node>
+      <node id="21466">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+      <node id="21467">
+        <label>wx/panel.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="21512">
+        <label>src/wxGUI/Routing/BoxDlg.h</label>
+        <link refid="d9/dd2/BoxDlg_8h"/>
+        <childnode refid="21479" relation="include">
+        </childnode>
+        <childnode refid="21474" relation="include">
+        </childnode>
+        <childnode refid="21499" relation="include">
+        </childnode>
+        <childnode refid="21475" relation="include">
+        </childnode>
+        <childnode refid="21498" relation="include">
+        </childnode>
+        <childnode refid="21500" relation="include">
+        </childnode>
+      </node>
+      <node id="21510">
+        <label>src/wxGUI/Routing/BoxIconShape.cpp</label>
+        <link refid="d7/dcb/BoxIconShape_8cpp"/>
+      </node>
+      <node id="21502">
+        <label>src/wxGUI/Routing/NewOutputDeviceShape.cpp</label>
+        <link refid="d1/d73/NewOutputDeviceShape_8cpp"/>
+      </node>
+      <node id="21520">
+        <label>src/wxGUI/Routing/NewOutputDeviceShape.h</label>
+        <link refid="df/d7b/NewOutputDeviceShape_8h"/>
+        <childnode refid="21479" relation="include">
+        </childnode>
+        <childnode refid="21502" relation="include">
+        </childnode>
+      </node>
+      <node id="21490">
+        <label>src/wxGUI/MutEditFile.cpp</label>
+        <link refid="d1/da4/MutEditFile_8cpp"/>
+      </node>
+      <node id="21524">
+        <label>src/wxGUI/Panel.cpp</label>
+        <link refid="d5/d10/Panel_8cpp"/>
+      </node>
+      <node id="21479">
+        <label>src/wxGUI/MutRouteWnd.cpp</label>
+        <link refid="dc/def/MutRouteWnd_8cpp"/>
+      </node>
+      <node id="21519">
+        <label>src/wxGUI/Routing/NewInputDeviceShape.h</label>
+        <link refid="d5/dba/NewInputDeviceShape_8h"/>
+        <childnode refid="21479" relation="include">
+        </childnode>
+        <childnode refid="21501" relation="include">
+        </childnode>
+      </node>
+      <node id="21499">
+        <label>src/wxGUI/Routing/BoxDlg.cpp</label>
+        <link refid="d3/d2a/BoxDlg_8cpp"/>
+      </node>
+      <node id="21500">
+        <label>src/wxGUI/Routing/NewBoxShape.cpp</label>
+        <link refid="d8/dba/NewBoxShape_8cpp"/>
+      </node>
+      <node id="21494">
+        <label>src/wxGUI/MutLogicWnd.cpp</label>
+        <link refid="df/d11/MutLogicWnd_8cpp"/>
+      </node>
+      <node id="21506">
+        <label>src/wxGUI/Routing/OutputMidiDeviceShape.cpp</label>
+        <link refid="d6/d68/OutputMidiDeviceShape_8cpp"/>
+      </node>
+      <node id="21505">
+        <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp</label>
+        <link refid="d3/d21/OutputGuidoFileDeviceShape_8cpp"/>
+      </node>
+      <node id="21495">
+        <label>src/wxGUI/MutTextBox.cpp</label>
+        <link refid="df/d3c/MutTextBox_8cpp"/>
+      </node>
+      <node id="21485">
+        <label>src/wxGUI/MutApp.h</label>
+        <link refid="db/dc1/MutApp_8h"/>
+        <childnode refid="21486" relation="include">
+        </childnode>
+        <childnode refid="21478" relation="include">
+        </childnode>
+        <childnode refid="21484" relation="include">
+        </childnode>
+        <childnode refid="21487" relation="include">
+        </childnode>
+        <childnode refid="21488" relation="include">
+        </childnode>
+        <childnode refid="21489" relation="include">
+        </childnode>
+        <childnode refid="21490" relation="include">
+        </childnode>
+        <childnode refid="21482" relation="include">
+        </childnode>
+        <childnode refid="21479" relation="include">
+        </childnode>
+        <childnode refid="21491" relation="include">
+        </childnode>
+        <childnode refid="21492" relation="include">
+        </childnode>
+      </node>
+      <node id="21511">
+        <label>src/wxGUI/Routing/DeviceShape.h</label>
+        <link refid="d9/d4d/DeviceShape_8h"/>
+        <childnode refid="21481" relation="include">
+        </childnode>
+        <childnode refid="21474" relation="include">
+        </childnode>
+        <childnode refid="21499" relation="include">
+        </childnode>
+        <childnode refid="21512" relation="include">
+        </childnode>
+        <childnode refid="21475" relation="include">
+        </childnode>
+        <childnode refid="21498" relation="include">
+        </childnode>
+        <childnode refid="21504" relation="include">
+        </childnode>
+        <childnode refid="21480" relation="include">
+        </childnode>
+        <childnode refid="21513" relation="include">
+        </childnode>
+        <childnode refid="21517" relation="include">
+        </childnode>
+        <childnode refid="21519" relation="include">
+        </childnode>
+        <childnode refid="21520" relation="include">
+        </childnode>
+        <childnode refid="21521" relation="include">
+        </childnode>
+        <childnode refid="21522" relation="include">
+        </childnode>
+        <childnode refid="21523" relation="include">
+        </childnode>
+      </node>
+      <node id="21509">
+        <label>src/wxGUI/Routing/BoxIconShape.h</label>
+        <link refid="d2/de0/BoxIconShape_8h"/>
+        <childnode refid="21510" relation="include">
+        </childnode>
+        <childnode refid="21476" relation="include">
+        </childnode>
+      </node>
+      <node id="21497">
+        <label>src/wxGUI/MutDocManager.cpp</label>
+        <link refid="dd/db0/MutDocManager_8cpp"/>
+      </node>
+      <node id="21493">
+        <label>src/wxGUI/MutChild.cpp</label>
+        <link refid="da/d72/MutChild_8cpp"/>
+      </node>
+      <node id="21484">
+        <label>src/wxGUI/MutApp.cpp</label>
+        <link refid="d5/d1c/MutApp_8cpp"/>
+      </node>
+      <node id="21522">
+        <label>src/wxGUI/Routing/OutputMidiDeviceShape.h</label>
+        <link refid="d8/dcb/OutputMidiDeviceShape_8h"/>
+        <childnode refid="21480" relation="include">
+        </childnode>
+        <childnode refid="21506" relation="include">
+        </childnode>
+      </node>
+      <node id="21521">
+        <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.h</label>
+        <link refid="db/d77/OutputGuidoFileDeviceShape_8h"/>
+        <childnode refid="21480" relation="include">
+        </childnode>
+        <childnode refid="21505" relation="include">
+        </childnode>
+      </node>
+      <node id="21508">
+        <label>src/wxGUI/Routing/NewBoxShape.h</label>
+        <link refid="d4/dcc/NewBoxShape_8h"/>
+        <childnode refid="21478" relation="include">
+        </childnode>
+        <childnode refid="21479" relation="include">
+        </childnode>
+        <childnode refid="21480" relation="include">
+        </childnode>
+        <childnode refid="21500" relation="include">
+        </childnode>
+      </node>
+      <node id="21489">
+        <label>src/wxGUI/MutDocument.cpp</label>
+        <link refid="d6/d3b/MutDocument_8cpp"/>
+      </node>
+      <node id="21481">
+        <label>src/wxGUI/MutRouteWnd.h</label>
+        <link refid="d3/dd7/MutRouteWnd_8h"/>
+        <childnode refid="21482" relation="include">
+        </childnode>
+        <childnode refid="21483" relation="include">
+        </childnode>
+        <childnode refid="21494" relation="include">
+        </childnode>
+        <childnode refid="21479" relation="include">
+        </childnode>
+        <childnode refid="21474" relation="include">
+        </childnode>
+        <childnode refid="21499" relation="include">
+        </childnode>
+        <childnode refid="21475" relation="include">
+        </childnode>
+        <childnode refid="21480" relation="include">
+        </childnode>
+        <childnode refid="21500" relation="include">
+        </childnode>
+        <childnode refid="21501" relation="include">
+        </childnode>
+        <childnode refid="21502" relation="include">
+        </childnode>
+        <childnode refid="21503" relation="include">
+        </childnode>
+      </node>
+      <node id="21472">
+        <label>src/wxGUI/IconShape.cpp</label>
+        <link refid="dc/d76/IconShape_8cpp"/>
+      </node>
+      <node id="21470">
+        <label>src/wxGUI/Panel.h</label>
+        <link refid="Panel.h"/>
+        <childnode refid="21471" relation="include">
+        </childnode>
+        <childnode refid="21524" relation="include">
+        </childnode>
+      </node>
+      <node id="21488">
+        <label>src/wxGUI/MutConfDlg.h</label>
+        <link refid="d9/d8f/MutConfDlg_8h"/>
+        <childnode refid="21484" relation="include">
+        </childnode>
+      </node>
+      <node id="21498">
+        <label>src/wxGUI/Routing/DeviceShape.cpp</label>
+        <link refid="d9/d94/DeviceShape_8cpp"/>
+      </node>
+      <node id="21491">
+        <label>src/wxGUI/MutView.cpp</label>
+        <link refid="d8/d33/MutView_8cpp"/>
+      </node>
+      <node id="21523">
+        <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.h</label>
+        <link refid="d4/de8/OutputMidiFileDeviceShape_8h"/>
+        <childnode refid="21480" relation="include">
+        </childnode>
+        <childnode refid="21507" relation="include">
+        </childnode>
+      </node>
+      <node id="21516">
+        <label>src/wxGUI/Routing/InputMidiDeviceShape.cpp</label>
+        <link refid="d1/d14/InputMidiDeviceShape_8cpp"/>
+      </node>
+      <node id="21474">
+        <label>src/wxGUI/Routing/BoxChannelShape.cpp</label>
+        <link refid="d9/d24/BoxChannelShape_8cpp"/>
+      </node>
+      <node id="21482">
+        <label>src/wxGUI/MutFrame.cpp</label>
+        <link refid="dc/df3/MutFrame_8cpp"/>
+      </node>
+      <node id="21518">
+        <label>src/wxGUI/Routing/InputMidiFileDeviceShape.cpp</label>
+        <link refid="d3/de3/InputMidiFileDeviceShape_8cpp"/>
+      </node>
+      <node id="21492">
+        <label>src/wxGUI/Routing/RouteIcons.cpp</label>
+        <link refid="d1/d28/RouteIcons_8cpp"/>
+      </node>
+      <node id="21515">
+        <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.cpp</label>
+        <link refid="d8/da8/InputGuidoFileDeviceShape_8cpp"/>
+      </node>
+      <node id="21514">
+        <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.h</label>
+        <link refid="d9/d0d/InputGuidoFileDeviceShape_8h"/>
+        <childnode refid="21480" relation="include">
+        </childnode>
+        <childnode refid="21515" relation="include">
+        </childnode>
+      </node>
+      <node id="21496">
+        <label>src/wxGUI/MutView.h</label>
+        <link refid="d0/d9e/MutView_8h"/>
+        <childnode refid="21484" relation="include">
+        </childnode>
+        <childnode refid="21497" relation="include">
+        </childnode>
+        <childnode refid="21489" relation="include">
+        </childnode>
+        <childnode refid="21490" relation="include">
+        </childnode>
+        <childnode refid="21482" relation="include">
+        </childnode>
+        <childnode refid="21491" relation="include">
+        </childnode>
+      </node>
+      <node id="21487">
+        <label>src/wxGUI/MutBitmaps.cpp</label>
+        <link refid="d7/db6/MutBitmaps_8cpp"/>
+      </node>
+      <node id="21480">
+        <label>src/wxGUI/Routing/GUIRoute.cpp</label>
+        <link refid="d4/dee/GUIRoute_8cpp"/>
+      </node>
+      <node id="21503">
+        <label>src/wxGUI/Routing/tests/GUIRouteTest.cpp</label>
+        <link refid="d9/d20/GUIRouteTest_8cpp"/>
+      </node>
+      <node id="21517">
+        <label>src/wxGUI/Routing/InputMidiFileDeviceShape.h</label>
+        <link refid="d1/da8/InputMidiFileDeviceShape_8h"/>
+        <childnode refid="21480" relation="include">
+        </childnode>
+        <childnode refid="21518" relation="include">
+        </childnode>
+      </node>
+      <node id="21504">
+        <label>src/wxGUI/Routing/GUIRoute-inlines.h</label>
+        <link refid="d2/d73/GUIRoute-inlines_8h"/>
+        <childnode refid="21479" relation="include">
+        </childnode>
+        <childnode refid="21474" relation="include">
+        </childnode>
+        <childnode refid="21499" relation="include">
+        </childnode>
+        <childnode refid="21475" relation="include">
+        </childnode>
+        <childnode refid="21498" relation="include">
+        </childnode>
+        <childnode refid="21480" relation="include">
+        </childnode>
+        <childnode refid="21500" relation="include">
+        </childnode>
+        <childnode refid="21501" relation="include">
+        </childnode>
+        <childnode refid="21502" relation="include">
+        </childnode>
+        <childnode refid="21505" relation="include">
+        </childnode>
+        <childnode refid="21506" relation="include">
+        </childnode>
+        <childnode refid="21507" relation="include">
+        </childnode>
+      </node>
+      <node id="21483">
+        <label>src/wxGUI/MutFrame.h</label>
+        <link refid="dd/db5/MutFrame_8h"/>
+        <childnode refid="21478" relation="include">
+        </childnode>
+        <childnode refid="21484" relation="include">
+        </childnode>
+        <childnode refid="21485" relation="include">
+        </childnode>
+        <childnode refid="21493" relation="include">
+        </childnode>
+        <childnode refid="21488" relation="include">
+        </childnode>
+        <childnode refid="21490" relation="include">
+        </childnode>
+        <childnode refid="21482" relation="include">
+        </childnode>
+        <childnode refid="21494" relation="include">
+        </childnode>
+        <childnode refid="21479" relation="include">
+        </childnode>
+        <childnode refid="21495" relation="include">
+        </childnode>
+        <childnode refid="21491" relation="include">
+        </childnode>
+        <childnode refid="21496" relation="include">
+        </childnode>
+        <childnode refid="21498" relation="include">
+        </childnode>
+        <childnode refid="21480" relation="include">
+        </childnode>
+      </node>
+      <node id="21471">
+        <label>src/wxGUI/IconShape.h</label>
+        <link refid="d5/d6f/IconShape_8h"/>
+        <childnode refid="21472" relation="include">
+        </childnode>
+        <childnode refid="21473" relation="include">
+        </childnode>
+        <childnode refid="21509" relation="include">
+        </childnode>
+        <childnode refid="21511" relation="include">
+        </childnode>
+      </node>
+      <node id="21486">
+        <label>src/wxGUI/generic/mutDebug.cpp</label>
+        <link refid="d4/dc0/mutDebug_8cpp"/>
+      </node>
+      <node id="21477">
+        <label>src/wxGUI/GUIBoxData-inlines.h</label>
+        <link refid="d5/d12/GUIBoxData-inlines_8h"/>
+        <childnode refid="21478" relation="include">
+        </childnode>
+        <childnode refid="21479" relation="include">
+        </childnode>
+        <childnode refid="21474" relation="include">
+        </childnode>
+        <childnode refid="21475" relation="include">
+        </childnode>
+        <childnode refid="21480" relation="include">
+        </childnode>
+      </node>
+      <node id="21507">
+        <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp</label>
+        <link refid="d5/d00/OutputMidiFileDeviceShape_8cpp"/>
+      </node>
+      <node id="21513">
+        <label>src/wxGUI/Routing/InputMidiDeviceShape.h</label>
+        <link refid="d3/d5e/InputMidiDeviceShape_8h"/>
+        <childnode refid="21480" relation="include">
+        </childnode>
+        <childnode refid="21514" relation="include">
+        </childnode>
+        <childnode refid="21516" relation="include">
+        </childnode>
+      </node>
+      <node id="21478">
+        <label>src/wxGUI/GUIBoxData.cpp</label>
+        <link refid="d2/dd3/GUIBoxData_8cpp"/>
+      </node>
+      <node id="21476">
+        <label>src/wxGUI/Routing/BoxShape.h</label>
+        <link refid="d9/d49/BoxShape_8h"/>
+        <childnode refid="21477" relation="include">
+        </childnode>
+        <childnode refid="21481" relation="include">
+        </childnode>
+        <childnode refid="21495" relation="include">
+        </childnode>
+        <childnode refid="21474" relation="include">
+        </childnode>
+        <childnode refid="21499" relation="include">
+        </childnode>
+        <childnode refid="21475" relation="include">
+        </childnode>
+        <childnode refid="21504" relation="include">
+        </childnode>
+        <childnode refid="21480" relation="include">
+        </childnode>
+        <childnode refid="21500" relation="include">
+        </childnode>
+        <childnode refid="21508" relation="include">
+        </childnode>
+        <childnode refid="21501" relation="include">
+        </childnode>
+        <childnode refid="21492" relation="include">
+        </childnode>
+      </node>
+      <node id="21473">
+        <label>src/wxGUI/Routing/BoxChannelShape.h</label>
+        <link refid="d6/d68/BoxChannelShape_8h"/>
+        <childnode refid="21474" relation="include">
+        </childnode>
+        <childnode refid="21475" relation="include">
+        </childnode>
+        <childnode refid="21476" relation="include">
+        </childnode>
+        <childnode refid="21498" relation="include">
+        </childnode>
+        <childnode refid="21480" relation="include">
+        </childnode>
+        <childnode refid="21500" relation="include">
+        </childnode>
+        <childnode refid="21501" relation="include">
+        </childnode>
+      </node>
+      <node id="21475">
+        <label>src/wxGUI/Routing/BoxShape.cpp</label>
+        <link refid="d8/db4/BoxShape_8cpp"/>
+      </node>
+      <node id="21501">
+        <label>src/wxGUI/Routing/NewInputDeviceShape.cpp</label>
+        <link refid="df/d62/NewInputDeviceShape_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="df/df2/classMutPanel" prot="public">MutPanel</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="df/dd1/group__GUI_1ga2fed2c451a8d3d1e7c1dc08cf311765b" prot="public" static="no">
+        <name>MUWX_PANEL_H</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Panel.h" line="36" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Panel.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="df/dd1/group__GUI_1gafa7afeabaad7b22a82f030b3f899f8e1" prot="public" static="no">
+        <name>MUWX_PANEL_H_PRECOMPILED</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Panel.h" line="46" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Panel.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="df/dd1/group__GUI_1gacb6adbcdc3f80fd09849e0e95997c712" prot="public" static="no" mutable="no">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxChar</type>
+        <definition>const wxChar MutPanelNameStr[]</definition>
+        <argsstring>[]</argsstring>
+        <name>MutPanelNameStr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Panel.h" line="54" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Mutabor Panel. </para>    </briefdescription>
+    <detaileddescription>
+<para>Panel based on wxControl and wxPanel Most code comes from wxPanel and has been rewritten in order to be a subclass of wxControl.</para><para>Note: License change towards (L)GPL is explicitly allowed for wxWindows license.</para><para>Copyright: (c) 2008 TU Dresden <simplesect kind="author"><para>Julian Smart, Tobias Schlemmer <ulink url="mailto:keinstein@users.berlios.de">keinstein@users.berlios.de</ulink>  GPL</para></simplesect>
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</para><para>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</para><para>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="33"><highlight class="preprocessor">#if<sp/>(!defined(MUWX_PANEL_H)<sp/>&amp;&amp;<sp/>!defined(PRECOMPILE))<sp/>\</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>(!defined(MUWX_PANEL_H_PRECOMPILED))</highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifndef<sp/>PRECOMPILE</highlight></codeline>
+<codeline lineno="36" refid="df/dd1/group__GUI_1ga2fed2c451a8d3d1e7c1dc08cf311765b" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MUWX_PANEL_H</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">src/kernel/Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MUWX_PANEL_H_PRECOMPILED</highlight></codeline>
+<codeline lineno="46" refid="df/dd1/group__GUI_1gafa7afeabaad7b22a82f030b3f899f8e1" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MUWX_PANEL_H_PRECOMPILED</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>system<sp/>headers<sp/>which<sp/>do<sp/>seldom<sp/>change</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/panel.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/control.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/containr.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxChar<sp/><ref refid="df/dd1/group__GUI_1gacb6adbcdc3f80fd09849e0e95997c712" kindref="member">MutPanelNameStr</ref>[];</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>wxPanel<sp/>contains<sp/>other<sp/>controls<sp/>and<sp/>implements<sp/>TAB<sp/>traversal<sp/>between<sp/>them</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="df/df2/classMutPanel" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="df/df2/classMutPanel" kindref="compound">MutPanel</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>wxControl</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="63" refid="df/df2/classMutPanel_1a1de9b5b84242818ff47b747d26103a9d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/df2/classMutPanel_1a1de9b5b84242818ff47b747d26103a9d" kindref="member">MutPanel</ref>()<sp/>{<sp/><ref refid="df/dd1/group__GUI_1ga09fc250280017059371a06c53255b690" kindref="member">Init</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Old-style<sp/>constructor<sp/>(no<sp/>default<sp/>values<sp/>for<sp/>coordinates<sp/>to<sp/>avoid</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ambiguity<sp/>with<sp/>the<sp/>new<sp/>one)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="df/df2/classMutPanel_1a3cac6864a36fb72929686bc9feccbbc4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/df2/classMutPanel_1a3cac6864a36fb72929686bc9feccbbc4" kindref="member">MutPanel</ref><sp/>(wxWindow<sp/>*parent,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>style<sp/>=<sp/>0<sp/></highlight><highlight class="comment">/*<sp/>wxTAB_TRAVERSAL<sp/>|<sp/>wxNO_BORDER<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxValidator&amp;<sp/>validator<sp/>=<sp/>wxDefaultValidator,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>name<sp/>=<sp/>wxPanelNameStr)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga09fc250280017059371a06c53255b690" kindref="member">Init</ref>();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga6db4ff1d919db7002998d07050be9fca" kindref="member">Create</ref>(parent,<sp/>wxID_ANY,<sp/>wxPoint(x,<sp/>y),<sp/>wxSize(width,<sp/>height),<sp/>style,<sp/>validator,<sp/>name);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Constructor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="df/df2/classMutPanel_1a3df9eb7da7b63fa042e732d842d9cc12" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/df2/classMutPanel_1a3df9eb7da7b63fa042e732d842d9cc12" kindref="member">MutPanel</ref>(wxWindow<sp/>*parent,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxWindowID<sp/>winid<sp/>=<sp/>wxID_ANY,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxPoint&amp;<sp/>pos<sp/>=<sp/>wxDefaultPosition,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxSize&amp;<sp/>size<sp/>=<sp/>wxDefaultSize,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>style<sp/>=<sp/>0<sp/></highlight><highlight class="comment">/*<sp/>wxTAB_TRAVERSAL<sp/>|<sp/>wxNO_BORDER<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxValidator&amp;<sp/>validator<sp/>=<sp/>wxDefaultValidator,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>name<sp/>=<sp/>wxPanelNameStr)</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga09fc250280017059371a06c53255b690" kindref="member">Init</ref>();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga6db4ff1d919db7002998d07050be9fca" kindref="member">Create</ref>(parent,<sp/>winid,<sp/>pos,<sp/>size,<sp/>style,<sp/>validator,<sp/>name);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pseudo<sp/>ctor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga6db4ff1d919db7002998d07050be9fca" kindref="member">Create</ref>(wxWindow<sp/>*parent,</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxWindowID<sp/>winid<sp/>=<sp/>wxID_ANY,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxPoint&amp;<sp/>pos<sp/>=<sp/>wxDefaultPosition,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxSize&amp;<sp/>size<sp/>=<sp/>wxDefaultSize,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>style<sp/>=<sp/>0<sp/></highlight><highlight class="comment">/*<sp/>wxTAB_TRAVERSAL<sp/>|<sp/>wxNO_BORDER<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxValidator&amp;<sp/>validator<sp/>=<sp/>wxDefaultValidator,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>name<sp/>=<sp/>wxPanelNameStr);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gada61e2352d10cc55b4cdcaba97df82fc" kindref="member">~MutPanel</ref>();</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gabd4977102e752763038723f0b4c03e8e" kindref="member">Destroy</ref>();</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>implementation<sp/>from<sp/>now<sp/>on</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>--------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>calls<sp/>layout<sp/>for<sp/>layout<sp/>constraints<sp/>and<sp/>sizers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga925abd6c6c3e860261b2accaacdd6927" kindref="member">OnSize</ref>(wxSizeEvent&amp;<sp/>event);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga1844f125f2466adc4722b648c79016ea" kindref="member">InitDialog</ref>();</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__WXUNIVERSAL__</highlight></codeline>
+<codeline lineno="112"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>IsCanvasWindow()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="114"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>WX_DECLARE_CONTROL_CONTAINER();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:<sp/></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/df2/classMutPanel_1ab921e06ea43367d1a284930a66171794" kindref="member">OnNavigationKey</ref>(wxNavigationKeyEvent&amp;<sp/>event);<sp/></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gafc651e2797ac4f52804836637137aff7" kindref="member">OnFocus</ref>(wxFocusEvent&amp;<sp/>event);<sp/></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gaf91386562e1e057b46bed9774eb923c1" kindref="member">OnChildFocus</ref>(wxChildFocusEvent&amp;<sp/>event);<sp/></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga0b4fa312ba3a177c69f8b15652195297" kindref="member">SetFocus</ref>();<sp/></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gaeb34b02ce60d0ad98a9048f5cce1f52d" kindref="member">SetFocusIgnoringChildren</ref>();<sp/></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1gada329ce8fdddfbf8be5a371d71a41660" kindref="member">RemoveChild</ref>(wxWindowBase<sp/>*child);<sp/></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga2b8ec2fe36513eaa57dbadc4b501ebd8" kindref="member">AcceptsFocus</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:<sp/></highlight></codeline>
+<codeline lineno="126" refid="df/df2/classMutPanel_1a8df7db7c6228f9b3f8cbd9bc1ab1498b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxControlContainer<sp/><ref refid="df/df2/classMutPanel_1a8df7db7c6228f9b3f8cbd9bc1ab1498b" kindref="member">m_container</ref>;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>common<sp/>part<sp/>of<sp/>all<sp/>ctors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga09fc250280017059371a06c53255b690" kindref="member">Init</ref>();</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DECLARE_DYNAMIC_CLASS_NO_COPY(<ref refid="df/df2/classMutPanel" kindref="compound">MutPanel</ref>)</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DECLARE_EVENT_TABLE()</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="139"><highlight class="preprocessor"></highlight><highlight class="comment">//<sp/>_MUTABOR_PANEL_H_PRECOMPILED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="141"><highlight class="preprocessor"></highlight><highlight class="comment">//<sp/>_MUTABOR_PANEL_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Panel.h"/>
+  </compounddef>
+</doxygen>

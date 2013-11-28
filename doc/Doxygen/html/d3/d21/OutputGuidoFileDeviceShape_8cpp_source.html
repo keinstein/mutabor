@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_eaae7e9da1b31c6b329e928d72e0e61a.html">wxGUI</a></li><li class="navelem"><a class="el" href="../../dir_589b0311d58a74617a532121d489d9c2.html">Routing</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">OutputGuidoFileDeviceShape.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d3/d21/OutputGuidoFileDeviceShape_8cpp.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// -*-C++ -*-</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"></span><span class="preprocessor">#include &quot;<a class="code" href="../../d1/d73/Defs_8h.html">src/kernel/Defs.h</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d2c/Route-inlines_8h.html">src/kernel/routing/Route-inlines.h</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../db/d77/OutputGuidoFileDeviceShape_8h.html">src/wxGUI/Routing/OutputGuidoFileDeviceShape.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d73/GUIRoute-inlines_8h.html">src/wxGUI/Routing/GUIRoute-inlines.h</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/d50/OutputDevDlg_8h.html">src/wxGUI/Routing/OutputDevDlg.h</a>&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">//#include &quot;MutApp.h&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">//#include &quot;MutIcon.h&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">//#include &quot;MutRouteWnd.h&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">//#include &quot;OutputDevDlg.h&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">//#include &quot;Device.h&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">using namespace </span>mutabor;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">namespace </span>mutaborGUI {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#gadf0b97764ab072536439537fde9b07f9">   44</a></span>&#160;        <span class="keywordtype">void</span> MutOutputGuidoFileDeviceShape::InitializeDialog(<a class="code" href="../../d2/d81/classmutaborGUI_1_1OutputDevDlg.html">OutputDevDlg</a> * out)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(device);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(device-&gt;GetType() == <a class="code" href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa2b2fa6564c9620ec4de6c1440688c984">DTGis</a>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(out);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                out -&gt; SetType(<a class="code" href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa2b2fa6564c9620ec4de6c1440688c984">DTGis</a>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                out -&gt; SetGUIDOFile(device-&gt;GetName());</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#ga9914e1a45379f01f016cd2ff2f95c6f6">   53</a></span>&#160;        <span class="keywordtype">bool</span> MutOutputGuidoFileDeviceShape::readDialog (<a class="code" href="../../d2/d81/classmutaborGUI_1_1OutputDevDlg.html">OutputDevDlg</a> * out)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(device);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(device-&gt;GetType() == <a class="code" href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa2b2fa6564c9620ec4de6c1440688c984">DTGis</a>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(out);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a> (out -&gt; GetType() == <a class="code" href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa2b2fa6564c9620ec4de6c1440688c984">DTGis</a>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other,_T (<span class="stringliteral">&quot;File %s&quot;</span>),  (out -&gt; GetGUIDOFile()).c_str());</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                device-&gt;SetName (out -&gt; GetGUIDOFile());</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                SetLabel (device-&gt;GetName());</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#ga8df1d367867c36fa678b204d2901b404">   65</a></span>&#160;        wxPanel * MutOutputGuidoFileDeviceShape::GetFilterPanel(wxWindow * parent, </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                                                      <a class="code" href="../../d5/dee/group__route.html#gae5927f0f6043b271d1bd1c493e2505e4">Route</a> &amp; route)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#gaedf3113729faf15522da4884cc137733">mutUnused</a>(route);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <a class="code" href="../../dd/d97/classGisOutputFilterPanelBase.html">GisOutputFilterPanel</a> * panel = <span class="keyword">new</span> <a class="code" href="../../dc/df2/group__GUIroute.html#gad82a022e05ea229eaa746695f4a2c3a4">GisOutputFilterPanel</a>(parent);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <span class="keywordflow">if</span> (!panel) <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="comment">// Room for actions</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="keywordflow">return</span> panel;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#gac6ea6e6b2b61b9533035b2a480866401">   76</a></span>&#160;        <span class="keywordtype">void</span> MutOutputGuidoFileDeviceShape::ReadFilterPanel(wxWindow * panel, <a class="code" href="../../d5/dee/group__route.html#gae5927f0f6043b271d1bd1c493e2505e4">Route</a> &amp; route)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#gaedf3113729faf15522da4884cc137733">mutUnused</a>(route);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <a class="code" href="../../dd/d97/classGisOutputFilterPanelBase.html">GisOutputFilterPanel</a> * pan = <span class="keyword">dynamic_cast&lt;</span><a class="code" href="../../dd/d97/classGisOutputFilterPanelBase.html">GisOutputFilterPanel</a> *<span class="keyword">&gt;</span> (panel);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="keywordflow">if</span> (!pan) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        <a class="code" href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="comment">// Room for actions</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <a class="code" href="../../da/d79/group__docview.html#ga6ec13dcf56fb697ed3fc3f815657c4fa">IMPLEMENT_DYNAMIC_CLASS</a>(<a class="code" href="../../d4/d4a/classmutaborGUI_1_1MutOutputGuidoFileDeviceShape.html">MutOutputGuidoFileDeviceShape</a>, <a class="code" href="../../d3/d4c/classmutaborGUI_1_1MutDeviceShape.html">MutOutputDeviceShape</a>)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment"> * \}</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment"> */</span></div>
+<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00141">mutDebug.h:141</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1MutDeviceShape_html"><div class="ttname"><a href="../../d3/d4c/classmutaborGUI_1_1MutDeviceShape.html">mutaborGUI::MutDeviceShape</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d4d/DeviceShape_8h_source.html#l00105">DeviceShape.h:105</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1MutOutputGuidoFileDeviceShape_html"><div class="ttname"><a href="../../d4/d4a/classmutaborGUI_1_1MutOutputGuidoFileDeviceShape.html">mutaborGUI::MutOutputGuidoFileDeviceShape</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d77/OutputGuidoFileDeviceShape_8h_source.html#l00065">OutputGuidoFileDeviceShape.h:65</a></div></div>
+<div class="ttc" id="group__kernel_html_gaedf3113729faf15522da4884cc137733"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gaedf3113729faf15522da4884cc137733">mutUnused</a></div><div class="ttdeci">#define mutUnused(expr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00079">Defs.h:79</a></div></div>
+<div class="ttc" id="group__route_html_gga84f84d78781fc500cd66ee58b0efc83aa2b2fa6564c9620ec4de6c1440688c984"><div class="ttname"><a href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa2b2fa6564c9620ec4de6c1440688c984">mutabor::DTGis</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00089">Device.h:89</a></div></div>
+<div class="ttc" id="Route-inlines_8h_html"><div class="ttname"><a href="../../d2/d2c/Route-inlines_8h.html">Route-inlines.h</a></div></div>
+<div class="ttc" id="group__docview_html_ga6ec13dcf56fb697ed3fc3f815657c4fa"><div class="ttname"><a href="../../da/d79/group__docview.html#ga6ec13dcf56fb697ed3fc3f815657c4fa">IMPLEMENT_DYNAMIC_CLASS</a></div><div class="ttdeci">IMPLEMENT_DYNAMIC_CLASS(MutCommandProcessor, wxCommandProcessor) IMPLEMENT_DYNAMIC_CLASS(MutDocument</div></div>
+<div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
+<div class="ttc" id="group__GUIroute_html_gad82a022e05ea229eaa746695f4a2c3a4"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#gad82a022e05ea229eaa746695f4a2c3a4">mutaborGUI::GisOutputFilterPanel</a></div><div class="ttdeci">GisOutputFilterPanelBase GisOutputFilterPanel</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d77/OutputGuidoFileDeviceShape_8h_source.html#l00063">OutputGuidoFileDeviceShape.h:63</a></div></div>
+<div class="ttc" id="group__kernel_html_ga77bd8e5b959213dd8bcd48dc513f6013"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a></div><div class="ttdeci">#define mutASSERT(cond)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00223">Defs.h:223</a></div></div>
+<div class="ttc" id="classGisOutputFilterPanelBase_html"><div class="ttname"><a href="../../dd/d97/classGisOutputFilterPanelBase.html">GisOutputFilterPanelBase</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc0/wxresource_8h_source.html#l00345">wxresource.h:345</a></div></div>
+<div class="ttc" id="group__route_html_gae5927f0f6043b271d1bd1c493e2505e4"><div class="ttname"><a href="../../d5/dee/group__route.html#gae5927f0f6043b271d1bd1c493e2505e4">mutabor::Route</a></div><div class="ttdeci">TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::Route Route</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00521">Route.h:521</a></div></div>
+<div class="ttc" id="OutputGuidoFileDeviceShape_8h_html"><div class="ttname"><a href="../../db/d77/OutputGuidoFileDeviceShape_8h.html">OutputGuidoFileDeviceShape.h</a></div><div class="ttdoc">Devices Basisklassen. </div></div>
+<div class="ttc" id="OutputDevDlg_8h_html"><div class="ttname"><a href="../../de/d50/OutputDevDlg_8h.html">OutputDevDlg.h</a></div></div>
+<div class="ttc" id="GUIRoute-inlines_8h_html"><div class="ttname"><a href="../../d2/d73/GUIRoute-inlines_8h.html">GUIRoute-inlines.h</a></div></div>
+<div class="ttc" id="group__GUI_html_ga21a35e4a9e56bbe15aded747eb5a7147"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a></div><div class="ttdeci">#define UNREACHABLEC</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00148">mhDefs.h:148</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1OutputDevDlg_html"><div class="ttname"><a href="../../d2/d81/classmutaborGUI_1_1OutputDevDlg.html">mutaborGUI::OutputDevDlg</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d50/OutputDevDlg_8h_source.html#l00066">OutputDevDlg.h:66</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:38:42 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d8/d3d/instrument_8c" kind="file">
+    <compoundname>instrument.c</compoundname>
+    <includes refid="d3/d4c/instrument_8h" local="yes">mutabor/instrument.h</includes>
+    <includes refid="da/ddb/heap_8h" local="yes">mutabor/heap.h</includes>
+    <incdepgraph>
+      <node id="20818">
+        <label>mutabor/instrument.h</label>
+        <link refid="d3/d4c/instrument_8h"/>
+      </node>
+      <node id="20817">
+        <label>src/libmutabor/instrument.c</label>
+        <link refid="instrument.c"/>
+        <childnode refid="20818" relation="include">
+        </childnode>
+        <childnode refid="20819" relation="include">
+        </childnode>
+      </node>
+      <node id="20822">
+        <label>math.h</label>
+      </node>
+      <node id="20819">
+        <label>mutabor/heap.h</label>
+        <link refid="da/ddb/heap_8h"/>
+        <childnode refid="20820" relation="include">
+        </childnode>
+        <childnode refid="20821" relation="include">
+        </childnode>
+      </node>
+      <node id="20820">
+        <label>stdio.h</label>
+      </node>
+      <node id="20821">
+        <label>mutabor/bad_decl.h</label>
+        <link refid="df/d8e/bad__decl_8h"/>
+        <childnode refid="20822" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d8/d3d/instrument_8c_1a17e64de3a93012931ac31d74adb77e21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_instrument_dekl</definition>
+        <argsstring>(int midi_in, int midi_von, int midi_bis, int midi_umleit, struct instrument **list_to_insert)</argsstring>
+        <name>get_instrument_dekl</name>
+        <param>
+          <type>int</type>
+          <declname>midi_in</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>midi_von</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>midi_bis</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>midi_umleit</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="d4/d0f/structinstrument" kindref="compound">instrument</ref> **</type>
+          <declname>list_to_insert</declname>
+        </param>
+        <briefdescription>
+<para>Einlesen der Instrumentdeklarationen. </para>        </briefdescription>
+        <detaileddescription>
+<para>Falls das <ref refid="d5/dc6/classInstrument" kindref="compound">Instrument</ref> schon vorhanden ist, wird eine Fehlermeldung ausgegeben. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">midi_in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MIDI-Instrument </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">midi_von</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>kleinster MIDI-Kanal </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">midi_bis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>größter MIDI-Kanal </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">midi_umleit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MIDI-Durchleitung </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">list_to_insert</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Instrumentenliste </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Es wird immer die gesamte Liste durchsucht. Effektivität? </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para>for (list_to_insert = &amp; list_of_instrumente; </para>        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/instrument.c" line="42" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/instrument.c" bodystart="42" bodyend="86"/>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d4/d0f/structinstrument_1a4cced7e2505d227bbd07fc8cf5c87e6c" compoundref="d3/d4c/instrument_8h" startline="28">instrument::midi_bis</references>
+        <references refid="d4/d0f/structinstrument_1a6d18b193c9041077fffeeedc601c9a19" compoundref="d3/d4c/instrument_8h" startline="26">instrument::midi_in</references>
+        <references refid="d4/d0f/structinstrument_1afc2572eec90eb266d99b6362e37b909a" compoundref="d3/d4c/instrument_8h" startline="29">instrument::midi_umleit</references>
+        <references refid="d4/d0f/structinstrument_1aaa6369891d84317bd27a57050e41a486" compoundref="d3/d4c/instrument_8h" startline="27">instrument::midi_von</references>
+        <references refid="d4/d0f/structinstrument_1a3d9ebc690ddc5343b9887d92e7d68275" compoundref="d3/d4c/instrument_8h" startline="30">instrument::next</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+        <referencedby refid="dc/d7e/group__runtime_1ga67e4c654aa6bfe3944304471e91956d0" compoundref="db/d80/Runtime_8cpp" startline="254" endline="256">SetChannels</referencedby>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Alles zu Instrumenten. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="rcs"><title>Header:</title><para>/home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/instrument.c,v 1.3 2005/07/20 11:53:56 keinstein Exp </para></simplesect>
+<simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein_junior@gmx.net">keinstein_junior@gmx.net</ulink> </para></simplesect>
+<simplesect kind="date"><para></para></simplesect>
+<simplesect kind="rcs"><title>Date:</title><para>2005/07/20 11:53:56 </para></simplesect>
+<simplesect kind="version"><para></para></simplesect>
+<simplesect kind="rcs"><title>Revision:</title><para>1.3 </para></simplesect>
+</para><para><simplesect kind="rcs"><title>Log:</title><para><ref refid="d8/d3d/instrument_8c" kindref="compound">instrument.c</ref>,v </para></simplesect>
+Revision 1.3 2005/07/20 11:53:56 keinstein Kopf korrigiert config.h</para><para>Revision 1.2 2005/07/19 15:15:27 keinstein Using own Templates</para><para>Revision 1.1 2005/07/08 14:44:20 keinstein Neue Datei. Aus <ref refid="d2/d72/parser_8c" kindref="compound">parser.c</ref> herausgelöst. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="23"><highlight class="preprocessor">#ifdef<sp/>HAVE_CONFIG_H</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>include<sp/>&quot;config.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="26"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifdef<sp/>HAVE_STDDEF_H</highlight></codeline>
+<codeline lineno="27"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d3/d4c/instrument_8h" kindref="compound">mutabor/instrument.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="da/ddb/heap_8h" kindref="compound">mutabor/heap.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">/*******<sp/>Einlesen<sp/>der<sp/>Instrumente<sp/>*******/</highlight></codeline>
+<codeline lineno="42" refid="d8/d3d/instrument_8c_1a17e64de3a93012931ac31d74adb77e21" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d3/d4c/instrument_8h_1a17e64de3a93012931ac31d74adb77e21" kindref="member">get_instrument_dekl</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>midi_in,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>midi_von,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>midi_bis,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>midi_umleit,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d4/d0f/structinstrument" kindref="compound">instrument</ref><sp/>**<sp/>list_to_insert)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{<sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>temp;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>list_to_insert;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>list_to_insert<sp/>=<sp/>&amp;<sp/>(*list_to_insert)-&gt;<ref refid="d4/d0f/structinstrument_1a3d9ebc690ddc5343b9887d92e7d68275" kindref="member">next</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>midi_in<sp/>==<sp/>(*list_to_insert)-&gt;midi_in)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" kindref="member">fatal_error</ref>(18,midi_in);<sp/></highlight><highlight class="comment">/*<sp/>MIDI-Instrument<sp/>doppelt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>midi_von<sp/>&gt;<sp/>midi_bis<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temp=midi_von;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Vertauschen<sp/>der<sp/>Reihenfolge<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>midi_von=midi_bis;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>midi_bis=temp;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>(midi_in<sp/>&lt;<sp/>1)<sp/>||<sp/>(midi_in<sp/>&gt;<sp/>16)<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" kindref="member">fatal_error</ref>(45);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>midi_von<sp/>&amp;&amp;<sp/>midi_bis<sp/>)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>(midi_von<sp/>&lt;<sp/>1)<sp/>||<sp/>(midi_von<sp/>&gt;<sp/>16)<sp/>)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" kindref="member">fatal_error</ref>(45);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>(midi_bis<sp/>&lt;<sp/>1)<sp/>||<sp/>(midi_bis<sp/>&gt;<sp/>16)<sp/>)<sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" kindref="member">fatal_error</ref>(45);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>(midi_umleit<sp/>&lt;<sp/>0)<sp/>||<sp/>(midi_umleit<sp/>&gt;<sp/>16)<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" kindref="member">fatal_error</ref>(45);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>(*<sp/>list_to_insert)<sp/>=<sp/>(</highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d4/d0f/structinstrument" kindref="compound">instrument</ref>*)<sp/><ref refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" kindref="member">xmalloc</ref><sp/>(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d4/d0f/structinstrument" kindref="compound">instrument</ref>));</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>(*<sp/>list_to_insert)<sp/>-&gt;<sp/>midi_in<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d0f/structinstrument_1a6d18b193c9041077fffeeedc601c9a19" kindref="member">midi_in</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>(*<sp/>list_to_insert)<sp/>-&gt;<sp/>midi_von<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d0f/structinstrument_1aaa6369891d84317bd27a57050e41a486" kindref="member">midi_von</ref>;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>(*<sp/>list_to_insert)<sp/>-&gt;<sp/>midi_bis<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d0f/structinstrument_1a4cced7e2505d227bbd07fc8cf5c87e6c" kindref="member">midi_bis</ref>;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>(*<sp/>list_to_insert)<sp/>-&gt;<sp/>midi_umleit<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d0f/structinstrument_1afc2572eec90eb266d99b6362e37b909a" kindref="member">midi_umleit</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>(*<sp/>list_to_insert)<sp/>-&gt;<sp/><ref refid="d4/d0f/structinstrument_1a3d9ebc690ddc5343b9887d92e7d68275" kindref="member">next</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/instrument.c"/>
+  </compounddef>
+</doxygen>

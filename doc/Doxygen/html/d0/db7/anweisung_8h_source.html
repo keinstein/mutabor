@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/includes/mutabor/anweisung.h Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_bf59d41d727aac54882b42f236ae575e.html">includes</a></li><li class="navelem"><a class="el" href="../../dir_6db30062d01f5c3ec76e386385d23595.html">mutabor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">anweisung.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d0/db7/anweisung_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#ifndef __ANWEISUNG_H_INCLUDED</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __ANWEISUNG_H_INCLUDED</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/dfa/ausloeser_8h.html">mutabor/ausloeser.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dd/de4/aktion_8h.html">mutabor/aktion.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span><span class="keyword">namespace </span>mutabor {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../d0/dab/structanweisung.html">   36</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="../../d0/dab/structanweisung.html">anweisung</a> {</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../d0/dab/structanweisung.html#a8712e41a0c226c692407c6933b6b2ab2">   37</a></span>&#160;      <span class="keyword">struct </span><a class="code" href="../../d9/de5/structausloeser.html">ausloeser</a> * <a class="code" href="../../d0/dab/structanweisung.html#a8712e41a0c226c692407c6933b6b2ab2">ausloeser</a>;    </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../d0/dab/structanweisung.html#affb7b32738f8c88cac91baaab9ad3383">   38</a></span>&#160;      <span class="keyword">struct </span><a class="code" href="../../d5/def/structaktions__liste.html">aktions_liste</a> * <a class="code" href="../../d0/dab/structanweisung.html#affb7b32738f8c88cac91baaab9ad3383">aktion</a>;   </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../d0/dab/structanweisung.html#ac2f1fdc2202ad29c50dbdc676fdc9a6a">   39</a></span>&#160;      <span class="keyword">struct </span><a class="code" href="../../d0/dab/structanweisung.html">anweisung</a> * <a class="code" href="../../d0/dab/structanweisung.html#ac2f1fdc2202ad29c50dbdc676fdc9a6a">next</a>;         </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    };</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">struct </span><a class="code" href="../../d0/dab/structanweisung.html">anweisung</a> * <a class="code" href="../../d0/db7/anweisung_8h.html#a69a9cc9b2f12873daad5f0fa8da3d40d">get_last_anweisungs_liste</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d0/db7/anweisung_8h.html#a5147664e7b76cf9ee4a0b4cce0cb33c1">init_anweisungs_liste</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d0/db7/anweisung_8h.html#a3a6809dc9fdfa33f77a00a4bcfcc2dc4">get_new_anweisung</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d2/d1c/group__Interpreter.html#gadd38444278d5ab45b8fed1d6683d16b1">insert_in_lokale_liste</a> (<span class="keywordtype">int</span> <a class="code" href="../../d4/d0f/structinstrument.html">instrument</a>, <span class="keyword">struct</span> <a class="code" href="../../d0/dab/structanweisung.html">anweisung</a> * lauf,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                 <span class="keywordtype">char</span> * name_der_logik);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#ifdef __cplusplus </span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor"></span>  } <span class="comment">// extern &quot;C&quot;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;} <span class="comment">// namespace mutabor</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __ANWEISUNG_H_INCLUDED */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="anweisung_8h_html_a69a9cc9b2f12873daad5f0fa8da3d40d"><div class="ttname"><a href="../../d0/db7/anweisung_8h.html#a69a9cc9b2f12873daad5f0fa8da3d40d">get_last_anweisungs_liste</a></div><div class="ttdeci">struct anweisung * get_last_anweisungs_liste(void)</div><div class="ttdoc">Gibt Wurzelelement von #tmp_anweisungs_liste zurück. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dfe/anweisung_8c_source.html#l00044">anweisung.c:44</a></div></div>
+<div class="ttc" id="structausloeser_html"><div class="ttname"><a href="../../d9/de5/structausloeser.html">ausloeser</a></div><div class="ttdoc">Einzelndes Ereignis, das Logik aktiviert. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dfa/ausloeser_8h_source.html#l00033">ausloeser.h:33</a></div></div>
+<div class="ttc" id="structinstrument_html"><div class="ttname"><a href="../../d4/d0f/structinstrument.html">instrument</a></div><div class="ttdoc">Definition der Instrumente als verkettete Liste. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d4c/instrument_8h_source.html#l00025">instrument.h:25</a></div></div>
+<div class="ttc" id="anweisung_8h_html_a3a6809dc9fdfa33f77a00a4bcfcc2dc4"><div class="ttname"><a href="../../d0/db7/anweisung_8h.html#a3a6809dc9fdfa33f77a00a4bcfcc2dc4">get_new_anweisung</a></div><div class="ttdeci">void get_new_anweisung(void)</div><div class="ttdoc">Fügt eine neue Anweisung ans Ende von tmp_anweisungsliste an. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dfe/anweisung_8c_source.html#l00054">anweisung.c:54</a></div></div>
+<div class="ttc" id="structanweisung_html"><div class="ttname"><a href="../../d0/dab/structanweisung.html">anweisung</a></div><div class="ttdoc">Anweisungen als einfach verkettete Liste. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db7/anweisung_8h_source.html#l00036">anweisung.h:36</a></div></div>
+<div class="ttc" id="structanweisung_html_affb7b32738f8c88cac91baaab9ad3383"><div class="ttname"><a href="../../d0/dab/structanweisung.html#affb7b32738f8c88cac91baaab9ad3383">anweisung::aktion</a></div><div class="ttdeci">struct aktions_liste * aktion</div><div class="ttdoc">Ausgelöste Aktion. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db7/anweisung_8h_source.html#l00038">anweisung.h:38</a></div></div>
+<div class="ttc" id="structanweisung_html_ac2f1fdc2202ad29c50dbdc676fdc9a6a"><div class="ttname"><a href="../../d0/dab/structanweisung.html#ac2f1fdc2202ad29c50dbdc676fdc9a6a">anweisung::next</a></div><div class="ttdeci">struct anweisung * next</div><div class="ttdoc">Nächste Anweisung. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db7/anweisung_8h_source.html#l00039">anweisung.h:39</a></div></div>
+<div class="ttc" id="structanweisung_html_a8712e41a0c226c692407c6933b6b2ab2"><div class="ttname"><a href="../../d0/dab/structanweisung.html#a8712e41a0c226c692407c6933b6b2ab2">anweisung::ausloeser</a></div><div class="ttdeci">struct ausloeser * ausloeser</div><div class="ttdoc">Auslösendes Ereignis. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db7/anweisung_8h_source.html#l00037">anweisung.h:37</a></div></div>
+<div class="ttc" id="group__Interpreter_html_gadd38444278d5ab45b8fed1d6683d16b1"><div class="ttname"><a href="../../d2/d1c/group__Interpreter.html#gadd38444278d5ab45b8fed1d6683d16b1">insert_in_lokale_liste</a></div><div class="ttdeci">void insert_in_lokale_liste(int instrument, struct anweisung *lauf, char *name_der_logik)</div><div class="ttdoc">Fügt die auslösende Harmonien, Taste bzw. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dcc/ausloeser_8c_source.html#l00420">ausloeser.c:420</a></div></div>
+<div class="ttc" id="structaktions__liste_html"><div class="ttname"><a href="../../d5/def/structaktions__liste.html">aktions_liste</a></div><div class="ttdoc">Aktionen als einfach verkettete Liste. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/de4/aktion_8h_source.html#l00057">aktion.h:57</a></div></div>
+<div class="ttc" id="ausloeser_8h_html"><div class="ttname"><a href="../../d1/dfa/ausloeser_8h.html">ausloeser.h</a></div><div class="ttdoc">Alles zu Auslösern. </div></div>
+<div class="ttc" id="anweisung_8h_html_a5147664e7b76cf9ee4a0b4cce0cb33c1"><div class="ttname"><a href="../../d0/db7/anweisung_8h.html#a5147664e7b76cf9ee4a0b4cce0cb33c1">init_anweisungs_liste</a></div><div class="ttdeci">void init_anweisungs_liste(void)</div><div class="ttdoc">Setzt globalen Anweisungs-Zwischenspeicher auf NULL. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dfe/anweisung_8c_source.html#l00038">anweisung.c:38</a></div></div>
+<div class="ttc" id="aktion_8h_html"><div class="ttname"><a href="../../dd/de4/aktion_8h.html">aktion.h</a></div><div class="ttdoc">Alles zu Aktionen. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:03:00 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

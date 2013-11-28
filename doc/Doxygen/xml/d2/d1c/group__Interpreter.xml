@@ -1,0 +1,689 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d2/d1c/group__Interpreter" kind="group">
+    <compoundname>Interpreter</compoundname>
+    <title>Interpreter</title>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1gac14268034c5788ccce35a8cd5d7e6c79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="d4/dd8/structton__einstell" kindref="compound">ton_einstell</ref> *</type>
+        <definition>struct ton_einstell* expand_tonliste</definition>
+        <argsstring>(struct ton *the_tonliste)</argsstring>
+        <name>expand_tonliste</name>
+        <param>
+          <type>struct <ref refid="dd/da3/structton" kindref="compound">ton</ref> *</type>
+          <declname>the_tonliste</declname>
+        </param>
+        <briefdescription>
+<para>Expandiert eine Tonliste in eine einfach verkettete Liste von Einstellungen. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the_tonliste</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Liste von Tönen. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/aktion.c" line="215" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/aktion.c" bodystart="215" bodyend="270"/>
+        <references refid="d0/d24/midicalc_8h_1a0ce82fc5bcce51924e0aaf286582ef7d" compoundref="d0/d24/midicalc_8h" startline="28">DOUBLE_TO_LONG</references>
+        <references refid="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465badf29554d2bdf1693c1ea53ba41d23159" compoundref="d4/d12/ton_8h" startline="52">einstell_absolut</references>
+        <references refid="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465babc9dee31f8a67378b01d72709b2dbf7d" compoundref="d4/d12/ton_8h" startline="51">einstell_gleich</references>
+        <references refid="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465ba532c6dad23c53fb25fed3d3d88642044" compoundref="d4/d12/ton_8h" startline="53">einstell_relativ</references>
+        <references refid="d9/d7c/group__kernel_1gga862a99d722d27db127b715f42761465ba8c2451b3a3b251272b1dad44f9aec46a" compoundref="d4/d12/ton_8h" startline="50">einstell_stumm</references>
+        <references refid="d0/d24/midicalc_8h_1a29cffdaab2019075e978c1459d4d0b14" compoundref="d0/d24/midicalc_8h" startline="42">FAKTOR_TO_MIDI</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d0/d24/midicalc_8h_1a2218d4cc1662a2a7147ec7ad9cb90ae1" compoundref="d0/d24/midicalc_8h" startline="35">FREQUENZ_TO_MIDI</references>
+        <references refid="d2/d8a/interval_8h_1a0812e04f17c515d5e3a639dd51e5801c" compoundref="d5/d28/interval_8c" startline="190" endline="204">get_komplex_faktor</references>
+        <references refid="d4/d12/ton_8h_1a0a6c4428485d9da14db1229e94d4db5b" compoundref="df/de8/ton_8c" startline="443" endline="448">get_komplex_frequenz</references>
+        <references refid="dd/da3/structton_1a3c9499dd5cfd4d6ce65697b1a86852e6" compoundref="d4/d12/ton_8h" startline="34">ton::name</references>
+        <references refid="d4/dd8/structton__einstell_1a1b26f4bbf71f1c5e8568d7bf781140bb" compoundref="d4/d12/ton_8h" startline="69">ton_einstell::next</references>
+        <references refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a39f2b025374e0969cf0d22ea3389a36b" compoundref="d4/d12/ton_8h" startline="23">ton_absolut</references>
+        <references refid="dd/da3/structton_1a2865e603abed94a0582ca7798ad95a21">ton::ton_absolut</references>
+        <references refid="d9/d7c/group__kernel_1gga4fe65436d72e9762190aa11871293925a435f7f05f60006f36ac067d647a8ac92" compoundref="d4/d12/ton_8h" startline="24">ton_komplex</references>
+        <references refid="dd/da3/structton_1aac4a8ccc88617139d5880560beac649a">ton::ton_komplex</references>
+        <references refid="dd/da3/structton_1a2173eae7dfaa7102dbed7bd7900ae82b">ton::u</references>
+        <references refid="d4/dd8/structton__einstell_1a0dff9af5955667a3cf2c0ad2f175db3f">ton_einstell::u</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="d2/d1c/group__Interpreter_1ga6140e72fda79613ca5af30a3832c286c" compoundref="d8/dc3/aktion_8c" startline="360" endline="470">expandiere_umstimmung</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1ga624187681a6783c21bd14e86fc82a929" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="d5/d8c/structdo__aktion" kindref="compound">do_aktion</ref> *</type>
+        <definition>struct do_aktion* expandiere_tonsystem</definition>
+        <argsstring>(struct tonsystem *the_tonsystem)</argsstring>
+        <name>expandiere_tonsystem</name>
+        <param>
+          <type>struct <ref refid="dc/dba/structtonsystem" kindref="compound">tonsystem</ref> *</type>
+          <declname>the_tonsystem</declname>
+        </param>
+        <briefdescription>
+<para>Wandelt ein Tonsystem in eine Aktion um. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dazu werden Tonnamen expandiert und die einzelnen Töne in MIDI-Werte umgerechnet. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the_tonsystem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Tonsystem. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/aktion.c" line="276" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/aktion.c" bodystart="276" bodyend="319"/>
+        <references refid="d4/d2a/structTSYS_1a8259cdab04a561ed9c1ff24bdcd781f9" compoundref="d8/d39/tonsystem_8h" startline="52">TSYS::anker</references>
+        <references refid="d9/d7c/group__kernel_1ggad274f7c459bd092f365be1c95b5973eaa0762fd5da36eedf3d7e0b507a750ab77" compoundref="dd/de4/aktion_8h" startline="43">aufruf_tonsystem</references>
+        <references refid="d4/d2a/structTSYS_1a40b61cf1ffb61fee185a714d0ad3cb5e" compoundref="d8/d39/tonsystem_8h" startline="53">TSYS::breite</references>
+        <references refid="d0/d24/midicalc_8h_1a0ce82fc5bcce51924e0aaf286582ef7d" compoundref="d0/d24/midicalc_8h" startline="28">DOUBLE_TO_LONG</references>
+        <references refid="d0/d24/midicalc_8h_1a29cffdaab2019075e978c1459d4d0b14" compoundref="d0/d24/midicalc_8h" startline="42">FAKTOR_TO_MIDI</references>
+        <references refid="d0/d24/midicalc_8h_1a2218d4cc1662a2a7147ec7ad9cb90ae1" compoundref="d0/d24/midicalc_8h" startline="35">FREQUENZ_TO_MIDI</references>
+        <references refid="d4/d12/ton_8h_1adf3f50ce72e583c1a3a2c42302c7d7f5" compoundref="df/de8/ton_8c" startline="69" endline="75">get_ton</references>
+        <references refid="d2/d8a/interval_8h_1aacf88ad309137961680bd044bd79d095" compoundref="d5/d28/interval_8c" startline="153" endline="183">get_wert_komplex_intervall</references>
+        <references refid="d4/d12/ton_8h_1aa614e631a7a7c9e90ad0614fbee2dd13" compoundref="d4/d12/ton_8h" startline="89">list_of_toene</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="dd/da3/structton_1a3c9499dd5cfd4d6ce65697b1a86852e6" compoundref="d4/d12/ton_8h" startline="34">ton::name</references>
+        <references refid="dd/da3/structton_1a0531d0ab1a39337684a162a66c88b5d0" compoundref="d4/d12/ton_8h" startline="45">ton::next</references>
+        <references refid="d4/d2a/structTSYS_1aada6a8b7de8e345cf1663a61abab9ef4" compoundref="d8/d39/tonsystem_8h" startline="54">TSYS::periode</references>
+        <references refid="df/de8/ton_8c_1a94804479feb853d5626e9384b24e8985" compoundref="df/de8/ton_8c" startline="217">toene</references>
+        <references refid="d4/d2a/structTSYS_1ac4ff8cad5f7ce09e437a7320e3dc60fb" compoundref="d8/d39/tonsystem_8h" startline="55">TSYS::ton</references>
+        <references refid="d4/d12/ton_8h_1a7205dceb2bb780245ab66f9b032e301a" compoundref="df/de8/ton_8c" startline="57" endline="60">ton_list_laenge</references>
+        <references refid="dd/da3/structton_1a2173eae7dfaa7102dbed7bd7900ae82b">ton::u</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga4ea14e5284c0840695599141a22e95c7" compoundref="d3/da0/TabGen_8cpp" startline="514" endline="583">expandiere_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gac450e7eec8ccc0dfa7bdd4e816e1be0b" compoundref="d3/da0/TabGen_8cpp" startline="835" endline="889">expandiere_name</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1ga8cbfd2aaf66a3d281ae8d25e374c78f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="d5/d8c/structdo__aktion" kindref="compound">do_aktion</ref> *</type>
+        <definition>struct do_aktion* expand_aktions_liste</definition>
+        <argsstring>(struct aktions_liste *the_liste, struct interpreter_parameter_liste *aktuelle_parameter)</argsstring>
+        <name>expand_aktions_liste</name>
+        <param>
+          <type>struct <ref refid="d5/def/structaktions__liste" kindref="compound">aktions_liste</ref> *</type>
+          <declname>the_liste</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="d2/d46/structinterpreter__parameter__liste" kindref="compound">interpreter_parameter_liste</ref> *</type>
+          <declname>aktuelle_parameter</declname>
+        </param>
+        <briefdescription>
+<para>Ersetzt Parameter in einer Aktionsliste durch ihre aktuellen Werte. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the_liste</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ausgangs-Liste mit den Aktionen, deren Parameter ersetzt werden sollon. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>aktuelle_parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Liste mit den Aktuellen Parametern, die ersetzt werden können. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Neu hinzukommende Aktionen werden erhalten. Kann das passieren? </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/aktion.c" line="326" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/aktion.c" bodystart="326" bodyend="354"/>
+        <references refid="d9/d7c/group__kernel_1gga4640ca6a739d886d48063bab20c0a6bda3199b6eb05486b74e1ba3242b42f7985" compoundref="dd/de4/aktion_8h" startline="36">aktion_aufruf</references>
+        <references refid="d9/d7c/group__kernel_1gga4640ca6a739d886d48063bab20c0a6bdac51871fe524a12542142cb5684de57fb" compoundref="dd/de4/aktion_8h" startline="35">aktion_midi_out</references>
+        <references refid="d2/d1c/group__Interpreter_1ga8cbfd2aaf66a3d281ae8d25e374c78f2" compoundref="d8/dc3/aktion_8c" startline="326" endline="354">expand_aktions_liste</references>
+        <references refid="d2/d1c/group__Interpreter_1ga17564c5b9aaeb5ce3957a9a3bb483924" compoundref="d8/dc3/aktion_8c" startline="529" endline="540">expandiere_midi</references>
+        <references refid="d2/d1c/group__Interpreter_1ga78114178682e1b11d830e325a46787c8" compoundref="d8/dc3/aktion_8c" startline="482" endline="524">expandiere_name</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d5/d8c/structdo__aktion_1a33512225fda804dc47afd26625182748" compoundref="dd/de4/aktion_8h" startline="123">do_aktion::next</references>
+        <references refid="d5/d8c/structdo__aktion_1a9b8df98cdca0d77d9d9c01046b3be0da">do_aktion::u</references>
+        <referencedby refid="d9/d7c/group__kernel_1gadadc27e0d85c98730dae564a11ea7202" compoundref="d3/da0/TabGen_8cpp" startline="585" endline="623">expand_aktions_liste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaa10f85957a81a404a0e77ba2a44fa842" compoundref="d3/da0/TabGen_8cpp" startline="626" endline="669">expand_case_liste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga17b03e17223aab80aa95d596a74bdc2d" compoundref="d3/da0/TabGen_8cpp" startline="672" endline="831">expandiere_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaa32d94398d0aa7cb0b2f2bf3b2308c30" compoundref="d3/da0/TabGen_8cpp" startline="1087" endline="1214">insert_in_lokale_liste</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1ga6140e72fda79613ca5af30a3832c286c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="d5/d8c/structdo__aktion" kindref="compound">do_aktion</ref> *</type>
+        <definition>struct do_aktion* expandiere_umstimmung</definition>
+        <argsstring>(struct umstimmung *the_umstimmung, struct interpreter_parameter_liste *aktuelle_parameter)</argsstring>
+        <name>expandiere_umstimmung</name>
+        <param>
+          <type>struct <ref refid="d2/d1c/structumstimmung" kindref="compound">umstimmung</ref> *</type>
+          <declname>the_umstimmung</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="d2/d46/structinterpreter__parameter__liste" kindref="compound">interpreter_parameter_liste</ref> *</type>
+          <declname>aktuelle_parameter</declname>
+        </param>
+        <briefdescription>
+<para>Ersetzt die Parameter einer Umstimmung durch deren Werte. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the_umstimmung</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Umstimmung, die bearbeitet werden soll. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>aktuelle_parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Liste der Parameter, die ersetzt werden können </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/aktion.c" line="360" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/aktion.c" bodystart="360" bodyend="470"/>
+        <references refid="d9/d7c/group__kernel_1ggad274f7c459bd092f365be1c95b5973eaaf0fc2fb19331357cd2b54a04481716d6" compoundref="dd/de4/aktion_8h" startline="53">aufruf_midi_out</references>
+        <references refid="d9/d7c/group__kernel_1ggad274f7c459bd092f365be1c95b5973eaa4f00ecbb5c4d62faae09bb07f06e5327" compoundref="dd/de4/aktion_8h" startline="45">aufruf_umst_breite_abs</references>
+        <references refid="d9/d7c/group__kernel_1ggad274f7c459bd092f365be1c95b5973eaa33f340007121ff19e62c43adbabc9948" compoundref="dd/de4/aktion_8h" startline="49">aufruf_umst_breite_rel</references>
+        <references refid="d9/d7c/group__kernel_1ggad274f7c459bd092f365be1c95b5973eaa24d19f1cfaf606201437d71268e5ca94" compoundref="dd/de4/aktion_8h" startline="44">aufruf_umst_taste_abs</references>
+        <references refid="d9/d7c/group__kernel_1ggad274f7c459bd092f365be1c95b5973eaaec35cfa6a0f938bb7a294588d3547e3f" compoundref="dd/de4/aktion_8h" startline="48">aufruf_umst_taste_rel</references>
+        <references refid="d9/d7c/group__kernel_1ggad274f7c459bd092f365be1c95b5973eaa49c80b18ef6906af7a5c73214d15f0c6" compoundref="dd/de4/aktion_8h" startline="50">aufruf_umst_toene_veraendert</references>
+        <references refid="d9/d7c/group__kernel_1ggad274f7c459bd092f365be1c95b5973eaac44a9a463202586b2edb01ca2d0315cc" compoundref="dd/de4/aktion_8h" startline="52">aufruf_umst_umst_case</references>
+        <references refid="d9/d7c/group__kernel_1ggad274f7c459bd092f365be1c95b5973eaae486514e03f76efc40db221ab274b18d" compoundref="dd/de4/aktion_8h" startline="46">aufruf_umst_wiederholung_abs</references>
+        <references refid="d9/d7c/group__kernel_1ggad274f7c459bd092f365be1c95b5973eaa648d12ec49089a7bc7a35083700f2f48" compoundref="dd/de4/aktion_8h" startline="47">aufruf_umst_wiederholung_rel</references>
+        <references refid="d0/d24/midicalc_8h_1a0ce82fc5bcce51924e0aaf286582ef7d" compoundref="d0/d24/midicalc_8h" startline="28">DOUBLE_TO_LONG</references>
+        <references refid="d2/d1c/group__Interpreter_1ga8cbfd2aaf66a3d281ae8d25e374c78f2" compoundref="d8/dc3/aktion_8c" startline="326" endline="354">expand_aktions_liste</references>
+        <references refid="d2/d1c/group__Interpreter_1ga959ca7312a401abde94d3485683cbc72" compoundref="dc/d54/case__liste_8c" startline="317" endline="354">expand_case_liste</references>
+        <references refid="d2/d1c/group__Interpreter_1gac14268034c5788ccce35a8cd5d7e6c79" compoundref="d8/dc3/aktion_8c" startline="215" endline="270">expand_tonliste</references>
+        <references refid="d0/d24/midicalc_8h_1a29cffdaab2019075e978c1459d4d0b14" compoundref="d0/d24/midicalc_8h" startline="42">FAKTOR_TO_MIDI</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d2/d8a/interval_8h_1aacf88ad309137961680bd044bd79d095" compoundref="d5/d28/interval_8c" startline="153" endline="183">get_wert_komplex_intervall</references>
+        <references refid="db/d1e/argument_8h_1af636a1e8393f27b82c5c10e8c0120f04" compoundref="d3/d14/argument_8c" startline="159" endline="189">get_wert_of_argument</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="d5/d8c/structdo__aktion_1a33512225fda804dc47afd26625182748" compoundref="dd/de4/aktion_8h" startline="123">do_aktion::next</references>
+        <references refid="d2/d1c/structumstimmung_1af6c0515f9099f9d765cedd86762d9c6b">umstimmung::u</references>
+        <references refid="d5/d8c/structdo__aktion_1a9b8df98cdca0d77d9d9c01046b3be0da">do_aktion::u</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa8879390ae7740d1e6d77458bf8837018" compoundref="da/d7f/umstimmung_8h" startline="29">umstimmung_breite_abs</references>
+        <references refid="d2/d1c/structumstimmung_1afc99e04ffdb79ca027d7d4540781216e">umstimmung::umstimmung_breite_abs</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaf5ef8366ca077fbd9096f9e91117bd88" compoundref="da/d7f/umstimmung_8h" startline="30">umstimmung_breite_rel</references>
+        <references refid="d2/d1c/structumstimmung_1aa4d357ff24656ae3a4b2493ba43af0d4">umstimmung::umstimmung_breite_rel</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aab0e072b71e6b4d425ff841b448a7272e" compoundref="da/d7f/umstimmung_8h" startline="36">umstimmung_midi_out</references>
+        <references refid="d2/d1c/structumstimmung_1a235688adac19434827d30078734b8ac0">umstimmung::umstimmung_midi_out</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aabd7780801f2432bc197c238b90f476da" compoundref="da/d7f/umstimmung_8h" startline="27">umstimmung_taste_abs</references>
+        <references refid="d2/d1c/structumstimmung_1a5b970f1acddc758aee3234494e6751a1">umstimmung::umstimmung_taste_abs</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aafe2f45099e251961aacaf58101885deb" compoundref="da/d7f/umstimmung_8h" startline="28">umstimmung_taste_rel</references>
+        <references refid="d2/d1c/structumstimmung_1adc79e3476f239eabe9df9853d6e55095">umstimmung::umstimmung_taste_rel</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa14c0a1e77760dbe7bf7fd23d047daf65" compoundref="da/d7f/umstimmung_8h" startline="31">umstimmung_toene_veraendert</references>
+        <references refid="d2/d1c/structumstimmung_1a17bcbd19a918a3f6b7b59e3095060006">umstimmung::umstimmung_toene_veraendert</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa6762ebe62dfd2cb6d4a659f6a840e2a4" compoundref="da/d7f/umstimmung_8h" startline="35">umstimmung_umstimmungs_case</references>
+        <references refid="d2/d1c/structumstimmung_1a152278390f21c75ae6180c7a7c738e81">umstimmung::umstimmung_umstimmungs_case</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa185e81c4fa5d32b1500d5d5d895a0af8" compoundref="da/d7f/umstimmung_8h" startline="34">umstimmung_umstimmungsbund</references>
+        <references refid="d2/d1c/structumstimmung_1a3eec91d4b820edc872944be5769f80e0">umstimmung::umstimmung_umstimmungsbund</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aaee34b68ac28af4bdc8876001aec69edf" compoundref="da/d7f/umstimmung_8h" startline="32">umstimmung_wiederholung_abs</references>
+        <references refid="d2/d1c/structumstimmung_1a4fa668220d409503b83ca4830a76584a">umstimmung::umstimmung_wiederholung_abs</references>
+        <references refid="d9/d7c/group__kernel_1ggae4a3d9bbce90258ea2550ced0e649d0aa29dcdd9f8c0808b673707fc06aace5c0" compoundref="da/d7f/umstimmung_8h" startline="33">umstimmung_wiederholung_rel</references>
+        <references refid="d9/d7c/group__kernel_1ga2a0a21b8d377742eac6cb1f7f3229e86" compoundref="da/d02/Hilfs_8cpp" startline="145" endline="150">xfree</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga4ea14e5284c0840695599141a22e95c7" compoundref="d3/da0/TabGen_8cpp" startline="514" endline="583">expandiere_logik</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gac450e7eec8ccc0dfa7bdd4e816e1be0b" compoundref="d3/da0/TabGen_8cpp" startline="835" endline="889">expandiere_name</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1ga78114178682e1b11d830e325a46787c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="d5/d8c/structdo__aktion" kindref="compound">do_aktion</ref> *</type>
+        <definition>struct do_aktion* expandiere_name</definition>
+        <argsstring>(char *name, struct argument_liste *parameter, struct interpreter_parameter_liste *bezugs_liste)</argsstring>
+        <name>expandiere_name</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="dd/d7c/structargument__liste" kindref="compound">argument_liste</ref> *</type>
+          <declname>parameter</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="d2/d46/structinterpreter__parameter__liste" kindref="compound">interpreter_parameter_liste</ref> *</type>
+          <declname>bezugs_liste</declname>
+        </param>
+        <briefdescription>
+<para>Sucht nach einer Logik, einem Tonsystem bzw. </para>        </briefdescription>
+        <detaileddescription>
+<para>einer Umstimmung in dieser Reihenfolge. Wird eine Umstimmung zurückgeliefert, so werden gleich auch deren Parameter ersetzt. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name der zu suchenden Logik, des Tonsystems oder der Umstimmung. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Argumente, für die Parameter-Ersetzung </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bezugs_liste</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Liste mit den Interpreter-Parametern, aus denen die aktuellen Parameter für die Expansion der Umstimmung generiert werden. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/aktion.c" line="482" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/aktion.c" bodystart="482" bodyend="524"/>
+        <references refid="d1/dff/logik_8h_1adeba205c8988dbafa8226746ae29a639" compoundref="d7/d6e/logik_8c" startline="260" endline="299">expandiere_logik</references>
+        <references refid="d2/d1c/group__Interpreter_1ga624187681a6783c21bd14e86fc82a929" compoundref="d8/dc3/aktion_8c" startline="276" endline="319">expandiere_tonsystem</references>
+        <references refid="d2/d1c/group__Interpreter_1ga6140e72fda79613ca5af30a3832c286c" compoundref="d8/dc3/aktion_8c" startline="360" endline="470">expandiere_umstimmung</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d2/d2a/parameter_8h_1a493a3f825cf92358363ce341cbf1c4cb" compoundref="d7/d2d/parameter_8c" startline="116" endline="148">gen_parameter_liste</references>
+        <references refid="d1/dff/logik_8h_1aeac62519a6479ab36a94d3ad1937bb61" compoundref="d7/d6e/logik_8c" startline="78" endline="83">get_logik</references>
+        <references refid="da/d7f/umstimmung_8h_1ae60de5ad4f8f7e1954cf3105b34d21bc" compoundref="d2/d4a/umstimmung_8c" startline="60" endline="66">get_umstimmung</references>
+        <references refid="d1/dff/logik_8h_1a7f772804a850a0156f485df5f8cb1339" compoundref="d7/d6e/logik_8c" startline="44">list_of_logiken</references>
+        <references refid="d8/d39/tonsystem_8h_1a1c6d9a9da675102ad666d5da4ad167ca" compoundref="d8/d39/tonsystem_8h" startline="66">list_of_tonsysteme</references>
+        <references refid="da/d7f/umstimmung_8h_1a96aa4405f944de769b350336489cf56e" compoundref="da/d7f/umstimmung_8h" startline="117">list_of_umstimmungen</references>
+        <references refid="d8/d39/tonsystem_8h_1a4563750267670ae068cbd8f00d5a7796" compoundref="da/dd2/tonsystem_8c" startline="50" endline="56">parser_get_tonsystem</references>
+        <referencedby refid="d9/d7c/group__kernel_1gadadc27e0d85c98730dae564a11ea7202" compoundref="d3/da0/TabGen_8cpp" startline="585" endline="623">expand_aktions_liste</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1ga17564c5b9aaeb5ce3957a9a3bb483924" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="d5/d8c/structdo__aktion" kindref="compound">do_aktion</ref> *</type>
+        <definition>struct do_aktion* expandiere_midi</definition>
+        <argsstring>(struct midiliste *liste)</argsstring>
+        <name>expandiere_midi</name>
+        <param>
+          <type>struct <ref refid="df/df2/structmidiliste" kindref="compound">midiliste</ref> *</type>
+          <declname>liste</declname>
+        </param>
+        <briefdescription>
+<para>Wandelt eine MIDI-Liste in eine MIDI-Ausgabe-Aktion um. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">liste</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MIDI-Liste, die umgewandelt werden soll </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/aktion.c" line="529" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/aktion.c" bodystart="529" bodyend="540"/>
+        <references refid="d9/d7c/group__kernel_1ggad274f7c459bd092f365be1c95b5973eaaf0fc2fb19331357cd2b54a04481716d6" compoundref="dd/de4/aktion_8h" startline="53">aufruf_midi_out</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="d5/d8c/structdo__aktion_1a33512225fda804dc47afd26625182748" compoundref="dd/de4/aktion_8h" startline="123">do_aktion::next</references>
+        <references refid="d5/d8c/structdo__aktion_1a9b8df98cdca0d77d9d9c01046b3be0da">do_aktion::u</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="d9/d7c/group__kernel_1gadadc27e0d85c98730dae564a11ea7202" compoundref="d3/da0/TabGen_8cpp" startline="585" endline="623">expand_aktions_liste</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1ga69baa9919250669cbe29d4a4fa4bf9ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void insert_in_globale_liste</definition>
+        <argsstring>(int instrument, struct logik *lauf)</argsstring>
+        <name>insert_in_globale_liste</name>
+        <param>
+          <type>int</type>
+          <declname>instrument</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="db/d28/structlogik" kindref="compound">logik</ref> *</type>
+          <declname>lauf</declname>
+        </param>
+        <briefdescription>
+<para>Fügt die auslösende Harmonien, Taste bzw. </para>        </briefdescription>
+        <detaileddescription>
+<para>das Midiereignis der Logik in die entsprechenede globale Liste eines Instrumentes ein. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>instrument</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="d5/dc6/classInstrument" kindref="compound">Instrument</ref>, für das das Ereignis eingefügt werden soll. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lauf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Logik, deren Auslöser eingefügt werden soll. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" line="295" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="295" bodyend="379"/>
+        <references refid="d8/d8e/structkeyboard__ereignis_1aabae38673dcfd43fc298e64b756adc6e" compoundref="d1/dfa/ausloeser_8h" startline="59">keyboard_ereignis::aktion</references>
+        <references refid="d7/d77/structmidi__ereignis_1a9e775c365af2b2be99ad9a6c9fbb8efc" compoundref="d1/dfa/ausloeser_8h" startline="69">midi_ereignis::aktion</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1ac2a50ecf0fd3ecce4a9683b004b30d72" compoundref="d1/dfa/ausloeser_8h" startline="81">harmonie_ereignis::aktion</references>
+        <references refid="db/d28/structlogik_1a9220a60ca430902aad58a930d8f5e8f6" compoundref="d1/dff/logik_8h" startline="33">logik::ausloeser</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa1844e4b7f36346b7d8a8e2937728d55" compoundref="d1/dfa/ausloeser_8h" startline="25">ausloeser_harmonie</references>
+        <references refid="d9/de5/structausloeser_1a08124200232ca1482b390ab19217e55e">ausloeser::ausloeser_harmonie</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a9b2b50e78cd5c69758e24d0731f4c5c2" compoundref="d1/dfa/ausloeser_8h" startline="26">ausloeser_harmonie_form</references>
+        <references refid="d9/de5/structausloeser_1a8e224e1ec8b6b76c5d3a11457ef4b8f3">ausloeser::ausloeser_harmonie_form</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160adfd3d26ad9545043cc1f524df558f1c8" compoundref="d1/dfa/ausloeser_8h" startline="28">ausloeser_midi_in</references>
+        <references refid="d9/de5/structausloeser_1ab0106d671eb6240faf29b0f07a7346c9">ausloeser::ausloeser_midi_in</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa70672d6552c2a53d62562b3a2787cc8" compoundref="d1/dfa/ausloeser_8h" startline="27">ausloeser_taste</references>
+        <references refid="d2/d1c/group__Interpreter_1ga9d00fa30c4b5542162e707c060daec77" compoundref="d8/dff/midicalc_8c" startline="116" endline="128">create_midi_scan_liste</references>
+        <references refid="d2/d1c/group__Interpreter_1ga04fa5cd297957f96749cf608f126b9c4" compoundref="dd/d35/harmonie_8c" startline="128" endline="153">expand_pattern</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d7/d77/structmidi__ereignis_1a6cb5fe36e14ce490ae3e8ab1758826a8" compoundref="d1/dfa/ausloeser_8h" startline="66">midi_ereignis::first_pos</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1a2e260cfda961d3a119066d6cd2b09906" compoundref="d1/dfa/ausloeser_8h" startline="77">harmonie_ereignis::ist_harmonieform</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1a61c12c628e5edb695321ff7d03c36d4d" compoundref="d1/dfa/ausloeser_8h" startline="79">harmonie_ereignis::nachtaste</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" compoundref="d1/dff/logik_8h" startline="32">logik::name</references>
+        <references refid="d8/d8e/structkeyboard__ereignis_1a01d07f77fd83e8f39193d898f0f8d347" compoundref="d1/dfa/ausloeser_8h" startline="61">keyboard_ereignis::next</references>
+        <references refid="d7/d77/structmidi__ereignis_1a654d8d12e2d31ae5769a891e3858788b" compoundref="d1/dfa/ausloeser_8h" startline="71">midi_ereignis::next</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1a7235e608d8367b0fcce870b3e330ff4c" compoundref="d1/dfa/ausloeser_8h" startline="83">harmonie_ereignis::next</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1acadd5e3cc1864df7733f886c8bdf6111" compoundref="d1/dfa/ausloeser_8h" startline="76">harmonie_ereignis::pattern</references>
+        <references refid="d7/d77/structmidi__ereignis_1aa229a7383cc5e9ccdd286ba1764ee3b9" compoundref="d1/dfa/ausloeser_8h" startline="67">midi_ereignis::scan_pos</references>
+        <references refid="d8/d8e/structkeyboard__ereignis_1a5178ec1b200646932f712cb0218d2207" compoundref="d1/dfa/ausloeser_8h" startline="60">keyboard_ereignis::the_logik_to_expand</references>
+        <references refid="d7/d77/structmidi__ereignis_1a421345335988d99c81ef21fb4e52d77c" compoundref="d1/dfa/ausloeser_8h" startline="70">midi_ereignis::the_logik_to_expand</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1ac931d37144fc073a3fce3a078d446209" compoundref="d1/dfa/ausloeser_8h" startline="82">harmonie_ereignis::the_logik_to_expand</references>
+        <references refid="d9/de5/structausloeser_1a79822bf38abb01c6b4941af3a5730ef3">ausloeser::u</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1a0e113780e1e76ae5dbe08443301da81d" compoundref="d1/dfa/ausloeser_8h" startline="78">harmonie_ereignis::vortaste</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" compoundref="d3/da0/TabGen_8cpp" startline="1291" endline="1368">expand_decition_tree</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1gab7918076c80dc48be1a4c64a39be0510" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="d9/d5b/structharmonie__ereignis" kindref="compound">harmonie_ereignis</ref> **</type>
+        <definition>struct harmonie_ereignis** get_ende_harmonie</definition>
+        <argsstring>(struct harmonie_ereignis **lauf)</argsstring>
+        <name>get_ende_harmonie</name>
+        <param>
+          <type>struct <ref refid="d9/d5b/structharmonie__ereignis" kindref="compound">harmonie_ereignis</ref> **</type>
+          <declname>lauf</declname>
+        </param>
+        <briefdescription>
+<para>Liefert einen Zeiger auf den Nachfolge-Zeiger des letzten Elementes einer Harmonie-Ereignis-Liste. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lauf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Zeiger auf die Wurzel einer einfach verketteten Liste von Harmonieereignissen. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" line="386" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="386" bodyend="390"/>
+        <references refid="d2/d1c/group__Interpreter_1gab7918076c80dc48be1a4c64a39be0510" compoundref="d6/dcc/ausloeser_8c" startline="386" endline="390">get_ende_harmonie</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1a7235e608d8367b0fcce870b3e330ff4c" compoundref="d1/dfa/ausloeser_8h" startline="83">harmonie_ereignis::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" compoundref="d3/da0/TabGen_8cpp" startline="1291" endline="1368">expand_decition_tree</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1gab7918076c80dc48be1a4c64a39be0510" compoundref="d6/dcc/ausloeser_8c" startline="386" endline="390">get_ende_harmonie</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1gaf764bbaa2fdfbb274ead1ebf61f49ac7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="d8/d8e/structkeyboard__ereignis" kindref="compound">keyboard_ereignis</ref> **</type>
+        <definition>struct keyboard_ereignis** get_ende_keyboard</definition>
+        <argsstring>(struct keyboard_ereignis **lauf)</argsstring>
+        <name>get_ende_keyboard</name>
+        <param>
+          <type>struct <ref refid="d8/d8e/structkeyboard__ereignis" kindref="compound">keyboard_ereignis</ref> **</type>
+          <declname>lauf</declname>
+        </param>
+        <briefdescription>
+<para>Liefert einen Zeiger auf den Nachfolge-Zeiger des letzten Elementes einer Tasten-Ereignis-Liste. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lauf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Zeiger auf die Wurzel einer einfach verketteten Liste von Tastenereignissen. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" line="397" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="397" bodyend="401"/>
+        <references refid="d2/d1c/group__Interpreter_1gaf764bbaa2fdfbb274ead1ebf61f49ac7" compoundref="d6/dcc/ausloeser_8c" startline="397" endline="401">get_ende_keyboard</references>
+        <references refid="d8/d8e/structkeyboard__ereignis_1a01d07f77fd83e8f39193d898f0f8d347" compoundref="d1/dfa/ausloeser_8h" startline="61">keyboard_ereignis::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" compoundref="d3/da0/TabGen_8cpp" startline="1291" endline="1368">expand_decition_tree</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1gaf764bbaa2fdfbb274ead1ebf61f49ac7" compoundref="d6/dcc/ausloeser_8c" startline="397" endline="401">get_ende_keyboard</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1gaa6d0bceb2b55629cbd049f76ca7fc577" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="d7/d77/structmidi__ereignis" kindref="compound">midi_ereignis</ref> **</type>
+        <definition>struct midi_ereignis** get_ende_midi</definition>
+        <argsstring>(struct midi_ereignis **lauf)</argsstring>
+        <name>get_ende_midi</name>
+        <param>
+          <type>struct <ref refid="d7/d77/structmidi__ereignis" kindref="compound">midi_ereignis</ref> **</type>
+          <declname>lauf</declname>
+        </param>
+        <briefdescription>
+<para>Liefert einen Zeiger auf den Nachfolge-Zeiger des letzten Elementes einer MIDI-Ereignis-Liste. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lauf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Zeiger auf die Wurzel einer einfach verketteten Liste von MIDI-Ereignissen. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" line="408" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="408" bodyend="412"/>
+        <references refid="d2/d1c/group__Interpreter_1gaa6d0bceb2b55629cbd049f76ca7fc577" compoundref="d6/dcc/ausloeser_8c" startline="408" endline="412">get_ende_midi</references>
+        <references refid="d7/d77/structmidi__ereignis_1a654d8d12e2d31ae5769a891e3858788b" compoundref="d1/dfa/ausloeser_8h" startline="71">midi_ereignis::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" compoundref="d3/da0/TabGen_8cpp" startline="1291" endline="1368">expand_decition_tree</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1gaa6d0bceb2b55629cbd049f76ca7fc577" compoundref="d6/dcc/ausloeser_8c" startline="408" endline="412">get_ende_midi</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1gadd38444278d5ab45b8fed1d6683d16b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void insert_in_lokale_liste</definition>
+        <argsstring>(int instrument, struct anweisung *lauf, char *name_der_logik)</argsstring>
+        <name>insert_in_lokale_liste</name>
+        <param>
+          <type>int</type>
+          <declname>instrument</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="d0/dab/structanweisung" kindref="compound">anweisung</ref> *</type>
+          <declname>lauf</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>name_der_logik</declname>
+        </param>
+        <briefdescription>
+<para>Fügt die auslösende Harmonien, Taste bzw. </para>        </briefdescription>
+        <detaileddescription>
+<para>das Midiereignis der Logik in die entsprechenede lokale Liste eines Instrumentes ein. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>instrument</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="d5/dc6/classInstrument" kindref="compound">Instrument</ref>, für das das Ereignis eingefügt werden soll. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lauf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Anweisung, deren Auslöser eingefügt werden soll. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name_der_logik</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name der Logik, zu der die Anweisung gehört. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" line="420" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="420" bodyend="524"/>
+        <references refid="d0/dab/structanweisung_1affb7b32738f8c88cac91baaab9ad3383" compoundref="d0/db7/anweisung_8h" startline="38">anweisung::aktion</references>
+        <references refid="d8/d8e/structkeyboard__ereignis_1aabae38673dcfd43fc298e64b756adc6e" compoundref="d1/dfa/ausloeser_8h" startline="59">keyboard_ereignis::aktion</references>
+        <references refid="d7/d77/structmidi__ereignis_1a9e775c365af2b2be99ad9a6c9fbb8efc" compoundref="d1/dfa/ausloeser_8h" startline="69">midi_ereignis::aktion</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1ac2a50ecf0fd3ecce4a9683b004b30d72" compoundref="d1/dfa/ausloeser_8h" startline="81">harmonie_ereignis::aktion</references>
+        <references refid="d0/dab/structanweisung_1a8712e41a0c226c692407c6933b6b2ab2" compoundref="d0/db7/anweisung_8h" startline="37">anweisung::ausloeser</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a06ceaf3e37d0994c0e6b5f5c87855443" compoundref="d1/dfa/ausloeser_8h" startline="29">ausloeser_default</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa1844e4b7f36346b7d8a8e2937728d55" compoundref="d1/dfa/ausloeser_8h" startline="25">ausloeser_harmonie</references>
+        <references refid="d9/de5/structausloeser_1a08124200232ca1482b390ab19217e55e">ausloeser::ausloeser_harmonie</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a9b2b50e78cd5c69758e24d0731f4c5c2" compoundref="d1/dfa/ausloeser_8h" startline="26">ausloeser_harmonie_form</references>
+        <references refid="d9/de5/structausloeser_1a8e224e1ec8b6b76c5d3a11457ef4b8f3">ausloeser::ausloeser_harmonie_form</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160adfd3d26ad9545043cc1f524df558f1c8" compoundref="d1/dfa/ausloeser_8h" startline="28">ausloeser_midi_in</references>
+        <references refid="d9/de5/structausloeser_1ab0106d671eb6240faf29b0f07a7346c9">ausloeser::ausloeser_midi_in</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa70672d6552c2a53d62562b3a2787cc8" compoundref="d1/dfa/ausloeser_8h" startline="27">ausloeser_taste</references>
+        <references refid="d2/d1c/group__Interpreter_1ga9d00fa30c4b5542162e707c060daec77" compoundref="d8/dff/midicalc_8c" startline="116" endline="128">create_midi_scan_liste</references>
+        <references refid="d2/d1c/group__Interpreter_1ga8cbfd2aaf66a3d281ae8d25e374c78f2" compoundref="d8/dc3/aktion_8c" startline="326" endline="354">expand_aktions_liste</references>
+        <references refid="d2/d1c/group__Interpreter_1ga04fa5cd297957f96749cf608f126b9c4" compoundref="dd/d35/harmonie_8c" startline="128" endline="153">expand_pattern</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d7/d77/structmidi__ereignis_1a6cb5fe36e14ce490ae3e8ab1758826a8" compoundref="d1/dfa/ausloeser_8h" startline="66">midi_ereignis::first_pos</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1a2e260cfda961d3a119066d6cd2b09906" compoundref="d1/dfa/ausloeser_8h" startline="77">harmonie_ereignis::ist_harmonieform</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1a61c12c628e5edb695321ff7d03c36d4d" compoundref="d1/dfa/ausloeser_8h" startline="79">harmonie_ereignis::nachtaste</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="d8/d8e/structkeyboard__ereignis_1a01d07f77fd83e8f39193d898f0f8d347" compoundref="d1/dfa/ausloeser_8h" startline="61">keyboard_ereignis::next</references>
+        <references refid="d7/d77/structmidi__ereignis_1a654d8d12e2d31ae5769a891e3858788b" compoundref="d1/dfa/ausloeser_8h" startline="71">midi_ereignis::next</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1a7235e608d8367b0fcce870b3e330ff4c" compoundref="d1/dfa/ausloeser_8h" startline="83">harmonie_ereignis::next</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1acadd5e3cc1864df7733f886c8bdf6111" compoundref="d1/dfa/ausloeser_8h" startline="76">harmonie_ereignis::pattern</references>
+        <references refid="d7/d77/structmidi__ereignis_1aa229a7383cc5e9ccdd286ba1764ee3b9" compoundref="d1/dfa/ausloeser_8h" startline="67">midi_ereignis::scan_pos</references>
+        <references refid="d2/d2a/parameter_8h_1a9ce22c816d7eba71ee7eb07b751b168b" compoundref="dc/d30/interpreter_8c" startline="38">start_parameter_liste</references>
+        <references refid="d9/de5/structausloeser_1a79822bf38abb01c6b4941af3a5730ef3">ausloeser::u</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1a0e113780e1e76ae5dbe08443301da81d" compoundref="d1/dfa/ausloeser_8h" startline="78">harmonie_ereignis::vortaste</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" compoundref="d3/da0/TabGen_8cpp" startline="1291" endline="1368">expand_decition_tree</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga4ea14e5284c0840695599141a22e95c7" compoundref="d3/da0/TabGen_8cpp" startline="514" endline="583">expandiere_logik</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1ga49fcfc4930df7019571296f7c2c9d320" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void expandiere_in_globale_liste</definition>
+        <argsstring>(void)</argsstring>
+        <name>expandiere_in_globale_liste</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Expandiert die Auslösenden Ereignisse aller angesammeldten Logiken in die globale Liste. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" line="530" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="530" bodyend="592"/>
+        <references refid="d7/d77/structmidi__ereignis_1a9e775c365af2b2be99ad9a6c9fbb8efc" compoundref="d1/dfa/ausloeser_8h" startline="69">midi_ereignis::aktion</references>
+        <references refid="d1/dff/logik_8h_1adeba205c8988dbafa8226746ae29a639" compoundref="d7/d6e/logik_8c" startline="260" endline="299">expandiere_logik</references>
+        <references refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" compoundref="df/d8e/bad__decl_8h" startline="52">MAX_BOX</references>
+        <references refid="d7/d77/structmidi__ereignis_1a654d8d12e2d31ae5769a891e3858788b" compoundref="d1/dfa/ausloeser_8h" startline="71">midi_ereignis::next</references>
+        <references refid="d7/d77/structmidi__ereignis_1a421345335988d99c81ef21fb4e52d77c" compoundref="d1/dfa/ausloeser_8h" startline="70">midi_ereignis::the_logik_to_expand</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" compoundref="d3/da0/TabGen_8cpp" startline="1291" endline="1368">expand_decition_tree</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1ga959ca7312a401abde94d3485683cbc72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="dc/da0/structcase__element" kindref="compound">case_element</ref> *</type>
+        <definition>struct case_element* expand_case_liste</definition>
+        <argsstring>(struct case_liste *the_liste, struct interpreter_parameter_liste *aktuelle_parameter)</argsstring>
+        <name>expand_case_liste</name>
+        <param>
+          <type>struct <ref refid="d0/d45/structcase__liste" kindref="compound">case_liste</ref> *</type>
+          <declname>the_liste</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="d2/d46/structinterpreter__parameter__liste" kindref="compound">interpreter_parameter_liste</ref> *</type>
+          <declname>aktuelle_parameter</declname>
+        </param>
+        <briefdescription>
+<para>Sortiert die Default-Zweige von Case-Listen ans Ende und expandiert die Paramater der einzelnen Aktionen. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the_liste</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Case-Liste, die bearbeitet werden soll. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>aktuelle_parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Aktuelle Parameter, die ersetzt werden können. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<xrefsect id="dd/da0/todo_1_todo000028"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>Vereinigen beider Schleifen duch hinzufügen einer neuen temporären default-ende-liste. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/case_liste.c" line="317" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/case_liste.c" bodystart="317" bodyend="354"/>
+        <references refid="dc/da0/structcase__element_1ab798f2d7434e4bd56d70264f42b61ff3" compoundref="db/d99/case__liste_8h" startline="46">case_element::case_aktion</references>
+        <references refid="dc/da0/structcase__element_1a94f286e8b9d1bbed19b02f5fb7a91dcc" compoundref="db/d99/case__liste_8h" startline="44">case_element::case_wert</references>
+        <references refid="d2/d1c/group__Interpreter_1ga8cbfd2aaf66a3d281ae8d25e374c78f2" compoundref="d8/dc3/aktion_8c" startline="326" endline="354">expand_aktions_liste</references>
+        <references refid="d0/d45/structcase__liste_1abd47924362217e6214412632178c9952" compoundref="db/d99/case__liste_8h" startline="37">case_liste::is_default</references>
+        <references refid="dc/da0/structcase__element_1a77b70c758a112626833f4943117e8411" compoundref="db/d99/case__liste_8h" startline="45">case_element::is_default</references>
+        <references refid="d0/d45/structcase__liste_1a290cbd2723599508d118f507c3528c03" compoundref="db/d99/case__liste_8h" startline="39">case_liste::next</references>
+        <references refid="dc/da0/structcase__element_1a5bc187c889ab8af5193a66e1657d2ad6" compoundref="db/d99/case__liste_8h" startline="47">case_element::next</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga17b03e17223aab80aa95d596a74bdc2d" compoundref="d3/da0/TabGen_8cpp" startline="672" endline="831">expandiere_umstimmung</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1ga04fa5cd297957f96749cf608f126b9c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d63/harmonie_8h_1a267d883cd4bbaaa3f808d018cbb72bdd" kindref="member">PATTERNN</ref> *</type>
+        <definition>PATTERNN* expand_pattern</definition>
+        <argsstring>(char *harmonie_name)</argsstring>
+        <name>expand_pattern</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>harmonie_name</declname>
+        </param>
+        <briefdescription>
+<para>Erzeugt eine Suchmaske für die Suche nach Harmonien. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>harmonie_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name der Harmonie, für die die Maske erzeugt werden soll. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Ganzzahlenfeld, das die Harmonie-Suchmaske symbolisiert </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/harmonie.c" line="128" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/harmonie.c" bodystart="128" bodyend="153"/>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="df/d33/mut_8cc_1ab352f63e4dbefc447c3fd0eba3fa120f">for</references>
+        <references refid="dd/d21/group__Parser_1ga915c1bf69d511fa274ddbc6cc8fa0c87" compoundref="dd/d35/harmonie_8c" startline="54" endline="59">get_harmonie</references>
+        <references refid="df/d8e/bad__decl_8h_1af0566e83c6445f2a84c21406ca24d8e8" compoundref="df/d8e/bad__decl_8h" startline="63">MAX_BREITE</references>
+        <references refid="d1/db5/structtaste_1ad6e8e7fb2039f6ac1501d793cc8d3757" compoundref="df/d7d/taste_8h" startline="21">taste::stern</references>
+        <references refid="d1/db5/structtaste_1a9c88178a01aca8f82581a140a4d10d2b" compoundref="df/d7d/taste_8h" startline="20">taste::taste</references>
+        <references refid="d4/dcb/structharmonie_1a4191b16d8e944a7aba7a51d27724eaf1" compoundref="d1/d63/harmonie_8h" startline="34">harmonie::tastenliste</references>
+        <references refid="d3/dc4/structPTRN_1a4aef63c21f5b59f074fa88c6140f55fa" compoundref="d1/d63/harmonie_8h" startline="41">PTRN::tonigkeit</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="d9/d7c/group__kernel_1gabebfd8538aae475e3a2ba47f95d7d2c3" compoundref="d3/da0/TabGen_8cpp" startline="978" endline="1085">insert_in_globale_liste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaa32d94398d0aa7cb0b2f2bf3b2308c30" compoundref="d3/da0/TabGen_8cpp" startline="1087" endline="1214">insert_in_lokale_liste</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1ga9d00fa30c4b5542162e707c060daec77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int *</type>
+        <definition>int* create_midi_scan_liste</definition>
+        <argsstring>(struct midiliste *lauf)</argsstring>
+        <name>create_midi_scan_liste</name>
+        <param>
+          <type>struct <ref refid="df/df2/structmidiliste" kindref="compound">midiliste</ref> *</type>
+          <declname>lauf</declname>
+        </param>
+        <briefdescription>
+<para>Wandelt eine einfach verkettete MIDI-Liste in ein Ganzzahlen-(<computeroutput>int</computeroutput>)-Feld um. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Ganzzahlenfeld. Der Letzte Eintrag enthält quasi als Wächter den Wert -1. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/midicalc.c" line="116" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/midicalc.c" bodystart="116" bodyend="128"/>
+        <references refid="df/df2/structmidiliste_1a39c148af3f0e5556a71412b94958a30f" compoundref="d0/d24/midicalc_8h" startline="51">midiliste::midi_code</references>
+        <references refid="d0/d24/midicalc_8h_1a211bbae54c64209cb0fdcc8754e02394" compoundref="d8/dff/midicalc_8c" startline="41" endline="44">midi_list_laenge</references>
+        <references refid="df/df2/structmidiliste_1a6a0c42708eebd22168563a38ca00a02c" compoundref="d0/d24/midicalc_8h" startline="52">midiliste::next</references>
+        <references refid="da/ddb/heap_8h_1ab0c7434dd1577c62500713d2508d89ce" compoundref="d2/d29/heap_8c" startline="258" endline="268">xcalloc</references>
+        <referencedby refid="d9/d7c/group__kernel_1gabebfd8538aae475e3a2ba47f95d7d2c3" compoundref="d3/da0/TabGen_8cpp" startline="978" endline="1085">insert_in_globale_liste</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaa32d94398d0aa7cb0b2f2bf3b2308c30" compoundref="d3/da0/TabGen_8cpp" startline="1087" endline="1214">insert_in_lokale_liste</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Eigentliche Ausführung des Programmes. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

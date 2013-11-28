@@ -1,0 +1,226 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="df/d7d/taste_8h" kind="file">
+    <compoundname>taste.h</compoundname>
+    <includedby refid="d2/d49/global_8h" local="yes">src/includes/mutabor/global.h</includedby>
+    <includedby refid="d6/dcc/ausloeser_8c" local="yes">src/libmutabor/ausloeser.c</includedby>
+    <includedby refid="dd/d35/harmonie_8c" local="yes">src/libmutabor/harmonie.c</includedby>
+    <includedby refid="d3/da3/mut_8c" local="yes">src/libmutabor/mut.c</includedby>
+    <includedby refid="d6/dc9/taste_8c" local="yes">src/libmutabor/taste.c</includedby>
+    <invincdepgraph>
+      <node id="15060">
+        <label>src/libmutabor/harmonie.c</label>
+        <link refid="dd/d35/harmonie_8c"/>
+      </node>
+      <node id="15058">
+        <label>src/gmut/gmutdos.cpp</label>
+        <link refid="dd/d15/gmutdos_8cpp"/>
+      </node>
+      <node id="15056">
+        <label>src/includes/mutabor/taste.h</label>
+        <link refid="taste.h"/>
+        <childnode refid="15057" relation="include">
+        </childnode>
+        <childnode refid="15059" relation="include">
+        </childnode>
+        <childnode refid="15060" relation="include">
+        </childnode>
+        <childnode refid="15061" relation="include">
+        </childnode>
+        <childnode refid="15062" relation="include">
+        </childnode>
+      </node>
+      <node id="15059">
+        <label>src/libmutabor/ausloeser.c</label>
+        <link refid="d6/dcc/ausloeser_8c"/>
+      </node>
+      <node id="15057">
+        <label>src/includes/mutabor/global.h</label>
+        <link refid="d2/d49/global_8h"/>
+        <childnode refid="15058" relation="include">
+        </childnode>
+      </node>
+      <node id="15061">
+        <label>src/libmutabor/mut.c</label>
+        <link refid="d3/da3/mut_8c"/>
+      </node>
+      <node id="15062">
+        <label>src/libmutabor/taste.c</label>
+        <link refid="d6/dc9/taste_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d1/db5/structtaste" prot="public">taste</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="df/d7d/taste_8h_1ab225f4f6f321862e0e7c23ff393855df" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d1/db5/structtaste" kindref="compound">taste</ref> *</type>
+        <definition>struct taste* tmp_tastenliste</definition>
+        <argsstring></argsstring>
+        <name>tmp_tastenliste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/taste.h" line="29" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/taste.h" bodystart="29" bodyend="-1"/>
+        <referencedby refid="dd/d21/group__Parser_1gaedc5966bb91f8d4a84fbe5062adac38d" compoundref="dd/d35/harmonie_8c" startline="82" endline="101">get_new_harmonie</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="df/d7d/taste_8h_1a7c03591be73191090cfa4bc66f8daf96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_tastenliste</definition>
+        <argsstring>(void)</argsstring>
+        <name>init_tastenliste</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Setzt die temporäre Tastenliste auf <computeroutput>NULL</computeroutput>. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>Die Argumentliste wird nicht gelöscht. Das muss gegebenenfalls vor der Initialiserung manuell erledigt werden. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/taste.h" line="25" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/taste.c" bodystart="37" bodyend="40"/>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="df/d7d/taste_8h_1a35136b1912d32bc653e1588485754816" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_new_taste</definition>
+        <argsstring>(int taste, char stern)</argsstring>
+        <name>get_new_taste</name>
+        <param>
+          <type>int</type>
+          <declname>taste</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <declname>stern</declname>
+        </param>
+        <briefdescription>
+<para>Fügt eine Taste ans Ende von <computeroutput>tmp_tastenliste</computeroutput> an. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>taste</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Tastennummer (Schlüssel-C = 60) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>stern</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Stern zur Taste (<computeroutput>TRUE</computeroutput> oder <computeroutput>FALSE</computeroutput>) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Es wird immer die gesamte Liste durchsucht. Effektivität? </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/taste.h" line="26" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/taste.c" bodystart="47" bodyend="62"/>
+        <references refid="de/d45/errors_8h_1ae2387ffc56e4c38de349dcd17ce78865" compoundref="d0/d15/errors_8c" startline="20">mutabor_debug_level</references>
+        <references refid="d1/db5/structtaste_1acae54c723bf57f7603de9a0d5f027e03" compoundref="df/d7d/taste_8h" startline="22">taste::next</references>
+        <references refid="d1/db5/structtaste_1ad6e8e7fb2039f6ac1501d793cc8d3757" compoundref="df/d7d/taste_8h" startline="21">taste::stern</references>
+        <references refid="d1/db5/structtaste_1a9c88178a01aca8f82581a140a4d10d2b" compoundref="df/d7d/taste_8h" startline="20">taste::taste</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga8cb1d2c54ae07b13d345a7e3966c4079" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int enthalten_in_tastenliste</definition>
+        <argsstring>(int taste, struct taste *lauf)</argsstring>
+        <name>enthalten_in_tastenliste</name>
+        <param>
+          <type>int</type>
+          <declname>taste</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="d1/db5/structtaste" kindref="compound">taste</ref> *</type>
+          <declname>lauf</declname>
+        </param>
+        <briefdescription>
+<para>Prüft ob eine Taste in einer Liste von Tasten enthalten ist. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">taste</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Taste, die gesucht wird </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">lauf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Tastenliste, in der gesucht wird </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Taste wurde gefunden </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Taste wurde nicht gefunden </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/taste.h" line="27" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.cpp" bodystart="2522" bodyend="2532"/>
+        <references refid="de/db7/group__debug_1gaad9cc64d45a76ba0d37c00f8cd9caa37" compoundref="de/de1/mutDebug_8h" startline="144">TRACE</references>
+        <references refid="db/d28/structlogik_1a914e1adb949943bea4471b9f16a3e818" compoundref="d1/dff/logik_8h" startline="36">logik::next</references>
+        <references refid="d1/db5/structtaste_1acae54c723bf57f7603de9a0d5f027e03" compoundref="df/d7d/taste_8h" startline="22">taste::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga566a356c2f12cd3b1cc4b6d06176a5e0" compoundref="dc/df5/Parser_8cpp" startline="2548" endline="2693">check_ausloeser</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Tasten usw. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein_junior@gmx.net">keinstein_junior@gmx.net</ulink> </para></simplesect>
+<simplesect kind="date"><para>2005 </para></simplesect>
+<simplesect kind="version"><para>0.1 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="10"><highlight class="preprocessor">#ifndef<sp/>__TASTE_H_INCLUDED</highlight></codeline>
+<codeline lineno="11"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>__TASTE_H_INCLUDED</highlight></codeline>
+<codeline lineno="12"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="14"><highlight class="preprocessor"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="17"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="19" refid="d1/db5/structtaste" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d1/db5/structtaste" kindref="compound">taste</ref><sp/>{</highlight></codeline>
+<codeline lineno="20" refid="d1/db5/structtaste_1a9c88178a01aca8f82581a140a4d10d2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d1/db5/structtaste_1a9c88178a01aca8f82581a140a4d10d2b" kindref="member">taste</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="21" refid="d1/db5/structtaste_1ad6e8e7fb2039f6ac1501d793cc8d3757" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="d1/db5/structtaste_1ad6e8e7fb2039f6ac1501d793cc8d3757" kindref="member">stern</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="22" refid="d1/db5/structtaste_1acae54c723bf57f7603de9a0d5f027e03" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d1/db5/structtaste" kindref="compound">taste</ref><sp/>*<sp/><ref refid="d1/db5/structtaste_1acae54c723bf57f7603de9a0d5f027e03" kindref="member">next</ref>;<sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/d7d/taste_8h_1a7c03591be73191090cfa4bc66f8daf96" kindref="member">init_tastenliste</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/d7d/taste_8h_1a35136b1912d32bc653e1588485754816" kindref="member">get_new_taste</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d1/db5/structtaste" kindref="compound">taste</ref>,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="d1/db5/structtaste_1ad6e8e7fb2039f6ac1501d793cc8d3757" kindref="member">stern</ref>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga8cb1d2c54ae07b13d345a7e3966c4079" kindref="member">enthalten_in_tastenliste</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d1/db5/structtaste" kindref="compound">taste</ref>,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>taste<sp/>*<sp/>lauf);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="29" refid="df/d7d/taste_8h_1ab225f4f6f321862e0e7c23ff393855df" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d1/db5/structtaste" kindref="compound">taste</ref><sp/>*<sp/><ref refid="df/d7d/taste_8h_1ab225f4f6f321862e0e7c23ff393855df" kindref="member">tmp_tastenliste</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus<sp/></highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>extern<sp/>&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mutabor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__TASTE_H_INCLUDED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/taste.h"/>
+  </compounddef>
+</doxygen>

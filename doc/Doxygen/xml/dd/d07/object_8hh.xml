@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="dd/d07/object_8hh" kind="file">
+    <compoundname>object.hh</compoundname>
+    <includedby refid="d0/de1/object_8c" local="yes">src/libmutabor/object.c</includedby>
+    <invincdepgraph>
+      <node id="14991">
+        <label>src/includes/mutabor/object.hh</label>
+        <link refid="object.hh"/>
+        <childnode refid="14992" relation="include">
+        </childnode>
+      </node>
+      <node id="14992">
+        <label>src/libmutabor/object.c</label>
+        <link refid="d0/de1/object_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="dd/d07/object_8hh_1a55d07c8d3e43a7a165c98e13b8ea2637" prot="public" static="no" mutable="no">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> void *</type>
+        <definition>const void* mutabor_object_object</definition>
+        <argsstring></argsstring>
+        <name>mutabor_object_object</name>
+        <initializer>=&amp;<ref refid="dd/d07/object_8hh_1a5442743902f98d13575b0a080653d068" kindref="member">_mutabor_virttable_object</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.hh" line="5" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.hh" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d07/object_8hh_1a5442743902f98d13575b0a080653d068" prot="public" static="yes" mutable="no">
+        <type>struct <ref refid="d7/dc5/structmutabor__virttable__object" kindref="compound">mutabor_virttable_object</ref></type>
+        <definition>struct mutabor_virttable_object _mutabor_virttable_object</definition>
+        <argsstring></argsstring>
+        <name>_mutabor_virttable_object</name>
+        <initializer>= {
+    sizeof(struct <ref refid="d0/dff/structmutabor__class__object" kindref="compound">mutabor_class_object</ref>),
+    &quot;object&quot;,
+    (void **)&amp;<ref refid="dd/d07/object_8hh_1a55d07c8d3e43a7a165c98e13b8ea2637" kindref="member">mutabor_object_object</ref>,
+    <ref refid="dd/d07/object_8hh_1ac0a41cf232bb1ee87295a3f526609038" kindref="member">mutabor_cls_object_constructor</ref>,
+    <ref refid="dd/d07/object_8hh_1a7c619f0b7b56ca999ee1111c37f68c48" kindref="member">mutabor_cls_object_destructor</ref>,
+    <ref refid="dd/db0/ptrlist_8hh_1ac68e414a210e1e26b14ecf651f2b9b41" kindref="member">mutabor_cls_object_compare</ref>,
+    <ref refid="dd/d07/object_8hh_1a21a0c16e396d72ce3c776a121466d5e0" kindref="member">mutabor_cls_object_tostring</ref>
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.hh" line="5" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.hh" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="dd/d07/object_8hh_1ac0a41cf232bb1ee87295a3f526609038" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* mutabor_cls_object_constructor</definition>
+        <argsstring>(void *_self)</argsstring>
+        <name>mutabor_cls_object_constructor</name>
+        <param>
+          <type>void *</type>
+          <declname>_self</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.hh" line="1" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d07/object_8hh_1a7c619f0b7b56ca999ee1111c37f68c48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* mutabor_cls_object_destructor</definition>
+        <argsstring>(void *_self)</argsstring>
+        <name>mutabor_cls_object_destructor</name>
+        <param>
+          <type>void *</type>
+          <declname>_self</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.hh" line="2" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d07/object_8hh_1ac68e414a210e1e26b14ecf651f2b9b41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutabor_cls_object_compare</definition>
+        <argsstring>(void *one, void *two)</argsstring>
+        <name>mutabor_cls_object_compare</name>
+        <param>
+          <type>void *</type>
+          <declname>one</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>two</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.hh" line="3" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d07/object_8hh_1a21a0c16e396d72ce3c776a121466d5e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <definition>char* mutabor_cls_object_tostring</definition>
+        <argsstring>(void *_self)</argsstring>
+        <name>mutabor_cls_object_tostring</name>
+        <param>
+          <type>void *</type>
+          <declname>_self</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.hh" line="4" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dd/d07/object_8hh_1ac0a41cf232bb1ee87295a3f526609038" kindref="member">mutabor_cls_object_constructor</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self);</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dd/d07/object_8hh_1a7c619f0b7b56ca999ee1111c37f68c48" kindref="member">mutabor_cls_object_destructor</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self);</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dc/ddf/idlist_8hh_1ac68e414a210e1e26b14ecf651f2b9b41" kindref="member">mutabor_cls_object_compare</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>one,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>two);</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dd/d07/object_8hh_1a21a0c16e396d72ce3c776a121466d5e0" kindref="member">mutabor_cls_object_tostring</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self);</highlight></codeline>
+<codeline lineno="5" refid="dd/d07/object_8hh_1a55d07c8d3e43a7a165c98e13b8ea2637" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="de/d10/object_8h_1ad2b7bde6a0a8079b0aa4397949554e02" kindref="member">mutabor_object_object</ref>;</highlight></codeline>
+<codeline lineno="6" refid="dd/d07/object_8hh_1a5442743902f98d13575b0a080653d068" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/dc5/structmutabor__virttable__object" kindref="compound">mutabor_virttable_object</ref><sp/><ref refid="dd/d07/object_8hh_1a5442743902f98d13575b0a080653d068" kindref="member">_mutabor_virttable_object</ref><sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/dff/structmutabor__class__object" kindref="compound">mutabor_class_object</ref>),</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>&quot;object&quot;,</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>(void<sp/>**)&amp;<ref refid="de/d10/object_8h_1ad2b7bde6a0a8079b0aa4397949554e02" kindref="member">mutabor_object_object</ref>,</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dd/d07/object_8hh_1ac0a41cf232bb1ee87295a3f526609038" kindref="member">mutabor_cls_object_constructor</ref>,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dd/d07/object_8hh_1a7c619f0b7b56ca999ee1111c37f68c48" kindref="member">mutabor_cls_object_destructor</ref>,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dc/ddf/idlist_8hh_1ac68e414a210e1e26b14ecf651f2b9b41" kindref="member">mutabor_cls_object_compare</ref>,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dd/d07/object_8hh_1a21a0c16e396d72ce3c776a121466d5e0" kindref="member">mutabor_cls_object_tostring</ref></highlight></codeline>
+<codeline lineno="14"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="15" refid="de/d10/object_8h_1ad2b7bde6a0a8079b0aa4397949554e02" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="de/d10/object_8h_1ad2b7bde6a0a8079b0aa4397949554e02" kindref="member">mutabor_object_object</ref>=&amp;<ref refid="dd/d07/object_8hh_1a5442743902f98d13575b0a080653d068" kindref="member">_mutabor_virttable_object</ref>;</highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/object.hh"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,604 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="db/d1e/argument_8h" kind="file">
+    <compoundname>argument.h</compoundname>
+    <includes refid="d2/d2a/parameter_8h" local="yes">mutabor/parameter.h</includes>
+    <includedby refid="dd/de4/aktion_8h" local="yes">src/includes/mutabor/aktion.h</includedby>
+    <includedby refid="d2/d2a/parameter_8h" local="yes">src/includes/mutabor/parameter.h</includedby>
+    <includedby refid="d5/d36/parser_8h" local="yes">src/includes/mutabor/parser.h</includedby>
+    <includedby refid="d3/d14/argument_8c" local="yes">src/libmutabor/argument.c</includedby>
+    <includedby refid="d3/da3/mut_8c" local="yes">src/libmutabor/mut.c</includedby>
+    <incdepgraph>
+      <node id="14386">
+        <label>src/includes/mutabor/argument.h</label>
+        <link refid="argument.h"/>
+        <childnode refid="14387" relation="include">
+        </childnode>
+      </node>
+      <node id="14389">
+        <label>math.h</label>
+      </node>
+      <node id="14387">
+        <label>mutabor/parameter.h</label>
+        <link refid="d2/d2a/parameter_8h"/>
+        <childnode refid="14386" relation="include">
+        </childnode>
+        <childnode refid="14388" relation="include">
+        </childnode>
+      </node>
+      <node id="14388">
+        <label>mutabor/bad_decl.h</label>
+        <link refid="df/d8e/bad__decl_8h"/>
+        <childnode refid="14389" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="14404">
+        <label>src/libmutabor/anweisung.c</label>
+        <link refid="d5/dfe/anweisung_8c"/>
+      </node>
+      <node id="14399">
+        <label>src/libmutabor/interpreter.c</label>
+        <link refid="dc/d30/interpreter_8c"/>
+      </node>
+      <node id="14405">
+        <label>src/includes/mutabor/case_liste.h</label>
+        <link refid="db/d99/case__liste_8h"/>
+        <childnode refid="14406" relation="include">
+        </childnode>
+      </node>
+      <node id="14396">
+        <label>src/gmut/gmutdos.cpp</label>
+        <link refid="dd/d15/gmutdos_8cpp"/>
+      </node>
+      <node id="14400">
+        <label>src/libmutabor/logik.c</label>
+        <link refid="d7/d6e/logik_8c"/>
+      </node>
+      <node id="14412">
+        <label>src/libmutabor/interval.c</label>
+        <link refid="d5/d28/interval_8c"/>
+      </node>
+      <node id="14390">
+        <label>src/includes/mutabor/argument.h</label>
+        <link refid="argument.h"/>
+        <childnode refid="14391" relation="include">
+        </childnode>
+        <childnode refid="14409" relation="include">
+        </childnode>
+        <childnode refid="14411" relation="include">
+        </childnode>
+        <childnode refid="14415" relation="include">
+        </childnode>
+        <childnode refid="14401" relation="include">
+        </childnode>
+      </node>
+      <node id="14391">
+        <label>src/includes/mutabor/aktion.h</label>
+        <link refid="dd/de4/aktion_8h"/>
+        <childnode refid="14392" relation="include">
+        </childnode>
+        <childnode refid="14405" relation="include">
+        </childnode>
+        <childnode refid="14394" relation="include">
+        </childnode>
+        <childnode refid="14400" relation="include">
+        </childnode>
+      </node>
+      <node id="14406">
+        <label>src/includes/mutabor/umstimmung.h</label>
+        <link refid="da/d7f/umstimmung_8h"/>
+        <childnode refid="14391" relation="include">
+        </childnode>
+        <childnode refid="14395" relation="include">
+        </childnode>
+        <childnode refid="14397" relation="include">
+        </childnode>
+        <childnode refid="14407" relation="include">
+        </childnode>
+        <childnode refid="14400" relation="include">
+        </childnode>
+        <childnode refid="14408" relation="include">
+        </childnode>
+        <childnode refid="14401" relation="include">
+        </childnode>
+        <childnode refid="14402" relation="include">
+        </childnode>
+        <childnode refid="14403" relation="include">
+        </childnode>
+      </node>
+      <node id="14408">
+        <label>src/libmutabor/midicalc.c</label>
+        <link refid="d8/dff/midicalc_8c"/>
+      </node>
+      <node id="14410">
+        <label>src/libmutabor/parameter.c</label>
+        <link refid="d7/d2d/parameter_8c"/>
+      </node>
+      <node id="14393">
+        <label>src/includes/mutabor/ausloeser.h</label>
+        <link refid="d1/dfa/ausloeser_8h"/>
+        <childnode refid="14392" relation="include">
+        </childnode>
+        <childnode refid="14394" relation="include">
+        </childnode>
+        <childnode refid="14398" relation="include">
+        </childnode>
+        <childnode refid="14399" relation="include">
+        </childnode>
+      </node>
+      <node id="14403">
+        <label>src/libmutabor/umstimmung.c</label>
+        <link refid="d2/d4a/umstimmung_8c"/>
+      </node>
+      <node id="14414">
+        <label>src/libmutabor/tests/testparser.c</label>
+        <link refid="d3/d47/testparser_8c"/>
+      </node>
+      <node id="14397">
+        <label>src/libmutabor/aktion.c</label>
+        <link refid="d8/dc3/aktion_8c"/>
+      </node>
+      <node id="14398">
+        <label>src/libmutabor/ausloeser.c</label>
+        <link refid="d6/dcc/ausloeser_8c"/>
+      </node>
+      <node id="14413">
+        <label>src/libmutabor/tests/testmutfile.c</label>
+        <link refid="d8/d9b/testmutfile_8c"/>
+      </node>
+      <node id="14407">
+        <label>src/libmutabor/case_liste.c</label>
+        <link refid="dc/d54/case__liste_8c"/>
+      </node>
+      <node id="14395">
+        <label>src/includes/mutabor/global.h</label>
+        <link refid="d2/d49/global_8h"/>
+        <childnode refid="14396" relation="include">
+        </childnode>
+      </node>
+      <node id="14401">
+        <label>src/libmutabor/mut.c</label>
+        <link refid="d3/da3/mut_8c"/>
+      </node>
+      <node id="14402">
+        <label>src/libmutabor/parser.c</label>
+        <link refid="d2/d72/parser_8c"/>
+      </node>
+      <node id="14394">
+        <label>src/includes/mutabor/logik.h</label>
+        <link refid="d1/dff/logik_8h"/>
+        <childnode refid="14391" relation="include">
+        </childnode>
+        <childnode refid="14395" relation="include">
+        </childnode>
+        <childnode refid="14397" relation="include">
+        </childnode>
+        <childnode refid="14398" relation="include">
+        </childnode>
+        <childnode refid="14399" relation="include">
+        </childnode>
+        <childnode refid="14400" relation="include">
+        </childnode>
+        <childnode refid="14401" relation="include">
+        </childnode>
+        <childnode refid="14402" relation="include">
+        </childnode>
+        <childnode refid="14403" relation="include">
+        </childnode>
+      </node>
+      <node id="14415">
+        <label>src/libmutabor/argument.c</label>
+        <link refid="d3/d14/argument_8c"/>
+      </node>
+      <node id="14409">
+        <label>src/includes/mutabor/parameter.h</label>
+        <link refid="d2/d2a/parameter_8h"/>
+        <childnode refid="14391" relation="include">
+        </childnode>
+        <childnode refid="14390" relation="include">
+        </childnode>
+        <childnode refid="14395" relation="include">
+        </childnode>
+        <childnode refid="14397" relation="include">
+        </childnode>
+        <childnode refid="14407" relation="include">
+        </childnode>
+        <childnode refid="14399" relation="include">
+        </childnode>
+        <childnode refid="14400" relation="include">
+        </childnode>
+        <childnode refid="14401" relation="include">
+        </childnode>
+        <childnode refid="14410" relation="include">
+        </childnode>
+        <childnode refid="14402" relation="include">
+        </childnode>
+        <childnode refid="14403" relation="include">
+        </childnode>
+      </node>
+      <node id="14411">
+        <label>src/includes/mutabor/parser.h</label>
+        <link refid="d5/d36/parser_8h"/>
+        <childnode refid="14395" relation="include">
+        </childnode>
+        <childnode refid="14412" relation="include">
+        </childnode>
+        <childnode refid="14401" relation="include">
+        </childnode>
+        <childnode refid="14402" relation="include">
+        </childnode>
+        <childnode refid="14413" relation="include">
+        </childnode>
+        <childnode refid="14414" relation="include">
+        </childnode>
+      </node>
+      <node id="14392">
+        <label>src/includes/mutabor/anweisung.h</label>
+        <link refid="d0/db7/anweisung_8h"/>
+        <childnode refid="14393" relation="include">
+        </childnode>
+        <childnode refid="14395" relation="include">
+        </childnode>
+        <childnode refid="14404" relation="include">
+        </childnode>
+        <childnode refid="14398" relation="include">
+        </childnode>
+        <childnode refid="14400" relation="include">
+        </childnode>
+        <childnode refid="14401" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d2/d74/structargument" prot="public">argument</innerclass>
+    <innerclass refid="dd/d7c/structargument__liste" prot="public">argument_liste</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="db/d1e/argument_8h_1a670b4baf221831f19e00a812a7b68282" prot="public" static="no">
+        <name>argument_typ</name>
+        <enumvalue id="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a47e9a84a3f91507862a3baa02e1a05b6" prot="public">
+          <name>zahl</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" prot="public">
+          <name>parameter</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282acb45e5658cb3d730bc16de440ba5d8d5" prot="public">
+          <name>mutabor_argument_integer</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a37abbbdb0f40c89fc998192e015f952c" prot="public">
+          <name>mutabor_argument_parameter</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a405db8d574bf60b948bd57fd8151e121" prot="public">
+          <name>mutabor_argument_distance</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a7d63531d59534436ca230f93053cc96e" prot="public">
+          <name>mutabor_argument_anchor</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a3b3441e691c02c359cf64c18fcc863cc" prot="public">
+          <name>mutabor_argument_invalid</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Argumententypen: Zahl oder Zeichenkette. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/argument.h" line="30" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/argument.h" bodystart="30" bodyend="30"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="db/d1e/argument_8h_1ab2df1fd1457d1487623c1468c1d33d35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void drucke_argument</definition>
+        <argsstring>(struct argument *z_or_p)</argsstring>
+        <name>drucke_argument</name>
+        <param>
+          <type>struct <ref refid="d2/d74/structargument" kindref="compound">argument</ref> *</type>
+          <declname>z_or_p</declname>
+        </param>
+        <briefdescription>
+<para>Gibt ein Argument auf der Standardausgabe aus. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">z_or_p</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Argument. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/argument.h" line="53" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/argument.c" bodystart="123" bodyend="133"/>
+        <references refid="d2/d74/structargument_1ae6f70084cffab08980e51bba6aa80856">argument::parameter</references>
+        <references refid="d2/d74/structargument_1a3ccccc4ff00127c5d4731a94768c8cd8">argument::u</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a47e9a84a3f91507862a3baa02e1a05b6" compoundref="db/d1e/argument_8h" startline="30">zahl</references>
+        <references refid="d2/d74/structargument_1a8d5ebe7bca0a3f0ebb29132e0ee0eead" compoundref="db/d1e/argument_8h" startline="37">argument::zahl</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="db/d1e/argument_8h_1a187f4b650eee454d7c2d5ce3efb821d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_argument_liste</definition>
+        <argsstring>(void)</argsstring>
+        <name>init_argument_liste</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Setzt Argumentliste auf NULL. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>Die Argumentliste wird nicht gelöscht. Das muss gegebenenfalls vor der Initialiserung manuell erledigt werden. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/argument.h" line="55" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/argument.c" bodystart="68" bodyend="71"/>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="db/d1e/argument_8h_1aab375f164719d7e02a663a5a16fd6396" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_new_name_in_argument_list</definition>
+        <argsstring>(char *parameter)</argsstring>
+        <name>get_new_name_in_argument_list</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>parameter</declname>
+          <defname>parameter_name</defname>
+        </param>
+        <briefdescription>
+<para>Fügt einen Namen ans Ende von <emphasis>list_of_argumente</emphasis> an. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parameter_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name, der angefügt werden soll </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Es wird immer die gesamte Liste durchsucht. Effektivität? </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/argument.h" line="56" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/argument.c" bodystart="95" bodyend="111"/>
+        <references refid="d2/d74/structargument_1aebffb910f9535b2c61aaf2629909a524" compoundref="db/d1e/argument_8h" startline="34">argument::argument_typ</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="dd/d7c/structargument__liste_1a17fc5968b0581a9d61d426e3185533c7" compoundref="db/d1e/argument_8h" startline="50">argument_liste::next</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" compoundref="db/d1e/argument_8h" startline="30">parameter</references>
+        <references refid="d2/d74/structargument_1ae6f70084cffab08980e51bba6aa80856">argument::parameter</references>
+        <references refid="d2/d74/structargument_1a3ccccc4ff00127c5d4731a94768c8cd8">argument::u</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="db/d1e/argument_8h_1a629acae86a31b15437e35657215f9ae6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_new_number_in_argument_list</definition>
+        <argsstring>(double parameter)</argsstring>
+        <name>get_new_number_in_argument_list</name>
+        <param>
+          <type>double</type>
+          <declname>parameter</declname>
+          <defname>parameter_zahl</defname>
+        </param>
+        <briefdescription>
+<para>Fügt eine Zahl ans Ende von <emphasis>list_of_argumente</emphasis> an. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parameter_zahl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Zahl, die angefügt werden soll </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Es wird immer die gesamte Liste durchsucht. Effektivität? </para></simplesect>
+<xrefsect id="dd/da0/todo_1_todo000026"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>Typkonvertierung von <computeroutput>double</computeroutput> nach <computeroutput>int</computeroutput> prüfen </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/argument.h" line="57" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/argument.c" bodystart="78" bodyend="88"/>
+        <references refid="d2/d74/structargument_1aebffb910f9535b2c61aaf2629909a524" compoundref="db/d1e/argument_8h" startline="34">argument::argument_typ</references>
+        <references refid="dd/d7c/structargument__liste_1a17fc5968b0581a9d61d426e3185533c7" compoundref="db/d1e/argument_8h" startline="50">argument_liste::next</references>
+        <references refid="d2/d74/structargument_1a3ccccc4ff00127c5d4731a94768c8cd8">argument::u</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a47e9a84a3f91507862a3baa02e1a05b6" compoundref="db/d1e/argument_8h" startline="30">zahl</references>
+        <references refid="d2/d74/structargument_1a8d5ebe7bca0a3f0ebb29132e0ee0eead" compoundref="db/d1e/argument_8h" startline="37">argument::zahl</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="db/d1e/argument_8h_1af636a1e8393f27b82c5c10e8c0120f04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int *</type>
+        <definition>int* get_wert_of_argument</definition>
+        <argsstring>(struct argument *argument, struct interpreter_parameter_liste *aktuelle_parameter)</argsstring>
+        <name>get_wert_of_argument</name>
+        <param>
+          <type>struct <ref refid="d2/d74/structargument" kindref="compound">argument</ref> *</type>
+          <declname>argument</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="d2/d46/structinterpreter__parameter__liste" kindref="compound">interpreter_parameter_liste</ref> *</type>
+          <declname>aktuelle_parameter</declname>
+        </param>
+        <briefdescription>
+<para>Gibt das Wertefeld eines Argumentes zurück. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>argument</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Argument, das gesucht werden soll. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>aktuelle_parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Interpreter-Parameter-Liste mit Wertefeldern für nichtnumerische Argumente. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/argument.h" line="59" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/argument.c" bodystart="159" bodyend="189"/>
+        <references refid="d2/d74/structargument_1aebffb910f9535b2c61aaf2629909a524" compoundref="db/d1e/argument_8h" startline="34">argument::argument_typ</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d3/d97/interpreter_8h_1a97e40f66eb0949a7a12b20cc142bb401" compoundref="dc/d30/interpreter_8c" startline="61" endline="75">get_cache_konstante</references>
+        <references refid="de/d45/errors_8h_1ac61fd91ca8958e4e3c181d39f4fb4b1b" compoundref="de/d45/errors_8h" startline="33">MUTABOR_ERROR_UNDEFINED</references>
+        <references refid="d2/d46/structinterpreter__parameter__liste_1ae1d46c921924f5caf79971e65c3630a7" compoundref="d2/d2a/parameter_8h" startline="38">interpreter_parameter_liste::next</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" compoundref="db/d1e/argument_8h" startline="30">parameter</references>
+        <references refid="d2/d74/structargument_1ae6f70084cffab08980e51bba6aa80856">argument::parameter</references>
+        <references refid="d2/d74/structargument_1a3ccccc4ff00127c5d4731a94768c8cd8">argument::u</references>
+        <references refid="d2/d46/structinterpreter__parameter__liste_1ac9e40372bb579351da7e2aed8c135cac" compoundref="d2/d2a/parameter_8h" startline="37">interpreter_parameter_liste::werte_feld</references>
+        <references refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a47e9a84a3f91507862a3baa02e1a05b6" compoundref="db/d1e/argument_8h" startline="30">zahl</references>
+        <references refid="d2/d74/structargument_1a8d5ebe7bca0a3f0ebb29132e0ee0eead" compoundref="db/d1e/argument_8h" startline="37">argument::zahl</references>
+        <referencedby refid="d2/d1c/group__Interpreter_1ga6140e72fda79613ca5af30a3832c286c" compoundref="d8/dc3/aktion_8c" startline="360" endline="470">expandiere_umstimmung</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="db/d1e/argument_8h_1ab25c931f33390392a2b537055f8af416" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int argument_list_laenge</definition>
+        <argsstring>(struct argument_liste *list)</argsstring>
+        <name>argument_list_laenge</name>
+        <param>
+          <type>struct <ref refid="dd/d7c/structargument__liste" kindref="compound">argument_liste</ref> *</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+<para>Zählen der Elemente einer einfach verketteten Argumentliste. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Liste der Argumente </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Anzahl der Elemente von <emphasis>list</emphasis> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/argument.h" line="63" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/argument.c" bodystart="37" bodyend="40"/>
+        <references refid="db/d1e/argument_8h_1ab25c931f33390392a2b537055f8af416" compoundref="d3/d14/argument_8c" startline="37" endline="40">argument_list_laenge</references>
+        <references refid="d0/dab/structanweisung_1ac2f1fdc2202ad29c50dbdc676fdc9a6a" compoundref="d0/db7/anweisung_8h" startline="39">anweisung::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga39266c1e0de300e9937852d93cdababf" compoundref="dc/df5/Parser_8cpp" startline="156" endline="162">argument_list_laenge</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga905a1b74bbe8c62344795da1a2a07c3a" compoundref="dc/df5/Parser_8cpp" startline="2697" endline="2862">check_aktionen</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d2/d4a/umstimmung_8c_1a9fc87f323f75b7afaef30c37c78af7c6" compoundref="d2/d4a/umstimmung_8c" startline="538" endline="732">check_umstimmungs_konsistenz</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="db/d1e/argument_8h_1a0fc5fadb32034c11e8875d11ca679f77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="dd/d7c/structargument__liste" kindref="compound">argument_liste</ref> *</type>
+        <definition>struct argument_liste* get_last_argument_liste</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_last_argument_liste</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gibt die Wurzel von <emphasis>list_of_argumente</emphasis> zurück. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/argument.h" line="65" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/argument.c" bodystart="114" bodyend="117"/>
+        <references refid="d3/d14/argument_8c_1ac9f2f84453cadb70991971cb16e16310" compoundref="d3/d14/argument_8c" startline="61">list_of_argumente</references>
+        <referencedby refid="dd/d21/group__Parser_1ga2409d98deecdaeb03931132bae441717" compoundref="d8/dc3/aktion_8c" startline="69" endline="80">get_new_aktion_aufruf_element</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Alles zu Argumenten. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="rcs"><title>Id:</title><para>argument.h,v 1.3 2005/11/03 14:24:30 keinstein Exp </para></simplesect>
+<simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein@users.berlios.de">keinstein@users.berlios.de</ulink> </para></simplesect>
+<simplesect kind="date"><para></para></simplesect>
+<simplesect kind="rcs"><title>Date:</title><para>2005/11/03 14:24:30 </para></simplesect>
+<simplesect kind="version"><para></para></simplesect>
+<simplesect kind="rcs"><title>Revision:</title><para>1.3 </para></simplesect>
+</para><para><simplesect kind="rcs"><title>Log:</title><para>argument.h,v </para></simplesect>
+Revision 1.3 2005/11/03 14:24:30 keinstein new Header includes corrected interpreter functions and data structures </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="18"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dd/d7c/structargument__liste" kindref="compound">argument_liste</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__ARGUMENT_H_INCLUDED</highlight></codeline>
+<codeline lineno="20"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>__ARGUMENT_H_INCLUDED</highlight></codeline>
+<codeline lineno="21"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d2a/parameter_8h" kindref="compound">mutabor/parameter.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="25"><highlight class="preprocessor"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="28"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="30" refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a47e9a84a3f91507862a3baa02e1a05b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="db/d1e/argument_8h_1a670b4baf221831f19e00a812a7b68282" kindref="member">argument_typ</ref><sp/>{<ref refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a47e9a84a3f91507862a3baa02e1a05b6" kindref="member">zahl</ref>,<sp/><ref refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" kindref="member">parameter</ref>};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="d2/d74/structargument" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d74/structargument" kindref="compound">argument</ref><sp/>{</highlight></codeline>
+<codeline lineno="34" refid="d2/d74/structargument_1aebffb910f9535b2c61aaf2629909a524" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="db/d1e/argument_8h_1a670b4baf221831f19e00a812a7b68282" kindref="member">argument_typ</ref><sp/><ref refid="db/d1e/argument_8h_1a670b4baf221831f19e00a812a7b68282" kindref="member">argument_typ</ref><sp/>;<sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37" refid="d2/d74/structargument_1a8d5ebe7bca0a3f0ebb29132e0ee0eead" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d2/d74/structargument_1a8d5ebe7bca0a3f0ebb29132e0ee0eead" kindref="member">zahl</ref>;<sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282a47e9a84a3f91507862a3baa02e1a05b6" kindref="member">zahl</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40" refid="d2/d74/structargument_1abe74721da2ad53e8a3379adad9eb26ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d2/d74/structargument_1abe74721da2ad53e8a3379adad9eb26ea" kindref="member">parameter_nummer</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42" refid="d2/d74/structargument_1a33235b4dbefe4e75e2aafb2385ba608e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d2/d74/structargument_1a33235b4dbefe4e75e2aafb2385ba608e" kindref="member">parameter_name</ref>;<sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" kindref="member">parameter</ref>;<sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>u;<sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="dd/d7c/structargument__liste" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dd/d7c/structargument__liste" kindref="compound">argument_liste</ref><sp/>{</highlight></codeline>
+<codeline lineno="49" refid="dd/d7c/structargument__liste_1a62205ad94c3fb485ffc1c8d599fdf3d1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d74/structargument" kindref="compound">argument</ref><sp/><ref refid="d2/d74/structargument" kindref="compound">argument</ref>;<sp/></highlight></codeline>
+<codeline lineno="50" refid="dd/d7c/structargument__liste_1a17fc5968b0581a9d61d426e3185533c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dd/d7c/structargument__liste" kindref="compound">argument_liste</ref><sp/>*<sp/><ref refid="dd/d7c/structargument__liste_1a17fc5968b0581a9d61d426e3185533c7" kindref="member">next</ref>;<sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="db/d1e/argument_8h_1ab2df1fd1457d1487623c1468c1d33d35" kindref="member">drucke_argument</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d2/d74/structargument" kindref="compound">argument</ref><sp/>*<sp/>z_or_p);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="db/d1e/argument_8h_1a187f4b650eee454d7c2d5ce3efb821d2" kindref="member">init_argument_liste</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="db/d1e/argument_8h_1aab375f164719d7e02a663a5a16fd6396" kindref="member">get_new_name_in_argument_list</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" kindref="member">parameter</ref>);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="db/d1e/argument_8h_1a629acae86a31b15437e35657215f9ae6" kindref="member">get_new_number_in_argument_list</ref><sp/>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gga670b4baf221831f19e00a812a7b68282ae7731519cb6c1281973399cbefa90833" kindref="member">parameter</ref>);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*<sp/><ref refid="db/d1e/argument_8h_1af636a1e8393f27b82c5c10e8c0120f04" kindref="member">get_wert_of_argument</ref>(</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d2/d74/structargument" kindref="compound">argument</ref><sp/>*<sp/><ref refid="d2/d74/structargument" kindref="compound">argument</ref>,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d2/d46/structinterpreter__parameter__liste" kindref="compound">interpreter_parameter_liste</ref><sp/>*<sp/>aktuelle_parameter</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="db/d1e/argument_8h_1ab25c931f33390392a2b537055f8af416" kindref="member">argument_list_laenge</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="dd/d7c/structargument__liste" kindref="compound">argument_liste</ref><sp/>*list);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dd/d7c/structargument__liste" kindref="compound">argument_liste</ref><sp/>*<sp/><ref refid="db/d1e/argument_8h_1a0fc5fadb32034c11e8875d11ca679f77" kindref="member">get_last_argument_liste</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus<sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>extern<sp/>&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mutabor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__ARGUMENT_H_INCLUDED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/argument.h"/>
+  </compounddef>
+</doxygen>

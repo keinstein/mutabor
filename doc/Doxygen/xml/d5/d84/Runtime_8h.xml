@@ -1,0 +1,735 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d5/d84/Runtime_8h" kind="file">
+    <compoundname>Runtime.h</compoundname>
+    <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
+    <includes refid="d4/d7c/CompDlg_8h" local="yes">src/wxGUI/CompDlg.h</includes>
+    <includes refid="de/d05/Device_8h" local="yes">src/kernel/routing/Device.h</includes>
+    <includes local="yes">wx/wxchar.h</includes>
+    <includes local="no">setjmp.h</includes>
+    <includedby refid="df/d23/Execute_8cpp" local="yes">src/kernel/Execute.cpp</includedby>
+    <includedby refid="d3/dca/Interval_8cpp" local="yes">src/kernel/Interval.cpp</includedby>
+    <includedby refid="dd/dc6/Box_8cpp" local="yes">src/kernel/routing/Box.cpp</includedby>
+    <includedby refid="d9/d6a/CommonFileDevice-inlines_8h" local="yes">src/kernel/routing/CommonFileDevice-inlines.h</includedby>
+    <includedby refid="d0/d6b/DevMidF_8cpp" local="yes">src/kernel/routing/midi/DevMidF.cpp</includedby>
+    <includedby refid="d3/d0f/midicmn_8cpp" local="yes">src/kernel/routing/midi/midicmn.cpp</includedby>
+    <includedby refid="d9/d99/DevMidFTest_8cpp" local="yes">src/kernel/routing/midi/tests/DevMidFTest.cpp</includedby>
+    <includedby refid="da/d0f/DevMidFTest_8h" local="yes">src/kernel/routing/midi/tests/DevMidFTest.h</includedby>
+    <includedby refid="dd/d56/midicmnTest_8h" local="yes">src/kernel/routing/midi/tests/midicmnTest.h</includedby>
+    <includedby refid="df/d01/BoxTest_8h" local="yes">src/kernel/routing/tests/BoxTest.h</includedby>
+    <includedby refid="dc/d45/RouteTest_8h" local="yes">src/kernel/routing/tests/RouteTest.h</includedby>
+    <includedby refid="db/d80/Runtime_8cpp" local="yes">src/kernel/Runtime.cpp</includedby>
+    <includedby refid="d1/da7/boxTest_8cpp" local="yes">src/kernel/tests/boxTest.cpp</includedby>
+    <includedby refid="dc/d2f/boxTest_8h" local="yes">src/kernel/tests/boxTest.h</includedby>
+    <includedby refid="dc/df3/MutFrame_8cpp" local="yes">src/wxGUI/MutFrame.cpp</includedby>
+    <incdepgraph>
+      <node id="17968">
+        <label>src/xrc/wxresource.h</label>
+        <link refid="d2/dc0/wxresource_8h"/>
+      </node>
+      <node id="17940">
+        <label>list</label>
+      </node>
+      <node id="17933">
+        <label>src/kernel/routing/Box.h</label>
+        <link refid="de/d0f/Box_8h"/>
+        <childnode refid="17929" relation="include">
+        </childnode>
+        <childnode refid="17934" relation="include">
+        </childnode>
+        <childnode refid="17935" relation="include">
+        </childnode>
+        <childnode refid="17936" relation="include">
+        </childnode>
+        <childnode refid="17943" relation="include">
+        </childnode>
+        <childnode refid="17945" relation="include">
+        </childnode>
+        <childnode refid="17939" relation="include">
+        </childnode>
+        <childnode refid="17941" relation="include">
+        </childnode>
+        <childnode refid="17952" relation="include">
+        </childnode>
+        <childnode refid="17953" relation="include">
+        </childnode>
+        <childnode refid="17930" relation="include">
+        </childnode>
+        <childnode refid="17944" relation="include">
+        </childnode>
+      </node>
+      <node id="17930">
+        <label>stdarg.h</label>
+      </node>
+      <node id="17960">
+        <label>wx/html/htmlwin.h</label>
+      </node>
+      <node id="17976">
+        <label>src/kernel/routing/timing.h</label>
+        <link refid="db/d41/timing_8h"/>
+        <childnode refid="17929" relation="include">
+        </childnode>
+        <childnode refid="17937" relation="include">
+        </childnode>
+        <childnode refid="17977" relation="include">
+        </childnode>
+        <childnode refid="17978" relation="include">
+        </childnode>
+        <childnode refid="17942" relation="include">
+        </childnode>
+        <childnode refid="17979" relation="include">
+        </childnode>
+        <childnode refid="17935" relation="include">
+        </childnode>
+      </node>
+      <node id="17977">
+        <label>limits</label>
+      </node>
+      <node id="17961">
+        <label>wx/radiobox.h</label>
+      </node>
+      <node id="17943">
+        <label>src/kernel/Execute.h</label>
+        <link refid="de/d11/Execute_8h"/>
+        <childnode refid="17929" relation="include">
+        </childnode>
+        <childnode refid="17944" relation="include">
+        </childnode>
+      </node>
+      <node id="17939">
+        <label>boost/intrusive_ptr.hpp</label>
+      </node>
+      <node id="17929">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="17930" relation="include">
+        </childnode>
+        <childnode refid="17931" relation="include">
+        </childnode>
+      </node>
+      <node id="17947">
+        <label>stdlib.h</label>
+      </node>
+      <node id="17982">
+        <label>wx/wxchar.h</label>
+      </node>
+      <node id="17983">
+        <label>setjmp.h</label>
+      </node>
+      <node id="17928">
+        <label>src/kernel/Runtime.h</label>
+        <link refid="Runtime.h"/>
+        <childnode refid="17929" relation="include">
+        </childnode>
+        <childnode refid="17932" relation="include">
+        </childnode>
+        <childnode refid="17970" relation="include">
+        </childnode>
+        <childnode refid="17982" relation="include">
+        </childnode>
+        <childnode refid="17983" relation="include">
+        </childnode>
+      </node>
+      <node id="17959">
+        <label>wx/filepicker.h</label>
+      </node>
+      <node id="17942">
+        <label>stdexcept</label>
+      </node>
+      <node id="17951">
+        <label>malloc.h</label>
+      </node>
+      <node id="17957">
+        <label>wx/choicebk.h</label>
+      </node>
+      <node id="17948">
+        <label>string</label>
+      </node>
+      <node id="17964">
+        <label>wx/stattext.h</label>
+      </node>
+      <node id="17978">
+        <label>exception</label>
+      </node>
+      <node id="17956">
+        <label>wx/checkbox.h</label>
+      </node>
+      <node id="17966">
+        <label>wx/window.h</label>
+      </node>
+      <node id="17962">
+        <label>wx/radiobut.h</label>
+      </node>
+      <node id="17950">
+        <label>Interpre.h</label>
+        <link refid="d2/dd8/Interpre_8h"/>
+        <childnode refid="17929" relation="include">
+        </childnode>
+        <childnode refid="17946" relation="include">
+        </childnode>
+      </node>
+      <node id="17945">
+        <label>src/kernel/box.h</label>
+        <link refid="dc/d19/box_8h"/>
+        <childnode refid="17929" relation="include">
+        </childnode>
+        <childnode refid="17946" relation="include">
+        </childnode>
+        <childnode refid="17950" relation="include">
+        </childnode>
+        <childnode refid="17943" relation="include">
+        </childnode>
+        <childnode refid="17951" relation="include">
+        </childnode>
+      </node>
+      <node id="17958">
+        <label>wx/dialog.h</label>
+      </node>
+      <node id="17937">
+        <label>src/kernel/MidiKern.h</label>
+        <link refid="da/dfd/MidiKern_8h"/>
+        <childnode refid="17929" relation="include">
+        </childnode>
+      </node>
+      <node id="17975">
+        <label>string.h</label>
+      </node>
+      <node id="17967">
+        <label>wx/xrc/xmlres.h</label>
+      </node>
+      <node id="17941">
+        <label>vector</label>
+      </node>
+      <node id="17936">
+        <label>src/kernel/routing/Route.h</label>
+        <link refid="d1/d65/Route_8h"/>
+        <childnode refid="17929" relation="include">
+        </childnode>
+        <childnode refid="17937" relation="include">
+        </childnode>
+        <childnode refid="17934" relation="include">
+        </childnode>
+        <childnode refid="17938" relation="include">
+        </childnode>
+        <childnode refid="17939" relation="include">
+        </childnode>
+        <childnode refid="17940" relation="include">
+        </childnode>
+        <childnode refid="17941" relation="include">
+        </childnode>
+        <childnode refid="17942" relation="include">
+        </childnode>
+      </node>
+      <node id="17981">
+        <label>boost/unordered_set.hpp</label>
+      </node>
+      <node id="17953">
+        <label>sstream</label>
+      </node>
+      <node id="17973">
+        <label>wx/string.h</label>
+      </node>
+      <node id="17971">
+        <label>src/kernel/routing/gmn/GIS.h</label>
+        <link refid="dd/d4d/GIS_8h"/>
+        <childnode refid="17929" relation="include">
+        </childnode>
+        <childnode refid="17972" relation="include">
+        </childnode>
+        <childnode refid="17975" relation="include">
+        </childnode>
+        <childnode refid="17947" relation="include">
+        </childnode>
+      </node>
+      <node id="17946">
+        <label>Global.h</label>
+        <link refid="dd/d40/Global_8h"/>
+        <childnode refid="17929" relation="include">
+        </childnode>
+        <childnode refid="17944" relation="include">
+        </childnode>
+        <childnode refid="17947" relation="include">
+        </childnode>
+        <childnode refid="17930" relation="include">
+        </childnode>
+        <childnode refid="17948" relation="include">
+        </childnode>
+        <childnode refid="17949" relation="include">
+        </childnode>
+      </node>
+      <node id="17949">
+        <label>math.h</label>
+      </node>
+      <node id="17974">
+        <label>iostream</label>
+      </node>
+      <node id="17972">
+        <label>src/kernel/Frac.h</label>
+        <link refid="df/d4f/Frac_8h"/>
+        <childnode refid="17929" relation="include">
+        </childnode>
+        <childnode refid="17973" relation="include">
+        </childnode>
+        <childnode refid="17974" relation="include">
+        </childnode>
+      </node>
+      <node id="17931">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+      <node id="17954">
+        <label>src/wxGUI/resourceload.h</label>
+        <link refid="d3/daf/resourceload_8h"/>
+        <childnode refid="17929" relation="include">
+        </childnode>
+        <childnode refid="17955" relation="include">
+        </childnode>
+        <childnode refid="17956" relation="include">
+        </childnode>
+        <childnode refid="17957" relation="include">
+        </childnode>
+        <childnode refid="17958" relation="include">
+        </childnode>
+        <childnode refid="17959" relation="include">
+        </childnode>
+        <childnode refid="17960" relation="include">
+        </childnode>
+        <childnode refid="17961" relation="include">
+        </childnode>
+        <childnode refid="17962" relation="include">
+        </childnode>
+        <childnode refid="17963" relation="include">
+        </childnode>
+        <childnode refid="17964" relation="include">
+        </childnode>
+        <childnode refid="17965" relation="include">
+        </childnode>
+        <childnode refid="17966" relation="include">
+        </childnode>
+        <childnode refid="17967" relation="include">
+        </childnode>
+        <childnode refid="17968" relation="include">
+        </childnode>
+      </node>
+      <node id="17980">
+        <label>wx/thread.h</label>
+      </node>
+      <node id="17935">
+        <label>src/kernel/routing/thread.h</label>
+        <link refid="db/dd5/thread_8h"/>
+        <childnode refid="17929" relation="include">
+        </childnode>
+      </node>
+      <node id="17955">
+        <label>wx/button.h</label>
+      </node>
+      <node id="17963">
+        <label>wx/spinctrl.h</label>
+      </node>
+      <node id="17938">
+        <label>src/kernel/boost-interface.h</label>
+        <link refid="d1/da4/boost-interface_8h"/>
+        <childnode refid="17929" relation="include">
+        </childnode>
+        <childnode refid="17935" relation="include">
+        </childnode>
+      </node>
+      <node id="17979">
+        <label>wx/stopwatch.h</label>
+      </node>
+      <node id="17932">
+        <label>src/wxGUI/CompDlg.h</label>
+        <link refid="d4/d7c/CompDlg_8h"/>
+        <childnode refid="17929" relation="include">
+        </childnode>
+        <childnode refid="17933" relation="include">
+        </childnode>
+        <childnode refid="17954" relation="include">
+        </childnode>
+        <childnode refid="17969" relation="include">
+        </childnode>
+        <childnode refid="17959" relation="include">
+        </childnode>
+        <childnode refid="17967" relation="include">
+        </childnode>
+        <childnode refid="17960" relation="include">
+        </childnode>
+      </node>
+      <node id="17952">
+        <label>algorithm</label>
+      </node>
+      <node id="17970">
+        <label>src/kernel/routing/Device.h</label>
+        <link refid="de/d05/Device_8h"/>
+        <childnode refid="17929" relation="include">
+        </childnode>
+        <childnode refid="17971" relation="include">
+        </childnode>
+        <childnode refid="17936" relation="include">
+        </childnode>
+        <childnode refid="17976" relation="include">
+        </childnode>
+        <childnode refid="17937" relation="include">
+        </childnode>
+        <childnode refid="17941" relation="include">
+        </childnode>
+        <childnode refid="17940" relation="include">
+        </childnode>
+        <childnode refid="17952" relation="include">
+        </childnode>
+        <childnode refid="17953" relation="include">
+        </childnode>
+        <childnode refid="17930" relation="include">
+        </childnode>
+        <childnode refid="17980" relation="include">
+        </childnode>
+        <childnode refid="17979" relation="include">
+        </childnode>
+        <childnode refid="17981" relation="include">
+        </childnode>
+      </node>
+      <node id="17969">
+        <label>wx/statline.h</label>
+      </node>
+      <node id="17944">
+        <label>stdio.h</label>
+      </node>
+      <node id="17965">
+        <label>wx/textctrl.h</label>
+      </node>
+      <node id="17934">
+        <label>src/kernel/treestorage.h</label>
+        <link refid="db/dbe/treestorage_8h"/>
+        <childnode refid="17929" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="17995">
+        <label>src/kernel/routing/tests/main.cpp</label>
+        <link refid="d1/de6/kernel_2routing_2tests_2main_8cpp"/>
+      </node>
+      <node id="18003">
+        <label>src/kernel/routing/midi/tests/midicmnTest.h</label>
+        <link refid="dd/d56/midicmnTest_8h"/>
+        <childnode refid="18000" relation="include">
+        </childnode>
+        <childnode refid="18002" relation="include">
+        </childnode>
+        <childnode refid="18004" relation="include">
+        </childnode>
+      </node>
+      <node id="17997">
+        <label>src/kernel/routing/midi/DevMidF.cpp</label>
+        <link refid="d0/d6b/DevMidF_8cpp"/>
+      </node>
+      <node id="18011">
+        <label>src/kernel/tests/boxTest.h</label>
+        <link refid="dc/d2f/boxTest_8h"/>
+        <childnode refid="18010" relation="include">
+        </childnode>
+        <childnode refid="18012" relation="include">
+        </childnode>
+      </node>
+      <node id="17984">
+        <label>src/kernel/Runtime.h</label>
+        <link refid="Runtime.h"/>
+        <childnode refid="17985" relation="include">
+        </childnode>
+        <childnode refid="17986" relation="include">
+        </childnode>
+        <childnode refid="17987" relation="include">
+        </childnode>
+        <childnode refid="17988" relation="include">
+        </childnode>
+        <childnode refid="17997" relation="include">
+        </childnode>
+        <childnode refid="17998" relation="include">
+        </childnode>
+        <childnode refid="18000" relation="include">
+        </childnode>
+        <childnode refid="18001" relation="include">
+        </childnode>
+        <childnode refid="18003" relation="include">
+        </childnode>
+        <childnode refid="18005" relation="include">
+        </childnode>
+        <childnode refid="18007" relation="include">
+        </childnode>
+        <childnode refid="18009" relation="include">
+        </childnode>
+        <childnode refid="18010" relation="include">
+        </childnode>
+        <childnode refid="18011" relation="include">
+        </childnode>
+        <childnode refid="18013" relation="include">
+        </childnode>
+      </node>
+      <node id="18004">
+        <label>src/kernel/routing/midi/tests/midicmnTest.cpp</label>
+        <link refid="d8/d59/midicmnTest_8cpp"/>
+      </node>
+      <node id="18010">
+        <label>src/kernel/tests/boxTest.cpp</label>
+        <link refid="d1/da7/boxTest_8cpp"/>
+      </node>
+      <node id="17989">
+        <label>src/kernel/routing/CommonFileDevice.cpp</label>
+        <link refid="dc/d72/CommonFileDevice_8cpp"/>
+      </node>
+      <node id="18007">
+        <label>src/kernel/routing/tests/RouteTest.h</label>
+        <link refid="dc/d45/RouteTest_8h"/>
+        <childnode refid="17995" relation="include">
+        </childnode>
+        <childnode refid="18008" relation="include">
+        </childnode>
+      </node>
+      <node id="17988">
+        <label>src/kernel/routing/CommonFileDevice-inlines.h</label>
+        <link refid="d9/d6a/CommonFileDevice-inlines_8h"/>
+        <childnode refid="17989" relation="include">
+        </childnode>
+        <childnode refid="17990" relation="include">
+        </childnode>
+        <childnode refid="17991" relation="include">
+        </childnode>
+        <childnode refid="17992" relation="include">
+        </childnode>
+        <childnode refid="17993" relation="include">
+        </childnode>
+        <childnode refid="17994" relation="include">
+        </childnode>
+        <childnode refid="17996" relation="include">
+        </childnode>
+      </node>
+      <node id="17998">
+        <label>src/kernel/routing/midi/midicmn.cpp</label>
+        <link refid="d3/d0f/midicmn_8cpp"/>
+        <childnode refid="17997" relation="include">
+        </childnode>
+        <childnode refid="17999" relation="include">
+        </childnode>
+        <childnode refid="18000" relation="include">
+        </childnode>
+      </node>
+      <node id="17992">
+        <label>src/kernel/routing/midi/tests/midiopenfail1.cpp</label>
+        <link refid="da/ddb/midiopenfail1_8cpp"/>
+      </node>
+      <node id="17986">
+        <label>src/kernel/Interval.cpp</label>
+        <link refid="d3/dca/Interval_8cpp"/>
+      </node>
+      <node id="18000">
+        <label>src/kernel/routing/midi/tests/DevMidFTest.cpp</label>
+        <link refid="d9/d99/DevMidFTest_8cpp"/>
+      </node>
+      <node id="18009">
+        <label>src/kernel/Runtime.cpp</label>
+        <link refid="db/d80/Runtime_8cpp"/>
+        <childnode refid="18004" relation="include">
+        </childnode>
+      </node>
+      <node id="18001">
+        <label>src/kernel/routing/midi/tests/DevMidFTest.h</label>
+        <link refid="da/d0f/DevMidFTest_8h"/>
+        <childnode refid="18000" relation="include">
+        </childnode>
+        <childnode refid="18002" relation="include">
+        </childnode>
+      </node>
+      <node id="17990">
+        <label>src/kernel/routing/gmn/tests/gmnopenfail1.cpp</label>
+        <link refid="d0/dd6/gmnopenfail1_8cpp"/>
+      </node>
+      <node id="17994">
+        <label>src/kernel/routing/tests/CommonFileDeviceTest.h</label>
+        <link refid="d4/d70/CommonFileDeviceTest_8h"/>
+        <childnode refid="17995" relation="include">
+        </childnode>
+      </node>
+      <node id="18013">
+        <label>src/wxGUI/MutFrame.cpp</label>
+        <link refid="dc/df3/MutFrame_8cpp"/>
+      </node>
+      <node id="17993">
+        <label>src/kernel/routing/midi/tests/playmidi1.cpp</label>
+        <link refid="d9/dfe/playmidi1_8cpp"/>
+      </node>
+      <node id="18012">
+        <label>src/kernel/tests/main.cpp</label>
+        <link refid="d5/dd0/kernel_2tests_2main_8cpp"/>
+      </node>
+      <node id="18008">
+        <label>src/kernel/routing/tests/RouteTest.cpp</label>
+        <link refid="d2/dba/RouteTest_8cpp"/>
+      </node>
+      <node id="17999">
+        <label>src/kernel/routing/midi/DevMidi.cpp</label>
+        <link refid="df/d8f/DevMidi_8cpp"/>
+      </node>
+      <node id="18005">
+        <label>src/kernel/routing/tests/BoxTest.h</label>
+        <link refid="df/d01/BoxTest_8h"/>
+        <childnode refid="18006" relation="include">
+        </childnode>
+        <childnode refid="17995" relation="include">
+        </childnode>
+      </node>
+      <node id="18006">
+        <label>src/kernel/routing/tests/BoxTest.cpp</label>
+        <link refid="db/d0a/BoxTest_8cpp"/>
+      </node>
+      <node id="17996">
+        <label>src/kernel/routing/tests/timer1.cpp</label>
+        <link refid="d9/d9a/timer1_8cpp"/>
+      </node>
+      <node id="17985">
+        <label>src/kernel/Execute.cpp</label>
+        <link refid="df/d23/Execute_8cpp"/>
+      </node>
+      <node id="17987">
+        <label>src/kernel/routing/Box.cpp</label>
+        <link refid="dd/dc6/Box_8cpp"/>
+      </node>
+      <node id="17991">
+        <label>src/kernel/routing/gmn/tests/playgmn1.cpp</label>
+        <link refid="d3/d06/playgmn1_8cpp"/>
+      </node>
+      <node id="18002">
+        <label>src/kernel/routing/midi/tests/main.cpp</label>
+        <link refid="df/d72/kernel_2routing_2midi_2tests_2main_8cpp"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="dc/d7e/group__runtime_1gabd075f0556c9ce6f682b5a71c3191863" prot="public" static="no">
+        <name>MU32_RUNTIME_H</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.h" line="39" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/d7e/group__runtime_1ga14f6f406ce592655a53e3b73ace7cddd" prot="public" static="no">
+        <name>MU32_RUNTIME_H_PRECOMPILED</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.h" line="51" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/d7e/group__runtime_1ga45c20c14d3d8790a22153d08ab2eb2ff" prot="public" static="no">
+        <name>UINT</name>
+        <initializer>unsigned int</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.h" line="59" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="dc/d7e/group__runtime_1ga1faa8705b3fd5029a295edfdcdf1a67f" prot="public" static="no" mutable="no">
+        <type>jmp_buf</type>
+        <definition>jmp_buf weiter_gehts_nach_compilerfehler</definition>
+        <argsstring></argsstring>
+        <name>weiter_gehts_nach_compilerfehler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.h" line="65" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="28" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="604" endline="645">mutabor::BoxClass::Compile</referencedby>
+        <referencedby refid="d3/d14/gmut_8cpp_1aa4fbd34cae8e303c82cf546234111c10" compoundref="d3/d14/gmut_8cpp" startline="153" endline="185">GMutCompile</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Runtime functions of the (mainly C) old kernel of Mutabor. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright: (c) 2008 TU Dresden changes after 2011-11 owned by the authors <simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein@users.berlios.de">keinstein@users.berlios.de</ulink>  GPL</para></simplesect>
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</para><para>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</para><para>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="28"><highlight class="comment">//<sp/>------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Mutabor<sp/>2.win,<sp/>1997,<sp/>R.Krauﬂe</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Laufzeitfunktionen<sp/>der<sp/>DLL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>we<sp/>guard<sp/>a<sp/>little<sp/>bit<sp/>complicated<sp/>to<sp/>ensure<sp/>the<sp/>references<sp/>are<sp/>set<sp/>right</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(!defined(MU32_RUNTIME_H)<sp/>&amp;&amp;<sp/>!defined(PRECOMPILE))<sp/>\</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>(!defined(MU32_RUNTIME_H_PRECOMPILED))</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifndef<sp/>PRECOMPILE</highlight></codeline>
+<codeline lineno="39" refid="dc/d7e/group__runtime_1gabd075f0556c9ce6f682b5a71c3191863" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MU32_RUNTIME_H</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">src/kernel/Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d4/d7c/CompDlg_8h" kindref="compound">src/wxGUI/CompDlg.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d05/Device_8h" kindref="compound">src/kernel/routing/Device.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MU32_RUNTIME_H_PRECOMPILED</highlight></codeline>
+<codeline lineno="51" refid="dc/d7e/group__runtime_1ga14f6f406ce592655a53e3b73ace7cddd" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MU32_RUNTIME_H_PRECOMPILED</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>system<sp/>headers<sp/>which<sp/>do<sp/>seldom<sp/>change</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/wxchar.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined(__WXMSW__)</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifndef<sp/>UINT</highlight></codeline>
+<codeline lineno="59" refid="dc/d7e/group__runtime_1ga45c20c14d3d8790a22153d08ab2eb2ff" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UINT<sp/>unsigned<sp/>int</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&lt;setjmp.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>jmp_buf<sp/><ref refid="dc/d7e/group__runtime_1ga1faa8705b3fd5029a295edfdcdf1a67f" kindref="member">weiter_gehts_nach_compilerfehler</ref>;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>void<sp/><sp/>InDeviceActionAll(char<sp/>action);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//void<sp/><sp/>InDeviceAction(int<sp/>inDevNr,<sp/>enum<sp/>mutabor::MutaborModeType<sp/>action);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight></codeline>
+<codeline lineno="72"><highlight class="preprocessor"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/>IsLogicKey(<ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>key);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>box<sp/>=<sp/>-1<sp/>...<sp/>weiterlesen<sp/>in<sp/>angefangener<sp/>Liste</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/>GetMutTag(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>&amp;isLogic,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**text,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*einsttext,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>&amp;key,<sp/><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/>KeyChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><ref refid="dc/d7e/group__runtime_1gabcf963f3b449cab5ee813f93e577f777" kindref="member">TSChanged</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/>InDevicesChanged();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><ref refid="dc/d7e/group__runtime_1ga5e01376e7205f06ada8473bceab22bed" kindref="member">GetInDevicesMode</ref>(</highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1gaa3d7d1e712c727d12c3b60c8dc04b484" kindref="member">mutabor::MutaborModeType</ref><sp/>*mode);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/>GetDrivers(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*driver);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/>SetDrivers(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*driver);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/><ref refid="dc/d7e/group__runtime_1gacd1e984f955655cb7d57b37569685bed" kindref="member">GetChannels</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>start,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;base,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;from,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;to,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;thru);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><ref refid="dc/d7e/group__runtime_1ga67e4c654aa6bfe3944304471e91956d0" kindref="member">SetChannels</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>base,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>from,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>to,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>thru);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/>SetAktuellesKeyboardInstrument(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>instr);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/><sp/>GetAktuellesKeyboardInstrument();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>WX</highlight></codeline>
+<codeline lineno="87"><highlight class="preprocessor"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/>ScanDevices(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*config);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="89"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><ref refid="d5/dee/group__route_1gaa9af06d2b801f5fbf129acc683bb764d" kindref="member">mutabor::OutputDevice</ref><sp/><ref refid="dd/d72/namespacecompat30_1a64f4f24016ab43fa9813995dcc1a77ae" kindref="member">GetOut</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nr);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><ref refid="dc/d7e/group__runtime_1gaad640d15310e214fe9dfaa45bb2baa52" kindref="member">GetTimerData</ref>(<ref refid="dc/d7e/group__runtime_1ga45c20c14d3d8790a22153d08ab2eb2ff" kindref="member">UINT</ref><sp/>&amp;min,<sp/><ref refid="dc/d7e/group__runtime_1ga45c20c14d3d8790a22153d08ab2eb2ff" kindref="member">UINT</ref><sp/>&amp;max);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>precompiled<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="95"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.h"/>
+  </compounddef>
+</doxygen>

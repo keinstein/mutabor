@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/libmutabor/tests/testparser.c Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_36b066032255252bd9de4e8c33341f8d.html">libmutabor</a></li><li class="navelem"><a class="el" href="../../dir_2ec5315002be0c30695deda91014825a.html">tests</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">testparser.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d3/d47/testparser_8c.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;stdarg.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifdef HAVE_MCHEK_H</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  include &lt;mcheck.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="../../de/d45/errors_8h.html">mutabor/errors.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d5/d36/parser_8h.html">mutabor/parser.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d5/d4b/mutlex_8c.html#aa63356936cc6758cd7c0bf591bef2aa8">mutabor_parser_tables_fload</a> (FILE* FP);</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="../../d3/d47/testparser_8c.html#a7fde6236fcb0f6e5d1d20ce98d9f0d01">   12</a></span>&#160;<span class="preprocessor">#define yydebug mutabor_parser_debug</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="../../d3/da3/mut_8c.html#a7fde6236fcb0f6e5d1d20ce98d9f0d01">yydebug</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="../../d3/d47/testparser_8c.html#a92408f36eb5962b70d2563c7e300e5f7">   15</a></span>&#160;FILE * <a class="code" href="../../d3/d47/testparser_8c.html#a92408f36eb5962b70d2563c7e300e5f7">mutabor_parser_out</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="../../d3/d47/testparser_8c.html#a5889635be4f3eec31734040bf4b4c743">   17</a></span>&#160;FILE * <a class="code" href="../../d3/d47/testparser_8c.html#a5889635be4f3eec31734040bf4b4c743">tabelle</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="../../d3/d47/testparser_8c.html#a4d78c95369c158fab97b5eea72c124f3">   19</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96a053ee5ee8425fcbcd4c51b3637254eb5">compiler_warning</a>( <span class="keywordtype">int</span> nr, ... )</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  va_list arglist;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  va_start(arglist,nr); </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  fprintf(stderr,<span class="stringliteral">&quot;Warnung: &quot;</span>);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  fprintf(stderr,<a class="code" href="../../d9/d7c/group__kernel.html#gaf8efbc9f57f10f6c6e914c5e86122486">Warning_text</a>[nr], arglist );</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../d3/d47/testparser_8c.html#ae0db9a9ecb1cd230a5c5698302250e43">   28</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dd/dff/testidentifier_8c.html#a51c4524d98f03e6f3eed99caf26e5fff">fatal_error</a>( <span class="keywordtype">int</span> nr, ... ) </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  va_list arglist;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  va_start(arglist,nr); </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  fprintf(stderr,<span class="stringliteral">&quot;Fehler: &quot;</span>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../de/d45/errors_8h.html#ae2387ffc56e4c38de349dcd17ce78865">mutabor_debug_level</a>)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    fprintf(stderr,<span class="stringliteral">&quot;Nr. %d &quot;</span>,nr);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  vfprintf(stderr,<a class="code" href="../../d9/d7c/group__kernel.html#ga9728df5840723c08b5def4e7d1966476">Error_text</a>[nr], arglist <span class="comment">/* arglist */</span>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  fprintf(stderr,<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  exit(300+nr);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../d3/d47/testparser_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">   41</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d4/d21/gmn2midi_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  mtrace();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordflow">if</span> (argc==3) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    printf(<span class="stringliteral">&quot;Öffne Tabelle&quot;</span>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    printf(<span class="stringliteral">&quot;%s\n%s\n&quot;</span>,getcwd(NULL,0),argv[1]);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">if</span> ((<a class="code" href="../../d3/d47/testparser_8c.html#a5889635be4f3eec31734040bf4b4c743">tabelle</a>=fopen(argv[1],<span class="stringliteral">&quot;r&quot;</span>))) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      printf(<span class="stringliteral">&quot;Lade Tabelle&quot;</span>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      <a class="code" href="../../d5/d4b/mutlex_8c.html#aa63356936cc6758cd7c0bf591bef2aa8">mutabor_parser_tables_fload</a>(<a class="code" href="../../d3/d47/testparser_8c.html#a5889635be4f3eec31734040bf4b4c743">tabelle</a>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      printf(<span class="stringliteral">&quot;Schließe Tabelle&quot;</span>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      fclose(<a class="code" href="../../d3/d47/testparser_8c.html#a5889635be4f3eec31734040bf4b4c743">tabelle</a>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="../../d3/d47/testparser_8c.html#a92408f36eb5962b70d2563c7e300e5f7">mutabor_parser_out</a>=stderr;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span>    <a class="code" href="../../de/d45/errors_8h.html#ae2387ffc56e4c38de349dcd17ce78865">mutabor_debug_level</a> = 0xffff;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="../../d3/da3/mut_8c.html#a7fde6236fcb0f6e5d1d20ce98d9f0d01">yydebug</a> = 1;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor"></span>    printf(<span class="stringliteral">&quot;%s\n%s\n&quot;</span>,get_current_dir_name(),argv[2]);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="../../d5/d36/parser_8h.html#afa88ae69a747f2c139bf6161d9b2d82d">mutabor_programm_einlesen</a>(argv[2]);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  muntrace();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="ttc" id="errors_8h_html"><div class="ttname"><a href="../../de/d45/errors_8h.html">errors.h</a></div><div class="ttdoc">Fehlermeldungen. </div></div>
+<div class="ttc" id="mut_8c_html_a7fde6236fcb0f6e5d1d20ce98d9f0d01"><div class="ttname"><a href="../../d3/da3/mut_8c.html#a7fde6236fcb0f6e5d1d20ce98d9f0d01">yydebug</a></div><div class="ttdeci">#define yydebug</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/da3/mut_8c_source.html#l00055">mut.c:55</a></div></div>
+<div class="ttc" id="parser_8h_html"><div class="ttname"><a href="../../d5/d36/parser_8h.html">parser.h</a></div><div class="ttdoc">Mutabor-Datei-Parser. </div></div>
+<div class="ttc" id="mutlex_8c_html_aa63356936cc6758cd7c0bf591bef2aa8"><div class="ttname"><a href="../../d5/d4b/mutlex_8c.html#aa63356936cc6758cd7c0bf591bef2aa8">mutabor_parser_tables_fload</a></div><div class="ttdeci">int mutabor_parser_tables_fload(FILE *fp, yyscan_t yyscanner)</div><div class="ttdoc">Load the DFA tables for this scanner from the given stream. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d4b/mutlex_8c_source.html#l02936">mutlex.c:2936</a></div></div>
+<div class="ttc" id="group__kernel_html_ggafeebd36c5713e8438dcf17e926f8ad96a053ee5ee8425fcbcd4c51b3637254eb5"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96a053ee5ee8425fcbcd4c51b3637254eb5">compiler_warning</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d11/Execute_8h_source.html#l00077">Execute.h:77</a></div></div>
+<div class="ttc" id="group__kernel_html_gaf8efbc9f57f10f6c6e914c5e86122486"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gaf8efbc9f57f10f6c6e914c5e86122486">Warning_text</a></div><div class="ttdeci">char * Warning_text[]</div><div class="ttdoc">Liste der Warnungen. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da2/Errors_8cpp_source.html#l00252">Errors.cpp:252</a></div></div>
+<div class="ttc" id="testparser_8c_html_a92408f36eb5962b70d2563c7e300e5f7"><div class="ttname"><a href="../../d3/d47/testparser_8c.html#a92408f36eb5962b70d2563c7e300e5f7">mutabor_parser_out</a></div><div class="ttdeci">FILE * mutabor_parser_out</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d47/testparser_8c_source.html#l00015">testparser.c:15</a></div></div>
+<div class="ttc" id="gmn2midi_8cpp_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="../../d4/d21/gmn2midi_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d21/gmn2midi_8cpp_source.html#l00023">gmn2midi.cpp:23</a></div></div>
+<div class="ttc" id="testidentifier_8c_html_a51c4524d98f03e6f3eed99caf26e5fff"><div class="ttname"><a href="../../dd/dff/testidentifier_8c.html#a51c4524d98f03e6f3eed99caf26e5fff">fatal_error</a></div><div class="ttdeci">int fatal_error</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dff/testidentifier_8c_source.html#l00012">testidentifier.c:12</a></div></div>
+<div class="ttc" id="testparser_8c_html_a5889635be4f3eec31734040bf4b4c743"><div class="ttname"><a href="../../d3/d47/testparser_8c.html#a5889635be4f3eec31734040bf4b4c743">tabelle</a></div><div class="ttdeci">FILE * tabelle</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d47/testparser_8c_source.html#l00017">testparser.c:17</a></div></div>
+<div class="ttc" id="group__kernel_html_ga9728df5840723c08b5def4e7d1966476"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga9728df5840723c08b5def4e7d1966476">Error_text</a></div><div class="ttdeci">char * Error_text[]</div><div class="ttdoc">Liste der Warnungen. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da2/Errors_8cpp_source.html#l00150">Errors.cpp:150</a></div></div>
+<div class="ttc" id="errors_8h_html_ae2387ffc56e4c38de349dcd17ce78865"><div class="ttname"><a href="../../de/d45/errors_8h.html#ae2387ffc56e4c38de349dcd17ce78865">mutabor_debug_level</a></div><div class="ttdeci">int mutabor_debug_level</div><div class="ttdoc">Debuglevel für die Bibliothek. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d15/errors_8c_source.html#l00020">errors.c:20</a></div></div>
+<div class="ttc" id="parser_8h_html_afa88ae69a747f2c139bf6161d9b2d82d"><div class="ttname"><a href="../../d5/d36/parser_8h.html#afa88ae69a747f2c139bf6161d9b2d82d">mutabor_programm_einlesen</a></div><div class="ttdeci">void mutabor_programm_einlesen(char *filename)</div><div class="ttdoc">Liest ein Mutabor-Programm ein. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d72/parser_8c_source.html#l00085">parser.c:85</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:03:01 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

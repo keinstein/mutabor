@@ -1,0 +1,562 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d4/d4a/classmutabor_1_1ChannelData" kind="class" prot="public">
+    <compoundname>mutabor::ChannelData</compoundname>
+    <includes refid="de/d05/Device_8h" local="no">Device.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="d5/dee/group__route_1ga42ffc64e07371f3e88da228f269c3bf8" prot="public" static="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>typedef std::vector&lt;int&gt; mutabor::ChannelData::controller_vector</definition>
+        <argsstring></argsstring>
+        <name>controller_vector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="99" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d5/dee/group__route_1gaeda197253c35135a1da36638d5c7450c" prot="protected" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1ga42ffc64e07371f3e88da228f269c3bf8" kindref="member">controller_vector</ref></type>
+        <definition>controller_vector mutabor::ChannelData::controller</definition>
+        <argsstring></argsstring>
+        <name>controller</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="340" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="340" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga9384f2cf9b7997d4c3b170c3cdadd54e" compoundref="de/d05/Device_8h" startline="101" endline="116">ChannelData</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga7278599abf7488ad9522ff9b2335a6cb" compoundref="de/d05/Device_8h" startline="269" endline="272">get_controller</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaf4973df23802dca8d1f8d9f9be982ad2" compoundref="de/d05/Device_8h" startline="274" endline="279">get_first_changed_controller</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga055c8f325a90077e67390547f3fe1e54" compoundref="de/d05/Device_8h" startline="216" endline="267">get_index</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga8cb74609cdd9a293be8d2ab4fb287cef" compoundref="de/d05/Device_8h" startline="280" endline="291">get_next_changed_controller</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga9acebb2cce4e38f90431f7c8d254afd9" compoundref="de/d05/Device_8h" startline="293" endline="301">is_changed_controller</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga978d02af349eafae499ee18078205be3" compoundref="de/d05/Device_8h" startline="317" endline="331">is_compatible</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac0653ce9e6eb54a49b97285978043f83" compoundref="de/d05/Device_8h" startline="303" endline="309">program_change</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa7087f8a29fabab2fe24b733bc0506fb" compoundref="de/d05/Device_8h" startline="118" endline="134">Reset</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa303e404aa1315f4c9a53179e74e804f" compoundref="de/d05/Device_8h" startline="136" endline="214">set_controller</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1ga11e2701beec99ec88bd471a386f3062e" prot="protected" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1ga42ffc64e07371f3e88da228f269c3bf8" kindref="member">controller_vector</ref></type>
+        <definition>controller_vector mutabor::ChannelData::controller_changed</definition>
+        <argsstring></argsstring>
+        <name>controller_changed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="341" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="341" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga9384f2cf9b7997d4c3b170c3cdadd54e" compoundref="de/d05/Device_8h" startline="101" endline="116">ChannelData</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaf4973df23802dca8d1f8d9f9be982ad2" compoundref="de/d05/Device_8h" startline="274" endline="279">get_first_changed_controller</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga8cb74609cdd9a293be8d2ab4fb287cef" compoundref="de/d05/Device_8h" startline="280" endline="291">get_next_changed_controller</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga9acebb2cce4e38f90431f7c8d254afd9" compoundref="de/d05/Device_8h" startline="293" endline="301">is_changed_controller</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa7087f8a29fabab2fe24b733bc0506fb" compoundref="de/d05/Device_8h" startline="118" endline="134">Reset</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa303e404aa1315f4c9a53179e74e804f" compoundref="de/d05/Device_8h" startline="136" endline="214">set_controller</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1ga8f833ee5adc43d40deee8d02bde6dce6" prot="protected" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t mutabor::ChannelData::first_unchanged</definition>
+        <argsstring></argsstring>
+        <name>first_unchanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="342" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="342" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga9384f2cf9b7997d4c3b170c3cdadd54e" compoundref="de/d05/Device_8h" startline="101" endline="116">ChannelData</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa7087f8a29fabab2fe24b733bc0506fb" compoundref="de/d05/Device_8h" startline="118" endline="134">Reset</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa303e404aa1315f4c9a53179e74e804f" compoundref="de/d05/Device_8h" startline="136" endline="214">set_controller</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1ga784317022e4301ac64c4e0055e2d0a0c" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool mutabor::ChannelData::looped</definition>
+        <argsstring></argsstring>
+        <name>looped</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="343" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="343" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gaa7087f8a29fabab2fe24b733bc0506fb" compoundref="de/d05/Device_8h" startline="118" endline="134">Reset</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa303e404aa1315f4c9a53179e74e804f" compoundref="de/d05/Device_8h" startline="136" endline="214">set_controller</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1gabe70b0ac8bf39d9658311323138f5c4c" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool mutabor::ChannelData::data_is_rpn</definition>
+        <argsstring></argsstring>
+        <name>data_is_rpn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="344" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="344" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga055c8f325a90077e67390547f3fe1e54" compoundref="de/d05/Device_8h" startline="216" endline="267">get_index</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa303e404aa1315f4c9a53179e74e804f" compoundref="de/d05/Device_8h" startline="136" endline="214">set_controller</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1ga8b0016682f09a847858d36b6bd1703ef" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::ChannelData::Sound</definition>
+        <argsstring></argsstring>
+        <name>Sound</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="345" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="345" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gacf1581956238415fa24a12e2881e11dc" compoundref="de/d05/Device_8h" startline="336" endline="336">get_program</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga978d02af349eafae499ee18078205be3" compoundref="de/d05/Device_8h" startline="317" endline="331">is_compatible</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac0653ce9e6eb54a49b97285978043f83" compoundref="de/d05/Device_8h" startline="303" endline="309">program_change</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa7087f8a29fabab2fe24b733bc0506fb" compoundref="de/d05/Device_8h" startline="118" endline="134">Reset</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1ga7826835e30d39f14d02dd42ad9afc6ba" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t mutabor::ChannelData::bank_coarse</definition>
+        <argsstring></argsstring>
+        <name>bank_coarse</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="346" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="346" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga246a5cf06548ca07b1e08c3160d92c27" compoundref="de/d05/Device_8h" startline="337" endline="337">get_bank_coarse</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac0653ce9e6eb54a49b97285978043f83" compoundref="de/d05/Device_8h" startline="303" endline="309">program_change</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa7087f8a29fabab2fe24b733bc0506fb" compoundref="de/d05/Device_8h" startline="118" endline="134">Reset</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1ga4425d32dc38bf70935451e94fb9b02b3" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t mutabor::ChannelData::bank_fine</definition>
+        <argsstring></argsstring>
+        <name>bank_fine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="347" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="347" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga2120ef1bfdd7394fe05e24f72678c901" compoundref="de/d05/Device_8h" startline="338" endline="338">get_bank_fine</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac0653ce9e6eb54a49b97285978043f83" compoundref="de/d05/Device_8h" startline="303" endline="309">program_change</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa7087f8a29fabab2fe24b733bc0506fb" compoundref="de/d05/Device_8h" startline="118" endline="134">Reset</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dee/group__route_1gaa329394bbbb9c7e04ee4d06c0bfd17bf" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::ChannelData::bend</definition>
+        <argsstring></argsstring>
+        <name>bend</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="348" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="348" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga7876084833965594290c1f421b45d813" compoundref="de/d05/Device_8h" startline="333" endline="333">get_bend</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa7087f8a29fabab2fe24b733bc0506fb" compoundref="de/d05/Device_8h" startline="118" endline="134">Reset</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga3ed3861d94c7deddc4f9b9ed03249cd3" compoundref="de/d05/Device_8h" startline="334" endline="334">set_bend</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/dee/group__route_1ga9384f2cf9b7997d4c3b170c3cdadd54e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::ChannelData::ChannelData</definition>
+        <argsstring>(int sound=-1, int8_t sustain=0)</argsstring>
+        <name>ChannelData</name>
+        <param>
+          <type>int</type>
+          <declname>sound</declname>
+          <defval>-1</defval>
+        </param>
+        <param>
+          <type>int8_t</type>
+          <declname>sustain</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="101" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="101" bodyend="116"/>
+        <references refid="d5/dee/group__route_1gaeda197253c35135a1da36638d5c7450c" compoundref="de/d05/Device_8h" startline="340">controller</references>
+        <references refid="d5/dee/group__route_1ga11e2701beec99ec88bd471a386f3062e" compoundref="de/d05/Device_8h" startline="341">controller_changed</references>
+        <references refid="d5/dee/group__route_1ga8f833ee5adc43d40deee8d02bde6dce6" compoundref="de/d05/Device_8h" startline="342">first_unchanged</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaa7087f8a29fabab2fe24b733bc0506fb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::ChannelData::Reset</definition>
+        <argsstring>()</argsstring>
+        <name>Reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="118" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="118" bodyend="134"/>
+        <references refid="d5/dee/group__route_1ga7826835e30d39f14d02dd42ad9afc6ba" compoundref="de/d05/Device_8h" startline="346">bank_coarse</references>
+        <references refid="d5/dee/group__route_1ga4425d32dc38bf70935451e94fb9b02b3" compoundref="de/d05/Device_8h" startline="347">bank_fine</references>
+        <references refid="d5/dee/group__route_1gaa329394bbbb9c7e04ee4d06c0bfd17bf" compoundref="de/d05/Device_8h" startline="348">bend</references>
+        <references refid="d5/dee/group__route_1gaeda197253c35135a1da36638d5c7450c" compoundref="de/d05/Device_8h" startline="340">controller</references>
+        <references refid="d5/dee/group__route_1ga11e2701beec99ec88bd471a386f3062e" compoundref="de/d05/Device_8h" startline="341">controller_changed</references>
+        <references refid="d5/dee/group__route_1ga8f833ee5adc43d40deee8d02bde6dce6" compoundref="de/d05/Device_8h" startline="342">first_unchanged</references>
+        <references refid="d5/dee/group__route_1ga784317022e4301ac64c4e0055e2d0a0c" compoundref="de/d05/Device_8h" startline="343">looped</references>
+        <references refid="d5/dee/group__route_1ga8b0016682f09a847858d36b6bd1703ef" compoundref="de/d05/Device_8h" startline="345">Sound</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a70648241a951d4f79aa3eb3aa9f83122" compoundref="d3/d0f/midicmn_8cpp" startline="50" endline="96">mutabor::CommonMidiOutput&lt; T, D &gt;::do_Open</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1af8efd78cfb3c9f9f744f49d899a77bc4" compoundref="d3/d0f/midicmn_8cpp" startline="669" endline="688">mutabor::CommonMidiOutput&lt; T, D &gt;::do_Panic</referencedby>
+        <referencedby refid="dc/d51/classmutabor_1_1CommonMidiInput_1ae107babf2f46026dea5743d43d060e79" compoundref="d3/d0f/midicmn_8cpp" startline="691" endline="766">mutabor::CommonMidiInput&lt; D &gt;::ProceedRoute</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaa303e404aa1315f4c9a53179e74e804f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutabor::ChannelData::set_controller</definition>
+        <argsstring>(size_t number, int8_t data)</argsstring>
+        <name>set_controller</name>
+        <param>
+          <type>size_t</type>
+          <declname>number</declname>
+        </param>
+        <param>
+          <type>int8_t</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="136" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="136" bodyend="214"/>
+        <references refid="d5/dee/group__route_1gaeda197253c35135a1da36638d5c7450c" compoundref="de/d05/Device_8h" startline="340">controller</references>
+        <references refid="d5/dee/group__route_1ga11e2701beec99ec88bd471a386f3062e" compoundref="de/d05/Device_8h" startline="341">controller_changed</references>
+        <references refid="d5/dee/group__route_1gabe70b0ac8bf39d9658311323138f5c4c" compoundref="de/d05/Device_8h" startline="344">data_is_rpn</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d5/dee/group__route_1ga8f833ee5adc43d40deee8d02bde6dce6" compoundref="de/d05/Device_8h" startline="342">first_unchanged</references>
+        <references refid="d5/dee/group__route_1ga784317022e4301ac64c4e0055e2d0a0c" compoundref="de/d05/Device_8h" startline="343">looped</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1aa34679ed2cc18306c52adf05acef66c5" compoundref="d3/d0f/midicmn_8cpp" startline="207" endline="236">mutabor::CommonMidiOutput&lt; T, D &gt;::CopyProgramChange</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a1090b361f27e9e68e40437012f82ec3b" compoundref="d3/d0f/midicmn_8cpp" startline="437" endline="495">mutabor::CommonMidiOutput&lt; T, D &gt;::do_Controller</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a23dfccd2e97e799cd8b32dea22306e5c" compoundref="d3/d0f/midicmn_8cpp" startline="239" endline="316">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOn</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a219c31648d7a9a7e425ee57bb7873e59" compoundref="d3/d0f/midicmn_8cpp" startline="166" endline="202">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateControllers</referencedby>
+        <referencedby refid="dc/d51/classmutabor_1_1CommonMidiInput_1ae107babf2f46026dea5743d43d060e79" compoundref="d3/d0f/midicmn_8cpp" startline="691" endline="766">mutabor::CommonMidiInput&lt; D &gt;::ProceedRoute</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga055c8f325a90077e67390547f3fe1e54" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutabor::ChannelData::get_index</definition>
+        <argsstring>(int message)</argsstring>
+        <name>get_index</name>
+        <param>
+          <type>int</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="216" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="216" bodyend="267"/>
+        <references refid="d5/dee/group__route_1gaeda197253c35135a1da36638d5c7450c" compoundref="de/d05/Device_8h" startline="340">controller</references>
+        <references refid="d5/dee/group__route_1gabe70b0ac8bf39d9658311323138f5c4c" compoundref="de/d05/Device_8h" startline="344">data_is_rpn</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a1090b361f27e9e68e40437012f82ec3b" compoundref="d3/d0f/midicmn_8cpp" startline="437" endline="495">mutabor::CommonMidiOutput&lt; T, D &gt;::do_Controller</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a219c31648d7a9a7e425ee57bb7873e59" compoundref="d3/d0f/midicmn_8cpp" startline="166" endline="202">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateControllers</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga7278599abf7488ad9522ff9b2335a6cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutabor::ChannelData::get_controller</definition>
+        <argsstring>(size_t number) const </argsstring>
+        <name>get_controller</name>
+        <param>
+          <type>size_t</type>
+          <declname>number</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="269" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="269" bodyend="272"/>
+        <references refid="d5/dee/group__route_1gaeda197253c35135a1da36638d5c7450c" compoundref="de/d05/Device_8h" startline="340">controller</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a23dfccd2e97e799cd8b32dea22306e5c" compoundref="d3/d0f/midicmn_8cpp" startline="239" endline="316">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOn</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a219c31648d7a9a7e425ee57bb7873e59" compoundref="d3/d0f/midicmn_8cpp" startline="166" endline="202">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateControllers</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ae068c3fe86a1c768f15c0249cdfb11ea" compoundref="d3/d0f/midicmn_8cpp" startline="377" endline="434">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateTones</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaf4973df23802dca8d1f8d9f9be982ad2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>controller_vector::const_iterator</type>
+        <definition>controller_vector::const_iterator mutabor::ChannelData::get_first_changed_controller</definition>
+        <argsstring>(const ChannelData &amp;other) const </argsstring>
+        <name>get_first_changed_controller</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d4/d4a/classmutabor_1_1ChannelData" kindref="compound">ChannelData</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="274" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="274" bodyend="279"/>
+        <references refid="d5/dee/group__route_1gaeda197253c35135a1da36638d5c7450c" compoundref="de/d05/Device_8h" startline="340">controller</references>
+        <references refid="d5/dee/group__route_1ga11e2701beec99ec88bd471a386f3062e" compoundref="de/d05/Device_8h" startline="341">controller_changed</references>
+        <references refid="d5/dee/group__route_1ga8cb74609cdd9a293be8d2ab4fb287cef" compoundref="de/d05/Device_8h" startline="280" endline="291">get_next_changed_controller</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a219c31648d7a9a7e425ee57bb7873e59" compoundref="d3/d0f/midicmn_8cpp" startline="166" endline="202">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateControllers</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga8cb74609cdd9a293be8d2ab4fb287cef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>controller_vector::const_iterator</type>
+        <definition>controller_vector::const_iterator mutabor::ChannelData::get_next_changed_controller</definition>
+        <argsstring>(const ChannelData &amp;other, controller_vector::const_iterator last) const </argsstring>
+        <name>get_next_changed_controller</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d4/d4a/classmutabor_1_1ChannelData" kindref="compound">ChannelData</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <param>
+          <type>controller_vector::const_iterator</type>
+          <declname>last</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="280" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="280" bodyend="291"/>
+        <references refid="d5/dee/group__route_1gaeda197253c35135a1da36638d5c7450c" compoundref="de/d05/Device_8h" startline="340">controller</references>
+        <references refid="d5/dee/group__route_1ga11e2701beec99ec88bd471a386f3062e" compoundref="de/d05/Device_8h" startline="341">controller_changed</references>
+        <references refid="dc/d7e/group__runtime_1ga3d20277bede54ba5cb6ef270236a2361" compoundref="db/d80/Runtime_8cpp" startline="149">last</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a219c31648d7a9a7e425ee57bb7873e59" compoundref="d3/d0f/midicmn_8cpp" startline="166" endline="202">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateControllers</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaf4973df23802dca8d1f8d9f9be982ad2" compoundref="de/d05/Device_8h" startline="274" endline="279">get_first_changed_controller</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga9acebb2cce4e38f90431f7c8d254afd9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::ChannelData::is_changed_controller</definition>
+        <argsstring>(controller_vector::const_iterator actual) const </argsstring>
+        <name>is_changed_controller</name>
+        <param>
+          <type>controller_vector::const_iterator</type>
+          <declname>actual</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="293" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="293" bodyend="301"/>
+        <references refid="d5/dee/group__route_1gaeda197253c35135a1da36638d5c7450c" compoundref="de/d05/Device_8h" startline="340">controller</references>
+        <references refid="d5/dee/group__route_1ga11e2701beec99ec88bd471a386f3062e" compoundref="de/d05/Device_8h" startline="341">controller_changed</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a219c31648d7a9a7e425ee57bb7873e59" compoundref="d3/d0f/midicmn_8cpp" startline="166" endline="202">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateControllers</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gac0653ce9e6eb54a49b97285978043f83" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::ChannelData::program_change</definition>
+        <argsstring>(int program)</argsstring>
+        <name>program_change</name>
+        <param>
+          <type>int</type>
+          <declname>program</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="303" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="303" bodyend="309"/>
+        <references refid="d5/dee/group__route_1ga7826835e30d39f14d02dd42ad9afc6ba" compoundref="de/d05/Device_8h" startline="346">bank_coarse</references>
+        <references refid="d5/dee/group__route_1ga4425d32dc38bf70935451e94fb9b02b3" compoundref="de/d05/Device_8h" startline="347">bank_fine</references>
+        <references refid="d5/dee/group__route_1gaeda197253c35135a1da36638d5c7450c" compoundref="de/d05/Device_8h" startline="340">controller</references>
+        <references refid="d5/dee/group__route_1ga8b0016682f09a847858d36b6bd1703ef" compoundref="de/d05/Device_8h" startline="345">Sound</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1aa34679ed2cc18306c52adf05acef66c5" compoundref="d3/d0f/midicmn_8cpp" startline="207" endline="236">mutabor::CommonMidiOutput&lt; T, D &gt;::CopyProgramChange</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a2b3ede588a224861e7a1810e983c6b45" compoundref="db/d78/DevGIS_8cpp" startline="399" endline="488">mutabor::InputGis::Proceed</referencedby>
+        <referencedby refid="dc/d51/classmutabor_1_1CommonMidiInput_1ae107babf2f46026dea5743d43d060e79" compoundref="d3/d0f/midicmn_8cpp" startline="691" endline="766">mutabor::CommonMidiInput&lt; D &gt;::ProceedRoute</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga77323ebd2952f915adfaaa654682bf1b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::ChannelData::program_change</definition>
+        <argsstring>(const ChannelData &amp;o)</argsstring>
+        <name>program_change</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d4/d4a/classmutabor_1_1ChannelData" kindref="compound">ChannelData</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="311" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="311" bodyend="315"/>
+        <references refid="d5/dee/group__route_1ga7826835e30d39f14d02dd42ad9afc6ba" compoundref="de/d05/Device_8h" startline="346">bank_coarse</references>
+        <references refid="d5/dee/group__route_1ga4425d32dc38bf70935451e94fb9b02b3" compoundref="de/d05/Device_8h" startline="347">bank_fine</references>
+        <references refid="d5/dee/group__route_1ga8b0016682f09a847858d36b6bd1703ef" compoundref="de/d05/Device_8h" startline="345">Sound</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga978d02af349eafae499ee18078205be3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::ChannelData::is_compatible</definition>
+        <argsstring>(const ChannelData &amp;cd) const </argsstring>
+        <name>is_compatible</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d4/d4a/classmutabor_1_1ChannelData" kindref="compound">ChannelData</ref> &amp;</type>
+          <declname>cd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="317" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="317" bodyend="331"/>
+        <references refid="d5/dee/group__route_1gaeda197253c35135a1da36638d5c7450c" compoundref="de/d05/Device_8h" startline="340">controller</references>
+        <references refid="d5/dee/group__route_1ga8b0016682f09a847858d36b6bd1703ef" compoundref="de/d05/Device_8h" startline="345">Sound</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga7876084833965594290c1f421b45d813" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutabor::ChannelData::get_bend</definition>
+        <argsstring>()</argsstring>
+        <name>get_bend</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="333" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="333" bodyend="333"/>
+        <references refid="d5/dee/group__route_1gaa329394bbbb9c7e04ee4d06c0bfd17bf" compoundref="de/d05/Device_8h" startline="348">bend</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a23dfccd2e97e799cd8b32dea22306e5c" compoundref="d3/d0f/midicmn_8cpp" startline="239" endline="316">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOn</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ae068c3fe86a1c768f15c0249cdfb11ea" compoundref="d3/d0f/midicmn_8cpp" startline="377" endline="434">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateTones</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga3ed3861d94c7deddc4f9b9ed03249cd3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::ChannelData::set_bend</definition>
+        <argsstring>(int b)</argsstring>
+        <name>set_bend</name>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="334" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="334" bodyend="334"/>
+        <references refid="d5/dee/group__route_1gaa329394bbbb9c7e04ee4d06c0bfd17bf" compoundref="de/d05/Device_8h" startline="348">bend</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a23dfccd2e97e799cd8b32dea22306e5c" compoundref="d3/d0f/midicmn_8cpp" startline="239" endline="316">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOn</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ae068c3fe86a1c768f15c0249cdfb11ea" compoundref="d3/d0f/midicmn_8cpp" startline="377" endline="434">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateTones</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gacf1581956238415fa24a12e2881e11dc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutabor::ChannelData::get_program</definition>
+        <argsstring>() const </argsstring>
+        <name>get_program</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="336" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="336" bodyend="336"/>
+        <references refid="d5/dee/group__route_1ga8b0016682f09a847858d36b6bd1703ef" compoundref="de/d05/Device_8h" startline="345">Sound</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1aa34679ed2cc18306c52adf05acef66c5" compoundref="d3/d0f/midicmn_8cpp" startline="207" endline="236">mutabor::CommonMidiOutput&lt; T, D &gt;::CopyProgramChange</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga246a5cf06548ca07b1e08c3160d92c27" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutabor::ChannelData::get_bank_coarse</definition>
+        <argsstring>() const </argsstring>
+        <name>get_bank_coarse</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="337" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="337" bodyend="337"/>
+        <references refid="d5/dee/group__route_1ga7826835e30d39f14d02dd42ad9afc6ba" compoundref="de/d05/Device_8h" startline="346">bank_coarse</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1aa34679ed2cc18306c52adf05acef66c5" compoundref="d3/d0f/midicmn_8cpp" startline="207" endline="236">mutabor::CommonMidiOutput&lt; T, D &gt;::CopyProgramChange</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga2120ef1bfdd7394fe05e24f72678c901" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutabor::ChannelData::get_bank_fine</definition>
+        <argsstring>() const </argsstring>
+        <name>get_bank_fine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="338" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="338" bodyend="338"/>
+        <references refid="d5/dee/group__route_1ga4425d32dc38bf70935451e94fb9b02b3" compoundref="de/d05/Device_8h" startline="347">bank_fine</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1aa34679ed2cc18306c52adf05acef66c5" compoundref="d3/d0f/midicmn_8cpp" startline="207" endline="236">mutabor::CommonMidiOutput&lt; T, D &gt;::CopyProgramChange</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2413">
+        <label>mutabor::ChannelData</label>
+        <link refid="d4/d4a/classmutabor_1_1ChannelData"/>
+        <childnode refid="2414" relation="usage">
+          <edgelabel>controller_changed</edgelabel>
+          <edgelabel>controller</edgelabel>
+        </childnode>
+      </node>
+      <node id="2414">
+        <label>std::vector&lt; int &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" line="97" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Device.h" bodystart="96" bodyend="349"/>
+    <listofallmembers>
+      <member refid="d5/dee/group__route_1ga7826835e30d39f14d02dd42ad9afc6ba" prot="protected" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>bank_coarse</name></member>
+      <member refid="d5/dee/group__route_1ga4425d32dc38bf70935451e94fb9b02b3" prot="protected" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>bank_fine</name></member>
+      <member refid="d5/dee/group__route_1gaa329394bbbb9c7e04ee4d06c0bfd17bf" prot="protected" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>bend</name></member>
+      <member refid="d5/dee/group__route_1ga9384f2cf9b7997d4c3b170c3cdadd54e" prot="public" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>ChannelData</name></member>
+      <member refid="d5/dee/group__route_1gaeda197253c35135a1da36638d5c7450c" prot="protected" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>controller</name></member>
+      <member refid="d5/dee/group__route_1ga11e2701beec99ec88bd471a386f3062e" prot="protected" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>controller_changed</name></member>
+      <member refid="d5/dee/group__route_1ga42ffc64e07371f3e88da228f269c3bf8" prot="public" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>controller_vector</name></member>
+      <member refid="d5/dee/group__route_1gabe70b0ac8bf39d9658311323138f5c4c" prot="protected" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>data_is_rpn</name></member>
+      <member refid="d5/dee/group__route_1ga8f833ee5adc43d40deee8d02bde6dce6" prot="protected" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>first_unchanged</name></member>
+      <member refid="d5/dee/group__route_1ga246a5cf06548ca07b1e08c3160d92c27" prot="public" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>get_bank_coarse</name></member>
+      <member refid="d5/dee/group__route_1ga2120ef1bfdd7394fe05e24f72678c901" prot="public" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>get_bank_fine</name></member>
+      <member refid="d5/dee/group__route_1ga7876084833965594290c1f421b45d813" prot="public" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>get_bend</name></member>
+      <member refid="d5/dee/group__route_1ga7278599abf7488ad9522ff9b2335a6cb" prot="public" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>get_controller</name></member>
+      <member refid="d5/dee/group__route_1gaf4973df23802dca8d1f8d9f9be982ad2" prot="public" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>get_first_changed_controller</name></member>
+      <member refid="d5/dee/group__route_1ga055c8f325a90077e67390547f3fe1e54" prot="public" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>get_index</name></member>
+      <member refid="d5/dee/group__route_1ga8cb74609cdd9a293be8d2ab4fb287cef" prot="public" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>get_next_changed_controller</name></member>
+      <member refid="d5/dee/group__route_1gacf1581956238415fa24a12e2881e11dc" prot="public" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>get_program</name></member>
+      <member refid="d5/dee/group__route_1ga9acebb2cce4e38f90431f7c8d254afd9" prot="public" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>is_changed_controller</name></member>
+      <member refid="d5/dee/group__route_1ga978d02af349eafae499ee18078205be3" prot="public" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>is_compatible</name></member>
+      <member refid="d5/dee/group__route_1ga784317022e4301ac64c4e0055e2d0a0c" prot="protected" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>looped</name></member>
+      <member refid="d5/dee/group__route_1gac0653ce9e6eb54a49b97285978043f83" prot="public" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>program_change</name></member>
+      <member refid="d5/dee/group__route_1ga77323ebd2952f915adfaaa654682bf1b" prot="public" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>program_change</name></member>
+      <member refid="d5/dee/group__route_1gaa7087f8a29fabab2fe24b733bc0506fb" prot="public" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>Reset</name></member>
+      <member refid="d5/dee/group__route_1ga3ed3861d94c7deddc4f9b9ed03249cd3" prot="public" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>set_bend</name></member>
+      <member refid="d5/dee/group__route_1gaa303e404aa1315f4c9a53179e74e804f" prot="public" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>set_controller</name></member>
+      <member refid="d5/dee/group__route_1ga8b0016682f09a847858d36b6bd1703ef" prot="protected" virt="non-virtual"><scope>mutabor::ChannelData</scope><name>Sound</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

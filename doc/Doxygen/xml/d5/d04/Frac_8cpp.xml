@@ -1,0 +1,363 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d5/d04/Frac_8cpp" kind="file">
+    <compoundname>Frac.cpp</compoundname>
+    <includes refid="df/d4f/Frac_8h" local="yes">Frac.h</includes>
+    <incdepgraph>
+      <node id="13455">
+        <label>stdarg.h</label>
+      </node>
+      <node id="13454">
+        <label>Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="13455" relation="include">
+        </childnode>
+        <childnode refid="13456" relation="include">
+        </childnode>
+      </node>
+      <node id="13452">
+        <label>src/kernel/Frac.cpp</label>
+        <link refid="Frac.cpp"/>
+        <childnode refid="13453" relation="include">
+        </childnode>
+      </node>
+      <node id="13457">
+        <label>wx/string.h</label>
+      </node>
+      <node id="13458">
+        <label>iostream</label>
+      </node>
+      <node id="13453">
+        <label>Frac.h</label>
+        <link refid="df/d4f/Frac_8h"/>
+        <childnode refid="13454" relation="include">
+        </childnode>
+        <childnode refid="13457" relation="include">
+        </childnode>
+        <childnode refid="13458" relation="include">
+        </childnode>
+      </node>
+      <node id="13456">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d9/d7c/group__kernel_1gac94075088c0eac02fb28aed380ae51d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>long</type>
+        <definition>long absLong</definition>
+        <argsstring>(const long x)</argsstring>
+        <name>absLong</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> long</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Frac.cpp" line="27" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Frac.cpp" bodystart="27" bodyend="31"/>
+        <referencedby refid="d9/d7c/group__kernel_1gaa754b647e99e092970847d6da64d7389" compoundref="d5/d04/Frac_8cpp" startline="272" endline="296">frac::gcd</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Description. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="rcs"><title>Header:</title><para>/home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/Frac.cpp,v 1.6 2011/02/20 22:35:55 keinstein Exp </para></simplesect>
+Copyright: (c) 2008 TU Dresden <simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein@users.berlios.de">keinstein@users.berlios.de</ulink> </para></simplesect>
+<simplesect kind="date"><para></para></simplesect>
+<simplesect kind="rcs"><title>Date:</title><para>2011/02/20 22:35:55 </para></simplesect>
+<simplesect kind="version"><para></para></simplesect>
+<simplesect kind="rcs"><title>Revision:</title><para>1.6 </para></simplesect>
+GPL </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="18"><highlight class="comment">//<sp/>##################################################################</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>frac<sp/>...<sp/>calculating<sp/>with<sp/>fractions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>##################################################################</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="df/d4f/Frac_8h" kindref="compound">Frac.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HAVE_BOOST_RATIONAL_HPP</highlight></codeline>
+<codeline lineno="25"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="d9/d7c/group__kernel_1gac94075088c0eac02fb28aed380ae51d6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gac94075088c0eac02fb28aed380ae51d6" kindref="member">absLong</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>x)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>x<sp/>&gt;=<sp/>0<sp/>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-x;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="d9/d7c/group__kernel_1ga45977bface0368528c916e649c6d036d" refkind="member"><highlight class="normal"><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/><ref refid="d9/d7c/group__kernel_1ga45977bface0368528c916e649c6d036d" kindref="member">frac::operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/>f)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>=<sp/>f.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>=<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="d9/d7c/group__kernel_1ga217b4855498dd93fdb263179916c3494" refkind="member"><highlight class="normal"><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/><ref refid="d9/d7c/group__kernel_1ga217b4855498dd93fdb263179916c3494" kindref="member">frac::operator +=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/>f)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/><sp/>||<sp/>!f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>cd<sp/>=<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*<sp/>(f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>/<sp/><ref refid="d9/d7c/group__kernel_1gaa754b647e99e092970847d6da64d7389" kindref="member">gcd</ref>(<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>,<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>));</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>cn<sp/>=<sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>(cd/<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>)+<sp/>f.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>(cd/f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>gd<sp/>=<sp/><ref refid="d9/d7c/group__kernel_1gaa754b647e99e092970847d6da64d7389" kindref="member">gcd</ref>(cd,<sp/>cn);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>gd<sp/>!=<sp/>1<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cn<sp/>/=<sp/>gd;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cd<sp/>/=<sp/>gd;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>=<sp/>cn;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>=<sp/>cd;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="d9/d7c/group__kernel_1ga1851e7965f04fefceefc286f756e39a6" refkind="member"><highlight class="normal"><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/><ref refid="d9/d7c/group__kernel_1ga1851e7965f04fefceefc286f756e39a6" kindref="member">frac::operator -=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/>f)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/><sp/>||<sp/>!f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>cd<sp/>=<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*<sp/>(f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>/<sp/><ref refid="d9/d7c/group__kernel_1gaa754b647e99e092970847d6da64d7389" kindref="member">gcd</ref>(<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>,<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>));</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>cn<sp/>=<sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>(cd/<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>)<sp/>-<sp/>f.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>(cd/f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>gd<sp/>=<sp/><ref refid="d9/d7c/group__kernel_1gaa754b647e99e092970847d6da64d7389" kindref="member">gcd</ref>(cd,<sp/>cn);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>gd<sp/>!=<sp/>1<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cn<sp/>/=<sp/>gd;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cd<sp/>/=<sp/>gd;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>=<sp/>cn;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>=<sp/>cd;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="d9/d7c/group__kernel_1ga523f425ff9825fed2be80a6a7c68d828" refkind="member"><highlight class="normal"><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/><ref refid="d9/d7c/group__kernel_1ga523f425ff9825fed2be80a6a7c68d828" kindref="member">frac::operator *=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/>f)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*=<sp/>f.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*=<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>gd<sp/>=<sp/><ref refid="d9/d7c/group__kernel_1gaa754b647e99e092970847d6da64d7389" kindref="member">gcd</ref>(<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>,<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>gd<sp/>!=<sp/>1<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>/=<sp/>gd;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>/=<sp/>gd;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="d9/d7c/group__kernel_1ga42d3ce49e7e181c29e80bc0982398ea9" refkind="member"><highlight class="normal"><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/><ref refid="d9/d7c/group__kernel_1ga42d3ce49e7e181c29e80bc0982398ea9" kindref="member">frac::operator /=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/>f)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*=<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*=<sp/>f.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>gd<sp/>=<sp/><ref refid="d9/d7c/group__kernel_1gaa754b647e99e092970847d6da64d7389" kindref="member">gcd</ref>(<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>,<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>gd<sp/>!=<sp/>1<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>/=<sp/>gd;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>/=<sp/>gd;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="d9/d7c/group__kernel_1gac2a4e69bff48f41fd10fdc3c3244ba7e" refkind="member"><highlight class="normal"><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/><ref refid="d9/d7c/group__kernel_1gac2a4e69bff48f41fd10fdc3c3244ba7e" kindref="member">frac::operator +</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>s)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/><sp/>||<sp/>!s.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a54386a010d92f1a7090610b8454506f1" kindref="member">frac</ref>(1,0);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>cd<sp/>=<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*<sp/>(s.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>/<sp/><ref refid="d9/d7c/group__kernel_1gaa754b647e99e092970847d6da64d7389" kindref="member">gcd</ref>(<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>,<sp/>s.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>));</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>cn<sp/>=<sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>(cd/<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>)+<sp/>s.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>(cd/s.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>long<sp/>cd<sp/>=<sp/>gcd(d,<sp/>s.d);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>long<sp/>cn<sp/>=<sp/>n<sp/>*<sp/>(s.d/cd)+<sp/>s.n<sp/>*<sp/>(d/cd);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>gd<sp/>=<sp/><ref refid="d9/d7c/group__kernel_1gaa754b647e99e092970847d6da64d7389" kindref="member">gcd</ref>(cd,<sp/>cn);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>gd<sp/>!=<sp/>1<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cn<sp/>/=<sp/>gd;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cd<sp/>/=<sp/>gd;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a54386a010d92f1a7090610b8454506f1" kindref="member">frac</ref>(cn,<sp/>cd);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="d9/d7c/group__kernel_1gabba1cdb301c907aa8c87b598b774fac1" refkind="member"><highlight class="normal"><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/><ref refid="d9/d7c/group__kernel_1gabba1cdb301c907aa8c87b598b774fac1" kindref="member">frac::operator -</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>s)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/><sp/>||<sp/>!s.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a54386a010d92f1a7090610b8454506f1" kindref="member">frac</ref>(1,0);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>cd<sp/>=<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*<sp/>(s.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>/<sp/><ref refid="d9/d7c/group__kernel_1gaa754b647e99e092970847d6da64d7389" kindref="member">gcd</ref>(<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>,<sp/>s.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>));</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>cn<sp/>=<sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>(cd/<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>)-<sp/>s.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>(cd/s.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>gd<sp/>=<sp/><ref refid="d9/d7c/group__kernel_1gaa754b647e99e092970847d6da64d7389" kindref="member">gcd</ref>(cd,<sp/>cn);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>gd<sp/>!=<sp/>1<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cn<sp/>/=<sp/>gd;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cd<sp/>/=<sp/>gd;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a54386a010d92f1a7090610b8454506f1" kindref="member">frac</ref>(cn,<sp/>cd);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="d9/d7c/group__kernel_1ga26a3005e8a5371920b8a962a2872e982" refkind="member"><highlight class="normal"><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/><ref refid="d9/d7c/group__kernel_1ga26a3005e8a5371920b8a962a2872e982" kindref="member">frac::operator *</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>s)</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>cn<sp/>=<sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>s.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>cd<sp/>=<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*<sp/>s.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>gd<sp/>=<sp/><ref refid="d9/d7c/group__kernel_1gaa754b647e99e092970847d6da64d7389" kindref="member">gcd</ref>(cd,<sp/>cn);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>gd<sp/>!=<sp/>1<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cn<sp/>/=<sp/>gd;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cd<sp/>/=<sp/>gd;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a54386a010d92f1a7090610b8454506f1" kindref="member">frac</ref>(cn,<sp/>cd);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="d9/d7c/group__kernel_1ga2908f66490e4905c34f2b17f8643ead0" refkind="member"><highlight class="normal"><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/><ref refid="d9/d7c/group__kernel_1ga2908f66490e4905c34f2b17f8643ead0" kindref="member">frac::operator /</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>s)</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>cn<sp/>=<sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>s.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>cd<sp/>=<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*<sp/>s.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>gd<sp/>=<sp/><ref refid="d9/d7c/group__kernel_1gaa754b647e99e092970847d6da64d7389" kindref="member">gcd</ref>(cd,<sp/>cn);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>gd<sp/>!=<sp/>1<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cn<sp/>/=<sp/>gd;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cd<sp/>/=<sp/>gd;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a54386a010d92f1a7090610b8454506f1" kindref="member">frac</ref>(cn,<sp/>cd);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189" refid="d9/d7c/group__kernel_1gacb303dc7bb2e710d15777c4d7db2fb55" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gacb303dc7bb2e710d15777c4d7db2fb55" kindref="member">frac::operator &lt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>&amp;f)</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>&lt;<sp/>0<sp/>)<sp/>s++;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>&lt;<sp/>0<sp/>)<sp/>s++;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>s<sp/>==<sp/>1<sp/>)</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>&gt;<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>&lt;<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204" refid="d9/d7c/group__kernel_1ga63d78875d28eb2aacb2e48f705452fa8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga63d78875d28eb2aacb2e48f705452fa8" kindref="member">frac::operator &lt;=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>&amp;f)</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>&lt;<sp/>0<sp/>)<sp/>s++;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>&lt;<sp/>0<sp/>)<sp/>s++;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>s<sp/>==<sp/>1<sp/>)</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>&gt;=<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>&lt;=<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219" refid="d9/d7c/group__kernel_1ga9f51aaf2bce310b8ce20621e652340b0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga9f51aaf2bce310b8ce20621e652340b0" kindref="member">frac::operator ==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>&amp;f)</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>==<sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226" refid="d9/d7c/group__kernel_1ga27fb4be870bf99b464613639629591be" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga27fb4be870bf99b464613639629591be" kindref="member">frac::operator !=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>&amp;f)</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>!=<sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref>;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232" refid="d9/d7c/group__kernel_1gad024a834eef61012e7192c1f32f49c38" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gad024a834eef61012e7192c1f32f49c38" kindref="member">frac::operator &gt;=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>&amp;f)</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>&lt;<sp/>0<sp/>)<sp/>s++;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>&lt;<sp/>0<sp/>)<sp/>s++;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>s<sp/>==<sp/>1<sp/>)</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>&lt;=<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>&gt;=<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247" refid="d9/d7c/group__kernel_1gac22bd5d74dea23a64816c10a769b2a4e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gac22bd5d74dea23a64816c10a769b2a4e" kindref="member">frac::operator &gt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref><sp/>&amp;f)</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>&lt;<sp/>0<sp/>)<sp/>s++;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>&lt;<sp/>0<sp/>)<sp/>s++;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>s<sp/>==<sp/>1<sp/>)</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>&lt;<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>&gt;<sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>*<sp/>f.<ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref>;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262" refid="d9/d7c/group__kernel_1ga7f143744a103b0c8e3faaff80084dec2" refkind="member"><highlight class="normal"><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>&amp;<sp/><ref refid="d9/d7c/group__kernel_1ga45977bface0368528c916e649c6d036d" kindref="member">frac::operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;i)</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a8feb45c34735bb816aa705fa8673cb13" kindref="member">n</ref><sp/>=<sp/>i;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" kindref="member">d</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="268"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272" refid="d9/d7c/group__kernel_1gaa754b647e99e092970847d6da64d7389" refkind="member"><highlight class="normal">mutint64<sp/><ref refid="d9/d7c/group__kernel_1gaa754b647e99e092970847d6da64d7389" kindref="member">frac::gcd</ref>(mutint64<sp/>a,<sp/>mutint64<sp/>b)</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>p,<sp/>q,<sp/>r<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>=<sp/><ref refid="d9/d7c/group__kernel_1gac94075088c0eac02fb28aed380ae51d6" kindref="member">absLong</ref>(a);</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b<sp/>=<sp/><ref refid="d9/d7c/group__kernel_1gac94075088c0eac02fb28aed380ae51d6" kindref="member">absLong</ref>(b);</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>a<sp/>&gt;<sp/>b<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p<sp/>=<sp/>a;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q<sp/>=<sp/>b;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p<sp/>=<sp/>b;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q<sp/>=<sp/>a;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!q<sp/>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<sp/>r<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r<sp/>=<sp/>p<sp/>%<sp/>q;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p<sp/>=<sp/>q;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q<sp/>=<sp/>r;</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>p;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="300"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Frac.cpp"/>
+  </compounddef>
+</doxygen>

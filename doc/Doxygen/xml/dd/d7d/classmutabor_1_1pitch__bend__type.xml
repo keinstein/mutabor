@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="dd/d7d/classmutabor_1_1pitch__bend__type" kind="class" prot="public">
+    <compoundname>mutabor::pitch_bend_type</compoundname>
+    <includes refid="de/d21/midicmn_8h" local="no">midicmn.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="dd/d7d/classmutabor_1_1pitch__bend__type_1aedc38536976943c5141d2c715725f62b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::pitch_bend_type::pitch</definition>
+        <argsstring></argsstring>
+        <name>pitch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="274" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="274" bodyend="-1"/>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a23dfccd2e97e799cd8b32dea22306e5c" compoundref="d3/d0f/midicmn_8cpp" startline="239" endline="316">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOn</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ae068c3fe86a1c768f15c0249cdfb11ea" compoundref="d3/d0f/midicmn_8cpp" startline="377" endline="434">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateTones</referencedby>
+        <referencedby refid="dd/d7d/classmutabor_1_1pitch__bend__type_1a2fb5a31e3bc623d1de18726dc64e5308" compoundref="de/d21/midicmn_8h" startline="277" endline="281">operator-=</referencedby>
+        <referencedby refid="dd/d7d/classmutabor_1_1pitch__bend__type_1ab46a24bf206e0d83f4538f6986681134" compoundref="de/d21/midicmn_8h" startline="283" endline="285">operator==</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a61000ffa761d3b1ca8a1bb3156c83db1" compoundref="de/d21/midicmn_8h" startline="717" endline="731">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::pitch_and_bend</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d7d/classmutabor_1_1pitch__bend__type_1a00eca1f14f275dd0a8ac71b6d33e2cc4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::pitch_bend_type::bend</definition>
+        <argsstring></argsstring>
+        <name>bend</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="275" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="275" bodyend="-1"/>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a23dfccd2e97e799cd8b32dea22306e5c" compoundref="d3/d0f/midicmn_8cpp" startline="239" endline="316">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOn</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ae068c3fe86a1c768f15c0249cdfb11ea" compoundref="d3/d0f/midicmn_8cpp" startline="377" endline="434">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateTones</referencedby>
+        <referencedby refid="dd/d7d/classmutabor_1_1pitch__bend__type_1a2fb5a31e3bc623d1de18726dc64e5308" compoundref="de/d21/midicmn_8h" startline="277" endline="281">operator-=</referencedby>
+        <referencedby refid="dd/d7d/classmutabor_1_1pitch__bend__type_1ab46a24bf206e0d83f4538f6986681134" compoundref="de/d21/midicmn_8h" startline="283" endline="285">operator==</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a61000ffa761d3b1ca8a1bb3156c83db1" compoundref="de/d21/midicmn_8h" startline="717" endline="731">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::pitch_and_bend</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="dd/d7d/classmutabor_1_1pitch__bend__type_1a2fb5a31e3bc623d1de18726dc64e5308" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="dd/d7d/classmutabor_1_1pitch__bend__type" kindref="compound">pitch_bend_type</ref> &amp;</type>
+        <definition>pitch_bend_type&amp; mutabor::pitch_bend_type::operator-=</definition>
+        <argsstring>(const pitch_bend_type &amp;other)</argsstring>
+        <name>operator-=</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="dd/d7d/classmutabor_1_1pitch__bend__type" kindref="compound">pitch_bend_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="277" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="277" bodyend="281"/>
+        <references refid="dd/d7d/classmutabor_1_1pitch__bend__type_1a00eca1f14f275dd0a8ac71b6d33e2cc4" compoundref="de/d21/midicmn_8h" startline="275">bend</references>
+        <references refid="dd/d7d/classmutabor_1_1pitch__bend__type_1aedc38536976943c5141d2c715725f62b" compoundref="de/d21/midicmn_8h" startline="274">pitch</references>
+      </memberdef>
+      <memberdef kind="function" id="dd/d7d/classmutabor_1_1pitch__bend__type_1ab46a24bf206e0d83f4538f6986681134" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::pitch_bend_type::operator==</definition>
+        <argsstring>(pitch_bend_type &amp;other)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type><ref refid="dd/d7d/classmutabor_1_1pitch__bend__type" kindref="compound">pitch_bend_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="283" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="283" bodyend="285"/>
+        <references refid="dd/d7d/classmutabor_1_1pitch__bend__type_1a00eca1f14f275dd0a8ac71b6d33e2cc4" compoundref="de/d21/midicmn_8h" startline="275">bend</references>
+        <references refid="dd/d7d/classmutabor_1_1pitch__bend__type_1aedc38536976943c5141d2c715725f62b" compoundref="de/d21/midicmn_8h" startline="274">pitch</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="272" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="272" bodyend="286"/>
+    <listofallmembers>
+      <member refid="dd/d7d/classmutabor_1_1pitch__bend__type_1a00eca1f14f275dd0a8ac71b6d33e2cc4" prot="public" virt="non-virtual"><scope>mutabor::pitch_bend_type</scope><name>bend</name></member>
+      <member refid="dd/d7d/classmutabor_1_1pitch__bend__type_1a2fb5a31e3bc623d1de18726dc64e5308" prot="public" virt="non-virtual"><scope>mutabor::pitch_bend_type</scope><name>operator-=</name></member>
+      <member refid="dd/d7d/classmutabor_1_1pitch__bend__type_1ab46a24bf206e0d83f4538f6986681134" prot="public" virt="non-virtual"><scope>mutabor::pitch_bend_type</scope><name>operator==</name></member>
+      <member refid="dd/d7d/classmutabor_1_1pitch__bend__type_1aedc38536976943c5141d2c715725f62b" prot="public" virt="non-virtual"><scope>mutabor::pitch_bend_type</scope><name>pitch</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

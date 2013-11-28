@@ -1,0 +1,697 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="dc/dae/classChordNote" kind="class" prot="public">
+    <compoundname>ChordNote</compoundname>
+    <includes refid="d1/db5/GIS__Head_8h" local="no">GIS_Head.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="dc/dae/classChordNote_1a699c7559d967dd8517c4301f4b753b81" prot="public" static="no" mutable="no">
+        <type><ref refid="dc/dae/classChordNote" kindref="compound">ChordNote</ref> *</type>
+        <definition>ChordNote* ChordNote::Next</definition>
+        <argsstring></argsstring>
+        <name>Next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="432" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="432" bodyend="-1"/>
+        <referencedby refid="dc/dae/classChordNote_1afd71ac3da0ebfcf4dcf4a122545e64cc" compoundref="d1/db5/GIS__Head_8h" startline="448" endline="483">ChordNote</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga8a0491f21c6455e3b99bf907fc5a078f" compoundref="d7/da0/GIS__Head_8cpp" startline="1043" endline="1064">GisWriteHead::GetFreeNote</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga5f35d1403197bea0bc54f2a4d22857aa" compoundref="d7/da0/GIS__Head_8cpp" startline="1067" endline="1079">GisWriteHead::GetNote</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga2f092a0c9eb371fe5dd1e0780976506f" compoundref="d7/da0/GIS__Head_8cpp" startline="1389" endline="1430">GisWriteHead::WriteChord</referencedby>
+        <referencedby refid="dc/dae/classChordNote_1a5ea15a02f1dd70fce030361c37896971" compoundref="d1/db5/GIS__Head_8h" startline="485" endline="490">~ChordNote</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/dae/classChordNote_1a6180c656c795a52e0e889a16f56ea1e7" prot="public" static="no" mutable="no">
+        <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+        <definition>GisToken* ChordNote::Data</definition>
+        <argsstring></argsstring>
+        <name>Data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="433" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="433" bodyend="-1"/>
+        <referencedby refid="dc/dae/classChordNote_1afd71ac3da0ebfcf4dcf4a122545e64cc" compoundref="d1/db5/GIS__Head_8h" startline="448" endline="483">ChordNote</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga2f092a0c9eb371fe5dd1e0780976506f" compoundref="d7/da0/GIS__Head_8cpp" startline="1389" endline="1430">GisWriteHead::WriteChord</referencedby>
+        <referencedby refid="dc/dae/classChordNote_1a5ea15a02f1dd70fce030361c37896971" compoundref="d1/db5/GIS__Head_8h" startline="485" endline="490">~ChordNote</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/dae/classChordNote_1a4f27d523db8100616d2d085d4734c43c" prot="public" static="no" mutable="no">
+        <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> **</type>
+        <definition>GisToken** ChordNote::Cursor</definition>
+        <argsstring></argsstring>
+        <name>Cursor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="434" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="434" bodyend="-1"/>
+        <referencedby refid="dc/dae/classChordNote_1afd71ac3da0ebfcf4dcf4a122545e64cc" compoundref="d1/db5/GIS__Head_8h" startline="448" endline="483">ChordNote</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/dae/classChordNote_1a2c2ac8a4f10bf92273e4178d87d69d31" prot="public" static="no" mutable="no">
+        <type><ref refid="d9/db2/classGisWriteHead" kindref="compound">GisWriteHead</ref> *</type>
+        <definition>GisWriteHead* ChordNote::Boss</definition>
+        <argsstring></argsstring>
+        <name>Boss</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="435" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="435" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga3712d6f14032d354b50568281ac1641d" compoundref="d7/da0/GIS__Head_8cpp" startline="795" endline="827">ChordNote</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/dae/classChordNote_1a37cd10b541afcae5ed96203ae392a80e" prot="public" static="no" mutable="no">
+        <type><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref></type>
+        <definition>frac ChordNote::CurrentTime</definition>
+        <argsstring></argsstring>
+        <name>CurrentTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="436" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="436" bodyend="-1"/>
+        <referencedby refid="dc/dae/classChordNote_1afd71ac3da0ebfcf4dcf4a122545e64cc" compoundref="d1/db5/GIS__Head_8h" startline="448" endline="483">ChordNote</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/dae/classChordNote_1a4388b964f7392f383db9bcda4b08f60a" prot="public" static="no" mutable="no">
+        <type><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref></type>
+        <definition>frac ChordNote::TotalTime</definition>
+        <argsstring></argsstring>
+        <name>TotalTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="437" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="437" bodyend="-1"/>
+        <referencedby refid="dc/dae/classChordNote_1afd71ac3da0ebfcf4dcf4a122545e64cc" compoundref="d1/db5/GIS__Head_8h" startline="448" endline="483">ChordNote</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/dae/classChordNote_1a96aaa0e94ffca648e93e1fd76a185bd9" prot="public" static="no" mutable="no">
+        <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> **</type>
+        <definition>GisToken** ChordNote::BossPos</definition>
+        <argsstring></argsstring>
+        <name>BossPos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="438" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="438" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga3712d6f14032d354b50568281ac1641d" compoundref="d7/da0/GIS__Head_8cpp" startline="795" endline="827">ChordNote</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/dae/classChordNote_1acb60f3d41f8020d5c2ebc266389eb589" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ChordNote::InstrId</definition>
+        <argsstring></argsstring>
+        <name>InstrId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="439" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="439" bodyend="-1"/>
+        <referencedby refid="dc/dae/classChordNote_1aef76f2c9044c19f06b053e6656247fd9" compoundref="d1/db5/GIS__Head_8h" startline="506" endline="509">CheckId</referencedby>
+        <referencedby refid="dc/dae/classChordNote_1afd71ac3da0ebfcf4dcf4a122545e64cc" compoundref="d1/db5/GIS__Head_8h" startline="448" endline="483">ChordNote</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/dae/classChordNote_1a26ad03cbe31f1a859759f0d48f968a64" prot="public" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <definition>char ChordNote::Status</definition>
+        <argsstring></argsstring>
+        <name>Status</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="440" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="440" bodyend="-1"/>
+        <referencedby refid="dc/dae/classChordNote_1afd71ac3da0ebfcf4dcf4a122545e64cc" compoundref="d1/db5/GIS__Head_8h" startline="448" endline="483">ChordNote</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/dae/classChordNote_1a8e66392d23ec25e2c44be671ba161755" prot="public" static="no" mutable="no">
+        <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> **</type>
+        <definition>GisToken** ChordNote::AlterBegin</definition>
+        <argsstring></argsstring>
+        <name>AlterBegin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="441" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="441" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dc/dae/classChordNote_1a77ef019eff876ef2086e56a14eb585f8" prot="public" static="no" mutable="no">
+        <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> **</type>
+        <definition>GisToken** ChordNote::TieBegin</definition>
+        <argsstring></argsstring>
+        <name>TieBegin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="442" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="442" bodyend="-1"/>
+        <referencedby refid="dc/dae/classChordNote_1afd71ac3da0ebfcf4dcf4a122545e64cc" compoundref="d1/db5/GIS__Head_8h" startline="448" endline="483">ChordNote</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/dae/classChordNote_1a4107e4ba9b53fcca10918c10f7cf7223" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ChordNote::nTie</definition>
+        <argsstring></argsstring>
+        <name>nTie</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="443" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="443" bodyend="-1"/>
+        <referencedby refid="dc/dae/classChordNote_1afd71ac3da0ebfcf4dcf4a122545e64cc" compoundref="d1/db5/GIS__Head_8h" startline="448" endline="483">ChordNote</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/dae/classChordNote_1af2f4a2ed6ff6d66b2ed383b1465755ee" prot="public" static="no" mutable="no">
+        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref> *</type>
+        <definition>mutString* ChordNote::LastSep</definition>
+        <argsstring></argsstring>
+        <name>LastSep</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="444" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="444" bodyend="-1"/>
+        <referencedby refid="dc/dae/classChordNote_1afd71ac3da0ebfcf4dcf4a122545e64cc" compoundref="d1/db5/GIS__Head_8h" startline="448" endline="483">ChordNote</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/dae/classChordNote_1a2e676b7873b3ac85d63abc9730784b22" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ChordNote::Taste</definition>
+        <argsstring></argsstring>
+        <name>Taste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="445" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="445" bodyend="-1"/>
+        <referencedby refid="dc/dae/classChordNote_1aef76f2c9044c19f06b053e6656247fd9" compoundref="d1/db5/GIS__Head_8h" startline="506" endline="509">CheckId</referencedby>
+        <referencedby refid="dc/dae/classChordNote_1afd71ac3da0ebfcf4dcf4a122545e64cc" compoundref="d1/db5/GIS__Head_8h" startline="448" endline="483">ChordNote</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/dae/classChordNote_1a951e9a4a3ad6fa3b9c9c6349876c5dfc" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ChordNote::Key</definition>
+        <argsstring></argsstring>
+        <name>Key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="446" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="446" bodyend="-1"/>
+        <referencedby refid="dc/dae/classChordNote_1afd71ac3da0ebfcf4dcf4a122545e64cc" compoundref="d1/db5/GIS__Head_8h" startline="448" endline="483">ChordNote</referencedby>
+        <referencedby refid="dc/dae/classChordNote_1ab371070f0a9b3f358c9ec091013e8b7b" compoundref="d1/db5/GIS__Head_8h" startline="511" endline="520">Cmp</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/dae/classChordNote_1afecf9276a2e45ce2db828b3805903e35" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ChordNote::Pitch</definition>
+        <argsstring></argsstring>
+        <name>Pitch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="447" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="447" bodyend="-1"/>
+        <referencedby refid="dc/dae/classChordNote_1afd71ac3da0ebfcf4dcf4a122545e64cc" compoundref="d1/db5/GIS__Head_8h" startline="448" endline="483">ChordNote</referencedby>
+        <referencedby refid="dc/dae/classChordNote_1ab371070f0a9b3f358c9ec091013e8b7b" compoundref="d1/db5/GIS__Head_8h" startline="511" endline="520">Cmp</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/dae/classChordNote_1afd71ac3da0ebfcf4dcf4a122545e64cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ChordNote::ChordNote</definition>
+        <argsstring>(GisWriteHead *boss)</argsstring>
+        <name>ChordNote</name>
+        <param>
+          <type><ref refid="d9/db2/classGisWriteHead" kindref="compound">GisWriteHead</ref> *</type>
+          <declname>boss</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="448" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="448" bodyend="483"/>
+        <references refid="d5/dee/group__route_1gade7d82fdf052395a3d9a34b7d205508c" compoundref="d7/da0/GIS__Head_8cpp" startline="865" endline="871">AddGis</references>
+        <references refid="dc/dae/classChordNote_1a2c2ac8a4f10bf92273e4178d87d69d31" compoundref="d1/db5/GIS__Head_8h" startline="435">Boss</references>
+        <references refid="dc/dae/classChordNote_1a96aaa0e94ffca648e93e1fd76a185bd9" compoundref="d1/db5/GIS__Head_8h" startline="438">BossPos</references>
+        <references refid="d9/db2/classGisWriteHead_1a2c2b7f595c083052f4dc27ef49b8b1bb" compoundref="d1/db5/GIS__Head_8h" startline="321">GisWriteHead::ChordPos</references>
+        <references refid="d9/db2/classGisWriteHead_1a182dfbbe992631e5be242270961ee3d6" compoundref="d1/db5/GIS__Head_8h" startline="318">GisWriteHead::CurrentTime</references>
+        <references refid="dc/dae/classChordNote_1a37cd10b541afcae5ed96203ae392a80e" compoundref="d1/db5/GIS__Head_8h" startline="436">CurrentTime</references>
+        <references refid="d9/db2/classGisWriteHead_1a78ac98bb0d6db9decf90e87794643191" compoundref="d1/db5/GIS__Head_8h" startline="317">GisWriteHead::Cursor</references>
+        <references refid="dc/dae/classChordNote_1a4f27d523db8100616d2d085d4734c43c" compoundref="d1/db5/GIS__Head_8h" startline="434">Cursor</references>
+        <references refid="dc/dae/classChordNote_1a6180c656c795a52e0e889a16f56ea1e7" compoundref="d1/db5/GIS__Head_8h" startline="433">Data</references>
+        <references refid="d5/dee/group__route_1ga01ad2325629ef1b5c53634e74160c69f" compoundref="dd/d4d/GIS_8h" startline="105">GMN_NO_KEY</references>
+        <references refid="dc/dae/classChordNote_1acb60f3d41f8020d5c2ebc266389eb589" compoundref="d1/db5/GIS__Head_8h" startline="439">InstrId</references>
+        <references refid="dc/dae/classChordNote_1a951e9a4a3ad6fa3b9c9c6349876c5dfc" compoundref="d1/db5/GIS__Head_8h" startline="446">Key</references>
+        <references refid="dc/dae/classChordNote_1af2f4a2ed6ff6d66b2ed383b1465755ee" compoundref="d1/db5/GIS__Head_8h" startline="444">LastSep</references>
+        <references refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" compoundref="d1/d73/Defs_8h" startline="171">mutEmptyString</references>
+        <references refid="d9/d7c/group__kernel_1gab0bf0415f048ff66e8cd015b484a3a09" compoundref="d1/d73/Defs_8h" startline="77">mutT</references>
+        <references refid="dc/dae/classChordNote_1a699c7559d967dd8517c4301f4b753b81" compoundref="d1/db5/GIS__Head_8h" startline="432">Next</references>
+        <references refid="dc/dae/classChordNote_1a4107e4ba9b53fcca10918c10f7cf7223" compoundref="d1/db5/GIS__Head_8h" startline="443">nTie</references>
+        <references refid="dc/dae/classChordNote_1afecf9276a2e45ce2db828b3805903e35" compoundref="d1/db5/GIS__Head_8h" startline="447">Pitch</references>
+        <references refid="dc/dae/classChordNote_1a26ad03cbe31f1a859759f0d48f968a64" compoundref="d1/db5/GIS__Head_8h" startline="440">Status</references>
+        <references refid="dc/dae/classChordNote_1a2e676b7873b3ac85d63abc9730784b22" compoundref="d1/db5/GIS__Head_8h" startline="445">Taste</references>
+        <references refid="dc/dae/classChordNote_1a77ef019eff876ef2086e56a14eb585f8" compoundref="d1/db5/GIS__Head_8h" startline="442">TieBegin</references>
+        <references refid="dc/dae/classChordNote_1a4388b964f7392f383db9bcda4b08f60a" compoundref="d1/db5/GIS__Head_8h" startline="437">TotalTime</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga3712d6f14032d354b50568281ac1641d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ChordNote::ChordNote</definition>
+        <argsstring>(ChordNote *first)</argsstring>
+        <name>ChordNote</name>
+        <param>
+          <type><ref refid="dc/dae/classChordNote" kindref="compound">ChordNote</ref> *</type>
+          <declname>first</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="484" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.cpp" bodystart="795" bodyend="827"/>
+        <references refid="d9/d81/classGisReadHead_1a82feb8a2bc183115b5670a72ebfe96f7" compoundref="d1/db5/GIS__Head_8h" startline="68">GisReadHead::Boss</references>
+        <references refid="dc/dae/classChordNote_1a2c2ac8a4f10bf92273e4178d87d69d31" compoundref="d1/db5/GIS__Head_8h" startline="435">Boss</references>
+        <references refid="dc/dae/classChordNote_1a96aaa0e94ffca648e93e1fd76a185bd9" compoundref="d1/db5/GIS__Head_8h" startline="438">BossPos</references>
+        <references refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" compoundref="d1/dca/timing_8cpp" startline="43">mutabor::CurrentTime</references>
+        <references refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" compoundref="d1/db5/GIS__Head_8h" startline="70">GisReadHead::Cursor</references>
+        <references refid="d5/dee/group__route_1ga01ad2325629ef1b5c53634e74160c69f" compoundref="dd/d4d/GIS_8h" startline="105">GMN_NO_KEY</references>
+        <references refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" compoundref="d1/d73/Defs_8h" startline="171">mutEmptyString</references>
+        <references refid="d9/d7c/group__kernel_1gab0bf0415f048ff66e8cd015b484a3a09" compoundref="d1/d73/Defs_8h" startline="77">mutT</references>
+        <references refid="d9/d81/classGisReadHead_1a7d7ecded97c79a3859c4312540f139ad" compoundref="d1/db5/GIS__Head_8h" startline="67">GisReadHead::Next</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/dae/classChordNote_1a5ea15a02f1dd70fce030361c37896971" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ChordNote::~ChordNote</definition>
+        <argsstring>()</argsstring>
+        <name>~ChordNote</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="485" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="485" bodyend="490"/>
+        <references refid="dc/dae/classChordNote_1a6180c656c795a52e0e889a16f56ea1e7" compoundref="d1/db5/GIS__Head_8h" startline="433">Data</references>
+        <references refid="dc/dae/classChordNote_1a699c7559d967dd8517c4301f4b753b81" compoundref="d1/db5/GIS__Head_8h" startline="432">Next</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga94c36394d06ee4a14a79aacb60b1ae70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ChordNote::CountOnTime</definition>
+        <argsstring>(frac dTime)</argsstring>
+        <name>CountOnTime</name>
+        <param>
+          <type><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref></type>
+          <declname>dTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="492" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.cpp" bodystart="829" bodyend="836"/>
+        <references refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" compoundref="d1/dca/timing_8cpp" startline="43">mutabor::CurrentTime</references>
+        <references refid="d9/d81/classGisReadHead_1a7d7ecded97c79a3859c4312540f139ad" compoundref="d1/db5/GIS__Head_8h" startline="67">GisReadHead::Next</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga468c2f949d1fac159d03ff33ea973280" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ChordNote::SetNoteOn</definition>
+        <argsstring>(GisToken *note)</argsstring>
+        <name>SetNoteOn</name>
+        <param>
+          <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+          <declname>note</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="493" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.cpp" bodystart="839" bodyend="845"/>
+        <references refid="d9/d81/classGisReadHead_1a82feb8a2bc183115b5670a72ebfe96f7" compoundref="d1/db5/GIS__Head_8h" startline="68">GisReadHead::Boss</references>
+        <references refid="d5/dee/group__route_1ga44a698d9812c5355093806d9d94c7723" compoundref="d1/db5/GIS__Head_8h" startline="422">CNNoteOn</references>
+        <references refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" compoundref="d1/db5/GIS__Head_8h" startline="70">GisReadHead::Cursor</references>
+        <references refid="d5/dee/group__route_1ga1ad73526ce07d2f3564dfd83c982ca3f" compoundref="d7/da0/GIS__Head_8cpp" startline="838">NOTE</references>
+        <referencedby refid="d5/dee/group__route_1gac73921011ef5b7af1c87336ca033f97c" compoundref="d7/da0/GIS__Head_8cpp" startline="1258" endline="1387">GisWriteHead::ProceedGis</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga38494505bd8538148c0f3ad1c5d86836" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ChordNote::SetNoteOff</definition>
+        <argsstring>(GisToken *note)</argsstring>
+        <name>SetNoteOff</name>
+        <param>
+          <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+          <declname>note</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="494" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.cpp" bodystart="847" bodyend="863"/>
+        <references refid="d9/d81/classGisReadHead_1a82feb8a2bc183115b5670a72ebfe96f7" compoundref="d1/db5/GIS__Head_8h" startline="68">GisReadHead::Boss</references>
+        <references refid="d5/dee/group__route_1ga6522b1d7d30fe61d96170fce084f9c68" compoundref="d7/da0/GIS__Head_8cpp" startline="778" endline="790">CmpNote</references>
+        <references refid="d5/dee/group__route_1ga44a698d9812c5355093806d9d94c7723" compoundref="d1/db5/GIS__Head_8h" startline="422">CNNoteOn</references>
+        <references refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" compoundref="d1/dca/timing_8cpp" startline="43">mutabor::CurrentTime</references>
+        <references refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" compoundref="d1/db5/GIS__Head_8h" startline="70">GisReadHead::Cursor</references>
+        <references refid="d9/d81/classGisReadHead_1a7d7ecded97c79a3859c4312540f139ad" compoundref="d1/db5/GIS__Head_8h" startline="67">GisReadHead::Next</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gade7d82fdf052395a3d9a34b7d205508c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ChordNote::AddGis</definition>
+        <argsstring>(GisToken *token)</argsstring>
+        <name>AddGis</name>
+        <param>
+          <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+          <declname>token</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="495" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.cpp" bodystart="865" bodyend="871"/>
+        <references refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" compoundref="d1/dca/timing_8cpp" startline="43">mutabor::CurrentTime</references>
+        <references refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" compoundref="d1/db5/GIS__Head_8h" startline="70">GisReadHead::Cursor</references>
+        <references refid="d2/db7/classGisToken_1a5987643937d79847fcd3f0dab8fe4b58" compoundref="dd/d4d/GIS_8h" startline="137">GisToken::Sep</references>
+        <referencedby refid="dc/dae/classChordNote_1afd71ac3da0ebfcf4dcf4a122545e64cc" compoundref="d1/db5/GIS__Head_8h" startline="448" endline="483">ChordNote</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga8a0491f21c6455e3b99bf907fc5a078f" compoundref="d7/da0/GIS__Head_8cpp" startline="1043" endline="1064">GisWriteHead::GetFreeNote</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga8e3ee4893c5a58be1590313f35cc0522" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ChordNote::CheckCloseAlter</definition>
+        <argsstring>()</argsstring>
+        <name>CheckCloseAlter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="496" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.cpp" bodystart="873" bodyend="899"/>
+        <references refid="d5/dee/group__route_1ga05d9aeb2a401fbb09982ff1db2bc7f60" compoundref="d1/db5/GIS__Head_8h" startline="421">CNAlter</references>
+        <references refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" compoundref="d1/d73/Defs_8h" startline="171">mutEmptyString</references>
+        <references refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" compoundref="d1/d73/Defs_8h" startline="169">mutString</references>
+        <references refid="d5/dee/group__route_1gad78ff14ef0e12b5d3c88f659314e3de3" compoundref="d3/d9e/GSP_8cpp" startline="68">Sep</references>
+        <referencedby refid="dc/dae/classChordNote_1a158a6f4f3659f981dc9fb06980765d8e" compoundref="d1/db5/GIS__Head_8h" startline="498" endline="502">CheckClose</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaed4a76ec9ff68f62b540d9fc7b6cb5b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ChordNote::CheckCloseTie</definition>
+        <argsstring>()</argsstring>
+        <name>CheckCloseTie</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="497" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.cpp" bodystart="901" bodyend="933"/>
+        <references refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" compoundref="d1/db5/GIS__Head_8h" startline="70">GisReadHead::Cursor</references>
+        <references refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" compoundref="d1/d73/Defs_8h" startline="171">mutEmptyString</references>
+        <references refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" compoundref="d1/d73/Defs_8h" startline="169">mutString</references>
+        <references refid="d9/d7c/group__kernel_1gab0bf0415f048ff66e8cd015b484a3a09" compoundref="d1/d73/Defs_8h" startline="77">mutT</references>
+        <references refid="d5/dee/group__route_1gad78ff14ef0e12b5d3c88f659314e3de3" compoundref="d3/d9e/GSP_8cpp" startline="68">Sep</references>
+        <references refid="d5/dee/group__route_1ga10bff18368b61a189924c3c940155fc1" compoundref="dd/d4d/GIS_8h" startline="94">TTtie</references>
+        <referencedby refid="dc/dae/classChordNote_1a158a6f4f3659f981dc9fb06980765d8e" compoundref="d1/db5/GIS__Head_8h" startline="498" endline="502">CheckClose</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/dae/classChordNote_1a158a6f4f3659f981dc9fb06980765d8e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ChordNote::CheckClose</definition>
+        <argsstring>()</argsstring>
+        <name>CheckClose</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="498" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="498" bodyend="502"/>
+        <references refid="d5/dee/group__route_1ga8e3ee4893c5a58be1590313f35cc0522" compoundref="d7/da0/GIS__Head_8cpp" startline="873" endline="899">CheckCloseAlter</references>
+        <references refid="d5/dee/group__route_1gaed4a76ec9ff68f62b540d9fc7b6cb5b6" compoundref="d7/da0/GIS__Head_8cpp" startline="901" endline="933">CheckCloseTie</references>
+        <referencedby refid="d5/dee/group__route_1ga2f092a0c9eb371fe5dd1e0780976506f" compoundref="d7/da0/GIS__Head_8cpp" startline="1389" endline="1430">GisWriteHead::WriteChord</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga01b0810f119d47c9a4909a3d2fc44921" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ChordNote::MutNoteOn</definition>
+        <argsstring>(int key, double pitch, int instrId, int taste, mutString sep)</argsstring>
+        <name>MutNoteOn</name>
+        <param>
+          <type>int</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>pitch</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>instrId</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>taste</declname>
+        </param>
+        <param>
+          <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+          <declname>sep</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="504" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.cpp" bodystart="935" bodyend="961"/>
+        <references refid="d9/d81/classGisReadHead_1a82feb8a2bc183115b5670a72ebfe96f7" compoundref="d1/db5/GIS__Head_8h" startline="68">GisReadHead::Boss</references>
+        <references refid="d5/dee/group__route_1ga05d9aeb2a401fbb09982ff1db2bc7f60" compoundref="d1/db5/GIS__Head_8h" startline="421">CNAlter</references>
+        <references refid="d5/dee/group__route_1ga44a698d9812c5355093806d9d94c7723" compoundref="d1/db5/GIS__Head_8h" startline="422">CNNoteOn</references>
+        <references refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" compoundref="d1/db5/GIS__Head_8h" startline="70">GisReadHead::Cursor</references>
+        <references refid="d5/dee/group__route_1ga01ad2325629ef1b5c53634e74160c69f" compoundref="dd/d4d/GIS_8h" startline="105">GMN_NO_KEY</references>
+        <references refid="d9/d7c/group__kernel_1gab0bf0415f048ff66e8cd015b484a3a09" compoundref="d1/d73/Defs_8h" startline="77">mutT</references>
+        <references refid="d5/dee/group__route_1ga82dd2e1391c6d95b63414074ff83b8ad" compoundref="dc/de7/GIS_8cpp" startline="666" endline="687">Note</references>
+        <references refid="d2/db7/classGisToken_1a5987643937d79847fcd3f0dab8fe4b58" compoundref="dd/d4d/GIS_8h" startline="137">GisToken::Sep</references>
+        <references refid="d5/dee/group__route_1ga2b6f6f7163e51d7504cf4ce2ad53d82b" compoundref="dd/d4d/GIS_8h" startline="100">TTalter</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gae44f190b817baaaef925c168970fd0d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ChordNote::MutNoteOff</definition>
+        <argsstring>()</argsstring>
+        <name>MutNoteOff</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="505" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.cpp" bodystart="963" bodyend="998"/>
+        <references refid="d9/d81/classGisReadHead_1a82feb8a2bc183115b5670a72ebfe96f7" compoundref="d1/db5/GIS__Head_8h" startline="68">GisReadHead::Boss</references>
+        <references refid="d5/dee/group__route_1ga05d9aeb2a401fbb09982ff1db2bc7f60" compoundref="d1/db5/GIS__Head_8h" startline="421">CNAlter</references>
+        <references refid="d5/dee/group__route_1ga44a698d9812c5355093806d9d94c7723" compoundref="d1/db5/GIS__Head_8h" startline="422">CNNoteOn</references>
+        <references refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" compoundref="d1/dca/timing_8cpp" startline="43">mutabor::CurrentTime</references>
+        <references refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" compoundref="d1/db5/GIS__Head_8h" startline="70">GisReadHead::Cursor</references>
+        <references refid="d5/dee/group__route_1ga48508764452cf587dd6f5c57e6b877a2" compoundref="dc/de7/GIS_8cpp" startline="787" endline="793">GetGisType</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861a4b64e411111d6f015cd6421b13889b9e" compoundref="dd/d4d/GIS_8h" startline="123">GTNote</references>
+        <references refid="d2/db7/classGisToken_1a5ebe3590397490871cf0839a758e2449" compoundref="dd/d4d/GIS_8h" startline="136">GisToken::Next</references>
+      </memberdef>
+      <memberdef kind="function" id="dc/dae/classChordNote_1aef76f2c9044c19f06b053e6656247fd9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <definition>char ChordNote::CheckId</definition>
+        <argsstring>(int instrId, int taste)</argsstring>
+        <name>CheckId</name>
+        <param>
+          <type>int</type>
+          <declname>instrId</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>taste</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="506" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="506" bodyend="509"/>
+        <references refid="dc/dae/classChordNote_1acb60f3d41f8020d5c2ebc266389eb589" compoundref="d1/db5/GIS__Head_8h" startline="439">InstrId</references>
+        <references refid="dc/dae/classChordNote_1a2e676b7873b3ac85d63abc9730784b22" compoundref="d1/db5/GIS__Head_8h" startline="445">Taste</references>
+        <referencedby refid="d5/dee/group__route_1ga5f35d1403197bea0bc54f2a4d22857aa" compoundref="d7/da0/GIS__Head_8cpp" startline="1067" endline="1079">GisWriteHead::GetNote</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dc/dae/classChordNote_1ab371070f0a9b3f358c9ec091013e8b7b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <definition>char ChordNote::Cmp</definition>
+        <argsstring>(int key, double pitch)</argsstring>
+        <name>Cmp</name>
+        <param>
+          <type>int</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>pitch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="511" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="511" bodyend="520"/>
+        <references refid="d5/dee/group__route_1ga01ad2325629ef1b5c53634e74160c69f" compoundref="dd/d4d/GIS_8h" startline="105">GMN_NO_KEY</references>
+        <references refid="dc/dae/classChordNote_1a951e9a4a3ad6fa3b9c9c6349876c5dfc" compoundref="d1/db5/GIS__Head_8h" startline="446">Key</references>
+        <references refid="dc/dae/classChordNote_1afecf9276a2e45ce2db828b3805903e35" compoundref="d1/db5/GIS__Head_8h" startline="447">Pitch</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2429">
+        <label>TagListData</label>
+        <link refid="d5/d11/structTagListData"/>
+        <childnode refid="2429" relation="usage">
+          <edgelabel>Next</edgelabel>
+        </childnode>
+        <childnode refid="2430" relation="usage">
+          <edgelabel>Data</edgelabel>
+        </childnode>
+        <childnode refid="2431" relation="usage">
+          <edgelabel>Tag</edgelabel>
+        </childnode>
+      </node>
+      <node id="2430">
+        <label>TagListData::data</label>
+        <link refid="de/d04/unionTagListData_1_1data"/>
+      </node>
+      <node id="2431">
+        <label>GisTag</label>
+        <link refid="d2/d39/classGisTag"/>
+        <childnode refid="2426" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2426" relation="usage">
+          <edgelabel>Para</edgelabel>
+        </childnode>
+      </node>
+      <node id="2428">
+        <label>GisWriteHead</label>
+        <link refid="d9/db2/classGisWriteHead"/>
+        <childnode refid="2429" relation="usage">
+          <edgelabel>Octave</edgelabel>
+          <edgelabel>Key</edgelabel>
+        </childnode>
+        <childnode refid="2425" relation="usage">
+          <edgelabel>ChordNotes</edgelabel>
+        </childnode>
+        <childnode refid="2426" relation="usage">
+          <edgelabel>Cursor</edgelabel>
+          <edgelabel>Data</edgelabel>
+          <edgelabel>ChordPos</edgelabel>
+        </childnode>
+        <childnode refid="2427" relation="usage">
+          <edgelabel>CurrentTime</edgelabel>
+          <edgelabel>TotalTime</edgelabel>
+        </childnode>
+        <childnode refid="2428" relation="usage">
+          <edgelabel>Prev</edgelabel>
+          <edgelabel>Next</edgelabel>
+          <edgelabel>Boss</edgelabel>
+        </childnode>
+      </node>
+      <node id="2427">
+        <label>frac</label>
+        <link refid="d7/dcc/classfrac"/>
+      </node>
+      <node id="2425">
+        <label>ChordNote</label>
+        <link refid="dc/dae/classChordNote"/>
+        <childnode refid="2425" relation="usage">
+          <edgelabel>Next</edgelabel>
+        </childnode>
+        <childnode refid="2426" relation="usage">
+          <edgelabel>TieBegin</edgelabel>
+          <edgelabel>Cursor</edgelabel>
+          <edgelabel>AlterBegin</edgelabel>
+          <edgelabel>Data</edgelabel>
+          <edgelabel>BossPos</edgelabel>
+        </childnode>
+        <childnode refid="2427" relation="usage">
+          <edgelabel>CurrentTime</edgelabel>
+          <edgelabel>TotalTime</edgelabel>
+        </childnode>
+        <childnode refid="2428" relation="usage">
+          <edgelabel>Boss</edgelabel>
+        </childnode>
+      </node>
+      <node id="2426">
+        <label>GisToken</label>
+        <link refid="d2/db7/classGisToken"/>
+        <childnode refid="2426" relation="usage">
+          <edgelabel>Next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="429" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="428" bodyend="521"/>
+    <listofallmembers>
+      <member refid="d5/dee/group__route_1gade7d82fdf052395a3d9a34b7d205508c" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>AddGis</name></member>
+      <member refid="dc/dae/classChordNote_1a8e66392d23ec25e2c44be671ba161755" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>AlterBegin</name></member>
+      <member refid="dc/dae/classChordNote_1a2c2ac8a4f10bf92273e4178d87d69d31" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>Boss</name></member>
+      <member refid="dc/dae/classChordNote_1a96aaa0e94ffca648e93e1fd76a185bd9" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>BossPos</name></member>
+      <member refid="dc/dae/classChordNote_1a158a6f4f3659f981dc9fb06980765d8e" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>CheckClose</name></member>
+      <member refid="d5/dee/group__route_1ga8e3ee4893c5a58be1590313f35cc0522" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>CheckCloseAlter</name></member>
+      <member refid="d5/dee/group__route_1gaed4a76ec9ff68f62b540d9fc7b6cb5b6" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>CheckCloseTie</name></member>
+      <member refid="dc/dae/classChordNote_1aef76f2c9044c19f06b053e6656247fd9" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>CheckId</name></member>
+      <member refid="dc/dae/classChordNote_1afd71ac3da0ebfcf4dcf4a122545e64cc" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>ChordNote</name></member>
+      <member refid="d5/dee/group__route_1ga3712d6f14032d354b50568281ac1641d" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>ChordNote</name></member>
+      <member refid="dc/dae/classChordNote_1ab371070f0a9b3f358c9ec091013e8b7b" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>Cmp</name></member>
+      <member refid="d5/dee/group__route_1ga94c36394d06ee4a14a79aacb60b1ae70" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>CountOnTime</name></member>
+      <member refid="dc/dae/classChordNote_1a37cd10b541afcae5ed96203ae392a80e" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>CurrentTime</name></member>
+      <member refid="dc/dae/classChordNote_1a4f27d523db8100616d2d085d4734c43c" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>Cursor</name></member>
+      <member refid="dc/dae/classChordNote_1a6180c656c795a52e0e889a16f56ea1e7" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>Data</name></member>
+      <member refid="dc/dae/classChordNote_1acb60f3d41f8020d5c2ebc266389eb589" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>InstrId</name></member>
+      <member refid="dc/dae/classChordNote_1a951e9a4a3ad6fa3b9c9c6349876c5dfc" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>Key</name></member>
+      <member refid="dc/dae/classChordNote_1af2f4a2ed6ff6d66b2ed383b1465755ee" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>LastSep</name></member>
+      <member refid="d5/dee/group__route_1gae44f190b817baaaef925c168970fd0d3" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>MutNoteOff</name></member>
+      <member refid="d5/dee/group__route_1ga01b0810f119d47c9a4909a3d2fc44921" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>MutNoteOn</name></member>
+      <member refid="dc/dae/classChordNote_1a699c7559d967dd8517c4301f4b753b81" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>Next</name></member>
+      <member refid="dc/dae/classChordNote_1a4107e4ba9b53fcca10918c10f7cf7223" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>nTie</name></member>
+      <member refid="dc/dae/classChordNote_1afecf9276a2e45ce2db828b3805903e35" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>Pitch</name></member>
+      <member refid="d5/dee/group__route_1ga38494505bd8538148c0f3ad1c5d86836" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>SetNoteOff</name></member>
+      <member refid="d5/dee/group__route_1ga468c2f949d1fac159d03ff33ea973280" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>SetNoteOn</name></member>
+      <member refid="dc/dae/classChordNote_1a26ad03cbe31f1a859759f0d48f968a64" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>Status</name></member>
+      <member refid="dc/dae/classChordNote_1a2e676b7873b3ac85d63abc9730784b22" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>Taste</name></member>
+      <member refid="dc/dae/classChordNote_1a77ef019eff876ef2086e56a14eb585f8" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>TieBegin</name></member>
+      <member refid="dc/dae/classChordNote_1a4388b964f7392f383db9bcda4b08f60a" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>TotalTime</name></member>
+      <member refid="dc/dae/classChordNote_1a5ea15a02f1dd70fce030361c37896971" prot="public" virt="non-virtual"><scope>ChordNote</scope><name>~ChordNote</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

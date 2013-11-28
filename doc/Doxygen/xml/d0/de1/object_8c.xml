@@ -1,0 +1,358 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d0/de1/object_8c" kind="file">
+    <compoundname>object.c</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">assert.h</includes>
+    <includes local="yes">lib-asprintf.h</includes>
+    <includes refid="de/d10/object_8h" local="yes">mutabor/object.h</includes>
+    <includes refid="dd/d07/object_8hh" local="yes">mutabor/object.hh</includes>
+    <includes refid="df/d8e/bad__decl_8h" local="yes">mutabor/bad_decl.h</includes>
+    <incdepgraph>
+      <node id="21060">
+        <label>assert.h</label>
+      </node>
+      <node id="21062">
+        <label>mutabor/object.h</label>
+        <link refid="de/d10/object_8h"/>
+      </node>
+      <node id="21063">
+        <label>mutabor/object.hh</label>
+        <link refid="dd/d07/object_8hh"/>
+      </node>
+      <node id="21065">
+        <label>math.h</label>
+      </node>
+      <node id="21061">
+        <label>lib-asprintf.h</label>
+      </node>
+      <node id="21058">
+        <label>src/libmutabor/object.c</label>
+        <link refid="object.c"/>
+        <childnode refid="21059" relation="include">
+        </childnode>
+        <childnode refid="21060" relation="include">
+        </childnode>
+        <childnode refid="21061" relation="include">
+        </childnode>
+        <childnode refid="21062" relation="include">
+        </childnode>
+        <childnode refid="21063" relation="include">
+        </childnode>
+        <childnode refid="21064" relation="include">
+        </childnode>
+      </node>
+      <node id="21059">
+        <label>stdio.h</label>
+      </node>
+      <node id="21064">
+        <label>mutabor/bad_decl.h</label>
+        <link refid="df/d8e/bad__decl_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d0/de1/object_8c_1a44d4609804f7dc554253feba5a40f8de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* MUTABOR_CLASS_FUNCTION</definition>
+        <argsstring>(object, constructor)</argsstring>
+        <name>MUTABOR_CLASS_FUNCTION</name>
+        <param>
+          <type>object</type>
+        </param>
+        <param>
+          <type>constructor</type>
+        </param>
+        <briefdescription>
+<para>Constructor for class object. </para>        </briefdescription>
+        <detaileddescription>
+<para>Does nothing than error checking. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/object.c" line="46" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/object.c" bodystart="46" bodyend="49"/>
+        <references refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" compoundref="de/d10/object_8h" startline="27">CHK_CLASS</references>
+      </memberdef>
+      <memberdef kind="function" id="d0/de1/object_8c_1a726623015854e956cb996c7471f7da75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* MUTABOR_CLASS_FUNCTION</definition>
+        <argsstring>(object, destructor)</argsstring>
+        <name>MUTABOR_CLASS_FUNCTION</name>
+        <param>
+          <type>object</type>
+        </param>
+        <param>
+          <type>destructor</type>
+        </param>
+        <briefdescription>
+<para>Destructor for class object. </para>        </briefdescription>
+        <detaileddescription>
+<para>Does nothing than error checking. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/object.c" line="53" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/object.c" bodystart="53" bodyend="56"/>
+        <references refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" compoundref="de/d10/object_8h" startline="27">CHK_CLASS</references>
+      </memberdef>
+      <memberdef kind="function" id="d0/de1/object_8c_1aea59a8cbeaa74d1d31ddf3b715d299ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int MUTABOR_CLASS_FUNCTION</definition>
+        <argsstring>(object, compare)</argsstring>
+        <name>MUTABOR_CLASS_FUNCTION</name>
+        <param>
+          <type>object</type>
+        </param>
+        <param>
+          <type>compare</type>
+        </param>
+        <briefdescription>
+<para>Comparison between two objects. </para>        </briefdescription>
+        <detaileddescription>
+<para>Simple comparison by pointers. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/object.c" line="60" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/object.c" bodystart="60" bodyend="64"/>
+        <references refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" compoundref="de/d10/object_8h" startline="27">CHK_CLASS</references>
+      </memberdef>
+      <memberdef kind="function" id="d0/de1/object_8c_1a59c0b97752844bba764727d1e2afece1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <definition>char* MUTABOR_CLASS_FUNCTION</definition>
+        <argsstring>(object, tostring)</argsstring>
+        <name>MUTABOR_CLASS_FUNCTION</name>
+        <param>
+          <type>object</type>
+        </param>
+        <param>
+          <type>tostring</type>
+        </param>
+        <briefdescription>
+<para>Formats Class content as string. </para>        </briefdescription>
+        <detaileddescription>
+<para>Intented exspecially for debugging. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/object.c" line="68" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/object.c" bodystart="68" bodyend="84"/>
+        <references refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" compoundref="de/d10/object_8h" startline="27">CHK_CLASS</references>
+        <references refid="de/d10/object_8h_1a5bcd31da3e6b613992ef458459a10bbe" compoundref="de/d10/object_8h" startline="35">MUT_VIRTTABLE</references>
+      </memberdef>
+      <memberdef kind="function" id="d0/de1/object_8c_1ac6f27aef514361ec3ac2b805fc55e6b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* mutabor_new</definition>
+        <argsstring>(void *_type)</argsstring>
+        <name>mutabor_new</name>
+        <param>
+          <type>void *</type>
+          <declname>_type</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new object in Heap space. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the table of virtual functions is not initialized yet, it will be initialized. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the virtual table of the desired class. It plays the role of class name. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/object.c" line="97" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/object.c" bodystart="97" bodyend="111"/>
+        <references refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" compoundref="de/d10/object_8h" startline="27">CHK_CLASS</references>
+        <references refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" compoundref="de/d10/object_8h" startline="33">MUT_CLASS</references>
+        <references refid="de/d10/object_8h_1a5bcd31da3e6b613992ef458459a10bbe" compoundref="de/d10/object_8h" startline="35">MUT_VIRTTABLE</references>
+      </memberdef>
+      <memberdef kind="function" id="d0/de1/object_8c_1ad3b722d501268b5e6614113662e57d46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor_delete</definition>
+        <argsstring>(void *_object)</argsstring>
+        <name>mutabor_delete</name>
+        <param>
+          <type>void *</type>
+          <declname>_object</declname>
+        </param>
+        <briefdescription>
+<para>Deletes an object from the heap. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>_object</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>object to be deleted. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/object.c" line="117" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/object.c" bodystart="117" bodyend="121"/>
+        <references refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" compoundref="de/d10/object_8h" startline="27">CHK_CLASS</references>
+        <references refid="d7/dc5/structmutabor__virttable__object_1a8ebba3c15af5b230d1947dae89a166a2" compoundref="de/d10/object_8h" startline="58">mutabor_virttable_object::destructor</references>
+        <references refid="d0/dff/structmutabor__class__object_1a7c8a4fe6e1de2458369f3bd583434faf" compoundref="de/d10/object_8h" startline="50">mutabor_class_object::virttable</references>
+        <referencedby refid="d5/d48/testchkobject_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4" compoundref="d5/d48/testchkobject_8c" startline="34" endline="97">main</referencedby>
+        <referencedby refid="d5/df1/idlist_8c_1ab87d2cf97a655cbbbf8b14a7a943c54f" compoundref="d5/df1/idlist_8c" startline="61" endline="77">MUTABOR_CLASS_FUNCTION</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d0/de1/object_8c_1afc2ddb50c7104d39b8e9d6c9d4bff3c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutabor_check_class</definition>
+        <argsstring>(void *_self, void *object)</argsstring>
+        <name>mutabor_check_class</name>
+        <param>
+          <type>void *</type>
+          <declname>_self</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>object</declname>
+        </param>
+        <briefdescription>
+<para>Checks, if a pointer is a subclass of a given class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>_self</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>object to be checked </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>object</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the virtual table of the desired class. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if not an object of the desired class </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if _self is an instance of <computeroutput>object</computeroutput> </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The function does not return if it encounters cyclic dependencies of objects (or what it takes as objects). In most cases of weired data structures it will (hopefully) fail with a null pointer dereference or a segmentation fault. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/object.c" line="134" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/object.c" bodystart="134" bodyend="139"/>
+        <references refid="de/d10/object_8h_1a1f973b95970e98bf6f69c21b27b90018" compoundref="de/d10/object_8h" startline="37">MUT_VIRTCALL</references>
+        <references refid="de/d10/object_8h_1afc2ddb50c7104d39b8e9d6c9d4bff3c6" compoundref="d0/de1/object_8c" startline="134" endline="139">mutabor_check_class</references>
+        <referencedby refid="d0/de1/object_8c_1afc2ddb50c7104d39b8e9d6c9d4bff3c6" compoundref="d0/de1/object_8c" startline="134" endline="139">mutabor_check_class</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Common definitions for object oriented programming and base class <computeroutput>#object</computeroutput>. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="rcs"><title>Id:</title><para><ref refid="d0/de1/object_8c" kindref="compound">object.c</ref>,v 1.2 2006/03/27 17:07:51 keinstein Exp </para></simplesect>
+<simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein@users.berlios.de">keinstein@users.berlios.de</ulink> </para></simplesect>
+<simplesect kind="date"><para></para></simplesect>
+<simplesect kind="rcs"><title>Date:</title><para>2006/03/27 17:07:51 </para></simplesect>
+<simplesect kind="version"><para></para></simplesect>
+<simplesect kind="rcs"><title>Revision:</title><para>1.2 </para></simplesect>
+</para><para><simplesect kind="rcs"><title>Log:</title><para><ref refid="d0/de1/object_8c" kindref="compound">object.c</ref>,v </para></simplesect>
+Revision 1.2 2006/03/27 17:07:51 keinstein added lib-asprintf.h</para><para>Revision 1.1 2005/11/03 14:58:11 keinstein initial release </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="20"><highlight class="preprocessor">#ifdef<sp/>HAVE_CONFIG_H</highlight></codeline>
+<codeline lineno="21"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;config.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Relevante<sp/>Variablen<sp/>für<sp/>diese<sp/>Datei:</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/><sp/><sp/>*<sp/>HAVE_MEMMOVE<sp/></highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/><sp/><sp/>*<sp/>malloc</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/><sp/><sp/>*<sp/>size_t</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="28"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAVE_STDLIB_H</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>include&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifdef<sp/>HAVE_STRING_H</highlight></codeline>
+<codeline lineno="33"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>include&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>HAVE_STRINGS_H</highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>include&lt;strings.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#<sp/><sp/>include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include&lt;assert.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;lib-asprintf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d10/object_8h" kindref="compound">mutabor/object.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dd/d07/object_8hh" kindref="compound">mutabor/object.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="df/d8e/bad__decl_8h" kindref="compound">mutabor/bad_decl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="d0/de1/object_8c_1a44d4609804f7dc554253feba5a40f8de" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">,constructor)<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self){</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><ref refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" kindref="member">CHK_CLASS</ref>(_self,</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(_self);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="d0/de1/object_8c_1a726623015854e956cb996c7471f7da75" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">,destructor)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self)<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><ref refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" kindref="member">CHK_CLASS</ref>(_self,</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(_self);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="d0/de1/object_8c_1aea59a8cbeaa74d1d31ddf3b715d299ac" refkind="member"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">,compare)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>one,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>two){</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><ref refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" kindref="member">CHK_CLASS</ref>(one,</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><ref refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" kindref="member">CHK_CLASS</ref>(two,</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(one<sp/>!=<sp/>two);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="d0/de1/object_8c_1a59c0b97752844bba764727d1e2afece1" refkind="member"><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="de/d10/object_8h_1a45c0adf625f480b9850f45fa892bcf7b" kindref="member">MUTABOR_CLASS_FUNCTION</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">,tostring)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self){</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><ref refid="de/d10/object_8h_1a5bcd31da3e6b613992ef458459a10bbe" kindref="member">MUT_VIRTTABLE</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">)<sp/>**<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">=_self;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>data;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><ref refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" kindref="member">CHK_CLASS</ref>(_self,</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(data)<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(asprintf(&amp;data,</highlight><highlight class="stringliteral">&quot;%s<sp/>(%p):<sp/>%p&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*self)-&gt;name,<sp/></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)*</highlight><highlight class="keyword">self</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_self)){</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>OLD_MUTABOR_CLASSES</highlight></codeline>
+<codeline lineno="87"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal">MUTABOR_INITIALIZE_CLASS(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="90"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="97" refid="d0/de1/object_8c_1ac6f27aef514361ec3ac2b805fc55e6b2" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="de/d10/object_8h_1ac6f27aef514361ec3ac2b805fc55e6b2" kindref="member">mutabor_new</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_type)<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><ref refid="de/d10/object_8h_1a5bcd31da3e6b613992ef458459a10bbe" kindref="member">MUT_VIRTTABLE</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">)<sp/>*<sp/>type=_type;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>OLD_MUTABOR_CLASSES</highlight></codeline>
+<codeline lineno="100"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>assert(type-&gt;init_virttable);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!type-&gt;parent)<sp/>type-&gt;init_virttable();</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="103"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><ref refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" kindref="member">MUT_CLASS</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">)<sp/>*<sp/>data;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><ref refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" kindref="member">CHK_CLASS</ref>(&amp;_type,</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>data=(</highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/dff/structmutabor__class__object" kindref="compound">mutabor_class_object</ref><sp/>*)<sp/>malloc(type-&gt;size);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(data)<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>data-&gt;virttable=_type;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>type-&gt;constructor(data);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(data);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="d0/de1/object_8c_1ad3b722d501268b5e6614113662e57d46" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="de/d10/object_8h_1ad3b722d501268b5e6614113662e57d46" kindref="member">mutabor_delete</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_object)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/dff/structmutabor__class__object" kindref="compound">mutabor_class_object</ref><sp/>*<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">=_object;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><ref refid="de/d10/object_8h_1a2029811b604bd2de63a2d593bc4433e0" kindref="member">CHK_CLASS</ref>(_object,</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/>free(object-&gt;<ref refid="d0/dff/structmutabor__class__object_1a7c8a4fe6e1de2458369f3bd583434faf" kindref="member">virttable</ref>-&gt;<ref refid="d7/dc5/structmutabor__virttable__object_1a8ebba3c15af5b230d1947dae89a166a2" kindref="member">destructor</ref>(_object));</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="d0/de1/object_8c_1afc2ddb50c7104d39b8e9d6c9d4bff3c6" refkind="member"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="de/d10/object_8h_1afc2ddb50c7104d39b8e9d6c9d4bff3c6" kindref="member">mutabor_check_class</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(_self<sp/>&amp;&amp;<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>*(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>**)</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>*(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">**)_self))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>**)_self<sp/>==<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(*(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>**)_self==*(<ref refid="de/d10/object_8h_1a1f973b95970e98bf6f69c21b27b90018" kindref="member">MUT_VIRTCALL</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">,_self,parent)))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d10/object_8h_1afc2ddb50c7104d39b8e9d6c9d4bff3c6" kindref="member">mutabor_check_class</ref>(<ref refid="de/d10/object_8h_1a1f973b95970e98bf6f69c21b27b90018" kindref="member">MUT_VIRTCALL</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">,_self,parent),</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/object.c"/>
+  </compounddef>
+</doxygen>

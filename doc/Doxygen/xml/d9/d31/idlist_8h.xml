@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d9/d31/idlist_8h" kind="file">
+    <compoundname>idlist.h</compoundname>
+    <includes refid="d7/da7/identifier_8h" local="yes">mutabor/identifier.h</includes>
+    <includedby refid="d5/de7/mutfile_8h" local="yes">src/includes/mutabor/mutfile.h</includedby>
+    <includedby refid="d5/df1/idlist_8c" local="yes">src/libmutabor/idlist.c</includedby>
+    <includedby refid="d0/dce/testidlist_8c" local="yes">src/libmutabor/tests/testidlist.c</includedby>
+    <incdepgraph>
+      <node id="14697">
+        <label>src/includes/mutabor/idlist.h</label>
+        <link refid="idlist.h"/>
+        <childnode refid="14698" relation="include">
+        </childnode>
+      </node>
+      <node id="14699">
+        <label>mutabor/object.h</label>
+        <link refid="de/d10/object_8h"/>
+      </node>
+      <node id="14698">
+        <label>mutabor/identifier.h</label>
+        <link refid="d7/da7/identifier_8h"/>
+        <childnode refid="14699" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="14705">
+        <label>src/libmutabor/mutfile.c</label>
+        <link refid="de/d09/mutfile_8c"/>
+      </node>
+      <node id="14700">
+        <label>src/includes/mutabor/idlist.h</label>
+        <link refid="idlist.h"/>
+        <childnode refid="14701" relation="include">
+        </childnode>
+        <childnode refid="14707" relation="include">
+        </childnode>
+        <childnode refid="14708" relation="include">
+        </childnode>
+      </node>
+      <node id="14707">
+        <label>src/libmutabor/idlist.c</label>
+        <link refid="d5/df1/idlist_8c"/>
+      </node>
+      <node id="14701">
+        <label>src/includes/mutabor/mutfile.h</label>
+        <link refid="d5/de7/mutfile_8h"/>
+        <childnode refid="14702" relation="include">
+        </childnode>
+        <childnode refid="14704" relation="include">
+        </childnode>
+        <childnode refid="14705" relation="include">
+        </childnode>
+        <childnode refid="14706" relation="include">
+        </childnode>
+      </node>
+      <node id="14706">
+        <label>src/libmutabor/tests/testmutfile.c</label>
+        <link refid="d8/d9b/testmutfile_8c"/>
+      </node>
+      <node id="14704">
+        <label>src/libmutabor/mut.c</label>
+        <link refid="d3/da3/mut_8c"/>
+      </node>
+      <node id="14703">
+        <label>src/libmutabor/cmutlex.c</label>
+        <link refid="d6/d05/cmutlex_8c"/>
+      </node>
+      <node id="14702">
+        <label>src/libmutabor/mutlex.c</label>
+        <link refid="d5/d4b/mutlex_8c"/>
+        <childnode refid="14703" relation="include">
+        </childnode>
+      </node>
+      <node id="14708">
+        <label>src/libmutabor/tests/testidlist.c</label>
+        <link refid="d0/dce/testidlist_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="df/d9e/structmutabor__class__idlist" prot="public">mutabor_class_idlist</innerclass>
+    <innerclass refid="dd/d13/structmutabor__virttable__idlist" prot="public">mutabor_virttable_idlist</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="d9/d31/idlist_8h_1a403b06ada6a4efba4bbacfe60df08749" prot="public" static="no" mutable="no">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> void *</type>
+        <definition>const void * mutabor_object_idlist</definition>
+        <argsstring></argsstring>
+        <name>mutabor_object_idlist</name>
+        <initializer>=&amp;<ref refid="dc/ddf/idlist_8hh_1a377c6b73f71d7cb9fae33856a11fa2d8" kindref="member">_mutabor_virttable_idlist</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/idlist.h" line="47" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/idlist.hh" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d9/d31/idlist_8h_1a0b7e9362fd16346cb300f42618561769" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor_cls_idlist_sortbyname</definition>
+        <argsstring>(void *_self, int force_bubble)</argsstring>
+        <name>mutabor_cls_idlist_sortbyname</name>
+        <param>
+          <type>void *</type>
+          <declname>_self</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>force_bubble</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/idlist.h" line="49" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d31/idlist_8h_1abcec83fddd89b597d52afb5a362847b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor_cls_idlist_sortbynumber</definition>
+        <argsstring>(void *_self, int force_bubble)</argsstring>
+        <name>mutabor_cls_idlist_sortbynumber</name>
+        <param>
+          <type>void *</type>
+          <declname>_self</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>force_bubble</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/idlist.h" line="50" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>List of identifiers. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="rcs"><title>Id:</title><para>idlist.h,v 1.5 2008/10/10 08:45:28 keinstein Exp </para></simplesect>
+<simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein@users.berlios.de">keinstein@users.berlios.de</ulink> </para></simplesect>
+<simplesect kind="date"><para></para></simplesect>
+<simplesect kind="rcs"><title>Date:</title><para>2008/10/10 08:45:28 </para></simplesect>
+<simplesect kind="version"><para></para></simplesect>
+<simplesect kind="rcs"><title>Revision:</title><para>1.5 </para></simplesect>
+</para><para><simplesect kind="rcs"><title>Log:</title><para>idlist.h,v </para></simplesect>
+Revision 1.5 2008/10/10 08:45:28 keinstein myContextHelpButton is still not needed</para><para>Revision 1.2 2005/11/10 16:16:59 keinstein working distcheck</para><para>Revision 1.1 2005/11/03 13:53:39 keinstein Identifier list class </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="22"><highlight class="preprocessor">#ifndef<sp/>__MUTABOR_IDLIST_H__</highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>__MUTABOR_IDLIST_H__</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d7/da7/identifier_8h" kindref="compound">mutabor/identifier.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="df/d9e/structmutabor__class__idlist" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/d9e/structmutabor__class__idlist" kindref="compound">mutabor_class_idlist</ref><sp/>{</highlight></codeline>
+<codeline lineno="28" refid="df/d9e/structmutabor__class__idlist_1a5ecc1d1c8e2da9fe08f5a92678811fb2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/dff/structmutabor__class__object" kindref="compound">mutabor_class_object</ref><sp/><ref refid="df/d9e/structmutabor__class__idlist_1a5ecc1d1c8e2da9fe08f5a92678811fb2" kindref="member">_</ref>;<sp/></highlight></codeline>
+<codeline lineno="29" refid="df/d9e/structmutabor__class__idlist_1aae200eb091a12d478111b69bd998f926" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="df/d9e/structmutabor__class__idlist_1aae200eb091a12d478111b69bd998f926" kindref="member">number</ref>;<sp/></highlight></codeline>
+<codeline lineno="30" refid="df/d9e/structmutabor__class__idlist_1ac0cf64e549fbd26bff3175947a8a192f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="df/d9e/structmutabor__class__idlist_1ac0cf64e549fbd26bff3175947a8a192f" kindref="member">arraysize</ref>;<sp/></highlight></codeline>
+<codeline lineno="31" refid="df/d9e/structmutabor__class__idlist_1a38f089f9c013d3a0b76f8ecce6ffe415" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d9e/structmutabor__class__idlist_1a38f089f9c013d3a0b76f8ecce6ffe415" kindref="member">status</ref>;<sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="df/d9e/structmutabor__class__idlist_1a7ee8bdd8ffa2bd3d3b7507c643744ab5" kindref="member">MUT_CLASS</ref>(identifier)<sp/>**<sp/>array;<sp/></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="dd/d13/structmutabor__virttable__idlist" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dd/d13/structmutabor__virttable__idlist" kindref="compound">mutabor_virttable_idlist</ref><sp/>{</highlight></codeline>
+<codeline lineno="36" refid="dd/d13/structmutabor__virttable__idlist_1a38a5b7b9157c2132a80175cf63c43ffa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="dd/d13/structmutabor__virttable__idlist_1a38a5b7b9157c2132a80175cf63c43ffa" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="37" refid="dd/d13/structmutabor__virttable__idlist_1a070475f927ef4cd6ef46a95f36103a44" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dd/d13/structmutabor__virttable__idlist_1a070475f927ef4cd6ef46a95f36103a44" kindref="member">name</ref>;</highlight></codeline>
+<codeline lineno="38" refid="dd/d13/structmutabor__virttable__idlist_1a6b3f8d9561f3b83ee781918ae35f0d37" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>**<sp/><ref refid="dd/d13/structmutabor__virttable__idlist_1a6b3f8d9561f3b83ee781918ae35f0d37" kindref="member">parent</ref>;</highlight></codeline>
+<codeline lineno="39" refid="dd/d13/structmutabor__virttable__idlist_1ac9e7417f10b51a48b02074797a1e8af0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>(*constructor)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self);<sp/></highlight></codeline>
+<codeline lineno="40" refid="dd/d13/structmutabor__virttable__idlist_1a6227e7f8e124a515002e7f584b45541d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>(*destructor)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self);<sp/></highlight></codeline>
+<codeline lineno="41" refid="dd/d13/structmutabor__virttable__idlist_1a8d150b341b7ff9d8e96f6f74608d478e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>(*<ref refid="dd/d13/structmutabor__virttable__idlist_1a8d150b341b7ff9d8e96f6f74608d478e" kindref="member">compare</ref>)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>one,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>two);<sp/></highlight></codeline>
+<codeline lineno="42" refid="dd/d13/structmutabor__virttable__idlist_1a2b5c9cf9052f1bb11929f3323e048d66" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>(*tostring)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self);<sp/></highlight></codeline>
+<codeline lineno="43" refid="dd/d13/structmutabor__virttable__idlist_1a26b5d4182d6f943ec4df8803aacb878e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>(*<ref refid="dd/d13/structmutabor__virttable__idlist_1a26b5d4182d6f943ec4df8803aacb878e" kindref="member">insert</ref>)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>identifier);<sp/></highlight></codeline>
+<codeline lineno="44" refid="dd/d13/structmutabor__virttable__idlist_1ab05002ed5444b83a13d4686635460e93" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dd/d13/structmutabor__virttable__idlist_1a2f50db297e65ce5da110ad0bb564cbb1" kindref="member">MUT_CLASS</ref>(identifier)<sp/>*<sp/>(*find)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dd/d13/structmutabor__virttable__idlist_1ab05002ed5444b83a13d4686635460e93" kindref="member">name</ref>);<sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d31/idlist_8h_1a403b06ada6a4efba4bbacfe60df08749" kindref="member">mutabor_object_idlist</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d31/idlist_8h_1a0b7e9362fd16346cb300f42618561769" kindref="member">mutabor_cls_idlist_sortbyname</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>force_bubble);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d31/idlist_8h_1abcec83fddd89b597d52afb5a362847b9" kindref="member">mutabor_cls_idlist_sortbynumber</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>force_bubble);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__MUTABOR_IDLIST_H__<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/idlist.h"/>
+  </compounddef>
+</doxygen>

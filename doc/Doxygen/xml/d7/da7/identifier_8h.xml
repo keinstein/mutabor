@@ -1,0 +1,566 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d7/da7/identifier_8h" kind="file">
+    <compoundname>identifier.h</compoundname>
+    <includes refid="de/d10/object_8h" local="yes">mutabor/object.h</includes>
+    <includedby refid="d9/d31/idlist_8h" local="yes">src/includes/mutabor/idlist.h</includedby>
+    <includedby refid="d2/d8a/interval_8h" local="yes">src/includes/mutabor/interval.h</includedby>
+    <includedby refid="d8/d84/identifier_8c" local="yes">src/libmutabor/identifier.c</includedby>
+    <includedby refid="dd/dff/testidentifier_8c" local="yes">src/libmutabor/tests/testidentifier.c</includedby>
+    <incdepgraph>
+      <node id="14642">
+        <label>mutabor/object.h</label>
+        <link refid="de/d10/object_8h"/>
+      </node>
+      <node id="14641">
+        <label>src/includes/mutabor/identifier.h</label>
+        <link refid="identifier.h"/>
+        <childnode refid="14642" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="14659">
+        <label>src/libmutabor/anweisung.c</label>
+        <link refid="d5/dfe/anweisung_8c"/>
+      </node>
+      <node id="14649">
+        <label>src/libmutabor/mutfile.c</label>
+        <link refid="de/d09/mutfile_8c"/>
+      </node>
+      <node id="14689">
+        <label>src/libmutabor/tonsystem.c</label>
+        <link refid="da/dd2/tonsystem_8c"/>
+      </node>
+      <node id="14671">
+        <label>src/libmutabor/interpreter.c</label>
+        <link refid="dc/d30/interpreter_8c"/>
+      </node>
+      <node id="14672">
+        <label>src/libmutabor/harmonie.c</label>
+        <link refid="dd/d35/harmonie_8c"/>
+      </node>
+      <node id="14664">
+        <label>src/includes/mutabor/case_liste.h</label>
+        <link refid="db/d99/case__liste_8h"/>
+        <childnode refid="14665" relation="include">
+        </childnode>
+      </node>
+      <node id="14675">
+        <label>src/libmutabor/intervalInv.c</label>
+        <link refid="d9/d49/intervalInv_8c"/>
+      </node>
+      <node id="14653">
+        <label>src/includes/mutabor/interval.h</label>
+        <link refid="d2/d8a/interval_8h"/>
+        <childnode refid="14654" relation="include">
+        </childnode>
+        <childnode refid="14673" relation="include">
+        </childnode>
+        <childnode refid="14678" relation="include">
+        </childnode>
+        <childnode refid="14681" relation="include">
+        </childnode>
+        <childnode refid="14687" relation="include">
+        </childnode>
+        <childnode refid="14688" relation="include">
+        </childnode>
+        <childnode refid="14691" relation="include">
+        </childnode>
+        <childnode refid="14649" relation="include">
+        </childnode>
+        <childnode refid="14690" relation="include">
+        </childnode>
+        <childnode refid="14689" relation="include">
+        </childnode>
+      </node>
+      <node id="14644">
+        <label>src/includes/mutabor/idlist.h</label>
+        <link refid="d9/d31/idlist_8h"/>
+        <childnode refid="14645" relation="include">
+        </childnode>
+        <childnode refid="14651" relation="include">
+        </childnode>
+        <childnode refid="14652" relation="include">
+        </childnode>
+      </node>
+      <node id="14686">
+        <label>src/libmutabor/intervalSum.c</label>
+        <link refid="d5/da9/intervalSum_8c"/>
+      </node>
+      <node id="14658">
+        <label>src/gmut/gmutdos.cpp</label>
+        <link refid="dd/d15/gmutdos_8cpp"/>
+      </node>
+      <node id="14661">
+        <label>src/libmutabor/logik.c</label>
+        <link refid="d7/d6e/logik_8c"/>
+      </node>
+      <node id="14691">
+        <label>src/libmutabor/interval.c</label>
+        <link refid="d5/d28/interval_8c"/>
+      </node>
+      <node id="14680">
+        <label>src/libmutabor/tests/testinterval.c</label>
+        <link refid="db/d57/testinterval_8c"/>
+      </node>
+      <node id="14678">
+        <label>src/includes/mutabor/intervalStretch.h</label>
+        <link refid="de/d0d/intervalStretch_8h"/>
+        <childnode refid="14679" relation="include">
+        </childnode>
+        <childnode refid="14648" relation="include">
+        </childnode>
+        <childnode refid="14680" relation="include">
+        </childnode>
+      </node>
+      <node id="14651">
+        <label>src/libmutabor/idlist.c</label>
+        <link refid="d5/df1/idlist_8c"/>
+      </node>
+      <node id="14663">
+        <label>src/includes/mutabor/aktion.h</label>
+        <link refid="dd/de4/aktion_8h"/>
+        <childnode refid="14656" relation="include">
+        </childnode>
+        <childnode refid="14664" relation="include">
+        </childnode>
+        <childnode refid="14662" relation="include">
+        </childnode>
+        <childnode refid="14661" relation="include">
+        </childnode>
+      </node>
+      <node id="14676">
+        <label>src/libmutabor/intervalPlaceholder.c</label>
+        <link refid="dc/d22/intervalPlaceholder_8c"/>
+      </node>
+      <node id="14665">
+        <label>src/includes/mutabor/umstimmung.h</label>
+        <link refid="da/d7f/umstimmung_8h"/>
+        <childnode refid="14663" relation="include">
+        </childnode>
+        <childnode refid="14657" relation="include">
+        </childnode>
+        <childnode refid="14666" relation="include">
+        </childnode>
+        <childnode refid="14667" relation="include">
+        </childnode>
+        <childnode refid="14661" relation="include">
+        </childnode>
+        <childnode refid="14668" relation="include">
+        </childnode>
+        <childnode refid="14648" relation="include">
+        </childnode>
+        <childnode refid="14669" relation="include">
+        </childnode>
+        <childnode refid="14670" relation="include">
+        </childnode>
+      </node>
+      <node id="14692">
+        <label>src/libmutabor/identifier.c</label>
+        <link refid="d8/d84/identifier_8c"/>
+      </node>
+      <node id="14643">
+        <label>src/includes/mutabor/identifier.h</label>
+        <link refid="identifier.h"/>
+        <childnode refid="14644" relation="include">
+        </childnode>
+        <childnode refid="14653" relation="include">
+        </childnode>
+        <childnode refid="14692" relation="include">
+        </childnode>
+        <childnode refid="14693" relation="include">
+        </childnode>
+      </node>
+      <node id="14688">
+        <label>src/includes/mutabor/tonsystem.h</label>
+        <link refid="d8/d39/tonsystem_8h"/>
+        <childnode refid="14663" relation="include">
+        </childnode>
+        <childnode refid="14657" relation="include">
+        </childnode>
+        <childnode refid="14666" relation="include">
+        </childnode>
+        <childnode refid="14661" relation="include">
+        </childnode>
+        <childnode refid="14648" relation="include">
+        </childnode>
+        <childnode refid="14669" relation="include">
+        </childnode>
+        <childnode refid="14689" relation="include">
+        </childnode>
+        <childnode refid="14670" relation="include">
+        </childnode>
+      </node>
+      <node id="14673">
+        <label>src/includes/mutabor/intervalPlaceholder.h</label>
+        <link refid="d7/d66/intervalPlaceholder_8h"/>
+        <childnode refid="14674" relation="include">
+        </childnode>
+        <childnode refid="14676" relation="include">
+        </childnode>
+        <childnode refid="14648" relation="include">
+        </childnode>
+        <childnode refid="14649" relation="include">
+        </childnode>
+        <childnode refid="14677" relation="include">
+        </childnode>
+      </node>
+      <node id="14681">
+        <label>src/includes/mutabor/intervalSum.h</label>
+        <link refid="db/d51/intervalSum_8h"/>
+        <childnode refid="14682" relation="include">
+        </childnode>
+        <childnode refid="14686" relation="include">
+        </childnode>
+      </node>
+      <node id="14668">
+        <label>src/libmutabor/midicalc.c</label>
+        <link refid="d8/dff/midicalc_8c"/>
+      </node>
+      <node id="14645">
+        <label>src/includes/mutabor/mutfile.h</label>
+        <link refid="d5/de7/mutfile_8h"/>
+        <childnode refid="14646" relation="include">
+        </childnode>
+        <childnode refid="14648" relation="include">
+        </childnode>
+        <childnode refid="14649" relation="include">
+        </childnode>
+        <childnode refid="14650" relation="include">
+        </childnode>
+      </node>
+      <node id="14682">
+        <label>src/includes/mutabor/intervalDiff.h</label>
+        <link refid="d4/d5e/intervalDiff_8h"/>
+        <childnode refid="14683" relation="include">
+        </childnode>
+        <childnode refid="14648" relation="include">
+        </childnode>
+        <childnode refid="14684" relation="include">
+        </childnode>
+        <childnode refid="14652" relation="include">
+        </childnode>
+        <childnode refid="14680" relation="include">
+        </childnode>
+        <childnode refid="14685" relation="include">
+        </childnode>
+      </node>
+      <node id="14655">
+        <label>src/includes/mutabor/ausloeser.h</label>
+        <link refid="d1/dfa/ausloeser_8h"/>
+        <childnode refid="14656" relation="include">
+        </childnode>
+        <childnode refid="14662" relation="include">
+        </childnode>
+        <childnode refid="14660" relation="include">
+        </childnode>
+        <childnode refid="14671" relation="include">
+        </childnode>
+      </node>
+      <node id="14687">
+        <label>src/includes/mutabor/ton.h</label>
+        <link refid="d4/d12/ton_8h"/>
+        <childnode refid="14688" relation="include">
+        </childnode>
+        <childnode refid="14665" relation="include">
+        </childnode>
+        <childnode refid="14690" relation="include">
+        </childnode>
+      </node>
+      <node id="14690">
+        <label>src/libmutabor/ton.c</label>
+        <link refid="df/de8/ton_8c"/>
+      </node>
+      <node id="14670">
+        <label>src/libmutabor/umstimmung.c</label>
+        <link refid="d2/d4a/umstimmung_8c"/>
+      </node>
+      <node id="14666">
+        <label>src/libmutabor/aktion.c</label>
+        <link refid="d8/dc3/aktion_8c"/>
+      </node>
+      <node id="14684">
+        <label>src/libmutabor/tests/testchkobject.c</label>
+        <link refid="d5/d48/testchkobject_8c"/>
+      </node>
+      <node id="14693">
+        <label>src/libmutabor/tests/testidentifier.c</label>
+        <link refid="dd/dff/testidentifier_8c"/>
+      </node>
+      <node id="14660">
+        <label>src/libmutabor/ausloeser.c</label>
+        <link refid="d6/dcc/ausloeser_8c"/>
+      </node>
+      <node id="14650">
+        <label>src/libmutabor/tests/testmutfile.c</label>
+        <link refid="d8/d9b/testmutfile_8c"/>
+      </node>
+      <node id="14667">
+        <label>src/libmutabor/case_liste.c</label>
+        <link refid="dc/d54/case__liste_8c"/>
+      </node>
+      <node id="14657">
+        <label>src/includes/mutabor/global.h</label>
+        <link refid="d2/d49/global_8h"/>
+        <childnode refid="14658" relation="include">
+        </childnode>
+      </node>
+      <node id="14648">
+        <label>src/libmutabor/mut.c</label>
+        <link refid="d3/da3/mut_8c"/>
+      </node>
+      <node id="14679">
+        <label>src/libmutabor/intervalStretch.c</label>
+        <link refid="d4/dc6/intervalStretch_8c"/>
+      </node>
+      <node id="14654">
+        <label>src/includes/mutabor/harmonie.h</label>
+        <link refid="d1/d63/harmonie_8h"/>
+        <childnode refid="14655" relation="include">
+        </childnode>
+        <childnode refid="14657" relation="include">
+        </childnode>
+        <childnode refid="14660" relation="include">
+        </childnode>
+        <childnode refid="14672" relation="include">
+        </childnode>
+        <childnode refid="14648" relation="include">
+        </childnode>
+        <childnode refid="14669" relation="include">
+        </childnode>
+      </node>
+      <node id="14669">
+        <label>src/libmutabor/parser.c</label>
+        <link refid="d2/d72/parser_8c"/>
+      </node>
+      <node id="14662">
+        <label>src/includes/mutabor/logik.h</label>
+        <link refid="d1/dff/logik_8h"/>
+        <childnode refid="14663" relation="include">
+        </childnode>
+        <childnode refid="14657" relation="include">
+        </childnode>
+        <childnode refid="14666" relation="include">
+        </childnode>
+        <childnode refid="14660" relation="include">
+        </childnode>
+        <childnode refid="14671" relation="include">
+        </childnode>
+        <childnode refid="14661" relation="include">
+        </childnode>
+        <childnode refid="14648" relation="include">
+        </childnode>
+        <childnode refid="14669" relation="include">
+        </childnode>
+        <childnode refid="14670" relation="include">
+        </childnode>
+      </node>
+      <node id="14647">
+        <label>src/libmutabor/cmutlex.c</label>
+        <link refid="d6/d05/cmutlex_8c"/>
+      </node>
+      <node id="14674">
+        <label>src/includes/mutabor/intervalInv.h</label>
+        <link refid="dd/da7/intervalInv_8h"/>
+        <childnode refid="14675" relation="include">
+        </childnode>
+        <childnode refid="14648" relation="include">
+        </childnode>
+      </node>
+      <node id="14646">
+        <label>src/libmutabor/mutlex.c</label>
+        <link refid="d5/d4b/mutlex_8c"/>
+        <childnode refid="14647" relation="include">
+        </childnode>
+      </node>
+      <node id="14685">
+        <label>src/libmutabor/tests/testptrlist.c</label>
+        <link refid="dc/dd2/testptrlist_8c"/>
+      </node>
+      <node id="14677">
+        <label>src/libmutabor/tests/testplaceholder.c</label>
+        <link refid="dd/dd4/testplaceholder_8c"/>
+      </node>
+      <node id="14652">
+        <label>src/libmutabor/tests/testidlist.c</label>
+        <link refid="d0/dce/testidlist_8c"/>
+      </node>
+      <node id="14683">
+        <label>src/libmutabor/intervalDiff.c</label>
+        <link refid="d4/d37/intervalDiff_8c"/>
+      </node>
+      <node id="14656">
+        <label>src/includes/mutabor/anweisung.h</label>
+        <link refid="d0/db7/anweisung_8h"/>
+        <childnode refid="14655" relation="include">
+        </childnode>
+        <childnode refid="14657" relation="include">
+        </childnode>
+        <childnode refid="14659" relation="include">
+        </childnode>
+        <childnode refid="14660" relation="include">
+        </childnode>
+        <childnode refid="14661" relation="include">
+        </childnode>
+        <childnode refid="14648" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d5/d81/structmutabor__class__identifier" prot="public">mutabor_class_identifier</innerclass>
+    <innerclass refid="d9/d27/structmutabor__virttable__identifier" prot="public">mutabor_virttable_identifier</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="d7/da7/identifier_8h_1a911b6ed2d3e4a053233abbdb46a377f7" prot="public" static="no" mutable="no">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> void *</type>
+        <definition>const void * mutabor_object_identifier</definition>
+        <argsstring></argsstring>
+        <name>mutabor_object_identifier</name>
+        <initializer>=&amp;<ref refid="d3/d55/identifier_8hh_1ad229d9e026b61a8b8066a4590b668111" kindref="member">_mutabor_virttable_identifier</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/identifier.h" line="60" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/identifier.hh" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d7/da7/identifier_8h_1a2ffab42c8696fc4c7c27bdf350caa0d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MUT_CLASS</definition>
+        <argsstring>(ptrlist)</argsstring>
+        <name>MUT_CLASS</name>
+        <param>
+          <type>ptrlist</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/identifier.h" line="41" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/da7/identifier_8h_1ad79e903efa7ef3a4966308e5bcd5b2e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor_cls_identifier_copy_name</definition>
+        <argsstring>(void *_self, char *name)</argsstring>
+        <name>mutabor_cls_identifier_copy_name</name>
+        <param>
+          <type>void *</type>
+          <declname>_self</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/identifier.h" line="62" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/da7/identifier_8h_1ad16d2cc2845ccc602df31c95a8c8b910" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor_cls_identifier_set_name</definition>
+        <argsstring>(void *_self, char *name)</argsstring>
+        <name>mutabor_cls_identifier_set_name</name>
+        <param>
+          <type>void *</type>
+          <declname>_self</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/identifier.h" line="63" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/da7/identifier_8h_1a4cd6d5ef8bc7afa286bd2fcfe2c239fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <definition>char* mutabor_cls_identifier_get_name</definition>
+        <argsstring>(void *_self)</argsstring>
+        <name>mutabor_cls_identifier_get_name</name>
+        <param>
+          <type>void *</type>
+          <declname>_self</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/identifier.h" line="64" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Identifier class. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="rcs"><title>Id:</title><para>identifier.h,v 1.5 2008/10/10 08:45:28 keinstein Exp </para></simplesect>
+<simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein@users.berlios.de">keinstein@users.berlios.de</ulink> </para></simplesect>
+<simplesect kind="date"><para></para></simplesect>
+<simplesect kind="rcs"><title>Date:</title><para>2008/10/10 08:45:28 </para></simplesect>
+<simplesect kind="version"><para></para></simplesect>
+<simplesect kind="rcs"><title>Revision:</title><para>1.5 </para></simplesect>
+</para><para><simplesect kind="rcs"><title>Log:</title><para>identifier.h,v </para></simplesect>
+Revision 1.5 2008/10/10 08:45:28 keinstein myContextHelpButton is still not needed</para><para>Revision 1.2 2005/11/10 16:16:59 keinstein working distcheck</para><para>Revision 1.1 2005/11/03 13:52:56 keinstein Identifier Class file </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="22"><highlight class="preprocessor">#ifndef<sp/>__MUTABOR_IDENTIFIER_H__</highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>__MUTABOR_IDENTIFIER_H__</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d10/object_8h" kindref="compound">mutabor/object.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>OLD_MUTABOR_CLASSES</highlight></codeline>
+<codeline lineno="28"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MUTABOR_CLASS_DEFINITIONS_identifier(class)<sp/>\</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"><sp/><sp/>PARENT(class,object)\</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"><sp/><sp/>FIELD(class,char<sp/>*,name)\</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"><sp/><sp/>OVERRIDE(class,<sp/>void<sp/>*,<sp/>constructor,<sp/>void<sp/>*<sp/>_self)<sp/>\</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"><sp/><sp/>OVERRIDE(class,<sp/>void<sp/>*,<sp/>destructor,<sp/>void<sp/>*<sp/>_self)<sp/>\</highlight></codeline>
+<codeline lineno="33"><highlight class="preprocessor"><sp/><sp/>OVERRIDE(class,<sp/>int,<sp/>compare,<sp/>void<sp/>*<sp/>one,<sp/>void<sp/>*<sp/>two)<sp/>\</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"><sp/><sp/>OVERRIDE(class,<sp/>char<sp/>*,<sp/>tostring,void<sp/>*<sp/>_self)\</highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"><sp/><sp/>VIRTUAL(class,void,precalculate,void<sp/>*<sp/>_self)\</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"><sp/><sp/>VIRTUAL(class,void,link_childs,void<sp/>*<sp/>_self)</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">MUTABOR_DECLARE_CLASS(identifier);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><ref refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" kindref="member">MUT_CLASS</ref>(ptrlist);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="d5/d81/structmutabor__class__identifier" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d5/d81/structmutabor__class__identifier" kindref="compound">mutabor_class_identifier</ref><sp/>{</highlight></codeline>
+<codeline lineno="44" refid="d5/d81/structmutabor__class__identifier_1a616acc29db57b789f73eaf3713e7296a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/dff/structmutabor__class__object" kindref="compound">mutabor_class_object</ref><sp/><ref refid="d5/d81/structmutabor__class__identifier_1a616acc29db57b789f73eaf3713e7296a" kindref="member">_</ref>;<sp/></highlight></codeline>
+<codeline lineno="45" refid="d5/d81/structmutabor__class__identifier_1ad42e370ba4847e4b6b1f41f88b13d9bc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d5/d81/structmutabor__class__identifier_1ad42e370ba4847e4b6b1f41f88b13d9bc" kindref="member">name</ref>;<sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="d9/d27/structmutabor__virttable__identifier" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d9/d27/structmutabor__virttable__identifier" kindref="compound">mutabor_virttable_identifier</ref><sp/>{</highlight></codeline>
+<codeline lineno="49" refid="d9/d27/structmutabor__virttable__identifier_1a97ab3743987c9e1796bf51238a4c8dbe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="d9/d27/structmutabor__virttable__identifier_1a97ab3743987c9e1796bf51238a4c8dbe" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="50" refid="d9/d27/structmutabor__virttable__identifier_1ac6eb927d769794c5e62bb0ab018ec9d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d27/structmutabor__virttable__identifier_1ac6eb927d769794c5e62bb0ab018ec9d3" kindref="member">name</ref>;</highlight></codeline>
+<codeline lineno="51" refid="d9/d27/structmutabor__virttable__identifier_1a6d9c6550cc372c4c633d2a3a356d9843" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>**<sp/><ref refid="d9/d27/structmutabor__virttable__identifier_1a6d9c6550cc372c4c633d2a3a356d9843" kindref="member">parent</ref>;</highlight></codeline>
+<codeline lineno="52" refid="d9/d27/structmutabor__virttable__identifier_1a28903cd77d181314645d8729d36844c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>(*constructor)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self);<sp/></highlight></codeline>
+<codeline lineno="53" refid="d9/d27/structmutabor__virttable__identifier_1a89d4abaebac9f7d9dfc9595a65d09537" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>(*destructor)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self);<sp/></highlight></codeline>
+<codeline lineno="54" refid="d9/d27/structmutabor__virttable__identifier_1a3868e8fa1a960b392a32fdcdb4b31565" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>(*<ref refid="d9/d27/structmutabor__virttable__identifier_1a3868e8fa1a960b392a32fdcdb4b31565" kindref="member">compare</ref>)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>one,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>two);<sp/></highlight></codeline>
+<codeline lineno="55" refid="d9/d27/structmutabor__virttable__identifier_1a5bd61b0df79e6a114ffe7b92ee45db86" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>(*tostring)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self);<sp/></highlight></codeline>
+<codeline lineno="56" refid="d9/d27/structmutabor__virttable__identifier_1a3c5eaf82f3e75aa1be8576f4c3127513" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>(*check_cycle)(</highlight><highlight class="keyword">register</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self,<sp/></highlight><highlight class="keyword">register</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_identifier,<sp/><sp/></highlight><highlight class="keyword">register</highlight><highlight class="normal"><sp/><ref refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" kindref="member">MUT_CLASS</ref>(ptrlist)<sp/>*<sp/>list);<sp/></highlight></codeline>
+<codeline lineno="57" refid="d9/d27/structmutabor__virttable__identifier_1aeae92ec23816393abf8b6f987bed8ee4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>(*<ref refid="d9/d27/structmutabor__virttable__identifier_1aeae92ec23816393abf8b6f987bed8ee4" kindref="member">precalculate</ref>)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self);<sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d7/da7/identifier_8h_1a911b6ed2d3e4a053233abbdb46a377f7" kindref="member">mutabor_object_identifier</ref>;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d7/da7/identifier_8h_1ad79e903efa7ef3a4966308e5bcd5b2e3" kindref="member">mutabor_cls_identifier_copy_name</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self,</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d7/da7/identifier_8h_1ad16d2cc2845ccc602df31c95a8c8b910" kindref="member">mutabor_cls_identifier_set_name</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self,</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d7/da7/identifier_8h_1a4cd6d5ef8bc7afa286bd2fcfe2c239fd" kindref="member">mutabor_cls_identifier_get_name</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__MUTABOR_IDENTIFIER_H__<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/identifier.h"/>
+  </compounddef>
+</doxygen>

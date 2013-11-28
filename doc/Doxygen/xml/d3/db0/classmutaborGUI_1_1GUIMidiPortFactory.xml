@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory" kind="class" prot="public">
+    <compoundname>mutaborGUI::GUIMidiPortFactory</compoundname>
+    <basecompoundref refid="d2/d9a/classmutaborGUI_1_1GUIDeviceFactory" prot="public" virt="non-virtual">mutaborGUI::GUIDeviceFactory</basecompoundref>
+    <includes refid="d6/dfa/GUIRoute_8h" local="no">GUIRoute.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory_1a65c9a3c7c254fcb82463d071c4d2577d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutaborGUI::GUIMidiPortFactory::GUIMidiPortFactory</definition>
+        <argsstring>(size_t id=mutabor::DTMidiPort)</argsstring>
+        <name>GUIMidiPortFactory</name>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+          <defval><ref refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa6fc00580b26fa48d6ac5d51fe78129e0" kindref="member">mutabor::DTMidiPort</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="686" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" bodystart="686" bodyend="687"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory_1a4813f4a566d84c66430e7a8a734cb376" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>mutaborGUI::GUIMidiPortFactory::~GUIMidiPortFactory</definition>
+        <argsstring>()</argsstring>
+        <name>~GUIMidiPortFactory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="688" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.cpp" bodystart="739" bodyend="739"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory_1a0db32f86fd806551cff2fb2f5ff4d1d2" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>virtual size_t mutaborGUI::GUIMidiPortFactory::GetType</definition>
+        <argsstring>() const </argsstring>
+        <name>GetType</name>
+        <reimplements refid="d5/dee/group__route_1gac4c814a10fc4e723a9bae9ea6d2b3de5">GetType</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="691" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" bodystart="691" bodyend="694"/>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa6fc00580b26fa48d6ac5d51fe78129e0" compoundref="de/d05/Device_8h" startline="89">mutabor::DTMidiPort</references>
+      </memberdef>
+      <memberdef kind="function" id="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory_1ae97c479a308628225eea010f5fdd6a8f" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="d2/d2f/classmutabor_1_1OutputDeviceClass" kindref="compound">mutabor::OutputDeviceClass</ref> *</type>
+        <definition>mutabor::OutputDeviceClass * mutaborGUI::GUIMidiPortFactory::DoCreateOutput</definition>
+        <argsstring>(const mutStringRef name, int id=-1) const </argsstring>
+        <name>DoCreateOutput</name>
+        <reimplements refid="d5/dee/group__route_1ga61576f6d9de13465e22e95d8812e4dbb">DoCreateOutput</reimplements>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="696" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.cpp" bodystart="742" bodyend="756"/>
+        <references refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1a8e0ac62ae46e256b171109f9d7cc4a4d" compoundref="d6/dfa/GUIRoute_8h" startline="438" endline="440">mutaborGUI::GUIfiedOutputDevice&lt; T &gt;::GetDevice</references>
+        <references refid="d5/dee/group__route_1ga219acefe8692f1b3e00181f97c9c866f" compoundref="de/d05/Device_8h" startline="487" endline="487">mutabor::Device::IsOpen</references>
+        <references refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" compoundref="dc/df3/MutFrame_8cpp" startline="119">mutaborGUI::LogicOn</references>
+        <references refid="d5/dee/group__route_1ga1e7ff931fc0fbd026f00d07b11924c7d" compoundref="de/d05/Device_8h" startline="755" endline="758">mutabor::OutputDeviceClass::Open</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+      </memberdef>
+      <memberdef kind="function" id="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory_1ac21944e7a1352632374ef38dcc9299be" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="d4/d18/classmutabor_1_1InputDeviceClass" kindref="compound">mutabor::InputDeviceClass</ref> *</type>
+        <definition>mutabor::InputDeviceClass * mutaborGUI::GUIMidiPortFactory::DoCreateInput</definition>
+        <argsstring>(const mutStringRef name, mutabor::MutaborModeType mode, int id=-1) const </argsstring>
+        <name>DoCreateInput</name>
+        <reimplements refid="d5/dee/group__route_1ga0e03803358cbd110a42c878f73e1eeed">DoCreateInput</reimplements>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gaa3d7d1e712c727d12c3b60c8dc04b484" kindref="member">mutabor::MutaborModeType</ref></type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="700" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.cpp" bodystart="759" bodyend="775"/>
+        <references refid="d6/d8f/classmutaborGUI_1_1GUIfiedInputDevice_1a6ff60bbf63b3f1aad026f85aad47695b" compoundref="d6/dfa/GUIRoute_8h" startline="583" endline="585">mutaborGUI::GUIfiedInputDevice&lt; T &gt;::GetDevice</references>
+        <references refid="d5/dee/group__route_1ga219acefe8692f1b3e00181f97c9c866f" compoundref="de/d05/Device_8h" startline="487" endline="487">mutabor::Device::IsOpen</references>
+        <references refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" compoundref="dc/df3/MutFrame_8cpp" startline="119">mutaborGUI::LogicOn</references>
+        <references refid="d5/dee/group__route_1ga1b67d7adf5f76fbffe0a5503bed265ff">mutabor::Device::Open</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+      </memberdef>
+      <memberdef kind="function" id="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory_1a75fa9c4e3f4fef1579499524d8825a02" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="dc/df2/group__GUIroute_1ga914c2e625ebf63e120a8c6c80274352d" kindref="member">MutOutputDeviceShape</ref> *</type>
+        <definition>MutOutputDeviceShape * mutaborGUI::GUIMidiPortFactory::DoCreateShape</definition>
+        <argsstring>(mutabor::OutputDevice &amp;device, wxWindow *parent) const </argsstring>
+        <name>DoCreateShape</name>
+        <reimplements refid="d2/d9a/classmutaborGUI_1_1GUIDeviceFactory_1ab97efbe755d2da35c77ef749da220675">DoCreateShape</reimplements>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gaa9af06d2b801f5fbf129acc683bb764d" kindref="member">mutabor::OutputDevice</ref> &amp;</type>
+          <declname>device</declname>
+        </param>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="dd/da0/todo_1_todo000033"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>implement ID sharing between the different shapes of one common route </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="704" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.cpp" bodystart="778" bodyend="792"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+      </memberdef>
+      <memberdef kind="function" id="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory_1a42d7481b20183ebe1482302d2f92dff5" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="dc/df2/group__GUIroute_1ga833524416458587c2a99531f9d9ea6ae" kindref="member">MutInputDeviceShape</ref> *</type>
+        <definition>MutInputDeviceShape * mutaborGUI::GUIMidiPortFactory::DoCreateShape</definition>
+        <argsstring>(mutabor::InputDevice &amp;device, wxWindow *parent) const </argsstring>
+        <name>DoCreateShape</name>
+        <reimplements refid="d2/d9a/classmutaborGUI_1_1GUIDeviceFactory_1a7139186192f9f057067132c5775aab9e">DoCreateShape</reimplements>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gaa07c845228719e7505615a18d241734d" kindref="member">mutabor::InputDevice</ref> &amp;</type>
+          <declname>device</declname>
+        </param>
+        <param>
+          <type>wxWindow *</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="dd/da0/todo_1_todo000034"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>implement ID sharing between the different shapes of one common route </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="707" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.cpp" bodystart="795" bodyend="809"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2930">
+        <label>mutaborGUI::GUIMidiPortFactory</label>
+        <link refid="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory"/>
+        <childnode refid="2931" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2932">
+        <label>mutabor::DeviceFactory</label>
+        <link refid="d7/d57/classmutabor_1_1DeviceFactory"/>
+      </node>
+      <node id="2931">
+        <label>mutaborGUI::GUIDeviceFactory</label>
+        <link refid="d2/d9a/classmutaborGUI_1_1GUIDeviceFactory"/>
+        <childnode refid="2932" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2937">
+        <label>T</label>
+      </node>
+      <node id="2933">
+        <label>mutaborGUI::GUIMidiPortFactory</label>
+        <link refid="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory"/>
+        <childnode refid="2934" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2936">
+        <label>std::vector&lt; T &gt;</label>
+        <childnode refid="2937" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2935">
+        <label>mutabor::DeviceFactory</label>
+        <link refid="d7/d57/classmutabor_1_1DeviceFactory"/>
+        <childnode refid="2936" relation="usage">
+          <edgelabel>factories</edgelabel>
+        </childnode>
+      </node>
+      <node id="2934">
+        <label>mutaborGUI::GUIDeviceFactory</label>
+        <link refid="d2/d9a/classmutaborGUI_1_1GUIDeviceFactory"/>
+        <childnode refid="2935" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="684" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" bodystart="684" bodyend="710"/>
+    <listofallmembers>
+      <member refid="d5/dee/group__route_1ga793ed58c40cc42bfff473f9597376708" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>Create</name></member>
+      <member refid="d5/dee/group__route_1ga2e95b010dd0736aa4d315f81ec86b59f" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>Create</name></member>
+      <member refid="d7/d57/classmutabor_1_1DeviceFactory_1ga2e95b010dd0736aa4d315f81ec86b59f" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>Create</name></member>
+      <member refid="d5/dee/group__route_1gae7f6e33308f9b52a914b383280a54068" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>CreateInput</name></member>
+      <member refid="d5/dee/group__route_1ga7d3885474af8ef38f69056fdff322654" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>CreateOutput</name></member>
+      <member refid="d2/d9a/classmutaborGUI_1_1GUIDeviceFactory_1a6a137e06c4f10eb731d599afb456aafc" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>CreateShape</name></member>
+      <member refid="d2/d9a/classmutaborGUI_1_1GUIDeviceFactory_1a3b1416ba68a84f5659646688737f2b47" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>CreateShape</name></member>
+      <member refid="d5/dee/group__route_1ga49be0ce7bff38d1a9aca119284f4ae08" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>Destroy</name></member>
+      <member refid="d5/dee/group__route_1gae02584b86238612dd6b2dc12ece6666c" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>DeviceFactory</name></member>
+      <member refid="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory_1ac21944e7a1352632374ef38dcc9299be" prot="protected" virt="virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>DoCreateInput</name></member>
+      <member refid="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory_1ae97c479a308628225eea010f5fdd6a8f" prot="protected" virt="virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>DoCreateOutput</name></member>
+      <member refid="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory_1a75fa9c4e3f4fef1579499524d8825a02" prot="protected" virt="virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>DoCreateShape</name></member>
+      <member refid="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory_1a42d7481b20183ebe1482302d2f92dff5" prot="protected" virt="virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>DoCreateShape</name></member>
+      <member refid="d5/dee/group__route_1ga04a22340c6dd6d54467411a1a57738fd" prot="protected" virt="virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>DoLoadInputDevices</name></member>
+      <member refid="d5/dee/group__route_1ga692dcac5350d964de28723c82fd64c09" prot="protected" virt="virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>DoLoadOutputDevices</name></member>
+      <member refid="d5/dee/group__route_1ga7e6111b88230c1c41c8b0e1a5a157382" prot="protected" virt="virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>DoSaveInputDevices</name></member>
+      <member refid="d5/dee/group__route_1ga023306868ca2f64d7047c193540178ca" prot="protected" virt="virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>DoSaveOutputDevices</name></member>
+      <member refid="d5/dee/group__route_1ga892c67a33ce0300143018e6c82b56ffb" prot="protected" virt="non-virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>factories</name></member>
+      <member refid="d5/dee/group__route_1ga4aa4c35092b59b3182ace726b9243e41" prot="protected" virt="non-virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>factorylist</name></member>
+      <member refid="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory_1a0db32f86fd806551cff2fb2f5ff4d1d2" prot="protected" virt="virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>GetType</name></member>
+      <member refid="d2/d9a/classmutaborGUI_1_1GUIDeviceFactory_1a18b5da81034d0485d8f0c782bcab7980" prot="protected" virt="non-virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>GUIDeviceFactory</name></member>
+      <member refid="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory_1a65c9a3c7c254fcb82463d071c4d2577d" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>GUIMidiPortFactory</name></member>
+      <member refid="d5/dee/group__route_1ga258cd4bc238074cb6834c10248c0f3fa" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>LoadInputDevices</name></member>
+      <member refid="d5/dee/group__route_1gabd6e84a77a79c3ca0960442ed17f6b51" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>LoadOutputDevices</name></member>
+      <member refid="d5/dee/group__route_1gae8161f3d5d3a0cbb02c724b6d8515e53" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>SaveInputDevices</name></member>
+      <member refid="d5/dee/group__route_1ga4e80ba5e5d5fb69eba97cd43d9ffbd95" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>SaveOutputDevices</name></member>
+      <member refid="d5/dee/group__route_1ga82cd1842215e59339d43199a03f2517a" prot="public" virt="virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>~DeviceFactory</name></member>
+      <member refid="d2/d9a/classmutaborGUI_1_1GUIDeviceFactory_1ac47096d76a843c848f121c15c5bff135" prot="public" virt="virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>~GUIDeviceFactory</name></member>
+      <member refid="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory_1a4813f4a566d84c66430e7a8a734cb376" prot="public" virt="virtual"><scope>mutaborGUI::GUIMidiPortFactory</scope><name>~GUIMidiPortFactory</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

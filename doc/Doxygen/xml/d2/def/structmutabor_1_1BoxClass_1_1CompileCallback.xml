@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d2/def/structmutabor_1_1BoxClass_1_1CompileCallback" kind="struct" prot="public" abstract="yes">
+    <compoundname>mutabor::BoxClass::CompileCallback</compoundname>
+    <derivedcompoundref refid="de/dbd/classmutaborGUI_1_1CompDlg" prot="public" virt="non-virtual">mutaborGUI::CompDlg</derivedcompoundref>
+    <derivedcompoundref refid="d3/d0e/structMyCompileCallback" prot="public" virt="non-virtual">MyCompileCallback</derivedcompoundref>
+    <includes refid="de/d0f/Box_8h" local="no">Box.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/dee/group__route_1ga4331ac23a6fc11b3a70bd95645b85e95" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void mutabor::BoxClass::CompileCallback::Refresh</definition>
+        <argsstring>()=0</argsstring>
+        <name>Refresh</name>
+        <reimplementedby refid="d3/d0e/structMyCompileCallback_1af05e9248accaba1a6be8fc59bf46cbdb">Refresh</reimplementedby>
+        <reimplementedby refid="de/dbd/classmutaborGUI_1_1CompDlg_1a8403632544c055dd614766d8d15fdcab">Refresh</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="442" column="1"/>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="604" endline="645">mutabor::BoxClass::Compile</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaa8eac0fc32217334c0a62f70453429a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void mutabor::BoxClass::CompileCallback::SetStatus</definition>
+        <argsstring>(mutString status)=0</argsstring>
+        <name>SetStatus</name>
+        <reimplementedby refid="d3/d0e/structMyCompileCallback_1a685ebe81e20ad74477e77902b9878956">SetStatus</reimplementedby>
+        <param>
+          <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="443" column="1"/>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="604" endline="645">mutabor::BoxClass::Compile</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gad008c418037d5072939e7863da9f66b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void mutabor::BoxClass::CompileCallback::SetMessage</definition>
+        <argsstring>(mutString message)=0</argsstring>
+        <name>SetMessage</name>
+        <reimplementedby refid="d3/d0e/structMyCompileCallback_1a275bb20ef0875ef3c42e9d5ffd7228c2">SetMessage</reimplementedby>
+        <param>
+          <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="444" column="1"/>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="604" endline="645">mutabor::BoxClass::Compile</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gab9b18dda2fe135c6bf9e5bf810eac12a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void mutabor::BoxClass::CompileCallback::SetStatus</definition>
+        <argsstring>(int logics, int tones, int tunings, int tone_systems, int intervals, int characters)=0</argsstring>
+        <name>SetStatus</name>
+        <reimplementedby refid="de/dbd/classmutaborGUI_1_1CompDlg_1a238f17580359a5c65945781a1fef9226">SetStatus</reimplementedby>
+        <reimplementedby refid="d3/d0e/structMyCompileCallback_1a1849590fb1d749c7f4f707db0cb146c6">SetStatus</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>logics</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tones</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tunings</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tone_systems</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>intervals</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>characters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="445" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gac20524bf504a3831df1dead1d4ae3c1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void mutabor::BoxClass::CompileCallback::SetLine</definition>
+        <argsstring>(int number)=0</argsstring>
+        <name>SetLine</name>
+        <reimplementedby refid="de/dbd/classmutaborGUI_1_1CompDlg_1ad9d873be61d9c0116be2a55991badbc6">SetLine</reimplementedby>
+        <reimplementedby refid="d3/d0e/structMyCompileCallback_1ad6b97257a079eb07c440b0f2bbd2fe35">SetLine</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>number</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="451" column="1"/>
+        <referencedby refid="d5/dee/group__route_1ga6dd51d0efa3bea935d7fb57bfa884da9" compoundref="dd/dc6/Box_8cpp" startline="793" endline="798">mutabor::BoxClass::compile_callback</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2567">
+        <label>MyCompileCallback</label>
+        <link refid="d3/d0e/structMyCompileCallback"/>
+        <childnode refid="2565" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2566">
+        <label>mutaborGUI::CompDlg</label>
+        <link refid="de/dbd/classmutaborGUI_1_1CompDlg"/>
+        <childnode refid="2565" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2565">
+        <label>mutabor::BoxClass::CompileCallback</label>
+        <link refid="d2/def/structmutabor_1_1BoxClass_1_1CompileCallback"/>
+      </node>
+    </inheritancegraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="441" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="441" bodyend="452"/>
+    <listofallmembers>
+      <member refid="d5/dee/group__route_1ga4331ac23a6fc11b3a70bd95645b85e95" prot="public" virt="pure-virtual"><scope>mutabor::BoxClass::CompileCallback</scope><name>Refresh</name></member>
+      <member refid="d5/dee/group__route_1gac20524bf504a3831df1dead1d4ae3c1c" prot="public" virt="pure-virtual"><scope>mutabor::BoxClass::CompileCallback</scope><name>SetLine</name></member>
+      <member refid="d5/dee/group__route_1gad008c418037d5072939e7863da9f66b9" prot="public" virt="pure-virtual"><scope>mutabor::BoxClass::CompileCallback</scope><name>SetMessage</name></member>
+      <member refid="d5/dee/group__route_1gaa8eac0fc32217334c0a62f70453429a1" prot="public" virt="pure-virtual"><scope>mutabor::BoxClass::CompileCallback</scope><name>SetStatus</name></member>
+      <member refid="d5/dee/group__route_1gab9b18dda2fe135c6bf9e5bf810eac12a" prot="public" virt="pure-virtual"><scope>mutabor::BoxClass::CompileCallback</scope><name>SetStatus</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

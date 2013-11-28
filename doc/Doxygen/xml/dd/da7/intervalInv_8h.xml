@@ -1,0 +1,234 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="dd/da7/intervalInv_8h" kind="file">
+    <compoundname>intervalInv.h</compoundname>
+    <includes refid="d7/d66/intervalPlaceholder_8h" local="yes">mutabor/intervalPlaceholder.h</includes>
+    <includes refid="df/d8e/bad__decl_8h" local="yes">mutabor/bad_decl.h</includes>
+    <includedby refid="d9/d49/intervalInv_8c" local="yes">src/libmutabor/intervalInv.c</includedby>
+    <includedby refid="d3/da3/mut_8c" local="yes">src/libmutabor/mut.c</includedby>
+    <incdepgraph>
+      <node id="14795">
+        <label>mutabor/interval.h</label>
+        <link refid="d2/d8a/interval_8h"/>
+        <childnode refid="14796" relation="include">
+        </childnode>
+        <childnode refid="14798" relation="include">
+        </childnode>
+      </node>
+      <node id="14797">
+        <label>mutabor/object.h</label>
+        <link refid="de/d10/object_8h"/>
+      </node>
+      <node id="14796">
+        <label>mutabor/identifier.h</label>
+        <link refid="d7/da7/identifier_8h"/>
+        <childnode refid="14797" relation="include">
+        </childnode>
+      </node>
+      <node id="14794">
+        <label>mutabor/intervalPlaceholder.h</label>
+        <link refid="d7/d66/intervalPlaceholder_8h"/>
+        <childnode refid="14795" relation="include">
+        </childnode>
+        <childnode refid="14798" relation="include">
+        </childnode>
+      </node>
+      <node id="14799">
+        <label>math.h</label>
+      </node>
+      <node id="14793">
+        <label>src/includes/mutabor/intervalInv.h</label>
+        <link refid="intervalInv.h"/>
+        <childnode refid="14794" relation="include">
+        </childnode>
+        <childnode refid="14798" relation="include">
+        </childnode>
+      </node>
+      <node id="14798">
+        <label>mutabor/bad_decl.h</label>
+        <link refid="df/d8e/bad__decl_8h"/>
+        <childnode refid="14799" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="14801">
+        <label>src/libmutabor/intervalInv.c</label>
+        <link refid="d9/d49/intervalInv_8c"/>
+      </node>
+      <node id="14802">
+        <label>src/libmutabor/mut.c</label>
+        <link refid="d3/da3/mut_8c"/>
+      </node>
+      <node id="14800">
+        <label>src/includes/mutabor/intervalInv.h</label>
+        <link refid="intervalInv.h"/>
+        <childnode refid="14801" relation="include">
+        </childnode>
+        <childnode refid="14802" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="df/d40/structmutabor__class__intervalInv" prot="public">mutabor_class_intervalInv</innerclass>
+    <innerclass refid="dc/dc1/structmutabor__virttable__intervalInv" prot="public">mutabor_virttable_intervalInv</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="dd/da7/intervalInv_8h_1ad79c99aa09342468cde384e1e494fca5" prot="public" static="no">
+        <name>mutabor_cls_intervalInv_copy_name</name>
+        <initializer><ref refid="d7/da7/identifier_8h_1ad79e903efa7ef3a4966308e5bcd5b2e3" kindref="member">mutabor_cls_identifier_copy_name</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/intervalInv.h" line="54" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/intervalInv.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dd/da7/intervalInv_8h_1aaf6e62d2bf588e696f16f39a8626b61d" prot="public" static="no">
+        <name>mutabor_cls_intervalInv_set_name</name>
+        <initializer><ref refid="d7/da7/identifier_8h_1ad16d2cc2845ccc602df31c95a8c8b910" kindref="member">mutabor_cls_identifier_set_name</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/intervalInv.h" line="56" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/intervalInv.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dd/da7/intervalInv_8h_1ae4ed98d0c183ad2a8144bddd6edb6406" prot="public" static="no">
+        <name>mutabor_cls_intervalInv_get_name</name>
+        <initializer><ref refid="d7/da7/identifier_8h_1a4cd6d5ef8bc7afa286bd2fcfe2c239fd" kindref="member">mutabor_cls_identifier_get_name</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/intervalInv.h" line="58" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/intervalInv.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dd/da7/intervalInv_8h_1aba57f50d7a563e12a97ea202ceea9428" prot="public" static="no">
+        <name>mutabor_cls_intervalInv_set_factor</name>
+        <initializer><ref refid="d2/d8a/interval_8h_1ab0f3aad37afa1bf44a8b5d6a39645da5" kindref="member">mutabor_cls_interval_set_factor</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/intervalInv.h" line="60" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/intervalInv.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dd/da7/intervalInv_8h_1a3c6ab7d6e64a7adddfe26da60b70b1a8" prot="public" static="no">
+        <name>mutabor_cls_intervalInv_setreplacement</name>
+        <initializer><ref refid="d7/d66/intervalPlaceholder_8h_1a58d956b73a6d0562e650df10806f9c3e" kindref="member">mutabor_cls_intervalPlaceholder_setreplacement</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/intervalInv.h" line="62" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/intervalInv.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="dd/da7/intervalInv_8h_1ad4f70f2b5c378d4bbd1d376f53fc1e41" prot="public" static="no" mutable="no">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> void *</type>
+        <definition>const void * mutabor_object_intervalInv</definition>
+        <argsstring></argsstring>
+        <name>mutabor_object_intervalInv</name>
+        <initializer>=&amp;<ref refid="df/d32/intervalInv_8hh_1ad601d607ad43e2029e70700b9f3c61b3" kindref="member">_mutabor_virttable_intervalInv</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/intervalInv.h" line="51" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/intervalInv.hh" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="dd/da7/intervalInv_8h_1add64390c35d24d3514251af3e54012a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor_cls_intervalInv_setright</definition>
+        <argsstring>(void *_self, void *interval)</argsstring>
+        <name>mutabor_cls_intervalInv_setright</name>
+        <param>
+          <type>void *</type>
+          <declname>_self</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>interval</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/intervalInv.h" line="63" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Inv objects for not yet specified identifiers. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="rcs"><title>Id:</title><para>intervalInv.h,v 1.6 2008/10/10 08:45:28 keinstein Exp </para></simplesect>
+<simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein@users.berlios.de">keinstein@users.berlios.de</ulink> </para></simplesect>
+<simplesect kind="date"><para></para></simplesect>
+<simplesect kind="rcs"><title>Date:</title><para>2008/10/10 08:45:28 </para></simplesect>
+<simplesect kind="version"><para></para></simplesect>
+<simplesect kind="rcs"><title>Revision:</title><para>1.6 </para></simplesect>
+</para><para><simplesect kind="rcs"><title>Log:</title><para>intervalInv.h,v </para></simplesect>
+Revision 1.6 2008/10/10 08:45:28 keinstein myContextHelpButton is still not needed</para><para>Revision 1.2 2005/11/10 16:16:59 keinstein working distcheck</para><para>Revision 1.1 2005/11/03 13:56:24 keinstein Initial revision </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="22"><highlight class="preprocessor">#ifndef<sp/>__MUTABOR_INTERVALINV_H_INCLUDED</highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>__MUTABOR_INTERVALINV_H_INCLUDED</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus<sp/></highlight></codeline>
+<codeline lineno="26"><highlight class="preprocessor"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d7/d66/intervalPlaceholder_8h" kindref="compound">mutabor/intervalPlaceholder.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="df/d8e/bad__decl_8h" kindref="compound">mutabor/bad_decl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="df/d40/structmutabor__class__intervalInv" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/d40/structmutabor__class__intervalInv" kindref="compound">mutabor_class_intervalInv</ref><sp/>{</highlight></codeline>
+<codeline lineno="36" refid="df/d40/structmutabor__class__intervalInv_1ac22f647811ba50506fa0e6ea8d6a8a2d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d3/db6/structmutabor__class__intervalPlaceholder" kindref="compound">mutabor_class_intervalPlaceholder</ref><sp/><ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>;<sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="dc/dc1/structmutabor__virttable__intervalInv" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dc/dc1/structmutabor__virttable__intervalInv" kindref="compound">mutabor_virttable_intervalInv</ref><sp/>{</highlight></codeline>
+<codeline lineno="40" refid="dc/dc1/structmutabor__virttable__intervalInv_1a52dcb257326f3b90478a678393c6700b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="dc/dc1/structmutabor__virttable__intervalInv_1a52dcb257326f3b90478a678393c6700b" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="41" refid="dc/dc1/structmutabor__virttable__intervalInv_1a06fc22bf8e9daaded37ab3f1da465459" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dc/dc1/structmutabor__virttable__intervalInv_1a06fc22bf8e9daaded37ab3f1da465459" kindref="member">name</ref>;</highlight></codeline>
+<codeline lineno="42" refid="dc/dc1/structmutabor__virttable__intervalInv_1aa19262b171040e1494202a3af7afd9e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>**<sp/><ref refid="dc/dc1/structmutabor__virttable__intervalInv_1aa19262b171040e1494202a3af7afd9e1" kindref="member">parent</ref>;</highlight></codeline>
+<codeline lineno="43" refid="dc/dc1/structmutabor__virttable__intervalInv_1a4580f743558616fa791d74fdeb16a927" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>(*constructor)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self);<sp/></highlight></codeline>
+<codeline lineno="44" refid="dc/dc1/structmutabor__virttable__intervalInv_1ace632adf534f581df8f6e83bd72e84b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>(*destructor)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self);<sp/></highlight></codeline>
+<codeline lineno="45" refid="dc/dc1/structmutabor__virttable__intervalInv_1adf801b508923b48bbdd1efe9d270f78a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>(*compare)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>one,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>two);<sp/></highlight></codeline>
+<codeline lineno="46" refid="dc/dc1/structmutabor__virttable__intervalInv_1a9cca44a6e6c638e401d835b5a4e4bb1a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>(*tostring)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self);<sp/></highlight></codeline>
+<codeline lineno="47" refid="dc/dc1/structmutabor__virttable__intervalInv_1aeb33ed883550bcc7a6c257f5a5a179e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>(*check_cycle)(</highlight><highlight class="keyword">register</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self,<sp/></highlight><highlight class="keyword">register</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_identifier,<sp/><sp/></highlight><highlight class="keyword">register</highlight><highlight class="normal"><sp/><ref refid="de/d10/object_8h_1a51fa8bfba0223bb5cddd9b3db2b2f55c" kindref="member">MUT_CLASS</ref>(ptrlist)<sp/>*<sp/>list);<sp/></highlight></codeline>
+<codeline lineno="48" refid="dc/dc1/structmutabor__virttable__intervalInv_1a9f40c208302743c938f379f289fbcb49" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>(*precalculate)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self);<sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dd/da7/intervalInv_8h_1ad4f70f2b5c378d4bbd1d376f53fc1e41" kindref="member">mutabor_object_intervalInv</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="dd/da7/intervalInv_8h_1ad79c99aa09342468cde384e1e494fca5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>mutabor_cls_intervalInv_copy_name<sp/>mutabor_cls_identifier_copy_name</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="dd/da7/intervalInv_8h_1aaf6e62d2bf588e696f16f39a8626b61d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>mutabor_cls_intervalInv_set_name<sp/>mutabor_cls_identifier_set_name</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="dd/da7/intervalInv_8h_1ae4ed98d0c183ad2a8144bddd6edb6406" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>mutabor_cls_intervalInv_get_name<sp/>mutabor_cls_identifier_get_name</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="dd/da7/intervalInv_8h_1aba57f50d7a563e12a97ea202ceea9428" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>mutabor_cls_intervalInv_set_factor<sp/>mutabor_cls_interval_set_factor</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="dd/da7/intervalInv_8h_1a3c6ab7d6e64a7adddfe26da60b70b1a8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>mutabor_cls_intervalInv_setreplacement<sp/>mutabor_cls_intervalPlaceholder_setreplacement</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/da7/intervalInv_8h_1add64390c35d24d3514251af3e54012a1" kindref="member">mutabor_cls_intervalInv_setright</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>_self,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>interval);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__MUTABOR_ITERVALINV_H_INCLUDED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/intervalInv.h"/>
+  </compounddef>
+</doxygen>

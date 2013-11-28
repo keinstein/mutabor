@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/kernel/tests/boxTest.h Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cbd7f246bdf7dc0a50281a272327e6ed.html">kernel</a></li><li class="navelem"><a class="el" href="../../dir_1b90869848351ba441431e8dd55b06b0.html">tests</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">boxTest.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../dc/d2f/boxTest_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// availlable groups: GUI, route, kernel, muwx, debug, docview, config, docview</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef __ROUTETEST_H__</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __ROUTETEST_H__</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;cppunit/extensions/HelperMacros.h&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;cppunit/portability/Stream.h&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d65/Route_8h.html">src/kernel/routing/Route.h</a>&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d2c/Route-inlines_8h.html">src/kernel/routing/Route-inlines.h</a>&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d5/d84/Runtime_8h.html">src/kernel/Runtime.h</a>&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/d11/Execute_8h.html">src/kernel/Execute.h</a>&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dc/d19/box_8h.html">src/kernel/box.h</a>&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../df/d21/classboxTest.html">   41</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../df/d21/classboxTest.html">boxTest</a> : <span class="keyword">public</span> CPPUNIT_NS::TestFixture </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="../../df/d21/classboxTest.html#a490096d324f69bc25e4892b538fb15a1">CPPUNIT_TEST_SUITE</a>( <a class="code" href="../../df/d21/classboxTest.html">boxTest</a> );</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="../../df/d21/classboxTest.html#a58302fa1fe49e43a71d4f34ce94fe429">CPPUNIT_TEST</a>( <a class="code" href="../../d9/d7c/group__kernel.html#gafcc43122e77ad12403856afa0db0013e">test_init</a> );</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="../../df/d21/classboxTest.html#a58302fa1fe49e43a71d4f34ce94fe429">CPPUNIT_TEST</a>( <a class="code" href="../../d9/d7c/group__kernel.html#ga5923b730f4274effdaef7fcd42a9ac00">testAddKey</a> );</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="../../df/d21/classboxTest.html#a58302fa1fe49e43a71d4f34ce94fe429">CPPUNIT_TEST</a>( <a class="code" href="../../d9/d7c/group__kernel.html#ga290639790e3a3565f2a8340ab5777d78">verifyAddKey</a> );</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="../../df/d21/classboxTest.html#a58302fa1fe49e43a71d4f34ce94fe429">CPPUNIT_TEST</a>( <a class="code" href="../../d9/d7c/group__kernel.html#gad39950425be30e376a4ffe04627f2feb">testDeleteKey</a> );</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="../../df/d21/classboxTest.html#a58302fa1fe49e43a71d4f34ce94fe429">CPPUNIT_TEST</a>( <a class="code" href="../../d9/d7c/group__kernel.html#gaf1b981252f6749c438f4416e68104a74">testReaddKey</a> );</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="../../df/d21/classboxTest.html#a58302fa1fe49e43a71d4f34ce94fe429">CPPUNIT_TEST</a>( <a class="code" href="../../d9/d7c/group__kernel.html#ga1ccb974d5e2eda5d814fc67976f56185">testAddDeleteKey</a> );</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="../../df/d21/classboxTest.html#a58302fa1fe49e43a71d4f34ce94fe429">CPPUNIT_TEST</a>( <a class="code" href="../../d9/d7c/group__kernel.html#gab0c2fc4355589b3da95eadf5264a5ab1">testMUT_BOX_MAX_KEY_INDEX</a> );</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="../../df/d21/classboxTest.html#a58302fa1fe49e43a71d4f34ce94fe429">CPPUNIT_TEST</a>( <a class="code" href="../../d9/d7c/group__kernel.html#gae5cd429df106dae578f5e9bca96fdcce">testFindKeyByKey</a> );</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="../../df/d21/classboxTest.html#a58302fa1fe49e43a71d4f34ce94fe429">CPPUNIT_TEST</a>( <a class="code" href="../../d9/d7c/group__kernel.html#ga71f10b089581270382caaf7219946a1f">testBug1Permutation1</a> );</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="../../df/d21/classboxTest.html#a58302fa1fe49e43a71d4f34ce94fe429">CPPUNIT_TEST</a>( <a class="code" href="../../d9/d7c/group__kernel.html#gacd9628c16629b6a3989ef814becb55be">testBug1Permutation2</a> );</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="../../df/d21/classboxTest.html#aadf0cfa40be4c0f4ab059e66aa713116">CPPUNIT_TEST_SUITE_END</a>();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../df/d21/classboxTest.html#a29ac5a31a401781bac822bb240645cdc">   57</a></span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="../../df/d21/classboxTest.html#a29ac5a31a401781bac822bb240645cdc">MAX_BOX</a> = 7;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../df/d21/classboxTest.html#a77747ac726171a8f01bf1b6011bad048">   58</a></span>&#160;        <a class="code" href="../../d9/d7c/group__kernel.html#ga57323e3b28383e1a7b145a4db34db975">mutabor::hidden::mutabor_box_type</a> <a class="code" href="../../df/d21/classboxTest.html#a77747ac726171a8f01bf1b6011bad048">boxes</a> [<a class="code" href="../../df/d21/classboxTest.html#a29ac5a31a401781bac822bb240645cdc">MAX_BOX</a>];</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">//      mutabor::Route route;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="../../df/d21/classboxTest.html#a2a62af9f3d412263139602558d6ac80c">   62</a></span>&#160;        <a class="code" href="../../df/d21/classboxTest.html#a2a62af9f3d412263139602558d6ac80c">boxTest</a>() {}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../df/d21/classboxTest.html#a5cca576e851a94ffff274395e9af7752">   64</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="../../df/d21/classboxTest.html#a5cca576e851a94ffff274395e9af7752">~boxTest</a>() {}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../df/d21/classboxTest.html#aac95bf551230f6ae30c31a98e468a669">   66</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="../../df/d21/classboxTest.html#aac95bf551230f6ae30c31a98e468a669">countTestCases</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">        </span>{ </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">return</span> 1; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#gab9a27a873f970d50ea458d548cde6920">setUp</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga27d57abba6529330d842914988afa74c">tearDown</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#gab0c2fc4355589b3da95eadf5264a5ab1">testMUT_BOX_MAX_KEY_INDEX</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga4271382d5a1f4fbe46214f4f35305166">verifyLastKey</a>(<span class="keywordtype">bool</span> force = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga5923b730f4274effdaef7fcd42a9ac00">testAddKey</a>();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga290639790e3a3565f2a8340ab5777d78">verifyAddKey</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#gad39950425be30e376a4ffe04627f2feb">testDeleteKey</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#gaf1b981252f6749c438f4416e68104a74">testReaddKey</a>();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga90d6cc2a4b3dc89f61ff9cb048b9b27e">checkMask</a>();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga1ccb974d5e2eda5d814fc67976f56185">testAddDeleteKey</a>();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#gafcc43122e77ad12403856afa0db0013e">test_init</a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#gae5cd429df106dae578f5e9bca96fdcce">testFindKeyByKey</a>();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga71f10b089581270382caaf7219946a1f">testBug1Permutation1</a> ();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#gacd9628c16629b6a3989ef814becb55be">testBug1Permutation2</a> ();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;};</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor"></span></div>
+<div class="ttc" id="group__kernel_html_gab9a27a873f970d50ea458d548cde6920"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gab9a27a873f970d50ea458d548cde6920">boxTest::setUp</a></div><div class="ttdeci">void setUp()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da7/boxTest_8cpp_source.html#l00046">boxTest.cpp:46</a></div></div>
+<div class="ttc" id="classboxTest_html_a2a62af9f3d412263139602558d6ac80c"><div class="ttname"><a href="../../df/d21/classboxTest.html#a2a62af9f3d412263139602558d6ac80c">boxTest::boxTest</a></div><div class="ttdeci">boxTest()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d2f/boxTest_8h_source.html#l00062">boxTest.h:62</a></div></div>
+<div class="ttc" id="classboxTest_html_aac95bf551230f6ae30c31a98e468a669"><div class="ttname"><a href="../../df/d21/classboxTest.html#aac95bf551230f6ae30c31a98e468a669">boxTest::countTestCases</a></div><div class="ttdeci">int countTestCases() const </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d2f/boxTest_8h_source.html#l00066">boxTest.h:66</a></div></div>
+<div class="ttc" id="group__kernel_html_gafcc43122e77ad12403856afa0db0013e"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gafcc43122e77ad12403856afa0db0013e">boxTest::test_init</a></div><div class="ttdeci">void test_init()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da7/boxTest_8cpp_source.html#l00218">boxTest.cpp:218</a></div></div>
+<div class="ttc" id="classboxTest_html_a29ac5a31a401781bac822bb240645cdc"><div class="ttname"><a href="../../df/d21/classboxTest.html#a29ac5a31a401781bac822bb240645cdc">boxTest::MAX_BOX</a></div><div class="ttdeci">static const int MAX_BOX</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d2f/boxTest_8h_source.html#l00057">boxTest.h:57</a></div></div>
+<div class="ttc" id="group__kernel_html_ga4271382d5a1f4fbe46214f4f35305166"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga4271382d5a1f4fbe46214f4f35305166">boxTest::verifyLastKey</a></div><div class="ttdeci">void verifyLastKey(bool force=true)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da7/boxTest_8cpp_source.html#l00075">boxTest.cpp:75</a></div></div>
+<div class="ttc" id="group__kernel_html_ga57323e3b28383e1a7b145a4db34db975"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga57323e3b28383e1a7b145a4db34db975">mutabor_box_type</a></div><div class="ttdeci">struct mutabor_box_type mutabor_box_type</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d19/box_8h_source.html#l00193">box.h:193</a></div></div>
+<div class="ttc" id="classboxTest_html_aadf0cfa40be4c0f4ab059e66aa713116"><div class="ttname"><a href="../../df/d21/classboxTest.html#aadf0cfa40be4c0f4ab059e66aa713116">boxTest::CPPUNIT_TEST_SUITE_END</a></div><div class="ttdeci">CPPUNIT_TEST_SUITE_END()</div></div>
+<div class="ttc" id="Route-inlines_8h_html"><div class="ttname"><a href="../../d2/d2c/Route-inlines_8h.html">Route-inlines.h</a></div></div>
+<div class="ttc" id="group__kernel_html_gae5cd429df106dae578f5e9bca96fdcce"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gae5cd429df106dae578f5e9bca96fdcce">boxTest::testFindKeyByKey</a></div><div class="ttdeci">void testFindKeyByKey()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da7/boxTest_8cpp_source.html#l00283">boxTest.cpp:283</a></div></div>
+<div class="ttc" id="Route_8h_html"><div class="ttname"><a href="../../d1/d65/Route_8h.html">Route.h</a></div><div class="ttdoc">Routing. </div></div>
+<div class="ttc" id="group__kernel_html_gaf1b981252f6749c438f4416e68104a74"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gaf1b981252f6749c438f4416e68104a74">boxTest::testReaddKey</a></div><div class="ttdeci">void testReaddKey()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da7/boxTest_8cpp_source.html#l00163">boxTest.cpp:163</a></div></div>
+<div class="ttc" id="group__kernel_html_gacd9628c16629b6a3989ef814becb55be"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gacd9628c16629b6a3989ef814becb55be">boxTest::testBug1Permutation2</a></div><div class="ttdeci">void testBug1Permutation2()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da7/boxTest_8cpp_source.html#l00369">boxTest.cpp:369</a></div></div>
+<div class="ttc" id="classboxTest_html"><div class="ttname"><a href="../../df/d21/classboxTest.html">boxTest</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d2f/boxTest_8h_source.html#l00041">boxTest.h:41</a></div></div>
+<div class="ttc" id="group__kernel_html_ga5923b730f4274effdaef7fcd42a9ac00"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga5923b730f4274effdaef7fcd42a9ac00">boxTest::testAddKey</a></div><div class="ttdeci">void testAddKey()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da7/boxTest_8cpp_source.html#l00089">boxTest.cpp:89</a></div></div>
+<div class="ttc" id="Runtime_8h_html"><div class="ttname"><a href="../../d5/d84/Runtime_8h.html">Runtime.h</a></div><div class="ttdoc">Runtime functions of the (mainly C) old kernel of Mutabor. </div></div>
+<div class="ttc" id="group__kernel_html_gad39950425be30e376a4ffe04627f2feb"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gad39950425be30e376a4ffe04627f2feb">boxTest::testDeleteKey</a></div><div class="ttdeci">void testDeleteKey()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da7/boxTest_8cpp_source.html#l00140">boxTest.cpp:140</a></div></div>
+<div class="ttc" id="classboxTest_html_a58302fa1fe49e43a71d4f34ce94fe429"><div class="ttname"><a href="../../df/d21/classboxTest.html#a58302fa1fe49e43a71d4f34ce94fe429">boxTest::CPPUNIT_TEST</a></div><div class="ttdeci">CPPUNIT_TEST(test_init)</div></div>
+<div class="ttc" id="group__kernel_html_ga1ccb974d5e2eda5d814fc67976f56185"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga1ccb974d5e2eda5d814fc67976f56185">boxTest::testAddDeleteKey</a></div><div class="ttdeci">void testAddDeleteKey()</div><div class="ttdoc">check adding and deleting of keys. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da7/boxTest_8cpp_source.html#l00208">boxTest.cpp:208</a></div></div>
+<div class="ttc" id="box_8h_html"><div class="ttname"><a href="../../dc/d19/box_8h.html">box.h</a></div><div class="ttdoc">Description: Collect all properties, which are used by boxes. </div></div>
+<div class="ttc" id="group__kernel_html_gab0c2fc4355589b3da95eadf5264a5ab1"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gab0c2fc4355589b3da95eadf5264a5ab1">boxTest::testMUT_BOX_MAX_KEY_INDEX</a></div><div class="ttdeci">void testMUT_BOX_MAX_KEY_INDEX()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da7/boxTest_8cpp_source.html#l00067">boxTest.cpp:67</a></div></div>
+<div class="ttc" id="group__kernel_html_ga90d6cc2a4b3dc89f61ff9cb048b9b27e"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga90d6cc2a4b3dc89f61ff9cb048b9b27e">boxTest::checkMask</a></div><div class="ttdeci">void checkMask()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da7/boxTest_8cpp_source.html#l00187">boxTest.cpp:187</a></div></div>
+<div class="ttc" id="Execute_8h_html"><div class="ttname"><a href="../../de/d11/Execute_8h.html">Execute.h</a></div><div class="ttdoc">Execute tuning changes. </div></div>
+<div class="ttc" id="classboxTest_html_a77747ac726171a8f01bf1b6011bad048"><div class="ttname"><a href="../../df/d21/classboxTest.html#a77747ac726171a8f01bf1b6011bad048">boxTest::boxes</a></div><div class="ttdeci">mutabor::hidden::mutabor_box_type boxes[MAX_BOX]</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d2f/boxTest_8h_source.html#l00058">boxTest.h:58</a></div></div>
+<div class="ttc" id="group__kernel_html_ga71f10b089581270382caaf7219946a1f"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga71f10b089581270382caaf7219946a1f">boxTest::testBug1Permutation1</a></div><div class="ttdeci">void testBug1Permutation1()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da7/boxTest_8cpp_source.html#l00331">boxTest.cpp:331</a></div></div>
+<div class="ttc" id="classboxTest_html_a5cca576e851a94ffff274395e9af7752"><div class="ttname"><a href="../../df/d21/classboxTest.html#a5cca576e851a94ffff274395e9af7752">boxTest::~boxTest</a></div><div class="ttdeci">virtual ~boxTest()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d2f/boxTest_8h_source.html#l00064">boxTest.h:64</a></div></div>
+<div class="ttc" id="classboxTest_html_a490096d324f69bc25e4892b538fb15a1"><div class="ttname"><a href="../../df/d21/classboxTest.html#a490096d324f69bc25e4892b538fb15a1">boxTest::CPPUNIT_TEST_SUITE</a></div><div class="ttdeci">CPPUNIT_TEST_SUITE(boxTest)</div></div>
+<div class="ttc" id="group__kernel_html_ga27d57abba6529330d842914988afa74c"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga27d57abba6529330d842914988afa74c">boxTest::tearDown</a></div><div class="ttdeci">void tearDown()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da7/boxTest_8cpp_source.html#l00058">boxTest.cpp:58</a></div></div>
+<div class="ttc" id="group__kernel_html_ga290639790e3a3565f2a8340ab5777d78"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga290639790e3a3565f2a8340ab5777d78">boxTest::verifyAddKey</a></div><div class="ttdeci">void verifyAddKey()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da7/boxTest_8cpp_source.html#l00116">boxTest.cpp:116</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:38:41 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

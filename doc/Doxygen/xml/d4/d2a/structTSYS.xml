@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d4/d2a/structTSYS" kind="struct" prot="public">
+    <compoundname>TSYS</compoundname>
+    <includes refid="d2/dd8/Interpre_8h" local="no">Interpre.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d4/d2a/structTSYS_1a8259cdab04a561ed9c1ff24bdcd781f9" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TSYS::anker</definition>
+        <argsstring></argsstring>
+        <name>anker</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="73" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="73" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1gad0e9c82241b92358c5780470413b11bf" compoundref="df/d23/Execute_8cpp" startline="193" endline="268">call_actions</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga72b0422e9acaa509a7b6ba430302db12" compoundref="df/d23/Execute_8cpp" startline="653" endline="687">change_anker</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga40cc25bc3bc64f0a93f97d5e756c2d49" compoundref="df/d23/Execute_8cpp" startline="689" endline="704">change_breite</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga00cc2a76cfd7714e7536fa1d1d523dce" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">execute_aktion</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaeca2b79472a3b3928278b99ab050ed8b" compoundref="dc/d19/box_8h" startline="81" endline="86">mutabor_get_note_distance</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga3fd83af6606781513a465c525097aa62" compoundref="dc/d19/box_8h" startline="75" endline="79">mutabor_get_note_index</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga0dda3f2e2a4d66c46d93cfaa44ae3aa5" compoundref="d1/dce/box_8cpp" startline="100" endline="126">mutabor_reset_box</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d2a/structTSYS_1a40b61cf1ffb61fee185a714d0ad3cb5e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TSYS::breite</definition>
+        <argsstring></argsstring>
+        <name>breite</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="74" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="74" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga72b0422e9acaa509a7b6ba430302db12" compoundref="df/d23/Execute_8cpp" startline="653" endline="687">change_anker</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga40cc25bc3bc64f0a93f97d5e756c2d49" compoundref="df/d23/Execute_8cpp" startline="689" endline="704">change_breite</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga00cc2a76cfd7714e7536fa1d1d523dce" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">execute_aktion</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga179b8caca2c9b058035e7f22c9737585" compoundref="df/d23/Execute_8cpp" startline="787" endline="873">local_harmony_analysis</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaeca2b79472a3b3928278b99ab050ed8b" compoundref="dc/d19/box_8h" startline="81" endline="86">mutabor_get_note_distance</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga3fd83af6606781513a465c525097aa62" compoundref="dc/d19/box_8h" startline="75" endline="79">mutabor_get_note_index</referencedby>
+        <referencedby refid="dc/d7e/group__runtime_1gabcf963f3b449cab5ee813f93e577f777" compoundref="db/d80/Runtime_8cpp" startline="206" endline="214">TSChanged</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga058b731538b10a7ef7b7e3f07d1c4f97" compoundref="df/d23/Execute_8cpp" startline="636" endline="651">update_pattern</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d2a/structTSYS_1a12c5a2eb2e3fe53f5715bfdfd86a15d4" prot="public" static="no" mutable="no">
+        <type><ref refid="d9/d7c/group__kernel_1ga263dbde740be0fd2d35d84366fe63021" kindref="member">mutabor_interval</ref></type>
+        <definition>mutabor_interval TSYS::periode</definition>
+        <argsstring></argsstring>
+        <name>periode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="75" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="75" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga72b0422e9acaa509a7b6ba430302db12" compoundref="df/d23/Execute_8cpp" startline="653" endline="687">change_anker</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga40cc25bc3bc64f0a93f97d5e756c2d49" compoundref="df/d23/Execute_8cpp" startline="689" endline="704">change_breite</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga00cc2a76cfd7714e7536fa1d1d523dce" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">execute_aktion</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga3c62b0038eb6f3e82bb934e4ee54208c" compoundref="dc/d19/box_8h" startline="88" endline="93">mutabor_get_note_frequency</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d2a/structTSYS_1a8e6c51d7cbd7d65a0ed6e9b4d061f3f5" prot="public" static="no" mutable="no">
+        <type><ref refid="d9/d7c/group__kernel_1ga3333acd22da6ff51a23188dc3b9fe11b" kindref="member">mutabor_tone</ref></type>
+        <definition>mutabor_tone TSYS::ton[MUTABOR_KEYRANGE_MAX_WIDTH]</definition>
+        <argsstring>[MUTABOR_KEYRANGE_MAX_WIDTH]</argsstring>
+        <name>ton</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="76" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="76" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga72b0422e9acaa509a7b6ba430302db12" compoundref="df/d23/Execute_8cpp" startline="653" endline="687">change_anker</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga40cc25bc3bc64f0a93f97d5e756c2d49" compoundref="df/d23/Execute_8cpp" startline="689" endline="704">change_breite</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga00cc2a76cfd7714e7536fa1d1d523dce" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">execute_aktion</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga13b966770b2c6d5e64470a014a958058" compoundref="d3/da0/TabGen_8cpp" startline="464" endline="511">expandiere_tonsystem</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga3c62b0038eb6f3e82bb934e4ee54208c" compoundref="dc/d19/box_8h" startline="88" endline="93">mutabor_get_note_frequency</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga0dda3f2e2a4d66c46d93cfaa44ae3aa5" compoundref="d1/dce/box_8cpp" startline="100" endline="126">mutabor_reset_box</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="72" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="71" bodyend="77"/>
+    <listofallmembers>
+      <member refid="d4/d2a/structTSYS_1a8259cdab04a561ed9c1ff24bdcd781f9" prot="public" virt="non-virtual"><scope>TSYS</scope><name>anker</name></member>
+      <member refid="d4/d2a/structTSYS_1a40b61cf1ffb61fee185a714d0ad3cb5e" prot="public" virt="non-virtual"><scope>TSYS</scope><name>breite</name></member>
+      <member refid="d4/d2a/structTSYS_1a12c5a2eb2e3fe53f5715bfdfd86a15d4" prot="public" virt="non-virtual"><scope>TSYS</scope><name>periode</name></member>
+      <member refid="d4/d2a/structTSYS_1a8e6c51d7cbd7d65a0ed6e9b4d061f3f5" prot="public" virt="non-virtual"><scope>TSYS</scope><name>ton</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

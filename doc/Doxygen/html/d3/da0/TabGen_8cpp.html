@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/kernel/TabGen.cpp-Dateireferenz</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cbd7f246bdf7dc0a50281a272327e6ed.html">kernel</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Makrodefinitionen</a> &#124;
+<a href="#typedef-members">Typdefinitionen</a> &#124;
+<a href="#func-members">Funktionen</a> &#124;
+<a href="#var-members">Variablen</a>  </div>
+  <div class="headertitle">
+<div class="title">TabGen.cpp-Dateireferenz</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Table generator.  
+<a href="#details">Mehr ...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="../../dd/d40/Global_8h_source.html">Global.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../dc/d19/box_8h_source.html">box.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d2/dd8/Interpre_8h_source.html">Interpre.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d1/d55/Interval_8h_source.html">Interval.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../da/dfd/MidiKern_8h_source.html">MidiKern.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d6/d0c/Parser_8h_source.html">Parser.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../de/d11/Execute_8h_source.html">Execute.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d2/d32/Hilfs_8h_source.html">Hilfs.h</a>&quot;</code><br/>
+<code>#include &lt;math.h&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Include-Abhängigkeitsdiagramm für TabGen.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/d84/TabGen_8cpp__incl.png" border="0" usemap="#src_2kernel_2TabGen_8cpp" alt=""/></div>
+<map name="src_2kernel_2TabGen_8cpp" id="src_2kernel_2TabGen_8cpp">
+<area shape="rect" id="node3" href="../../dd/d40/Global_8h.html" title="Global definitions (formerly in mutabor DLL) " alt="" coords="30,315,104,343"/><area shape="rect" id="node20" href="../../dc/d19/box_8h.html" title="Description: Collect all properties, which are used by boxes. " alt="" coords="371,161,427,189"/><area shape="rect" id="node24" href="../../d2/dd8/Interpre_8h.html" title="Interpreter for the logic at runtime. " alt="" coords="480,238,563,266"/><area shape="rect" id="node28" href="../../de/d11/Execute_8h.html" title="Execute tuning changes. " alt="" coords="260,315,346,343"/><area shape="rect" id="node35" href="../../d1/d55/Interval_8h.html" title="Description. " alt="" coords="816,161,896,189"/><area shape="rect" id="node38" href="../../da/dfd/MidiKern_8h.html" title="Some MIDI macros. " alt="" coords="739,238,824,266"/><area shape="rect" id="node41" href="../../d6/d0c/Parser_8h.html" title="Parser.h" alt="" coords="106,83,178,111"/><area shape="rect" id="node49" href="../../d2/d32/Hilfs_8h.html" title="Description. " alt="" coords="383,83,444,111"/><area shape="rect" id="node5" href="../../d1/d73/Defs_8h.html" title="Common definitions. " alt="" coords="412,393,474,421"/></map>
+</div>
+</div>
+<p><a href="../../d3/da0/TabGen_8cpp_source.html">gehe zum Quellcode dieser Datei</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Makrodefinitionen</h2></td></tr>
+<tr class="memitem:gae4dfd7b0d66121016d6466d2ff10e8ba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>&#160;&#160;&#160;_mut</td></tr>
+<tr class="separator:gae4dfd7b0d66121016d6466d2ff10e8ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typdefinitionen</h2></td></tr>
+<tr class="memitem:gada5e37f9724e44d92af21d4e895dc287"><td class="memItemLeft" align="right" valign="top">typedef int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#gada5e37f9724e44d92af21d4e895dc287">intptr</a></td></tr>
+<tr class="separator:gada5e37f9724e44d92af21d4e895dc287"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funktionen</h2></td></tr>
+<tr class="memitem:gac450e7eec8ccc0dfa7bdd4e816e1be0b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d5/d8c/structdo__aktion.html">do_aktion</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#gac450e7eec8ccc0dfa7bdd4e816e1be0b">expandiere_name</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, <a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> <a class="el" href="../../d5/dee/group__route.html#gafdffe3ab26a7d4cd9d6521731a6f396a">char</a> *name, struct <a class="el" href="../../d2/d3f/structargument__list.html">argument_list</a> *parameter, struct <a class="el" href="../../dc/d87/structinterpreter__argument__list.html">interpreter_argument_list</a> *bezugs_liste)</td></tr>
+<tr class="separator:gac450e7eec8ccc0dfa7bdd4e816e1be0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga17b03e17223aab80aa95d596a74bdc2d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d5/d8c/structdo__aktion.html">do_aktion</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#ga17b03e17223aab80aa95d596a74bdc2d">expandiere_umstimmung</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct <a class="el" href="../../d2/d1c/structumstimmung.html">umstimmung</a> *the_umstimmung, struct <a class="el" href="../../dc/d87/structinterpreter__argument__list.html">interpreter_argument_list</a> *aktuelle_parameter)</td></tr>
+<tr class="separator:ga17b03e17223aab80aa95d596a74bdc2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf4476d0bff62a06cb82f3b86fcbb6d83"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d5/d8c/structdo__aktion.html">do_aktion</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#gaf4476d0bff62a06cb82f3b86fcbb6d83">expandiere_midi</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct <a class="el" href="../../df/df2/structmidiliste.html">midiliste</a> *liste)</td></tr>
+<tr class="separator:gaf4476d0bff62a06cb82f3b86fcbb6d83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga43fbf0e36cd0c7d9dae03b69ea03b63f"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="../../d5/d8c/structdo__aktion.html">do_aktion</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#ga43fbf0e36cd0c7d9dae03b69ea03b63f">expand_harmony_analysis</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>)</td></tr>
+<tr class="separator:ga43fbf0e36cd0c7d9dae03b69ea03b63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa32d94398d0aa7cb0b2f2bf3b2308c30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#gaa32d94398d0aa7cb0b2f2bf3b2308c30">insert_in_lokale_liste</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct <a class="el" href="../../d5/d8c/structdo__aktion.html">do_aktion</a> *action, struct <a class="el" href="../../d0/dab/structanweisung.html">anweisung</a> *lauf, struct <a class="el" href="../../db/d28/structlogik.html">logik</a> *logic)</td></tr>
+<tr class="separator:gaa32d94398d0aa7cb0b2f2bf3b2308c30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga59661c7f2229507f939b3e24d885e47e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#ga59661c7f2229507f939b3e24d885e47e">get_komplex_faktor</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct <a class="el" href="../../d7/dc9/structkomplex__intervall.html">komplex_intervall</a> *lauf)</td></tr>
+<tr class="separator:ga59661c7f2229507f939b3e24d885e47e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac870ef84145f2f27a7b21506339cfb88"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#gac870ef84145f2f27a7b21506339cfb88">get_komplex_frequenz</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct <a class="el" href="../../dd/da3/structton.html">ton</a> *dieser)</td></tr>
+<tr class="separator:gac870ef84145f2f27a7b21506339cfb88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacd91c35a0b886a20ecc6bcd2bb8e37e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#gacd91c35a0b886a20ecc6bcd2bb8e37e3">fprint_argument</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, FILE *zieldatei, struct <a class="el" href="../../d2/d74/structargument.html">argument</a> *<a class="el" href="../../d2/d74/structargument.html">argument</a>)</td></tr>
+<tr class="separator:gacd91c35a0b886a20ecc6bcd2bb8e37e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga50212bc42678835d9dbc99045824de57"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#ga50212bc42678835d9dbc99045824de57">reduce_argument</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct <a class="el" href="../../dc/d87/structinterpreter__argument__list.html">interpreter_argument_list</a> *list, size_t index, struct <a class="el" href="../../dc/d87/structinterpreter__argument__list.html">interpreter_argument_list</a> *reference)</td></tr>
+<tr class="separator:ga50212bc42678835d9dbc99045824de57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4aa808146d17fbd47d95c6418dd3960f"><td class="memItemLeft" align="right" valign="top">static struct <br class="typebreak"/>
+<a class="el" href="../../dc/d87/structinterpreter__argument__list.html">interpreter_argument_list</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#ga4aa808146d17fbd47d95c6418dd3960f">generate_argument_list</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct <a class="el" href="../../d2/d3f/structargument__list.html">argument_list</a> *element, struct <a class="el" href="../../dc/d87/structinterpreter__argument__list.html">interpreter_argument_list</a> *bezugs_liste)</td></tr>
+<tr class="separator:ga4aa808146d17fbd47d95c6418dd3960f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga25d628752db4182278197c60b3a19913"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#ga25d628752db4182278197c60b3a19913">resolve_parameters</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct <a class="el" href="../../dc/d87/structinterpreter__argument__list.html">interpreter_argument_list</a> *target, struct <a class="el" href="../../dc/d87/structinterpreter__argument__list.html">interpreter_argument_list</a> *reference)</td></tr>
+<tr class="separator:ga25d628752db4182278197c60b3a19913"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2c6a360c780adc8cdda172a1a26c164b"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="../../d4/dd8/structton__einstell.html">ton_einstell</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#ga2c6a360c780adc8cdda172a1a26c164b">expand_tonliste</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct <a class="el" href="../../dd/da3/structton.html">ton</a> *the_tonliste)</td></tr>
+<tr class="separator:ga2c6a360c780adc8cdda172a1a26c164b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga13b966770b2c6d5e64470a014a958058"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="../../d5/d8c/structdo__aktion.html">do_aktion</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#ga13b966770b2c6d5e64470a014a958058">expandiere_tonsystem</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct <a class="el" href="../../dc/dba/structtonsystem.html">tonsystem</a> *the_tonsystem)</td></tr>
+<tr class="separator:ga13b966770b2c6d5e64470a014a958058"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4ea14e5284c0840695599141a22e95c7"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="../../d5/d8c/structdo__aktion.html">do_aktion</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#ga4ea14e5284c0840695599141a22e95c7">expandiere_logik</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct <a class="el" href="../../db/d28/structlogik.html">logik</a> *the_logik)</td></tr>
+<tr class="separator:ga4ea14e5284c0840695599141a22e95c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadadc27e0d85c98730dae564a11ea7202"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="../../d5/d8c/structdo__aktion.html">do_aktion</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#gadadc27e0d85c98730dae564a11ea7202">expand_aktions_liste</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct <a class="el" href="../../d5/def/structaktions__liste.html">aktions_liste</a> *the_liste, struct <a class="el" href="../../dc/d87/structinterpreter__argument__list.html">interpreter_argument_list</a> *current_parameters)</td></tr>
+<tr class="separator:gadadc27e0d85c98730dae564a11ea7202"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa10f85957a81a404a0e77ba2a44fa842"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="../../dc/da0/structcase__element.html">case_element</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#gaa10f85957a81a404a0e77ba2a44fa842">expand_case_liste</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct <a class="el" href="../../d0/d45/structcase__liste.html">case_liste</a> *the_liste, struct <a class="el" href="../../dc/d87/structinterpreter__argument__list.html">interpreter_argument_list</a> *aktuelle_parameter)</td></tr>
+<tr class="separator:gaa10f85957a81a404a0e77ba2a44fa842"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab3424f2af7bcb85b065de642ca1d1105"><td class="memItemLeft" align="right" valign="top">static int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#gab3424f2af7bcb85b065de642ca1d1105">create_midi_scan_liste</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct <a class="el" href="../../df/df2/structmidiliste.html">midiliste</a> *lauf)</td></tr>
+<tr class="separator:gab3424f2af7bcb85b065de642ca1d1105"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6885699d369c7b002988534b86e3ed8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d7c/group__kernel.html#ga267d883cd4bbaaa3f808d018cbb72bdd">PATTERNN</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#ga6885699d369c7b002988534b86e3ed8f">expand_pattern</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, <a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> <a class="el" href="../../d5/dee/group__route.html#gafdffe3ab26a7d4cd9d6521731a6f396a">char</a> *harmonie_name)</td></tr>
+<tr class="separator:ga6885699d369c7b002988534b86e3ed8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabebfd8538aae475e3a2ba47f95d7d2c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#gabebfd8538aae475e3a2ba47f95d7d2c3">insert_in_globale_liste</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, struct <a class="el" href="../../db/d28/structlogik.html">logik</a> *lauf)</td></tr>
+<tr class="separator:gabebfd8538aae475e3a2ba47f95d7d2c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaedad3c39090670b392bd5bc072af9139"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#gaedad3c39090670b392bd5bc072af9139">expandiere_in_globale_liste</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>)</td></tr>
+<tr class="separator:gaedad3c39090670b392bd5bc072af9139"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga166a469a0ff7e89b06d5a4b2055bb1a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#ga166a469a0ff7e89b06d5a4b2055bb1a9">expand_decition_tree</a> (<a class="el" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> *<a class="el" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>)</td></tr>
+<tr class="separator:ga166a469a0ff7e89b06d5a4b2055bb1a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variablen</h2></td></tr>
+<tr class="memitem:ga133c01da80801dde358f411a4ef498e6"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#ga133c01da80801dde358f411a4ef498e6">anzahl_eingelesene_zeichen</a></td></tr>
+<tr class="separator:ga133c01da80801dde358f411a4ef498e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
+<div class="textblock"><p>Table generator. </p>
+<p>Copyright: (c) 1997-2011 TU Dresden Changes after 2011-11 (c) by the authors </p>
+<dl class="section author"><dt>Autor</dt><dd>R.Krauße, Tobias Schlemmer <a href="#" onclick="location.href='mai'+'lto:'+'kei'+'ns'+'tei'+'n@'+'use'+'rs'+'.be'+'rl'+'ios'+'.d'+'e'; return false;">keins<span style="display: none;">.nosp@m.</span>tein<span style="display: none;">.nosp@m.</span>@user<span style="display: none;">.nosp@m.</span>s.be<span style="display: none;">.nosp@m.</span>rlios<span style="display: none;">.nosp@m.</span>.de</a>  GPL</dd></dl>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA </p>
+
+<p>Definiert in Datei <a class="el" href="../../d3/da0/TabGen_8cpp_source.html">TabGen.cpp</a>.</p>
+</div></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:38:42 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

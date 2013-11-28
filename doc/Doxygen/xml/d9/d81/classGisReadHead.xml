@@ -1,0 +1,537 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d9/d81/classGisReadHead" kind="class" prot="public">
+    <compoundname>GisReadHead</compoundname>
+    <derivedcompoundref refid="d4/d4c/classGisReadArtHead" prot="public" virt="non-virtual">GisReadArtHead</derivedcompoundref>
+    <includes refid="d1/db5/GIS__Head_8h" local="no">GIS_Head.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d9/d81/classGisReadHead_1a7d7ecded97c79a3859c4312540f139ad" prot="public" static="no" mutable="no">
+        <type><ref refid="d9/d81/classGisReadHead" kindref="compound">GisReadHead</ref> *</type>
+        <definition>GisReadHead* GisReadHead::Next</definition>
+        <argsstring></argsstring>
+        <name>Next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="67" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="67" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga109a0cf93dcc00970dc0d01283a5ff9a" compoundref="d7/da0/GIS__Head_8cpp" startline="1432" endline="1440">GisWriteHead::AddTime</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga3712d6f14032d354b50568281ac1641d" compoundref="d7/da0/GIS__Head_8cpp" startline="795" endline="827">ChordNote::ChordNote</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga3b5491c6e864dc9569bc8490ebc06a86" compoundref="d7/da0/GIS__Head_8cpp" startline="1512" endline="1560">CloseAllSubs</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga5d5d7313fc7047f4bd9c58d2c98bbb41" compoundref="d7/da0/GIS__Head_8cpp" startline="1151" endline="1182">GisWriteHead::CloseSubs</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga94c36394d06ee4a14a79aacb60b1ae70" compoundref="d7/da0/GIS__Head_8cpp" startline="829" endline="836">ChordNote::CountOnTime</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga2d15f81e4fff876bc86dadc798f3db04" compoundref="d7/da0/GIS__Head_8cpp" startline="216" endline="262">CutOut</referencedby>
+        <referencedby refid="d5/dee/group__route_1gad08ba4d928f36ebfeb63d6d3fa0090fc" compoundref="d7/da0/GIS__Head_8cpp" startline="1023" endline="1040">GisWriteHead::CutOut</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga18fbf3c45269dd19a140358c3e6441f8" compoundref="d7/da0/GIS__Head_8cpp" startline="656" endline="748">GisReadArtHeadOn</referencedby>
+        <referencedby refid="d9/d81/classGisReadHead_1aeb72bfc74b975e15bc3fc40c25893bca" compoundref="d1/db5/GIS__Head_8h" startline="76" endline="88">GisReadHead</referencedby>
+        <referencedby refid="d5/dee/group__route_1gad4848886a12c401c58db274c7e87e087" compoundref="d7/da0/GIS__Head_8cpp" startline="371" endline="438">GisReadHeadOn</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga7ad4a03599a57c087288c761942ad851" compoundref="d7/da0/GIS__Head_8cpp" startline="1003" endline="1021">GisWriteHead::InsertAfter</referencedby>
+        <referencedby refid="d5/dee/group__route_1gab8c6313f016650a6e06383621c29b45f" compoundref="d7/da0/GIS__Head_8cpp" startline="147" endline="214">InsertInfrontOf</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" compoundref="db/d78/DevGIS_8cpp" startline="571" endline="737">mutabor::InputGis::ReadOn</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga38494505bd8538148c0f3ad1c5d86836" compoundref="d7/da0/GIS__Head_8cpp" startline="847" endline="863">ChordNote::SetNoteOff</referencedby>
+        <referencedby refid="d9/d81/classGisReadHead_1a608a98c807cc959eecfd129c47b02f38" compoundref="d1/db5/GIS__Head_8h" startline="90" endline="96">~GisReadHead</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d9/d81/classGisReadHead_1a397ead2657ffe0343cc0825fd61ca6cf" prot="public" static="no" mutable="no">
+        <type><ref refid="d9/d81/classGisReadHead" kindref="compound">GisReadHead</ref> **</type>
+        <definition>GisReadHead ** GisReadHead::PrevPtr</definition>
+        <argsstring></argsstring>
+        <name>PrevPtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="67" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="67" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga2d15f81e4fff876bc86dadc798f3db04" compoundref="d7/da0/GIS__Head_8cpp" startline="216" endline="262">CutOut</referencedby>
+        <referencedby refid="d9/d81/classGisReadHead_1aeb72bfc74b975e15bc3fc40c25893bca" compoundref="d1/db5/GIS__Head_8h" startline="76" endline="88">GisReadHead</referencedby>
+        <referencedby refid="d5/dee/group__route_1gab8c6313f016650a6e06383621c29b45f" compoundref="d7/da0/GIS__Head_8cpp" startline="147" endline="214">InsertInfrontOf</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a602dd53cc86c2dbf91bf290b169f00a0" compoundref="db/d78/DevGIS_8cpp" startline="329" endline="355">mutabor::InputGis::Stop</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d9/d81/classGisReadHead_1a797b336a3149c1e51f4bdad05519def2" prot="public" static="no" mutable="no">
+        <type><ref refid="d9/d81/classGisReadHead" kindref="compound">GisReadHead</ref> *</type>
+        <definition>GisReadHead * GisReadHead::Prev</definition>
+        <argsstring></argsstring>
+        <name>Prev</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="67" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="67" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga2d15f81e4fff876bc86dadc798f3db04" compoundref="d7/da0/GIS__Head_8cpp" startline="216" endline="262">CutOut</referencedby>
+        <referencedby refid="d5/dee/group__route_1gad08ba4d928f36ebfeb63d6d3fa0090fc" compoundref="d7/da0/GIS__Head_8cpp" startline="1023" endline="1040">GisWriteHead::CutOut</referencedby>
+        <referencedby refid="d9/d81/classGisReadHead_1aeb72bfc74b975e15bc3fc40c25893bca" compoundref="d1/db5/GIS__Head_8h" startline="76" endline="88">GisReadHead</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga7ad4a03599a57c087288c761942ad851" compoundref="d7/da0/GIS__Head_8cpp" startline="1003" endline="1021">GisWriteHead::InsertAfter</referencedby>
+        <referencedby refid="d5/dee/group__route_1gab8c6313f016650a6e06383621c29b45f" compoundref="d7/da0/GIS__Head_8cpp" startline="147" endline="214">InsertInfrontOf</referencedby>
+        <referencedby refid="d4/d21/gmn2midi_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="d4/d21/gmn2midi_8cpp" startline="23" endline="74">main</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d9/d81/classGisReadHead_1a82feb8a2bc183115b5670a72ebfe96f7" prot="public" static="no" mutable="no">
+        <type><ref refid="d9/d81/classGisReadHead" kindref="compound">GisReadHead</ref> *</type>
+        <definition>GisReadHead* GisReadHead::Boss</definition>
+        <argsstring></argsstring>
+        <name>Boss</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="68" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="68" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga3712d6f14032d354b50568281ac1641d" compoundref="d7/da0/GIS__Head_8cpp" startline="795" endline="827">ChordNote::ChordNote</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga3b5491c6e864dc9569bc8490ebc06a86" compoundref="d7/da0/GIS__Head_8cpp" startline="1512" endline="1560">CloseAllSubs</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga7e9cd532053e6cae27e9b95654b11f20" compoundref="d7/da0/GIS__Head_8cpp" startline="1448" endline="1503">GetMatchingHeader</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga18fbf3c45269dd19a140358c3e6441f8" compoundref="d7/da0/GIS__Head_8cpp" startline="656" endline="748">GisReadArtHeadOn</referencedby>
+        <referencedby refid="d9/d81/classGisReadHead_1aeb72bfc74b975e15bc3fc40c25893bca" compoundref="d1/db5/GIS__Head_8h" startline="76" endline="88">GisReadHead</referencedby>
+        <referencedby refid="d5/dee/group__route_1gad4848886a12c401c58db274c7e87e087" compoundref="d7/da0/GIS__Head_8cpp" startline="371" endline="438">GisReadHeadOn</referencedby>
+        <referencedby refid="d5/dee/group__route_1gae44f190b817baaaef925c168970fd0d3" compoundref="d7/da0/GIS__Head_8cpp" startline="963" endline="998">ChordNote::MutNoteOff</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga01b0810f119d47c9a4909a3d2fc44921" compoundref="d7/da0/GIS__Head_8cpp" startline="935" endline="961">ChordNote::MutNoteOn</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" compoundref="db/d78/DevGIS_8cpp" startline="571" endline="737">mutabor::InputGis::ReadOn</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga38494505bd8538148c0f3ad1c5d86836" compoundref="d7/da0/GIS__Head_8cpp" startline="847" endline="863">ChordNote::SetNoteOff</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga468c2f949d1fac159d03ff33ea973280" compoundref="d7/da0/GIS__Head_8cpp" startline="839" endline="845">ChordNote::SetNoteOn</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d9/d81/classGisReadHead_1a0b7f1958ead3a1142f4895a77062328c" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int GisReadHead::nSub</definition>
+        <argsstring></argsstring>
+        <name>nSub</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="69" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="69" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga5d5d7313fc7047f4bd9c58d2c98bbb41" compoundref="d7/da0/GIS__Head_8cpp" startline="1151" endline="1182">GisWriteHead::CloseSubs</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaba99a430e658d303cbc5307bb3abf644" compoundref="d7/da0/GIS__Head_8cpp" startline="265" endline="300">CreateSegmentSubs</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac89b6135357ffc8e02f5d98d687a482f" compoundref="d7/da0/GIS__Head_8cpp" startline="303" endline="316">CreateSequenzSubs</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga18fbf3c45269dd19a140358c3e6441f8" compoundref="d7/da0/GIS__Head_8cpp" startline="656" endline="748">GisReadArtHeadOn</referencedby>
+        <referencedby refid="d9/d81/classGisReadHead_1aeb72bfc74b975e15bc3fc40c25893bca" compoundref="d1/db5/GIS__Head_8h" startline="76" endline="88">GisReadHead</referencedby>
+        <referencedby refid="d5/dee/group__route_1gad4848886a12c401c58db274c7e87e087" compoundref="d7/da0/GIS__Head_8cpp" startline="371" endline="438">GisReadHeadOn</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" compoundref="db/d78/DevGIS_8cpp" startline="571" endline="737">mutabor::InputGis::ReadOn</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" prot="public" static="no" mutable="no">
+        <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+        <definition>GisToken* GisReadHead::Cursor</definition>
+        <argsstring></argsstring>
+        <name>Cursor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="70" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="70" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gade7d82fdf052395a3d9a34b7d205508c" compoundref="d7/da0/GIS__Head_8cpp" startline="865" endline="871">ChordNote::AddGis</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaed4a76ec9ff68f62b540d9fc7b6cb5b6" compoundref="d7/da0/GIS__Head_8cpp" startline="901" endline="933">ChordNote::CheckCloseTie</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga3712d6f14032d354b50568281ac1641d" compoundref="d7/da0/GIS__Head_8cpp" startline="795" endline="827">ChordNote::ChordNote</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga3bc30436bf1460a58b0197cf4a66cac5" compoundref="d7/da0/GIS__Head_8cpp" startline="1185" endline="1253">GisWriteHead::CloseCurrentToken</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga5d5d7313fc7047f4bd9c58d2c98bbb41" compoundref="d7/da0/GIS__Head_8cpp" startline="1151" endline="1182">GisWriteHead::CloseSubs</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaba99a430e658d303cbc5307bb3abf644" compoundref="d7/da0/GIS__Head_8cpp" startline="265" endline="300">CreateSegmentSubs</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac89b6135357ffc8e02f5d98d687a482f" compoundref="d7/da0/GIS__Head_8cpp" startline="303" endline="316">CreateSequenzSubs</referencedby>
+        <referencedby refid="d9/d81/classGisReadHead_1ab58ced6bee32e0053fce7a446ba02198" compoundref="d1/db5/GIS__Head_8h" startline="106" endline="119">CursorNext</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga18fbf3c45269dd19a140358c3e6441f8" compoundref="d7/da0/GIS__Head_8cpp" startline="656" endline="748">GisReadArtHeadOn</referencedby>
+        <referencedby refid="d9/d81/classGisReadHead_1aeb72bfc74b975e15bc3fc40c25893bca" compoundref="d1/db5/GIS__Head_8h" startline="76" endline="88">GisReadHead</referencedby>
+        <referencedby refid="d5/dee/group__route_1gad4848886a12c401c58db274c7e87e087" compoundref="d7/da0/GIS__Head_8cpp" startline="371" endline="438">GisReadHeadOn</referencedby>
+        <referencedby refid="d5/dee/group__route_1gae44f190b817baaaef925c168970fd0d3" compoundref="d7/da0/GIS__Head_8cpp" startline="963" endline="998">ChordNote::MutNoteOff</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga01b0810f119d47c9a4909a3d2fc44921" compoundref="d7/da0/GIS__Head_8cpp" startline="935" endline="961">ChordNote::MutNoteOn</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a2b3ede588a224861e7a1810e983c6b45" compoundref="db/d78/DevGIS_8cpp" startline="399" endline="488">mutabor::InputGis::Proceed</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac73921011ef5b7af1c87336ca033f97c" compoundref="d7/da0/GIS__Head_8cpp" startline="1258" endline="1387">GisWriteHead::ProceedGis</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ab1fd97ac67b58b0a4627308223f52c6b" compoundref="db/d78/DevGIS_8cpp" startline="490" endline="533">mutabor::InputGis::ProceedRoute</referencedby>
+        <referencedby refid="d5/dee/group__route_1gace29001e83c7545b74e6cd63c0a47bc6" compoundref="d7/da0/GIS__Head_8cpp" startline="319" endline="350">Read</referencedby>
+        <referencedby refid="d5/dee/group__route_1gadd30cf551924b6e57607f265e6ac5d3d" compoundref="d7/da0/GIS__Head_8cpp" startline="516" endline="624">GisReadArtHead::Read</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" compoundref="db/d78/DevGIS_8cpp" startline="571" endline="737">mutabor::InputGis::ReadOn</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4f2e1a9d69f1a8c5242c72a53783a5c9" compoundref="d7/da0/GIS__Head_8cpp" startline="1083" endline="1129">GisWriteHead::ReadyForBoss</referencedby>
+        <referencedby refid="d5/dee/group__route_1gacb80104f8924cb3e582b980e5aea8ef1" compoundref="d7/da0/GIS__Head_8cpp" startline="1131" endline="1147">GisWriteHead::RemoveComma</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga38494505bd8538148c0f3ad1c5d86836" compoundref="d7/da0/GIS__Head_8cpp" startline="847" endline="863">ChordNote::SetNoteOff</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga468c2f949d1fac159d03ff33ea973280" compoundref="d7/da0/GIS__Head_8cpp" startline="839" endline="845">ChordNote::SetNoteOn</referencedby>
+        <referencedby refid="d4/d21/gmn2midi_8cpp_1a89f6a2d3b6f126bbc51071b02df8c753" compoundref="d4/d21/gmn2midi_8cpp" startline="14" endline="19">Write</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga2f092a0c9eb371fe5dd1e0780976506f" compoundref="d7/da0/GIS__Head_8cpp" startline="1389" endline="1430">GisWriteHead::WriteChord</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d9/d81/classGisReadHead_1a3593ef5641e761c24e59f5b33c8a58fe" prot="public" static="no" mutable="no">
+        <type><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref></type>
+        <definition>frac GisReadHead::Time</definition>
+        <argsstring></argsstring>
+        <name>Time</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="71" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="71" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga18fbf3c45269dd19a140358c3e6441f8" compoundref="d7/da0/GIS__Head_8cpp" startline="656" endline="748">GisReadArtHeadOn</referencedby>
+        <referencedby refid="d9/d81/classGisReadHead_1aeb72bfc74b975e15bc3fc40c25893bca" compoundref="d1/db5/GIS__Head_8h" startline="76" endline="88">GisReadHead</referencedby>
+        <referencedby refid="d5/dee/group__route_1gad4848886a12c401c58db274c7e87e087" compoundref="d7/da0/GIS__Head_8cpp" startline="371" endline="438">GisReadHeadOn</referencedby>
+        <referencedby refid="d5/dee/group__route_1gace29001e83c7545b74e6cd63c0a47bc6" compoundref="d7/da0/GIS__Head_8cpp" startline="319" endline="350">Read</referencedby>
+        <referencedby refid="d5/dee/group__route_1gadd30cf551924b6e57607f265e6ac5d3d" compoundref="d7/da0/GIS__Head_8cpp" startline="516" endline="624">GisReadArtHead::Read</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" compoundref="db/d78/DevGIS_8cpp" startline="571" endline="737">mutabor::InputGis::ReadOn</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d9/d81/classGisReadHead_1a93327a7ddcec6f05512dfb41a06f2a84" prot="public" static="no" mutable="no">
+        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+        <definition>mutString GisReadHead::Id</definition>
+        <argsstring></argsstring>
+        <name>Id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="72" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="72" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gaba99a430e658d303cbc5307bb3abf644" compoundref="d7/da0/GIS__Head_8cpp" startline="265" endline="300">CreateSegmentSubs</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac89b6135357ffc8e02f5d98d687a482f" compoundref="d7/da0/GIS__Head_8cpp" startline="303" endline="316">CreateSequenzSubs</referencedby>
+        <referencedby refid="d9/d81/classGisReadHead_1aeb72bfc74b975e15bc3fc40c25893bca" compoundref="d1/db5/GIS__Head_8h" startline="76" endline="88">GisReadHead</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a2b3ede588a224861e7a1810e983c6b45" compoundref="db/d78/DevGIS_8cpp" startline="399" endline="488">mutabor::InputGis::Proceed</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac73921011ef5b7af1c87336ca033f97c" compoundref="d7/da0/GIS__Head_8cpp" startline="1258" endline="1387">GisWriteHead::ProceedGis</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ab1fd97ac67b58b0a4627308223f52c6b" compoundref="db/d78/DevGIS_8cpp" startline="490" endline="533">mutabor::InputGis::ProceedRoute</referencedby>
+        <referencedby refid="d5/dee/group__route_1gadd30cf551924b6e57607f265e6ac5d3d" compoundref="d7/da0/GIS__Head_8cpp" startline="516" endline="624">GisReadArtHead::Read</referencedby>
+        <referencedby refid="d9/d81/classGisReadHead_1a608a98c807cc959eecfd129c47b02f38" compoundref="d1/db5/GIS__Head_8h" startline="90" endline="96">~GisReadHead</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d9/d81/classGisReadHead_1abc1b3f496f4d0770cfc2f3fdd4495a38" prot="public" static="no" mutable="no">
+        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <definition>char GisReadHead::Turn</definition>
+        <argsstring></argsstring>
+        <name>Turn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="73" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="73" bodyend="-1"/>
+        <referencedby refid="d9/d81/classGisReadHead_1ab58ced6bee32e0053fce7a446ba02198" compoundref="d1/db5/GIS__Head_8h" startline="106" endline="119">CursorNext</referencedby>
+        <referencedby refid="d4/d4c/classGisReadArtHead_1adc8e481de4b6d2c5f3f6fbfad34f9004" compoundref="d1/db5/GIS__Head_8h" startline="180" endline="208">GisReadArtHead::GisReadArtHead</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga18fbf3c45269dd19a140358c3e6441f8" compoundref="d7/da0/GIS__Head_8cpp" startline="656" endline="748">GisReadArtHeadOn</referencedby>
+        <referencedby refid="d5/dee/group__route_1gadd30cf551924b6e57607f265e6ac5d3d" compoundref="d7/da0/GIS__Head_8cpp" startline="516" endline="624">GisReadArtHead::Read</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" compoundref="db/d78/DevGIS_8cpp" startline="571" endline="737">mutabor::InputGis::ReadOn</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d9/d81/classGisReadHead_1a03cb4035693ef45b9427515e3994093e" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool GisReadHead::SingleToken</definition>
+        <argsstring></argsstring>
+        <name>SingleToken</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="74" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="74" bodyend="-1"/>
+        <referencedby refid="d9/d81/classGisReadHead_1ab58ced6bee32e0053fce7a446ba02198" compoundref="d1/db5/GIS__Head_8h" startline="106" endline="119">CursorNext</referencedby>
+        <referencedby refid="d9/d81/classGisReadHead_1aeb72bfc74b975e15bc3fc40c25893bca" compoundref="d1/db5/GIS__Head_8h" startline="76" endline="88">GisReadHead</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4f2e1a9d69f1a8c5242c72a53783a5c9" compoundref="d7/da0/GIS__Head_8cpp" startline="1083" endline="1129">GisWriteHead::ReadyForBoss</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/d81/classGisReadHead_1aeb72bfc74b975e15bc3fc40c25893bca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GisReadHead::GisReadHead</definition>
+        <argsstring>(GisReadHead *boss, GisToken *cursor, const mutString &amp;id, bool singleToken=false)</argsstring>
+        <name>GisReadHead</name>
+        <param>
+          <type><ref refid="d9/d81/classGisReadHead" kindref="compound">GisReadHead</ref> *</type>
+          <declname>boss</declname>
+        </param>
+        <param>
+          <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+          <declname>cursor</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref> &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>singleToken</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="76" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="76" bodyend="88"/>
+        <references refid="d9/d81/classGisReadHead_1a82feb8a2bc183115b5670a72ebfe96f7" compoundref="d1/db5/GIS__Head_8h" startline="68">Boss</references>
+        <references refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" compoundref="d1/db5/GIS__Head_8h" startline="70">Cursor</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d81/classGisReadHead_1a93327a7ddcec6f05512dfb41a06f2a84" compoundref="d1/db5/GIS__Head_8h" startline="72">Id</references>
+        <references refid="d5/dee/group__route_1gab8c6313f016650a6e06383621c29b45f" compoundref="d7/da0/GIS__Head_8cpp" startline="147" endline="214">InsertInfrontOf</references>
+        <references refid="d9/d7c/group__kernel_1gafd7eed8922ac73bf2cef2ce1a85c56b8" compoundref="d1/d73/Defs_8h" startline="175">mutCopyString</references>
+        <references refid="d9/d81/classGisReadHead_1a7d7ecded97c79a3859c4312540f139ad" compoundref="d1/db5/GIS__Head_8h" startline="67">Next</references>
+        <references refid="d9/d81/classGisReadHead_1a0b7f1958ead3a1142f4895a77062328c" compoundref="d1/db5/GIS__Head_8h" startline="69">nSub</references>
+        <references refid="d9/d81/classGisReadHead_1a797b336a3149c1e51f4bdad05519def2" compoundref="d1/db5/GIS__Head_8h" startline="67">Prev</references>
+        <references refid="d9/d81/classGisReadHead_1a397ead2657ffe0343cc0825fd61ca6cf" compoundref="d1/db5/GIS__Head_8h" startline="67">PrevPtr</references>
+        <references refid="d9/d81/classGisReadHead_1a03cb4035693ef45b9427515e3994093e" compoundref="d1/db5/GIS__Head_8h" startline="74">SingleToken</references>
+        <references refid="d9/d81/classGisReadHead_1a3593ef5641e761c24e59f5b33c8a58fe" compoundref="d1/db5/GIS__Head_8h" startline="71">Time</references>
+        <referencedby refid="d9/d81/classGisReadHead_1a90f585c3c0136362f3683b4876467595" compoundref="d1/db5/GIS__Head_8h" startline="98" endline="101">Build</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d81/classGisReadHead_1a608a98c807cc959eecfd129c47b02f38" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual GisReadHead::~GisReadHead</definition>
+        <argsstring>()</argsstring>
+        <name>~GisReadHead</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="90" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="90" bodyend="96"/>
+        <references refid="d9/d81/classGisReadHead_1a93327a7ddcec6f05512dfb41a06f2a84" compoundref="d1/db5/GIS__Head_8h" startline="72">Id</references>
+        <references refid="d9/d7c/group__kernel_1gae1886fec5e1bc39af4e253f3508da561" compoundref="d1/d73/Defs_8h" startline="172">mutFreeString</references>
+        <references refid="d9/d81/classGisReadHead_1a7d7ecded97c79a3859c4312540f139ad" compoundref="d1/db5/GIS__Head_8h" startline="67">Next</references>
+      </memberdef>
+      <memberdef kind="function" id="d9/d81/classGisReadHead_1a90f585c3c0136362f3683b4876467595" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d9/d81/classGisReadHead" kindref="compound">GisReadHead</ref> *</type>
+        <definition>virtual GisReadHead* GisReadHead::Build</definition>
+        <argsstring>(GisReadHead *boss, GisToken *cursor, const mutString &amp;id, bool singleToken=false)</argsstring>
+        <name>Build</name>
+        <reimplementedby refid="d4/d4c/classGisReadArtHead_1a27d9915b9f8594a2fbf271f6bfad51f3">Build</reimplementedby>
+        <param>
+          <type><ref refid="d9/d81/classGisReadHead" kindref="compound">GisReadHead</ref> *</type>
+          <declname>boss</declname>
+        </param>
+        <param>
+          <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+          <declname>cursor</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref> &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>singleToken</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="98" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="98" bodyend="101"/>
+        <references refid="d9/d81/classGisReadHead_1aeb72bfc74b975e15bc3fc40c25893bca" compoundref="d1/db5/GIS__Head_8h" startline="76" endline="88">GisReadHead</references>
+        <referencedby refid="d5/dee/group__route_1gaba99a430e658d303cbc5307bb3abf644" compoundref="d7/da0/GIS__Head_8cpp" startline="265" endline="300">CreateSegmentSubs</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac89b6135357ffc8e02f5d98d687a482f" compoundref="d7/da0/GIS__Head_8cpp" startline="303" endline="316">CreateSequenzSubs</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gab8c6313f016650a6e06383621c29b45f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d81/classGisReadHead" kindref="compound">GisReadHead</ref> *</type>
+        <definition>GisReadHead * GisReadHead::InsertInfrontOf</definition>
+        <argsstring>(GisReadHead *position)</argsstring>
+        <name>InsertInfrontOf</name>
+        <param>
+          <type><ref refid="d9/d81/classGisReadHead" kindref="compound">GisReadHead</ref> *</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="103" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.cpp" bodystart="147" bodyend="214"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d81/classGisReadHead_1a7d7ecded97c79a3859c4312540f139ad" compoundref="d1/db5/GIS__Head_8h" startline="67">Next</references>
+        <references refid="d9/d81/classGisReadHead_1a797b336a3149c1e51f4bdad05519def2" compoundref="d1/db5/GIS__Head_8h" startline="67">Prev</references>
+        <references refid="d9/d81/classGisReadHead_1a397ead2657ffe0343cc0825fd61ca6cf" compoundref="d1/db5/GIS__Head_8h" startline="67">PrevPtr</references>
+        <referencedby refid="d9/d81/classGisReadHead_1aeb72bfc74b975e15bc3fc40c25893bca" compoundref="d1/db5/GIS__Head_8h" startline="76" endline="88">GisReadHead</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1ga2d15f81e4fff876bc86dadc798f3db04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d81/classGisReadHead" kindref="compound">GisReadHead</ref> *</type>
+        <definition>GisReadHead * GisReadHead::CutOut</definition>
+        <argsstring>()</argsstring>
+        <name>CutOut</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="105" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.cpp" bodystart="216" bodyend="262"/>
+        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d81/classGisReadHead_1a7d7ecded97c79a3859c4312540f139ad" compoundref="d1/db5/GIS__Head_8h" startline="67">Next</references>
+        <references refid="d9/d81/classGisReadHead_1a797b336a3149c1e51f4bdad05519def2" compoundref="d1/db5/GIS__Head_8h" startline="67">Prev</references>
+        <references refid="d9/d81/classGisReadHead_1a397ead2657ffe0343cc0825fd61ca6cf" compoundref="d1/db5/GIS__Head_8h" startline="67">PrevPtr</references>
+        <referencedby refid="d5/dee/group__route_1ga18fbf3c45269dd19a140358c3e6441f8" compoundref="d7/da0/GIS__Head_8cpp" startline="656" endline="748">GisReadArtHeadOn</referencedby>
+        <referencedby refid="d5/dee/group__route_1gad4848886a12c401c58db274c7e87e087" compoundref="d7/da0/GIS__Head_8cpp" startline="371" endline="438">GisReadHeadOn</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" compoundref="db/d78/DevGIS_8cpp" startline="571" endline="737">mutabor::InputGis::ReadOn</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d81/classGisReadHead_1ab58ced6bee32e0053fce7a446ba02198" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
+        <definition>GisToken* GisReadHead::CursorNext</definition>
+        <argsstring>()</argsstring>
+        <name>CursorNext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="106" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="106" bodyend="119"/>
+        <references refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" compoundref="d1/db5/GIS__Head_8h" startline="70">Cursor</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861ad84723e7289663adcb8df2293c6a813d" compoundref="dd/d4d/GIS_8h" startline="127">GTComma</references>
+        <references refid="d2/db7/classGisToken_1a5ebe3590397490871cf0839a758e2449" compoundref="dd/d4d/GIS_8h" startline="136">GisToken::Next</references>
+        <references refid="d9/d81/classGisReadHead_1a03cb4035693ef45b9427515e3994093e" compoundref="d1/db5/GIS__Head_8h" startline="74">SingleToken</references>
+        <references refid="d9/d81/classGisReadHead_1abc1b3f496f4d0770cfc2f3fdd4495a38" compoundref="d1/db5/GIS__Head_8h" startline="73">Turn</references>
+        <references refid="d2/db7/classGisToken_1ae4d7f75c10842938ece11120d1665106" compoundref="dd/d4d/GIS_8h" startline="154" endline="157">GisToken::Type</references>
+        <referencedby refid="d5/dee/group__route_1ga18fbf3c45269dd19a140358c3e6441f8" compoundref="d7/da0/GIS__Head_8cpp" startline="656" endline="748">GisReadArtHeadOn</referencedby>
+        <referencedby refid="d5/dee/group__route_1gad4848886a12c401c58db274c7e87e087" compoundref="d7/da0/GIS__Head_8cpp" startline="371" endline="438">GisReadHeadOn</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" compoundref="db/d78/DevGIS_8cpp" startline="571" endline="737">mutabor::InputGis::ReadOn</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaba99a430e658d303cbc5307bb3abf644" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GisReadHead::CreateSegmentSubs</definition>
+        <argsstring>()</argsstring>
+        <name>CreateSegmentSubs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="120" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.cpp" bodystart="265" bodyend="300"/>
+        <references refid="d9/d81/classGisReadHead_1a90f585c3c0136362f3683b4876467595" compoundref="d1/db5/GIS__Head_8h" startline="98" endline="101">Build</references>
+        <references refid="d3/d6e/classGisSegment_1a0a5f8521b9792771b778b1af0416d222" compoundref="dd/d4d/GIS_8h" startline="249">GisSegment::Contents</references>
+        <references refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" compoundref="d1/db5/GIS__Head_8h" startline="70">Cursor</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861ad84723e7289663adcb8df2293c6a813d" compoundref="dd/d4d/GIS_8h" startline="127">GTComma</references>
+        <references refid="d9/d81/classGisReadHead_1a93327a7ddcec6f05512dfb41a06f2a84" compoundref="d1/db5/GIS__Head_8h" startline="72">Id</references>
+        <references refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" compoundref="d1/d73/Defs_8h" startline="169">mutString</references>
+        <references refid="d9/d7c/group__kernel_1gab0bf0415f048ff66e8cd015b484a3a09" compoundref="d1/d73/Defs_8h" startline="77">mutT</references>
+        <references refid="d2/db7/classGisToken_1a5ebe3590397490871cf0839a758e2449" compoundref="dd/d4d/GIS_8h" startline="136">GisToken::Next</references>
+        <references refid="d9/d81/classGisReadHead_1a0b7f1958ead3a1142f4895a77062328c" compoundref="d1/db5/GIS__Head_8h" startline="69">nSub</references>
+        <references refid="d2/db7/classGisToken_1ae4d7f75c10842938ece11120d1665106" compoundref="dd/d4d/GIS_8h" startline="154" endline="157">GisToken::Type</references>
+        <referencedby refid="d5/dee/group__route_1gace29001e83c7545b74e6cd63c0a47bc6" compoundref="d7/da0/GIS__Head_8cpp" startline="319" endline="350">Read</referencedby>
+        <referencedby refid="d5/dee/group__route_1gadd30cf551924b6e57607f265e6ac5d3d" compoundref="d7/da0/GIS__Head_8cpp" startline="516" endline="624">GisReadArtHead::Read</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gac89b6135357ffc8e02f5d98d687a482f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GisReadHead::CreateSequenzSubs</definition>
+        <argsstring>()</argsstring>
+        <name>CreateSequenzSubs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="121" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.cpp" bodystart="303" bodyend="316"/>
+        <references refid="d9/d81/classGisReadHead_1a90f585c3c0136362f3683b4876467595" compoundref="d1/db5/GIS__Head_8h" startline="98" endline="101">Build</references>
+        <references refid="d3/d6e/classGisSegment_1a0a5f8521b9792771b778b1af0416d222" compoundref="dd/d4d/GIS_8h" startline="249">GisSegment::Contents</references>
+        <references refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" compoundref="d1/db5/GIS__Head_8h" startline="70">Cursor</references>
+        <references refid="d9/d81/classGisReadHead_1a93327a7ddcec6f05512dfb41a06f2a84" compoundref="d1/db5/GIS__Head_8h" startline="72">Id</references>
+        <references refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" compoundref="d1/d73/Defs_8h" startline="169">mutString</references>
+        <references refid="d9/d7c/group__kernel_1gab0bf0415f048ff66e8cd015b484a3a09" compoundref="d1/d73/Defs_8h" startline="77">mutT</references>
+        <references refid="d9/d81/classGisReadHead_1a0b7f1958ead3a1142f4895a77062328c" compoundref="d1/db5/GIS__Head_8h" startline="69">nSub</references>
+        <referencedby refid="d5/dee/group__route_1gace29001e83c7545b74e6cd63c0a47bc6" compoundref="d7/da0/GIS__Head_8cpp" startline="319" endline="350">Read</referencedby>
+        <referencedby refid="d5/dee/group__route_1gadd30cf551924b6e57607f265e6ac5d3d" compoundref="d7/da0/GIS__Head_8cpp" startline="516" endline="624">GisReadArtHead::Read</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gace29001e83c7545b74e6cd63c0a47bc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GisReadHead::Read</definition>
+        <argsstring>()</argsstring>
+        <name>Read</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="122" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.cpp" bodystart="319" bodyend="350"/>
+        <references refid="d5/dee/group__route_1gaba99a430e658d303cbc5307bb3abf644" compoundref="d7/da0/GIS__Head_8cpp" startline="265" endline="300">CreateSegmentSubs</references>
+        <references refid="d5/dee/group__route_1gac89b6135357ffc8e02f5d98d687a482f" compoundref="d7/da0/GIS__Head_8cpp" startline="303" endline="316">CreateSequenzSubs</references>
+        <references refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" compoundref="d1/db5/GIS__Head_8h" startline="70">Cursor</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861ad84723e7289663adcb8df2293c6a813d" compoundref="dd/d4d/GIS_8h" startline="127">GTComma</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861a4b64e411111d6f015cd6421b13889b9e" compoundref="dd/d4d/GIS_8h" startline="123">GTNote</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861abfa44ca6362dc94f6b17040666537bcc" compoundref="dd/d4d/GIS_8h" startline="116">GTNull</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861a0e7f85af67af7f7525910b0448be19c7" compoundref="dd/d4d/GIS_8h" startline="124">GTParaInt</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861a5486bdc5c92f8e85d3f05b810eb17d2c" compoundref="dd/d4d/GIS_8h" startline="125">GTParaReal</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861a47da418be1ab05f8322f6a21bde2d45e" compoundref="dd/d4d/GIS_8h" startline="126">GTParaStr</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861afe97a3e9b9a485aeb126e6300fe17849" compoundref="dd/d4d/GIS_8h" startline="119">GTSegment</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861aafd3cbc11a660c2c8b352959a8efc782" compoundref="dd/d4d/GIS_8h" startline="118">GTSequenz</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861aebc8ed1642dd35c57de5b08b246474a3" compoundref="dd/d4d/GIS_8h" startline="120">GTTag</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861ad2428dfed3f60a34a6646960c0125e5b" compoundref="dd/d4d/GIS_8h" startline="121">GTTagBegin</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861a13ee82f1595618a8cd46e0dc181436cc" compoundref="dd/d4d/GIS_8h" startline="122">GTTagEnd</references>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861a2d3629aea860ee3797112abeb3918fbf" compoundref="dd/d4d/GIS_8h" startline="117">GTUnknown</references>
+        <references refid="d9/d81/classGisReadHead_1a3593ef5641e761c24e59f5b33c8a58fe" compoundref="d1/db5/GIS__Head_8h" startline="71">Time</references>
+        <references refid="d2/db7/classGisToken_1ae4d7f75c10842938ece11120d1665106" compoundref="dd/d4d/GIS_8h" startline="154" endline="157">GisToken::Type</references>
+        <referencedby refid="d5/dee/group__route_1gad4848886a12c401c58db274c7e87e087" compoundref="d7/da0/GIS__Head_8cpp" startline="371" endline="438">GisReadHeadOn</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2784">
+        <label>GisReadArtHead</label>
+        <link refid="d4/d4c/classGisReadArtHead"/>
+        <childnode refid="2783" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2783">
+        <label>GisReadHead</label>
+        <link refid="d9/d81/classGisReadHead"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2785">
+        <label>GisReadHead</label>
+        <link refid="d9/d81/classGisReadHead"/>
+        <childnode refid="2785" relation="usage">
+          <edgelabel>Prev</edgelabel>
+          <edgelabel>Next</edgelabel>
+          <edgelabel>Boss</edgelabel>
+          <edgelabel>PrevPtr</edgelabel>
+        </childnode>
+        <childnode refid="2786" relation="usage">
+          <edgelabel>Cursor</edgelabel>
+        </childnode>
+        <childnode refid="2787" relation="usage">
+          <edgelabel>Time</edgelabel>
+        </childnode>
+      </node>
+      <node id="2787">
+        <label>frac</label>
+        <link refid="d7/dcc/classfrac"/>
+      </node>
+      <node id="2786">
+        <label>GisToken</label>
+        <link refid="d2/db7/classGisToken"/>
+        <childnode refid="2786" relation="usage">
+          <edgelabel>Next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" line="64" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS_Head.h" bodystart="63" bodyend="135"/>
+    <listofallmembers>
+      <member refid="d9/d81/classGisReadHead_1a82feb8a2bc183115b5670a72ebfe96f7" prot="public" virt="non-virtual"><scope>GisReadHead</scope><name>Boss</name></member>
+      <member refid="d9/d81/classGisReadHead_1a90f585c3c0136362f3683b4876467595" prot="public" virt="virtual"><scope>GisReadHead</scope><name>Build</name></member>
+      <member refid="d5/dee/group__route_1gaba99a430e658d303cbc5307bb3abf644" prot="public" virt="non-virtual"><scope>GisReadHead</scope><name>CreateSegmentSubs</name></member>
+      <member refid="d5/dee/group__route_1gac89b6135357ffc8e02f5d98d687a482f" prot="public" virt="non-virtual"><scope>GisReadHead</scope><name>CreateSequenzSubs</name></member>
+      <member refid="d9/d81/classGisReadHead_1abb2bc6c3bcb4133c35449bf1d46e9a81" prot="public" virt="non-virtual"><scope>GisReadHead</scope><name>Cursor</name></member>
+      <member refid="d9/d81/classGisReadHead_1ab58ced6bee32e0053fce7a446ba02198" prot="public" virt="non-virtual"><scope>GisReadHead</scope><name>CursorNext</name></member>
+      <member refid="d5/dee/group__route_1ga2d15f81e4fff876bc86dadc798f3db04" prot="public" virt="non-virtual"><scope>GisReadHead</scope><name>CutOut</name></member>
+      <member refid="d9/d81/classGisReadHead_1aeb72bfc74b975e15bc3fc40c25893bca" prot="public" virt="non-virtual"><scope>GisReadHead</scope><name>GisReadHead</name></member>
+      <member refid="d9/d81/classGisReadHead_1a93327a7ddcec6f05512dfb41a06f2a84" prot="public" virt="non-virtual"><scope>GisReadHead</scope><name>Id</name></member>
+      <member refid="d5/dee/group__route_1gab8c6313f016650a6e06383621c29b45f" prot="public" virt="non-virtual"><scope>GisReadHead</scope><name>InsertInfrontOf</name></member>
+      <member refid="d9/d81/classGisReadHead_1a7d7ecded97c79a3859c4312540f139ad" prot="public" virt="non-virtual"><scope>GisReadHead</scope><name>Next</name></member>
+      <member refid="d9/d81/classGisReadHead_1a0b7f1958ead3a1142f4895a77062328c" prot="public" virt="non-virtual"><scope>GisReadHead</scope><name>nSub</name></member>
+      <member refid="d9/d81/classGisReadHead_1a797b336a3149c1e51f4bdad05519def2" prot="public" virt="non-virtual"><scope>GisReadHead</scope><name>Prev</name></member>
+      <member refid="d9/d81/classGisReadHead_1a397ead2657ffe0343cc0825fd61ca6cf" prot="public" virt="non-virtual"><scope>GisReadHead</scope><name>PrevPtr</name></member>
+      <member refid="d5/dee/group__route_1gace29001e83c7545b74e6cd63c0a47bc6" prot="public" virt="non-virtual"><scope>GisReadHead</scope><name>Read</name></member>
+      <member refid="d9/d81/classGisReadHead_1a03cb4035693ef45b9427515e3994093e" prot="public" virt="non-virtual"><scope>GisReadHead</scope><name>SingleToken</name></member>
+      <member refid="d9/d81/classGisReadHead_1a3593ef5641e761c24e59f5b33c8a58fe" prot="public" virt="non-virtual"><scope>GisReadHead</scope><name>Time</name></member>
+      <member refid="d9/d81/classGisReadHead_1abc1b3f496f4d0770cfc2f3fdd4495a38" prot="public" virt="non-virtual"><scope>GisReadHead</scope><name>Turn</name></member>
+      <member refid="d9/d81/classGisReadHead_1a608a98c807cc959eecfd129c47b02f38" prot="public" virt="virtual"><scope>GisReadHead</scope><name>~GisReadHead</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

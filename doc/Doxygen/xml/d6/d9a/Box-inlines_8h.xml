@@ -1,0 +1,420 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d6/d9a/Box-inlines_8h" kind="file">
+    <compoundname>Box-inlines.h</compoundname>
+    <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
+    <includes refid="de/d0f/Box_8h" local="yes">src/kernel/routing/Box.h</includes>
+    <includes refid="d2/dd8/Interpre_8h" local="yes">src/kernel/Interpre.h</includes>
+    <includes refid="d2/d2c/Route-inlines_8h" local="yes">src/kernel/routing/Route-inlines.h</includes>
+    <includedby refid="dd/dc6/Box_8cpp" local="yes">src/kernel/routing/Box.cpp</includedby>
+    <incdepgraph>
+      <node id="14272">
+        <label>list</label>
+      </node>
+      <node id="14265">
+        <label>src/kernel/routing/Box.h</label>
+        <link refid="de/d0f/Box_8h"/>
+        <childnode refid="14262" relation="include">
+        </childnode>
+        <childnode refid="14266" relation="include">
+        </childnode>
+        <childnode refid="14267" relation="include">
+        </childnode>
+        <childnode refid="14268" relation="include">
+        </childnode>
+        <childnode refid="14275" relation="include">
+        </childnode>
+        <childnode refid="14277" relation="include">
+        </childnode>
+        <childnode refid="14271" relation="include">
+        </childnode>
+        <childnode refid="14273" relation="include">
+        </childnode>
+        <childnode refid="14284" relation="include">
+        </childnode>
+        <childnode refid="14285" relation="include">
+        </childnode>
+        <childnode refid="14263" relation="include">
+        </childnode>
+        <childnode refid="14276" relation="include">
+        </childnode>
+      </node>
+      <node id="14263">
+        <label>stdarg.h</label>
+      </node>
+      <node id="14293">
+        <label>src/kernel/routing/timing.h</label>
+        <link refid="db/d41/timing_8h"/>
+        <childnode refid="14262" relation="include">
+        </childnode>
+        <childnode refid="14269" relation="include">
+        </childnode>
+        <childnode refid="14294" relation="include">
+        </childnode>
+        <childnode refid="14295" relation="include">
+        </childnode>
+        <childnode refid="14274" relation="include">
+        </childnode>
+        <childnode refid="14296" relation="include">
+        </childnode>
+        <childnode refid="14267" relation="include">
+        </childnode>
+      </node>
+      <node id="14294">
+        <label>limits</label>
+      </node>
+      <node id="14275">
+        <label>src/kernel/Execute.h</label>
+        <link refid="de/d11/Execute_8h"/>
+        <childnode refid="14262" relation="include">
+        </childnode>
+        <childnode refid="14276" relation="include">
+        </childnode>
+      </node>
+      <node id="14271">
+        <label>boost/intrusive_ptr.hpp</label>
+      </node>
+      <node id="14261">
+        <label>src/kernel/routing/Box-inlines.h</label>
+        <link refid="Box-inlines.h"/>
+        <childnode refid="14262" relation="include">
+        </childnode>
+        <childnode refid="14265" relation="include">
+        </childnode>
+        <childnode refid="14282" relation="include">
+        </childnode>
+        <childnode refid="14286" relation="include">
+        </childnode>
+      </node>
+      <node id="14262">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="14263" relation="include">
+        </childnode>
+        <childnode refid="14264" relation="include">
+        </childnode>
+      </node>
+      <node id="14279">
+        <label>stdlib.h</label>
+      </node>
+      <node id="14274">
+        <label>stdexcept</label>
+      </node>
+      <node id="14283">
+        <label>malloc.h</label>
+      </node>
+      <node id="14280">
+        <label>string</label>
+      </node>
+      <node id="14295">
+        <label>exception</label>
+      </node>
+      <node id="14282">
+        <label>Interpre.h</label>
+        <link refid="d2/dd8/Interpre_8h"/>
+        <childnode refid="14262" relation="include">
+        </childnode>
+        <childnode refid="14278" relation="include">
+        </childnode>
+      </node>
+      <node id="14277">
+        <label>src/kernel/box.h</label>
+        <link refid="dc/d19/box_8h"/>
+        <childnode refid="14262" relation="include">
+        </childnode>
+        <childnode refid="14278" relation="include">
+        </childnode>
+        <childnode refid="14282" relation="include">
+        </childnode>
+        <childnode refid="14275" relation="include">
+        </childnode>
+        <childnode refid="14283" relation="include">
+        </childnode>
+      </node>
+      <node id="14269">
+        <label>src/kernel/MidiKern.h</label>
+        <link refid="da/dfd/MidiKern_8h"/>
+        <childnode refid="14262" relation="include">
+        </childnode>
+      </node>
+      <node id="14292">
+        <label>string.h</label>
+      </node>
+      <node id="14273">
+        <label>vector</label>
+      </node>
+      <node id="14268">
+        <label>src/kernel/routing/Route.h</label>
+        <link refid="d1/d65/Route_8h"/>
+        <childnode refid="14262" relation="include">
+        </childnode>
+        <childnode refid="14269" relation="include">
+        </childnode>
+        <childnode refid="14266" relation="include">
+        </childnode>
+        <childnode refid="14270" relation="include">
+        </childnode>
+        <childnode refid="14271" relation="include">
+        </childnode>
+        <childnode refid="14272" relation="include">
+        </childnode>
+        <childnode refid="14273" relation="include">
+        </childnode>
+        <childnode refid="14274" relation="include">
+        </childnode>
+      </node>
+      <node id="14298">
+        <label>boost/unordered_set.hpp</label>
+      </node>
+      <node id="14285">
+        <label>sstream</label>
+      </node>
+      <node id="14290">
+        <label>wx/string.h</label>
+      </node>
+      <node id="14288">
+        <label>src/kernel/routing/gmn/GIS.h</label>
+        <link refid="dd/d4d/GIS_8h"/>
+        <childnode refid="14262" relation="include">
+        </childnode>
+        <childnode refid="14289" relation="include">
+        </childnode>
+        <childnode refid="14292" relation="include">
+        </childnode>
+        <childnode refid="14279" relation="include">
+        </childnode>
+      </node>
+      <node id="14278">
+        <label>Global.h</label>
+        <link refid="dd/d40/Global_8h"/>
+        <childnode refid="14262" relation="include">
+        </childnode>
+        <childnode refid="14276" relation="include">
+        </childnode>
+        <childnode refid="14279" relation="include">
+        </childnode>
+        <childnode refid="14263" relation="include">
+        </childnode>
+        <childnode refid="14280" relation="include">
+        </childnode>
+        <childnode refid="14281" relation="include">
+        </childnode>
+      </node>
+      <node id="14286">
+        <label>src/kernel/routing/Route-inlines.h</label>
+        <link refid="d2/d2c/Route-inlines_8h"/>
+        <childnode refid="14262" relation="include">
+        </childnode>
+        <childnode refid="14268" relation="include">
+        </childnode>
+        <childnode refid="14287" relation="include">
+        </childnode>
+        <childnode refid="14265" relation="include">
+        </childnode>
+      </node>
+      <node id="14281">
+        <label>math.h</label>
+      </node>
+      <node id="14291">
+        <label>iostream</label>
+      </node>
+      <node id="14289">
+        <label>src/kernel/Frac.h</label>
+        <link refid="df/d4f/Frac_8h"/>
+        <childnode refid="14262" relation="include">
+        </childnode>
+        <childnode refid="14290" relation="include">
+        </childnode>
+        <childnode refid="14291" relation="include">
+        </childnode>
+      </node>
+      <node id="14264">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+      <node id="14297">
+        <label>wx/thread.h</label>
+      </node>
+      <node id="14267">
+        <label>src/kernel/routing/thread.h</label>
+        <link refid="db/dd5/thread_8h"/>
+        <childnode refid="14262" relation="include">
+        </childnode>
+      </node>
+      <node id="14270">
+        <label>src/kernel/boost-interface.h</label>
+        <link refid="d1/da4/boost-interface_8h"/>
+        <childnode refid="14262" relation="include">
+        </childnode>
+        <childnode refid="14267" relation="include">
+        </childnode>
+      </node>
+      <node id="14296">
+        <label>wx/stopwatch.h</label>
+      </node>
+      <node id="14284">
+        <label>algorithm</label>
+      </node>
+      <node id="14287">
+        <label>src/kernel/routing/Device.h</label>
+        <link refid="de/d05/Device_8h"/>
+        <childnode refid="14262" relation="include">
+        </childnode>
+        <childnode refid="14288" relation="include">
+        </childnode>
+        <childnode refid="14268" relation="include">
+        </childnode>
+        <childnode refid="14293" relation="include">
+        </childnode>
+        <childnode refid="14269" relation="include">
+        </childnode>
+        <childnode refid="14273" relation="include">
+        </childnode>
+        <childnode refid="14272" relation="include">
+        </childnode>
+        <childnode refid="14284" relation="include">
+        </childnode>
+        <childnode refid="14285" relation="include">
+        </childnode>
+        <childnode refid="14263" relation="include">
+        </childnode>
+        <childnode refid="14297" relation="include">
+        </childnode>
+        <childnode refid="14296" relation="include">
+        </childnode>
+        <childnode refid="14298" relation="include">
+        </childnode>
+      </node>
+      <node id="14276">
+        <label>stdio.h</label>
+      </node>
+      <node id="14266">
+        <label>src/kernel/treestorage.h</label>
+        <link refid="db/dbe/treestorage_8h"/>
+        <childnode refid="14262" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="14299">
+        <label>src/kernel/routing/Box-inlines.h</label>
+        <link refid="Box-inlines.h"/>
+        <childnode refid="14300" relation="include">
+        </childnode>
+      </node>
+      <node id="14300">
+        <label>src/kernel/routing/Box.cpp</label>
+        <link refid="dd/dc6/Box_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="d6/daa/namespacemutabor">mutabor</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="d5/dee/group__route_1ga8fae7b9201a7a027acbfe12bddedee8a" prot="public" static="no">
+        <name>ROUTING_BOX_INLINES</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box-inlines.h" line="35" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box-inlines.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d5/dee/group__route_1gafc8850a890e795b7a37d0089e6daef7c" prot="public" static="no">
+        <name>ROUTING_BOX_INLINES_PRECOMPILED</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box-inlines.h" line="48" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box-inlines.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="comment">/*<sp/>we<sp/>guard<sp/>a<sp/>little<sp/>bit<sp/>complicated<sp/>to<sp/>ensure<sp/>the<sp/>references<sp/>are<sp/>set<sp/>right</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(!defined(ROUTING_BOX_INLINES)<sp/>&amp;&amp;<sp/>!defined(PRECOMPILE))<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="33"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>(!defined(ROUTING_BOX_INLINES_PRECOMPILED))</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifndef<sp/>PRECOMPILE</highlight></codeline>
+<codeline lineno="35" refid="d5/dee/group__route_1ga8fae7b9201a7a027acbfe12bddedee8a" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>ROUTING_BOX_INLINES</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">src/kernel/Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d0f/Box_8h" kindref="compound">src/kernel/routing/Box.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/dd8/Interpre_8h" kindref="compound">src/kernel/Interpre.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d2c/Route-inlines_8h" kindref="compound">src/kernel/routing/Route-inlines.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>ROUTING_BOX_INLINES_PRECOMPILED</highlight></codeline>
+<codeline lineno="48" refid="d5/dee/group__route_1gafc8850a890e795b7a37d0089e6daef7c" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>ROUTING_BOX_INLINES_PRECOMPILED</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>system<sp/>headers<sp/>which<sp/>do<sp/>seldom<sp/>change</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="d5/dee/group__route_1gac1413fcb540634c438e90e26dc835920" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1gac1413fcb540634c438e90e26dc835920" kindref="member">BoxClass::Destroy</ref>()<sp/><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">Box</ref><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d5/dee/group__route_1ga1b8f2a466bac599d219133d7fe48b0bd" kindref="member">IsOpen</ref>())<sp/><ref refid="d5/dee/group__route_1gac51da01c9500d5d626289e46d7e288d7" kindref="member">Close</ref>();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1ga62fd87e9a500c9ba71165e660d2be344" kindref="member">DisconnectFromAll</ref>();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga33e4d2337c0d8d97f3f9527159d490a0" kindref="member">debug_destroy_class</ref>(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1ga50118a6d5b807a40a6669746b8b30fce" kindref="member">RemoveFromBoxList</ref>(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="d5/dee/group__route_1ga62fd87e9a500c9ba71165e660d2be344" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ga62fd87e9a500c9ba71165e660d2be344" kindref="member">BoxClass::DisconnectFromAll</ref>()<sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1gae5927f0f6043b271d1bd1c493e2505e4" kindref="member">Route</ref><sp/>route<sp/>(NULL);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">Box</ref><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>routeListType::iterator<sp/>R;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<sp/>(R<sp/>=<sp/><ref refid="d5/dee/group__route_1gae7eacacdd1297cd728fd53bc4c466d34" kindref="member">routes</ref>.begin())<sp/>!=<sp/><ref refid="d5/dee/group__route_1gae7eacacdd1297cd728fd53bc4c466d34" kindref="member">routes</ref>.end()<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>route<sp/>=<sp/>(*R);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1adb9659c6b97b933b1997d17e5e790296" kindref="member">disconnect</ref>(route,</highlight><highlight class="keyword">self</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>route<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="83" refid="d6/daa/namespacemutabor_1abbf7f952288b9f3feba7a558a439abb1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/daa/namespacemutabor_1abbf7f952288b9f3feba7a558a439abb1" kindref="member">is_key_trigger</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>any_trigger<sp/>&amp;<sp/>trigger)<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.type<sp/>==<sp/><ref refid="d0/d2f/structany__trigger_1a95a4a7840361f8a8ff6da3f80231516fa05dae29dbb4634c9e6ba6fa10f054f1c" kindref="member">any_trigger::key</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86" refid="d6/daa/namespacemutabor_1a54822580288f249e5459f38de38b98f4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/daa/namespacemutabor_1a54822580288f249e5459f38de38b98f4" kindref="member">is_harmony_trigger</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>any_trigger<sp/>&amp;<sp/>trigger)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.type<sp/>==<sp/><ref refid="d0/d2f/structany__trigger_1a95a4a7840361f8a8ff6da3f80231516fa05dae29dbb4634c9e6ba6fa10f054f1c" kindref="member">any_trigger::key</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89" refid="d6/daa/namespacemutabor_1aa7dbda7a6a85890fa28770dd651a6eaf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/daa/namespacemutabor_1aa7dbda7a6a85890fa28770dd651a6eaf" kindref="member">is_midi_trigger</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>any_trigger<sp/>&amp;<sp/>trigger)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.type<sp/>==<sp/><ref refid="d0/d2f/structany__trigger_1a95a4a7840361f8a8ff6da3f80231516fa05dae29dbb4634c9e6ba6fa10f054f1c" kindref="member">any_trigger::key</ref>;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92" refid="d6/daa/namespacemutabor_1ac8e88f0e6c25fbe394c5a310cca961ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ga91310789fc17646a655ac1e5c4c3b18c" kindref="member">keyboard_action</ref><sp/>*<sp/><ref refid="d6/daa/namespacemutabor_1ac8e88f0e6c25fbe394c5a310cca961ea" kindref="member">get_key_trigger</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>any_trigger<sp/>&amp;<sp/>trigger)<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.key_trigger;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95" refid="d6/daa/namespacemutabor_1a419bf8fd7cedee3dc5fb32d8a0c6aa94" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1gae82103a488a96798bd17991f9c2fdf03" kindref="member">harmony_action</ref><sp/>*<sp/><ref refid="d6/daa/namespacemutabor_1a419bf8fd7cedee3dc5fb32d8a0c6aa94" kindref="member">get_harmony_trigger</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>any_trigger<sp/>&amp;<sp/>trigger)<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.harmony_trigger;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98" refid="d6/daa/namespacemutabor_1a5d86f3a514529cf373951103eec48710" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ga3b0879c36252710fa9c1746cc64b6fdb" kindref="member">midi_action</ref><sp/>*<sp/><ref refid="d6/daa/namespacemutabor_1a5d86f3a514529cf373951103eec48710" kindref="member">get_midi_trigger</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>any_trigger<sp/>&amp;<sp/>trigger)<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.midi_trigger;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>precompiled</highlight></codeline>
+<codeline lineno="105"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>header<sp/>loaded</highlight></codeline>
+<codeline lineno="106"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box-inlines.h"/>
+  </compounddef>
+</doxygen>

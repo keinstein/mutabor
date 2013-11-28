@@ -1,0 +1,1477 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d1/de5/stclanguage_8h" kind="file">
+    <compoundname>stclanguage.h</compoundname>
+    <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
+    <includes local="yes">wx/stc/stc.h</includes>
+    <includedby refid="d5/d1c/MutApp_8cpp" local="yes">src/wxGUI/MutApp.cpp</includedby>
+    <includedby refid="d1/da4/MutEditFile_8cpp" local="yes">src/wxGUI/MutEditFile.cpp</includedby>
+    <includedby refid="d5/dfb/MutEditFile_8h" local="yes">src/wxGUI/MutEditFile.h</includedby>
+    <includedby refid="dc/d0c/stclanguage_8cpp" local="yes">src/wxGUI/stclanguage.cpp</includedby>
+    <incdepgraph>
+      <node id="25228">
+        <label>stdarg.h</label>
+      </node>
+      <node id="25227">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="25228" relation="include">
+        </childnode>
+        <childnode refid="25229" relation="include">
+        </childnode>
+      </node>
+      <node id="25230">
+        <label>wx/stc/stc.h</label>
+      </node>
+      <node id="25229">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+      <node id="25226">
+        <label>src/wxGUI/stclanguage.h</label>
+        <link refid="stclanguage.h"/>
+        <childnode refid="25227" relation="include">
+        </childnode>
+        <childnode refid="25230" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="25273">
+        <label>src/wxGUI/Routing/BoxDlg.h</label>
+        <link refid="d9/dd2/BoxDlg_8h"/>
+        <childnode refid="25238" relation="include">
+        </childnode>
+        <childnode refid="25239" relation="include">
+        </childnode>
+        <childnode refid="25260" relation="include">
+        </childnode>
+        <childnode refid="25240" relation="include">
+        </childnode>
+        <childnode refid="25259" relation="include">
+        </childnode>
+        <childnode refid="25261" relation="include">
+        </childnode>
+      </node>
+      <node id="25285">
+        <label>src/wxGUI/Routing/tests/main.cpp</label>
+        <link refid="da/dee/wxGUI_2Routing_2tests_2main_8cpp"/>
+      </node>
+      <node id="25263">
+        <label>src/wxGUI/Routing/NewOutputDeviceShape.cpp</label>
+        <link refid="d1/d73/NewOutputDeviceShape_8cpp"/>
+      </node>
+      <node id="25281">
+        <label>src/wxGUI/Routing/NewOutputDeviceShape.h</label>
+        <link refid="df/d7b/NewOutputDeviceShape_8h"/>
+        <childnode refid="25238" relation="include">
+        </childnode>
+        <childnode refid="25263" relation="include">
+        </childnode>
+      </node>
+      <node id="25233">
+        <label>src/wxGUI/MutEditFile.cpp</label>
+        <link refid="d1/da4/MutEditFile_8cpp"/>
+      </node>
+      <node id="25286">
+        <label>src/wxGUI/tests/main.cpp</label>
+        <link refid="d9/d27/wxGUI_2tests_2main_8cpp"/>
+      </node>
+      <node id="25238">
+        <label>src/wxGUI/MutRouteWnd.cpp</label>
+        <link refid="dc/def/MutRouteWnd_8cpp"/>
+      </node>
+      <node id="25280">
+        <label>src/wxGUI/Routing/NewInputDeviceShape.h</label>
+        <link refid="d5/dba/NewInputDeviceShape_8h"/>
+        <childnode refid="25238" relation="include">
+        </childnode>
+        <childnode refid="25262" relation="include">
+        </childnode>
+      </node>
+      <node id="25260">
+        <label>src/wxGUI/Routing/BoxDlg.cpp</label>
+        <link refid="d3/d2a/BoxDlg_8cpp"/>
+      </node>
+      <node id="25261">
+        <label>src/wxGUI/Routing/NewBoxShape.cpp</label>
+        <link refid="d8/dba/NewBoxShape_8cpp"/>
+      </node>
+      <node id="25245">
+        <label>src/wxGUI/MutLogicWnd.cpp</label>
+        <link refid="df/d11/MutLogicWnd_8cpp"/>
+      </node>
+      <node id="25267">
+        <label>src/wxGUI/Routing/OutputMidiDeviceShape.cpp</label>
+        <link refid="d6/d68/OutputMidiDeviceShape_8cpp"/>
+      </node>
+      <node id="25266">
+        <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp</label>
+        <link refid="d3/d21/OutputGuidoFileDeviceShape_8cpp"/>
+      </node>
+      <node id="25250">
+        <label>src/wxGUI/MutApp.h</label>
+        <link refid="db/dc1/MutApp_8h"/>
+        <childnode refid="25251" relation="include">
+        </childnode>
+        <childnode refid="25237" relation="include">
+        </childnode>
+        <childnode refid="25232" relation="include">
+        </childnode>
+        <childnode refid="25252" relation="include">
+        </childnode>
+        <childnode refid="25253" relation="include">
+        </childnode>
+        <childnode refid="25254" relation="include">
+        </childnode>
+        <childnode refid="25233" relation="include">
+        </childnode>
+        <childnode refid="25242" relation="include">
+        </childnode>
+        <childnode refid="25238" relation="include">
+        </childnode>
+        <childnode refid="25255" relation="include">
+        </childnode>
+        <childnode refid="25256" relation="include">
+        </childnode>
+      </node>
+      <node id="25246">
+        <label>src/wxGUI/MutTextBox.cpp</label>
+        <link refid="df/d3c/MutTextBox_8cpp"/>
+      </node>
+      <node id="25272">
+        <label>src/wxGUI/Routing/DeviceShape.h</label>
+        <link refid="d9/d4d/DeviceShape_8h"/>
+        <childnode refid="25248" relation="include">
+        </childnode>
+        <childnode refid="25239" relation="include">
+        </childnode>
+        <childnode refid="25260" relation="include">
+        </childnode>
+        <childnode refid="25273" relation="include">
+        </childnode>
+        <childnode refid="25240" relation="include">
+        </childnode>
+        <childnode refid="25259" relation="include">
+        </childnode>
+        <childnode refid="25265" relation="include">
+        </childnode>
+        <childnode refid="25241" relation="include">
+        </childnode>
+        <childnode refid="25274" relation="include">
+        </childnode>
+        <childnode refid="25278" relation="include">
+        </childnode>
+        <childnode refid="25280" relation="include">
+        </childnode>
+        <childnode refid="25281" relation="include">
+        </childnode>
+        <childnode refid="25282" relation="include">
+        </childnode>
+        <childnode refid="25283" relation="include">
+        </childnode>
+        <childnode refid="25284" relation="include">
+        </childnode>
+      </node>
+      <node id="25270">
+        <label>src/wxGUI/Routing/GUIRoute.h</label>
+        <link refid="d6/dfa/GUIRoute_8h"/>
+        <childnode refid="25232" relation="include">
+        </childnode>
+        <childnode refid="25271" relation="include">
+        </childnode>
+        <childnode refid="25247" relation="include">
+        </childnode>
+        <childnode refid="25259" relation="include">
+        </childnode>
+        <childnode refid="25272" relation="include">
+        </childnode>
+        <childnode refid="25265" relation="include">
+        </childnode>
+        <childnode refid="25241" relation="include">
+        </childnode>
+        <childnode refid="25274" relation="include">
+        </childnode>
+        <childnode refid="25285" relation="include">
+        </childnode>
+        <childnode refid="25286" relation="include">
+        </childnode>
+      </node>
+      <node id="25258">
+        <label>src/wxGUI/MutDocManager.cpp</label>
+        <link refid="dd/db0/MutDocManager_8cpp"/>
+      </node>
+      <node id="25244">
+        <label>src/wxGUI/MutChild.cpp</label>
+        <link refid="da/d72/MutChild_8cpp"/>
+      </node>
+      <node id="25232">
+        <label>src/wxGUI/MutApp.cpp</label>
+        <link refid="d5/d1c/MutApp_8cpp"/>
+      </node>
+      <node id="25283">
+        <label>src/wxGUI/Routing/OutputMidiDeviceShape.h</label>
+        <link refid="d8/dcb/OutputMidiDeviceShape_8h"/>
+        <childnode refid="25241" relation="include">
+        </childnode>
+        <childnode refid="25267" relation="include">
+        </childnode>
+      </node>
+      <node id="25282">
+        <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.h</label>
+        <link refid="db/d77/OutputGuidoFileDeviceShape_8h"/>
+        <childnode refid="25241" relation="include">
+        </childnode>
+        <childnode refid="25266" relation="include">
+        </childnode>
+      </node>
+      <node id="25269">
+        <label>src/wxGUI/Routing/NewBoxShape.h</label>
+        <link refid="d4/dcc/NewBoxShape_8h"/>
+        <childnode refid="25237" relation="include">
+        </childnode>
+        <childnode refid="25238" relation="include">
+        </childnode>
+        <childnode refid="25241" relation="include">
+        </childnode>
+        <childnode refid="25261" relation="include">
+        </childnode>
+      </node>
+      <node id="25243">
+        <label>src/wxGUI/MutLogicWnd.h</label>
+        <link refid="d6/d81/MutLogicWnd_8h"/>
+        <childnode refid="25237" relation="include">
+        </childnode>
+        <childnode refid="25244" relation="include">
+        </childnode>
+        <childnode refid="25242" relation="include">
+        </childnode>
+        <childnode refid="25245" relation="include">
+        </childnode>
+      </node>
+      <node id="25254">
+        <label>src/wxGUI/MutDocument.cpp</label>
+        <link refid="d6/d3b/MutDocument_8cpp"/>
+      </node>
+      <node id="25248">
+        <label>src/wxGUI/MutRouteWnd.h</label>
+        <link refid="d3/dd7/MutRouteWnd_8h"/>
+        <childnode refid="25242" relation="include">
+        </childnode>
+        <childnode refid="25249" relation="include">
+        </childnode>
+        <childnode refid="25245" relation="include">
+        </childnode>
+        <childnode refid="25238" relation="include">
+        </childnode>
+        <childnode refid="25239" relation="include">
+        </childnode>
+        <childnode refid="25260" relation="include">
+        </childnode>
+        <childnode refid="25240" relation="include">
+        </childnode>
+        <childnode refid="25241" relation="include">
+        </childnode>
+        <childnode refid="25261" relation="include">
+        </childnode>
+        <childnode refid="25262" relation="include">
+        </childnode>
+        <childnode refid="25263" relation="include">
+        </childnode>
+        <childnode refid="25264" relation="include">
+        </childnode>
+      </node>
+      <node id="25234">
+        <label>src/wxGUI/MutEditFile.h</label>
+        <link refid="d5/dfb/MutEditFile_8h"/>
+        <childnode refid="25235" relation="include">
+        </childnode>
+        <childnode refid="25244" relation="include">
+        </childnode>
+        <childnode refid="25233" relation="include">
+        </childnode>
+        <childnode refid="25249" relation="include">
+        </childnode>
+      </node>
+      <node id="25253">
+        <label>src/wxGUI/MutConfDlg.h</label>
+        <link refid="d9/d8f/MutConfDlg_8h"/>
+        <childnode refid="25232" relation="include">
+        </childnode>
+      </node>
+      <node id="25259">
+        <label>src/wxGUI/Routing/DeviceShape.cpp</label>
+        <link refid="d9/d94/DeviceShape_8cpp"/>
+      </node>
+      <node id="25255">
+        <label>src/wxGUI/MutView.cpp</label>
+        <link refid="d8/d33/MutView_8cpp"/>
+      </node>
+      <node id="25284">
+        <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.h</label>
+        <link refid="d4/de8/OutputMidiFileDeviceShape_8h"/>
+        <childnode refid="25241" relation="include">
+        </childnode>
+        <childnode refid="25268" relation="include">
+        </childnode>
+      </node>
+      <node id="25287">
+        <label>src/wxGUI/stclanguage.cpp</label>
+        <link refid="dc/d0c/stclanguage_8cpp"/>
+      </node>
+      <node id="25277">
+        <label>src/wxGUI/Routing/InputMidiDeviceShape.cpp</label>
+        <link refid="d1/d14/InputMidiDeviceShape_8cpp"/>
+      </node>
+      <node id="25239">
+        <label>src/wxGUI/Routing/BoxChannelShape.cpp</label>
+        <link refid="d9/d24/BoxChannelShape_8cpp"/>
+      </node>
+      <node id="25242">
+        <label>src/wxGUI/MutFrame.cpp</label>
+        <link refid="dc/df3/MutFrame_8cpp"/>
+      </node>
+      <node id="25279">
+        <label>src/wxGUI/Routing/InputMidiFileDeviceShape.cpp</label>
+        <link refid="d3/de3/InputMidiFileDeviceShape_8cpp"/>
+      </node>
+      <node id="25256">
+        <label>src/wxGUI/Routing/RouteIcons.cpp</label>
+        <link refid="d1/d28/RouteIcons_8cpp"/>
+      </node>
+      <node id="25276">
+        <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.cpp</label>
+        <link refid="d8/da8/InputGuidoFileDeviceShape_8cpp"/>
+      </node>
+      <node id="25275">
+        <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.h</label>
+        <link refid="d9/d0d/InputGuidoFileDeviceShape_8h"/>
+        <childnode refid="25241" relation="include">
+        </childnode>
+        <childnode refid="25276" relation="include">
+        </childnode>
+      </node>
+      <node id="25257">
+        <label>src/wxGUI/MutView.h</label>
+        <link refid="d0/d9e/MutView_8h"/>
+        <childnode refid="25232" relation="include">
+        </childnode>
+        <childnode refid="25258" relation="include">
+        </childnode>
+        <childnode refid="25254" relation="include">
+        </childnode>
+        <childnode refid="25233" relation="include">
+        </childnode>
+        <childnode refid="25242" relation="include">
+        </childnode>
+        <childnode refid="25255" relation="include">
+        </childnode>
+      </node>
+      <node id="25252">
+        <label>src/wxGUI/MutBitmaps.cpp</label>
+        <link refid="d7/db6/MutBitmaps_8cpp"/>
+      </node>
+      <node id="25241">
+        <label>src/wxGUI/Routing/GUIRoute.cpp</label>
+        <link refid="d4/dee/GUIRoute_8cpp"/>
+      </node>
+      <node id="25235">
+        <label>src/wxGUI/GUIBoxData.h</label>
+        <link refid="d5/df7/GUIBoxData_8h"/>
+        <childnode refid="25236" relation="include">
+        </childnode>
+        <childnode refid="25237" relation="include">
+        </childnode>
+        <childnode refid="25242" relation="include">
+        </childnode>
+        <childnode refid="25243" relation="include">
+        </childnode>
+        <childnode refid="25246" relation="include">
+        </childnode>
+        <childnode refid="25240" relation="include">
+        </childnode>
+        <childnode refid="25247" relation="include">
+        </childnode>
+        <childnode refid="25270" relation="include">
+        </childnode>
+      </node>
+      <node id="25264">
+        <label>src/wxGUI/Routing/tests/GUIRouteTest.cpp</label>
+        <link refid="d9/d20/GUIRouteTest_8cpp"/>
+      </node>
+      <node id="25278">
+        <label>src/wxGUI/Routing/InputMidiFileDeviceShape.h</label>
+        <link refid="d1/da8/InputMidiFileDeviceShape_8h"/>
+        <childnode refid="25241" relation="include">
+        </childnode>
+        <childnode refid="25279" relation="include">
+        </childnode>
+      </node>
+      <node id="25265">
+        <label>src/wxGUI/Routing/GUIRoute-inlines.h</label>
+        <link refid="d2/d73/GUIRoute-inlines_8h"/>
+        <childnode refid="25238" relation="include">
+        </childnode>
+        <childnode refid="25239" relation="include">
+        </childnode>
+        <childnode refid="25260" relation="include">
+        </childnode>
+        <childnode refid="25240" relation="include">
+        </childnode>
+        <childnode refid="25259" relation="include">
+        </childnode>
+        <childnode refid="25241" relation="include">
+        </childnode>
+        <childnode refid="25261" relation="include">
+        </childnode>
+        <childnode refid="25262" relation="include">
+        </childnode>
+        <childnode refid="25263" relation="include">
+        </childnode>
+        <childnode refid="25266" relation="include">
+        </childnode>
+        <childnode refid="25267" relation="include">
+        </childnode>
+        <childnode refid="25268" relation="include">
+        </childnode>
+      </node>
+      <node id="25249">
+        <label>src/wxGUI/MutFrame.h</label>
+        <link refid="dd/db5/MutFrame_8h"/>
+        <childnode refid="25237" relation="include">
+        </childnode>
+        <childnode refid="25232" relation="include">
+        </childnode>
+        <childnode refid="25250" relation="include">
+        </childnode>
+        <childnode refid="25244" relation="include">
+        </childnode>
+        <childnode refid="25253" relation="include">
+        </childnode>
+        <childnode refid="25233" relation="include">
+        </childnode>
+        <childnode refid="25242" relation="include">
+        </childnode>
+        <childnode refid="25245" relation="include">
+        </childnode>
+        <childnode refid="25238" relation="include">
+        </childnode>
+        <childnode refid="25246" relation="include">
+        </childnode>
+        <childnode refid="25255" relation="include">
+        </childnode>
+        <childnode refid="25257" relation="include">
+        </childnode>
+        <childnode refid="25259" relation="include">
+        </childnode>
+        <childnode refid="25241" relation="include">
+        </childnode>
+      </node>
+      <node id="25251">
+        <label>src/wxGUI/generic/mutDebug.cpp</label>
+        <link refid="d4/dc0/mutDebug_8cpp"/>
+      </node>
+      <node id="25236">
+        <label>src/wxGUI/GUIBoxData-inlines.h</label>
+        <link refid="d5/d12/GUIBoxData-inlines_8h"/>
+        <childnode refid="25237" relation="include">
+        </childnode>
+        <childnode refid="25238" relation="include">
+        </childnode>
+        <childnode refid="25239" relation="include">
+        </childnode>
+        <childnode refid="25240" relation="include">
+        </childnode>
+        <childnode refid="25241" relation="include">
+        </childnode>
+      </node>
+      <node id="25268">
+        <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp</label>
+        <link refid="d5/d00/OutputMidiFileDeviceShape_8cpp"/>
+      </node>
+      <node id="25274">
+        <label>src/wxGUI/Routing/InputMidiDeviceShape.h</label>
+        <link refid="d3/d5e/InputMidiDeviceShape_8h"/>
+        <childnode refid="25241" relation="include">
+        </childnode>
+        <childnode refid="25275" relation="include">
+        </childnode>
+        <childnode refid="25277" relation="include">
+        </childnode>
+      </node>
+      <node id="25237">
+        <label>src/wxGUI/GUIBoxData.cpp</label>
+        <link refid="d2/dd3/GUIBoxData_8cpp"/>
+      </node>
+      <node id="25231">
+        <label>src/wxGUI/stclanguage.h</label>
+        <link refid="stclanguage.h"/>
+        <childnode refid="25232" relation="include">
+        </childnode>
+        <childnode refid="25233" relation="include">
+        </childnode>
+        <childnode refid="25234" relation="include">
+        </childnode>
+        <childnode refid="25287" relation="include">
+        </childnode>
+      </node>
+      <node id="25247">
+        <label>src/wxGUI/Routing/BoxShape.h</label>
+        <link refid="d9/d49/BoxShape_8h"/>
+        <childnode refid="25236" relation="include">
+        </childnode>
+        <childnode refid="25248" relation="include">
+        </childnode>
+        <childnode refid="25246" relation="include">
+        </childnode>
+        <childnode refid="25239" relation="include">
+        </childnode>
+        <childnode refid="25260" relation="include">
+        </childnode>
+        <childnode refid="25240" relation="include">
+        </childnode>
+        <childnode refid="25265" relation="include">
+        </childnode>
+        <childnode refid="25241" relation="include">
+        </childnode>
+        <childnode refid="25261" relation="include">
+        </childnode>
+        <childnode refid="25269" relation="include">
+        </childnode>
+        <childnode refid="25262" relation="include">
+        </childnode>
+        <childnode refid="25256" relation="include">
+        </childnode>
+      </node>
+      <node id="25271">
+        <label>src/wxGUI/Routing/BoxChannelShape.h</label>
+        <link refid="d6/d68/BoxChannelShape_8h"/>
+        <childnode refid="25239" relation="include">
+        </childnode>
+        <childnode refid="25240" relation="include">
+        </childnode>
+        <childnode refid="25247" relation="include">
+        </childnode>
+        <childnode refid="25259" relation="include">
+        </childnode>
+        <childnode refid="25241" relation="include">
+        </childnode>
+        <childnode refid="25261" relation="include">
+        </childnode>
+        <childnode refid="25262" relation="include">
+        </childnode>
+      </node>
+      <node id="25240">
+        <label>src/wxGUI/Routing/BoxShape.cpp</label>
+        <link refid="d8/db4/BoxShape_8cpp"/>
+      </node>
+      <node id="25262">
+        <label>src/wxGUI/Routing/NewInputDeviceShape.cpp</label>
+        <link refid="df/d62/NewInputDeviceShape_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d7/d8e/structmutaborGUI_1_1CommonInfo" prot="public">mutaborGUI::CommonInfo</innerclass>
+    <innerclass refid="d4/d4a/structmutaborGUI_1_1LanguageInfo" prot="public">mutaborGUI::LanguageInfo</innerclass>
+    <innerclass refid="df/d1f/structmutaborGUI_1_1StyleInfo" prot="public">mutaborGUI::StyleInfo</innerclass>
+    <innerclass refid="d1/dea/classmutaborGUI_1_1MutSTCLexer" prot="public">mutaborGUI::MutSTCLexer</innerclass>
+    <innernamespace refid="db/d94/namespacemutaborGUI">mutaborGUI</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="df/dd1/group__GUI_1gafb190f8380ed407365911ca10a17b499" prot="public" static="no">
+        <name>MUWX_STCLANGUAGE_H</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="33" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="df/dd1/group__GUI_1ga3a6ace345304f6c52fabb5739a7b3d2b" prot="public" static="no">
+        <name>MUWX_STCLANGUAGE_H_PRECOMPILED</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="43" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a2a112ca1c7c7dc54fe43375469738dc4" prot="public" static="no">
+        <name>DEFAULT_LANGUAGE</name>
+        <initializer><ref refid="d8/d5a/reslocale_8cpp_1a421875521561a2db6f51866ed65544ac" kindref="member">_</ref>(&quot;&lt;default&gt;&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="69" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="69" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gac75a3b4b31efb3651b5562f0d5e448c1" compoundref="d1/da4/MutEditFile_8cpp" startline="488" endline="557">mutaborGUI::MutEditFile::Init</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a2616855475cc8add4a71b86603d053b2" prot="public" static="no">
+        <name>PAGE_COMMON</name>
+        <initializer><ref refid="d8/d5a/reslocale_8cpp_1a421875521561a2db6f51866ed65544ac" kindref="member">_</ref>(&quot;Common&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="71" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1ab33619ffd355354fb3e7530a0442f9c6" prot="public" static="no">
+        <name>PAGE_LANGUAGES</name>
+        <initializer><ref refid="d8/d5a/reslocale_8cpp_1a421875521561a2db6f51866ed65544ac" kindref="member">_</ref>(&quot;Languages&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="72" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a98c94231dc81a99bc2abce5b6b5c9bba" prot="public" static="no">
+        <name>PAGE_STYLE_TYPES</name>
+        <initializer><ref refid="d8/d5a/reslocale_8cpp_1a421875521561a2db6f51866ed65544ac" kindref="member">_</ref>(&quot;Style types&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="73" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a2bf008bdf5440d2ea4ab17900c22a851" prot="public" static="no">
+        <name>STYLE_TYPES_COUNT</name>
+        <initializer>32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="75" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="75" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1adacb27d0943451b492e1b93c5ca5d319" prot="public" static="no">
+        <name>MutSTC_TYPE_DEFAULT</name>
+        <initializer>0</initializer>
+        <briefdescription>
+<para>general style types </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="78" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a52faf218647bf7e501c096f4b5da8d0d" prot="public" static="no">
+        <name>MutSTC_TYPE_WORD1</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="80" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1aea65a2770deafd84826eef6a57d1ec95" prot="public" static="no">
+        <name>MutSTC_TYPE_WORD2</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="81" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a6188a393289c27a1b5ee5fb42f7d9968" prot="public" static="no">
+        <name>MutSTC_TYPE_WORD3</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="82" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1ae90e9848721c448eafa5bdba90db6307" prot="public" static="no">
+        <name>MutSTC_TYPE_WORD4</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="83" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a86ce9f57b93fe174238fa549aac23244" prot="public" static="no">
+        <name>MutSTC_TYPE_WORD5</name>
+        <initializer>5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="84" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1aeb7dd8183011ce9a0a5cb2a795346ad2" prot="public" static="no">
+        <name>MutSTC_TYPE_WORD6</name>
+        <initializer>6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="85" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a6c37ac2419fb0e9ea39ad28f61802f28" prot="public" static="no">
+        <name>MutSTC_TYPE_COMMENT</name>
+        <initializer>7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="87" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a3f3bca9faf23401abfc849a02b42de74" prot="public" static="no">
+        <name>MutSTC_TYPE_COMMENT_DOC</name>
+        <initializer>8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="88" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1ad0dd2edbd1222bef7616e5e8640ed952" prot="public" static="no">
+        <name>MutSTC_TYPE_COMMENT_LINE</name>
+        <initializer>9</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="89" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a13bb07c3b1c0a3fa01a8bc4fdeb5c927" prot="public" static="no">
+        <name>MutSTC_TYPE_COMMENT_SPECIAL</name>
+        <initializer>10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="90" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1af098d8d8d72d189b8b65732284dd55ef" prot="public" static="no">
+        <name>MutSTC_TYPE_CHARACTER</name>
+        <initializer>11</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="92" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a14ec95af63d63d293e91d5811d449ea0" prot="public" static="no">
+        <name>MutSTC_TYPE_CHARACTER_EOL</name>
+        <initializer>12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="93" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a3c761484ac6daa3e9721f944db9e08c1" prot="public" static="no">
+        <name>MutSTC_TYPE_STRING</name>
+        <initializer>13</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="94" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a0e682be22f9801158c651b04bbb99fe9" prot="public" static="no">
+        <name>MutSTC_TYPE_STRING_EOL</name>
+        <initializer>14</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="95" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a32a436fcc1419164a83620d4e4ca8500" prot="public" static="no">
+        <name>MutSTC_TYPE_DELIMITER</name>
+        <initializer>15</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="97" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a985599567775fdbeb1986c6a05a93cf9" prot="public" static="no">
+        <name>MutSTC_TYPE_PUNCTUATION</name>
+        <initializer>16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="99" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a1d6a0ed4235a5ec0ff4397d1061236e3" prot="public" static="no">
+        <name>MutSTC_TYPE_OPERATOR</name>
+        <initializer>17</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="101" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a27f97c7055cf1b3b293f53629ce97ecb" prot="public" static="no">
+        <name>MutSTC_TYPE_BRACE</name>
+        <initializer>18</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="103" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1aa60c988a5db2e3223183402423286b65" prot="public" static="no">
+        <name>MutSTC_TYPE_COMMAND</name>
+        <initializer>19</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="105" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a7dfc10fe3ed3d55b2a9fa0c615a3d207" prot="public" static="no">
+        <name>MutSTC_TYPE_IDENTIFIER</name>
+        <initializer>20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="106" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a694eec54a7aa59d23d72c4c44d31918c" prot="public" static="no">
+        <name>MutSTC_TYPE_LABEL</name>
+        <initializer>21</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="107" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a90d26a0bcbab05770759ebf42494b4b2" prot="public" static="no">
+        <name>MutSTC_TYPE_NUMBER</name>
+        <initializer>22</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="108" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a527f8d264be0ad9b95927ebb086b6dd1" prot="public" static="no">
+        <name>MutSTC_TYPE_PARAMETER</name>
+        <initializer>23</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="109" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a5fe5556ea4bdf9d6b0671e2817856229" prot="public" static="no">
+        <name>MutSTC_TYPE_REGEX</name>
+        <initializer>24</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="110" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1abf16662121303093bbc96e264674f968" prot="public" static="no">
+        <name>MutSTC_TYPE_UUID</name>
+        <initializer>25</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="111" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a8d0806e8f5cc0c172b5ea9e75a6b2585" prot="public" static="no">
+        <name>MutSTC_TYPE_VALUE</name>
+        <initializer>26</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="112" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1adfa35d949c1f9dd88426e79d8e8246ed" prot="public" static="no">
+        <name>MutSTC_TYPE_PREPROCESSOR</name>
+        <initializer>27</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="114" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a5008360023e6e75c90404545a82e2e04" prot="public" static="no">
+        <name>MutSTC_TYPE_SCRIPT</name>
+        <initializer>28</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="115" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a1f5624b666575cfe5ea69973e40bb535" prot="public" static="no">
+        <name>MutSTC_TYPE_ERROR</name>
+        <initializer>29</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="117" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1aa776515a46236d1a2b00e2cccf47688f" prot="public" static="no">
+        <name>MutSTC_STYLE_BOLD</name>
+        <initializer>1</initializer>
+        <briefdescription>
+<para>style bits types </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="121" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="121" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a827d51f2d2a71d081414b7ddaddd064e" prot="public" static="no">
+        <name>MutSTC_STYLE_ITALIC</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="122" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="122" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a85c17daba160a44929ea7a7112ba50d4" prot="public" static="no">
+        <name>MutSTC_STYLE_UNDERL</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="123" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="123" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a66d81c5b062a413fae4295ce13802ddc" prot="public" static="no">
+        <name>MutSTC_STYLE_HIDDEN</name>
+        <initializer>8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="124" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="124" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1ab1f6d959de6e18c69e2b505bb8765ee0" prot="public" static="no">
+        <name>MutSTC_FOLD_COMMENT</name>
+        <initializer>1</initializer>
+        <briefdescription>
+<para>general folding types </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="128" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="128" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a6ee9d4cf40639a5170ca24298b986594" prot="public" static="no">
+        <name>MutSTC_FOLD_COMPACT</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="129" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="129" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a9fb5ce68dcb20b5703c9c2d4936e2075" prot="public" static="no">
+        <name>MutSTC_FOLD_PREPROC</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="130" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="130" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a0988868831ebce985af4b55509cb647e" prot="public" static="no">
+        <name>MutSTC_FOLD_HTML</name>
+        <initializer>16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="132" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="132" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a2425fedf3f184fa0b7e6061d03e88136" prot="public" static="no">
+        <name>MutSTC_FOLD_HTMLPREP</name>
+        <initializer>32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="133" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="133" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a295b9ef24e20405d28690d3578c7497d" prot="public" static="no">
+        <name>MutSTC_FOLD_COMMENTPY</name>
+        <initializer>64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="135" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="135" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1abdf9d9c42bba0b75f065f58d34710255" prot="public" static="no">
+        <name>MutSTC_FOLD_QUOTESPY</name>
+        <initializer>128</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="136" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="136" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a7adc7af41b7a6f8bf0992e0bb4ee895d" prot="public" static="no">
+        <name>MutSTC_FLAG_WRAPMODE</name>
+        <initializer>16</initializer>
+        <briefdescription>
+<para>flags </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="140" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1af0e0fe8c8743ad6e08b498e2df3cf5a8" prot="public" static="no">
+        <name>MutSTC_LEX_MUTABOR</name>
+        <initializer>900</initializer>
+        <briefdescription>
+<para>Lexers. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="144" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1abf8c3e3f44daaf3936f3c099b675a6d6" prot="public" static="no">
+        <name>MutSTC_MUTABOR_DEFAULT</name>
+        <initializer>0</initializer>
+        <briefdescription>
+<para>Lexer stats. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="148" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1af940d3023666b6be167dcb49cf542000" prot="public" static="no">
+        <name>MutSTC_MUTABOR_SECTION</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="149" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a998dc55020bd742c2623d022af5cb2c4" prot="public" static="no">
+        <name>MutSTC_MUTABOR_PARAMETER</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="150" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a564faa64604fce33d277f038f187f350" prot="public" static="no">
+        <name>MutSTC_MUTABOR_COMMENT</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="151" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1adec63360014253e2ec7532e0c895833e" prot="public" static="no">
+        <name>MutSTC_MUTABOR_IDENTIFIER</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="152" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1aae65bcc5d7c546503537b8ab2c0abc9a" prot="public" static="no">
+        <name>MutSTC_MUTABOR_DEFNAME</name>
+        <initializer>5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="153" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a17838d6497ad7e3d2fe0c6f5ec59189d" prot="public" static="no">
+        <name>MutSTC_MUTABOR_OPERATOR</name>
+        <initializer>6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="154" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1afff008a3eb434f187fa162b6b5f8107d" prot="public" static="no">
+        <name>MutSTC_MUTABOR_PAREN</name>
+        <initializer>6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="155" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1af744a0be894b8c01c212dbf2bb6f64c2" prot="public" static="no">
+        <name>MutSTC_MUTABOR_BRACKET</name>
+        <initializer>7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="156" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a7aefc527f8d9dbde91c0b133f709679c" prot="public" static="no">
+        <name>MutSTC_MUTABOR_BRACE</name>
+        <initializer>8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="157" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d1/de5/stclanguage_8h_1a9ad2fc7d10a0e4c8197ffde9c09ec65d" prot="public" static="no">
+        <name>MutSTC_MUTABOR_NUMBER</name>
+        <initializer>9</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="158" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="28"><highlight class="comment">//<sp/>availlable<sp/>groups:<sp/>GUI,<sp/>route,<sp/>kernel,<sp/>src/wxGUI,<sp/>debug,<sp/>docview</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(!defined(MUWX_STCLANGUAGE_H)<sp/>&amp;&amp;<sp/>!defined(PRECOMPILE))<sp/>\</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>(!defined(MUWX_STCLANGUAGE_H_PRECOMPILED))</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifndef<sp/>PRECOMPILE</highlight></codeline>
+<codeline lineno="33" refid="df/dd1/group__GUI_1gafb190f8380ed407365911ca10a17b499" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MUWX_STCLANGUAGE_H</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">src/kernel/Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MUWX_STCLANGUAGE_H_PRECOMPILED</highlight></codeline>
+<codeline lineno="43" refid="df/dd1/group__GUI_1ga3a6ace345304f6c52fabb5739a7b3d2b" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MUWX_STCLANGUAGE_H_PRECOMPILED</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor">#include<sp/>&quot;wx/stc/stc.h&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>styled<sp/>text<sp/>control</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutaborGUI<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>wingdi.h<sp/>defines<sp/>ERROR<sp/>to<sp/>0<sp/>and<sp/>RGN_ERROR<sp/>to<sp/>ERROR</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>we<sp/>clean<sp/>up<sp/>a<sp/>little<sp/>bit,<sp/>here.</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>see<sp/>also<sp/>https://github.com/reorg/pg_repack/tree/master/msvc</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ERROR</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#undef<sp/>ERROR</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#undef<sp/>RGN_ERROR</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>RGN_ERROR<sp/>0</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="d1/de5/stclanguage_8h_1a2a112ca1c7c7dc54fe43375469738dc4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_LANGUAGE<sp/>_(&quot;&lt;default&gt;&quot;)</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="d1/de5/stclanguage_8h_1a2616855475cc8add4a71b86603d053b2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PAGE_COMMON<sp/>_(&quot;Common&quot;)</highlight></codeline>
+<codeline lineno="72" refid="d1/de5/stclanguage_8h_1ab33619ffd355354fb3e7530a0442f9c6" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PAGE_LANGUAGES<sp/>_(&quot;Languages&quot;)</highlight></codeline>
+<codeline lineno="73" refid="d1/de5/stclanguage_8h_1a98c94231dc81a99bc2abce5b6b5c9bba" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PAGE_STYLE_TYPES<sp/>_(&quot;Style<sp/>types&quot;)</highlight></codeline>
+<codeline lineno="74"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="d1/de5/stclanguage_8h_1a2bf008bdf5440d2ea4ab17900c22a851" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STYLE_TYPES_COUNT<sp/>32</highlight></codeline>
+<codeline lineno="76"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="78" refid="d1/de5/stclanguage_8h_1adacb27d0943451b492e1b93c5ca5d319" refkind="member"><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_DEFAULT<sp/>0</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="d1/de5/stclanguage_8h_1a52faf218647bf7e501c096f4b5da8d0d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_WORD1<sp/>1</highlight></codeline>
+<codeline lineno="81" refid="d1/de5/stclanguage_8h_1aea65a2770deafd84826eef6a57d1ec95" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_WORD2<sp/>2</highlight></codeline>
+<codeline lineno="82" refid="d1/de5/stclanguage_8h_1a6188a393289c27a1b5ee5fb42f7d9968" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_WORD3<sp/>3</highlight></codeline>
+<codeline lineno="83" refid="d1/de5/stclanguage_8h_1ae90e9848721c448eafa5bdba90db6307" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_WORD4<sp/>4</highlight></codeline>
+<codeline lineno="84" refid="d1/de5/stclanguage_8h_1a86ce9f57b93fe174238fa549aac23244" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_WORD5<sp/>5</highlight></codeline>
+<codeline lineno="85" refid="d1/de5/stclanguage_8h_1aeb7dd8183011ce9a0a5cb2a795346ad2" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_WORD6<sp/>6</highlight></codeline>
+<codeline lineno="86"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="d1/de5/stclanguage_8h_1a6c37ac2419fb0e9ea39ad28f61802f28" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_COMMENT<sp/>7</highlight></codeline>
+<codeline lineno="88" refid="d1/de5/stclanguage_8h_1a3f3bca9faf23401abfc849a02b42de74" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_COMMENT_DOC<sp/>8</highlight></codeline>
+<codeline lineno="89" refid="d1/de5/stclanguage_8h_1ad0dd2edbd1222bef7616e5e8640ed952" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_COMMENT_LINE<sp/>9</highlight></codeline>
+<codeline lineno="90" refid="d1/de5/stclanguage_8h_1a13bb07c3b1c0a3fa01a8bc4fdeb5c927" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_COMMENT_SPECIAL<sp/>10</highlight></codeline>
+<codeline lineno="91"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="d1/de5/stclanguage_8h_1af098d8d8d72d189b8b65732284dd55ef" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_CHARACTER<sp/>11</highlight></codeline>
+<codeline lineno="93" refid="d1/de5/stclanguage_8h_1a14ec95af63d63d293e91d5811d449ea0" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_CHARACTER_EOL<sp/>12</highlight></codeline>
+<codeline lineno="94" refid="d1/de5/stclanguage_8h_1a3c761484ac6daa3e9721f944db9e08c1" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_STRING<sp/>13</highlight></codeline>
+<codeline lineno="95" refid="d1/de5/stclanguage_8h_1a0e682be22f9801158c651b04bbb99fe9" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_STRING_EOL<sp/>14</highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="d1/de5/stclanguage_8h_1a32a436fcc1419164a83620d4e4ca8500" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_DELIMITER<sp/>15</highlight></codeline>
+<codeline lineno="98"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="d1/de5/stclanguage_8h_1a985599567775fdbeb1986c6a05a93cf9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_PUNCTUATION<sp/>16</highlight></codeline>
+<codeline lineno="100"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="d1/de5/stclanguage_8h_1a1d6a0ed4235a5ec0ff4397d1061236e3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_OPERATOR<sp/>17</highlight></codeline>
+<codeline lineno="102"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="d1/de5/stclanguage_8h_1a27f97c7055cf1b3b293f53629ce97ecb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_BRACE<sp/>18</highlight></codeline>
+<codeline lineno="104"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="d1/de5/stclanguage_8h_1aa60c988a5db2e3223183402423286b65" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_COMMAND<sp/>19</highlight></codeline>
+<codeline lineno="106" refid="d1/de5/stclanguage_8h_1a7dfc10fe3ed3d55b2a9fa0c615a3d207" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_IDENTIFIER<sp/>20</highlight></codeline>
+<codeline lineno="107" refid="d1/de5/stclanguage_8h_1a694eec54a7aa59d23d72c4c44d31918c" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_LABEL<sp/>21</highlight></codeline>
+<codeline lineno="108" refid="d1/de5/stclanguage_8h_1a90d26a0bcbab05770759ebf42494b4b2" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_NUMBER<sp/>22</highlight></codeline>
+<codeline lineno="109" refid="d1/de5/stclanguage_8h_1a527f8d264be0ad9b95927ebb086b6dd1" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_PARAMETER<sp/>23</highlight></codeline>
+<codeline lineno="110" refid="d1/de5/stclanguage_8h_1a5fe5556ea4bdf9d6b0671e2817856229" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_REGEX<sp/>24</highlight></codeline>
+<codeline lineno="111" refid="d1/de5/stclanguage_8h_1abf16662121303093bbc96e264674f968" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_UUID<sp/>25</highlight></codeline>
+<codeline lineno="112" refid="d1/de5/stclanguage_8h_1a8d0806e8f5cc0c172b5ea9e75a6b2585" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_VALUE<sp/>26</highlight></codeline>
+<codeline lineno="113"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="d1/de5/stclanguage_8h_1adfa35d949c1f9dd88426e79d8e8246ed" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_PREPROCESSOR<sp/>27</highlight></codeline>
+<codeline lineno="115" refid="d1/de5/stclanguage_8h_1a5008360023e6e75c90404545a82e2e04" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_SCRIPT<sp/>28</highlight></codeline>
+<codeline lineno="116"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="d1/de5/stclanguage_8h_1a1f5624b666575cfe5ea69973e40bb535" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_TYPE_ERROR<sp/>29</highlight></codeline>
+<codeline lineno="118"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------------</highlight></codeline>
+<codeline lineno="121" refid="d1/de5/stclanguage_8h_1aa776515a46236d1a2b00e2cccf47688f" refkind="member"><highlight class="comment"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_STYLE_BOLD<sp/>1</highlight></codeline>
+<codeline lineno="122" refid="d1/de5/stclanguage_8h_1a827d51f2d2a71d081414b7ddaddd064e" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_STYLE_ITALIC<sp/>2</highlight></codeline>
+<codeline lineno="123" refid="d1/de5/stclanguage_8h_1a85c17daba160a44929ea7a7112ba50d4" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_STYLE_UNDERL<sp/>4</highlight></codeline>
+<codeline lineno="124" refid="d1/de5/stclanguage_8h_1a66d81c5b062a413fae4295ce13802ddc" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_STYLE_HIDDEN<sp/>8</highlight></codeline>
+<codeline lineno="125"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------------</highlight></codeline>
+<codeline lineno="128" refid="d1/de5/stclanguage_8h_1ab1f6d959de6e18c69e2b505bb8765ee0" refkind="member"><highlight class="comment"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_FOLD_COMMENT<sp/>1</highlight></codeline>
+<codeline lineno="129" refid="d1/de5/stclanguage_8h_1a6ee9d4cf40639a5170ca24298b986594" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_FOLD_COMPACT<sp/>2</highlight></codeline>
+<codeline lineno="130" refid="d1/de5/stclanguage_8h_1a9fb5ce68dcb20b5703c9c2d4936e2075" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_FOLD_PREPROC<sp/>4</highlight></codeline>
+<codeline lineno="131"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="d1/de5/stclanguage_8h_1a0988868831ebce985af4b55509cb647e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_FOLD_HTML<sp/>16</highlight></codeline>
+<codeline lineno="133" refid="d1/de5/stclanguage_8h_1a2425fedf3f184fa0b7e6061d03e88136" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_FOLD_HTMLPREP<sp/>32</highlight></codeline>
+<codeline lineno="134"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="d1/de5/stclanguage_8h_1a295b9ef24e20405d28690d3578c7497d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_FOLD_COMMENTPY<sp/>64</highlight></codeline>
+<codeline lineno="136" refid="d1/de5/stclanguage_8h_1abdf9d9c42bba0b75f065f58d34710255" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_FOLD_QUOTESPY<sp/>128</highlight></codeline>
+<codeline lineno="137"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------------</highlight></codeline>
+<codeline lineno="140" refid="d1/de5/stclanguage_8h_1a7adc7af41b7a6f8bf0992e0bb4ee895d" refkind="member"><highlight class="comment"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_FLAG_WRAPMODE<sp/>16</highlight></codeline>
+<codeline lineno="141"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------------</highlight></codeline>
+<codeline lineno="144" refid="d1/de5/stclanguage_8h_1af0e0fe8c8743ad6e08b498e2df3cf5a8" refkind="member"><highlight class="comment"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_LEX_MUTABOR<sp/>900</highlight></codeline>
+<codeline lineno="145"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------------</highlight></codeline>
+<codeline lineno="148" refid="d1/de5/stclanguage_8h_1abf8c3e3f44daaf3936f3c099b675a6d6" refkind="member"><highlight class="comment"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_MUTABOR_DEFAULT<sp/>0</highlight></codeline>
+<codeline lineno="149" refid="d1/de5/stclanguage_8h_1af940d3023666b6be167dcb49cf542000" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_MUTABOR_SECTION<sp/>1</highlight></codeline>
+<codeline lineno="150" refid="d1/de5/stclanguage_8h_1a998dc55020bd742c2623d022af5cb2c4" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_MUTABOR_PARAMETER<sp/>2</highlight></codeline>
+<codeline lineno="151" refid="d1/de5/stclanguage_8h_1a564faa64604fce33d277f038f187f350" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_MUTABOR_COMMENT<sp/>3</highlight></codeline>
+<codeline lineno="152" refid="d1/de5/stclanguage_8h_1adec63360014253e2ec7532e0c895833e" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_MUTABOR_IDENTIFIER<sp/>4</highlight></codeline>
+<codeline lineno="153" refid="d1/de5/stclanguage_8h_1aae65bcc5d7c546503537b8ab2c0abc9a" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_MUTABOR_DEFNAME<sp/>5</highlight></codeline>
+<codeline lineno="154" refid="d1/de5/stclanguage_8h_1a17838d6497ad7e3d2fe0c6f5ec59189d" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_MUTABOR_OPERATOR<sp/>6</highlight></codeline>
+<codeline lineno="155" refid="d1/de5/stclanguage_8h_1afff008a3eb434f187fa162b6b5f8107d" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_MUTABOR_PAREN<sp/>6</highlight></codeline>
+<codeline lineno="156" refid="d1/de5/stclanguage_8h_1af744a0be894b8c01c212dbf2bb6f64c2" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_MUTABOR_BRACKET<sp/>7</highlight></codeline>
+<codeline lineno="157" refid="d1/de5/stclanguage_8h_1a7aefc527f8d9dbde91c0b133f709679c" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_MUTABOR_BRACE<sp/>8</highlight></codeline>
+<codeline lineno="158" refid="d1/de5/stclanguage_8h_1a9ad2fc7d10a0e4c8197ffde9c09ec65d" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MutSTC_MUTABOR_NUMBER<sp/>9</highlight></codeline>
+<codeline lineno="159"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CommonInfo</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163" refid="d7/d8e/structmutaborGUI_1_1CommonInfo" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/d8e/structmutaborGUI_1_1CommonInfo" kindref="compound">CommonInfo</ref><sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>editor<sp/>functionality<sp/>prefs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165" refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1a51c5537926d5e41adacbd1358a1aa27d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1a51c5537926d5e41adacbd1358a1aa27d" kindref="member">syntaxEnable</ref>;</highlight></codeline>
+<codeline lineno="166" refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1abf3d1082a24ea55836e6989942dca99a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1abf3d1082a24ea55836e6989942dca99a" kindref="member">foldEnable</ref>;</highlight></codeline>
+<codeline lineno="167" refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1aea55d7bc850060dd655eca78fcf26fca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1aea55d7bc850060dd655eca78fcf26fca" kindref="member">indentEnable</ref>;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>display<sp/>defaults<sp/>prefs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1a950136fb5cef99b57c89ba4a3829789d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1a950136fb5cef99b57c89ba4a3829789d" kindref="member">readOnlyInitial</ref>;</highlight></codeline>
+<codeline lineno="170" refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1a861c74cfdc85f0b8cac09a3c3ff1c06e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1a861c74cfdc85f0b8cac09a3c3ff1c06e" kindref="member">overTypeInitial</ref>;</highlight></codeline>
+<codeline lineno="171" refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1a3b5424e9af2f4d02528da7cf3109c41a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1a3b5424e9af2f4d02528da7cf3109c41a" kindref="member">wrapModeInitial</ref>;</highlight></codeline>
+<codeline lineno="172" refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1a94ff13ac4f8458d108fcb58a4929de21" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1a94ff13ac4f8458d108fcb58a4929de21" kindref="member">displayEOLEnable</ref>;</highlight></codeline>
+<codeline lineno="173" refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1afb69fd5984eab20ebae35a26945c897c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1afb69fd5984eab20ebae35a26945c897c" kindref="member">indentGuideEnable</ref>;</highlight></codeline>
+<codeline lineno="174" refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1a5acd44a1649cbbcf3ad882eb0de176de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1a5acd44a1649cbbcf3ad882eb0de176de" kindref="member">lineNumberEnable</ref>;</highlight></codeline>
+<codeline lineno="175" refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1a524cdf254e262176a55d29a18093a9b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1a524cdf254e262176a55d29a18093a9b5" kindref="member">longLineOnEnable</ref>;</highlight></codeline>
+<codeline lineno="176" refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1ad9b3e849f8ed4da5c54600661f39754a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d7/d8e/structmutaborGUI_1_1CommonInfo_1ad9b3e849f8ed4da5c54600661f39754a" kindref="member">whiteSpaceEnable</ref>;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d7/d8e/structmutaborGUI_1_1CommonInfo" kindref="compound">CommonInfo</ref><sp/><ref refid="db/d94/namespacemutaborGUI_1acfe0d68f9165efaf661248b5e0c9b34d" kindref="member">g_CommonPrefs</ref>;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="comment">//<sp/>LanguageInfo</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="d4/d4a/structmutaborGUI_1_1LanguageInfo" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d4/d4a/structmutaborGUI_1_1LanguageInfo" kindref="compound">LanguageInfo</ref><sp/>{</highlight></codeline>
+<codeline lineno="184" refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1a98c5c970d0926dd0b4b0a3fdea468704" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxChar<sp/>*<ref refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1a98c5c970d0926dd0b4b0a3fdea468704" kindref="member">name</ref>;</highlight></codeline>
+<codeline lineno="185" refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1a84c2f3bb70bef604b7aa6df6715e41c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxChar<sp/>*<ref refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1a84c2f3bb70bef604b7aa6df6715e41c3" kindref="member">filepattern</ref>;</highlight></codeline>
+<codeline lineno="186" refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1abf7d2c313919d3c9ac293b379fb8c669" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxChar<sp/>*<ref refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1abf7d2c313919d3c9ac293b379fb8c669" kindref="member">wordchars</ref>;</highlight></codeline>
+<codeline lineno="187" refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1ad981f9e7818ece4c449366c47d1912d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1ad981f9e7818ece4c449366c47d1912d8" kindref="member">lexer</ref>;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="189" refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1abb3f036e862303eddb5e648525c1cde8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1abb3f036e862303eddb5e648525c1cde8" kindref="member">type</ref>;</highlight></codeline>
+<codeline lineno="190" refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1aae20207f3ad8f26c56d76313aece4586" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxChar<sp/>*<ref refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1aae20207f3ad8f26c56d76313aece4586" kindref="member">words</ref>;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1a32c1f38b5249fe73281727e7748e4975" kindref="member">styles</ref><sp/>[<ref refid="d1/de5/stclanguage_8h_1a2bf008bdf5440d2ea4ab17900c22a851" kindref="member">STYLE_TYPES_COUNT</ref>];</highlight></codeline>
+<codeline lineno="192" refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1aa9eab4b69b65ebf29a475e877c60eba7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1aa9eab4b69b65ebf29a475e877c60eba7" kindref="member">folds</ref>;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d4/d4a/structmutaborGUI_1_1LanguageInfo" kindref="compound">LanguageInfo</ref><sp/><ref refid="db/d94/namespacemutaborGUI_1a81d8face0c1a39cbb84425ab7e48c153" kindref="member">g_LanguagePrefs</ref>[];</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="db/d94/namespacemutaborGUI_1a9d8fc05b85b262ec0d52c3825ac7dfb0" kindref="member">g_LanguagePrefsSize</ref>;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="comment">//<sp/>StyleInfo</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200" refid="df/d1f/structmutaborGUI_1_1StyleInfo" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/d1f/structmutaborGUI_1_1StyleInfo" kindref="compound">StyleInfo</ref><sp/>{</highlight></codeline>
+<codeline lineno="201" refid="df/d1f/structmutaborGUI_1_1StyleInfo_1a25a4f3adb030baa540421dc4e43333e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxChar<sp/>*<ref refid="df/d1f/structmutaborGUI_1_1StyleInfo_1a25a4f3adb030baa540421dc4e43333e3" kindref="member">name</ref>;</highlight></codeline>
+<codeline lineno="202" refid="df/d1f/structmutaborGUI_1_1StyleInfo_1aad0eac6c8d668e65d1f5996c54df2c3f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxChar<sp/>*<ref refid="df/d1f/structmutaborGUI_1_1StyleInfo_1aad0eac6c8d668e65d1f5996c54df2c3f" kindref="member">foreground</ref>;</highlight></codeline>
+<codeline lineno="203" refid="df/d1f/structmutaborGUI_1_1StyleInfo_1a8bb57983d3c605258eb6e17792b34e34" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxChar<sp/>*<ref refid="df/d1f/structmutaborGUI_1_1StyleInfo_1a8bb57983d3c605258eb6e17792b34e34" kindref="member">background</ref>;</highlight></codeline>
+<codeline lineno="204" refid="df/d1f/structmutaborGUI_1_1StyleInfo_1a90587bcee287130813e318646e41680d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxChar<sp/>*<ref refid="df/d1f/structmutaborGUI_1_1StyleInfo_1a90587bcee287130813e318646e41680d" kindref="member">fontname</ref>;</highlight></codeline>
+<codeline lineno="205" refid="df/d1f/structmutaborGUI_1_1StyleInfo_1a77f4c7a01563c40da1d09393567fb627" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d1f/structmutaborGUI_1_1StyleInfo_1a77f4c7a01563c40da1d09393567fb627" kindref="member">fontsize</ref>;</highlight></codeline>
+<codeline lineno="206" refid="df/d1f/structmutaborGUI_1_1StyleInfo_1a919c9d3dcfffb52dccee523c70a6c758" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d1f/structmutaborGUI_1_1StyleInfo_1a919c9d3dcfffb52dccee523c70a6c758" kindref="member">fontstyle</ref>;</highlight></codeline>
+<codeline lineno="207" refid="df/d1f/structmutaborGUI_1_1StyleInfo_1aa328bd0feb8a5ee2f9eb469f4a342555" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d1f/structmutaborGUI_1_1StyleInfo_1aa328bd0feb8a5ee2f9eb469f4a342555" kindref="member">lettercase</ref>;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="df/d1f/structmutaborGUI_1_1StyleInfo" kindref="compound">StyleInfo</ref><sp/><ref refid="db/d94/namespacemutaborGUI_1a8c03cf975312f6c89d8d9e443646e3c8" kindref="member">g_StylePrefs</ref>[];</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="db/d94/namespacemutaborGUI_1a157302826761dcf66cb0f3a51eb831f6" kindref="member">g_StylePrefsSize</ref>;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer" kindref="compound">MutSTCLexer</ref><sp/>{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:<sp/></highlight></codeline>
+<codeline lineno="215" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9a" kindref="member">States</ref><sp/>{</highlight></codeline>
+<codeline lineno="216" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa18aa80f9c7eae109714428f6f8d96f4f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa18aa80f9c7eae109714428f6f8d96f4f" kindref="member">DEFAULT</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="217" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa9108d0e77ee4a31b856f8cbdaf8817a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa9108d0e77ee4a31b856f8cbdaf8817a1" kindref="member">IDENTIFIER</ref><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="218" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa130a8a6c4075baf4c514d5556889b28e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa130a8a6c4075baf4c514d5556889b28e" kindref="member">SECTIONKEYWORD</ref><sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="219" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa9c6b08db335cd838df4d71c304f47986" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa9c6b08db335cd838df4d71c304f47986" kindref="member">OPERATOR</ref><sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="220" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa396b03fe4d1ab7de2e2914028b773ef6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa396b03fe4d1ab7de2e2914028b773ef6" kindref="member">RESERVEDWORD</ref><sp/>=<sp/>4,</highlight></codeline>
+<codeline lineno="221" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa55d6c9c718bbe7d5371d947eede915e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa55d6c9c718bbe7d5371d947eede915e3" kindref="member">DELIMITER</ref><sp/>=<sp/>5,</highlight></codeline>
+<codeline lineno="222" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aaf0207672dc18cc2307a7e9b8c4924df8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aaf0207672dc18cc2307a7e9b8c4924df8" kindref="member">COMMENT</ref><sp/>=<sp/>6,</highlight></codeline>
+<codeline lineno="223" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa0aa8a6eea259f7e2a5af85a768a699c4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa0aa8a6eea259f7e2a5af85a768a699c4" kindref="member">NUMBER</ref><sp/>=<sp/>7,</highlight></codeline>
+<codeline lineno="224" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa788ea6ccfd09f873b481e530104abc30" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa788ea6ccfd09f873b481e530104abc30" kindref="member">PARAMETER</ref><sp/>=<sp/>8,</highlight></codeline>
+<codeline lineno="225" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa019a8cfacb14e2b37a0c20a23e78a1fa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa019a8cfacb14e2b37a0c20a23e78a1fa" kindref="member">OTHER</ref><sp/>=<sp/>9,</highlight></codeline>
+<codeline lineno="226" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa488a8cfde98fc85135069def29570609" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa488a8cfde98fc85135069def29570609" kindref="member">ERROR</ref><sp/>=<sp/>10,</highlight></codeline>
+<codeline lineno="227" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa926b59f8d442b37837ab5544ed975f57" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a8043ccee6bc2424c76fb1732eb765c9aa926b59f8d442b37837ab5544ed975f57" kindref="member">BRACE</ref><sp/>=<sp/>11</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1aa0fa0411034be6c5334787c7f56b12ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1aa0fa0411034be6c5334787c7f56b12ae" kindref="member">MutSTCLexer</ref>(wxStyledTextCtrl<sp/>*<sp/>e):<ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a4213eaf54322dafc8fc44af0e6b80ea5" kindref="member">editor</ref>(e)<sp/>{}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a30e777b67eb50a9c08427266b9bd08c9" kindref="member">OnStyleNeeded</ref><sp/>(wxStyledTextEvent<sp/>&amp;<sp/>event);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="233" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a4213eaf54322dafc8fc44af0e6b80ea5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxStyledTextCtrl<sp/>*<sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a4213eaf54322dafc8fc44af0e6b80ea5" kindref="member">editor</ref>;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1aee5ea6f87755d1016abec5f4acc64645" kindref="member">SetStyling</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>style,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pos,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>len);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>precompiled</highlight></codeline>
+<codeline lineno="241"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>full<sp/>header<sp/>inclusion</highlight></codeline>
+<codeline lineno="242"><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h"/>
+  </compounddef>
+</doxygen>

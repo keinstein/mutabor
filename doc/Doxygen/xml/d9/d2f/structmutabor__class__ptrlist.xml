@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d9/d2f/structmutabor__class__ptrlist" kind="struct" prot="public">
+    <compoundname>mutabor_class_ptrlist</compoundname>
+    <includes refid="d4/d70/ptrlist_8h" local="no">ptrlist.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d9/d2f/structmutabor__class__ptrlist_1acef0b1751a5b7e649697239e8bef2f99" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d0/dff/structmutabor__class__object" kindref="compound">mutabor_class_object</ref></type>
+        <definition>struct mutabor_class_object mutabor_class_ptrlist::_</definition>
+        <argsstring></argsstring>
+        <name>_</name>
+        <briefdescription>
+<para>Parent class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ptrlist.h" line="46" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ptrlist.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/d2f/structmutabor__class__ptrlist_1a5cece6bc465334c7b34c430706bf852e" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d6/d82/structmutabor__avl__node__ptr" kindref="compound">mutabor_avl_node_ptr</ref> *</type>
+        <definition>struct mutabor_avl_node_ptr* mutabor_class_ptrlist::root</definition>
+        <argsstring></argsstring>
+        <name>root</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ptrlist.h" line="31" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ptrlist.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3680">
+        <label>mutabor_class_object</label>
+        <link refid="d0/dff/structmutabor__class__object"/>
+        <childnode refid="3681" relation="usage">
+          <edgelabel>virttable</edgelabel>
+        </childnode>
+      </node>
+      <node id="3679">
+        <label>mutabor_class_ptrlist</label>
+        <link refid="d9/d2f/structmutabor__class__ptrlist"/>
+        <childnode refid="3680" relation="usage">
+          <edgelabel>_</edgelabel>
+        </childnode>
+        <childnode refid="3682" relation="usage">
+          <edgelabel>root</edgelabel>
+        </childnode>
+      </node>
+      <node id="3681">
+        <label>mutabor_virttable_object</label>
+        <link refid="d7/dc5/structmutabor__virttable__object"/>
+      </node>
+      <node id="3682">
+        <label>mutabor_avl_node_ptr</label>
+        <link refid="d6/d82/structmutabor__avl__node__ptr"/>
+        <childnode refid="3682" relation="usage">
+          <edgelabel>right</edgelabel>
+          <edgelabel>left</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ptrlist.h" line="29" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ptrlist.h" bodystart="29" bodyend="32"/>
+    <listofallmembers>
+      <member refid="d9/d2f/structmutabor__class__ptrlist_1acef0b1751a5b7e649697239e8bef2f99" prot="public" virt="non-virtual"><scope>mutabor_class_ptrlist</scope><name>_</name></member>
+      <member refid="d9/d2f/structmutabor__class__ptrlist_1a5cece6bc465334c7b34c430706bf852e" prot="public" virt="non-virtual"><scope>mutabor_class_ptrlist</scope><name>root</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

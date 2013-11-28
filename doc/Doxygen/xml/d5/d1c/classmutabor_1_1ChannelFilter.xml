@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d5/d1c/classmutabor_1_1ChannelFilter" kind="class" prot="public">
+    <compoundname>mutabor::ChannelFilter</compoundname>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d5/d1c/classmutabor_1_1ChannelFilter_1a0dc27ab4c727a8aff2fb6c5eb3e4f203" prot="protected" static="no" mutable="no">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1ga1883da1b1be8d9e8d11d091c04a37521" kindref="member">RouteClass</ref> *</type>
+        <definition>const RouteClass* mutabor::ChannelFilter::route</definition>
+        <argsstring></argsstring>
+        <name>route</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" line="134" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="134" bodyend="-1"/>
+        <referencedby refid="d5/d1c/classmutabor_1_1ChannelFilter_1a075ad96b8adfb08f5c2a86b9b8f4fbb1" compoundref="d3/d0f/midicmn_8cpp" startline="130" endline="132">check</referencedby>
+        <referencedby refid="d5/d1c/classmutabor_1_1ChannelFilter_1a56c3d9c2157ed82f96b9efa893baab3e" compoundref="d3/d0f/midicmn_8cpp" startline="123" endline="128">operator()</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/d1c/classmutabor_1_1ChannelFilter_1a5a74eed26d5aa185434af28032ad273e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::ChannelFilter::ChannelFilter</definition>
+        <argsstring>(const RouteClass *r)</argsstring>
+        <name>ChannelFilter</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1ga1883da1b1be8d9e8d11d091c04a37521" kindref="member">RouteClass</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" line="121" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="121" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d1c/classmutabor_1_1ChannelFilter_1a56c3d9c2157ed82f96b9efa893baab3e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::ChannelFilter::operator()</definition>
+        <argsstring>(int channel)</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" line="123" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="123" bodyend="128"/>
+        <references refid="dc/d7e/group__runtime_1gad4cd3246197199ef9c3d5d299b2d9393" compoundref="da/dfd/MidiKern_8h" startline="53">DRUMCHANNEL</references>
+        <references refid="d5/dee/group__route_1ga9ccc83af0c146ab61d12a9efa7a4266b" compoundref="d1/d65/Route_8h" startline="328" endline="330">mutabor::TRouteClass&lt; I, O, B &gt;::GetOutputFrom</references>
+        <references refid="d5/dee/group__route_1ga0cde2c00cc341621b8e04809bc50a0fc" compoundref="d1/d65/Route_8h" startline="344" endline="346">mutabor::TRouteClass&lt; I, O, B &gt;::GetOutputTo</references>
+        <references refid="d5/dee/group__route_1gab9643dec82601c2a36c76bae383bc1cb" compoundref="d1/d65/Route_8h" startline="353" endline="355">mutabor::TRouteClass&lt; I, O, B &gt;::OutputAvoidDrumChannel</references>
+        <references refid="d5/d1c/classmutabor_1_1ChannelFilter_1a0dc27ab4c727a8aff2fb6c5eb3e4f203" compoundref="d3/d0f/midicmn_8cpp" startline="134">route</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/d1c/classmutabor_1_1ChannelFilter_1a075ad96b8adfb08f5c2a86b9b8f4fbb1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::ChannelFilter::check</definition>
+        <argsstring>()</argsstring>
+        <name>check</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" line="130" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="130" bodyend="132"/>
+        <references refid="d5/dee/group__route_1ga9ccc83af0c146ab61d12a9efa7a4266b" compoundref="d1/d65/Route_8h" startline="328" endline="330">mutabor::TRouteClass&lt; I, O, B &gt;::GetOutputFrom</references>
+        <references refid="d5/dee/group__route_1ga0cde2c00cc341621b8e04809bc50a0fc" compoundref="d1/d65/Route_8h" startline="344" endline="346">mutabor::TRouteClass&lt; I, O, B &gt;::GetOutputTo</references>
+        <references refid="d5/d1c/classmutabor_1_1ChannelFilter_1a0dc27ab4c727a8aff2fb6c5eb3e4f203" compoundref="d3/d0f/midicmn_8cpp" startline="134">route</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2423">
+        <label>B</label>
+      </node>
+      <node id="2420">
+        <label>I</label>
+      </node>
+      <node id="2421">
+        <label>O</label>
+      </node>
+      <node id="2419">
+        <label>T</label>
+      </node>
+      <node id="2418">
+        <label>std::list&lt; T &gt;</label>
+        <childnode refid="2419" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2416">
+        <label>mutabor::ChannelFilter</label>
+        <link refid="d5/d1c/classmutabor_1_1ChannelFilter"/>
+        <childnode refid="2417" relation="usage">
+          <edgelabel>route</edgelabel>
+        </childnode>
+      </node>
+      <node id="2417">
+        <label>mutabor::TRouteClass&lt; I, O, B &gt;</label>
+        <link refid="db/d05/classmutabor_1_1TRouteClass"/>
+        <childnode refid="2418" relation="usage">
+          <edgelabel>routeList</edgelabel>
+        </childnode>
+        <childnode refid="2420" relation="usage">
+          <edgelabel>In</edgelabel>
+        </childnode>
+        <childnode refid="2421" relation="usage">
+          <edgelabel>Out</edgelabel>
+        </childnode>
+        <childnode refid="2422" relation="usage">
+          <edgelabel>session_id</edgelabel>
+        </childnode>
+        <childnode refid="2423" relation="usage">
+          <edgelabel>box</edgelabel>
+        </childnode>
+      </node>
+      <node id="2422">
+        <label>mutabor::idtype&lt; mutabor::TRouteClass&lt; I, O &gt; &gt;</label>
+        <link refid="d7/dce/classmutabor_1_1idtype"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" line="119" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="119" bodyend="135"/>
+    <listofallmembers>
+      <member refid="d5/d1c/classmutabor_1_1ChannelFilter_1a5a74eed26d5aa185434af28032ad273e" prot="public" virt="non-virtual"><scope>mutabor::ChannelFilter</scope><name>ChannelFilter</name></member>
+      <member refid="d5/d1c/classmutabor_1_1ChannelFilter_1a075ad96b8adfb08f5c2a86b9b8f4fbb1" prot="public" virt="non-virtual"><scope>mutabor::ChannelFilter</scope><name>check</name></member>
+      <member refid="d5/d1c/classmutabor_1_1ChannelFilter_1a56c3d9c2157ed82f96b9efa893baab3e" prot="public" virt="non-virtual"><scope>mutabor::ChannelFilter</scope><name>operator()</name></member>
+      <member refid="d5/d1c/classmutabor_1_1ChannelFilter_1a0dc27ab4c727a8aff2fb6c5eb3e4f203" prot="protected" virt="non-virtual"><scope>mutabor::ChannelFilter</scope><name>route</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

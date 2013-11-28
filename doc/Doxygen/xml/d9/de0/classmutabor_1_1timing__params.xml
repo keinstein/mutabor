@@ -1,0 +1,569 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d9/de0/classmutabor_1_1timing__params" kind="class" prot="public">
+    <compoundname>mutabor::timing_params</compoundname>
+    <includes refid="db/d41/timing_8h" local="no">timing.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool mutabor::timing_params::is_fixed_ticks</definition>
+        <argsstring></argsstring>
+        <name>is_fixed_ticks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="312" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="312" bodyend="-1"/>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a41efec80d11804c47b6ec9aea32563d7" compoundref="db/d41/timing_8h" startline="205" endline="209">get_delta_exact</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a825c106c4340aefee46d84924e4b634a" compoundref="db/d41/timing_8h" startline="186" endline="195">get_delta_midi</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1af079d3630d39bfcdb1255ef8dabe52dd" compoundref="d1/dca/timing_8cpp" startline="45" endline="90">get_MIDI_tick_signature</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a0bf70ae178d861d0a13ebec3382ead4a" compoundref="db/d41/timing_8h" startline="172" endline="176">get_time_exact</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a99b3824ef2c3adad8a7efb42cdd8ffef" compoundref="db/d41/timing_8h" startline="158" endline="162">get_time_midi</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a07e795c5aa491e75f0e693b51a2428a7" compoundref="db/d41/timing_8h" startline="107" endline="112">reset</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1acd1d82276b80f1c324c766ab721b8a48" compoundref="d1/dca/timing_8cpp" startline="92" endline="107">set_MIDI_tick_signature</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1aa8ab063d3451df81c53a5f549bba1f4d" compoundref="d1/dca/timing_8cpp" startline="109" endline="113">TowxString</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a7c9c5dc64b9c4adf16974c7dcfccb756" compoundref="db/d41/timing_8h" startline="287" endline="305">update_duration_exact</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1aaa349c24bb42ee890be5635d2f8874da" compoundref="db/d41/timing_8h" startline="253" endline="263">update_duration_midi</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::timing_params::fps</definition>
+        <argsstring></argsstring>
+        <name>fps</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="313" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="313" bodyend="-1"/>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1af079d3630d39bfcdb1255ef8dabe52dd" compoundref="d1/dca/timing_8cpp" startline="45" endline="90">get_MIDI_tick_signature</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a07e795c5aa491e75f0e693b51a2428a7" compoundref="db/d41/timing_8h" startline="107" endline="112">reset</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1acd1d82276b80f1c324c766ab721b8a48" compoundref="d1/dca/timing_8cpp" startline="92" endline="107">set_MIDI_tick_signature</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1aa8ab063d3451df81c53a5f549bba1f4d" compoundref="d1/dca/timing_8cpp" startline="109" endline="113">TowxString</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d9/de0/classmutabor_1_1timing__params_1aa6a719796af0458e9a133d78c3bdf7c2" prot="protected" static="no" mutable="no">
+        <type>mutint64</type>
+        <definition>mutint64 mutabor::timing_params::quarter_duration</definition>
+        <argsstring></argsstring>
+        <name>quarter_duration</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="314" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="314" bodyend="-1"/>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a41efec80d11804c47b6ec9aea32563d7" compoundref="db/d41/timing_8h" startline="205" endline="209">get_delta_exact</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a825c106c4340aefee46d84924e4b634a" compoundref="db/d41/timing_8h" startline="186" endline="195">get_delta_midi</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a4788f23f8ce332656d852b76c47a7eb1" compoundref="db/d41/timing_8h" startline="132" endline="132">get_quarter_duration</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a0bf70ae178d861d0a13ebec3382ead4a" compoundref="db/d41/timing_8h" startline="172" endline="176">get_time_exact</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a99b3824ef2c3adad8a7efb42cdd8ffef" compoundref="db/d41/timing_8h" startline="158" endline="162">get_time_midi</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a07e795c5aa491e75f0e693b51a2428a7" compoundref="db/d41/timing_8h" startline="107" endline="112">reset</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a388d3ecb25575ec9ee8b07b4ed106ad2" compoundref="db/d41/timing_8h" startline="120" endline="124">set_quarter_duration</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1aa8ab063d3451df81c53a5f549bba1f4d" compoundref="d1/dca/timing_8cpp" startline="109" endline="113">TowxString</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a7c9c5dc64b9c4adf16974c7dcfccb756" compoundref="db/d41/timing_8h" startline="287" endline="305">update_duration_exact</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1aaa349c24bb42ee890be5635d2f8874da" compoundref="db/d41/timing_8h" startline="253" endline="263">update_duration_midi</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" prot="protected" static="no" mutable="no">
+        <type>mutint64</type>
+        <definition>mutint64 mutabor::timing_params::quarter_divisions</definition>
+        <argsstring></argsstring>
+        <name>quarter_divisions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="315" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="315" bodyend="-1"/>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a41efec80d11804c47b6ec9aea32563d7" compoundref="db/d41/timing_8h" startline="205" endline="209">get_delta_exact</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a825c106c4340aefee46d84924e4b634a" compoundref="db/d41/timing_8h" startline="186" endline="195">get_delta_midi</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1af079d3630d39bfcdb1255ef8dabe52dd" compoundref="d1/dca/timing_8cpp" startline="45" endline="90">get_MIDI_tick_signature</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a846ac9a9d21bd6bcfab9369aff6ab96e" compoundref="db/d41/timing_8h" startline="148" endline="148">get_ticks</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a0bf70ae178d861d0a13ebec3382ead4a" compoundref="db/d41/timing_8h" startline="172" endline="176">get_time_exact</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a99b3824ef2c3adad8a7efb42cdd8ffef" compoundref="db/d41/timing_8h" startline="158" endline="162">get_time_midi</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a07e795c5aa491e75f0e693b51a2428a7" compoundref="db/d41/timing_8h" startline="107" endline="112">reset</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1acd1d82276b80f1c324c766ab721b8a48" compoundref="d1/dca/timing_8cpp" startline="92" endline="107">set_MIDI_tick_signature</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1aa8ab063d3451df81c53a5f549bba1f4d" compoundref="d1/dca/timing_8cpp" startline="109" endline="113">TowxString</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a7c9c5dc64b9c4adf16974c7dcfccb756" compoundref="db/d41/timing_8h" startline="287" endline="305">update_duration_exact</referencedby>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1aaa349c24bb42ee890be5635d2f8874da" compoundref="db/d41/timing_8h" startline="253" endline="263">update_duration_midi</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/de0/classmutabor_1_1timing__params_1a89366d0e9493a39da08f8104dd7cf0f4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::timing_params::timing_params</definition>
+        <argsstring>()</argsstring>
+        <name>timing_params</name>
+        <briefdescription>
+<para>Default Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>The default constructor sets the timing parametes as follows: Fixed step durations on a 1ms grid at 120 bpm. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="83" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="83" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/de0/classmutabor_1_1timing__params_1a5466b8ab022aa8c15c11485d626cc2ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::timing_params::timing_params</definition>
+        <argsstring>(const timing_params &amp;o)</argsstring>
+        <name>timing_params</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/de0/classmutabor_1_1timing__params" kindref="compound">timing_params</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>o</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the timing params that should be copied. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="95" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="95" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/de0/classmutabor_1_1timing__params_1a07e795c5aa491e75f0e693b51a2428a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::timing_params::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+<para>Reset the parameters to the default values. </para>        </briefdescription>
+        <detaileddescription>
+<para>Fixed step durations on a 1ms grid at 120 bpm. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="107" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="107" bodyend="112"/>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" compoundref="db/d41/timing_8h" startline="313">fps</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" compoundref="db/d41/timing_8h" startline="312">is_fixed_ticks</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" compoundref="db/d41/timing_8h" startline="315">quarter_divisions</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1aa6a719796af0458e9a133d78c3bdf7c2" compoundref="db/d41/timing_8h" startline="314">quarter_duration</references>
+      </memberdef>
+      <memberdef kind="function" id="d9/de0/classmutabor_1_1timing__params_1a388d3ecb25575ec9ee8b07b4ed106ad2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::timing_params::set_quarter_duration</definition>
+        <argsstring>(mutint64 d)</argsstring>
+        <name>set_quarter_duration</name>
+        <param>
+          <type>mutint64</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>Set the quarter duration parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>duration of a quarter note in microseconds. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="120" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="120" bodyend="124"/>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1aa6a719796af0458e9a133d78c3bdf7c2" compoundref="db/d41/timing_8h" startline="314">quarter_duration</references>
+        <referencedby refid="dd/dbe/classmutabor_1_1Track_1aaabe2dbadf9b8f5dbb95ddc51db30e2a" compoundref="da/d3c/DevMidF_8h" startline="130" endline="140">mutabor::Track::ResetPosition</referencedby>
+        <referencedby refid="dd/dbe/classmutabor_1_1Track_1aa5297ceaca5746ee2efbe6ebba70a8d8" compoundref="da/d3c/DevMidF_8h" startline="171" endline="194">mutabor::Track::SetQuarterDuration</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/de0/classmutabor_1_1timing__params_1a4788f23f8ce332656d852b76c47a7eb1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>mutint64</type>
+        <definition>mutint64 mutabor::timing_params::get_quarter_duration</definition>
+        <argsstring>()</argsstring>
+        <name>get_quarter_duration</name>
+        <briefdescription>
+<para>Get the quarter duration. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>quarter duration in microseconds. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="132" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="132" bodyend="132"/>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1aa6a719796af0458e9a133d78c3bdf7c2" compoundref="db/d41/timing_8h" startline="314">quarter_duration</references>
+        <referencedby refid="db/d40/classTimingParamsTest_1a17fe27d608a0d2a69095a1569969a8dc" compoundref="d6/d6d/tests_2timing_8h" startline="165" endline="227">TimingParamsTest::testExactTicks</referencedby>
+        <referencedby refid="db/d40/classTimingParamsTest_1a7d909b7e6c8e02ca6d872db12081132a" compoundref="d6/d6d/tests_2timing_8h" startline="89" endline="164">TimingParamsTest::testMIDITicks</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/de0/classmutabor_1_1timing__params_1a846ac9a9d21bd6bcfab9369aff6ab96e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>mutint64</type>
+        <definition>mutint64 mutabor::timing_params::get_ticks</definition>
+        <argsstring>()</argsstring>
+        <name>get_ticks</name>
+        <briefdescription>
+<para>Get the number of ticks per time interval. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>in fixed time mode return the ticks per second otherwise the number of divisions of a quarter note. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="148" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="148" bodyend="148"/>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" compoundref="db/d41/timing_8h" startline="315">quarter_divisions</references>
+        <referencedby refid="db/d40/classTimingParamsTest_1a17fe27d608a0d2a69095a1569969a8dc" compoundref="d6/d6d/tests_2timing_8h" startline="165" endline="227">TimingParamsTest::testExactTicks</referencedby>
+        <referencedby refid="db/d40/classTimingParamsTest_1a7d909b7e6c8e02ca6d872db12081132a" compoundref="d6/d6d/tests_2timing_8h" startline="89" endline="164">TimingParamsTest::testMIDITicks</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/de0/classmutabor_1_1timing__params_1a99b3824ef2c3adad8a7efb42cdd8ffef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>mutint64</type>
+        <definition>mutint64 mutabor::timing_params::get_time_midi</definition>
+        <argsstring>(mutint64 d)</argsstring>
+        <name>get_time_midi</name>
+        <param>
+          <type>mutint64</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>Translates a given number of MIDI quarter ticks into microseconds. </para>        </briefdescription>
+        <detaileddescription>
+<para>Rounding is done according to the formula given in the midi standard: time = ticks * (quarter_duration / ticks per quarter)</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>time in quarter divisions</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>time in microseconds. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="158" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="158" bodyend="162"/>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" compoundref="db/d41/timing_8h" startline="312">is_fixed_ticks</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" compoundref="db/d41/timing_8h" startline="315">quarter_divisions</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1aa6a719796af0458e9a133d78c3bdf7c2" compoundref="db/d41/timing_8h" startline="314">quarter_duration</references>
+        <referencedby refid="db/d40/classTimingParamsTest_1a7d909b7e6c8e02ca6d872db12081132a" compoundref="d6/d6d/tests_2timing_8h" startline="89" endline="164">TimingParamsTest::testMIDITicks</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/de0/classmutabor_1_1timing__params_1a0bf70ae178d861d0a13ebec3382ead4a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>mutint64</type>
+        <definition>mutint64 mutabor::timing_params::get_time_exact</definition>
+        <argsstring>(mutint64 d)</argsstring>
+        <name>get_time_exact</name>
+        <param>
+          <type>mutint64</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>Translates a given number of quarter ticks into microseconds using more exact rounding. </para>        </briefdescription>
+        <detaileddescription>
+<para>Rounding is done according to the following formula (in integer arithmetic): time = round ((ticks * (quarter_duration )) / ticks per quarter)</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>time in quarter divisions</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>time in microseconds. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="172" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="172" bodyend="176"/>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" compoundref="db/d41/timing_8h" startline="312">is_fixed_ticks</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" compoundref="db/d41/timing_8h" startline="315">quarter_divisions</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1aa6a719796af0458e9a133d78c3bdf7c2" compoundref="db/d41/timing_8h" startline="314">quarter_duration</references>
+        <referencedby refid="db/d40/classTimingParamsTest_1a17fe27d608a0d2a69095a1569969a8dc" compoundref="d6/d6d/tests_2timing_8h" startline="165" endline="227">TimingParamsTest::testExactTicks</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/de0/classmutabor_1_1timing__params_1a825c106c4340aefee46d84924e4b634a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>mutint64</type>
+        <definition>mutint64 mutabor::timing_params::get_delta_midi</definition>
+        <argsstring>(mutint64 time)</argsstring>
+        <name>get_delta_midi</name>
+        <param>
+          <type>mutint64</type>
+          <declname>time</declname>
+        </param>
+        <briefdescription>
+<para>Translates a given time in microseconds into the corresponding number of MIDI. </para>        </briefdescription>
+        <detaileddescription>
+<para>Rounding is done to meet the formula given in the midi standard: time = ticks * (quarter_duration / ticks per quarter)</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>time in microseconds.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>time in quarter divisions </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="186" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="186" bodyend="195"/>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" compoundref="db/d41/timing_8h" startline="312">is_fixed_ticks</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" compoundref="db/d41/timing_8h" startline="315">quarter_divisions</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1aa6a719796af0458e9a133d78c3bdf7c2" compoundref="db/d41/timing_8h" startline="314">quarter_duration</references>
+        <referencedby refid="db/d40/classTimingParamsTest_1a7d909b7e6c8e02ca6d872db12081132a" compoundref="d6/d6d/tests_2timing_8h" startline="89" endline="164">TimingParamsTest::testMIDITicks</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/de0/classmutabor_1_1timing__params_1a41efec80d11804c47b6ec9aea32563d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>mutint64</type>
+        <definition>mutint64 mutabor::timing_params::get_delta_exact</definition>
+        <argsstring>(mutint64 time)</argsstring>
+        <name>get_delta_exact</name>
+        <param>
+          <type>mutint64</type>
+          <declname>time</declname>
+        </param>
+        <briefdescription>
+<para>Translates a given time in microseconds into number of quarter ticks using more exact rounding. </para>        </briefdescription>
+        <detaileddescription>
+<para>Rounding is done to meet following formula (in integer arithmetic): time = round ((ticks * (quarter_duration )) / ticks per quarter)</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>time in microseconds.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>time in quarter divisions </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="205" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="205" bodyend="209"/>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" compoundref="db/d41/timing_8h" startline="312">is_fixed_ticks</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" compoundref="db/d41/timing_8h" startline="315">quarter_divisions</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1aa6a719796af0458e9a133d78c3bdf7c2" compoundref="db/d41/timing_8h" startline="314">quarter_duration</references>
+        <referencedby refid="db/d40/classTimingParamsTest_1a17fe27d608a0d2a69095a1569969a8dc" compoundref="d6/d6d/tests_2timing_8h" startline="165" endline="227">TimingParamsTest::testExactTicks</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/de0/classmutabor_1_1timing__params_1af079d3630d39bfcdb1255ef8dabe52dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::pair&lt; uint8_t, uint8_t &gt;</type>
+        <definition>std::pair&lt; uint8_t, uint8_t &gt; mutabor::timing_params::get_MIDI_tick_signature</definition>
+        <argsstring>()</argsstring>
+        <name>get_MIDI_tick_signature</name>
+        <briefdescription>
+<para>Calculate the two bytes indicating the ticks per divisions field in a MIDI file. </para>        </briefdescription>
+        <detaileddescription>
+<para>The return value can be read as -fps and ticks per frame in fixed timing mode and as a 15 bit number in quarter relative timeing mode.</para><para><simplesect kind="return"><para>pair of bytes that can be directly copied into the Standard MIDI File header. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="224" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.cpp" bodystart="45" bodyend="90"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" compoundref="db/d41/timing_8h" startline="313">fps</references>
+        <references refid="d9/d7c/group__kernel_1ga426d842d7b3e04622b2da17b089e586d" compoundref="d1/d73/Defs_8h" startline="230">gettext_noop</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" compoundref="db/d41/timing_8h" startline="312">is_fixed_ticks</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" compoundref="db/d41/timing_8h" startline="315">quarter_divisions</references>
+        <referencedby refid="dd/dbe/classmutabor_1_1Track_1aaecca49faf2b852e0455c64302951159" compoundref="da/d3c/DevMidF_8h" startline="217" endline="219">mutabor::Track::getMidiIickSignature</referencedby>
+        <referencedby refid="db/d40/classTimingParamsTest_1a17fe27d608a0d2a69095a1569969a8dc" compoundref="d6/d6d/tests_2timing_8h" startline="165" endline="227">TimingParamsTest::testExactTicks</referencedby>
+        <referencedby refid="db/d40/classTimingParamsTest_1a7d909b7e6c8e02ca6d872db12081132a" compoundref="d6/d6d/tests_2timing_8h" startline="89" endline="164">TimingParamsTest::testMIDITicks</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/de0/classmutabor_1_1timing__params_1acd1d82276b80f1c324c766ab721b8a48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::timing_params::set_MIDI_tick_signature</definition>
+        <argsstring>(uint8_t fps, uint8_t count)</argsstring>
+        <name>set_MIDI_tick_signature</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>fps</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+<para>Calculate timing mode and timing parameters from the corresponding bytes in the MIDI file header. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fps</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>first byte of the signature denating MSB or negative frame rate. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>second byte of the signature denoting LSB or ticks per frame. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="233" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.cpp" bodystart="92" bodyend="107"/>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" compoundref="db/d41/timing_8h" startline="313">fps</references>
+        <references refid="d9/d7c/group__kernel_1ga426d842d7b3e04622b2da17b089e586d" compoundref="d1/d73/Defs_8h" startline="230">gettext_noop</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" compoundref="db/d41/timing_8h" startline="312">is_fixed_ticks</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" compoundref="db/d41/timing_8h" startline="315">quarter_divisions</references>
+        <referencedby refid="db/d40/classTimingParamsTest_1a17fe27d608a0d2a69095a1569969a8dc" compoundref="d6/d6d/tests_2timing_8h" startline="165" endline="227">TimingParamsTest::testExactTicks</referencedby>
+        <referencedby refid="db/d40/classTimingParamsTest_1a7d909b7e6c8e02ca6d872db12081132a" compoundref="d6/d6d/tests_2timing_8h" startline="89" endline="164">TimingParamsTest::testMIDITicks</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/de0/classmutabor_1_1timing__params_1aa8ab063d3451df81c53a5f549bba1f4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>wxString</type>
+        <definition>wxString mutabor::timing_params::TowxString</definition>
+        <argsstring>()</argsstring>
+        <name>TowxString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="307" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.cpp" bodystart="109" bodyend="113"/>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" compoundref="db/d41/timing_8h" startline="313">fps</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" compoundref="db/d41/timing_8h" startline="312">is_fixed_ticks</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" compoundref="db/d41/timing_8h" startline="315">quarter_divisions</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1aa6a719796af0458e9a133d78c3bdf7c2" compoundref="db/d41/timing_8h" startline="314">quarter_duration</references>
+        <referencedby refid="d9/de0/classmutabor_1_1timing__params_1a70aea746b2d6ce7f784cefd003069e8c" compoundref="db/d41/timing_8h" startline="308" endline="310">c_str</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/de0/classmutabor_1_1timing__params_1a70aea746b2d6ce7f784cefd003069e8c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga13c03a937e32254ea17154104db5208a" kindref="member">mutChar</ref> *</type>
+        <definition>const mutChar* mutabor::timing_params::c_str</definition>
+        <argsstring>()</argsstring>
+        <name>c_str</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="308" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="308" bodyend="310"/>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1aa8ab063d3451df81c53a5f549bba1f4d" compoundref="d1/dca/timing_8cpp" startline="109" endline="113">TowxString</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="d9/de0/classmutabor_1_1timing__params_1aaa349c24bb42ee890be5635d2f8874da" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>mutint64</type>
+        <definition>static mutint64 mutabor::timing_params::update_duration_midi</definition>
+        <argsstring>(mutint64 duration, const timing_params &amp;oldd, const timing_params &amp;newd)</argsstring>
+        <name>update_duration_midi</name>
+        <param>
+          <type>mutint64</type>
+          <declname>duration</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/de0/classmutabor_1_1timing__params" kindref="compound">timing_params</ref> &amp;</type>
+          <declname>oldd</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/de0/classmutabor_1_1timing__params" kindref="compound">timing_params</ref> &amp;</type>
+          <declname>newd</declname>
+        </param>
+        <briefdescription>
+<para>Update the a duration when the parameters change. </para>        </briefdescription>
+        <detaileddescription>
+<para>In Type 1 MIDI files the first track contains timing parameters for all tracks. This function can be used to update time stamps that are stored in microseconds.</para><para><simplesect kind="note"><para>This function assumes that the change should take after an offset of 0 μs. Thus, offsets must be honoured in the calling code.</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>duration</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>time to be recalculated </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oldd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>old timing object. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>newd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>now timing object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>recalculated duration according to the two passed timing objects. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="253" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="253" bodyend="263"/>
+        <references refid="d5/dee/group__route_1gae8e68e7c0733bdbf88aeef3bfb75808a" compoundref="d3/d9e/GSP_8cpp" startline="91">duration</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" compoundref="db/d41/timing_8h" startline="312">is_fixed_ticks</references>
+        <references refid="d5/dee/group__route_1ga5c38af00c7fd323a00aae0133ea4336e" compoundref="db/d41/timing_8h" startline="61">MUTABOR_NO_DELTA</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" compoundref="db/d41/timing_8h" startline="315">quarter_divisions</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1aa6a719796af0458e9a133d78c3bdf7c2" compoundref="db/d41/timing_8h" startline="314">quarter_duration</references>
+        <referencedby refid="dd/dbe/classmutabor_1_1Track_1aa5297ceaca5746ee2efbe6ebba70a8d8" compoundref="da/d3c/DevMidF_8h" startline="171" endline="194">mutabor::Track::SetQuarterDuration</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/de0/classmutabor_1_1timing__params_1a7c9c5dc64b9c4adf16974c7dcfccb756" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>mutint64</type>
+        <definition>static mutint64 mutabor::timing_params::update_duration_exact</definition>
+        <argsstring>(mutint64 duration, const timing_params &amp;oldd, const timing_params &amp;newd)</argsstring>
+        <name>update_duration_exact</name>
+        <param>
+          <type>mutint64</type>
+          <declname>duration</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/de0/classmutabor_1_1timing__params" kindref="compound">timing_params</ref> &amp;</type>
+          <declname>oldd</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/de0/classmutabor_1_1timing__params" kindref="compound">timing_params</ref> &amp;</type>
+          <declname>newd</declname>
+        </param>
+        <briefdescription>
+<para>Update the a duration when the parameters change. </para>        </briefdescription>
+        <detaileddescription>
+<para>In Type 1 MIDI files the first track contains timing parameters for all tracks. This function can be used to update time stamps that are stored in microseconds.</para><para>This version tries to be more exact than the MIDI standard. For decoding standard MIDI files update_duration_midi is recommended.</para><para><simplesect kind="note"><para>This function assumes that the change should take after an offset of 0 μs. Thus, offsets must be honoured in the calling code.</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>duration</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>time to be recalculated </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oldd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>old timing object. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>newd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>now timing object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>recalculated duration according to the two passed timing objects. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="287" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="287" bodyend="305"/>
+        <references refid="d5/dee/group__route_1gae8e68e7c0733bdbf88aeef3bfb75808a" compoundref="d3/d9e/GSP_8cpp" startline="91">duration</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" compoundref="db/d41/timing_8h" startline="312">is_fixed_ticks</references>
+        <references refid="d5/dee/group__route_1ga5c38af00c7fd323a00aae0133ea4336e" compoundref="db/d41/timing_8h" startline="61">MUTABOR_NO_DELTA</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" compoundref="db/d41/timing_8h" startline="315">quarter_divisions</references>
+        <references refid="d9/de0/classmutabor_1_1timing__params_1aa6a719796af0458e9a133d78c3bdf7c2" compoundref="db/d41/timing_8h" startline="314">quarter_duration</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A class for managing time calculations. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class provides a common API for time calculation. It allows to store timing parameters and provides functions for the correct transformation between the different time formats. </para>    </detaileddescription>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" line="74" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.h" bodystart="74" bodyend="316"/>
+    <listofallmembers>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1a70aea746b2d6ce7f784cefd003069e8c" prot="public" virt="non-virtual"><scope>mutabor::timing_params</scope><name>c_str</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" prot="protected" virt="non-virtual"><scope>mutabor::timing_params</scope><name>fps</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1a41efec80d11804c47b6ec9aea32563d7" prot="public" virt="non-virtual"><scope>mutabor::timing_params</scope><name>get_delta_exact</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1a825c106c4340aefee46d84924e4b634a" prot="public" virt="non-virtual"><scope>mutabor::timing_params</scope><name>get_delta_midi</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1af079d3630d39bfcdb1255ef8dabe52dd" prot="public" virt="non-virtual"><scope>mutabor::timing_params</scope><name>get_MIDI_tick_signature</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1a4788f23f8ce332656d852b76c47a7eb1" prot="public" virt="non-virtual"><scope>mutabor::timing_params</scope><name>get_quarter_duration</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1a846ac9a9d21bd6bcfab9369aff6ab96e" prot="public" virt="non-virtual"><scope>mutabor::timing_params</scope><name>get_ticks</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1a0bf70ae178d861d0a13ebec3382ead4a" prot="public" virt="non-virtual"><scope>mutabor::timing_params</scope><name>get_time_exact</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1a99b3824ef2c3adad8a7efb42cdd8ffef" prot="public" virt="non-virtual"><scope>mutabor::timing_params</scope><name>get_time_midi</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" prot="protected" virt="non-virtual"><scope>mutabor::timing_params</scope><name>is_fixed_ticks</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" prot="protected" virt="non-virtual"><scope>mutabor::timing_params</scope><name>quarter_divisions</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1aa6a719796af0458e9a133d78c3bdf7c2" prot="protected" virt="non-virtual"><scope>mutabor::timing_params</scope><name>quarter_duration</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1a07e795c5aa491e75f0e693b51a2428a7" prot="public" virt="non-virtual"><scope>mutabor::timing_params</scope><name>reset</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1acd1d82276b80f1c324c766ab721b8a48" prot="public" virt="non-virtual"><scope>mutabor::timing_params</scope><name>set_MIDI_tick_signature</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1a388d3ecb25575ec9ee8b07b4ed106ad2" prot="public" virt="non-virtual"><scope>mutabor::timing_params</scope><name>set_quarter_duration</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1a89366d0e9493a39da08f8104dd7cf0f4" prot="public" virt="non-virtual"><scope>mutabor::timing_params</scope><name>timing_params</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1a5466b8ab022aa8c15c11485d626cc2ec" prot="public" virt="non-virtual"><scope>mutabor::timing_params</scope><name>timing_params</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1aa8ab063d3451df81c53a5f549bba1f4d" prot="public" virt="non-virtual"><scope>mutabor::timing_params</scope><name>TowxString</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1a7c9c5dc64b9c4adf16974c7dcfccb756" prot="public" virt="non-virtual"><scope>mutabor::timing_params</scope><name>update_duration_exact</name></member>
+      <member refid="d9/de0/classmutabor_1_1timing__params_1aaa349c24bb42ee890be5635d2f8874da" prot="public" virt="non-virtual"><scope>mutabor::timing_params</scope><name>update_duration_midi</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

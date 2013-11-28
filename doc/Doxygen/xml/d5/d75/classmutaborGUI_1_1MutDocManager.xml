@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d5/d75/classmutaborGUI_1_1MutDocManager" kind="class" prot="public">
+    <compoundname>mutaborGUI::MutDocManager</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">wxDocManager</basecompoundref>
+    <includes refid="df/d7f/MutDocManager_8h" local="no">MutDocManager.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/d75/classmutaborGUI_1_1MutDocManager_1ad418398238f09a8fdd8bea5a77d8ac82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::MutDocManager::ProcessEvent</definition>
+        <argsstring>(wxEvent &amp;event)</argsstring>
+        <name>ProcessEvent</name>
+        <param>
+          <type>wxEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Extend event processing to search the view&apos;s event table. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocManager.h" line="55" column="1"/>
+        <referencedby refid="dd/db0/MutDocManager_8cpp_1a9e7a087c5c550acffcd802f4b40bd609" compoundref="dd/db0/MutDocManager_8cpp" startline="87" endline="181">END_EVENT_TABLE</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/d75/classmutaborGUI_1_1MutDocManager_1a3d310b2f0cbcf5e50a9098eda3c9fe5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>wxString</type>
+        <definition>virtual wxString mutaborGUI::MutDocManager::MakeFrameTitle</definition>
+        <argsstring>(wxDocument *doc)</argsstring>
+        <name>MakeFrameTitle</name>
+        <param>
+          <type>wxDocument *</type>
+          <declname>doc</declname>
+        </param>
+        <briefdescription>
+<para>calculate the frame title </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocManager.h" line="58" column="1"/>
+        <referencedby refid="dd/db0/MutDocManager_8cpp_1a9e7a087c5c550acffcd802f4b40bd609" compoundref="dd/db0/MutDocManager_8cpp" startline="87" endline="181">END_EVENT_TABLE</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d5/d75/classmutaborGUI_1_1MutDocManager_1ac873be14b62dff95b5efed7c8676c282" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutDocManager::CmExecuteLogic</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>CmExecuteLogic</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocManager.h" line="59" column="1"/>
+        <referencedby refid="dd/db0/MutDocManager_8cpp_1a9e7a087c5c550acffcd802f4b40bd609" compoundref="dd/db0/MutDocManager_8cpp" startline="87" endline="181">END_EVENT_TABLE</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="d5/d75/classmutaborGUI_1_1MutDocManager_1a6011984c09cfff66ea0b7f293993ad32" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool mutaborGUI::MutDocManager::TryParent</definition>
+        <argsstring>(wxEvent &amp;event)</argsstring>
+        <name>TryParent</name>
+        <param>
+          <type>wxEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Pass certain events to the Application. </para>        </briefdescription>
+        <detaileddescription>
+<para><ref refid="d5/d75/classmutaborGUI_1_1MutDocManager_1ad418398238f09a8fdd8bea5a77d8ac82" kindref="member">MutDocManager::ProcessEvent</ref> is called directly from <ref refid="de/d4d/classmutaborGUI_1_1MutApp" kindref="compound">MutApp</ref> event handlers. This leads to endless loops. To prevent these loops, we must be very careful, which kind of events get passed back. Probably no events should be propagated. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocManager.h" line="69" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3603">
+        <label>mutaborGUI::MutDocManager</label>
+        <link refid="d5/d75/classmutaborGUI_1_1MutDocManager"/>
+        <childnode refid="3604" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3604">
+        <label>wxDocManager</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3605">
+        <label>mutaborGUI::MutDocManager</label>
+        <link refid="d5/d75/classmutaborGUI_1_1MutDocManager"/>
+        <childnode refid="3606" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3606">
+        <label>wxDocManager</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocManager.h" line="52" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocManager.h" bodystart="52" bodyend="71"/>
+    <listofallmembers>
+      <member refid="d5/d75/classmutaborGUI_1_1MutDocManager_1ac873be14b62dff95b5efed7c8676c282" prot="public" virt="non-virtual"><scope>mutaborGUI::MutDocManager</scope><name>CmExecuteLogic</name></member>
+      <member refid="d5/d75/classmutaborGUI_1_1MutDocManager_1a3d310b2f0cbcf5e50a9098eda3c9fe5e" prot="public" virt="virtual"><scope>mutaborGUI::MutDocManager</scope><name>MakeFrameTitle</name></member>
+      <member refid="d5/d75/classmutaborGUI_1_1MutDocManager_1ad418398238f09a8fdd8bea5a77d8ac82" prot="public" virt="non-virtual"><scope>mutaborGUI::MutDocManager</scope><name>ProcessEvent</name></member>
+      <member refid="d5/d75/classmutaborGUI_1_1MutDocManager_1a6011984c09cfff66ea0b7f293993ad32" prot="protected" virt="virtual"><scope>mutaborGUI::MutDocManager</scope><name>TryParent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

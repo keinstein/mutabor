@@ -1,0 +1,1056 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d1/dfa/ausloeser_8h" kind="file">
+    <compoundname>ausloeser.h</compoundname>
+    <includes refid="d0/d24/midicalc_8h" local="yes">mutabor/midicalc.h</includes>
+    <includes refid="d1/d63/harmonie_8h" local="yes">mutabor/harmonie.h</includes>
+    <includes refid="d0/db7/anweisung_8h" local="yes">mutabor/anweisung.h</includes>
+    <includedby refid="d0/db7/anweisung_8h" local="yes">src/includes/mutabor/anweisung.h</includedby>
+    <includedby refid="d1/dff/logik_8h" local="yes">src/includes/mutabor/logik.h</includedby>
+    <includedby refid="d6/dcc/ausloeser_8c" local="yes">src/libmutabor/ausloeser.c</includedby>
+    <includedby refid="dc/d30/interpreter_8c" local="yes">src/libmutabor/interpreter.c</includedby>
+    <incdepgraph>
+      <node id="14430">
+        <label>mutabor/case_liste.h</label>
+        <link refid="db/d99/case__liste_8h"/>
+        <childnode refid="14425" relation="include">
+        </childnode>
+      </node>
+      <node id="14419">
+        <label>mutabor/interval.h</label>
+        <link refid="d2/d8a/interval_8h"/>
+        <childnode refid="14420" relation="include">
+        </childnode>
+        <childnode refid="14422" relation="include">
+        </childnode>
+      </node>
+      <node id="14421">
+        <label>mutabor/object.h</label>
+        <link refid="de/d10/object_8h"/>
+      </node>
+      <node id="14426">
+        <label>mutabor/argument.h</label>
+        <link refid="db/d1e/argument_8h"/>
+        <childnode refid="14427" relation="include">
+        </childnode>
+      </node>
+      <node id="14425">
+        <label>mutabor/aktion.h</label>
+        <link refid="dd/de4/aktion_8h"/>
+        <childnode refid="14417" relation="include">
+        </childnode>
+        <childnode refid="14426" relation="include">
+        </childnode>
+        <childnode refid="14428" relation="include">
+        </childnode>
+        <childnode refid="14431" relation="include">
+        </childnode>
+        <childnode refid="14427" relation="include">
+        </childnode>
+        <childnode refid="14432" relation="include">
+        </childnode>
+      </node>
+      <node id="14428">
+        <label>mutabor/umstimmung.h</label>
+        <link refid="da/d7f/umstimmung_8h"/>
+        <childnode refid="14429" relation="include">
+        </childnode>
+        <childnode refid="14430" relation="include">
+        </childnode>
+      </node>
+      <node id="14420">
+        <label>mutabor/identifier.h</label>
+        <link refid="d7/da7/identifier_8h"/>
+        <childnode refid="14421" relation="include">
+        </childnode>
+      </node>
+      <node id="14431">
+        <label>mutabor/tonsystem.h</label>
+        <link refid="d8/d39/tonsystem_8h"/>
+        <childnode refid="14429" relation="include">
+        </childnode>
+        <childnode refid="14419" relation="include">
+        </childnode>
+        <childnode refid="14422" relation="include">
+        </childnode>
+      </node>
+      <node id="14416">
+        <label>src/includes/mutabor/ausloeser.h</label>
+        <link refid="ausloeser.h"/>
+        <childnode refid="14417" relation="include">
+        </childnode>
+        <childnode refid="14418" relation="include">
+        </childnode>
+        <childnode refid="14424" relation="include">
+        </childnode>
+      </node>
+      <node id="14429">
+        <label>mutabor/ton.h</label>
+        <link refid="d4/d12/ton_8h"/>
+        <childnode refid="14419" relation="include">
+        </childnode>
+      </node>
+      <node id="14423">
+        <label>math.h</label>
+      </node>
+      <node id="14418">
+        <label>mutabor/harmonie.h</label>
+        <link refid="d1/d63/harmonie_8h"/>
+        <childnode refid="14419" relation="include">
+        </childnode>
+        <childnode refid="14422" relation="include">
+        </childnode>
+      </node>
+      <node id="14432">
+        <label>mutabor/logik.h</label>
+        <link refid="d1/dff/logik_8h"/>
+        <childnode refid="14416" relation="include">
+        </childnode>
+        <childnode refid="14425" relation="include">
+        </childnode>
+      </node>
+      <node id="14417">
+        <label>mutabor/midicalc.h</label>
+        <link refid="d0/d24/midicalc_8h"/>
+      </node>
+      <node id="14427">
+        <label>mutabor/parameter.h</label>
+        <link refid="d2/d2a/parameter_8h"/>
+        <childnode refid="14426" relation="include">
+        </childnode>
+        <childnode refid="14422" relation="include">
+        </childnode>
+      </node>
+      <node id="14422">
+        <label>mutabor/bad_decl.h</label>
+        <link refid="df/d8e/bad__decl_8h"/>
+        <childnode refid="14423" relation="include">
+        </childnode>
+      </node>
+      <node id="14424">
+        <label>mutabor/anweisung.h</label>
+        <link refid="d0/db7/anweisung_8h"/>
+        <childnode refid="14416" relation="include">
+        </childnode>
+        <childnode refid="14425" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="14437">
+        <label>src/libmutabor/anweisung.c</label>
+        <link refid="d5/dfe/anweisung_8c"/>
+      </node>
+      <node id="14450">
+        <label>src/libmutabor/interpreter.c</label>
+        <link refid="dc/d30/interpreter_8c"/>
+      </node>
+      <node id="14443">
+        <label>src/includes/mutabor/case_liste.h</label>
+        <link refid="db/d99/case__liste_8h"/>
+        <childnode refid="14444" relation="include">
+        </childnode>
+      </node>
+      <node id="14436">
+        <label>src/gmut/gmutdos.cpp</label>
+        <link refid="dd/d15/gmutdos_8cpp"/>
+      </node>
+      <node id="14439">
+        <label>src/libmutabor/logik.c</label>
+        <link refid="d7/d6e/logik_8c"/>
+      </node>
+      <node id="14442">
+        <label>src/includes/mutabor/aktion.h</label>
+        <link refid="dd/de4/aktion_8h"/>
+        <childnode refid="14434" relation="include">
+        </childnode>
+        <childnode refid="14443" relation="include">
+        </childnode>
+        <childnode refid="14441" relation="include">
+        </childnode>
+        <childnode refid="14439" relation="include">
+        </childnode>
+      </node>
+      <node id="14444">
+        <label>src/includes/mutabor/umstimmung.h</label>
+        <link refid="da/d7f/umstimmung_8h"/>
+        <childnode refid="14442" relation="include">
+        </childnode>
+        <childnode refid="14435" relation="include">
+        </childnode>
+        <childnode refid="14445" relation="include">
+        </childnode>
+        <childnode refid="14446" relation="include">
+        </childnode>
+        <childnode refid="14439" relation="include">
+        </childnode>
+        <childnode refid="14447" relation="include">
+        </childnode>
+        <childnode refid="14440" relation="include">
+        </childnode>
+        <childnode refid="14448" relation="include">
+        </childnode>
+        <childnode refid="14449" relation="include">
+        </childnode>
+      </node>
+      <node id="14447">
+        <label>src/libmutabor/midicalc.c</label>
+        <link refid="d8/dff/midicalc_8c"/>
+      </node>
+      <node id="14433">
+        <label>src/includes/mutabor/ausloeser.h</label>
+        <link refid="ausloeser.h"/>
+        <childnode refid="14434" relation="include">
+        </childnode>
+        <childnode refid="14441" relation="include">
+        </childnode>
+        <childnode refid="14438" relation="include">
+        </childnode>
+        <childnode refid="14450" relation="include">
+        </childnode>
+      </node>
+      <node id="14449">
+        <label>src/libmutabor/umstimmung.c</label>
+        <link refid="d2/d4a/umstimmung_8c"/>
+      </node>
+      <node id="14445">
+        <label>src/libmutabor/aktion.c</label>
+        <link refid="d8/dc3/aktion_8c"/>
+      </node>
+      <node id="14438">
+        <label>src/libmutabor/ausloeser.c</label>
+        <link refid="d6/dcc/ausloeser_8c"/>
+      </node>
+      <node id="14446">
+        <label>src/libmutabor/case_liste.c</label>
+        <link refid="dc/d54/case__liste_8c"/>
+      </node>
+      <node id="14435">
+        <label>src/includes/mutabor/global.h</label>
+        <link refid="d2/d49/global_8h"/>
+        <childnode refid="14436" relation="include">
+        </childnode>
+      </node>
+      <node id="14440">
+        <label>src/libmutabor/mut.c</label>
+        <link refid="d3/da3/mut_8c"/>
+      </node>
+      <node id="14448">
+        <label>src/libmutabor/parser.c</label>
+        <link refid="d2/d72/parser_8c"/>
+      </node>
+      <node id="14441">
+        <label>src/includes/mutabor/logik.h</label>
+        <link refid="d1/dff/logik_8h"/>
+        <childnode refid="14442" relation="include">
+        </childnode>
+        <childnode refid="14435" relation="include">
+        </childnode>
+        <childnode refid="14445" relation="include">
+        </childnode>
+        <childnode refid="14438" relation="include">
+        </childnode>
+        <childnode refid="14450" relation="include">
+        </childnode>
+        <childnode refid="14439" relation="include">
+        </childnode>
+        <childnode refid="14440" relation="include">
+        </childnode>
+        <childnode refid="14448" relation="include">
+        </childnode>
+        <childnode refid="14449" relation="include">
+        </childnode>
+      </node>
+      <node id="14434">
+        <label>src/includes/mutabor/anweisung.h</label>
+        <link refid="d0/db7/anweisung_8h"/>
+        <childnode refid="14433" relation="include">
+        </childnode>
+        <childnode refid="14435" relation="include">
+        </childnode>
+        <childnode refid="14437" relation="include">
+        </childnode>
+        <childnode refid="14438" relation="include">
+        </childnode>
+        <childnode refid="14439" relation="include">
+        </childnode>
+        <childnode refid="14440" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d9/de5/structausloeser" prot="public">ausloeser</innerclass>
+    <innerclass refid="d8/d8e/structkeyboard__ereignis" prot="public">keyboard_ereignis</innerclass>
+    <innerclass refid="d7/d77/structmidi__ereignis" prot="public">midi_ereignis</innerclass>
+    <innerclass refid="d9/d5b/structharmonie__ereignis" prot="public">harmonie_ereignis</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="d1/dfa/ausloeser_8h_1a232f0a426b83beef39b8a41f729af160" prot="public" static="no">
+        <name>ausloeser_typ</name>
+        <enumvalue id="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa1844e4b7f36346b7d8a8e2937728d55" prot="public">
+          <name>ausloeser_harmonie</name>
+          <briefdescription>
+<para>Harmonie. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a9b2b50e78cd5c69758e24d0731f4c5c2" prot="public">
+          <name>ausloeser_harmonie_form</name>
+          <briefdescription>
+<para>Harmonieform. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa70672d6552c2a53d62562b3a2787cc8" prot="public">
+          <name>ausloeser_taste</name>
+          <briefdescription>
+<para>Taste. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160adfd3d26ad9545043cc1f524df558f1c8" prot="public">
+          <name>ausloeser_midi_in</name>
+          <briefdescription>
+<para>MIDI-Ereignis. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a06ceaf3e37d0994c0e6b5f5c87855443" prot="public">
+          <name>ausloeser_default</name>
+          <briefdescription>
+<para>Standard. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa1844e4b7f36346b7d8a8e2937728d55" prot="public">
+          <name>ausloeser_harmonie</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a9b2b50e78cd5c69758e24d0731f4c5c2" prot="public">
+          <name>ausloeser_harmonie_form</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa70672d6552c2a53d62562b3a2787cc8" prot="public">
+          <name>ausloeser_taste</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160adfd3d26ad9545043cc1f524df558f1c8" prot="public">
+          <name>ausloeser_midi_in</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a06ceaf3e37d0994c0e6b5f5c87855443" prot="public">
+          <name>ausloeser_default</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>&lt; Typen von auslösenden Ereignissen. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="24" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" bodystart="24" bodyend="30"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="dd/d21/group__Parser_1gaeb4def1910a49d76e3898d8ef6be1f0f" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d9/d5b/structharmonie__ereignis" kindref="compound">harmonie_ereignis</ref> *</type>
+        <definition>struct harmonie_ereignis* first_harmonie[MAX_BOX]</definition>
+        <argsstring>[MAX_BOX]</argsstring>
+        <name>first_harmonie</name>
+        <briefdescription>
+<para>Liste der globalen auslösenden Harmonieen. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="86" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="46" bodyend="-1"/>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d21/group__Parser_1gafa20457ba0cc68c3fb9b951396475f39" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d9/d5b/structharmonie__ereignis" kindref="compound">harmonie_ereignis</ref> **</type>
+        <definition>struct harmonie_ereignis** last_global_harmonie[MAX_BOX]</definition>
+        <argsstring>[MAX_BOX]</argsstring>
+        <name>last_global_harmonie</name>
+        <briefdescription>
+<para>Letztes Element der globalen auslösenden Harmonien. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="87" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="48" bodyend="-1"/>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d21/group__Parser_1gaa539e63152f2a354b62a0b98490e2293" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d9/d5b/structharmonie__ereignis" kindref="compound">harmonie_ereignis</ref> **</type>
+        <definition>struct harmonie_ereignis** first_lokal_harmonie</definition>
+        <argsstring></argsstring>
+        <name>first_lokal_harmonie</name>
+        <briefdescription>
+<para>Liste der lokalen auslösenden Harmonien. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="88" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="50" bodyend="-1"/>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+        <referencedby refid="d7/d6e/logik_8c_1adeba205c8988dbafa8226746ae29a639" compoundref="d7/d6e/logik_8c" startline="260" endline="299">expandiere_logik</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d21/group__Parser_1ga0efb7f4c5368462a4f0eed6de4e8c025" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d8/d8e/structkeyboard__ereignis" kindref="compound">keyboard_ereignis</ref> *</type>
+        <definition>struct keyboard_ereignis* first_keyboard[MAX_BOX]</definition>
+        <argsstring>[MAX_BOX]</argsstring>
+        <name>first_keyboard</name>
+        <briefdescription>
+<para>Liste der globalen auslösenden Tastenereignissen. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="89" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="52" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1gafcc43122e77ad12403856afa0db0013e" compoundref="d1/da7/boxTest_8cpp" startline="218" endline="281">boxTest::test_init</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d21/group__Parser_1ga7d7d753e6a50fb64c3142215b6d3dc8d" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d8/d8e/structkeyboard__ereignis" kindref="compound">keyboard_ereignis</ref> **</type>
+        <definition>struct keyboard_ereignis** last_global_keyboard[MAX_BOX]</definition>
+        <argsstring>[MAX_BOX]</argsstring>
+        <name>last_global_keyboard</name>
+        <briefdescription>
+<para>Letztes Element der globalen auslösenden Tastenereignissen. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="90" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="54" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1gafcc43122e77ad12403856afa0db0013e" compoundref="d1/da7/boxTest_8cpp" startline="218" endline="281">boxTest::test_init</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d21/group__Parser_1gac413ef20e141cd76dd18c44e99df1ba4" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d8/d8e/structkeyboard__ereignis" kindref="compound">keyboard_ereignis</ref> **</type>
+        <definition>struct keyboard_ereignis** first_lokal_keyboard</definition>
+        <argsstring></argsstring>
+        <name>first_lokal_keyboard</name>
+        <briefdescription>
+<para>Liste der lokalen auslösenden Tastenereignissen. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="91" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="56" bodyend="-1"/>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+        <referencedby refid="d7/d6e/logik_8c_1adeba205c8988dbafa8226746ae29a639" compoundref="d7/d6e/logik_8c" startline="260" endline="299">expandiere_logik</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d21/group__Parser_1gaf0944493cbec9f89bad097c3b952634a" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d7/d77/structmidi__ereignis" kindref="compound">midi_ereignis</ref> *</type>
+        <definition>struct midi_ereignis* first_midi[MAX_BOX]</definition>
+        <argsstring>[MAX_BOX]</argsstring>
+        <name>first_midi</name>
+        <briefdescription>
+<para>Liste der globalen auslösenden MIDI-Ereignissen. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="92" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="58" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1gafcc43122e77ad12403856afa0db0013e" compoundref="d1/da7/boxTest_8cpp" startline="218" endline="281">boxTest::test_init</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d21/group__Parser_1gaeacc603c530f9ab8c25eaf9386d74ed2" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d7/d77/structmidi__ereignis" kindref="compound">midi_ereignis</ref> **</type>
+        <definition>struct midi_ereignis** last_global_midi[MAX_BOX]</definition>
+        <argsstring>[MAX_BOX]</argsstring>
+        <name>last_global_midi</name>
+        <briefdescription>
+<para>Letztes Element der globalen auslösenden MIDI-Ereignissen. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="93" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="60" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1gafcc43122e77ad12403856afa0db0013e" compoundref="d1/da7/boxTest_8cpp" startline="218" endline="281">boxTest::test_init</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d21/group__Parser_1gaa4d5de4a97f2396dd4c30ac78285d6bf" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d7/d77/structmidi__ereignis" kindref="compound">midi_ereignis</ref> **</type>
+        <definition>struct midi_ereignis** first_lokal_midi</definition>
+        <argsstring></argsstring>
+        <name>first_lokal_midi</name>
+        <briefdescription>
+<para>Liste der lokalen auslösenden MIDI-Ereignissen. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="94" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="62" bodyend="-1"/>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+        <referencedby refid="d7/d6e/logik_8c_1adeba205c8988dbafa8226746ae29a639" compoundref="d7/d6e/logik_8c" startline="260" endline="299">expandiere_logik</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="dd/d21/group__Parser_1gac0676abdb811f08267cf9372f32ca690" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void print_ausloeser</definition>
+        <argsstring>(struct ausloeser *this_)</argsstring>
+        <name>print_ausloeser</name>
+        <param>
+          <type>struct <ref refid="d9/de5/structausloeser" kindref="compound">ausloeser</ref> *</type>
+          <declname>this_</declname>
+        </param>
+        <briefdescription>
+<para>Gibt einen Auslöser auf der Standard-Ausgabe aus. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">this_</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Auslöser. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="96" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="142" bodyend="179"/>
+        <references refid="d9/de5/structausloeser_1a50378b5f0c1480af565b7aaccd128a40" compoundref="d1/dfa/ausloeser_8h" startline="34">ausloeser::ausloeser_typ</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a06ceaf3e37d0994c0e6b5f5c87855443" compoundref="d1/dfa/ausloeser_8h" startline="29">ausloeser_default</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa1844e4b7f36346b7d8a8e2937728d55" compoundref="d1/dfa/ausloeser_8h" startline="25">ausloeser_harmonie</references>
+        <references refid="d9/de5/structausloeser_1a79822bf38abb01c6b4941af3a5730ef3">ausloeser::u</references>
+        <references refid="d9/de5/structausloeser_1a08124200232ca1482b390ab19217e55e">ausloeser::ausloeser_harmonie</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a9b2b50e78cd5c69758e24d0731f4c5c2" compoundref="d1/dfa/ausloeser_8h" startline="26">ausloeser_harmonie_form</references>
+        <references refid="d9/de5/structausloeser_1a8e224e1ec8b6b76c5d3a11457ef4b8f3">ausloeser::ausloeser_harmonie_form</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa70672d6552c2a53d62562b3a2787cc8" compoundref="d1/dfa/ausloeser_8h" startline="27">ausloeser_taste</references>
+        <references refid="d9/de5/structausloeser_1a9cd1a88a91835fd13b40fcde68094240">ausloeser::ausloeser_taste</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160adfd3d26ad9545043cc1f524df558f1c8" compoundref="d1/dfa/ausloeser_8h" startline="28">ausloeser_midi_in</references>
+        <references refid="d9/d7c/group__kernel_1gae0f2e4ab4ba734abcdd1679382fe08e0" compoundref="dc/df5/Parser_8cpp" startline="1005" endline="1012">print_integersequenz</references>
+        <references refid="d9/de5/structausloeser_1ab0106d671eb6240faf29b0f07a7346c9">ausloeser::ausloeser_midi_in</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/d21/group__Parser_1ga20155f08f72ea6f74b736f5c1720db20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_ausloeser</definition>
+        <argsstring>(void)</argsstring>
+        <name>init_ausloeser</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Setzt Liste auslösender Ereignisse auf NULL. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>Die Liste wird nicht gelöscht. Das muss gegebenenfalls vor der Initialiserung manuell erledigt werden. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="98" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="69" bodyend="72"/>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/d21/group__Parser_1ga3cd5f0e67c5234531195f561caa7ab2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_ausloeser_default</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_ausloeser_default</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Markiert <computeroutput><ref refid="dd/d21/group__Parser_1ga88fe3dcf2105f4e508237140f81f5ec7" kindref="member">tmp_ausloeser</ref></computeroutput> als Standard-Auslöser. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="99" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="81" bodyend="85"/>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a06ceaf3e37d0994c0e6b5f5c87855443" compoundref="d1/dfa/ausloeser_8h" startline="29">ausloeser_default</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/d21/group__Parser_1ga38d10ead0ad58ce740ee50d429b9f9b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_ausloeser_harmonie</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_ausloeser_harmonie</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Deklariert <computeroutput><ref refid="dd/d21/group__Parser_1ga88fe3dcf2105f4e508237140f81f5ec7" kindref="member">tmp_ausloeser</ref></computeroutput> als Harmonie-Auslöser und setzt die Werte aus dem Zwischenspeicher. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="100" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="90" bodyend="97"/>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa1844e4b7f36346b7d8a8e2937728d55" compoundref="d1/dfa/ausloeser_8h" startline="25">ausloeser_harmonie</references>
+        <references refid="d9/de5/structausloeser_1a79822bf38abb01c6b4941af3a5730ef3">ausloeser::u</references>
+        <references refid="d1/d63/harmonie_8h_1ad85d75600efd7da89f5974312a13ca9c" compoundref="d1/d63/harmonie_8h" startline="55">tmp_vor_taste</references>
+        <references refid="d1/d63/harmonie_8h_1a785ba1f06c9f45123085019e98239a34" compoundref="d1/d63/harmonie_8h" startline="56">tmp_name</references>
+        <references refid="d1/d63/harmonie_8h_1afedd171c4ce9636705c759e529d8d22a" compoundref="d1/d63/harmonie_8h" startline="57">tmp_nach_taste</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/d21/group__Parser_1gaa911c0f45f7f7e1db820a9a79d745f0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_ausloeser_harmonie_form</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_ausloeser_harmonie_form</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Deklariert <computeroutput><ref refid="dd/d21/group__Parser_1ga88fe3dcf2105f4e508237140f81f5ec7" kindref="member">tmp_ausloeser</ref></computeroutput> als Harmonie-Auslöser und setzt die Werte aus dem Zwischenspeicher. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="101" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="102" bodyend="109"/>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a9b2b50e78cd5c69758e24d0731f4c5c2" compoundref="d1/dfa/ausloeser_8h" startline="26">ausloeser_harmonie_form</references>
+        <references refid="d9/de5/structausloeser_1a79822bf38abb01c6b4941af3a5730ef3">ausloeser::u</references>
+        <references refid="d1/d63/harmonie_8h_1ad85d75600efd7da89f5974312a13ca9c" compoundref="d1/d63/harmonie_8h" startline="55">tmp_vor_taste</references>
+        <references refid="d1/d63/harmonie_8h_1a785ba1f06c9f45123085019e98239a34" compoundref="d1/d63/harmonie_8h" startline="56">tmp_name</references>
+        <references refid="d1/d63/harmonie_8h_1afedd171c4ce9636705c759e529d8d22a" compoundref="d1/d63/harmonie_8h" startline="57">tmp_nach_taste</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/d21/group__Parser_1ga4ff9b641b4464848704cbd7746627cc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_ausloeser_taste</definition>
+        <argsstring>(char *name)</argsstring>
+        <name>get_ausloeser_taste</name>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Deklariert <computeroutput>tmp_ausloeser</computeroutput> als Tasten-Auslöser. </para>        </briefdescription>
+        <detaileddescription>
+<para>Ist die Taste nicht definiert, wird ein fataler Fehler ausgelöst. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name der auslösenden Taste </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="102" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="115" bodyend="125"/>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa70672d6552c2a53d62562b3a2787cc8" compoundref="d1/dfa/ausloeser_8h" startline="27">ausloeser_taste</references>
+        <references refid="d9/de5/structausloeser_1a79822bf38abb01c6b4941af3a5730ef3">ausloeser::u</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/d21/group__Parser_1ga774f372905f74d416d4ba0ebc75a7664" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_ausloeser_midi_in</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_ausloeser_midi_in</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Deklariert <computeroutput>tmp_ausloeser</computeroutput> als MIDI-Sequenz. </para>        </briefdescription>
+        <detaileddescription>
+<para>Dafür wird die letzte eingelesene Ganzzahlen-Folge verwendet. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="103" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="130" bodyend="136"/>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160adfd3d26ad9545043cc1f524df558f1c8" compoundref="d1/dfa/ausloeser_8h" startline="28">ausloeser_midi_in</references>
+        <references refid="d9/de5/structausloeser_1a79822bf38abb01c6b4941af3a5730ef3">ausloeser::u</references>
+        <references refid="d0/d24/midicalc_8h_1a39abbf3b6344eda62f537b164f21fb24" compoundref="d8/dff/midicalc_8c" startline="79" endline="82">get_last_integersequenz</references>
+        <referencedby refid="df/d33/mut_8cc_1a5b7bf1384bf1f609b09f3bb5386b0822" compoundref="df/d33/mut_8cc" startline="1965" endline="3192">switch</referencedby>
+        <referencedby refid="d3/da3/mut_8c_1acd8617a8f2ac0de8bc1cc032cf449e19" compoundref="d1/de1/Mut__Tab_8cpp" startline="476" endline="1596">yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/d21/group__Parser_1ga513256ed0bc6682cb3e6c2f5e86d8bef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void check_ausloeser</definition>
+        <argsstring>(struct ausloeser *ausloeser, char *name)</argsstring>
+        <name>check_ausloeser</name>
+        <param>
+          <type>struct <ref refid="d9/de5/structausloeser" kindref="compound">ausloeser</ref> *</type>
+          <declname>ausloeser</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Testet einen Auslöser auf Zulässigkeit. </para>        </briefdescription>
+        <detaileddescription>
+<para>Wird eine nicht zulässige oder erreichbare Konfiguration gefunden, wird je nach Situation ein fataler Fehler oder eine Compiler-Warnung ausgelöst. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ausloeser</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Auslöser, der geprüft werden soll </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name für Meldungen </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="104" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="187" bodyend="282"/>
+        <references refid="d9/de5/structausloeser_1a50378b5f0c1480af565b7aaccd128a40" compoundref="d1/dfa/ausloeser_8h" startline="34">ausloeser::ausloeser_typ</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a9b2b50e78cd5c69758e24d0731f4c5c2" compoundref="d1/dfa/ausloeser_8h" startline="26">ausloeser_harmonie_form</references>
+        <references refid="dd/d21/group__Parser_1ga915c1bf69d511fa274ddbc6cc8fa0c87" compoundref="dd/d35/harmonie_8c" startline="54" endline="59">get_harmonie</references>
+        <references refid="d9/de5/structausloeser_1a79822bf38abb01c6b4941af3a5730ef3">ausloeser::u</references>
+        <references refid="d9/de5/structausloeser_1a8e224e1ec8b6b76c5d3a11457ef4b8f3">ausloeser::ausloeser_harmonie_form</references>
+        <references refid="dd/d21/group__Parser_1ga3f2f9506513cddd0cef78847058f51f3" compoundref="dd/d35/harmonie_8c" startline="45">list_of_harmonien</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <references refid="d9/d7c/group__kernel_1ga8cb1d2c54ae07b13d345a7e3966c4079" compoundref="dc/df5/Parser_8cpp" startline="2522" endline="2532">enthalten_in_tastenliste</references>
+        <references refid="d4/dcb/structharmonie_1a4191b16d8e944a7aba7a51d27724eaf1" compoundref="d1/d63/harmonie_8h" startline="34">harmonie::tastenliste</references>
+        <references refid="d9/d7c/group__kernel_1ggafeebd36c5713e8438dcf17e926f8ad96a053ee5ee8425fcbcd4c51b3637254eb5" compoundref="de/d11/Execute_8h" startline="77">compiler_warning</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa1844e4b7f36346b7d8a8e2937728d55" compoundref="d1/dfa/ausloeser_8h" startline="25">ausloeser_harmonie</references>
+        <references refid="d9/de5/structausloeser_1a08124200232ca1482b390ab19217e55e">ausloeser::ausloeser_harmonie</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160adfd3d26ad9545043cc1f524df558f1c8" compoundref="d1/dfa/ausloeser_8h" startline="28">ausloeser_midi_in</references>
+        <references refid="d9/de5/structausloeser_1ab0106d671eb6240faf29b0f07a7346c9">ausloeser::ausloeser_midi_in</references>
+        <references refid="df/df2/structmidiliste_1a39c148af3f0e5556a71412b94958a30f" compoundref="d0/d24/midicalc_8h" startline="51">midiliste::midi_code</references>
+        <references refid="df/df2/structmidiliste_1a6a0c42708eebd22168563a38ca00a02c" compoundref="d0/d24/midicalc_8h" startline="52">midiliste::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga0bc227a9a1fa0cb630a193e4c6af1af7" compoundref="dc/df5/Parser_8cpp" startline="2954" endline="3547">check_konsistenz</referencedby>
+        <referencedby refid="d7/d6e/logik_8c_1aed04795a6b7c21df1893c7bc845231e6" compoundref="d7/d6e/logik_8c" startline="192" endline="251">check_logik_konsistenz</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1ga69baa9919250669cbe29d4a4fa4bf9ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void insert_in_globale_liste</definition>
+        <argsstring>(int instrument, struct logik *lauf)</argsstring>
+        <name>insert_in_globale_liste</name>
+        <param>
+          <type>int</type>
+          <declname>instrument</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="db/d28/structlogik" kindref="compound">logik</ref> *</type>
+          <declname>lauf</declname>
+        </param>
+        <briefdescription>
+<para>Fügt die auslösende Harmonien, Taste bzw. </para>        </briefdescription>
+        <detaileddescription>
+<para>das Midiereignis der Logik in die entsprechenede globale Liste eines Instrumentes ein. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>instrument</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="d5/dc6/classInstrument" kindref="compound">Instrument</ref>, für das das Ereignis eingefügt werden soll. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lauf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Logik, deren Auslöser eingefügt werden soll. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="105" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="295" bodyend="379"/>
+        <references refid="db/d28/structlogik_1a9220a60ca430902aad58a930d8f5e8f6" compoundref="d1/dff/logik_8h" startline="33">logik::ausloeser</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa1844e4b7f36346b7d8a8e2937728d55" compoundref="d1/dfa/ausloeser_8h" startline="25">ausloeser_harmonie</references>
+        <references refid="d9/de5/structausloeser_1a79822bf38abb01c6b4941af3a5730ef3">ausloeser::u</references>
+        <references refid="d9/de5/structausloeser_1a08124200232ca1482b390ab19217e55e">ausloeser::ausloeser_harmonie</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1a7235e608d8367b0fcce870b3e330ff4c" compoundref="d1/dfa/ausloeser_8h" startline="83">harmonie_ereignis::next</references>
+        <references refid="da/ddb/heap_8h_1a42ccfa6fc49cc4ce90cc44cd05052490" compoundref="d2/d29/heap_8c" startline="166" endline="217">xmalloc</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1acadd5e3cc1864df7733f886c8bdf6111" compoundref="d1/dfa/ausloeser_8h" startline="76">harmonie_ereignis::pattern</references>
+        <references refid="d2/d1c/group__Interpreter_1ga04fa5cd297957f96749cf608f126b9c4" compoundref="dd/d35/harmonie_8c" startline="128" endline="153">expand_pattern</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1a2e260cfda961d3a119066d6cd2b09906" compoundref="d1/dfa/ausloeser_8h" startline="77">harmonie_ereignis::ist_harmonieform</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1a0e113780e1e76ae5dbe08443301da81d" compoundref="d1/dfa/ausloeser_8h" startline="78">harmonie_ereignis::vortaste</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1a61c12c628e5edb695321ff7d03c36d4d" compoundref="d1/dfa/ausloeser_8h" startline="79">harmonie_ereignis::nachtaste</references>
+        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
+        <references refid="db/d28/structlogik_1a657099a85df9abcec074f46f7c0640b3" compoundref="d1/dff/logik_8h" startline="32">logik::name</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1ac2a50ecf0fd3ecce4a9683b004b30d72" compoundref="d1/dfa/ausloeser_8h" startline="81">harmonie_ereignis::aktion</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1ac931d37144fc073a3fce3a078d446209" compoundref="d1/dfa/ausloeser_8h" startline="82">harmonie_ereignis::the_logik_to_expand</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a9b2b50e78cd5c69758e24d0731f4c5c2" compoundref="d1/dfa/ausloeser_8h" startline="26">ausloeser_harmonie_form</references>
+        <references refid="d9/de5/structausloeser_1a8e224e1ec8b6b76c5d3a11457ef4b8f3">ausloeser::ausloeser_harmonie_form</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa70672d6552c2a53d62562b3a2787cc8" compoundref="d1/dfa/ausloeser_8h" startline="27">ausloeser_taste</references>
+        <references refid="d8/d8e/structkeyboard__ereignis_1a01d07f77fd83e8f39193d898f0f8d347" compoundref="d1/dfa/ausloeser_8h" startline="61">keyboard_ereignis::next</references>
+        <references refid="d8/d8e/structkeyboard__ereignis_1aabae38673dcfd43fc298e64b756adc6e" compoundref="d1/dfa/ausloeser_8h" startline="59">keyboard_ereignis::aktion</references>
+        <references refid="d8/d8e/structkeyboard__ereignis_1a5178ec1b200646932f712cb0218d2207" compoundref="d1/dfa/ausloeser_8h" startline="60">keyboard_ereignis::the_logik_to_expand</references>
+        <references refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160adfd3d26ad9545043cc1f524df558f1c8" compoundref="d1/dfa/ausloeser_8h" startline="28">ausloeser_midi_in</references>
+        <references refid="d7/d77/structmidi__ereignis_1a654d8d12e2d31ae5769a891e3858788b" compoundref="d1/dfa/ausloeser_8h" startline="71">midi_ereignis::next</references>
+        <references refid="d7/d77/structmidi__ereignis_1a6cb5fe36e14ce490ae3e8ab1758826a8" compoundref="d1/dfa/ausloeser_8h" startline="66">midi_ereignis::first_pos</references>
+        <references refid="d7/d77/structmidi__ereignis_1aa229a7383cc5e9ccdd286ba1764ee3b9" compoundref="d1/dfa/ausloeser_8h" startline="67">midi_ereignis::scan_pos</references>
+        <references refid="d2/d1c/group__Interpreter_1ga9d00fa30c4b5542162e707c060daec77" compoundref="d8/dff/midicalc_8c" startline="116" endline="128">create_midi_scan_liste</references>
+        <references refid="d9/de5/structausloeser_1ab0106d671eb6240faf29b0f07a7346c9">ausloeser::ausloeser_midi_in</references>
+        <references refid="d7/d77/structmidi__ereignis_1a9e775c365af2b2be99ad9a6c9fbb8efc" compoundref="d1/dfa/ausloeser_8h" startline="69">midi_ereignis::aktion</references>
+        <references refid="d7/d77/structmidi__ereignis_1a421345335988d99c81ef21fb4e52d77c" compoundref="d1/dfa/ausloeser_8h" startline="70">midi_ereignis::the_logik_to_expand</references>
+        <references refid="dd/dff/testidentifier_8c_1a51c4524d98f03e6f3eed99caf26e5fff" compoundref="dd/dff/testidentifier_8c" startline="12">fatal_error</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" compoundref="d3/da0/TabGen_8cpp" startline="1291" endline="1368">expand_decition_tree</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1ga49fcfc4930df7019571296f7c2c9d320" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void expandiere_in_globale_liste</definition>
+        <argsstring>(void)</argsstring>
+        <name>expandiere_in_globale_liste</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Expandiert die Auslösenden Ereignisse aller angesammeldten Logiken in die globale Liste. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="106" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="530" bodyend="592"/>
+        <references refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" compoundref="df/d8e/bad__decl_8h" startline="52">MAX_BOX</references>
+        <references refid="d7/d77/structmidi__ereignis_1a9e775c365af2b2be99ad9a6c9fbb8efc" compoundref="d1/dfa/ausloeser_8h" startline="69">midi_ereignis::aktion</references>
+        <references refid="d1/dff/logik_8h_1adeba205c8988dbafa8226746ae29a639" compoundref="d7/d6e/logik_8c" startline="260" endline="299">expandiere_logik</references>
+        <references refid="d7/d77/structmidi__ereignis_1a421345335988d99c81ef21fb4e52d77c" compoundref="d1/dfa/ausloeser_8h" startline="70">midi_ereignis::the_logik_to_expand</references>
+        <references refid="d7/d77/structmidi__ereignis_1a654d8d12e2d31ae5769a891e3858788b" compoundref="d1/dfa/ausloeser_8h" startline="71">midi_ereignis::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" compoundref="d3/da0/TabGen_8cpp" startline="1291" endline="1368">expand_decition_tree</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1gaa6d0bceb2b55629cbd049f76ca7fc577" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="d7/d77/structmidi__ereignis" kindref="compound">midi_ereignis</ref> **</type>
+        <definition>struct midi_ereignis** get_ende_midi</definition>
+        <argsstring>(struct midi_ereignis **lauf)</argsstring>
+        <name>get_ende_midi</name>
+        <param>
+          <type>struct <ref refid="d7/d77/structmidi__ereignis" kindref="compound">midi_ereignis</ref> **</type>
+          <declname>lauf</declname>
+        </param>
+        <briefdescription>
+<para>Liefert einen Zeiger auf den Nachfolge-Zeiger des letzten Elementes einer MIDI-Ereignis-Liste. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lauf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Zeiger auf die Wurzel einer einfach verketteten Liste von MIDI-Ereignissen. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="108" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="408" bodyend="412"/>
+        <references refid="d2/d1c/group__Interpreter_1gaa6d0bceb2b55629cbd049f76ca7fc577" compoundref="d6/dcc/ausloeser_8c" startline="408" endline="412">get_ende_midi</references>
+        <references refid="d7/d77/structmidi__ereignis_1a654d8d12e2d31ae5769a891e3858788b" compoundref="d1/dfa/ausloeser_8h" startline="71">midi_ereignis::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" compoundref="d3/da0/TabGen_8cpp" startline="1291" endline="1368">expand_decition_tree</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1gaa6d0bceb2b55629cbd049f76ca7fc577" compoundref="d6/dcc/ausloeser_8c" startline="408" endline="412">get_ende_midi</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1gaf764bbaa2fdfbb274ead1ebf61f49ac7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="d8/d8e/structkeyboard__ereignis" kindref="compound">keyboard_ereignis</ref> **</type>
+        <definition>struct keyboard_ereignis** get_ende_keyboard</definition>
+        <argsstring>(struct keyboard_ereignis **lauf)</argsstring>
+        <name>get_ende_keyboard</name>
+        <param>
+          <type>struct <ref refid="d8/d8e/structkeyboard__ereignis" kindref="compound">keyboard_ereignis</ref> **</type>
+          <declname>lauf</declname>
+        </param>
+        <briefdescription>
+<para>Liefert einen Zeiger auf den Nachfolge-Zeiger des letzten Elementes einer Tasten-Ereignis-Liste. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lauf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Zeiger auf die Wurzel einer einfach verketteten Liste von Tastenereignissen. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="109" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="397" bodyend="401"/>
+        <references refid="d2/d1c/group__Interpreter_1gaf764bbaa2fdfbb274ead1ebf61f49ac7" compoundref="d6/dcc/ausloeser_8c" startline="397" endline="401">get_ende_keyboard</references>
+        <references refid="d8/d8e/structkeyboard__ereignis_1a01d07f77fd83e8f39193d898f0f8d347" compoundref="d1/dfa/ausloeser_8h" startline="61">keyboard_ereignis::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" compoundref="d3/da0/TabGen_8cpp" startline="1291" endline="1368">expand_decition_tree</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1gaf764bbaa2fdfbb274ead1ebf61f49ac7" compoundref="d6/dcc/ausloeser_8c" startline="397" endline="401">get_ende_keyboard</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d2/d1c/group__Interpreter_1gab7918076c80dc48be1a4c64a39be0510" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="d9/d5b/structharmonie__ereignis" kindref="compound">harmonie_ereignis</ref> **</type>
+        <definition>struct harmonie_ereignis** get_ende_harmonie</definition>
+        <argsstring>(struct harmonie_ereignis **lauf)</argsstring>
+        <name>get_ende_harmonie</name>
+        <param>
+          <type>struct <ref refid="d9/d5b/structharmonie__ereignis" kindref="compound">harmonie_ereignis</ref> **</type>
+          <declname>lauf</declname>
+        </param>
+        <briefdescription>
+<para>Liefert einen Zeiger auf den Nachfolge-Zeiger des letzten Elementes einer Harmonie-Ereignis-Liste. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lauf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Zeiger auf die Wurzel einer einfach verketteten Liste von Harmonieereignissen. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="110" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="386" bodyend="390"/>
+        <references refid="d2/d1c/group__Interpreter_1gab7918076c80dc48be1a4c64a39be0510" compoundref="d6/dcc/ausloeser_8c" startline="386" endline="390">get_ende_harmonie</references>
+        <references refid="d9/d5b/structharmonie__ereignis_1a7235e608d8367b0fcce870b3e330ff4c" compoundref="d1/dfa/ausloeser_8h" startline="83">harmonie_ereignis::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga166a469a0ff7e89b06d5a4b2055bb1a9" compoundref="d3/da0/TabGen_8cpp" startline="1291" endline="1368">expand_decition_tree</referencedby>
+        <referencedby refid="d2/d1c/group__Interpreter_1gab7918076c80dc48be1a4c64a39be0510" compoundref="d6/dcc/ausloeser_8c" startline="386" endline="390">get_ende_harmonie</referencedby>
+        <referencedby refid="dc/d30/interpreter_8c_1a80f694cdb409db5d5dd155ca0759f310" compoundref="dc/d30/interpreter_8c" startline="81" endline="139">mutabor_tabellen_generator</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/d21/group__Parser_1ga1e505704cb9a70800ee05786127a8cef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="d9/de5/structausloeser" kindref="compound">ausloeser</ref> *</type>
+        <definition>struct ausloeser* get_last_ausloeser</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_last_ausloeser</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gibt Wurzelelement von <emphasis><ref refid="dd/d21/group__Parser_1ga88fe3dcf2105f4e508237140f81f5ec7" kindref="member">tmp_ausloeser</ref></emphasis> zurück. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h" line="111" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/libmutabor/ausloeser.c" bodystart="75" bodyend="78"/>
+        <references refid="dd/d21/group__Parser_1ga88fe3dcf2105f4e508237140f81f5ec7" compoundref="d6/dcc/ausloeser_8c" startline="44">tmp_ausloeser</references>
+        <referencedby refid="d9/d7c/group__kernel_1gaa7e7939d922025be8735fddb04b9f215" compoundref="dc/df5/Parser_8cpp" startline="2180" endline="2195">get_new_anweisung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga580f12d4669345b7a4c3e340395d4fd5" compoundref="dc/df5/Parser_8cpp" startline="2197" endline="2222">get_new_logik</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Alles zu Auslösern. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="rcs"><title>Id:</title><para>ausloeser.h,v 1.4 2006/03/27 16:53:05 keinstein Exp </para></simplesect>
+<simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein_junior@gmx.net">keinstein_junior@gmx.net</ulink> </para></simplesect>
+<simplesect kind="date"><para></para></simplesect>
+<simplesect kind="rcs"><title>Date:</title><para>2006/03/27 16:53:05 </para></simplesect>
+<simplesect kind="version"><para></para></simplesect>
+<simplesect kind="rcs"><title>Revision:</title><para>1.4 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#ifndef<sp/>__AUSLOESER_H_INCLUDED</highlight></codeline>
+<codeline lineno="12"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>__AUSLOESER_H_INCLUDED</highlight></codeline>
+<codeline lineno="13"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d0/d24/midicalc_8h" kindref="compound">mutabor/midicalc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d63/harmonie_8h" kindref="compound">mutabor/harmonie.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d0/db7/anweisung_8h" kindref="compound">mutabor/anweisung.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="19"><highlight class="preprocessor"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="22"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="24" refid="d1/dfa/ausloeser_8h_1a232f0a426b83beef39b8a41f729af160" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="d1/dfa/ausloeser_8h_1a232f0a426b83beef39b8a41f729af160" kindref="member">ausloeser_typ</ref><sp/>{</highlight></codeline>
+<codeline lineno="25" refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa1844e4b7f36346b7d8a8e2937728d55" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa1844e4b7f36346b7d8a8e2937728d55" kindref="member">ausloeser_harmonie</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="26" refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a9b2b50e78cd5c69758e24d0731f4c5c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a9b2b50e78cd5c69758e24d0731f4c5c2" kindref="member">ausloeser_harmonie_form</ref>,<sp/></highlight></codeline>
+<codeline lineno="27" refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa70672d6552c2a53d62562b3a2787cc8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa70672d6552c2a53d62562b3a2787cc8" kindref="member">ausloeser_taste</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="28" refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160adfd3d26ad9545043cc1f524df558f1c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160adfd3d26ad9545043cc1f524df558f1c8" kindref="member">ausloeser_midi_in</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="29" refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a06ceaf3e37d0994c0e6b5f5c87855443" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a06ceaf3e37d0994c0e6b5f5c87855443" kindref="member">ausloeser_default</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="d9/de5/structausloeser" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d9/de5/structausloeser" kindref="compound">ausloeser</ref><sp/>{</highlight></codeline>
+<codeline lineno="34" refid="d9/de5/structausloeser_1a50378b5f0c1480af565b7aaccd128a40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="d1/dfa/ausloeser_8h_1a232f0a426b83beef39b8a41f729af160" kindref="member">ausloeser_typ</ref><sp/><ref refid="d1/dfa/ausloeser_8h_1a232f0a426b83beef39b8a41f729af160" kindref="member">ausloeser_typ</ref>;<sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37" refid="d9/de5/structausloeser_1a837ca196c666fc04f8a94458119a3e6c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/de5/structausloeser_1a837ca196c666fc04f8a94458119a3e6c" kindref="member">vortaste</ref>;<sp/></highlight></codeline>
+<codeline lineno="38" refid="d9/de5/structausloeser_1aa673db09d41908202a5381af8c2afe3f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/de5/structausloeser_1aa673db09d41908202a5381af8c2afe3f" kindref="member">name</ref>;<sp/></highlight></codeline>
+<codeline lineno="39" refid="d9/de5/structausloeser_1abba85c89a2db496fcc72719cba02389f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/de5/structausloeser_1abba85c89a2db496fcc72719cba02389f" kindref="member">nachtaste</ref>;<sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa1844e4b7f36346b7d8a8e2937728d55" kindref="member">ausloeser_harmonie</ref>;<sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>vortaste;<sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>;<sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nachtaste;<sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160a9b2b50e78cd5c69758e24d0731f4c5c2" kindref="member">ausloeser_harmonie_form</ref>;<sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47" refid="d9/de5/structausloeser_1aa02b4721a307b5201a9bae71c0c39c69" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/de5/structausloeser_1aa02b4721a307b5201a9bae71c0c39c69" kindref="member">taste</ref>;<sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160aa70672d6552c2a53d62562b3a2787cc8" kindref="member">ausloeser_taste</ref>;<sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50" refid="d9/de5/structausloeser_1ae839c4dda5c96b77fdf70f6f7be17c6c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/df2/structmidiliste" kindref="compound">midiliste</ref><sp/>*<sp/><ref refid="d9/de5/structausloeser_1ae839c4dda5c96b77fdf70f6f7be17c6c" kindref="member">midi_code</ref>;<sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d9/d7c/group__kernel_1gga232f0a426b83beef39b8a41f729af160adfd3d26ad9545043cc1f524df558f1c8" kindref="member">ausloeser_midi_in</ref>;<sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>u;<sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="56" refid="d8/d8e/structkeyboard__ereignis" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d8/d8e/structkeyboard__ereignis" kindref="compound">keyboard_ereignis</ref><sp/>{</highlight></codeline>
+<codeline lineno="57" refid="d8/d8e/structkeyboard__ereignis_1acabc546ce1e8683b487ec2592a7685ff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="d8/d8e/structkeyboard__ereignis_1acabc546ce1e8683b487ec2592a7685ff" kindref="member">taste</ref>;<sp/></highlight></codeline>
+<codeline lineno="58" refid="d8/d8e/structkeyboard__ereignis_1a7c2cc1eb543ab43da5f7d8a234e8fac1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d8/d8e/structkeyboard__ereignis_1a7c2cc1eb543ab43da5f7d8a234e8fac1" kindref="member">name</ref>;<sp/></highlight></codeline>
+<codeline lineno="59" refid="d8/d8e/structkeyboard__ereignis_1aabae38673dcfd43fc298e64b756adc6e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d5/d8c/structdo__aktion" kindref="compound">do_aktion</ref><sp/>*<sp/><ref refid="d8/d8e/structkeyboard__ereignis_1aabae38673dcfd43fc298e64b756adc6e" kindref="member">aktion</ref>;<sp/></highlight></codeline>
+<codeline lineno="60" refid="d8/d8e/structkeyboard__ereignis_1a5178ec1b200646932f712cb0218d2207" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d28/structlogik" kindref="compound">logik</ref><sp/>*<sp/><ref refid="d8/d8e/structkeyboard__ereignis_1a5178ec1b200646932f712cb0218d2207" kindref="member">the_logik_to_expand</ref>;<sp/></highlight></codeline>
+<codeline lineno="61" refid="d8/d8e/structkeyboard__ereignis_1a01d07f77fd83e8f39193d898f0f8d347" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d8/d8e/structkeyboard__ereignis" kindref="compound">keyboard_ereignis</ref><sp/>*<sp/><ref refid="d8/d8e/structkeyboard__ereignis_1a01d07f77fd83e8f39193d898f0f8d347" kindref="member">next</ref>;<sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="d7/d77/structmidi__ereignis" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/d77/structmidi__ereignis" kindref="compound">midi_ereignis</ref><sp/>{</highlight></codeline>
+<codeline lineno="66" refid="d7/d77/structmidi__ereignis_1a6cb5fe36e14ce490ae3e8ab1758826a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d7/d77/structmidi__ereignis_1a6cb5fe36e14ce490ae3e8ab1758826a8" kindref="member">first_pos</ref>;<sp/></highlight></codeline>
+<codeline lineno="67" refid="d7/d77/structmidi__ereignis_1aa229a7383cc5e9ccdd286ba1764ee3b9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d7/d77/structmidi__ereignis_1aa229a7383cc5e9ccdd286ba1764ee3b9" kindref="member">scan_pos</ref>;<sp/></highlight></codeline>
+<codeline lineno="68" refid="d7/d77/structmidi__ereignis_1a858a429cb4d0e85d7360751c0d99749c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d7/d77/structmidi__ereignis_1a858a429cb4d0e85d7360751c0d99749c" kindref="member">name</ref>;<sp/></highlight></codeline>
+<codeline lineno="69" refid="d7/d77/structmidi__ereignis_1a9e775c365af2b2be99ad9a6c9fbb8efc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d5/d8c/structdo__aktion" kindref="compound">do_aktion</ref><sp/>*<sp/><ref refid="d7/d77/structmidi__ereignis_1a9e775c365af2b2be99ad9a6c9fbb8efc" kindref="member">aktion</ref>;<sp/></highlight></codeline>
+<codeline lineno="70" refid="d7/d77/structmidi__ereignis_1a421345335988d99c81ef21fb4e52d77c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d28/structlogik" kindref="compound">logik</ref><sp/>*<sp/><ref refid="d7/d77/structmidi__ereignis_1a421345335988d99c81ef21fb4e52d77c" kindref="member">the_logik_to_expand</ref>;<sp/></highlight></codeline>
+<codeline lineno="71" refid="d7/d77/structmidi__ereignis_1a654d8d12e2d31ae5769a891e3858788b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/d77/structmidi__ereignis" kindref="compound">midi_ereignis</ref><sp/>*<sp/><ref refid="d7/d77/structmidi__ereignis_1a654d8d12e2d31ae5769a891e3858788b" kindref="member">next</ref>;<sp/></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="d9/d5b/structharmonie__ereignis" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d9/d5b/structharmonie__ereignis" kindref="compound">harmonie_ereignis</ref><sp/>{</highlight></codeline>
+<codeline lineno="76" refid="d9/d5b/structharmonie__ereignis_1acadd5e3cc1864df7733f886c8bdf6111" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d3/dc4/structPTRN" kindref="compound">PATTERNN</ref><sp/>*<sp/><ref refid="d9/d5b/structharmonie__ereignis_1acadd5e3cc1864df7733f886c8bdf6111" kindref="member">pattern</ref>;<sp/></highlight></codeline>
+<codeline lineno="77" refid="d9/d5b/structharmonie__ereignis_1a2e260cfda961d3a119066d6cd2b09906" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="d9/d5b/structharmonie__ereignis_1a2e260cfda961d3a119066d6cd2b09906" kindref="member">ist_harmonieform</ref>;<sp/></highlight></codeline>
+<codeline lineno="78" refid="d9/d5b/structharmonie__ereignis_1a0e113780e1e76ae5dbe08443301da81d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d5b/structharmonie__ereignis_1a0e113780e1e76ae5dbe08443301da81d" kindref="member">vortaste</ref>;<sp/></highlight></codeline>
+<codeline lineno="79" refid="d9/d5b/structharmonie__ereignis_1a61c12c628e5edb695321ff7d03c36d4d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d5b/structharmonie__ereignis_1a61c12c628e5edb695321ff7d03c36d4d" kindref="member">nachtaste</ref>;<sp/></highlight></codeline>
+<codeline lineno="80" refid="d9/d5b/structharmonie__ereignis_1a0a37765017043bb6481e4d9f7dcca64c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d5b/structharmonie__ereignis_1a0a37765017043bb6481e4d9f7dcca64c" kindref="member">name</ref>;<sp/></highlight></codeline>
+<codeline lineno="81" refid="d9/d5b/structharmonie__ereignis_1ac2a50ecf0fd3ecce4a9683b004b30d72" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d5/d8c/structdo__aktion" kindref="compound">do_aktion</ref><sp/>*<sp/><ref refid="d9/d5b/structharmonie__ereignis_1ac2a50ecf0fd3ecce4a9683b004b30d72" kindref="member">aktion</ref>;<sp/></highlight></codeline>
+<codeline lineno="82" refid="d9/d5b/structharmonie__ereignis_1ac931d37144fc073a3fce3a078d446209" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d28/structlogik" kindref="compound">logik</ref><sp/>*<sp/><ref refid="d9/d5b/structharmonie__ereignis_1ac931d37144fc073a3fce3a078d446209" kindref="member">the_logik_to_expand</ref>;<sp/></highlight></codeline>
+<codeline lineno="83" refid="d9/d5b/structharmonie__ereignis_1a7235e608d8367b0fcce870b3e330ff4c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d9/d5b/structharmonie__ereignis" kindref="compound">harmonie_ereignis</ref><sp/>*<sp/><ref refid="d9/d5b/structharmonie__ereignis_1a7235e608d8367b0fcce870b3e330ff4c" kindref="member">next</ref>;<sp/></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d9/d5b/structharmonie__ereignis" kindref="compound">harmonie_ereignis</ref><sp/>*<sp/><sp/><ref refid="dd/d21/group__Parser_1gaeb4def1910a49d76e3898d8ef6be1f0f" kindref="member">first_harmonie</ref>[<ref refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" kindref="member">MAX_BOX</ref>];</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d9/d5b/structharmonie__ereignis" kindref="compound">harmonie_ereignis</ref><sp/>**<sp/><ref refid="dd/d21/group__Parser_1gafa20457ba0cc68c3fb9b951396475f39" kindref="member">last_global_harmonie</ref>[<ref refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" kindref="member">MAX_BOX</ref>];</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d9/d5b/structharmonie__ereignis" kindref="compound">harmonie_ereignis</ref><sp/>**<sp/><ref refid="dd/d21/group__Parser_1gaa539e63152f2a354b62a0b98490e2293" kindref="member">first_lokal_harmonie</ref>;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d8/d8e/structkeyboard__ereignis" kindref="compound">keyboard_ereignis</ref><sp/>*<sp/><sp/><ref refid="dd/d21/group__Parser_1ga0efb7f4c5368462a4f0eed6de4e8c025" kindref="member">first_keyboard</ref>[<ref refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" kindref="member">MAX_BOX</ref>];</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d8/d8e/structkeyboard__ereignis" kindref="compound">keyboard_ereignis</ref><sp/>**<sp/><ref refid="dd/d21/group__Parser_1ga7d7d753e6a50fb64c3142215b6d3dc8d" kindref="member">last_global_keyboard</ref>[<ref refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" kindref="member">MAX_BOX</ref>];</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d8/d8e/structkeyboard__ereignis" kindref="compound">keyboard_ereignis</ref><sp/>**<sp/><ref refid="dd/d21/group__Parser_1gac413ef20e141cd76dd18c44e99df1ba4" kindref="member">first_lokal_keyboard</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/d77/structmidi__ereignis" kindref="compound">midi_ereignis</ref><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="dd/d21/group__Parser_1gaf0944493cbec9f89bad097c3b952634a" kindref="member">first_midi</ref>[<ref refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" kindref="member">MAX_BOX</ref>];</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/d77/structmidi__ereignis" kindref="compound">midi_ereignis</ref><sp/><sp/><sp/><sp/><sp/>**<sp/><ref refid="dd/d21/group__Parser_1gaeacc603c530f9ab8c25eaf9386d74ed2" kindref="member">last_global_midi</ref>[<ref refid="df/d8e/bad__decl_8h_1aae2ce8aa9330f0725d8cde55c77e23bb" kindref="member">MAX_BOX</ref>];</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/d77/structmidi__ereignis" kindref="compound">midi_ereignis</ref><sp/><sp/><sp/><sp/><sp/>**<sp/><ref refid="dd/d21/group__Parser_1gaa4d5de4a97f2396dd4c30ac78285d6bf" kindref="member">first_lokal_midi</ref>;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d21/group__Parser_1gac0676abdb811f08267cf9372f32ca690" kindref="member">print_ausloeser</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d9/de5/structausloeser" kindref="compound">ausloeser</ref><sp/>*<sp/>this_);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d21/group__Parser_1ga20155f08f72ea6f74b736f5c1720db20" kindref="member">init_ausloeser</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d21/group__Parser_1ga3cd5f0e67c5234531195f561caa7ab2e" kindref="member">get_ausloeser_default</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d21/group__Parser_1ga38d10ead0ad58ce740ee50d429b9f9b1" kindref="member">get_ausloeser_harmonie</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d21/group__Parser_1gaa911c0f45f7f7e1db820a9a79d745f0b" kindref="member">get_ausloeser_harmonie_form</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d21/group__Parser_1ga4ff9b641b4464848704cbd7746627cc8" kindref="member">get_ausloeser_taste</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d21/group__Parser_1ga774f372905f74d416d4ba0ebc75a7664" kindref="member">get_ausloeser_midi_in</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d21/group__Parser_1ga513256ed0bc6682cb3e6c2f5e86d8bef" kindref="member">check_ausloeser</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d9/de5/structausloeser" kindref="compound">ausloeser</ref><sp/>*<sp/><ref refid="d9/de5/structausloeser" kindref="compound">ausloeser</ref>,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d2/d1c/group__Interpreter_1ga69baa9919250669cbe29d4a4fa4bf9ca" kindref="member">insert_in_globale_liste</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/d0f/structinstrument" kindref="compound">instrument</ref>,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="db/d28/structlogik" kindref="compound">logik</ref><sp/>*<sp/>lauf);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d2/d1c/group__Interpreter_1ga49fcfc4930df7019571296f7c2c9d320" kindref="member">expandiere_in_globale_liste</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/d77/structmidi__ereignis" kindref="compound">midi_ereignis</ref><sp/>**<sp/><ref refid="d2/d1c/group__Interpreter_1gaa6d0bceb2b55629cbd049f76ca7fc577" kindref="member">get_ende_midi</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d7/d77/structmidi__ereignis" kindref="compound">midi_ereignis</ref><sp/>**<sp/>lauf);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d8/d8e/structkeyboard__ereignis" kindref="compound">keyboard_ereignis</ref><sp/>**<sp/><ref refid="d2/d1c/group__Interpreter_1gaf764bbaa2fdfbb274ead1ebf61f49ac7" kindref="member">get_ende_keyboard</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d8/d8e/structkeyboard__ereignis" kindref="compound">keyboard_ereignis</ref><sp/>**<sp/>lauf);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d9/d5b/structharmonie__ereignis" kindref="compound">harmonie_ereignis</ref><sp/>**<sp/><ref refid="d2/d1c/group__Interpreter_1gab7918076c80dc48be1a4c64a39be0510" kindref="member">get_ende_harmonie</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d9/d5b/structharmonie__ereignis" kindref="compound">harmonie_ereignis</ref><sp/>**<sp/>lauf);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d9/de5/structausloeser" kindref="compound">ausloeser</ref><sp/>*<sp/><ref refid="dd/d21/group__Parser_1ga1e505704cb9a70800ee05786127a8cef" kindref="member">get_last_ausloeser</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus<sp/></highlight></codeline>
+<codeline lineno="114"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>extern<sp/>&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mutabor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="117"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__AUSLOESER_H_INCLUDED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/includes/mutabor/ausloeser.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1398 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>Debugging functions</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.5 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#namespaces">Namensbereiche</a> &#124;
+<a href="#nested-classes">Klassen</a> &#124;
+<a href="#define-members">Makrodefinitionen</a> &#124;
+<a href="#func-members">Funktionen</a> &#124;
+<a href="#var-members">Variablen</a>  </div>
+  <div class="headertitle">
+<div class="title">Debugging functions</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>This group contains the functions that are used to help debugging of Mutabor.  
+<a href="#details">Mehr ...</a></p>
+<div class="dynheader">
+Zusammengehörigkeiten von Debugging functions:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="../../de/db7/group__debug.png" border="0" alt="" usemap="#de_2db7_2group____debug"/>
+<map name="de_2db7_2group____debug" id="de_2db7_2group____debug">
+<area shape="rect" id="node1" href="../../df/dd1/group__GUI.html" title="While the original frontend of Mutabor was designed using Borland OWL the current one uses the platfo..." alt="" coords="289,5,460,33"/><area shape="rect" id="node2" href="../../da/d79/group__docview.html" title="Docview" alt="" coords="337,55,412,83"/><area shape="rect" id="node3" href="../../d5/dee/group__route.html" title="This group contains functions and classes that can be used to set up a generic event routing..." alt="" coords="303,106,447,150"/><area shape="rect" id="node4" href="../../dc/df2/group__GUIroute.html" title="GUIroute" alt="" coords="336,173,413,201"/><area shape="rect" id="node5" href="../../d1/d44/group__config.html" title="Save and restore configuration of boxes and routes. " alt="" coords="296,223,453,251"/></map>
+</td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namensbereiche</h2></td></tr>
+<tr class="memitem:db/d94/namespacemutaborGUI"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html">mutaborGUI</a></td></tr>
+<tr class="memdesc:db/d94/namespacemutaborGUI"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main mutabor frame class. <br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Klassen</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9f/classconsoleinit.html">consoleinit</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d82/structnogetflag.html">nogetflag</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d82/classwatchedPtr.html">watchedPtr&lt; T, flag, P &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Makrodefinitionen</h2></td></tr>
+<tr class="memitem:gad51281d5c23e4daa2d7f85fc94935239"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gad51281d5c23e4daa2d7f85fc94935239">isDebugFlag</a>(level)&#160;&#160;&#160;false</td></tr>
+<tr class="separator:gad51281d5c23e4daa2d7f85fc94935239"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7c13600c17b7e363d86333bfc6aa54f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga7c13600c17b7e363d86333bfc6aa54f3">DEBUGLOGBASEINT</a>(...)&#160;&#160;&#160;do {} <a class="el" href="../../d0/dc8/mutlex_8cc.html#a8fdafe3be7e00ce3d4f0cb50a9a5eb39">while</a> (0)</td></tr>
+<tr class="separator:ga7c13600c17b7e363d86333bfc6aa54f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3afe596b4b512260d559f255fb3bf1ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga3afe596b4b512260d559f255fb3bf1ac">DEBUGLOGBASE</a>(...)&#160;&#160;&#160;do {} <a class="el" href="../../d0/dc8/mutlex_8cc.html#a8fdafe3be7e00ce3d4f0cb50a9a5eb39">while</a> (0)</td></tr>
+<tr class="separator:ga3afe596b4b512260d559f255fb3bf1ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga391d61b0297bf03db59dad4f6b8457ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga391d61b0297bf03db59dad4f6b8457ab">PRINTSIZER</a>(X)&#160;&#160;&#160;do {} <a class="el" href="../../d0/dc8/mutlex_8cc.html#a8fdafe3be7e00ce3d4f0cb50a9a5eb39">while</a> (0)</td></tr>
+<tr class="separator:ga391d61b0297bf03db59dad4f6b8457ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0191db36d7964b7c93f9e7b540a48db2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga0191db36d7964b7c93f9e7b540a48db2">mutRefCast</a>(type, value)&#160;&#160;&#160;static_cast&lt;type &amp;&gt;(value)</td></tr>
+<tr class="separator:ga0191db36d7964b7c93f9e7b540a48db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9aed8740f47ad4601d8252e4e77fc46b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga9aed8740f47ad4601d8252e4e77fc46b">mutPtrCast</a>(type, value)&#160;&#160;&#160;static_cast&lt;type *&gt;(value)</td></tr>
+<tr class="separator:ga9aed8740f47ad4601d8252e4e77fc46b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1cb0494257f81c4e6622c0502ab0059b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga1cb0494257f81c4e6622c0502ab0059b">mutPtrDynCast</a>(type, value)&#160;&#160;&#160;dynamic_cast&lt;type *&gt;(value)</td></tr>
+<tr class="separator:ga1cb0494257f81c4e6622c0502ab0059b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga86ae1dca49d692e6adabb3ba38154f09"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(level,...)&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga3afe596b4b512260d559f255fb3bf1ac">DEBUGLOGBASE</a>(level, typeid(*this).name(),__VA_ARGS__)</td></tr>
+<tr class="separator:ga86ae1dca49d692e6adabb3ba38154f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad0fa697ccfdac1d20857a4359add2996"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gad0fa697ccfdac1d20857a4359add2996">DEBUGLOG2</a>(level,...)&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga3afe596b4b512260d559f255fb3bf1ac">DEBUGLOGBASE</a>(level, _T(&quot;&quot;),__VA_ARGS__)</td></tr>
+<tr class="separator:gad0fa697ccfdac1d20857a4359add2996"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9de22df51e7efa23154a04eab9e66cad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga9de22df51e7efa23154a04eab9e66cad">DEBUGLOGTYPE</a>(level, type,...)&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga3afe596b4b512260d559f255fb3bf1ac">DEBUGLOGBASE</a>(level, typeid(type).name(), __VA_ARGS__)</td></tr>
+<tr class="separator:ga9de22df51e7efa23154a04eab9e66cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9f7c0ab5b0db6d8abc460bd962667633"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga9f7c0ab5b0db6d8abc460bd962667633">DEBUGLOGTYPEINT</a>(level, strlevel, type,...)&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga7c13600c17b7e363d86333bfc6aa54f3">DEBUGLOGBASEINT</a>(level, strlevel, typeid(type).name(), __VA_ARGS__)</td></tr>
+<tr class="separator:ga9f7c0ab5b0db6d8abc460bd962667633"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaad9cc64d45a76ba0d37c00f8cd9caa37"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gaad9cc64d45a76ba0d37c00f8cd9caa37">TRACE</a>&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga3afe596b4b512260d559f255fb3bf1ac">DEBUGLOGBASE</a>(trace,_T(&quot;&quot;),_T(&quot;.&quot;))</td></tr>
+<tr class="separator:gaad9cc64d45a76ba0d37c00f8cd9caa37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga86acd9c1c30c8cb1831b46da11b1ec62"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(trace,_T(&quot;.&quot;))</td></tr>
+<tr class="separator:ga86acd9c1c30c8cb1831b46da11b1ec62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga556434a0102a112e3dd0c2849d5e36fd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga556434a0102a112e3dd0c2849d5e36fd">TRACET</a>(type)&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga9de22df51e7efa23154a04eab9e66cad">DEBUGLOGTYPE</a>(trace,type,_T(&quot;.&quot;))</td></tr>
+<tr class="separator:ga556434a0102a112e3dd0c2849d5e36fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaab4d9ab34f40c3e65ae4b48e25aec5d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gaab4d9ab34f40c3e65ae4b48e25aec5d0">WATCHEDPTR</a>(T, f, P)&#160;&#160;&#160;<a class="el" href="../../dd/d82/classwatchedPtr.html">watchedPtr</a>&lt;T,<a class="el" href="../../d2/d82/structnogetflag.html">nogetflag</a>,P&gt;</td></tr>
+<tr class="separator:gaab4d9ab34f40c3e65ae4b48e25aec5d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac36bf26db9b8eee44c2ecf1aedd244c6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gac36bf26db9b8eee44c2ecf1aedd244c6">DEFWATCHEDPTR</a></td></tr>
+<tr class="separator:gac36bf26db9b8eee44c2ecf1aedd244c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga69f1fd7d0d4f34dbea0acff2e92b7460"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga69f1fd7d0d4f34dbea0acff2e92b7460">debug_destroy_class</a>(ptr)&#160;&#160;&#160;debug_destroy_class(ptr,__FILE__,__LINE__)</td></tr>
+<tr class="separator:ga69f1fd7d0d4f34dbea0acff2e92b7460"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab79160fab63de3860fd1a82d342b0fe3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gab79160fab63de3860fd1a82d342b0fe3">MUWX_ROUTING_DEBUGROUTE_H</a></td></tr>
+<tr class="separator:gab79160fab63de3860fd1a82d342b0fe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac9b6f8b3448eb64ad34e8670aa26522d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gac9b6f8b3448eb64ad34e8670aa26522d">MUWX_ROUTING_DEBUGROUTE_H_PRECOMPILED</a></td></tr>
+<tr class="separator:gac9b6f8b3448eb64ad34e8670aa26522d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funktionen</h2></td></tr>
+<tr class="memitem:gae7c707573d355e5f9014404f474678c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gae7c707573d355e5f9014404f474678c5">MutInitConsole</a> ()</td></tr>
+<tr class="separator:gae7c707573d355e5f9014404f474678c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa956b288de489d3459d1cd1b7f994012"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gaa956b288de489d3459d1cd1b7f994012">DoShowAssertDialog</a> (<a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> wxString &amp;msg)</td></tr>
+<tr class="separator:gaa956b288de489d3459d1cd1b7f994012"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga711968cbebc4d3b87c0c9f765213bbd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga711968cbebc4d3b87c0c9f765213bbd4">mutAssertFailure</a> (<a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> wxChar *file, int line, <a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> wxChar *func, <a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> wxChar *cond, <a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> wxChar *msg)</td></tr>
+<tr class="separator:ga711968cbebc4d3b87c0c9f765213bbd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga33e4d2337c0d8d97f3f9527159d490a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga33e4d2337c0d8d97f3f9527159d490a0">debug_destroy_class</a> (void *ptr, std::string file, int l)</td></tr>
+<tr class="separator:ga33e4d2337c0d8d97f3f9527159d490a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad832f7644d01ea65a5de5dc9ba942d11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gad832f7644d01ea65a5de5dc9ba942d11">debug_destruct_class</a> (void *ptr)</td></tr>
+<tr class="separator:gad832f7644d01ea65a5de5dc9ba942d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga15f8c412cd184d3b64d2deac2e3f74e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga15f8c412cd184d3b64d2deac2e3f74e8">debug_print_pointers</a> ()</td></tr>
+<tr class="separator:ga15f8c412cd184d3b64d2deac2e3f74e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga886d7604932ac35111800f57ea4a5a43"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga886d7604932ac35111800f57ea4a5a43">debug_is_all_deleted</a> ()</td></tr>
+<tr class="separator:ga886d7604932ac35111800f57ea4a5a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadbf79483244e2a2d3f7c6bb05d7667ab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gadbf79483244e2a2d3f7c6bb05d7667ab">DEBUGFLAG</a> (other, <a class="el" href="../../de/db7/group__debug.html#ga63719beeefaec831a72724b660b44f59">N_</a>(&quot;Unspecified debug information&quot;)) DEBUGFLAG(kernel_exec</td></tr>
+<tr class="separator:gadbf79483244e2a2d3f7c6bb05d7667ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac8c4de4b8f99001765fd7091fc0b12fe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gac8c4de4b8f99001765fd7091fc0b12fe">N_</a> (&quot;Debug Execute.cpp&quot;)) DEBUGFLAG(kernel_tabgen</td></tr>
+<tr class="separator:gac8c4de4b8f99001765fd7091fc0b12fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae976c24a1f797fc5488db17b4d486f38"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gae976c24a1f797fc5488db17b4d486f38">N_</a> (&quot;Debug table generator&quot;)) DEBUGFLAG(kernel_runtime</td></tr>
+<tr class="separator:gae976c24a1f797fc5488db17b4d486f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga68462250845e52cf9f815afcd030453e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga68462250845e52cf9f815afcd030453e">N_T</a> (&quot;Debug other runtime functions of the kernel&quot;)) DEBUGFLAG(kernel_parser</td></tr>
+<tr class="separator:ga68462250845e52cf9f815afcd030453e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac1ac287b3b831362cdb245fbe5642510"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gac1ac287b3b831362cdb245fbe5642510">N_</a> (&quot;Debug the parser of the Mutabor kernel&quot;)) DEBUGFLAG(kernel_box</td></tr>
+<tr class="separator:gac1ac287b3b831362cdb245fbe5642510"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga664e65d22788498900b2ee62dea6752a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga664e65d22788498900b2ee62dea6752a">N_</a> (&quot;Debug the GUIDO file devices&quot;)) DEBUGFLAG(gui</td></tr>
+<tr class="separator:ga664e65d22788498900b2ee62dea6752a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadd97daeeec4453c3add48d1eda99e66c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gadd97daeeec4453c3add48d1eda99e66c">N_</a> (&quot;Other gui related debug information&quot;)) DEBUGFLAG(dialog</td></tr>
+<tr class="separator:gadd97daeeec4453c3add48d1eda99e66c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga692303bc135e9aa833c2bcab8cb85a3b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga692303bc135e9aa833c2bcab8cb85a3b">N_</a> (&quot;Debug configuration and postprocessing of dialogs&quot;)) DEBUGFLAG(routing</td></tr>
+<tr class="separator:ga692303bc135e9aa833c2bcab8cb85a3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga09a8166ec3620123f5dcdd495d7fdaa2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga09a8166ec3620123f5dcdd495d7fdaa2">N_</a> (&quot;Debug the routing system&quot;)) DEBUGFLAG(routinggui</td></tr>
+<tr class="separator:ga09a8166ec3620123f5dcdd495d7fdaa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga40c027f66909659b65597c3b6cf5d6c7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga40c027f66909659b65597c3b6cf5d6c7">N_</a> (&quot;Debug the routing system GUI&quot;)) DEBUGFLAG(midiio</td></tr>
+<tr class="separator:ga40c027f66909659b65597c3b6cf5d6c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf5c85716ba57c13d821992aa97fbb34e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gaf5c85716ba57c13d821992aa97fbb34e">N_</a> (&quot;Debug the MIDI input/output system&quot;)) DEBUGFLAG(midifile</td></tr>
+<tr class="separator:gaf5c85716ba57c13d821992aa97fbb34e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac15e24c2cb8a56aa8d2ce8b9ffc6e935"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gac15e24c2cb8a56aa8d2ce8b9ffc6e935">N_</a> (&quot;Debug the MIDI file devices&quot;)) DEBUGFLAG(mutparser</td></tr>
+<tr class="separator:gac15e24c2cb8a56aa8d2ce8b9ffc6e935"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga71644ef33c9042af3a0565b934573a37"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga71644ef33c9042af3a0565b934573a37">N_</a> (&quot;Debug the Mutabor file parser&quot;)) DEBUGFLAG(config</td></tr>
+<tr class="separator:ga71644ef33c9042af3a0565b934573a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab11c7c9f3cd12d8b977a48b7c461fe35"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gab11c7c9f3cd12d8b977a48b7c461fe35">N_</a> (&quot;Debug the config file parser&quot;)) DEBUGFLAG(docview</td></tr>
+<tr class="separator:gab11c7c9f3cd12d8b977a48b7c461fe35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa1c3de9db49b954401c62ebf70c39d9a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gaa1c3de9db49b954401c62ebf70c39d9a">N_</a> (&quot;Debug the Document/View framework&quot;)) DEBUGFLAG(eventqueue</td></tr>
+<tr class="separator:gaa1c3de9db49b954401c62ebf70c39d9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae64329b458b40c2b064a4305140c1d8e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gae64329b458b40c2b064a4305140c1d8e">N_</a> (&quot;Print unhandled events in the queue&quot;)) DEBUGFLAG(editor</td></tr>
+<tr class="separator:gae64329b458b40c2b064a4305140c1d8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab0a658f053f9ec9703633272f53709e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gab0a658f053f9ec9703633272f53709e9">N_</a> (&quot;Debug editor related functionality&quot;)) DEBUGFLAG(editlexer</td></tr>
+<tr class="separator:gab0a658f053f9ec9703633272f53709e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga987c2d613501916c42032feb8a03dd3e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga987c2d613501916c42032feb8a03dd3e">N_</a> (&quot;Debug editor language lexer related functionality&quot;)) DEBUGFLAG(smartptr</td></tr>
+<tr class="separator:ga987c2d613501916c42032feb8a03dd3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0c1f162191f3cde41a7d48cb6fd4d655"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga0c1f162191f3cde41a7d48cb6fd4d655">N_</a> (&quot;Debug smart pointer related functionality&quot;)) DEBUGFLAG(trace</td></tr>
+<tr class="separator:ga0c1f162191f3cde41a7d48cb6fd4d655"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf3c9a982ea88fa588eb58ac7ea72b93b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gaf3c9a982ea88fa588eb58ac7ea72b93b">N_</a> (&quot;Output some tracepoints&quot;)) DEBUGFLAG(timer</td></tr>
+<tr class="separator:gaf3c9a982ea88fa588eb58ac7ea72b93b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga720940eae72549a44e3b014b3c0292c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga720940eae72549a44e3b014b3c0292c4">N_</a> (&quot;Trace thread timer problems&quot;)) DEBUGFLAG(thread</td></tr>
+<tr class="separator:ga720940eae72549a44e3b014b3c0292c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga63719beeefaec831a72724b660b44f59"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga63719beeefaec831a72724b660b44f59">N_</a> (&quot;Trace thread problems&quot;)) DEBUGFLAG(always</td></tr>
+<tr class="separator:ga63719beeefaec831a72724b660b44f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variablen</h2></td></tr>
+<tr class="memitem:gaac12d0e918fb9eb6a8f5687bb1029fcc"><td class="memItemLeft" align="right" valign="top">class <a class="el" href="../../d1/d9f/classconsoleinit.html">consoleinit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gaac12d0e918fb9eb6a8f5687bb1029fcc">g_consoleinit</a></td></tr>
+<tr class="separator:gaac12d0e918fb9eb6a8f5687bb1029fcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
+<p>This group contains the functions that are used to help debugging of Mutabor. </p>
+<p>Despite the core is written in C these functions are written in C++ but can easily replaced by C. </p>
+<h2 class="groupheader">Makro-Dokumentation</h2>
+<a class="anchor" id="ga69f1fd7d0d4f34dbea0acff2e92b7460"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define debug_destroy_class</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ptr</td><td>)</td>
+          <td>&#160;&#160;&#160;debug_destroy_class(ptr,__FILE__,__LINE__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00226">226</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga86ae1dca49d692e6adabb3ba38154f09"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGLOG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">level, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga3afe596b4b512260d559f255fb3bf1ac">DEBUGLOGBASE</a>(level, typeid(*this).name(),__VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00141">141</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00415">mutaborGUI::GUIRouteBase::Add()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00167">mutaborGUI::MutBoxChannelShape::Add()</a>, <a class="el" href="../../d8/db4/BoxShape_8cpp_source.html#l00168">mutaborGUI::MutBoxShape::Add()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00123">mutabor::BoxClass::Add()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00846">mutaborGUI::GUIOutputDeviceBase::Add()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l01040">mutaborGUI::GUIInputDeviceBase::Add()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00100">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Add()</a>, <a class="el" href="../../d3/d2a/BoxDlg_8cpp_source.html#l00180">mutaborGUI::RoutePanel::AddBox()</a>, <a class="el" href="../../d6/d3b/MutDocument_8cpp_source.html#l00055">BEGIN_EVENT_TABLE()</a>, <a class="el" href="../../da/d72/MutChild_8cpp_source.html#l00077">mutaborGUI::BEGIN_EVENT_TABLE()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l01604">mutaborGUI::MutFrame::CeInDevPlay()</a>, <a class="el" href="../../dd/d56/midicmnTest_8h_source.html#l00084">midicmnOutputDevice::Check()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01289">OutputMidiFileTest::CheckOut()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00843">mutaborGUI::MutFrame::ClearSubMenu()</a>, <a class="el" href="../../d9/d6a/CommonFileDevice-inlines_8h_source.html#l00207">mutabor::CommonFileInputDevice::Close()</a>, <a class="el" href="../../dd/db5/MutFrame_8h_source.html#l00292">mutaborGUI::MutFrame::CloseClientWindow()</a>, <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00767">mutaborGUI::MutLogicWnd::CmBox()</a>, <a class="el" href="../../d1/da4/MutEditFile_8cpp_source.html#l00407">mutaborGUI::MutEditFile::CmCompile()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00699">mutaborGUI::MutFrame::CmDoActivate()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00567">mutaborGUI::MutFrame::CmFileOpen()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00980">mutaborGUI::MutFrame::CmRoutes()</a>, <a class="el" href="../../d1/da4/MutEditFile_8cpp_source.html#l00222">mutaborGUI::MutEditFile::Compile()</a>, <a class="el" href="../../de/d21/midicmn_8h_source.html#l00669">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::controller()</a>, <a class="el" href="../../d9/d94/DeviceShape_8cpp_source.html#l00108">mutaborGUI::MutDeviceShape&lt; T &gt;::Create()</a>, <a class="el" href="../../d3/d2a/BoxDlg_8cpp_source.html#l00221">mutaborGUI::RouteRemoveButton::Create()</a>, <a class="el" href="../../d2/d2c/Route-inlines_8h_source.html#l00188">mutabor::TRouteClass&lt; I, O, B &gt;::Create()</a>, <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00271">mutaborGUI::MutRouteWnd::createInputDevices()</a>, <a class="el" href="../../d7/da0/GIS__Head_8cpp_source.html#l00265">GisReadHead::CreateSegmentSubs()</a>, <a class="el" href="../../da/d72/MutChild_8cpp_source.html#l00168">mutaborGUI::MutChild::deleteFromWinAttrs()</a>, <a class="el" href="../../d5/d6f/IconShape_8h_source.html#l00175">MutIconShapeClass&lt; MutPanel &gt;::DeleteSelfEvent()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00477">mutaborGUI::GUIRouteBase::Destroy()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00512">mutaborGUI::GUIfiedRoute&lt; T &gt;::Destroy()</a>, <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00319">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOff()</a>, <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00239">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOn()</a>, <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00377">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateTones()</a>, <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00436">mutaborGUI::MutLogicWnd::doClose()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00601">mutaborGUI::GUIRouteFactory::DoCreateBoxChannelShape()</a>, <a class="el" href="../../d2/dd3/GUIBoxData_8cpp_source.html#l00391">mutaborGUI::GUIBoxFactory::DoCreateBoxShape()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00778">mutaborGUI::GUIMidiPortFactory::DoCreateShape()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00850">mutaborGUI::GUIMidiFileFactory::DoCreateShape()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00914">mutaborGUI::GUIGisFactory::DoCreateShape()</a>, <a class="el" href="../../dc/d76/IconShape_8cpp_source.html#l00303">MutIconShapeClass&lt; T &gt;::DoGetBestSize()</a>, <a class="el" href="../../d1/da4/MutEditFile_8cpp_source.html#l00319">mutaborGUI::MutEditFile::DoLoadFile()</a>, <a class="el" href="../../d1/da4/MutEditFile_8cpp_source.html#l00353">mutaborGUI::MutEditFile::DoSaveFile()</a>, <a class="el" href="../../d8/db4/BoxShape_8cpp_source.html#l00254">mutaborGUI::MutBoxShape::DrawLines()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00563">mutaborGUI::MutBoxChannelShape::DrawLines()</a>, <a class="el" href="../../dd/db0/MutDocManager_8cpp_source.html#l00087">END_EVENT_TABLE()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00459">mutaborGUI::MutFrame::EventPassOn()</a>, <a class="el" href="../../de/d21/midicmn_8h_source.html#l00094">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::find_matching_channel()</a>, <a class="el" href="../../d4/d8f/InputDevDlg_8cpp_source.html#l00190">mutaborGUI::InputDevDlg::FindType()</a>, <a class="el" href="../../d1/dca/timing_8cpp_source.html#l00045">mutabor::timing_params::get_MIDI_tick_signature()</a>, <a class="el" href="../../d7/dcb/BoxIconShape_8cpp_source.html#l00039">mutaborGUI::MutBoxIconShape::GetBordersForSizer()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00139">mutaborGUI::MutBoxChannelShape::GetMutIcon()</a>, <a class="el" href="../../dc/d76/IconShape_8cpp_source.html#l00549">MutIconShapeClass&lt; T &gt;::GetPerimeterPoint()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00690">mutaborGUI::MutBoxChannelShape::GetPerimeterPoint()</a>, <a class="el" href="../../d1/db5/GIS__Head_8h_source.html#l00275">GisReadArtHead::GetSpeedFactor()</a>, <a class="el" href="../../d1/db5/GIS__Head_8h_source.html#l00180">GisReadArtHead::GisReadArtHead()</a>, <a class="el" href="../../d1/db5/GIS__Head_8h_source.html#l00076">GisReadHead::GisReadHead()</a>, <a class="el" href="../../dd/d4d/GIS_8h_source.html#l00301">GisTag::GisTag()</a>, <a class="el" href="../../dd/d4d/GIS_8h_source.html#l00139">GisToken::GisToken()</a>, <a class="el" href="../../dc/d76/IconShape_8cpp_source.html#l00404">MutIconShapeClass&lt; T &gt;::GotFocus()</a>, <a class="el" href="../../d5/d1c/MutApp_8cpp_source.html#l00088">IMPLEMENT_APP()</a>, <a class="el" href="../../d8/dba/NewBoxShape_8cpp_source.html#l00048">mutaborGUI::IMPLEMENT_CLASS()</a>, <a class="el" href="../../da/dd8/OutputDevDlg_8cpp_source.html#l00046">IMPLEMENT_DYNAMIC_CLASS()</a>, <a class="el" href="../../d6/d68/OutputMidiDeviceShape_8cpp_source.html#l00074">mutaborGUI::MutOutputMidiDeviceShape::InitializeDialog()</a>, <a class="el" href="../../d1/da4/MutEditFile_8cpp_source.html#l01041">mutaborGUI::MutEditFile::InitializePrefs()</a>, <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00201">mutaborGUI::MutRouteWnd::InitShapes()</a>, <a class="el" href="../../d7/da0/GIS__Head_8cpp_source.html#l00147">GisReadHead::InsertInfrontOf()</a>, <a class="el" href="../../dc/d76/IconShape_8cpp_source.html#l00707">MutIconShapeClass&lt; T &gt;::Layout()</a>, <a class="el" href="../../df/d3c/MutTextBox_8cpp_source.html#l00417">MutTextBox::NewText()</a>, <a class="el" href="../../d1/da4/MutEditFile_8cpp_source.html#l00986">mutaborGUI::MutEditFile::OnCharAdded()</a>, <a class="el" href="../../df/d3c/MutTextBox_8cpp_source.html#l00102">MutTextBox::OnClose()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00497">mutaborGUI::MutFrame::OnCloseWindow()</a>, <a class="el" href="../../d7/dcb/BoxIconShape_8cpp_source.html#l00047">mutaborGUI::MutBoxIconShape::OnDraw()</a>, <a class="el" href="../../dc/d76/IconShape_8cpp_source.html#l00493">MutIconShapeClass&lt; T &gt;::OnDraw()</a>, <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00719">mutaborGUI::MutRouteWnd::OnDraw()</a>, <a class="el" href="../../d4/d8f/InputDevDlg_8cpp_source.html#l00182">mutaborGUI::InputDevDlg::OnFileChanged()</a>, <a class="el" href="../../d1/da4/MutEditFile_8cpp_source.html#l00654">mutaborGUI::MutEditFile::OnFindDialog()</a>, <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00738">mutaborGUI::MutRouteWnd::OnMoveShape()</a>, <a class="el" href="../../dc/d0c/stclanguage_8cpp_source.html#l00368">mutaborGUI::MutSTCLexer::OnStyleNeeded()</a>, <a class="el" href="../../d9/d6a/CommonFileDevice-inlines_8h_source.html#l00143">mutabor::CommonFileInputDevice::Open()</a>, <a class="el" href="../../db/d78/DevGIS_8cpp_source.html#l00270">mutabor::InputGis::Open()</a>, <a class="el" href="../../d0/d6b/DevMidF_8cpp_source.html#l00502">mutabor::InputMidiFile::Open()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00622">mutaborGUI::MutFrame::OpenFile()</a>, <a class="el" href="../../da/d3c/DevMidF_8h_source.html#l00148">mutabor::Track::PassDelta()</a>, <a class="el" href="../../d4/d70/CommonFileDeviceTest_8h_source.html#l00050">testCommonFileDeviceTimer::Play()</a>, <a class="el" href="../../d9/d6a/CommonFileDevice-inlines_8h_source.html#l00268">mutabor::CommonFileInputDevice::Play()</a>, <a class="el" href="../../d5/de4/StatusBar_8cpp_source.html#l00059">mutaborGUI::StatusBar::PositionElements()</a>, <a class="el" href="../../d4/d70/CommonFileDeviceTest_8h_source.html#l00078">testCommonFileDeviceTimer::PrepareNextEvent()</a>, <a class="el" href="../../db/d78/DevGIS_8cpp_source.html#l00362">mutabor::InputGis::PrepareNextEvent()</a>, <a class="el" href="../../d0/d6b/DevMidF_8cpp_source.html#l00677">mutabor::InputMidiFile::PrepareNextEvent()</a>, <a class="el" href="../../db/d78/DevGIS_8cpp_source.html#l00399">mutabor::InputGis::Proceed()</a>, <a class="el" href="../../db/d78/DevGIS_8cpp_source.html#l00490">mutabor::InputGis::ProceedRoute()</a>, <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00691">mutabor::CommonMidiInput&lt; D &gt;::ProceedRoute()</a>, <a class="el" href="../../de/d21/midicmn_8h_source.html#l00630">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::program_change()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00877">mutaborGUI::MutFrame::RaiseLogic()</a>, <a class="el" href="../../de/d21/midicmn_8h_source.html#l00379">mutabor::DebugMidiOutputProvider::RawMsg()</a>, <a class="el" href="../../d7/da0/GIS__Head_8cpp_source.html#l00319">GisReadHead::Read()</a>, <a class="el" href="../../d7/da0/GIS__Head_8cpp_source.html#l00516">GisReadArtHead::Read()</a>, <a class="el" href="../../d0/d6b/DevMidF_8cpp_source.html#l00108">mutabor::Track::ReadDelta()</a>, <a class="el" href="../../d6/d68/OutputMidiDeviceShape_8cpp_source.html#l00087">mutaborGUI::MutOutputMidiDeviceShape::readDialog()</a>, <a class="el" href="../../d3/d21/OutputGuidoFileDeviceShape_8cpp_source.html#l00053">mutaborGUI::MutOutputGuidoFileDeviceShape::readDialog()</a>, <a class="el" href="../../d8/da8/InputGuidoFileDeviceShape_8cpp_source.html#l00132">mutaborGUI::MutInputGuidoFileDeviceShape::readDialog()</a>, <a class="el" href="../../d0/d6b/DevMidF_8cpp_source.html#l00702">mutabor::InputMidiFile::ReadMidiProceed()</a>, <a class="el" href="../../db/d78/DevGIS_8cpp_source.html#l00571">mutabor::InputGis::ReadOn()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00444">mutaborGUI::MutBoxChannelShape::ReadPanel()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00612">mutaborGUI::GUIRouteBase::Remove()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00238">mutaborGUI::MutBoxChannelShape::Remove()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00150">mutabor::BoxClass::Remove()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00909">mutaborGUI::GUIOutputDeviceBase::Remove()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l01106">mutaborGUI::GUIInputDeviceBase::Remove()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00129">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Remove()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00453">mutaborGUI::GUIRouteBase::Replace()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00202">mutaborGUI::MutBoxChannelShape::Replace()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00137">mutabor::BoxClass::Replace()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00114">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Replace()</a>, <a class="el" href="../../da/d3c/DevMidF_8h_source.html#l00142">mutabor::Track::ResetDelta()</a>, <a class="el" href="../../da/d3c/DevMidF_8h_source.html#l00130">mutabor::Track::ResetPosition()</a>, <a class="el" href="../../de/d21/midicmn_8h_source.html#l00464">mutabor::DebugMidiOutputProvider::SendSysEx()</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00136">mutabor::ChannelData::set_controller()</a>, <a class="el" href="../../d3/d2a/BoxDlg_8cpp_source.html#l00315">mutaborGUI::BoxDlg::SetBoxType()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00651">mutaborGUI::MutFrame::SetClient()</a>, <a class="el" href="../../de/d50/OutputDevDlg_8h_source.html#l00146">mutaborGUI::OutputDevDlg::SetGUIDOFile()</a>, <a class="el" href="../../d9/d12/InputDevDlg_8h_source.html#l00158">mutaborGUI::InputDevDlg::SetGUIDOFile()</a>, <a class="el" href="../../db/d0a/BoxTest_8cpp_source.html#l00077">MyCompileCallback::SetMessage()</a>, <a class="el" href="../../de/d50/OutputDevDlg_8h_source.html#l00117">mutaborGUI::OutputDevDlg::SetMidiDevice()</a>, <a class="el" href="../../d9/d12/InputDevDlg_8h_source.html#l00131">mutaborGUI::InputDevDlg::SetMidiDevice()</a>, <a class="el" href="../../de/d50/OutputDevDlg_8h_source.html#l00130">mutaborGUI::OutputDevDlg::SetMidiFile()</a>, <a class="el" href="../../d9/d12/InputDevDlg_8h_source.html#l00144">mutaborGUI::InputDevDlg::SetMidiFile()</a>, <a class="el" href="../../d4/d26/configtree_8cpp_source.html#l00233">configtree::SetPath()</a>, <a class="el" href="../../da/d3c/DevMidF_8h_source.html#l00171">mutabor::Track::SetQuarterDuration()</a>, <a class="el" href="../../db/d0a/BoxTest_8cpp_source.html#l00074">MyCompileCallback::SetStatus()</a>, <a class="el" href="../../dc/d0c/stclanguage_8cpp_source.html#l00570">mutaborGUI::MutSTCLexer::SetStyling()</a>, <a class="el" href="../../de/d50/OutputDevDlg_8h_source.html#l00166">mutaborGUI::OutputDevDlg::SetType()</a>, <a class="el" href="../../d9/d12/InputDevDlg_8h_source.html#l00178">mutaborGUI::InputDevDlg::SetType()</a>, <a class="el" href="../../d0/d6b/DevMidF_8cpp_source.html#l00852">mutabor::InputMidiFile::shouldProceed()</a>, <a class="el" href="../../d4/d70/CommonFileDeviceTest_8h_source.html#l00069">testCommonFileDeviceTimer::Stop()</a>, <a class="el" href="../../d9/d6a/CommonFileDevice-inlines_8h_source.html#l00253">mutabor::CommonFileInputDevice::Stop()</a>, <a class="el" href="../../db/d78/DevGIS_8cpp_source.html#l00329">mutabor::InputGis::Stop()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01569">OutputMidiFileTest::testBatchPlay1()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l00605">InputMidiFileTest::testBug019010_2()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00955">CommonMidiInputTest::testGlobalPanic()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00329">CommonMidiOutputTest::testMoreNotesThanChannels()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00083">CommonMidiOutputTest::testNoteOnOff()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01379">OutputMidiFileTest::testNoteOnOff()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00599">CommonMidiInputTest::testPanic()</a>, <a class="el" href="../../d1/da7/boxTest_8cpp_source.html#l00163">boxTest::testReaddKey()</a>, <a class="el" href="../../d4/d70/CommonFileDeviceTest_8h_source.html#l00163">CommonFileDeviceTest::testTimer()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l01152">mutaborGUI::MutFrame::TextBoxOpen()</a>, <a class="el" href="../../d9/d6a/CommonFileDevice-inlines_8h_source.html#l00393">mutabor::CommonFileInputDevice::ThreadPlay()</a>, <a class="el" href="../../d4/d26/configtree_8cpp_source.html#l00125">configtree::toFirstLeaf()</a>, <a class="el" href="../../de/d4f/xmltree_8cpp_source.html#l00287">mutaborGUI::xmltree::toFirstLeaf()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l01044">mutaborGUI::MutFrame::ToggleTextBox()</a>, <a class="el" href="../../d4/d26/configtree_8cpp_source.html#l00086">configtree::toLeaf()</a>, <a class="el" href="../../de/d4f/xmltree_8cpp_source.html#l00191">mutaborGUI::xmltree::toLeaf()</a>, <a class="el" href="../../d4/d26/configtree_8cpp_source.html#l00156">configtree::toNextLeaf()</a>, <a class="el" href="../../d4/d26/configtree_8cpp_source.html#l00195">configtree::toParent()</a>, <a class="el" href="../../de/d4f/xmltree_8cpp_source.html#l00337">mutaborGUI::xmltree::toParent()</a>, <a class="el" href="../../da/d3c/DevMidF_8h_source.html#l00099">mutabor::Track::Track()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l01814">mutaborGUI::MutFrame::UpdateBoxMenu()</a>, <a class="el" href="../../da/d3c/DevMidF_8h_source.html#l00159">mutabor::Track::UpdateDelta()</a>, <a class="el" href="../../d4/d8f/InputDevDlg_8cpp_source.html#l00131">mutaborGUI::InputDevDlg::UpdateLayout()</a>, <a class="el" href="../../d9/d17/CommonFileDevice_8h_source.html#l00229">mutabor::CommonFileInputDevice::WaitForDeviceFinish()</a>, <a class="el" href="../../d0/d6b/DevMidF_8cpp_source.html#l00117">mutabor::Track::WriteDelta()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00079">mutabor::BoxClass::~BoxClass()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00084">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::~CommonTypedDeviceAPI()</a> und <a class="el" href="../../d8/dfb/Route_8cpp_source.html#l00058">mutabor::TRouteClass&lt; I, O, B &gt;::~TRouteClass()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gad0fa697ccfdac1d20857a4359add2996"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGLOG2</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">level, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga3afe596b4b512260d559f255fb3bf1ac">DEBUGLOGBASE</a>(level, _T(&quot;&quot;),__VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00142">142</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00585">BeginParameter()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00604">BeginRange()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00517">BeginSegment()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00551">BeginSequenz()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00492">BuildTag()</a>, <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00689">change_breite()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00749">Comma()</a>, <a class="el" href="../../d5/d12/GUIBoxData-inlines_8h_source.html#l00055">mutaborGUI::connect()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00115">mutaborGUI::connect_device_shape()</a>, <a class="el" href="../../d5/d12/GUIBoxData-inlines_8h_source.html#l00094">mutaborGUI::disconnect()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00258">mutaborGUI::disconnect_device_shape()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00592">EndParameter()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00638">EndRange()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00534">EndSegment()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00568">EndSequenz()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l01217">expandiere_in_globale_liste()</a>, <a class="el" href="../../d2/d2f/mxDefs_8cpp_source.html#l00042">FileNameDialog()</a>, <a class="el" href="../../d7/da0/GIS__Head_8cpp_source.html#l00058">GetMidiInstrument()</a>, <a class="el" href="../../d3/d9e/GSP_8cpp_source.html#l00227">GetSep()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00795">GetTagId()</a>, <a class="el" href="../../d7/da0/GIS__Head_8cpp_source.html#l00098">GetTheSpeedFactor()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00844">GisParse()</a>, <a class="el" href="../../d7/da0/GIS__Head_8cpp_source.html#l00656">GisReadArtHeadOn()</a>, <a class="el" href="../../dd/db8/RouteCompat_8cpp_source.html#l00124">compat30::LoadRoutes()</a>, <a class="el" href="../../dc/d19/box_8h_source.html#l00257">mutabor_delete_key_in_box()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00614">mutabor_programm_einlesen()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00657">NextSequenz()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00666">Note()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00570">mutabor::OutOpen()</a>, <a class="el" href="../../de/d21/midicmn_8h_source.html#l00610">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::pitch_bend()</a>, <a class="el" href="../../d2/d2f/mxDefs_8cpp_source.html#l00150">PRINTWINDOW()</a>, <a class="el" href="../../d3/d9e/GSP_8cpp_source.html#l00341">ReadLong()</a>, <a class="el" href="../../d3/d9e/GSP_8cpp_source.html#l00493">ReadNote()</a>, <a class="el" href="../../db/d78/DevGIS_8cpp_source.html#l00571">mutabor::InputGis::ReadOn()</a>, <a class="el" href="../../d2/d2c/Route-inlines_8h_source.html#l00157">mutabor::reconnect()</a>, <a class="el" href="../../dd/db8/RouteCompat_8cpp_source.html#l00335">compat30::SaveRoutes()</a>, <a class="el" href="../../d2/dd3/GUIBoxData_8cpp_source.html#l00069">mutaborGUI::BoxData::set_routefile_id()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00509">StartSep()</a>, <a class="el" href="../../dd/db8/RouteCompat_8cpp_source.html#l00079">compat30::Str2DT()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00689">Tag()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00704">TagParaInt()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00719">TagParaReal()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00734">TagParaStr()</a>, <a class="el" href="../../d3/d9e/GSP_8cpp_source.html#l00216">takesep()</a>, <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00094">xalloca()</a>, <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00270">xcalloc()</a>, <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00154">xmalloc()</a>, <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00236">xrealloc()</a>, <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00335">ymalloc()</a> und <a class="el" href="../../df/d33/mut_8cc_source.html#l03443">yylex()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga3afe596b4b512260d559f255fb3bf1ac"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGLOGBASE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td>&#160;&#160;&#160;do {} <a class="el" href="../../d0/dc8/mutlex_8cc.html#a8fdafe3be7e00ce3d4f0cb50a9a5eb39">while</a> (0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00132">132</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00436">mutaborGUI::MutLogicWnd::doClose()</a>, <a class="el" href="../../d3/d9e/GSP_8cpp_source.html#l00612">DoParse()</a> und <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00604">mutabor::InOpen()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga7c13600c17b7e363d86333bfc6aa54f3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGLOGBASEINT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td>&#160;&#160;&#160;do {} <a class="el" href="../../d0/dc8/mutlex_8cc.html#a8fdafe3be7e00ce3d4f0cb50a9a5eb39">while</a> (0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00131">131</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga9de22df51e7efa23154a04eab9e66cad"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGLOGTYPE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">level, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga3afe596b4b512260d559f255fb3bf1ac">DEBUGLOGBASE</a>(level, typeid(type).name(), __VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00143">143</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d2/d2c/Route-inlines_8h_source.html#l00239">mutabor::RouteFactory::Create()</a>, <a class="el" href="../../d8/db4/BoxShape_8cpp_source.html#l00047">mutaborGUI::GetStaticBoxSize()</a>, <a class="el" href="../../dc/d76/IconShape_8cpp_source.html#l00404">MutIconShapeClass&lt; T &gt;::GotFocus()</a>, <a class="el" href="../../d5/d1c/MutApp_8cpp_source.html#l00088">IMPLEMENT_APP()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00292">mutaborGUI::MutBoxChannelShape::InitializeInputFilter()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00395">mutaborGUI::MutBoxChannelShape::InitializeOutputFilter()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00351">mutaborGUI::MutBoxChannelShape::InitializeRoute()</a>, <a class="el" href="../../d1/da4/boost-interface_8h_source.html#l00114">intrusive_ptr_add_ref()</a>, <a class="el" href="../../d1/da4/boost-interface_8h_source.html#l00123">intrusive_ptr_release()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00854">mutabor::BoxFactory::LoadBoxes()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00479">mutabor::DeviceFactory::LoadInputDevices()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00426">mutabor::DeviceFactory::LoadOutputDevices()</a>, <a class="el" href="../../d8/dfb/Route_8cpp_source.html#l00250">mutabor::TRouteClass&lt; I, O, B &gt;::LoadRoutes()</a> und <a class="el" href="../../db/d41/timing_8h_source.html#l00402">mutabor::CurrentTimerBase::Sleep()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga9f7c0ab5b0db6d8abc460bd962667633"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGLOGTYPEINT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">level, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">strlevel, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga7c13600c17b7e363d86333bfc6aa54f3">DEBUGLOGBASEINT</a>(level, strlevel, typeid(type).name(), __VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00144">144</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00171">watchedPtr&lt; T, flag, P &gt;::operator=()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gac36bf26db9b8eee44c2ecf1aedd244c6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEFWATCHEDPTR</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00211">211</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gad51281d5c23e4daa2d7f85fc94935239"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define isDebugFlag</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">level</td><td>)</td>
+          <td>&#160;&#160;&#160;false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00130">130</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02399">berechne_toene_absolut()</a> und <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00614">mutabor_programm_einlesen()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga9aed8740f47ad4601d8252e4e77fc46b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mutPtrCast</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;static_cast&lt;type *&gt;(value)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00136">136</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga1cb0494257f81c4e6622c0502ab0059b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mutPtrDynCast</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;dynamic_cast&lt;type *&gt;(value)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00137">137</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga0191db36d7964b7c93f9e7b540a48db2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mutRefCast</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;static_cast&lt;type &amp;&gt;(value)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00135">135</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gab79160fab63de3860fd1a82d342b0fe3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MUWX_ROUTING_DEBUGROUTE_H</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../d5/d31/DebugRoute_8h_source.html#l00035">35</a> der Datei <a class="el" href="../../d5/d31/DebugRoute_8h_source.html">DebugRoute.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gac9b6f8b3448eb64ad34e8670aa26522d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MUWX_ROUTING_DEBUGROUTE_H_PRECOMPILED</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../d5/d31/DebugRoute_8h_source.html#l00045">45</a> der Datei <a class="el" href="../../d5/d31/DebugRoute_8h_source.html">DebugRoute.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga391d61b0297bf03db59dad4f6b8457ab"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PRINTSIZER</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">X</td><td>)</td>
+          <td>&#160;&#160;&#160;do {} <a class="el" href="../../d0/dc8/mutlex_8cc.html#a8fdafe3be7e00ce3d4f0cb50a9a5eb39">while</a> (0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00133">133</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00248">mutaborGUI::MutRouteWnd::InitDevices()</a>, <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00201">mutaborGUI::MutRouteWnd::InitShapes()</a>, <a class="el" href="../../dc/d76/IconShape_8cpp_source.html#l00707">MutIconShapeClass&lt; T &gt;::Layout()</a> und <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00719">mutaborGUI::MutRouteWnd::OnDraw()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaad9cc64d45a76ba0d37c00f8cd9caa37"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TRACE&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga3afe596b4b512260d559f255fb3bf1ac">DEBUGLOGBASE</a>(trace,_T(&quot;&quot;),_T(&quot;.&quot;))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00145">145</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00070">allgemeine_initialisierungen()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00156">argument_list_laenge()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02311">belege_toene()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02878">belege_zyklenfeld()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02399">berechne_toene_absolut()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02362">berechne_ton_endgueltig()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02535">case_label_enthalten_in_case_liste()</a>, <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00653">change_anker()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02697">check_aktionen()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02548">check_ausloeser()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02954">check_konsistenz()</a>, <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00764">compare_harmonie()</a>, <a class="el" href="../../d5/d12/GUIBoxData-inlines_8h_source.html#l00055">mutaborGUI::connect()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00115">mutaborGUI::connect_device_shape()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00924">create_midi_scan_liste()</a>, <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00928">DeleteKey()</a>, <a class="el" href="../../d5/d12/GUIBoxData-inlines_8h_source.html#l00094">mutaborGUI::disconnect()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00258">mutaborGUI::disconnect_device_shape()</a>, <a class="el" href="../../d8/db4/BoxShape_8cpp_source.html#l00360">mutaborGUI::MutBoxShape::DoLeftDblClick()</a>, <a class="el" href="../../d9/d94/DeviceShape_8cpp_source.html#l00405">mutaborGUI::MutDeviceShape&lt; T &gt;::DoLeftDblClick()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01412">eintrage_parameterliste_in_umstimmung()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02522">enthalten_in_tastenliste()</a>, <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00270">execute_aktion()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00585">expand_aktions_liste()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00626">expand_case_liste()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l01291">expand_decition_tree()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00908">expand_harmony_analysis()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00941">expand_pattern()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00396">expand_tonliste()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l01217">expandiere_in_globale_liste()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00514">expandiere_logik()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00891">expandiere_midi()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00835">expandiere_name()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00464">expandiere_tonsystem()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00672">expandiere_umstimmung()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00136">fprint_argument()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00229">generate_argument_list()</a>, <a class="el" href="../../df/d23/Execute_8cpp_source.html#l01077">generic_keyboard_analysis()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02102">get_ausloeser_default()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02111">get_ausloeser_harmonie()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02122">get_ausloeser_harmonie_form()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02150">get_ausloeser_midi_in()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02133">get_ausloeser_taste()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00202">get_harmonie()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02238">get_instrument_dekl()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00175">get_intervall()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00087">get_komplex_faktor()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00469">get_last_aktions_liste()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02174">get_last_anweisungs_liste()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02096">get_last_ausloeser()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00245">get_last_integersequenz()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00503">get_last_komplex_intervall()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00211">get_logik()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00132">get_logik_nummer()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00424">get_new_aktion_aufruf_element()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00457">get_new_aktion_harmony_analysis()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00442">get_new_aktion_midi_out_element()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00393">get_new_anchor_in_argument_list()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02180">get_new_anweisung()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00380">get_new_distance_in_argument_list()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00483">get_new_faktor_anteil()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02016">get_new_harmonie()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00232">get_new_integer_in_integersequenz()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01083">get_new_intervall()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01111">get_new_intervall_komplex()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02197">get_new_logik()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00364">get_new_name_in_argument_list()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00265">get_new_name_in_parameterlist()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00348">get_new_number_in_argument_list()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01996">get_new_taste()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01140">get_new_ton_absolut()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01241">get_new_ton_in_tonsystem()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01189">get_new_ton_komplex_negative()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01164">get_new_ton_komplex_positive()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01258">get_new_tonsystem()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01283">get_new_tonsystem_negative()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01480">get_new_umstimm_expression()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01531">get_new_umstimm_expression_negative()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01393">get_new_umstimmung()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00296">get_parameter_by_name()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00165">get_ton()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00193">get_umstimmung()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01448">get_umstimmung_breite_abs()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01457">get_umstimmung_breite_rel()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01974">get_umstimmung_midi_out()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01428">get_umstimmung_taste_abs()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01437">get_umstimmung_taste_rel()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01841">get_umstimmung_umstimm_case()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01672">get_umstimmung_umstimmungs_bund()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01606">get_umstimmung_wiederholung_rel_negative()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01598">get_umstimmung_wiederholung_rel_positive()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01814">get_umstimmungs_case_default_element()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01796">get_umstimmungs_case_zahl_element()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00672">mutabor::BoxClass::GetChannel()</a>, <a class="el" href="../../d7/da0/GIS__Head_8cpp_source.html#l00656">GisReadArtHeadOn()</a>, <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00876">HarmonyAnalysis()</a>, <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00735">hoechste_taste()</a>, <a class="el" href="../../d5/d1c/MutApp_8cpp_source.html#l00088">IMPLEMENT_APP()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00624">mutabor::InClose()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00417">init_aktions_liste()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02168">init_anweisungs_liste()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00340">init_argument_liste()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02090">init_ausloeser()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00225">init_integersequenz()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00477">init_komplex_ton_list()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00257">init_parameter_liste()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01990">init_tastenliste()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01235">init_ton_liste()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01474">init_umstimm_expression_list()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01333">init_umstimmung()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l01835">init_umstimmungs_case_liste()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00604">mutabor::InOpen()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00978">insert_in_globale_liste()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l01087">insert_in_lokale_liste()</a>, <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00964">KeyboardIn()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00479">mutabor::DeviceFactory::LoadInputDevices()</a>, <a class="el" href="../../dd/db8/RouteCompat_8cpp_source.html#l00124">compat30::LoadRoutes()</a>, <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00787">local_harmony_analysis()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00111">logik_list_laenge()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00121">midi_list_laenge()</a>, <a class="el" href="../../df/d23/Execute_8cpp_source.html#l01019">MidiAnalysis()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00614">mutabor_programm_einlesen()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00634">mutabor::NeedsRealTime()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00147">parameter_list_laenge()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00184">parser_get_tonsystem()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00309">print_argumentliste()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00512">mutabor::DeviceFactory::SaveInputDevices()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02339">test_zyklen()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02902">test_zyklen_nummer()</a>, <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00707">tiefste_taste()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00080">ton_list_laenge()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02322">ton_nummer()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00091">tonsystem_list_laenge()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02923">u_test_zyklen()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00101">umstimmungs_list_laenge()</a>, <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00636">update_pattern()</a> und <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l02224">vervollstaendige_logik()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga86acd9c1c30c8cb1831b46da11b1ec62"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TRACEC&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(trace,_T(&quot;.&quot;))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00146">146</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d9/d49/BoxShape_8h_source.html#l00154">mutaborGUI::MutBoxShape::Add()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00153">mutaborGUI::MutBoxChannelShape::Add()</a>, <a class="el" href="../../d9/d4d/DeviceShape_8h_source.html#l00175">mutaborGUI::MutDeviceShape&lt; T &gt;::Add()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00123">mutabor::BoxClass::Add()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00961">mutaborGUI::GUIfiedOutputDevice&lt; T &gt;::Add()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00100">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Add()</a>, <a class="el" href="../../d3/d2a/BoxDlg_8cpp_source.html#l00060">mutaborGUI::InputFilterPanel::AddPage()</a>, <a class="el" href="../../dc/d76/IconShape_8cpp_source.html#l00086">BEGIN_EVENT_TABLE_TEMPLATE1()</a>, <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00372">mutaborGUI::MutRouteWnd::ClearBoxes()</a>, <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00299">mutaborGUI::MutRouteWnd::ClearInputDevices()</a>, <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00410">mutaborGUI::MutRouteWnd::ClearOutputDevices()</a>, <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00099">mutabor::CommonMidiOutput&lt; T, D &gt;::Close()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l01747">mutaborGUI::MutFrame::CloseAll()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00699">mutaborGUI::MutFrame::CmDoActivate()</a>, <a class="el" href="../../d9/d8f/MutConfDlg_8h_source.html#l00071">mutaborGUI::MutConfigDialog::CmHelp()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l01543">mutaborGUI::MutFrame::CmInDevPlay()</a>, <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00698">mutaborGUI::MutLogicWnd::CmMutTag()</a>, <a class="el" href="../../de/d21/midicmn_8h_source.html#l00768">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::CommonMidiOutput()</a>, <a class="el" href="../../d4/de8/OutputMidiFileDeviceShape_8h_source.html#l00075">mutaborGUI::MutOutputMidiFileDeviceShape::Create()</a>, <a class="el" href="../../d9/d0d/InputGuidoFileDeviceShape_8h_source.html#l00077">mutaborGUI::MutInputGuidoFileDeviceShape::Create()</a>, <a class="el" href="../../d9/d94/DeviceShape_8cpp_source.html#l00108">mutaborGUI::MutDeviceShape&lt; T &gt;::Create()</a>, <a class="el" href="../../d1/da8/InputMidiFileDeviceShape_8h_source.html#l00147">mutaborGUI::MutInputMidiFileDeviceShape::Create()</a>, <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00308">mutaborGUI::MutRouteWnd::createBoxes()</a>, <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00271">mutaborGUI::MutRouteWnd::createInputDevices()</a>, <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00382">mutaborGUI::MutRouteWnd::createOutputDevices()</a>, <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00338">mutaborGUI::MutRouteWnd::createRoutes()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00636">mutaborGUI::GUIOutputDeviceBase::Destroy()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00694">mutaborGUI::GUIInputDeviceBase::Destroy()</a>, <a class="el" href="../../d8/d4d/Device-inlines_8h_source.html#l00053">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Destroy()</a>, <a class="el" href="../../d6/d9a/Box-inlines_8h_source.html#l00054">mutabor::BoxClass::Destroy()</a>, <a class="el" href="../../d9/d94/DeviceShape_8cpp_source.html#l00481">mutaborGUI::MutDeviceShape&lt; T &gt;::DetachDevice()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l01712">mutaborGUI::MutFrame::DetermineFrameSize()</a>, <a class="el" href="../../d6/d9a/Box-inlines_8h_source.html#l00068">mutabor::BoxClass::DisconnectFromAll()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00660">mutaborGUI::GUIfiedOutputDevice&lt; T &gt;::DisconnectFromAll()</a>, <a class="el" href="../../d8/d4d/Device-inlines_8h_source.html#l00068">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::DisconnectFromAll()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00728">mutaborGUI::GUIfiedInputDevice&lt; T &gt;::DisconnectFromAll()</a>, <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00513">mutabor::CommonMidiOutput&lt; T, D &gt;::do_GetChannel()</a>, <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00050">mutabor::CommonMidiOutput&lt; T, D &gt;::do_Open()</a>, <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00669">mutabor::CommonMidiOutput&lt; T, D &gt;::do_Panic()</a>, <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00656">mutabor::CommonMidiOutput&lt; T, D &gt;::do_Quiet()</a>, <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00377">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateTones()</a>, <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00436">mutaborGUI::MutLogicWnd::doClose()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00759">mutaborGUI::GUIMidiPortFactory::DoCreateInput()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00831">mutaborGUI::GUIMidiFileFactory::DoCreateInput()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00894">mutaborGUI::GUIGisFactory::DoCreateInput()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00742">mutaborGUI::GUIMidiPortFactory::DoCreateOutput()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00815">mutaborGUI::GUIMidiFileFactory::DoCreateOutput()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00878">mutaborGUI::GUIGisFactory::DoCreateOutput()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00778">mutaborGUI::GUIMidiPortFactory::DoCreateShape()</a>, <a class="el" href="../../d1/da4/MutEditFile_8cpp_source.html#l00773">mutaborGUI::MutEditFile::DoFind()</a>, <a class="el" href="../../d9/d94/DeviceShape_8cpp_source.html#l00405">mutaborGUI::MutDeviceShape&lt; T &gt;::DoLeftDblClick()</a>, <a class="el" href="../../d1/da4/MutEditFile_8cpp_source.html#l00319">mutaborGUI::MutEditFile::DoLoadFile()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00912">mutaborGUI::MutFrame::DoStop()</a>, <a class="el" href="../../dd/db0/MutDocManager_8cpp_source.html#l00087">END_EVENT_TABLE()</a>, <a class="el" href="../../d3/d2a/BoxDlg_8cpp_source.html#l00082">mutaborGUI::InputFilterPanel::GetCurrentSelection()</a>, <a class="el" href="../../d8/dcb/OutputMidiDeviceShape_8h_source.html#l00081">mutaborGUI::MutOutputMidiDeviceShape::GetMutIcon()</a>, <a class="el" href="../../db/d77/OutputGuidoFileDeviceShape_8h_source.html#l00082">mutaborGUI::MutOutputGuidoFileDeviceShape::GetMutIcon()</a>, <a class="el" href="../../d4/de8/OutputMidiFileDeviceShape_8h_source.html#l00083">mutaborGUI::MutOutputMidiFileDeviceShape::GetMutIcon()</a>, <a class="el" href="../../d9/d0d/InputGuidoFileDeviceShape_8h_source.html#l00085">mutaborGUI::MutInputGuidoFileDeviceShape::GetMutIcon()</a>, <a class="el" href="../../d3/d5e/InputMidiDeviceShape_8h_source.html#l00152">mutaborGUI::MutInputMidiDeviceShape::GetMutIcon()</a>, <a class="el" href="../../d1/da8/InputMidiFileDeviceShape_8h_source.html#l00157">mutaborGUI::MutInputMidiFileDeviceShape::GetMutIcon()</a>, <a class="el" href="../../d9/d4d/DeviceShape_8h_source.html#l00155">mutaborGUI::MutDeviceShape&lt; T &gt;::getRoutes()</a>, <a class="el" href="../../d5/d1c/MutApp_8cpp_source.html#l00088">IMPLEMENT_APP()</a>, <a class="el" href="../../d7/dcb/BoxIconShape_8cpp_source.html#l00107">mutaborGUI::MutBoxIconShape::Layout()</a>, <a class="el" href="../../dc/d76/IconShape_8cpp_source.html#l00436">MutIconShapeClass&lt; T &gt;::LostFocus()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00169">mutabor::BoxClass::MoveRoutes()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00148">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::MoveRoutes()</a>, <a class="el" href="../../d9/d0d/InputGuidoFileDeviceShape_8h_source.html#l00069">mutaborGUI::MutInputGuidoFileDeviceShape::MutInputGuidoFileDeviceShape()</a>, <a class="el" href="../../df/d3c/MutTextBox_8cpp_source.html#l00075">MutTextBox::MutTextBox()</a>, <a class="el" href="../../df/d3c/MutTextBox_8cpp_source.html#l00377">MutTextBox::NewText()</a>, <a class="el" href="../../da/d72/MutChild_8cpp_source.html#l00157">mutaborGUI::MutChild::OnActivate()</a>, <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00776">mutaborGUI::MutLogicWnd::OnActivate()</a>, <a class="el" href="../../d2/df9/MutChild_8h_source.html#l00092">mutaborGUI::MutChild::OnAuiClose()</a>, <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00472">mutaborGUI::MutLogicWnd::OnChar()</a>, <a class="el" href="../../da/d72/MutChild_8cpp_source.html#l00206">mutaborGUI::MutChild::OnChar()</a>, <a class="el" href="../../d2/df9/MutChild_8h_source.html#l00083">mutaborGUI::MutChild::OnClose()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00497">mutaborGUI::MutFrame::OnCloseWindow()</a>, <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00785">mutaborGUI::MutLogicWnd::OnGetFocus()</a>, <a class="el" href="../../dc/d76/IconShape_8cpp_source.html#l00444">MutIconShapeClass&lt; T &gt;::OnGetFocus()</a>, <a class="el" href="../../da/d72/MutChild_8cpp_source.html#l00395">mutaborGUI::MutChild::OnGetFocus()</a>, <a class="el" href="../../dc/d76/IconShape_8cpp_source.html#l00452">MutIconShapeClass&lt; T &gt;::OnKillFocus()</a>, <a class="el" href="../../dc/d76/IconShape_8cpp_source.html#l00460">MutIconShapeClass&lt; T &gt;::OnMouseClick()</a>, <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00362">mutabor::OutputMidiPort::OutputMidiPort()</a>, <a class="el" href="../../d9/d94/DeviceShape_8cpp_source.html#l00196">mutaborGUI::MutDeviceShape&lt; T &gt;::ReadPanel()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00444">mutaborGUI::MutBoxChannelShape::ReadPanel()</a>, <a class="el" href="../../d9/d49/BoxShape_8h_source.html#l00179">mutaborGUI::MutBoxShape::Remove()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00225">mutaborGUI::MutBoxChannelShape::Remove()</a>, <a class="el" href="../../d9/d4d/DeviceShape_8h_source.html#l00200">mutaborGUI::MutDeviceShape&lt; T &gt;::Remove()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00992">mutaborGUI::GUIfiedOutputDevice&lt; T &gt;::Remove()</a>, <a class="el" href="../../d9/d49/BoxShape_8h_source.html#l00164">mutaborGUI::MutBoxShape::Replace()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00187">mutaborGUI::MutBoxChannelShape::Replace()</a>, <a class="el" href="../../d9/d4d/DeviceShape_8h_source.html#l00185">mutaborGUI::MutDeviceShape&lt; T &gt;::Replace()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00971">mutaborGUI::GUIfiedOutputDevice&lt; T &gt;::Replace()</a>, <a class="el" href="../../d9/d94/DeviceShape_8cpp_source.html#l00507">mutaborGUI::MutDeviceShape&lt; T &gt;::replaceSelfBy()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00463">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::TRouteClass()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00079">mutabor::BoxClass::~BoxClass()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00084">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::~CommonTypedDeviceAPI()</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00361">mutabor::Device::~Device()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00426">mutaborGUI::GUIfiedOutputDevice&lt; T &gt;::~GUIfiedOutputDevice()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00225">mutaborGUI::GUIfiedRoute&lt; T &gt;::~GUIfiedRoute()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00077">mutaborGUI::GUIRouteBase::~GUIRouteBase()</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00886">mutabor::InputDeviceClass::~InputDeviceClass()</a>, <a class="el" href="../../da/d72/MutChild_8cpp_source.html#l00150">mutaborGUI::MutChild::~MutChild()</a>, <a class="el" href="../../d9/d94/DeviceShape_8cpp_source.html#l00099">mutaborGUI::MutDeviceShape&lt; T &gt;::~MutDeviceShape()</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00694">mutabor::OutputDeviceClass::~OutputDeviceClass()</a> und <a class="el" href="../../d8/dfb/Route_8cpp_source.html#l00058">mutabor::TRouteClass&lt; I, O, B &gt;::~TRouteClass()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga556434a0102a112e3dd0c2849d5e36fd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TRACET</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga9de22df51e7efa23154a04eab9e66cad">DEBUGLOGTYPE</a>(trace,type,_T(&quot;.&quot;))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00147">147</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d8/dfb/Route_8cpp_source.html#l00285">mutabor::TRouteClass&lt; I, O, B &gt;::AppendToRouteList()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00416">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::ClearRouteList()</a>, <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00524">mutaborGUI::MutRouteWnd::CmRouteSave()</a>, <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00601">mutaborGUI::MutRouteWnd::CmRouteSaveAs()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00189">mutabor::BoxClass::InitializeIds()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00169">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::InitializeIds()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00292">mutaborGUI::MutBoxChannelShape::InitializeInputFilter()</a>, <a class="el" href="../../d8/dfb/Route_8cpp_source.html#l00250">mutabor::TRouteClass&lt; I, O, B &gt;::LoadRoutes()</a> und <a class="el" href="../../d9/d94/DeviceShape_8cpp_source.html#l00507">mutaborGUI::MutDeviceShape&lt; T &gt;::replaceSelfBy()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaab4d9ab34f40c3e65ae4b48e25aec5d0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WATCHEDPTR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">T, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">f, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">P&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="../../dd/d82/classwatchedPtr.html">watchedPtr</a>&lt;T,<a class="el" href="../../d2/d82/structnogetflag.html">nogetflag</a>,P&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00210">210</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Funktionen</h2>
+<a class="anchor" id="ga33e4d2337c0d8d97f3f9527159d490a0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void debug_destroy_class </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>l</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00221">221</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d2/d2c/Route-inlines_8h_source.html#l00228">mutabor::TRouteClass&lt; I, O, B &gt;::Destroy()</a>, <a class="el" href="../../d8/d4d/Device-inlines_8h_source.html#l00053">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Destroy()</a> und <a class="el" href="../../d6/d9a/Box-inlines_8h_source.html#l00054">mutabor::BoxClass::Destroy()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;{}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="gad832f7644d01ea65a5de5dc9ba942d11"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void debug_destruct_class </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00222">222</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00079">mutabor::BoxClass::~BoxClass()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00084">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::~CommonTypedDeviceAPI()</a> und <a class="el" href="../../d8/dfb/Route_8cpp_source.html#l00058">mutabor::TRouteClass&lt; I, O, B &gt;::~TRouteClass()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;{}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ga886d7604932ac35111800f57ea4a5a43"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool debug_is_all_deleted </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00224">224</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d5/d1c/MutApp_8cpp_source.html#l00088">IMPLEMENT_APP()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ga15f8c412cd184d3b64d2deac2e3f74e8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void debug_print_pointers </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00223">223</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d5/d1c/MutApp_8cpp_source.html#l00088">IMPLEMENT_APP()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;{}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="gadbf79483244e2a2d3f7c6bb05d7667ab"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEBUGFLAG </td>
+          <td>(</td>
+          <td class="paramtype">other&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../de/db7/group__debug.html#ga63719beeefaec831a72724b660b44f59">N_</a>(&quot;Unspecified debug information&quot;)&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="gaa956b288de489d3459d1cd1b7f994012"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool DoShowAssertDialog </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> wxString &amp;&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../d4/dc0/mutDebug_8cpp_source.html#l00204">204</a> der Datei <a class="el" href="../../d4/dc0/mutDebug_8cpp_source.html">mutDebug.cpp</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d4/dc0/mutDebug_8cpp_source.html#l00243">mutAssertFailure()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;{</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="comment">// under MSW we can show the dialog even in the console mode</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="preprocessor">#if defined(__WXMSW__) &amp;&amp; !defined(__WXMICROWIN__)</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor"></span>    wxString msgDlg(msg);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="comment">// this message is intentionally not translated -- it is for</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="comment">// developpers only</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    msgDlg += wxT(<span class="stringliteral">&quot;\nDo you want to stop the program?\n&quot;</span>)</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;              wxT(&quot;You can also choose [Cancel] to suppress &quot;)</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;              wxT(&quot;further warnings.&quot;);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <a class="code" href="../../df/d33/mut_8cc.html#a5b7bf1384bf1f609b09f3bb5386b0822">switch</a> ( ::MessageBox(NULL, msgDlg, _T(&quot;wxWidgets Debug Alert&quot;),</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                          MB_YESNOCANCEL | MB_ICONSTOP ) )</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keywordflow">case</span> IDYES:</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            wxTrap();</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <span class="keywordflow">case</span> IDCANCEL:</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            <span class="comment">// stop the asserts</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="comment">//case IDNO: nothing to do</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    }</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">#else // !__WXMSW__</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor"></span>    wxFprintf(stderr, wxT(<span class="stringliteral">&quot;%s\n&quot;</span>), msg.c_str());</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    fflush(stderr);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="comment">// TODO: ask the user to enter &quot;Y&quot; or &quot;N&quot; on the console?</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    wxTrap();</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="preprocessor">#endif // __WXMSW__/!__WXMSW__</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="comment">// continue with the asserts</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;}</div>
+<div class="ttc" id="mut_8cc_html_a5b7bf1384bf1f609b09f3bb5386b0822"><div class="ttname"><a href="../../df/d33/mut_8cc.html#a5b7bf1384bf1f609b09f3bb5386b0822">switch</a></div><div class="ttdeci">switch(yyn)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/mut_8cc_source.html#l01965">mut.cc:1965</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ga711968cbebc4d3b87c0c9f765213bbd4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mutAssertFailure </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> wxChar *&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> wxChar *&#160;</td>
+          <td class="paramname"><em>func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> wxChar *&#160;</td>
+          <td class="paramname"><em>cond</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> wxChar *&#160;</td>
+          <td class="paramname"><em>msg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../d4/dc0/mutDebug_8cpp_source.html#l00243">243</a> der Datei <a class="el" href="../../d4/dc0/mutDebug_8cpp_source.html">mutDebug.cpp</a>.</p>
+
+<p>Benutzt <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00057">_</a>, <a class="el" href="../../d4/dc0/mutDebug_8cpp_source.html#l00204">DoShowAssertDialog()</a> und <a class="el" href="../../d4/dc0/mutDebug_8cpp_source.html#l00146">MutInitConsole()</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d5/d1c/MutApp_8cpp_source.html#l00088">IMPLEMENT_APP()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;{</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="preprocessor">#ifdef MUTABOR_CPPUNIT</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="preprocessor"></span>        { </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                        CPPUNIT_NS::Message mesg( <span class="stringliteral">&quot;assertion failed&quot;</span>,           </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                                                  std::string(wxString::Format(_T(<span class="stringliteral">&quot;%s:%d:%s\nFunction: %s; Expression: %s&quot;</span>),</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                                                                               file,</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                                                                               line, </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                                                                               (msg?msg:_T(<span class="stringliteral">&quot;&quot;</span>)),</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                                                                               func, </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                                                                               cond).ToUTF8()));</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                        wxString filename(file);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                        CPPUNIT_NS::Asserter::fail(mesg,</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                                                   CPPUNIT_NS::SourceLine(std::string(filename.ToUTF8()), line )</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                                );</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        }</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="preprocessor"></span>        <span class="keywordflow">if</span> (!std::clog.good()) <a class="code" href="../../de/db7/group__debug.html#gae7c707573d355e5f9014404f474678c5">MutInitConsole</a>();</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        wxString s = wxString::Format(<a class="code" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>(<span class="stringliteral">&quot;%s:%d: An assert failed in %s().\nCondition: %s\nMessage:%s\nDo you want to call the default assert handler?&quot;</span>), </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                                      file,line,func,cond,msg);</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        std::clog &lt;&lt; (<span class="keyword">const</span> <span class="keywordtype">char</span> *) s.ToUTF8() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="comment">// use wxWidgets ShowAssertDialog function (it&#39;s static so we repeat its code, here.</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                <span class="comment">// this variable can be set to true to suppress &quot;assert failure&quot; messages</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                <span class="keyword">static</span> <span class="keywordtype">bool</span> s_bNoAsserts = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                wxString message;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                message.reserve(2048);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                <span class="comment">// here, we change format to the gcc form</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                message.Printf(wxT(<span class="stringliteral">&quot;%s:%d: assert \&quot;%s\&quot; failed&quot;</span>), file, line, cond);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                <span class="comment">// add the function name, if any</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                <span class="keywordflow">if</span> ( func &amp;&amp; *func )</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                        message &lt;&lt; _T(<span class="stringliteral">&quot; in &quot;</span>) &lt;&lt; func &lt;&lt; _T(<span class="stringliteral">&quot;()&quot;</span>);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                <span class="comment">// and the message itself</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                <span class="keywordflow">if</span> ( msg )</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                {</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                        message &lt;&lt; _T(<span class="stringliteral">&quot;: &quot;</span>) &lt;&lt; msg;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                }</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                <span class="keywordflow">else</span> <span class="comment">// no message given</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                        message &lt;&lt; _T(<span class="charliteral">&#39;.&#39;</span>);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="preprocessor">#if wxUSE_THREADS</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="preprocessor"></span>                <span class="comment">// if we are not in the main thread, output the assert directly and trap</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                <span class="comment">// since dialogs cannot be displayed</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                <span class="keywordflow">if</span> ( !wxThread::IsMain() )</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                        message += wxT(<span class="stringliteral">&quot; [in child thread]&quot;</span>);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="preprocessor">#if defined(__WXMSW__) &amp;&amp; !defined(__WXMICROWIN__)</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="preprocessor"></span>                        message &lt;&lt; wxT(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                        OutputDebugString(message );</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="preprocessor"></span>                        <span class="comment">// send to stderr</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                        wxFprintf(stderr, wxT(<span class="stringliteral">&quot;%s\n&quot;</span>), message.c_str());</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                        fflush(stderr);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="preprocessor"></span>                        <span class="comment">// He-e-e-e-elp!! we&#39;re asserting in a child thread</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                        wxTrap();</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="preprocessor">#endif // wxUSE_THREADS</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                        <span class="keywordflow">if</span> ( !s_bNoAsserts )</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                        {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                                <span class="comment">// send it to the normal log destination</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                                wxLogDebug(_T(<span class="stringliteral">&quot;%s&quot;</span>), message.c_str());</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="preprocessor">#ifdef __WXDEBUG__</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="preprocessor"></span>                                <span class="keywordflow">if</span> ( wxGetApp().GetTraits() )</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                                {</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                                        <span class="comment">// delegate showing assert dialog (if possible) to that class</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                                        s_bNoAsserts = wxGetApp().GetTraits()-&gt;ShowAssertDialog(message);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                                }</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                                <span class="keywordflow">else</span> <span class="comment">// no traits object</span></div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;<span class="preprocessor"></span>                                {</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                                        <span class="comment">// fall back to the function of last resort</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                                        s_bNoAsserts = <a class="code" href="../../de/db7/group__debug.html#gaa956b288de489d3459d1cd1b7f994012">DoShowAssertDialog</a>(message);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                                }</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                        }</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        }</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="preprocessor">#endif  </span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="ttc" id="group__debug_html_gae7c707573d355e5f9014404f474678c5"><div class="ttname"><a href="../../de/db7/group__debug.html#gae7c707573d355e5f9014404f474678c5">MutInitConsole</a></div><div class="ttdeci">void MutInitConsole()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dc0/mutDebug_8cpp_source.html#l00146">mutDebug.cpp:146</a></div></div>
+<div class="ttc" id="group__debug_html_gaa956b288de489d3459d1cd1b7f994012"><div class="ttname"><a href="../../de/db7/group__debug.html#gaa956b288de489d3459d1cd1b7f994012">DoShowAssertDialog</a></div><div class="ttdeci">static bool DoShowAssertDialog(const wxString &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dc0/mutDebug_8cpp_source.html#l00204">mutDebug.cpp:204</a></div></div>
+<div class="ttc" id="group__kernel_html_gae4dfd7b0d66121016d6466d2ff10e8ba"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a></div><div class="ttdeci">#define _</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/Execute_8cpp_source.html#l00057">Execute.cpp:57</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="gae7c707573d355e5f9014404f474678c5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MutInitConsole </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../d4/dc0/mutDebug_8cpp_source.html#l00146">146</a> der Datei <a class="el" href="../../d4/dc0/mutDebug_8cpp_source.html">mutDebug.cpp</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d4/dc0/mutDebug_8cpp_source.html#l00198">consoleinit::consoleinit()</a> und <a class="el" href="../../d4/dc0/mutDebug_8cpp_source.html#l00243">mutAssertFailure()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;{</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor">#if __WXMSW__</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor"></span>        <span class="comment">// taken from http://www.halcyon.com/~ast/dload/guicon.htm</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> WORD MAX_CONSOLE_LINES = 500;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordtype">int</span> hConHandle;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordtype">long</span> lStdHandle;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        CONSOLE_SCREEN_BUFFER_INFO coninfo;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        FILE *fp;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="comment">// allocate a console for this app</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        AllocConsole();</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="comment">// set the screen buffer to be big enough to let us scroll text</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE),</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                                        &amp;coninfo);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        coninfo.dwSize.Y = MAX_CONSOLE_LINES;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE),</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                                        coninfo.dwSize);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="comment">// redirect unbuffered STDOUT to the console</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        lStdHandle = (long)GetStdHandle(STD_OUTPUT_HANDLE);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        fp = _fdopen( hConHandle, <span class="stringliteral">&quot;w&quot;</span> );</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        *stdout = *fp;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        setvbuf( stdout, NULL, _IONBF, 0 );</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="comment">// redirect unbuffered STDIN to the console</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        lStdHandle = (long)GetStdHandle(STD_INPUT_HANDLE);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        fp = _fdopen( hConHandle, <span class="stringliteral">&quot;r&quot;</span> );</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        *stdin = *fp;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        setvbuf( stdin, NULL, _IONBF, 0 );</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="comment">// redirect unbuffered STDERR to the console</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        lStdHandle = (long)GetStdHandle(STD_ERROR_HANDLE);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        fp = _fdopen( hConHandle, <span class="stringliteral">&quot;w&quot;</span> );</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        *stderr = *fp;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        setvbuf( stderr, NULL, _IONBF, 0 );</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="comment">// make cout, wcout, cin, wcin, wcerr, cerr, wclog and clog</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="comment">// point to console as well</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        std::ios::sync_with_stdio();</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="preprocessor"></span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="gac8c4de4b8f99001765fd7091fc0b12fe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Debug Execute.cpp&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="gae976c24a1f797fc5488db17b4d486f38"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Debug table generator&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="gac1ac287b3b831362cdb245fbe5642510"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Debug the parser of the Mutabor kernel&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ga664e65d22788498900b2ee62dea6752a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Debug the GUIDO file devices&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="gadd97daeeec4453c3add48d1eda99e66c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Other gui related debug information&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ga692303bc135e9aa833c2bcab8cb85a3b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Debug configuration and postprocessing of dialogs&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ga09a8166ec3620123f5dcdd495d7fdaa2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Debug the routing system&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ga40c027f66909659b65597c3b6cf5d6c7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Debug the routing system GUI&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="gaf5c85716ba57c13d821992aa97fbb34e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Debug the MIDI input/output system&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="gac15e24c2cb8a56aa8d2ce8b9ffc6e935"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Debug the MIDI file devices&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ga71644ef33c9042af3a0565b934573a37"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Debug the Mutabor file parser&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="gab11c7c9f3cd12d8b977a48b7c461fe35"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Debug the config file parser&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="gaa1c3de9db49b954401c62ebf70c39d9a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Debug the Document/View framework&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="gae64329b458b40c2b064a4305140c1d8e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Print unhandled events in the queue&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="gab0a658f053f9ec9703633272f53709e9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Debug editor related functionality&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ga987c2d613501916c42032feb8a03dd3e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Debug editor language lexer related functionality&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ga0c1f162191f3cde41a7d48cb6fd4d655"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Debug smart pointer related functionality&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="gaf3c9a982ea88fa588eb58ac7ea72b93b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Output some tracepoints&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ga720940eae72549a44e3b014b3c0292c4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Trace thread timer problems&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ga63719beeefaec831a72724b660b44f59"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Trace thread problems&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ga68462250845e52cf9f815afcd030453e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_T </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Debug other runtime functions of the kernel&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variablen-Dokumentation</h2>
+<a class="anchor" id="gaac12d0e918fb9eb6a8f5687bb1029fcc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">class <a class="el" href="../../d1/d9f/classconsoleinit.html">consoleinit</a>  g_consoleinit</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Don Nov 28 2013 19:38:44 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+</body>
+</html>

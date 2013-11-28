@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="d9/d34/midicmn-inlines_8h" kind="file">
+    <compoundname>midicmn-inlines.h</compoundname>
+    <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
+    <includes refid="de/d21/midicmn_8h" local="yes">src/kernel/routing/midi/midicmn.h</includes>
+    <includes refid="da/dfd/MidiKern_8h" local="yes">src/kernel/MidiKern.h</includes>
+    <includedby refid="d0/d6b/DevMidF_8cpp" local="yes">src/kernel/routing/midi/DevMidF.cpp</includedby>
+    <includedby refid="df/d8f/DevMidi_8cpp" local="yes">src/kernel/routing/midi/DevMidi.cpp</includedby>
+    <includedby refid="d9/d99/DevMidFTest_8cpp" local="yes">src/kernel/routing/midi/tests/DevMidFTest.cpp</includedby>
+    <includedby refid="d8/d59/midicmnTest_8cpp" local="yes">src/kernel/routing/midi/tests/midicmnTest.cpp</includedby>
+    <incdepgraph>
+      <node id="15902">
+        <label>list</label>
+      </node>
+      <node id="15886">
+        <label>stdarg.h</label>
+      </node>
+      <node id="15905">
+        <label>src/kernel/routing/timing.h</label>
+        <link refid="db/d41/timing_8h"/>
+        <childnode refid="15885" relation="include">
+        </childnode>
+        <childnode refid="15897" relation="include">
+        </childnode>
+        <childnode refid="15906" relation="include">
+        </childnode>
+        <childnode refid="15907" relation="include">
+        </childnode>
+        <childnode refid="15904" relation="include">
+        </childnode>
+        <childnode refid="15908" relation="include">
+        </childnode>
+        <childnode refid="15900" relation="include">
+        </childnode>
+      </node>
+      <node id="15906">
+        <label>limits</label>
+      </node>
+      <node id="15901">
+        <label>boost/intrusive_ptr.hpp</label>
+      </node>
+      <node id="15888">
+        <label>src/kernel/routing/midi/midicmn.h</label>
+        <link refid="de/d21/midicmn_8h"/>
+        <childnode refid="15885" relation="include">
+        </childnode>
+        <childnode refid="15889" relation="include">
+        </childnode>
+        <childnode refid="15903" relation="include">
+        </childnode>
+      </node>
+      <node id="15885">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="15886" relation="include">
+        </childnode>
+        <childnode refid="15887" relation="include">
+        </childnode>
+      </node>
+      <node id="15895">
+        <label>stdlib.h</label>
+      </node>
+      <node id="15904">
+        <label>stdexcept</label>
+      </node>
+      <node id="15907">
+        <label>exception</label>
+      </node>
+      <node id="15897">
+        <label>src/kernel/MidiKern.h</label>
+        <link refid="da/dfd/MidiKern_8h"/>
+        <childnode refid="15885" relation="include">
+        </childnode>
+      </node>
+      <node id="15894">
+        <label>string.h</label>
+      </node>
+      <node id="15903">
+        <label>vector</label>
+      </node>
+      <node id="15896">
+        <label>src/kernel/routing/Route.h</label>
+        <link refid="d1/d65/Route_8h"/>
+        <childnode refid="15885" relation="include">
+        </childnode>
+        <childnode refid="15897" relation="include">
+        </childnode>
+        <childnode refid="15898" relation="include">
+        </childnode>
+        <childnode refid="15899" relation="include">
+        </childnode>
+        <childnode refid="15901" relation="include">
+        </childnode>
+        <childnode refid="15902" relation="include">
+        </childnode>
+        <childnode refid="15903" relation="include">
+        </childnode>
+        <childnode refid="15904" relation="include">
+        </childnode>
+      </node>
+      <node id="15912">
+        <label>boost/unordered_set.hpp</label>
+      </node>
+      <node id="15910">
+        <label>sstream</label>
+      </node>
+      <node id="15892">
+        <label>wx/string.h</label>
+      </node>
+      <node id="15890">
+        <label>src/kernel/routing/gmn/GIS.h</label>
+        <link refid="dd/d4d/GIS_8h"/>
+        <childnode refid="15885" relation="include">
+        </childnode>
+        <childnode refid="15891" relation="include">
+        </childnode>
+        <childnode refid="15894" relation="include">
+        </childnode>
+        <childnode refid="15895" relation="include">
+        </childnode>
+      </node>
+      <node id="15893">
+        <label>iostream</label>
+      </node>
+      <node id="15891">
+        <label>src/kernel/Frac.h</label>
+        <link refid="df/d4f/Frac_8h"/>
+        <childnode refid="15885" relation="include">
+        </childnode>
+        <childnode refid="15892" relation="include">
+        </childnode>
+        <childnode refid="15893" relation="include">
+        </childnode>
+      </node>
+      <node id="15887">
+        <label>wx/msw/wrapwin.h</label>
+      </node>
+      <node id="15911">
+        <label>wx/thread.h</label>
+      </node>
+      <node id="15900">
+        <label>src/kernel/routing/thread.h</label>
+        <link refid="db/dd5/thread_8h"/>
+        <childnode refid="15885" relation="include">
+        </childnode>
+      </node>
+      <node id="15899">
+        <label>src/kernel/boost-interface.h</label>
+        <link refid="d1/da4/boost-interface_8h"/>
+        <childnode refid="15885" relation="include">
+        </childnode>
+        <childnode refid="15900" relation="include">
+        </childnode>
+      </node>
+      <node id="15884">
+        <label>src/kernel/routing/midi/midicmn-inlines.h</label>
+        <link refid="midicmn-inlines.h"/>
+        <childnode refid="15885" relation="include">
+        </childnode>
+        <childnode refid="15888" relation="include">
+        </childnode>
+        <childnode refid="15897" relation="include">
+        </childnode>
+      </node>
+      <node id="15908">
+        <label>wx/stopwatch.h</label>
+      </node>
+      <node id="15909">
+        <label>algorithm</label>
+      </node>
+      <node id="15889">
+        <label>src/kernel/routing/Device.h</label>
+        <link refid="de/d05/Device_8h"/>
+        <childnode refid="15885" relation="include">
+        </childnode>
+        <childnode refid="15890" relation="include">
+        </childnode>
+        <childnode refid="15896" relation="include">
+        </childnode>
+        <childnode refid="15905" relation="include">
+        </childnode>
+        <childnode refid="15897" relation="include">
+        </childnode>
+        <childnode refid="15903" relation="include">
+        </childnode>
+        <childnode refid="15902" relation="include">
+        </childnode>
+        <childnode refid="15909" relation="include">
+        </childnode>
+        <childnode refid="15910" relation="include">
+        </childnode>
+        <childnode refid="15886" relation="include">
+        </childnode>
+        <childnode refid="15911" relation="include">
+        </childnode>
+        <childnode refid="15908" relation="include">
+        </childnode>
+        <childnode refid="15912" relation="include">
+        </childnode>
+      </node>
+      <node id="15898">
+        <label>src/kernel/treestorage.h</label>
+        <link refid="db/dbe/treestorage_8h"/>
+        <childnode refid="15885" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="15914">
+        <label>src/kernel/routing/midi/DevMidF.cpp</label>
+        <link refid="d0/d6b/DevMidF_8cpp"/>
+      </node>
+      <node id="15917">
+        <label>src/kernel/routing/midi/tests/midicmnTest.cpp</label>
+        <link refid="d8/d59/midicmnTest_8cpp"/>
+      </node>
+      <node id="15916">
+        <label>src/kernel/routing/midi/tests/DevMidFTest.cpp</label>
+        <link refid="d9/d99/DevMidFTest_8cpp"/>
+      </node>
+      <node id="15915">
+        <label>src/kernel/routing/midi/DevMidi.cpp</label>
+        <link refid="df/d8f/DevMidi_8cpp"/>
+      </node>
+      <node id="15913">
+        <label>src/kernel/routing/midi/midicmn-inlines.h</label>
+        <link refid="midicmn-inlines.h"/>
+        <childnode refid="15914" relation="include">
+        </childnode>
+        <childnode refid="15915" relation="include">
+        </childnode>
+        <childnode refid="15916" relation="include">
+        </childnode>
+        <childnode refid="15917" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="31"><highlight class="comment">//<sp/>availlable<sp/>groups:<sp/>GUI,<sp/>route,<sp/>kernel,<sp/>muwx,<sp/>debug,<sp/>docview</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>we<sp/>guard<sp/>a<sp/>little<sp/>bit<sp/>complicated<sp/>to<sp/>ensure<sp/>the<sp/>references<sp/>are<sp/>set<sp/>right</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">src/kernel/Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d21/midicmn_8h" kindref="compound">src/kernel/routing/midi/midicmn.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="da/dfd/MidiKern_8h" kindref="compound">src/kernel/MidiKern.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__BORLANDC__</highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#pragma<sp/>hdrstop</highlight></codeline>
+<codeline lineno="42"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="43"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn-inlines.h"/>
+  </compounddef>
+</doxygen>
