@@ -1,4 +1,4 @@
-/** \file         -*- C++ -*-
+/** \file 
  ********************************************************************
  * Mutabor Panel. Panel based on wxControl and wxPanel
  * Most code comes from wxPanel and has been rewritten in order to 
@@ -6,58 +6,27 @@
  *
  * Note: License change towards (L)GPL is explicitly allowed for wxWindows license.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Panel.h,v 1.9 2011/11/16 14:07:03 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
- * \author  Julian Smart, Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/11/16 14:07:03 $
- * \version $Revision: 1.9 $
+ * \author Julian Smart,  Tobias Schlemmer <keinstein@users.berlios.de>
  * \license GPL
  *
- * $Log: Panel.h,v $
- * Revision 1.9  2011/11/16 14:07:03  keinstein
- * passed make distcheck on linux
- * addedd some osdep files to the archive
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.8  2011-11-02 14:31:59  keinstein
- * fix some errors crashing Mutabor on Windows
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.7  2011-10-03 15:50:21  keinstein
- * Fix focus issues in the route window. This includes:
- *  * Using templates to describe the base class of MutIconShape.
- *  * Rename MutIconShape->MutIconShapeClass.
- *  * typedef MutIconShapeClass<wxControl> MutIconShape
- *  * Expand the control container macros in MutPanel.
- *  * Disable most of the control container behaviour as we don't need it, currently
- *  * Focus NewInputDevice on window creation.
- *  * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
- *  * Display focused Window with sunken border
- *
- * Revision 1.6  2011-09-27 20:13:24  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.5  2011-02-20 22:35:58  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.4  2011-01-29 20:09:31  keinstein
- * compiles on mac 
- *
- * Revision 1.3  2010-12-13 00:27:53  keinstein
- * compiles in linux as well as in mingw
- *
- * Revision 1.2  2010-11-21 13:15:47  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.1  2010-02-15 12:08:21  keinstein
- * intermediate update for backup progress
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
  ********************************************************************
- * \addtogroup src/wxGUI
+ * \addtogroup GUI
  * \{
  ********************************************************************/
 

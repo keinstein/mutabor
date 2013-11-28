@@ -1,13 +1,9 @@
 /** \file 
  ********************************************************************
- * Description
+ * Main debugging functions
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/generic/mutDebug.h,v 1.11 2011/11/02 14:32:01 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/11/02 14:32:01 $
- * \version $Revision: 1.11 $
  * \license GPL
  *
  *
@@ -27,7 +23,12 @@
  *
  *
  ********************************************************************
- * \addtogroup debug
+ * \defgroup debug Debugging functions 
+ *
+ * This group contains the functions that are used to help debugging
+ * of Mutabor. Despite the core is written in C these functions are
+ * written in C++ but can easily replaced by C.
+ * 
  * \{
  ********************************************************************/
 /*

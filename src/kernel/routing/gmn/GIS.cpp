@@ -1,31 +1,30 @@
 /** \file 
  ********************************************************************
- * Description
+ * main file of GIS (GMN Internal Structure)
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/gmn/GIS.cpp,v 1.5 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/11/02 14:31:57 $
- * \version $Revision: 1.5 $
  * \license GPL
  *
- * $Log: GIS.cpp,v $
- * Revision 1.5  2011/11/02 14:31:57  keinstein
- * fix some errors crashing Mutabor on Windows
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.4  2011-02-20 22:35:56  keinstein
- * updated license information; some file headers have to be revised, though
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
  ********************************************************************
  * \addtogroup route
  * \{
  ********************************************************************/
-// #################################################################
-// main file of GIS (GMN Intern Structur)
-// ##################################################################
 
 #ifndef FOR_MUTWIN
 #include <iostream>

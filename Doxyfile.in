@@ -38,7 +38,7 @@ PROJECT_NUMBER         = @PACKAGE_VERSION@
 # If a relative path is entered, it will be relative to the location 
 # where doxygen was started. If left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       = @abs_top_srcdir@/docs/Doxygen
+OUTPUT_DIRECTORY       = @abs_top_srcdir@/doc/Doxygen
 
 # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create 
 # 4096 sub-directories (in 2 levels) under the output directory of each output 
@@ -575,10 +575,13 @@ WARN_LOGFILE           =
 # with spaces.
 
 INPUT                  = @abs_top_srcdir@/config.h \
-                         @abs_top_srcdir@/mu32 \
-                         @abs_top_srcdir@/muwx \
-                         @abs_top_srcdir@/src/wxGUI/generic \
-                         @abs_top_srcdir@/rtmidi
+                         @abs_top_srcdir@/src/gmut \
+                         @abs_top_srcdir@/src/kernel \
+                         @abs_top_srcdir@/src/tests \
+                         @abs_top_srcdir@/src/wxGUI \
+                         @abs_top_srcdir@/src/xrc \
+                         @abs_top_srcdir@/src/wxintl
+#                        @abs_top_srcdir@/rtmidi
 #                         @abs_top_srcdir@/missfunc \
 #                         @abs_top_srcdir@/wxintl \
 #                         @abs_top_srcdir@/intl \

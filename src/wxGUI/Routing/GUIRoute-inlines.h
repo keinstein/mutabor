@@ -22,7 +22,7 @@
  *
  *
  ********************************************************************
- * \addtogroup GUI
+ * \addtogroup GUIroute
  * \{
  ********************************************************************/
 // availlable groups: GUI, route, kernel, src/wxGUI, debug, docview

@@ -24,7 +24,9 @@
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  ********************************************************************
- * \addtogroup kernel
+ * \defgroup kernel Mutabor core functionality
+ * This group contains the functions that deal with the core idea of Mutabor:
+ * Parse Mutabor source files and use the generated memory structures to manage tunings, logics and retunings.
  * \{
  ********************************************************************/
 

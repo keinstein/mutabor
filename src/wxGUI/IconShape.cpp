@@ -4,12 +4,8 @@
 ********************************************************************
 * Icon shape.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/IconShape.cpp,v 1.18 2011/11/05 15:19:38 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
-* \date 1998
-* $Date: 2011/11/05 15:19:38 $
-* \version $Revision: 1.18 $
 * \license GPL
 *
 *    This program is free software; you can redistribute it and/or modify
@@ -28,7 +24,7 @@
 *
 *
 ********************************************************************
-*\addtogroup route
+*\addtogroup GUI
 *\{
 ********************************************************************/
 

@@ -22,7 +22,7 @@
  *
  *
  ********************************************************************
- * \addtogroup templates
+ * \addtogroup kernel
  * \{
  ********************************************************************/
 // availlable groups: GUI, route, kernel, muwx, debug, docview, config, docview

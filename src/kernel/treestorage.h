@@ -21,7 +21,13 @@
 *
 *
 ********************************************************************
-* \addtogroup kernel
+* \defgroup config Configuration system
+*
+* Save and restore configuration of boxes and routes
+*
+* This group combines GUI and non-GUI parts of the configuration system. While
+* loading and saving of the current route configuration must be managed by the
+* route system, the actual storage format should be provided by the UI backend.
 * \{
 ********************************************************************/
 

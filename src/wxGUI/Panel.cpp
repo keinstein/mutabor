@@ -6,64 +6,27 @@
  *
  * Note: License change towards (L)GPL is explicitly allowed for wxWindows license.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Panel.cpp,v 1.11 2011/11/16 14:07:03 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author Julian Smart,  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/11/16 14:07:03 $
- * \version $Revision: 1.11 $
  * \license GPL
  *
- * $Log: Panel.cpp,v $
- * Revision 1.11  2011/11/16 14:07:03  keinstein
- * passed make distcheck on linux
- * addedd some osdep files to the archive
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.10  2011-11-02 14:31:59  keinstein
- * fix some errors crashing Mutabor on Windows
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.9  2011-10-22 16:32:39  keinstein
- * commit to continue debugging on Linux/wine
- *
- * Revision 1.8  2011-10-03 20:34:05  keinstein
- * fix compiling with wx 2.9
- *
- * Revision 1.7  2011-10-03 15:50:21  keinstein
- * Fix focus issues in the route window. This includes:
- *  * Using templates to describe the base class of MutIconShape.
- *  * Rename MutIconShape->MutIconShapeClass.
- *  * typedef MutIconShapeClass<wxControl> MutIconShape
- *  * Expand the control container macros in MutPanel.
- *  * Disable most of the control container behaviour as we don't need it, currently
- *  * Focus NewInputDevice on window creation.
- *  * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
- *  * Display focused Window with sunken border
- *
- * Revision 1.6  2011-09-30 09:10:25  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.5  2011-09-29 05:26:59  keinstein
- * debug intrusive_ptr
- * fix storage and retrieving of input/output devices in treestorage
- * save maximum border size in icons
- * Apply the calculated offset in IconShape (box and box channels still missing)
- * Fix debug saving and restoring route information/route window on activation
- * Add wxWANTS_CHARS to MutEditWindow
- *
- * Revision 1.4  2011-09-27 20:13:24  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.3  2011-02-20 22:35:58  keinstein
- * updated license information; some file headers have to be revised, though
- *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
  ********************************************************************
- * \addtogroup src/wxGUI
+ * \addtogroup GUI
  * \{
  ********************************************************************/
 

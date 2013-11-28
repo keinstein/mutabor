@@ -3,44 +3,25 @@
  * Wrapper around wxcresource.h since wxrc doesn't prevent multiple 
  * inclusion
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/resourceload.h,v 1.6 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 2008/08/05
- * $Date: 2011/11/02 14:31:59 $
- * \version $Revision: 1.6 $
  * \license GPL
  *
- * $Log: resourceload.h,v $
- * Revision 1.6  2011/11/02 14:31:59  keinstein
- * fix some errors crashing Mutabor on Windows
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.5  2011-09-27 20:13:24  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.4  2011-02-20 22:35:58  keinstein
- * updated license information; some file headers have to be revised, though
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * Revision 1.3  2011-01-28 20:59:45  keinstein
- * satisfy distcheck on Ubuntu 10.10
- *
- * Revision 1.2  2010-11-21 13:15:48  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.2  2010-02-15 12:08:21  keinstein
- * intermediate update for backup progress
- *
- * Revision 1.1.2.1  2010/01/14 10:13:51  keinstein
- * src/wxGUI/resourceload.h: new file to preload other header files for wxresource.h
- *
- * Revision 1.1.2.1  2010/01/11 10:12:59  keinstein
- * added some .cvsignore files
- *
- * \addtogroup src/wxGUI
+ * \addtogroup GUI
  * \{
  ********************************************************************/
 

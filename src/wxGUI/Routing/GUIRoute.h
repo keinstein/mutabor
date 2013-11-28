@@ -24,7 +24,7 @@
  *
  *
  ********************************************************************
- * \addtogroup GUI
+ * \addtogroup GUIroute
  * \{
  *
  * \todo Rewrite shape classes to use GUI-references. In order to do

@@ -3,63 +3,27 @@
  ********************************************************************
  * Icon class fixing issues with Mac OS.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutIcon.h,v 1.10 2011/11/02 14:31:59 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 1998
- * $Date: 2011/11/02 14:31:59 $
- * \version $Revision: 1.10 $
  * \license GPL
  *
- * $Log: MutIcon.h,v $
- * Revision 1.10  2011/11/02 14:31:59  keinstein
- * fix some errors crashing Mutabor on Windows
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.9  2011-10-05 16:28:39  keinstein
- * correct layout on mac
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.8  2011-10-04 17:16:14  keinstein
- * make program compile on Mac (wx 2.9) and fix some memory corruption
- *
- * Revision 1.7  2011-09-30 09:10:25  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.6  2011-09-27 20:13:23  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.5  2011-02-20 22:35:57  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.4  2011-01-11 00:42:27  keinstein
- * Fix a bug preventing Mutabor from starting on Win32 due to wrong usage of wxIcon/wxICON
- *
- * Revision 1.3  2010-11-21 13:15:47  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.3  2010-03-30 08:38:26  keinstein
- * added rudimentary command line support
- * changed debug system to allow selection of messages via command line
- * further enhancements to the route dialogs
- *
- * Revision 1.1.2.2  2009/11/30 12:08:57  keinstein
- * split MutRouteShapes into several files into directory Routing
- *
- * Revision 1.1.2.1  2009/08/10 11:23:12  keinstein
- * merged from wrong tree
- *
- * Revision 1.2  2009/08/10 11:15:46  keinstein
- * some steps towards new route window
- *
- * Revision 1.1  2008/11/04 13:55:58  keinstein
- * new file
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
  ********************************************************************
- *\addtogroup route
+ *\addtogroup GUI
  *\{
  ********************************************************************/
 

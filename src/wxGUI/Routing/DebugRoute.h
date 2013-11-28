@@ -2,40 +2,27 @@
  ********************************************************************
  * Debug functions for routing system
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/DebugRoute.h,v 1.6 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2010 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 2010/04/13
- * $Date: 2011/11/02 14:31:59 $
- * \version $Revision: 1.6 $
  * \license GPL
  *
- * $Log: DebugRoute.h,v $
- * Revision 1.6  2011/11/02 14:31:59  keinstein
- * fix some errors crashing Mutabor on Windows
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.5  2011-09-28 07:35:54  keinstein
- * Make distclean happy
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.4  2011-09-27 20:13:24  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.3  2011-02-20 22:35:58  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.2  2010-11-21 13:15:51  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
- * added some .cvsignore files
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
  ********************************************************************
- * \addtogroup route
+ * \addtogroup debug
  * \{
  ********************************************************************/
 

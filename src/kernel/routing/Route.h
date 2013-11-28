@@ -24,8 +24,13 @@
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  ********************************************************************
- *\addtogroup route
- *\{
+ *\defgroup route Basic event routing functions
+ *
+ * This group contains functions and classes that can be used to set
+ * up a generic event routing. It uses the RtMidi library for MIDI
+ * access, but is kept independent from any GUI library.
+ *
+ * \{
  ********************************************************************/
 
 /* we guard a little bit complicated to ensure the references are set right

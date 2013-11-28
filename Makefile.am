@@ -821,3 +821,8 @@ all-local:
 			cp "$$file" "$(top_srcdir)/$$file" ; \
 		fi \
 	done
+
+doxygen: Doxyfile
+	builddir=`pwd` ; \
+	cd $(top_srcdir) ; \
+	doxygen "$$builddir/Doxyfile"

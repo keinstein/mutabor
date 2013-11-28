@@ -4,9 +4,6 @@
  *
  * Copyright:   (c) 2008-2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 2008/08/05
- * $Date: 2011/11/02 14:31:59 $
- * \version $Revision: 1.9 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -25,7 +22,7 @@
  *
  *
  *
- * \addtogroup route
+ * \addtogroup GUIroute
  * \{
  ********************************************************************/
 

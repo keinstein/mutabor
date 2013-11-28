@@ -2,12 +2,8 @@
  ********************************************************************
  * Language definitions for wxStyledTextControl (wxScintilla)
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/stclanguage.h,v 1.4 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/11/02 14:31:59 $
- * \version $Revision: 1.4 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -25,27 +21,8 @@
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
- * $Log: stclanguage.h,v $
- * Revision 1.4  2011/11/02 14:31:59  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.3  2011-09-27 20:13:24  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.2  2011-08-21 16:52:05  keinstein
- * Integrate a more sophisticated editor menu based on the stc sample
- *
- * Revision 1.1  2011-08-20 18:15:36  keinstein
- * new files
- *
- *
- *
  ********************************************************************
- * \addtogroup src/wxGUI
+ * \addtogroup GUI
  * \{
  ********************************************************************/
 // availlable groups: GUI, route, kernel, src/wxGUI, debug, docview

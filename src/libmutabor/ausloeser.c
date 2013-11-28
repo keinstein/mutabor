@@ -1,30 +1,29 @@
 /** \file
  ********************************************************************
- * Alles zu Ereignis-Auslösern
+ * Everything about event triggers
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/ausloeser.c,v 1.4 2005/11/03 14:47:08 keinstein Exp $
+ * Copyright:   (c) 2011 TU Dresden
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 14:47:08 $
- * \version $Revision: 1.4 $
+ * \license GPL
  *
- * $Log: ausloeser.c,v $
- * Revision 1.4  2005/11/03 14:47:08  keinstein
- * email to berlios
- * new includes
- * interpreter functions and data
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.3  2005/07/20 09:49:55  keinstein
- * Includes für Doxygen verschönert
- * config.h genutzt
- * ein paar Links für Doxygen
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.2  2005/07/19 15:15:27  keinstein
- * Using own Templates
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * Revision 1.1  2005/07/08 14:44:20  keinstein
- * Neue Datei.
- * Aus parser.c herausgelöst.
  *
+ ********************************************************************
+ * \addtogroup Parser
+ * \{
  ********************************************************************/
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -62,9 +61,6 @@ struct midi_ereignis     ** last_global_midi[MAX_BOX];
 /** Liste der lokalen auslösenden MIDI-Ereignissen. */
 struct midi_ereignis     ** first_lokal_midi;
 
-/** \defgroup Parser 
- * \{
- */
 
 /** Setzt Liste auslösender Ereignisse auf NULL.
  * \warning Die Liste wird nicht gelöscht. 

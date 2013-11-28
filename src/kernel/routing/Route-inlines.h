@@ -22,7 +22,7 @@
  *
  *
  ********************************************************************
- * \addtogroup templates
+ * \addtogroup route
  * \{
  ********************************************************************/
 // availlable groups: GUI, route, kernel, src/wxGUI, debug, docview

@@ -5,9 +5,6 @@
 * Copyright:   (c) 2008-2012 TU Dresden
 * \author R. Krauße
 * Tobias Schlemmer <keinstein@users.berlios.de>
-* \date 2005/08/12
-* $Date: 2011/11/02 14:31:59 $
-* \version $Revision: 1.34 $
 * \license GPL
 *
 *    This program is free software; you can redistribute it and/or modify
@@ -24,7 +21,7 @@
 *    along with this program; if not, write to the Free Software
 *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* \addtogroup src/wxGUI
+* \addtogroup GUI
 * \{
 ********************************************************************/
 

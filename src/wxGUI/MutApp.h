@@ -27,7 +27,7 @@
  * The directory src/wxGUI contains the wxWidgets frontend classes of Mutabor.
  *************************************************************************
  *
- * \defgroup src/wxGUI wxWidgets Mutabor GUI
+ * \defgroup GUI wxWidgets Mutabor GUI
  * While the original frontend of Mutabor was designed using Borland OWL
  * the current one uses the platform independent environment provided by
  * wxWidgets.

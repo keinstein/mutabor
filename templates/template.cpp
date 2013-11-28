@@ -25,7 +25,7 @@
  * \addtogroup templates
  * \{
  ********************************************************************/
-// availlable groups: GUI, route, kernel, muwx, debug, docview, config, docview
+// availlable groups: GUI, Parser, route, kernel, debug, docview, config, GUIroute
 
 /* we guard a little bit complicated to ensure the references are set right
  */

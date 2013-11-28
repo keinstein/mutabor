@@ -1,23 +1,28 @@
 /** \file   -*- C++ -*-
  ********************************************************************
- * Description
+ * Some array definitons
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/generic/mhArray.h,v 1.4 2011/02/20 22:35:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author R. Krauße,  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/02/20 22:35:59 $
- * \version $Revision: 1.4 $
  * \license GPL
  *
- * $Log: mhArray.h,v $
- * Revision 1.4  2011/02/20 22:35:59  keinstein
- * updated license information; some file headers have to be revised, though
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
  ********************************************************************
- * \addtogroup other
+ * \addtogroup GUI
  * \{
  ********************************************************************/
 #ifndef mhARRAY_H
