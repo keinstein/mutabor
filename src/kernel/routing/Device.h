@@ -400,6 +400,28 @@ namespace mutabor {
 		virtual void Panic() = 0;
 
 
+		// The following functions can be used both for playback and recording.
+		// Nevertheless they should not be availlable without a proper device type.
+
+		/** 
+		 * Start playback or recording of the device.
+		 * 
+		 */
+		virtual void Play() {}
+
+
+		/** 
+		 * Pause playback or recording of the device.
+		 * 
+		 */
+		virtual void Pause() {}
+
+		/** 
+		 * Stop playback or recording of the device.
+		 * 
+		 */
+		virtual void Stop() {}
+
 		virtual void SetMode(MutaborModeType m) { Mode = m; }
 
 		MutaborModeType GetMode() {
