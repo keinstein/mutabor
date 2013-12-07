@@ -951,7 +951,7 @@ To start the translation hit the play button or select “Play” from the “Se
 	void MutFrame::CmPanic(wxCommandEvent& WXUNUSED(event))
 	{
 		if ( LogicOn )
-			Panic();
+			Panic(midi::DEFAULT_PANIC);
 	}
 
 	void MutFrame::CeExecute(wxUpdateUIEvent& event)
