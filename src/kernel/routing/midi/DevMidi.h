@@ -535,7 +535,9 @@ namespace mutabor {
 			      int id = -1):
 			parentType (name,mode,id),
 			DevId(-1),
-			hMidiIn (NULL) {}
+			hMidiIn (NULL) {
+			channel_data.resize(16);
+		}
 
 
 	};

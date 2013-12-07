@@ -453,6 +453,7 @@ namespace mutabor {
 					switch (ctrl) {
 					case midi::DATA_ENTRY_COARSE:
 					case midi::DATA_ENTRY_FINE:
+#warning also increment/decrement must continue
 						break;
 					default:
 						continue;
@@ -465,29 +466,29 @@ namespace mutabor {
 
 				// this might change the index (e.g. RPN/NRPN coarse/fine)
 				Cd[i].set_controller(ctrl, value);
-				ctrl = Cd[i].get_index(ctrl);
+				newctrl = Cd[i].get_index(ctrl);
 				
-				if (ctrl == -1) continue;
+				if (newctrl == -1) continue;
 
-				if (ctrl < 0x10000) {
+				if (newctrl < 0x10000) {
 					mutASSERT(value < 0x80);
-					controller(i, ctrl, value);
-				} else if (0x10000 <= ctrl && ctrl < 0x20000) {
-					controller(i,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
-					controller(i,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+					controller(i, newctrl, value);
+				} else if (0x10000 <= newctrl && newctrl < 0x20000) {
+					controller(i,midi::REGISTERED_PARAMETER_COARSE, (newctrl >> 8) & 0x7F);
+					controller(i,midi::REGISTERED_PARAMETER_FINE, newctrl & 0x7F);
 
 					controller(i,midi::DATA_ENTRY_COARSE, value >> 7 & 0x7F);
 					controller(i,midi::DATA_ENTRY_FINE, value & 0x7F);
-				} else if (ctrl <= 0x30000) {
-					controller(i,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
-					controller(i,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+				} else if (newctrl <= 0x30000) {
+					controller(i,midi::REGISTERED_PARAMETER_COARSE, (newctrl >> 8) & 0x7F);
+					controller(i,midi::REGISTERED_PARAMETER_FINE, newctrl & 0x7F);
 
 					controller(i,midi::DATA_ENTRY_COARSE, value >> 7 & 0x7F);
 					controller(i,midi::DATA_ENTRY_FINE, value & 0x7F);
 				}
 				
 				// sustained section contains only inactive MIDI channels
-				if (ctrl == midi::HOLD_PEDAL_ON_OFF
+				if (newctrl == midi::HOLD_PEDAL_ON_OFF
 				    && !ton_auf_kanal[i].active) {
 					channel_queue.sustain_channel(i, value > 0x40);
 				} 
@@ -703,7 +704,7 @@ namespace mutabor {
 	}
 
 	template <class D>
-	void CommonMidiInput<D>::ProceedRoute(DWORD midiCode, Route route)
+	void CommonMidiInput<D>::ProceedRoute(DWORD midiCode, Route route, int channel_offset)
 	{
 		if (!route) {
 			UNREACHABLEC;
@@ -724,7 +725,7 @@ namespace mutabor {
 				       (midiCode >> 8) & 0xff,
 				       (midiCode >> 16) & 0xff,	      
 				       MidiChannel,
-				       Cd[MidiChannel],
+				       channel_data[MidiChannel],
 				       NULL);
 				break;
 			}
@@ -737,7 +738,7 @@ namespace mutabor {
 			break;
 
 		case midi::PROGRAM_CHANGE: // Programm Change
-			Cd[MidiChannel].program_change((midiCode >> 8) & 0xff);
+			channel_data[MidiChannel].program_change((midiCode >> 8) & 0xff);
 			break;
 
 		case midi::CONTROLLER: {
@@ -746,10 +747,6 @@ namespace mutabor {
 			bool panic = false;
 			bool reset = false;
 			/* cases that need special treatment */
-		case midi::CONTROLLER:
-#warning "Implement less rigourous answers to reset messages"
-			Cd[MidiChannel].set_controller((midiCode >> 8) & 0xff, 
-						       (midiCode >> 16) & 0xff);
 			switch ((midiCode >> 8) & 0xff) {
 			case midi::ALL_CONTROLLERS_OFF:
 				propagate = panic = reset = true;
@@ -803,7 +800,7 @@ namespace mutabor {
 	}
 
 	template <class D>
-	void CommonMidiInput<D>::ProceedRoute(const std::vector<unsigned char > * midiCode, Route route)
+	void CommonMidiInput<D>::ProceedRoute(const std::vector<unsigned char > * midiCode, Route route, int channel_offset)
 	{
 #warning "Unimplemented SysEx ProceedRoute"
 		return;
@@ -813,7 +810,7 @@ namespace mutabor {
 			  route->GetActive(),
 			  (void*)route->GetOutputDevice().get());
 		Box box = route->GetBox();
-		BYTE MidiChannel = midiCode->at(0) & 0x0F;
+		BYTE MidiChannel = midiCode->at(0) & 0x0F + channel_offset;
 		BYTE MidiStatus  = midiCode->at(0) & 0xF0;
 		DEBUGLOG (midifile, _T("Status: %x"), MidiStatus);
 
@@ -838,7 +835,7 @@ namespace mutabor {
 			break;
 
 		case midi::PROGRAM_CHANGE: // Programm Change
-			Cd[MidiChannel].program_change(midiCode->at(1));
+			channel_data[MidiChannel].program_change(midiCode->at(1));
 
 			break;
 
@@ -917,7 +914,7 @@ namespace mutabor {
 	 */// Routen testen und jenachdem entsprechend Codeverarbeitung
 
 	template <class D>
-	void CommonMidiInput<D>::Proceed(DWORD midiCode, int data)
+	void CommonMidiInput<D>::Proceed(DWORD midiCode, int data, int channel_offset)
 	{
 		bool DidOut = 0;
 		routeListType elseroutes;
@@ -926,7 +923,7 @@ namespace mutabor {
 		     R != this->routes.end(); R++)
 			switch (shouldProceed(*R,midiCode, data)) {
 			case ProceedYes:
-				ProceedRoute(midiCode, *R);
+				ProceedRoute(midiCode, *R, channel_offset);
 				DidOut = 1;
 				break;
 			case ProceedNo:
@@ -940,7 +937,7 @@ namespace mutabor {
 		if (!DidOut) {
 			for (routeListType::iterator R = elseroutes.begin(); 
 			     R != elseroutes.end(); R++) {
-				ProceedRoute(midiCode,*R);
+				ProceedRoute(midiCode,*R, channel_offset);
 			}
 		}
 	}
@@ -953,7 +950,7 @@ namespace mutabor {
 	 */// Routen testen und jenachdem entsprechend Codeverarbeitung
 
 	template <class D>
-	void CommonMidiInput<D>::Proceed(const std::vector<unsigned char > * midiCode, int data)
+	void CommonMidiInput<D>::Proceed(const std::vector<unsigned char > * midiCode, int data, int channel_offset)
 	{
 		bool DidOut = 0;
 		routeListType elseroutes;
@@ -962,7 +959,7 @@ namespace mutabor {
 		     R != this->routes.end(); R++)
 			switch (shouldProceed(*R,midiCode, data)) {
 			case ProceedYes:
-				ProceedRoute(midiCode, *R);
+				ProceedRoute(midiCode, *R, channel_offset);
 				DidOut = 1;
 				break;
 			case ProceedNo:
@@ -976,7 +973,7 @@ namespace mutabor {
 		if (!DidOut) {
 			for (routeListType::iterator R = elseroutes.begin(); 
 			     R != this->routes.end(); R++) {
-				ProceedRoute(midiCode,*R);
+				ProceedRoute(midiCode,*R, channel_offset);
 			}
 		}
 	}

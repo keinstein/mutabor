@@ -218,14 +218,14 @@ OutputMidiPort:\n\
 		InputMidiPort * thisPort = static_cast<InputMidiPort *>(userData);
 
 		if (message->size() > 4) {
-			thisPort -> Proceed(message,0);
+			thisPort -> Proceed(message, 0, 0);
 			return;
 		}
 
 		for (int i = message->size()-1; i >= 0; i--)
 			data = ((data << 8) | ((unsigned char)(*message)[i]));
 
-		thisPort->Proceed(data,0);
+		thisPort->Proceed(data,0,0);
 	}
 
 #else
@@ -386,7 +386,7 @@ OutputMidiPort:\n\
 	{
 		mutASSERT(!isOpen);
 		for (int i = 0; i < 16; i++)
-			Cd[i].Reset();
+			channel_data[i].Reset();
 
 #ifdef RTMIDI
 		try {

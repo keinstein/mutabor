@@ -583,6 +583,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 
 		// Tracks lesen
 		Tracks.resize(nTrack,Track(timing));
+		channel_data.resize(16*nTrack);
 		if (Tracks.empty()) {
 			runtime_error(false,
 				      _("Could not allocate memory for the track list of file '%s'."), 
@@ -631,6 +632,8 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 					      (const mutChar *)Name.c_str(),i);
 				goto error_cleanup;
 			}
+
+			channel_data[i].Reset();
 		}
 
 		mutCloseStream(is);
@@ -806,7 +809,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 					a += message[1] << 8;
 					break;
 				}
-			Proceed(a, nr);
+			Proceed(a, nr, nr << 4);
 
 			Delta = Tracks[nr].ReadDelta();
 		
