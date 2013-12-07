@@ -268,15 +268,23 @@ namespace mutabor {
 #endif
 		
 	protected:
-		FileTimer * timer;
+		FileTimer * timer;             //< timer thread for the file player
+		/// Signals to communicate with the player thread
 		enum ThreadCommunication {
-			Nothing       = 0,
-			RequestExit   = 1,
-			RequestPause  = 2,
-			ResetTime     = 4
+			Nothing       = 0,     //< proceed, no change
+			RequestExit   = 1,     //< exit the thread as soon as possible
+			RequestPause  = 2,     //< stop the thread execution as soon as possible
+			ResetTime     = 4,      /**< restart counting
+						the time of the
+						thread. This should
+						be used only to sigal
+						a start after the
+						playback has been
+						stopped */
+			RequestPanic = 8       //< request Panic() before stopping the device
 		};
 		/* volatile is handled inside the class */
-		safe_integer<int> threadsignal;
+		safe_integer<int> threadsignal; //< signal 
 		Mutex waitMutex, threadReady, lockMode, exitLock;
 		ThreadCondition waitCondition;
 		/** 

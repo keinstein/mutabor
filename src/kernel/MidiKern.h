@@ -296,6 +296,7 @@ namespace mutabor {
 			POLY_ON                  = 0x7F // (127)
 		};
 
+#define DEFAULT_PANIC ALL_SOUND_OFF
 		enum midi_controller_values {
 			CONTROLLER_ON           = 0x7F,
 			CONTROLLER_OFF          = 0X00

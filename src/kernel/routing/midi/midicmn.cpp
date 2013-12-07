@@ -653,26 +653,41 @@ namespace mutabor {
 	}
 	
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::do_Quiet(RouteClass * r)
+	void CommonMidiOutput<T,D>::do_Quiet(Route r, int type)
 	{
 		if (!this->isOpen) return;
 		TRACEC;
-
+#ifdef DEBUG
 		for (int i = 0; i < 16; i++) {
-			if ( ton_auf_kanal[i].active && ton_auf_kanal[i].channel == r->get_session_id() )
-				do_NoteOff(r->GetBox(), ton_auf_kanal[i].inkey, 64, r, ton_auf_kanal[i].unique_id, false);
+			if ( ton_auf_kanal[i].active ) 
+				mutASSERT(ton_auf_kanal[i].channel != r->get_session_id() );
+					//do_NoteOff(r->GetBox(), ton_auf_kanal[i].inkey, 64, r, ton_auf_kanal[i].unique_id, false);
 		}
-
+#endif
 	}
 
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::do_Panic()
+	void CommonMidiOutput<T,D>::do_Quiet(Route r, int type, size_t id)
+	{
+		if (!this->isOpen) return;
+		TRACEC;
+
+#ifdef DEBUG
+		for (int i = 0; i < 16; i++) {
+			if ( ton_auf_kanal[i].active && ton_auf_kanal[i].channel == r->get_session_id() )
+				do_NoteOff(r->GetBox(), ton_auf_kanal[i].inkey, 64, r.get(), ton_auf_kanal[i].unique_id, false);
+		}
+#endif
+	}
+
+	template<class T, class D>
+	void CommonMidiOutput<T,D>::do_Panic(int type)
 	{
 		if (!this->isOpen) return;
 		TRACEC;
 
 		for (int i = 0; i < 16; i++) {
-			controller(i,midi::ALL_NOTES_OFF,0);
+			controller(i,type,0);
 			ton_auf_kanal[i].active = false;
 			ton_auf_kanal[i].inkey=0;
 			ton_auf_kanal[i].unique_id=0;
@@ -683,7 +698,7 @@ namespace mutabor {
 		
 		nKeyOn = 0;
 		for (int i = 0; i < GetMaxChannel(); i++) {
-			do_Controller(i,midi::ALL_NOTES_OFF,0);
+			do_Controller(i,type,0);
 		}
 	}
 
@@ -725,24 +740,46 @@ namespace mutabor {
 			Cd[MidiChannel].program_change((midiCode >> 8) & 0xff);
 			break;
 
+		case midi::CONTROLLER: {
+			/* defaults for normal controllers */
+			bool propagate = true;
+			bool panic = false;
+			bool reset = false;
+			/* cases that need special treatment */
 		case midi::CONTROLLER:
 #warning "Implement less rigourous answers to reset messages"
 			Cd[MidiChannel].set_controller((midiCode >> 8) & 0xff, 
 						       (midiCode >> 16) & 0xff);
 			switch ((midiCode >> 8) & 0xff) {
 			case midi::ALL_CONTROLLERS_OFF:
-				Cd[MidiChannel].Reset();
+				propagate = panic = reset = true;
+				break;
 			case midi::ALL_SOUND_OFF:
-			case midi::LOCAL_ON_OFF:
 			case midi::ALL_NOTES_OFF:
 			case midi::OMNI_OFF:
 			case midi::OMNI_ON:
 			case midi::MONO_ON:
 			case midi::POLY_ON:
-				Panic();
+				propagate = false;
+				panic = true;
+				break;
+			case midi::LOCAL_ON_OFF:
+				panic = true;
+				break;
 			}
-			route -> Controller((midiCode >> 8) & 0xff,  
-					    (midiCode >> 8) & 0xff);
+			break;
+			
+			if (propagate)
+				channel_data[MidiChannel].set_controller((midiCode >> 8) & 0xff, 
+						       (midiCode >> 16) & 0xff);
+			if (panic)
+				this->Panic((midiCode >> 8) & 0xff,MidiChannel);
+			if (reset)
+				channel_data[MidiChannel].Reset();
+			if (propagate)
+				route -> Controller((midiCode >> 8) & 0xff,  
+						    (midiCode >> 8) & 0xff);
+		}
 			break;
 		case midi::KEY_PRESSURE:
 #warning "implement key_pressure"
@@ -784,18 +821,20 @@ namespace mutabor {
 
 		case midi::NOTE_ON: // Note On
 			if ( (midiCode->at(2) & 0x7f) > 0 ) {
-				route->NoteOn(midiCode->at(1),
-					      midiCode->at(2),
-					      MidiChannel, 
-					      Cd[MidiChannel],
-					      NULL);
+				this->NoteOn(route,
+					     midiCode->at(1),
+					     midiCode->at(2),
+					     MidiChannel, 
+					     channel_data[MidiChannel],
+					     NULL);
 				break;
 			}
 
 		case midi::NOTE_OFF: // Note Off
-			route->NoteOff(midiCode->at(1), 
-				       midiCode->at(2),
-				       MidiChannel);
+			this->NoteOff(route,
+				      midiCode->at(1), 
+				      midiCode->at(2),
+				      MidiChannel);
 			break;
 
 		case midi::PROGRAM_CHANGE: // Programm Change
@@ -803,23 +842,42 @@ namespace mutabor {
 
 			break;
 
-		case midi::CONTROLLER:
-			Cd[MidiChannel].set_controller(midiCode->at(1), 
-						       midiCode->at(2));
+		case midi::CONTROLLER: {
+			/* defaults for normal controllers */
+			bool propagate = true;
+			bool panic = false;
+			bool reset = false;
+			/* cases that need special treatment */
 			switch (midiCode -> at(1)) {
 			case midi::ALL_CONTROLLERS_OFF:
-				Cd[MidiChannel].Reset();
+				propagate = panic = reset = true;
+				break;
 			case midi::ALL_SOUND_OFF:
-			case midi::LOCAL_ON_OFF:
 			case midi::ALL_NOTES_OFF:
 			case midi::OMNI_OFF:
 			case midi::OMNI_ON:
 			case midi::MONO_ON:
 			case midi::POLY_ON:
-				Panic();
+				propagate = false;
+				panic = true;
+				break;
+			case midi::LOCAL_ON_OFF:
+				panic = true;
+				break;
 			}
-			route -> Controller(midiCode->at(1),  
-					    midiCode->at(2));
+			break;
+			
+			if (propagate)
+				channel_data[MidiChannel].set_controller(midiCode->at(1), 
+							       midiCode->at(2));
+			if (panic)
+				this->Panic(midiCode->at(1),MidiChannel);
+			if (reset)
+				channel_data[MidiChannel].Reset();
+			if (propagate)
+				route -> Controller(midiCode->at(1),  
+						    midiCode->at(2));
+		}
 			break;
 		case midi::KEY_PRESSURE:
 #warning "implement key_pressure"

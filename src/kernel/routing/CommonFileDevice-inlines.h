@@ -254,8 +254,10 @@ namespace mutabor {
 	{
 		ScopedLock modelock(lockMode);
 		DEBUGLOG(routing,_T("old mode = %d"),Mode);
-		if ( Mode == DevicePlay || Mode == DeviceTimingError )
+		if ( Mode == DevicePlay || Mode == DeviceTimingError ) {
+			threadsignal |= RequestPanic;
 			Pause();
+		}
 		
 		threadsignal |= ResetTime;
 		referenceTime = 0;
@@ -288,7 +290,7 @@ namespace mutabor {
 			DEBUGLOG(timer,
 				 _T("Paused. Realtime = %d."),
 				 (int)CurrentTime.isRealtime());
-			threadsignal |= ResetTime;
+			// threadsignal |= ResetTime;
 			referenceTime += CurrentTime.Get() - pauseTime;
 			pauseTime = 0;
 
@@ -335,7 +337,6 @@ namespace mutabor {
 			}
 			pauseTime = CurrentTime.Get();
 			Mode = DevicePause;
-			Panic();
 			break;
 		case DevicePause:
 			Play(); // A mechanical Pause button usually is released if pressed twice
@@ -449,6 +450,12 @@ namespace mutabor {
 		wxThread::ExitCode e = 0;
 		while (true) {
 			if (threadsignal & RequestPause) {
+				if (threadsignal & RequestPanic ) {
+					this->Panic(midi::DEFAULT_PANIC);
+					threadsignal &= ~(int)RequestPanic;
+				} else {
+					SilenceKeys(false);
+				}
 				DEBUGLOG(thread,
 					 _T("Thread %p waiting at threadsignal = %x"),
 					 Thread::This(),
@@ -473,6 +480,7 @@ namespace mutabor {
 					threadsignal &= ~(int)ResetTime;
 				} 
 				reference = referenceTime;
+				ResumeKeys();
 			} else if (thistimer -> TestDestroy()) {
 				return (void *) (Mode + 0x100);
 			}

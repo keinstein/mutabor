@@ -235,10 +235,18 @@ namespace mutabor {
 			return midi::NO_CHANNEL;
 		}
 
-		void Panic() {
-			/// \todo reset keys by channel
+		void Panic(int type) {
+			if (box)
+				box-> Panic(this,type);
 			if (Out) 
-				Out -> Quiet(this);
+				Out -> Quiet(this, type);
+		}
+
+		void Panic(int type, size_t unique_id) {
+			if (box)
+				box-> Panic(this, type, unique_id);
+			if (Out) 
+				Out -> Quiet(this, type, unique_id);
 		}
 
 		void Controller(int controller, int value) {

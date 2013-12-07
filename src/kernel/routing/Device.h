@@ -397,7 +397,7 @@ namespace mutabor {
 		virtual bool Remove(Route & route) = 0;
 
 		/// reset the device if requested
-		virtual void Panic() = 0;
+		virtual void Panic(int type) = 0;
 
 
 		// The following functions can be used both for playback and recording.
@@ -485,6 +485,8 @@ namespace mutabor {
 		bool IsDirty() const { return dirty; }
 		void Dirty(bool d=true) { dirty = d; }
 		bool IsOpen() const { return isOpen; }
+
+
 
 #ifdef WX
 		virtual wxString TowxString() const;
@@ -697,11 +699,11 @@ namespace mutabor {
 			TRACEC;
 		}
 		void NoteOn(Box box,
-				    int taste,
-				    int velo,
-				    RouteClass * r,
-				    size_t id,
-				    const ChannelData & input_channel_data) {
+			    int taste,
+			    int velo,
+			    RouteClass * r,
+			    size_t id,
+			    const ChannelData & input_channel_data) {
 			ScopedLock lock(write_lock);
 			do_NoteOn(box,taste,velo,r,id,input_channel_data);
 
@@ -744,13 +746,18 @@ namespace mutabor {
 			ScopedLock lock(write_lock);
 			do_MidiOut(p,n);
 		}
-		void Quiet(RouteClass * r) {
+		void Quiet(Route r, int type) {
 			ScopedLock lock(write_lock);
-			do_Quiet(r);
+			do_Quiet(r,type);
 		}
-		void Panic() {
+		void Quiet(Route r,int type, size_t id) {
 			ScopedLock lock(write_lock);
-			do_Panic();
+			do_Quiet(r,type,id);
+		}
+
+		void Panic(int type) {
+			ScopedLock lock(write_lock);
+			do_Panic(type);
 		};
 		bool Open() {
 			ScopedLock lock(write_lock);
@@ -807,8 +814,9 @@ namespace mutabor {
 		virtual void do_AddTime(frac time) = 0;
 		virtual void do_MidiOut(mutabor::Box box, midi_string data) = 0;
 		virtual void do_MidiOut(BYTE *p, size_t n) = 0;
-		virtual void do_Quiet(RouteClass * r) = 0;
-		virtual void do_Panic() { STUBC; };
+		virtual void do_Quiet(Route r, int type) = 0;
+		virtual void do_Quiet(Route r, int type, size_t id) = 0;
+		virtual void do_Panic(int type) { STUBC; };
 		virtual bool do_Open() { return true; }
 
 	};
@@ -829,13 +837,27 @@ namespace mutabor {
 				int unique_id;
 				int velocity;
 				Route route;
-				entry(int k, int u, int v, Route &R): key(k),
-								      unique_id(u),
-								      velocity(v),
-								      route (R) {}
+				InputDevice device;
+				const ChannelData * settings;
+				void * userdata;
+				entry(int k, 
+				      int u, 
+				      int v, 
+				      Route &R, 
+				      InputDevice i,
+				      const ChannelData * c,
+				      void * d): key(k),
+						 unique_id(u),
+						 velocity(v),
+						 route (R),
+						 device(i),
+						 settings(c),
+						 userdata(d){}
 
 				bool operator == (const entry & e) const {
-					return e.key == key && e.unique_id == unique_id && e.route == route;
+					return e.key == key 
+						&& e.unique_id == unique_id 
+						&& e.route == route;
 				}
 			};
 
@@ -856,23 +878,50 @@ namespace mutabor {
 			void add (int key,
 				  int velocity,
 				  int unique_id,
-				  Route & R) {
-				map.insert(entry(key,unique_id,velocity, R));
+				  Route & R,
+				  InputDevice i,
+				  const ChannelData & c,
+				  void * userdata) {
+				map.insert(entry(key,
+						 unique_id,
+						 velocity, 
+						 R,
+						 i,
+						 &c,
+						 userdata));
+				DEBUGLOG(always,_T("(key = %d, channel = %lu, id = %lu)"),
+					 key,
+					 (unsigned long)R->get_session_id(),
+					 (unsigned long)unique_id);
+				mutASSERT(isDebugFlag(always));
+			}
+			void add (entry e) {
+				map.insert(e);
 			}
 
 			void remove(int key,
 				    int velocity,
 				    int unique_id,
 				    Route & R) {
-				std::pair<map_type::iterator, map_type::iterator> range = map.equal_range(entry(key,unique_id,velocity, R));
+				std::pair<map_type::iterator, map_type::iterator> range = 
+					map.equal_range(entry(key,unique_id,velocity, R, NULL, NULL, NULL));
 				if (range.first != map.end()) {
 					map.erase(range.first);
+					DEBUGLOG(always,_T("(key = %d, channel = %lu, id = %lu)"),
+						 key,
+						 (unsigned long)R->get_session_id(),
+						 (unsigned long)unique_id);
 				}
 			}
 
 			void remove (iterator i ) {
 				map.erase(i);
 			}
+
+			void clear() {
+				map.clear();
+			}
+
 
 			iterator begin() { return map.begin(); }
 			const_iterator begin() const { return map.begin(); }
@@ -889,7 +938,7 @@ namespace mutabor {
 			Stop();
 		}
 		virtual void Stop() {
-			Panic(false);
+			Panic(midi::DEFAULT_PANIC);
 			Mode = DeviceStop;
 		}
 
@@ -965,35 +1014,10 @@ namespace mutabor {
 		 */
 		virtual mutint64 PrepareNextEvent() { return MUTABOR_NO_DELTA; }
 
-		void NoteOn(Route &R, int key, int velocity,
-			    size_t make_unique,
-			    const ChannelData & input_channel_data,
-			    void * userdata) {
-			current_keys.add(key, make_unique, velocity, R);
-			if (R) {
-				R->NoteOn(key,velocity,make_unique, input_channel_data, userdata);
-			}
-		}
-
-		void NoteOff(Route & R,
-			     int key,
-			     int velocity,
-			     size_t make_unique) {
-			current_keys.remove(key, make_unique, velocity, R);
-			if (R) {
-				R->NoteOff(key,velocity,make_unique);
-			}
-		}
-
-
-		void Panic() { Panic(true); } // is virtual in Device
-		void Panic(bool global);
-
-
 		virtual DevType GetType() const
-			{
-				return DTUnknown;
-			}
+		{
+			return DTUnknown;
+		}
 
 		virtual mutString GetTypeName () const {
 			return N_("Undefined input device");
@@ -1011,8 +1035,68 @@ namespace mutabor {
 		virtual wxString TowxString() const;
 #endif
 
+		void NoteOn(Route &R, int key, int velocity,
+			    size_t make_unique,
+			    const ChannelData & input_channel_data,
+			    void * userdata) {
+			ScopedLock lock(write_lock);
+			DEBUGLOG(always,_T("(key = %d, channel = %lu, id = %lu)"),
+				 key,
+				 (unsigned long)R->get_session_id(),
+				 (unsigned long)make_unique);
+			
+			current_keys.add(key, 
+					 velocity, 
+					 make_unique, 
+					 R,
+					 this,
+					 input_channel_data,
+					 userdata);
+			if (R) {
+				R->NoteOn(key,
+					  velocity,
+					  make_unique, 
+					  input_channel_data, 
+					  userdata);
+			}
+		}
+
+		void NoteOff(Route & R,
+			     int key,
+			     int velocity,
+			     size_t make_unique) {
+			ScopedLock lock(write_lock);
+			DoNoteOff(R, key, velocity, make_unique);
+		}
+
+		void DoNoteOff(Route & R,
+			       int key,
+			       int velocity,
+			       size_t make_unique) {
+			if (R) {
+				R->NoteOff(key,velocity,make_unique);
+			}
+			current_keys.remove(key, velocity, make_unique, R);
+			DEBUGLOG(always,_T("(key = %d, channel = %lu, id = %lu)"),
+				 key,
+				 (unsigned long)R->get_session_id(),
+				 (unsigned long)make_unique);
+		}
+
+		void SilenceKeys(bool remove) {
+			ScopedLock lock(write_lock);
+			DoSilenceKeys(remove);
+		}
+		void DoSilenceKeys(bool remove);
+		void ResumeKeys();
+
+		void Panic(int type);
+		void Panic(int type, size_t unique_id);
+
+
 	protected:
 		current_keys_type current_keys;
+		Mutex write_lock;
 
 		InputDeviceClass(const mutStringRef name = mutEmptyString,
 				 mutabor::MutaborModeType m = DeviceStop,

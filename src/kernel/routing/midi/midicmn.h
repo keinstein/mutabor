@@ -577,8 +577,9 @@ namespace mutabor {
 //		void Sustain(int channel, const ChannelData & cd);
 		int do_GetChannel(int inkey, size_t channel, size_t id);
 		void do_SplitOut (BYTE * p, size_t n);
-		void do_Quiet(RouteClass * r);
-		void do_Panic();
+		void do_Quiet(Route r, int type);
+		void do_Quiet(Route r, int type, size_t id);
+		void do_Panic(int type);
 		void do_SendBendingRange(int channel) {
 			do_Controller(channel,midi::PITCH_BEND_SENSITIVITY,bending_range);
 			controller(channel,midi::REGISTERED_PARAMETER_COARSE, 

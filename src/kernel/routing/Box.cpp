@@ -321,7 +321,55 @@ namespace mutabor {
 	}
 
 
-	void BoxClass::Panic() {
+	void BoxClass::Panic(Route r, int type, size_t unique_id)
+	{
+		BoxLock lock(this);
+#ifdef DEBUG
+		size_t channel = r -> get_session_id();
+		mutabor_note_type * key;
+		size_t index = 0;
+		while ((key = hidden::mutabor_find_key_in_box(box,
+							      index)) 
+		       != NULL) {
+			if (key -> channel == channel
+			    && key -> id == unique_id)
+				break;
+			index = key->next;
+		}
+
+		mutASSERT(key == NULL);
+#endif
+		
+	}
+
+	void BoxClass::Panic(Route r, int type)
+	{
+		BoxLock lock(this);
+#ifdef DEBUG
+		size_t channel = r -> get_session_id();
+		mutabor_note_type * key;
+		size_t index = 0;
+		while ((key = hidden::mutabor_find_key_in_box(box,
+							      index)) 
+		       != NULL) {
+			if (key -> channel == channel)
+				break;
+			index = key->next;
+		}
+
+		if (key != NULL) {
+			DEBUGLOG(always,_T("(key = %d, channel = %lu, id = %lu)"),
+				 key->number,
+				 key->channel,
+				 key->id);
+
+		}
+		mutASSERT(key == NULL);
+#endif
+		
+	}
+
+	void BoxClass::Panic(int type) {
 		BoxLock lock(this);
 		mutASSERT(open);
 		hidden::mutabor_reset_keys(box);
@@ -915,19 +963,21 @@ namespace mutabor {
 
 
 	struct dopanic_type {
+		dopanic_type(int t):type(t) {}
+		int type;
 		void operator () (InputDevice in) {
-			in->Panic();
+			in->Panic(type);
 		}
 		void operator () (Box box) {
-			box->Panic();
+			box->Panic(type);
 		}
 		void operator () (OutputDevice out) {
-			out->Panic();
+			out->Panic(type);
 		}
 	};
 
-	void  Panic() {
-		dopanic_type dopanic;
+	void  Panic(int type) {
+		dopanic_type dopanic(type);
 
 		const InputDeviceList & inlist = InputDeviceClass::GetDeviceList();
 		std::for_each(inlist.begin(),inlist.end(),dopanic);

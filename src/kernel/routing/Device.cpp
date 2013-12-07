@@ -316,19 +316,72 @@ OutputDeviceClass:\n\
 
 	}
 #endif
+
+	void InputDeviceClass::DoSilenceKeys(bool remove) {
+		current_keys_type::iterator i;
+		size_t j = 0;
+		DEBUGLOG(always,_T(""));
+		for (i = current_keys.begin();i!= current_keys.end();i++) {
+			i->route->NoteOff(i->key,i->velocity,i->unique_id);
+			j++;
+		}
+		DEBUGLOG(always,_T("silenced %lu keys"),(unsigned long)j);
+		if (remove) {
+			current_keys.clear();
+		}
+	}
+
+	void InputDeviceClass::ResumeKeys() {
+		ScopedLock lock(write_lock);
+
+		DEBUGLOG(always,_T(""));
+		current_keys_type::iterator i;
+		size_t j = 0;
+		for (i = current_keys.begin();i!= current_keys.end();i++) {
+			DEBUGLOG(always,_T("(key = %d, channel = %lu, id = %lu)"),
+				 i->key,
+				 (unsigned long)i->route->get_session_id(),
+				 (unsigned long)i->unique_id);
+			i->route->NoteOn(i->key,
+					 i->velocity,
+					 i->unique_id,
+					 *i->settings,
+					 i->userdata);
+			j++;
+		}
+		DEBUGLOG(always,_T("revived %lu keys"),(unsigned long)j);
+	}
 	
 
-	void InputDeviceClass::Panic(bool global) {
+	void InputDeviceClass::Panic(int type, size_t unique_id) 
+	{
+		ScopedLock lock(write_lock);
+
+		current_keys_type tmp;
 		current_keys_type::iterator i;
-		while ((i = current_keys.begin())!= current_keys.end()) {
-			i->route->NoteOff(i->key,i->velocity,i->unique_id);
-			current_keys.remove(i);
+		for (i = current_keys.begin();i!= current_keys.end();i++) {
+			if (i->unique_id != unique_id) continue;
+			tmp.add(*i);
+		}
+		while ((i = tmp.begin())!= tmp.end()) {
+			// Maps have constant entries
+			DoNoteOff(const_cast<Route &>(i->route),
+				i->key,i->velocity,i->unique_id);
 		}
 
-		if (global) {
-			for (routeListType::iterator j = routes.begin(); j!= routes.end(); j++) {
-				(*j)->Panic();
-			}
+		InputDevice self = this;
+		for (routeListType::iterator j = routes.begin(); j!= routes.end(); j++) {
+			(*j)->Panic(type,unique_id);
+
+		}
+	}
+
+	void InputDeviceClass::Panic(int type) {
+		ScopedLock lock(write_lock);
+		DoSilenceKeys(true);
+
+		for (routeListType::iterator j = routes.begin(); j!= routes.end(); j++) {
+			(*j)->Panic(type);
 		}
 	}
 

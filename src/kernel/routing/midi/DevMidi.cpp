@@ -438,7 +438,7 @@ OutputMidiPort:\n\
 		midiInReset(hMidiIn);
 		midiInClose(hMidiIn);
 #endif
-		Panic(false);
+		Panic(midi::DEFAULT_PANIC);
 		isOpen = false;
 	}
 

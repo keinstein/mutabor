@@ -351,10 +351,10 @@ namespace mutabor {
 		// Delta-Times lesen
 		minDelta = 0;
 		Mode = DeviceStop;
-		Panic();
+		Panic(midi::DEFAULT_PANIC);
 	}
 
-	void InputGis::Panic() {
+	void InputGis::Panic(int type) {
 #warning "Implement Panic()"
 	}
 
@@ -455,20 +455,21 @@ namespace mutabor {
 			switch (turn) {
 			case 0:
 				Cd.program_change(h->GetInstr());
-				route->NoteOn(Key,
-					      h->GetIntensity(turn),
-					      0,
-					      Cd,
-					      NULL);
+				NoteOn(route,
+				       Key,
+				       h->GetIntensity(turn),
+				       0,
+				       Cd,
+				       NULL);
 				break;
 			case 1:
-				route->GetOutputDevice()
-					->NoteOff(box,
-						  Key, 
-						  h->GetIntensity(turn),
-						  route.get(), 
-						  0,
-						  false); //4 ?? channelid aus staff
+				NoteOff(route,
+					/* box, */
+					Key, 
+					h->GetIntensity(turn),
+					/* route.get(), */
+					0/* ,
+					    false*/); //4 ?? channelid aus staff
 				break;
 			case 2:
 				box->DeleteNote(Key, 0, route->get_session_id());

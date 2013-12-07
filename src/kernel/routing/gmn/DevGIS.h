@@ -200,7 +200,9 @@ namespace mutabor {
 				Head->AddTime(time);
 			}
 
-		virtual void do_Quiet(RouteClass * r)
+		virtual void do_Quiet(Route r, int type)
+			{};
+		virtual void do_Quiet(Route r, int type, size_t id)
 			{};
 
 #if defined(_MSC_VER)
@@ -256,7 +258,7 @@ namespace mutabor {
 		virtual void Stop();
 	
 		virtual bool Open();
-		virtual void Panic();
+		virtual void Panic(int type);
 
 		void Proceed(GisReadArtHead *h, char turn, Route route);
 		void ProceedRoute(GisReadArtHead *h, char turn);

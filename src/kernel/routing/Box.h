@@ -325,7 +325,9 @@ namespace mutabor {
 
 
 		/// reset the device if requested
-		virtual void Panic();
+		virtual void Panic(int type);
+		virtual void Panic(Route r, int type);
+		virtual void Panic(Route r, int type, size_t unique_id);
 		virtual void Reset();
 
 #if defined(_MSC_VER)
@@ -822,7 +824,7 @@ namespace mutabor {
 		else return BoxFactory::Create(id);
 	}
 
-	void  Panic();
+	void  Panic(int type);
 
 	inline void BoxClose()
 	{
