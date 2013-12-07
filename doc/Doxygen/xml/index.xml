@@ -116,7 +116,9 @@
     <member refid="d5/dee/group__route_1ga8941bc1b906a3e3124fb1d5a490d3ce9" kind="function"><name>GetRoutes</name></member>
     <member refid="d5/dee/group__route_1ga88ade0720a7c8243fd96bc928f1502f7" kind="function"><name>MoveInList</name></member>
     <member refid="d5/dee/group__route_1ga62fd87e9a500c9ba71165e660d2be344" kind="function"><name>DisconnectFromAll</name></member>
-    <member refid="d5/dee/group__route_1gaf9dc832e91a28da7a19382beddb8edaf" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1gabf29d2503c0b431e29bcc0b91dce05e1" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1gabb21e9aeed30fb26d3f6abadf2f88ac9" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1gac2b70947947163c95ca37619b696e8b7" kind="function"><name>Panic</name></member>
     <member refid="d5/dee/group__route_1gacde207de41abe9defd55468078513aab" kind="function"><name>Reset</name></member>
     <member refid="d5/dee/group__route_1ga48f59ed7caa9d9713eac1a405913d8da" kind="function"><name>ReadData</name></member>
     <member refid="d5/dee/group__route_1ga5bac9d0deca309d7279421eab132fda3" kind="function"><name>WriteData</name></member>
@@ -224,7 +226,6 @@
     <member refid="df/d08/classmutaborGUI_1_1BoxData_1aab98069a58059b61a7e9321babc285d8" kind="function"><name>Destroy</name></member>
     <member refid="df/d08/classmutaborGUI_1_1BoxData_1a89d8f42074f02083df8327976c6d2700" kind="function"><name>Save</name></member>
     <member refid="df/d08/classmutaborGUI_1_1BoxData_1a952a6448ed833fabf227d2dea6d809cb" kind="function"><name>Load</name></member>
-    <member refid="df/d08/classmutaborGUI_1_1BoxData_1a777e3bbb78984507df135e5d361e50f3" kind="function"><name>runtime_error</name></member>
     <member refid="df/d08/classmutaborGUI_1_1BoxData_1ab26b4050180fd5202231f3588d3faf36" kind="function"><name>DoOpen</name></member>
     <member refid="df/d08/classmutaborGUI_1_1BoxData_1a684ed3207623117eeab3befa6fa83dfb" kind="function"><name>DoClose</name></member>
     <member refid="df/d08/classmutaborGUI_1_1BoxData_1a6d3bce4d0850cf412353906b3fbb9f8b" kind="function"><name>Activate</name></member>
@@ -482,6 +483,7 @@
     <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59a36c6fdc406fe47d6f70581062fc282d9" kind="enumvalue"><name>RequestExit</name></member>
     <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59a6163594cb2510bbd2b8a32fcf7806062" kind="enumvalue"><name>RequestPause</name></member>
     <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59aeedaf6a8fa478c488bd205f15396d3f9" kind="enumvalue"><name>ResetTime</name></member>
+    <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3a7a534be2da7ac9e62375cf9e22ca59af421bc7fec56407df2e5f09b29d2f02a" kind="enumvalue"><name>RequestPanic</name></member>
     <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ab9d8e436f426b7f75f526fd9e88411cb" kind="friend"><name>MidiFileFactory</name></member>
     <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a63ef0124e0849202e8b92b5c90a46dd3" kind="friend"><name>FileTimer</name></member>
     <member refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ac12acf2139170dc37a1432f25affd4f2" kind="variable"><name>timer</name></member>
@@ -542,12 +544,12 @@
     <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1a3b305d753980dc61b353214bc9fc84e5a171e542712b441e373058b2219400d4b" kind="enumvalue"><name>ProceedNo</name></member>
     <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1a3b305d753980dc61b353214bc9fc84e5a12bdee8ac1313e75afd6809c4d791cce" kind="enumvalue"><name>ProceedElse</name></member>
     <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1a124a4bbb1fb433bdb353368b8bcce71b" kind="typedef"><name>parenttype</name></member>
-    <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1a7c515980ee297a2348d046c3d5fb8de3" kind="variable"><name>Cd</name></member>
-    <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1af51274b95343ce7016ba7f5ac8e79d5c" kind="function"><name>Proceed</name></member>
-    <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1a74db34e3f993097fbd33fa6e6bce9d84" kind="function"><name>Proceed</name></member>
+    <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1ad7f41b9b656778fcc8c17eb3a79d7e19" kind="variable"><name>channel_data</name></member>
+    <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1a1e2068f1a6a937465de4ed1529ab15f6" kind="function"><name>Proceed</name></member>
+    <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1a22eba71fad439334bd9955fd40ddd568" kind="function"><name>Proceed</name></member>
     <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1a2ebad09121371c7770d66e5f4da151df" kind="function"><name>CommonMidiInput</name></member>
-    <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1ae107babf2f46026dea5743d43d060e79" kind="function"><name>ProceedRoute</name></member>
-    <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1a7cac3ed74f45482798853d5b6f6da0c4" kind="function"><name>ProceedRoute</name></member>
+    <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1ad3882519b5e6f29138f3d642ab2a9e8a" kind="function"><name>ProceedRoute</name></member>
+    <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1ab6618f04373c0de7b62bd70f12bd1dbc" kind="function"><name>ProceedRoute</name></member>
     <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1a1e85a636033c432bfad9d169476c104d" kind="function"><name>shouldProceed</name></member>
     <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1ac84353f9e39196fbbed4ab9813e46c37" kind="function"><name>shouldProceed</name></member>
   </compound>
@@ -602,8 +604,9 @@
     <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a1090b361f27e9e68e40437012f82ec3b" kind="function"><name>do_Controller</name></member>
     <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a695084d69d0dd0b194bac47b74cfa21f" kind="function"><name>do_GetChannel</name></member>
     <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a3317040cafaa0eaf568c263dd19ad7d9" kind="function"><name>do_SplitOut</name></member>
-    <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a3e9beb053705ae8a01aee1866f7d1304" kind="function"><name>do_Quiet</name></member>
-    <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1af8efd78cfb3c9f9f744f49d899a77bc4" kind="function"><name>do_Panic</name></member>
+    <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a1664accfd269911e4875d852f7fb1d44" kind="function"><name>do_Quiet</name></member>
+    <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1aac88cc5a15eceee7a4bd955a922695ce" kind="function"><name>do_Quiet</name></member>
+    <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a8c0c5de82c08d6c6eb58674c44a456cb" kind="function"><name>do_Panic</name></member>
     <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a8295cae4cc60dc36db5fb23c69218b94" kind="function"><name>do_SendBendingRange</name></member>
     <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a1763508a1c9abc965829cd1f0793f00d" kind="function"><name>do_Gis</name></member>
     <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1acffddd2d43ce718f15b4901a33d4a09f" kind="function"><name>do_MidiOut</name></member>
@@ -756,9 +759,11 @@
     <member refid="d5/dee/group__route_1ga9dc4924041e297df8a23823be32c7e63" kind="typedef"><name>iterator</name></member>
     <member refid="d5/dee/group__route_1gab90674730831db317278dc9486c35dff" kind="typedef"><name>const_iterator</name></member>
     <member refid="d5/dee/group__route_1ga9eb823358514d41552a756fd53c1046e" kind="variable"><name>map</name></member>
-    <member refid="d5/dee/group__route_1ga3a786b7012a67df221d51392a837deec" kind="function"><name>add</name></member>
+    <member refid="d5/dee/group__route_1ga9dcb29b150a1f7f6ff3e73ef98d60fae" kind="function"><name>add</name></member>
+    <member refid="d5/dee/group__route_1ga6971bd5d1d040303654cd2f98c007d4c" kind="function"><name>add</name></member>
     <member refid="d5/dee/group__route_1ga5e13cc8cc989f36f96831ccef9835047" kind="function"><name>remove</name></member>
     <member refid="d5/dee/group__route_1ga9f5fee3723bbf66c083bc81da52a8842" kind="function"><name>remove</name></member>
+    <member refid="d5/dee/group__route_1ga105f0a3e72992dcaf7ad35542e2424d0" kind="function"><name>clear</name></member>
     <member refid="d5/dee/group__route_1ga20093f61916baa598c1ed6899fc6e0ee" kind="function"><name>begin</name></member>
     <member refid="d5/dee/group__route_1ga3e2341aa9a2efc92ab2230928e5ce143" kind="function"><name>begin</name></member>
     <member refid="d5/dee/group__route_1gad19dacd14e10267a9275a70acde77bf3" kind="function"><name>end</name></member>
@@ -837,14 +842,14 @@
     <member refid="d5/dee/group__route_1ga5c987724477e17b02e862bdec75b8d1a" kind="function"><name>Add</name></member>
     <member refid="d5/dee/group__route_1gaadb4fdc84516a3d1519e69f92cf0ff22" kind="function"><name>Replace</name></member>
     <member refid="d5/dee/group__route_1ga6b58b4eb4a69e55729cc770b4629cb99" kind="function"><name>Remove</name></member>
-    <member refid="d5/dee/group__route_1gacbfcb856b399d1b01b958c9f41d6c294" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1ga01fca44cf920d3340d55e7aa06f477d7" kind="function"><name>Panic</name></member>
     <member refid="d5/dee/group__route_1ga8d7e66cd428ad6bc8d82bfd5fde5ab4b" kind="function"><name>Play</name></member>
     <member refid="d5/dee/group__route_1ga877980d75727478edae304ea0b513324" kind="function"><name>Pause</name></member>
     <member refid="d5/dee/group__route_1ga70164b668155aa5907d04a56c39c85c0" kind="function"><name>Stop</name></member>
     <member refid="d5/dee/group__route_1ga67e80dc8dd7ecc105020ae37eed4bf63" kind="function"><name>SetMode</name></member>
     <member refid="d5/dee/group__route_1ga85133d32c2a68f1a343aeab80bbd92f4" kind="function"><name>GetMode</name></member>
-    <member refid="d5/dee/group__route_1ga01c3f19123c1f42d8f1a2d405c3d21e2" kind="function"><name>runtime_error</name></member>
-    <member refid="d5/dee/group__route_1gac5f5412fc2ea0b0b5edbd199353309c9" kind="function"><name>runtime_error</name></member>
+    <member refid="d5/dee/group__route_1ga8ee3b1752e55aea0e7230d4268a8c305" kind="function"><name>runtime_error</name></member>
+    <member refid="d5/dee/group__route_1ga20cd513c13ed9623fbf23321c4db988f" kind="function"><name>runtime_error</name></member>
     <member refid="d5/dee/group__route_1gabacd3a9aa739a6e21a737feeb9b9e9c9" kind="function"><name>GetName</name></member>
     <member refid="d5/dee/group__route_1ga5d6f8f7b6518cf74b80d683f69030e2e" kind="function"><name>SetName</name></member>
     <member refid="d5/dee/group__route_1ga48afafba127beb4c42f6a1a9bceb2148" kind="function"><name>get_session_id</name></member>
@@ -923,6 +928,8 @@
     <member refid="da/dc8/structmutabor_1_1doexecute__flags_1ad237f082de0df48da7e1e2169ee9b067" kind="function"><name>operator()</name></member>
   </compound>
   <compound refid="de/d87/structmutabor_1_1dopanic__type" kind="struct"><name>mutabor::dopanic_type</name>
+    <member refid="de/d87/structmutabor_1_1dopanic__type_1ab9993ceeb5d565ff1edb374276d35c6e" kind="variable"><name>type</name></member>
+    <member refid="de/d87/structmutabor_1_1dopanic__type_1ac13e194fc1abc8274336a7a62f5cc3e6" kind="function"><name>dopanic_type</name></member>
     <member refid="de/d87/structmutabor_1_1dopanic__type_1a3f846cf25eb6d5c43eebab8f17bd40e4" kind="function"><name>operator()</name></member>
     <member refid="de/d87/structmutabor_1_1dopanic__type_1a2252c4215ec424e48f75c750ec7c7562" kind="function"><name>operator()</name></member>
     <member refid="de/d87/structmutabor_1_1dopanic__type_1a459e949b189bc7ea818d11a61b6d54d9" kind="function"><name>operator()</name></member>
@@ -932,7 +939,10 @@
     <member refid="d5/dee/group__route_1ga878aafbb34c232ca820d259cf497de70" kind="variable"><name>unique_id</name></member>
     <member refid="d5/dee/group__route_1ga0960027f676e8eadc0a9e420a09b2aa5" kind="variable"><name>velocity</name></member>
     <member refid="d5/dee/group__route_1ga25518c5548be3766d5ba9ed418152021" kind="variable"><name>route</name></member>
-    <member refid="d5/dee/group__route_1gad6700658759671cb82c8a8c0c7978e50" kind="function"><name>entry</name></member>
+    <member refid="d5/dee/group__route_1ga2f59a55fd2ef4a892cf0549a8631804e" kind="variable"><name>device</name></member>
+    <member refid="d5/dee/group__route_1ga5fec0e9ad3c164c3074c579cbc99cbbf" kind="variable"><name>settings</name></member>
+    <member refid="d5/dee/group__route_1gafbae3109ebd3faafad50f883f9394e00" kind="variable"><name>userdata</name></member>
+    <member refid="d5/dee/group__route_1ga9ae7eb4a1de1d7acf45478e95f597dfe" kind="function"><name>entry</name></member>
     <member refid="d5/dee/group__route_1ga341a65506d56db0af6240723bb8c3344" kind="function"><name>operator==</name></member>
   </compound>
   <compound refid="d8/ddf/structmutabor_1_1RouteFactory_1_1FactoryAlreadySet" kind="struct"><name>mutabor::RouteFactory::FactoryAlreadySet</name>
@@ -1244,7 +1254,7 @@
     <member refid="d6/d8f/classmutaborGUI_1_1GUIfiedInputDevice_1ac6b83430bb4da72c4ca2187990f79990" kind="function"><name>Remove</name></member>
     <member refid="d6/d8f/classmutaborGUI_1_1GUIfiedInputDevice_1a7cbc15164380dcb3eb1e920dd39297a3" kind="function"><name>DisconnectFromAll</name></member>
     <member refid="d6/d8f/classmutaborGUI_1_1GUIfiedInputDevice_1ad57171ef2a3601ea40048f047115804a" kind="function"><name>MoveInList</name></member>
-    <member refid="d6/d8f/classmutaborGUI_1_1GUIfiedInputDevice_1abd94f1dd96628ac991fc7ad154e2eda5" kind="function"><name>runtime_error</name></member>
+    <member refid="d6/d8f/classmutaborGUI_1_1GUIfiedInputDevice_1a1f1f6e5ce8d9ed158cf502c30df6d2b1" kind="function"><name>runtime_error</name></member>
   </compound>
   <compound refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice" kind="class"><name>mutaborGUI::GUIfiedOutputDevice</name>
     <member refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1ab8ec94065300fef929fc32c2657f7a67" kind="typedef"><name>basetype</name></member>
@@ -1260,7 +1270,7 @@
     <member refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1a8e0ac62ae46e256b171109f9d7cc4a4d" kind="function"><name>GetDevice</name></member>
     <member refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1a36eccf5ac5bd144ed76e05ac74411ebc" kind="function"><name>DisconnectFromAll</name></member>
     <member refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1a6925d6c1e9bc20a069c15cb0418c0ec4" kind="function"><name>MoveInList</name></member>
-    <member refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1a5b0f33795729434013db9d26b8bd9513" kind="function"><name>runtime_error</name></member>
+    <member refid="da/df1/classmutaborGUI_1_1GUIfiedOutputDevice_1ae29b7e93652db8037756ddbd78dab9e4" kind="function"><name>runtime_error</name></member>
   </compound>
   <compound refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute" kind="class"><name>mutaborGUI::GUIfiedRoute</name>
     <member refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1a676b2e9d1197055e152e5144868003ef" kind="typedef"><name>thistype</name></member>
@@ -1281,7 +1291,7 @@
     <member refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1adf5353f0112f49a900031a918f17459d" kind="function"><name>Remove</name></member>
     <member refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1a20f496591d4e24a0d07d669893365847" kind="function"><name>GetRoute</name></member>
     <member refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1a2d218f3e79bcd368dc9fd2e3fddc970c" kind="function"><name>Destroy</name></member>
-    <member refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1a264c99a77613e7f7d4f0542a68979379" kind="function"><name>runtime_error</name></member>
+    <member refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1a58ce7457ae433feaf9d89d069c46300c" kind="function"><name>runtime_error</name></member>
   </compound>
   <compound refid="d9/dbd/classmutaborGUI_1_1GUIGisFactory" kind="class"><name>mutaborGUI::GUIGisFactory</name>
     <member refid="d9/dbd/classmutaborGUI_1_1GUIGisFactory_1a1198cf590bc237f817f3c100fa236473" kind="function"><name>GUIGisFactory</name></member>
@@ -1310,7 +1320,7 @@
     <member refid="d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase_1a9c7510618af1fd2fabbceb1553577b72" kind="function"><name>GetShape</name></member>
     <member refid="d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase_1afbfbc03c6e6049e8fd491019051a55b6" kind="function"><name>MoveToInList</name></member>
     <member refid="d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase_1a510160d5c322139010df2e3b946c8da9" kind="function"><name>Destroy</name></member>
-    <member refid="d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase_1aa7151676f52c9f56b33accf153e39f51" kind="function"><name>runtime_error</name></member>
+    <member refid="d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase_1a356eff405627ebcfeff1727c6cebac98" kind="function"><name>runtime_error</name></member>
     <member refid="d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase_1ab4b0d42d02c29750c4008bf2278a79fc" kind="function"><name>GetGUIInputDevice</name></member>
     <member refid="d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase_1aacd29deb16de22a5522dd455c2f4693c" kind="function"><name>GetGUIInputDevice</name></member>
     <member refid="d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase_1a248283ae35fdc99fc6005151d8542654" kind="function"><name>NotifyShapes</name></member>
@@ -1346,7 +1356,7 @@
     <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1abdcf85d9daa3775b12a455bf7da3d047" kind="function"><name>GetDevice</name></member>
     <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a88d42786efa8945ede45bb0554d171c9" kind="function"><name>MoveToInList</name></member>
     <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a8151d96d434fee057024db8c2c6c5c1a" kind="function"><name>Destroy</name></member>
-    <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a84258f346a632fa421c55653e45e8153" kind="function"><name>runtime_error</name></member>
+    <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a1a7a06b1a6d5c620eb72799f0ce1fb2f" kind="function"><name>runtime_error</name></member>
     <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1a2b7acfc6cd62acc7872f0d021fb816e2" kind="function"><name>GetGUIOutputDevice</name></member>
     <member refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1abc5c85a01fa37e92d0da4c2eebbd710e" kind="function"><name>GetGUIOutputDevice</name></member>
   </compound>
@@ -1369,7 +1379,7 @@
     <member refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a6272869e19783b2bb65e5e713d42ee86" kind="function"><name>GetRoute</name></member>
     <member refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a572cc176ea6cbfcae2261692d61f724e" kind="function"><name>Destroy</name></member>
     <member refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a5ea441cfd467c5c764af892ae95ccb9e" kind="function"><name>GetShape</name></member>
-    <member refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a872aae10a842e9e99cdac6bfd687a51b" kind="function"><name>runtime_error</name></member>
+    <member refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a554ceb028d46e0997e05d6df8a430854" kind="function"><name>runtime_error</name></member>
     <member refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1abb0aa9bd1137e4eb9943186542d8165e" kind="function"><name>GetGUIRoute</name></member>
   </compound>
   <compound refid="d6/de3/classmutaborGUI_1_1GUIRouteFactory" kind="class"><name>mutaborGUI::GUIRouteFactory</name>
@@ -1494,6 +1504,7 @@
     <member refid="d5/dee/group__route_1ggac2bb84d1f1e0c5c42e57cf8ac9992996a39530c962f92d84a1b55f32be3f5f0fd" kind="enumvalue"><name>wxTHREAD_WAIT_DEFAULT</name></member>
     <member refid="d5/dee/group__route_1gac36d9e10cb965cbf9c71a189eff845af" kind="friend"><name>DeviceFactory</name></member>
     <member refid="d5/dee/group__route_1gabd5333b4904bd05f4d82ee7f3e259530" kind="variable"><name>current_keys</name></member>
+    <member refid="d5/dee/group__route_1ga68e959446d94cf18b1d8bfb3e60d4e75" kind="variable"><name>write_lock</name></member>
     <member refid="d5/dee/group__route_1gab96d961196f9b390aba6a647a2c3602e" kind="function"><name>~InputDeviceClass</name></member>
     <member refid="d5/dee/group__route_1ga74c7ff321332ac230d3696c91559dbcf" kind="function"><name>Close</name></member>
     <member refid="d5/dee/group__route_1gafd7b958ce532dc3ac37a3b312abfccd1" kind="function"><name>Stop</name></member>
@@ -1502,13 +1513,17 @@
     <member refid="d5/dee/group__route_1ga75218401589785a6a67e0b29289b3436" kind="function"><name>Pause</name></member>
     <member refid="d5/dee/group__route_1ga7940967ce95f17bf1c79c6928cd732e7" kind="function"><name>NeedsRealTime</name></member>
     <member refid="d5/dee/group__route_1ga77179da20d4bb3a5cd8d03fc90435ddb" kind="function"><name>PrepareNextEvent</name></member>
-    <member refid="d5/dee/group__route_1gacc20d37049923e4473fc0ff10fed282c" kind="function"><name>NoteOn</name></member>
-    <member refid="d5/dee/group__route_1gadab298f6643f7929782652b7a2764731" kind="function"><name>NoteOff</name></member>
-    <member refid="d5/dee/group__route_1ga4c7c24c48255adddc767a745ed3c8e1c" kind="function"><name>Panic</name></member>
-    <member refid="d5/dee/group__route_1ga16e5549446e1eff905acfaa343ea254b" kind="function"><name>Panic</name></member>
     <member refid="d5/dee/group__route_1ga0c8207244321c9d72913ae24fbad4be5" kind="function"><name>GetType</name></member>
     <member refid="d5/dee/group__route_1ga0988ca3116773a66652ccc573204c928" kind="function"><name>GetTypeName</name></member>
     <member refid="d5/dee/group__route_1ga33c4a77081b2d1b31f0153cd442d597a" kind="function"><name>IsDelta</name></member>
+    <member refid="d5/dee/group__route_1gacc20d37049923e4473fc0ff10fed282c" kind="function"><name>NoteOn</name></member>
+    <member refid="d5/dee/group__route_1gadab298f6643f7929782652b7a2764731" kind="function"><name>NoteOff</name></member>
+    <member refid="d5/dee/group__route_1gacb6aebc4750fdcb7a26f3c72f88fbc50" kind="function"><name>DoNoteOff</name></member>
+    <member refid="d5/dee/group__route_1gad25b86b6b97d706021560154beba956b" kind="function"><name>SilenceKeys</name></member>
+    <member refid="d5/dee/group__route_1ga149a7081186d9f03e6ad5a7f21fa9830" kind="function"><name>DoSilenceKeys</name></member>
+    <member refid="d5/dee/group__route_1ga85fbc49b0b301e47ff473ef609158582" kind="function"><name>ResumeKeys</name></member>
+    <member refid="d5/dee/group__route_1gac4b560ea932322713aea7e0350207d99" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1gacb942a8c5cee15a375579b29208eddd4" kind="function"><name>Panic</name></member>
     <member refid="d5/dee/group__route_1ga2e005c6f49a1547b9b3b011a940879be" kind="function"><name>BatchPlay</name></member>
     <member refid="d5/dee/group__route_1gacb751971284f0b211abb68ae3dafd4b4" kind="function"><name>RealtimePlay</name></member>
     <member refid="d5/dee/group__route_1gab552cc7e2033cc34840644adee86699f" kind="function"><name>GetNO_DELTA</name></member>
@@ -1559,7 +1574,7 @@
     <member refid="dc/da1/classmutabor_1_1InputGis_1ab14a7743d1cf4f74e06608c113ac4463" kind="function"><name>Close</name></member>
     <member refid="dc/da1/classmutabor_1_1InputGis_1a602dd53cc86c2dbf91bf290b169f00a0" kind="function"><name>Stop</name></member>
     <member refid="dc/da1/classmutabor_1_1InputGis_1a5f9cd24f25454fe7cbbc87918fe06ab3" kind="function"><name>Open</name></member>
-    <member refid="dc/da1/classmutabor_1_1InputGis_1a2c639ab63ae9f31104ef179646b77a45" kind="function"><name>Panic</name></member>
+    <member refid="dc/da1/classmutabor_1_1InputGis_1a840650191ddd82368f5a213e188ae69b" kind="function"><name>Panic</name></member>
     <member refid="dc/da1/classmutabor_1_1InputGis_1a2b3ede588a224861e7a1810e983c6b45" kind="function"><name>Proceed</name></member>
     <member refid="dc/da1/classmutabor_1_1InputGis_1ab1fd97ac67b58b0a4627308223f52c6b" kind="function"><name>ProceedRoute</name></member>
     <member refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" kind="function"><name>ReadOn</name></member>
@@ -1651,6 +1666,13 @@
     <member refid="d7/d15/classmutaborGUI_1_1InputFilterPanel_1_1InputShapeData_1a8861dfe9f629018a933366ed21770906" kind="function"><name>InputShapeData</name></member>
     <member refid="d7/d15/classmutaborGUI_1_1InputFilterPanel_1_1InputShapeData_1aba97d4fa2127990226a14b7a956279ce" kind="function"><name>GetDevice</name></member>
   </compound>
+  <compound refid="d4/d0f/structinstrument" kind="struct"><name>instrument</name>
+    <member refid="d4/d0f/structinstrument_1a6d18b193c9041077fffeeedc601c9a19" kind="variable"><name>midi_in</name></member>
+    <member refid="d4/d0f/structinstrument_1aaa6369891d84317bd27a57050e41a486" kind="variable"><name>midi_von</name></member>
+    <member refid="d4/d0f/structinstrument_1a4cced7e2505d227bbd07fc8cf5c87e6c" kind="variable"><name>midi_bis</name></member>
+    <member refid="d4/d0f/structinstrument_1afc2572eec90eb266d99b6362e37b909a" kind="variable"><name>midi_umleit</name></member>
+    <member refid="d4/d0f/structinstrument_1aa5fb8316689b36137833acae95e9773f" kind="variable"><name>next</name></member>
+  </compound>
   <compound refid="d5/dc6/classInstrument" kind="class"><name>Instrument</name>
     <member refid="d5/dc6/classInstrument_1aae52f573028f8b138cbf5bff5ea62cc8" kind="variable"><name>Next</name></member>
     <member refid="d5/dc6/classInstrument_1a1d706308eb8d74731de949cc16bc13e5" kind="variable"><name>Id</name></member>
@@ -1658,13 +1680,6 @@
     <member refid="d5/dc6/classInstrument_1a71995b3b274865a56ad7d613acb57d8a" kind="variable"><name>Bis</name></member>
     <member refid="d5/dc6/classInstrument_1a38ae55b27b94b68405c27112db8e853e" kind="variable"><name>Sound</name></member>
     <member refid="d5/dc6/classInstrument_1ad1cf2ce5018294b15c35a7985d7c9262" kind="function"><name>Instrument</name></member>
-  </compound>
-  <compound refid="d4/d0f/structinstrument" kind="struct"><name>instrument</name>
-    <member refid="d4/d0f/structinstrument_1a6d18b193c9041077fffeeedc601c9a19" kind="variable"><name>midi_in</name></member>
-    <member refid="d4/d0f/structinstrument_1aaa6369891d84317bd27a57050e41a486" kind="variable"><name>midi_von</name></member>
-    <member refid="d4/d0f/structinstrument_1a4cced7e2505d227bbd07fc8cf5c87e6c" kind="variable"><name>midi_bis</name></member>
-    <member refid="d4/d0f/structinstrument_1afc2572eec90eb266d99b6362e37b909a" kind="variable"><name>midi_umleit</name></member>
-    <member refid="d4/d0f/structinstrument_1aa5fb8316689b36137833acae95e9773f" kind="variable"><name>next</name></member>
   </compound>
   <compound refid="dc/d4e/unioninterpreter__argument" kind="union"><name>interpreter_argument</name>
     <member refid="dc/d4e/unioninterpreter__argument_1a741c85fd73051e232dd5d2e3197c900d" kind="variable"><name>index</name></member>
@@ -3047,8 +3062,9 @@
     <member refid="d5/dee/group__route_1gac3e936098fe85037c365ad53681a6f60" kind="function"><name>AddTime</name></member>
     <member refid="d5/dee/group__route_1ga97e4ddbae9a9d8097038c07a7b52046e" kind="function"><name>MidiOut</name></member>
     <member refid="d5/dee/group__route_1gae48defd6215d421f119d321b3c20c219" kind="function"><name>MidiOut</name></member>
-    <member refid="d5/dee/group__route_1ga294ad7f8b724e44e7fde7f87157046ee" kind="function"><name>Quiet</name></member>
-    <member refid="d5/dee/group__route_1gac77e443b48248e49dc70250edef9cd4e" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1ga4ab0a6b5f1805a707ad15fc968a22d4e" kind="function"><name>Quiet</name></member>
+    <member refid="d5/dee/group__route_1gaf3492ab37c2e7716c105e375f47efac1" kind="function"><name>Quiet</name></member>
+    <member refid="d5/dee/group__route_1ga1e4a0003df8dd4f587ec74a30d78022d" kind="function"><name>Panic</name></member>
     <member refid="d5/dee/group__route_1ga1e7ff931fc0fbd026f00d07b11924c7d" kind="function"><name>Open</name></member>
     <member refid="d5/dee/group__route_1gab9de5728ebbc88f38204e91e2d7c1a78" kind="function"><name>NeedsRealTime</name></member>
     <member refid="d5/dee/group__route_1ga88bc3737a5843795342bfa75acb85391" kind="function"><name>GetType</name></member>
@@ -3064,8 +3080,9 @@
     <member refid="d5/dee/group__route_1gafe2f29681da76de312218331ac168115" kind="function"><name>do_AddTime</name></member>
     <member refid="d5/dee/group__route_1gaa2f04ca55e971275ccf8632fa955a358" kind="function"><name>do_MidiOut</name></member>
     <member refid="d5/dee/group__route_1gac582962c4f9f580d6d277ff7bebbe265" kind="function"><name>do_MidiOut</name></member>
-    <member refid="d5/dee/group__route_1gab122b1a708b2424a7d513094d050d503" kind="function"><name>do_Quiet</name></member>
-    <member refid="d5/dee/group__route_1ga4a53d2638e53503d6d0f437a55420ccf" kind="function"><name>do_Panic</name></member>
+    <member refid="d5/dee/group__route_1ga71185d8186652b02c7c7050ef759a75a" kind="function"><name>do_Quiet</name></member>
+    <member refid="d5/dee/group__route_1ga711568c6b8c09fae0a2404c1451eaa26" kind="function"><name>do_Quiet</name></member>
+    <member refid="d5/dee/group__route_1gab6bd82b3fd84d5da31e3b12ff202b7e6" kind="function"><name>do_Panic</name></member>
     <member refid="d5/dee/group__route_1gac05719bb6e4ec988a59e17db0743612f" kind="function"><name>do_Open</name></member>
   </compound>
   <compound refid="d8/d41/structmutaborGUI_1_1outputdevicetypes" kind="struct"><name>mutaborGUI::outputdevicetypes</name>
@@ -3103,7 +3120,8 @@
     <member refid="dd/de6/classmutabor_1_1OutputGis_1a8f8f34cf7100b87db7bfdba3ccea9c23" kind="function"><name>do_MidiOut</name></member>
     <member refid="dd/de6/classmutabor_1_1OutputGis_1a54a4ac5a85ebf2538f52ead87d470a4c" kind="function"><name>do_MidiOut</name></member>
     <member refid="dd/de6/classmutabor_1_1OutputGis_1a5b22b9d9eba6707dca757a433943c9fc" kind="function"><name>do_AddTime</name></member>
-    <member refid="dd/de6/classmutabor_1_1OutputGis_1a2bc8ae437633d980c9127cac9725eb08" kind="function"><name>do_Quiet</name></member>
+    <member refid="dd/de6/classmutabor_1_1OutputGis_1aa5115f0fd8429e5fb89e51599427a594" kind="function"><name>do_Quiet</name></member>
+    <member refid="dd/de6/classmutabor_1_1OutputGis_1a7f2af9636490b083d7fe21e33039f0db" kind="function"><name>do_Quiet</name></member>
     <member refid="dd/de6/classmutabor_1_1OutputGis_1a0193e8306df248892dedbbb3a4c1de96" kind="function"><name>~OutputGis</name></member>
     <member refid="dd/de6/classmutabor_1_1OutputGis_1a5238013279f1d14d5ffab06444e5952c" kind="function"><name>Save</name></member>
     <member refid="dd/de6/classmutabor_1_1OutputGis_1ad7b49c55c64964b95fccd580f2b27771" kind="function"><name>Save</name></member>
@@ -3288,17 +3306,17 @@
     <member refid="d5/dee/group__route_1gac1ae595ebe8819c13893d725e51115b1" kind="function"><name>set_callback</name></member>
     <member refid="d5/dee/group__route_1gaa63774ec7552c354c47a5ed09196d4bd" kind="function"><name>~set_callback</name></member>
   </compound>
-  <compound refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state" kind="struct"><name>mutaborGUI::xmltree::state</name>
-    <member refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1afd223f40d100e64c722330ed7448d03b" kind="variable"><name>node</name></member>
-    <member refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1ace84c20c5adfbf4dbdf865c760cf058b" kind="variable"><name>path</name></member>
-    <member refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a869465823cc04fd35bf1b1505ad4b184" kind="function"><name>state</name></member>
-    <member refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a8e13a24d2f4097d01b0490a706f0faf5" kind="function"><name>operator==</name></member>
-  </compound>
   <compound refid="d9/de4/structconfigtree_1_1state" kind="struct"><name>configtree::state</name>
     <member refid="d9/de4/structconfigtree_1_1state_1ad4514ef56c2bdbcb6b7c4dabd7f043f8" kind="variable"><name>chdepth</name></member>
     <member refid="d9/de4/structconfigtree_1_1state_1a96c937da41adcfcb941a1b782e869a71" kind="variable"><name>leafid</name></member>
     <member refid="d9/de4/structconfigtree_1_1state_1a8fe720e44ea2463a03e1472181407d52" kind="function"><name>state</name></member>
     <member refid="d9/de4/structconfigtree_1_1state_1affd8d81f52ce01f485a42827fd2d8cb7" kind="function"><name>operator==</name></member>
+  </compound>
+  <compound refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state" kind="struct"><name>mutaborGUI::xmltree::state</name>
+    <member refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1afd223f40d100e64c722330ed7448d03b" kind="variable"><name>node</name></member>
+    <member refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1ace84c20c5adfbf4dbdf865c760cf058b" kind="variable"><name>path</name></member>
+    <member refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a869465823cc04fd35bf1b1505ad4b184" kind="function"><name>state</name></member>
+    <member refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a8e13a24d2f4097d01b0490a706f0faf5" kind="function"><name>operator==</name></member>
   </compound>
   <compound refid="dc/d00/classmutaborGUI_1_1StatusBar" kind="class"><name>mutaborGUI::StatusBar</name>
     <member refid="dc/d00/classmutaborGUI_1_1StatusBar_1a6299a024e3aed702b368e41d4def15eb" kind="enum"><name>playstate</name></member>
@@ -3593,7 +3611,8 @@
     <member refid="d5/dee/group__route_1ga1d218671419fc648b327f268d0f184c0" kind="function"><name>MidiOut</name></member>
     <member refid="d5/dee/group__route_1ga6ddbf0014c25b7ed21133b5c65768a19" kind="function"><name>UpdateTones</name></member>
     <member refid="d5/dee/group__route_1ga415842bcbaed7eff71e1476168a607ca" kind="function"><name>GetChannel</name></member>
-    <member refid="d5/dee/group__route_1ga18e2fbe8e6698cad4b91324bbd9e8db3" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1gaa36afa3a67293dfa2181c69de620b665" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1gafc754acf35919046035f6a3f831d6d0e" kind="function"><name>Panic</name></member>
     <member refid="d5/dee/group__route_1gac4495ec6ad2c9d0f51ef24f04c1a2e46" kind="function"><name>Controller</name></member>
     <member refid="d5/dee/group__route_1gaa1a7304f5415bad19812785af8e3c6ff" kind="function"><name>Add</name></member>
     <member refid="d5/dee/group__route_1ga47411e32a9f8ee91fcb5eb74a1230a81" kind="function"><name>Add</name></member>
@@ -3795,12 +3814,6 @@
     <member refid="d8/d97/unionyyalloc_1a9326f4fdc6f737a929444427836d8928" kind="variable"><name>yyvs_alloc</name></member>
     <member refid="d8/d97/unionyyalloc_1a542e43248e6afac9af342c2f4e3162fc" kind="variable"><name>yyls_alloc</name></member>
   </compound>
-  <compound refid="d8/d38/structYYLTYPE" kind="struct"><name>YYLTYPE</name>
-    <member refid="d8/d38/structYYLTYPE_1a50ad3435eaea74bcab6f1ae5fbaefd89" kind="variable"><name>first_line</name></member>
-    <member refid="d8/d38/structYYLTYPE_1a3a556533babab1b9066fa9bdbb809210" kind="variable"><name>first_column</name></member>
-    <member refid="d8/d38/structYYLTYPE_1a3075f2bc3448df5d2a9f16d22bff2cc1" kind="variable"><name>last_line</name></member>
-    <member refid="d8/d38/structYYLTYPE_1acf87f8c98686f286eaf700c4b62157b2" kind="variable"><name>last_column</name></member>
-  </compound>
   <compound refid="d8/dee/structyyltype" kind="struct"><name>yyltype</name>
     <member refid="d8/dee/structyyltype_1a19a8114a9d9106b62481f99c728b8b20" kind="variable"><name>timestamp</name></member>
     <member refid="d8/dee/structyyltype_1a883af75af091cd209ef3664fb7d9cf59" kind="variable"><name>first_line</name></member>
@@ -3808,6 +3821,12 @@
     <member refid="d8/dee/structyyltype_1a8127c7399f03f0ccab0ab88127b65f7d" kind="variable"><name>last_line</name></member>
     <member refid="d8/dee/structyyltype_1a3908c6833d48b542a6553f5c804e48f7" kind="variable"><name>last_column</name></member>
     <member refid="d8/dee/structyyltype_1aad0aa01bb6128302ad61d96adc661336" kind="variable"><name>text</name></member>
+  </compound>
+  <compound refid="d8/d38/structYYLTYPE" kind="struct"><name>YYLTYPE</name>
+    <member refid="d8/d38/structYYLTYPE_1a50ad3435eaea74bcab6f1ae5fbaefd89" kind="variable"><name>first_line</name></member>
+    <member refid="d8/d38/structYYLTYPE_1a3a556533babab1b9066fa9bdbb809210" kind="variable"><name>first_column</name></member>
+    <member refid="d8/d38/structYYLTYPE_1a3075f2bc3448df5d2a9f16d22bff2cc1" kind="variable"><name>last_line</name></member>
+    <member refid="d8/d38/structYYLTYPE_1acf87f8c98686f286eaf700c4b62157b2" kind="variable"><name>last_column</name></member>
   </compound>
   <compound refid="da/d7e/unionYYSTYPE" kind="union"><name>YYSTYPE</name>
     <member refid="da/d7e/unionYYSTYPE_1a5c271e70f4d29399df5af39a9d791473" kind="variable"><name>f_value</name></member>
@@ -3891,7 +3910,7 @@
     <member refid="d6/daa/namespacemutabor_1a608cc1e9512743844d90a2be7c965165" kind="function"><name>error_callback</name></member>
     <member refid="d6/daa/namespacemutabor_1a4f92da7cc5bf11b6f35d7f0830cfa044" kind="function"><name>lock_callback</name></member>
     <member refid="d6/daa/namespacemutabor_1aee406afa47a27ac0baadff2bf05b2794" kind="function"><name>unlock_callback</name></member>
-    <member refid="d5/dee/group__route_1ga5b4ff2d84ebcfa5d31083f0b7df79c84" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1gad4092c9965b9f85607cf343adbfa8649" kind="function"><name>Panic</name></member>
     <member refid="d5/dee/group__route_1ga8f3424d939c6cfaff88e5d77b69baa04" kind="function"><name>initialize_box_data</name></member>
     <member refid="d5/dee/group__route_1gab2c9f697ef8d670d83423330ed46235b" kind="function"><name>to_string</name></member>
     <member refid="d5/dee/group__route_1ga4a259200e6f0fb39029b6e317c8a185b" kind="function"><name>BoxClose</name></member>
@@ -7135,8 +7154,12 @@
     <member refid="d5/dee/group__route_1ga878aafbb34c232ca820d259cf497de70" kind="variable"><name>unique_id</name></member>
     <member refid="d5/dee/group__route_1ga0960027f676e8eadc0a9e420a09b2aa5" kind="variable"><name>velocity</name></member>
     <member refid="d5/dee/group__route_1ga25518c5548be3766d5ba9ed418152021" kind="variable"><name>route</name></member>
+    <member refid="d5/dee/group__route_1ga2f59a55fd2ef4a892cf0549a8631804e" kind="variable"><name>device</name></member>
+    <member refid="d5/dee/group__route_1ga5fec0e9ad3c164c3074c579cbc99cbbf" kind="variable"><name>settings</name></member>
+    <member refid="d5/dee/group__route_1gafbae3109ebd3faafad50f883f9394e00" kind="variable"><name>userdata</name></member>
     <member refid="d5/dee/group__route_1ga9eb823358514d41552a756fd53c1046e" kind="variable"><name>map</name></member>
     <member refid="d5/dee/group__route_1gabd5333b4904bd05f4d82ee7f3e259530" kind="variable"><name>current_keys</name></member>
+    <member refid="d5/dee/group__route_1ga68e959446d94cf18b1d8bfb3e60d4e75" kind="variable"><name>write_lock</name></member>
     <member refid="d5/dee/group__route_1ga5373f1698de78313c8e4dad25d3d6128" kind="variable"><name>id</name></member>
     <member refid="d5/dee/group__route_1ga8a35fdac4d5cfd24c182f997cec4e211" kind="variable"><name>message_</name></member>
     <member refid="d5/dee/group__route_1ga892c67a33ce0300143018e6c82b56ffb" kind="variable"><name>factories</name></member>
@@ -7262,7 +7285,9 @@
     <member refid="d5/dee/group__route_1ga88ade0720a7c8243fd96bc928f1502f7" kind="function"><name>MoveInList</name></member>
     <member refid="d5/dee/group__route_1gaf902f52cc92b92c56c800871fb2a4593" kind="function"><name>ClearBoxList</name></member>
     <member refid="d5/dee/group__route_1ga62fd87e9a500c9ba71165e660d2be344" kind="function"><name>DisconnectFromAll</name></member>
-    <member refid="d5/dee/group__route_1gaf9dc832e91a28da7a19382beddb8edaf" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1gabf29d2503c0b431e29bcc0b91dce05e1" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1gabb21e9aeed30fb26d3f6abadf2f88ac9" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1gac2b70947947163c95ca37619b696e8b7" kind="function"><name>Panic</name></member>
     <member refid="d5/dee/group__route_1gacde207de41abe9defd55468078513aab" kind="function"><name>Reset</name></member>
     <member refid="d5/dee/group__route_1ga48f59ed7caa9d9713eac1a405913d8da" kind="function"><name>ReadData</name></member>
     <member refid="d5/dee/group__route_1ga5bac9d0deca309d7279421eab132fda3" kind="function"><name>WriteData</name></member>
@@ -7341,7 +7366,7 @@
     <member refid="d5/dee/group__route_1ga54a0edb9737d11959b2bc557e13e1d9f" kind="function"><name>~ScopedBox</name></member>
     <member refid="d5/dee/group__route_1ga9683f7b0b26b57fc57d634517189db8e" kind="function"><name>operator=</name></member>
     <member refid="d5/dee/group__route_1gadf64348bcb35d4eeb423c4aa325224e9" kind="function"><name>operator=</name></member>
-    <member refid="d5/dee/group__route_1ga5b4ff2d84ebcfa5d31083f0b7df79c84" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1gad4092c9965b9f85607cf343adbfa8649" kind="function"><name>Panic</name></member>
     <member refid="d5/dee/group__route_1ga4a259200e6f0fb39029b6e317c8a185b" kind="function"><name>BoxClose</name></member>
     <member refid="d5/dee/group__route_1ga8376c87747866f9eb111644263144fc9" kind="function"><name>OpenAll</name></member>
     <member refid="d5/dee/group__route_1ga8f3424d939c6cfaff88e5d77b69baa04" kind="function"><name>initialize_box_data</name></member>
@@ -7369,14 +7394,14 @@
     <member refid="d5/dee/group__route_1ga5c987724477e17b02e862bdec75b8d1a" kind="function"><name>Add</name></member>
     <member refid="d5/dee/group__route_1gaadb4fdc84516a3d1519e69f92cf0ff22" kind="function"><name>Replace</name></member>
     <member refid="d5/dee/group__route_1ga6b58b4eb4a69e55729cc770b4629cb99" kind="function"><name>Remove</name></member>
-    <member refid="d5/dee/group__route_1gacbfcb856b399d1b01b958c9f41d6c294" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1ga01fca44cf920d3340d55e7aa06f477d7" kind="function"><name>Panic</name></member>
     <member refid="d5/dee/group__route_1ga8d7e66cd428ad6bc8d82bfd5fde5ab4b" kind="function"><name>Play</name></member>
     <member refid="d5/dee/group__route_1ga877980d75727478edae304ea0b513324" kind="function"><name>Pause</name></member>
     <member refid="d5/dee/group__route_1ga70164b668155aa5907d04a56c39c85c0" kind="function"><name>Stop</name></member>
     <member refid="d5/dee/group__route_1ga67e80dc8dd7ecc105020ae37eed4bf63" kind="function"><name>SetMode</name></member>
     <member refid="d5/dee/group__route_1ga85133d32c2a68f1a343aeab80bbd92f4" kind="function"><name>GetMode</name></member>
-    <member refid="d5/dee/group__route_1ga01c3f19123c1f42d8f1a2d405c3d21e2" kind="function"><name>runtime_error</name></member>
-    <member refid="d5/dee/group__route_1gac5f5412fc2ea0b0b5edbd199353309c9" kind="function"><name>runtime_error</name></member>
+    <member refid="d5/dee/group__route_1ga8ee3b1752e55aea0e7230d4268a8c305" kind="function"><name>runtime_error</name></member>
+    <member refid="d5/dee/group__route_1ga20cd513c13ed9623fbf23321c4db988f" kind="function"><name>runtime_error</name></member>
     <member refid="d5/dee/group__route_1gabacd3a9aa739a6e21a737feeb9b9e9c9" kind="function"><name>GetName</name></member>
     <member refid="d5/dee/group__route_1ga5d6f8f7b6518cf74b80d683f69030e2e" kind="function"><name>SetName</name></member>
     <member refid="d5/dee/group__route_1ga48afafba127beb4c42f6a1a9bceb2148" kind="function"><name>get_session_id</name></member>
@@ -7429,8 +7454,9 @@
     <member refid="d5/dee/group__route_1gac3e936098fe85037c365ad53681a6f60" kind="function"><name>AddTime</name></member>
     <member refid="d5/dee/group__route_1ga97e4ddbae9a9d8097038c07a7b52046e" kind="function"><name>MidiOut</name></member>
     <member refid="d5/dee/group__route_1gae48defd6215d421f119d321b3c20c219" kind="function"><name>MidiOut</name></member>
-    <member refid="d5/dee/group__route_1ga294ad7f8b724e44e7fde7f87157046ee" kind="function"><name>Quiet</name></member>
-    <member refid="d5/dee/group__route_1gac77e443b48248e49dc70250edef9cd4e" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1ga4ab0a6b5f1805a707ad15fc968a22d4e" kind="function"><name>Quiet</name></member>
+    <member refid="d5/dee/group__route_1gaf3492ab37c2e7716c105e375f47efac1" kind="function"><name>Quiet</name></member>
+    <member refid="d5/dee/group__route_1ga1e4a0003df8dd4f587ec74a30d78022d" kind="function"><name>Panic</name></member>
     <member refid="d5/dee/group__route_1ga1e7ff931fc0fbd026f00d07b11924c7d" kind="function"><name>Open</name></member>
     <member refid="d5/dee/group__route_1gab9de5728ebbc88f38204e91e2d7c1a78" kind="function"><name>NeedsRealTime</name></member>
     <member refid="d5/dee/group__route_1ga88bc3737a5843795342bfa75acb85391" kind="function"><name>GetType</name></member>
@@ -7446,15 +7472,18 @@
     <member refid="d5/dee/group__route_1gafe2f29681da76de312218331ac168115" kind="function"><name>do_AddTime</name></member>
     <member refid="d5/dee/group__route_1gaa2f04ca55e971275ccf8632fa955a358" kind="function"><name>do_MidiOut</name></member>
     <member refid="d5/dee/group__route_1gac582962c4f9f580d6d277ff7bebbe265" kind="function"><name>do_MidiOut</name></member>
-    <member refid="d5/dee/group__route_1gab122b1a708b2424a7d513094d050d503" kind="function"><name>do_Quiet</name></member>
-    <member refid="d5/dee/group__route_1ga4a53d2638e53503d6d0f437a55420ccf" kind="function"><name>do_Panic</name></member>
+    <member refid="d5/dee/group__route_1ga71185d8186652b02c7c7050ef759a75a" kind="function"><name>do_Quiet</name></member>
+    <member refid="d5/dee/group__route_1ga711568c6b8c09fae0a2404c1451eaa26" kind="function"><name>do_Quiet</name></member>
+    <member refid="d5/dee/group__route_1gab6bd82b3fd84d5da31e3b12ff202b7e6" kind="function"><name>do_Panic</name></member>
     <member refid="d5/dee/group__route_1gac05719bb6e4ec988a59e17db0743612f" kind="function"><name>do_Open</name></member>
-    <member refid="d5/dee/group__route_1gad6700658759671cb82c8a8c0c7978e50" kind="function"><name>entry</name></member>
+    <member refid="d5/dee/group__route_1ga9ae7eb4a1de1d7acf45478e95f597dfe" kind="function"><name>entry</name></member>
     <member refid="d5/dee/group__route_1ga341a65506d56db0af6240723bb8c3344" kind="function"><name>operator==</name></member>
     <member refid="d5/dee/group__route_1ga95c3ffcd0343e3dbd2af7fd2e7fd70df" kind="function"><name>operator()</name></member>
-    <member refid="d5/dee/group__route_1ga3a786b7012a67df221d51392a837deec" kind="function"><name>add</name></member>
+    <member refid="d5/dee/group__route_1ga9dcb29b150a1f7f6ff3e73ef98d60fae" kind="function"><name>add</name></member>
+    <member refid="d5/dee/group__route_1ga6971bd5d1d040303654cd2f98c007d4c" kind="function"><name>add</name></member>
     <member refid="d5/dee/group__route_1ga5e13cc8cc989f36f96831ccef9835047" kind="function"><name>remove</name></member>
     <member refid="d5/dee/group__route_1ga9f5fee3723bbf66c083bc81da52a8842" kind="function"><name>remove</name></member>
+    <member refid="d5/dee/group__route_1ga105f0a3e72992dcaf7ad35542e2424d0" kind="function"><name>clear</name></member>
     <member refid="d5/dee/group__route_1ga20093f61916baa598c1ed6899fc6e0ee" kind="function"><name>begin</name></member>
     <member refid="d5/dee/group__route_1ga3e2341aa9a2efc92ab2230928e5ce143" kind="function"><name>begin</name></member>
     <member refid="d5/dee/group__route_1gad19dacd14e10267a9275a70acde77bf3" kind="function"><name>end</name></member>
@@ -7469,14 +7498,18 @@
     <member refid="d5/dee/group__route_1ga75218401589785a6a67e0b29289b3436" kind="function"><name>Pause</name></member>
     <member refid="d5/dee/group__route_1ga7940967ce95f17bf1c79c6928cd732e7" kind="function"><name>NeedsRealTime</name></member>
     <member refid="d5/dee/group__route_1ga77179da20d4bb3a5cd8d03fc90435ddb" kind="function"><name>PrepareNextEvent</name></member>
-    <member refid="d5/dee/group__route_1gacc20d37049923e4473fc0ff10fed282c" kind="function"><name>NoteOn</name></member>
-    <member refid="d5/dee/group__route_1gadab298f6643f7929782652b7a2764731" kind="function"><name>NoteOff</name></member>
-    <member refid="d5/dee/group__route_1ga4c7c24c48255adddc767a745ed3c8e1c" kind="function"><name>Panic</name></member>
-    <member refid="d5/dee/group__route_1ga16e5549446e1eff905acfaa343ea254b" kind="function"><name>Panic</name></member>
     <member refid="d5/dee/group__route_1ga0c8207244321c9d72913ae24fbad4be5" kind="function"><name>GetType</name></member>
     <member refid="d5/dee/group__route_1ga0988ca3116773a66652ccc573204c928" kind="function"><name>GetTypeName</name></member>
     <member refid="d5/dee/group__route_1gab552cc7e2033cc34840644adee86699f" kind="function"><name>GetNO_DELTA</name></member>
     <member refid="d5/dee/group__route_1ga33c4a77081b2d1b31f0153cd442d597a" kind="function"><name>IsDelta</name></member>
+    <member refid="d5/dee/group__route_1gacc20d37049923e4473fc0ff10fed282c" kind="function"><name>NoteOn</name></member>
+    <member refid="d5/dee/group__route_1gadab298f6643f7929782652b7a2764731" kind="function"><name>NoteOff</name></member>
+    <member refid="d5/dee/group__route_1gacb6aebc4750fdcb7a26f3c72f88fbc50" kind="function"><name>DoNoteOff</name></member>
+    <member refid="d5/dee/group__route_1gad25b86b6b97d706021560154beba956b" kind="function"><name>SilenceKeys</name></member>
+    <member refid="d5/dee/group__route_1ga149a7081186d9f03e6ad5a7f21fa9830" kind="function"><name>DoSilenceKeys</name></member>
+    <member refid="d5/dee/group__route_1ga85fbc49b0b301e47ff473ef609158582" kind="function"><name>ResumeKeys</name></member>
+    <member refid="d5/dee/group__route_1gac4b560ea932322713aea7e0350207d99" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1gacb942a8c5cee15a375579b29208eddd4" kind="function"><name>Panic</name></member>
     <member refid="d5/dee/group__route_1ga2a95987d1056dd6fb4a0706d9eb894a5" kind="function"><name>InputDeviceClass</name></member>
     <member refid="d5/dee/group__route_1ga01894fe71280b77f8668e44bc9daa6b9" kind="function"><name>FactoryNotFound</name></member>
     <member refid="d5/dee/group__route_1gaaf67e55fd1a54ce6af3747a5bca4eac7" kind="function"><name>~FactoryNotFound</name></member>
@@ -7589,7 +7622,8 @@
     <member refid="d5/dee/group__route_1ga1d218671419fc648b327f268d0f184c0" kind="function"><name>MidiOut</name></member>
     <member refid="d5/dee/group__route_1ga6ddbf0014c25b7ed21133b5c65768a19" kind="function"><name>UpdateTones</name></member>
     <member refid="d5/dee/group__route_1ga415842bcbaed7eff71e1476168a607ca" kind="function"><name>GetChannel</name></member>
-    <member refid="d5/dee/group__route_1ga18e2fbe8e6698cad4b91324bbd9e8db3" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1gaa36afa3a67293dfa2181c69de620b665" kind="function"><name>Panic</name></member>
+    <member refid="d5/dee/group__route_1gafc754acf35919046035f6a3f831d6d0e" kind="function"><name>Panic</name></member>
     <member refid="d5/dee/group__route_1gac4495ec6ad2c9d0f51ef24f04c1a2e46" kind="function"><name>Controller</name></member>
     <member refid="d5/dee/group__route_1gaa1a7304f5415bad19812785af8e3c6ff" kind="function"><name>Add</name></member>
     <member refid="d5/dee/group__route_1ga47411e32a9f8ee91fcb5eb74a1230a81" kind="function"><name>Add</name></member>

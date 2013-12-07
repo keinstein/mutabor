@@ -560,353 +560,356 @@
 <div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;</div>
 <div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;                <span class="comment">// Tracks lesen</span></div>
 <div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;                Tracks.resize(nTrack,<a class="code" href="../../dd/dbe/classmutabor_1_1Track.html">Track</a>(timing));</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;                <span class="keywordflow">if</span> (Tracks.empty()) {</div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;                        <a class="code" href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96ad3060906d5483a267df65d28ad1b254b">runtime_error</a>(<span class="keyword">false</span>,</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;                                      <a class="code" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>(<span class="stringliteral">&quot;Could not allocate memory for the track list of file &#39;%s&#39;.&quot;</span>), </div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;                                      (<span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga13c03a937e32254ea17154104db5208a">mutChar</a> *)Name.c_str())    ;</div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;                        <span class="keywordflow">goto</span> error_cleanup;</div>
-<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;                }</div>
-<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;</div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;                <span class="keywordflow">for</span> (i = 0; i &lt; nTrack; i++ ) {</div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;                        <a class="code" href="../../d9/d7c/group__kernel.html#gac5ff367bd2e884239a38e8b81287ce13">mutReadStream</a>(is,Header, 4);</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;                        <span class="keywordflow">if</span> (strcmp(Header,<span class="stringliteral">&quot;MTrk&quot;</span>)) {</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96ad3060906d5483a267df65d28ad1b254b">runtime_error</a>(<span class="keyword">false</span>,<a class="code" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>(<span class="stringliteral">&quot;File &#39;%s&#39; has a broken track header.&quot;</span>), </div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;                                              (<span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga13c03a937e32254ea17154104db5208a">mutChar</a> *)Name.c_str())    ;</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;                                <span class="keywordflow">goto</span> error_cleanup;</div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;                        }</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;</div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;                        l = <a class="code" href="../../d6/daa/namespacemutabor.html#a8c070609aa1ba654d6d44cbb87901e06">mutabor::ReadLength</a>(is);</div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;                        Tracks[i].clear();</div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;                        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;                                Tracks[i].resize(l);</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;                        } <span class="keywordflow">catch</span> (std::bad_alloc e) {</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;                                Tracks[i].clear();</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;                        }</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;</div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;                        <span class="keywordflow">if</span> ( Tracks[i].size() &lt; l) {</div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;                                Mode = <a class="code" href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8">DeviceCompileError</a>;</div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96ad3060906d5483a267df65d28ad1b254b">runtime_error</a>(<span class="keyword">false</span>,</div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;                                              <a class="code" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>(<span class="stringliteral">&quot;Could not allocate data for track %d of MIDI input file &#39;%s&#39;.&quot;</span>),</div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;                                              i, (<span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga13c03a937e32254ea17154104db5208a">mutChar</a> *)Name.c_str());</div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;                                <span class="keywordflow">goto</span> error_cleanup;</div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;                        }</div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;                        </div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;                channel_data.resize(16*nTrack);</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;                <span class="keywordflow">if</span> (Tracks.empty()) {</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;                        <a class="code" href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96ad3060906d5483a267df65d28ad1b254b">runtime_error</a>(<span class="keyword">false</span>,</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;                                      <a class="code" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>(<span class="stringliteral">&quot;Could not allocate memory for the track list of file &#39;%s&#39;.&quot;</span>), </div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;                                      (<span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga13c03a937e32254ea17154104db5208a">mutChar</a> *)Name.c_str())    ;</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;                        <span class="keywordflow">goto</span> error_cleanup;</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;                }</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;                <span class="keywordflow">for</span> (i = 0; i &lt; nTrack; i++ ) {</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;                        <a class="code" href="../../d9/d7c/group__kernel.html#gac5ff367bd2e884239a38e8b81287ce13">mutReadStream</a>(is,Header, 4);</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;                        <span class="keywordflow">if</span> (strcmp(Header,<span class="stringliteral">&quot;MTrk&quot;</span>)) {</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96ad3060906d5483a267df65d28ad1b254b">runtime_error</a>(<span class="keyword">false</span>,<a class="code" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>(<span class="stringliteral">&quot;File &#39;%s&#39; has a broken track header.&quot;</span>), </div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;                                              (<span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga13c03a937e32254ea17154104db5208a">mutChar</a> *)Name.c_str())    ;</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;                                <span class="keywordflow">goto</span> error_cleanup;</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;                        }</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;                        l = <a class="code" href="../../d6/daa/namespacemutabor.html#a8c070609aa1ba654d6d44cbb87901e06">mutabor::ReadLength</a>(is);</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;                        Tracks[i].clear();</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;                        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;                                Tracks[i].resize(l);</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;                        } <span class="keywordflow">catch</span> (std::bad_alloc e) {</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;                                Tracks[i].clear();</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;                        }</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;                        <span class="keywordflow">if</span> ( Tracks[i].size() &lt; l) {</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;                                Mode = <a class="code" href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8">DeviceCompileError</a>;</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96ad3060906d5483a267df65d28ad1b254b">runtime_error</a>(<span class="keyword">false</span>,</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;                                              <a class="code" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>(<span class="stringliteral">&quot;Could not allocate data for track %d of MIDI input file &#39;%s&#39;.&quot;</span>),</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;                                              i, (<span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga13c03a937e32254ea17154104db5208a">mutChar</a> *)Name.c_str());</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;                                <span class="keywordflow">goto</span> error_cleanup;</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;                        }</div>
 <div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;                        </div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;                        <span class="keywordflow">if</span> ( l &gt; 0x10000000) {</div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;                                <span class="comment">// in order to avoid problems with 32bit integers we read large tracks in 3 chunks</span></div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;                                </div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#gac5ff367bd2e884239a38e8b81287ce13">mutReadStream</a>(is, (<span class="keywordtype">char</span>*)(Tracks[i].data()), l/3);</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#gac5ff367bd2e884239a38e8b81287ce13">mutReadStream</a>(is, (<span class="keywordtype">char</span>*)(Tracks[i].data())+l/3, l/3);</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#gac5ff367bd2e884239a38e8b81287ce13">mutReadStream</a>(is, (<span class="keywordtype">char</span>*)(Tracks[i].data())+l/3+l/3,l-l/3- l/3);</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;                        } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#gac5ff367bd2e884239a38e8b81287ce13">mutReadStream</a>(is, (<span class="keywordtype">char</span>*)(Tracks[i].data()), l);</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;                        <span class="keywordflow">if</span> ( <a class="code" href="../../d9/d7c/group__kernel.html#gac7303c91aca74e4365007eb320490d7f">mutStreamBad</a>(is) ) {</div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96ad3060906d5483a267df65d28ad1b254b">runtime_error</a>(<span class="keyword">false</span>,</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;                                              <a class="code" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>(<span class="stringliteral">&quot;The MIDI input file “%s” is corrupted. This has been detected while reading track %d.&quot;</span>),</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;                                              (<span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga13c03a937e32254ea17154104db5208a">mutChar</a> *)Name.c_str(),i);</div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;                                <span class="keywordflow">goto</span> error_cleanup;</div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;                        }</div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;                }</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;                        </div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;                        <span class="keywordflow">if</span> ( l &gt; 0x10000000) {</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;                                <span class="comment">// in order to avoid problems with 32bit integers we read large tracks in 3 chunks</span></div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;                                </div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#gac5ff367bd2e884239a38e8b81287ce13">mutReadStream</a>(is, (<span class="keywordtype">char</span>*)(Tracks[i].data()), l/3);</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#gac5ff367bd2e884239a38e8b81287ce13">mutReadStream</a>(is, (<span class="keywordtype">char</span>*)(Tracks[i].data())+l/3, l/3);</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#gac5ff367bd2e884239a38e8b81287ce13">mutReadStream</a>(is, (<span class="keywordtype">char</span>*)(Tracks[i].data())+l/3+l/3,l-l/3- l/3);</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;                        } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#gac5ff367bd2e884239a38e8b81287ce13">mutReadStream</a>(is, (<span class="keywordtype">char</span>*)(Tracks[i].data()), l);</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;                        <span class="keywordflow">if</span> ( <a class="code" href="../../d9/d7c/group__kernel.html#gac7303c91aca74e4365007eb320490d7f">mutStreamBad</a>(is) ) {</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96ad3060906d5483a267df65d28ad1b254b">runtime_error</a>(<span class="keyword">false</span>,</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;                                              <a class="code" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>(<span class="stringliteral">&quot;The MIDI input file “%s” is corrupted. This has been detected while reading track %d.&quot;</span>),</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;                                              (<span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga13c03a937e32254ea17154104db5208a">mutChar</a> *)Name.c_str(),i);</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;                                <span class="keywordflow">goto</span> error_cleanup;</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;                        }</div>
 <div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;</div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#gac3b3331a2deb0df502189487ce720294">mutCloseStream</a>(is);</div>
-<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;                </div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;                <span class="keywordflow">return</span> base::Open();</div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;</div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;        error_cleanup:</div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;                Mode = <a class="code" href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8">DeviceCompileError</a>;</div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;                isOpen = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#gac3b3331a2deb0df502189487ce720294">mutCloseStream</a>(is);</div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;                Tracks.clear();</div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;        }</div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;</div>
-<div class="line"><a name="l00648"></a><span class="lineno"><a class="line" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a28c0387b456dbd7ed53bbf3204fa2e1c">  648</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a28c0387b456dbd7ed53bbf3204fa2e1c">InputMidiFile::Close</a>()</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;        {</div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;                base::Close();</div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;</div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;                <span class="keywordflow">if</span> ( Mode == <a class="code" href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8">DeviceCompileError</a> )</div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;                        channel_data[i].Reset();</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;                }</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#gac3b3331a2deb0df502189487ce720294">mutCloseStream</a>(is);</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;                </div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;                <span class="keywordflow">return</span> base::Open();</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;        error_cleanup:</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;                Mode = <a class="code" href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8">DeviceCompileError</a>;</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;                isOpen = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#gac3b3331a2deb0df502189487ce720294">mutCloseStream</a>(is);</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;                Tracks.clear();</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;        }</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;</div>
+<div class="line"><a name="l00651"></a><span class="lineno"><a class="line" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a28c0387b456dbd7ed53bbf3204fa2e1c">  651</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a28c0387b456dbd7ed53bbf3204fa2e1c">InputMidiFile::Close</a>()</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;        {</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;                base::Close();</div>
 <div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;</div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;                Tracks.clear();</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;        }</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;                <span class="keywordflow">if</span> ( Mode == <a class="code" href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8">DeviceCompileError</a> )</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;                        <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;</div>
-<div class="line"><a name="l00658"></a><span class="lineno"><a class="line" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#af01cb3bb180e5f6f08ceeb8f7543c995">  658</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#af01cb3bb180e5f6f08ceeb8f7543c995">InputMidiFile::Stop</a>()</div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;        {</div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;                base::Stop();</div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;                <span class="comment">// OK ?</span></div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;                <span class="keywordflow">if</span> ( Mode == <a class="code" href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8">DeviceCompileError</a> )</div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;                        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;</div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;                <span class="comment">// Delta-Times lesen</span></div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;                minDelta = <a class="code" href="../../d5/dee/group__route.html#ga5c38af00c7fd323a00aae0133ea4336e">MUTABOR_NO_DELTA</a>;</div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;                timing.reset();</div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; Tracks.size(); i++ ) {</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;                        Tracks[i].ResetPosition(0,<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;<span class="preprocessor">#warning Implement catching of dalta_length_error</span></div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;<span class="preprocessor"></span>                        minDelta = std::min(minDelta, Tracks[i].ReadDelta());</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;                }</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;        }</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;</div>
-<div class="line"><a name="l00677"></a><span class="lineno"><a class="line" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#aabfc9a226690dbd5314c7bd82195b056">  677</a></span>&#160;        mutint64 <a class="code" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#aabfc9a226690dbd5314c7bd82195b056">InputMidiFile::PrepareNextEvent</a>()</div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;        {</div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;                mutint64 passedDelta = minDelta;</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;                mutint64 NewMinDelta = <a class="code" href="../../d5/dee/group__route.html#ga5c38af00c7fd323a00aae0133ea4336e">MUTABOR_NO_DELTA</a>;</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; Tracks.size(); i++ ) {</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;                        mutint64 delta = Tracks[i].GetDelta();</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(midifile,_T(<span class="stringliteral">&quot;Track: %d, delta: %ld μs&quot;</span>),(<span class="keywordtype">int</span>)i,delta);</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;                        <span class="keywordflow">if</span> ( delta  == <a class="code" href="../../d5/dee/group__route.html#ga5c38af00c7fd323a00aae0133ea4336e">MUTABOR_NO_DELTA</a> ) </div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;                                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;                        <span class="keywordflow">if</span> ( delta &lt;= passedDelta )</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;                                delta = ReadMidiProceed(i, passedDelta);</div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;                        <span class="keywordflow">else</span> </div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;                                delta = Tracks[i].PassDelta(passedDelta);</div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;                        </div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;                        <span class="keywordflow">if</span> (delta != <a class="code" href="../../d5/dee/group__route.html#ga5c38af00c7fd323a00aae0133ea4336e">MUTABOR_NO_DELTA</a> &amp;&amp; </div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;                            delta &lt; NewMinDelta ) {</div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;                                        NewMinDelta = delta;</div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;                        }</div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(midifile,_T(<span class="stringliteral">&quot;Track: %d, delta: %ld μs&quot;</span>),(<span class="keywordtype">int</span>)i,Tracks[i].GetDelta());</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;                }</div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(midifile,_T(<span class="stringliteral">&quot;Next event after %ld μs (MUTABOR_NO_DELTA = %ld)&quot;</span>),minDelta,<a class="code" href="../../d5/dee/group__route.html#ga5c38af00c7fd323a00aae0133ea4336e">MUTABOR_NO_DELTA</a>);</div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;                minDelta = NewMinDelta;</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;                <span class="keywordflow">return</span> NewMinDelta;</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;        }</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;</div>
-<div class="line"><a name="l00702"></a><span class="lineno"><a class="line" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#aeda6e5119f71a31dd51dfd99938836f2">  702</a></span>&#160;        mutint64 <a class="code" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#aeda6e5119f71a31dd51dfd99938836f2">InputMidiFile::ReadMidiProceed</a>(<span class="keywordtype">size_t</span> nr, mutint64 deltatime)</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;        {</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;                mutint64 Delta = Tracks[nr].GetDelta();</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(Delta &gt;= -1000000);</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;                mutint64 time = deltatime;</div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;                <span class="keywordflow">while</span> ( time &gt;= Delta ) {</div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;                        <span class="comment">// Delta Time</span></div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;                        <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(time &gt;= Delta);</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;                        time -= Delta;</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;                        Tracks[nr].PassDelta(Delta);</div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;                        <a class="code" href="../../dd/dbe/classmutabor_1_1Track.html#a3783c8532c181db968f99a707666a689">Track::base</a> message = Tracks[nr].ReadMessage();</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;</div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;                        uint8_t status = message[0];</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;                        <span class="keywordtype">int</span> a = status;</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;                Tracks.clear();</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;        }</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;</div>
+<div class="line"><a name="l00661"></a><span class="lineno"><a class="line" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#af01cb3bb180e5f6f08ceeb8f7543c995">  661</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#af01cb3bb180e5f6f08ceeb8f7543c995">InputMidiFile::Stop</a>()</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;        {</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;                base::Stop();</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;                <span class="comment">// OK ?</span></div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;                <span class="keywordflow">if</span> ( Mode == <a class="code" href="../../d5/dee/group__route.html#ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8">DeviceCompileError</a> )</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;                <span class="comment">// Delta-Times lesen</span></div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;                minDelta = <a class="code" href="../../d5/dee/group__route.html#ga5c38af00c7fd323a00aae0133ea4336e">MUTABOR_NO_DELTA</a>;</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;                timing.reset();</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; Tracks.size(); i++ ) {</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;                        Tracks[i].ResetPosition(0,<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;<span class="preprocessor">#warning Implement catching of dalta_length_error</span></div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;<span class="preprocessor"></span>                        minDelta = std::min(minDelta, Tracks[i].ReadDelta());</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;                }</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;        }</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;</div>
+<div class="line"><a name="l00680"></a><span class="lineno"><a class="line" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#aabfc9a226690dbd5314c7bd82195b056">  680</a></span>&#160;        mutint64 <a class="code" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#aabfc9a226690dbd5314c7bd82195b056">InputMidiFile::PrepareNextEvent</a>()</div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;        {</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;                mutint64 passedDelta = minDelta;</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;                mutint64 NewMinDelta = <a class="code" href="../../d5/dee/group__route.html#ga5c38af00c7fd323a00aae0133ea4336e">MUTABOR_NO_DELTA</a>;</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; Tracks.size(); i++ ) {</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;                        mutint64 delta = Tracks[i].GetDelta();</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(midifile,_T(<span class="stringliteral">&quot;Track: %d, delta: %ld μs&quot;</span>),(<span class="keywordtype">int</span>)i,delta);</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;                        <span class="keywordflow">if</span> ( delta  == <a class="code" href="../../d5/dee/group__route.html#ga5c38af00c7fd323a00aae0133ea4336e">MUTABOR_NO_DELTA</a> ) </div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;                                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;                        <span class="keywordflow">if</span> ( delta &lt;= passedDelta )</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;                                delta = ReadMidiProceed(i, passedDelta);</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;                        <span class="keywordflow">else</span> </div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;                                delta = Tracks[i].PassDelta(passedDelta);</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;                        </div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;                        <span class="keywordflow">if</span> (delta != <a class="code" href="../../d5/dee/group__route.html#ga5c38af00c7fd323a00aae0133ea4336e">MUTABOR_NO_DELTA</a> &amp;&amp; </div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;                            delta &lt; NewMinDelta ) {</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;                                        NewMinDelta = delta;</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;                        }</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(midifile,_T(<span class="stringliteral">&quot;Track: %d, delta: %ld μs&quot;</span>),(<span class="keywordtype">int</span>)i,Tracks[i].GetDelta());</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;                }</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(midifile,_T(<span class="stringliteral">&quot;Next event after %ld μs (MUTABOR_NO_DELTA = %ld)&quot;</span>),minDelta,<a class="code" href="../../d5/dee/group__route.html#ga5c38af00c7fd323a00aae0133ea4336e">MUTABOR_NO_DELTA</a>);</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;                minDelta = NewMinDelta;</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;                <span class="keywordflow">return</span> NewMinDelta;</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;        }</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;</div>
+<div class="line"><a name="l00705"></a><span class="lineno"><a class="line" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#aeda6e5119f71a31dd51dfd99938836f2">  705</a></span>&#160;        mutint64 <a class="code" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#aeda6e5119f71a31dd51dfd99938836f2">InputMidiFile::ReadMidiProceed</a>(<span class="keywordtype">size_t</span> nr, mutint64 deltatime)</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;        {</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;                mutint64 Delta = Tracks[nr].GetDelta();</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(Delta &gt;= -1000000);</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;                mutint64 time = deltatime;</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;                <span class="keywordflow">while</span> ( time &gt;= Delta ) {</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;                        <span class="comment">// Delta Time</span></div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;                        <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(time &gt;= Delta);</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;                        time -= Delta;</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;                        Tracks[nr].PassDelta(Delta);</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;                        <a class="code" href="../../dd/dbe/classmutabor_1_1Track.html#a3783c8532c181db968f99a707666a689">Track::base</a> message = Tracks[nr].ReadMessage();</div>
 <div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;                        <span class="keywordflow">if</span> ( status  &lt;  midi::SYSTEM ) <span class="comment">// normaler midi code</span></div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;                        {</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;                                </div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;                                <span class="keywordtype">int</span> l = message.size();</div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(l&lt;4);</div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;                                <span class="keywordtype">int</span> shift = 8;</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; l; i++)</div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;                                {</div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;                                        a += (int)(message[i]) &lt;&lt; shift;</div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;                                        shift += 8;</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;                                }</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;                        }</div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;                        <span class="keywordflow">else</span> <span class="keywordflow">switch</span> (status) {</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;                                <span class="keywordflow">case</span> midi::SYSEX_START:</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;                                <span class="keywordflow">case</span> midi::SYSEX_END:</div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;                                {</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;<span class="preprocessor">#warning Implement SysEx handling in MIDI files</span></div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;<span class="preprocessor"></span>                                } </div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;                                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;                                <span class="keywordflow">case</span> midi::META: <span class="comment">// meta event</span></div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;                                {</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;                                        uint8_t meta_type = message[1];</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;                                        <span class="keywordflow">switch</span> (meta_type) {</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;<span class="preprocessor"></span><span class="comment">// according to the MIDI specification the time signature provides</span></div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;<span class="comment">// interpretation for metronomes, but not for delta times</span></div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;                                        <span class="keywordflow">case</span> midi::META_TIME_SIGNATURE: </div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;                                                <span class="keywordflow">if</span> (message.size() &gt;= 2+4) {</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;                                                        TicksPerQuarter = <a class="code" href="../../dd/dbe/classmutabor_1_1Track.html">Track</a>[nr][TrackPos[nr]+2];</div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                                                        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(midifile,_T(<span class="stringliteral">&quot;Change time signature to  %d ticks/qarter&quot;</span>),</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;                                                                 TicksPerQuarter);</div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;                                                }</div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;                                                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;<span class="preprocessor"></span>                                        <span class="keywordflow">case</span> midi::META_SET_TEMPO:</div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;                                                <span class="keywordflow">if</span> (message.size() &gt;= 2+3) {</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;                                                        <span class="keywordtype">long</span> NewQuarterDuration =</div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;                                                                (((int)message[2]) &lt;&lt; 16) +</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;                                                                (((<span class="keywordtype">int</span>)message[3]) &lt;&lt; 8) +</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;                                                                (((int)message[4]));</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;                                                </div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;                                                        <span class="keywordtype">size_t</span> j,e;</div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;                                                        <span class="comment">// file type 0</span></div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;                                                        <span class="comment">// must not</span></div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;                                                        <span class="comment">// have more</span></div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;                                                        <span class="comment">// than 1</span></div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;                                                        <span class="comment">// track file</span></div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;                                                        <span class="comment">// we treat it</span></div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;                                                        <span class="comment">// like type</span></div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;                                                        <span class="comment">// one even</span></div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;                                                        <span class="comment">// though</span></div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;                                                        <span class="comment">// files with</span></div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;                                                        <span class="comment">// multiple</span></div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;                                                        <span class="comment">// tracks are</span></div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;                                                        <span class="comment">// corrupted.</span></div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;                                                        <span class="comment">// type 2 has</span></div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;                                                        <span class="comment">// independent</span></div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;                                                        <span class="comment">// tracks</span></div>
-<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;                                                        <span class="keywordflow">if</span> (FileType &gt; 1) {</div>
-<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;                                                                j = nr; e = nr+1;</div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;                                                        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;                                                                j = 0; e = Tracks.size();</div>
-<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;                                                        }</div>
-<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;                                                        <span class="keywordflow">for</span> (; j &lt; e; j++ )</div>
-<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;                                                                Tracks[j].SetQuarterDuration(NewQuarterDuration, </div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;                                                                                             <span class="keyword">true</span>, </div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;                                                                                             j&gt;nr ? deltatime - time: (mutint64)0);</div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;                                                        </div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;                                                        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(midifile,</div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;                                                                 _T(<span class="stringliteral">&quot;Change tempo to %ldμs per quarter (next event after %ld)&quot;</span>),</div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;                                                                 NewQuarterDuration, minDelta);</div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;                                                }</div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;                                                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;                                        <span class="keywordflow">case</span> midi::META_END_OF_TRACK:</div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;                                                Tracks[nr].Stop();</div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;                                                <span class="keywordflow">return</span> <a class="code" href="../../d5/dee/group__route.html#ga5c38af00c7fd323a00aae0133ea4336e">MUTABOR_NO_DELTA</a>;</div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;                                                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;                                        }</div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;                                }</div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;                                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;                                <span class="keywordflow">case</span> midi::SONG_POSITION: </div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;                                        a += message[1] &lt;&lt; (8 + message[2]) &lt;&lt; 16;</div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;                                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;                                <span class="keywordflow">case</span> midi::SONG_SELECT:</div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;                                        a += message[1] &lt;&lt; 8;</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;                        uint8_t status = message[0];</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;                        <span class="keywordtype">int</span> a = status;</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;                        <span class="keywordflow">if</span> ( status  &lt;  midi::SYSTEM ) <span class="comment">// normaler midi code</span></div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                        {</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;                                </div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;                                <span class="keywordtype">int</span> l = message.size();</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(l&lt;4);</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;                                <span class="keywordtype">int</span> shift = 8;</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; l; i++)</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;                                {</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;                                        a += (int)(message[i]) &lt;&lt; shift;</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;                                        shift += 8;</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;                                }</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;                        }</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;                        <span class="keywordflow">else</span> <span class="keywordflow">switch</span> (status) {</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;                                <span class="keywordflow">case</span> midi::SYSEX_START:</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;                                <span class="keywordflow">case</span> midi::SYSEX_END:</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;                                {</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;<span class="preprocessor">#warning Implement SysEx handling in MIDI files</span></div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;<span class="preprocessor"></span>                                } </div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;                                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;                                <span class="keywordflow">case</span> midi::META: <span class="comment">// meta event</span></div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;                                {</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;                                        uint8_t meta_type = message[1];</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;                                        <span class="keywordflow">switch</span> (meta_type) {</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;<span class="preprocessor"></span><span class="comment">// according to the MIDI specification the time signature provides</span></div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;<span class="comment">// interpretation for metronomes, but not for delta times</span></div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                                        <span class="keywordflow">case</span> midi::META_TIME_SIGNATURE: </div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;                                                <span class="keywordflow">if</span> (message.size() &gt;= 2+4) {</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;                                                        TicksPerQuarter = <a class="code" href="../../dd/dbe/classmutabor_1_1Track.html">Track</a>[nr][TrackPos[nr]+2];</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;                                                        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(midifile,_T(<span class="stringliteral">&quot;Change time signature to  %d ticks/qarter&quot;</span>),</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;                                                                 TicksPerQuarter);</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;                                                }</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;                                                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;<span class="preprocessor"></span>                                        <span class="keywordflow">case</span> midi::META_SET_TEMPO:</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;                                                <span class="keywordflow">if</span> (message.size() &gt;= 2+3) {</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;                                                        <span class="keywordtype">long</span> NewQuarterDuration =</div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;                                                                (((int)message[2]) &lt;&lt; 16) +</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;                                                                (((<span class="keywordtype">int</span>)message[3]) &lt;&lt; 8) +</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;                                                                (((int)message[4]));</div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;                                                </div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;                                                        <span class="keywordtype">size_t</span> j,e;</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;                                                        <span class="comment">// file type 0</span></div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;                                                        <span class="comment">// must not</span></div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;                                                        <span class="comment">// have more</span></div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;                                                        <span class="comment">// than 1</span></div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;                                                        <span class="comment">// track file</span></div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;                                                        <span class="comment">// we treat it</span></div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;                                                        <span class="comment">// like type</span></div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;                                                        <span class="comment">// one even</span></div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;                                                        <span class="comment">// though</span></div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;                                                        <span class="comment">// files with</span></div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;                                                        <span class="comment">// multiple</span></div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;                                                        <span class="comment">// tracks are</span></div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;                                                        <span class="comment">// corrupted.</span></div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;                                                        <span class="comment">// type 2 has</span></div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;                                                        <span class="comment">// independent</span></div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;                                                        <span class="comment">// tracks</span></div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;                                                        <span class="keywordflow">if</span> (FileType &gt; 1) {</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;                                                                j = nr; e = nr+1;</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;                                                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;                                                                j = 0; e = Tracks.size();</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;                                                        }</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;                                                        <span class="keywordflow">for</span> (; j &lt; e; j++ )</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;                                                                Tracks[j].SetQuarterDuration(NewQuarterDuration, </div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;                                                                                             <span class="keyword">true</span>, </div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;                                                                                             j&gt;nr ? deltatime - time: (mutint64)0);</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;                                                        </div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;                                                        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(midifile,</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;                                                                 _T(<span class="stringliteral">&quot;Change tempo to %ldμs per quarter (next event after %ld)&quot;</span>),</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;                                                                 NewQuarterDuration, minDelta);</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;                                                }</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;                                                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;                                        <span class="keywordflow">case</span> midi::META_END_OF_TRACK:</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;                                                Tracks[nr].Stop();</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;                                                <span class="keywordflow">return</span> <a class="code" href="../../d5/dee/group__route.html#ga5c38af00c7fd323a00aae0133ea4336e">MUTABOR_NO_DELTA</a>;</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;                                                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;                                        }</div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;                                }</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;                                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;                                <span class="keywordflow">case</span> midi::SONG_POSITION: </div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;                                        a += message[1] &lt;&lt; (8 + message[2]) &lt;&lt; 16;</div>
 <div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;                                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;                                }</div>
-<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;                        Proceed(a, nr);</div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;</div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;                        Delta = Tracks[nr].ReadDelta();</div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;                </div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(midifile,</div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;                                 _T(<span class="stringliteral">&quot;Next event on Track %d after %ld μs&quot;</span>),</div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;                                 (<span class="keywordtype">int</span>)nr, Delta);</div>
-<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;                }</div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;<span class="preprocessor"></span>                mutint64 checktime = </div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;<span class="preprocessor"></span>                        Tracks[nr].PassDelta(time);</div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;</div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;<span class="preprocessor"></span>                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(checktime == Delta - time);</div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;<span class="preprocessor"></span>                <span class="keywordflow">return</span> Delta - time;</div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;        }</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;</div>
-<div class="line"><a name="l00828"></a><span class="lineno"><a class="line" href="../../d0/d6b/DevMidF_8cpp.html#a02946621a8cade333c9e17468233ab0e">  828</a></span>&#160;<span class="preprocessor">#define MIDICODE(i)                             \</span></div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;<span class="preprocessor">        (0xff &amp; (midiCode &gt;&gt; (8*i)))</span></div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;<span class="preprocessor"></span><span class="comment">//(((BYTE*)(&amp;midiCode))[i])</span></div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;</div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;<span class="comment">// f¸r bestimmte Route Codeverarbeitung</span></div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;</div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;        </div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;<span class="preprocessor">#ifdef WX</span></div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;<span class="preprocessor"></span>        wxString InputMidiFile::TowxString()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;                <span class="keywordflow">return</span> InputDeviceClass::TowxString() +</div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;                        wxString::Format(_T(<span class="stringliteral">&quot;\n\</span></div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;<span class="stringliteral">  FileType = %d\n\</span></div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;<span class="stringliteral">  Tracks: %d\n\</span></div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;<span class="stringliteral">  minDelta = %ld\n                              \</span></div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;<span class="stringliteral">  Busy = %d\n&quot;</span>),</div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;                                         FileType, </div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;                                         (<span class="keywordtype">int</span>)Tracks.size(), </div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;                                         minDelta,</div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;                                         Busy);</div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;        }</div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;<span class="preprocessor"></span>        </div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;</div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;<span class="comment">// Routen testen und jenachdem entsprechend Codeverarbeitung</span></div>
-<div class="line"><a name="l00852"></a><span class="lineno"><a class="line" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a67a4bc1bfefd6bf6c691d7fcd592608c">  852</a></span>&#160;        <a class="code" href="../../dc/d51/classmutabor_1_1CommonMidiInput.html#a3b305d753980dc61b353214bc9fc84e5">InputMidiFile::proceed_bool</a> <a class="code" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a67a4bc1bfefd6bf6c691d7fcd592608c">InputMidiFile::shouldProceed</a>(<a class="code" href="../../d5/dee/group__route.html#gae5927f0f6043b271d1bd1c493e2505e4">Route</a> R, DWORD midiCode, <span class="keywordtype">int</span> track)</div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;        {</div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(midifile,_T(<span class="stringliteral">&quot;midiCode: %x, track %d&quot;</span>),midiCode,track);</div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;                <span class="keywordflow">switch</span> ( R-&gt;GetType() ) {</div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45ea50bfca9bacf204a403c6f37b47af802c">RTchannel</a>:</div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;                        <span class="keywordflow">if</span> ( R-&gt;Check(midiCode &amp; 0x0F) ) {</div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;                                <span class="keywordflow">return</span> ProceedYes;</div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;                        }</div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;</div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45eaa42b7d5ee257d648d6469bbcb456a723">RTstaff</a>:</div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;                        <span class="keywordflow">if</span> ( R-&gt;Check(track) ) {</div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;                                <span class="keywordflow">return</span> ProceedYes;</div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;                        }</div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45eac3c8aee25fc8afe5bafcb3de4a403bd9">RTelse</a>:</div>
-<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;                        <span class="keywordflow">return</span> ProceedElse;</div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;                                <span class="keywordflow">case</span> midi::SONG_SELECT:</div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;                                        a += message[1] &lt;&lt; 8;</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;                                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;                                }</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;                        Proceed(a, nr, nr &lt;&lt; 4);</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;                        Delta = Tracks[nr].ReadDelta();</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;                </div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(midifile,</div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;                                 _T(<span class="stringliteral">&quot;Next event on Track %d after %ld μs&quot;</span>),</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;                                 (<span class="keywordtype">int</span>)nr, Delta);</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;                }</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;<span class="preprocessor"></span>                mutint64 checktime = </div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;<span class="preprocessor"></span>                        Tracks[nr].PassDelta(time);</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;<span class="preprocessor"></span>                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(checktime == Delta - time);</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;<span class="preprocessor"></span>                <span class="keywordflow">return</span> Delta - time;</div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;        }</div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;</div>
+<div class="line"><a name="l00831"></a><span class="lineno"><a class="line" href="../../d0/d6b/DevMidF_8cpp.html#a02946621a8cade333c9e17468233ab0e">  831</a></span>&#160;<span class="preprocessor">#define MIDICODE(i)                             \</span></div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;<span class="preprocessor">        (0xff &amp; (midiCode &gt;&gt; (8*i)))</span></div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;<span class="preprocessor"></span><span class="comment">//(((BYTE*)(&amp;midiCode))[i])</span></div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;<span class="comment">// f¸r bestimmte Route Codeverarbeitung</span></div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;</div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;        </div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;<span class="preprocessor">#ifdef WX</span></div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;<span class="preprocessor"></span>        wxString InputMidiFile::TowxString()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;                <span class="keywordflow">return</span> InputDeviceClass::TowxString() +</div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;                        wxString::Format(_T(<span class="stringliteral">&quot;\n\</span></div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;<span class="stringliteral">  FileType = %d\n\</span></div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;<span class="stringliteral">  Tracks: %d\n\</span></div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;<span class="stringliteral">  minDelta = %ld\n                              \</span></div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;<span class="stringliteral">  Busy = %d\n&quot;</span>),</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;                                         FileType, </div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;                                         (<span class="keywordtype">int</span>)Tracks.size(), </div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;                                         minDelta,</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;                                         Busy);</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;        }</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;<span class="preprocessor"></span>        </div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;<span class="comment">// Routen testen und jenachdem entsprechend Codeverarbeitung</span></div>
+<div class="line"><a name="l00855"></a><span class="lineno"><a class="line" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a67a4bc1bfefd6bf6c691d7fcd592608c">  855</a></span>&#160;        <a class="code" href="../../dc/d51/classmutabor_1_1CommonMidiInput.html#a3b305d753980dc61b353214bc9fc84e5">InputMidiFile::proceed_bool</a> <a class="code" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a67a4bc1bfefd6bf6c691d7fcd592608c">InputMidiFile::shouldProceed</a>(<a class="code" href="../../d5/dee/group__route.html#gae5927f0f6043b271d1bd1c493e2505e4">Route</a> R, DWORD midiCode, <span class="keywordtype">int</span> track)</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;        {</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(midifile,_T(<span class="stringliteral">&quot;midiCode: %x, track %d&quot;</span>),midiCode,track);</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;                <span class="keywordflow">switch</span> ( R-&gt;GetType() ) {</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45ea50bfca9bacf204a403c6f37b47af802c">RTchannel</a>:</div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;                        <span class="keywordflow">if</span> ( R-&gt;Check(midiCode &amp; 0x0F) ) {</div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;                                <span class="keywordflow">return</span> ProceedYes;</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;                        }</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45eaa42b7d5ee257d648d6469bbcb456a723">RTstaff</a>:</div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;                        <span class="keywordflow">if</span> ( R-&gt;Check(track) ) {</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;                                <span class="keywordflow">return</span> ProceedYes;</div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;                        }</div>
 <div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;                        </div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45eaf43f088132d41bd9b008a37e561bb218">RTall</a>:</div>
-<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;                        <span class="keywordflow">return</span> ProceedYes;</div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;                <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;                        <a class="code" href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a>;</div>
-<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;                }</div>
-<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;                <span class="keywordflow">return</span> ProceedNo;</div>
-<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;        }</div>
-<div class="line"><a name="l00879"></a><span class="lineno"><a class="line" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a9b9410cda8d53b5d1ea022f296c14291">  879</a></span>&#160;        <a class="code" href="../../dc/d51/classmutabor_1_1CommonMidiInput.html#a3b305d753980dc61b353214bc9fc84e5">InputMidiFile::proceed_bool</a> <a class="code" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a67a4bc1bfefd6bf6c691d7fcd592608c">InputMidiFile::shouldProceed</a>(<a class="code" href="../../d5/dee/group__route.html#gae5927f0f6043b271d1bd1c493e2505e4">Route</a> R, </div>
-<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;                                                                 <span class="keyword">const</span> std::vector&lt;unsigned char &gt; * midiCode,</div>
-<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;                                                                 <span class="keywordtype">int</span> track)</div>
-<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;        {</div>
-<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(midiCode);</div>
-<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;                <span class="keywordflow">if</span> (midiCode-&gt;at(0) != midi::SYSTEM) </div>
-<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;                        <a class="code" href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a>;</div>
-<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;</div>
-<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;                <span class="keywordflow">switch</span> ( R-&gt;GetType() ) {</div>
-<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45ea50bfca9bacf204a403c6f37b47af802c">RTchannel</a>:</div>
-<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;<span class="comment">//                      if ( R-&gt;Check(midiCode &amp; 0x0F) ) {</span></div>
-<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;                                <span class="keywordflow">return</span> ProceedYes;</div>
-<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;<span class="comment">//                      }</span></div>
-<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;</div>
-<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45eaa42b7d5ee257d648d6469bbcb456a723">RTstaff</a>:</div>
-<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;                        <span class="keywordflow">if</span> ( R-&gt;Check(track) ) {</div>
-<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;                                <span class="keywordflow">return</span> ProceedYes;</div>
-<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;                        }</div>
-<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45eac3c8aee25fc8afe5bafcb3de4a403bd9">RTelse</a>:</div>
-<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;<span class="comment">//                      return ProceedElse;</span></div>
-<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;                        <span class="keywordflow">return</span> ProceedYes;</div>
-<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;                        </div>
-<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45eaf43f088132d41bd9b008a37e561bb218">RTall</a>:</div>
-<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;                        <span class="keywordflow">return</span> ProceedYes;</div>
-<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;                <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;                        <a class="code" href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a>;</div>
-<div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160;                }</div>
-<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;                <span class="keywordflow">return</span> ProceedNo;</div>
-<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;        }</div>
-<div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;</div>
-<div class="line"><a name="l00913"></a><span class="lineno"><a class="line" href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a87de75db09411bf560c9c97a61f4bc27">  913</a></span>&#160;        <a class="code" href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a87de75db09411bf560c9c97a61f4bc27">MidiFileFactory::~MidiFileFactory</a>() {}</div>
-<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;</div>
-<div class="line"><a name="l00915"></a><span class="lineno"><a class="line" href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a31f7346a7716bff41200d3e80e6d6bdc">  915</a></span>&#160;        <a class="code" href="../../d2/d2f/classmutabor_1_1OutputDeviceClass.html">OutputDeviceClass</a> * <a class="code" href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a31f7346a7716bff41200d3e80e6d6bdc">MidiFileFactory::DoCreateOutput</a> (<span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga0357d6ebe41b7958687f47fd0d2d288e">mutStringRef</a> name, </div>
-<div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;                                                             <span class="keywordtype">int</span> <span class="keywordtype">id</span>)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00918"></a><span class="lineno">  918</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d5/d5f/classmutabor_1_1OutputMidiFile.html">OutputMidiFile</a>(name,<span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;        }</div>
-<div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;</div>
-<div class="line"><a name="l00921"></a><span class="lineno"><a class="line" href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a370f91501bf6a0a3b71d65da08e16294">  921</a></span>&#160;        <a class="code" href="../../d4/d18/classmutabor_1_1InputDeviceClass.html">InputDeviceClass</a> * <a class="code" href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a370f91501bf6a0a3b71d65da08e16294">MidiFileFactory::DoCreateInput</a> (<span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga0357d6ebe41b7958687f47fd0d2d288e">mutStringRef</a> name, </div>
-<div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;                                                           <a class="code" href="../../d5/dee/group__route.html#gaa3d7d1e712c727d12c3b60c8dc04b484">MutaborModeType</a> mode, </div>
-<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;                                                           <span class="keywordtype">int</span> <span class="keywordtype">id</span>)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d6/d12/classmutabor_1_1InputMidiFile.html">InputMidiFile</a>(name,mode,<span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;        }</div>
-<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;</div>
-<div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;}</div>
-<div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;</div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45eac3c8aee25fc8afe5bafcb3de4a403bd9">RTelse</a>:</div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;                        <span class="keywordflow">return</span> ProceedElse;</div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;                        </div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45eaf43f088132d41bd9b008a37e561bb218">RTall</a>:</div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;                        <span class="keywordflow">return</span> ProceedYes;</div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;                <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;                        <a class="code" href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a>;</div>
+<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;                }</div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;                <span class="keywordflow">return</span> ProceedNo;</div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;        }</div>
+<div class="line"><a name="l00882"></a><span class="lineno"><a class="line" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a9b9410cda8d53b5d1ea022f296c14291">  882</a></span>&#160;        <a class="code" href="../../dc/d51/classmutabor_1_1CommonMidiInput.html#a3b305d753980dc61b353214bc9fc84e5">InputMidiFile::proceed_bool</a> <a class="code" href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a67a4bc1bfefd6bf6c691d7fcd592608c">InputMidiFile::shouldProceed</a>(<a class="code" href="../../d5/dee/group__route.html#gae5927f0f6043b271d1bd1c493e2505e4">Route</a> R, </div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;                                                                 <span class="keyword">const</span> std::vector&lt;unsigned char &gt; * midiCode,</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;                                                                 <span class="keywordtype">int</span> track)</div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;        {</div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(midiCode);</div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;                <span class="keywordflow">if</span> (midiCode-&gt;at(0) != midi::SYSTEM) </div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;                        <a class="code" href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a>;</div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;</div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;                <span class="keywordflow">switch</span> ( R-&gt;GetType() ) {</div>
+<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45ea50bfca9bacf204a403c6f37b47af802c">RTchannel</a>:</div>
+<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;<span class="comment">//                      if ( R-&gt;Check(midiCode &amp; 0x0F) ) {</span></div>
+<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;                                <span class="keywordflow">return</span> ProceedYes;</div>
+<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;<span class="comment">//                      }</span></div>
+<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;</div>
+<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45eaa42b7d5ee257d648d6469bbcb456a723">RTstaff</a>:</div>
+<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;                        <span class="keywordflow">if</span> ( R-&gt;Check(track) ) {</div>
+<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;                                <span class="keywordflow">return</span> ProceedYes;</div>
+<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;                        }</div>
+<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45eac3c8aee25fc8afe5bafcb3de4a403bd9">RTelse</a>:</div>
+<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;<span class="comment">//                      return ProceedElse;</span></div>
+<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;                        <span class="keywordflow">return</span> ProceedYes;</div>
+<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;                        </div>
+<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45eaf43f088132d41bd9b008a37e561bb218">RTall</a>:</div>
+<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;                        <span class="keywordflow">return</span> ProceedYes;</div>
+<div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;                <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;                        <a class="code" href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a>;</div>
+<div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;                }</div>
+<div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;                <span class="keywordflow">return</span> ProceedNo;</div>
+<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;        }</div>
+<div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;</div>
+<div class="line"><a name="l00916"></a><span class="lineno"><a class="line" href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a87de75db09411bf560c9c97a61f4bc27">  916</a></span>&#160;        <a class="code" href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a87de75db09411bf560c9c97a61f4bc27">MidiFileFactory::~MidiFileFactory</a>() {}</div>
+<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;</div>
+<div class="line"><a name="l00918"></a><span class="lineno"><a class="line" href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a31f7346a7716bff41200d3e80e6d6bdc">  918</a></span>&#160;        <a class="code" href="../../d2/d2f/classmutabor_1_1OutputDeviceClass.html">OutputDeviceClass</a> * <a class="code" href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a31f7346a7716bff41200d3e80e6d6bdc">MidiFileFactory::DoCreateOutput</a> (<span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga0357d6ebe41b7958687f47fd0d2d288e">mutStringRef</a> name, </div>
+<div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;                                                             <span class="keywordtype">int</span> <span class="keywordtype">id</span>)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d5/d5f/classmutabor_1_1OutputMidiFile.html">OutputMidiFile</a>(name,<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;        }</div>
+<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;</div>
+<div class="line"><a name="l00924"></a><span class="lineno"><a class="line" href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a370f91501bf6a0a3b71d65da08e16294">  924</a></span>&#160;        <a class="code" href="../../d4/d18/classmutabor_1_1InputDeviceClass.html">InputDeviceClass</a> * <a class="code" href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a370f91501bf6a0a3b71d65da08e16294">MidiFileFactory::DoCreateInput</a> (<span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga0357d6ebe41b7958687f47fd0d2d288e">mutStringRef</a> name, </div>
+<div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;                                                           <a class="code" href="../../d5/dee/group__route.html#gaa3d7d1e712c727d12c3b60c8dc04b484">MutaborModeType</a> mode, </div>
+<div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;                                                           <span class="keywordtype">int</span> <span class="keywordtype">id</span>)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d6/d12/classmutabor_1_1InputMidiFile.html">InputMidiFile</a>(name,mode,<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;        }</div>
 <div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160;</div>
+<div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;}</div>
+<div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;</div>
+<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;</div>
 <div class="ttc" id="group__kernel_html_ga8122320953f6a958fc8d159eb49a3663"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga8122320953f6a958fc8d159eb49a3663">mutIFstream</a></div><div class="ttdeci">#define mutIFstream</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00190">Defs.h:190</a></div></div>
 <div class="ttc" id="group__route_html_ga005dc1a3518ecb0bfb408cf058319d7a"><div class="ttname"><a href="../../d5/dee/group__route.html#ga005dc1a3518ecb0bfb408cf058319d7a">mutabor::Device::ReadData</a></div><div class="ttdeci">virtual void ReadData(wxConfigBase *config)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00473">Device.h:473</a></div></div>
-<div class="ttc" id="classmutabor_1_1CommonMidiInput_html_a3b305d753980dc61b353214bc9fc84e5"><div class="ttname"><a href="../../dc/d51/classmutabor_1_1CommonMidiInput.html#a3b305d753980dc61b353214bc9fc84e5">mutabor::CommonMidiInput&lt; CommonFileInputDevice &gt;::proceed_bool</a></div><div class="ttdeci">proceed_bool</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d21/midicmn_8h_source.html#l00796">midicmn.h:796</a></div></div>
+<div class="ttc" id="classmutabor_1_1CommonMidiInput_html_a3b305d753980dc61b353214bc9fc84e5"><div class="ttname"><a href="../../dc/d51/classmutabor_1_1CommonMidiInput.html#a3b305d753980dc61b353214bc9fc84e5">mutabor::CommonMidiInput&lt; CommonFileInputDevice &gt;::proceed_bool</a></div><div class="ttdeci">proceed_bool</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d21/midicmn_8h_source.html#l00797">midicmn.h:797</a></div></div>
 <div class="ttc" id="group__route_html_gga40717007e1ff5cfd3b0255fa4db7f45eaa42b7d5ee257d648d6469bbcb456a723"><div class="ttname"><a href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45eaa42b7d5ee257d648d6469bbcb456a723">mutabor::RTstaff</a></div><div class="ttdoc">use only a certain staff/track/… range (depends on the input device type) </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00082">Route.h:82</a></div></div>
 <div class="ttc" id="classmutabor_1_1Track_html_a8356bf6ddd6cecdfd5a80e85ca2e0bd4"><div class="ttname"><a href="../../dd/dbe/classmutabor_1_1Track.html#a8356bf6ddd6cecdfd5a80e85ca2e0bd4">mutabor::Track::ReadDelta</a></div><div class="ttdeci">mutint64 ReadDelta()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00108">DevMidF.cpp:108</a></div></div>
 <div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00141">mutDebug.h:141</a></div></div>
@@ -917,22 +920,22 @@
 <div class="ttc" id="classmutabor_1_1Track_html_a89d2b93a331e68025f332a2ab1ddb8ce"><div class="ttname"><a href="../../dd/dbe/classmutabor_1_1Track.html#a89d2b93a331e68025f332a2ab1ddb8ce">mutabor::Track::WriteLength</a></div><div class="ttdeci">void WriteLength(mutOFstream &amp;os, size_t l)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00192">DevMidF.cpp:192</a></div></div>
 <div class="ttc" id="classmutabor_1_1OutputMidiFile_html_a6edbcd23203804c50bf66e0c50cb357f"><div class="ttname"><a href="../../d5/d5f/classmutabor_1_1OutputMidiFile.html#a6edbcd23203804c50bf66e0c50cb357f">mutabor::OutputMidiFile::Save</a></div><div class="ttdeci">virtual void Save(tree_storage &amp;config)</div><div class="ttdoc">Save current device settings in a tree storage. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00249">DevMidF.cpp:249</a></div></div>
 <div class="ttc" id="classmutabor_1_1InputMidiFile_html_a79fc7f29bcff21db0af9043bf00f8797"><div class="ttname"><a href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a79fc7f29bcff21db0af9043bf00f8797">mutabor::InputMidiFile::Load</a></div><div class="ttdeci">virtual void Load(tree_storage &amp;config, RouteClass *route)</div><div class="ttdoc">Loade route settings (filter settings) for a given route. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00429">DevMidF.cpp:429</a></div></div>
-<div class="ttc" id="classmutabor_1_1MidiFileFactory_html_a87de75db09411bf560c9c97a61f4bc27"><div class="ttname"><a href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a87de75db09411bf560c9c97a61f4bc27">mutabor::MidiFileFactory::~MidiFileFactory</a></div><div class="ttdeci">virtual ~MidiFileFactory()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00913">DevMidF.cpp:913</a></div></div>
+<div class="ttc" id="classmutabor_1_1MidiFileFactory_html_a87de75db09411bf560c9c97a61f4bc27"><div class="ttname"><a href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a87de75db09411bf560c9c97a61f4bc27">mutabor::MidiFileFactory::~MidiFileFactory</a></div><div class="ttdeci">virtual ~MidiFileFactory()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00916">DevMidF.cpp:916</a></div></div>
 <div class="ttc" id="Route-inlines_8h_html"><div class="ttname"><a href="../../d2/d2c/Route-inlines_8h.html">Route-inlines.h</a></div></div>
-<div class="ttc" id="classmutabor_1_1MidiFileFactory_html_a31f7346a7716bff41200d3e80e6d6bdc"><div class="ttname"><a href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a31f7346a7716bff41200d3e80e6d6bdc">mutabor::MidiFileFactory::DoCreateOutput</a></div><div class="ttdeci">virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name, int id=-1) const </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00915">DevMidF.cpp:915</a></div></div>
-<div class="ttc" id="classmutabor_1_1InputDeviceClass_html"><div class="ttname"><a href="../../d4/d18/classmutabor_1_1InputDeviceClass.html">mutabor::InputDeviceClass</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00822">Device.h:822</a></div></div>
+<div class="ttc" id="classmutabor_1_1MidiFileFactory_html_a31f7346a7716bff41200d3e80e6d6bdc"><div class="ttname"><a href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a31f7346a7716bff41200d3e80e6d6bdc">mutabor::MidiFileFactory::DoCreateOutput</a></div><div class="ttdeci">virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name, int id=-1) const </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00918">DevMidF.cpp:918</a></div></div>
+<div class="ttc" id="classmutabor_1_1InputDeviceClass_html"><div class="ttname"><a href="../../d4/d18/classmutabor_1_1InputDeviceClass.html">mutabor::InputDeviceClass</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00830">Device.h:830</a></div></div>
 <div class="ttc" id="midicmn_8cpp_html"><div class="ttname"><a href="../../d3/d0f/midicmn_8cpp.html">midicmn.cpp</a></div></div>
 <div class="ttc" id="group__route_html_gaa3d7d1e712c727d12c3b60c8dc04b484"><div class="ttname"><a href="../../d5/dee/group__route.html#gaa3d7d1e712c727d12c3b60c8dc04b484">mutabor::MutaborModeType</a></div><div class="ttdeci">MutaborModeType</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00074">Device.h:74</a></div></div>
 <div class="ttc" id="group__kernel_html_gab67b5b5a0e836af1d08638600a232ce3"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gab67b5b5a0e836af1d08638600a232ce3">mutOFstream</a></div><div class="ttdeci">#define mutOFstream</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00189">Defs.h:189</a></div></div>
 <div class="ttc" id="Runtime_8h_html"><div class="ttname"><a href="../../d5/d84/Runtime_8h.html">Runtime.h</a></div><div class="ttdoc">Runtime functions of the (mainly C) old kernel of Mutabor. </div></div>
 <div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
-<div class="ttc" id="group__route_html_ga4ab812006460df93060c3f19f6c63435"><div class="ttname"><a href="../../d5/dee/group__route.html#ga4ab812006460df93060c3f19f6c63435">mutabor::TRouteClass::GetInputTo</a></div><div class="ttdeci">int GetInputTo() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00336">Route.h:336</a></div></div>
+<div class="ttc" id="group__route_html_ga4ab812006460df93060c3f19f6c63435"><div class="ttname"><a href="../../d5/dee/group__route.html#ga4ab812006460df93060c3f19f6c63435">mutabor::TRouteClass::GetInputTo</a></div><div class="ttdeci">int GetInputTo() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00348">Route.h:348</a></div></div>
 <div class="ttc" id="group__route_html_gga40717007e1ff5cfd3b0255fa4db7f45eaf43f088132d41bd9b008a37e561bb218"><div class="ttname"><a href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45eaf43f088132d41bd9b008a37e561bb218">mutabor::RTall</a></div><div class="ttdoc">all events will pass </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00079">Route.h:79</a></div></div>
 <div class="ttc" id="classmutabor_1_1OutputMidiFile_html_a52e01019980b20f5106f4266a1817324"><div class="ttname"><a href="../../d5/d5f/classmutabor_1_1OutputMidiFile.html#a52e01019980b20f5106f4266a1817324">mutabor::OutputMidiFile::Close</a></div><div class="ttdeci">virtual void Close()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00336">DevMidF.cpp:336</a></div></div>
-<div class="ttc" id="group__route_html_gabff93a2b84d53fe71b390a76278f87ca"><div class="ttname"><a href="../../d5/dee/group__route.html#gabff93a2b84d53fe71b390a76278f87ca">mutabor::TRouteClass::SetOutputFrom</a></div><div class="ttdeci">void SetOutputFrom(int o)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00332">Route.h:332</a></div></div>
-<div class="ttc" id="classmutabor_1_1InputMidiFile_html_aabfc9a226690dbd5314c7bd82195b056"><div class="ttname"><a href="../../d6/d12/classmutabor_1_1InputMidiFile.html#aabfc9a226690dbd5314c7bd82195b056">mutabor::InputMidiFile::PrepareNextEvent</a></div><div class="ttdeci">virtual mutint64 PrepareNextEvent()</div><div class="ttdoc">Go on to the next event. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00677">DevMidF.cpp:677</a></div></div>
+<div class="ttc" id="group__route_html_gabff93a2b84d53fe71b390a76278f87ca"><div class="ttname"><a href="../../d5/dee/group__route.html#gabff93a2b84d53fe71b390a76278f87ca">mutabor::TRouteClass::SetOutputFrom</a></div><div class="ttdeci">void SetOutputFrom(int o)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00344">Route.h:344</a></div></div>
+<div class="ttc" id="classmutabor_1_1InputMidiFile_html_aabfc9a226690dbd5314c7bd82195b056"><div class="ttname"><a href="../../d6/d12/classmutabor_1_1InputMidiFile.html#aabfc9a226690dbd5314c7bd82195b056">mutabor::InputMidiFile::PrepareNextEvent</a></div><div class="ttdeci">virtual mutint64 PrepareNextEvent()</div><div class="ttdoc">Go on to the next event. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00680">DevMidF.cpp:680</a></div></div>
 <div class="ttc" id="classmutabor_1_1Track_html_a3783c8532c181db968f99a707666a689"><div class="ttname"><a href="../../dd/dbe/classmutabor_1_1Track.html#a3783c8532c181db968f99a707666a689">mutabor::Track::base</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; base</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d3c/DevMidF_8h_source.html#l00076">DevMidF.h:76</a></div></div>
-<div class="ttc" id="classmutabor_1_1InputMidiFile_html_a28c0387b456dbd7ed53bbf3204fa2e1c"><div class="ttname"><a href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a28c0387b456dbd7ed53bbf3204fa2e1c">mutabor::InputMidiFile::Close</a></div><div class="ttdeci">virtual void Close()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00648">DevMidF.cpp:648</a></div></div>
+<div class="ttc" id="classmutabor_1_1InputMidiFile_html_a28c0387b456dbd7ed53bbf3204fa2e1c"><div class="ttname"><a href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a28c0387b456dbd7ed53bbf3204fa2e1c">mutabor::InputMidiFile::Close</a></div><div class="ttdeci">virtual void Close()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00651">DevMidF.cpp:651</a></div></div>
 <div class="ttc" id="group__kernel_html_ga13c03a937e32254ea17154104db5208a"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga13c03a937e32254ea17154104db5208a">mutChar</a></div><div class="ttdeci">#define mutChar</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00168">Defs.h:168</a></div></div>
 <div class="ttc" id="classmutabor_1_1CurrentTimer_html_a7df1d50b0b51dd10a6cd2d59fd97581e"><div class="ttname"><a href="../../d7/dda/classmutabor_1_1CurrentTimer.html#a7df1d50b0b51dd10a6cd2d59fd97581e">mutabor::CurrentTimer::Get</a></div><div class="ttdeci">mutint64 Get()</div><div class="ttdoc">Return the current time in μs. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d41/timing_8h_source.html#l00496">timing.h:496</a></div></div>
 <div class="ttc" id="group__kernel_html_ga426d842d7b3e04622b2da17b089e586d"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga426d842d7b3e04622b2da17b089e586d">gettext_noop</a></div><div class="ttdeci">#define gettext_noop(a)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00230">Defs.h:230</a></div></div>
@@ -943,13 +946,13 @@
 <div class="ttc" id="DevMidF_8h_html"><div class="ttname"><a href="../../da/d3c/DevMidF_8h.html">DevMidF.h</a></div></div>
 <div class="ttc" id="classmutabor_1_1OutputMidiFile_html_a85e0f75c86bb35421a7b780877427744"><div class="ttname"><a href="../../d5/d5f/classmutabor_1_1OutputMidiFile.html#a85e0f75c86bb35421a7b780877427744">mutabor::OutputMidiFile::Load</a></div><div class="ttdeci">virtual void Load(tree_storage &amp;config)</div><div class="ttdoc">Load current device settings from a tree storage. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00283">DevMidF.cpp:283</a></div></div>
 <div class="ttc" id="classmutabor_1_1tree__storage_html_aa1883b11f7457404ba7036104924e42a"><div class="ttname"><a href="../../da/de5/classmutabor_1_1tree__storage.html#aa1883b11f7457404ba7036104924e42a">mutabor::tree_storage::Write</a></div><div class="ttdeci">virtual void Write(const mutStringRef key, long value)=0</div><div class="ttdoc">Writes a long integer value. </div></div>
-<div class="ttc" id="classmutabor_1_1MidiFileFactory_html_a370f91501bf6a0a3b71d65da08e16294"><div class="ttname"><a href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a370f91501bf6a0a3b71d65da08e16294">mutabor::MidiFileFactory::DoCreateInput</a></div><div class="ttdeci">virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name, mutabor::MutaborModeType mode, int id=-1) const </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00921">DevMidF.cpp:921</a></div></div>
+<div class="ttc" id="classmutabor_1_1MidiFileFactory_html_a370f91501bf6a0a3b71d65da08e16294"><div class="ttname"><a href="../../d8/d5a/classmutabor_1_1MidiFileFactory.html#a370f91501bf6a0a3b71d65da08e16294">mutabor::MidiFileFactory::DoCreateInput</a></div><div class="ttdeci">virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name, mutabor::MutaborModeType mode, int id=-1) const </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00924">DevMidF.cpp:924</a></div></div>
 <div class="ttc" id="group__kernel_html_gad2925abec9399af8f0c111a540a9e8d5"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gad2925abec9399af8f0c111a540a9e8d5">mutStreamGood</a></div><div class="ttdeci">#define mutStreamGood(stream)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00209">Defs.h:209</a></div></div>
-<div class="ttc" id="group__route_html_gae5927f0f6043b271d1bd1c493e2505e4"><div class="ttname"><a href="../../d5/dee/group__route.html#gae5927f0f6043b271d1bd1c493e2505e4">mutabor::Route</a></div><div class="ttdeci">TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::Route Route</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00521">Route.h:521</a></div></div>
+<div class="ttc" id="group__route_html_gae5927f0f6043b271d1bd1c493e2505e4"><div class="ttname"><a href="../../d5/dee/group__route.html#gae5927f0f6043b271d1bd1c493e2505e4">mutabor::Route</a></div><div class="ttdeci">TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::Route Route</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00533">Route.h:533</a></div></div>
 <div class="ttc" id="GrafKern_8h_html"><div class="ttname"><a href="../../d4/d47/GrafKern_8h.html">GrafKern.h</a></div><div class="ttdoc">Output functions. </div></div>
-<div class="ttc" id="group__route_html_gab9643dec82601c2a36c76bae383bc1cb"><div class="ttname"><a href="../../d5/dee/group__route.html#gab9643dec82601c2a36c76bae383bc1cb">mutabor::TRouteClass::OutputAvoidDrumChannel</a></div><div class="ttdeci">bool OutputAvoidDrumChannel() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00353">Route.h:353</a></div></div>
+<div class="ttc" id="group__route_html_gab9643dec82601c2a36c76bae383bc1cb"><div class="ttname"><a href="../../d5/dee/group__route.html#gab9643dec82601c2a36c76bae383bc1cb">mutabor::TRouteClass::OutputAvoidDrumChannel</a></div><div class="ttdeci">bool OutputAvoidDrumChannel() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00365">Route.h:365</a></div></div>
 <div class="ttc" id="group__kernel_html_ga874591de145deee953efe2e026dd4e9e"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga874591de145deee953efe2e026dd4e9e">mutGetC</a></div><div class="ttdeci">#define mutGetC(stream)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00206">Defs.h:206</a></div></div>
-<div class="ttc" id="classmutabor_1_1InputMidiFile_html_a67a4bc1bfefd6bf6c691d7fcd592608c"><div class="ttname"><a href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a67a4bc1bfefd6bf6c691d7fcd592608c">mutabor::InputMidiFile::shouldProceed</a></div><div class="ttdeci">proceed_bool shouldProceed(Route R, DWORD midiCode, int track=0)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00852">DevMidF.cpp:852</a></div></div>
+<div class="ttc" id="classmutabor_1_1InputMidiFile_html_a67a4bc1bfefd6bf6c691d7fcd592608c"><div class="ttname"><a href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a67a4bc1bfefd6bf6c691d7fcd592608c">mutabor::InputMidiFile::shouldProceed</a></div><div class="ttdeci">proceed_bool shouldProceed(Route R, DWORD midiCode, int track=0)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00855">DevMidF.cpp:855</a></div></div>
 <div class="ttc" id="classmutabor_1_1InputMidiFile_html_a6146930f86cbd9c73933d50c1543fcc7"><div class="ttname"><a href="../../d6/d12/classmutabor_1_1InputMidiFile.html#a6146930f86cbd9c73933d50c1543fcc7">mutabor::InputMidiFile::Save</a></div><div class="ttdeci">virtual void Save(tree_storage &amp;config, const RouteClass *route)</div><div class="ttdoc">Save route settings (filter settings) for a given route. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00397">DevMidF.cpp:397</a></div></div>
 <div class="ttc" id="classmutabor_1_1InputMidiFile_html"><div class="ttname"><a href="../../d6/d12/classmutabor_1_1InputMidiFile.html">mutabor::InputMidiFile</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/d3c/DevMidF_8h_source.html#l00668">DevMidF.h:668</a></div></div>
 <div class="ttc" id="group__route_html_gga40717007e1ff5cfd3b0255fa4db7f45ea50bfca9bacf204a403c6f37b47af802c"><div class="ttname"><a href="../../d5/dee/group__route.html#gga40717007e1ff5cfd3b0255fa4db7f45ea50bfca9bacf204a403c6f37b47af802c">mutabor::RTchannel</a></div><div class="ttdoc">use only a certain channel range (depends on the input device type) </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00081">Route.h:81</a></div></div>
@@ -959,17 +962,17 @@
 <div class="ttc" id="group__kernel_html_gae4dfd7b0d66121016d6466d2ff10e8ba"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a></div><div class="ttdeci">#define _</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/Execute_8cpp_source.html#l00057">Execute.cpp:57</a></div></div>
 <div class="ttc" id="classmutabor_1_1tree__storage_html_ac745edc6daafaae2b2fee856bfd4ecdb"><div class="ttname"><a href="../../da/de5/classmutabor_1_1tree__storage.html#ac745edc6daafaae2b2fee856bfd4ecdb">mutabor::tree_storage::toParent</a></div><div class="ttdeci">virtual void toParent(unsigned int count=1)=0</div><div class="ttdoc">This function jumps up in the tree (i.e. towards the root). </div></div>
 <div class="ttc" id="group__kernel_html_gaee1aacac49f58ce7e63245ea1f92a9ea"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gaee1aacac49f58ce7e63245ea1f92a9ea">mutOpenIFstream</a></div><div class="ttdeci">#define mutOpenIFstream(name, filename)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00195">Defs.h:195</a></div></div>
-<div class="ttc" id="group__route_html_ga670c41f2b1ab9c0a52b13c34e8918de0"><div class="ttname"><a href="../../d5/dee/group__route.html#ga670c41f2b1ab9c0a52b13c34e8918de0">mutabor::TRouteClass::GetType</a></div><div class="ttdeci">RouteType GetType() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00308">Route.h:308</a></div></div>
-<div class="ttc" id="group__route_html_ga0cde2c00cc341621b8e04809bc50a0fc"><div class="ttname"><a href="../../d5/dee/group__route.html#ga0cde2c00cc341621b8e04809bc50a0fc">mutabor::TRouteClass::GetOutputTo</a></div><div class="ttdeci">int GetOutputTo() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00344">Route.h:344</a></div></div>
-<div class="ttc" id="classmutabor_1_1InputMidiFile_html_aeda6e5119f71a31dd51dfd99938836f2"><div class="ttname"><a href="../../d6/d12/classmutabor_1_1InputMidiFile.html#aeda6e5119f71a31dd51dfd99938836f2">mutabor::InputMidiFile::ReadMidiProceed</a></div><div class="ttdeci">mutint64 ReadMidiProceed(size_t nr, mutint64 time)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00702">DevMidF.cpp:702</a></div></div>
-<div class="ttc" id="group__route_html_gabdcc9667a9b344cbccd11113719f95f5"><div class="ttname"><a href="../../d5/dee/group__route.html#gabdcc9667a9b344cbccd11113719f95f5">mutabor::TRouteClass::GetInputFrom</a></div><div class="ttdeci">int GetInputFrom() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00320">Route.h:320</a></div></div>
+<div class="ttc" id="group__route_html_ga670c41f2b1ab9c0a52b13c34e8918de0"><div class="ttname"><a href="../../d5/dee/group__route.html#ga670c41f2b1ab9c0a52b13c34e8918de0">mutabor::TRouteClass::GetType</a></div><div class="ttdeci">RouteType GetType() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00320">Route.h:320</a></div></div>
+<div class="ttc" id="group__route_html_ga0cde2c00cc341621b8e04809bc50a0fc"><div class="ttname"><a href="../../d5/dee/group__route.html#ga0cde2c00cc341621b8e04809bc50a0fc">mutabor::TRouteClass::GetOutputTo</a></div><div class="ttdeci">int GetOutputTo() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00356">Route.h:356</a></div></div>
+<div class="ttc" id="classmutabor_1_1InputMidiFile_html_aeda6e5119f71a31dd51dfd99938836f2"><div class="ttname"><a href="../../d6/d12/classmutabor_1_1InputMidiFile.html#aeda6e5119f71a31dd51dfd99938836f2">mutabor::InputMidiFile::ReadMidiProceed</a></div><div class="ttdeci">mutint64 ReadMidiProceed(size_t nr, mutint64 time)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00705">DevMidF.cpp:705</a></div></div>
+<div class="ttc" id="group__route_html_gabdcc9667a9b344cbccd11113719f95f5"><div class="ttname"><a href="../../d5/dee/group__route.html#gabdcc9667a9b344cbccd11113719f95f5">mutabor::TRouteClass::GetInputFrom</a></div><div class="ttdeci">int GetInputFrom() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00332">Route.h:332</a></div></div>
 <div class="ttc" id="classmutabor_1_1Track_1_1delta__length__error_html"><div class="ttname"><a href="../../df/d45/classmutabor_1_1Track_1_1delta__length__error.html">mutabor::Track::delta_length_error</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/d3c/DevMidF_8h_source.html#l00078">DevMidF.h:78</a></div></div>
-<div class="ttc" id="group__route_html_ga9ccc83af0c146ab61d12a9efa7a4266b"><div class="ttname"><a href="../../d5/dee/group__route.html#ga9ccc83af0c146ab61d12a9efa7a4266b">mutabor::TRouteClass::GetOutputFrom</a></div><div class="ttdeci">int GetOutputFrom() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00328">Route.h:328</a></div></div>
+<div class="ttc" id="group__route_html_ga9ccc83af0c146ab61d12a9efa7a4266b"><div class="ttname"><a href="../../d5/dee/group__route.html#ga9ccc83af0c146ab61d12a9efa7a4266b">mutabor::TRouteClass::GetOutputFrom</a></div><div class="ttdeci">int GetOutputFrom() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00340">Route.h:340</a></div></div>
 <div class="ttc" id="group__kernel_html_ga53c9d27cec65eb91f0f596b6c442abc3"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga53c9d27cec65eb91f0f596b6c442abc3">mutOpenOFstream</a></div><div class="ttdeci">#define mutOpenOFstream(name, filename)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00193">Defs.h:193</a></div></div>
-<div class="ttc" id="classmutabor_1_1InputMidiFile_html_af01cb3bb180e5f6f08ceeb8f7543c995"><div class="ttname"><a href="../../d6/d12/classmutabor_1_1InputMidiFile.html#af01cb3bb180e5f6f08ceeb8f7543c995">mutabor::InputMidiFile::Stop</a></div><div class="ttdeci">virtual void Stop()</div><div class="ttdoc">Stop playback or recording of the device. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00658">DevMidF.cpp:658</a></div></div>
+<div class="ttc" id="classmutabor_1_1InputMidiFile_html_af01cb3bb180e5f6f08ceeb8f7543c995"><div class="ttname"><a href="../../d6/d12/classmutabor_1_1InputMidiFile.html#af01cb3bb180e5f6f08ceeb8f7543c995">mutabor::InputMidiFile::Stop</a></div><div class="ttdeci">virtual void Stop()</div><div class="ttdoc">Stop playback or recording of the device. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00661">DevMidF.cpp:661</a></div></div>
 <div class="ttc" id="mis_8cpp_html_a3259b43da528318989730caeb66a18a9"><div class="ttname"><a href="../../d4/df2/mis_8cpp.html#a3259b43da528318989730caeb66a18a9">WriteLength</a></div><div class="ttdeci">void WriteLength(ostream &amp;os, DWORD l)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/df2/mis_8cpp_source.html#l00035">mis.cpp:35</a></div></div>
 <div class="ttc" id="group__kernel_html_ga85be71f178e0223d517dd404a9af82b1"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga85be71f178e0223d517dd404a9af82b1">mutPutC</a></div><div class="ttdeci">#define mutPutC(stream, data)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00205">Defs.h:205</a></div></div>
-<div class="ttc" id="group__route_html_gab840a660c5f087bcae0c56201ae70935"><div class="ttname"><a href="../../d5/dee/group__route.html#gab840a660c5f087bcae0c56201ae70935">mutabor::TRouteClass::SetOutputTo</a></div><div class="ttdeci">void SetOutputTo(int o)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00348">Route.h:348</a></div></div>
+<div class="ttc" id="group__route_html_gab840a660c5f087bcae0c56201ae70935"><div class="ttname"><a href="../../d5/dee/group__route.html#gab840a660c5f087bcae0c56201ae70935">mutabor::TRouteClass::SetOutputTo</a></div><div class="ttdeci">void SetOutputTo(int o)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00360">Route.h:360</a></div></div>
 <div class="ttc" id="group__kernel_html_gac7303c91aca74e4365007eb320490d7f"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gac7303c91aca74e4365007eb320490d7f">mutStreamBad</a></div><div class="ttdeci">#define mutStreamBad(stream)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00208">Defs.h:208</a></div></div>
 <div class="ttc" id="Execute_8h_html"><div class="ttname"><a href="../../de/d11/Execute_8h.html">Execute.h</a></div><div class="ttdoc">Execute tuning changes. </div></div>
 <div class="ttc" id="group__GUI_html_ga21a35e4a9e56bbe15aded747eb5a7147"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a></div><div class="ttdeci">#define UNREACHABLEC</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00148">mhDefs.h:148</a></div></div>
@@ -983,11 +986,11 @@
 <div class="ttc" id="group__kernel_html_ga09f31da051b5aa9ecd11f09432aa93e5"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga09f31da051b5aa9ecd11f09432aa93e5">mutStreamEOF</a></div><div class="ttdeci">#define mutStreamEOF(stream)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00210">Defs.h:210</a></div></div>
 <div class="ttc" id="classmutabor_1_1tree__storage_html_a56fd0890515d0b39ae35acb7c0682339"><div class="ttname"><a href="../../da/de5/classmutabor_1_1tree__storage.html#a56fd0890515d0b39ae35acb7c0682339">mutabor::tree_storage::GetPath</a></div><div class="ttdeci">virtual mutString GetPath()=0</div><div class="ttdoc">Return a string representation of the position in the current tree. </div></div>
 <div class="ttc" id="classmutabor_1_1tree__storage_html"><div class="ttname"><a href="../../da/de5/classmutabor_1_1tree__storage.html">mutabor::tree_storage</a></div><div class="ttdoc">Class tree_storage proviedes an interface for classes providing tree based storage. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dbe/treestorage_8h_source.html#l00060">treestorage.h:60</a></div></div>
-<div class="ttc" id="group__route_html_ga54107d2ab5d826deb2dcc6a68d8cdc52"><div class="ttname"><a href="../../d5/dee/group__route.html#ga54107d2ab5d826deb2dcc6a68d8cdc52">mutabor::TRouteClass::SetInputTo</a></div><div class="ttdeci">void SetInputTo(int i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00340">Route.h:340</a></div></div>
+<div class="ttc" id="group__route_html_ga54107d2ab5d826deb2dcc6a68d8cdc52"><div class="ttname"><a href="../../d5/dee/group__route.html#ga54107d2ab5d826deb2dcc6a68d8cdc52">mutabor::TRouteClass::SetInputTo</a></div><div class="ttdeci">void SetInputTo(int i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00352">Route.h:352</a></div></div>
 <div class="ttc" id="classmutabor_1_1Track_html_aeb8fd81de62c04152a77b53c1be94683"><div class="ttname"><a href="../../dd/dbe/classmutabor_1_1Track.html#aeb8fd81de62c04152a77b53c1be94683">mutabor::Track::Save</a></div><div class="ttdeci">void Save(mutOFstream &amp;os)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00200">DevMidF.cpp:200</a></div></div>
 <div class="ttc" id="group__kernel_html_gac3b3331a2deb0df502189487ce720294"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gac3b3331a2deb0df502189487ce720294">mutCloseStream</a></div><div class="ttdeci">#define mutCloseStream(stream)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00202">Defs.h:202</a></div></div>
 <div class="ttc" id="namespacemutabor_html_a8c070609aa1ba654d6d44cbb87901e06"><div class="ttname"><a href="../../d6/daa/namespacemutabor.html#a8c070609aa1ba654d6d44cbb87901e06">mutabor::ReadLength</a></div><div class="ttdeci">static DWORD ReadLength(mutIFstream &amp;is)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00096">DevMidF.cpp:96</a></div></div>
-<div class="ttc" id="group__route_html_ga52805c5c9570003d2f7502891047a819"><div class="ttname"><a href="../../d5/dee/group__route.html#ga52805c5c9570003d2f7502891047a819">mutabor::TRouteClass::SetInputFrom</a></div><div class="ttdeci">void SetInputFrom(int i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00324">Route.h:324</a></div></div>
+<div class="ttc" id="group__route_html_ga52805c5c9570003d2f7502891047a819"><div class="ttname"><a href="../../d5/dee/group__route.html#ga52805c5c9570003d2f7502891047a819">mutabor::TRouteClass::SetInputFrom</a></div><div class="ttdeci">void SetInputFrom(int i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00336">Route.h:336</a></div></div>
 <div class="ttc" id="namespacemutabor_html_ab2acff956460e39a59c206fc02dc4c99"><div class="ttname"><a href="../../d6/daa/namespacemutabor.html#ab2acff956460e39a59c206fc02dc4c99">mutabor::CurrentTime</a></div><div class="ttdeci">CurrentTimer CurrentTime</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dca/timing_8cpp_source.html#l00043">timing.cpp:43</a></div></div>
 <div class="ttc" id="group__kernel_html_gac5ff367bd2e884239a38e8b81287ce13"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gac5ff367bd2e884239a38e8b81287ce13">mutReadStream</a></div><div class="ttdeci">#define mutReadStream(stream, data, count)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00200">Defs.h:200</a></div></div>
 <div class="ttc" id="classmutabor_1_1Track_html_ab27de7a5339ed4cd5583989586934b29"><div class="ttname"><a href="../../dd/dbe/classmutabor_1_1Track.html#ab27de7a5339ed4cd5583989586934b29">mutabor::Track::ReadMessage</a></div><div class="ttdeci">base ReadMessage()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00154">DevMidF.cpp:154</a></div></div>
@@ -996,9 +999,9 @@
 <div class="ttc" id="group__kernel_html_ga610d7c4be5ea54d60cc7ba385f0f03f7"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga610d7c4be5ea54d60cc7ba385f0f03f7">mutEmptyString</a></div><div class="ttdeci">#define mutEmptyString</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00171">Defs.h:171</a></div></div>
 <div class="ttc" id="classmutabor_1_1Track_html_ae39002be9f85e746f308b31224343af8"><div class="ttname"><a href="../../dd/dbe/classmutabor_1_1Track.html#ae39002be9f85e746f308b31224343af8">mutabor::Track::ReadInt</a></div><div class="ttdeci">uint32_t ReadInt()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d6b/DevMidF_8cpp_source.html#l00137">DevMidF.cpp:137</a></div></div>
 <div class="ttc" id="classmutabor_1_1Track_1_1invalid__status_html"><div class="ttname"><a href="../../d3/d45/classmutabor_1_1Track_1_1invalid__status.html">mutabor::Track::invalid_status</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/d3c/DevMidF_8h_source.html#l00083">DevMidF.h:83</a></div></div>
-<div class="ttc" id="classmutabor_1_1OutputDeviceClass_html"><div class="ttname"><a href="../../d2/d2f/classmutabor_1_1OutputDeviceClass.html">mutabor::OutputDeviceClass</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00690">Device.h:690</a></div></div>
+<div class="ttc" id="classmutabor_1_1OutputDeviceClass_html"><div class="ttname"><a href="../../d2/d2f/classmutabor_1_1OutputDeviceClass.html">mutabor::OutputDeviceClass</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00692">Device.h:692</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Don Nov 28 2013 19:38:41 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Sam Dez 7 2013 09:32:36 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
 </body>
 </html>

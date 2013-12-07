@@ -149,7 +149,7 @@
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" line="439" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Global.h" bodystart="439" bodyend="-1"/>
         <referencedby refid="d9/d7c/group__kernel_1ga4ea14e5284c0840695599141a22e95c7" compoundref="d3/da0/TabGen_8cpp" startline="514" endline="583">expandiere_logik</referencedby>
-        <referencedby refid="d9/d7c/group__kernel_1ga68aa37253345f4399f7fb07524fe840b" compoundref="df/d23/Execute_8cpp" startline="1077" endline="1111">generic_keyboard_analysis</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga68aa37253345f4399f7fb07524fe840b" compoundref="df/d23/Execute_8cpp" startline="1086" endline="1120">generic_keyboard_analysis</referencedby>
         <referencedby refid="d9/d7c/group__kernel_1ga580f12d4669345b7a4c3e340395d4fd5" compoundref="dc/df5/Parser_8cpp" startline="2197" endline="2222">get_new_logik</referencedby>
         <referencedby refid="d9/d7c/group__kernel_1gaa32d94398d0aa7cb0b2f2bf3b2308c30" compoundref="d3/da0/TabGen_8cpp" startline="1087" endline="1214">insert_in_lokale_liste</referencedby>
       </memberdef>
@@ -168,7 +168,7 @@
         <referencedby refid="d9/d7c/group__kernel_1ga4ea14e5284c0840695599141a22e95c7" compoundref="d3/da0/TabGen_8cpp" startline="514" endline="583">expandiere_logik</referencedby>
         <referencedby refid="d9/d7c/group__kernel_1ga580f12d4669345b7a4c3e340395d4fd5" compoundref="dc/df5/Parser_8cpp" startline="2197" endline="2222">get_new_logik</referencedby>
         <referencedby refid="d9/d7c/group__kernel_1gaa32d94398d0aa7cb0b2f2bf3b2308c30" compoundref="d3/da0/TabGen_8cpp" startline="1087" endline="1214">insert_in_lokale_liste</referencedby>
-        <referencedby refid="d9/d7c/group__kernel_1ga12a7a721463b39816b65d98359c986be" compoundref="df/d23/Execute_8cpp" startline="1019" endline="1053">MidiAnalysis</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga12a7a721463b39816b65d98359c986be" compoundref="df/d23/Execute_8cpp" startline="1028" endline="1062">MidiAnalysis</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -176,254 +176,254 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3218">
+      <node id="3238">
         <label>argument</label>
         <link refid="d2/d74/structargument"/>
-        <childnode refid="3219" relation="usage">
+        <childnode refid="3239" relation="usage">
           <edgelabel>parameter</edgelabel>
         </childnode>
       </node>
-      <node id="3221">
+      <node id="3241">
         <label>komplex_intervall</label>
         <link refid="d7/dc9/structkomplex__intervall"/>
-        <childnode refid="3221" relation="usage">
+        <childnode refid="3241" relation="usage">
           <edgelabel>next</edgelabel>
         </childnode>
       </node>
-      <node id="3216">
+      <node id="3236">
         <label>aktions_liste</label>
         <link refid="d5/def/structaktions__liste"/>
-        <childnode refid="3216" relation="usage">
+        <childnode refid="3236" relation="usage">
           <edgelabel>next</edgelabel>
         </childnode>
-        <childnode refid="3217" relation="usage">
+        <childnode refid="3237" relation="usage">
           <edgelabel>argument_liste</edgelabel>
         </childnode>
-        <childnode refid="3220" relation="usage">
+        <childnode refid="3240" relation="usage">
           <edgelabel>midi_code</edgelabel>
         </childnode>
       </node>
-      <node id="3223">
+      <node id="3243">
         <label>case_element</label>
         <link refid="dc/da0/structcase__element"/>
-        <childnode refid="3223" relation="usage">
+        <childnode refid="3243" relation="usage">
           <edgelabel>next</edgelabel>
         </childnode>
-        <childnode refid="3213" relation="usage">
+        <childnode refid="3233" relation="usage">
           <edgelabel>case_aktion</edgelabel>
         </childnode>
       </node>
-      <node id="3219">
+      <node id="3239">
         <label>parameter_list</label>
         <link refid="d8/d28/structparameter__list"/>
-        <childnode refid="3219" relation="usage">
-          <edgelabel>next</edgelabel>
-        </childnode>
-      </node>
-      <node id="3211">
-        <label>logik</label>
-        <link refid="db/d28/structlogik"/>
-        <childnode refid="3211" relation="usage">
-          <edgelabel>next</edgelabel>
-        </childnode>
-        <childnode refid="3212" relation="usage">
-          <edgelabel>midi_input_list</edgelabel>
-        </childnode>
-        <childnode refid="3228" relation="usage">
-          <edgelabel>ausloeser</edgelabel>
-        </childnode>
-        <childnode refid="3213" relation="usage">
-          <edgelabel>einstimmung</edgelabel>
-        </childnode>
-        <childnode refid="3229" relation="usage">
-          <edgelabel>harmony_list</edgelabel>
-        </childnode>
-        <childnode refid="3231" relation="usage">
-          <edgelabel>keystroke_list</edgelabel>
-        </childnode>
-        <childnode refid="3232" relation="usage">
-          <edgelabel>anweisungsliste</edgelabel>
-        </childnode>
-      </node>
-      <node id="3224">
-        <label>interpreter_argument_list</label>
-        <link refid="dc/d87/structinterpreter__argument__list"/>
-        <childnode refid="3225" relation="usage">
-          <edgelabel>data</edgelabel>
-        </childnode>
-      </node>
-      <node id="3222">
-        <label>ton</label>
-        <link refid="dd/da3/structton"/>
-        <childnode refid="3221" relation="usage">
-          <edgelabel>komplex_liste</edgelabel>
-        </childnode>
-        <childnode refid="3222" relation="usage">
-          <edgelabel>next</edgelabel>
-        </childnode>
-      </node>
-      <node id="3215">
-        <label>case_liste</label>
-        <link refid="d0/d45/structcase__liste"/>
-        <childnode refid="3215" relation="usage">
-          <edgelabel>next</edgelabel>
-        </childnode>
-        <childnode refid="3216" relation="usage">
-          <edgelabel>case_aktion</edgelabel>
-        </childnode>
-      </node>
-      <node id="3227">
-        <label>ton_einstell</label>
-        <link refid="d4/dd8/structton__einstell"/>
-        <childnode refid="3227" relation="usage">
-          <edgelabel>next</edgelabel>
-        </childnode>
-      </node>
-      <node id="3230">
-        <label>PTRN</label>
-        <link refid="d3/dc4/structPTRN"/>
-      </node>
-      <node id="3213">
-        <label>do_aktion</label>
-        <link refid="d5/d8c/structdo__aktion"/>
-        <childnode refid="3214" relation="usage">
-          <edgelabel>retuning</edgelabel>
-        </childnode>
-        <childnode refid="3211" relation="usage">
-          <edgelabel>logic</edgelabel>
-        </childnode>
-        <childnode refid="3223" relation="usage">
-          <edgelabel>umst_case</edgelabel>
-        </childnode>
-        <childnode refid="3224" relation="usage">
-          <edgelabel>secondary_arguments</edgelabel>
-          <edgelabel>arguments</edgelabel>
-        </childnode>
-        <childnode refid="3213" relation="usage">
-          <edgelabel>next</edgelabel>
-        </childnode>
-        <childnode refid="3226" relation="usage">
-          <edgelabel>tonsystem</edgelabel>
-        </childnode>
-        <childnode refid="3227" relation="usage">
-          <edgelabel>tonliste</edgelabel>
-        </childnode>
-        <childnode refid="3220" relation="usage">
-          <edgelabel>out_liste</edgelabel>
-        </childnode>
-      </node>
-      <node id="3226">
-        <label>TSYS</label>
-        <link refid="d4/d2a/structTSYS"/>
-      </node>
-      <node id="3229">
-        <label>harmonie_ereignis</label>
-        <link refid="d9/d5b/structharmonie__ereignis"/>
-        <childnode refid="3211" relation="usage">
-          <edgelabel>the_logik_to_expand</edgelabel>
-        </childnode>
-        <childnode refid="3230" relation="usage">
-          <edgelabel>pattern</edgelabel>
-        </childnode>
-        <childnode refid="3213" relation="usage">
-          <edgelabel>aktion</edgelabel>
-        </childnode>
-        <childnode refid="3229" relation="usage">
+        <childnode refid="3239" relation="usage">
           <edgelabel>next</edgelabel>
         </childnode>
       </node>
       <node id="3231">
-        <label>keyboard_ereignis</label>
-        <link refid="d8/d8e/structkeyboard__ereignis"/>
-        <childnode refid="3211" relation="usage">
-          <edgelabel>the_logik_to_expand</edgelabel>
-        </childnode>
-        <childnode refid="3213" relation="usage">
-          <edgelabel>aktion</edgelabel>
-        </childnode>
+        <label>logik</label>
+        <link refid="db/d28/structlogik"/>
         <childnode refid="3231" relation="usage">
           <edgelabel>next</edgelabel>
         </childnode>
+        <childnode refid="3232" relation="usage">
+          <edgelabel>midi_input_list</edgelabel>
+        </childnode>
+        <childnode refid="3248" relation="usage">
+          <edgelabel>ausloeser</edgelabel>
+        </childnode>
+        <childnode refid="3233" relation="usage">
+          <edgelabel>einstimmung</edgelabel>
+        </childnode>
+        <childnode refid="3249" relation="usage">
+          <edgelabel>harmony_list</edgelabel>
+        </childnode>
+        <childnode refid="3251" relation="usage">
+          <edgelabel>keystroke_list</edgelabel>
+        </childnode>
+        <childnode refid="3252" relation="usage">
+          <edgelabel>anweisungsliste</edgelabel>
+        </childnode>
       </node>
-      <node id="3225">
-        <label>interpreter_argument</label>
-        <link refid="dc/d4e/unioninterpreter__argument"/>
-      </node>
-      <node id="3212">
-        <label>midi_ereignis</label>
-        <link refid="d7/d77/structmidi__ereignis"/>
-        <childnode refid="3211" relation="usage">
-          <edgelabel>the_logik_to_expand</edgelabel>
-        </childnode>
-        <childnode refid="3212" relation="usage">
-          <edgelabel>next</edgelabel>
-        </childnode>
-        <childnode refid="3213" relation="usage">
-          <edgelabel>aktion</edgelabel>
+      <node id="3244">
+        <label>interpreter_argument_list</label>
+        <link refid="dc/d87/structinterpreter__argument__list"/>
+        <childnode refid="3245" relation="usage">
+          <edgelabel>data</edgelabel>
         </childnode>
       </node>
-      <node id="3214">
-        <label>umstimmung</label>
-        <link refid="d2/d1c/structumstimmung"/>
-        <childnode refid="3214" relation="usage">
-          <edgelabel>next</edgelabel>
-        </childnode>
-        <childnode refid="3215" relation="usage">
-          <edgelabel>umstimmungs_case_liste</edgelabel>
-        </childnode>
-        <childnode refid="3221" relation="usage">
+      <node id="3242">
+        <label>ton</label>
+        <link refid="dd/da3/structton"/>
+        <childnode refid="3241" relation="usage">
           <edgelabel>komplex_liste</edgelabel>
         </childnode>
-        <childnode refid="3219" relation="usage">
-          <edgelabel>parameter_liste</edgelabel>
+        <childnode refid="3242" relation="usage">
+          <edgelabel>next</edgelabel>
         </childnode>
-        <childnode refid="3216" relation="usage">
-          <edgelabel>aktions_liste</edgelabel>
+      </node>
+      <node id="3235">
+        <label>case_liste</label>
+        <link refid="d0/d45/structcase__liste"/>
+        <childnode refid="3235" relation="usage">
+          <edgelabel>next</edgelabel>
         </childnode>
-        <childnode refid="3217" relation="usage">
-          <edgelabel>argument_liste</edgelabel>
+        <childnode refid="3236" relation="usage">
+          <edgelabel>case_aktion</edgelabel>
         </childnode>
-        <childnode refid="3222" relation="usage">
+      </node>
+      <node id="3247">
+        <label>ton_einstell</label>
+        <link refid="d4/dd8/structton__einstell"/>
+        <childnode refid="3247" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3250">
+        <label>PTRN</label>
+        <link refid="d3/dc4/structPTRN"/>
+      </node>
+      <node id="3233">
+        <label>do_aktion</label>
+        <link refid="d5/d8c/structdo__aktion"/>
+        <childnode refid="3234" relation="usage">
+          <edgelabel>retuning</edgelabel>
+        </childnode>
+        <childnode refid="3231" relation="usage">
+          <edgelabel>logic</edgelabel>
+        </childnode>
+        <childnode refid="3243" relation="usage">
+          <edgelabel>umst_case</edgelabel>
+        </childnode>
+        <childnode refid="3244" relation="usage">
+          <edgelabel>secondary_arguments</edgelabel>
+          <edgelabel>arguments</edgelabel>
+        </childnode>
+        <childnode refid="3233" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3246" relation="usage">
+          <edgelabel>tonsystem</edgelabel>
+        </childnode>
+        <childnode refid="3247" relation="usage">
           <edgelabel>tonliste</edgelabel>
         </childnode>
-        <childnode refid="3220" relation="usage">
+        <childnode refid="3240" relation="usage">
           <edgelabel>out_liste</edgelabel>
         </childnode>
       </node>
-      <node id="3232">
-        <label>anweisung</label>
-        <link refid="d0/dab/structanweisung"/>
-        <childnode refid="3228" relation="usage">
-          <edgelabel>ausloeser</edgelabel>
+      <node id="3246">
+        <label>TSYS</label>
+        <link refid="d4/d2a/structTSYS"/>
+      </node>
+      <node id="3249">
+        <label>harmonie_ereignis</label>
+        <link refid="d9/d5b/structharmonie__ereignis"/>
+        <childnode refid="3231" relation="usage">
+          <edgelabel>the_logik_to_expand</edgelabel>
         </childnode>
-        <childnode refid="3216" relation="usage">
+        <childnode refid="3250" relation="usage">
+          <edgelabel>pattern</edgelabel>
+        </childnode>
+        <childnode refid="3233" relation="usage">
           <edgelabel>aktion</edgelabel>
+        </childnode>
+        <childnode refid="3249" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3251">
+        <label>keyboard_ereignis</label>
+        <link refid="d8/d8e/structkeyboard__ereignis"/>
+        <childnode refid="3231" relation="usage">
+          <edgelabel>the_logik_to_expand</edgelabel>
+        </childnode>
+        <childnode refid="3233" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+        <childnode refid="3251" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3245">
+        <label>interpreter_argument</label>
+        <link refid="dc/d4e/unioninterpreter__argument"/>
+      </node>
+      <node id="3232">
+        <label>midi_ereignis</label>
+        <link refid="d7/d77/structmidi__ereignis"/>
+        <childnode refid="3231" relation="usage">
+          <edgelabel>the_logik_to_expand</edgelabel>
         </childnode>
         <childnode refid="3232" relation="usage">
           <edgelabel>next</edgelabel>
         </childnode>
+        <childnode refid="3233" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
       </node>
-      <node id="3220">
-        <label>midiliste</label>
-        <link refid="df/df2/structmidiliste"/>
-        <childnode refid="3220" relation="usage">
+      <node id="3234">
+        <label>umstimmung</label>
+        <link refid="d2/d1c/structumstimmung"/>
+        <childnode refid="3234" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3235" relation="usage">
+          <edgelabel>umstimmungs_case_liste</edgelabel>
+        </childnode>
+        <childnode refid="3241" relation="usage">
+          <edgelabel>komplex_liste</edgelabel>
+        </childnode>
+        <childnode refid="3239" relation="usage">
+          <edgelabel>parameter_liste</edgelabel>
+        </childnode>
+        <childnode refid="3236" relation="usage">
+          <edgelabel>aktions_liste</edgelabel>
+        </childnode>
+        <childnode refid="3237" relation="usage">
+          <edgelabel>argument_liste</edgelabel>
+        </childnode>
+        <childnode refid="3242" relation="usage">
+          <edgelabel>tonliste</edgelabel>
+        </childnode>
+        <childnode refid="3240" relation="usage">
+          <edgelabel>out_liste</edgelabel>
+        </childnode>
+      </node>
+      <node id="3252">
+        <label>anweisung</label>
+        <link refid="d0/dab/structanweisung"/>
+        <childnode refid="3248" relation="usage">
+          <edgelabel>ausloeser</edgelabel>
+        </childnode>
+        <childnode refid="3236" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+        <childnode refid="3252" relation="usage">
           <edgelabel>next</edgelabel>
         </childnode>
       </node>
-      <node id="3228">
+      <node id="3240">
+        <label>midiliste</label>
+        <link refid="df/df2/structmidiliste"/>
+        <childnode refid="3240" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3248">
         <label>ausloeser</label>
         <link refid="d9/de5/structausloeser"/>
-        <childnode refid="3220" relation="usage">
+        <childnode refid="3240" relation="usage">
           <edgelabel>midi_code</edgelabel>
         </childnode>
       </node>
-      <node id="3217">
+      <node id="3237">
         <label>argument_list</label>
         <link refid="d2/d3f/structargument__list"/>
-        <childnode refid="3218" relation="usage">
+        <childnode refid="3238" relation="usage">
           <edgelabel>argument</edgelabel>
         </childnode>
-        <childnode refid="3217" relation="usage">
+        <childnode refid="3237" relation="usage">
           <edgelabel>next</edgelabel>
         </childnode>
       </node>

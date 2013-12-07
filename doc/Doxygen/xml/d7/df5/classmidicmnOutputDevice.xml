@@ -72,7 +72,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" line="74" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/midicmnTest.h" bodystart="74" bodyend="74"/>
-        <references refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab9e21db48481b66774b6f439d964601d" compoundref="de/d21/midicmn_8h" startline="753">mutabor::CommonMidiOutput&lt; mutabor::DebugMidiOutputProvider, mutabor::OutputDeviceClass &gt;::Out</references>
+        <references refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab9e21db48481b66774b6f439d964601d" compoundref="de/d21/midicmn_8h" startline="754">mutabor::CommonMidiOutput&lt; mutabor::DebugMidiOutputProvider, mutabor::OutputDeviceClass &gt;::Out</references>
         <referencedby refid="d5/dee/group__route_1gacbc442186afd2221606b8c9178bc5094" compoundref="d8/d59/midicmnTest_8cpp" startline="955" endline="1325">CommonMidiInputTest::testGlobalPanic</referencedby>
         <referencedby refid="d5/dee/group__route_1ga1e95b1be14158e0e6848202acec95977" compoundref="d8/d59/midicmnTest_8cpp" startline="83" endline="327">CommonMidiOutputTest::testNoteOnOff</referencedby>
         <referencedby refid="d5/dee/group__route_1ga28763107ca50051640ed4834f627ffdc" compoundref="d8/d59/midicmnTest_8cpp" startline="599" endline="953">CommonMidiInputTest::testPanic</referencedby>
@@ -230,7 +230,7 @@
         <references refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1ab5a9dfd1b091ffe8a1448b6d9ca7d7b0" compoundref="de/d21/midicmn_8h" startline="483" endline="483">mutabor::DebugMidiOutputProvider::ClearData</references>
         <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
         <references refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" compoundref="d1/d73/Defs_8h" startline="169">mutString</references>
-        <references refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab9e21db48481b66774b6f439d964601d" compoundref="de/d21/midicmn_8h" startline="753">mutabor::CommonMidiOutput&lt; mutabor::DebugMidiOutputProvider, mutabor::OutputDeviceClass &gt;::Out</references>
+        <references refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab9e21db48481b66774b6f439d964601d" compoundref="de/d21/midicmn_8h" startline="754">mutabor::CommonMidiOutput&lt; mutabor::DebugMidiOutputProvider, mutabor::OutputDeviceClass &gt;::Out</references>
         <referencedby refid="d5/dee/group__route_1ga2a92d096b48cecf841988b6c1263ca31" compoundref="d9/d99/DevMidFTest_8cpp" startline="43" endline="602">InputMidiFileTest::testBatchPlay1</referencedby>
         <referencedby refid="d5/dee/group__route_1gab68c1c36d9a962246c5f1363d25e3aa7" compoundref="d9/d99/DevMidFTest_8cpp" startline="946" endline="1287">InputMidiFileTest::testBug019010</referencedby>
         <referencedby refid="d5/dee/group__route_1ga4c70a75c2ee66f5074b6db03f318347b" compoundref="d9/d99/DevMidFTest_8cpp" startline="605" endline="943">InputMidiFileTest::testBug019010_2</referencedby>
@@ -245,155 +245,155 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3287">
+      <node id="3308">
         <label>mutabor::CommonTypedDeviceAPI&lt; OutputDeviceClass &gt;</label>
         <link refid="d9/dbf/classmutabor_1_1CommonTypedDeviceAPI"/>
-        <childnode refid="3288" relation="public-inheritance">
+        <childnode refid="3309" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3286">
+      <node id="3307">
         <label>mutabor::OutputDeviceClass</label>
         <link refid="d2/d2f/classmutabor_1_1OutputDeviceClass"/>
-        <childnode refid="3287" relation="public-inheritance">
+        <childnode refid="3308" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3288">
+      <node id="3309">
         <label>mutabor::Device</label>
         <link refid="db/db4/classmutabor_1_1Device"/>
       </node>
-      <node id="3285">
+      <node id="3306">
         <label>mutabor::CommonMidiOutput&lt; mutabor::DebugMidiOutputProvider, mutabor::OutputDeviceClass &gt;</label>
         <link refid="dd/df5/classmutabor_1_1CommonMidiOutput"/>
-        <childnode refid="3286" relation="public-inheritance">
+        <childnode refid="3307" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3284">
+      <node id="3305">
         <label>midicmnOutputDevice</label>
         <link refid="d7/df5/classmidicmnOutputDevice"/>
-        <childnode refid="3285" relation="public-inheritance">
+        <childnode refid="3306" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3292">
+      <node id="3313">
         <label>mutabor::CommonTypedDeviceAPI&lt; OutputDeviceClass &gt;</label>
         <link refid="d9/dbf/classmutabor_1_1CommonTypedDeviceAPI"/>
-        <childnode refid="3293" relation="public-inheritance">
+        <childnode refid="3314" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3303">
+      <node id="3324">
         <label>mutabor::channel_queue_template&lt; unsigned char, 16 &gt;</label>
         <link refid="d3/d85/classmutabor_1_1channel__queue__template"/>
-        <childnode refid="3304" relation="public-inheritance">
+        <childnode refid="3325" relation="public-inheritance">
         </childnode>
-        <childnode refid="3305" relation="usage">
+        <childnode refid="3326" relation="usage">
           <edgelabel>last_sustained</edgelabel>
           <edgelabel>first_free</edgelabel>
         </childnode>
       </node>
-      <node id="3299">
+      <node id="3320">
         <label>mutabor::TAK</label>
         <link refid="d9/d2a/structmutabor_1_1TAK"/>
-        <childnode refid="3300" relation="usage">
+        <childnode refid="3321" relation="usage">
           <edgelabel>outkey</edgelabel>
         </childnode>
       </node>
-      <node id="3296">
+      <node id="3317">
         <label>T</label>
       </node>
-      <node id="3294">
+      <node id="3315">
         <label>mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;</label>
         <link refid="db/d05/classmutabor_1_1TRouteClass"/>
-        <childnode refid="3295" relation="usage">
+        <childnode refid="3316" relation="usage">
           <edgelabel>routeList</edgelabel>
         </childnode>
-        <childnode refid="3297" relation="usage">
+        <childnode refid="3318" relation="usage">
           <edgelabel>session_id</edgelabel>
         </childnode>
       </node>
-      <node id="3297">
+      <node id="3318">
         <label>mutabor::idtype&lt; mutabor::TRouteClass&lt; InputDevice, OutputDevice &gt; &gt;</label>
         <link refid="d7/dce/classmutabor_1_1idtype"/>
       </node>
-      <node id="3291">
+      <node id="3312">
         <label>mutabor::OutputDeviceClass</label>
         <link refid="d2/d2f/classmutabor_1_1OutputDeviceClass"/>
-        <childnode refid="3292" relation="public-inheritance">
+        <childnode refid="3313" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3298">
+      <node id="3319">
         <label>mutabor::idtype&lt; mutabor::Device &gt;</label>
         <link refid="d7/dce/classmutabor_1_1idtype"/>
       </node>
-      <node id="3293">
+      <node id="3314">
         <label>mutabor::Device</label>
         <link refid="db/db4/classmutabor_1_1Device"/>
-        <childnode refid="3294" relation="usage">
+        <childnode refid="3315" relation="usage">
           <edgelabel>routes</edgelabel>
         </childnode>
-        <childnode refid="3298" relation="usage">
+        <childnode refid="3319" relation="usage">
           <edgelabel>session_id</edgelabel>
         </childnode>
       </node>
-      <node id="3295">
+      <node id="3316">
         <label>std::list&lt; T &gt;</label>
-        <childnode refid="3296" relation="usage">
+        <childnode refid="3317" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
-      <node id="3290">
+      <node id="3311">
         <label>mutabor::CommonMidiOutput&lt; mutabor::DebugMidiOutputProvider, mutabor::OutputDeviceClass &gt;</label>
         <link refid="dd/df5/classmutabor_1_1CommonMidiOutput"/>
-        <childnode refid="3291" relation="public-inheritance">
+        <childnode refid="3312" relation="public-inheritance">
         </childnode>
-        <childnode refid="3299" relation="usage">
+        <childnode refid="3320" relation="usage">
           <edgelabel>ton_auf_kanal</edgelabel>
         </childnode>
-        <childnode refid="3301" relation="usage">
+        <childnode refid="3322" relation="usage">
           <edgelabel>Cd</edgelabel>
         </childnode>
-        <childnode refid="3303" relation="usage">
+        <childnode refid="3324" relation="usage">
           <edgelabel>channel_queue</edgelabel>
         </childnode>
-        <childnode refid="3306" relation="usage">
+        <childnode refid="3327" relation="usage">
           <edgelabel>Out</edgelabel>
         </childnode>
       </node>
-      <node id="3300">
+      <node id="3321">
         <label>mutabor::pitch_bend_type</label>
         <link refid="dd/d7d/classmutabor_1_1pitch__bend__type"/>
       </node>
-      <node id="3301">
+      <node id="3322">
         <label>mutabor::ChannelData</label>
         <link refid="d4/d4a/classmutabor_1_1ChannelData"/>
-        <childnode refid="3302" relation="usage">
+        <childnode refid="3323" relation="usage">
           <edgelabel>controller_changed</edgelabel>
           <edgelabel>controller</edgelabel>
         </childnode>
       </node>
-      <node id="3305">
+      <node id="3326">
         <label>std::vector&lt; T &gt;::iterator</label>
       </node>
-      <node id="3304">
+      <node id="3325">
         <label>std::vector&lt; unsigned char &gt;</label>
-        <childnode refid="3296" relation="usage">
+        <childnode refid="3317" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
-      <node id="3306">
+      <node id="3327">
         <label>mutabor::DebugMidiOutputProvider</label>
         <link refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider"/>
-        <childnode refid="3293" relation="usage">
+        <childnode refid="3314" relation="usage">
           <edgelabel>device</edgelabel>
         </childnode>
       </node>
-      <node id="3289">
+      <node id="3310">
         <label>midicmnOutputDevice</label>
         <link refid="d7/df5/classmidicmnOutputDevice"/>
-        <childnode refid="3290" relation="public-inheritance">
+        <childnode refid="3311" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3302">
+      <node id="3323">
         <label>std::vector&lt; int &gt;</label>
       </node>
     </collaborationgraph>
@@ -436,8 +436,9 @@
       <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ac4ebdd04cc1b0b2ca5bddd9283d77464" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_NoteOff</name></member>
       <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a23dfccd2e97e799cd8b32dea22306e5c" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_NoteOn</name></member>
       <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a70648241a951d4f79aa3eb3aa9f83122" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_Open</name></member>
-      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1af8efd78cfb3c9f9f744f49d899a77bc4" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_Panic</name></member>
-      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a3e9beb053705ae8a01aee1866f7d1304" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_Quiet</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a8c0c5de82c08d6c6eb58674c44a456cb" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_Panic</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a1664accfd269911e4875d852f7fb1d44" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_Quiet</name></member>
+      <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1aac88cc5a15eceee7a4bd955a922695ce" prot="protected" virt="virtual"><scope>midicmnOutputDevice</scope><name>do_Quiet</name></member>
       <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a8295cae4cc60dc36db5fb23c69218b94" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>do_SendBendingRange</name></member>
       <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a3317040cafaa0eaf568c263dd19ad7d9" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>do_SplitOut</name></member>
       <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a219c31648d7a9a7e425ee57bb7873e59" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>do_UpdateControllers</name></member>
@@ -498,22 +499,23 @@
       <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab9e21db48481b66774b6f439d964601d" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>Out</name></member>
       <member refid="d5/dee/group__route_1ga8b24cbec4d6ce0820a121362a716aaf1" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>OutputDeviceClass</name></member>
       <member refid="d5/dee/group__route_1ga16b47649cb0a3e37ff8d60e439a1e941" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>OutputDeviceClass</name></member>
-      <member refid="d5/dee/group__route_1gac77e443b48248e49dc70250edef9cd4e" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Panic</name></member>
+      <member refid="d5/dee/group__route_1ga1e4a0003df8dd4f587ec74a30d78022d" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Panic</name></member>
       <member refid="d5/dee/group__route_1ga877980d75727478edae304ea0b513324" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Pause</name></member>
       <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a61000ffa761d3b1ca8a1bb3156c83db1" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>pitch_and_bend</name></member>
       <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a2cfe10d2dd44591bbcf715873fe9ce45" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>pitch_and_bend</name></member>
       <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a34906a20e5c41af5979db58656b6a181" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>pitch_bend</name></member>
       <member refid="d5/dee/group__route_1ga8d7e66cd428ad6bc8d82bfd5fde5ab4b" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Play</name></member>
       <member refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a2476082a0c5bdc67c3d0abf8b7d99a66" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>program_change</name></member>
-      <member refid="d5/dee/group__route_1ga294ad7f8b724e44e7fde7f87157046ee" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>Quiet</name></member>
+      <member refid="d5/dee/group__route_1ga4ab0a6b5f1805a707ad15fc968a22d4e" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>Quiet</name></member>
+      <member refid="d5/dee/group__route_1gaf3492ab37c2e7716c105e375f47efac1" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>Quiet</name></member>
       <member refid="d5/dee/group__route_1ga005dc1a3518ecb0bfb408cf058319d7a" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>ReadData</name></member>
       <member refid="d5/dee/group__route_1ga75c2c1c9312c7fd3b0ac67482bc3f3b7" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Remove</name></member>
       <member refid="d5/dee/group__route_1gaea9507768e02eb39aa56acde9fbb0d75" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>RemoveFromDeviceList</name></member>
       <member refid="d5/dee/group__route_1ga2875373929d294d6c51991238407f542" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Replace</name></member>
       <member refid="d5/dee/group__route_1gaa9515535e69b65e614b048f0c417024e" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>routefile_id</name></member>
       <member refid="d5/dee/group__route_1ga0050f060be5dcbdaa7473c97e675140c" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>routes</name></member>
-      <member refid="d5/dee/group__route_1ga01c3f19123c1f42d8f1a2d405c3d21e2" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>runtime_error</name></member>
-      <member refid="d5/dee/group__route_1gac5f5412fc2ea0b0b5edbd199353309c9" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>runtime_error</name></member>
+      <member refid="d5/dee/group__route_1ga8ee3b1752e55aea0e7230d4268a8c305" prot="public" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>runtime_error</name></member>
+      <member refid="d5/dee/group__route_1ga20cd513c13ed9623fbf23321c4db988f" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>runtime_error</name></member>
       <member refid="d7/df5/classmidicmnOutputDevice_1a74ddae86c4d87adb7aa78156923c4fb4" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Save</name></member>
       <member refid="d7/df5/classmidicmnOutputDevice_1a3730c855ba15c074d8f23a963bc2ce45" prot="public" virt="virtual"><scope>midicmnOutputDevice</scope><name>Save</name></member>
       <member refid="d5/dee/group__route_1ga25dab27656e5e9960b90178f5365c890" prot="protected" virt="non-virtual"><scope>midicmnOutputDevice</scope><name>session_id</name></member>

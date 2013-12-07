@@ -95,7 +95,7 @@
         <references refid="d9/d7c/group__kernel_1ggafeebd36c5713e8438dcf17e926f8ad96ad606e435413ea0944dd00d49e901e4ed" compoundref="de/d11/Execute_8h" startline="79">error</references>
         <references refid="d9/d7c/group__kernel_1ga13c03a937e32254ea17154104db5208a" compoundref="d1/d73/Defs_8h" startline="168">mutChar</references>
         <references refid="d2/db3/classmutabor_1_1MidiPortOutputProvider_1a634b95300906fdfe9fb9876ec4d63ace" compoundref="d4/da2/DevMidi_8h" startline="265">port</references>
-        <references refid="d5/dee/group__route_1ga01c3f19123c1f42d8f1a2d405c3d21e2" compoundref="de/d05/Device_8h" startline="432" endline="436">mutabor::Device::runtime_error</references>
+        <references refid="d5/dee/group__route_1ga8ee3b1752e55aea0e7230d4268a8c305" compoundref="de/d05/Device_8h" startline="432" endline="436">mutabor::Device::runtime_error</references>
         <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1a7f77f5b9b90ee57c7a7082fa85be2d84" compoundref="d4/da2/DevMidi_8h" startline="369" endline="373">mutabor::OutputMidiPort::do_Open</referencedby>
       </memberdef>
       <memberdef kind="function" id="d2/db3/classmutabor_1_1MidiPortOutputProvider_1a6cdcaf7e2d99a85b6a772988dd2072c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -437,47 +437,47 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3381">
+      <node id="3402">
         <label>T</label>
       </node>
-      <node id="3379">
+      <node id="3400">
         <label>mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;</label>
         <link refid="db/d05/classmutabor_1_1TRouteClass"/>
-        <childnode refid="3380" relation="usage">
+        <childnode refid="3401" relation="usage">
           <edgelabel>routeList</edgelabel>
         </childnode>
-        <childnode refid="3382" relation="usage">
+        <childnode refid="3403" relation="usage">
           <edgelabel>session_id</edgelabel>
         </childnode>
       </node>
-      <node id="3382">
+      <node id="3403">
         <label>mutabor::idtype&lt; mutabor::TRouteClass&lt; InputDevice, OutputDevice &gt; &gt;</label>
         <link refid="d7/dce/classmutabor_1_1idtype"/>
       </node>
-      <node id="3383">
+      <node id="3404">
         <label>mutabor::idtype&lt; mutabor::Device &gt;</label>
         <link refid="d7/dce/classmutabor_1_1idtype"/>
       </node>
-      <node id="3378">
+      <node id="3399">
         <label>mutabor::Device</label>
         <link refid="db/db4/classmutabor_1_1Device"/>
-        <childnode refid="3379" relation="usage">
+        <childnode refid="3400" relation="usage">
           <edgelabel>routes</edgelabel>
         </childnode>
-        <childnode refid="3383" relation="usage">
+        <childnode refid="3404" relation="usage">
           <edgelabel>session_id</edgelabel>
         </childnode>
       </node>
-      <node id="3380">
+      <node id="3401">
         <label>std::list&lt; T &gt;</label>
-        <childnode refid="3381" relation="usage">
+        <childnode refid="3402" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
-      <node id="3377">
+      <node id="3398">
         <label>mutabor::MidiPortOutputProvider</label>
         <link refid="d2/db3/classmutabor_1_1MidiPortOutputProvider"/>
-        <childnode refid="3378" relation="usage">
+        <childnode refid="3399" relation="usage">
           <edgelabel>device</edgelabel>
         </childnode>
       </node>

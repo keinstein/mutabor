@@ -358,7 +358,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="262" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" bodystart="262" bodyend="264"/>
-        <referencedby refid="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1a3dc58a640f4137a88a3a085b10a81362" compoundref="d4/dee/GUIRoute_8cpp" startline="537" endline="544">mutaborGUI::GUIRouteFactory::DoCreate</referencedby>
+        <referencedby refid="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1a3dc58a640f4137a88a3a085b10a81362" compoundref="d4/dee/GUIRoute_8cpp" startline="553" endline="560">mutaborGUI::GUIRouteFactory::DoCreate</referencedby>
       </memberdef>
       <memberdef kind="function" id="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1a2d218f3e79bcd368dc9fd2e3fddc970c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -372,20 +372,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="266" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.cpp" bodystart="512" bodyend="535"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="266" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.cpp" bodystart="528" bodyend="551"/>
         <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
         <references refid="d9/d7c/group__kernel_1ga929b9e3b3d2ed10ebd92110d49320603" compoundref="d1/da4/boost-interface_8h" startline="107" endline="111">intrusive_ptr_get_refcount</references>
         <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
       </memberdef>
-      <memberdef kind="function" id="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1a264c99a77613e7f7d4f0542a68979379" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1a58ce7457ae433feaf9d89d069c46300c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>virtual void mutaborGUI::GUIfiedRoute&lt; T &gt;::runtime_error</definition>
-        <argsstring>(bool iswarning, const mutString &amp;message, va_list &amp;args)</argsstring>
+        <argsstring>(int type, const mutString &amp;message, va_list &amp;args)</argsstring>
         <name>runtime_error</name>
-        <reimplements refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a872aae10a842e9e99cdac6bfd687a51b">runtime_error</reimplements>
+        <reimplements refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a554ceb028d46e0997e05d6df8a430854">runtime_error</reimplements>
         <param>
-          <type>bool</type>
-          <declname>iswarning</declname>
+          <type>int</type>
+          <declname>type</declname>
         </param>
         <param>
           <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref> &amp;</type>
@@ -402,7 +402,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" line="268" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/GUIRoute.h" bodystart="268" bodyend="274"/>
-        <references refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a872aae10a842e9e99cdac6bfd687a51b" compoundref="d4/dee/GUIRoute_8cpp" startline="504" endline="508">mutaborGUI::GUIRouteBase::runtime_error</references>
+        <references refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a554ceb028d46e0997e05d6df8a430854" compoundref="d4/dee/GUIRoute_8cpp" startline="504" endline="524">mutaborGUI::GUIRouteBase::runtime_error</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -410,98 +410,98 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2888">
+      <node id="2906">
         <label>T</label>
       </node>
-      <node id="2889">
+      <node id="2907">
         <label>mutaborGUI::GUIRouteBase</label>
         <link refid="d8/db4/classmutaborGUI_1_1GUIRouteBase"/>
       </node>
-      <node id="2887">
+      <node id="2905">
         <label>mutaborGUI::GUIfiedRoute&lt; T &gt;</label>
         <link refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute"/>
-        <childnode refid="2888" relation="public-inheritance">
+        <childnode refid="2906" relation="public-inheritance">
         </childnode>
-        <childnode refid="2889" relation="public-inheritance">
+        <childnode refid="2907" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2891">
+      <node id="2909">
         <label>T</label>
       </node>
-      <node id="2892">
+      <node id="2910">
         <label>mutaborGUI::GUIRouteBase</label>
         <link refid="d8/db4/classmutaborGUI_1_1GUIRouteBase"/>
-        <childnode refid="2893" relation="usage">
+        <childnode refid="2911" relation="usage">
           <edgelabel>shapes</edgelabel>
         </childnode>
       </node>
-      <node id="2896">
+      <node id="2914">
         <label>std::list&lt; wxPoint &gt;</label>
       </node>
-      <node id="2897">
+      <node id="2915">
         <label>mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;</label>
         <link refid="db/d05/classmutabor_1_1TRouteClass"/>
-        <childnode refid="2898" relation="usage">
+        <childnode refid="2916" relation="usage">
           <edgelabel>routeList</edgelabel>
         </childnode>
-        <childnode refid="2899" relation="usage">
+        <childnode refid="2917" relation="usage">
           <edgelabel>session_id</edgelabel>
         </childnode>
       </node>
-      <node id="2899">
+      <node id="2917">
         <label>mutabor::idtype&lt; mutabor::TRouteClass&lt; InputDevice, OutputDevice &gt; &gt;</label>
         <link refid="d7/dce/classmutabor_1_1idtype"/>
       </node>
-      <node id="2895">
+      <node id="2913">
         <label>MutIconShape</label>
         <link refid="d5/d12/classMutIconShapeClass"/>
-        <childnode refid="2891" relation="public-inheritance">
+        <childnode refid="2909" relation="public-inheritance">
         </childnode>
-        <childnode refid="2896" relation="usage">
+        <childnode refid="2914" relation="usage">
           <edgelabel>usedperimeterpoints</edgelabel>
         </childnode>
       </node>
-      <node id="2898">
+      <node id="2916">
         <label>std::list&lt; T &gt;</label>
-        <childnode refid="2891" relation="usage">
+        <childnode refid="2909" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
-      <node id="2890">
+      <node id="2908">
         <label>mutaborGUI::GUIfiedRoute&lt; T &gt;</label>
         <link refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute"/>
-        <childnode refid="2891" relation="public-inheritance">
+        <childnode refid="2909" relation="public-inheritance">
         </childnode>
-        <childnode refid="2892" relation="public-inheritance">
+        <childnode refid="2910" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2894">
+      <node id="2912">
         <label>mutaborGUI::MutBoxChannelShape</label>
         <link refid="d8/d8e/classmutaborGUI_1_1MutBoxChannelShape"/>
-        <childnode refid="2895" relation="public-inheritance">
+        <childnode refid="2913" relation="public-inheritance">
         </childnode>
-        <childnode refid="2897" relation="usage">
+        <childnode refid="2915" relation="usage">
           <edgelabel>route</edgelabel>
         </childnode>
-        <childnode refid="2900" relation="usage">
+        <childnode refid="2918" relation="usage">
           <edgelabel>output</edgelabel>
           <edgelabel>input</edgelabel>
         </childnode>
       </node>
-      <node id="2893">
+      <node id="2911">
         <label>std::list&lt; MutBoxChannelShape * &gt;</label>
-        <childnode refid="2894" relation="usage">
+        <childnode refid="2912" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
-      <node id="2900">
+      <node id="2918">
         <label>mutaborGUI::MutDeviceShape&lt; T &gt;</label>
         <link refid="d3/d4c/classmutaborGUI_1_1MutDeviceShape"/>
-        <childnode refid="2895" relation="public-inheritance">
+        <childnode refid="2913" relation="public-inheritance">
         </childnode>
-        <childnode refid="2893" relation="usage">
+        <childnode refid="2911" relation="usage">
           <edgelabel>routes</edgelabel>
         </childnode>
       </node>
@@ -530,7 +530,7 @@
       <member refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1a32f3155d27f0a80a03db5364dd0bc497" prot="public" virt="virtual"><scope>mutaborGUI::GUIfiedRoute</scope><name>Replace</name></member>
       <member refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1a5e560a0a6467086d2880c1a364a8b09d" prot="public" virt="virtual"><scope>mutaborGUI::GUIfiedRoute</scope><name>Replace</name></member>
       <member refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1a96b536706f437332db4238e321db694b" prot="public" virt="virtual"><scope>mutaborGUI::GUIfiedRoute</scope><name>Replace</name></member>
-      <member refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1a264c99a77613e7f7d4f0542a68979379" prot="public" virt="virtual"><scope>mutaborGUI::GUIfiedRoute</scope><name>runtime_error</name></member>
+      <member refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1a58ce7457ae433feaf9d89d069c46300c" prot="public" virt="virtual"><scope>mutaborGUI::GUIfiedRoute</scope><name>runtime_error</name></member>
       <member refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a24178ea2f5b07715719cdb72c83083b6" prot="protected" virt="non-virtual"><scope>mutaborGUI::GUIfiedRoute</scope><name>shapes</name></member>
       <member refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1a676b2e9d1197055e152e5144868003ef" prot="public" virt="non-virtual"><scope>mutaborGUI::GUIfiedRoute</scope><name>thistype</name></member>
       <member refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1a0ffa966a816aed02dff2ce319687ebaa" prot="public" virt="virtual"><scope>mutaborGUI::GUIfiedRoute</scope><name>~GUIfiedRoute</name></member>

@@ -1355,7 +1355,7 @@
         <references refid="df/dd1/group__GUI_1gad9a57faab7467bf135565362072f911d" compoundref="d1/da4/MutEditFile_8cpp" startline="1202" endline="1221">SaveFile</references>
         <references refid="df/d08/classmutaborGUI_1_1BoxData_1aed0395ecde2fa39761c8f7e89cf7a968" compoundref="d5/df7/GUIBoxData_8h" startline="102" endline="102">mutaborGUI::BoxData::SetEditor</references>
         <references refid="de/dbd/classmutaborGUI_1_1CompDlg_1a1d1f1ce7e0be3dad3172ee3aed28014d" compoundref="d4/d7c/CompDlg_8h" startline="110" endline="121">mutaborGUI::CompDlg::SetFileName</references>
-        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="309" endline="312">mutaborGUI::ToGUIBase</references>
+        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="307" endline="310">mutaborGUI::ToGUIBase</references>
         <referencedby refid="df/dd1/group__GUI_1gaeab4883a0ccfd8f9fcdbed7a534a6c94" compoundref="d1/da4/MutEditFile_8cpp" startline="417" endline="421">CmCompAct</referencedby>
         <referencedby refid="df/dd1/group__GUI_1ga310ed105c078ad274d850e51cb1081be" compoundref="d1/da4/MutEditFile_8cpp" startline="407" endline="415">CmCompile</referencedby>
       </memberdef>
@@ -1561,52 +1561,52 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3612">
+      <node id="3633">
         <label>wxStyledTextCtrl</label>
       </node>
-      <node id="3611">
+      <node id="3632">
         <label>mutaborGUI::MutEditFile</label>
         <link refid="de/dfe/classmutaborGUI_1_1MutEditFile"/>
-        <childnode refid="3612" relation="public-inheritance">
+        <childnode refid="3633" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3618">
+      <node id="3639">
         <label>wxView</label>
       </node>
-      <node id="3615">
+      <node id="3636">
         <label>mutaborGUI::MutSTCLexer</label>
         <link refid="d1/dea/classmutaborGUI_1_1MutSTCLexer"/>
       </node>
-      <node id="3614">
+      <node id="3635">
         <label>wxStyledTextCtrl</label>
       </node>
-      <node id="3613">
+      <node id="3634">
         <label>mutaborGUI::MutEditFile</label>
         <link refid="de/dfe/classmutaborGUI_1_1MutEditFile"/>
-        <childnode refid="3614" relation="public-inheritance">
+        <childnode refid="3635" relation="public-inheritance">
         </childnode>
-        <childnode refid="3615" relation="usage">
+        <childnode refid="3636" relation="usage">
           <edgelabel>lexer</edgelabel>
         </childnode>
-        <childnode refid="3616" relation="usage">
+        <childnode refid="3637" relation="usage">
           <edgelabel>m_language</edgelabel>
         </childnode>
-        <childnode refid="3617" relation="usage">
+        <childnode refid="3638" relation="usage">
           <edgelabel>view</edgelabel>
         </childnode>
       </node>
-      <node id="3616">
+      <node id="3637">
         <label>mutaborGUI::LanguageInfo</label>
         <link refid="d4/d4a/structmutaborGUI_1_1LanguageInfo"/>
       </node>
-      <node id="3617">
+      <node id="3638">
         <label>mutaborGUI::MutView</label>
         <link refid="d8/dd6/classmutaborGUI_1_1MutView"/>
-        <childnode refid="3618" relation="public-inheritance">
+        <childnode refid="3639" relation="public-inheritance">
         </childnode>
-        <childnode refid="3613" relation="usage">
+        <childnode refid="3634" relation="usage">
           <edgelabel>textsw</edgelabel>
         </childnode>
       </node>

@@ -97,8 +97,8 @@ Zusammengehörigkeiten von mutaborGUI::GUIInputDeviceBase:</div>
 <tr class="separator:afbfbc03c6e6049e8fd491019051a55b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a510160d5c322139010df2e3b946c8da9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a510160d5c322139010df2e3b946c8da9">Destroy</a> ()</td></tr>
 <tr class="separator:a510160d5c322139010df2e3b946c8da9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7151676f52c9f56b33accf153e39f51"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#aa7151676f52c9f56b33accf153e39f51">runtime_error</a> (bool iswarning, <a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> <a class="el" href="../../d9/d7c/group__kernel.html#ga7e6a85a8235f7b6e5f1ab363345262a8">mutString</a> &amp;message, va_list &amp;args)</td></tr>
-<tr class="separator:aa7151676f52c9f56b33accf153e39f51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a356eff405627ebcfeff1727c6cebac98"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a356eff405627ebcfeff1727c6cebac98">runtime_error</a> (int type, <a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> <a class="el" href="../../d9/d7c/group__kernel.html#ga0357d6ebe41b7958687f47fd0d2d288e">mutStringRef</a> message, va_list &amp;args)</td></tr>
+<tr class="separator:a356eff405627ebcfeff1727c6cebac98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Öffentliche, statische Methoden</h2></td></tr>
@@ -150,7 +150,7 @@ Geschützte Attribute</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l01040">1040</a> der Datei <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html">GUIRoute-inlines.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00161">mutaborGUI::MutBoxChannelShape::Add()</a>, <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00141">DEBUGLOG</a>, <a class="el" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#ace569bf29f85dc90adbb9cf060ca5c76">GetDevice()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00758">mutaborGUI::GUIRouteBase::GetShape()</a>, <a class="el" href="../../d1/da4/boost-interface_8h_source.html#l00107">intrusive_ptr_get_refcount()</a>, <a class="el" href="../../d1/d73/Defs_8h_source.html#l00223">mutASSERT</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00490">shapes</a> und <a class="el" href="../../d5/df7/GUIBoxData_8h_source.html#l00309">mutaborGUI::ToGUIBase()</a>.</p>
+<p>Benutzt <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00161">mutaborGUI::MutBoxChannelShape::Add()</a>, <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00141">DEBUGLOG</a>, <a class="el" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#ace569bf29f85dc90adbb9cf060ca5c76">GetDevice()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00758">mutaborGUI::GUIRouteBase::GetShape()</a>, <a class="el" href="../../d1/da4/boost-interface_8h_source.html#l00107">intrusive_ptr_get_refcount()</a>, <a class="el" href="../../d1/d73/Defs_8h_source.html#l00223">mutASSERT</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00490">shapes</a> und <a class="el" href="../../d5/df7/GUIBoxData_8h_source.html#l00307">mutaborGUI::ToGUIBase()</a>.</p>
 
 <p>Wird benutzt von <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l01145">mutaborGUI::GUIfiedInputDevice&lt; T &gt;::Add()</a>.</p>
 <div class="fragment"><div class="line"><a name="l01040"></a><span class="lineno"> 1040</span>&#160;                                                                {</div>
@@ -187,7 +187,7 @@ Geschützte Attribute</h2></td></tr>
 <div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00141">mutDebug.h:141</a></div></div>
 <div class="ttc" id="group__kernel_html_ga77bd8e5b959213dd8bcd48dc513f6013"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a></div><div class="ttdeci">#define mutASSERT(cond)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00223">Defs.h:223</a></div></div>
 <div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a9f9c91ffe38217f6b1b505c04dc397f5"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a9f9c91ffe38217f6b1b505c04dc397f5">mutaborGUI::GUIInputDeviceBase::shapes</a></div><div class="ttdeci">MutInputDeviceShapeList shapes</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dfa/GUIRoute_8h_source.html#l00490">GUIRoute.h:490</a></div></div>
-<div class="ttc" id="namespacemutaborGUI_html_a523a519a578cfbb4735203dee5fd2fd4"><div class="ttname"><a href="../../db/d94/namespacemutaborGUI.html#a523a519a578cfbb4735203dee5fd2fd4">mutaborGUI::ToGUIBase</a></div><div class="ttdeci">BoxData * ToGUIBase(mutabor::BoxClass *b)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/df7/GUIBoxData_8h_source.html#l00309">GUIBoxData.h:309</a></div></div>
+<div class="ttc" id="namespacemutaborGUI_html_a523a519a578cfbb4735203dee5fd2fd4"><div class="ttname"><a href="../../db/d94/namespacemutaborGUI.html#a523a519a578cfbb4735203dee5fd2fd4">mutaborGUI::ToGUIBase</a></div><div class="ttdeci">BoxData * ToGUIBase(mutabor::BoxClass *b)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/df7/GUIBoxData_8h_source.html#l00307">GUIBoxData.h:307</a></div></div>
 <div class="ttc" id="group__kernel_html_ga929b9e3b3d2ed10ebd92110d49320603"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga929b9e3b3d2ed10ebd92110d49320603">intrusive_ptr_get_refcount</a></div><div class="ttdeci">size_t intrusive_ptr_get_refcount(intrusive_ptr_T *obj)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da4/boost-interface_8h_source.html#l00107">boost-interface.h:107</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -254,13 +254,13 @@ Geschützte Attribute</h2></td></tr>
 
 <p>Erneute Implementation in <a class="el" href="../../d6/d8f/classmutaborGUI_1_1GUIfiedInputDevice.html#a7d87b732fb7b7e9b5131a78e617d9c23">mutaborGUI::GUIfiedInputDevice&lt; T &gt;</a>.</p>
 
-<p>Definiert in Zeile <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00689">689</a> der Datei <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html">GUIRoute.cpp</a>.</p>
+<p>Definiert in Zeile <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00721">721</a> der Datei <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html">GUIRoute.cpp</a>.</p>
 
 <p>Wird benutzt von <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00613">mutaborGUI::GUIfiedInputDevice&lt; T &gt;::Close()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;                                       {</div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;                <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">NotifyShapes</a>();</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;        }</div>
-<div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a248283ae35fdc99fc6005151d8542654"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">mutaborGUI::GUIInputDeviceBase::NotifyShapes</a></div><div class="ttdeci">void NotifyShapes()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dee/GUIRoute_8cpp_source.html#l00716">GUIRoute.cpp:716</a></div></div>
+<div class="fragment"><div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;                                       {</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;                <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">NotifyShapes</a>();</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;        }</div>
+<div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a248283ae35fdc99fc6005151d8542654"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">mutaborGUI::GUIInputDeviceBase::NotifyShapes</a></div><div class="ttdeci">void NotifyShapes()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dee/GUIRoute_8cpp_source.html#l00764">GUIRoute.cpp:764</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -277,29 +277,29 @@ Geschützte Attribute</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definiert in Zeile <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00694">694</a> der Datei <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html">GUIRoute.cpp</a>.</p>
+<p>Definiert in Zeile <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00726">726</a> der Datei <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html">GUIRoute.cpp</a>.</p>
 
 <p>Benutzt <a class="el" href="../../d2/d2c/Route-inlines_8h_source.html#l00077">mutabor::disconnect()</a> und <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00146">TRACEC</a>.</p>
-<div class="fragment"><div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;                                         {</div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;                <a class="code" href="../../d5/dee/group__route.html#gaa07c845228719e7505615a18d241734d">InputDevice</a> In(<a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#ace569bf29f85dc90adbb9cf060ca5c76">GetDevice</a>());</div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;                MutInputDeviceShapeList::iterator i;</div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;                <span class="keywordflow">while</span> ((i = <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a9f9c91ffe38217f6b1b505c04dc397f5">shapes</a>.begin()) != <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a9f9c91ffe38217f6b1b505c04dc397f5">shapes</a>.end()) {</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;                        <a class="code" href="../../dc/df2/group__GUIroute.html#ga833524416458587c2a99531f9d9ea6ae">MutInputDeviceShape</a> * shape = *i;</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;                        <a class="code" href="../../db/d94/namespacemutaborGUI.html#af9c3a082da5f2b4a0fb0770aad541af3">disconnect</a>(<span class="keyword">this</span>,shape);</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;                        shape -&gt; <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a510160d5c322139010df2e3b946c8da9">Destroy</a>();</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;                }</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;                In = NULL;</div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;                                         {</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;                <a class="code" href="../../d5/dee/group__route.html#gaa07c845228719e7505615a18d241734d">InputDevice</a> In(<a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#ace569bf29f85dc90adbb9cf060ca5c76">GetDevice</a>());</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;                MutInputDeviceShapeList::iterator i;</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;                <span class="keywordflow">while</span> ((i = <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a9f9c91ffe38217f6b1b505c04dc397f5">shapes</a>.begin()) != <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a9f9c91ffe38217f6b1b505c04dc397f5">shapes</a>.end()) {</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;                        <a class="code" href="../../dc/df2/group__GUIroute.html#ga833524416458587c2a99531f9d9ea6ae">MutInputDeviceShape</a> * shape = *i;</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;                        <a class="code" href="../../db/d94/namespacemutaborGUI.html#af9c3a082da5f2b4a0fb0770aad541af3">disconnect</a>(<span class="keyword">this</span>,shape);</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;                        shape -&gt; <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a510160d5c322139010df2e3b946c8da9">Destroy</a>();</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;                }</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;                In = NULL;</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;        }</div>
 <div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_ace569bf29f85dc90adbb9cf060ca5c76"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#ace569bf29f85dc90adbb9cf060ca5c76">mutaborGUI::GUIInputDeviceBase::GetDevice</a></div><div class="ttdeci">virtual mutabor::InputDeviceClass * GetDevice()=0</div></div>
 <div class="ttc" id="group__debug_html_ga86acd9c1c30c8cb1831b46da11b1ec62"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a></div><div class="ttdeci">#define TRACEC</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00146">mutDebug.h:146</a></div></div>
 <div class="ttc" id="namespacemutaborGUI_html_af9c3a082da5f2b4a0fb0770aad541af3"><div class="ttname"><a href="../../db/d94/namespacemutaborGUI.html#af9c3a082da5f2b4a0fb0770aad541af3">mutaborGUI::disconnect</a></div><div class="ttdeci">bool disconnect(mutabor::Box &amp;box, MutBoxShape *shape)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d12/GUIBoxData-inlines_8h_source.html#l00094">GUIBoxData-inlines.h:94</a></div></div>
-<div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a510160d5c322139010df2e3b946c8da9"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a510160d5c322139010df2e3b946c8da9">mutaborGUI::GUIInputDeviceBase::Destroy</a></div><div class="ttdeci">void Destroy()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dee/GUIRoute_8cpp_source.html#l00694">GUIRoute.cpp:694</a></div></div>
-<div class="ttc" id="group__route_html_gaa07c845228719e7505615a18d241734d"><div class="ttname"><a href="../../d5/dee/group__route.html#gaa07c845228719e7505615a18d241734d">mutabor::InputDevice</a></div><div class="ttdeci">CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::DevicePtr InputDevice</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00819">Device.h:819</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a510160d5c322139010df2e3b946c8da9"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a510160d5c322139010df2e3b946c8da9">mutaborGUI::GUIInputDeviceBase::Destroy</a></div><div class="ttdeci">void Destroy()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dee/GUIRoute_8cpp_source.html#l00726">GUIRoute.cpp:726</a></div></div>
+<div class="ttc" id="group__route_html_gaa07c845228719e7505615a18d241734d"><div class="ttname"><a href="../../d5/dee/group__route.html#gaa07c845228719e7505615a18d241734d">mutabor::InputDevice</a></div><div class="ttdeci">CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::DevicePtr InputDevice</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00827">Device.h:827</a></div></div>
 <div class="ttc" id="group__GUIroute_html_ga833524416458587c2a99531f9d9ea6ae"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#ga833524416458587c2a99531f9d9ea6ae">mutaborGUI::MutInputDeviceShape</a></div><div class="ttdeci">MutDeviceShape&lt; inputdevicetypes &gt; MutInputDeviceShape</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d4d/DeviceShape_8h_source.html#l00413">DeviceShape.h:413</a></div></div>
 <div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a9f9c91ffe38217f6b1b505c04dc397f5"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a9f9c91ffe38217f6b1b505c04dc397f5">mutaborGUI::GUIInputDeviceBase::shapes</a></div><div class="ttdeci">MutInputDeviceShapeList shapes</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dfa/GUIRoute_8h_source.html#l00490">GUIRoute.h:490</a></div></div>
 </div><!-- fragment -->
@@ -356,13 +356,13 @@ Geschützte Attribute</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00539">539</a> der Datei <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html">GUIRoute.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../de/d05/Device_8h_source.html#l00521">mutabor::Device::getUserData()</a>.</p>
+<p>Benutzt <a class="el" href="../../de/d05/Device_8h_source.html#l00523">mutabor::Device::getUserData()</a>.</p>
 
 <p>Wird benutzt von <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00640">mutaborGUI::ToGUIBase()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;                                                                                           {</div>
 <div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>GUIInputDeviceBase *<span class="keyword">&gt;</span>(d-&gt;<a class="code" href="../../d5/dee/group__route.html#ga6b40f3affafc4ecaf39ac957e2c74cd3">getUserData</a>());</div>
 <div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;                }</div>
-<div class="ttc" id="group__route_html_ga6b40f3affafc4ecaf39ac957e2c74cd3"><div class="ttname"><a href="../../d5/dee/group__route.html#ga6b40f3affafc4ecaf39ac957e2c74cd3">mutabor::Device::getUserData</a></div><div class="ttdeci">virtual void * getUserData() const </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00521">Device.h:521</a></div></div>
+<div class="ttc" id="group__route_html_ga6b40f3affafc4ecaf39ac957e2c74cd3"><div class="ttname"><a href="../../d5/dee/group__route.html#ga6b40f3affafc4ecaf39ac957e2c74cd3">mutabor::Device::getUserData</a></div><div class="ttdeci">virtual void * getUserData() const </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00523">Device.h:523</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -390,11 +390,11 @@ Geschützte Attribute</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00542">542</a> der Datei <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html">GUIRoute.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../de/d05/Device_8h_source.html#l00521">mutabor::Device::getUserData()</a>.</p>
+<p>Benutzt <a class="el" href="../../de/d05/Device_8h_source.html#l00523">mutabor::Device::getUserData()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;                                                                                                       {</div>
 <div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>GUIInputDeviceBase *<span class="keyword">&gt;</span>(d-&gt;<a class="code" href="../../d5/dee/group__route.html#ga6b40f3affafc4ecaf39ac957e2c74cd3">getUserData</a>());</div>
 <div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;                }</div>
-<div class="ttc" id="group__route_html_ga6b40f3affafc4ecaf39ac957e2c74cd3"><div class="ttname"><a href="../../d5/dee/group__route.html#ga6b40f3affafc4ecaf39ac957e2c74cd3">mutabor::Device::getUserData</a></div><div class="ttdeci">virtual void * getUserData() const </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00521">Device.h:521</a></div></div>
+<div class="ttc" id="group__route_html_ga6b40f3affafc4ecaf39ac957e2c74cd3"><div class="ttname"><a href="../../d5/dee/group__route.html#ga6b40f3affafc4ecaf39ac957e2c74cd3">mutabor::Device::getUserData</a></div><div class="ttdeci">virtual void * getUserData() const </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00523">Device.h:523</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -572,18 +572,18 @@ Geschützte Attribute</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definiert in Zeile <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00716">716</a> der Datei <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html">GUIRoute.cpp</a>.</p>
+<p>Definiert in Zeile <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00764">764</a> der Datei <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html">GUIRoute.cpp</a>.</p>
 
 <p>Benutzt <a class="el" href="../../d9/d64/Mutabor_8rh_source.html#l00097">mutaborGUI::CM_DEVICE_STATE_CHANGED</a>.</p>
-<div class="fragment"><div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;        {</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;                wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED,</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;                                     <a class="code" href="../../db/d94/namespacemutaborGUI.html#a2a08133c5c0cbb22dd229213615f8a34ada495524ba2f570a1b361acbf7fcbb17">CM_DEVICE_STATE_CHANGED</a>);</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;                <span class="keywordflow">for</span> (MutInputDeviceShapeList::iterator i = <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a9f9c91ffe38217f6b1b505c04dc397f5">shapes</a>.begin();</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;                     i != <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a9f9c91ffe38217f6b1b505c04dc397f5">shapes</a>.end();</div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;                     i++) {</div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                        wxPostEvent(*i,event);</div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;                }</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;        {</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;                wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED,</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;                                     <a class="code" href="../../db/d94/namespacemutaborGUI.html#a2a08133c5c0cbb22dd229213615f8a34ada495524ba2f570a1b361acbf7fcbb17">CM_DEVICE_STATE_CHANGED</a>);</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;                <span class="keywordflow">for</span> (MutInputDeviceShapeList::iterator i = <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a9f9c91ffe38217f6b1b505c04dc397f5">shapes</a>.begin();</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;                     i != <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a9f9c91ffe38217f6b1b505c04dc397f5">shapes</a>.end();</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;                     i++) {</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;                        wxPostEvent(*i,event);</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;                }</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;        }</div>
 <div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a9f9c91ffe38217f6b1b505c04dc397f5"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a9f9c91ffe38217f6b1b505c04dc397f5">mutaborGUI::GUIInputDeviceBase::shapes</a></div><div class="ttdeci">MutInputDeviceShapeList shapes</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dfa/GUIRoute_8h_source.html#l00490">GUIRoute.h:490</a></div></div>
 <div class="ttc" id="namespacemutaborGUI_html_a2a08133c5c0cbb22dd229213615f8a34ada495524ba2f570a1b361acbf7fcbb17"><div class="ttname"><a href="../../db/d94/namespacemutaborGUI.html#a2a08133c5c0cbb22dd229213615f8a34ada495524ba2f570a1b361acbf7fcbb17">mutaborGUI::CM_DEVICE_STATE_CHANGED</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d64/Mutabor_8rh_source.html#l00097">Mutabor.rh:97</a></div></div>
 </div><!-- fragment -->
@@ -612,14 +612,14 @@ Geschützte Attribute</h2></td></tr>
 
 <p>Erneute Implementation in <a class="el" href="../../d6/d8f/classmutaborGUI_1_1GUIfiedInputDevice.html#a7f1a3f83129196a0158fb43076337ddf">mutaborGUI::GUIfiedInputDevice&lt; T &gt;</a>.</p>
 
-<p>Definiert in Zeile <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00684">684</a> der Datei <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html">GUIRoute.cpp</a>.</p>
+<p>Definiert in Zeile <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00716">716</a> der Datei <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html">GUIRoute.cpp</a>.</p>
 
 <p>Wird benutzt von <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00604">mutaborGUI::GUIfiedInputDevice&lt; T &gt;::Open()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;                                      {</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;                <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">NotifyShapes</a>();</div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;        }</div>
-<div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a248283ae35fdc99fc6005151d8542654"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">mutaborGUI::GUIInputDeviceBase::NotifyShapes</a></div><div class="ttdeci">void NotifyShapes()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dee/GUIRoute_8cpp_source.html#l00716">GUIRoute.cpp:716</a></div></div>
+<div class="fragment"><div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;                                      {</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;                <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">NotifyShapes</a>();</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;        }</div>
+<div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a248283ae35fdc99fc6005151d8542654"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">mutaborGUI::GUIInputDeviceBase::NotifyShapes</a></div><div class="ttdeci">void NotifyShapes()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dee/GUIRoute_8cpp_source.html#l00764">GUIRoute.cpp:764</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -646,15 +646,15 @@ Geschützte Attribute</h2></td></tr>
 
 <p>Erneute Implementation in <a class="el" href="../../d6/d8f/classmutaborGUI_1_1GUIfiedInputDevice.html#a6d10b996ea3d469306b85713f334354c">mutaborGUI::GUIfiedInputDevice&lt; T &gt;</a>.</p>
 
-<p>Definiert in Zeile <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00679">679</a> der Datei <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html">GUIRoute.cpp</a>.</p>
+<p>Definiert in Zeile <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00711">711</a> der Datei <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html">GUIRoute.cpp</a>.</p>
 
 <p>Wird benutzt von <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00596">mutaborGUI::GUIfiedInputDevice&lt; T &gt;::Pause()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;                                       {</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;                <a class="code" href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a15bed87c5a0ef8e7f20b5a9d8fa53867">StatusBar::AllSetPlaystate</a>(<a class="code" href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a6299a024e3aed702b368e41d4def15ebaa08b58f6fffde4c6f3012198b4c317c8">StatusBar::Pause</a>);</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;                <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">NotifyShapes</a>();</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;        }</div>
-<div class="ttc" id="classmutaborGUI_1_1StatusBar_html_a15bed87c5a0ef8e7f20b5a9d8fa53867"><div class="ttname"><a href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a15bed87c5a0ef8e7f20b5a9d8fa53867">mutaborGUI::StatusBar::AllSetPlaystate</a></div><div class="ttdeci">static void AllSetPlaystate(playstate pst=Stop, bool force=false)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6e/StatusBar_8h_source.html#l00165">StatusBar.h:165</a></div></div>
-<div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a248283ae35fdc99fc6005151d8542654"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">mutaborGUI::GUIInputDeviceBase::NotifyShapes</a></div><div class="ttdeci">void NotifyShapes()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dee/GUIRoute_8cpp_source.html#l00716">GUIRoute.cpp:716</a></div></div>
+<div class="fragment"><div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;                                       {</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;                <a class="code" href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a426bea57309dc011921e6c7c15fae5cb">StatusBar::SendPlaystateChanged</a>(<a class="code" href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a6299a024e3aed702b368e41d4def15ebaa08b58f6fffde4c6f3012198b4c317c8">StatusBar::Pause</a>);</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;                <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">NotifyShapes</a>();</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;        }</div>
+<div class="ttc" id="classmutaborGUI_1_1StatusBar_html_a426bea57309dc011921e6c7c15fae5cb"><div class="ttname"><a href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a426bea57309dc011921e6c7c15fae5cb">mutaborGUI::StatusBar::SendPlaystateChanged</a></div><div class="ttdeci">static void SendPlaystateChanged(playstate pst=Stop)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6e/StatusBar_8h_source.html#l00140">StatusBar.h:140</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a248283ae35fdc99fc6005151d8542654"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">mutaborGUI::GUIInputDeviceBase::NotifyShapes</a></div><div class="ttdeci">void NotifyShapes()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dee/GUIRoute_8cpp_source.html#l00764">GUIRoute.cpp:764</a></div></div>
 <div class="ttc" id="classmutaborGUI_1_1StatusBar_html_a6299a024e3aed702b368e41d4def15ebaa08b58f6fffde4c6f3012198b4c317c8"><div class="ttname"><a href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a6299a024e3aed702b368e41d4def15ebaa08b58f6fffde4c6f3012198b4c317c8">mutaborGUI::StatusBar::Pause</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6e/StatusBar_8h_source.html#l00064">StatusBar.h:64</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -682,16 +682,16 @@ Geschützte Attribute</h2></td></tr>
 
 <p>Erneute Implementation in <a class="el" href="../../d6/d8f/classmutaborGUI_1_1GUIfiedInputDevice.html#ac289213b55b3fea86c83734d2f270044">mutaborGUI::GUIfiedInputDevice&lt; T &gt;</a>.</p>
 
-<p>Definiert in Zeile <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00669">669</a> der Datei <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html">GUIRoute.cpp</a>.</p>
+<p>Definiert in Zeile <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00701">701</a> der Datei <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html">GUIRoute.cpp</a>.</p>
 
 <p>Wird benutzt von <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00592">mutaborGUI::GUIfiedInputDevice&lt; T &gt;::Play()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;                                      {</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;                <a class="code" href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a15bed87c5a0ef8e7f20b5a9d8fa53867">StatusBar::AllSetPlaystate</a>(<a class="code" href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a6299a024e3aed702b368e41d4def15eba5d7ce8179fcbb755ee59673d35b66c55">StatusBar::Play</a>);</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;                <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">NotifyShapes</a>();</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;                                      {</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;                <a class="code" href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a426bea57309dc011921e6c7c15fae5cb">StatusBar::SendPlaystateChanged</a>(<a class="code" href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a6299a024e3aed702b368e41d4def15eba5d7ce8179fcbb755ee59673d35b66c55">StatusBar::Play</a>);</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;                <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">NotifyShapes</a>();</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;        }</div>
 <div class="ttc" id="classmutaborGUI_1_1StatusBar_html_a6299a024e3aed702b368e41d4def15eba5d7ce8179fcbb755ee59673d35b66c55"><div class="ttname"><a href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a6299a024e3aed702b368e41d4def15eba5d7ce8179fcbb755ee59673d35b66c55">mutaborGUI::StatusBar::Play</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6e/StatusBar_8h_source.html#l00065">StatusBar.h:65</a></div></div>
-<div class="ttc" id="classmutaborGUI_1_1StatusBar_html_a15bed87c5a0ef8e7f20b5a9d8fa53867"><div class="ttname"><a href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a15bed87c5a0ef8e7f20b5a9d8fa53867">mutaborGUI::StatusBar::AllSetPlaystate</a></div><div class="ttdeci">static void AllSetPlaystate(playstate pst=Stop, bool force=false)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6e/StatusBar_8h_source.html#l00165">StatusBar.h:165</a></div></div>
-<div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a248283ae35fdc99fc6005151d8542654"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">mutaborGUI::GUIInputDeviceBase::NotifyShapes</a></div><div class="ttdeci">void NotifyShapes()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dee/GUIRoute_8cpp_source.html#l00716">GUIRoute.cpp:716</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1StatusBar_html_a426bea57309dc011921e6c7c15fae5cb"><div class="ttname"><a href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a426bea57309dc011921e6c7c15fae5cb">mutaborGUI::StatusBar::SendPlaystateChanged</a></div><div class="ttdeci">static void SendPlaystateChanged(playstate pst=Stop)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6e/StatusBar_8h_source.html#l00140">StatusBar.h:140</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a248283ae35fdc99fc6005151d8542654"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">mutaborGUI::GUIInputDeviceBase::NotifyShapes</a></div><div class="ttdeci">void NotifyShapes()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dee/GUIRoute_8cpp_source.html#l00764">GUIRoute.cpp:764</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -723,7 +723,7 @@ Geschützte Attribute</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l01106">1106</a> der Datei <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html">GUIRoute-inlines.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00141">DEBUGLOG</a>, <a class="el" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#ace569bf29f85dc90adbb9cf060ca5c76">GetDevice()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00758">mutaborGUI::GUIRouteBase::GetShape()</a>, <a class="el" href="../../d1/da4/boost-interface_8h_source.html#l00107">intrusive_ptr_get_refcount()</a>, <a class="el" href="../../d1/d73/Defs_8h_source.html#l00223">mutASSERT</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00216">mutaborGUI::MutBoxChannelShape::Remove()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00490">shapes</a>, <a class="el" href="../../d5/df7/GUIBoxData_8h_source.html#l00309">mutaborGUI::ToGUIBase()</a> und <a class="el" href="../../d0/d68/mhDefs_8h_source.html#l00148">UNREACHABLEC</a>.</p>
+<p>Benutzt <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00141">DEBUGLOG</a>, <a class="el" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#ace569bf29f85dc90adbb9cf060ca5c76">GetDevice()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00758">mutaborGUI::GUIRouteBase::GetShape()</a>, <a class="el" href="../../d1/da4/boost-interface_8h_source.html#l00107">intrusive_ptr_get_refcount()</a>, <a class="el" href="../../d1/d73/Defs_8h_source.html#l00223">mutASSERT</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00216">mutaborGUI::MutBoxChannelShape::Remove()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00490">shapes</a>, <a class="el" href="../../d5/df7/GUIBoxData_8h_source.html#l00307">mutaborGUI::ToGUIBase()</a> und <a class="el" href="../../d0/d68/mhDefs_8h_source.html#l00148">UNREACHABLEC</a>.</p>
 
 <p>Wird benutzt von <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l01161">mutaborGUI::GUIfiedInputDevice&lt; T &gt;::Remove()</a> und <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l01072">Replace()</a>.</p>
 <div class="fragment"><div class="line"><a name="l01107"></a><span class="lineno"> 1107</span>&#160;        {</div>
@@ -764,7 +764,7 @@ Geschützte Attribute</h2></td></tr>
 <div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00141">mutDebug.h:141</a></div></div>
 <div class="ttc" id="group__kernel_html_ga77bd8e5b959213dd8bcd48dc513f6013"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a></div><div class="ttdeci">#define mutASSERT(cond)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00223">Defs.h:223</a></div></div>
 <div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a9f9c91ffe38217f6b1b505c04dc397f5"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a9f9c91ffe38217f6b1b505c04dc397f5">mutaborGUI::GUIInputDeviceBase::shapes</a></div><div class="ttdeci">MutInputDeviceShapeList shapes</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dfa/GUIRoute_8h_source.html#l00490">GUIRoute.h:490</a></div></div>
-<div class="ttc" id="namespacemutaborGUI_html_a523a519a578cfbb4735203dee5fd2fd4"><div class="ttname"><a href="../../db/d94/namespacemutaborGUI.html#a523a519a578cfbb4735203dee5fd2fd4">mutaborGUI::ToGUIBase</a></div><div class="ttdeci">BoxData * ToGUIBase(mutabor::BoxClass *b)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/df7/GUIBoxData_8h_source.html#l00309">GUIBoxData.h:309</a></div></div>
+<div class="ttc" id="namespacemutaborGUI_html_a523a519a578cfbb4735203dee5fd2fd4"><div class="ttname"><a href="../../db/d94/namespacemutaborGUI.html#a523a519a578cfbb4735203dee5fd2fd4">mutaborGUI::ToGUIBase</a></div><div class="ttdeci">BoxData * ToGUIBase(mutabor::BoxClass *b)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/df7/GUIBoxData_8h_source.html#l00307">GUIBoxData.h:307</a></div></div>
 <div class="ttc" id="group__GUI_html_ga21a35e4a9e56bbe15aded747eb5a7147"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a></div><div class="ttdeci">#define UNREACHABLEC</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00148">mhDefs.h:148</a></div></div>
 <div class="ttc" id="group__kernel_html_ga929b9e3b3d2ed10ebd92110d49320603"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga929b9e3b3d2ed10ebd92110d49320603">intrusive_ptr_get_refcount</a></div><div class="ttdeci">size_t intrusive_ptr_get_refcount(intrusive_ptr_T *obj)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da4/boost-interface_8h_source.html#l00107">boost-interface.h:107</a></div></div>
 </div><!-- fragment -->
@@ -854,7 +854,7 @@ Geschützte Attribute</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l01072">1072</a> der Datei <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html">GUIRoute-inlines.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00758">mutaborGUI::GUIRouteBase::GetShape()</a>, <a class="el" href="../../d1/d73/Defs_8h_source.html#l00223">mutASSERT</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l01106">Remove()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00490">shapes</a> und <a class="el" href="../../d5/df7/GUIBoxData_8h_source.html#l00309">mutaborGUI::ToGUIBase()</a>.</p>
+<p>Benutzt <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00758">mutaborGUI::GUIRouteBase::GetShape()</a>, <a class="el" href="../../d1/d73/Defs_8h_source.html#l00223">mutASSERT</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l01106">Remove()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00490">shapes</a> und <a class="el" href="../../d5/df7/GUIBoxData_8h_source.html#l00307">mutaborGUI::ToGUIBase()</a>.</p>
 
 <p>Wird benutzt von <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l01152">mutaborGUI::GUIfiedInputDevice&lt; T &gt;::Replace()</a>.</p>
 <div class="fragment"><div class="line"><a name="l01072"></a><span class="lineno"> 1072</span>&#160;                                                                                               {</div>
@@ -894,11 +894,11 @@ Geschützte Attribute</h2></td></tr>
 <div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a4e3eebc2221ba139023389355161897a"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a4e3eebc2221ba139023389355161897a">mutaborGUI::GUIInputDeviceBase::Replace</a></div><div class="ttdeci">virtual bool Replace(mutabor::Route &amp;oldroute, mutabor::Route &amp;newroute)</div><div class="ttdoc">replace a route </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d73/GUIRoute-inlines_8h_source.html#l01072">GUIRoute-inlines.h:1072</a></div></div>
 <div class="ttc" id="group__kernel_html_ga77bd8e5b959213dd8bcd48dc513f6013"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a></div><div class="ttdeci">#define mutASSERT(cond)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00223">Defs.h:223</a></div></div>
 <div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a9f9c91ffe38217f6b1b505c04dc397f5"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a9f9c91ffe38217f6b1b505c04dc397f5">mutaborGUI::GUIInputDeviceBase::shapes</a></div><div class="ttdeci">MutInputDeviceShapeList shapes</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dfa/GUIRoute_8h_source.html#l00490">GUIRoute.h:490</a></div></div>
-<div class="ttc" id="namespacemutaborGUI_html_a523a519a578cfbb4735203dee5fd2fd4"><div class="ttname"><a href="../../db/d94/namespacemutaborGUI.html#a523a519a578cfbb4735203dee5fd2fd4">mutaborGUI::ToGUIBase</a></div><div class="ttdeci">BoxData * ToGUIBase(mutabor::BoxClass *b)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/df7/GUIBoxData_8h_source.html#l00309">GUIBoxData.h:309</a></div></div>
+<div class="ttc" id="namespacemutaborGUI_html_a523a519a578cfbb4735203dee5fd2fd4"><div class="ttname"><a href="../../db/d94/namespacemutaborGUI.html#a523a519a578cfbb4735203dee5fd2fd4">mutaborGUI::ToGUIBase</a></div><div class="ttdeci">BoxData * ToGUIBase(mutabor::BoxClass *b)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/df7/GUIBoxData_8h_source.html#l00307">GUIBoxData.h:307</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="aa7151676f52c9f56b33accf153e39f51"></a>
+<a class="anchor" id="a356eff405627ebcfeff1727c6cebac98"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -908,13 +908,13 @@ Geschützte Attribute</h2></td></tr>
         <tr>
           <td class="memname">void mutaborGUI::GUIInputDeviceBase::runtime_error </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>iswarning</em>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> <a class="el" href="../../d9/d7c/group__kernel.html#ga7e6a85a8235f7b6e5f1ab363345262a8">mutString</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> <a class="el" href="../../d9/d7c/group__kernel.html#ga0357d6ebe41b7958687f47fd0d2d288e">mutStringRef</a>&#160;</td>
           <td class="paramname"><em>message</em>, </td>
         </tr>
         <tr>
@@ -936,20 +936,35 @@ Geschützte Attribute</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Erneute Implementation in <a class="el" href="../../d6/d8f/classmutaborGUI_1_1GUIfiedInputDevice.html#abd94f1dd96628ac991fc7ad154e2eda5">mutaborGUI::GUIfiedInputDevice&lt; T &gt;</a>.</p>
+<p>Definiert in Zeile <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00742">742</a> der Datei <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html">GUIRoute.cpp</a>.</p>
 
-<p>Definiert in Zeile <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00710">710</a> der Datei <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html">GUIRoute.cpp</a>.</p>
-
-<p>Benutzt <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00057">_</a> und <a class="el" href="../../de/d11/Execute_8h_source.html#l00079">error</a>.</p>
+<p>Benutzt <a class="el" href="../../d9/d64/Mutabor_8rh_source.html#l00105">mutaborGUI::CM_PRINT_ERROR</a>, <a class="el" href="../../de/d11/Execute_8h_source.html#l00080">internal_error</a> und <a class="el" href="../../de/d0f/Box_8h_source.html#l00104">mutabor::to_string()</a>.</p>
 
 <p>Wird benutzt von <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00630">mutaborGUI::GUIfiedInputDevice&lt; T &gt;::runtime_error()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;                                                                                                       {</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;                wxString <a class="code" href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96ad606e435413ea0944dd00d49e901e4ed">error</a> = wxString::FormatV(message,args);</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;                wxMessageBox(error, iswarning?<a class="code" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>(<span class="stringliteral">&quot;Warning&quot;</span>):<a class="code" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>(<span class="stringliteral">&quot;Error&quot;</span>),</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;                             wxOK | (iswarning?wxICON_WARNING:wxICON_ERROR) );</div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;        }</div>
-<div class="ttc" id="group__kernel_html_ggafeebd36c5713e8438dcf17e926f8ad96ad606e435413ea0944dd00d49e901e4ed"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96ad606e435413ea0944dd00d49e901e4ed">error</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d11/Execute_8h_source.html#l00079">Execute.h:79</a></div></div>
-<div class="ttc" id="group__kernel_html_gae4dfd7b0d66121016d6466d2ff10e8ba"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a></div><div class="ttdeci">#define _</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/Execute_8cpp_source.html#l00057">Execute.cpp:57</a></div></div>
+<div class="fragment"><div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;                                                                                                 {</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;                wxString msg = wxString::FormatV(message,args);</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;                wxString head(<a class="code" href="../../d5/dee/group__route.html#gab2c9f697ef8d670d83423330ed46235b">mutabor::to_string</a>(type));</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;                msg = head + <span class="stringliteral">&quot;: &quot;</span> + msg;</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;<span class="preprocessor"></span>                <span class="keywordflow">if</span> (type == <a class="code" href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96a565a17952d248ac799b0b0358761fbf0">mutabor::internal_error</a>) {</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;                        wxFAIL_MSG(msg);</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;                }</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;<span class="preprocessor"></span>                fprintf(stderr,<span class="stringliteral">&quot;%s: %s\n&quot;</span>,<a class="code" href="../../d5/dee/group__route.html#gab2c9f697ef8d670d83423330ed46235b">mutabor::to_string</a>(type),message);</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;<span class="preprocessor"></span>                fprintf(stderr,<span class="stringliteral">&quot;%s:%d:\nIn order to debug this message you should watch mutaborGUI::BoxData::runtime_error.\n&quot;</span>,</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;                        __FILE__,</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;                        __LINE__);</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;                wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, <a class="code" href="../../db/d94/namespacemutaborGUI.html#a2a08133c5c0cbb22dd229213615f8a34aab12cf8929af33f7afac24e60a2eb715">CM_PRINT_ERROR</a>);</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;                <span class="keyword">event</span>.SetString(msg);</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;                <span class="keyword">event</span>.SetInt(type);</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;                wxPostEvent(&amp;wxGetApp(),event);</div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;        }</div>
+<div class="ttc" id="group__kernel_html_ggafeebd36c5713e8438dcf17e926f8ad96a565a17952d248ac799b0b0358761fbf0"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96a565a17952d248ac799b0b0358761fbf0">internal_error</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d11/Execute_8h_source.html#l00080">Execute.h:80</a></div></div>
+<div class="ttc" id="namespacemutaborGUI_html_a2a08133c5c0cbb22dd229213615f8a34aab12cf8929af33f7afac24e60a2eb715"><div class="ttname"><a href="../../db/d94/namespacemutaborGUI.html#a2a08133c5c0cbb22dd229213615f8a34aab12cf8929af33f7afac24e60a2eb715">mutaborGUI::CM_PRINT_ERROR</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d64/Mutabor_8rh_source.html#l00105">Mutabor.rh:105</a></div></div>
+<div class="ttc" id="group__route_html_gab2c9f697ef8d670d83423330ed46235b"><div class="ttname"><a href="../../d5/dee/group__route.html#gab2c9f697ef8d670d83423330ed46235b">mutabor::to_string</a></div><div class="ttdeci">const char * to_string(error_type type)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00104">Box.h:104</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -976,16 +991,16 @@ Geschützte Attribute</h2></td></tr>
 
 <p>Erneute Implementation in <a class="el" href="../../d6/d8f/classmutaborGUI_1_1GUIfiedInputDevice.html#afc6f210bd861ad037054a6b18f1d7d28">mutaborGUI::GUIfiedInputDevice&lt; T &gt;</a>.</p>
 
-<p>Definiert in Zeile <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00674">674</a> der Datei <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html">GUIRoute.cpp</a>.</p>
+<p>Definiert in Zeile <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00706">706</a> der Datei <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html">GUIRoute.cpp</a>.</p>
 
 <p>Wird benutzt von <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00600">mutaborGUI::GUIfiedInputDevice&lt; T &gt;::Stop()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;                                      {</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;                <a class="code" href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a15bed87c5a0ef8e7f20b5a9d8fa53867">StatusBar::AllSetPlaystate</a>(<a class="code" href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a6299a024e3aed702b368e41d4def15ebad405c9068f9a69f01af42b2741cefc34">StatusBar::Stop</a>);</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;                <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">NotifyShapes</a>();</div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;                                      {</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;                <a class="code" href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a426bea57309dc011921e6c7c15fae5cb">StatusBar::SendPlaystateChanged</a>(<a class="code" href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a6299a024e3aed702b368e41d4def15ebad405c9068f9a69f01af42b2741cefc34">StatusBar::Stop</a>);</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;                <a class="code" href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">NotifyShapes</a>();</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;        }</div>
 <div class="ttc" id="classmutaborGUI_1_1StatusBar_html_a6299a024e3aed702b368e41d4def15ebad405c9068f9a69f01af42b2741cefc34"><div class="ttname"><a href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a6299a024e3aed702b368e41d4def15ebad405c9068f9a69f01af42b2741cefc34">mutaborGUI::StatusBar::Stop</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6e/StatusBar_8h_source.html#l00063">StatusBar.h:63</a></div></div>
-<div class="ttc" id="classmutaborGUI_1_1StatusBar_html_a15bed87c5a0ef8e7f20b5a9d8fa53867"><div class="ttname"><a href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a15bed87c5a0ef8e7f20b5a9d8fa53867">mutaborGUI::StatusBar::AllSetPlaystate</a></div><div class="ttdeci">static void AllSetPlaystate(playstate pst=Stop, bool force=false)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6e/StatusBar_8h_source.html#l00165">StatusBar.h:165</a></div></div>
-<div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a248283ae35fdc99fc6005151d8542654"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">mutaborGUI::GUIInputDeviceBase::NotifyShapes</a></div><div class="ttdeci">void NotifyShapes()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dee/GUIRoute_8cpp_source.html#l00716">GUIRoute.cpp:716</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1StatusBar_html_a426bea57309dc011921e6c7c15fae5cb"><div class="ttname"><a href="../../dc/d00/classmutaborGUI_1_1StatusBar.html#a426bea57309dc011921e6c7c15fae5cb">mutaborGUI::StatusBar::SendPlaystateChanged</a></div><div class="ttdeci">static void SendPlaystateChanged(playstate pst=Stop)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6e/StatusBar_8h_source.html#l00140">StatusBar.h:140</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1GUIInputDeviceBase_html_a248283ae35fdc99fc6005151d8542654"><div class="ttname"><a href="../../d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase.html#a248283ae35fdc99fc6005151d8542654">mutaborGUI::GUIInputDeviceBase::NotifyShapes</a></div><div class="ttdeci">void NotifyShapes()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dee/GUIRoute_8cpp_source.html#l00764">GUIRoute.cpp:764</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1021,6 +1036,6 @@ Geschützte Attribute</h2></td></tr>
 </ul>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Don Nov 28 2013 19:38:46 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Sam Dez 7 2013 09:32:56 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
 </body>
 </html>

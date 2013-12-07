@@ -228,105 +228,105 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3747">
+      <node id="3768">
         <label>T</label>
       </node>
-      <node id="3746">
+      <node id="3767">
         <label>MutIconShape</label>
         <link refid="d5/d12/classMutIconShapeClass"/>
-        <childnode refid="3747" relation="public-inheritance">
+        <childnode refid="3768" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3745">
+      <node id="3766">
         <label>MutOutputDeviceShape</label>
         <link refid="d3/d4c/classmutaborGUI_1_1MutDeviceShape"/>
-        <childnode refid="3746" relation="public-inheritance">
+        <childnode refid="3767" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3744">
+      <node id="3765">
         <label>mutaborGUI::MutOutputMidiDeviceShape</label>
         <link refid="d9/def/classmutaborGUI_1_1MutOutputMidiDeviceShape"/>
-        <childnode refid="3745" relation="public-inheritance">
+        <childnode refid="3766" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3751">
+      <node id="3772">
         <label>T</label>
       </node>
-      <node id="3752">
+      <node id="3773">
         <label>std::list&lt; wxPoint &gt;</label>
       </node>
-      <node id="3755">
+      <node id="3776">
         <label>mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;</label>
         <link refid="db/d05/classmutabor_1_1TRouteClass"/>
-        <childnode refid="3756" relation="usage">
+        <childnode refid="3777" relation="usage">
           <edgelabel>routeList</edgelabel>
         </childnode>
-        <childnode refid="3757" relation="usage">
+        <childnode refid="3778" relation="usage">
           <edgelabel>session_id</edgelabel>
         </childnode>
       </node>
-      <node id="3757">
+      <node id="3778">
         <label>mutabor::idtype&lt; mutabor::TRouteClass&lt; InputDevice, OutputDevice &gt; &gt;</label>
         <link refid="d7/dce/classmutabor_1_1idtype"/>
       </node>
-      <node id="3750">
+      <node id="3771">
         <label>MutIconShape</label>
         <link refid="d5/d12/classMutIconShapeClass"/>
-        <childnode refid="3751" relation="public-inheritance">
+        <childnode refid="3772" relation="public-inheritance">
         </childnode>
-        <childnode refid="3752" relation="usage">
+        <childnode refid="3773" relation="usage">
           <edgelabel>usedperimeterpoints</edgelabel>
         </childnode>
       </node>
-      <node id="3756">
+      <node id="3777">
         <label>std::list&lt; T &gt;</label>
-        <childnode refid="3751" relation="usage">
+        <childnode refid="3772" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
-      <node id="3754">
+      <node id="3775">
         <label>mutaborGUI::MutBoxChannelShape</label>
         <link refid="d8/d8e/classmutaborGUI_1_1MutBoxChannelShape"/>
-        <childnode refid="3750" relation="public-inheritance">
+        <childnode refid="3771" relation="public-inheritance">
         </childnode>
-        <childnode refid="3755" relation="usage">
+        <childnode refid="3776" relation="usage">
           <edgelabel>route</edgelabel>
         </childnode>
-        <childnode refid="3758" relation="usage">
+        <childnode refid="3779" relation="usage">
           <edgelabel>output</edgelabel>
           <edgelabel>input</edgelabel>
         </childnode>
       </node>
-      <node id="3753">
+      <node id="3774">
         <label>std::list&lt; MutBoxChannelShape * &gt;</label>
-        <childnode refid="3754" relation="usage">
+        <childnode refid="3775" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
-      <node id="3758">
+      <node id="3779">
         <label>mutaborGUI::MutDeviceShape&lt; T &gt;</label>
         <link refid="d3/d4c/classmutaborGUI_1_1MutDeviceShape"/>
-        <childnode refid="3750" relation="public-inheritance">
+        <childnode refid="3771" relation="public-inheritance">
         </childnode>
-        <childnode refid="3753" relation="usage">
+        <childnode refid="3774" relation="usage">
           <edgelabel>routes</edgelabel>
         </childnode>
       </node>
-      <node id="3749">
+      <node id="3770">
         <label>MutOutputDeviceShape</label>
         <link refid="d3/d4c/classmutaborGUI_1_1MutDeviceShape"/>
-        <childnode refid="3750" relation="public-inheritance">
+        <childnode refid="3771" relation="public-inheritance">
         </childnode>
-        <childnode refid="3753" relation="usage">
+        <childnode refid="3774" relation="usage">
           <edgelabel>routes</edgelabel>
         </childnode>
       </node>
-      <node id="3748">
+      <node id="3769">
         <label>mutaborGUI::MutOutputMidiDeviceShape</label>
         <link refid="d9/def/classmutaborGUI_1_1MutOutputMidiDeviceShape"/>
-        <childnode refid="3749" relation="public-inheritance">
+        <childnode refid="3770" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

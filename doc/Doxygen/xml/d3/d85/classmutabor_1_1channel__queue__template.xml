@@ -519,35 +519,35 @@ Sustaining is <emphasis>not</emphasis> handled by this class.</para><para><simpl
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2407">
+      <node id="2418">
         <label>std::vector&lt; T &gt;</label>
       </node>
-      <node id="2406">
+      <node id="2417">
         <label>mutabor::channel_queue_template&lt; T, count &gt;</label>
         <link refid="d3/d85/classmutabor_1_1channel__queue__template"/>
-        <childnode refid="2407" relation="public-inheritance">
+        <childnode refid="2418" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2410">
+      <node id="2421">
         <label>T</label>
       </node>
-      <node id="2409">
+      <node id="2420">
         <label>std::vector&lt; T &gt;</label>
-        <childnode refid="2410" relation="usage">
+        <childnode refid="2421" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
-      <node id="2411">
+      <node id="2422">
         <label>std::vector&lt; T &gt;::iterator</label>
       </node>
-      <node id="2408">
+      <node id="2419">
         <label>mutabor::channel_queue_template&lt; T, count &gt;</label>
         <link refid="d3/d85/classmutabor_1_1channel__queue__template"/>
-        <childnode refid="2409" relation="public-inheritance">
+        <childnode refid="2420" relation="public-inheritance">
         </childnode>
-        <childnode refid="2411" relation="usage">
+        <childnode refid="2422" relation="usage">
           <edgelabel>last_sustained</edgelabel>
           <edgelabel>first_free</edgelabel>
         </childnode>

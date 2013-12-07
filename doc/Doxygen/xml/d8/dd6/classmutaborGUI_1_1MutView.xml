@@ -229,52 +229,52 @@
     <detaileddescription>
 <para>What else? it will receive instructions from the document to update (ie redraw) when the document changes, and close when the document closes, and do something when the document changes its filename (eg the user does a save_as). Does the view need an event table? no I think its methods get called by direct pointer access p-&gt;method etc. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="3823">
+      <node id="3844">
         <label>wxView</label>
       </node>
-      <node id="3822">
+      <node id="3843">
         <label>mutaborGUI::MutView</label>
         <link refid="d8/dd6/classmutaborGUI_1_1MutView"/>
-        <childnode refid="3823" relation="public-inheritance">
+        <childnode refid="3844" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3825">
+      <node id="3846">
         <label>wxView</label>
       </node>
-      <node id="3828">
+      <node id="3849">
         <label>mutaborGUI::MutSTCLexer</label>
         <link refid="d1/dea/classmutaborGUI_1_1MutSTCLexer"/>
       </node>
-      <node id="3827">
+      <node id="3848">
         <label>wxStyledTextCtrl</label>
       </node>
-      <node id="3826">
+      <node id="3847">
         <label>mutaborGUI::MutEditFile</label>
         <link refid="de/dfe/classmutaborGUI_1_1MutEditFile"/>
-        <childnode refid="3827" relation="public-inheritance">
+        <childnode refid="3848" relation="public-inheritance">
         </childnode>
-        <childnode refid="3828" relation="usage">
+        <childnode refid="3849" relation="usage">
           <edgelabel>lexer</edgelabel>
         </childnode>
-        <childnode refid="3829" relation="usage">
+        <childnode refid="3850" relation="usage">
           <edgelabel>m_language</edgelabel>
         </childnode>
-        <childnode refid="3824" relation="usage">
+        <childnode refid="3845" relation="usage">
           <edgelabel>view</edgelabel>
         </childnode>
       </node>
-      <node id="3829">
+      <node id="3850">
         <label>mutaborGUI::LanguageInfo</label>
         <link refid="d4/d4a/structmutaborGUI_1_1LanguageInfo"/>
       </node>
-      <node id="3824">
+      <node id="3845">
         <label>mutaborGUI::MutView</label>
         <link refid="d8/dd6/classmutaborGUI_1_1MutView"/>
-        <childnode refid="3825" relation="public-inheritance">
+        <childnode refid="3846" relation="public-inheritance">
         </childnode>
-        <childnode refid="3826" relation="usage">
+        <childnode refid="3847" relation="usage">
           <edgelabel>textsw</edgelabel>
         </childnode>
       </node>
