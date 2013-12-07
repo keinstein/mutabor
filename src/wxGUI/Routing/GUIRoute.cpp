@@ -667,17 +667,17 @@ namespace mutaborGUI {
 
 
 	void GUIInputDeviceBase::Play() {
-		StatusBar::AllSetPlaystate(StatusBar::Play);
+		StatusBar::SendPlaystateChanged(StatusBar::Play);
 		NotifyShapes();
 	}
 
 	void GUIInputDeviceBase::Stop() {
-		StatusBar::AllSetPlaystate(StatusBar::Stop);
+		StatusBar::SendPlaystateChanged(StatusBar::Stop);
 		NotifyShapes();
 	}
 
 	void GUIInputDeviceBase::Pause() {
-		StatusBar::AllSetPlaystate(StatusBar::Pause);
+		StatusBar::SendPlaystateChanged(StatusBar::Pause);
 		NotifyShapes();
 	}
 
