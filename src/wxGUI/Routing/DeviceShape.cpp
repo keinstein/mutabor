@@ -327,6 +327,7 @@ namespace mutaborGUI {
 		playbuttons->Layout();
 		wxSize size = playbuttons->GetMinSize();
 		playbuttons->SetDimension(0,0,size.GetWidth(),size.GetHeight());
+		Update();
 	}
 
 	template <class T>
