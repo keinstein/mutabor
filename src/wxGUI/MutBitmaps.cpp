@@ -91,67 +91,67 @@ namespace mutaborGUI {
 		if (initialized) return(true);
 		EmptyBitmap.Create(16,16,-1);
 		initMutBitmap(New,
-			      wxGetApp().GetResourceName (_T ("16x16/document-new.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/document-new.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Open,
-			      wxGetApp().GetResourceName (_T ("16x16/document-open.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/document-open.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Save,
-			      wxGetApp().GetResourceName (_T ("16x16/document-save.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/document-save.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(SaveAs,
-			      wxGetApp().GetResourceName (_T ("16x16/document-save-as.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/document-save-as.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Print,
-			      wxGetApp().GetResourceName (_T ("16x16/document-print.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/document-print.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(LogicActivate,
-			      wxGetApp().GetResourceName (_T ("16x16/ActivateMutabor.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/ActivateMutabor.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(LogicStop,
-			      wxGetApp().GetResourceName (_T ("16x16/StopMutabor.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/StopMutabor.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(LogicPanic,
-			      wxGetApp().GetResourceName (_T ("16x16/Panic.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/Panic.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Copy,
-			      wxGetApp().GetResourceName (_T ("16x16/edit-copy.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/edit-copy.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Cut,
-			      wxGetApp().GetResourceName (_T ("16x16/edit-cut.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/edit-cut.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Paste,
-			      wxGetApp().GetResourceName (_T ("16x16/edit-paste.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/edit-paste.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Undo,
-			      wxGetApp().GetResourceName (_T ("16x16/edit-undo.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/edit-undo.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Redo,
-			      wxGetApp().GetResourceName (_T ("16x16/edit-redo.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/edit-redo.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(GoUp,
-			      wxGetApp().GetResourceName (_T ("16x16/go-up.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/go-up.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(GoDown,
-			      wxGetApp().GetResourceName (_T ("16x16/go-down.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/go-down.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(RouteLoad,
-			      wxGetApp().GetResourceName (_T ("16x16/RouteLoad.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/RouteLoad.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(RouteSave,
-			      wxGetApp().GetResourceName (_T ("16x16/RouteSave.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/RouteSave.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(IndevsPlay,
-			      wxGetApp().GetResourceName (_T ("16x16/InDevPlay.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/InDevPlay.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(IndevsStop,
-			      wxGetApp().GetResourceName (_T ("16x16/InDevStop.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/InDevStop.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(IndevsPause,
-			      wxGetApp().GetResourceName (_T ("16x16/InDevPause.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/InDevPause.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(About,
-			      wxGetApp().GetResourceName (_T ("16x16/help-browser.png")),
+			      wxGetApp().GetResourceName (_T ("20x20/help-browser.png")),
 			      wxBITMAP_TYPE_PNG);
 		initialized = true;
 		return true;	
@@ -166,16 +166,16 @@ namespace mutaborGUI {
 	bool StatusBarBitmaps::DoInit() {
 		if (initialized) return(true);
 		initMutBitmap(Play,
-			      wxGetApp().GetResourceName (_T ("InDevPlay.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/InDevPlay.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Stop,
-			      wxGetApp().GetResourceName (_T ("InDevStop.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/InDevStop.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Pause,
-			      wxGetApp().GetResourceName (_T ("InDevPause.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/InDevPause.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Active,
-			      wxGetApp().GetResourceName (_T ("ToolbarLogicActive.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/ToolbarLogicActive.png")),
 			      wxBITMAP_TYPE_PNG);
 		initialized = true;
 		return true;	

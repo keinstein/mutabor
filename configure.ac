@@ -796,6 +796,7 @@ lib/Makefile
 lib/missfunc/Makefile
 Images/Makefile
 Images/Icons/png/16x16/Makefile
+Images/Icons/png/20x20/Makefile
 osdep/macosx/Info.plist
 osdep/win/Mutabor.nsi
 doc/Makefile

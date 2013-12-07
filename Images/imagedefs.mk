@@ -1,3 +1,8 @@
+ICONDIR = $(top_srcdir)/Images/Icons
+SVGICONDIR = $(ICONDIR)/svg
+PNGICONDIR = $(ICONDIR)/png
+PNGSIZEICONDIR = $(PNGICONDIR)/$(XSIZE)x$(YSIZE)
+
 TOOLBARICONS = \
 	document-new \
 	document-open \
@@ -22,14 +27,27 @@ TOOLBARICONS = \
 	InDevRecord \
 	help-browser
 
-SVGTOOLBARICONS = $(shell for d in $(TOOLBARICONS); \
-	do echo "$(top_srcdir)/Images/Icons/svg/$$d.svg"; done)
+STATUSBARICONS = \
+	InDevPlay \
+	InDevStop \
+	InDevPause \
+	InDevRecord \
+	ToolbarLogicActive
 
-PNGTOOLBARICONS = $(shell for d in $(TOOLBARICONS); \
-	do echo "$(top_srcdir)/Images/Icons/png/$(XSIZE)x$(YSIZE)/$$d.png"; done)
+#SVGTOOLBARICONS = $(shell for d in $(TOOLBARICONS); \
+#	do echo "$$d" | \
+#		sed -e 's,^,$(SVGICONDIR)/, ; s,$,.svg,'; \
+#	done | sort | uniq)
+
+UNIQUEICONS = $(shell  for d in $(ICONS); \
+	do echo "$$d"; done | sort | uniq )
+
+PNGICONS = $(shell for d in $(UNIQUEICONS); \
+	do echo "$(PNGSIZEICONDIR)/$$d.png"; done)
+
+
 
 icondatadir = $(pkgdatadir)/$(XSIZE)x$(YSIZE)
-ICONDATA = $(PNGTOOLBARICONS)
 # iconbaselist is copied from Automake generated variable am__base_list
 iconbaselist = \
   sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
@@ -50,16 +68,16 @@ CLEANFILES += Makefile.dep
 all-local: icons
 install-data-am: install-icons
 unintall-data-am: uninstall-icons
-icons: $(ICONS)
+icons: $(ICONDATA)
 
 Makefile.dep: Makefile
 	echo '# -*- Makefile -*-' > "$@"
-	for d in $(TOOLBARICONS); \
+	for d in $(UNIQUEICONS); \
 	do \
 		echo -e "@DST@: @SRC@\n\t\$$(INKSCAPE) -e \"\$$@\" -w $(XSIZE) -h $(YSIZE) \"\$$<\"" | \
 		sed \
--e 's&@DST@&$$(top_srcdir)/Images/Icons/png/$(XSIZE)x$(YSIZE)/'"$$d.png"'&g' \
--e 's&@SRC@&$$(top_srcdir)/Images/Icons/svg/'"$$d.svg"'&g' \
+-e 's&@DST@&$(PNGSIZEICONDIR)/'"$$d.png"'&g' \
+-e 's&@SRC@&$(SVGICONDIR)/'"$$d.svg"'&g' \
 		  >> "$@" ; \
 	done
 #< $(top_srcdir)/Images/depfilerule.prototype
