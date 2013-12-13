@@ -54,6 +54,7 @@
 #include "src/wxGUI/Routing/RouteLists.h"
 #include "src/wxGUI/MutRouteWnd.h"
 #include "src/wxGUI/MutFrame.h"
+#include "src/wxGUI/MutApp.h"
 #include "src/wxGUI/StatusBar.h"
 
 
@@ -501,10 +502,26 @@ namespace mutaborGUI {
 		r = NULL;
 	}
 
-	void GUIRouteBase::runtime_error(bool iswarning, const mutString& message, va_list & args) {
-		wxString error = wxString::FormatV(message,args);
-		wxMessageBox(error, iswarning?_("Warning"):_("Error"),
-			     wxOK | (iswarning?wxICON_WARNING:wxICON_ERROR) );
+	void GUIRouteBase::runtime_error(int type, const mutStringRef message, va_list & args) {
+		wxString msg = wxString::FormatV(message,args);
+		wxString head(mutabor::to_string((error_type)type));
+		msg = head + ": " + msg;
+#ifdef DEBUG
+		if (type == mutabor::internal_error) {
+			wxFAIL_MSG(msg);
+		}
+#endif
+		fprintf(stderr,"%s: %s\n",(const char *)head.ToUTF8(),(const char *)msg.ToUTF8());
+#ifdef DEBUG
+		fprintf(stderr,"%s:%d:\nIn order to debug this message you should watch mutaborGUI::BoxData::runtime_error.\n",
+			__FILE__,
+			__LINE__);
+#endif
+
+		wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, CM_PRINT_ERROR);
+		event.SetString(msg);
+		event.SetInt(type);
+		wxPostEvent(&wxGetApp(),event);
 	}
 
 
@@ -649,10 +666,26 @@ namespace mutaborGUI {
 		TRACEC;
 	}
 
-	void GUIOutputDeviceBase::runtime_error(bool iswarning, const mutString& message, va_list & args) {
-		wxString error = wxString::FormatV(message,args);
-		wxMessageBox(error, iswarning?_("Warning"):_("Error"),
-			     wxOK | (iswarning?wxICON_WARNING:wxICON_ERROR) );
+	void GUIOutputDeviceBase::runtime_error(int type, const mutString& message, va_list & args) {
+		wxString msg = wxString::FormatV(message,args);
+		wxString head(mutabor::to_string((mutabor::error_type)type));
+		msg = head + ": " + msg;
+#ifdef DEBUG
+		if (type == mutabor::internal_error) {
+			wxFAIL_MSG(msg);
+		}
+#endif
+		fprintf(stderr,"%s: %s\n",(const char *)head.ToUTF8(),(const char *)msg.ToUTF8());
+#ifdef DEBUG
+		fprintf(stderr,"%s:%d:\nIn order to debug this message you should watch mutaborGUI::BoxData::runtime_error.\n",
+			__FILE__,
+			__LINE__);
+#endif
+
+		wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, CM_PRINT_ERROR);
+		event.SetString(msg);
+		event.SetInt(type);
+		wxPostEvent(&wxGetApp(),event);
 	}
 
 
@@ -707,10 +740,26 @@ namespace mutaborGUI {
 		TRACEC;
 	}
 
-	void GUIInputDeviceBase::runtime_error(bool iswarning, const mutString& message, va_list & args) {
-		wxString error = wxString::FormatV(message,args);
-		wxMessageBox(error, iswarning?_("Warning"):_("Error"),
-			     wxOK | (iswarning?wxICON_WARNING:wxICON_ERROR) );
+	void GUIInputDeviceBase::runtime_error(int type, const mutString& message, va_list & args) {
+		wxString msg = wxString::FormatV(message,args);
+		wxString head(mutabor::to_string((mutabor::error_type)type));
+		msg = head + ": " + msg;
+#ifdef DEBUG
+		if (type == mutabor::internal_error) {
+			wxFAIL_MSG(msg);
+		}
+#endif
+		fprintf(stderr,"%s: %s\n",(const char *)head.ToUTF8(),(const char *)msg.ToUTF8());
+#ifdef DEBUG
+		fprintf(stderr,"%s:%d:\nIn order to debug this message you should watch mutaborGUI::BoxData::runtime_error.\n",
+			__FILE__,
+			__LINE__);
+#endif
+
+		wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, CM_PRINT_ERROR);
+		event.SetString(msg);
+		event.SetInt(type);
+		wxPostEvent(&wxGetApp(),event);
 	}
 
 	void GUIInputDeviceBase::NotifyShapes()

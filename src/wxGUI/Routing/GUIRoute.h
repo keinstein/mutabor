@@ -187,7 +187,7 @@ namespace mutaborGUI {
 		*/
 		MutBoxChannelShape * GetShape(wxWindow * parent);
 
-		virtual void runtime_error(bool iswarning, const mutString& message, va_list & args);
+		virtual void runtime_error(int type, const mutString& message, va_list & args);
 	};
 
 
@@ -265,12 +265,12 @@ namespace mutaborGUI {
 
 		virtual void Destroy();
 
-		virtual void  runtime_error(bool iswarning,
+		virtual void  runtime_error(int type,
 					    const mutString& message,
 					    va_list & args) {
-			GUIRouteBase::runtime_error(iswarning,
-						message,
-						args);
+			GUIRouteBase::runtime_error(type,
+						    message,
+						    args);
 		}
 	};
 
@@ -404,7 +404,7 @@ namespace mutaborGUI {
 
 		void Destroy();
 
-		virtual void runtime_error(bool iswarning, const mutString& message, va_list & args);
+		virtual void runtime_error(int type, const mutStringRef message, va_list & args);
 	};
 
 	template<class T>
@@ -441,10 +441,10 @@ namespace mutaborGUI {
 
 		virtual void DisconnectFromAll();
 		virtual	int MoveInList(int count);
-		virtual void  runtime_error(bool iswarning,
+		virtual void  runtime_error(int type,
 					    const mutString& message,
 					    va_list & args) {
-			GUIOutputDeviceBase::runtime_error(iswarning,
+			GUIOutputDeviceBase::runtime_error(type,
 							   message,
 							   args);
 		}
@@ -555,7 +555,7 @@ namespace mutaborGUI {
 		 */
 		virtual	void MoveToInList(int newpos);
 		void Destroy();
-		virtual void runtime_error(bool iswarning, const mutString& message, va_list & args);
+		virtual void runtime_error(int type, const mutStringRef message, va_list & args);
 	protected:
 		void NotifyShapes();
 	};
@@ -627,10 +627,10 @@ namespace mutaborGUI {
 
 		virtual void DisconnectFromAll();
 		virtual	int MoveInList(int count);
-		virtual void  runtime_error(bool iswarning,
+		virtual void  runtime_error(int type,
 					    const mutString& message,
 					    va_list & args) {
-			GUIInputDeviceBase::runtime_error(iswarning,
+			GUIInputDeviceBase::runtime_error(type,
 							  message,
 							  args);
 		}

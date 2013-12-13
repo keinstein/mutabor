@@ -810,7 +810,7 @@ namespace mutabor {
 			  route->GetActive(),
 			  (void*)route->GetOutputDevice().get());
 		Box box = route->GetBox();
-		BYTE MidiChannel = midiCode->at(0) & 0x0F + channel_offset;
+		BYTE MidiChannel = (midiCode->at(0) & 0x0F) + channel_offset;
 		BYTE MidiStatus  = midiCode->at(0) & 0xF0;
 		DEBUGLOG (midifile, _T("Status: %x"), MidiStatus);
 

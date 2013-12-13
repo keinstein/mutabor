@@ -40,13 +40,15 @@
 #include "src/kernel/routing/Device-inlines.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/kernel/routing/Route.h"
+#include "src/kernel/routing/Box.h"
 
 
 namespace mutabor {
 	template <> size_t idtype<Device>::idpool(0);
 
-	void Device::runtime_error(bool iswarning, const mutStringRef message, va_list & args) {
-		mutPrintf(_T("%s: "),(const mutChar *)(iswarning?_("Warning"):_("Error")));
+	void Device::runtime_error(int type, const mutStringRef message, va_list & args) {
+		mutString t = mutabor::to_string((mutabor::error_type)type);
+		mutPrintf(_T("%s: "),(const mutChar *)(t));
 		mutVPrintf(message,args);
 	}
 	

@@ -141,9 +141,15 @@ namespace mutabor {
 			}
 
 			ExitCode Entry() {
-				ExitCode e = file->ThreadPlay(this);
+				ExitCode e;
+				try {
+					e = file->ThreadPlay(this);
+				} catch (...) {
+					e =  file->exception_error();
+				}
 				return e;
 			}
+
 
 			void OnExit() {
 				mutASSERT(!IsDetached() || !file);
@@ -218,6 +224,14 @@ namespace mutabor {
 			threadkind = k;
 			return !timer;
 		}
+
+		/** 
+		 * Issue an error message and stop the device.
+		 * 
+		 * 
+		 * \return Error exit code.
+		 */
+		wxThread::ExitCode exception_error();
 
 		/** 
 		 * Play the file.

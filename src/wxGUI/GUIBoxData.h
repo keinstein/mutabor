@@ -263,8 +263,6 @@ namespace mutaborGUI {
 		}
 
 
-		/// Process an error message (doing the real work)
-		virtual void runtime_error(bool iswarning, const char * message);
 		
 		/// do the work for opening a box
 		virtual bool DoOpen();

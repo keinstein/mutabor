@@ -31,6 +31,9 @@
 #include "src/kernel/routing/CommonFileDevice.h"
 #include "src/kernel/routing/CommonFileDevice-inlines.h"
 #include "src/kernel/routing/Route-inlines.h"
+#include "src/kernel/routing/Box.h"
+
+#include <boost/exception/diagnostic_information.hpp>
 
 /// not for headers
 #ifdef __BORLANDC__
@@ -38,6 +41,16 @@
 #endif
 
 namespace mutabor {
+
+	wxThread::ExitCode CommonFileInputDevice::exception_error() {
+		mutString str = boost::current_exception_diagnostic_information();
+		runtime_error(mutabor::runtime_error,_("The playback thread has been killed.\n\
+Please report the error to the developers and include (if possible)\n	\
+the current file and the following information:\n%s"),(const char *)str.ToUTF8());
+		Stop();
+		Mode=DeviceKilled;
+		return (void *)Mode;
+	}
 
 
 #if __WXMSW__ && 0

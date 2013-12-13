@@ -110,6 +110,7 @@ namespace mutabor {
 /// Save current device settings in a tree storage
 /** \argument config (tree_storage) storage class, where the data will be saved.
  */
+
 	inline void CommonFileInputDevice::Save (tree_storage & config)
 	{
 #ifdef DEBUG
@@ -279,10 +280,14 @@ namespace mutabor {
 		case DeviceCompileError:
 		case DeviceTimingError:
 		case DeviceUnregistered:
+		case DeviceKilled:
 			DEBUGLOG(timer,
 				 _T("Returnung due to device error."));
 			starting = false; 
 			return;
+		case DeviceInitializing: 
+			// this will eventually change to DeviceStop
+			// DevicePause case will wait until the device is initialized.
 		case DeviceStop:
 			referenceTime = 0;
 			pauseTime = 0;
@@ -389,6 +394,7 @@ namespace mutabor {
 	}
 #endif
 
+
 	/* we use microseconds as errors sum up */
 	inline wxThread::ExitCode
 	CommonFileInputDevice::ThreadPlay(FileTimer * thistimer)
@@ -482,7 +488,7 @@ namespace mutabor {
 				reference = referenceTime;
 				ResumeKeys();
 			} else if (thistimer -> TestDestroy()) {
-				return (void *) (Mode + 0x100);
+				return (void *) (Mode + (size_t)0x100);
 			}
 			mutASSERT(IsDelta(nextEvent));
 			if (!delta && IsDelta(nextEvent)) {

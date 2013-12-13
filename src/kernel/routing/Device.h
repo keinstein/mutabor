@@ -78,7 +78,8 @@ namespace mutabor {
 		DevicePlay,              //< Playback is running
 		DevicePause,             //< Playback is paused
 		DeviceCompileError,      //< Error while compiling/decoding the file (file propably corrupted)
-		DeviceTimingError        //< Timing problems e.g. backwards runnig time in a file.
+		DeviceTimingError,       //< Timing problems e.g. backwards runnig time in a file. May be reset after Stop()
+		DeviceKilled             //< A problem that makes the device (probably) unusable.
 	};
 
 	extern char InDevChanged;
@@ -429,14 +430,14 @@ namespace mutabor {
 		}
 
 		/// Process an error message
-		void runtime_error(bool iswarning, mutString message, ...) {
+		void runtime_error(int type, mutString message, ...) {
 			va_list args;
 			va_start(args,message);
-			runtime_error(iswarning,message,args);
+			runtime_error(type,message,args);
 		}
 
 		/// Process an error message (doing the real work)
-		virtual void runtime_error(bool iswarning, const mutString & message, va_list & args);
+		virtual void runtime_error(int type, const mutStringRef message, va_list & args);
 
 
 		const wxString & GetName() const {
@@ -834,7 +835,7 @@ namespace mutabor {
 		struct current_keys_type {
 			struct entry {
 				int key;
-				int unique_id;
+				size_t unique_id;
 				int velocity;
 				Route route;
 				InputDevice device;
@@ -988,6 +989,7 @@ namespace mutabor {
 		}
 		//	  virtual frac ReadOn(frac time) = 0;
 
+		
 
 		virtual bool NeedsRealTime() {
 			return false;
@@ -1295,6 +1297,7 @@ namespace mutabor {
 
 
 //	void OutNotesCorrect(mutabor_box_type *  box);
+
 
 	bool OutOpen();
 

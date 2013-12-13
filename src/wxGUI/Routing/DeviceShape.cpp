@@ -297,6 +297,7 @@ namespace mutaborGUI {
 			case DevicePause:
 				hidePause = true;
 				break;
+			case DeviceKilled:
 			case DeviceUnregistered:
 			case DeviceInitializing:
 			case DeviceCompileError:

@@ -274,13 +274,6 @@ namespace mutaborGUI {
 	}
 #endif
 
-	void BoxData::runtime_error(bool iswarning, const char * message) {
-		wxString str = wxString::FromUTF8(message);
-		wxMessageBox(str, iswarning?_("Warning"):_("Error"), 
-			     wxOK | (iswarning?wxICON_WARNING:wxICON_ERROR) );
-	}
-
-
 	bool BoxData::DoOpen() 
 	{
 		mutASSERT(editor);

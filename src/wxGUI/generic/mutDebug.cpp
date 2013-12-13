@@ -83,9 +83,10 @@ void debugFlags::InitCommandLine(wxCmdLineParser&  parser)
 void debugFlags::ProcessCommandLine(wxCmdLineParser&  parser) 
 {
 #define DEBUGFLAG(flag,description) \
-  debugFlags::flags.flag = parser.Found(_T("debug-"#flag));
+	debugFlags::flags.flag = parser.Found(_T("debug-"#flag));
 #include "mutDebugFlags.h"
 #undef DEBUGFLAG	
+	debugFlags::flags.always = true;
 }
 
 debugMutex debugmutex;
