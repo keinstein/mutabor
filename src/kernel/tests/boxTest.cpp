@@ -25,6 +25,7 @@
  * \addtogroup kernel
  * \{
  ********************************************************************/
+#include "src/kernel/Defs.h"
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/portability/Stream.h>
 #include "src/kernel/tests/boxTest.h"

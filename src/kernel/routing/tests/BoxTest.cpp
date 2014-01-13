@@ -29,7 +29,7 @@
 #include "src/kernel/box.h"
 #include "src/kernel/routing/tests/BoxTest.h"
 #include "src/wxGUI/generic/muconvauto.h"
-#include "wx/ffile.h"
+#include "wx/file.h"
 #include <stdarg.h>
 /// not for headers
 #ifdef __BORLANDC__
@@ -134,7 +134,7 @@ void BoxTest::tearDown()
 
 void BoxTest::testParser() {
 	MyCompileCallback callback;
-	mutabor::Box Box0 = mutabor::BoxFactory::Create(mutabor::Box0,mutabor::BoxClass::GetNextFreeBox());
+	mutabor::ScopedBox Box0 = mutabor::BoxFactory::Create(mutabor::Box0,mutabor::BoxClass::GetNextFreeBox());
 	char * logic_string;
 	CPPUNIT_ASSERT(Box0->Compile(&callback, ""));
 
@@ -157,9 +157,9 @@ void BoxTest::testParser() {
 
 void BoxTest::testCopyPLay() {
 	MyCompileCallback callback;
-	mutabor::Box Box0 = mutabor::BoxFactory::Create(mutabor::Box0,mutabor::BoxClass::GetNextFreeBox());
-	mutabor::Box Box1 = mutabor::BoxFactory::Create(mutabor::Box0,mutabor::BoxClass::GetNextFreeBox());
-	mutabor::Box Box2 = mutabor::BoxFactory::Create(mutabor::Box0,mutabor::BoxClass::GetNextFreeBox());
+	mutabor::ScopedBox Box0 = mutabor::BoxFactory::Create(mutabor::Box0,mutabor::BoxClass::GetNextFreeBox());
+	mutabor::ScopedBox Box1 = mutabor::BoxFactory::Create(mutabor::Box0,mutabor::BoxClass::GetNextFreeBox());
+	mutabor::ScopedBox Box2 = mutabor::BoxFactory::Create(mutabor::Box0,mutabor::BoxClass::GetNextFreeBox());
 	char * logic_string;
 
 

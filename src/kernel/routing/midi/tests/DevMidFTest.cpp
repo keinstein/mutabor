@@ -55,7 +55,7 @@ void  InputMidiFileTest::testBatchPlay1()
 
 	mutabor::ScopedOutputDevice guard;
 	midicmnOutputDevice * out;
-	mutabor::ScopedBox box;
+	mutabor::ScopedBox box(NULL);
 	mutabor::ScopedRoute  route;
 	mutabor::ChannelData cd;
 
@@ -222,22 +222,7 @@ void  InputMidiFileTest::testBatchPlay1()
 //	mutabor::InputDeviceClass::BatchPlay();
 	in -> Play();
 	mutint64 delta = in -> PrepareNextEvent();
-	CPPUNIT_ASSERT(out->Check(_T("0   0: b0 7b 00\n\
-0   1: b1 7b 00\n\
-0   2: b2 7b 00\n\
-0   3: b3 7b 00\n\
-0   4: b4 7b 00\n\
-0   5: b5 7b 00\n\
-0   6: b6 7b 00\n\
-0   7: b7 7b 00\n\
-0   8: b8 7b 00\n\
-0   9: b9 7b 00\n\
-0  10: ba 7b 00\n\
-0  11: bb 7b 00\n\
-0  12: bc 7b 00\n\
-0  13: bd 7b 00\n\
-0  14: be 7b 00\n\
-0  15: bf 7b 00\n\
+	CPPUNIT_ASSERT(out->Check(_T("\
 0   0: c0 4f\n\
 0   0: 90 3c 7f\n"),__LINE__,_T(__FILE__)));
 
@@ -407,22 +392,6 @@ void  InputMidiFileTest::testBatchPlay1()
 0  15: bf 64 00\n\
 0  15: bf 06 02\n\
 0  15: bf 26 00\n\
-0   0: b0 7b 00\n\
-0   1: b1 7b 00\n\
-0   2: b2 7b 00\n\
-0   3: b3 7b 00\n\
-0   4: b4 7b 00\n\
-0   5: b5 7b 00\n\
-0   6: b6 7b 00\n\
-0   7: b7 7b 00\n\
-0   8: b8 7b 00\n\
-0   9: b9 7b 00\n\
-0  10: ba 7b 00\n\
-0  11: bb 7b 00\n\
-0  12: bc 7b 00\n\
-0  13: bd 7b 00\n\
-0  14: be 7b 00\n\
-0  15: bf 7b 00\n\
 0   0: c0 4f\n\
 0   0: 90 3c 7f\n\
 49920   1: c1 4f\n\
@@ -570,22 +539,6 @@ void  InputMidiFileTest::testBatchPlay1()
 0  15: bf 64 00\n\
 0  15: bf 06 02\n\
 0  15: bf 26 00\n\
-0   0: b0 7b 00\n\
-0   1: b1 7b 00\n\
-0   2: b2 7b 00\n\
-0   3: b3 7b 00\n\
-0   4: b4 7b 00\n\
-0   5: b5 7b 00\n\
-0   6: b6 7b 00\n\
-0   7: b7 7b 00\n\
-0   8: b8 7b 00\n\
-0   9: b9 7b 00\n\
-0  10: ba 7b 00\n\
-0  11: bb 7b 00\n\
-0  12: bc 7b 00\n\
-0  13: bd 7b 00\n\
-0  14: be 7b 00\n\
-0  15: bf 7b 00\n\
 0   0: c0 4f\n\
 0   0: 90 3c 7f\n\
 49920   1: c1 4f\n\
@@ -618,7 +571,7 @@ void  InputMidiFileTest::testBug019010_2()
 
 	mutabor::ScopedOutputDevice guard;
 	midicmnOutputDevice * out;
-	mutabor::ScopedBox box;
+	mutabor::ScopedBox box(NULL);
 	mutabor::ScopedRoute  route;
 	mutabor::ChannelData cd;
 
@@ -814,10 +767,8 @@ void  InputMidiFileTest::testBug019010_2()
 
 	delta = in -> PrepareNextEvent();
 	DEBUGLOG(midiio,_T("delta = %d"),delta);
-	CPPUNIT_ASSERT(out->Check(_T("\
-0   0: b0 40 00\n\
-0   0: 90 3c 7f\n\
-"),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(out->Check(_T("0   0: 90 3c 7f\n"),
+				  __LINE__,_T(__FILE__)));
 	CPPUNIT_ASSERT(delta == 6287200);
 
 	delta = in -> PrepareNextEvent();
@@ -843,7 +794,6 @@ void  InputMidiFileTest::testBug019010_2()
 	delta = in -> PrepareNextEvent();
 	DEBUGLOG(midiio,_T("delta = %d"),delta);
 	CPPUNIT_ASSERT(out->Check(_T("\
-0   1: b1 40 00\n\
 0   1: 91 40 1f\n\
 "),__LINE__,_T(__FILE__)));
 	CPPUNIT_ASSERT(delta == 10330000);
@@ -858,7 +808,6 @@ void  InputMidiFileTest::testBug019010_2()
 	delta = in -> PrepareNextEvent();
 	DEBUGLOG(midiio,_T("delta = %d"),delta);
 	CPPUNIT_ASSERT(out->Check(_T("\
-0   2: b2 40 00\n\
 0   2: 92 43 3f\n\
 "),__LINE__,_T(__FILE__)));
 	CPPUNIT_ASSERT(delta == 10330000);
@@ -876,7 +825,6 @@ void  InputMidiFileTest::testBug019010_2()
 	delta = in -> PrepareNextEvent();
 	DEBUGLOG(midiio,_T("delta = %d"),delta);
 	CPPUNIT_ASSERT(out->Check(_T("\
-0   3: b3 40 00\n\
 0   3: 93 34 7f\n\
 "),__LINE__,_T(__FILE__)));
 	CPPUNIT_ASSERT(delta == 200000);
@@ -959,7 +907,7 @@ void  InputMidiFileTest::testBug019010()
 
 	mutabor::ScopedOutputDevice guard;
 	midicmnOutputDevice * out;
-	mutabor::ScopedBox box;
+	mutabor::ScopedBox box(NULL);
 	mutabor::ScopedRoute  route;
 	mutabor::ChannelData cd;
 
@@ -1121,15 +1069,11 @@ void  InputMidiFileTest::testBug019010()
 0  15: bf 64 00\n\
 0  15: bf 06 02\n\
 0  15: bf 26 00\n\
-21711080   0: b0 40 00\n\
 21711080   0: 90 3c 7f\n\
-32310240   1: b1 40 00\n\
 32310240   1: 91 40 1f\n\
 42640240   1: 81 40 40\n\
-52970240   2: b2 40 00\n\
 52970240   2: 92 43 3f\n\
 63300240   2: 82 43 40\n\
-77209720   3: b3 40 00\n\
 77209720   3: 93 34 7f\n\
 90738200   3: 83 34 40\n\
 104248200   0: 80 3c 7f\n\
@@ -1270,15 +1214,11 @@ void  InputMidiFileTest::testBug019010()
 0  15: bf 64 00\n\
 0  15: bf 06 02\n\
 0  15: bf 26 00\n\
-21711080   0: b0 40 00\n\
 21711080   0: 90 3c 7f\n\
-32310240   1: b1 40 00\n\
 32310240   1: 91 40 1f\n\
 42640240   1: 81 40 40\n\
-52970240   2: b2 40 00\n\
 52970240   2: 92 43 3f\n\
 63300240   2: 82 43 40\n\
-77209720   3: b3 40 00\n\
 77209720   3: 93 34 7f\n\
 90738200   3: 83 34 40\n\
 104248200   0: 80 3c 7f\n\
@@ -1678,9 +1618,8 @@ void  OutputMidiFileTest::testBatchPlay1()
 	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
 
 	CheckStr = _T(" 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 1d 00 ff  51 03 07 d0 00 00 ff 58   rk……………… Q………………X\n") 
-		+ DataStr + _T(" 02 00 bf 26 00 81 a9 4f  b0 40 00 00 90 3c 7f 00   ………&………O …@………<……\n\
- ff 2f 00                                           …/…\n");
+ 72 6b 00 00 02 19 00 ff  51 03 07 d0 00 00 ff 58   rk……………… Q………………X\n") 
+		+ DataStr + _T(" 02 00 bf 26 00 81 a9 4f  90 3c 7f 00 ff 2f 00      ………&………O …<………/…\n");
 
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
 	CPPUNIT_ASSERT(delta == 6287200);
@@ -1714,11 +1653,11 @@ void  OutputMidiFileTest::testBatchPlay1()
 	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
 
 
-	DataStr += _T(" 02 00 bf 26 00 81 a9 4f  b0 40 00 00 90 3c 7f d2   ………&………O …@………<……\n");
+	DataStr += _T(" 02 00 bf 26 00 81 a9 4f  90 3c 7f d2 67 91 40 1f   ………&………O …<……g…@…\n");
 
 	CheckStr = _T(" 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 26 00 ff  51 03 07 d0 00 00 ff 58   rk………&…… Q………………X\n") 
-		+ DataStr + _T(" 67 b1 40 00 00 91 40 1f  00 ff 2f 00               g…@………@… ……/…\n");
+ 72 6b 00 00 02 1e 00 ff  51 03 07 d0 00 00 ff 58   rk……………… Q………………X\n") 
+		+ DataStr + _T(" 00 ff 2f 00                                        ……/…\n");
 
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
 	CPPUNIT_ASSERT(delta == 10330000);
@@ -1728,9 +1667,8 @@ void  OutputMidiFileTest::testBatchPlay1()
 	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
 
 	CheckStr = _T(" 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 2b 00 ff  51 03 07 d0 00 00 ff 58   rk………+…… Q………………X\n") 
-		+ DataStr + _T(" 67 b1 40 00 00 91 40 1f  d0 5a 81 40 40 00 ff 2f   g…@………@… …Z…@@……/\n\
- 00                                                 …\n");
+ 72 6b 00 00 02 23 00 ff  51 03 07 d0 00 00 ff 58   rk………#…… Q………………X\n") 
+		+ DataStr + _T(" d0 5a 81 40 40 00 ff 2f  00                        …Z…@@……/ …\n");
 
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
 	CPPUNIT_ASSERT(delta == 10330000);
@@ -1738,11 +1676,10 @@ void  OutputMidiFileTest::testBatchPlay1()
 
 	delta = in -> PrepareNextEvent();
 	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
-	DataStr += _T(" 67 b1 40 00 00 91 40 1f  d0 5a 81 40 40 d0 5a b2   g…@………@… …Z…@@…Z…\n");
 
 	CheckStr = _T(" 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 34 00 ff  51 03 07 d0 00 00 ff 58   rk………4…… Q………………X\n") 
-		+ DataStr + _T(" 40 00 00 92 43 3f 00 ff  2f 00                     @………C?…… /…\n");
+ 72 6b 00 00 02 28 00 ff  51 03 07 d0 00 00 ff 58   rk………(…… Q………………X\n") 
+		+ DataStr + _T(" d0 5a 81 40 40 d0 5a 92  43 3f 00 ff 2f 00         …Z…@@…Z… C?……/…\n");
 
 
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
@@ -1752,8 +1689,10 @@ void  OutputMidiFileTest::testBatchPlay1()
 	delta = in -> PrepareNextEvent();
 	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
 	CheckStr = _T(" 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 39 00 ff  51 03 07 d0 00 00 ff 58   rk………9…… Q………………X\n") 
-		+ DataStr + _T(" 40 00 00 92 43 3f d0 5a  82 43 40 00 ff 2f 00      @………C?…Z …C@……/…\n");
+ 72 6b 00 00 02 2d 00 ff  51 03 07 d0 00 00 ff 58   rk………-…… Q………………X\n") 
+		+ DataStr + _T("\
+ d0 5a 81 40 40 d0 5a 92  43 3f d0 5a 82 43 40 00   …Z…@@…Z… C?…Z…C@…\n\
+ ff 2f 00                                           …/…\n");
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
 	CPPUNIT_ASSERT(delta == 7809480);
 	mutabor::CurrentTime += delta;
@@ -1767,10 +1706,10 @@ void  OutputMidiFileTest::testBatchPlay1()
 	delta = in -> PrepareNextEvent();
 	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
 
-	DataStr += _T(" 40 00 00 92 43 3f d0 5a  82 43 40 ec 56 b3 40 00   @………C?…Z …C@…V…@…\n");
+	DataStr += _T(" d0 5a 81 40 40 d0 5a 92  43 3f d0 5a 82 43 40 ec   …Z…@@…Z… C?…Z…C@…\n");
 	CheckStr = _T(" 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 42 00 ff  51 03 07 d0 00 00 ff 58   rk………B…… Q………………X\n") 
-		+ DataStr + _T(" 00 93 34 7f 00 ff 2f 00                            ……4………/…\n");
+ 72 6b 00 00 02 32 00 ff  51 03 07 d0 00 00 ff 58   rk………2…… Q………………X\n") 
+		+ DataStr + _T(" 56 93 34 7f 00 ff 2f 00                            V…4………/…\n");
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
 	CPPUNIT_ASSERT(delta == 200000);
 	mutabor::CurrentTime += delta;
@@ -1833,8 +1772,8 @@ void  OutputMidiFileTest::testBatchPlay1()
 	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
 
 	CheckStr = _T(" 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 47 00 ff  51 03 07 d0 00 00 ff 58   rk………G…… Q………………X\n") 
-		+ DataStr + _T(" 00 93 34 7f e9 58 83 34  40 00 ff 2f 00            ……4……X…4 @……/…\n");
+ 72 6b 00 00 02 37 00 ff  51 03 07 d0 00 00 ff 58   rk………7…… Q………………X\n") 
+		+ DataStr + _T(" 56 93 34 7f e9 58 83 34  40 00 ff 2f 00            V…4……X…4 @……/…\n");
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
 	CPPUNIT_ASSERT(delta == 13510000);
 	mutabor::CurrentTime += delta;
@@ -1842,8 +1781,8 @@ void  OutputMidiFileTest::testBatchPlay1()
 	delta = in -> PrepareNextEvent();
 	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
 	CheckStr = _T(" 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 4c 00 ff  51 03 07 d0 00 00 ff 58   rk………L…… Q………………X\n") 
-		+ DataStr + _T(" 00 93 34 7f e9 58 83 34  40 e9 46 80 3c 7f 00 ff   ……4……X…4 @…F…<………\n\
+ 72 6b 00 00 02 3c 00 ff  51 03 07 d0 00 00 ff 58   rk………<…… Q………………X\n") 
+		+ DataStr + _T(" 56 93 34 7f e9 58 83 34  40 e9 46 80 3c 7f 00 ff   V…4……X…4 @…F…<………\n\
  2f 00                                              /…\n");
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
 	CPPUNIT_ASSERT(delta == MUTABOR_NO_DELTA);
@@ -1877,7 +1816,7 @@ void  OutputMidiFileTest::testBatchPlay1()
 
 	CheckStr = _T("\
  4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 0e 73 00 ff  51 03 07 d0 00 00 ff 58   rk………s…… Q………………X\n\
+ 72 6b 00 00 02 33 00 ff  51 03 07 d0 00 00 ff 58   rk………3…… Q………………X\n\
  04 04 02 18 08 00 e0 00  40 00 b0 7a 00 00 b0 7d   …………………… @……z………}\n\
  00 00 b0 7f 00 00 b0 65  00 00 b0 64 00 00 b0 06   …………………e ………d…………\n\
  02 00 b0 26 00 00 e1 00  40 00 b1 7a 00 00 b1 7d   ………&………… @……z………}\n\
@@ -1910,204 +1849,8 @@ void  OutputMidiFileTest::testBatchPlay1()
  00 00 be 7f 00 00 be 65  00 00 be 64 00 00 be 06   …………………e ………d…………\n\
  02 00 be 26 00 00 ef 00  40 00 bf 7a 00 00 bf 7d   ………&………… @……z………}\n\
  00 00 bf 7f 00 00 bf 65  00 00 bf 64 00 00 bf 06   …………………e ………d…………\n\
- 02 00 bf 26 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………&………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 7b  00 00 b1 7b 00 00 b2 7b   ………{………{ ………{………{\n\
- 00 00 b3 7b 00 00 b4 7b  00 00 b5 7b 00 00 b6 7b   ………{………{ ………{………{\n\
- 00 00 b7 7b 00 00 b8 7b  00 00 b9 7b 00 00 ba 7b   ………{………{ ………{………{\n\
- 00 00 bb 7b 00 00 bc 7b  00 00 bd 7b 00 00 be 7b   ………{………{ ………{………{\n\
- 00 00 bf 7b 00 00 b0 40  00 00 90 3c 7f 00 b0 7a   ………{………@ ………<………z\n\
- 00 00 b0 7d 00 00 b0 7f  00 00 b0 40 40 00 b1 40   ………}………… ………@@……@\n\
- 00 00 91 40 1f 00 b1 7a  00 00 b1 7d 00 00 b1 7f   ………@………z ………}…………\n\
- 00 00 81 40 40 00 b2 40  00 00 92 43 3f 00 b2 7a   ………@@……@ ………C?……z\n\
- 00 00 b2 7d 00 00 b2 7f  00 00 82 43 40 00 b3 40   ………}………… ………C@……@\n\
- 00 00 93 34 7f 00 b3 7d  00 00 b3 7f 00 00 83 34   ………4………} …………………4\n\
+ 02 00 bf 26 00 00 90 3c  7f 00 91 40 1f 00 81 40   ………&………< ………@………@\n\
+ 40 00 92 43 3f 00 82 43  40 00 93 34 7f 00 83 34   @……C?……C @……4………4\n\
  40 00 80 3c 7f 00 ff 2f  00                        @……<………/ …\n");
 
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));

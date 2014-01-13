@@ -798,6 +798,9 @@ namespace mutabor {
 				get()->Destroy();
 		}
 
+		ScopedBox(BoxClass * rhs):Box(rhs) {}
+		ScopedBox(const Box & rhs):Box(rhs) {}
+
 		ScopedBox & operator = (BoxClass * rhs) {
 			(*(static_cast<Box *>(this))) = rhs;
 			return *this;

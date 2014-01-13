@@ -63,13 +63,13 @@ public:
 
 	void testGetNextFreeBox() 
 	{ 	  
-		mutabor::Box Box0 = mutabor::BoxFactory::Create(mutabor::Box0,mutabor::BoxClass::GetNextFreeBox());
+		mutabor::ScopedBox Box0 = mutabor::BoxFactory::Create(mutabor::Box0,mutabor::BoxClass::GetNextFreeBox());
 		CPPUNIT_ASSERT( Box0->get_routefile_id() == 0 );
-		mutabor::Box Box1 = mutabor::BoxFactory::Create(mutabor::Box0);
+		mutabor::ScopedBox Box1 = mutabor::BoxFactory::Create(mutabor::Box0);
 		CPPUNIT_ASSERT( Box1->get_routefile_id() == 1 );
-		mutabor::Box Box2 = mutabor::BoxFactory::Create(mutabor::Box0,5);
+		mutabor::ScopedBox Box2 = mutabor::BoxFactory::Create(mutabor::Box0,5);
 		CPPUNIT_ASSERT( Box2->get_routefile_id() == 5 );
-		mutabor::Box Box3 = mutabor::BoxFactory::Create(mutabor::Box0);
+		mutabor::ScopedBox Box3 = mutabor::BoxFactory::Create(mutabor::Box0);
 		CPPUNIT_ASSERT( Box3->get_routefile_id() == 6 );
 		Box1->Destroy();
 		Box1=NULL;
@@ -79,14 +79,9 @@ public:
 		CPPUNIT_ASSERT( Box1->get_routefile_id() == 4 );
 		Box2 = mutabor::BoxFactory::Create(mutabor::Box0);
 		CPPUNIT_ASSERT( Box2->get_routefile_id() == 7 );
-		mutabor::Box Box4 = mutabor::BoxFactory::Create(mutabor::Box0,5);
+		mutabor::ScopedBox Box4 = mutabor::BoxFactory::Create(mutabor::Box0,5);
 		CPPUNIT_ASSERT( Box4->get_routefile_id() == 5 );
 		CPPUNIT_ASSERT( mutabor::BoxClass::GetNextFreeBox() == 8);
-		Box0->Destroy();
-		Box1->Destroy();
-		Box2->Destroy();
-		Box3->Destroy();
-		Box4->Destroy();
 	}
 
 	void testParser();

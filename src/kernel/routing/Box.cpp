@@ -81,15 +81,18 @@ namespace mutabor {
 		// if there are remaining pointers we have other problems.
 		DEBUGLOG(routing,_T("this = %p"),(void*)this);
 		if (open) Close();
-#ifdef Debug
-		listttype::iterator i = FindInBoxList(this);
+#ifdef DEBUG
+		// prevent from endless destroy loop
+		intrusive_ptr_add_ref(this);
+		intrusive_ptr_add_ref(this);
+		BoxListType::iterator i = FindInBoxList(this);
 		if (i != boxList.end()) {
 			UNREACHABLEC;
-			deviceList.erase(i);
+			//		boxList.erase(i);
 		}
 #endif
-		debug_destruct_class(this);
 		TRACEC;
+		debug_destruct_class(this);
 		if (box) free(box);
 	}
 
@@ -279,6 +282,7 @@ namespace mutabor {
 	void BoxClass::AppendToBoxList (Box b)
 	{
 #ifdef DEBUG
+		print_stacktrace();
 		typename listtype::iterator i =
 			FindInBoxList(b);
 		if (i != boxList.end()) {

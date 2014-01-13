@@ -39,7 +39,7 @@ void CommonMidiOutputTest::setUp()
 // change DEBUGA to DEBUG in case you need the debug output
 #ifdef DEBUG
 //	debugFlags::flags.timer = true;
-	debugFlags::flags.midiio = true;
+//	debugFlags::flags.midiio = true;
 #endif
 	CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
 	CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
@@ -75,7 +75,7 @@ void CommonMidiOutputTest::tearDown()
 	CPPUNIT_ASSERT(mutabor::BoxClass::GetBoxList().empty());
 #ifdef DEBUG
 //	debugFlags::flags.timer = false;
-	debugFlags::flags.midiio = false;
+//	debugFlags::flags.midiio = false;
 #endif
 }
 
@@ -546,7 +546,7 @@ void CommonMidiInputTest::setUp()
 // change DEBUGA to DEBUG in case you need the debug input
 #ifdef DEBUG
 //	debugFlags::flags.timer = true;
-	debugFlags::flags.midiio = true;
+//	debugFlags::flags.midiio = true;
 #endif
 	std::clog << "Running setUp()" << std::endl;
 
@@ -894,19 +894,19 @@ void CommonMidiInputTest::testPanic()
 	in->NoteOff(0,63,55);
 	CPPUNIT_ASSERT( out->Check(_T("  0: 80 3f 37\n"), __LINE__, _T(__FILE__) ) );
 
-	in->Panic();
-	CPPUNIT_ASSERT( out->Check(_T("  2: 82 3c 40\n"
-				      "  3: 83 3f 40\n"
-				      "  4: 84 3f 40\n"
-				      "  5: 85 3c 40\n"
-				      "  6: 86 3c 40\n"
-				      "  8: 88 3f 40\n"
-				      " 10: 8a 3f 40\n"
-				      " 11: 8b 38 40\n"
-				      " 12: 8c 3c 40\n"
-				      " 13: 8d 3c 40\n"
-				      " 14: 8e 3f 40\n"
-				      " 15: 8f 38 40\n"), 
+	in->Panic(mutabor::midi::DEFAULT_PANIC);
+	CPPUNIT_ASSERT( out->Check(_T("  3: 83 3f 62\n"
+				      "  4: 84 3f 62\n"
+				      "  8: 88 3f 62\n"
+				      " 10: 8a 3f 62\n"
+				      " 14: 8e 3f 62\n"
+				      "  2: 82 3c 61\n"
+				      "  5: 85 3c 61\n"
+				      "  6: 86 3c 61\n"
+				      " 12: 8c 3c 61\n"
+				      " 13: 8d 3c 61\n"
+				      " 11: 8b 38 60\n"
+				      " 15: 8f 38 60\n"), 
 				   __LINE__, 
 				   _T(__FILE__) ) );
 
@@ -1250,35 +1250,35 @@ void CommonMidiInputTest::testGlobalPanic()
 	in->NoteOff(0,63,55);
 	CPPUNIT_ASSERT( out->Check(_T("  0: 80 3f 37\n"), __LINE__, _T(__FILE__) ) );
 
-	mutabor::Panic();
-	CPPUNIT_ASSERT( out->Check(_T("  2: 82 3c 40\n"
-				      "  3: 83 3f 40\n"
-				      "  4: 84 3f 40\n"
-				      "  5: 85 3c 40\n"
-				      "  6: 86 3c 40\n"
-				      "  8: 88 3f 40\n"
-				      " 10: 8a 3f 40\n"
-				      " 11: 8b 38 40\n"
-				      " 12: 8c 3c 40\n"
-				      " 13: 8d 3c 40\n"
-				      " 14: 8e 3f 40\n"
-				      " 15: 8f 38 40\n"
-				      "  0: b0 7b 00\n"
-				      "  1: b1 7b 00\n"
-				      "  2: b2 7b 00\n"
-				      "  3: b3 7b 00\n"
-				      "  4: b4 7b 00\n"
-				      "  5: b5 7b 00\n"
-				      "  6: b6 7b 00\n"
-				      "  7: b7 7b 00\n"
-				      "  8: b8 7b 00\n"
-				      "  9: b9 7b 00\n"
-				      " 10: ba 7b 00\n"
-				      " 11: bb 7b 00\n"
-				      " 12: bc 7b 00\n"
-				      " 13: bd 7b 00\n"
-				      " 14: be 7b 00\n"
-				      " 15: bf 7b 00\n"), 
+	mutabor::Panic(mutabor::midi::DEFAULT_PANIC);
+	CPPUNIT_ASSERT( out->Check(_T("  3: 83 3f 62\n"
+				      "  4: 84 3f 62\n"
+				      "  8: 88 3f 62\n"
+				      " 10: 8a 3f 62\n"
+				      " 14: 8e 3f 62\n"
+				      "  2: 82 3c 61\n"
+				      "  5: 85 3c 61\n"
+				      "  6: 86 3c 61\n"
+				      " 12: 8c 3c 61\n"
+				      " 13: 8d 3c 61\n"
+				      " 11: 8b 38 60\n"
+				      " 15: 8f 38 60\n"
+				      "  0: b0 78 00\n"
+				      "  1: b1 78 00\n"
+				      "  2: b2 78 00\n"
+				      "  3: b3 78 00\n"
+				      "  4: b4 78 00\n"
+				      "  5: b5 78 00\n"
+				      "  6: b6 78 00\n"
+				      "  7: b7 78 00\n"
+				      "  8: b8 78 00\n"
+				      "  9: b9 78 00\n"
+				      " 10: ba 78 00\n"
+				      " 11: bb 78 00\n"
+				      " 12: bc 78 00\n"
+				      " 13: bd 78 00\n"
+				      " 14: be 78 00\n"
+				      " 15: bf 78 00\n"), 
 				   __LINE__, 
 				   _T(__FILE__) ) );
 

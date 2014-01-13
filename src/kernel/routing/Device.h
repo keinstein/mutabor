@@ -924,6 +924,10 @@ namespace mutabor {
 				map.clear();
 			}
 
+			void rehash(size_t n) {
+				map.rehash(n);
+			}
+
 
 			iterator begin() { return map.begin(); }
 			const_iterator begin() const { return map.begin(); }

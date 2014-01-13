@@ -148,7 +148,8 @@ int main(int argc, char **argv)
 	}
 
 	mutabor::InitDeviceFactories();
-	mutabor::InputDevice in(new myDevice());
+	mutabor::ScopedInputDevice in;
+	in = (new myDevice());
 //	mutabor::InputDevice in(mutabor::DeviceFactory::CreateInput(mutabor::DTMidiFile));
 	if (!in) {
 		std::clog << "Class construction failed." << std::endl;

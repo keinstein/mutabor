@@ -25,6 +25,7 @@
  * \addtogroup tests
  * \{
  ********************************************************************/
+#include "src/kernel/Defs.h"
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/portability/Stream.h>
 //#include "src/kernel/Runtime.h"
@@ -64,7 +65,7 @@ void GUIRouteTest::testConnect()
 	ScopedOutputDevice out1, out2;
 	ScopedRoute r1, r2;
 	ScopedInputDevice in1, in2;
-	ScopedBox MyNoBox;
+	ScopedBox MyNoBox(NULL);
 
 	std::auto_ptr<wxWindow> parent(new wxFrame(0,wxID_ANY,_T("Test")));
 	MutRouteWnd * wnd;

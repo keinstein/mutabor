@@ -78,15 +78,15 @@ public:
 	void Save(mutabor::tree_storage&, const mutabor::RouteClass*) {}
 	void Load(mutabor::tree_storage&) {}
 	void Load(mutabor::tree_storage&, mutabor::RouteClass*) {}
-	void AddTime(frac) {}
+	void do_AddTime(frac) {}
 	int GetMaxChannel() const { return 15; }
 	int GetMinChannel() const { return 0; }
 	bool Check(mutString s,int line = -1, mutString filename = _T(__FILE__)) {
 		bool retval = (s == (mutString)Out);
 		if (!retval) {
-			DEBUGLOG(midiio,_T("Check failed:\n%s:%d:"),filename.c_str(),line);
-			DEBUGLOG(midiio,_T("Expected:\n%s"),s.c_str());
-			DEBUGLOG(midiio,_T("Got:\n%s"), mutString(Out).c_str());
+			DEBUGLOG(always,_T("Check failed:\n%s:%d:"),filename.c_str(),line);
+			DEBUGLOG(always,_T("Expected:\n%s"),s.c_str());
+			DEBUGLOG(always,_T("Got:\n%s"), mutString(Out).c_str());
 		}
 		Out.ClearData();
 //		retval = true;
@@ -135,7 +135,12 @@ class  midicmnInputDevice:public mutabor::CommonMidiInput<mutabor::InputDeviceCl
 public:
 	typedef mutabor::CommonMidiInput<mutabor::InputDeviceClass> base;
 
-	midicmnInputDevice( wxString name = wxEmptyString):base(name) {}
+	midicmnInputDevice( wxString name = wxEmptyString):base(name) {
+		channel_data.resize(16);
+		// reserve a hash table that is large enough to hold all data
+		// as rehashing leads to unpredictable results.
+		current_keys.rehash(32);
+	}
 	~midicmnInputDevice() {}
 
 // fix pure virtual functions:

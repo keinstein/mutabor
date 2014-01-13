@@ -29,6 +29,7 @@
 #ifndef __ROUTETEST_H__
 #define __ROUTETEST_H__
 
+#include "src/kernel/Defs.h"
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/portability/Stream.h>
 #include "src/kernel/routing/Route.h"

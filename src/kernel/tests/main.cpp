@@ -67,3 +67,5 @@ main(int argc, char** argv)
 
 	return wasSuccessful ? 0 : 1;
 }
+
+/// }

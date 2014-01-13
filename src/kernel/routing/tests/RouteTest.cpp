@@ -58,5 +58,6 @@ void RouteTest::testDestroyAll() {
 	mutabor::InputDeviceClass::ClearDeviceList();
 	mutabor::OutputDeviceClass::ClearDeviceList();
 	mutabor::RouteClass::ClearRouteList();
+	mutabor::BoxClass::ClearBoxList();
 }
 ///\}
