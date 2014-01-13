@@ -125,7 +125,7 @@ namespace mutabor {
 			Route route;
 			NoOutputDevice(const thistype * r):
 			invalid_argument(gettext_noop("No such output device")) {
-				r = const_cast<thistype *>(r);
+				route = const_cast<thistype *>(r);
 			}
 			virtual ~NoOutputDevice() throw() {} 
 		};
@@ -133,9 +133,9 @@ namespace mutabor {
 		public:
 			Route route;
 			NoInputDevice(const thistype * r) 
-				{
-					r = const_cast<thistype *>(r);
-				}
+			{
+				route = const_cast<thistype *>(r);
+			}
 		};
 	public: // functions
 		virtual ~TRouteClass();
