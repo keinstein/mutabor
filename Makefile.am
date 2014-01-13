@@ -826,3 +826,17 @@ doxygen: Doxyfile
 	builddir=`pwd` ; \
 	cd $(top_srcdir) ; \
 	doxygen "$$builddir/Doxyfile"
+
+cppcheck:
+	cd '$(top_srcdir)' ; \
+	INCLUDES=`echo "$(CXXCOMPILE)" | \
+		sed -e 's/ -I */ -I/' | \
+		tr ' ' '\n' | \
+		grep -e '$(top_srcdir)' | \
+		sed -e '/-I/ {s/-I/-I /; p } ; d'` ; \
+	echo $$INCLUDES ; \
+	cfiles=`echo $(POTSOURCES) | tr ' ' '\n' | grep -ve '\\.h$$'` ; \
+	echo "$$cfiles" ; \
+	hfiles=`echo $(POTSOURCES) | tr ' ' '\n' | grep -e '\\.h$$'` ; \
+	echo "$$hfiles" ; \
+	cppcheck -v --enable=all --force $$INCLUDES -I. $$cfiles $$hfiles -j8 
