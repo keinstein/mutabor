@@ -631,13 +631,14 @@ namespace mutaborGUI {
 		Box box = route->GetBox();
 		MutBoxShape * boxshape = NULL;
 		if (!box) {
-			box = BoxFactory::Create(mutabor::NoBox);
+			box = BoxClass::GetOrCreateBox(mutabor::NoBox);
 			connect (route,box);
+		} 
+		boxshape = const_cast<MutBoxShape *>(ToGUIBase(box)->GetShape(parent));
+		if (!boxshape) {
 			boxshape = GUIBoxFactory::CreateBoxShape(box, parent);
 			MutRouteWnd * root = dynamic_cast<MutRouteWnd *>(parent);
 			root->AddBox(boxshape,MutBoxShape::GetSizerFlags());
-		} else {
-			boxshape = const_cast<MutBoxShape *>(ToGUIBase(box)->GetShape(parent));
 		}
 		MutBoxChannelShape * shape =
 			new MutBoxChannelShape (boxshape,

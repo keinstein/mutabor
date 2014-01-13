@@ -145,7 +145,7 @@ namespace mutaborGUI {
 				m_icon->SetBackgroundStyle(wxBG_STYLE_SYSTEM);
 				break;
 			case NoBox:
-				SetBox();
+				SetBox(false);
 				break;
 			case GmnBox:
 				m_icon->SetLabel(_("GUIDO Box"));
