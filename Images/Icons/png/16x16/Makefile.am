@@ -5,5 +5,5 @@ ICONS = $(TOOLBARICONS) \
 	$(STATUSBARICONS)
 
 include $(top_srcdir)/Images/imagedefs.mk
-
 ICONDATA = $(PNGICONS)
+

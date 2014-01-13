@@ -4,46 +4,42 @@ PNGICONDIR = $(ICONDIR)/png
 PNGSIZEICONDIR = $(PNGICONDIR)/$(XSIZE)x$(YSIZE)
 
 TOOLBARICONS = \
-	document-new \
-	document-open \
-	document-save \
-	document-save-as \
-	document-print \
-	ActivateMutabor \
-	StopMutabor \
-	Panic \
-	edit-copy \
-	edit-cut \
-	edit-paste \
-	edit-undo \
-	edit-redo \
-	go-up \
-	go-down \
-	RouteLoad \
-	RouteSave \
-	InDevPlay \
-	InDevStop \
-	InDevPause \
-	InDevRecord \
-	help-browser
+	document-new.svg \
+	document-open.svg \
+	document-save.svg \
+	document-save-as.svg \
+	document-print.svg \
+	ActivateMutabor.svg \
+	StopMutabor.svg \
+	Panic.svg \
+	edit-copy.svg \
+	edit-cut.svg \
+	edit-paste.svg \
+	edit-undo.svg \
+	edit-redo.svg \
+	go-up.svg \
+	go-down.svg \
+	RouteLoad.svg \
+	RouteSave.svg \
+	InDevPlay.svg \
+	InDevStop.svg \
+	InDevPause.svg \
+	InDevRecord.svg \
+	help-browser.svg
 
 STATUSBARICONS = \
-	InDevPlay \
-	InDevStop \
-	InDevPause \
-	InDevRecord \
-	ToolbarLogicActive
+	InDevPlay.svg \
+	InDevStop.svg \
+	InDevPause.svg \
+	InDevRecord.svg \
+	ToolbarLogicActive.svg
 
 #SVGTOOLBARICONS = $(shell for d in $(TOOLBARICONS); \
 #	do echo "$$d" | \
 #		sed -e 's,^,$(SVGICONDIR)/, ; s,$,.svg,'; \
 #	done | sort | uniq)
 
-UNIQUEICONS = $(shell  for d in $(ICONS); \
-	do echo "$$d"; done | sort | uniq )
-
-PNGICONS = $(shell for d in $(UNIQUEICONS); \
-	do echo "$(PNGSIZEICONDIR)/$$d.png"; done)
+PNGICONS = $(ICONS:.svg=.png)
 
 
 
@@ -62,29 +58,37 @@ iconuninstallfromdir = { \
 
 CLEANFILES =
 
-if COND_INKSCAPE
-CLEANFILES += Makefile.dep
 
 all-local: icons
-install-data-am: install-icons
-unintall-data-am: uninstall-icons
-icons: $(ICONDATA)
+install-data-local: install-icons
+unintall-data-local: uninstall-icons
+#icons: $(ICONDATA)
 
+if COND_INKSCAPE
+CLEANFILES += Makefile.dep
 Makefile.dep: Makefile
+	echo $(PNGICONS)
+	echo $(ICONDATA)
 	echo '# -*- Makefile -*-' > "$@"
-	for d in $(UNIQUEICONS); \
+	for d in `echo $(PNGICONS:.png=)|tr ' ' '\n' |sort -u`; \
 	do \
-		echo -e "@DST@: @SRC@\n\t\$$(INKSCAPE) -e \"\$$@\" -w $(XSIZE) -h $(YSIZE) \"\$$<\"" | \
+		( echo -e "icons: $(PNGSIZEICONDIR)/@DST@" ; \
+		echo -e "$(PNGSIZEICONDIR)/@DST@: $@" ; \
+		echo -e "$(PNGSIZEICONDIR)/@DST@: $(SVGICONDIR)/@SRC@\n\t\$$(INKSCAPE) -e \"\$$@\" -w $(XSIZE) -h $(YSIZE) \"\$$<\"" ) | \
 		sed \
--e 's&@DST@&$(PNGSIZEICONDIR)/'"$$d.png"'&g' \
--e 's&@SRC@&$(SVGICONDIR)/'"$$d.svg"'&g' \
+-e 's&@DST@&'"$$d.png"'&g' \
+-e 's&@DSTDIR@&$(PNGSIZEICONDIR)&g' \
+-e 's&@SRC@&'"$$d.svg"'&g' \
 		  >> "$@" ; \
 	done
 #< $(top_srcdir)/Images/depfilerule.prototype
+else
+icons:
+endif
 
 install-icons: icons
-	@$(NORMAL_INSTALL)
-	@list='$(ICONDATA)'; test -n "$(icondatadir)" || list=; \
+	echo $(NORMAL_INSTALL)
+	@list=`echo $(ICONDATA)|tr ' ' '\n'|sort -u`; test -n "$(icondatadir)" || list=; \
 	if test -n "$$list"; then \
 	  echo " $(MKDIR_P) '$(DESTDIR)$(icondatadir)'"; \
 	  $(MKDIR_P) "$(DESTDIR)$(icondatadir)" || exit 1; \
@@ -107,6 +111,3 @@ uninstall-icons:
 
 -include Makefile.dep
 
-else
-icons:
-endif
