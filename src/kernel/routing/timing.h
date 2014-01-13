@@ -400,6 +400,7 @@ namespace mutabor {
 
 #else
 	class CurrentTimerBase:protected wxStopWatch {
+	public:
 		static void Sleep(mutint64 time) {
 			DEBUGLOGTYPE(timer,
 				     CurrentTimerBase,

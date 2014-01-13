@@ -61,8 +61,8 @@
 using mutaborGUI::BoxData;
 using namespace mutaborGUI;
 
-wxString TextBoxTitle[] =
-        { N_("Current keys"), N_("Tone system"), N_("Actions") };
+const wxChar * TextBoxTitle[] =
+        { N_("Current keys"), N_("Tone system"), N_("Actions") , 0};
 // needs wxGetTranslation();
 
 BEGIN_EVENT_TABLE(MutTextBox, wxListBox)
@@ -70,7 +70,6 @@ BEGIN_EVENT_TABLE(MutTextBox, wxListBox)
 	EVT_CLOSE(MutTextBox::OnClose)
 END_EVENT_TABLE()
 
-wxString ListInit[1] = { _("<init>") };
 
 MutTextBox::MutTextBox(WinKind k,
                        mutabor::Box & b,
@@ -79,11 +78,13 @@ MutTextBox::MutTextBox(WinKind k,
 
                        const wxPoint& pos,
                        const wxSize& size):
-		wxListBox(parent, id, pos, size, 1, ListInit),
+		wxListBox(),
 		ChangedCallback(b),
 		winKind(k),
 		box(b)
 {
+	wxString initlist[] = { _("<init>")  };
+	Create(parent, id, pos, size, 1, initlist);
 	TRACEC;
 #if wxCHECK_VERSION(2,9,0)
 	SetBackgroundStyle(wxBG_STYLE_ERASE);
@@ -193,7 +194,11 @@ void MutTextBox::BoxChangedAction(const char * a) {
 	}
 	wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED,
 			     CM_UPDATEUI);
+#if wxCHECK_VERSION(2,9,0)
 	event.SetString(a);
+#else
+	event.SetString(wxString::FromUTF8(a));
+#endif
 	wxPostEvent(this,event);
 }
 

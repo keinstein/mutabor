@@ -1,6 +1,10 @@
 #line 2 "src/kernel/mutlex.cc"
+#line 12 "../../../mutabor-git/src/kernel/mutlex.ll"
+#include "src/kernel/Defs.h"
 
-#line 4 "src/kernel/mutlex.cc"
+
+
+#line 8 "src/kernel/mutlex.cc"
 
 #define  YY_INT_ALIGNED short int
 
@@ -686,11 +690,8 @@ static yyconst flex_int16_t yy_rule_linenum[28] =
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 #line 1 "../../../mutabor-git/src/kernel/mutlex.ll"
-#line 12 "../../../mutabor-git/src/kernel/mutlex.ll"
-#ifdef HAVE_CONFIG_H
-# include "config.h"
-#endif
 
+#line 16 "../../../mutabor-git/src/kernel/mutlex.ll"
 #define YY_NO_UNISTD_H
 #include "src/kernel/box.h"
 using namespace mutabor;
@@ -715,7 +716,7 @@ extern "C" inline int dummyisatty (int fd) { return isatty(fd); }
 */
 #define BUMP
 
-#line 719 "src/kernel/mutlex.cc"
+#line 720 "src/kernel/mutlex.cc"
 
 #define INITIAL 0
 #define comment 1
@@ -884,7 +885,7 @@ YY_DECL
 
 
 
-#line 888 "src/kernel/mutlex.cc"
+#line 889 "src/kernel/mutlex.cc"
 
 	if ( !(yy_init) )
 		{
@@ -1152,7 +1153,7 @@ YY_RULE_SETUP
 #line 78 "../../../mutabor-git/src/kernel/mutlex.ll"
 ECHO;
 	YY_BREAK
-#line 1156 "src/kernel/mutlex.cc"
+#line 1157 "src/kernel/mutlex.cc"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(comment):
 	yyterminate();

@@ -471,7 +471,7 @@ void MutRouteWnd::CmRouteLoad(wxCommandEvent& event)
 	}
 		break;
 	case MutFileDataType::XMLRoute1: {
-		xmltree document("mutabor-routes",false);
+		xmltree document(_T("mutabor-routes"),false);
 		if (!document.Load(MurFileData.name.GetFullPath())) {
 			wxLogError(_("File '%s' couldn't be loaded"),MurFileData.name.GetFullPath().c_str());
 			return;
@@ -584,7 +584,7 @@ void MutRouteWnd::CmRouteSave(wxCommandEvent& event)
 	}
 		break;
 	case MutFileDataType::XMLRoute1: {
-		xmltree document("mutabor-routes",true);
+		xmltree document(_T("mutabor-routes"),true);
 		mutabor::RouteFactory::SaveRoutes(document);
 		document.Save(MurFileData.name.GetFullPath());
 			

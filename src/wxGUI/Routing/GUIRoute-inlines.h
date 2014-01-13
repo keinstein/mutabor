@@ -45,9 +45,7 @@
 #include "src/wxGUI/Routing/GUIRoute.h"
 #include "src/wxGUI/Routing/BoxShape.h"
 #include "src/wxGUI/Routing/DeviceShape.h"
-#ifdef DEBUG
 #include "src/wxGUI/MutRouteWnd.h"
-#endif
 
 #include "src/kernel/routing/Route-inlines.h"
 

@@ -1,3 +1,4 @@
+#include "src/kernel/Defs.h"
 #include "src/wxGUI/Routing/tests/GUIRouteTest.h"
 #include "src/wxGUI/Routing/RouteIcons.h"
 #include "src/wxGUI/Routing/GUIRoute.h"

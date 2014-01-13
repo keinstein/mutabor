@@ -923,6 +923,7 @@ namespace mutaborGUI {
 	/// Show an error message from somewhere in the program
 	void CmError(wxCommandEvent& event) {
 		mutabor::error_type type = (mutabor::error_type) event.GetInt();
+		wxString heading;
 		int style;
 		switch (type) {
 		case mutabor::warning:
@@ -938,8 +939,12 @@ namespace mutaborGUI {
 			style = wxICON_ERROR;
 			break;
 		}
-		
-		wxMessageBox(event.GetString(),to_string(type),wxOK | style);
+#if wxCHECK_VERSION(2,9,0)
+		heading = to_string(type);
+#else
+		heading = wxString::FromUTF8(to_string(type));
+#endif
+		wxMessageBox(event.GetString(),heading,wxOK | style);
 	}
 
 
@@ -1016,15 +1021,28 @@ namespace mutaborGUI {
 	wxString MutApp::GetResourceName(const wxString & file)
 	{
 #ifdef MUTABOR_TEST
-		wxFileName rcname(srcdir,file);
+		wxFileName rcname(file);
+		wxString dir = rcname.GetPath();
+		wxChar sep = rcname.GetPathSeparator();
+		if (dir.empty()) 
+			rcname.SetPath(srcdir);
+		else 
+			rcname.SetPath(srcdir + sep + dir);
 		if (rcname.IsFileReadable()) {
 			return rcname.GetFullPath();
 		} 
-		rcname.SetPath(top_srcdir);
+		if (dir.empty()) 
+			rcname.SetPath(top_srcdir);
+		else 
+			rcname.SetPath(top_srcdir + sep + dir);
 		if (rcname.IsFileReadable()) {
 			return rcname.GetFullPath();
 		} 
 		rcname.SetPath(mutString(top_srcdir) + _T("/Images/Icons/png/"));
+		if (dir.empty()) 
+			rcname.SetPath(mutString(top_srcdir) + _T("/Images/Icons/png/"));
+		else 
+			rcname.SetPath(mutString(top_srcdir) + _T("/Images/Icons/png/") + dir);
 		if (rcname.IsFileReadable()) {
 			return rcname.GetFullPath();
 		} 

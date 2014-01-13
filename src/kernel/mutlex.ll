@@ -8,11 +8,11 @@
 %option yylineno 
 %option prefix="mutabor_lexer_"
 
-%{
-#ifdef HAVE_CONFIG_H
-# include "config.h"
-#endif
+%top{
+#include "src/kernel/Defs.h"
+}
 
+%{
 #define YY_NO_UNISTD_H
 #include "src/kernel/box.h"
 using namespace mutabor;

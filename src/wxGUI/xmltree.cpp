@@ -130,33 +130,33 @@ namespace mutaborGUI {
 	{
 		wxXmlProperty * prop = GetProperty(key, true);
 		if (!prop) return;
-		prop->SetValue(wxString::Format("%ld",value));
+		prop->SetValue(wxString::Format(_T("%ld"),value));
 	}
 
 	void xmltree::Write (const mutStringRef key, double value)
 	{
 		wxXmlProperty * prop = GetProperty(key, true);
 		if (!prop) return;
-		prop->SetValue(wxString::Format("%20g",value));
+		prop->SetValue(wxString::Format(_T("%20g"),value));
 	}
 
 	void xmltree::Write (const mutStringRef key, int value)
 	{
 		wxXmlProperty * prop = GetProperty(key, true);
 		if (!prop) return;
-		prop->SetValue(wxString::Format("%d",value));
+		prop->SetValue(wxString::Format(_T("%d"),value));
 	}
 
 	void xmltree::Write (const mutStringRef key, bool value)
 	{
 		wxXmlProperty * prop = GetProperty(key, true);
 		if (!prop) return;
-		prop->SetValue(value?"true":"false");
+		prop->SetValue(value?_T("true"):_T("false"));
 	}
 
 	void xmltree::Write (const mutStringRef key, const mutStringRef value)
 	{
-		if (key == "name") {
+		if (key == _T("name")) {
 			wxXmlProperty * prop = GetProperty(key, true);
 			if (!prop) return;
 			prop->SetValue(value);
@@ -275,7 +275,7 @@ namespace mutaborGUI {
 				old_node->SetNext(node);
 			}
 			current_node = node;
-			Write("Id",id);
+			Write(_T("Id"),id);
 		} else current_node = node;
 		if (node)
 			states.push(state(node,sanitized_name));
@@ -355,10 +355,10 @@ namespace mutaborGUI {
 	mutString xmltree::GetPath()
 	{
 		node_type * node = current_node;
-		if (!node) return "/";
-		wxString path = "/" + node->GetName();
+		if (!node) return _T("/");
+		wxString path = _T("/") + node->GetName();
 		while ((node = node->GetParent()))
-			wxString path = "/" + node->GetName() + path;
+			wxString path = _T("/") + node->GetName() + path;
 		return path;
 	}
 
@@ -371,7 +371,7 @@ namespace mutaborGUI {
 		*/
 		bool create = create_tree;
 		if (!path) return;
-		wxStringTokenizer tokenizer(path,"/");
+		wxStringTokenizer tokenizer(path,_T("/"));
 		if (!tokenizer.HasMoreTokens()) return;
 		wxString name = tokenizer.GetNextToken();
 		node_type * node;
@@ -528,7 +528,7 @@ namespace mutaborGUI {
 			prop = prop->GetNext();
 		}
 		if (!prop && create) {
-			prop = new wxXmlProperty(name,"");
+			prop = new wxXmlProperty(name,_T(""));
 			if (last_prop) {
 				last_prop->SetNext(prop);
 			} else {

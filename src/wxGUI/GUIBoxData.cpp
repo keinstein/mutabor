@@ -358,8 +358,13 @@ namespace mutaborGUI {
 	}
 
 	void BoxData::runtime_error(mutabor::error_type type, const char * message) {
+#if wxCHECK_VERSION(2,9,0)
 		wxString msg(message), head(mutabor::to_string(type));
-		msg = head + ": " + msg;
+#else
+		wxString msg=wxString::FromUTF8(message), 
+			head=wxString::FromUTF8(mutabor::to_string(type));
+#endif
+		msg = head + _T(": ") + msg;
 #ifdef DEBUG
 		if (type == mutabor::internal_error) {
 			wxFAIL_MSG(msg);

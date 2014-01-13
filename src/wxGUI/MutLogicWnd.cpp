@@ -659,9 +659,14 @@ namespace mutaborGUI {
 						  isLogic,
 						  isOpen || i->active,
 						  i -> key);
-			tag->SetLabel(isLogic ? i-> name + (!i->startTuning.IsEmpty() ? 
-							    "\n(" + i -> startTuning + ")":""): 
-				      i->startTuning);
+			std::string taglabel = isLogic ? i-> name + (!i->startTuning.empty() ? 
+								     "\n(" + i -> startTuning + ")":""): 
+				i->startTuning;
+#if wxCHECK_VERSION(2,9,0)
+			tag -> SetLabel(taglabel);
+#else
+			tag -> SetLabel(wxString::FromUTF8(taglabel.c_str()));
+#endif
 			tag -> SetBackgroundColour(GetBackgroundColour());
 			tag -> SetForegroundColour(GetForegroundColour());
 			TagMinSize.IncTo(tag->GetBestSize());

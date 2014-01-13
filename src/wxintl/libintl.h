@@ -50,7 +50,6 @@
 #ifdef __cplusplus 
 extern "C" {
 #endif
-
 #ifndef __cplusplus
 #define wxwidgets_gettext(msgid) wxwidgets_sgettext(msgid)
 #endif
@@ -91,6 +90,26 @@ extern "C" {
 						 int __category)
 		__attribute_format_arg__ (2) __attribute_format_arg__ (3);
 #endif
+
+
+/* Set the current default message catalog to DOMAINNAME.
+   If DOMAINNAME is null, return the current default.
+   If DOMAINNAME is "", reset to the default of "messages".  */
+extern char *wxwidgets_textdomain (const char *__domainname) ;
+
+/* Specify that the DOMAINNAME message catalog will be found
+   in DIRNAME rather than in the system locale data base.  */
+extern char *wxwidgets_bindtextdomain (const char *__domainname,
+			     const char *__dirname);
+
+#if 0
+/* Specify the character encoding in which the messages from the
+   DOMAINNAME message catalog will be returned.  */
+extern char *bind_textdomain_codeset (const char *__domainname,
+				      const char *__codeset) ;
+#endif
+
+
 						
 #ifdef __cplusplus 
 }

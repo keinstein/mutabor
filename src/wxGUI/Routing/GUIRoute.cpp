@@ -504,8 +504,12 @@ namespace mutaborGUI {
 
 	void GUIRouteBase::runtime_error(int type, const mutStringRef message, va_list & args) {
 		wxString msg = wxString::FormatV(message,args);
+#if wxCHECK_VERSION(2,9,0)
 		wxString head(mutabor::to_string((error_type)type));
-		msg = head + ": " + msg;
+#else
+		wxString head = wxString::FromUTF8(mutabor::to_string((error_type)type));
+#endif
+		msg = head + _T(": ") + msg;
 #ifdef DEBUG
 		if (type == mutabor::internal_error) {
 			wxFAIL_MSG(msg);
@@ -668,8 +672,12 @@ namespace mutaborGUI {
 
 	void GUIOutputDeviceBase::runtime_error(int type, const mutString& message, va_list & args) {
 		wxString msg = wxString::FormatV(message,args);
+#if wxCHECK_VERSION(2,9,0)
 		wxString head(mutabor::to_string((mutabor::error_type)type));
-		msg = head + ": " + msg;
+#else
+		wxString head = wxString::FromUTF8(mutabor::to_string((mutabor::error_type)type));
+#endif
+		msg = head + _T(": ") + msg;
 #ifdef DEBUG
 		if (type == mutabor::internal_error) {
 			wxFAIL_MSG(msg);
@@ -742,8 +750,12 @@ namespace mutaborGUI {
 
 	void GUIInputDeviceBase::runtime_error(int type, const mutString& message, va_list & args) {
 		wxString msg = wxString::FormatV(message,args);
+#if wxCHECK_VERSION(2,9,0)
 		wxString head(mutabor::to_string((mutabor::error_type)type));
-		msg = head + ": " + msg;
+#else
+		wxString head=wxString::FromUTF8(mutabor::to_string((mutabor::error_type)type));
+#endif
+		msg = head + _T(": ") + msg;
 #ifdef DEBUG
 		if (type == mutabor::internal_error) {
 			wxFAIL_MSG(msg);

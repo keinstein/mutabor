@@ -416,7 +416,12 @@ darwin*)
 	copydlls=true
 	LT_LANG([Windows Resource])
 	AC_LIBTOOL_LANG_RC_CONFIG
+	AC_DEFINE(__USE_MINGW_ANSI_STDIO,1,[prefer POSIX printf & Co. over microsofts one])
+	AC_DEFINE(_GNU_SOURCE,1)
 	AC_CHECK_HEADERS([winsock2.h])
+	AC_LANG_PUSH(C++)
+	AC_CHECK_FUNCS([vasprintf])
+	AC_LANG_POP(C++)
 	AC_CHECK_LIB_HEADER(ws2_32,ntohs,[
 	#include <winsock2.h>
 	])
@@ -427,7 +432,9 @@ darwin*)
 #include <windows.h>
 #include <mmsystem.h>
 "
+	    AC_LANG_PUSH(C)
 	    AC_LIB_WINMM([midiOutGetNumDevs])
+	    AC_LANG_POP(C)
 	    AC_MSG_RESULT(using WinMM)
 	    dnl LIBS="$LIBS -lwinmm 
 	    ], )
@@ -444,7 +451,9 @@ darwin*)
 #include <windows.h>
 #include <mmsystem.h>
 "
+	    AC_LANG_PUSH(C)
 	    AC_LIB_WINMM([midiOutGetNumDevs])
+	    AC_LANG_POP(C)
 	    AC_MSG_RESULT(using WinMM)
 	    dnl LIBS="$LIBS -lwinmm 
   fi
@@ -467,6 +476,25 @@ darwin*)
 			])
 		esac
 	fi
+	AC_LANG_PUSH(C++)
+	tmpcxxflags="$CXXFLAGS"
+	CXXFLAGS="$CXXFLAGS -Wl,-Map,symbols.map"
+	AC_MSG_CHECKING([whether $CXX supports -Wl,-Map,symbols.map])
+      	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	 			[AC_MSG_RESULT([yes])], 
+				[CXXFLAGS="$tmpcxxflags"]
+	       			[AC_MSG_RESULT([yes])])
+	AC_LANG_POP(C++)
+	AC_LANG_PUSH(C)
+	tmpcflags="$CFLAGS"
+	CFLAGS="$CFLAGS -Wl,-Map,symbols.map"
+	AC_MSG_CHECKING([whether $CC supports ])
+      	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	 			[AC_MSG_RESULT([yes])], 
+				[CXXFLAGS="$tmpcxxflags"]
+	       			[AC_MSG_RESULT([yes])])
+	AC_LANG_POP(C)
+
 	;;
 *)
 	AC_MSG_ERROR([
@@ -513,8 +541,10 @@ else
 	AC_SUBST(USE_INCLUDED_LIBWXINTL,yes)
 	AC_SUBST(BUILD_INCLUDED_LIBWXINTL,yes)
 	AC_SUBST(WXINTLLDADD,[\$\(WXINTLDIR\)/libwxintl.a])
+	AC_SUBST(WXINTLCFLAGS,[-I\$\(top_srcdir\)/$\(WXINTLDIR\)])
 	AC_SUBST(USE_INCLUDED_LIBINTL,no)
 	AC_SUBST(BUILD_INCLUDED_LIBINTL,no)
+	WX_LIBS=`echo -n "$WX_LIBS"|sed -e 's/-mwindows//g'`
 	enable_nls="no"
 fi
 
@@ -557,11 +587,11 @@ AC_SUBST(WX_LOCALE_DIRS,$ac_cv_wx_locale_dirs)
 
 AC_CACHE_CHECK([where to find support dlls], [ac_cv_mingw_dll_dirs],
 [
-       SEARCHDIRS=`$WX_CONFIG_PATH --exec-prefix`/lib
-       tmpsearch=`$CXX $CXXFLAGS -print-search-dirs|\
+       wxsearchdirs=`$WX_CONFIG_PATH --exec-prefix`/lib
+       gccsearchdirs=`$CXX $CXXFLAGS -print-search-dirs|\
        			sed -e '/^libraries:/ { s/^libraries: *=\?//;s/:/ /g; p } ; d'`
-       SEARCHDIRS="$SEARCHDIRS $tmpsearch"
-       for d in /usr/share/doc/mingw32-runtime /mingw/lib /mingw/bin  /usr/lib /lib /usr/bin /bin
+       SEARCHDIRS=""
+       for d in $wxsearchdirs $gccsearchdirs /usr/share/doc/mingw32-runtime /mingw/lib /mingw/bin  /usr/lib /lib /usr/bin /bin
        do 
        	  AS_IF(test -d $d,
 	  [ SEARCHDIRS="$SEARCHDIRS $d" ])
@@ -645,7 +675,34 @@ then
 	AC_DEFINE(MUST_REUSE_C,1,[Define to x if the scope of C loop variables is inside the loop])
 fi
 
+AC_LANG_PUSH(C++)
+AC_CACHE_CHECK([syntax for signalling printf format attributes], ac_cv_format_arg,
+[
+ AC_COMPILE_IFELSE([
+	AC_LANG_PROGRAM([
+	int test (constchar * auto, ...) __attribute_format_arg__(1);
+	],[])],[ac_cv_format_arg="__attribute_format_arg__"],[])
+ AS_IF(test -z "$ac_cv_format_arg",
+  AC_COMPILE_IFELSE([
+  	AC_LANG_PROGRAM([
+	int test (constchar * auto, ...) __attribute__((format_arg(1)));
+	],[])],[ac_cv_format_arg="__attribute__(format_arg(number))"],[]))
+ AS_IF(test -z "$ac_cv_format_arg",
+  AC_COMPILE_IFELSE([
+  	AC_LANG_PROGRAM([
+	int test (constchar * auto, ...) __attribute__((__format_arg__(1)));
+	],[])],[ac_cv_format_arg="__attribute__(format_arg(number))"],[]))
+ AS_IF(test -z "$ac_cv_format_arg",
+  AC_COMPILE_IFELSE([
+  	AC_LANG_PROGRAM([
+	int test (constchar * auto, ...) __attribute__((__format_arg__(1)));
+	],[])],[ac_cv_format_arg="__attribute__(format_arg(number))"],[]))
+])
 
+AS_IF(test "$ac_cv_format_arg" != __attribute_format_arg,
+    AC_DEFINE_UNQUOTED(__attribute_format_arg__(number),[$ac_cv_format_arg],[Define if the compiler does not support __attribute_format_arg__]))
+
+AC_LANG_POP(C++)
 
 
 AC_LANG(C++)
@@ -705,6 +762,7 @@ AM_PATH_CPPUNIT(1.8.0)
 # build cppunit-using test programs.
 AM_CONDITIONAL(HAVE_CPPUNIT, test "$CPPUNIT_LIBS")
 CPPUNIT_CFLAGS="$CPPUNIT_CFLAGS -DMUTABOR_CPPUNIT -DMUTABOR_TEST"
+DLLSEARCHPATH="$DLLSEARCHPATH `echo $CPPUNIT_LIBS  | tr ' ' '\n' | sed -e '/^-L/ { s/^-L//; s,$,/../bin, ; p }; d'`"
 
 dnl non verbose
 
