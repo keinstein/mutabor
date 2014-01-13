@@ -64,8 +64,8 @@
 #define BOOL bool
 #define pascal
 #define CALLBACK
-#include "src/wxintl/libintl.h"
 #endif
+#include "src/wxintl/libintl.h"
 #pragma GCC diagnostic ignored "-Wlong-long"
 #define mutint64 int_fast64_t
 #else // not WX
