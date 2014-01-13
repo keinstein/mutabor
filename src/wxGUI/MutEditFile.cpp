@@ -256,6 +256,16 @@ namespace mutaborGUI {
 		} 
 #endif
 
+		// we check the boxes before generating the compile dialog (avoids deleting it)
+		const mutabor::BoxListType & boxlist = mutabor::BoxClass::GetBoxList();
+		mutabor::BoxListType::const_iterator i = boxlist.begin();
+		if (i == boxlist.end()) {
+			wxMessageBox(_("At least one box is needed to compile the logic"),
+				     _("Error"), wxOK | wxICON_ERROR);
+			return false;
+		}
+		mutabor::Box box = *i;
+
 		CompDia = new CompDlg(this);
 
 		if (!CompDia->Show()) {
@@ -275,14 +285,6 @@ namespace mutaborGUI {
 
 #endif
 
-		const mutabor::BoxListType & boxlist = mutabor::BoxClass::GetBoxList();
-		mutabor::BoxListType::const_iterator i = boxlist.begin();
-		mutabor::Box box = *i;
-		if (!box) {
-			wxMessageBox(_("At least one box is needed to compile the logic"),
-				     _("Error"), wxOK | wxICON_ERROR);
-			return false;
-		}
 
 
 		int line;
