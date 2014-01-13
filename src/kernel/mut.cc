@@ -1,19 +1,19 @@
-/* A Bison parser, made by GNU Bison 2.7.12-4996.  */
+/* A Bison parser, made by GNU Bison 3.0.2.  */
 
 /* Bison implementation for Yacc-like parsers in C
-   
-      Copyright (C) 1984, 1989-1990, 2000-2013 Free Software Foundation, Inc.
-   
+
+   Copyright (C) 1984, 1989-1990, 2000-2013 Free Software Foundation, Inc.
+
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
@@ -26,7 +26,7 @@
    special exception, which will cause the skeleton and the resulting
    Bison output files to be licensed under the GNU General Public
    License without this special exception.
-   
+
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
@@ -44,7 +44,7 @@
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "2.7.12-4996"
+#define YYBISON_VERSION "3.0.2"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -62,8 +62,7 @@
 
 
 /* Copy the first part of user declarations.  */
-/* Line 371 of yacc.c  */
-#line 38 "../../../mutabor-git/src/kernel/mut.yy"
+#line 38 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:339  */
 
 
 /* BEGIN MUT_TAB.C */
@@ -84,6 +83,9 @@
 #include "src/kernel/Parser.h"
 #include "src/kernel/Hilfs.h"
 #include "src/kernel/Execute.h"
+#ifdef SRC_WXINTL_LIBINTL
+#define dgettext(domain,string) wxwidgets_sgettext(string)
+#endif
 
 #ifdef _
 #undef _
@@ -106,18 +108,17 @@
 #endif
 #define YYERROR_VERBOSE 1
 #define YYMALLOC(size) xmalloc(box,size)
-#define YYFREE(X) do { /* empty */; } while (YYID (0))
+#define YYFREE(X) do { /* empty */; } while (0)
 #define YYMAXLIMIT (HEAP_PORTION_SYNTAX / sizeof(YYLTYPE) - 1)
                    /* wegen fehlendem alloca in PUREC */
 
-/* Line 371 of yacc.c  */
-#line 115 "../../../mutabor-git/src/kernel/mut.cc"
+#line 116 "src/kernel/mut.cc" /* yacc.c:339  */
 
-# ifndef YY_NULL
+# ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
-#   define YY_NULL nullptr
+#   define YY_NULLPTR nullptr
 #  else
-#   define YY_NULL 0
+#   define YY_NULLPTR 0
 #  endif
 # endif
 
@@ -131,9 +132,9 @@
 
 /* In a future release of Bison, this section will be replaced
    by #include "y.tab.h".  */
-#ifndef YY_YY__MUTABOR_GIT_SRC_KERNEL_MUT_HH_INCLUDED
-# define YY_YY__MUTABOR_GIT_SRC_KERNEL_MUT_HH_INCLUDED
-/* Enabling traces.  */
+#ifndef YY_YY_SRC_KERNEL_MUT_HH_INCLUDED
+# define YY_YY_SRC_KERNEL_MUT_HH_INCLUDED
+/* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
 #endif
@@ -141,41 +142,40 @@
 extern int yydebug;
 #endif
 
-/* Tokens.  */
+/* Token type.  */
 #ifndef YYTOKENTYPE
 # define YYTOKENTYPE
-   /* Put the tokens into the symbol table, so that GDB and other debuggers
-      know about them.  */
-   enum yytokentype {
-     MUTABOR_TOKEN_IDENTIFIER = 258,
-     MUTABOR_TOKEN_F_NUMBER = 259,
-     MUTABOR_TOKEN_INTEGER = 260,
-     MUTABOR_TOKEN_INTERVAL = 261,
-     MUTABOR_TOKEN_TONE = 262,
-     MUTABOR_TOKEN_TONESYSTEM = 263,
-     MUTABOR_TOKEN_RETUNING = 264,
-     MUTABOR_TOKEN_HARMONY = 265,
-     MUTABOR_TOKEN_LOGIC = 266,
-     MUTABOR_TOKEN_MIDICHANNEL = 267,
-     MUTABOR_TOKEN_KEY = 268,
-     MUTABOR_TOKEN_FORM = 269,
-     MUTABOR_TOKEN_ROOT = 270,
-     MUTABOR_TOKEN_MIDI_IN = 271,
-     MUTABOR_TOKEN_MIDI_OUT = 272,
-     MUTABOR_TOKEN_HARMONY_ANALYSIS = 273,
-     MUTABOR_TOKEN_CALLS = 274,
-     MUTABOR_TOKEN_ELSE = 275,
-     MUTABOR_TOKEN_PARAMETER = 276,
-     MUTABOR_TOKEN_ANCHOR = 277,
-     MUTABOR_TOKEN_DISTANCE = 278,
-     MUTABOR_TOKEN_ENDOFFILE = 279,
-     MUTABOR_TOKEN_ERROR = 280,
-     MUTABOR_TOKEN_SPACES = 281,
-     MUTABOR_TOKEN_COMMENT = 282,
-     MUTABOR_TOKEN_COMMENT_START = 283,
-     MUTABOR_TOKEN_COMMENT_END = 284,
-     MUTABOR_TOKEN_OTHER = 285
-   };
+  enum yytokentype
+  {
+    MUTABOR_TOKEN_IDENTIFIER = 258,
+    MUTABOR_TOKEN_F_NUMBER = 259,
+    MUTABOR_TOKEN_INTEGER = 260,
+    MUTABOR_TOKEN_INTERVAL = 261,
+    MUTABOR_TOKEN_TONE = 262,
+    MUTABOR_TOKEN_TONESYSTEM = 263,
+    MUTABOR_TOKEN_RETUNING = 264,
+    MUTABOR_TOKEN_HARMONY = 265,
+    MUTABOR_TOKEN_LOGIC = 266,
+    MUTABOR_TOKEN_MIDICHANNEL = 267,
+    MUTABOR_TOKEN_KEY = 268,
+    MUTABOR_TOKEN_FORM = 269,
+    MUTABOR_TOKEN_ROOT = 270,
+    MUTABOR_TOKEN_MIDI_IN = 271,
+    MUTABOR_TOKEN_MIDI_OUT = 272,
+    MUTABOR_TOKEN_HARMONY_ANALYSIS = 273,
+    MUTABOR_TOKEN_CALLS = 274,
+    MUTABOR_TOKEN_ELSE = 275,
+    MUTABOR_TOKEN_PARAMETER = 276,
+    MUTABOR_TOKEN_ANCHOR = 277,
+    MUTABOR_TOKEN_DISTANCE = 278,
+    MUTABOR_TOKEN_ENDOFFILE = 279,
+    MUTABOR_TOKEN_ERROR = 280,
+    MUTABOR_TOKEN_SPACES = 281,
+    MUTABOR_TOKEN_COMMENT = 282,
+    MUTABOR_TOKEN_COMMENT_START = 283,
+    MUTABOR_TOKEN_COMMENT_END = 284,
+    MUTABOR_TOKEN_OTHER = 285
+  };
 #endif
 /* Tokens.  */
 #define MUTABOR_TOKEN_IDENTIFIER 258
@@ -207,13 +207,12 @@ extern int yydebug;
 #define MUTABOR_TOKEN_COMMENT_END 284
 #define MUTABOR_TOKEN_OTHER 285
 
-
-
+/* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef union YYSTYPE
+typedef union YYSTYPE YYSTYPE;
+union YYSTYPE
 {
-/* Line 387 of yacc.c  */
-#line 85 "../../../mutabor-git/src/kernel/mut.yy"
+#line 88 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:355  */
 
 			double      f_value;        /* floating point numbers */
 			int         integer;        /* integers */
@@ -221,48 +220,34 @@ typedef union YYSTYPE
 			struct argument_list * arguments;  /* argument list */
 			struct parameter_list * parameters; /* parameter list */
 
-
-/* Line 387 of yacc.c  */
-#line 227 "../../../mutabor-git/src/kernel/mut.cc"
-} YYSTYPE;
+#line 224 "src/kernel/mut.cc" /* yacc.c:355  */
+};
 # define YYSTYPE_IS_TRIVIAL 1
-# define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
 #endif
 
+/* Location type.  */
 #if ! defined YYLTYPE && ! defined YYLTYPE_IS_DECLARED
-typedef struct YYLTYPE
+typedef struct YYLTYPE YYLTYPE;
+struct YYLTYPE
 {
   int first_line;
   int first_column;
   int last_line;
   int last_column;
-} YYLTYPE;
-# define yyltype YYLTYPE /* obsolescent; will be withdrawn */
+};
 # define YYLTYPE_IS_DECLARED 1
 # define YYLTYPE_IS_TRIVIAL 1
 #endif
 
 
-#ifdef YYPARSE_PARAM
-#if defined __STDC__ || defined __cplusplus
-int yyparse (void *YYPARSE_PARAM);
-#else
-int yyparse ();
-#endif
-#else /* ! YYPARSE_PARAM */
-#if defined __STDC__ || defined __cplusplus
-int yyparse (mutabor_box_type * box);
-#else
-int yyparse ();
-#endif
-#endif /* ! YYPARSE_PARAM */
 
-#endif /* !YY_YY__MUTABOR_GIT_SRC_KERNEL_MUT_HH_INCLUDED  */
+int yyparse (mutabor_box_type * box);
+
+#endif /* !YY_YY_SRC_KERNEL_MUT_HH_INCLUDED  */
 
 /* Copy the second part of user declarations.  */
-/* Line 390 of yacc.c  */
-#line 147 "../../../mutabor-git/src/kernel/mut.yy"
+#line 150 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:358  */
 
 int yylex(YYSTYPE* lvalp, YYLTYPE* llocp,  mutabor_box_type * box);
 void yyerror(YYLTYPE* locp, mutabor_box_type * box, const char* err)
@@ -277,8 +262,7 @@ void yyerror(YYLTYPE* locp, mutabor_box_type * box, const char* err)
 #define YYLEX_PARAM box
 //#define scanner box
 
-/* Line 390 of yacc.c  */
-#line 282 "../../../mutabor-git/src/kernel/mut.cc"
+#line 266 "src/kernel/mut.cc" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -292,11 +276,8 @@ typedef unsigned char yytype_uint8;
 
 #ifdef YYTYPE_INT8
 typedef YYTYPE_INT8 yytype_int8;
-#elif (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
-typedef signed char yytype_int8;
 #else
-typedef short int yytype_int8;
+typedef signed char yytype_int8;
 #endif
 
 #ifdef YYTYPE_UINT16
@@ -316,8 +297,7 @@ typedef short int yytype_int16;
 #  define YYSIZE_T __SIZE_TYPE__
 # elif defined size_t
 #  define YYSIZE_T size_t
-# elif ! defined YYSIZE_T && (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+# elif ! defined YYSIZE_T
 #  include <stddef.h> /* INFRINGES ON USER NAME SPACE */
 #  define YYSIZE_T size_t
 # else
@@ -339,11 +319,30 @@ typedef short int yytype_int16;
 # endif
 #endif
 
-#ifndef __attribute__
-/* This feature is available in gcc versions 2.5 and later.  */
-# if (! defined __GNUC__ || __GNUC__ < 2 \
-      || (__GNUC__ == 2 && __GNUC_MINOR__ < 5))
-#  define __attribute__(Spec) /* empty */
+#ifndef YY_ATTRIBUTE
+# if (defined __GNUC__                                               \
+      && (2 < __GNUC__ || (__GNUC__ == 2 && 96 <= __GNUC_MINOR__)))  \
+     || defined __SUNPRO_C && 0x5110 <= __SUNPRO_C
+#  define YY_ATTRIBUTE(Spec) __attribute__(Spec)
+# else
+#  define YY_ATTRIBUTE(Spec) /* empty */
+# endif
+#endif
+
+#ifndef YY_ATTRIBUTE_PURE
+# define YY_ATTRIBUTE_PURE   YY_ATTRIBUTE ((__pure__))
+#endif
+
+#ifndef YY_ATTRIBUTE_UNUSED
+# define YY_ATTRIBUTE_UNUSED YY_ATTRIBUTE ((__unused__))
+#endif
+
+#if !defined _Noreturn \
+     && (!defined __STDC_VERSION__ || __STDC_VERSION__ < 201112)
+# if defined _MSC_VER && 1200 <= _MSC_VER
+#  define _Noreturn __declspec (noreturn)
+# else
+#  define _Noreturn YY_ATTRIBUTE ((__noreturn__))
 # endif
 #endif
 
@@ -354,24 +353,25 @@ typedef short int yytype_int16;
 # define YYUSE(E) /* empty */
 #endif
 
+#if defined __GNUC__ && 407 <= __GNUC__ * 100 + __GNUC_MINOR__
+/* Suppress an incorrect diagnostic about yylval being uninitialized.  */
+# define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN \
+    _Pragma ("GCC diagnostic push") \
+    _Pragma ("GCC diagnostic ignored \"-Wuninitialized\"")\
+    _Pragma ("GCC diagnostic ignored \"-Wmaybe-uninitialized\"")
+# define YY_IGNORE_MAYBE_UNINITIALIZED_END \
+    _Pragma ("GCC diagnostic pop")
+#else
+# define YY_INITIAL_VALUE(Value) Value
+#endif
+#ifndef YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
+# define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
+# define YY_IGNORE_MAYBE_UNINITIALIZED_END
+#endif
+#ifndef YY_INITIAL_VALUE
+# define YY_INITIAL_VALUE(Value) /* Nothing. */
+#endif
 
-/* Identity function, used to suppress warnings about constant conditions.  */
-#ifndef lint
-# define YYID(N) (N)
-#else
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
-static int
-YYID (int yyi)
-#else
-static int
-YYID (yyi)
-    int yyi;
-#endif
-{
-  return yyi;
-}
-#endif
 
 #if ! defined yyoverflow || YYERROR_VERBOSE
 
@@ -390,8 +390,7 @@ YYID (yyi)
 #    define alloca _alloca
 #   else
 #    define YYSTACK_ALLOC alloca
-#    if ! defined _ALLOCA_H && ! defined EXIT_SUCCESS && (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+#    if ! defined _ALLOCA_H && ! defined EXIT_SUCCESS
 #     include <stdlib.h> /* INFRINGES ON USER NAME SPACE */
       /* Use EXIT_SUCCESS as a witness for stdlib.h.  */
 #     ifndef EXIT_SUCCESS
@@ -403,8 +402,8 @@ YYID (yyi)
 # endif
 
 # ifdef YYSTACK_ALLOC
-   /* Pacify GCC's `empty if-body' warning.  */
-#  define YYSTACK_FREE(Ptr) do { /* empty */; } while (YYID (0))
+   /* Pacify GCC's 'empty if-body' warning.  */
+#  define YYSTACK_FREE(Ptr) do { /* empty */; } while (0)
 #  ifndef YYSTACK_ALLOC_MAXIMUM
     /* The OS might guarantee only one guard page at the bottom of the stack,
        and a page size can be as small as 4096 bytes.  So we cannot safely
@@ -420,7 +419,7 @@ YYID (yyi)
 #  endif
 #  if (defined __cplusplus && ! defined EXIT_SUCCESS \
        && ! ((defined YYMALLOC || defined malloc) \
-	     && (defined YYFREE || defined free)))
+             && (defined YYFREE || defined free)))
 #   include <stdlib.h> /* INFRINGES ON USER NAME SPACE */
 #   ifndef EXIT_SUCCESS
 #    define EXIT_SUCCESS 0
@@ -428,15 +427,13 @@ YYID (yyi)
 #  endif
 #  ifndef YYMALLOC
 #   define YYMALLOC malloc
-#   if ! defined malloc && ! defined EXIT_SUCCESS && (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+#   if ! defined malloc && ! defined EXIT_SUCCESS
 void *malloc (YYSIZE_T); /* INFRINGES ON USER NAME SPACE */
 #   endif
 #  endif
 #  ifndef YYFREE
 #   define YYFREE free
-#   if ! defined free && ! defined EXIT_SUCCESS && (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+#   if ! defined free && ! defined EXIT_SUCCESS
 void free (void *); /* INFRINGES ON USER NAME SPACE */
 #   endif
 #  endif
@@ -446,8 +443,8 @@ void free (void *); /* INFRINGES ON USER NAME SPACE */
 
 #if (! defined yyoverflow \
      && (! defined __cplusplus \
-	 || (defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL \
-	     && defined YYSTYPE_IS_TRIVIAL && YYSTYPE_IS_TRIVIAL)))
+         || (defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL \
+             && defined YYSTYPE_IS_TRIVIAL && YYSTYPE_IS_TRIVIAL)))
 
 /* A type that is properly aligned for any stack member.  */
 union yyalloc
@@ -473,16 +470,16 @@ union yyalloc
    elements in the stack, and YYPTR gives the new location of the
    stack.  Advance YYPTR to a properly aligned location for the next
    stack.  */
-# define YYSTACK_RELOCATE(Stack_alloc, Stack)				\
-    do									\
-      {									\
-	YYSIZE_T yynewbytes;						\
-	YYCOPY (&yyptr->Stack_alloc, Stack, yysize);			\
-	Stack = &yyptr->Stack_alloc;					\
-	yynewbytes = yystacksize * sizeof (*Stack) + YYSTACK_GAP_MAXIMUM; \
-	yyptr += yynewbytes / sizeof (*yyptr);				\
-      }									\
-    while (YYID (0))
+# define YYSTACK_RELOCATE(Stack_alloc, Stack)                           \
+    do                                                                  \
+      {                                                                 \
+        YYSIZE_T yynewbytes;                                            \
+        YYCOPY (&yyptr->Stack_alloc, Stack, yysize);                    \
+        Stack = &yyptr->Stack_alloc;                                    \
+        yynewbytes = yystacksize * sizeof (*Stack) + YYSTACK_GAP_MAXIMUM; \
+        yyptr += yynewbytes / sizeof (*yyptr);                          \
+      }                                                                 \
+    while (0)
 
 #endif
 
@@ -501,7 +498,7 @@ union yyalloc
           for (yyi = 0; yyi < (Count); yyi++)   \
             (Dst)[yyi] = (Src)[yyi];            \
         }                                       \
-      while (YYID (0))
+      while (0)
 #  endif
 # endif
 #endif /* !YYCOPY_NEEDED */
@@ -517,17 +514,19 @@ union yyalloc
 #define YYNNTS  106
 /* YYNRULES -- Number of rules.  */
 #define YYNRULES  212
-/* YYNRULES -- Number of states.  */
+/* YYNSTATES -- Number of states.  */
 #define YYNSTATES  349
 
-/* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
+/* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
+   by yylex, with out-of-bounds checking.  */
 #define YYUNDEFTOK  2
 #define YYMAXUTOK   285
 
-#define YYTRANSLATE(YYX)						\
+#define YYTRANSLATE(YYX)                                                \
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
 
-/* YYTRANSLATE[YYLEX] -- Bison symbol number corresponding to YYLEX.  */
+/* YYTRANSLATE[TOKEN-NUM] -- Symbol number corresponding to TOKEN-NUM
+   as returned by yylex, without out-of-bounds checking.  */
 static const yytype_uint8 yytranslate[] =
 {
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -562,131 +561,31 @@ static const yytype_uint8 yytranslate[] =
 };
 
 #if YYDEBUG
-/* YYPRHS[YYN] -- Index of the first RHS symbol of rule number YYN in
-   YYRHS.  */
-static const yytype_uint16 yyprhs[] =
-{
-       0,     0,     3,     4,     6,     8,    10,    12,    14,    16,
-      18,    21,    24,    26,    29,    30,    32,    34,    36,    38,
-      40,    42,    44,    47,    50,    51,    54,    55,    58,    64,
-      70,    74,    78,    81,    84,    85,    88,    89,    92,    96,
-     102,   106,   112,   116,   119,   120,   123,   126,   129,   133,
-     137,   142,   147,   153,   159,   161,   164,   168,   173,   176,
-     177,   180,   181,   184,   185,   194,   195,   205,   207,   211,
-     213,   214,   216,   217,   219,   221,   225,   227,   229,   231,
-     232,   234,   236,   240,   242,   244,   247,   249,   251,   254,
-     255,   258,   259,   264,   265,   273,   274,   282,   283,   289,
-     291,   293,   295,   297,   299,   301,   303,   305,   307,   309,
-     311,   315,   321,   327,   335,   336,   341,   343,   347,   348,
-     352,   354,   358,   359,   361,   363,   365,   366,   371,   372,
-     377,   378,   383,   384,   389,   390,   395,   396,   402,   403,
-     410,   411,   418,   419,   424,   426,   430,   432,   437,   443,
-     444,   450,   452,   453,   459,   461,   464,   465,   471,   472,
-     479,   480,   486,   487,   493,   496,   497,   500,   501,   509,
-     513,   514,   517,   519,   523,   525,   528,   531,   532,   533,
-     537,   538,   546,   547,   556,   557,   560,   561,   569,   570,
-     576,   582,   586,   590,   592,   594,   596,   599,   602,   603,
-     609,   611,   615,   617,   620,   621,   624,   629,   636,   643,
-     651,   661,   663
-};
-
-/* YYRHS -- A `-1'-separated list of the rules' RHS.  */
-static const yytype_int16 yyrhs[] =
-{
-      50,     0,    -1,    -1,    56,    -1,    31,    -1,    32,    -1,
-      33,    -1,    34,    -1,    51,    -1,    52,    -1,    35,    35,
-      -1,    36,    36,    -1,    57,    -1,    56,    57,    -1,    -1,
-      58,    -1,    63,    -1,    72,    -1,    87,    -1,   130,    -1,
-     137,    -1,   151,    -1,     1,    57,    -1,     6,    59,    -1,
-      -1,    59,    60,    -1,    -1,    61,    62,    -1,     3,    37,
-     154,    38,   154,    -1,     3,    37,   154,    15,   154,    -1,
-       3,    37,    68,    -1,     3,    37,     1,    -1,     3,     1,
-      -1,     7,    64,    -1,    -1,    64,    65,    -1,    -1,    66,
-      67,    -1,     3,    37,   154,    -1,     3,    37,     3,    32,
-      68,    -1,     3,    37,     3,    -1,     3,    37,     3,    31,
-      68,    -1,     3,    37,     1,    -1,    71,    69,    -1,    -1,
-      69,    70,    -1,    31,     3,    -1,    32,     3,    -1,    31,
-     154,     3,    -1,    32,   154,     3,    -1,    31,    34,   154,
-       3,    -1,    32,    34,   154,     3,    -1,    31,   154,    34,
-     154,     3,    -1,    32,   154,    34,   154,     3,    -1,     3,
-      -1,   154,     3,    -1,    34,   154,     3,    -1,   154,    34,
-     154,     3,    -1,     8,    73,    -1,    -1,    73,    74,    -1,
-      -1,    75,    76,    -1,    -1,     3,    37,     5,    39,    79,
-      40,    77,    68,    -1,    -1,     3,    37,     5,    39,    79,
-      40,    78,    32,    68,    -1,    80,    -1,    79,    41,    80,
-      -1,     3,    -1,    -1,     1,    -1,    -1,    82,    -1,    83,
-      -1,    83,    41,    82,    -1,     3,    -1,    23,    -1,    22,
-      -1,    -1,    85,    -1,    86,    -1,    86,    41,    85,    -1,
-       3,    -1,     5,    -1,    32,     5,    -1,    23,    -1,    22,
-      -1,     9,    88,    -1,    -1,    89,    88,    -1,    -1,     3,
-      37,    90,    94,    -1,    -1,     3,    42,    81,    43,    37,
-      91,    94,    -1,    -1,     3,    42,    81,     1,    37,    92,
-      94,    -1,    -1,     3,     1,    37,    93,    94,    -1,    95,
-      -1,    96,    -1,    97,    -1,    98,    -1,    99,    -1,   110,
-      -1,   113,    -1,   116,    -1,   121,    -1,   128,    -1,     1,
-      -1,    86,    39,    40,    -1,    44,    51,    86,    39,    40,
-      -1,    39,    54,    86,    55,    40,    -1,    39,    54,    44,
-      53,    86,    55,    40,    -1,    -1,    39,   100,   101,    40,
-      -1,   105,    -1,   105,    41,   103,    -1,    -1,    41,   102,
-     103,    -1,   104,    -1,   103,    41,   104,    -1,    -1,   105,
-      -1,     3,    -1,    44,    -1,    -1,     3,    31,   106,    68,
-      -1,    -1,    44,    31,   107,    68,    -1,    -1,     3,    32,
-     108,    68,    -1,    -1,    44,    32,   109,    68,    -1,    -1,
-      39,    40,   111,    68,    -1,    -1,    39,    40,   112,    32,
-      68,    -1,    -1,    39,    40,    44,    31,   114,    68,    -1,
-      -1,    39,    40,    44,    32,   115,    68,    -1,    -1,    45,
-     117,   118,    46,    -1,   119,    -1,   118,    41,   119,    -1,
-       3,    -1,     3,    42,    84,    43,    -1,     3,    42,    84,
-       1,    43,    -1,    -1,    17,    42,   120,   150,    43,    -1,
-      18,    -1,    -1,    86,    45,   122,   123,    46,    -1,   124,
-      -1,   123,   124,    -1,    -1,     5,    32,    36,   125,   118,
-      -1,    -1,    32,     5,    32,    36,   126,   118,    -1,    -1,
-      20,    32,    36,   127,   118,    -1,    -1,    17,    42,   129,
-     150,    43,    -1,    10,   131,    -1,    -1,   131,   132,    -1,
-      -1,     3,    37,    45,   133,   135,    46,   134,    -1,     3,
-      37,     1,    -1,    -1,    47,     5,    -1,   136,    -1,   135,
-      41,   136,    -1,     5,    -1,    33,     5,    -1,    11,   138,
-      -1,    -1,    -1,   138,   139,   140,    -1,    -1,     3,   148,
-      37,    39,   141,   143,    40,    -1,    -1,     3,   148,    37,
-       3,    39,   142,   143,    40,    -1,    -1,   143,   144,    -1,
-      -1,   148,    32,    36,    45,   145,   118,    46,    -1,    -1,
-     148,    32,    36,   146,   119,    -1,     5,    48,     3,    48,
-       5,    -1,     3,    48,     5,    -1,     5,    48,     3,    -1,
-       3,    -1,    20,    -1,   147,    -1,    14,   147,    -1,    13,
-       3,    -1,    -1,    16,    42,   149,   150,    43,    -1,     5,
-      -1,   150,    41,     5,    -1,     1,    -1,    12,   152,    -1,
-      -1,   152,   153,    -1,     5,    32,    36,     5,    -1,     5,
-      32,    36,     5,    32,     5,    -1,     5,    32,    36,    39,
-       5,    40,    -1,     5,    32,    36,     5,    39,     5,    40,
-      -1,     5,    32,    36,     5,    32,     5,    39,     5,    40,
-      -1,     4,    -1,     5,    -1
-};
-
-/* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
+  /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,   165,   165,   166,   170,   171,   175,   176,   180,   181,
-     184,   185,   187,   188,   191,   192,   193,   194,   195,   196,
-     197,   198,   199,   207,   209,   211,   215,   215,   219,   227,
-     238,   240,   247,   256,   258,   260,   264,   264,   268,   271,
-     275,   279,   283,   293,   297,   299,   302,   305,   308,   311,
-     314,   324,   334,   344,   369,   377,   380,   390,   420,   422,
-     424,   428,   428,   433,   432,   437,   436,   442,   442,   445,
-     446,   447,   455,   456,   462,   463,   474,   477,   484,   504,
-     505,   511,   514,   530,   532,   534,   536,   538,   544,   548,
-     550,   554,   554,   565,   564,   575,   574,   588,   588,   602,
-     603,   604,   605,   606,   607,   608,   609,   610,   611,   612,
-     622,   627,   632,   637,   643,   642,   652,   653,   655,   655,
-     662,   663,   668,   672,   676,   677,   679,   679,   682,   682,
-     685,   685,   688,   688,   695,   695,   698,   698,   704,   704,
-     707,   707,   713,   713,   719,   720,   724,   727,   729,   738,
-     737,   741,   745,   745,   751,   752,   757,   756,   761,   760,
-     765,   764,   772,   771,   779,   783,   784,   789,   788,   793,
-     803,   804,   808,   809,   813,   814,   818,   822,   823,   823,
-     831,   830,   836,   835,   843,   844,   849,   849,   853,   853,
-     859,   861,   863,   865,   870,   871,   872,   873,   874,   874,
-     880,   882,   884,   894,   898,   899,   903,   905,   907,   909,
-     911,   916,   917
+       0,   168,   168,   169,   173,   174,   178,   179,   183,   184,
+     187,   188,   190,   191,   194,   195,   196,   197,   198,   199,
+     200,   201,   202,   210,   212,   214,   218,   218,   222,   230,
+     241,   243,   250,   259,   261,   263,   267,   267,   271,   274,
+     278,   282,   286,   296,   300,   302,   305,   308,   311,   314,
+     317,   327,   337,   347,   372,   380,   383,   393,   423,   425,
+     427,   431,   431,   436,   435,   440,   439,   445,   445,   448,
+     449,   450,   458,   459,   465,   466,   477,   480,   487,   507,
+     508,   514,   517,   533,   535,   537,   539,   541,   547,   551,
+     553,   557,   557,   568,   567,   578,   577,   591,   591,   605,
+     606,   607,   608,   609,   610,   611,   612,   613,   614,   615,
+     625,   630,   635,   640,   646,   645,   655,   656,   658,   658,
+     665,   666,   671,   675,   679,   680,   682,   682,   685,   685,
+     688,   688,   691,   691,   698,   698,   701,   701,   707,   707,
+     710,   710,   716,   716,   722,   723,   727,   730,   732,   741,
+     740,   744,   748,   748,   754,   755,   760,   759,   764,   763,
+     768,   767,   775,   774,   782,   786,   787,   792,   791,   796,
+     806,   807,   811,   812,   816,   817,   821,   825,   826,   826,
+     834,   833,   839,   838,   846,   847,   852,   852,   856,   856,
+     862,   864,   866,   868,   873,   874,   875,   876,   877,   877,
+     883,   885,   887,   897,   901,   902,   906,   908,   910,   912,
+     914,   919,   920
 };
 #endif
 
@@ -735,13 +634,13 @@ static const char *const yytname[] =
   "logik_dekl_2", "$@29", "$@30", "anweisungs_liste", "anweisung", "$@31",
   "$@32", "harmoniebezeichner", "ausloeser", "$@33", "integersequenz",
   "instrumentdeklaration", "instrument_dekl_1", "instrument_dekl_2",
-  "GLEITKOMMA_ZAHL", YY_NULL
+  "GLEITKOMMA_ZAHL", YY_NULLPTR
 };
 #endif
 
 # ifdef YYPRINT
-/* YYTOKNUM[YYLEX-NUM] -- Internal token number corresponding to
-   token YYLEX-NUM.  */
+/* YYTOKNUM[NUM] -- (External) token number corresponding to the
+   (internal) symbol number NUM (which must be that of a token).  */
 static const yytype_uint16 yytoknum[] =
 {
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
@@ -752,121 +651,18 @@ static const yytype_uint16 yytoknum[] =
 };
 # endif
 
-/* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
-static const yytype_uint8 yyr1[] =
-{
-       0,    49,    50,    50,    51,    51,    52,    52,    53,    53,
-      54,    55,    56,    56,    57,    57,    57,    57,    57,    57,
-      57,    57,    57,    58,    59,    59,    61,    60,    62,    62,
-      62,    62,    62,    63,    64,    64,    66,    65,    67,    67,
-      67,    67,    67,    68,    69,    69,    70,    70,    70,    70,
-      70,    70,    70,    70,    71,    71,    71,    71,    72,    73,
-      73,    75,    74,    77,    76,    78,    76,    79,    79,    80,
-      80,    80,    81,    81,    82,    82,    83,    83,    83,    84,
-      84,    85,    85,    86,    86,    86,    86,    86,    87,    88,
-      88,    90,    89,    91,    89,    92,    89,    93,    89,    94,
-      94,    94,    94,    94,    94,    94,    94,    94,    94,    94,
-      95,    96,    97,    98,   100,    99,   101,   101,   102,   101,
-     103,   103,   104,   104,   105,   105,   106,   105,   107,   105,
-     108,   105,   109,   105,   111,   110,   112,   110,   114,   113,
-     115,   113,   117,   116,   118,   118,   119,   119,   119,   120,
-     119,   119,   122,   121,   123,   123,   125,   124,   126,   124,
-     127,   124,   129,   128,   130,   131,   131,   133,   132,   132,
-     134,   134,   135,   135,   136,   136,   137,   138,   139,   138,
-     141,   140,   142,   140,   143,   143,   145,   144,   146,   144,
-     147,   147,   147,   147,   148,   148,   148,   148,   149,   148,
-     150,   150,   150,   151,   152,   152,   153,   153,   153,   153,
-     153,   154,   154
-};
-
-/* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
-static const yytype_uint8 yyr2[] =
-{
-       0,     2,     0,     1,     1,     1,     1,     1,     1,     1,
-       2,     2,     1,     2,     0,     1,     1,     1,     1,     1,
-       1,     1,     2,     2,     0,     2,     0,     2,     5,     5,
-       3,     3,     2,     2,     0,     2,     0,     2,     3,     5,
-       3,     5,     3,     2,     0,     2,     2,     2,     3,     3,
-       4,     4,     5,     5,     1,     2,     3,     4,     2,     0,
-       2,     0,     2,     0,     8,     0,     9,     1,     3,     1,
-       0,     1,     0,     1,     1,     3,     1,     1,     1,     0,
-       1,     1,     3,     1,     1,     2,     1,     1,     2,     0,
-       2,     0,     4,     0,     7,     0,     7,     0,     5,     1,
-       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
-       3,     5,     5,     7,     0,     4,     1,     3,     0,     3,
-       1,     3,     0,     1,     1,     1,     0,     4,     0,     4,
-       0,     4,     0,     4,     0,     4,     0,     5,     0,     6,
-       0,     6,     0,     4,     1,     3,     1,     4,     5,     0,
-       5,     1,     0,     5,     1,     2,     0,     5,     0,     6,
-       0,     5,     0,     5,     2,     0,     2,     0,     7,     3,
-       0,     2,     1,     3,     1,     2,     2,     0,     0,     3,
-       0,     7,     0,     8,     0,     2,     0,     7,     0,     5,
-       5,     3,     3,     1,     1,     1,     2,     2,     0,     5,
-       1,     3,     1,     2,     0,     2,     4,     6,     6,     7,
-       9,     1,     1
-};
-
-/* YYDEFACT[STATE-NAME] -- Default reduction number in state STATE-NUM.
-   Performed when YYTABLE doesn't specify something else to do.  Zero
-   means the default is an error.  */
-static const yytype_uint8 yydefact[] =
-{
-       0,     0,    24,    34,    59,    89,   165,   177,   204,     0,
-       0,    12,    15,    16,    17,    18,    19,    20,    21,    22,
-      23,    33,    58,     0,    88,    89,   164,   176,   203,     1,
-      13,    25,     0,    35,     0,    60,     0,     0,    91,    72,
-      90,     0,   166,     0,     0,   205,     0,    27,     0,    37,
-       0,    62,    97,     0,    76,    78,    77,     0,    73,    74,
-       0,     0,   179,     0,    32,     0,     0,     0,     0,   109,
-      83,    84,     0,    87,    86,     0,   114,     0,   142,     0,
-      92,    99,   100,   101,   102,   103,   104,   105,   106,   107,
-     108,     0,     0,     0,   169,   167,   193,     0,     0,     0,
-       0,   194,   195,     0,     0,    31,    54,   211,   212,     0,
-      30,    44,     0,    42,    40,    38,     0,    98,   162,    85,
-       0,   134,     0,     0,     4,     5,     0,     0,     0,   152,
-      95,    93,    75,     0,     0,     0,   197,   196,   198,     0,
-     206,     0,     0,    43,    55,     0,     0,     0,     0,     0,
-       0,     0,    10,     0,     0,     0,     0,     0,   124,   118,
-     125,     0,   116,     0,   146,     0,   151,     0,   144,   110,
-       0,     0,     0,   174,     0,     0,   172,   191,   192,     0,
-       0,   180,     0,     0,     0,    56,     0,     0,    45,    29,
-       0,    28,    41,     0,    39,    71,    69,     0,    67,   202,
-     200,     0,   138,   140,   135,     0,     6,     7,     8,     9,
-       0,     0,     0,   126,   130,   122,   128,   132,   115,   122,
-       0,    79,   149,     0,   143,     0,     0,     0,     0,   154,
-      96,    94,   175,     0,   170,     0,     0,   182,   184,   207,
-       0,   208,    46,     0,     0,    47,     0,     0,    57,    63,
-       0,     0,   163,     0,     0,   137,     0,    11,   112,     0,
-       0,   119,   120,   123,     0,     0,   117,   111,     0,    80,
-      81,     0,   145,     0,     0,     0,   153,   155,   173,     0,
-     168,   190,   199,   184,     0,     0,   209,     0,    48,     0,
-       0,    49,     0,     0,     0,    68,   201,   139,   141,     0,
-     127,   131,   122,   129,   133,     0,   147,     0,     0,   156,
-     160,     0,   171,     0,   181,   185,     0,     0,    50,     0,
-      51,     0,    64,     0,   113,   121,   148,    82,   150,     0,
-       0,   158,   183,     0,   210,    52,    53,    66,   157,   161,
-       0,   188,   159,   186,     0,     0,   189,     0,   187
-};
-
-/* YYDEFGOTO[NTERM-NUM].  */
-static const yytype_int16 yydefgoto[] =
-{
-      -1,     9,   126,   209,   210,   122,   212,    10,    11,    12,
-      20,    31,    32,    47,    13,    21,    33,    34,    49,   110,
-     143,   188,   111,    14,    22,    35,    36,    51,   293,   294,
-     197,   198,    57,    58,    59,   268,   269,    79,    15,    24,
-      25,    53,   172,   171,    68,    80,    81,    82,    83,    84,
-      85,   123,   161,   215,   261,   262,   263,   259,   264,   260,
-     265,    86,   154,   155,    87,   253,   254,    88,   127,   167,
-     168,   271,    89,   170,   228,   229,   329,   340,   330,    90,
-     151,    16,    26,    42,   133,   280,   175,   176,    17,    27,
-      43,    62,   238,   283,   284,   315,   345,   344,   102,   316,
-     179,   201,    18,    28,    45,   193
-};
-
-/* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
-   STATE-NUM.  */
 #define YYPACT_NINF -220
+
+#define yypact_value_is_default(Yystate) \
+  (!!((Yystate) == (-220)))
+
+#define YYTABLE_NINF -179
+
+#define yytable_value_is_error(Yytable_value) \
+  0
+
+  /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
+     STATE-NUM.  */
 static const yytype_int16 yypact[] =
 {
      183,   196,  -220,  -220,  -220,    18,  -220,  -220,  -220,    49,
@@ -906,7 +702,49 @@ static const yytype_int16 yypact[] =
       25,   269,   267,  -220,    25,    25,  -220,   113,  -220
 };
 
-/* YYPGOTO[NTERM-NUM].  */
+  /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
+     Performed when YYTABLE does not specify something else to do.  Zero
+     means the default is an error.  */
+static const yytype_uint8 yydefact[] =
+{
+       0,     0,    24,    34,    59,    89,   165,   177,   204,     0,
+       0,    12,    15,    16,    17,    18,    19,    20,    21,    22,
+      23,    33,    58,     0,    88,    89,   164,   176,   203,     1,
+      13,    25,     0,    35,     0,    60,     0,     0,    91,    72,
+      90,     0,   166,     0,     0,   205,     0,    27,     0,    37,
+       0,    62,    97,     0,    76,    78,    77,     0,    73,    74,
+       0,     0,   179,     0,    32,     0,     0,     0,     0,   109,
+      83,    84,     0,    87,    86,     0,   114,     0,   142,     0,
+      92,    99,   100,   101,   102,   103,   104,   105,   106,   107,
+     108,     0,     0,     0,   169,   167,   193,     0,     0,     0,
+       0,   194,   195,     0,     0,    31,    54,   211,   212,     0,
+      30,    44,     0,    42,    40,    38,     0,    98,   162,    85,
+       0,   134,     0,     0,     4,     5,     0,     0,     0,   152,
+      95,    93,    75,     0,     0,     0,   197,   196,   198,     0,
+     206,     0,     0,    43,    55,     0,     0,     0,     0,     0,
+       0,     0,    10,     0,     0,     0,     0,     0,   124,   118,
+     125,     0,   116,     0,   146,     0,   151,     0,   144,   110,
+       0,     0,     0,   174,     0,     0,   172,   191,   192,     0,
+       0,   180,     0,     0,     0,    56,     0,     0,    45,    29,
+       0,    28,    41,     0,    39,    71,    69,     0,    67,   202,
+     200,     0,   138,   140,   135,     0,     6,     7,     8,     9,
+       0,     0,     0,   126,   130,   122,   128,   132,   115,   122,
+       0,    79,   149,     0,   143,     0,     0,     0,     0,   154,
+      96,    94,   175,     0,   170,     0,     0,   182,   184,   207,
+       0,   208,    46,     0,     0,    47,     0,     0,    57,    63,
+       0,     0,   163,     0,     0,   137,     0,    11,   112,     0,
+       0,   119,   120,   123,     0,     0,   117,   111,     0,    80,
+      81,     0,   145,     0,     0,     0,   153,   155,   173,     0,
+     168,   190,   199,   184,     0,     0,   209,     0,    48,     0,
+       0,    49,     0,     0,     0,    68,   201,   139,   141,     0,
+     127,   131,   122,   129,   133,     0,   147,     0,     0,   156,
+     160,     0,   171,     0,   181,   185,     0,     0,    50,     0,
+      51,     0,    64,     0,   113,   121,   148,    82,   150,     0,
+       0,   158,   183,     0,   210,    52,    53,    66,   157,   161,
+       0,   188,   159,   186,     0,     0,   189,     0,   187
+};
+
+  /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int16 yypgoto[] =
 {
     -220,  -220,   146,  -220,  -220,  -220,    45,  -220,    96,  -220,
@@ -922,10 +760,25 @@ static const yytype_int16 yypgoto[] =
     -220,  -176,  -220,  -220,  -220,   -65
 };
 
-/* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
-   positive, shift that token.  If negative, reduce the rule which
-   number is the opposite.  If YYTABLE_NINF, syntax error.  */
-#define YYTABLE_NINF -179
+  /* YYDEFGOTO[NTERM-NUM].  */
+static const yytype_int16 yydefgoto[] =
+{
+      -1,     9,   126,   209,   210,   122,   212,    10,    11,    12,
+      20,    31,    32,    47,    13,    21,    33,    34,    49,   110,
+     143,   188,   111,    14,    22,    35,    36,    51,   293,   294,
+     197,   198,    57,    58,    59,   268,   269,    79,    15,    24,
+      25,    53,   172,   171,    68,    80,    81,    82,    83,    84,
+      85,   123,   161,   215,   261,   262,   263,   259,   264,   260,
+     265,    86,   154,   155,    87,   253,   254,    88,   127,   167,
+     168,   271,    89,   170,   228,   229,   329,   340,   330,    90,
+     151,    16,    26,    42,   133,   280,   175,   176,    17,    27,
+      43,    62,   238,   283,   284,   315,   345,   344,   102,   316,
+     179,   201,    18,    28,    45,   193
+};
+
+  /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
+     positive, shift that token.  If negative, reduce the rule whose
+     number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int16 yytable[] =
 {
      112,   115,   157,   236,   272,   117,   163,   192,   194,    91,
@@ -963,12 +816,6 @@ static const yytype_int16 yytable[] =
        0,     0,     0,   137,     0,     0,     0,     0,     0,     0,
        0,     0,   103
 };
-
-#define yypact_value_is_default(Yystate) \
-  (!!((Yystate) == (-220)))
-
-#define yytable_value_is_error(Yytable_value) \
-  YYID (0)
 
 static const yytype_int16 yycheck[] =
 {
@@ -1008,8 +855,8 @@ static const yytype_int16 yycheck[] =
       -1,    -1,    61
 };
 
-/* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
-   symbol of state STATE-NUM.  */
+  /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
+     symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
        0,     1,     6,     7,     8,     9,    10,    11,    12,    50,
@@ -1049,30 +896,70 @@ static const yytype_uint8 yystos[] =
      126,    36,   118,    45,   146,   145,   119,   118,    46
 };
 
-#define yyerrok		(yyerrstatus = 0)
-#define yyclearin	(yychar = YYEMPTY)
-#define YYEMPTY		(-2)
-#define YYEOF		0
+  /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
+static const yytype_uint8 yyr1[] =
+{
+       0,    49,    50,    50,    51,    51,    52,    52,    53,    53,
+      54,    55,    56,    56,    57,    57,    57,    57,    57,    57,
+      57,    57,    57,    58,    59,    59,    61,    60,    62,    62,
+      62,    62,    62,    63,    64,    64,    66,    65,    67,    67,
+      67,    67,    67,    68,    69,    69,    70,    70,    70,    70,
+      70,    70,    70,    70,    71,    71,    71,    71,    72,    73,
+      73,    75,    74,    77,    76,    78,    76,    79,    79,    80,
+      80,    80,    81,    81,    82,    82,    83,    83,    83,    84,
+      84,    85,    85,    86,    86,    86,    86,    86,    87,    88,
+      88,    90,    89,    91,    89,    92,    89,    93,    89,    94,
+      94,    94,    94,    94,    94,    94,    94,    94,    94,    94,
+      95,    96,    97,    98,   100,    99,   101,   101,   102,   101,
+     103,   103,   104,   104,   105,   105,   106,   105,   107,   105,
+     108,   105,   109,   105,   111,   110,   112,   110,   114,   113,
+     115,   113,   117,   116,   118,   118,   119,   119,   119,   120,
+     119,   119,   122,   121,   123,   123,   125,   124,   126,   124,
+     127,   124,   129,   128,   130,   131,   131,   133,   132,   132,
+     134,   134,   135,   135,   136,   136,   137,   138,   139,   138,
+     141,   140,   142,   140,   143,   143,   145,   144,   146,   144,
+     147,   147,   147,   147,   148,   148,   148,   148,   149,   148,
+     150,   150,   150,   151,   152,   152,   153,   153,   153,   153,
+     153,   154,   154
+};
 
-#define YYACCEPT	goto yyacceptlab
-#define YYABORT		goto yyabortlab
-#define YYERROR		goto yyerrorlab
+  /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
+static const yytype_uint8 yyr2[] =
+{
+       0,     2,     0,     1,     1,     1,     1,     1,     1,     1,
+       2,     2,     1,     2,     0,     1,     1,     1,     1,     1,
+       1,     1,     2,     2,     0,     2,     0,     2,     5,     5,
+       3,     3,     2,     2,     0,     2,     0,     2,     3,     5,
+       3,     5,     3,     2,     0,     2,     2,     2,     3,     3,
+       4,     4,     5,     5,     1,     2,     3,     4,     2,     0,
+       2,     0,     2,     0,     8,     0,     9,     1,     3,     1,
+       0,     1,     0,     1,     1,     3,     1,     1,     1,     0,
+       1,     1,     3,     1,     1,     2,     1,     1,     2,     0,
+       2,     0,     4,     0,     7,     0,     7,     0,     5,     1,
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       3,     5,     5,     7,     0,     4,     1,     3,     0,     3,
+       1,     3,     0,     1,     1,     1,     0,     4,     0,     4,
+       0,     4,     0,     4,     0,     4,     0,     5,     0,     6,
+       0,     6,     0,     4,     1,     3,     1,     4,     5,     0,
+       5,     1,     0,     5,     1,     2,     0,     5,     0,     6,
+       0,     5,     0,     5,     2,     0,     2,     0,     7,     3,
+       0,     2,     1,     3,     1,     2,     2,     0,     0,     3,
+       0,     7,     0,     8,     0,     2,     0,     7,     0,     5,
+       5,     3,     3,     1,     1,     1,     2,     2,     0,     5,
+       1,     3,     1,     2,     0,     2,     4,     6,     6,     7,
+       9,     1,     1
+};
 
 
-/* Like YYERROR except do call yyerror.  This remains here temporarily
-   to ease the transition to the new meaning of YYERROR, for GCC.
-   Once GCC version 2 has supplanted version 1, this can go.  However,
-   YYFAIL appears to be in use.  Nevertheless, it is formally deprecated
-   in Bison 2.4.2's NEWS entry, where a plan to phase it out is
-   discussed.  */
+#define yyerrok         (yyerrstatus = 0)
+#define yyclearin       (yychar = YYEMPTY)
+#define YYEMPTY         (-2)
+#define YYEOF           0
 
-#define YYFAIL		goto yyerrlab
-#if defined YYFAIL
-  /* This is here to suppress warnings from the GCC cpp's
-     -Wunused-macros.  Normally we don't worry about that warning, but
-     some users do, and we want to make it easy for users to remove
-     YYFAIL uses, which will produce warnings from Bison 2.5.  */
-#endif
+#define YYACCEPT        goto yyacceptlab
+#define YYABORT         goto yyabortlab
+#define YYERROR         goto yyerrorlab
+
 
 #define YYRECOVERING()  (!!yyerrstatus)
 
@@ -1089,13 +976,13 @@ do                                                              \
   else                                                          \
     {                                                           \
       yyerror (&yylloc, box, YY_("syntax error: cannot back up")); \
-      YYERROR;							\
-    }								\
-while (YYID (0))
+      YYERROR;                                                  \
+    }                                                           \
+while (0)
 
 /* Error token number */
-#define YYTERROR	1
-#define YYERRCODE	256
+#define YYTERROR        1
+#define YYERRCODE       256
 
 
 /* YYLLOC_DEFAULT -- Set CURRENT to span from RHS[1] to RHS[N].
@@ -1105,7 +992,7 @@ while (YYID (0))
 #ifndef YYLLOC_DEFAULT
 # define YYLLOC_DEFAULT(Current, Rhs, N)                                \
     do                                                                  \
-      if (YYID (N))                                                     \
+      if (N)                                                            \
         {                                                               \
           (Current).first_line   = YYRHSLOC (Rhs, 1).first_line;        \
           (Current).first_column = YYRHSLOC (Rhs, 1).first_column;      \
@@ -1119,10 +1006,25 @@ while (YYID (0))
           (Current).first_column = (Current).last_column =              \
             YYRHSLOC (Rhs, 0).last_column;                              \
         }                                                               \
-    while (YYID (0))
+    while (0)
 #endif
 
 #define YYRHSLOC(Rhs, K) ((Rhs)[K])
+
+
+/* Enable debugging if requested.  */
+#if YYDEBUG
+
+# ifndef YYFPRINTF
+#  include <stdio.h> /* INFRINGES ON USER NAME SPACE */
+#  define YYFPRINTF fprintf
+# endif
+
+# define YYDPRINTF(Args)                        \
+do {                                            \
+  if (yydebug)                                  \
+    YYFPRINTF Args;                             \
+} while (0)
 
 
 /* YY_LOCATION_PRINT -- Print the location on the stream.
@@ -1134,36 +1036,28 @@ while (YYID (0))
 
 /* Print *YYLOCP on YYO.  Private, do not rely on its existence. */
 
-__attribute__((__unused__))
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+YY_ATTRIBUTE_UNUSED
 static unsigned
 yy_location_print_ (FILE *yyo, YYLTYPE const * const yylocp)
-#else
-static unsigned
-yy_location_print_ (yyo, yylocp)
-    FILE *yyo;
-    YYLTYPE const * const yylocp;
-#endif
 {
   unsigned res = 0;
   int end_col = 0 != yylocp->last_column ? yylocp->last_column - 1 : 0;
   if (0 <= yylocp->first_line)
     {
-      res += fprintf (yyo, "%d", yylocp->first_line);
+      res += YYFPRINTF (yyo, "%d", yylocp->first_line);
       if (0 <= yylocp->first_column)
-        res += fprintf (yyo, ".%d", yylocp->first_column);
+        res += YYFPRINTF (yyo, ".%d", yylocp->first_column);
     }
   if (0 <= yylocp->last_line)
     {
       if (yylocp->first_line < yylocp->last_line)
         {
-          res += fprintf (yyo, "-%d", yylocp->last_line);
+          res += YYFPRINTF (yyo, "-%d", yylocp->last_line);
           if (0 <= end_col)
-            res += fprintf (yyo, ".%d", end_col);
+            res += YYFPRINTF (yyo, ".%d", end_col);
         }
       else if (0 <= end_col && yylocp->first_column < end_col)
-        res += fprintf (yyo, "-%d", end_col);
+        res += YYFPRINTF (yyo, "-%d", end_col);
     }
   return res;
  }
@@ -1177,69 +1071,34 @@ yy_location_print_ (yyo, yylocp)
 #endif
 
 
-/* YYLEX -- calling `yylex' with the right arguments.  */
-#ifdef YYLEX_PARAM
-# define YYLEX yylex (&yylval, &yylloc, YYLEX_PARAM)
-#else
-# define YYLEX yylex (&yylval, &yylloc, scanner)
-#endif
-
-/* Enable debugging if requested.  */
-#if YYDEBUG
-
-# ifndef YYFPRINTF
-#  include <stdio.h> /* INFRINGES ON USER NAME SPACE */
-#  define YYFPRINTF fprintf
-# endif
-
-# define YYDPRINTF(Args)			\
-do {						\
-  if (yydebug)					\
-    YYFPRINTF Args;				\
-} while (YYID (0))
-
-# define YY_SYMBOL_PRINT(Title, Type, Value, Location)			  \
-do {									  \
-  if (yydebug)								  \
-    {									  \
-      YYFPRINTF (stderr, "%s ", Title);					  \
-      yy_symbol_print (stderr,						  \
-		  Type, Value, Location, box); \
-      YYFPRINTF (stderr, "\n");						  \
-    }									  \
-} while (YYID (0))
+# define YY_SYMBOL_PRINT(Title, Type, Value, Location)                    \
+do {                                                                      \
+  if (yydebug)                                                            \
+    {                                                                     \
+      YYFPRINTF (stderr, "%s ", Title);                                   \
+      yy_symbol_print (stderr,                                            \
+                  Type, Value, Location, box); \
+      YYFPRINTF (stderr, "\n");                                           \
+    }                                                                     \
+} while (0)
 
 
-/*--------------------------------.
-| Print this symbol on YYOUTPUT.  |
-`--------------------------------*/
+/*----------------------------------------.
+| Print this symbol's value on YYOUTPUT.  |
+`----------------------------------------*/
 
-/*ARGSUSED*/
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
 static void
 yy_symbol_value_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep, YYLTYPE const * const yylocationp, mutabor_box_type * box)
-#else
-static void
-yy_symbol_value_print (yyoutput, yytype, yyvaluep, yylocationp, box)
-    FILE *yyoutput;
-    int yytype;
-    YYSTYPE const * const yyvaluep;
-    YYLTYPE const * const yylocationp;
-    mutabor_box_type * box;
-#endif
 {
   FILE *yyo = yyoutput;
   YYUSE (yyo);
-  if (!yyvaluep)
-    return;
   YYUSE (yylocationp);
   YYUSE (box);
+  if (!yyvaluep)
+    return;
 # ifdef YYPRINT
   if (yytype < YYNTOKENS)
     YYPRINT (yyoutput, yytoknum[yytype], *yyvaluep);
-# else
-  YYUSE (yyoutput);
 # endif
   YYUSE (yytype);
 }
@@ -1249,24 +1108,11 @@ yy_symbol_value_print (yyoutput, yytype, yyvaluep, yylocationp, box)
 | Print this symbol on YYOUTPUT.  |
 `--------------------------------*/
 
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
 static void
 yy_symbol_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep, YYLTYPE const * const yylocationp, mutabor_box_type * box)
-#else
-static void
-yy_symbol_print (yyoutput, yytype, yyvaluep, yylocationp, box)
-    FILE *yyoutput;
-    int yytype;
-    YYSTYPE const * const yyvaluep;
-    YYLTYPE const * const yylocationp;
-    mutabor_box_type * box;
-#endif
 {
-  if (yytype < YYNTOKENS)
-    YYFPRINTF (yyoutput, "token %s (", yytname[yytype]);
-  else
-    YYFPRINTF (yyoutput, "nterm %s (", yytname[yytype]);
+  YYFPRINTF (yyoutput, "%s %s (",
+             yytype < YYNTOKENS ? "token" : "nterm", yytname[yytype]);
 
   YY_LOCATION_PRINT (yyoutput, *yylocationp);
   YYFPRINTF (yyoutput, ": ");
@@ -1279,16 +1125,8 @@ yy_symbol_print (yyoutput, yytype, yyvaluep, yylocationp, box)
 | TOP (included).                                                   |
 `------------------------------------------------------------------*/
 
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
 static void
 yy_stack_print (yytype_int16 *yybottom, yytype_int16 *yytop)
-#else
-static void
-yy_stack_print (yybottom, yytop)
-    yytype_int16 *yybottom;
-    yytype_int16 *yytop;
-#endif
 {
   YYFPRINTF (stderr, "Stack now");
   for (; yybottom <= yytop; yybottom++)
@@ -1299,51 +1137,42 @@ yy_stack_print (yybottom, yytop)
   YYFPRINTF (stderr, "\n");
 }
 
-# define YY_STACK_PRINT(Bottom, Top)				\
-do {								\
-  if (yydebug)							\
-    yy_stack_print ((Bottom), (Top));				\
-} while (YYID (0))
+# define YY_STACK_PRINT(Bottom, Top)                            \
+do {                                                            \
+  if (yydebug)                                                  \
+    yy_stack_print ((Bottom), (Top));                           \
+} while (0)
 
 
 /*------------------------------------------------.
 | Report that the YYRULE is going to be reduced.  |
 `------------------------------------------------*/
 
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
 static void
-yy_reduce_print (YYSTYPE *yyvsp, YYLTYPE *yylsp, int yyrule, mutabor_box_type * box)
-#else
-static void
-yy_reduce_print (yyvsp, yylsp, yyrule, box)
-    YYSTYPE *yyvsp;
-    YYLTYPE *yylsp;
-    int yyrule;
-    mutabor_box_type * box;
-#endif
+yy_reduce_print (yytype_int16 *yyssp, YYSTYPE *yyvsp, YYLTYPE *yylsp, int yyrule, mutabor_box_type * box)
 {
+  unsigned long int yylno = yyrline[yyrule];
   int yynrhs = yyr2[yyrule];
   int yyi;
-  unsigned long int yylno = yyrline[yyrule];
   YYFPRINTF (stderr, "Reducing stack by rule %d (line %lu):\n",
-	     yyrule - 1, yylno);
+             yyrule - 1, yylno);
   /* The symbols being reduced.  */
   for (yyi = 0; yyi < yynrhs; yyi++)
     {
       YYFPRINTF (stderr, "   $%d = ", yyi + 1);
-      yy_symbol_print (stderr, yyrhs[yyprhs[yyrule] + yyi],
-		       &(yyvsp[(yyi + 1) - (yynrhs)])
-		       , &(yylsp[(yyi + 1) - (yynrhs)])		       , box);
+      yy_symbol_print (stderr,
+                       yystos[yyssp[yyi + 1 - yynrhs]],
+                       &(yyvsp[(yyi + 1) - (yynrhs)])
+                       , &(yylsp[(yyi + 1) - (yynrhs)])                       , box);
       YYFPRINTF (stderr, "\n");
     }
 }
 
-# define YY_REDUCE_PRINT(Rule)		\
-do {					\
-  if (yydebug)				\
-    yy_reduce_print (yyvsp, yylsp, Rule, box); \
-} while (YYID (0))
+# define YY_REDUCE_PRINT(Rule)          \
+do {                                    \
+  if (yydebug)                          \
+    yy_reduce_print (yyssp, yyvsp, yylsp, Rule, box); \
+} while (0)
 
 /* Nonzero means print parse trace.  It is left uninitialized so that
    multiple parsers can coexist.  */
@@ -1357,7 +1186,7 @@ int yydebug;
 
 
 /* YYINITDEPTH -- initial size of the parser's stacks.  */
-#ifndef	YYINITDEPTH
+#ifndef YYINITDEPTH
 # define YYINITDEPTH 200
 #endif
 
@@ -1380,15 +1209,8 @@ int yydebug;
 #   define yystrlen strlen
 #  else
 /* Return the length of YYSTR.  */
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
 static YYSIZE_T
 yystrlen (const char *yystr)
-#else
-static YYSIZE_T
-yystrlen (yystr)
-    const char *yystr;
-#endif
 {
   YYSIZE_T yylen;
   for (yylen = 0; yystr[yylen]; yylen++)
@@ -1404,16 +1226,8 @@ yystrlen (yystr)
 #  else
 /* Copy YYSRC to YYDEST, returning the address of the terminating '\0' in
    YYDEST.  */
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
 static char *
 yystpcpy (char *yydest, const char *yysrc)
-#else
-static char *
-yystpcpy (yydest, yysrc)
-    char *yydest;
-    const char *yysrc;
-#endif
 {
   char *yyd = yydest;
   const char *yys = yysrc;
@@ -1443,27 +1257,27 @@ yytnamerr (char *yyres, const char *yystr)
       char const *yyp = yystr;
 
       for (;;)
-	switch (*++yyp)
-	  {
-	  case '\'':
-	  case ',':
-	    goto do_not_strip_quotes;
+        switch (*++yyp)
+          {
+          case '\'':
+          case ',':
+            goto do_not_strip_quotes;
 
-	  case '\\':
-	    if (*++yyp != '\\')
-	      goto do_not_strip_quotes;
-	    /* Fall through.  */
-	  default:
-	    if (yyres)
-	      yyres[yyn] = *yyp;
-	    yyn++;
-	    break;
+          case '\\':
+            if (*++yyp != '\\')
+              goto do_not_strip_quotes;
+            /* Fall through.  */
+          default:
+            if (yyres)
+              yyres[yyn] = *yyp;
+            yyn++;
+            break;
 
-	  case '"':
-	    if (yyres)
-	      yyres[yyn] = '\0';
-	    return yyn;
-	  }
+          case '"':
+            if (yyres)
+              yyres[yyn] = '\0';
+            return yyn;
+          }
     do_not_strip_quotes: ;
     }
 
@@ -1486,11 +1300,11 @@ static int
 yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
                 yytype_int16 *yyssp, int yytoken)
 {
-  YYSIZE_T yysize0 = yytnamerr (YY_NULL, yytname[yytoken]);
+  YYSIZE_T yysize0 = yytnamerr (YY_NULLPTR, yytname[yytoken]);
   YYSIZE_T yysize = yysize0;
   enum { YYERROR_VERBOSE_ARGS_MAXIMUM = 5 };
   /* Internationalized format string. */
-  const char *yyformat = YY_NULL;
+  const char *yyformat = YY_NULLPTR;
   /* Arguments of yyformat. */
   char const *yyarg[YYERROR_VERBOSE_ARGS_MAXIMUM];
   /* Number of reported tokens (one for the "unexpected", one per
@@ -1498,10 +1312,6 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
   int yycount = 0;
 
   /* There are many possibilities here to consider:
-     - Assume YYFAIL is not used.  It's too flawed to consider.  See
-       <http://lists.gnu.org/archive/html/bison-patches/2009-12/msg00024.html>
-       for details.  YYERROR is fine as it does not invoke this
-       function.
      - If this state is a consistent state with a default action, then
        the only way this function was invoked is if the default action
        is an error action.  In that case, don't check for expected
@@ -1551,7 +1361,7 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
                   }
                 yyarg[yycount++] = yytname[yyx];
                 {
-                  YYSIZE_T yysize1 = yysize + yytnamerr (YY_NULL, yytname[yyx]);
+                  YYSIZE_T yysize1 = yysize + yytnamerr (YY_NULLPTR, yytname[yyx]);
                   if (! (yysize <= yysize1
                          && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
                     return 2;
@@ -1618,30 +1428,19 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
 | Release the memory associated to this symbol.  |
 `-----------------------------------------------*/
 
-/*ARGSUSED*/
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
 static void
 yydestruct (const char *yymsg, int yytype, YYSTYPE *yyvaluep, YYLTYPE *yylocationp, mutabor_box_type * box)
-#else
-static void
-yydestruct (yymsg, yytype, yyvaluep, yylocationp, box)
-    const char *yymsg;
-    int yytype;
-    YYSTYPE *yyvaluep;
-    YYLTYPE *yylocationp;
-    mutabor_box_type * box;
-#endif
 {
   YYUSE (yyvaluep);
   YYUSE (yylocationp);
   YYUSE (box);
-
   if (!yymsg)
     yymsg = "Deleting";
   YY_SYMBOL_PRINT (yymsg, yytype, yyvaluep, yylocationp);
 
+  YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
   YYUSE (yytype);
+  YY_IGNORE_MAYBE_UNINITIALIZED_END
 }
 
 
@@ -1651,65 +1450,26 @@ yydestruct (yymsg, yytype, yyvaluep, yylocationp, box)
 | yyparse.  |
 `----------*/
 
-#ifdef YYPARSE_PARAM
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
-int
-yyparse (void *YYPARSE_PARAM)
-#else
-int
-yyparse (YYPARSE_PARAM)
-    void *YYPARSE_PARAM;
-#endif
-#else /* ! YYPARSE_PARAM */
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
 int
 yyparse (mutabor_box_type * box)
-#else
-int
-yyparse (box)
-    mutabor_box_type * box;
-#endif
-#endif
 {
 /* The lookahead symbol.  */
 int yychar;
 
 
-#if defined __GNUC__ && 407 <= __GNUC__ * 100 + __GNUC_MINOR__
-/* Suppress an incorrect diagnostic about yylval being uninitialized.  */
-# define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN \
-    _Pragma ("GCC diagnostic push") \
-    _Pragma ("GCC diagnostic ignored \"-Wuninitialized\"")\
-    _Pragma ("GCC diagnostic ignored \"-Wmaybe-uninitialized\"")
-# define YY_IGNORE_MAYBE_UNINITIALIZED_END \
-    _Pragma ("GCC diagnostic pop")
-#else
+/* The semantic value of the lookahead symbol.  */
 /* Default value used for initialization, for pacifying older GCCs
    or non-GCC compilers.  */
-static YYSTYPE yyval_default;
-# define YY_INITIAL_VALUE(Value) = Value
-#endif
+YY_INITIAL_VALUE (static YYSTYPE yyval_default;)
+YYSTYPE yylval YY_INITIAL_VALUE (= yyval_default);
+
+/* Location data for the lookahead symbol.  */
 static YYLTYPE yyloc_default
 # if defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL
   = { 1, 1, 1, 1 }
 # endif
 ;
-#ifndef YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
-# define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
-# define YY_IGNORE_MAYBE_UNINITIALIZED_END
-#endif
-#ifndef YY_INITIAL_VALUE
-# define YY_INITIAL_VALUE(Value) /* Nothing. */
-#endif
-
-/* The semantic value of the lookahead symbol.  */
-YYSTYPE yylval YY_INITIAL_VALUE(yyval_default);
-
-/* Location data for the lookahead symbol.  */
 YYLTYPE yylloc = yyloc_default;
-
 
     /* Number of syntax errors so far.  */
     int yynerrs;
@@ -1719,9 +1479,9 @@ YYLTYPE yylloc = yyloc_default;
     int yyerrstatus;
 
     /* The stacks and their tools:
-       `yyss': related to states.
-       `yyvs': related to semantic values.
-       `yyls': related to locations.
+       'yyss': related to states.
+       'yyvs': related to semantic values.
+       'yyls': related to locations.
 
        Refer to the stacks through separate pointers, to allow yyoverflow
        to reallocate them elsewhere.  */
@@ -1800,26 +1560,26 @@ YYLTYPE yylloc = yyloc_default;
 
 #ifdef yyoverflow
       {
-	/* Give user a chance to reallocate the stack.  Use copies of
-	   these so that the &'s don't force the real ones into
-	   memory.  */
-	YYSTYPE *yyvs1 = yyvs;
-	yytype_int16 *yyss1 = yyss;
-	YYLTYPE *yyls1 = yyls;
+        /* Give user a chance to reallocate the stack.  Use copies of
+           these so that the &'s don't force the real ones into
+           memory.  */
+        YYSTYPE *yyvs1 = yyvs;
+        yytype_int16 *yyss1 = yyss;
+        YYLTYPE *yyls1 = yyls;
 
-	/* Each stack pointer address is followed by the size of the
-	   data in use in that stack, in bytes.  This used to be a
-	   conditional around just the two extra args, but that might
-	   be undefined if yyoverflow is a macro.  */
-	yyoverflow (YY_("memory exhausted"),
-		    &yyss1, yysize * sizeof (*yyssp),
-		    &yyvs1, yysize * sizeof (*yyvsp),
-		    &yyls1, yysize * sizeof (*yylsp),
-		    &yystacksize);
+        /* Each stack pointer address is followed by the size of the
+           data in use in that stack, in bytes.  This used to be a
+           conditional around just the two extra args, but that might
+           be undefined if yyoverflow is a macro.  */
+        yyoverflow (YY_("memory exhausted"),
+                    &yyss1, yysize * sizeof (*yyssp),
+                    &yyvs1, yysize * sizeof (*yyvsp),
+                    &yyls1, yysize * sizeof (*yylsp),
+                    &yystacksize);
 
-	yyls = yyls1;
-	yyss = yyss1;
-	yyvs = yyvs1;
+        yyls = yyls1;
+        yyss = yyss1;
+        yyvs = yyvs1;
       }
 #else /* no yyoverflow */
 # ifndef YYSTACK_RELOCATE
@@ -1827,23 +1587,23 @@ YYLTYPE yylloc = yyloc_default;
 # else
       /* Extend the stack our own way.  */
       if (YYMAXDEPTH <= yystacksize)
-	goto yyexhaustedlab;
+        goto yyexhaustedlab;
       yystacksize *= 2;
       if (YYMAXDEPTH < yystacksize)
-	yystacksize = YYMAXDEPTH;
+        yystacksize = YYMAXDEPTH;
 
       {
-	yytype_int16 *yyss1 = yyss;
-	union yyalloc *yyptr =
-	  (union yyalloc *) YYSTACK_ALLOC (YYSTACK_BYTES (yystacksize));
-	if (! yyptr)
-	  goto yyexhaustedlab;
-	YYSTACK_RELOCATE (yyss_alloc, yyss);
-	YYSTACK_RELOCATE (yyvs_alloc, yyvs);
-	YYSTACK_RELOCATE (yyls_alloc, yyls);
+        yytype_int16 *yyss1 = yyss;
+        union yyalloc *yyptr =
+          (union yyalloc *) YYSTACK_ALLOC (YYSTACK_BYTES (yystacksize));
+        if (! yyptr)
+          goto yyexhaustedlab;
+        YYSTACK_RELOCATE (yyss_alloc, yyss);
+        YYSTACK_RELOCATE (yyvs_alloc, yyvs);
+        YYSTACK_RELOCATE (yyls_alloc, yyls);
 #  undef YYSTACK_RELOCATE
-	if (yyss1 != yyssa)
-	  YYSTACK_FREE (yyss1);
+        if (yyss1 != yyssa)
+          YYSTACK_FREE (yyss1);
       }
 # endif
 #endif /* no yyoverflow */
@@ -1853,10 +1613,10 @@ YYLTYPE yylloc = yyloc_default;
       yylsp = yyls + yysize - 1;
 
       YYDPRINTF ((stderr, "Stack size increased to %lu\n",
-		  (unsigned long int) yystacksize));
+                  (unsigned long int) yystacksize));
 
       if (yyss + yystacksize - 1 <= yyssp)
-	YYABORT;
+        YYABORT;
     }
 
   YYDPRINTF ((stderr, "Entering state %d\n", yystate));
@@ -1885,7 +1645,7 @@ yybackup:
   if (yychar == YYEMPTY)
     {
       YYDPRINTF ((stderr, "Reading a token: "));
-      yychar = YYLEX;
+      yychar = yylex (&yylval, &yylloc, box);
     }
 
   if (yychar <= YYEOF)
@@ -1950,7 +1710,7 @@ yyreduce:
   yylen = yyr2[yyn];
 
   /* If YYLEN is nonzero, implement the default value of the action:
-     `$$ = $1'.
+     '$$ = $1'.
 
      Otherwise, the following line sets YYVAL to garbage.
      This behavior is undocumented and Bison
@@ -1965,352 +1725,351 @@ yyreduce:
   switch (yyn)
     {
         case 4:
-/* Line 1787 of yacc.c  */
-#line 170 "../../../mutabor-git/src/kernel/mut.yy"
+#line 173 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.integer) = '+' ; }
+#line 1731 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 5:
-/* Line 1787 of yacc.c  */
-#line 171 "../../../mutabor-git/src/kernel/mut.yy"
+#line 174 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.integer) = '-' ; }
+#line 1737 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 6:
-/* Line 1787 of yacc.c  */
-#line 175 "../../../mutabor-git/src/kernel/mut.yy"
+#line 178 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.integer) = '*' ; }
+#line 1743 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 7:
-/* Line 1787 of yacc.c  */
-#line 176 "../../../mutabor-git/src/kernel/mut.yy"
+#line 179 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.integer) = '/' ; }
+#line 1749 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 8:
-/* Line 1787 of yacc.c  */
-#line 180 "../../../mutabor-git/src/kernel/mut.yy"
-    { (yyval.integer) = (yyvsp[(1) - (1)].integer); }
+#line 183 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { (yyval.integer) = (yyvsp[0].integer); }
+#line 1755 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 9:
-/* Line 1787 of yacc.c  */
-#line 181 "../../../mutabor-git/src/kernel/mut.yy"
-    { (yyval.integer) = (yyvsp[(1) - (1)].integer); }
+#line 184 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { (yyval.integer) = (yyvsp[0].integer); }
+#line 1761 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 22:
-/* Line 1787 of yacc.c  */
-#line 199 "../../../mutabor-git/src/kernel/mut.yy"
+#line 202 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {  mutabor_error_message(box,
 		compiler_error,
 		_("Syntax error in line %d."),
 		FEHLERZEILE); 
 		}
+#line 1771 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 26:
-/* Line 1787 of yacc.c  */
-#line 215 "../../../mutabor-git/src/kernel/mut.yy"
+#line 218 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
+#line 1777 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 28:
-/* Line 1787 of yacc.c  */
-#line 220 "../../../mutabor-git/src/kernel/mut.yy"
-    { if ( fabs((yyvsp[(5) - (5)].f_value)) > 0.001 )
-				    get_new_intervall (box, (yyvsp[(1) - (5)].identifier), (yyvsp[(3) - (5)].f_value) / (yyvsp[(5) - (5)].f_value));
+#line 223 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { if ( fabs((yyvsp[0].f_value)) > 0.001 )
+				    get_new_intervall (box, (yyvsp[-4].identifier), (yyvsp[-2].f_value) / (yyvsp[0].f_value));
                       else
 			      mutabor_error_message (box,compiler_error,
 					   _("Bad interval value in %s"),
-					   ((yyvsp[(1) - (5)].identifier)) ); }
+					   ((yyvsp[-4].identifier)) ); }
+#line 1788 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 29:
-/* Line 1787 of yacc.c  */
-#line 228 "../../../mutabor-git/src/kernel/mut.yy"
-    { if ( fabs ((yyvsp[(3) - (5)].f_value)) > 0.001 )
-				    get_new_intervall (box, (yyvsp[(1) - (5)].identifier), pow ((yyvsp[(5) - (5)].f_value), 1 / (yyvsp[(3) - (5)].f_value)));
+#line 231 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { if ( fabs ((yyvsp[-2].f_value)) > 0.001 )
+				    get_new_intervall (box, (yyvsp[-4].identifier), pow ((yyvsp[0].f_value), 1 / (yyvsp[-2].f_value)));
                       else
 			      mutabor_error_message (box,compiler_error,
 						     _("Bad interval value in %s"),
-						     ((yyvsp[(1) - (5)].identifier))); }
+						     ((yyvsp[-4].identifier))); }
+#line 1799 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 30:
-/* Line 1787 of yacc.c  */
-#line 239 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_intervall_komplex (box,(yyvsp[(1) - (3)].identifier)); }
+#line 242 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_intervall_komplex (box,(yyvsp[-2].identifier)); }
+#line 1805 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 31:
-/* Line 1787 of yacc.c  */
-#line 240 "../../../mutabor-git/src/kernel/mut.yy"
+#line 243 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
 		  mutabor_error_message(box,
 		                        compiler_error,
 		                        _("Bad interval declaration of intervall %s in line %d."),
-				        ((yyvsp[(1) - (3)].identifier)),
+				        ((yyvsp[-2].identifier)),
 				        FEHLERZEILE); 
 		}
+#line 1817 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 32:
-/* Line 1787 of yacc.c  */
-#line 247 "../../../mutabor-git/src/kernel/mut.yy"
+#line 250 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
 		mutabor_error_message(box,
 				      compiler_error,
 				      _("Wrong character. Expecting %s in line %d."),
 				      mutT("="),FEHLERZEILE); 
 	  }
+#line 1828 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 36:
-/* Line 1787 of yacc.c  */
-#line 264 "../../../mutabor-git/src/kernel/mut.yy"
+#line 267 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
+#line 1834 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 38:
-/* Line 1787 of yacc.c  */
-#line 269 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_ton_absolut (box, (yyvsp[(1) - (3)].identifier), (yyvsp[(3) - (3)].f_value)); }
+#line 272 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_ton_absolut (box, (yyvsp[-2].identifier), (yyvsp[0].f_value)); }
+#line 1840 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 39:
-/* Line 1787 of yacc.c  */
-#line 273 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_ton_komplex_negative (box, (yyvsp[(1) - (5)].identifier), (yyvsp[(3) - (5)].identifier)); }
+#line 276 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_ton_komplex_negative (box, (yyvsp[-4].identifier), (yyvsp[-2].identifier)); }
+#line 1846 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 40:
-/* Line 1787 of yacc.c  */
-#line 277 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_ton_komplex_positive (box, (yyvsp[(1) - (3)].identifier), (yyvsp[(3) - (3)].identifier)); }
+#line 280 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_ton_komplex_positive (box, (yyvsp[-2].identifier), (yyvsp[0].identifier)); }
+#line 1852 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 41:
-/* Line 1787 of yacc.c  */
-#line 281 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_ton_komplex_positive (box, (yyvsp[(1) - (5)].identifier), (yyvsp[(3) - (5)].identifier)); }
+#line 284 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_ton_komplex_positive (box, (yyvsp[-4].identifier), (yyvsp[-2].identifier)); }
+#line 1858 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 42:
-/* Line 1787 of yacc.c  */
-#line 283 "../../../mutabor-git/src/kernel/mut.yy"
+#line 286 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
 	      mutabor_error_message(box,
 				    compiler_error,
 				    _("Bad tone declaration of tone %s in line %d."),
-				    ((yyvsp[(1) - (3)].identifier)),
+				    ((yyvsp[-2].identifier)),
 				    FEHLERZEILE); 
 	}
+#line 1870 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 46:
-/* Line 1787 of yacc.c  */
-#line 303 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_faktor_anteil ( box, (double) 1, (yyvsp[(2) - (2)].identifier)); }
+#line 306 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_faktor_anteil ( box, (double) 1, (yyvsp[0].identifier)); }
+#line 1876 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 47:
-/* Line 1787 of yacc.c  */
-#line 306 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_faktor_anteil ( box,  (double) -1, (yyvsp[(2) - (2)].identifier)); }
+#line 309 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_faktor_anteil ( box,  (double) -1, (yyvsp[0].identifier)); }
+#line 1882 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 48:
-/* Line 1787 of yacc.c  */
-#line 309 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_faktor_anteil (box, (yyvsp[(2) - (3)].f_value), (yyvsp[(3) - (3)].identifier)); }
+#line 312 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_faktor_anteil (box, (yyvsp[-1].f_value), (yyvsp[0].identifier)); }
+#line 1888 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 49:
-/* Line 1787 of yacc.c  */
-#line 312 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_faktor_anteil (box, -((yyvsp[(2) - (3)].f_value)), (yyvsp[(3) - (3)].identifier)); }
+#line 315 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_faktor_anteil (box, -((yyvsp[-1].f_value)), (yyvsp[0].identifier)); }
+#line 1894 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 50:
-/* Line 1787 of yacc.c  */
-#line 315 "../../../mutabor-git/src/kernel/mut.yy"
-    { if ( fabs((yyvsp[(3) - (4)].f_value)) > 0.001 )
-				   get_new_faktor_anteil (box, (double) 1 / ((yyvsp[(3) - (4)].f_value)), (yyvsp[(4) - (4)].identifier));
+#line 318 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { if ( fabs((yyvsp[-1].f_value)) > 0.001 )
+				   get_new_faktor_anteil (box, (double) 1 / ((yyvsp[-1].f_value)), (yyvsp[0].identifier));
 			   else
 				   mutabor_error_message(box,
 							 compiler_error,
 							 _("Division by (nearly) 0 in line %d."),
 							 FEHLERZEILE);  
 		   }
+#line 1907 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 51:
-/* Line 1787 of yacc.c  */
-#line 325 "../../../mutabor-git/src/kernel/mut.yy"
-    { if ( fabs((yyvsp[(3) - (4)].f_value)) > 0.001 )
-				   get_new_faktor_anteil (box, (double) -1 / ((yyvsp[(3) - (4)].f_value)), (yyvsp[(4) - (4)].identifier));
+#line 328 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { if ( fabs((yyvsp[-1].f_value)) > 0.001 )
+				   get_new_faktor_anteil (box, (double) -1 / ((yyvsp[-1].f_value)), (yyvsp[0].identifier));
                      else
 				   mutabor_error_message(box,
 							 compiler_error,
 							 _("Division by (nearly) 0 in line %d."),
 							 FEHLERZEILE);  
 		   }
+#line 1920 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 52:
-/* Line 1787 of yacc.c  */
-#line 335 "../../../mutabor-git/src/kernel/mut.yy"
-    { if ( fabs((yyvsp[(4) - (5)].f_value)) > 0.001 )
-				   get_new_faktor_anteil (box, ((yyvsp[(2) - (5)].f_value)) / ((yyvsp[(4) - (5)].f_value)), (yyvsp[(5) - (5)].identifier));
+#line 338 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { if ( fabs((yyvsp[-1].f_value)) > 0.001 )
+				   get_new_faktor_anteil (box, ((yyvsp[-3].f_value)) / ((yyvsp[-1].f_value)), (yyvsp[0].identifier));
                      else
 			     mutabor_error_message(box,
 						   compiler_error,
 						   _("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);  
 		   }
+#line 1933 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 53:
-/* Line 1787 of yacc.c  */
-#line 345 "../../../mutabor-git/src/kernel/mut.yy"
-    { if ( fabs((yyvsp[(4) - (5)].f_value)) > 0.001 )
-				   get_new_faktor_anteil (box, -((yyvsp[(2) - (5)].f_value)) / ((yyvsp[(4) - (5)].f_value)), (yyvsp[(5) - (5)].identifier));
+#line 348 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { if ( fabs((yyvsp[-1].f_value)) > 0.001 )
+				   get_new_faktor_anteil (box, -((yyvsp[-3].f_value)) / ((yyvsp[-1].f_value)), (yyvsp[0].identifier));
                      else
 			     mutabor_error_message(box,
 						   compiler_error,
 						   _("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);  
 		   }
+#line 1946 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 54:
-/* Line 1787 of yacc.c  */
-#line 370 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_faktor_anteil (box, (double) 1.0 , (yyvsp[(1) - (1)].identifier)); }
+#line 373 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_faktor_anteil (box, (double) 1.0 , (yyvsp[0].identifier)); }
+#line 1952 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 55:
-/* Line 1787 of yacc.c  */
-#line 378 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_faktor_anteil (box, (yyvsp[(1) - (2)].f_value), (yyvsp[(2) - (2)].identifier)); }
+#line 381 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_faktor_anteil (box, (yyvsp[-1].f_value), (yyvsp[0].identifier)); }
+#line 1958 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 56:
-/* Line 1787 of yacc.c  */
-#line 381 "../../../mutabor-git/src/kernel/mut.yy"
-    { if ( fabs((yyvsp[(2) - (3)].f_value)) > 0.001 )
-				   get_new_faktor_anteil (box, (double) 1 / ((yyvsp[(2) - (3)].f_value)), (yyvsp[(3) - (3)].identifier));
+#line 384 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { if ( fabs((yyvsp[-1].f_value)) > 0.001 )
+				   get_new_faktor_anteil (box, (double) 1 / ((yyvsp[-1].f_value)), (yyvsp[0].identifier));
                      else
 			     mutabor_error_message(box,
 						   compiler_error,
 						   _("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);  
 		   }
+#line 1971 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 57:
-/* Line 1787 of yacc.c  */
-#line 391 "../../../mutabor-git/src/kernel/mut.yy"
-    { if ( fabs((yyvsp[(3) - (4)].f_value)) > 0.001 )
-				   get_new_faktor_anteil (box, ((yyvsp[(1) - (4)].f_value)) / ((yyvsp[(3) - (4)].f_value)), (yyvsp[(4) - (4)].identifier));
+#line 394 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { if ( fabs((yyvsp[-1].f_value)) > 0.001 )
+				   get_new_faktor_anteil (box, ((yyvsp[-3].f_value)) / ((yyvsp[-1].f_value)), (yyvsp[0].identifier));
                      else
 			     mutabor_error_message(box,
 						   compiler_error,
 						   _("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);  
 		   }
+#line 1984 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 61:
-/* Line 1787 of yacc.c  */
-#line 428 "../../../mutabor-git/src/kernel/mut.yy"
+#line 431 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_ton_liste (box); }
+#line 1990 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 63:
-/* Line 1787 of yacc.c  */
-#line 433 "../../../mutabor-git/src/kernel/mut.yy"
+#line 436 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
+#line 1996 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 64:
-/* Line 1787 of yacc.c  */
-#line 435 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_tonsystem (box, (yyvsp[(1) - (8)].identifier), (yyvsp[(3) - (8)].integer)); }
+#line 438 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_tonsystem (box, (yyvsp[-7].identifier), (yyvsp[-5].integer)); }
+#line 2002 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 65:
-/* Line 1787 of yacc.c  */
-#line 437 "../../../mutabor-git/src/kernel/mut.yy"
+#line 440 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
+#line 2008 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 66:
-/* Line 1787 of yacc.c  */
-#line 439 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_tonsystem_negative (box, (yyvsp[(1) - (9)].identifier), (yyvsp[(3) - (9)].integer)); }
+#line 442 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_tonsystem_negative (box, (yyvsp[-8].identifier), (yyvsp[-6].integer)); }
+#line 2014 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 69:
-/* Line 1787 of yacc.c  */
-#line 445 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_ton_in_tonsystem (box, (yyvsp[(1) - (1)].identifier)); }
+#line 448 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_ton_in_tonsystem (box, (yyvsp[0].identifier)); }
+#line 2020 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 70:
-/* Line 1787 of yacc.c  */
-#line 446 "../../../mutabor-git/src/kernel/mut.yy"
+#line 449 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_ton_in_tonsystem (box, NULL); }
+#line 2026 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 71:
-/* Line 1787 of yacc.c  */
-#line 447 "../../../mutabor-git/src/kernel/mut.yy"
+#line 450 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {     mutabor_error_message(box,
 		compiler_error,
 		_("Bad tonesystem declaration in line %d."),		      
 		FEHLERZEILE);
 		}
+#line 2036 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 72:
-/* Line 1787 of yacc.c  */
-#line 455 "../../../mutabor-git/src/kernel/mut.yy"
+#line 458 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.parameters) = NULL; }
+#line 2042 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 73:
-/* Line 1787 of yacc.c  */
-#line 456 "../../../mutabor-git/src/kernel/mut.yy"
-    { (yyval.parameters) = (yyvsp[(1) - (1)].parameters); 
+#line 459 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { (yyval.parameters) = (yyvsp[0].parameters); 
                     enumerate_parameters(box,(yyval.parameters));
 		}
+#line 2050 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 75:
-/* Line 1787 of yacc.c  */
-#line 464 "../../../mutabor-git/src/kernel/mut.yy"
+#line 467 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {
-		    if ((yyvsp[(1) - (3)].parameters) != NULL) {
-			(yyval.parameters) = (yyvsp[(1) - (3)].parameters);
-		        (yyval.parameters)->next = (yyvsp[(3) - (3)].parameters);
-   		    } else {(yyval.parameters) = (yyvsp[(3) - (3)].parameters);}
+		    if ((yyvsp[-2].parameters) != NULL) {
+			(yyval.parameters) = (yyvsp[-2].parameters);
+		        (yyval.parameters)->next = (yyvsp[0].parameters);
+   		    } else {(yyval.parameters) = (yyvsp[0].parameters);}
 		}
+#line 2061 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 76:
-/* Line 1787 of yacc.c  */
-#line 474 "../../../mutabor-git/src/kernel/mut.yy"
+#line 477 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
-			(yyval.parameters) = get_new_name_in_parameterlist (box, (yyvsp[(1) - (1)].identifier)); 
+			(yyval.parameters) = get_new_name_in_parameterlist (box, (yyvsp[0].identifier)); 
 		}
+#line 2069 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 77:
-/* Line 1787 of yacc.c  */
-#line 477 "../../../mutabor-git/src/kernel/mut.yy"
+#line 480 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
 		    (yyval.parameters) = NULL;
 		    mutabor_error_message(box,
@@ -2318,11 +2077,11 @@ yyreduce:
 		                          _("Arguments named “DISTANCE” or “ABSTAND” have a fixed meaning. Using them as parameters as in line %d is not supported. Expect undexpected behaviour."),
 		                          FEHLERZEILE);
 		}
+#line 2081 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 78:
-/* Line 1787 of yacc.c  */
-#line 484 "../../../mutabor-git/src/kernel/mut.yy"
+#line 487 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
 			(yyval.parameters) = NULL;
 		        mutabor_error_message(box,
@@ -2330,864 +2089,864 @@ yyreduce:
 		                          _("Arguments named “DISTANCE” or “ABSTAND” have a fixed meaning. Using them as parameters as in line %d is not supported. Expect undexpected behaviour."),
  		                          FEHLERZEILE);
 		}
+#line 2093 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 79:
-/* Line 1787 of yacc.c  */
-#line 504 "../../../mutabor-git/src/kernel/mut.yy"
+#line 507 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.arguments) = NULL; }
+#line 2099 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 80:
-/* Line 1787 of yacc.c  */
-#line 505 "../../../mutabor-git/src/kernel/mut.yy"
+#line 508 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
-			(yyval.arguments) = (yyvsp[(1) - (1)].arguments); 
+			(yyval.arguments) = (yyvsp[0].arguments); 
 		}
+#line 2107 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 81:
-/* Line 1787 of yacc.c  */
-#line 511 "../../../mutabor-git/src/kernel/mut.yy"
+#line 514 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
-			(yyval.arguments) = (yyvsp[(1) - (1)].arguments); 
+			(yyval.arguments) = (yyvsp[0].arguments); 
 		}
+#line 2115 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 82:
-/* Line 1787 of yacc.c  */
-#line 514 "../../../mutabor-git/src/kernel/mut.yy"
+#line 517 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
-			(yyval.arguments) = (yyvsp[(1) - (3)].arguments); 
-		        (yyvsp[(1) - (3)].arguments)->next = (yyvsp[(3) - (3)].arguments);
+			(yyval.arguments) = (yyvsp[-2].arguments); 
+		        (yyvsp[-2].arguments)->next = (yyvsp[0].arguments);
 		}
+#line 2124 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 83:
-/* Line 1787 of yacc.c  */
-#line 531 "../../../mutabor-git/src/kernel/mut.yy"
-    { (yyval.arguments) = get_new_name_in_argument_list (box, (yyvsp[(1) - (1)].identifier)) ;  }
+#line 534 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { (yyval.arguments) = get_new_name_in_argument_list (box, (yyvsp[0].identifier)) ;  }
+#line 2130 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 84:
-/* Line 1787 of yacc.c  */
-#line 533 "../../../mutabor-git/src/kernel/mut.yy"
-    { (yyval.arguments) = get_new_number_in_argument_list (box, (yyvsp[(1) - (1)].integer)) ;  }
+#line 536 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { (yyval.arguments) = get_new_number_in_argument_list (box, (yyvsp[0].integer)) ;  }
+#line 2136 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 85:
-/* Line 1787 of yacc.c  */
-#line 535 "../../../mutabor-git/src/kernel/mut.yy"
-    { (yyval.arguments) = get_new_number_in_argument_list (box, -((yyvsp[(2) - (2)].integer))); }
+#line 538 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { (yyval.arguments) = get_new_number_in_argument_list (box, -((yyvsp[0].integer))); }
+#line 2142 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 86:
-/* Line 1787 of yacc.c  */
-#line 537 "../../../mutabor-git/src/kernel/mut.yy"
+#line 540 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.arguments) = get_new_distance_in_argument_list (box); }
+#line 2148 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 87:
-/* Line 1787 of yacc.c  */
-#line 539 "../../../mutabor-git/src/kernel/mut.yy"
+#line 542 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.arguments) = get_new_anchor_in_argument_list (box); }
+#line 2154 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 91:
-/* Line 1787 of yacc.c  */
-#line 554 "../../../mutabor-git/src/kernel/mut.yy"
+#line 557 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
-			init_umstimmung (box, (yyvsp[(1) - (2)].identifier)); 
+			init_umstimmung (box, (yyvsp[-1].identifier)); 
 		eintrage_parameterliste_in_umstimmung (box, 
                                                        box->file->tmp_umstimmung,
  		                                       NULL);  
 		}
+#line 2165 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 92:
-/* Line 1787 of yacc.c  */
-#line 560 "../../../mutabor-git/src/kernel/mut.yy"
+#line 563 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
 			get_new_umstimmung (box); 
 		}
+#line 2173 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 93:
-/* Line 1787 of yacc.c  */
-#line 565 "../../../mutabor-git/src/kernel/mut.yy"
+#line 568 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {
-			init_umstimmung (box,(yyvsp[(1) - (5)].identifier)); 
+			init_umstimmung (box,(yyvsp[-4].identifier)); 
 		        eintrage_parameterliste_in_umstimmung (box, 
                                                        box->file->tmp_umstimmung,
- 		                                       (yyvsp[(3) - (5)].parameters)); 
+ 		                                       (yyvsp[-2].parameters)); 
 		}
+#line 2184 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 94:
-/* Line 1787 of yacc.c  */
-#line 570 "../../../mutabor-git/src/kernel/mut.yy"
+#line 573 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
 			get_new_umstimmung (box); 
 		}
+#line 2192 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 95:
-/* Line 1787 of yacc.c  */
-#line 575 "../../../mutabor-git/src/kernel/mut.yy"
+#line 578 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
-			init_umstimmung (box,(yyvsp[(1) - (5)].identifier));
+			init_umstimmung (box,(yyvsp[-4].identifier));
 		        eintrage_parameterliste_in_umstimmung (box, 
                                                        box->file->tmp_umstimmung,
- 		                                       (yyvsp[(3) - (5)].parameters));
+ 		                                       (yyvsp[-2].parameters));
 		        mutabor_error_message(box,
 		                              compiler_error,
 		                              _("Invalid parameter list in retuning %s line %d"),
-		                              (yyvsp[(1) - (5)].identifier), FEHLERZEILE); 
+		                              (yyvsp[-4].identifier), FEHLERZEILE); 
 		}
+#line 2207 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 96:
-/* Line 1787 of yacc.c  */
-#line 584 "../../../mutabor-git/src/kernel/mut.yy"
+#line 587 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
 			get_new_umstimmung (box); 
 		}
+#line 2215 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 97:
-/* Line 1787 of yacc.c  */
-#line 588 "../../../mutabor-git/src/kernel/mut.yy"
+#line 591 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {
-			init_umstimmung (box,(yyvsp[(1) - (3)].identifier)); 
+			init_umstimmung (box,(yyvsp[-2].identifier)); 
 		        eintrage_parameterliste_in_umstimmung (box, 
                                                        box->file->tmp_umstimmung,
  		                                       NULL);
 		        mutabor_error_message(box,
 		                              compiler_error,
 		                              _("Error while reading %s line %d"),
-                               		      (yyvsp[(1) - (3)].identifier), FEHLERZEILE); 
+                               		      (yyvsp[-2].identifier), FEHLERZEILE); 
 		}
+#line 2230 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 98:
-/* Line 1787 of yacc.c  */
-#line 598 "../../../mutabor-git/src/kernel/mut.yy"
+#line 601 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_umstimmung (box); }
+#line 2236 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 99:
-/* Line 1787 of yacc.c  */
-#line 602 "../../../mutabor-git/src/kernel/mut.yy"
+#line 605 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2242 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 100:
-/* Line 1787 of yacc.c  */
-#line 603 "../../../mutabor-git/src/kernel/mut.yy"
+#line 606 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2248 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 101:
-/* Line 1787 of yacc.c  */
-#line 604 "../../../mutabor-git/src/kernel/mut.yy"
+#line 607 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2254 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 102:
-/* Line 1787 of yacc.c  */
-#line 605 "../../../mutabor-git/src/kernel/mut.yy"
+#line 608 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2260 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 103:
-/* Line 1787 of yacc.c  */
-#line 606 "../../../mutabor-git/src/kernel/mut.yy"
+#line 609 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2266 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 104:
-/* Line 1787 of yacc.c  */
-#line 607 "../../../mutabor-git/src/kernel/mut.yy"
+#line 610 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2272 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 105:
-/* Line 1787 of yacc.c  */
-#line 608 "../../../mutabor-git/src/kernel/mut.yy"
+#line 611 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2278 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 106:
-/* Line 1787 of yacc.c  */
-#line 609 "../../../mutabor-git/src/kernel/mut.yy"
+#line 612 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2284 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 107:
-/* Line 1787 of yacc.c  */
-#line 610 "../../../mutabor-git/src/kernel/mut.yy"
+#line 613 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2290 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 108:
-/* Line 1787 of yacc.c  */
-#line 611 "../../../mutabor-git/src/kernel/mut.yy"
+#line 614 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2296 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 109:
-/* Line 1787 of yacc.c  */
-#line 612 "../../../mutabor-git/src/kernel/mut.yy"
+#line 615 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {
 		mutabor_error_message(box,
 				      compiler_error,
 				      _("Bad retuning in line %d."),
 				      FEHLERZEILE);
 	  }
+#line 2307 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 110:
-/* Line 1787 of yacc.c  */
-#line 623 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_umstimmung_taste_abs (box, (yyvsp[(1) - (3)].arguments)); }
+#line 626 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_umstimmung_taste_abs (box, (yyvsp[-2].arguments)); }
+#line 2313 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 111:
-/* Line 1787 of yacc.c  */
-#line 628 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_umstimmung_taste_rel (box, (yyvsp[(3) - (5)].arguments), (yyvsp[(2) - (5)].integer)); }
+#line 631 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_umstimmung_taste_rel (box, (yyvsp[-2].arguments), (yyvsp[-3].integer)); }
+#line 2319 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 112:
-/* Line 1787 of yacc.c  */
-#line 633 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_umstimmung_breite_abs (box, (yyvsp[(3) - (5)].arguments)); }
+#line 636 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_umstimmung_breite_abs (box, (yyvsp[-2].arguments)); }
+#line 2325 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 113:
-/* Line 1787 of yacc.c  */
-#line 638 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_umstimmung_breite_rel (box, (yyvsp[(5) - (7)].arguments), (yyvsp[(4) - (7)].integer)); }
+#line 641 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_umstimmung_breite_rel (box, (yyvsp[-2].arguments), (yyvsp[-3].integer)); }
+#line 2331 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 114:
-/* Line 1787 of yacc.c  */
-#line 643 "../../../mutabor-git/src/kernel/mut.yy"
+#line 646 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_umstimm_expression_list (box); }
+#line 2337 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 115:
-/* Line 1787 of yacc.c  */
-#line 645 "../../../mutabor-git/src/kernel/mut.yy"
+#line 648 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_tonhoehe_veraendert (box); }
+#line 2343 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 116:
-/* Line 1787 of yacc.c  */
-#line 652 "../../../mutabor-git/src/kernel/mut.yy"
+#line 655 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2349 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 117:
-/* Line 1787 of yacc.c  */
-#line 653 "../../../mutabor-git/src/kernel/mut.yy"
+#line 656 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2355 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 118:
-/* Line 1787 of yacc.c  */
-#line 655 "../../../mutabor-git/src/kernel/mut.yy"
+#line 658 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list(box);
 		  get_new_umstimm_expression (box,NULL);
                    }
+#line 2363 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 119:
-/* Line 1787 of yacc.c  */
-#line 658 "../../../mutabor-git/src/kernel/mut.yy"
+#line 661 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2369 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 120:
-/* Line 1787 of yacc.c  */
-#line 662 "../../../mutabor-git/src/kernel/mut.yy"
+#line 665 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2375 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 121:
-/* Line 1787 of yacc.c  */
-#line 663 "../../../mutabor-git/src/kernel/mut.yy"
+#line 666 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2381 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 122:
-/* Line 1787 of yacc.c  */
-#line 668 "../../../mutabor-git/src/kernel/mut.yy"
+#line 671 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list(box);
 		  get_new_umstimm_expression (box, NULL);
                    }
+#line 2389 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 124:
-/* Line 1787 of yacc.c  */
-#line 676 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_umstimm_expression (box,(yyvsp[(1) - (1)].identifier)); }
+#line 679 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_umstimm_expression (box,(yyvsp[0].identifier)); }
+#line 2395 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 125:
-/* Line 1787 of yacc.c  */
-#line 677 "../../../mutabor-git/src/kernel/mut.yy"
+#line 680 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_umstimm_expression (box, "@"); }
+#line 2401 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 126:
-/* Line 1787 of yacc.c  */
-#line 679 "../../../mutabor-git/src/kernel/mut.yy"
+#line 682 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
+#line 2407 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 127:
-/* Line 1787 of yacc.c  */
-#line 681 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_umstimm_expression_positive (box, (yyvsp[(1) - (4)].identifier)); }
+#line 684 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_umstimm_expression_positive (box, (yyvsp[-3].identifier)); }
+#line 2413 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 128:
-/* Line 1787 of yacc.c  */
-#line 682 "../../../mutabor-git/src/kernel/mut.yy"
+#line 685 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
+#line 2419 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 129:
-/* Line 1787 of yacc.c  */
-#line 684 "../../../mutabor-git/src/kernel/mut.yy"
+#line 687 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_umstimm_expression_positive (box, "@" ); }
+#line 2425 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 130:
-/* Line 1787 of yacc.c  */
-#line 685 "../../../mutabor-git/src/kernel/mut.yy"
+#line 688 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
+#line 2431 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 131:
-/* Line 1787 of yacc.c  */
-#line 687 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_umstimm_expression_negative (box,(yyvsp[(1) - (4)].identifier)); }
+#line 690 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_umstimm_expression_negative (box,(yyvsp[-3].identifier)); }
+#line 2437 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 132:
-/* Line 1787 of yacc.c  */
-#line 688 "../../../mutabor-git/src/kernel/mut.yy"
+#line 691 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
+#line 2443 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 133:
-/* Line 1787 of yacc.c  */
-#line 690 "../../../mutabor-git/src/kernel/mut.yy"
+#line 693 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_umstimm_expression_negative (box, "@" ); }
+#line 2449 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 134:
-/* Line 1787 of yacc.c  */
-#line 695 "../../../mutabor-git/src/kernel/mut.yy"
+#line 698 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
+#line 2455 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 135:
-/* Line 1787 of yacc.c  */
-#line 697 "../../../mutabor-git/src/kernel/mut.yy"
+#line 700 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_wiederholung_abs (box); }
+#line 2461 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 136:
-/* Line 1787 of yacc.c  */
-#line 698 "../../../mutabor-git/src/kernel/mut.yy"
+#line 701 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
+#line 2467 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 137:
-/* Line 1787 of yacc.c  */
-#line 700 "../../../mutabor-git/src/kernel/mut.yy"
+#line 703 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_wiederholung_abs_negative (box); }
+#line 2473 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 138:
-/* Line 1787 of yacc.c  */
-#line 704 "../../../mutabor-git/src/kernel/mut.yy"
+#line 707 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
+#line 2479 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 139:
-/* Line 1787 of yacc.c  */
-#line 706 "../../../mutabor-git/src/kernel/mut.yy"
+#line 709 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_wiederholung_rel_positive (box); }
+#line 2485 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 140:
-/* Line 1787 of yacc.c  */
-#line 707 "../../../mutabor-git/src/kernel/mut.yy"
+#line 710 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
+#line 2491 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 141:
-/* Line 1787 of yacc.c  */
-#line 709 "../../../mutabor-git/src/kernel/mut.yy"
+#line 712 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_wiederholung_rel_negative (box); }
+#line 2497 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 142:
-/* Line 1787 of yacc.c  */
-#line 713 "../../../mutabor-git/src/kernel/mut.yy"
+#line 716 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_aktions_liste (box); }
+#line 2503 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 143:
-/* Line 1787 of yacc.c  */
-#line 715 "../../../mutabor-git/src/kernel/mut.yy"
+#line 718 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_umstimmungs_bund (box); }
+#line 2509 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 144:
-/* Line 1787 of yacc.c  */
-#line 719 "../../../mutabor-git/src/kernel/mut.yy"
+#line 722 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2515 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 145:
-/* Line 1787 of yacc.c  */
-#line 720 "../../../mutabor-git/src/kernel/mut.yy"
+#line 723 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2521 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 146:
-/* Line 1787 of yacc.c  */
-#line 724 "../../../mutabor-git/src/kernel/mut.yy"
+#line 727 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
-		  get_new_aktion_aufruf_element (box,(yyvsp[(1) - (1)].identifier),NULL); 
+		  get_new_aktion_aufruf_element (box,(yyvsp[0].identifier),NULL); 
 	  }
+#line 2529 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 147:
-/* Line 1787 of yacc.c  */
-#line 728 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_aktion_aufruf_element (box,(yyvsp[(1) - (4)].identifier), (yyvsp[(3) - (4)].arguments)); }
+#line 731 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_aktion_aufruf_element (box,(yyvsp[-3].identifier), (yyvsp[-1].arguments)); }
+#line 2535 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 148:
-/* Line 1787 of yacc.c  */
-#line 730 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_aktion_aufruf_element (box,(yyvsp[(1) - (5)].identifier), (yyvsp[(3) - (5)].arguments));
+#line 733 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_aktion_aufruf_element (box,(yyvsp[-4].identifier), (yyvsp[-2].arguments));
 			    mutabor_error_message(box,
 						 compiler_error,
 						 _("Invalid argument list for call to %s in line %d"),
-						 (yyvsp[(1) - (5)].identifier),
+						 (yyvsp[-4].identifier),
 						 FEHLERZEILE);
 		    }
+#line 2547 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 149:
-/* Line 1787 of yacc.c  */
-#line 738 "../../../mutabor-git/src/kernel/mut.yy"
+#line 741 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_integersequenz (box);}
+#line 2553 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 150:
-/* Line 1787 of yacc.c  */
-#line 740 "../../../mutabor-git/src/kernel/mut.yy"
+#line 743 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_aktion_midi_out_element (box); }
+#line 2559 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 151:
-/* Line 1787 of yacc.c  */
-#line 741 "../../../mutabor-git/src/kernel/mut.yy"
+#line 744 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_aktion_harmony_analysis(box); }
+#line 2565 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 152:
-/* Line 1787 of yacc.c  */
-#line 745 "../../../mutabor-git/src/kernel/mut.yy"
+#line 748 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_umstimmungs_case_liste (box); }
+#line 2571 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 153:
-/* Line 1787 of yacc.c  */
-#line 747 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_umstimmung_umstimm_case (box,(yyvsp[(1) - (5)].arguments)); }
+#line 750 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_umstimmung_umstimm_case (box,(yyvsp[-4].arguments)); }
+#line 2577 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 154:
-/* Line 1787 of yacc.c  */
-#line 751 "../../../mutabor-git/src/kernel/mut.yy"
+#line 754 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2583 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 155:
-/* Line 1787 of yacc.c  */
-#line 752 "../../../mutabor-git/src/kernel/mut.yy"
+#line 755 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2589 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 156:
-/* Line 1787 of yacc.c  */
-#line 757 "../../../mutabor-git/src/kernel/mut.yy"
+#line 760 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_aktions_liste (box); }
+#line 2595 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 157:
-/* Line 1787 of yacc.c  */
-#line 759 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_umstimmungs_case_zahl_element (box,(yyvsp[(1) - (5)].integer)); }
+#line 762 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_umstimmungs_case_zahl_element (box,(yyvsp[-4].integer)); }
+#line 2601 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 158:
-/* Line 1787 of yacc.c  */
-#line 761 "../../../mutabor-git/src/kernel/mut.yy"
+#line 764 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_aktions_liste (box); }
+#line 2607 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 159:
-/* Line 1787 of yacc.c  */
-#line 763 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_umstimmungs_case_zahl_element (box,-((yyvsp[(2) - (6)].integer))); }
+#line 766 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_umstimmungs_case_zahl_element (box,-((yyvsp[-4].integer))); }
+#line 2613 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 160:
-/* Line 1787 of yacc.c  */
-#line 765 "../../../mutabor-git/src/kernel/mut.yy"
+#line 768 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_aktions_liste (box); }
+#line 2619 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 161:
-/* Line 1787 of yacc.c  */
-#line 767 "../../../mutabor-git/src/kernel/mut.yy"
+#line 770 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmungs_case_default_element (box); }
+#line 2625 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 162:
-/* Line 1787 of yacc.c  */
-#line 772 "../../../mutabor-git/src/kernel/mut.yy"
+#line 775 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_integersequenz (box);}
+#line 2631 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 163:
-/* Line 1787 of yacc.c  */
-#line 774 "../../../mutabor-git/src/kernel/mut.yy"
+#line 777 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_midi_out (box); }
+#line 2637 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 164:
-/* Line 1787 of yacc.c  */
-#line 779 "../../../mutabor-git/src/kernel/mut.yy"
+#line 782 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2643 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 165:
-/* Line 1787 of yacc.c  */
-#line 783 "../../../mutabor-git/src/kernel/mut.yy"
+#line 786 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2649 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 166:
-/* Line 1787 of yacc.c  */
-#line 784 "../../../mutabor-git/src/kernel/mut.yy"
+#line 787 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2655 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 167:
-/* Line 1787 of yacc.c  */
-#line 789 "../../../mutabor-git/src/kernel/mut.yy"
+#line 792 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_tastenliste (box); }
+#line 2661 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 168:
-/* Line 1787 of yacc.c  */
-#line 791 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_harmonie (box, (yyvsp[(1) - (7)].identifier), (yyvsp[(7) - (7)].integer)); }
+#line 794 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_harmonie (box, (yyvsp[-6].identifier), (yyvsp[0].integer)); }
+#line 2667 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 169:
-/* Line 1787 of yacc.c  */
-#line 793 "../../../mutabor-git/src/kernel/mut.yy"
+#line 796 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
 		mutabor_error_message(box,
 				      compiler_error,
 				      _("Bad pattern declaration “%s” at line %d"),
-				      ((yyvsp[(1) - (3)].identifier)),
+				      ((yyvsp[-2].identifier)),
 				      FEHLERZEILE); 
 	  }
+#line 2679 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 170:
-/* Line 1787 of yacc.c  */
-#line 803 "../../../mutabor-git/src/kernel/mut.yy"
+#line 806 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.integer) = -1; }
+#line 2685 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 171:
-/* Line 1787 of yacc.c  */
-#line 804 "../../../mutabor-git/src/kernel/mut.yy"
-    { (yyval.integer) = (yyvsp[(2) - (2)].integer); }
+#line 807 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { (yyval.integer) = (yyvsp[0].integer); }
+#line 2691 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 172:
-/* Line 1787 of yacc.c  */
-#line 808 "../../../mutabor-git/src/kernel/mut.yy"
+#line 811 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2697 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 173:
-/* Line 1787 of yacc.c  */
-#line 809 "../../../mutabor-git/src/kernel/mut.yy"
+#line 812 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2703 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 174:
-/* Line 1787 of yacc.c  */
-#line 813 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_taste (box, (yyvsp[(1) - (1)].integer), '+'); }
+#line 816 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_taste (box, (yyvsp[0].integer), '+'); }
+#line 2709 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 175:
-/* Line 1787 of yacc.c  */
-#line 814 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_taste (box, (yyvsp[(2) - (2)].integer), '*'); }
+#line 817 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_taste (box, (yyvsp[0].integer), '*'); }
+#line 2715 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 176:
-/* Line 1787 of yacc.c  */
-#line 818 "../../../mutabor-git/src/kernel/mut.yy"
+#line 821 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2721 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 177:
-/* Line 1787 of yacc.c  */
-#line 822 "../../../mutabor-git/src/kernel/mut.yy"
+#line 825 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2727 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 178:
-/* Line 1787 of yacc.c  */
-#line 823 "../../../mutabor-git/src/kernel/mut.yy"
+#line 826 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_ausloeser (box);
                          /* f〉 die Anfangsausloesung der Logik */
                        }
+#line 2735 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 179:
-/* Line 1787 of yacc.c  */
-#line 826 "../../../mutabor-git/src/kernel/mut.yy"
+#line 829 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2741 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 180:
-/* Line 1787 of yacc.c  */
-#line 831 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_logik (box, (yyvsp[(1) - (4)].identifier), NULL);
+#line 834 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_logik (box, (yyvsp[-3].identifier), NULL);
                 init_anweisungs_liste (box); }
+#line 2748 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 181:
-/* Line 1787 of yacc.c  */
-#line 834 "../../../mutabor-git/src/kernel/mut.yy"
+#line 837 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { vervollstaendige_logik (box); }
+#line 2754 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 182:
-/* Line 1787 of yacc.c  */
-#line 836 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_logik (box, (yyvsp[(1) - (5)].identifier), (yyvsp[(4) - (5)].identifier));
+#line 839 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_logik (box, (yyvsp[-4].identifier), (yyvsp[-1].identifier));
                 init_anweisungs_liste (box); }
+#line 2761 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 183:
-/* Line 1787 of yacc.c  */
-#line 839 "../../../mutabor-git/src/kernel/mut.yy"
+#line 842 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { vervollstaendige_logik (box); }
+#line 2767 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 184:
-/* Line 1787 of yacc.c  */
-#line 843 "../../../mutabor-git/src/kernel/mut.yy"
+#line 846 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2773 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 185:
-/* Line 1787 of yacc.c  */
-#line 844 "../../../mutabor-git/src/kernel/mut.yy"
+#line 847 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2779 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 186:
-/* Line 1787 of yacc.c  */
-#line 849 "../../../mutabor-git/src/kernel/mut.yy"
+#line 852 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_aktions_liste (box); }
+#line 2785 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 187:
-/* Line 1787 of yacc.c  */
-#line 851 "../../../mutabor-git/src/kernel/mut.yy"
+#line 854 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_anweisung (box); }
+#line 2791 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 188:
-/* Line 1787 of yacc.c  */
-#line 853 "../../../mutabor-git/src/kernel/mut.yy"
+#line 856 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_aktions_liste (box); }
+#line 2797 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 189:
-/* Line 1787 of yacc.c  */
-#line 855 "../../../mutabor-git/src/kernel/mut.yy"
+#line 858 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_anweisung (box); }
+#line 2803 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 190:
-/* Line 1787 of yacc.c  */
-#line 860 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_harmoniebezeichner (box, (yyvsp[(1) - (5)].integer), (yyvsp[(3) - (5)].identifier),  (yyvsp[(5) - (5)].integer)); }
+#line 863 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_harmoniebezeichner (box, (yyvsp[-4].integer), (yyvsp[-2].identifier),  (yyvsp[0].integer)); }
+#line 2809 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 191:
-/* Line 1787 of yacc.c  */
-#line 862 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_harmoniebezeichner (box, MUTABOR_NO_KEY, (yyvsp[(1) - (3)].identifier),  (yyvsp[(3) - (3)].integer)); }
+#line 865 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_harmoniebezeichner (box, MUTABOR_NO_KEY, (yyvsp[-2].identifier),  (yyvsp[0].integer)); }
+#line 2815 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 192:
-/* Line 1787 of yacc.c  */
-#line 864 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_harmoniebezeichner (box, (yyvsp[(1) - (3)].integer), (yyvsp[(3) - (3)].identifier), MUTABOR_NO_KEY); }
+#line 867 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_harmoniebezeichner (box, (yyvsp[-2].integer), (yyvsp[0].identifier), MUTABOR_NO_KEY); }
+#line 2821 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 193:
-/* Line 1787 of yacc.c  */
-#line 866 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_harmoniebezeichner (box,  MUTABOR_NO_KEY, (yyvsp[(1) - (1)].identifier), MUTABOR_NO_KEY); }
+#line 869 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_harmoniebezeichner (box,  MUTABOR_NO_KEY, (yyvsp[0].identifier), MUTABOR_NO_KEY); }
+#line 2827 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 194:
-/* Line 1787 of yacc.c  */
-#line 870 "../../../mutabor-git/src/kernel/mut.yy"
+#line 873 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_ausloeser_default (box); }
+#line 2833 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 195:
-/* Line 1787 of yacc.c  */
-#line 871 "../../../mutabor-git/src/kernel/mut.yy"
+#line 874 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_ausloeser_harmonie (box); }
+#line 2839 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 196:
-/* Line 1787 of yacc.c  */
-#line 872 "../../../mutabor-git/src/kernel/mut.yy"
+#line 875 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_ausloeser_harmonie_form (box); }
+#line 2845 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 197:
-/* Line 1787 of yacc.c  */
-#line 873 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_ausloeser_taste (box,(yyvsp[(2) - (2)].identifier)); }
+#line 876 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_ausloeser_taste (box,(yyvsp[0].identifier)); }
+#line 2851 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 198:
-/* Line 1787 of yacc.c  */
-#line 874 "../../../mutabor-git/src/kernel/mut.yy"
+#line 877 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_integersequenz (box); }
+#line 2857 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 199:
-/* Line 1787 of yacc.c  */
-#line 876 "../../../mutabor-git/src/kernel/mut.yy"
+#line 879 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_ausloeser_midi_in (box); }
+#line 2863 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 200:
-/* Line 1787 of yacc.c  */
-#line 881 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_integer_in_integersequenz (box,(yyvsp[(1) - (1)].integer));}
+#line 884 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_integer_in_integersequenz (box,(yyvsp[0].integer));}
+#line 2869 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 201:
-/* Line 1787 of yacc.c  */
-#line 883 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_new_integer_in_integersequenz (box,(yyvsp[(3) - (3)].integer));}
+#line 886 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_new_integer_in_integersequenz (box,(yyvsp[0].integer));}
+#line 2875 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 202:
-/* Line 1787 of yacc.c  */
-#line 884 "../../../mutabor-git/src/kernel/mut.yy"
+#line 887 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
 		mutabor_error_message(box,
 				      compiler_error,
 				      _("Bad MIDI list in line %d"),  
 				      FEHLERZEILE );
 	  }
+#line 2886 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 203:
-/* Line 1787 of yacc.c  */
-#line 894 "../../../mutabor-git/src/kernel/mut.yy"
+#line 897 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2892 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 204:
-/* Line 1787 of yacc.c  */
-#line 898 "../../../mutabor-git/src/kernel/mut.yy"
+#line 901 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2898 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 205:
-/* Line 1787 of yacc.c  */
-#line 899 "../../../mutabor-git/src/kernel/mut.yy"
+#line 902 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
+#line 2904 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 206:
-/* Line 1787 of yacc.c  */
-#line 904 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_instrument_dekl (box, (yyvsp[(1) - (4)].integer), (yyvsp[(4) - (4)].integer), (yyvsp[(4) - (4)].integer), 0, & box->file->list_of_instrumente); }
+#line 907 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_instrument_dekl (box, (yyvsp[-3].integer), (yyvsp[0].integer), (yyvsp[0].integer), 0, & box->file->list_of_instrumente); }
+#line 2910 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 207:
-/* Line 1787 of yacc.c  */
-#line 906 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_instrument_dekl (box, (yyvsp[(1) - (6)].integer), (yyvsp[(4) - (6)].integer), (yyvsp[(6) - (6)].integer), 0, & box->file->list_of_instrumente); }
+#line 909 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_instrument_dekl (box, (yyvsp[-5].integer), (yyvsp[-2].integer), (yyvsp[0].integer), 0, & box->file->list_of_instrumente); }
+#line 2916 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 208:
-/* Line 1787 of yacc.c  */
-#line 908 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_instrument_dekl (box, (yyvsp[(1) - (6)].integer), 0, 0, (yyvsp[(5) - (6)].integer), & box->file->list_of_instrumente); }
+#line 911 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_instrument_dekl (box, (yyvsp[-5].integer), 0, 0, (yyvsp[-1].integer), & box->file->list_of_instrumente); }
+#line 2922 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 209:
-/* Line 1787 of yacc.c  */
-#line 910 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_instrument_dekl (box, (yyvsp[(1) - (7)].integer), (yyvsp[(4) - (7)].integer), (yyvsp[(4) - (7)].integer), (yyvsp[(6) - (7)].integer), & box->file->list_of_instrumente); }
+#line 913 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_instrument_dekl (box, (yyvsp[-6].integer), (yyvsp[-3].integer), (yyvsp[-3].integer), (yyvsp[-1].integer), & box->file->list_of_instrumente); }
+#line 2928 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 210:
-/* Line 1787 of yacc.c  */
-#line 912 "../../../mutabor-git/src/kernel/mut.yy"
-    { get_instrument_dekl (box, (yyvsp[(1) - (9)].integer), (yyvsp[(4) - (9)].integer), (yyvsp[(6) - (9)].integer), (yyvsp[(8) - (9)].integer), & box->file->list_of_instrumente); }
+#line 915 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_instrument_dekl (box, (yyvsp[-8].integer), (yyvsp[-5].integer), (yyvsp[-3].integer), (yyvsp[-1].integer), & box->file->list_of_instrumente); }
+#line 2934 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 211:
-/* Line 1787 of yacc.c  */
-#line 916 "../../../mutabor-git/src/kernel/mut.yy"
-    { (yyval.f_value) = (yyvsp[(1) - (1)].f_value) ; }
+#line 919 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { (yyval.f_value) = (yyvsp[0].f_value) ; }
+#line 2940 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 212:
-/* Line 1787 of yacc.c  */
-#line 917 "../../../mutabor-git/src/kernel/mut.yy"
-    { (yyval.f_value) = (double) (yyvsp[(1) - (1)].integer) ; }
+#line 920 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { (yyval.f_value) = (double) (yyvsp[0].integer) ; }
+#line 2946 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
 
-/* Line 1787 of yacc.c  */
-#line 3191 "../../../mutabor-git/src/kernel/mut.cc"
+#line 2950 "src/kernel/mut.cc" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -3210,7 +2969,7 @@ yyreduce:
   *++yyvsp = yyval;
   *++yylsp = yyloc;
 
-  /* Now `shift' the result of the reduction.  Determine what state
+  /* Now 'shift' the result of the reduction.  Determine what state
      that goes to, based on the state we popped back to and the rule
      number reduced by.  */
 
@@ -3225,9 +2984,9 @@ yyreduce:
   goto yynewstate;
 
 
-/*------------------------------------.
-| yyerrlab -- here on detecting error |
-`------------------------------------*/
+/*--------------------------------------.
+| yyerrlab -- here on detecting error.  |
+`--------------------------------------*/
 yyerrlab:
   /* Make sure we have latest lookahead translation.  See comments at
      user semantic actions for why this is necessary.  */
@@ -3278,20 +3037,20 @@ yyerrlab:
   if (yyerrstatus == 3)
     {
       /* If just tried and failed to reuse lookahead token after an
-	 error, discard it.  */
+         error, discard it.  */
 
       if (yychar <= YYEOF)
-	{
-	  /* Return failure if at end of input.  */
-	  if (yychar == YYEOF)
-	    YYABORT;
-	}
+        {
+          /* Return failure if at end of input.  */
+          if (yychar == YYEOF)
+            YYABORT;
+        }
       else
-	{
-	  yydestruct ("Error: discarding",
-		      yytoken, &yylval, &yylloc, box);
-	  yychar = YYEMPTY;
-	}
+        {
+          yydestruct ("Error: discarding",
+                      yytoken, &yylval, &yylloc, box);
+          yychar = YYEMPTY;
+        }
     }
 
   /* Else will try to reuse lookahead token after shifting the error
@@ -3311,7 +3070,7 @@ yyerrorlab:
      goto yyerrorlab;
 
   yyerror_range[1] = yylsp[1-yylen];
-  /* Do not reclaim the symbols of the rule which action triggered
+  /* Do not reclaim the symbols of the rule whose action triggered
      this YYERROR.  */
   YYPOPSTACK (yylen);
   yylen = 0;
@@ -3324,29 +3083,29 @@ yyerrorlab:
 | yyerrlab1 -- common code for both syntax error and YYERROR.  |
 `-------------------------------------------------------------*/
 yyerrlab1:
-  yyerrstatus = 3;	/* Each real token shifted decrements this.  */
+  yyerrstatus = 3;      /* Each real token shifted decrements this.  */
 
   for (;;)
     {
       yyn = yypact[yystate];
       if (!yypact_value_is_default (yyn))
-	{
-	  yyn += YYTERROR;
-	  if (0 <= yyn && yyn <= YYLAST && yycheck[yyn] == YYTERROR)
-	    {
-	      yyn = yytable[yyn];
-	      if (0 < yyn)
-		break;
-	    }
-	}
+        {
+          yyn += YYTERROR;
+          if (0 <= yyn && yyn <= YYLAST && yycheck[yyn] == YYTERROR)
+            {
+              yyn = yytable[yyn];
+              if (0 < yyn)
+                break;
+            }
+        }
 
       /* Pop the current state because it cannot handle the error token.  */
       if (yyssp == yyss)
-	YYABORT;
+        YYABORT;
 
       yyerror_range[1] = *yylsp;
       yydestruct ("Error: popping",
-		  yystos[yystate], yyvsp, yylsp, box);
+                  yystos[yystate], yyvsp, yylsp, box);
       YYPOPSTACK (1);
       yystate = *yyssp;
       YY_STACK_PRINT (yyss, yyssp);
@@ -3402,14 +3161,14 @@ yyreturn:
       yydestruct ("Cleanup: discarding lookahead",
                   yytoken, &yylval, &yylloc, box);
     }
-  /* Do not reclaim the symbols of the rule which action triggered
+  /* Do not reclaim the symbols of the rule whose action triggered
      this YYABORT or YYACCEPT.  */
   YYPOPSTACK (yylen);
   YY_STACK_PRINT (yyss, yyssp);
   while (yyssp != yyss)
     {
       yydestruct ("Cleanup: popping",
-		  yystos[*yyssp], yyvsp, yylsp, box);
+                  yystos[*yyssp], yyvsp, yylsp, box);
       YYPOPSTACK (1);
     }
 #ifndef yyoverflow
@@ -3420,13 +3179,9 @@ yyreturn:
   if (yymsg != yymsgbuf)
     YYSTACK_FREE (yymsg);
 #endif
-  /* Make sure YYID is used.  */
-  return YYID (yyresult);
+  return yyresult;
 }
-
-
-/* Line 2050 of yacc.c  */
-#line 921 "../../../mutabor-git/src/kernel/mut.yy"
+#line 924 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1906  */
 
 /// \todo check whether this function is necessary for any system but windows
 #ifdef __WXMSW__

@@ -34,7 +34,7 @@
 %locations
 %error-verbose
 %parse-param { mutabor_box_type * box }
-%lex-param { mutabor_box_type * box, void * scanner }
+%lex-param { mutabor_box_type * box }
 %{
 
 /* BEGIN MUT_TAB.C */
@@ -55,6 +55,9 @@
 #include "src/kernel/Parser.h"
 #include "src/kernel/Hilfs.h"
 #include "src/kernel/Execute.h"
+#ifdef SRC_WXINTL_LIBINTL
+#define dgettext(domain,string) wxwidgets_sgettext(string)
+#endif
 
 #ifdef _
 #undef _
@@ -77,7 +80,7 @@
 #endif
 #define YYERROR_VERBOSE 1
 #define YYMALLOC(size) xmalloc(box,size)
-#define YYFREE(X) do { /* empty */; } while (YYID (0))
+#define YYFREE(X) do { /* empty */; } while (0)
 #define YYMAXLIMIT (HEAP_PORTION_SYNTAX / sizeof(YYLTYPE) - 1)
                    /* wegen fehlendem alloca in PUREC */
 %}
