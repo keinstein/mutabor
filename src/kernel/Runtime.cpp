@@ -315,7 +315,6 @@ OutputDevice *GetOut(int nr) {
 
 	return Out;
 }
-*/
 
 // Timerdaten
 void  GetTimerData(UINT &min, UINT &max) {
@@ -328,6 +327,10 @@ void  GetTimerData(UINT &min, UINT &max) {
 	//TODO
 #endif
 }
+
+*/
+
+
 #ifdef __cplusplus
 		}
 	}
