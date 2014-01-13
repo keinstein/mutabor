@@ -24,7 +24,7 @@ do
     echo $seq $datei
     echo $TEXINPUTS
     echo
-	latex '\def\outputformat{help}\input '"$datei"
+	latex -interaction=nonstopmode '\def\outputformat{help}\input '"$datei"
 	if [ -f "${datei%.tex}".idx ] 
 	then
   	  tex '\def\filename{{'"${dateiname%.tex}"'}{idx}{4dx}{ind}} \input  idxmake.4ht' 
