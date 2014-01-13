@@ -798,7 +798,6 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 					case midi::META_END_OF_TRACK:
 						Tracks[nr].Stop();
 						return MUTABOR_NO_DELTA;
-						break;
 					}
 				}
 				break;
@@ -869,11 +868,9 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 			break;
 		case RTelse:
 			return ProceedElse;
-			break;
 			
 		case RTall:
 			return ProceedYes;
-			break;
 		default:
 			UNREACHABLEC;
 		}
@@ -892,7 +889,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 //			if ( R->Check(midiCode & 0x0F) ) {
 				return ProceedYes;
 //			}
-			break;
+//			break;
 
 		case RTstaff:
 			if ( R->Check(track) ) {
@@ -902,11 +899,9 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 		case RTelse:
 //			return ProceedElse;
 			return ProceedYes;
-			break;
 			
 		case RTall:
 			return ProceedYes;
-			break;
 		default:
 			UNREACHABLEC;
 		}

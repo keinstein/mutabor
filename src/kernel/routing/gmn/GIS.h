@@ -463,14 +463,20 @@ public:
 	int Octave;
 	frac Duration;
 
-	GisNote(const mutString &name = mutEmptyString, const mutString &accedentials = mutEmptyString, int octave = 0,
-	        frac duration = frac(1,4), const mutString &sep = mutEmptyString, GisToken *next = 0)
-			: GisToken(sep, next),Name(name),Accedentials(accedentials)
+	GisNote(const mutString &name = mutEmptyString, 
+		const mutString &accedentials = mutEmptyString, 
+		int octave = 0,
+	        frac duration = frac(1,4), 
+		const mutString &sep = mutEmptyString, 
+		GisToken *next = 0)
+			: GisToken(sep, next),
+		Name(name),
+		Accedentials(accedentials),
+		Octave(octave),
+		Duration(duration)
 	{
 		CHECKDUP(Name, name);
 		CHECKDUP(Accedentials, accedentials);
-		Octave = octave;
-		Duration = duration;
 	}
 
 	GisNote(int key, int octave, int acc, const mutString sep = mutEmptyString, GisToken *next = 0);

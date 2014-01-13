@@ -60,11 +60,9 @@ static double get_intervall_wert (mutabor_box_type * box,
 			case intervall_komplex:
 				return get_wert_komplex_intervall(box,
 								  lauf->u.intervall_komplex.komplex_liste);
-				break;
 
 			case intervall_absolut:
 				return lauf->u.intervall_absolut.intervall_wert ;
-				break;
 				
 			default:
 				mutabor_error_message(box,

@@ -452,7 +452,7 @@ namespace mutabor {
 		mutint64 nextEvent = wxLL(0); // in μs
 		mutint64 playTime  = wxLL(0); // in μs
 		mutint64 reference = wxLL(0); // in μs
-		mutint64 delta; // in ms
+		mutint64 delta = GetNO_DELTA(); // in ms
 		wxThread::ExitCode e = 0;
 		while (true) {
 			if (threadsignal & RequestPause) {

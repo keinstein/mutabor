@@ -96,13 +96,13 @@ public:
 
 	frac& operator /=(const frac& f);
 
-	frac operator +(const frac s);
+	frac operator +(const frac & s);
 
-	frac operator -(const frac s);
+	frac operator -(const frac & s);
 
-	frac operator *(const frac s);
+	frac operator *(const frac & s);
 
-	frac operator /(const frac s);
+	frac operator /(const frac & s);
 
 	int operator <(const frac &f);
 
@@ -131,7 +131,7 @@ public:
 
 	mutint64 gcd(mutint64 a, mutint64 b);
 
-	friend STD_PRE::ostream& operator << (STD_PRE::ostream& os, const frac f);
+	friend STD_PRE::ostream& operator << (STD_PRE::ostream& os, const frac & f);
 
 #ifdef WX
 	operator wxString() const
@@ -148,7 +148,7 @@ inline wxString TowxString(const frac &f)
 	return (wxString) f;
 }
 
-inline STD_PRE::ostream& operator<<(STD_PRE::ostream& os, const frac f)
+inline STD_PRE::ostream& operator<<(STD_PRE::ostream& os, const frac & f)
 {
 	return os << "(" << f.n << "/" << f.d << ")";
 }

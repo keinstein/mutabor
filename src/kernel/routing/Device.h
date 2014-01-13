@@ -103,6 +103,7 @@ namespace mutabor {
 								controller_changed(128,-1),
 								first_unchanged(0),
 								looped(false),
+								data_is_rpn(true),
 								Sound(sound),
 								bank_coarse(-1),
 								bank_fine(-1),
@@ -120,10 +121,10 @@ namespace mutabor {
 			{
 				for (controller_vector::iterator i = controller.begin();
 				     i != controller.end();
-				     i++) *i = -1;
+				     ++i) *i = -1;
 				for (controller_vector::iterator i = controller_changed.begin();
 				     i != controller_changed.end();
-				     i++) *i = -1;
+				     ++i) *i = -1;
 				first_unchanged = 0;
 				looped = false;
 				Sound = -1;
@@ -284,7 +285,7 @@ namespace mutabor {
 			mutASSERT(last < controller_changed.end());
 			controller_vector::const_iterator retval = last;
 			do {
-				retval++;
+				++retval;
 			} while (retval != controller_changed.end() && (*retval != -1)
 				 && (size_t)(*retval) < other.controller.size()
 				 && controller[*retval] == other.controller[*retval]);
@@ -1172,7 +1173,7 @@ namespace mutabor {
 		static void Destroy() {
 			if (!factories.empty()) {
 				for (factorylist::iterator i = factories.begin();
-				     i != factories.end(); i++) {
+				     i != factories.end(); ++i) {
 				        DeviceFactory * factory = *i;
 					if (factory)
 						delete factory;

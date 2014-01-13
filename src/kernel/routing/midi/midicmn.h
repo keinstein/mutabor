@@ -99,7 +99,7 @@ namespace mutabor {
 			iterator actual = start;
 			while (actual != this->end() && (!(filter((int)(*actual))))) {
 				DEBUGLOG(midiio,_T("Not using Channel %d"),(int)(*actual));
-				actual++;
+				++actual;
 			}
 			DEBUGLOG(midiio,_T("Using Channel %d"),(actual != this->end()?(int)(*actual):(int)-1));
 			return actual;
@@ -130,9 +130,9 @@ namespace mutabor {
 				if (first_free <= actual) {
 					move_to_front(actual,first_free);
 					actual = first_free;
-					first_free ++ ;
+					++first_free;
 					if (first_free > last_sustained) {
-						last_sustained++;
+						++last_sustained;
 					}
 					mutASSERT(first_free == this->end() || first_free <= last_sustained);
 				} else {
@@ -180,7 +180,7 @@ namespace mutabor {
 			}
 			if (last_sustained <= current) {
 				move_to_front(current,last_sustained);
-				last_sustained ++;
+				++last_sustained;
 				return;
 			}
 			if (first_free <= current) {
@@ -188,7 +188,7 @@ namespace mutabor {
 				return;
 			}
 			move_to_end(current,last_sustained);
-			first_free --;
+			--first_free;
 		}
 
 		/** 
@@ -216,8 +216,8 @@ namespace mutabor {
 				return this->end();
 			}
 			move_to_end(current,this->end());
-			last_sustained--;
-			if (current < first_free) first_free --;
+			--last_sustained;
+			if (current < first_free) --first_free;
 			return this->end() - 1;
 		}
 		/** 
@@ -554,6 +554,7 @@ namespace mutabor {
 		CommonMidiOutput(int b):base(),
 					Out(this),
 					bending_range(b),
+					bank_mode(msb_first),
 					channel_queue(),
 					nKeyOn(0) {}
 		

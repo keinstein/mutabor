@@ -338,7 +338,7 @@ namespace mutaborGUI {
 				boost::throw_exception( FactoryNotFound(type));
 			BoxFactory * factory = factories[type];
 			mutASSERT(dynamic_cast<GUIBoxFactory *> (factory));
-			return ((GUIBoxFactory *)factory)->
+			return (static_cast<GUIBoxFactory *>(factory))->
 				DoCreateBoxShape(box,parent);
 		}
 	protected:

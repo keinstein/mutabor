@@ -827,19 +827,21 @@ namespace mutabor {
 		if (flags & mutabor::hidden::mutabor_logic_changed) newflags |= ChangedCallback::LogicChanged;
 		if (flags & mutabor::hidden::mutabor_keys_changed) newflags |= ChangedCallback::KeysChanged;
 		if (flags & mutabor::hidden::mutabor_action_changed) newflags |= ChangedCallback::ActionChanged;
-		((BoxClass *)b->userdata) -> updateflags |= newflags;
+		reinterpret_cast<BoxClass *>(b -> userdata) -> updateflags |= newflags;
 	}
 
 
 	void BoxClass::MidiOutCallback(struct mutabor::hidden::mutabor_box_type * b,
 				       struct mutabor::hidden::midiliste * outliste) {
-		BoxClass * box = (BoxClass *)b -> userdata;
+		BoxClass * box = 
+			reinterpret_cast<BoxClass *>(b -> userdata);
 		if (!box) return;
 		box->MidiOut(outliste);
 	}
 
 	void BoxClass::compile_callback(struct mutabor_box_type * b, int line_number) {
-		BoxClass * box = (BoxClass *)b -> userdata;
+		BoxClass * box = 
+			reinterpret_cast<BoxClass *>(b -> userdata);
 		if (box->current_compile_callback) {
 			box->current_compile_callback->SetLine(line_number);
 		}
@@ -848,7 +850,8 @@ namespace mutabor {
 	static void error_callback(mutabor_box_type * b, error_type type,
 			      const char * message) {
 
-		BoxClass * box = (BoxClass *)b -> userdata;
+		BoxClass * box = 
+			reinterpret_cast<BoxClass *>(b -> userdata);
 		box->runtime_error(type, message);
 	}
 
@@ -866,7 +869,8 @@ namespace mutabor {
 	void BoxClass::log_action(mutabor_box_type * b,
 				  const char * action) {
 
-		BoxClass * box = (BoxClass *)b -> userdata;
+		BoxClass * box = 
+			reinterpret_cast<BoxClass *>(b -> userdata);
 		box->ExecuteCallbacks(action);
 	}
 

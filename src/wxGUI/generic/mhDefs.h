@@ -163,7 +163,7 @@ inline void UpdateRecursive (wxWindow * win) {
 	wxWindowList & list = win->GetChildren();
 	for (wxWindowList::iterator i = list.begin();
 	     i != list.end();
-	     i++)
+	     ++i)
 		UpdateRecursive(*i);
 	win->Update();
 }

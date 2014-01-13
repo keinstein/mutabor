@@ -1,4 +1,4 @@
-/** \file 
+/** \file
  ********************************************************************
  * main file of GIS (GMN Internal Structure)
  *
@@ -39,22 +39,68 @@
 
 const mutChar * Tags[NTAGS] =
         {
-                mutT(""), mutT("intens"),  mutT("slur"),  mutT("beam"), mutT("text"),
-                mutT("bar"), mutT("cresc"), mutT("dim"), mutT("crescBegin"), mutT("crescEnd"),
-                mutT("dimBegin"), mutT("dimEnd"), mutT("tempo"), mutT("accel"), mutT("rit"),
-                mutT("accelBegin"), mutT("accelEnd"), mutT("ritBegin"), mutT("ritEnd"), mutT("instr"),
-                mutT("tie"), mutT("stacc"), mutT("accent"), mutT("ten"), mutT("marcato"),
-                mutT("trill"), mutT("mord"), mutT("turn"), mutT("trem"), mutT("fermata"),
-                mutT("grace"), mutT("cue"), mutT("repeatBegin"), mutT("repeatEnd"), mutT("clef"),
-                mutT("meter"), mutT("key"), mutT("oct"), mutT("staff"), mutT("beamsAuto"),
-                mutT("beamsOff"), mutT("stemsAuto"), mutT("stemsUp"), mutT("stemsDown"), mutT("doubleBar"),
-                mutT("tactus"), mutT("title"), mutT("composer"), mutT("mark"), mutT("label"),
-                mutT("alter"), mutT("mutabor")
+                mutT(""),
+		mutT("intens"),
+		mutT("slur"),
+		mutT("beam"),
+		mutT("text"),
+                mutT("bar"),
+		mutT("cresc"),
+		mutT("dim"),
+		mutT("crescBegin"),
+		mutT("crescEnd"),
+                mutT("dimBegin"),
+		mutT("dimEnd"),
+		mutT("tempo"),
+		mutT("accel"),
+		mutT("rit"),
+                mutT("accelBegin"),
+		mutT("accelEnd"),
+		mutT("ritBegin"),
+		mutT("ritEnd"),
+		mutT("instr"),
+                mutT("tie"),
+		mutT("stacc"),
+		mutT("accent"),
+		mutT("ten"),
+		mutT("marcato"),
+                mutT("trill"),
+		mutT("mord"),
+		mutT("turn"),
+		mutT("trem"),
+		mutT("fermata"),
+                mutT("grace"),
+		mutT("cue"),
+		mutT("repeatBegin"),
+		mutT("repeatEnd"),
+		mutT("clef"),
+                mutT("meter"),
+		mutT("key"),
+		mutT("oct"),
+		mutT("staff"),
+		mutT("beamsAuto"),
+                mutT("beamsOff"),
+		mutT("stemsAuto"),
+		mutT("stemsUp"),
+		mutT("stemsDown"),
+		mutT("doubleBar"),
+                mutT("tactus"),
+		mutT("title"),
+		mutT("composer"),
+		mutT("mark"),
+		mutT("label"),
+                mutT("alter"),
+		mutT("mutabor")
         };
 
 const mutChar * TagShorts[NTAGSHORTS] =
         {
-                mutT(""), mutT("i"), mutT("sl"), mutT("bm"), mutT("t"), mutT("|")
+                mutT(""),
+		mutT("i"),
+		mutT("sl"),
+		mutT("bm"),
+		mutT("t"),
+		mutT("|")
         };
 
 GisToken *Root;
@@ -804,6 +850,7 @@ int GetTagId(const mutString &name, mutString &registered)
 	int i;
 
 	for (i = 0; i < NTAGS; i++) {
+		DEBUGLOG2(gmnfile,_T("comparing '%s' with tag'%s'"),name.c_str(),Tags[i]);
 		if ( mutStrEq2(wxString(name), Tags[i]) ) {
 			registered = Tags[i];
 			return i;
@@ -812,7 +859,7 @@ int GetTagId(const mutString &name, mutString &registered)
 
 	// check short form
 	for (i = 0; i < NTAGSHORTS; i++) {
-		DEBUGLOG2(gmnfile,_T("comparing '%s' with tag'%s'"),name.c_str(),Tags[i]);
+		DEBUGLOG2(gmnfile,_T("comparing '%s' with tag'%s'"),name.c_str(),TagShorts[i]);
 
 		if ( mutStrEq2(name, TagShorts[i]) ) {
 			registered = TagShorts[i];

@@ -516,15 +516,16 @@ void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 	}
 	DEBUGLOG (other, _T("Icon ok."));
 
-	int x = 0, y = borderOffset.y;
+	int y = borderOffset.y;
 	wxPoint center(size.width/2,y + GetIcon().GetHeight()/2);
 
 	for (mutpointlist::iterator i = usedperimeterpoints.begin();
-	     i != usedperimeterpoints.end();i++) {
+	     i != usedperimeterpoints.end();++i) {
 		DrawPerimeterPoint(dc,center, *i);
 	}
 
 	if (GetIcon().IsOk()) {
+		int x = 0;
 		DEBUGLOG (other, _T("Size: %dx%d"),GetIcon().GetHeight(),
 			 GetIcon().GetWidth());
 		x = (size.width-GetIcon().GetWidth())/2;
@@ -689,11 +690,13 @@ void MutIconShapeClass<T>::LineTo(wxDC &dc, const wxPoint & p,
 				  const wxRect & screenpos)  const
 {
 	return;
+#if 0
 	wxRect rect = this->GetRect();
 	wxPoint p1(rect.x + rect.width/2, 
 		   rect.y + Icon.GetHeight()/2 + borderOffset.y);
 	wxPoint origin(screenpos.x,screenpos.y);
 	dc.DrawLine(p1+origin,p+origin);
+#endif
 }
 
 

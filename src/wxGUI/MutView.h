@@ -95,7 +95,7 @@ namespace mutaborGUI {
 			if (f) {
 				mutASSERT(dynamic_cast<MutFrame *>(f));
 			}
-			return (MutFrame *) f; 
+			return static_cast<MutFrame *>(f); 
 		}
 		
 		DECLARE_EVENT_TABLE()

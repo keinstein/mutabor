@@ -860,7 +860,6 @@ inline static void call_actions (mutabor_box_type * box,
 				call_actions(box, index->aktion, NULL);
 				mutabor_update (box,mutabor_action_changed);
 				return true;
-				break;
 			default:
 				mutabor_error_message(box,
 						      internal_error,

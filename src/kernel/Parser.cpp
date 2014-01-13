@@ -2242,8 +2242,6 @@ void vervollstaendige_logik (mutabor_box_type * box)
 			   int midi_umleit,
 			   struct instrument ** list_to_insert)
 {
-	int temp;
-
 	TRACE;
 	/**///for (list_to_insert = & list_of_instrumente;
 
@@ -2261,7 +2259,8 @@ void vervollstaendige_logik (mutabor_box_type * box)
 
 	if ( midi_von > midi_bis )
 		{
-			temp=midi_von;       /* Vertauschen der Reihenfolge */
+			int temp = midi_von;
+			/* Vertauschen der Reihenfolge */
 			midi_von=midi_bis;
 			midi_bis=temp;
 
@@ -3468,8 +3467,6 @@ static void check_konsistenz (mutabor_box_type * box)
 
 		for (lauf = box->file->list_of_logiken; lauf; lauf = lauf->next) {
 
-			struct umstimmung * help_umstimmung;
-
 			check_ausloeser (box,lauf->ausloeser, lauf->name);
 
 			/* Eine Logik darf nicht mit dem DEFAULT-Auslîser aufgerufen werden */
@@ -3485,7 +3482,9 @@ static void check_konsistenz (mutabor_box_type * box)
 
 			if (lauf->einstimmungs_name!=NULL) {
 				if (parser_get_tonsystem (lauf->einstimmungs_name, box->file->list_of_tonsysteme) == NULL) {
-					if ((help_umstimmung=get_umstimmung (lauf->einstimmungs_name, box->file->list_of_umstimmungen)) == NULL) {
+					struct umstimmung * help_umstimmung
+						= get_umstimmung (lauf->einstimmungs_name, box->file->list_of_umstimmungen);
+					if (help_umstimmung == NULL) {
 						mutabor_error_message(box,
 								      compiler_error,
 								      _("Undefined initial tuning: %s (in logic %s)"),

@@ -163,7 +163,7 @@ void PRINTSIZER (wxSizer * sizer, const wxString & offset)
                       (void*)sizer,(void*)sizer->GetContainingWindow ());
         wxSizerItemList &childs = sizer -> GetChildren ();
         for (wxSizerItemList::iterator i = childs.begin ();
-             i!=childs.end (); i++) {
+             i!=childs.end (); ++i) {
                 wxSizerItem * item = *i;
                 wxRect rect = item->GetRect ();
                 if (item->IsSizer ()) {

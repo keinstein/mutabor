@@ -56,7 +56,13 @@ class muConvAuto : public wxMBConv
 
 public:
 	// default ctor, the real conversion will be created on demand
-	muConvAuto() : wxMBConv()
+	muConvAuto() : wxMBConv(),
+		       m_conv(NULL),
+		       m_ownsConv(false),
+		       m_fallback(muConvAutoFallback),
+		       m_ownsFallback(false),
+		       m_bomType(BOM_None),
+		       m_consumedBOM(false)
 	{
 		TRACEC;
 		m_conv = NULL;
@@ -68,12 +74,15 @@ public:
 	// copy ctor doesn't initialize anything neither as conversion can only be
 	// deduced on first use
 
-	muConvAuto(const muConvAuto& other) : wxMBConv()
+	muConvAuto(const muConvAuto& other) : wxMBConv(),
+		       m_conv(NULL),
+		       m_ownsConv(false),
+		       m_fallback(other.m_fallback->Clone()),
+		       m_ownsFallback(true),
+		       m_bomType(BOM_None),
+		       m_consumedBOM(false)
 	{
 		TRACEC;
-		m_conv = NULL;
-		m_fallback = other.m_fallback->Clone();
-		m_ownsFallback = true;
 	}
 
 	virtual ~muConvAuto()

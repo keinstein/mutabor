@@ -68,7 +68,7 @@ namespace mutaborGUI {
 namespace mutabor {
 	namespace hidden {
 		extern "C" {
-			struct mutabor_box_type;
+			// struct mutabor_box_type;
 			struct keyboard_ereignis;
 			struct midi_ereignis;
 			struct harmonie_ereignis;
@@ -172,16 +172,12 @@ namespace mutabor {
 			switch (GetType()) {
 			case NewBox:
 				return _("New box");
-				break;
 			case NoBox:
 				return _("No box");
-				break;
 			case GmnBox:
 				return _("GUIDO Music Notation box");
-				break;
 			case Box0:
 				return _("Mutabor box");
-				break;
 			}
 			return _("Unknown box type");
 		}
@@ -190,16 +186,13 @@ namespace mutabor {
 			switch (GetType()) {
 			case NewBox:
 				return _("New box");
-				break;
 			case NoBox:
 				return _("No box");
-				break;
 			case GmnBox:
 				return _("GUIDO box");
-				break;
 			case Box0:
-				return mutString::Format(_("Box %d"),get_routefile_id());
-				break;
+				return mutString::Format(_("Box %d"),
+							 get_routefile_id());
 			}
 			return _("Unknown box type");
 		}
@@ -386,8 +379,8 @@ namespace mutabor {
 		struct logic_entry {
 			enum { none, Logic, CurrentLogic } flags;
 			bool active;
-			mutString name;
-			mutString     startTuning;
+			std::string name;
+			std::string startTuning;
 			int key;
 			struct any_trigger trigger;
 		};

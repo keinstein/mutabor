@@ -264,9 +264,7 @@ namespace mutabor {
 		void WriteLongChunk(i from, i to, size_t offset = 0) {
 			size_t count = (to - from) + offset;
 			
-			size_t c = count;
-
-			c = count+offset;
+			size_t c = count+offset;
 			if (capacity() < size()+c+4) 
 				reserve (size()+c+4);
 			WriteNumber(count+offset);
@@ -672,6 +670,7 @@ namespace mutabor {
 	protected:
 		InputMidiFile(): base(),
 				 Tracks(),
+				 Busy(false),
 				 timing() { }
 
 		InputMidiFile(mutString name, 
@@ -679,7 +678,8 @@ namespace mutabor {
 			      int id): base(name, 
 					    mode, 
 					    id),
-				       Tracks(), 
+				       Tracks(),
+				       Busy(false), 
 				       timing() {}
 
 	public:

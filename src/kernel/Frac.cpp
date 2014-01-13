@@ -116,7 +116,7 @@ frac& frac::operator /=(const frac& f)
 	return *this;
 }
 
-frac frac::operator +(const frac s)
+frac frac::operator +(const frac & s)
 
 {
 	if ( !d  || !s.d ) return frac(1,0);
@@ -137,7 +137,7 @@ frac frac::operator +(const frac s)
 	return frac(cn, cd);
 }
 
-frac frac::operator -(const frac s)
+frac frac::operator -(const frac & s)
 
 {
 	if ( !d  || !s.d ) return frac(1,0);
@@ -156,7 +156,7 @@ frac frac::operator -(const frac s)
 	return frac(cn, cd);
 }
 
-frac frac::operator *(const frac s)
+frac frac::operator *(const frac & s)
 
 {
 	long cn = n * s.n;
@@ -171,7 +171,7 @@ frac frac::operator *(const frac s)
 	return frac(cn, cd);
 }
 
-frac frac::operator /(const frac s)
+frac frac::operator /(const frac & s)
 
 {
 	long cn = n * s.d;

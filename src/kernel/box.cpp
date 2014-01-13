@@ -182,9 +182,9 @@ void initialize_boxes ()
 void mutabor_initialize_keyplane(mutabor_key_index_type * plane)
 {
 	size_t i;
-	mutabor_note_type *key;
 	for (i = 0 ; i <= MUT_BOX_MAX_KEY_INDEX; i++) {
-		key = &(plane->key[i]);
+		mutabor_note_type *key
+			= &(plane->key[i]);
 		key->userdata = NULL;
 		key->next = MUTABOR_NO_NEXT;
 	}

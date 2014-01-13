@@ -307,7 +307,8 @@ namespace mutaborGUI {
 			wxWindow * parent)
 			__attribute__ ((malloc))
 		{
-			return ((GUIRouteFactory *)factory)->
+			mutASSERT(dynamic_cast<GUIRouteFactory *>(factory));
+			return (static_cast<GUIRouteFactory *>(factory))->
 				DoCreateBoxChannelShape(route,parent);
 		}
 

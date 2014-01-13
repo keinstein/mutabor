@@ -220,7 +220,10 @@ public:
 
 	virtual GisReadHead *Build(GisReadHead *boss, GisToken *cursor, const mutString & id, bool singleToken = false)
 		{
-			return new GisReadArtHead((GisReadArtHead*)boss, cursor, id, singleToken);
+			mutASSERT(!boss 
+				  || dynamic_cast<GisReadArtHead*>(boss));
+			return new GisReadArtHead(static_cast<GisReadArtHead*>(boss),
+						  cursor, id, singleToken);
 		}
 
 	void Read();

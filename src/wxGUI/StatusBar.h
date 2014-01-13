@@ -118,7 +118,7 @@ namespace mutaborGUI {
 
 		static void AllSetActive(bool active) {
 			for (wxWindowList::iterator i = wxTopLevelWindows.begin();
-			     i != wxTopLevelWindows.end(); i++) {
+			     i != wxTopLevelWindows.end(); ++i) {
 				wxFrame * win = dynamic_cast<wxFrame *>(*i);
 				if (!win) continue;
 				StatusBar * bar = dynamic_cast<StatusBar*>(win->GetStatusBar());
@@ -146,7 +146,7 @@ namespace mutaborGUI {
 			// update the status bar anyway
 			lastprocessed = (pst == Stop)?Play:Stop;
 			for (wxWindowList::iterator i = wxTopLevelWindows.begin();
-			     i != wxTopLevelWindows.end(); i++) {
+			     i != wxTopLevelWindows.end(); ++i) {
 				wxFrame * win = dynamic_cast<wxFrame *>(*i);
 				if (!win) continue;
 				StatusBar * bar = dynamic_cast<StatusBar*>(win->GetStatusBar());
@@ -175,7 +175,6 @@ namespace mutaborGUI {
 				oldpst = pst;
 				AllDoSetPlaystate(pst);
 				return;
-				break;
 			case Pause:
 				if (oldpst == Stop) {
 					oldpst = pst;
@@ -259,7 +258,7 @@ namespace mutaborGUI {
 		
 		static void AllDoSetPlaystate(playstate pst) {
 			for (wxWindowList::iterator i = wxTopLevelWindows.begin();
-			     i != wxTopLevelWindows.end(); i++) {
+			     i != wxTopLevelWindows.end(); ++i) {
 				wxFrame * win = dynamic_cast<wxFrame *>(*i);
 				if (!win) continue;
 				StatusBar * bar = dynamic_cast<StatusBar*>(win->GetStatusBar());

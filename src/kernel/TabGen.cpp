@@ -531,7 +531,6 @@ static struct do_aktion * expandiere_logik (mutabor_box_type * box,
 	    the_logik -> einstimmung == NULL )
 	{
 		struct tonsystem * help_tonsystem;
-		struct umstimmung * help_umstimmung;
 
 		/* Guard against circular expansion */
 		the_logik -> einstimmung = (struct do_aktion *)NULL + 1;
@@ -540,10 +539,12 @@ static struct do_aktion * expandiere_logik (mutabor_box_type * box,
 		if (help_tonsystem) {
 			the_logik -> einstimmung = expandiere_tonsystem (box, help_tonsystem);
 		} else {
-			help_umstimmung = get_umstimmung (the_logik->einstimmungs_name,
-			                                  box->file->list_of_umstimmungen);
+			struct umstimmung * help_umstimmung 
+				= get_umstimmung (the_logik->einstimmungs_name,
+						  box->file->list_of_umstimmungen);
 			if (help_umstimmung) {
-				the_logik -> einstimmung = expandiere_umstimmung (box, help_umstimmung, NULL);
+				the_logik -> einstimmung 
+					= expandiere_umstimmung (box, help_umstimmung, NULL);
 			} else {
 				mutabor_error_message(box,
 						      compiler_error,
@@ -838,8 +839,6 @@ static struct do_aktion * expandiere_name (mutabor_box_type * box,
 					   struct interpreter_argument_list * bezugs_liste)
 {
 	struct logik * help_logik;
-	struct tonsystem * help_tonsystem;
-	struct umstimmung * help_umstimmung;
 	TRACE;
 
 
@@ -851,11 +850,10 @@ static struct do_aktion * expandiere_name (mutabor_box_type * box,
 	if (help_logik)
 	{
 		return expandiere_logik (box,help_logik);
-
 	} else
 	{
-
-		help_tonsystem = parser_get_tonsystem (name, box->file->list_of_tonsysteme);
+		struct tonsystem * help_tonsystem
+			= parser_get_tonsystem (name, box->file->list_of_tonsysteme);
 
 		if (help_tonsystem) {
 			
@@ -863,8 +861,8 @@ static struct do_aktion * expandiere_name (mutabor_box_type * box,
 			return expandiere_tonsystem (box,help_tonsystem);
 
 		} else {
-
-			help_umstimmung = get_umstimmung (name, box->file->list_of_umstimmungen);
+			struct umstimmung * help_umstimmung
+				= get_umstimmung (name, box->file->list_of_umstimmungen);
 
 			if (help_umstimmung) {
 
@@ -979,9 +977,6 @@ void insert_in_globale_liste (mutabor_box_type * box, struct logik * lauf)
 
 {
 
-	struct harmonie_ereignis ** temp_harmonie;
-	struct keyboard_ereignis ** temp_keyboard;
-	struct midi_ereignis     ** temp_midi;
 
 	TRACE;
 	mutASSERT(lauf && lauf != NULL);
@@ -990,7 +985,9 @@ void insert_in_globale_liste (mutabor_box_type * box, struct logik * lauf)
 	{
 		switch ((lauf->ausloeser)->ausloeser_typ) {
 
-		case ausloeser_harmonie:
+		case ausloeser_harmonie: {
+			struct harmonie_ereignis ** temp_harmonie;
+
 			TRACE;
 			if (lauf->ausloeser->u.ausloeser_harmonie.vortaste == MUTABOR_INVALID_KEY)
 				/* Dann unmöglicher Harmonieauslöser */
@@ -1012,9 +1009,12 @@ void insert_in_globale_liste (mutabor_box_type * box, struct logik * lauf)
 			(*temp_harmonie) -> aktion=NULL;
 			(*temp_harmonie) -> the_logik_to_expand=lauf;
 			(*temp_harmonie) -> next=NULL;
+		}
 			break;
 
-		case ausloeser_harmonie_form:
+		case ausloeser_harmonie_form:{
+			struct harmonie_ereignis ** temp_harmonie;
+
 			TRACE;
 			if (lauf->ausloeser->u.ausloeser_harmonie_form.vortaste == MUTABOR_INVALID_KEY)
 				/* Dann unmöglicher Harmonieauslöser */
@@ -1035,10 +1035,12 @@ void insert_in_globale_liste (mutabor_box_type * box, struct logik * lauf)
 			(*temp_harmonie) -> aktion=NULL;
 			(*temp_harmonie) -> the_logik_to_expand=lauf;
 			(*temp_harmonie) -> next=NULL;
-
+		}
 			break;
 
-		case ausloeser_taste:
+		case ausloeser_taste: {
+			struct keyboard_ereignis ** temp_keyboard;
+
 			TRACE;
 			/* Neuen Eintrag erzeugen */
 			for (temp_keyboard = & box->file->global_keystrokes;
@@ -1051,9 +1053,12 @@ void insert_in_globale_liste (mutabor_box_type * box, struct logik * lauf)
 			(*temp_keyboard) -> aktion=NULL;
 			(*temp_keyboard) -> the_logik_to_expand=lauf;
 			(*temp_keyboard) -> next=NULL;
+		}
 			break;
 
-		case ausloeser_midi_in:
+		case ausloeser_midi_in: {
+			struct midi_ereignis     ** temp_midi;
+
 			TRACE;
 			/* Neuen Eintrag erzeugen */
 			for (temp_midi = & box->file->global_midi_inputs;
@@ -1071,6 +1076,7 @@ void insert_in_globale_liste (mutabor_box_type * box, struct logik * lauf)
 			(*temp_midi) -> aktion=NULL;
 			(*temp_midi) -> the_logik_to_expand=lauf;
 			(*temp_midi) -> next = NULL;
+		}
 			break;
 
 		default:
@@ -1089,16 +1095,14 @@ void insert_in_lokale_liste (mutabor_box_type * box,
 			     struct anweisung * lauf,
                              struct logik * logic)
 {
-	struct harmonie_ereignis ** temp_harmonie;
-	struct keyboard_ereignis ** temp_keyboard;
-	struct midi_ereignis     ** temp_midi;
 	TRACE;
 
 	if (lauf->ausloeser)
 	{
 		switch ((lauf->ausloeser)->ausloeser_typ) {
 
-		case ausloeser_harmonie:
+		case ausloeser_harmonie: {
+			struct harmonie_ereignis ** temp_harmonie;
 			TRACE;
 			if (lauf->ausloeser->u.ausloeser_harmonie.vortaste == MUTABOR_INVALID_KEY)
 				/* Dann unmöglicher Harmonieauslöser */
@@ -1121,10 +1125,11 @@ void insert_in_lokale_liste (mutabor_box_type * box,
 			        expand_aktions_liste (box,lauf->aktion, NULL);
 
 			(*temp_harmonie) -> next=NULL;
-
+		}
 			break;
 
-		case ausloeser_harmonie_form:
+		case ausloeser_harmonie_form: {
+			struct harmonie_ereignis ** temp_harmonie;
 			TRACE;
 			if (lauf->ausloeser->u.ausloeser_harmonie_form.vortaste == MUTABOR_INVALID_KEY)
 				/* Dann unmöglicher Harmonieauslöser */
@@ -1145,9 +1150,12 @@ void insert_in_lokale_liste (mutabor_box_type * box,
 			(*temp_harmonie) -> aktion=
 			        expand_aktions_liste (box,lauf->aktion, NULL);
 			(*temp_harmonie) -> next=NULL;
+		}
 			break;
 
-		case ausloeser_default:
+		case ausloeser_default: {
+			struct harmonie_ereignis ** temp_harmonie;
+
 			TRACE;
 			/* Neuen Eintrag erzeugen */
 			for (temp_harmonie = & logic->harmony_list;
@@ -1164,10 +1172,11 @@ void insert_in_lokale_liste (mutabor_box_type * box,
 			(*temp_harmonie) -> aktion=
 			        expand_aktions_liste (box,lauf->aktion, NULL);
 			(*temp_harmonie) -> next=NULL;
-
+		}
 			break;
 
-		case ausloeser_taste:
+		case ausloeser_taste: {
+			struct keyboard_ereignis ** temp_keyboard;
 			TRACE;
 			/* Neuen Eintrag erzeugen */
 			for (temp_keyboard = & logic->keystroke_list;
@@ -1175,16 +1184,19 @@ void insert_in_lokale_liste (mutabor_box_type * box,
 			     temp_keyboard = & (*temp_keyboard)->next)
 				;
 
-			*temp_keyboard  = (keyboard_ereignis*) xmalloc(box, (size_t)sizeof(struct keyboard_ereignis));
+			*temp_keyboard  = (keyboard_ereignis*) 
+				xmalloc(box, 
+					(size_t)sizeof(struct keyboard_ereignis));
 			(*temp_keyboard) -> taste= (*((lauf->ausloeser)->u.ausloeser_taste.taste)) ;
 			(*temp_keyboard) -> name=logic->name;
 			(*temp_keyboard) -> aktion=
 			        expand_aktions_liste (box,lauf->aktion, NULL);
 			(*temp_keyboard) -> next=NULL;
-
+		}
 			break;
 
-		case ausloeser_midi_in:
+		case ausloeser_midi_in: {
+			struct midi_ereignis     ** temp_midi;
 			TRACE;
 			/* Neuen Eintrag erzeugen */
 			for (temp_midi = & logic->midi_input_list;
@@ -1200,6 +1212,7 @@ void insert_in_lokale_liste (mutabor_box_type * box,
 			(*temp_midi) -> aktion=
 			        expand_aktions_liste (box,lauf->aktion, NULL);
 			(*temp_midi) -> next = NULL;
+		}
 			break;
 
 		default:

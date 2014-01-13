@@ -255,7 +255,7 @@ inline size_t mutabor_find_key_in_box_by_key(mutabor_box_type * box, int key_num
  * \param index Index of the key in box->current_keys of the key that shall be deleted.
  */
 inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t index) {
-	mutabor_note_type *last_key, *current_key, *next_key;
+	mutabor_note_type *last_key, *current_key;
 
 	if (!box->key_count) return;
 
@@ -268,7 +268,8 @@ inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t index) {
 	if (!index) {
 		
 		if (current_key -> next != MUTABOR_NO_NEXT) {
-			next_key = mutabor_find_key_in_box(box,current_key->next);
+			mutabor_note_type * next_key 
+				= mutabor_find_key_in_box(box,current_key->next);
 			if (current_key->next == box->last_key)
 				box -> last_key = 0;
 			*(current_key) = *(next_key);
@@ -317,7 +318,6 @@ inline mutabor_note_type * mutabor_create_key_in_box (mutabor_box_type * box) {
 	mutabor_key_index_type *oldplane;
 	size_t index = 0;
 	size_t planeidx = 0;
-	size_t curridx = 0;
 	bool found = false;
 
 	mutASSERT(box);
@@ -340,7 +340,7 @@ inline mutabor_note_type * mutabor_create_key_in_box (mutabor_box_type * box) {
 	
 	while (plane != NULL && new_key == NULL) {
 		size_t i;
-		curridx = planeidx << MUT_BOX_MAX_KEY_INDEX_LOG;
+		size_t curridx = planeidx << MUT_BOX_MAX_KEY_INDEX_LOG;
 		for (i = 0 ; i <= MUT_BOX_MAX_KEY_INDEX; i++) {
 			if (i+curridx == box->last_key) {
 				continue;
