@@ -312,6 +312,7 @@ AS_IF(test "$cxx_cv_iso_for_loop_scope" = yes,
   
 # Checks for libraries.
 AC_CHECK_LIB(m,pow)
+AC_CHECK_LIB(backtrace,backtrace_print)
 
 dnl check for boost earlier as it might correct the library path.
 dnl some systems don't set it correctly

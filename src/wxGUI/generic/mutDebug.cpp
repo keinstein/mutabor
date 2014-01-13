@@ -1,4 +1,4 @@
-/** \file 
+/** \file
  ********************************************************************
  * Some functions and classes to help to debug Mutabor
  *
@@ -40,52 +40,55 @@
 #include <conio.h>
 #include <stdio.h>
 #endif
+#if __LINUX__
+#include <backtrace.h>
+#endif
 
 #include "src/kernel/routing/Route-inlines.h"
 
 debugFlags::flagtype debugFlags::flags;
 
 
-debugFlags::flagtype::flagtype() 
+debugFlags::flagtype::flagtype()
 {
-#define DEBUGFLAG(flag,description) \
+#define DEBUGFLAG(flag,description)				      \
 	flags.flag = false;
 #include "mutDebugFlags.h"
-#undef DEBUGFLAG	
+#undef DEBUGFLAG
 	flags.always = true;
 	// manual overrides for debug purposes
-//	flags.smartptr = true;
+	//	flags.smartptr = true;
 }
 
 
-void debugFlags::InitCommandLine(wxCmdLineParser&  parser) 
+void debugFlags::InitCommandLine(wxCmdLineParser&  parser)
 {
 #if wxCHECK_VERSION(2,9,0)
 #  ifdef N_
 #    undef N_
 #  endif
 #  define N_(text) text
-#  define DEBUGFLAG(flag,description) \
+#  define DEBUGFLAG(flag,description)					\
         { wxCMD_LINE_SWITCH, "", ("debug-"#flag), (description) },
 #else
-#  define DEBUGFLAG(flag,description) \
-    { wxCMD_LINE_SWITCH, wxEmptyString, _T("debug-"#flag), description },
+#  define DEBUGFLAG(flag,description)					\
+	{ wxCMD_LINE_SWITCH, wxEmptyString, _T("debug-"#flag), description },
 #endif
 	static const wxCmdLineEntryDesc cmdLineDesc[] =
-	{
-#include "mutDebugFlags.h"		
-		{ wxCMD_LINE_NONE }
-	};
+		{
+#include "mutDebugFlags.h"
+			{ wxCMD_LINE_NONE }
+		};
 #undef DEBUGFLAG
 	parser.SetDesc(cmdLineDesc);
 }
 
-void debugFlags::ProcessCommandLine(wxCmdLineParser&  parser) 
+void debugFlags::ProcessCommandLine(wxCmdLineParser&  parser)
 {
-#define DEBUGFLAG(flag,description) \
+#define DEBUGFLAG(flag,description)					\
 	debugFlags::flags.flag = parser.Found(_T("debug-"#flag));
 #include "mutDebugFlags.h"
-#undef DEBUGFLAG	
+#undef DEBUGFLAG
 	debugFlags::flags.always = true;
 }
 
@@ -96,8 +99,8 @@ struct ptrlist_item {
 	std::string file;
 	int line;
 	ptrlist_item(void * p, std::string &f, int l):ptr(p),
-					       file(f),
-					       line(l) {}
+						      file(f),
+						      line(l) {}
 	bool operator == (void * p) const { return ptr == p ; }
 	bool operator < (void * p) const { return ptr < p ; }
 };
@@ -106,16 +109,16 @@ typedef std::list<ptrlist_item> ptrlist;
 static ptrlist debug_save_pointers;
 
 #undef debug_destroy_class
-void debug_destroy_class(void * ptr, std::string file, int l) 
+void debug_destroy_class(void * ptr, std::string file, int l)
 {
 	mutASSERT(std::find(debug_save_pointers.begin(),
 			    debug_save_pointers.end(),
-			    ptr) 
+			    ptr)
 		  == debug_save_pointers.end());
 	debug_save_pointers.push_back(ptrlist_item(ptr,file,l));
 }
 
-void debug_destruct_class(void * ptr) 
+void debug_destruct_class(void * ptr)
 {
 	ptrlist::iterator i = std::find(debug_save_pointers.begin(),
 					debug_save_pointers.end(),
@@ -141,7 +144,47 @@ bool debug_is_all_deleted()
 	return debug_save_pointers.empty();
 }
 
+static void mutabor_backtrace_error_callback(void * data,
+					     const char * msg,
+					     int errnum) {
+	perror("print_backtrace");
+	std::cerr << msg << std::endl;
+}
 
+void print_stacktrace () {
+#if __LINUX__
+	backtrace_state * state = backtrace_create_state(NULL,
+							 false,
+							 &mutabor_backtrace_error_callback,
+							 NULL);
+
+	backtrace_print(state,0,stderr);
+#endif
+#if 0
+	int j, nptrs;
+	const int size = 100;
+	void *buffer[size];
+	char **strings;
+
+	nptrs = backtrace(buffer, size);
+	fprintf(stderr,"backtrace() returned %d addresses\n", nptrs);
+
+	/* The call backtrace_symbols_fd(buffer, nptrs, STDOUT_FILENO)
+	   would produce similar output to the following: */
+
+	strings = backtrace_symbols_fd(stderr, buffer, nptrs);
+	// in case we implement our own backtrace function
+	if (strings == NULL) {
+		perror("backtrace_symbols");
+		return;
+	}
+
+	for (j = 0; j < nptrs; j++)
+		printf("%s\n", strings[j]);
+
+	free(strings);
+#endif
+}
 #endif
 
 void MutInitConsole()
@@ -160,10 +203,10 @@ void MutInitConsole()
 
 	// set the screen buffer to be big enough to let us scroll text
 	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE),
-					&coninfo);
+				   &coninfo);
 	coninfo.dwSize.Y = MAX_CONSOLE_LINES;
 	SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE),
-					coninfo.dwSize);
+				   coninfo.dwSize);
 
 	// redirect unbuffered STDOUT to the console
 	lStdHandle = (long)GetStdHandle(STD_OUTPUT_HANDLE);
@@ -204,39 +247,39 @@ public:
 #ifndef MUTABOR_CPPUNIT
 static bool DoShowAssertDialog(const wxString& msg)
 {
-    // under MSW we can show the dialog even in the console mode
+	// under MSW we can show the dialog even in the console mode
 #if defined(__WXMSW__) && !defined(__WXMICROWIN__)
-    wxString msgDlg(msg);
+	wxString msgDlg(msg);
 
-    // this message is intentionally not translated -- it is for
-    // developpers only
-    msgDlg += wxT("\nDo you want to stop the program?\n")
-              wxT("You can also choose [Cancel] to suppress ")
-              wxT("further warnings.");
+	// this message is intentionally not translated -- it is for
+	// developpers only
+	msgDlg += wxT("\nDo you want to stop the program?\n")
+		wxT("You can also choose [Cancel] to suppress ")
+		wxT("further warnings.");
 
-    switch ( ::MessageBox(NULL, msgDlg, _T("wxWidgets Debug Alert"),
-                          MB_YESNOCANCEL | MB_ICONSTOP ) )
-    {
-        case IDYES:
-            wxTrap();
-            break;
+	switch ( ::MessageBox(NULL, msgDlg, _T("wxWidgets Debug Alert"),
+			      MB_YESNOCANCEL | MB_ICONSTOP ) )
+		{
+		case IDYES:
+			wxTrap();
+			break;
 
-        case IDCANCEL:
-            // stop the asserts
-            return true;
+		case IDCANCEL:
+			// stop the asserts
+			return true;
 
-        //case IDNO: nothing to do
-    }
+			//case IDNO: nothing to do
+		}
 #else // !__WXMSW__
-    wxFprintf(stderr, wxT("%s\n"), msg.c_str());
-    fflush(stderr);
+	wxFprintf(stderr, wxT("%s\n"), msg.c_str());
+	fflush(stderr);
 
-    // TODO: ask the user to enter "Y" or "N" on the console?
-    wxTrap();
+	// TODO: ask the user to enter "Y" or "N" on the console?
+	wxTrap();
 #endif // __WXMSW__/!__WXMSW__
 
-    // continue with the asserts
-    return false;
+	// continue with the asserts
+	return false;
 }
 #endif
 
@@ -248,24 +291,24 @@ void mutAssertFailure(const wxChar *file,
 		      const wxChar *msg)
 {
 #ifdef MUTABOR_CPPUNIT
-	{ 
-	       		CPPUNIT_NS::Message mesg( "assertion failed",		
-						  std::string(wxString::Format(_T("%s:%d:%s\nFunction: %s; Expression: %s"),
-									       file,
-									       line, 
-									       (msg?msg:_T("")),
-									       func, 
-									       cond).ToUTF8()));
-		
-			wxString filename(file);
-			CPPUNIT_NS::Asserter::fail(mesg,
-						   CPPUNIT_NS::SourceLine(std::string(filename.ToUTF8()), line )
-				);
+	{
+		CPPUNIT_NS::Message mesg( "assertion failed",
+					  std::string(wxString::Format(_T("%s:%d:%s\nFunction: %s; Expression: %s"),
+								       file,
+								       line,
+								       (msg?msg:_T("")),
+								       func,
+								       cond).ToUTF8()));
+
+		wxString filename(file);
+		CPPUNIT_NS::Asserter::fail(mesg,
+					   CPPUNIT_NS::SourceLine(std::string(filename.ToUTF8()), line )
+					   );
 	}
 
 #else
 	if (!std::clog.good()) MutInitConsole();
-	wxString s = wxString::Format(_("%s:%d: An assert failed in %s().\nCondition: %s\nMessage:%s\nDo you want to call the default assert handler?"), 
+	wxString s = wxString::Format(_("%s:%d: An assert failed in %s().\nCondition: %s\nMessage:%s\nDo you want to call the default assert handler?"),
 				      file,line,func,cond,msg);
 	std::clog << (const char *) s.ToUTF8() << std::endl;
 
@@ -288,64 +331,64 @@ void mutAssertFailure(const wxChar *file,
 
 		// and the message itself
 		if ( msg )
-		{
-			message << _T(": ") << msg;
-		}
+			{
+				message << _T(": ") << msg;
+			}
 		else // no message given
-		{
-			message << _T('.');
-		}
+			{
+				message << _T('.');
+			}
 
 #if wxUSE_THREADS
 		// if we are not in the main thread, output the assert directly and trap
 		// since dialogs cannot be displayed
 		if ( !wxThread::IsMain() )
-		{
-			message += wxT(" [in child thread]");
+			{
+				message += wxT(" [in child thread]");
 
 #if defined(__WXMSW__) && !defined(__WXMICROWIN__)
-			message << wxT("\r\n");
-			OutputDebugString(message );
+				message << wxT("\r\n");
+				OutputDebugString(message );
 #else
-			// send to stderr
-			wxFprintf(stderr, wxT("%s\n"), message.c_str());
-			fflush(stderr);
+				// send to stderr
+				wxFprintf(stderr, wxT("%s\n"), message.c_str());
+				fflush(stderr);
 #endif
-			// He-e-e-e-elp!! we're asserting in a child thread
-			wxTrap();
-		}
+				// He-e-e-e-elp!! we're asserting in a child thread
+				wxTrap();
+			}
 		else
 #endif // wxUSE_THREADS
 
 			if ( !s_bNoAsserts )
-			{
-				// send it to the normal log destination
-				wxLogDebug(_T("%s"), message.c_str());
+				{
+					// send it to the normal log destination
+					wxLogDebug(_T("%s"), message.c_str());
 
 #ifdef __WXDEBUG__
-				if ( wxGetApp().GetTraits() )
-				{
-					// delegate showing assert dialog (if possible) to that class
-					s_bNoAsserts = wxGetApp().GetTraits()->ShowAssertDialog(message);
-				}
-				else // no traits object
+					if ( wxGetApp().GetTraits() )
+						{
+							// delegate showing assert dialog (if possible) to that class
+							s_bNoAsserts = wxGetApp().GetTraits()->ShowAssertDialog(message);
+						}
+					else // no traits object
 #endif
-				{
-					// fall back to the function of last resort
-					s_bNoAsserts = DoShowAssertDialog(message);
+						{
+							// fall back to the function of last resort
+							s_bNoAsserts = DoShowAssertDialog(message);
+						}
 				}
-			}
 	}
-#endif	
+#endif
 }
 
 #ifdef MUTABOR_TEST
 mutString StreamToHex(mutStreamBuffer * buf)
 {
 	mutString retval;
-	if (!buf) 
+	if (!buf)
 		return retval;
-	if (buf->Seek(0,wxFromStart) == wxInvalidOffset) 
+	if (buf->Seek(0,wxFromStart) == wxInvalidOffset)
 		return retval;
 
 	size_t max = buf->GetDataLeft();
@@ -355,7 +398,7 @@ mutString StreamToHex(mutStreamBuffer * buf)
 	wxChar tmpchar;
 	wxString clearstring;
 	clearstring.Alloc(9);
-	
+
 	for (unsigned char * i = start; i < end ; i++ ) {
 		if ((i-start) && !((i-start)%16)){
 			retval += _T("   ") + clearstring + _T("\n");
@@ -368,18 +411,18 @@ mutString StreamToHex(mutStreamBuffer * buf)
 		}
 		retval += wxString::Format(_T(" %02x"),*i);
 		tmpchar = *i;
-		if (32 <= tmpchar && tmpchar < 127) 
+		if (32 <= tmpchar && tmpchar < 127)
 			clearstring += tmpchar;
-		else 
+		else
 			clearstring += _T("…");
 	}
 	for (size_t j = 15-((end-start+15) % 16); j ; j--) {
 		retval += _T("   ");
 	}
-//	retval += wxString :: Format(_T("  %d/%d  "),(end-start), (end-start)%16);
+	//	retval += wxString :: Format(_T("  %d/%d  "),(end-start), (end-start)%16);
 	if ((end-start+15)%16 < 8 )
 		retval += _T(" ");
-	
+
 	retval += _T("   ") + clearstring + _T("\n");
 	return retval;
 }
