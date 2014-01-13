@@ -156,6 +156,7 @@ namespace mutabor {
 				}
 				va_end(args);
 				mutabor_callbacks->error_message(box,type,formatted);
+				free(formatted);
 			}
 
 			inline void show_line_number(mutabor_box_type * box, int line_number ) {
