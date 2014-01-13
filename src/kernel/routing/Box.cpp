@@ -50,7 +50,7 @@
 
 namespace mutabor {
 	using namespace hidden;
-	template <> size_t idtype<BoxClass>::idpool(0);
+	template <> size_t idtype<BoxClass>::idpool(1);
 	BoxListType BoxClass::boxList;
 	int BoxClass::nextboxid = Box0;
 
