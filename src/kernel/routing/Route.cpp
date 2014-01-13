@@ -526,7 +526,7 @@ TRouteClass<I,O,B>:\n\
 	RouteFactory::RouteFactory() {
 		if (factory) {
 //			UNREACHABLEC;
-			throw FactoryAlreadySet(factory,this);
+			boost::throw_exception( FactoryAlreadySet(factory,this));
 			/*
 			  delete factory;
 			  factory = this;

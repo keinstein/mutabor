@@ -947,7 +947,7 @@ namespace mutabor {
 
 	BoxClass * BoxFactory::DoCreateBox(int id) const {
 		BoxClass * box = new BoxClass(id);
-		if (!box) throw BoxNotCreated();
+		if (!box) boost::throw_exception(BoxNotCreated());
 		return box;
 	}
 

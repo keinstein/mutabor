@@ -501,8 +501,8 @@ namespace mutabor {
 	template<class T, class D>
 	class CommonMidiOutput:public D {
 	public:
-		class TooHighPitchBend {};
-		class TooSmallPitchBend {};
+		class TooHighPitchBend:public std::exception {};
+		class TooSmallPitchBend:public std::exception {};
 
 		typedef T midiprovider;
 		typedef D base;
@@ -611,9 +611,9 @@ namespace mutabor {
 		void pitch_bend(int channel, int value) {
 			const int pitch_bend_border = 0x40 << 7;
 			if (value >= pitch_bend_border)
-				throw TooHighPitchBend();
+				boost::throw_exception(TooHighPitchBend());
 			if (value < -(pitch_bend_border))
-				throw TooHighPitchBend();
+				boost::throw_exception(TooSmallPitchBend());
 
 			int pb = value + pitch_bend_border;
 			DEBUGLOG2(midiio,_T("MIDI_PITCH(%x/%d,%x/%d) = %x/%d (%x/%d, %x/%d, %x/%d)"), 

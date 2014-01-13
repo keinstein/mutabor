@@ -1139,12 +1139,12 @@ namespace mutabor {
 			/* \todo implement output device record/pause */
 			mutASSERT(type >= 0);
 			if (factories.size() <=(size_t) type) {
-				throw FactoryNotFound(type);
+				boost::throw_exception(FactoryNotFound(type));
 				UNREACHABLECT(DeviceFactory);
 				return NULL;
 			}
 			if (!factories[type])
-				throw FactoryNotFound(type);
+				boost::throw_exception(FactoryNotFound(type));
 			return factories[type]->DoCreateOutput(name,id);
 		}
 
@@ -1155,12 +1155,12 @@ namespace mutabor {
 					       int id = -1) {
 			mutASSERT(type >= 0);
 			if (factories.size() <= (size_t)type) {
-				throw FactoryNotFound(type);
+				boost::throw_exception(FactoryNotFound(type));
 				UNREACHABLECT(DeviceFactory);
 				return NULL;
 			}
 			if (!factories[type])
-				throw FactoryNotFound(type);
+				boost::throw_exception(FactoryNotFound(type));
 			return factories[type]->DoCreateInput(name, mode, id);
 		}
 

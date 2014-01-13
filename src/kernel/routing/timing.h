@@ -49,6 +49,7 @@
 #include <limits>
 #include <exception>
 #include <stdexcept>
+#include <boost/throw_exception.hpp>
 #if _XOPEN_SOURCE >= 600 || _POSIX_C_SOURCE >= 200112L
 #include <time.h>
 #include <errno.h>
@@ -119,7 +120,7 @@ namespace mutabor {
 		 */
 		void set_quarter_duration(mutint64 d) { 
 			if (d <= 0) 
-				throw std::range_error("duration must be positive");
+				boost::throw_exception(std::range_error("duration must be positive"));
 			quarter_duration = d;
 		}
 

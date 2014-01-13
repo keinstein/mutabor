@@ -744,12 +744,12 @@ namespace mutabor {
 			if (type < 0) type = 0;
 			mutASSERT(type >= 0);
 			if (factories.size() <=(size_t) type) {
-				throw FactoryNotFound(type);
+				boost::throw_exception(FactoryNotFound(type));
 				UNREACHABLECT(BoxFactory);
 				return NULL;
 			}
 			if (!factories[type]) 
-				throw FactoryNotFound(type);
+				boost::throw_exception(FactoryNotFound(type));
 			return factories[type]->DoCreateBox(id);
 		}
 

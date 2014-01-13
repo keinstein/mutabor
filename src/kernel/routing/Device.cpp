@@ -47,7 +47,11 @@ namespace mutabor {
 	template <> size_t idtype<Device>::idpool(0);
 
 	void Device::runtime_error(int type, const mutStringRef message, va_list & args) {
+#if wxCHECK_VERSION(2,9,0)
 		mutString t = mutabor::to_string((mutabor::error_type)type);
+#else
+		mutString t = mutString::FromUTF8(mutabor::to_string((mutabor::error_type)type));
+#endif
 		mutPrintf(_T("%s: "),(const mutChar *)(t));
 		mutVPrintf(message,args);
 	}

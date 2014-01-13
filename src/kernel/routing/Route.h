@@ -56,10 +56,11 @@
 #define MU32_ROUTING_ROUTE_H_PRECOMPILED
 
 // system headers which do seldom change
-#include <boost/intrusive_ptr.hpp>
 #include <list>
 #include <vector>
 #include <stdexcept>
+#include "boost/throw_exception.hpp"
+#include "boost/intrusive_ptr.hpp"
 
 #ifdef WX
 #include "wx/config.h"
@@ -580,7 +581,7 @@ namespace mutabor {
 			if (factory)
 				return factory->DoCreate();
 			else
-				throw RouteFactoryNotSet();
+				boost::throw_exception(RouteFactoryNotSet());
 			return NULL;
 		}
 
@@ -629,7 +630,7 @@ namespace mutabor {
 			if (factory)
 				delete factory;
 			else 
-				throw RouteFactoryNotSet();
+				boost::throw_exception( RouteFactoryNotSet());
 //				UNREACHABLECT(RouteFactory);
 		}
 
@@ -641,7 +642,7 @@ namespace mutabor {
 			if (factory)
 				factory->DoLoadRoutes(config);
 			else 
-				throw RouteFactoryNotSet();
+				boost::throw_exception( RouteFactoryNotSet());
 //				UNREACHABLECT(RouteFactory);
 		}
 
@@ -652,7 +653,7 @@ namespace mutabor {
 			if (factory)
 				factory->DoSaveRoutes(config);
 			else 
-				throw RouteFactoryNotSet();
+				boost::throw_exception( RouteFactoryNotSet());
 			// UNREACHABLECT(RouteFactory);
 		}
 	protected:
