@@ -281,6 +281,8 @@ namespace mutaborGUI {
 		DEBUGLOG (gui, _T("Restoring state for debugging"));
 		wxGetApp().RestoreState();
 		DebugCheckRoutes();
+		// i gets invalid during RestoreState 
+		i = boxlist.begin();
 	}
 
 #endif
