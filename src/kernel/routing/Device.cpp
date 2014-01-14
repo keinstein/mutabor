@@ -179,7 +179,7 @@ namespace mutabor {
 		for (typename listtype::iterator i = deviceList.begin();
 		     i != deviceList.end();
 		     i++) {
-			(*i)->set_file_id(nr);
+			(*i)->set_routefile_id(nr);
 			routeListType & list = (*i)->routes;
 			for (routeListType::iterator j = list.begin();
 			     j != list.end();
@@ -495,7 +495,7 @@ InputDeviceClass:\n\
 			DevType type = (DevType) config.Read(_T("Type"), DTMidiPort);
 			OutputDevice out = DeviceFactory::CreateOutput(type);
 			if (!out) continue;
-			out -> set_file_id(i);
+			out -> set_routefile_id(i);
 			wxString name = config.Read(_T("Type Name"),
 						    _T("Midi output device"));
 			DEBUGLOGTYPE(config,
@@ -548,7 +548,7 @@ InputDeviceClass:\n\
 			TRACE;
 			InputDevice in = CreateInput(type);
 			TRACE;
-			in -> Device::set_file_id(i);
+			in -> Device::set_routefile_id(i);
 #ifdef DEBUG
 			wxString name = config.Read(_T("Type Name"),
 						    _T("Midi input device"));

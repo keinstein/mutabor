@@ -197,7 +197,7 @@ namespace mutabor {
 		     i != boxList.end();
 		     i++) {
 			/* currently, the user provides the numeric ids, so we don't need to change them */
-			//(*i)->set_file_id(nr);
+			//(*i)->set_routefile_id(nr);
 			nr = (*i)->get_routefile_id();
 			routeListType & list = (*i)->routes;
 			for (routeListType::iterator j = list.begin();
@@ -213,7 +213,7 @@ namespace mutabor {
 		for (typename listtype::iterator i = deviceList.begin();
 		     i != deviceList.end();
 		     i++) {
-			(*i)->set_file_id(nr);
+			(*i)->set_routexfile_id(nr);
 			routeListType & list = (*i)->routes;
 			for (routeListType::iterator j = list.begin();
 			     j != list.end();
@@ -920,7 +920,7 @@ namespace mutabor {
 			int type = config.Read(_T("Type"), NoBox);
 			Box b = BoxFactory::Create(type);
 			if (!b) continue;
-			b -> set_file_id(i);
+			b -> set_routefile_id(i);
 			b -> Load(config);
 			i = config.toNextLeaf(_T("Box"));
 		}

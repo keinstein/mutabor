@@ -670,10 +670,6 @@ namespace mutabor {
 
 		BoxClass(int id = -1);
 
-		virtual void set_file_id(int id) {
-			routefile_id = id;
-		}
-
 		void Register(ChangedCallback * callback) {
 			callbacks.push_back(callback);
 		}

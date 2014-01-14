@@ -524,7 +524,7 @@ namespace mutabor {
 		}
 		virtual void * getUserData() const { return userdata; }
 
-		void set_file_id(int id) {
+		void set_routefile_id(int id) {
 			routefile_id = id;
 		}
 
