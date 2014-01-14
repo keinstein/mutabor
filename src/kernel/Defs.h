@@ -152,6 +152,8 @@ inline void mutPrintf(const wxChar * format, ...) {
 #define _dmut wxwidgets_dgettext
 #define _nmut wxwidgets_ngettext
 #define _dnmut wxwidgets_dngettext
+#define bindtextdomain wxwidgets_bindtextdomain
+#define textdomain wxwidgets_textdomain
 
 #if wxCHECK_VERSION(2,9,0)
 #define mutTranslationChar char
