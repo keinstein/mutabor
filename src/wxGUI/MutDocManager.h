@@ -57,16 +57,39 @@ namespace mutaborGUI {
 		/// calculate the frame title
 		virtual wxString MakeFrameTitle(wxDocument* doc);
 		void CmExecuteLogic(wxCommandEvent& event);
-    
+
+		/**
+		 * Connect the event handling functions to the events.
+		 *
+		 * \param handler Event handler that shall call the
+		 * handling functions.
+		 */
+		void ConnectToApp(wxEvtHandler * handler);
+
+		/**
+		 * Disconnect the event handling functions from the events.
+		 *
+		 * \param handler Event handler that should have
+		 * called the handling functions.
+		 */
+		void DisconnectFromApp(wxEvtHandler * handler);
+
+#if 0
+		/* We are using Connect for the event handling so the
+		   following is not needed anymore. */
 
 	protected:
 		/// Pass certain events to the Application.
-		/** MutDocManager::ProcessEvent is called directly from MutApp 
+		/** MutDocManager::ProcessEvent is called directly from MutApp
 		    event handlers. This leads to endless loops. To prevent these
-		    loops, we must be very careful, which kind of events get 
+		    loops, we must be very careful, which kind of events get
 		    passed back. Probably no events should be propagated.
 		*/
-		virtual bool TryParent(wxEvent& event);	
+		virtual bool TryParent(wxEvent& event);
+#endif
+	private:
+		template<class C>
+		void doConnect(C & Connect);
 		DECLARE_EVENT_TABLE()
 	};
 }

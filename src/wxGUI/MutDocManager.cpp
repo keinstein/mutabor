@@ -1,13 +1,9 @@
 /** \file               -*- C++ -*-
  ********************************************************************
- * Description
+ * Document/View framework document manager
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutDocManager.cpp,v 1.8 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/11/02 14:31:58 $
- * \version $Revision: 1.8 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -23,39 +19,6 @@
  *    You should have received a copy of the GNU General Public License
  *    along with this program; if not, write to the Free Software
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- *
- * $Log: MutDocManager.cpp,v $
- * Revision 1.8  2011/11/02 14:31:58  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.7  2011-09-30 18:07:04  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.6  2011-09-27 20:13:23  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.5  2011-08-28 20:09:10  keinstein
- * several impovements for opening and saving files
- *
- * Revision 1.4  2011-08-24 21:19:36  keinstein
- * first run with 2.9.2+
- *
- * Revision 1.3  2011-08-21 16:52:05  keinstein
- * Integrate a more sophisticated editor menu based on the stc sample
- *
- * Revision 1.2  2011-08-11 19:00:48  keinstein
- * get Document/View running.
- * Needs further testing (possible segfaults).
- *
- * Revision 1.1  2011-08-06 09:22:27  keinstein
- * added mutabor document manager class
  *
  *
  *
@@ -88,11 +51,12 @@ END_EVENT_TABLE()
 
 namespace mutaborGUI {
 
+#if 0
 	bool MutDocManager::TryParent(wxEvent& event)
 	{
 		mutUnused(event);
 		TRACEC;
-		// if we must pass some events to the Application, 
+		// if we must pass some events to the Application,
 		// they must be handled here somehow replacing false
 #if 0
 		// Implementation in Event.cpp:
@@ -111,6 +75,7 @@ namespace mutaborGUI {
 
 		return true;
 	}
+#endif
 
         // Extend event processing to search the view's event table
 	bool MutDocManager::ProcessEvent(wxEvent& event)
@@ -149,7 +114,7 @@ namespace mutaborGUI {
 		return title;
 	}
 
-	void MutDocManager::CmExecuteLogic(wxCommandEvent& event) 
+	void MutDocManager::CmExecuteLogic(wxCommandEvent& event)
 	{
 		mutUnused(event);
 		wxDocument * doc = CreateDocument( wxEmptyString, 0);
@@ -175,6 +140,199 @@ namespace mutaborGUI {
 		wxCommandEvent ev(wxEVT_COMMAND_MENU_SELECTED,
 				  CM_ACTIVATE);
 		f->GetEventHandler()->ProcessEvent(ev);
+	}
+
+	class MutDocManagerEventConnector {
+	public:
+		MutDocManagerEventConnector(wxEvtHandler * h):handler(h) {}
+		MutDocManagerEventConnector & operator () (int id,
+			     wxEventType eventType,
+			     wxObjectEventFunction function,
+			     wxObject* userData = NULL,
+			     wxEvtHandler* eventSink = NULL) {
+			handler -> Connect(id, eventType, function, userData, eventSink);
+			return *this;
+		}
+	protected:
+		wxEvtHandler * handler;
+	};
+	class MutDocManagerEventDisconnector {
+	public:
+		MutDocManagerEventDisconnector(wxEvtHandler * h):handler(h) {}
+		MutDocManagerEventDisconnector & operator () (int id,
+			     wxEventType eventType,
+			     wxObjectEventFunction function,
+			     wxObject* userData = NULL,
+			     wxEvtHandler* eventSink = NULL) {
+			handler -> Disconnect(id, eventType, function, userData, eventSink);
+			return * this;
+		}
+	protected:
+		wxEvtHandler * handler;
+	};
+
+	template<class C>
+	inline void MutDocManager::doConnect(C & Connect) {
+		// original handlers
+		Connect(wxID_OPEN,
+			wxEVT_COMMAND_MENU_SELECTED,
+			wxCommandEventHandler( wxDocManager::OnFileOpen ),
+			NULL,
+			this);
+		Connect(wxID_CLOSE,
+			wxEVT_COMMAND_MENU_SELECTED,
+			wxCommandEventHandler( wxDocManager::OnFileClose ),
+			NULL,
+			this);
+		Connect(wxID_CLOSE_ALL,
+			wxEVT_COMMAND_MENU_SELECTED,
+			wxCommandEventHandler( wxDocManager::OnFileCloseAll ),
+			NULL,
+			this);
+		Connect(wxID_REVERT,
+			wxEVT_COMMAND_MENU_SELECTED,
+			wxCommandEventHandler( wxDocManager::OnFileRevert ),
+			NULL,
+			this);
+		Connect(wxID_NEW,
+			wxEVT_COMMAND_MENU_SELECTED,
+			wxCommandEventHandler( wxDocManager::OnFileNew ),
+			NULL,
+			this);
+		Connect(wxID_SAVE,
+			wxEVT_COMMAND_MENU_SELECTED,
+			wxCommandEventHandler( wxDocManager::OnFileSave ),
+			NULL,
+			this);
+		Connect(wxID_SAVEAS,
+			wxEVT_COMMAND_MENU_SELECTED,
+			wxCommandEventHandler( wxDocManager::OnFileSaveAs ),
+			NULL,
+			this);
+		Connect(wxID_UNDO,
+			wxEVT_COMMAND_MENU_SELECTED,
+			wxCommandEventHandler( wxDocManager::OnUndo ),
+			NULL,
+			this);
+		Connect(wxID_REDO,
+			wxEVT_COMMAND_MENU_SELECTED,
+			wxCommandEventHandler( wxDocManager::OnRedo ),
+			NULL,
+			this);
+
+		Connect(wxID_OPEN,
+			wxEVT_UPDATE_UI,
+			wxUpdateUIEventHandler( wxDocManager::OnUpdateFileOpen ),
+			NULL,
+			this);
+#if wxCHECK_VERSION(2,9,0)
+		Connect(wxID_CLOSE,
+			wxEVT_UPDATE_UI,
+			wxUpdateUIEventHandler( wxDocManager::OnUpdateDisableIfNoDoc ),
+			NULL,
+			this);
+		Connect(wxID_CLOSE_ALL,
+			wxEVT_UPDATE_UI,
+			wxUpdateUIEventHandler( wxDocManager::OnUpdateDisableIfNoDoc ),
+			NULL,
+			this);
+#else
+		Connect(wxID_CLOSE,
+			wxEVT_UPDATE_UI,
+			wxUpdateUIEventHandler( wxDocManager::OnUpdateFileClose ),
+			NULL,
+			this);
+		Connect(wxID_CLOSE_ALL,
+			wxEVT_UPDATE_UI,
+			wxUpdateUIEventHandler( wxDocManager::OnUpdateFileClose ),
+			NULL,
+			this);
+#endif
+		Connect(wxID_REVERT,
+			wxEVT_UPDATE_UI,
+			wxUpdateUIEventHandler( wxDocManager::OnUpdateFileRevert ),
+			NULL,
+			this);
+		Connect(wxID_NEW,
+			wxEVT_UPDATE_UI,
+			wxUpdateUIEventHandler( wxDocManager::OnUpdateFileNew ),
+			NULL,
+			this);
+		Connect(wxID_SAVE,
+			wxEVT_UPDATE_UI,
+			wxUpdateUIEventHandler( wxDocManager::OnUpdateFileSave ),
+			NULL,
+			this);
+		Connect(wxID_SAVEAS,
+			wxEVT_UPDATE_UI,
+			wxUpdateUIEventHandler( wxDocManager::OnUpdateFileSaveAs ),
+			NULL,
+			this);
+		Connect(wxID_UNDO,
+			wxEVT_UPDATE_UI,
+			wxUpdateUIEventHandler( wxDocManager::OnUpdateUndo ),
+			NULL,
+			this);
+		Connect(wxID_REDO,
+			wxEVT_UPDATE_UI,
+			wxUpdateUIEventHandler( wxDocManager::OnUpdateRedo ),
+			NULL,
+			this);
+
+#if wxUSE_PRINTING_ARCHITECTURE
+		Connect(wxID_PRINT,
+			wxEVT_COMMAND_MENU_SELECTED,
+			wxCommandEventHandler( wxDocManager::OnPrint ),
+			NULL,
+			this);
+		Connect(wxID_PREVIEW,
+			wxEVT_COMMAND_MENU_SELECTED,
+			wxCommandEventHandler( wxDocManager::OnPreview ),
+			NULL,
+			this);
+
+#if wxCHECK_VERSION(2,9,0)
+		Connect(wxID_PRINT,
+			wxEVT_UPDATE_UI,
+			wxUpdateUIEventHandler( wxDocManager::OnUpdateDisableIfNoDoc ),
+			NULL,
+			this);
+		Connect(wxID_PREVIEW,
+			wxEVT_UPDATE_UI,
+			wxUpdateUIEventHandler( wxDocManager::OnUpdateDisableIfNoDoc ),
+			NULL,
+			this);
+#else
+		Connect(wxID_PRINT,
+			wxEVT_UPDATE_UI,
+			wxUpdateUIEventHandler( wxDocManager::OnUpdatePrint ),
+			NULL,
+			this);
+		Connect(wxID_PREVIEW,
+			wxEVT_UPDATE_UI,
+			wxUpdateUIEventHandler( wxDocManager::OnUpdatePreview ),
+			NULL,
+			this);
+#endif
+#endif
+
+
+		// our own handlers
+		Connect(CM_EXECUTE,
+			wxEVT_COMMAND_MENU_SELECTED,
+			wxCommandEventHandler(MutDocManager::CmExecuteLogic),
+			NULL,
+			this);
+	}
+
+	void MutDocManager::ConnectToApp(wxEvtHandler * handler) {
+		MutDocManagerEventConnector Connect(handler);
+		doConnect(Connect);
+	}
+
+	void MutDocManager::DisconnectFromApp(wxEvtHandler * handler) {
+		MutDocManagerEventDisconnector Disconnect(handler);
+		doConnect(Disconnect);
 	}
 
 

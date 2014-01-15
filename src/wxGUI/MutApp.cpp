@@ -127,34 +127,9 @@ namespace mutaborGUI {
 
 	BEGIN_EVENT_TABLE(MutApp, wxApp)
 	EVT_MENU(CM_SETUP,                     MutApp::CmSetup)
-	EVT_MENU(wxID_OPEN,                    MutApp::PassEventToDocManagerCMD)
-	EVT_MENU(wxID_CLOSE,                   MutApp::PassEventToDocManagerCMD)
-	EVT_MENU(wxID_CLOSE_ALL,               MutApp::PassEventToDocManagerCMD)
-	EVT_MENU(wxID_REVERT,                  MutApp::PassEventToDocManagerCMD)
-	EVT_MENU(wxID_NEW,                     MutApp::PassEventToDocManagerCMD)
-	EVT_MENU(wxID_SAVE,                    MutApp::PassEventToDocManagerCMD)
-	EVT_MENU(wxID_SAVEAS,                  MutApp::PassEventToDocManagerCMD)
-	EVT_MENU(wxID_UNDO,                    MutApp::PassEventToDocManagerCMD)
-	EVT_MENU(wxID_REDO,                    MutApp::PassEventToDocManagerCMD)
-	EVT_MENU(CM_EXECUTE,                   MutApp::PassEventToDocManagerCMD)
-
-	EVT_UPDATE_UI(wxID_OPEN,               MutApp::PassEventToDocManagerUPD)
-	EVT_UPDATE_UI(wxID_CLOSE,              MutApp::PassEventToDocManagerUPD)
-	EVT_UPDATE_UI(wxID_CLOSE_ALL,          MutApp::PassEventToDocManagerUPD)
-	EVT_UPDATE_UI(wxID_REVERT,             MutApp::PassEventToDocManagerUPD)
-	EVT_UPDATE_UI(wxID_NEW,                MutApp::PassEventToDocManagerUPD)
-	EVT_UPDATE_UI(wxID_SAVE,               MutApp::PassEventToDocManagerUPD)
-	EVT_UPDATE_UI(wxID_SAVEAS,             MutApp::PassEventToDocManagerUPD)
-	EVT_UPDATE_UI(wxID_UNDO,               MutApp::PassEventToDocManagerUPD)
-	EVT_UPDATE_UI(wxID_REDO,               MutApp::PassEventToDocManagerUPD)
 
 #if wxUSE_PRINTING_ARCHITECTURE
 	EVT_MENU (wxID_PRINT_SETUP,            MutApp::OnPrintSetup)
-	EVT_MENU(wxID_PRINT,                   MutApp::PassEventToDocManagerCMD)
-	EVT_MENU(wxID_PREVIEW,                 MutApp::PassEventToDocManagerCMD)
-
-	EVT_UPDATE_UI(wxID_PRINT,              MutApp::PassEventToDocManagerUPD)
-	EVT_UPDATE_UI(wxID_PREVIEW,            MutApp::PassEventToDocManagerUPD)
 #endif
 	EVT_MENU_RANGE(wxID_FILE1, wxID_FILE9, MutApp::OnMRUFile)	
 	EVT_MENU(CM_ROUTES,                    MutApp::CmRoutes)
@@ -355,6 +330,7 @@ namespace mutaborGUI {
 				  wxT("mutabor_logic_view"), 
 				  CLASSINFO(mutaborGUI::MutDocument), 
 				  CLASSINFO(mutaborGUI::MutView) );
+		document_manager->ConnectToApp(this);
 #if defined(__WXMAC__) && defined(__WXCARBON__) 
 		wxFileName::MacRegisterDefaultTypeAndCreator( wxT("mut") , 'MUTA' , 'MUTA' ) ;
 #endif
@@ -524,7 +500,8 @@ namespace mutaborGUI {
 #endif
 		return retval;
 	}
-
+#if 0
+	// may be removed
 	void MutApp::PassEventToDocManagerCMD(wxCommandEvent& event)
 	{
 		DEBUGLOG(eventqueue,_T("Command %p, id=%d, type=%d"),
@@ -545,7 +522,7 @@ namespace mutaborGUI {
 		if (!(document_manager->ProcessEvent(event)))
 			event.Skip();
 	}
-
+#endif
 	void MutApp::OnMRUFile(wxCommandEvent& event)
 	{
 		int n = event.GetId() - wxID_FILE1;  // the index in MRU list
@@ -1382,11 +1359,14 @@ namespace mutaborGUI {
 
 		MidiUninit();
 
+		document_manager->DisconnectFromApp(this);
 		delete document_manager;
+		document_manager = NULL;
 #if defined(__WXMAC__)
 		wxMenuBar::MacSetCommonMenuBar(NULL);
 #endif
 		delete HelpController;
+		HelpController = NULL;
 		wxXmlResource::Get()->ClearHandlers();
 
 		debug_print_pointers();
