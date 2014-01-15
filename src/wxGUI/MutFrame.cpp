@@ -355,9 +355,8 @@ namespace mutaborGUI {
 	MutFrame::~MutFrame()
 
 	{
-		if (filemenu) {
-			if (wxGetApp().GetDocumentManager()) 
-				wxGetApp().GetDocumentManager()->FileHistoryRemoveMenu(filemenu);
+		if (filemenu && wxGetApp().GetDocumentManager()) {
+			wxGetApp().GetDocumentManager()->FileHistoryRemoveMenu(filemenu);
 		}
 		if (m_childView) {
 			mutASSERT(dynamic_cast<MutView *>(m_childView));
