@@ -283,6 +283,8 @@ namespace mutaborGUI {
 		DebugCheckRoutes();
 		// i gets invalid during RestoreState 
 		i = boxlist.begin();
+		if (i != boxlist.end())
+		box = *i;
 	}
 
 #endif
@@ -293,7 +295,7 @@ namespace mutaborGUI {
 		if ( (line = box->Compile(CompDia, GetText().ToUTF8())) >= 0 ) {
 			CompiledFile = m_filename;
 			ToGUIBase(box)->SetEditor(this);
-			for (;i!= boxlist.end(); i++) {
+			for (i!=boxlist.end()?++i:i ; i!= boxlist.end() ; ++i) {
 				mutabor::Box b = *i;
 				b->SetLogic(box);
 				ToGUIBase(b)->SetEditor(this);
@@ -302,7 +304,7 @@ namespace mutaborGUI {
 			if (activate) {
 				wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, 
 						      CM_DOACTIVATE);
-				GetParent()->GetEventHandler()->ProcessEvent(event);
+				wxPostEvent(GetParent(),event);
 				CompDia->Destroy();
 			} else
 				CompDia->EnableButton(true);
