@@ -486,6 +486,9 @@ namespace mutabor {
 					    struct keyboard_ereignis * keystrokes) {
 		for (struct keyboard_ereignis * i = keystrokes;
 		     i ; i=i->next) {
+			const char * start_tuning = (i->the_logik_to_expand?
+						     i->the_logik_to_expand->einstimmungs_name:
+						     (i->aktion?i->aktion->name:i->name));
 			BoxClass::logic_entry entry = {
 				((i->the_logik_to_expand == NULL)?
 				 BoxClass::logic_entry::none:
@@ -495,9 +498,8 @@ namespace mutabor {
 				(box->last_trigger.type
 				 == mutabor::hidden::any_trigger::key &&
 				 box->last_trigger.key_trigger == i),
-				i->name,
-				(i->the_logik_to_expand?i->the_logik_to_expand->einstimmungs_name:
-				 (i->aktion?i->aktion->name:i->name)),
+				(i->name?i->name:""),
+				(start_tuning?start_tuning:""),
 				i->taste,
 				{ mutabor::hidden::any_trigger::key, i }
 				};
