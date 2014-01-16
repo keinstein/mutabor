@@ -256,6 +256,17 @@ namespace mutaborGUI {
 		} 
 #endif
 
+#ifdef DEBUG
+		if (activate) {
+			wxGetApp().SaveState();
+			DebugCheckRoutes();
+			DEBUGLOG (gui, _T("Restoring state for debugging"));
+			wxGetApp().RestoreState();
+			DebugCheckRoutes();
+		}
+
+#endif
+
 		// we check the boxes before generating the compile dialog (avoids deleting it)
 		const mutabor::BoxListType & boxlist = mutabor::BoxClass::GetBoxList();
 		mutabor::BoxListType::const_iterator i = boxlist.begin();
@@ -273,23 +284,6 @@ namespace mutaborGUI {
 		};
 
 		CompDia->SetFileName(GetName());
-
-#ifdef DEBUG
-		if (activate) {
-		wxGetApp().SaveState();
-		DebugCheckRoutes();
-		DEBUGLOG (gui, _T("Restoring state for debugging"));
-		wxGetApp().RestoreState();
-		DebugCheckRoutes();
-		// i gets invalid during RestoreState 
-		i = boxlist.begin();
-		if (i != boxlist.end())
-		box = *i;
-	}
-
-#endif
-
-
 
 		int line;
 		if ( (line = box->Compile(CompDia, GetText().ToUTF8())) >= 0 ) {
