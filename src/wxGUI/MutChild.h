@@ -49,6 +49,7 @@ namespace mutaborGUI {
 	struct MutChildApi {
 		virtual ~MutChildApi() {}
 		virtual wxString MakeTitle() = 0;
+		virtual void BoxChanged() = 0;
 	};
 
 	class MutChild: public MutTextBox,
@@ -69,6 +70,8 @@ namespace mutaborGUI {
 		virtual wxString MakeTitle() {
 			return MutTextBox::MakeTitle();
 		}
+
+		virtual void BoxChanged();
 
 		void OnActivate(wxActivateEvent& event);
 

@@ -98,6 +98,21 @@ namespace mutaborGUI {
 				text_colour = *wxBLACK;
 			background_colour = wxColour(r,g,b);
 		}
+		MutChildApi * windows[] = { winattr.key_window,
+					    winattr.tonesystem_window,
+					    winattr.actions_window,
+					    winattr.logic_window };
+
+		for (int i = 0 ; i < 4 ; ++i) {
+			if (!windows[i]) continue;
+			windows[i]->BoxChanged();
+		}
+		for (MutBoxShapeList::iterator i = shapes.begin();
+		     i!= shapes.end();
+		     ++i) {
+			MutBoxShape * shape = *i;
+			shape->BoxChanged();
+		}
 	}
 
 	void BoxData::Destroy() {

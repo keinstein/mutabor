@@ -77,6 +77,7 @@ namespace mutaborGUI {
 		}
 
 		virtual wxString MakeTitle();
+		virtual void BoxChanged();
 
 		void OnSize(wxSizeEvent& event);
 		void FixSizer();
@@ -102,6 +103,9 @@ namespace mutaborGUI {
 		void OnActivate(wxActivateEvent& event);
 		void OnGetFocus(wxFocusEvent& event);
 		void BoxChangedAction(int flags);
+
+		virtual bool SetBackgroundColour(const wxColour& colour);
+		virtual bool SetForegroundColour(const wxColour& colour);
 
 	protected:
 //		void DoLayout();

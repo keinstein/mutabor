@@ -247,7 +247,13 @@ namespace mutaborGUI {
 		mutabor::Box GetBox() const { return box; }
 
 		wxSizer * GetChannels() const { return channels; }
-
+		
+		/** 
+		 * Updates the Display of the Box shape after a change
+		 * of the box that must be honoured by this shape.
+		 * 
+		 */
+		void BoxChanged();
 	protected:
 		MutBoxIconShape * m_icon;
 		wxSizer * channels;

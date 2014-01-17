@@ -113,7 +113,8 @@ namespace mutaborGUI {
 	}
 
 	bool MutBoxShape::SetBackgroundColour(const wxColour& colour) {
-		bool retval = MutBoxIconShape::SetBackgroundColour(colour);
+		bool retval 
+			= MutBoxIconShape::SetBackgroundColour(colour);
 		if (!retval) return false;
 		if (!channels) return true;
 		wxSizerItemList list = channels->GetChildren();
@@ -131,31 +132,34 @@ namespace mutaborGUI {
 
 	}
 
+	void MutBoxShape::BoxChanged() {
+		BoxData * guibox = ToGUIBase(box);
+		int boxId = box->get_routefile_id();
+		switch (boxId) {
+		case NewBox:
+			m_icon->SetLabel(_("New Box"));
+			m_icon->SetBackgroundStyle(wxBG_STYLE_SYSTEM);
+			break;
+		case NoBox:
+			SetBox(false);
+			break;
+		case GmnBox:
+			m_icon->SetLabel(_("GUIDO Box"));
+			break;
+		default:
+			m_icon->SetLabel(wxString::Format(_("Box %d"),boxId));
+			break;
+		}
+		m_icon->SetForegroundColour(guibox->GetTextColour());
+		m_icon->SetBackgroundColour(guibox->GetBackgroundColour());
+	}
 
 	void MutBoxShape::SetBox(Box & b, bool layout) {
 		box = b;
 		if (m_icon) {
 			if (!box) 
 				SetBox();
-			BoxData * guibox = ToGUIBase(box);
-			int boxId = box->get_routefile_id();
-			switch (boxId) {
-			case NewBox:
-				m_icon->SetLabel(_("New Box"));
-				m_icon->SetBackgroundStyle(wxBG_STYLE_SYSTEM);
-				break;
-			case NoBox:
-				SetBox(false);
-				break;
-			case GmnBox:
-				m_icon->SetLabel(_("GUIDO Box"));
-				break;
-			default:
-				m_icon->SetLabel(wxString::Format(_("Box %d"),boxId));
-				break;
-			}
-			m_icon->SetForegroundColour(guibox->GetTextColour());
-			m_icon->SetBackgroundColour(guibox->GetBackgroundColour());
+			BoxChanged();
 			if (layout) {
 				InvalidateBestSize();
 				Fit();

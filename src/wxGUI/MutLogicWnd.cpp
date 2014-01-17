@@ -377,6 +377,18 @@ namespace mutaborGUI {
 					box->get_routefile_id());
 	}
 
+	void MutLogicWnd::BoxChanged() {
+		BoxData * guibox = ToGUIBase(box);
+		SetForegroundColour(guibox->GetTextColour());
+		SetBackgroundColour(guibox->GetBackgroundColour());
+		wxAuiManager * manager = wxAuiManager::GetManager(this);
+		mutASSERT(manager);
+		if (!manager) return;
+		wxAuiPaneInfo& pane = manager->GetPane(this);
+		pane.Caption(MakeTitle());
+		manager->Update();
+	}
+
 	void MutLogicWnd::OnSize(wxSizeEvent& event)
 	{
 		FixSizer();
@@ -802,6 +814,30 @@ namespace mutaborGUI {
 					      CM_UPDATEUI);
 			wxPostEvent(this,event);
 		}
+	}
+
+	bool MutLogicWnd::SetBackgroundColour(const wxColour& colour) {
+		bool retval = wxScrolledWindow::SetBackgroundColour(colour);
+		wxWindowList & list = GetChildren();
+		for (wxWindowList::iterator i = list.begin();
+		     i != list.end();
+		     ++i) {
+			wxWindow * child = *i;
+			retval &= child->SetBackgroundColour(colour);
+		}
+		return retval;
+	}
+
+	bool MutLogicWnd::SetForegroundColour(const wxColour& colour) {
+		bool retval = wxScrolledWindow::SetForegroundColour(colour);
+		wxWindowList & list = GetChildren();
+		for (wxWindowList::iterator i = list.begin();
+		     i != list.end();
+		     ++i) {
+			wxWindow * child = *i;
+			retval &= child->SetForegroundColour(colour);
+		}
+		return retval;
 	}
 
 

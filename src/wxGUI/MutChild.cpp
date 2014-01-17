@@ -154,6 +154,19 @@ namespace mutaborGUI {
 		deleteFromWinAttrs();
 	}
 
+	void MutChild::BoxChanged() {
+		BoxData * guibox = ToGUIBase(box);
+		SetForegroundColour(guibox->GetTextColour());
+		SetBackgroundColour(guibox->GetBackgroundColour());
+		wxAuiManager * manager = wxAuiManager::GetManager(this);
+		mutASSERT(manager);
+		if (!manager) return;
+		wxAuiPaneInfo& pane = manager->GetPane(this);
+		pane.Caption(MakeTitle());
+		manager->Update();
+	}
+
+
 	void MutChild::OnActivate(wxActivateEvent& event)
 	{
 		if (event.GetActive()) {
