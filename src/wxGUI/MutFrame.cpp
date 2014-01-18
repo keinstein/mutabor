@@ -840,6 +840,17 @@ To start the translation hit the play button or select “Play” from the “Se
 				     _("Realtime play"),
 				     wxOK);
 		}
+		const mutabor::BoxListType & boxlist = mutabor::BoxClass::GetBoxList();
+		for (mutabor::BoxListType::const_iterator boxptr = boxlist.begin();
+		     boxptr != boxlist.end();
+		     ++boxptr) {
+			const BoxData * guibox = ToGUIBase(*boxptr);
+			if (!guibox) continue;
+			wxWindow * logic = guibox->GetLogicWindow();
+			if (!logic) continue;
+			logic -> SetFocus();
+			break;
+		}
 	}
 
 	wxMenuItem * MutFrame::ClearMenuItem(int id)
