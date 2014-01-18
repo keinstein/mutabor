@@ -346,7 +346,8 @@ namespace mutaborGUI {
 		wxWindow *client;
 
 		static MutFrame * ActiveWindow;
-		static std::map<int,mutabor::Box> boxCommandIds;
+		typedef std::map<int,mutabor::Box> boxCommandMap;
+		static boxCommandMap boxCommandIds;
 		DECLARE_EVENT_TABLE()
 	};
 
