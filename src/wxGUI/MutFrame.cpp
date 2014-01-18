@@ -1855,9 +1855,18 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 	void MutFrame::UpdateBoxMenu()
 	{
-		/** \todo Disconnect unused box menu entries from the event handler */
-		/** \todo remove unused command ids from the box map */
-		/** \todo reuse box selection command ids, depends on the other two issues */
+		/* the current implementation saves unused box command
+		   ids for further usage.  Thus the map of command ids
+		   will never get smaller.
+
+		   On the other hand, the number of used command ids
+		   equals the largest number of boxes that have been
+		   active simultaniously.
+
+		   This set of command ids is copied once per call. So
+		   the complexity of this function can be roughly
+		   estimated by $#(boxes) * max\{#(used_boxes_so_far)\}$.
+		*/
 		DEBUGLOG(other,_T("MutFrame::CmDoActivate: Set Box selection menu"));
 		wxMenuItem * boxSelector = ClearMenuItem(CM_SELECTBOX);
 		mutASSERT(boxSelector->IsSubMenu());
@@ -1866,6 +1875,19 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		DEBUGLOG (other, _T("boxMenu = %p"),(void*)boxMenu);
 		//  wxID_HIGHEST
 		//  wxMenu *
+
+
+		// At least on wxGTK a checked menu item does not send any events
+		// so we add a special item for the current box.
+		wxMenuItem * item = new wxMenuItem(boxMenu,
+						   CM_BOX,
+						   _("&Raise current box\tCtrl+B"),
+						   _("This item activates the window of the currently selectcd box"));
+		boxMenu->Append(item);
+		boxMenu->AppendSeparator();
+		boxCommandMap tmpmap;
+		tmpmap.swap(boxCommandIds);
+
 
 		const mutabor::BoxListType &list = mutabor::BoxClass::GetBoxList();
 		for (mutabor::BoxListType::const_iterator i = list.begin();
@@ -1877,21 +1899,40 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 				continue;
 			int id = box->get_routefile_id();
 
+			// use an arbitrary command id that may not be a box command id
+			// maybe CM_ACTIVATE is somewhat descriptive, here.
 			int command_id = CM_ACTIVATE;
-			for (boxCommandMap::iterator i = boxCommandIds.begin();
-			     i != boxCommandIds.end();
+			boxCommandMap::iterator freecmd = tmpmap.end();
+			bool new_command_id = false;
+			for (boxCommandMap::iterator i = tmpmap.begin();
+			     i != tmpmap.end();
 			     ++i) {
 				if (i->second == box) {
 					command_id = i->first;
+					tmpmap.erase(i);
+					break;
+				}
+
+				// this means that the command id was
+				// in use but is currently not
+				if (i->second == NULL) {
+					freecmd = i;
 				}
 			}
 
 			if (command_id == CM_ACTIVATE) {
-				command_id = wxNewId();
-				boxCommandIds[command_id]=box;
+				if (freecmd == tmpmap.end()) {
+					command_id = wxNewId();
+					new_command_id = true;
+				} else {
+					command_id = freecmd->first;
+					tmpmap.erase(freecmd);
+				}
 				DEBUGLOG (menu, _("Box %d got a new id %d"),
 					  id,command_id);
 			}
+
+			boxCommandIds[command_id]=box;
 
 			DEBUGLOG (menu, _("Currently %d items in box menu"),
 				  (int)(boxMenu->GetMenuItemCount()));
@@ -1919,9 +1960,18 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 			DEBUGLOG (menu, _("Connecting command with id %d for box command %d"),
 				  id,command_id);
 
+			// already used command ids got disconnected
+			// by ClearSubMenu() so we reconnect, here
 			Connect( command_id,
 				 wxEVT_COMMAND_MENU_SELECTED,
 				 wxCommandEventHandler(MutFrame::RaiseLogic) );
+		}
+
+		// save the remaining command ids for further usage.
+		for (boxCommandMap::iterator i = tmpmap.begin();
+			     i != tmpmap.end();
+			     ++i) {
+			boxCommandIds[i->first] = NULL;
 		}
 	}
 
