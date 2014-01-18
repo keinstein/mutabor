@@ -219,11 +219,14 @@ namespace mutaborGUI {
 	EVT_MENU(CM_TOGGLEACT, MutFrame::CmToggleAct)
 	EVT_MENU(CM_OWM, MutFrame::CmToggleOWM)
 	EVT_MENU(CM_CAW, MutFrame::CmToggleCAW)
+	EVT_MENU(CM_BOX, MutFrame::RaiseLogic)
+
 	EVT_UPDATE_UI(CM_TOGGLEKEY, MutFrame::CeToggleKey)
 	EVT_UPDATE_UI(CM_TOGGLETS, MutFrame::CeToggleTS)
 	EVT_UPDATE_UI(CM_TOGGLEACT, MutFrame::CeToggleAct)
 	EVT_UPDATE_UI(CM_OWM, MutFrame::CeToggleOWM)
 	EVT_UPDATE_UI(CM_CAW, MutFrame::CeToggleCAW)
+	EVT_UPDATE_UI(CM_BOX, MutFrame::CeStop)
 
 	EVT_MENU(CM_INDEVSTOP, MutFrame::CmInDevStop)
 	EVT_MENU(CM_INDEVPLAY, MutFrame::CmInDevPlay)
@@ -910,10 +913,15 @@ To start the translation hit the play button or select “Play” from the “Se
 		mutASSERT(ActiveWindow == this);
 		DEBUGLOG (other, _T("%d"),event.GetId());
 
-		mutabor::Box box = boxCommandIds[event.GetId()];
+		bool is_current = (event.GetId() == CM_BOX);
+		mutabor::Box box =
+			is_current?
+			GetCurrentBox():
+			boxCommandIds[event.GetId()];
 		if (!box) return;
 
-		SetCurrentBox(box);
+		if (!is_current)
+			SetCurrentBox(box);
 
 		BoxData * boxdata = ToGUIBase(box);
 		MutLogicWnd * w = boxdata->GetLogicWindow();
@@ -927,7 +935,8 @@ To start the translation hit the play button or select “Play” from the “Se
 			DEBUGLOG (other, _T("Parent type: %s"),
 				  muT(typeid(*( w->GetParent())).name()).c_str());
 
-			GetMenuBar()->Check(event.GetId(),true);
+			if (!is_current)
+				GetMenuBar()->Check(event.GetId(),true);
 			w->SetFocus();
 		}
 	}
