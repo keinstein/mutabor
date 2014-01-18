@@ -336,13 +336,6 @@ namespace mutaborGUI {
 		int curStatusImg;
 
 		wxAuiManager auimanager;
-
-#if 0
-		wxWindow *keywindows[MAX_BOX];
-		wxWindow *tswindows[MAX_BOX];
-		wxWindow *actionwindows[MAX_BOX];
-#endif
-
 		wxWindow *client;
 
 		static MutFrame * ActiveWindow;
