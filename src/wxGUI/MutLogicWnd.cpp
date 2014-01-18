@@ -266,9 +266,8 @@ namespace mutaborGUI {
 	void MutTag::OnChar(wxKeyEvent& event)
 	{
 //  TButton::EvChar(key, repeatCount, flags);
-
 		if ( ('A' < event.GetKeyCode() && event.GetKeyCode() <= 'z') 
-		     || event.GetKeyCode() == WXK_TAB 
+		     //		     || event.GetKeyCode() == WXK_TAB 
 		     || event.GetKeyCode() == WXK_RETURN 
 		     || event.GetKeyCode() == WXK_SPACE )
 			wxPostEvent(GetParent(),event);
