@@ -88,9 +88,6 @@ namespace mutaborGUI {
 			NoSuchBoxException(int i):invalid_argument("No such box."),boxnumber(i) {}
 		};
 
-#if 0
-		void reset();
-#endif
 		const MutBoxShape * GetShape(wxWindow * parent) const;
 		MutBoxShape * GetShape(wxWindow * parent);
 
@@ -206,53 +203,9 @@ namespace mutaborGUI {
 		 */
 		virtual void Destroy();
 
-#if 0		
-		void Attatch(MutBoxShape * shape);
-		bool Detatch(MutBoxShape * shape);
-		bool Delete(MutBoxShape * shape);
-#endif
-		
-
-#if 0
-		static void InitializeBoxes(size_t count = MAX_BOX) {
-			vector.resize(count);
-			for (size_t i = 0 ; i < vector.size() ; i++) {
-				vector[i].box = &(mut_box[i]);
-				mut_box[i].userdata = &(vector[i]);
-			}
-		}
-#endif
-
-
-#if 0		
-		/// Check whether a closed route means closing a box
-		/** this function calls CloseBox(int boxid) in case 
-		    the box boxid has no routes attatched anymore */
-		static void CloseRoute(int boxid);
-		/// Close all windows associated to the box boxid
-		static void CloseBox(int boxid);
-		
-		/// Check whether a new route means new a box
-		/** this function is the counterpart to CloseRoute(int).
-		 */
-		static void OpenRoute(int boxid);
-		/// Open all wanted windows associated to the box boxid
-		static void OpenBox(int boxid);
-
-		/// Check whether a new box id on a route means new a box
-		/** this function is the counterpart to CloseRoute(int).
-		 */
-		static void ReOpenRoute(int old_boxid, int new_boxid);
-		/// Reopen all wanted windows associated to the box boxid
-		static void ReOpenBox(int old_boxid, int new_boxid);
-#endif
 		void Save(mutabor::tree_storage & config);
 		void Load(mutabor::tree_storage &  config);
 
-#if 0
-		static bool SaveAll(wxConfigBase * config);
-		static bool LoadAll(wxConfigBase * config);
-#endif
 
 
 		static mutabor::Box GetCurrentBox() {
