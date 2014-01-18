@@ -92,6 +92,16 @@ namespace mutaborGUI {
 			doClose(event);
 		}
 
+#if wxCHECK_VERSION(2,9,4)
+		void OnAuiActivate(wxAuiManagerEvent& event)
+		{
+			mutUnused(event);
+			TRACEC;
+			wxActivateEvent e;
+			OnActivate(e);
+		}
+#endif		
+
 		void doClose(wxEvent& event);
 		void UpDate();
 //		void CorrectScroller();

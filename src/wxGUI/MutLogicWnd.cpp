@@ -327,6 +327,10 @@ namespace mutaborGUI {
 	EVT_MENU(CM_UPDATEUI, MutLogicWnd::CmUpdateUI)
 	EVT_CLOSE(MutLogicWnd::OnClose)
 	EVT_ACTIVATE(MutLogicWnd::OnActivate)
+	EVT_AUI_PANE_CLOSE(MutChild::OnAuiClose)
+#if wxCHECK_VERSION(2,9,4)
+	EVT_AUI_PANE_ACTIVATED(MutChild::OnAuiActivate)
+#endif
 	END_EVENT_TABLE()
 
 	MutLogicWnd::MutLogicWnd(wxWindow *parent,

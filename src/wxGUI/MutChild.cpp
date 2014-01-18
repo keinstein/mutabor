@@ -96,6 +96,9 @@ namespace mutaborGUI {
 	EVT_CHAR(MutChild::OnChar)
 	EVT_CLOSE(MutChild::OnClose)
 	EVT_AUI_PANE_CLOSE(MutChild::OnAuiClose)
+#if wxCHECK_VERSION(2,9,4)
+	EVT_AUI_PANE_ACTIVATED(MutChild::OnAuiActivate)
+#endif
 	END_EVENT_TABLE()
 
 	// ===========================================================================
@@ -151,7 +154,7 @@ namespace mutaborGUI {
 	{
 		mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 		TRACEC;
-		deleteFromWinAttrs();
+		deleteFromWinAttrs(false);
 	}
 
 	void MutChild::BoxChanged() {
@@ -178,21 +181,36 @@ namespace mutaborGUI {
 		event.Skip();
 	}
 
-	void MutChild::deleteFromWinAttrs()
+	void MutChild::deleteFromWinAttrs(bool setWant)
 	{
-		DEBUGLOG (other, _T("winKind: %d"),winKind);
 	
 		BoxData * boxdata = ToGUIBase(box);
+		mutASSERT(boxdata);
 		mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+		DEBUGLOG (gui, _T("winKind: %d, setWant: %d, wanted: %d%d%d" ),
+			  winKind, 
+			  setWant,
+			  boxdata->WantKeyWindow(),
+			  boxdata->WantTonesystemWindow(),
+			  boxdata->WantActionsWindow());
 		switch (winKind) {
 		case WK_KEY: 
 			boxdata->SetKeyWindow(NULL);
+			if (setWant) {
+				boxdata->WantKeyWindow(false);
+			}
 			break;
 		case WK_TS: 
 			boxdata->SetTonesystemWindow(NULL);
+			if (setWant) {
+				boxdata->WantTonesystemWindow(false);
+			}
 			break;
 		case WK_ACT: 
 			boxdata->SetActionsWindow(NULL);
+			if (setWant) {
+				boxdata->WantActionsWindow(false);
+			}
 			break;
 		case WK_LOGIC:
 			wxLogWarning(_("Unexpected value: WK_LOGIC"));
@@ -214,6 +232,12 @@ namespace mutaborGUI {
 			wxLogError(_("Unexpected window kind: %d"), winKind);
 			UNREACHABLEC;
 		}	
+		DEBUGLOG (gui, _T("winKind: %d, setWant: %d, wanted: %d%d%d"),
+			  winKind, 
+			  setWant,
+			  boxdata->WantKeyWindow(),
+			  boxdata->WantTonesystemWindow(),
+			  boxdata->WantActionsWindow());
 	}
 
 	void MutChild::OnChar(wxKeyEvent& event)

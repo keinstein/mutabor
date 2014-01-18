@@ -119,6 +119,17 @@ namespace mutaborGUI {
 		    \param event Event to be passed */
 		void EventPassOn(wxCommandEvent& event);
 
+		/** 
+		 * This function informs the child windows about AUI
+		 * events. It is an event handler AUI events.
+		 *
+		 * \note The AUI manager does not inform the childs
+		 * directly.
+		 * 
+		 * \param event Event as passed by wxWidgets.
+		 */
+		void OnAuiChildEvent(wxAuiManagerEvent & event);
+
 		/// Handles close event.
 		/** This function tries to determine, if we can close the current window.
 		 */
@@ -170,6 +181,7 @@ namespace mutaborGUI {
 		void CeStop(wxUpdateUIEvent& event);
 
 		void CmRoutes(wxCommandEvent& event);
+
 
 		void CmToggleKey(wxCommandEvent& WXUNUSED(event));
 

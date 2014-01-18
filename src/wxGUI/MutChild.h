@@ -81,7 +81,7 @@ namespace mutaborGUI {
 //    void OnSize(wxSizeEvent& event);
 //    void OnMove(wxMoveEvent& event);
 
-		void deleteFromWinAttrs();
+		void deleteFromWinAttrs(bool setWant = true);
 
 		void OnClose(wxCloseEvent& event)
 		{
@@ -91,6 +91,16 @@ namespace mutaborGUI {
 			MutTextBox::OnClose(event);
 		}
 
+#if wxCHECK_VERSION(2,9,4)
+		void OnAuiActivate(wxAuiManagerEvent& event)
+		{
+			mutUnused(event);
+			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+			TRACEC;
+			wxActivateEvent e;
+			OnActivate(e);
+		}
+#endif
 
 		void OnAuiClose(wxAuiManagerEvent& event)
 

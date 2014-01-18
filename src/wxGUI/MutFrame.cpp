@@ -210,6 +210,10 @@ namespace mutaborGUI {
 	EVT_MENU (CM_CHARSETUTF8,       MutFrame::PassEventToEditor)
 	//    EVT_MENU(CM_ROUTES, MutFrame::CmRoutes)
 
+#if wxCHECK_VERSION(2,9,4)
+	EVT_AUI_PANE_ACTIVATED(MutFrame::OnAuiChildEvent)
+#endif
+	EVT_AUI_PANE_CLOSE(MutFrame::OnAuiChildEvent)
 	EVT_MENU(CM_TOGGLEKEY, MutFrame::CmToggleKey)
 	EVT_MENU(CM_TOGGLETS, MutFrame::CmToggleTS)
 	EVT_MENU(CM_TOGGLEACT, MutFrame::CmToggleAct)
@@ -491,6 +495,15 @@ namespace mutaborGUI {
 
 		event.Skip();
 
+	}
+
+	void MutFrame::OnAuiChildEvent(wxAuiManagerEvent & event) {
+		wxAuiPaneInfo * pane = event.GetPane();
+		if (!pane) return;
+		wxWindow * win = pane->window;
+		int level = event.StopPropagation();
+		win->GetEventHandler()->ProcessEvent(event);
+		event.ResumePropagation(level);
 	}
 
 	void MutFrame::OnCloseWindow(wxCloseEvent& event)
@@ -1305,8 +1318,25 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 	void MutFrame::CeToggleKey(wxUpdateUIEvent& event)
 	{
 		mutabor::Box box = GetCurrentBox();
+		if (box) {
+			event.Enable(true);
+			event.Show(true);
+		} else {
+			event.Enable(false);
+			event.Show(false);
+			DEBUGLOG(menu,_T("box: %d, Checked: %d"),
+				 box?box->get_routefile_id():-10000,
+				 event.GetChecked());
+			return;
+		}
 		BoxData * guibox = ToGUIBase(box);
 		event.Check(guibox?guibox->WantKeyWindow():false);
+		DEBUGLOG(menu,_T("box: %d, guibox: %p, Checked: %d, Enabled: %d, Shown: %d"),
+			 guibox?box->get_routefile_id():-10000,
+			 guibox,
+			 event.GetChecked(),
+			 event.GetEnabled(),
+			 event.GetShown());
 	}
 
 	void MutFrame::CeToggleTS(wxUpdateUIEvent& event)
