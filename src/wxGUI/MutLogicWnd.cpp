@@ -272,6 +272,8 @@ namespace mutaborGUI {
 		     || event.GetKeyCode() == WXK_RETURN 
 		     || event.GetKeyCode() == WXK_SPACE )
 			wxPostEvent(GetParent(),event);
+		else 
+			event.Skip();
 	}
 
 	void MutTag::OnLeftDown(wxMouseEvent& event)
