@@ -164,7 +164,7 @@ namespace mutaborGUI {
 		Key = key;
 
 		Create(parent, CM_MUTTAG);
-//TODO  Attr.AccelTable = IDA_MUTWIN;
+		//TODO  Attr.AccelTable = IDA_MUTWIN;
 	}
 
 
@@ -175,97 +175,9 @@ namespace mutaborGUI {
 		if (Key > 0)
 			PaintCenteredText(dc, wxString::Format(_T("%c"), Key), 15);
 	}
-#if 0
-	void MutTag::InitText(wxDC& dc)
-
-	{
-		int i = Text.Length();
-		wxCoord w, h;
-		dc.GetMultiLineTextExtent(Text, &w, &h);
-
-		if ( w <= MUTTAGX-4 ) TPos = 0;
-
-		while ( i >= 0 ) {
-			if ( Text[i] == '_' ) {
-				Text[i] = '-';
-				if ( TPos == -1 ) {
-					dc.GetMultiLineTextExtent(Text.Left(i+1), &w, &h);
-					if ( w <= MUTTAGX-4 ) TPos = i+1;
-				}
-			}
-
-			i--;
-		}
-
-		if ( TPos == -1 ) TPos = 0;
-
-		dc.GetMultiLineTextExtent(Text.Mid(TPos), &w, &h);
-
-		if ( w > MUTTAGX-4 )
-			Text.Last() = '.';
-
-		dc.GetMultiLineTextExtent(Text.Mid(TPos), &w, &h);
-
-		int l = Text.Length();
-
-		while ( w > MUTTAGX-4 ) {
-			l--;
-			Text.Truncate(l);
-			Text.Last() = '.';
-			dc.GetMultiLineTextExtent(Text.Mid(TPos), &w, &h);
-		}
-	}
-
-	
-
-	void MutTag::OnPaint(wxPaintEvent& WXUNUSED(event))
-	{
-		wxPaintDC dc(this);
-		//dc.SetBackgroundMode(wxTRANSPARENT);
-		dc.SetBackground(GetBackgroundColour());
-
-		dc.SetMapMode(wxMM_TEXT);
-		// evtl. erst noch Abteilung des Textes berechnen
-
-		if ( TPos == -1 ) InitText(dc);
-
-		// Selected-Rahmen
-		wxPen SelPen(GetForegroundColour(), 1, wxDOT);
-		wxBrush SelBrush(GetBackgroundColour(),wxTRANSPARENT);
-
-		if ( wxWindow::FindFocus() == this ) {
-			dc.SetPen(SelPen);
-			dc.SetBrush(SelBrush);
-			if ( TPos )
-				dc.DrawRectangle(1, 3, MUTTAGX-6, MUTTAGY-3);
-			else
-				dc.DrawRectangle(1, 3, MUTTAGX-6, MUTTAGY-6);
-		}
-
-		// dc.SetPen(wxNullPen);
-
-		// Icon zeichnen
-		dc.DrawIcon(Icon, MUTTAGX/2-16, 10);
-
-		// Taste auf Icon
-		dc.SetTextBackground(GetBackgroundColour());
-		dc.SetTextForeground(*wxBLACK);
-		if (Key > 0)
-			PaintCenteredText(dc, wxString::Format(_T("%c"), Key), 20);
-
-		dc.SetTextForeground(GetForegroundColour());
-		if ( TPos ) {
-			PaintCenteredText(dc, Text.Mid(0, TPos), 44);
-			PaintCenteredText(dc, Text.Mid(TPos), 56);
-		} else
-			PaintCenteredText(dc, Text, 50);
-
-	}
-#endif
 
 	void MutTag::OnChar(wxKeyEvent& event)
 	{
-//  TButton::EvChar(key, repeatCount, flags);
 		if ( ('A' < event.GetKeyCode() && event.GetKeyCode() <= 'z') 
 		     //		     || event.GetKeyCode() == WXK_TAB 
 		     || event.GetKeyCode() == WXK_RETURN 
@@ -279,46 +191,20 @@ namespace mutaborGUI {
 	{
 		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_MUTTAG);
 		event1.SetEventObject(this);
-		//((MutLogicWnd*)GetParent())->UpDate(GetKey(), GetIsLogic());
 		wxPostEvent(GetParent(),event1);
 	}
 
 	void MutTag::OnGetFocus(wxFocusEvent& event)
 	{
-//		SetFocus();
 		Refresh();
 		Update();
-//		((MutLogicWnd*)GetParent())->CorrectScroller();
 		event.Skip();
 	}
 
-/*LRESULT TMutTag::EvCommand(UINT id, HWND hWndCtl, UINT notifyCode)
-  {
-  if (hWndCtl == 0 && notifyCode == 1)
-  // from an accelerator
-  if ( id == VK_LEFT || id == VK_RIGHT || id == VK_UP || id == VK_DOWN || id == VK_F12 )
-  Parent->HandleMessage(WM_CHAR, id, 1);
-  return TButton::EvCommand(id, hWndCtl, notifyCode);
-  }*/
 
-// Funktion f¸r FirstThat
+	// MutLogicWnd ----------------------------------------------------------
+	// Fenster, das die Logiken enthält
 
-/*bool HasPosition(TWindow *win, void *param)
-  {
-  return win->Attr.X == ((int*)param)[0] && win->Attr.Y == ((int*)param)[1];
-  }*/
-
-// MutLogicWnd ----------------------------------------------------------
-// Fenster, das die Logiken enth‰lt
-
-/*DEFINE_RESPONSE_TABLE1(MutLogicWnd, TWindow)
-  EV_WM_CHAR,
-  EV_WM_SIZE,
-  EV_COMMAND(CM_MUTTAG, CmMutTag),
-  EV_COMMAND(CM_TASTE, CmTaste),
-  EV_COMMAND(CM_BOX, CmBox),
-  EV_WM_RBUTTONDOWN,
-  END_RESPONSE_TABLE;*/
 
 	BEGIN_EVENT_TABLE(MutLogicWnd, wxScrolledWindow)
 	EVT_SET_FOCUS(MutLogicWnd::OnGetFocus)
@@ -501,33 +387,8 @@ namespace mutaborGUI {
 
 	{
 		int key = pubTaste;
-		/*	if ( key == WXK_TAB )
-			{
-			HWND Handle = GetWindowPtr(GetFocus())->GetNextWindow(GW_HWNDNEXT);
-			if ( Handle )
-			GetWindowPtr(Handle)->SetFocus();
-			else
-			GetFirstChild()->SetFocus();
-			SetFocusPos();
-			CorrectScroller();
-			}
-			else if ( key == VK_UP )
-			MoveFocus(0, -1);
-			else if ( key == VK_DOWN )
-			MoveFocus(0, +1);
-			else if ( key == VK_LEFT )
-			MoveFocus(-1, 0);
-			else if ( key == VK_RIGHT )
-			MoveFocus(+1, 0);
-			else if ( key == VK_F12 )
-			MessageBox("This code was nearly completely written by R.K.", "Besides...", MB_OK | MB_ICONASTERISK);
-			else*/
 
 		if ( key == WXK_SPACE ) {
-			/*		TWindow *Win = FirstThat(HasPosition, FocusPos);
-					if ( Win ) Win->SetFocus();
-					CorrectScroller();
-					SetFocusPos();*/
 			wxWindow *w = wxWindow::FindFocus();
 
 			if ( w && w->GetId() == CM_MUTTAG ) {
@@ -547,77 +408,6 @@ namespace mutaborGUI {
 		}
 	}
 
-#if 0
-#ifndef max
-#define max(a, b) ((a) < (b) ? (b) : (a))
-#endif
-
-
-	void MutLogicWnd::DoLayout()
-	{
-/*
-		wxSize R = GetClientSize();
-		int nx = (R.GetWidth()-4) / MUTTAGX, 
-			ny = (R.GetHeight()-4)/ MUTTAGY;
-		bool quer = R.GetWidth() > R.GetHeight();
-
-		if ( nx * ny < nTags ) // Scroller notwendig
-		{
-
-			if  ( ny < 1) ny = 1;
-
-			if ( quer ) nx = (nTags + ny -1) / ny;
-		}
-		DEBUGLOG(other, _T("nTags = %d, nx = %d"),nTags,nx);
-
-		if  ( nx < 1 ) nx = 1;
-
-		ny = (nTags + nx -1) / nx;
-
-		int x = 4, y = 4, xi = 0;
-
-		DEBUGLOG(other, 
-			 _T("nx = %d,  MUTTAGX = %d,  ny == %d,  MUTTAGY = %d"),
-			 nx, MUTTAGX, ny, MUTTAGY);
-
-		SetVirtualSize(nx*MUTTAGX+8, ny*MUTTAGY+8);
-
-		int xv, yv;
-
-		GetViewStart(&xv, &yv);
-
-		for (wxWindowList::iterator i = GetChildren().begin(); 
-		     i!=GetChildren().end(); i++) {
-			wxWindow * Win= *i;
-			if ( Win->GetId() == CM_MUTTAG ) {
-				//			Win->Move(x - Scroller->XPos*Scroller->XUnit, y - Scroller->YPos*Scroller->YUnit, MUTTAGX, MUTTAGY, true);
-				Win->Move(x-xv*10, y-yv*10);
-				x += MUTTAGX;
-				xi++;
-
-				if ( xi == nx ) {
-					x = 4;
-					xi = 0;
-					y += MUTTAGY;
-				}
-			}
-		}
-
-		if ( xi )
-			y += MUTTAGY;
-
-		// Farbbalken
-		if ( ColorBar1 )
-			ColorBar1->SetSize(-xv*10, -yv*10, max(nx*MUTTAGX+8, R.GetWidth()), 2);
-
-		if ( ColorBar2 )
-			ColorBar2->SetSize(-xv*10, -yv*10, 2, max(ny*MUTTAGY+8, R.GetHeight()));
-
-		CorrectScroller();
-*/
-	}
-
-#endif
 	void MutLogicWnd::UpDate()
 	{
 		if (Ok) return;
@@ -631,14 +421,7 @@ namespace mutaborGUI {
 		// Analyse zuerst
 		BoxData * guibox = ToGUIBase(box);
 		mutASSERT(guibox);
-#warning reimplement this using BoxClass::GetLogics();
-#if 0
-		guibox->KeyboardAnalysis(thekey,flags);
-		if (flags == mutabor::BoxClass::KeyboardLogic) {
-			guibox->SetKeyTonesystem(0);
-			guibox->SetKeyLogic(thekey);
-		}
-#endif
+
 		wxSizer * sizer = GetSizer();
 		wxSizerFlags flags;
 		flags.Expand().Centre();
@@ -698,25 +481,9 @@ namespace mutaborGUI {
 		if ( toFocus && FindFocus() != toFocus)
 			toFocus->SetFocus();
 
-#if 0
-		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED,
-				      CM_UPDATEUI);
-
-		BoxData * boxdata = ToGUIBase(box);
-		wxWindow * win = boxdata->GetActionsWindow();
-		if (win) 
-			wxPostEvent(win,event1);
-		win = boxdata->GetTonesystemWindow();
-		if (win) 
-			wxPostEvent(win,event1);
-		/* keys may be retuned, now */
-		win = boxdata->GetKeyWindow();
-		if (win) 
-			wxPostEvent(win,event1);
-#endif
 	}
-// Reaktion auf geklickte TMutTag-s
 
+	// Reaktion auf geklickte TMutTag-s
 	void MutLogicWnd::CmMutTag(wxCommandEvent& event)
 	{
 		mutASSERT(box);
@@ -739,53 +506,7 @@ namespace mutaborGUI {
 		UpDate();
 	}
 
-#if 0
-	void MutLogicWnd::CorrectScroller()
-	{
-		wxWindow *Win = wxWindow::FindFocus();
 
-		if ( !Win || Win->GetId() != CM_MUTTAG )
-			return;
-
-		int xView, yView;
-
-		GetViewStart(&xView, &yView);
-
-		xView *=10;
-
-		yView *=10;
-
-		int xw, yw;
-
-		Win->GetPosition(&xw, &yw);
-
-		xw += xView;
-
-		yw += yView;
-
-		int w, h;
-
-		GetClientSize(&w, &h);
-
-		int dx = xView, dy = yView;
-
-		// rechte untere Ecke im Bild ???
-		if ( xw + MUTTAGX > xView+w ) dx = xw + MUTTAGX - w;
-
-		if ( yw + MUTTAGY > yView+h ) dy = yw + MUTTAGY - h;
-
-		// linke obere Ecke im Bild ??? (dominierend)
-		if ( xw < xView ) dx = xw;
-
-		if ( yw < yView ) dy = yw;
-
-		Scroll(dx / 10, dy / 10);
-	}
-#endif
-
-// keyboardanalyse, Fenster aufräumen, Logiken lesen und anzeigen
-
-// Reaktion auf neues aktuelles Instrument
 	void MutLogicWnd::CmBox()
 	{
 		DEBUGLOG (other, _T("%s at box %p"),CompiledFile.c_str(),box.get() );
