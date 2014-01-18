@@ -979,7 +979,6 @@ To start the translation hit the play button or select “Play” from the “Se
 
 	void MutFrame::CeExecute(wxUpdateUIEvent& event)
 	{
-		//	event.Enable(!LogicOn && (Compiled || ActiveWinKind == WK_EDIT));
 		event.Enable(!LogicOn);
 	}
 
@@ -989,12 +988,16 @@ To start the translation hit the play button or select “Play” from the “Se
 		//	event.Enable(!LogicOn && (Compiled || ActiveWinKind == WK_EDIT));
 		bool enable = !LogicOn && (dynamic_cast<MutEditFile *>(client)); 
 		event.Enable(enable);
+
+		// this does not work as wxWidgets does not support hiding toolbar buttons
 		event.Show(enable);
 	}
 
 	void MutFrame::CeStop(wxUpdateUIEvent& event)
 	{
 		event.Enable(LogicOn);
+
+		// this does not work as wxWidgets does not support hiding toolbar buttons
 		event.Show(LogicOn);
 	}
 
