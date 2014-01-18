@@ -282,6 +282,7 @@ namespace mutabor {
 	void BoxClass::AppendToBoxList (Box b)
 	{
 #ifdef DEBUG
+		DEBUGLOG2(routing,_T("Adding box %p"),b.get());
 		print_stacktrace();
 		typename listtype::iterator i =
 			FindInBoxList(b);
@@ -362,7 +363,7 @@ namespace mutabor {
 		}
 
 		if (key != NULL) {
-			DEBUGLOG(always,_T("(key = %d, channel = %lu, id = %lu)"),
+			DEBUGLOG(routing,_T("(key = %d, channel = %lu, id = %lu)"),
 				 key->number,
 				 key->channel,
 				 key->id);

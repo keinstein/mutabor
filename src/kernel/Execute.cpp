@@ -915,6 +915,11 @@ Please, report this error to the MUTABOR team."),
 		new_key->channel = channel;
 		new_key->id = id;
 		new_key->userdata = userdata;
+		DEBUGLOG2(routing,_T("(key = %d, channel = %lu, id = %lu, userdata = %p)"),
+			 taste,
+			 (unsigned long)channel,
+			 (unsigned long)id,
+			 userdata);
 
 		if (box->tonesystem && box->tonesystem != NULL) {
 			box->pattern.tonigkeit[mutabor_get_note_index(taste,box->tonesystem)]++;
@@ -937,6 +942,10 @@ Please, report this error to the MUTABOR team."),
 
 		if (key == NULL) return;
 		mutabor_delete_key_in_box(box,index);
+		DEBUGLOG2(routing,_T("(key = %d, channel = %lu, id = %lu)"),
+			 taste,
+			 (unsigned long)channel,
+			 (unsigned long)id);
 
 		if (box->tonesystem) {
 			box->pattern.tonigkeit[mutabor_get_note_index(taste,box->tonesystem)]--;

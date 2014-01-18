@@ -174,6 +174,10 @@ namespace mutabor {
 			if (Active) {
 				// global C part
 				box->AddNote(key, make_unique, session_id, userdata);
+				DEBUGLOG(routing,_T("(key = %d, channel = %lu, id = %lu)"),
+					 key,
+					 (unsigned long)get_session_id(),
+					 (unsigned long)make_unique);
 			}
 			if (Out) {
 				Out->NoteOn(box,
