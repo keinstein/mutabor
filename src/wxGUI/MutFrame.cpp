@@ -783,10 +783,10 @@ while playing by computer keyboard.)"),
 		}
 
 
+#endif
 		UpdateBoxMenu();
 		MutFrame * routewin = dynamic_cast<MutFrame *>(FindWindowById(WK_ROUTE));
 		if ( routewin ) routewin->UpdateBoxMenu();
-#endif
 
 		DEBUGLOG (gui, _T("Open other than logic; One window mode: %d"),OWM);
 
