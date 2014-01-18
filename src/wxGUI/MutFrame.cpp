@@ -1855,6 +1855,9 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 	void MutFrame::UpdateBoxMenu()
 	{
+		/** \todo Disconnect unused box menu entries from the event handler */
+		/** \todo remove unused command ids from the box map */
+		/** \todo reuse box selection command ids, depends on the other two issues */
 		DEBUGLOG(other,_T("MutFrame::CmDoActivate: Set Box selection menu"));
 		wxMenuItem * boxSelector = ClearMenuItem(CM_SELECTBOX);
 		mutASSERT(boxSelector->IsSubMenu());
@@ -1869,6 +1872,9 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		     i != list.end();
 		     ++i) {
 			mutabor::Box box = *i;
+			BoxData * guibox = ToGUIBase(box);
+			if (!(guibox->GetLogicWindow()))
+				continue;
 			int id = box->get_routefile_id();
 
 			int command_id = CM_ACTIVATE;
