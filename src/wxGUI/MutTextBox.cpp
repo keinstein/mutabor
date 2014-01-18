@@ -61,8 +61,10 @@
 using mutaborGUI::BoxData;
 using namespace mutaborGUI;
 
-const wxChar * TextBoxTitle[] =
-        { N_("Current keys"), N_("Tone system"), N_("Actions") , 0};
+const wxString TextBoxTitle[] = { 
+	wxString(N_("Current keys")), 
+	wxString(N_("Tone system")), 
+	wxString(N_("Actions")) };
 // needs wxGetTranslation();
 
 BEGIN_EVENT_TABLE(MutTextBox, wxListBox)
