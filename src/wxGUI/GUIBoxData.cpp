@@ -64,6 +64,12 @@ namespace mutaborGUI {
 				 winattr()
 	{		
 		set_routefile_id(id);
+		if (!boxList.empty()) {
+			mutabor::Box tmp = boxList.front();
+			BoxData * guibox = ToGUIBase(tmp);
+			editor = guibox->editor;
+			SetLogic(tmp);
+		}
 	}
 
 	void BoxData::set_routefile_id(int id) {
