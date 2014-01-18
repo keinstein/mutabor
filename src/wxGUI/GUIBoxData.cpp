@@ -119,6 +119,14 @@ namespace mutaborGUI {
 			MutBoxShape * shape = *i;
 			shape->BoxChanged();
 		}
+		if (LogicOn) {
+			MutFrame * logicframe = MutFrame::GetActiveWindow();
+			if (logicframe)
+				logicframe->UpdateBoxMenu();
+			MutFrame * routewin = dynamic_cast<MutFrame *>(wxWindow::FindWindowById(WK_ROUTE));
+			if (routewin)
+				routewin->UpdateBoxMenu();
+		}
 	}
 
 	void BoxData::Destroy() {
