@@ -94,7 +94,7 @@ namespace mutaborGUI {
 			disconnect(box,this);
 	}
 
-//* \todo  fix tab order
+	//* \todo  fix tab order
 	bool MutBoxShape::Create(wxWindow * parent,wxWindowID wid, Box & b)
 	{
 		if (!b) return false;
@@ -104,7 +104,7 @@ namespace mutaborGUI {
 		channels = new wxBoxSizer(wxVERTICAL);
 		SetSizer(channels);
 		//	SetAutoLayout(true); done by SetSizer()
-                //	m_icon = new MutBoxIconShape(this,-1);
+		//	m_icon = new MutBoxIconShape(this,-1);
 		m_icon = this;
 		if (!m_icon) return false;
 
@@ -120,14 +120,14 @@ namespace mutaborGUI {
 		wxSizerItemList list = channels->GetChildren();
 		for (wxSizerItemList::iterator i = list.begin(); 
 		     i != (list.end()); i++)
-		{
+			{
       
-			MutBoxChannelShape * channel = 
-				static_cast<MutBoxChannelShape *> ((*i)->GetWindow());
-			mutASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
-			mutASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
-			retval = retval && channel->SetBackgroundColour(colour);
-		}
+				MutBoxChannelShape * channel = 
+					static_cast<MutBoxChannelShape *> ((*i)->GetWindow());
+				mutASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
+				mutASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
+				retval = retval && channel->SetBackgroundColour(colour);
+			}
 		return retval;
 
 	}
@@ -245,13 +245,13 @@ namespace mutaborGUI {
 		wxSizerItemList list = channels->GetChildren();
 		for (wxSizerItemList::iterator i = list.begin(); 
 		     i != (list.end()); i++)
-		{
+			{
       
-			MutBoxChannelShape * channel = (MutBoxChannelShape *) ((*i)->GetWindow());
-			mutASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
-			mutASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
-			connect(channel,device);
-		}
+				MutBoxChannelShape * channel = (MutBoxChannelShape *) ((*i)->GetWindow());
+				mutASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
+				mutASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
+				connect(channel,device);
+			}
 	}
 
 
@@ -260,8 +260,8 @@ namespace mutaborGUI {
 	{
 		mutASSERT(paintingWindow);
 #if 0 
-// code for checking that certain positions are correct.
-// Unfortunately this ClientToScreen does not work correctly for GTK
+		// code for checking that certain positions are correct.
+		// Unfortunately this ClientToScreen does not work correctly for GTK
 		wxRect rect1 = GetScreenRect();
 		wxRect rect2 = GetRect();
 		
@@ -282,23 +282,23 @@ namespace mutaborGUI {
 		wxSizerItemList list = channels->GetChildren();
 		for (wxSizerItemList::iterator i = list.begin(); 
 		     i != (list.end()); i++)
-		{
+			{
       
-			MutBoxChannelShape * channel = 
-				static_cast<MutBoxChannelShape *> ((*i)->GetWindow());
-			mutASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
-			mutASSERT(dynamic_cast<
-				  MutBoxChannelShape *
-				  >((*i)->GetWindow()));
-			channel->DrawLines(dc, paintingWindow);
+				MutBoxChannelShape * channel = 
+					static_cast<MutBoxChannelShape *> ((*i)->GetWindow());
+				mutASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
+				mutASSERT(dynamic_cast<
+					  MutBoxChannelShape *
+					  >((*i)->GetWindow()));
+				channel->DrawLines(dc, paintingWindow);
 #if 0
-			wxPoint pos = GetPosition();
+				wxPoint pos = GetPosition();
 #if __WXMAC__
-			pos += maxBorderSize - borderOffset;
+				pos += maxBorderSize - borderOffset;
 #endif
-			channel->DrawLines(dc, pos, screenpos);
+				channel->DrawLines(dc, pos, screenpos);
 #endif
-		}
+			}
 	}
 
 #if 0
@@ -320,10 +320,10 @@ namespace mutaborGUI {
 		// sizer (which can happen because it's being already destroyed for
 		// example)
 		if ( window == m_icon )
-		{
-			UNREACHABLEC;
-			m_icon = NULL;
-		}
+			{
+				UNREACHABLEC;
+				m_icon = NULL;
+			}
 
 		bool ok = true;
 		
@@ -333,29 +333,29 @@ namespace mutaborGUI {
 				      wxTopLevelWindow);
 
 		if ( tlw )
-		{
-			wxWindow* tmpDefaultItem = tlw->GetTmpDefaultItem();
-			if ( tmpDefaultItem == this )
-				tlw->SetTmpDefaultItem(NULL);
-			else if ( tmpDefaultItem )
 			{
-				// A temporary default item masks the real 
-				// default item, so
-				// temporarily unset the temporary default
-				// item so we can access the
+				wxWindow* tmpDefaultItem = tlw->GetTmpDefaultItem();
+				if ( tmpDefaultItem == this )
+					tlw->SetTmpDefaultItem(NULL);
+				else if ( tmpDefaultItem )
+					{
+						// A temporary default item masks the real 
+						// default item, so
+						// temporarily unset the temporary default
+						// item so we can access the
 
-				// real default item.
-				tlw->SetTmpDefaultItem(NULL);
+						// real default item.
+						tlw->SetTmpDefaultItem(NULL);
 
-				if ( tlw->GetDefaultItem() == this )
+						if ( tlw->GetDefaultItem() == this )
+							tlw->SetDefaultItem(NULL);
+
+						// Set the temporary default item back.
+						tlw->SetTmpDefaultItem(tmpDefaultItem);
+					}
+				else if ( tlw->GetDefaultItem() == this )
 					tlw->SetDefaultItem(NULL);
-
-				// Set the temporary default item back.
-				tlw->SetTmpDefaultItem(tmpDefaultItem);
 			}
-			else if ( tlw->GetDefaultItem() == this )
-				tlw->SetDefaultItem(NULL);
-		}
 		
 		RemoveChild(window);
 		return ok && channels -> Detach( window );
@@ -453,11 +453,11 @@ namespace mutaborGUI {
 	}
 
 
-/// Constructs the box configuration dialog.
-/**
- * \todo use value “unknown” for dynamic dialog creation
- *
- */
+	/// Constructs the box configuration dialog.
+	/**
+	 * \todo use value “unknown” for dynamic dialog creation
+	 *
+	 */
 	BoxDlg * MutBoxShape::ShowBoxDialog() const{
 		MutRouteWnd * parentwin = dynamic_cast<MutRouteWnd *>(GetParent());
 		mutASSERT(parentwin);
@@ -592,41 +592,9 @@ namespace mutaborGUI {
 		mutASSERT (newshape);
 	
 		// this is only used in NewMutBoxShape so far.
-		// But we need it, when we implement other Box types
+		// But we may need it, when we implement other Box types
 		UNREACHABLEC;
-	
-/*
-  for(Route  route = newshape->device->ReplaceDevice (device);
-  route; route = route->Next) 
-  {
-  void * p = route->getUserData();
-  mutASSERT (wxDynamicCast (p,MutBoxChannelShape));
-  MutBoxChannelShape * channel = (MutBoxChannelShape *) p;
-		
-  mutASSERT (channel->GetInput() == this);
-  channel->SetInput (newshape);
-		
-		
-  }
-	
-  delete device;
-  device = NULL;
-	
-  newshape->MoveBeforeInTabOrder (this);
-	
-  wxSizer * sizer = GetContainingSizer();
-  sizer -> Replace (this, newshape, false);
-	
-  if (FindFocus()==this) {
-  m_parent->Layout();
-  m_parent->FitInside();
-  m_parent->SetVirtualSize(wxDefaultSize);
-  newshape->SetFocus();
-  }
-	
-  Hide();	
-  return true;
-*/
+
 		return false;
 	}
 
@@ -677,7 +645,7 @@ namespace mutaborGUI {
 			return;
 		}
 
-                /* Other inspirations:
+		/* Other inspirations:
 		   case WXK_DELETE:
 		   // cursor keys
 		   */
@@ -690,12 +658,12 @@ namespace mutaborGUI {
 		case WXK_ADD:
 		case WXK_WINDOWS_MENU:
 		case WXK_MENU:
-		{
-			wxCommandEvent command(wxEVT_COMMAND_MENU_SELECTED,
-					       CM_LEFT_DOUBLE_CLICK); 
-			wxPostEvent(this,command); 
-			return;
-		}
+			{
+				wxCommandEvent command(wxEVT_COMMAND_MENU_SELECTED,
+						       CM_LEFT_DOUBLE_CLICK); 
+				wxPostEvent(this,command); 
+				return;
+			}
 		default:
 			event.Skip();
 		}

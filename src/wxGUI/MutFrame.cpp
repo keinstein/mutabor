@@ -998,8 +998,7 @@ To start the translation hit the play button or select “Play” from the “Se
 		event.Show(LogicOn);
 	}
 
-// Routenfenster anzeigen
-
+	// Routenfenster anzeigen
 	void MutFrame::CmRoutes(wxCommandEvent& event)
 	{
 		if ( GetId()== WK_ROUTE ) {
