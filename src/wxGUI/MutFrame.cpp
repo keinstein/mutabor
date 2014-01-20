@@ -1862,6 +1862,13 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 #endif
 	}
 
+	bool MutFrame::Destroy() {
+		bool retval = base::Destroy();
+		if (retval)
+			boxCommandIds.clear();
+		return retval;
+	}
+
 	void MutFrame::UpdateBoxMenu()
 	{
 		/* the current implementation saves unused box command

@@ -63,6 +63,7 @@ namespace mutaborGUI {
 	{
 
 	public:
+		typedef wxDocChildFrame base;
 		/// Constructor
 		/** This constructor creates a new main window.
 		 */
@@ -96,19 +97,19 @@ namespace mutaborGUI {
 
 		/// passes an event to the editor.
 		/** This function is used to pass one event to the
-		    client window. 
+		    client window.
 		    \param event Event to be passed */
 		void PassEventToEditor(wxCommandEvent &event);
 
 		/// passes an UpdateUIEvent to the editor.
 		/** This function is used to pass one event to the
-		    client window. 
+		    client window.
 		    \param event Event to be passed */
 		void PassEventToEditorUI(wxUpdateUIEvent& event);
 
 		/// passes a FindDialogEvent to the editor.
 		/** This function is used to pass one event to the
-		    client window. 
+		    client window.
 		    \param event Event to be passed */
 		void PassEventToEditorFind(wxFindDialogEvent& event);
 
@@ -119,13 +120,13 @@ namespace mutaborGUI {
 		    \param event Event to be passed */
 		void EventPassOn(wxCommandEvent& event);
 
-		/** 
+		/**
 		 * This function informs the child windows about AUI
 		 * events. It is an event handler AUI events.
 		 *
 		 * \note The AUI manager does not inform the childs
 		 * directly.
-		 * 
+		 *
 		 * \param event Event as passed by wxWidgets.
 		 */
 		void OnAuiChildEvent(wxAuiManagerEvent & event);
@@ -240,7 +241,7 @@ namespace mutaborGUI {
 		void RestoreState();
 
 		void LogicWinOpen(mutabor::Box box);
-		
+
 		void ToggleTextBox(WinKind kind);
 
 		static void BoxWindowsOpen(mutabor::Box box, bool update = true) {
@@ -257,7 +258,7 @@ namespace mutaborGUI {
 		void DoBoxWindowsClose(mutabor::Box box, bool update = true);
 
 		void TextBoxOpen(WinKind kind,
-				 mutabor::Box & box, 
+				 mutabor::Box & box,
 				 bool update_auimanager	= true);
 
 		void CmSelectBox();
@@ -265,6 +266,8 @@ namespace mutaborGUI {
 		void CmCloseChild();
 
 		void CloseAll(WinKind kind = WK_NULL);
+
+		bool Destroy();
 
 		wxRect DetermineFrameSize ();
 
@@ -316,7 +319,7 @@ namespace mutaborGUI {
 			if (update) auimanager.Update();
 
 			DEBUGLOG(other, _T("Closing window."));
-			// should be done by ClosePane:	w->Close(); 
+			// should be done by ClosePane:	w->Close();
 			// win should be invalid now.
 		}
 
@@ -324,7 +327,7 @@ namespace mutaborGUI {
 
 		wxMenu * editmenu;
 		wxMenu * filemenu;
-	
+
 		virtual wxStatusBar* OnCreateStatusBar(int number, long style, wxWindowID id, const wxString& name) {
 			StatusBar * bar = new StatusBar(this, id, style, name);
 			if (!bar) return NULL;
