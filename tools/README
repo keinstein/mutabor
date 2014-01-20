@@ -1,1 +1,15 @@
 This directory contains certain tools, mainly 3rd party software.
+
+find-smartpointer.sh <address> <log-file> <binary>
+	this script can be used to decode print the initialization address
+	of not correctly deleted smart pointers.
+
+	After the normal cleanup the debug intrusive pointer (on linux)
+	prints a stack trace for each non-NULL smart pointer, from the
+	destructor. However, sometimes the pointer object does not get
+	deleted, so the destructor is not called. In this case this script
+	can collect the addresses of the pointers to an object that pesists
+	persisting Destory(). Each pointer is checked for proper destruction
+	and for the undestructed pointers it translates the return address
+	of the constructor using addr2line into a file:line location.
+
