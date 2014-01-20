@@ -160,7 +160,7 @@ namespace mutabor {
 			else if (store_running_status(status)) 
 				running_status = status;
 		} else status = running_status;
-		if (! status & 0x80) {
+		if (! (status & 0x80)) {
 			boost::throw_exception(invalid_status (gettext_noop("Invalid status byte")));
 		}
 
