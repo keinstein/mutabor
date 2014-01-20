@@ -283,7 +283,7 @@ namespace mutabor {
 	{
 #ifdef DEBUG
 		DEBUGLOG2(routing,_T("Adding box %p"),b.get());
-		print_stacktrace();
+		print_stacktrace(isDebugFlag(smartptr));
 		typename listtype::iterator i =
 			FindInBoxList(b);
 		if (i != boxList.end()) {
