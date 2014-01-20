@@ -1369,6 +1369,7 @@ namespace mutaborGUI {
 		HelpController = NULL;
 		wxXmlResource::Get()->ClearHandlers();
 
+		mutabor_backtrace::set_global_print();
 		debug_print_pointers();
 		wxASSERT(debug_is_all_deleted());
 
