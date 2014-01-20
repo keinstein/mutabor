@@ -422,7 +422,7 @@ namespace mutaborGUI {
 			 box.get(),(int)(ToGUIBase(box)->GetShapes().size()));
 		
 	
-		if (box == NULL) 
+		if (!box) 
 			shape = new NewMutBoxShape(parent,wxID_ANY);
 		else
 			/** \todo implement ID sharing between the different

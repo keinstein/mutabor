@@ -257,7 +257,7 @@ void MutTextBox::GetKeys(bool asTS)
 {
 	wxString keys;
 
-	if (box == NULL || !box) return;
+	if (!box) return;
 	Freeze();
 	Clear();
 

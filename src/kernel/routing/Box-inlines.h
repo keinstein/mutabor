@@ -77,7 +77,7 @@ namespace mutabor {
 			disconnect(route,self);
 			TRACEC;
 		}
-		route = NULL;
+		route.reset();
 	}
 	
 	inline bool is_key_trigger(struct any_trigger & trigger) {

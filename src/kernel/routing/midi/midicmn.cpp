@@ -255,7 +255,7 @@ namespace mutabor {
 //		DWORD p;
 		long freq;
 
-		if ( box == NULL ) {
+		if ( !box ) {
 			freq = ((long)inkey) << 24;
 		} else
 			freq = box->get_frequency(inkey);

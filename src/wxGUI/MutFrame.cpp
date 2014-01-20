@@ -1924,7 +1924,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 				// this means that the command id was
 				// in use but is currently not
-				if (i->second == NULL) {
+				if (!(i->second)) {
 					freecmd = i;
 				}
 			}
@@ -1980,7 +1980,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		for (boxCommandMap::iterator i = tmpmap.begin();
 			     i != tmpmap.end();
 			     ++i) {
-			boxCommandIds[i->first] = NULL;
+			boxCommandIds[i->first].reset();
 		}
 	}
 

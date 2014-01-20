@@ -499,7 +499,7 @@ namespace mutaborGUI {
 			 (void*)r.get(),
 			 (int)intrusive_ptr_get_refcount(r.get()));
 //		box -> Detatch(route);
-		r = NULL;
+		r.reset();
 	}
 
 	void GUIRouteBase::runtime_error(int type, const mutStringRef message, va_list & args) {
@@ -667,7 +667,7 @@ namespace mutaborGUI {
 			shape -> Destroy();
 		}
 		TRACEC;
-		Out = NULL;
+		Out.reset();
 		TRACEC;
 	}
 
@@ -745,7 +745,7 @@ namespace mutaborGUI {
 			shape -> Destroy();
 		}
 		TRACEC;
-		In = NULL;
+		In.reset();
 		TRACEC;
 	}
 

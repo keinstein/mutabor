@@ -157,11 +157,11 @@ namespace mutabor {
 					if (file->timer == this)
 						file -> timer = NULL;
 				}
-				file = NULL;
+				file.reset();
 			}
 			
 			void ClearFile() {
-				file = NULL;
+				file.reset();
 			}
 
 			bool HasFile(CommonFileInputDevice * f) {

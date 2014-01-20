@@ -343,7 +343,7 @@ namespace mutabor {
 		Head = new GisReadArtHead(NULL, Data, Name);
 
 		DEBUGLOG (gmnfile, _T("Head = %p"),(void*)Head);
-		Head->Box = 0; /// hier muﬂ noch was hin
+		Head->Box.reset(); /// hier muﬂ noch was hin
 		DEBUGLOG (gmnfile, _T("Head = %p"),(void*)Head);
 		//  Head->Prev = Head;
 		Head->PrevPtr = (GisReadHead**)&Head;

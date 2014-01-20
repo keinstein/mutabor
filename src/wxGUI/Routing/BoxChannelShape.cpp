@@ -242,7 +242,7 @@ namespace mutaborGUI {
 			UNREACHABLEC;
 		if (retval) {
 			DEBUGLOG(smartptr,_T("removing route %p"),(void *)r.get());
-			route = NULL;
+			route.reset();
 		}
 		return retval;
 	}
@@ -314,7 +314,7 @@ namespace mutaborGUI {
 				     (void *)route.get(),
 				     (int)intrusive_ptr_get_refcount(route.get()));
 		} else
-			route = NULL;
+			route.reset();
 		TRACET(MutBoxChannelShape);
 	
 		panel->AddPage(new wxPanel(choiceBook),
@@ -364,7 +364,7 @@ namespace mutaborGUI {
 				     (void *)shape->route.get());
 			route = shape->route;
 		} else
-			route = NULL;
+			route.reset();
 	
 		if (route)
 			panel->SetActive(route->GetActive());
@@ -414,7 +414,7 @@ namespace mutaborGUI {
 				     (void*)shape->route.get());
 			route = shape->route;
 		} else
-			route = NULL;
+			route.reset();
 	
 		panel -> AddPage(new wxPanel(choiceBook),
 				 _("No output device"), 
@@ -784,7 +784,7 @@ namespace mutaborGUI {
 	void MutBoxChannelShape::DeleteRoute() {
 		if (route)
 			route->Destroy();
-		route = NULL;
+		route.reset();
 	}
 }
 

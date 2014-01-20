@@ -77,7 +77,6 @@ namespace mutabor {
 			disconnect(route,self);
 			TRACEC;
 		}
-		route = NULL;
 	}
 
 }

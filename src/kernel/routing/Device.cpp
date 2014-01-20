@@ -141,7 +141,7 @@ namespace mutabor {
 		bool found = (i != routes.end());
 		mutASSERT(found);
 		if (found) {
-			(*i) = NULL;// list can save some memory for reuse,
+			(*i).reset();// list can save some memory for reuse,
 			// but route must be deleted
 			routes.erase(i);
 		}

@@ -275,7 +275,7 @@ namespace mutaborGUI {
 	private:
 		void SetBox(bool nullify = true) {
 			if (nullify)
-				box = NULL;
+				box.reset();
 			m_icon->SetLabel(_("No Box / Though mode"));
 			m_icon->SetBackgroundStyle(wxBG_STYLE_SYSTEM);
 		}

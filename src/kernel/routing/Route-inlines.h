@@ -209,11 +209,11 @@ namespace mutabor {
 		if (in) 
 			connect(self,in);
 		else 
-			In = NULL;
+			In.reset();
 		if (out)
 			connect(self,out);
 		else 
-			Out = NULL;
+			Out.reset();
 		Type = type;
 		IFrom = iFrom;
 		ITo = iTo;

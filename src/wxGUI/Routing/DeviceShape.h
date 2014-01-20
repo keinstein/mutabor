@@ -203,7 +203,7 @@ namespace mutaborGUI {
 				UNREACHABLEC;
 				return false;
 			} else
-				device = NULL;
+				device.reset();
 			TRACEC;
 			return true;
 		}

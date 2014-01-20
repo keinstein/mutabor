@@ -198,7 +198,7 @@ public:
 				Alter = NULL;
 				Instr = NULL;
 				Tempo = NULL;
-				Box = 0;
+				Box.reset();
 			}
 
 			Time2 = 0;

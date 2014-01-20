@@ -441,8 +441,6 @@ namespace mutabor {
 			}
 			mutASSERT(intrusive_ptr_get_refcount(d.get()) <= 1);
 			TRACET(thistype);
-			d = NULL;
-			TRACET(thistype);
 		}
 #ifdef WX
 		virtual wxString TowxString() const;

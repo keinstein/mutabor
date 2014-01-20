@@ -190,7 +190,7 @@ namespace mutabor {
 			UNREACHABLEC;
 			return false;
 		}
-		Out = NULL;
+		Out.reset();
 		return true;
 	}
 	template <class I, class O, class B>
@@ -199,7 +199,7 @@ namespace mutabor {
 			UNREACHABLEC;
 			return false;
 		}
-		In = NULL;
+		In.reset();
 		return true;
 	}
 	template <class I, class O, class B>
