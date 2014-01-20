@@ -53,7 +53,7 @@
 #define ROUTING_BOX_H_PRECOMPILED
 
 // system headers which do seldom change
-#include <boost/intrusive_ptr.hpp>
+//#include <boost/intrusive_ptr.hpp>
 #include <vector>
 #include <algorithm>
 #include <sstream>

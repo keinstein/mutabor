@@ -60,7 +60,7 @@
 #include <vector>
 #include <stdexcept>
 #include "boost/throw_exception.hpp"
-#include "boost/intrusive_ptr.hpp"
+//#include "boost/intrusive_ptr.hpp"
 
 #ifdef WX
 #include "wx/config.h"
