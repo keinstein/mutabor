@@ -107,7 +107,7 @@ namespace mutaborGUI {
 	
 	bool MutBoxChannelShape::Create (wxWindow * p,
 					 wxWindowID id, 
-					 mutabor::Route & r)
+					 mutabor::Route r)
 	{ 
 		mutASSERT(!route || !r);
 		if (route && r) {

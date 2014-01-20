@@ -746,13 +746,6 @@ namespace mutabor {
 
 	extern const mutString DevTypeName[];
 
-	/// An empty route to be passed by reference
-	/** somtimes we need to pass NULL to a function
-	    expecting (Route &). This we define NullRoute
-	    that can be used in such situations */
-	extern Route NullRoute; 
-
-
 }
 #endif /* PRECOMPILED */
 #endif

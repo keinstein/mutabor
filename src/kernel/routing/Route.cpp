@@ -42,9 +42,6 @@ namespace mutabor {
 // Route ------------------------------------------------------------
 	template <> size_t idtype<RouteClass>::idpool(0);
 
-
-	Route NullRoute(NULL); 
-
 	/*
 	template <class I, class O>
 	typename TRouteClass<I,O,B>::Route TRouteClass<I,O,B>::routeList;

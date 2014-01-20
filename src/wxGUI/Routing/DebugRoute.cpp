@@ -836,7 +836,6 @@ namespace mutaborGUI {
 #endif
 
 	void DebugCheckRoutes() {
-		mutASSERT(!NullRoute);
 #if wxGUI
 		rwdtoplevels.clear();
 		MakeTopLevelsInput();
@@ -852,7 +851,6 @@ namespace mutaborGUI {
 #if wxGUI
 		CheckWindows();
 #endif
-		mutASSERT(!NullRoute);
 	}
 }
 #endif

@@ -57,7 +57,6 @@
 
 
 namespace mutaborGUI {
-	using mutabor::NullRoute;
 	class MutRouteWnd;
 	class InputFilterPanel;
 	class RoutePanel;
@@ -80,15 +79,15 @@ namespace mutaborGUI {
 		    corresponding attatch function.
 		*/
 		MutBoxChannelShape (wxWindow * p = NULL, wxWindowID id = wxID_ANY, 
-				    mutabor::Route & r=NullRoute):MutIconShape(),
+				    mutabor::Route r=NULL):MutIconShape(),
 							   route(NULL), 
 							   input(NULL),
 							   output(NULL)
-			{
-				// to satisfy attatch route mus be NULL for now
-				Create (p, id, r);
-//				borderOffset = maxBorderSize;
-			}
+		{
+			// to satisfy attatch route mus be NULL for now
+			Create (p, id, r);
+			//				borderOffset = maxBorderSize;
+		}
 
 	public:
 		virtual ~MutBoxChannelShape();
@@ -113,7 +112,7 @@ namespace mutaborGUI {
 		    \retval false if an error has occured
 		*/
 		bool Create (wxWindow * p = NULL, wxWindowID id = wxID_ANY, 
-			     mutabor::Route & r=NullRoute);
+			     mutabor::Route r=NULL);
 
 		/*****************************************/
 		// Event handlers
