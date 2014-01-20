@@ -109,31 +109,21 @@ namespace mutaborGUI {
 	class RoutePanel:public RoutePanelBase {
 		DECLARE_DYNAMIC_CLASS( RoutePanel )
 		
-			protected:
-		class BoxShapeData: public wxClientData {
-			mutabor::Box box;
-		public:
-			BoxShapeData(mutabor::Box b):wxClientData(),
-					      box(b) {}
-			mutabor::Box & GetBox() { return box; }
-		};
-		InputFilterPanel * inPanel;
-		OutputFilterPanel * outPanel;
-		MutBoxChannelShape * channel;
 	public:
-	RoutePanel():RoutePanelBase()
+		RoutePanel():RoutePanelBase()
 		{
 			inPanel = NULL;
 			outPanel = NULL;
 			channel = NULL;
 		}
 	
-	RoutePanel(wxWindow * parent):RoutePanelBase(parent) 
+		RoutePanel(wxWindow * parent):RoutePanelBase(parent) 
 		{
 			inPanel = NULL;
 			outPanel = NULL;
 			channel = NULL;
 		}
+		~RoutePanel();
 	
 		bool GetActive() {
 			return active->GetValue();
@@ -162,6 +152,19 @@ namespace mutaborGUI {
 		int AddBox(mutabor::Box box, bool selected = false);
 	
 		void EnableRoute(bool enable = true);
+	protected:
+		class BoxShapeData: public wxClientData {
+			mutabor::Box box;
+		public:
+			BoxShapeData(mutabor::Box b):wxClientData(),
+					      box(b) {}
+			mutabor::Box & GetBox() { return box; }
+		};
+		typedef std::list<BoxShapeData *> boxdatalisttype;
+		InputFilterPanel * inPanel;
+		OutputFilterPanel * outPanel;
+		MutBoxChannelShape * channel;
+		boxdatalisttype boxdatalist;
 	
 	};
 

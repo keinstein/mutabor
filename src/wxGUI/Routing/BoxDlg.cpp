@@ -147,6 +147,17 @@ namespace mutaborGUI {
 	 * BoxDlg event table definition
 	 */
 
+
+	RoutePanel::~RoutePanel() {
+		for (boxdatalisttype::iterator i = boxdatalist.begin();
+		     i != boxdatalist.end();
+		     i = boxdatalist.begin()) {
+			BoxShapeData * data = *i;
+			delete data;
+			boxdatalist.erase(i);
+		}
+	}
+
 #if 0
 	void RoutePanel::SetBox(mutabor Box & b) {
 		
@@ -179,15 +190,17 @@ namespace mutaborGUI {
 
 	int RoutePanel::AddBox(mutabor::Box b, bool selected) {
 		int number;
+		BoxShapeData * shape = new BoxShapeData(b);
+		boxdatalist.push_back(shape);
 		if (selected) {
 			number = box->Append(_("this box"), 
-					     new BoxShapeData(b));
+					     shape);
 			box->SetSelection(number);
-		} else 	if (b)
+		} else 	if (b) {
 			number = box->Append(b->GetLabel(), 
-					     new BoxShapeData(b));
-		else number = box->Append(_("new box"), 
-					  new BoxShapeData(NULL));
+					     shape);
+		} else number = box->Append(_("new box"), 
+					    shape);
 
 #ifdef DEBUG
 		if (b) {
