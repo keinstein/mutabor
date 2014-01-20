@@ -217,7 +217,7 @@ void debug_destroy_class(void * ptr, std::string file, int l);
 void debug_destruct_class(void * ptr);
 void debug_print_pointers();
 bool debug_is_all_deleted();
-void print_stacktrace ();
+void print_stacktrace (bool flag);
 #else 
 inline void debug_destroy_class(void * ptr, std::string file, int l) {}
 inline void debug_destruct_class(void * ptr) {}

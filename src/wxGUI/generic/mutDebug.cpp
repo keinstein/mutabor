@@ -6,6 +6,19 @@
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \license GPL
  *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  ********************************************************************
  * \addtogroup debug
@@ -144,21 +157,64 @@ bool debug_is_all_deleted()
 	return debug_save_pointers.empty();
 }
 
-static void mutabor_backtrace_error_callback(void * data,
-					     const char * msg,
-					     int errnum) {
-	perror("print_backtrace");
-	std::cerr << msg << std::endl;
+
+static void
+mutabor_backtrace_error_callback (void *data, const char *msg, int errnum)
+{
+	fprintf (stderr, "backtrace: %s: (%d) %s\n",
+		 msg,
+		 errnum,
+		 errnum>0?strerror (errnum):"");
 }
 
-void print_stacktrace () {
+
+static int mutabor_backtrace_print_callback (void *data,
+					     uintptr_t pc,
+					     const char *filename,
+					     int lineno,
+					     const char *function)
+{
+	fprintf (stderr, "%s:%d:\n\t0x%lx: %s \n",
+		 filename == NULL ? "???" : filename,
+		 lineno,
+		 (unsigned long) pc,
+		 function == NULL ? "???" : function);
+	return 0;
+}
+static int mutabor_backtrace_simple_print_callback (void *data,
+						    uintptr_t pc)
+{
+	fprintf (stderr, "%lx \n",
+		 (unsigned long) pc);
+	return 0;
+}
+
+
+
+void print_stacktrace (bool flag) {
+	if (!flag) return;
 #if __LINUX__
 	backtrace_state * state = backtrace_create_state(NULL,
 							 false,
 							 &mutabor_backtrace_error_callback,
 							 NULL);
+#if 1
+	fprintf(stderr,"Stack trace:");
+	backtrace_full (state,
+			1,
+			mutabor_backtrace_print_callback,
+			mutabor_backtrace_error_callback,
+			NULL);
+#else
+	backtrace_simple(state,
+			 1,
+			 mutabor_backtrace_simple_print_callback,
+			 mutabor_backtrace_error_callback,
+			 NULL);
+#endif
 
-	backtrace_print(state,0,stderr);
+	//	backtrace_print(state,0,stderr);
+	//	__asan_backtrace_free (state);
 #endif
 #if 0
 	int j, nptrs;
