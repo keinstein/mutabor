@@ -49,6 +49,11 @@
 #include <bitset>
 #include <iostream>
 #include <cstdio>
+#include <vector>
+#include <stdint.h>
+#if __LINUX__
+#include <backtrace.h>
+#endif
 #include "wx/cmdline.h"
 #include "wx/string.h"
 #include "wx/debug.h"
@@ -218,12 +223,34 @@ void debug_destruct_class(void * ptr);
 void debug_print_pointers();
 bool debug_is_all_deleted();
 void print_stacktrace (bool flag);
+class mutabor_backtrace: public std::vector<uintptr_t> {
+public:
+	typedef std::vector<uintptr_t> base;
+	mutabor_backtrace(int omit_count = 0);
+	~mutabor_backtrace();
+	void set_print (bool p = true) { print = p; }
+	static void set_global_print(bool p = true) { global_print = p; }
+	static bool get_global_print() { return global_print; }
+protected:
+	bool print;
+	static bool global_print;
+	backtrace_state * state;
+};
 #else 
 inline void debug_destroy_class(void * ptr, std::string file, int l) {}
 inline void debug_destruct_class(void * ptr) {}
 inline void debug_print_pointers() {}
 inline bool debug_is_all_deleted() { return true; }
 inline void print_stacktrace (){}
+
+class mutabor_backtrace {
+public:
+	typedef mutabor_backtrace base;
+	mutabor_backtrace(int omit_count = 0) {}
+	void set_print (bool p = true) {  }
+	static void set_global_print(bool p = true) {  }
+};
+
 #endif
 #define debug_destroy_class(ptr) debug_destroy_class(ptr,__FILE__,__LINE__)
 

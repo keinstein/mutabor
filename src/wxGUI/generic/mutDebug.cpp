@@ -241,6 +241,52 @@ void print_stacktrace (bool flag) {
 	free(strings);
 #endif
 }
+
+
+bool mutabor_backtrace::global_print = false;
+
+static int mutabor_save_backtrace_callback (void *data,
+					    uintptr_t pc)
+{
+	mutabor_backtrace * obj
+		= reinterpret_cast<mutabor_backtrace *> (data);
+	if (obj)
+		obj->push_back(pc);
+	return 0;
+}
+
+mutabor_backtrace::mutabor_backtrace(int omit_count):base(0),
+						     print(false)
+{
+	reserve(10);
+
+	state = backtrace_create_state(NULL,
+				       false,
+				       &mutabor_backtrace_error_callback,
+				       reinterpret_cast<void *>(this));
+	backtrace_simple(state,
+			 omit_count + 1,
+			 mutabor_save_backtrace_callback,
+			 mutabor_backtrace_error_callback,
+			 reinterpret_cast<void *>(this));
+}
+
+mutabor_backtrace::~mutabor_backtrace() {
+	if (!(print && global_print))
+		return;
+
+	fprintf(stderr,"Stack trace:");
+	for (base::iterator i = begin();
+	     i!= end(); ++i) {
+		backtrace_pcinfo (state,
+				  *i,
+				  mutabor_backtrace_print_callback,
+				  mutabor_backtrace_error_callback,
+				  NULL);
+	}
+}
+
+
 #endif
 
 void MutInitConsole()
