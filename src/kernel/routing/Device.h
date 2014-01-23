@@ -54,6 +54,7 @@
 
 #include <vector>
 #include <list>
+#include <limits.h>
 #include <algorithm>
 #include <sstream>
 #include <stdarg.h>
@@ -98,6 +99,7 @@ namespace mutabor {
 	{
 	public:
 		typedef std::vector<int> controller_vector;
+		static const size_t IGNORE_UNIQUE_ID = ULONG_MAX;
 
 		ChannelData(int sound = -1,
 			    int8_t sustain = 0):controller(128,-1),
