@@ -144,6 +144,10 @@ namespace mutabor {
 			int param = -1;
 			DEBUGLOG(midiio,_T("ctrl: %d, %d => %d"),(int)number,(int)retval,(int)data);
 			controller[number] = data;
+
+			// we allow to set a controller to an udefined state.
+			if (data < 0) return retval;
+
 			switch (number) {
 			case midi::NON_REGISTERED_PARAMETER_FINE:
 			case midi::NON_REGISTERED_PARAMETER_COARSE:
