@@ -170,37 +170,95 @@ namespace mutabor {
 
 	template<class T, class D>
 	void CommonMidiOutput<T,D>::do_UpdateControllers(int channel, const ChannelData & input) {
+
 		// a simple implementation with room for improvements
-		for(ChannelData::controller_vector::const_iterator i = input.get_first_changed_controller(Cd[channel]);
-		    input.is_changed_controller(i);
-		    i = input.get_next_changed_controller(Cd[channel],i)) {
+		// first pass: revert changes that have been made
+		for(ChannelData::controller_vector::const_iterator i
+			    = Cd[channel].get_first_changed_controller(Cd[channel]);
+		    Cd[channel].is_changed_controller(i);
+		    i = Cd[channel].get_next_changed_controller(Cd[channel],i)) {
 			int number =  *i;
-			int value =   input.get_controller(number);
+
+			// avoid setting controllers that are hard to undo
+			switch (number) {
+				// data entry helper are marked as to be set
+				case midi::DATA_ENTRY_COARSE:
+				case midi::DATA_ENTRY_FINE:
+				case midi::DATA_BUTTON_INCREMENT:
+				case midi::DATA_BUTTON_DECREMENT:
+				case midi::NON_REGISTERED_PARAMETER_FINE:
+				case midi::NON_REGISTERED_PARAMETER_COARSE:
+				case midi::REGISTERED_PARAMETER_FINE:
+				case midi::REGISTERED_PARAMETER_COARSE:
+					Cd[channel].set_controller(number,-1);
+					continue;
+			}
+
+			int value = input.get_controller(number);
 			int ctrl = Cd[channel].get_index(number);
-			
-			if (ctrl == number && 
-			    Cd[channel].get_controller(ctrl) == value) 
+
+			if (ctrl == number &&
+			    (value < 0
+			     || Cd[channel].get_controller(ctrl) == value))
 				continue;
-			
+
+
 			// this might change the index
 			Cd[channel].set_controller(number,value);
 			ctrl = Cd[channel].get_index(number);
 
 			if (ctrl == -1) continue;
-			
+
 			if (ctrl < 0x10000) {
 				mutASSERT(value < 0x80);
 				controller(channel, ctrl, value);
 			} else if (0x10000 <= ctrl && ctrl < 0x20000) {
 				controller(channel,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
 				controller(channel,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
-				
+
 				controller(channel,midi::DATA_ENTRY_COARSE, value >> 7 & 0x7F);
 				controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
 			} else if (ctrl <= 0x30000) {
 				controller(channel,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
 				controller(channel,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
-				
+
+				controller(channel,midi::DATA_ENTRY_COARSE, value >> 7 & 0x7F);
+				controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
+			}
+		}
+
+
+		for(ChannelData::controller_vector::const_iterator i
+			    = input.get_first_changed_controller(Cd[channel]);
+		    input.is_changed_controller(i);
+		    i = input.get_next_changed_controller(Cd[channel],i)) {
+			int number =  *i;
+			int value =   input.get_controller(number);
+			int ctrl = Cd[channel].get_index(number);
+
+			if (ctrl == number &&
+			    Cd[channel].get_controller(ctrl) == value)
+				continue;
+
+			// this might change the index
+			Cd[channel].set_controller(number,value);
+			ctrl = Cd[channel].get_index(number);
+
+			if (ctrl == -1) continue;
+
+			if (ctrl < 0x10000) {
+				mutASSERT(value < 0x80);
+				controller(channel, ctrl, value);
+			} else if (0x10000 <= ctrl && ctrl < 0x20000) {
+				controller(channel,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
+				controller(channel,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+
+				controller(channel,midi::DATA_ENTRY_COARSE, value >> 7 & 0x7F);
+				controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
+			} else if (ctrl <= 0x30000) {
+				controller(channel,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
+				controller(channel,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+
 				controller(channel,midi::DATA_ENTRY_COARSE, value >> 7 & 0x7F);
 				controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
 			}
