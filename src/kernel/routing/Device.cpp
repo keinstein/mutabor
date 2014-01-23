@@ -373,6 +373,7 @@ OutputDeviceClass:\n\
 			// Maps have constant entries
 			DoNoteOff(const_cast<Route &>(i->route),
 				i->key,i->velocity,i->unique_id);
+			tmp.remove(i);
 		}
 
 		InputDevice self = this;
