@@ -80,13 +80,19 @@ namespace mutabor {
 		for (i = 0; i < 16; i++) {
 			pitch_bend(i,0);
 			// omni and poly act on 0
-			do_Controller(i,midi::LOCAL_ON_OFF, midi::CONTROLLER_OFF );
-			do_Controller(i,midi::OMNI_ON, midi::CONTROLLER_OFF );
-			do_Controller(i,midi::POLY_ON, midi::CONTROLLER_OFF );
+			Cd[i].set_controller(midi::LOCAL_ON_OFF,
+					     midi::CONTROLLER_OFF );
+			Cd[i].set_controller(midi::OMNI_ON,
+					     midi::CONTROLLER_OFF );
+			Cd[i].set_controller(midi::POLY_ON,
+					     midi::CONTROLLER_OFF );
 			// we must set the controllers manually
-			controller(i,midi::LOCAL_ON_OFF, midi::CONTROLLER_OFF );
-			controller(i,midi::OMNI_ON, midi::CONTROLLER_OFF );
-			controller(i,midi::POLY_ON, midi::CONTROLLER_OFF );
+			controller(i,midi::LOCAL_ON_OFF,
+				   midi::CONTROLLER_OFF );
+			controller(i,midi::OMNI_ON,
+				   midi::CONTROLLER_OFF );
+			controller(i,midi::POLY_ON,
+				   midi::CONTROLLER_OFF );
 			do_SendBendingRange(i);
 		}
 
@@ -704,10 +710,11 @@ namespace mutabor {
 		}
 
 		channel_queue.init();
-		
+
 		nKeyOn = 0;
+
 		for (int i = 0; i < GetMaxChannel(); i++) {
-			do_Controller(i,type,0);
+			controller(i,type,0);
 		}
 	}
 

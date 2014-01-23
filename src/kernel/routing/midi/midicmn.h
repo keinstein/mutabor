@@ -596,10 +596,11 @@ namespace mutabor {
 		void do_Quiet(Route r, int type, size_t id);
 		void do_Panic(int type);
 		void do_SendBendingRange(int channel) {
-			do_Controller(channel,midi::PITCH_BEND_SENSITIVITY,bending_range);
-			controller(channel,midi::REGISTERED_PARAMETER_COARSE, 
+			Cd[channel].set_controller(midi::PITCH_BEND_SENSITIVITY,
+						   bending_range);
+			controller(channel,midi::REGISTERED_PARAMETER_COARSE,
 				   (midi::PITCH_BEND_SENSITIVITY >> 8) & 0x7F);
-			controller(channel,midi::REGISTERED_PARAMETER_FINE, 
+			controller(channel,midi::REGISTERED_PARAMETER_FINE,
 				   midi::PITCH_BEND_SENSITIVITY & 0x7F);
 			controller(channel,midi::DATA_ENTRY_COARSE, bending_range);
 			controller(channel,midi::DATA_ENTRY_FINE, 0);
