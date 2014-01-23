@@ -767,7 +767,6 @@ namespace mutabor {
 				panic = true;
 				break;
 			}
-			break;
 
 			if (propagate)
 				channel_data[MidiChannel].set_controller((midiCode >>  8) & 0xff,
@@ -778,9 +777,11 @@ namespace mutabor {
 
 			if (reset)
 				channel_data[MidiChannel].Reset();
-			if (propagate)
-				route -> Controller((midiCode >> 8) & 0xff,  
-						    (midiCode >> 8) & 0xff);
+
+			// always propagate as we need to store the correct result.
+			route -> Controller((midiCode >>  8) & 0xff,
+					    (midiCode >> 16) & 0xff,
+					    MidiChannel);
 		}
 			break;
 		case midi::KEY_PRESSURE:
