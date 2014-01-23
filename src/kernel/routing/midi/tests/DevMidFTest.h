@@ -113,7 +113,7 @@ public:
 #endif
 		if (in) 
 			in -> Destroy();
-		in = NULL;
+		in.reset();
 		CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
 		CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
 		CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());

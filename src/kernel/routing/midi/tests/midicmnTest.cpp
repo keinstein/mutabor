@@ -64,10 +64,10 @@ void CommonMidiOutputTest::tearDown()
 	guard->Destroy();
 	route->Destroy();
 	out = NULL;
-	guard = NULL;
-	route = NULL;
+	guard.reset();
+	route.reset();
 	box -> Destroy();
-	box = NULL;
+	box.reset();
 
 	CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
 	CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
@@ -586,9 +586,9 @@ void CommonMidiInputTest::tearDown()
 		box -> Destroy();
 	in = NULL;
 	out = NULL;
-	guard = NULL;
-	route = NULL;
-	box = NULL;
+	guard.reset();
+	route.reset();
+	box.reset();
 #ifdef DEBUG
 //	debugFlags::flags.timer = false;
 	debugFlags::flags.midiio = false;
