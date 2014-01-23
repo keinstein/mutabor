@@ -203,7 +203,7 @@ namespace mutabor {
 					controller_vector :: iterator beg = controller_changed.begin();
 					std::rotate(beg + i,beg+i+1 ,beg +first_unchanged);
 					found = true;
-					index = i;
+					index = first_unchanged-1;
 					break;
 				}
 			}
