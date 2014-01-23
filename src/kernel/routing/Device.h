@@ -225,6 +225,13 @@ namespace mutabor {
 			switch (message) {
 			case midi::PITCH_BEND_SENSITIVITY:
 				return -1;
+#if 0
+				// Don't send the parameter at this
+				// moment.  the parameter should be
+				// sent when data is stored in the corresponding
+				// RPN/NRPN parameter
+				// nevertheess we may preprogramm the register
+				// address for later use, so return not -1
 			case midi::NON_REGISTERED_PARAMETER_FINE:
 			case midi::NON_REGISTERED_PARAMETER_COARSE:
  				if (controller[midi::NON_REGISTERED_PARAMETER_FINE] != -1
@@ -246,6 +253,7 @@ namespace mutabor {
 							 | controller[midi::REGISTERED_PARAMETER_COARSE] << 8
 							 | controller[midi::REGISTERED_PARAMETER_FINE]);
 				return -1;
+#endif
 			case midi::DATA_ENTRY_COARSE:
 			case midi::DATA_ENTRY_FINE:
 			case midi::DATA_BUTTON_INCREMENT:
