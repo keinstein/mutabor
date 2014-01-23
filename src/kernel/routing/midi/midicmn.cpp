@@ -522,11 +522,33 @@ namespace mutabor {
 					switch (ctrl) {
 					case midi::DATA_ENTRY_COARSE:
 					case midi::DATA_ENTRY_FINE:
-#warning also increment/decrement must continue
+					case midi::DATA_BUTTON_INCREMENT:
+					case midi::DATA_BUTTON_DECREMENT:
+					case midi::ALL_CONTROLLERS_OFF:
+					case midi::ALL_SOUND_OFF:
+					case midi::ALL_NOTES_OFF:
+					case midi::OMNI_OFF:
+					case midi::OMNI_ON:
+					case midi::MONO_ON:
+					case midi::POLY_ON:
+					case midi::LOCAL_ON_OFF:
 						break;
 					default:
 						continue;
 					}
+				}
+				switch (ctrl) {
+					case midi::ALL_CONTROLLERS_OFF:
+					case midi::ALL_SOUND_OFF:
+					case midi::ALL_NOTES_OFF:
+					case midi::OMNI_OFF:
+					case midi::OMNI_ON:
+					case midi::MONO_ON:
+					case midi::POLY_ON:
+						ChannelData data;
+							data.Reset();
+						do_UpdateControllers(i, data);
+						continue;
 				}
 
 				int newctrl = Cd[i].get_index(ctrl);
