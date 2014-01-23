@@ -254,8 +254,14 @@ namespace mutabor {
 				Out -> Quiet(this, type, unique_id);
 		}
 
-		void Controller(int controller, int value) {
-			if (Out) Out->Controller(session_id, controller, value);
+		void Controller(int controller,
+				int value,
+				size_t make_unique) {
+			if (Out)
+				Out->Controller(session_id,
+						controller,
+						value,
+						make_unique);
 		}
 
 		/// add a new output device

@@ -728,9 +728,15 @@ namespace mutabor {
 			ScopedLock lock(write_lock);
 			do_UpdateTones(route);
 		}
-		void Controller(int mutabor_channel, int controller, int value) {
+		void Controller(int mutabor_channel,
+				int controller,
+				int value,
+				size_t id) {
 			ScopedLock lock(write_lock);
-			do_Controller(mutabor_channel, controller, value);
+			do_Controller(mutabor_channel,
+				      controller,
+				      value,
+				      id);
 		}
 //		virtual void Sustain(int channel, const ChannelData & cd) = 0;
 		int  GetChannel(int inkey, size_t channel, size_t id) {
@@ -814,7 +820,10 @@ namespace mutabor {
 				     size_t id,
 				     bool is_note_on) = 0;
 		virtual void do_UpdateTones(RouteClass * route) = 0;
-		virtual void do_Controller(int mutabor_channel, int controller, int value) = 0;
+		virtual void do_Controller(int mutabor_channel,
+					   int controller,
+					   int value,
+					   size_t id) = 0;
 //		virtual void Sustain(int channel, const ChannelData & cd) = 0;
 		virtual int  do_GetChannel(int inkey, size_t channel, size_t id) = 0;
 		virtual void do_Gis(GisToken *token, char turn) = 0;

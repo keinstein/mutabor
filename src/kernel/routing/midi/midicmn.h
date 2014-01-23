@@ -585,7 +585,10 @@ namespace mutabor {
 			     bool is_note_on /* = false */
 			);
 		void do_UpdateTones(RouteClass * route);
-		void do_Controller(int mutabor_channel, int controller, int value);
+		void do_Controller(int mutabor_channel,
+				   int controller,
+				   int value,
+				   size_t id);
 //		void Sustain(int channel, const ChannelData & cd);
 		int do_GetChannel(int inkey, size_t channel, size_t id);
 		void do_SplitOut (BYTE * p, size_t n);

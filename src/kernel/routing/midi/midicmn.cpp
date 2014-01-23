@@ -434,7 +434,10 @@ namespace mutabor {
 	}
 
 	template<class T, class D>
-	void  CommonMidiOutput<T,D>::do_Controller(int mutabor_channel, int ctrl, int value)
+	void  CommonMidiOutput<T,D>::do_Controller(int mutabor_channel,
+						   int ctrl,
+						   int value,
+						   size_t id)
 	{
 
 
@@ -447,7 +450,9 @@ namespace mutabor {
 			  || ctrl == midi::POLY_ON);
 		for (int i = 0; i < 16; i++)
 			if ( ton_auf_kanal[i].channel == mutabor_channel
-			     && (ton_auf_kanal[i].active 
+			     && (id == ChannelData::IGNORE_UNIQUE_ID
+				 || ton_auf_kanal[i].unique_id == id)
+			     && (ton_auf_kanal[i].active
 				 || Cd[i].get_controller(midi::HOLD_PEDAL_ON_OFF) > 0x40)) {
 				if (Cd[i].get_controller(ctrl) == value) {
 					switch (ctrl) {

@@ -180,7 +180,7 @@ namespace mutabor {
 
 		virtual void do_UpdateTones(RouteClass * route) {};
 
-		virtual void do_Controller(int,int,int) {}
+		virtual void do_Controller(int,int,int,size_t) {}
 /*
 		virtual void Sustain(int channel, const ChannelData & cd)
 			{};
