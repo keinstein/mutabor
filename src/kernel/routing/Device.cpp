@@ -326,12 +326,12 @@ OutputDeviceClass:\n\
 	void InputDeviceClass::DoSilenceKeys(bool remove) {
 		current_keys_type::iterator i;
 		size_t j = 0;
-		DEBUGLOG(always,_T(""));
+		DEBUGLOG(routing,_T(""));
 		for (i = current_keys.begin();i!= current_keys.end();i++) {
 			i->route->NoteOff(i->key,i->velocity,i->unique_id);
 			j++;
 		}
-		DEBUGLOG(always,_T("silenced %lu keys"),(unsigned long)j);
+		DEBUGLOG(routing,_T("silenced %lu keys"),(unsigned long)j);
 		if (remove) {
 			current_keys.clear();
 		}
@@ -340,11 +340,11 @@ OutputDeviceClass:\n\
 	void InputDeviceClass::ResumeKeys() {
 		ScopedLock lock(write_lock);
 
-		DEBUGLOG(always,_T(""));
+		DEBUGLOG(routing,_T(""));
 		current_keys_type::iterator i;
 		size_t j = 0;
 		for (i = current_keys.begin();i!= current_keys.end();i++) {
-			DEBUGLOG(always,_T("(key = %d, channel = %lu, id = %lu)"),
+			DEBUGLOG(routing,_T("(key = %d, channel = %lu, id = %lu)"),
 				 i->key,
 				 (unsigned long)i->route->get_session_id(),
 				 (unsigned long)i->unique_id);
@@ -355,7 +355,7 @@ OutputDeviceClass:\n\
 					 i->userdata);
 			j++;
 		}
-		DEBUGLOG(always,_T("revived %lu keys"),(unsigned long)j);
+		DEBUGLOG(routing,_T("revived %lu keys"),(unsigned long)j);
 	}
 	
 

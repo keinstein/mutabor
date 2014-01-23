@@ -891,11 +891,10 @@ namespace mutabor {
 						 i,
 						 &c,
 						 userdata));
-				DEBUGLOG(always,_T("(key = %d, channel = %lu, id = %lu)"),
+				DEBUGLOG(routing,_T("(key = %d, channel = %lu, id = %lu)"),
 					 key,
 					 (unsigned long)R->get_session_id(),
 					 (unsigned long)unique_id);
-				mutASSERT(isDebugFlag(always));
 			}
 			void add (entry e) {
 				map.insert(e);
@@ -909,7 +908,7 @@ namespace mutabor {
 					map.equal_range(entry(key,unique_id,velocity, R, NULL, NULL, NULL));
 				if (range.first != map.end()) {
 					map.erase(range.first);
-					DEBUGLOG(always,_T("(key = %d, channel = %lu, id = %lu)"),
+					DEBUGLOG(routing,_T("(key = %d, channel = %lu, id = %lu)"),
 						 key,
 						 (unsigned long)R->get_session_id(),
 						 (unsigned long)unique_id);
@@ -1047,7 +1046,7 @@ namespace mutabor {
 			    const ChannelData & input_channel_data,
 			    void * userdata) {
 			ScopedLock lock(write_lock);
-			DEBUGLOG(always,_T("(key = %d, channel = %lu, id = %lu)"),
+			DEBUGLOG(routing,_T("(key = %d, channel = %lu, id = %lu)"),
 				 key,
 				 (unsigned long)R->get_session_id(),
 				 (unsigned long)make_unique);
@@ -1084,7 +1083,7 @@ namespace mutabor {
 				R->NoteOff(key,velocity,make_unique);
 			}
 			current_keys.remove(key, velocity, make_unique, R);
-			DEBUGLOG(always,_T("(key = %d, channel = %lu, id = %lu)"),
+			DEBUGLOG(routing,_T("(key = %d, channel = %lu, id = %lu)"),
 				 key,
 				 (unsigned long)R->get_session_id(),
 				 (unsigned long)make_unique);
