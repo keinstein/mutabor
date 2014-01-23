@@ -328,6 +328,7 @@ OutputDeviceClass:\n\
 		size_t j = 0;
 		DEBUGLOG(routing,_T(""));
 		for (i = current_keys.begin();i!= current_keys.end();i++) {
+#warning do something like route->Controller (SUSTAIN, CONTROLLER_OFF)
 			i->route->NoteOff(i->key,i->velocity,i->unique_id);
 			j++;
 		}
@@ -365,11 +366,13 @@ OutputDeviceClass:\n\
 
 		current_keys_type tmp;
 		current_keys_type::iterator i;
+
 		for (i = current_keys.begin();i!= current_keys.end();i++) {
 			if (i->unique_id != unique_id) continue;
 			tmp.add(*i);
 		}
 		while ((i = tmp.begin())!= tmp.end()) {
+#warning do something like route->Controller (SUSTAIN, CONTROLLER_OFF)
 			// Maps have constant entries
 			DoNoteOff(const_cast<Route &>(i->route),
 				i->key,i->velocity,i->unique_id);
