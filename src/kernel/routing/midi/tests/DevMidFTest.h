@@ -69,6 +69,7 @@ class InputMidiFileTest : public CPPUNIT_NS::TestFixture
 	CPPUNIT_TEST( testBatchPlay1 );
 	CPPUNIT_TEST( testBug019010_2 );
 	CPPUNIT_TEST( testBug019010 );
+	CPPUNIT_TEST( testControllerPlay );
 	CPPUNIT_TEST_SUITE_END();
 
 protected:
@@ -138,6 +139,7 @@ public:
 	void testBatchPlay1();
 	void testBug019010_2();
 	void testBug019010();
+	void testControllerPlay();
 
 #if __WXMSW__
 protected:
