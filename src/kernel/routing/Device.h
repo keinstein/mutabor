@@ -99,41 +99,42 @@ namespace mutabor {
 	public:
 		typedef std::vector<int> controller_vector;
 
-		ChannelData(int sound = -1, int8_t sustain = 0):controller(128,-1),
-								controller_changed(128,-1),
-								first_unchanged(0),
-								looped(false),
-								data_is_rpn(true),
-								Sound(sound),
-								bank_coarse(-1),
-								bank_fine(-1),
-								bend(0)
-			{
-				controller[midi::HOLD_PEDAL_ON_OFF] = sustain;
-				if (sustain != 0) {
-					controller_changed[first_unchanged]
-						= midi::HOLD_PEDAL_ON_OFF;
-					first_unchanged++;
-				}
+		ChannelData(int sound = -1,
+			    int8_t sustain = 0):controller(128,-1),
+						controller_changed(128,-1),
+						first_unchanged(0),
+						looped(false),
+						data_is_rpn(true),
+						Sound(sound),
+						bank_coarse(-1),
+						bank_fine(-1),
+						bend(0)
+		{
+			controller[midi::HOLD_PEDAL_ON_OFF] = sustain;
+			if (sustain != 0) {
+				controller_changed[first_unchanged]
+					= midi::HOLD_PEDAL_ON_OFF;
+				first_unchanged++;
 			}
+		}
 
 		void Reset()
-			{
-				for (controller_vector::iterator i = controller.begin();
-				     i != controller.end();
-				     ++i) *i = -1;
-				for (controller_vector::iterator i = controller_changed.begin();
-				     i != controller_changed.end();
-				     ++i) *i = -1;
-				first_unchanged = 0;
-				looped = false;
-				Sound = -1;
-				bank_coarse = -1;
-				bank_fine = -1;
-				bend = 0;
+		{
+			for (controller_vector::iterator i = controller.begin();
+			     i != controller.end();
+			     ++i) *i = -1;
+			for (controller_vector::iterator i = controller_changed.begin();
+			     i != controller_changed.end();
+			     ++i) *i = -1;
+			first_unchanged = 0;
+			looped = false;
+			Sound = -1;
+			bank_coarse = -1;
+			bank_fine = -1;
+			bend = 0;
 
 
-			}
+		}
 
 		int set_controller(size_t number, int8_t data) {
 
@@ -405,22 +406,22 @@ namespace mutabor {
 		// The following functions can be used both for playback and recording.
 		// Nevertheless they should not be availlable without a proper device type.
 
-		/** 
+		/**
 		 * Start playback or recording of the device.
-		 * 
+		 *
 		 */
 		virtual void Play() {}
 
 
-		/** 
+		/**
 		 * Pause playback or recording of the device.
-		 * 
+		 *
 		 */
 		virtual void Pause() {}
 
-		/** 
+		/**
 		 * Stop playback or recording of the device.
-		 * 
+		 *
 		 */
 		virtual void Stop() {}
 
@@ -711,11 +712,11 @@ namespace mutabor {
 
 		}
 		void NoteOff(Box box,
-				     int taste,
-				     int velo,
-				     RouteClass * r,
-				     size_t id,
-				     bool is_note_on) {
+			     int taste,
+			     int velo,
+			     RouteClass * r,
+			     size_t id,
+			     bool is_note_on) {
 			ScopedLock lock(write_lock);
 			do_NoteOff(box,taste,velo,r,id,is_note_on);
 		}
@@ -842,10 +843,10 @@ namespace mutabor {
 				InputDevice device;
 				const ChannelData * settings;
 				void * userdata;
-				entry(int k, 
-				      int u, 
-				      int v, 
-				      Route &R, 
+				entry(int k,
+				      int u,
+				      int v,
+				      Route &R,
 				      InputDevice i,
 				      const ChannelData * c,
 				      void * d): key(k),
@@ -857,8 +858,8 @@ namespace mutabor {
 						 userdata(d){}
 
 				bool operator == (const entry & e) const {
-					return e.key == key 
-						&& e.unique_id == unique_id 
+					return e.key == key
+						&& e.unique_id == unique_id
 						&& e.route == route;
 				}
 			};
@@ -886,7 +887,7 @@ namespace mutabor {
 				  void * userdata) {
 				map.insert(entry(key,
 						 unique_id,
-						 velocity, 
+						 velocity,
 						 R,
 						 i,
 						 &c,
@@ -904,7 +905,7 @@ namespace mutabor {
 				    int velocity,
 				    int unique_id,
 				    Route & R) {
-				std::pair<map_type::iterator, map_type::iterator> range = 
+				std::pair<map_type::iterator, map_type::iterator> range =
 					map.equal_range(entry(key,unique_id,velocity, R, NULL, NULL, NULL));
 				if (range.first != map.end()) {
 					map.erase(range.first);
@@ -926,7 +927,6 @@ namespace mutabor {
 			void rehash(size_t n) {
 				map.rehash(n);
 			}
-
 
 			iterator begin() { return map.begin(); }
 			const_iterator begin() const { return map.begin(); }
@@ -993,7 +993,7 @@ namespace mutabor {
 		}
 		//	  virtual frac ReadOn(frac time) = 0;
 
-		
+
 
 		virtual bool NeedsRealTime() {
 			return false;
@@ -1050,10 +1050,10 @@ namespace mutabor {
 				 key,
 				 (unsigned long)R->get_session_id(),
 				 (unsigned long)make_unique);
-			
-			current_keys.add(key, 
-					 velocity, 
-					 make_unique, 
+
+			current_keys.add(key,
+					 velocity,
+					 make_unique,
 					 R,
 					 this,
 					 input_channel_data,
@@ -1061,8 +1061,8 @@ namespace mutabor {
 			if (R) {
 				R->NoteOn(key,
 					  velocity,
-					  make_unique, 
-					  input_channel_data, 
+					  make_unique,
+					  input_channel_data,
 					  userdata);
 			}
 		}

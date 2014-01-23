@@ -4,7 +4,7 @@
  *
  * Copyright:   (c) 2012 Tobias Schlemmer
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
+ * \date
  * $Date: 2011/09/27 20:13:26 $
  * \version $Version$
  * \license GPL
@@ -63,7 +63,7 @@ namespace mutabor {
 			ton_auf_kanal[i].midi_channel = 0;
 			ton_auf_kanal[i].unique_id = 0;
 		}
-		
+
 		channel_queue.init();
 
 		nKeyOn = 0;
@@ -119,14 +119,14 @@ namespace mutabor {
 	class ChannelFilter {
 	public:
 		ChannelFilter(const RouteClass * r):route(r) {}
-		
+
 		bool operator () (int channel) {
 			return channel >= route->GetOutputFrom()
 				&& channel <= route->GetOutputTo()
-				&& (!route->OutputAvoidDrumChannel() 
+				&& (!route->OutputAvoidDrumChannel()
 				    || channel != DRUMCHANNEL);
 		}
-		
+
 		bool check() {
 			return route->GetOutputFrom() <= route->GetOutputTo();
 		}
@@ -136,7 +136,7 @@ namespace mutabor {
 
 
 	template<class T, class D>
-	typename channel_queue_type::const_iterator 
+	typename channel_queue_type::const_iterator
 	CommonMidiOutput<T,D>::EmergencyFindChannel(RouteClass * r) {
 		mutASSERT(this->isOpen);
 		// "mittelste Taste weglassen"
@@ -152,7 +152,7 @@ namespace mutabor {
 
 		for ( j = r->GetOutputFrom(); j <= r->GetOutputTo(); j++ )
 			if ( j != DRUMCHANNEL || !r->OutputAvoidDrumChannel() )
-				if ( abs(AM - (ton_auf_kanal[j].tuned_key)) 
+				if ( abs(AM - (ton_auf_kanal[j].tuned_key))
 				     < abs(AM - (ton_auf_kanal[free].tuned_key) ))
 					free = j;
 
@@ -200,10 +200,10 @@ namespace mutabor {
 			}
 		}
 	}
-		
+
 
 	template<class T, class D>
-	void 
+	void
 	CommonMidiOutput<T,D>::CopyProgramChange(const ChannelData & input_channel_data,
 						 ChannelData & output_data,
 						 int channel) {
@@ -217,14 +217,14 @@ namespace mutabor {
 
 		if (bank_fine != -1 && output_data.get_bank_fine() != bank_fine) {
 			set_sound =true;
-			if (bank_coarse == -1) 
+			if (bank_coarse == -1)
 				bank_coarse = output_data.get_bank_coarse();
 		} else if (bank_coarse != -1 && output_data.get_bank_coarse() != bank_coarse) {
 			set_sound =true;
-			if (bank_fine == -1) 
+			if (bank_fine == -1)
 				bank_fine = output_data.get_bank_fine();
 		}
-		if (set_sound && sound == -1) 
+		if (set_sound && sound == -1)
 			sound = output_data.get_program();
 
 		if (set_sound) {
@@ -232,15 +232,15 @@ namespace mutabor {
 			output_data.set_controller(midi::BANK_COARSE,bank_coarse);
 			output_data.set_controller(midi::BANK_FINE,bank_fine);
 			output_data.program_change(sound);
-		}	      
+		}
 	}
 
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::do_NoteOn(Box box, 
-				      int inkey, 
-				      int velocity, 
-				      RouteClass * r, 
-				      size_t id, 
+	void CommonMidiOutput<T,D>::do_NoteOn(Box box,
+				      int inkey,
+				      int velocity,
+				      RouteClass * r,
+				      size_t id,
 				      const ChannelData & input_channel_data)
 	{
 		mutASSERT(this->isOpen);
@@ -262,7 +262,7 @@ namespace mutabor {
 
 		if ( !freq ) return;
 
-		channel_queue_type::const_iterator pos = 
+		channel_queue_type::const_iterator pos =
 			channel_queue.reserve_channel_filtered(ChannelFilter(r));
 		if (pos == channel_queue.end()) {
 			pos = EmergencyFindChannel(r);
@@ -274,7 +274,7 @@ namespace mutabor {
 		ChannelData & output_data = Cd[channel];
  		pitch_bend_type note = pitch_and_bend(freq);
 		int8_t controller_value;
-	
+
 		if ( note.bend != output_data.get_bend() ) {
 			pitch_bend(channel,note.bend);
 			output_data.set_bend(note.bend);
@@ -290,7 +290,7 @@ namespace mutabor {
 		}
 
 		if ( output_data.get_controller(midi::HOLD_PEDAL_ON_OFF) !=
-		     (controller_value 
+		     (controller_value
 		      = input_channel_data.get_controller(midi::HOLD_PEDAL_ON_OFF)) ) {
 			controller(channel,
 				   midi::HOLD_PEDAL_ON_OFF,
@@ -316,10 +316,10 @@ namespace mutabor {
 	}
 
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::do_NoteOff(Box box, 
-				       int inkey, 
-				       int velo, 
-				       RouteClass * r, 
+	void CommonMidiOutput<T,D>::do_NoteOff(Box box,
+				       int inkey,
+				       int velo,
+				       RouteClass * r,
 				       size_t id,
 				       bool is_note_on /* = false */
 		)
@@ -347,23 +347,23 @@ namespace mutabor {
 
 		for (int i = r->GetOutputFrom(); i <= r->GetOutputTo(); i++)
 			if ( i != DRUMCHANNEL || !r->OutputAvoidDrumChannel() )
-				if ( ton_auf_kanal[i].active 
+				if ( ton_auf_kanal[i].active
 				     && ton_auf_kanal[i].inkey == inkey
-				     && ton_auf_kanal[i].unique_id == id 
+				     && ton_auf_kanal[i].unique_id == id
 				     && ton_auf_kanal[i].channel == r->get_session_id() ) {
 
 					ton_auf_kanal[i].active = false;
 
-					/* note on is used on some devices as special note on 
+					/* note on is used on some devices as special note on
 					   while on others it means note off */
 
-					if (is_note_on) 
+					if (is_note_on)
 						note_on(i, ton_auf_kanal[i].outkey.pitch, 0);
 					else
 						note_off(i, ton_auf_kanal[i].outkey.pitch, velo);
-						
 
-					if (is_note_on 
+
+					if (is_note_on
 					    || Cd[i].get_controller(midi::HOLD_PEDAL_ON_OFF))
 						channel_queue.sustain_channel(i);
 					else
@@ -384,21 +384,21 @@ namespace mutabor {
 		}
 
 		for (int channel = 0; channel < 16; channel++)
-			if ( (ton_auf_kanal[channel].active 
-			      || Cd[channel].get_controller(midi::HOLD_PEDAL_ON_OFF)>0 ) 
+			if ( (ton_auf_kanal[channel].active
+			      || Cd[channel].get_controller(midi::HOLD_PEDAL_ON_OFF)>0 )
 			     && ton_auf_kanal[channel].channel == route->get_session_id()) {
 
 				TAK & tone = ton_auf_kanal[channel];
-				
+
 				DEBUGLOG(midiio,
-					 _T("old(hex/dec): channel = %01x/%d, Inkey = %02x/%d, key = %02x/%d, pitch = %06x/%d"), 
+					 _T("old(hex/dec): channel = %01x/%d, Inkey = %02x/%d, key = %02x/%d, pitch = %06x/%d"),
 					 channel,channel,
-					 tone.inkey,tone.inkey, 
+					 tone.inkey,tone.inkey,
 					 tone.outkey.pitch,tone.outkey.pitch,
 					 Cd[channel].get_bend(),Cd[channel].get_bend());
 
 				long freq = route->GetBox()->get_frequency(tone.inkey);
-				
+
 				if (freq == tone.tuned_key) continue;
 
 				pitch_bend_type oldpb = tone.outkey;
@@ -413,10 +413,10 @@ namespace mutabor {
 						/* temporary sowith hold off */
 						controller(channel,midi::HOLD_PEDAL_ON_OFF,0);
 					}
-					
+
 					note_off(channel,tone.outkey.pitch, 0);
 
-					if (sustain) 
+					if (sustain)
 						controller(channel,midi::HOLD_PEDAL_ON_OFF,
 							   Cd[channel].get_controller(midi::HOLD_PEDAL_ON_OFF));
 
@@ -440,7 +440,7 @@ namespace mutabor {
 
 		mutASSERT(ctrl < 0x20000);
 		mutASSERT(value < 0x4000);
-		mutASSERT(this->isOpen 
+		mutASSERT(this->isOpen
 			  || ctrl == midi::PITCH_BEND_SENSITIVITY
 			  || ctrl == midi::LOCAL_ON_OFF
 			  || ctrl == midi::OMNI_ON
@@ -466,8 +466,11 @@ namespace mutabor {
 
 				// this might change the index (e.g. RPN/NRPN coarse/fine)
 				Cd[i].set_controller(ctrl, value);
+
+
+
 				newctrl = Cd[i].get_index(ctrl);
-				
+
 				if (newctrl == -1) continue;
 
 				if (newctrl < 0x10000) {
@@ -486,12 +489,12 @@ namespace mutabor {
 					controller(i,midi::DATA_ENTRY_COARSE, value >> 7 & 0x7F);
 					controller(i,midi::DATA_ENTRY_FINE, value & 0x7F);
 				}
-				
+
 				// sustained section contains only inactive MIDI channels
 				if (newctrl == midi::HOLD_PEDAL_ON_OFF
 				    && !ton_auf_kanal[i].active) {
 					channel_queue.sustain_channel(i, value > 0x40);
-				} 
+				}
 			}
 	}
 
@@ -504,7 +507,7 @@ namespace mutabor {
 				int8_t controller_value = cd.get_controller(midi::HOLD_PEDAL_ON_OFF);
 				controller(i, midi::HOLD_PEDAL_ON_OFF, controller_value);
 				Cd[i].set_controller(midi::HOLD_PEDAL_ON_OFF, controller_value);
-				
+
 				channel_queue.sustain_channel(i);
 			}
 	}
@@ -517,9 +520,9 @@ namespace mutabor {
 		TRACEC;
 
 		for (int i = 0; i < 16; i++)
-			if ( ton_auf_kanal[i].active 
+			if ( ton_auf_kanal[i].active
 			     && (ton_auf_kanal[i].unique_id == id)
-			     && (ton_auf_kanal[i].inkey == inkey) 
+			     && (ton_auf_kanal[i].inkey == inkey)
 			     && (ton_auf_kanal[i].channel == channel) )
 				return ton_auf_kanal[i].midi_channel;
 
@@ -541,7 +544,7 @@ namespace mutabor {
 			case midi::AFTER_TOUCH:
 			case midi::CONTROLLER:
 			case midi::PITCH_BEND:
-				if (n-pos < 3) 
+				if (n-pos < 3)
 					return;
 				if (p[pos+1] & 0x80) {
 					pos++;
@@ -550,24 +553,24 @@ namespace mutabor {
 				} else {
 					Out(channel, command, p[pos+1], p[pos+2]);
 					last_command = p[pos];
-					pos += 3; 
+					pos += 3;
 					datalength = 2;
 				}
 				break;
 			case midi::PROGRAM_CHANGE:
 			case midi::CHANNEL_PRESSURE:
-				if (n-pos < 2) 
+				if (n-pos < 2)
 					return;
 				if (p[pos+1] & 0x80) {
 					pos++;
 				} else {
 					Out(channel, command, p[pos+1]);
 					last_command = p[pos];
-					pos += 2; 
+					pos += 2;
 					datalength = 1;
 				}
 				break;
-				
+
 			case midi::SYSTEM:
 				if (!(channel & 0x08)) datalength = 0;
 				channel = -1;
@@ -575,7 +578,7 @@ namespace mutabor {
 				case midi::SYSEX_START:
 					{
 						size_t counter = pos + 1;
-						while (counter < n && 
+						while (counter < n &&
 						       p[counter] != midi::SYSEX_END) {
 							if (p[counter] & 0x80) {
 								break;
@@ -591,17 +594,17 @@ namespace mutabor {
 					break;
 				case midi::QUARTER_FRAME:
 				case midi::SONG_SELECT:
-					if (n-pos < 2) 
+					if (n-pos < 2)
 						return;
 					if (p[pos+1] & 0x80) {
 						pos++;
 					} else {
 						Out(channel, command, p[pos+1]);
-						pos += 2; 
+						pos += 2;
 					}
 					break;
 				case midi::SONG_POSITION:
-					if (n-pos < 3) 
+					if (n-pos < 3)
 						return;
 					if (p[pos+1] & 0x80) {
 						pos++;
@@ -609,7 +612,7 @@ namespace mutabor {
 						pos += 2;
 					} else {
 						Out(channel, command, p[pos+1], p[pos+2]);
-						pos += 3; 
+						pos += 3;
 					}
 					break;
 
@@ -626,12 +629,12 @@ namespace mutabor {
 				default:
 					pos++;
 				}
-			default: 
+			default:
 				command = last_command & midi::TYPE_MASK;
 				channel = last_command & midi::CHANNEL_MASK;
 				switch (datalength) {
-				case 2: 
-					if (n-pos < 2) 
+				case 2:
+					if (n-pos < 2)
 						return;
 					if (p[pos+1] & 0x80) {
 						pos++;
@@ -640,7 +643,7 @@ namespace mutabor {
 						pos += 2;
 					}
 					break;
-				case 1: 
+				case 1:
 					Out(channel,command,p[pos++]);
 					break;
 				default:
@@ -649,10 +652,10 @@ namespace mutabor {
 					pos++;
 				}
 			}
-			
+
 		}
 	}
-	
+
 	template<class T, class D>
 	void CommonMidiOutput<T,D>::do_Quiet(Route r, int type)
 	{
@@ -660,7 +663,7 @@ namespace mutabor {
 		TRACEC;
 #ifdef DEBUG
 		for (int i = 0; i < 16; i++) {
-			if ( ton_auf_kanal[i].active ) 
+			if ( ton_auf_kanal[i].active )
 				mutASSERT(ton_auf_kanal[i].channel != r->get_session_id() );
 					//do_NoteOff(r->GetBox(), ton_auf_kanal[i].inkey, 64, r, ton_auf_kanal[i].unique_id, false);
 		}
@@ -721,9 +724,9 @@ namespace mutabor {
 
 		case midi::NOTE_ON: // Note On
 			if ( (midiCode & 0x7f0000) > 0 ) {
-				this->NoteOn(route, 
+				this->NoteOn(route,
 				       (midiCode >> 8) & 0xff,
-				       (midiCode >> 16) & 0xff,	      
+				       (midiCode >> 16) & 0xff,
 				       MidiChannel,
 				       channel_data[MidiChannel],
 				       NULL);
@@ -732,7 +735,7 @@ namespace mutabor {
 
 		case midi::NOTE_OFF: // Note Off
 			this->NoteOff(route,
-				(midiCode >> 8) & 0xff, 
+				(midiCode >> 8) & 0xff,
 				(midiCode >> 16) & 0xff,
 				MidiChannel);
 			break;
@@ -765,12 +768,14 @@ namespace mutabor {
 				break;
 			}
 			break;
-			
+
 			if (propagate)
-				channel_data[MidiChannel].set_controller((midiCode >> 8) & 0xff, 
-						       (midiCode >> 16) & 0xff);
+				channel_data[MidiChannel].set_controller((midiCode >>  8) & 0xff,
+									 (midiCode >> 16) & 0xff);
+
 			if (panic)
 				this->Panic((midiCode >> 8) & 0xff,MidiChannel);
+
 			if (reset)
 				channel_data[MidiChannel].Reset();
 			if (propagate)
@@ -781,7 +786,7 @@ namespace mutabor {
 		case midi::KEY_PRESSURE:
 #warning "implement key_pressure"
 		case midi::CHANNEL_PRESSURE: // Key Pressure, Controler, Channel Pressure
-#warning "implement channel_pressure"			
+#warning "implement channel_pressure"
 			break;
 
 		case midi::SYSTEM:
@@ -792,7 +797,7 @@ namespace mutabor {
 #else
                         ;
 #endif
-			
+
 		}
 
 		route->MidiAnalysis(midiCode);
@@ -804,7 +809,7 @@ namespace mutabor {
 	{
 #warning "Unimplemented SysEx ProceedRoute"
 		return;
-	
+
 		DEBUGLOG (midifile, _T("Code: %p, Active: %d, Out: %p"),
 			  (void*)midiCode,
 			  route->GetActive(),
@@ -821,7 +826,7 @@ namespace mutabor {
 				this->NoteOn(route,
 					     midiCode->at(1),
 					     midiCode->at(2),
-					     MidiChannel, 
+					     MidiChannel,
 					     channel_data[MidiChannel],
 					     NULL);
 				break;
@@ -829,7 +834,7 @@ namespace mutabor {
 
 		case midi::NOTE_OFF: // Note Off
 			this->NoteOff(route,
-				      midiCode->at(1), 
+				      midiCode->at(1),
 				      midiCode->at(2),
 				      MidiChannel);
 			break;
@@ -863,23 +868,24 @@ namespace mutabor {
 				break;
 			}
 			break;
-			
+
 			if (propagate)
-				channel_data[MidiChannel].set_controller(midiCode->at(1), 
+				channel_data[MidiChannel].set_controller(midiCode->at(1),
 							       midiCode->at(2));
 			if (panic)
 				this->Panic(midiCode->at(1),MidiChannel);
 			if (reset)
 				channel_data[MidiChannel].Reset();
 			if (propagate)
-				route -> Controller(midiCode->at(1),  
-						    midiCode->at(2));
+				route -> Controller(midiCode->at(1),
+						    midiCode->at(2),
+						    MidiChannel);
 		}
 			break;
 		case midi::KEY_PRESSURE:
 #warning "implement key_pressure"
 		case midi::CHANNEL_PRESSURE: // Key Pressure, Controler, Channel Pressure
-#warning "implement channel_pressure"			
+#warning "implement channel_pressure"
 			break;
 
 		case midi::SYSTEM:
@@ -891,7 +897,7 @@ namespace mutabor {
 #else
                         ;
 #endif
-			
+
 		}
 
 		// Midianalyse
@@ -906,9 +912,9 @@ namespace mutabor {
 	}
 
 
-	/** 
+	/**
 	 * Check which routes shall work on the midi code and forward the code.
-	 * 
+	 *
 	 * \param midiCode Code to be processed
 	 * \param data     Additional data that might be necessardy
 	 */// Routen testen und jenachdem entsprechend Codeverarbeitung
@@ -918,8 +924,8 @@ namespace mutabor {
 	{
 		bool DidOut = 0;
 		routeListType elseroutes;
-		
-		for (routeListType::iterator R = this->routes.begin(); 
+
+		for (routeListType::iterator R = this->routes.begin();
 		     R != this->routes.end(); R++)
 			switch (shouldProceed(*R,midiCode, data)) {
 			case ProceedYes:
@@ -935,16 +941,16 @@ namespace mutabor {
 				UNREACHABLEC;
 			}
 		if (!DidOut) {
-			for (routeListType::iterator R = elseroutes.begin(); 
+			for (routeListType::iterator R = elseroutes.begin();
 			     R != elseroutes.end(); R++) {
 				ProceedRoute(midiCode,*R, channel_offset);
 			}
 		}
 	}
 
-	/** 
+	/**
 	 * Check which routes shall work on the midi code and forward the code.
-	 * 
+	 *
 	 * \param midiCode Code to be processed
 	 * \param data     Additional data that might be necessardy
 	 */// Routen testen und jenachdem entsprechend Codeverarbeitung
@@ -954,8 +960,8 @@ namespace mutabor {
 	{
 		bool DidOut = 0;
 		routeListType elseroutes;
-		
-		for (routeListType::iterator R = this->routes.begin(); 
+
+		for (routeListType::iterator R = this->routes.begin();
 		     R != this->routes.end(); R++)
 			switch (shouldProceed(*R,midiCode, data)) {
 			case ProceedYes:
@@ -971,7 +977,7 @@ namespace mutabor {
 				UNREACHABLEC;
 			}
 		if (!DidOut) {
-			for (routeListType::iterator R = elseroutes.begin(); 
+			for (routeListType::iterator R = elseroutes.begin();
 			     R != this->routes.end(); R++) {
 				ProceedRoute(midiCode,*R, channel_offset);
 			}

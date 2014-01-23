@@ -63,9 +63,12 @@
 #include "src/kernel/Runtime.h"
 
 
-class  midicmnOutputDevice:public mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider,mutabor::OutputDeviceClass> {
+class  midicmnOutputDevice:
+	public mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider,
+					 mutabor::OutputDeviceClass> {
 public:
-	typedef mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider,mutabor::OutputDeviceClass> base;
+	typedef mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider,
+					  mutabor::OutputDeviceClass> base;
 
 	midicmnOutputDevice(wxString name, 
 			    int id = -1, 

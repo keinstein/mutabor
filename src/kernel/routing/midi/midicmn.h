@@ -50,7 +50,7 @@
 // system headers which do seldom change
 #include <vector>
 
-#define DEFAULT_BENDING_RANGE 2l		
+#define DEFAULT_BENDING_RANGE 2l
 
 namespace mutabor {
 
@@ -70,17 +70,17 @@ namespace mutabor {
 						      last_sustained(basetype::end()){
 			init();
 		}
-		
-		
+
+
 		void init () {
 			first_free = this->begin();
 			last_sustained = this->end();
-			
+
 			for (T i = 0 ; i < this->size(); i++) {
 				this->at(i) = i;
 			}
 		}
-		
+
 		iterator find_channel(T nr) {
 			return std::find(this->begin(),this->end(),nr);
 		}
@@ -89,7 +89,7 @@ namespace mutabor {
 			return std::find(this->begin(),this->end(),nr);
 		}
 
-		
+
 		template<class F>
 		iterator find_matching_channel  (iterator start, F filter) {
 			if (start == this->end()) {
@@ -106,19 +106,19 @@ namespace mutabor {
 		}
 
 
-		/** 
-		 * Reserves the first free channel. 
-		 * That is usually the longest unused one. 
+		/**
+		 * Reserves the first free channel.
+		 * That is usually the longest unused one.
 		 *
 		 * \note This can change if certain Channels are
 		 * registered to be sustained. In that case they are
 		 * postponed until no channels are availlable anymore.
 		 *
 		 * Sustaining is *not* handled by this class.
-		 * 
+		 *
 		 * \return number of the first free channel
 		 * \retval end() if no free or sustained channel can be found
-		 */		
+		 */
 		template<class F>
 		const_iterator reserve_channel_filtered (F filter) {
 			iterator actual = find_matching_channel(first_free, filter);
@@ -136,41 +136,41 @@ namespace mutabor {
 					}
 					mutASSERT(first_free == this->end() || first_free <= last_sustained);
 				} else {
-					// we are rearranging used channels 
+					// we are rearranging used channels
 					// thus first_free doesn't change
 					move_to_end(actual, first_free);
 					actual = first_free - 1;
-				} 
+				}
 			}
 			return actual;
 		}
 
-		/** 
+		/**
 		 * Forcibly reserve given channel regardless of its state.
-		 * This function is used if there are no free channels left 
+		 * This function is used if there are no free channels left
 		 * and the system frees a channel depending on semantic data.
-		 * 
+		 *
 		 * \param nr Channel to be reserved
-		 * 
+		 *
 		 * \return iterator to the channel.
 		 */
 		iterator reserve_channel(T nr) {
 			return reserve_channel(find_channel(nr));
 		}
 
-		/** 
+		/**
 		 * Find and free a channel.
-		 * \note the channel must not be freed already. 
-		 * 
+		 * \note the channel must not be freed already.
+		 *
 		 * \param nr Channel to bee freed.
 		 */
 		void free_channel (T nr) {
 			free_channel(find_channel(nr));
 		}
 
-		/** 
+		/**
 		 * Mark a channel to be free.
-		 * 
+		 *
 		 * \param current iterator pointing to the channel to be regarded as free.
 		 */
 		void free_channel (iterator current) {
@@ -191,21 +191,21 @@ namespace mutabor {
 			--first_free;
 		}
 
-		/** 
+		/**
 		 * Find and sustain a channel.
-		 * \note the channel must not be sustaind already. 
-		 * 
+		 * \note the channel must not be sustaind already.
+		 *
 		 * \param nr Channel to bee sustaind.
 		 */
 		void sustain_channel (T nr, bool sustain = true) {
-			if (sustain) 
+			if (sustain)
 				sustain_channel(find_channel(nr));
 			else unsustain_channel(find_channel(nr));
 		}
 
-		/** 
+		/**
 		 * Mark a channel to be sustained.
-		 * 
+		 *
 		 * \param current iterator pointing to the channel to be regarded as sustained.
 		 */
 		iterator sustain_channel (iterator current) {
@@ -220,12 +220,12 @@ namespace mutabor {
 			if (current < first_free) --first_free;
 			return this->end() - 1;
 		}
-		/** 
+		/**
 		 * Unmark channel to be sustained;
-		 * 
+		 *
 		 * \param current iterator pointing to the channel to be regarded as sustained.
 		 */
-		void unsustain_channel (iterator current) {			
+		void unsustain_channel (iterator current) {
 			free_channel(current);
 		}
 
@@ -235,10 +235,10 @@ namespace mutabor {
 	protected:
 		iterator first_free;
 		iterator last_sustained;
-		
-		/** 
+
+		/**
 		 * Move current pointer to the end of a range.
-		 * 
+		 *
 		 * \param current current position
 		 * \param end position after the end position of the element.
 		 */
@@ -251,9 +251,9 @@ namespace mutabor {
 			std::rotate(current, current+1, end);
 		}
 
-		/** 
+		/**
 		 * Move current pointer to the beginning of a range.
-		 * 
+		 *
 		 * \param current current position
 		 * \param final position where the element should be moved to
 		 */
@@ -265,7 +265,7 @@ namespace mutabor {
 			}
 			std::rotate(final, current, current+1);
 		}
-		
+
 	};
 	typedef channel_queue_template<unsigned char,16> channel_queue_type;
 
@@ -273,7 +273,7 @@ namespace mutabor {
 	public:
 		int pitch;
 		int bend;
-		
+
 		pitch_bend_type & operator -= (const pitch_bend_type & other) {
 			pitch -= other.pitch;
 			bend -= other.bend;
@@ -290,32 +290,32 @@ namespace mutabor {
 		bool active;      //< is this tone active or free?
 		int inkey;        //< internal key id. provided by input device
 		int velocity;     //< attack velocity or note volume
-		pitch_bend_type outkey;   
+		pitch_bend_type outkey;
 		int channel;      //< route that broght the note to this device
 		int midi_channel; //< MIDI channel (unsused)
 		size_t unique_id; //< unique id defined by input device
                 long tuned_key;   //< tuned key
 	} TonAufKanal;
 
-      
-	
-	
-	/** 
+
+
+
+	/**
 	 * A simple MIDI output provider describing the API and providing simple means for debugging.
-	 * 
+	 *
 	 */
 	class DebugMidiOutputProvider {
 	public:
-		
+
 		// Flawfinder: ignore
 		DebugMidiOutputProvider(Device * d):device(d), data(),open(false) {}
 
-		
-		/** 
+
+		/**
 		 * Opens the output.
-		 * 
-		 * 
-		 * \retval true on success.  
+		 *
+		 *
+		 * \retval true on success.
 		 * \retval false if an error
 		 * occurred. In that case assume that everything below
 		 * this function has been restored to closed state.
@@ -330,11 +330,11 @@ namespace mutabor {
 		}
 
 
-		/** 
+		/**
 		 * Opens the output.
-		 * 
-		 * 
-		 * \retval true on success.  
+		 *
+		 *
+		 * \retval true on success.
 		 * \retval false if an error
 		 * occurred. In that case assume that everything below
 		 * this function has been restored to closed state.
@@ -347,14 +347,14 @@ namespace mutabor {
 			data += _T("...closed.\n");
 		}
 
-		/** 
+		/**
 		 * Outputs a three-byte message merging the channel into the data.
-		 * 
+		 *
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
-		 *        subdevices is managed by the OutputProvider 
-		 * \param byte1 1st byte 
-		 * \param byte2 2nd byte 
+		 *        subdevices is managed by the OutputProvider
+		 * \param byte1 1st byte
+		 * \param byte2 2nd byte
 		 * \param byte3 3rd byte
 		 */
 		DebugMidiOutputProvider & operator() (int channel,
@@ -366,20 +366,20 @@ namespace mutabor {
 			byte1 |= channel & midi::CHANNEL_MASK;
 			return RawMsg(channel,byte1,byte2,byte3);
 		}
-		/** 
+		/**
 		 * Outputs a raw three-byte message.
-		 * 
+		 *
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
-		 *        subdevices is managed by the OutputProvider 
-		 * \param byte1 1st byte 
-		 * \param byte2 2nd byte 
+		 *        subdevices is managed by the OutputProvider
+		 * \param byte1 1st byte
+		 * \param byte2 2nd byte
 		 * \param byte3 3rd byte
 		 */
 		DebugMidiOutputProvider & RawMsg (int channel,
 						  uint8_t byte1,
 						  uint8_t byte2,
-						  uint8_t byte3) { 
+						  uint8_t byte3) {
 			// Flawfinder: ignore
 			mutASSERT(open);
 			mutString tmp;
@@ -390,12 +390,12 @@ namespace mutabor {
 			return *this;
 		}
 
-		/** 
+		/**
 		 * Outputs a two-byte message merging the channel into the message.
-		 * 
+		 *
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
-		 *        subdevices is managed by the OutputProvider 
+		 *        subdevices is managed by the OutputProvider
 		 * \param byte1 1st byte
 		 * \param byte2 2nd byte
 		 */
@@ -407,12 +407,12 @@ namespace mutabor {
 			byte1 |= channel & midi::CHANNEL_MASK;
 			return RawMsg(channel,byte1,byte2);
 		}
-		/** 
+		/**
 		 * Outputs a two-byte message.
-		 * 
+		 *
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
-		 *        subdevices is managed by the OutputProvider 
+		 *        subdevices is managed by the OutputProvider
 		 * \param byte1 1st byte
 		 * \param byte2 2nd byte
 		 */
@@ -428,13 +428,13 @@ namespace mutabor {
 			data += tmp + _T("\n");
 			return * this;
 		}
-		
-		/** 
+
+		/**
 		 * Outputs a one-byte message.
-		 * 
+		 *
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
-		 *        subdevices is managed by the OutputProvider 
+		 *        subdevices is managed by the OutputProvider
 		 * \param byte1 byte
 		 */
 		DebugMidiOutputProvider & RawMsg (int channel, uint8_t byte1) {
@@ -451,12 +451,12 @@ namespace mutabor {
 
 
 
-		/** 
+		/**
 		 * Outputs a System Exclusive Message.
-		 * 
+		 *
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
-		 *        subdevices is managed by the OutputProvider 
+		 *        subdevices is managed by the OutputProvider
 		 * \param message byte array containang the message
 		 * \param count number of bytes to be sent
 		 */
@@ -471,16 +471,16 @@ namespace mutabor {
 			}
 			WriteTime();
 			mutString tmp = mutString::Format(_T("%3d: SysEx"),channel);
-			while ( from != to) 
+			while ( from != to)
 				tmp += mutString::Format(_T(" %02x"),*(from++));
-			
+
 			DEBUGLOG(midiio,_T("MIDI OUT to %s"),tmp.c_str());
 			data += tmp + _T(" End\n");
 			return * this;
 		}
 
 		operator mutString () { return data; }
-		void ClearData() { data = _T(""); } 
+		void ClearData() { data = _T(""); }
 	protected:
 		Device * device;
 		/* the data fields not not necessary for and output provider */
@@ -497,7 +497,7 @@ namespace mutabor {
 		}
 	};
 
-	
+
 	template<class T, class D>
 	class CommonMidiOutput:public D {
 	public:
@@ -516,15 +516,26 @@ namespace mutabor {
 
 		void Close();
 		channel_queue_type::const_iterator EmergencyFindChannel(RouteClass * r);
-		void UpdateControllers(int channel, const ChannelData & input_channel_data) {
+
+		/**
+		 * Update the controller data of a channel. A
+		 * smplified characterization would be: copy channnel
+		 * data.
+		 *
+		 * \param channel MIDI output channel whose controller
+		 * data should be updated
+		 * \param input_channel_data reference ChannelData objecet.
+		 */
+		void UpdateControllers(int channel,
+				       const ChannelData & input_channel_data) {
 			ScopedLock lock(this->write_lock);
 			do_UpdateControllers(channel,input_channel_data);
 		}
 
-		/** 
+		/**
 		 * Copies the program change and bank data from the input channel to the output
 		 * choannel and issues the corresponding bank change and prgoram change messages.
-		 * 
+		 *
 		 * \param input_channel_data input to be copied from
 		 * \param output_data output to be copied to
 		 * \param channel MIDI channel to output the data to
@@ -538,7 +549,7 @@ namespace mutabor {
 //		midiprovider & GetProvider () { return Out(); }
 		void SetBendingRange(int br) {
 			ScopedLock lock(this->write_lock);
-			bending_range = br; 
+			bending_range = br;
 			if (!this->isOpen) return;
 			int max = GetMaxChannel();
 			for (int i = GetMinChannel() ; i < max ; i++) {
@@ -546,7 +557,7 @@ namespace mutabor {
 			}
 		}
 		int GetBendingRange() const { return bending_range; }
-						   
+
 		virtual int GetMaxChannel() const = 0;
 		virtual int GetMinChannel() const = 0;
 
@@ -557,22 +568,22 @@ namespace mutabor {
 					bank_mode(msb_first),
 					channel_queue(),
 					nKeyOn(0) {}
-		
+
 		bool do_Open();
-		void do_NoteOn(Box box, 
-			    int inkey, 
-			    int velocity, 
-			    RouteClass * r, 
-			    size_t id, 
+		void do_NoteOn(Box box,
+			    int inkey,
+			    int velocity,
+			    RouteClass * r,
+			    size_t id,
 			    const ChannelData & input_channel_data);
 
-		void do_NoteOff(Box box, 
-			     int inkey, 
-			     int velo, 
-			     RouteClass * r, 
+		void do_NoteOff(Box box,
+			     int inkey,
+			     int velo,
+			     RouteClass * r,
 			     size_t id,
 			     bool is_note_on /* = false */
-			);	
+			);
 		void do_UpdateTones(RouteClass * route);
 		void do_Controller(int mutabor_channel, int controller, int value);
 //		void Sustain(int channel, const ChannelData & cd);
@@ -591,8 +602,8 @@ namespace mutabor {
 			controller(channel,midi::DATA_ENTRY_FINE, 0);
 		}
 
-		/** 
-		 * Gis output is unimplemented. 
+		/**
+		 * Gis output is unimplemented.
 		 * Ignore GIS tokens.
 		 */
 		void do_Gis(GisToken*, char) {}
@@ -603,9 +614,9 @@ namespace mutabor {
 			do_SplitOut(data.data(),data.size());
 		}
 		void do_UpdateControllers(int channel, const ChannelData & input_channel_data);
-		/** 
+		/**
 		 * Sends a pitchbend signal.
-		 * 
+		 *
 		 * \param channel Channel on which the data shall be sent.
 		 * \param value   Data to be sent range has already been honoured Center is at 0.
 		 */
@@ -617,15 +628,15 @@ namespace mutabor {
 				boost::throw_exception(TooSmallPitchBend());
 
 			int pb = value + pitch_bend_border;
-			DEBUGLOG2(midiio,_T("MIDI_PITCH(%x/%d,%x/%d) = %x/%d (%x/%d, %x/%d, %x/%d)"), 
+			DEBUGLOG2(midiio,_T("MIDI_PITCH(%x/%d,%x/%d) = %x/%d (%x/%d, %x/%d, %x/%d)"),
 				  channel,channel,
 				  value,value,
 				  pb,pb,
 				  (int)midi::PITCH_BEND + channel,(int)midi::PITCH_BEND + channel,
 				  pb & 0x7f, pb & 0x7f,
-				  (0x40 + (pb >> 7) ) & 0x7f, 
+				  (0x40 + (pb >> 7) ) & 0x7f,
 				  (0x40 + (pb >> 7) ) & 0x7f );
-			Out (channel, midi::PITCH_BEND, 
+			Out (channel, midi::PITCH_BEND,
 			     pb & 0x7f, (pb >> 7) & 0x7f);
 		}
 
@@ -664,7 +675,7 @@ namespace mutabor {
 				}
 			}
 
-			if ( sound != -1 ) 
+			if ( sound != -1 )
 				Out(channel,midi::PROGRAM_CHANGE, sound);
 		}
 
@@ -683,7 +694,7 @@ namespace mutabor {
 
 
 
-		
+
 		long fix_bend(long bend) {
 			long retval;
 			if (bend < 0) {
@@ -693,25 +704,25 @@ namespace mutabor {
 				retval = b / (0x2000 * bending_range);
 
 			}
-			
-			/* A naive approach assumes that pitch bend ranges 
-			   from -0x2000 to 0x2000. Actually the range lasts 
+
+			/* A naive approach assumes that pitch bend ranges
+			   from -0x2000 to 0x2000. Actually the range lasts
 			   from -0x2000 to 0x1fff.
 
 			   The difference is one step or
-			   (pitch_bend_range / 0x1fff). For 12HT pitch bend range 
+			   (pitch_bend_range / 0x1fff). For 12HT pitch bend range
 			   this means about 0.3ct.
 
-			   Note: The auditory system has about 4000 receptors, 
-			   which proviedes an average distance of 3ct. But they 
-			   are not equally distributed and the amplification 
-			   is not linear, which makes difference tones to be real, 
+			   Note: The auditory system has about 4000 receptors,
+			   which proviedes an average distance of 3ct. But they
+			   are not equally distributed and the amplification
+			   is not linear, which makes difference tones to be real,
 			   detectable frequencies.
 
 			   In absense of the standard (it's at work) I
 			   implemented the complicate correct formula above.
 			*/
-			
+
 			// must solve the equation 0x1 00 00 00 / divisor + 0x 3f ff = 0x 7f ff
 			return retval / 0x800; //we can't use >> because of negative values
 		}
@@ -749,7 +760,7 @@ namespace mutabor {
 
 
 
-			
+
 
 	protected:
 		midiprovider Out;
@@ -761,18 +772,18 @@ namespace mutabor {
 		TonAufKanal ton_auf_kanal[16];
 		int nKeyOn;
 
-		CommonMidiOutput():base(), 
+		CommonMidiOutput():base(),
 				   Out(this),
 				   bending_range (2),
 				   bank_mode(lsb_first),
 				   nKeyOn(0) { }
 
-		CommonMidiOutput(wxString name, 
-				 int id = -1, 
+		CommonMidiOutput(wxString name,
+				 int id = -1,
 				 int bendingRange = 2)
 			: base(name, id),
 			  Out(this),
-			  bending_range (bendingRange), 
+			  bending_range (bendingRange),
 			  bank_mode(lsb_first),
 			  nKeyOn(0)
 			{
@@ -790,7 +801,7 @@ namespace mutabor {
 
 	protected:
 
-		CommonMidiInput(const mutStringRef name = mutEmptyString, 
+		CommonMidiInput(const mutStringRef name = mutEmptyString,
 				MutaborModeType mode = DeviceStop,
 				int id = -1):parenttype(name,mode,id) {}
 
@@ -801,8 +812,8 @@ namespace mutabor {
 		void ProceedRoute(DWORD midiCode, Route route, int channel_offset);
 		void ProceedRoute(const std::vector<unsigned char > * midiCode, Route route, int channel_offset);
 		virtual proceed_bool shouldProceed(Route R, DWORD midiCode,  int data =0) = 0;
-		virtual proceed_bool shouldProceed(Route R, 
-						   const std::vector<unsigned char > * midiCode,  
+		virtual proceed_bool shouldProceed(Route R,
+						   const std::vector<unsigned char > * midiCode,
 						   int data =0) = 0;
 	};
 

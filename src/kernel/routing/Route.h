@@ -82,19 +82,19 @@ namespace mutabor {
 		RTchannel,						 /**< use only a certain channel range (depends on the input device type) */
 		RTstaff							 /**< use only a certain staff/track/… range (depends on the input device type) */
 	};
-	
+
 	extern const mutString RTName[];
-	
+
 	class OutputDeviceClass;
 	typedef boost::intrusive_ptr<OutputDeviceClass> OutputDevice;
 	class InputDeviceClass;
-	typedef boost::intrusive_ptr<InputDeviceClass> InputDevice;	
+	typedef boost::intrusive_ptr<InputDeviceClass> InputDevice;
 	class ChannelData;
 	class BoxClass;
-	typedef boost::intrusive_ptr<BoxClass> Box;	
-	
+	typedef boost::intrusive_ptr<BoxClass> Box;
+
 	class RouteFactory;
-	
+
 	/// Class for managing routing
 	/**
 	* As we are using smart pointers the Route gets deleted, when no pointers
@@ -127,12 +127,12 @@ namespace mutabor {
 			invalid_argument(gettext_noop("No such output device")) {
 				route = const_cast<thistype *>(r);
 			}
-			virtual ~NoOutputDevice() throw() {} 
+			virtual ~NoOutputDevice() throw() {}
 		};
 		class NoInputDevice {
 		public:
 			Route route;
-			NoInputDevice(const thistype * r) 
+			NoInputDevice(const thistype * r)
 			{
 				route = const_cast<thistype *>(r);
 			}
@@ -141,17 +141,17 @@ namespace mutabor {
 		virtual ~TRouteClass();
 
 		/// Write the route settings into a tree based configuration.
-		/** \argument config (tree_storage &) configuration where 
+		/** \argument config (tree_storage &) configuration where
 		 * the route settings will be stored
 		 */
 		virtual void Save(tree_storage & config);
 
 		/// Read the route into from a tree based configuration.
-		/** \argument config (tree_storage &) configuration 
+		/** \argument config (tree_storage &) configuration
 		 * where the route settings will be read from
 		 */
 		virtual void Load(tree_storage & config);
-	
+
 
 		char Check(int i) {
 			return (IFrom <= i && i <= ITo);
@@ -181,8 +181,8 @@ namespace mutabor {
 			}
 			if (Out) {
 				Out->NoteOn(box,
-					    key, velocity, this, make_unique, 
-					    input_channel_data);						    
+					    key, velocity, this, make_unique,
+					    input_channel_data);
 			}
 		}
 
@@ -190,15 +190,15 @@ namespace mutabor {
 			     int velocity,
 			     size_t make_unique) {
 			if (Active) {
-				box->DeleteNote(key, 
-					       make_unique, 
+				box->DeleteNote(key,
+					       make_unique,
 					       session_id);
 			}
 			if (Out) {
-				Out->NoteOff(box, 
-					     key, 
+				Out->NoteOff(box,
+					     key,
 					     velocity,
-					     this, 
+					     this,
 					     make_unique,
 					     false);
 			}
@@ -230,12 +230,12 @@ namespace mutabor {
 		}
 
 		void UpdateTones() {
-			if (Out && Out->IsOpen()) 
+			if (Out && Out->IsOpen())
 				Out->UpdateTones(this);
 		}
 
 		int GetChannel(int key, size_t channel, size_t id) {
-			if (channel == session_id()) 
+			if (channel == session_id())
 				return Out->GetChannel(key, channel, id);
 			return midi::NO_CHANNEL;
 		}
@@ -243,14 +243,14 @@ namespace mutabor {
 		void Panic(int type) {
 			if (box)
 				box-> Panic(this,type);
-			if (Out) 
+			if (Out)
 				Out -> Quiet(this, type);
 		}
 
 		void Panic(int type, size_t unique_id) {
 			if (box)
 				box-> Panic(this, type, unique_id);
-			if (Out) 
+			if (Out)
 				Out -> Quiet(this, type, unique_id);
 		}
 
@@ -265,10 +265,10 @@ namespace mutabor {
 		/// add a new box
 		virtual void Add(Box & b);
 		/// replace an existing output device
-		virtual bool Replace (OutputDevice & olddev, 
+		virtual bool Replace (OutputDevice & olddev,
 				      OutputDevice & newdev);
 		/// replace an existing input device
-		virtual bool Replace (InputDevice & olddev, 
+		virtual bool Replace (InputDevice & olddev,
 				      InputDevice & newdev);
 		/// replace an existing box
 		virtual bool Replace (Box & oldbox, Box & newbox);
@@ -301,75 +301,75 @@ namespace mutabor {
 			return boxid;
 		}
 
-	
+
 		bool GetActive() const {
 			return Active;
 		}
-	
+
 		void SetActive(bool active) {
 			Active = active;
 		}
-	
+
 		Box GetBox() const {
 			return box;
 		}
-	
+
 		virtual void SetBox(Box b) {
 			box = b;
 		}
-	
+
 		RouteType GetType() const {
 			return Type;
 		}
-	
+
 		void SetType(RouteType type) {
 			Type = type;
 		}
-	
+
 		const mutString & GetTypeName()	{
 			return RTName[Type];
 		}
-	
+
 		int GetInputFrom() const {
 			return IFrom;
 		}
-	
+
 		void SetInputFrom(int i) {
 			IFrom = i;
 		}
-	
+
 		int GetOutputFrom() const {
 			return OFrom;
 		}
-	
+
 		void SetOutputFrom(int o) {
 			OFrom = o;
 		}
-	
+
 		int GetInputTo() const {
 			return ITo;
 		}
-	
+
 		void SetInputTo(int i) {
 			ITo = i;
 		}
-	
+
 		int GetOutputTo() const	{
 			return OTo;
 		}
-	
+
 		void SetOutputTo(int o)	{
 			OTo = o;
 		}
-	
-	
+
+
 		bool OutputAvoidDrumChannel() const {
 			return ONoDrum;
 		}
 		void OutputAvoidDrumChannel(bool avoid) {
 			ONoDrum = avoid;
 		}
-	
+
 #if 0
 		Route  GetNext() const {
 			return Next;
@@ -378,11 +378,11 @@ namespace mutabor {
 		void SetNext(Route  route) {
 			Next = route;
 		}
-#endif	
+#endif
 		int get_routefile_id () const {
 			return routefile_id;
 		}
-	
+
 		size_t get_session_id () const {
 			return session_id;
 		}
@@ -390,7 +390,7 @@ namespace mutabor {
 		static const  routeListType & GetRouteList() {
 			return routeList;
 		}
-#if 0	
+#if 0
 		Route  GetGlobalNext() {
 			return globalNext;
 		}
@@ -402,14 +402,14 @@ namespace mutabor {
 		 * As we are using smart pointers the Route gets deleted, when no pointers
 		 * point to it any more. As we want to interactively manage routes,
 		 * We must allow routes to have no input device attached to it. This
-		 * function explicitely allows to delete the object when it is not used 
+		 * function explicitely allows to delete the object when it is not used
 		 * any more.
 		 */
 		virtual void Destroy();
-	
+
 		/// Initialize the internal device identifiers.
-		/** This function sets the internal device ids of 
-		 *  all input devices, starting from 0 and 
+		/** This function sets the internal device ids of
+		 *  all input devices, starting from 0 and
 		 *  incrementing by 1
 		 */
 		static void InitializeIds();
@@ -436,7 +436,7 @@ namespace mutabor {
 				TRACET(thistype);
 				d->Destroy();
 
-				mutASSERT(routeList.empty() || 
+				mutASSERT(routeList.empty() ||
 					 d != routeList.front());
 			}
 			mutASSERT(intrusive_ptr_get_refcount(d.get()) <= 1);
@@ -450,10 +450,10 @@ namespace mutabor {
 		OutputDevice Out;
 		InputDevice In;
 		Box box;
-	
+
 		//Route Next;
 
-		// This list is managed automatically and availlable 
+		// This list is managed automatically and availlable
 		// only to not forget about routes. These references must not be counted
 //		Route globalNext;
 		static routeListType routeList;
@@ -463,7 +463,7 @@ namespace mutabor {
 		int outputid;
 		int boxid;
 
-		
+
 		RouteType Type;
 		int IFrom, ITo;
 		bool Active;
@@ -522,11 +522,11 @@ namespace mutabor {
 		virtual void * getUserData() const;
 		static void AppendToRouteList (Route route);
 		static void RemoveFromRouteList (Route route);
-	
+
 		REFPTR_INTERFACE;
 	};
 
-	template<class I, class O, class B> 
+	template<class I, class O, class B>
 	typename TRouteClass<I,O, B>::routeListType TRouteClass<I,O, B>::routeList;
 
 	typedef TRouteClass<InputDevice,OutputDevice, Box>::Route Route;
@@ -539,25 +539,25 @@ namespace mutabor {
 
 	// see Route-inlines for the connecting functions:
 
-       /** Class for creation of Routes.   
+       /** Class for creation of Routes.
 	* This class will create a
 	* route object corresponding to the type given to the Create function.
-	* 
+	*
 	* Though the interface is mainly prepared to provide the
 	* necessary means for adding new route types, it currently
 	* stores only one route factory.
 	*/
-	class RouteFactory { 
-	
+	class RouteFactory {
+
 	public:
 
-		/** 
+		/**
 		 * Douplicate route factory exception.
 		 * This class is thrown if a routefactory is already set.
-		 * 
+		 *
 		 */
 		struct FactoryAlreadySet:public std::logic_error {
-			RouteFactory * old; 
+			RouteFactory * old;
 			RouteFactory * created;
 			FactoryAlreadySet(RouteFactory * o, RouteFactory * n): logic_error(gettext_noop("Route factory already set")),
 											   old(o), created(n) {}
@@ -566,17 +566,17 @@ namespace mutabor {
 		struct RouteFactoryNotSet:public std::logic_error {
 			RouteFactoryNotSet():logic_error(gettext_noop("Trying to create a route without the correct factory. You (the programmer) must create one!")) {}
 		};
-			
-                /** Creates a route Factory.  
+
+                /** Creates a route Factory.
 		 * Constructor. Should be overridden if classes inhert from Route.
-		 */		
+		 */
 		RouteFactory();
 
-		/** Creates a generic route.  
+		/** Creates a generic route.
 		 * This functions creates a
 		 * route object on the heap and returns a smart
 		 * pointer to it. This route will not be preconfigured.
-		 * 
+		 *
 		 * \return Route smart pointer to the newly created route
 		 */
 		static Route Create() {
@@ -588,12 +588,12 @@ namespace mutabor {
 		}
 
 
-		/** Creates a preconfigured route according to the given type. 
+		/** Creates a preconfigured route according to the given type.
 		 * This functions creates a
 		 * route object on the heap and returns a smart
-		 * pointer to it. This route will be preconfigured according 
+		 * pointer to it. This route will be preconfigured according
 		 * the data provided in the arguments.
-		 * 
+		 *
 		 * \param in InputDevice& Reference to a smart pointer
 		 * for the input device where the route starts.
 		 * \param out OutputDevice& End point of the route.
@@ -601,14 +601,14 @@ namespace mutabor {
 		 * \param iFrom start of the range for the input filter. Its meaning depends on the input filter type.
 		 * \param iTo end of the range for the input filter. Its meaning depends on the input filter type.
 		 * \param box box to be used. Values less than 0 indicate a pass through route or a GMN box.
-		 * \param active indicates whether the events on the route may 
+		 * \param active indicates whether the events on the route may
 		 * change the tuning of the box. Regardless of this setting the
-		 * box referenced by the box parameter will influence the 
+		 * box referenced by the box parameter will influence the
 		 * tuning of the events in this route.
 		 * \param oFrom Start of the range of the output filter (will be interpreted by the output device.
 		 * \param oTo End of the reange of the output fileter (will be interpreted by the output device
 		 * \param oNoDrum On MIDI like devices avoid the channel usually used for percussion.
-		 * 
+		 *
 		 * \return Route created by this function (smart pointer).
 		 */
 		inline static Route Create(
@@ -623,15 +623,15 @@ namespace mutabor {
 			int oTo = -1,
 			bool oNoDrum = true);
 
-		/** 
+		/**
 		 * Destroy the route factory. Call this function instead of deleting the factory.
-		 * 
+		 *
 		 */
 
 		static void Destroy() {
 			if (factory)
 				delete factory;
-			else 
+			else
 				boost::throw_exception( RouteFactoryNotSet());
 //				UNREACHABLECT(RouteFactory);
 		}
@@ -643,27 +643,27 @@ namespace mutabor {
 		static void LoadRoutes(tree_storage & config) {
 			if (factory)
 				factory->DoLoadRoutes(config);
-			else 
+			else
 				boost::throw_exception( RouteFactoryNotSet());
 //				UNREACHABLECT(RouteFactory);
 		}
 
 		/// write the routes to the configuration
 		/** \param config configuration to be written to
-		 */ 
+		 */
 		static void SaveRoutes(tree_storage & config) {
 			if (factory)
 				factory->DoSaveRoutes(config);
-			else 
+			else
 				boost::throw_exception( RouteFactoryNotSet());
 			// UNREACHABLECT(RouteFactory);
 		}
 	protected:
-		/** Destructor. 
-		 * This destructor will destroy the route factory. It does not touch the 
+		/** Destructor.
+		 * This destructor will destroy the route factory. It does not touch the
 		 * route objects that are created using this class.
 		 *
-		 * You should not delete the factory directly as it saves a pointer to 
+		 * You should not delete the factory directly as it saves a pointer to
 		 */
 		virtual ~RouteFactory();
 
@@ -673,20 +673,20 @@ namespace mutabor {
 		 *
 		 * Each RouteFactory class must override this function
 		 * to return a route of its type.
-		 * 
+		 *
 		 * \return Route smart pointer to the newly created route
 		 */
 		virtual RouteClass * DoCreate() const __attribute__ ((malloc));
 
-		/** Creates a preconfigured route. 
+		/** Creates a preconfigured route.
 		 * This functions creates a
 		 * route object on the heap and returns a smart
-		 * pointer to it. This route will be preconfigured according 
+		 * pointer to it. This route will be preconfigured according
 		 * the data provided in the arguments.
 		 *
 		 * Each RouteFactory class must override this function
 		 * to return a route of its type.
-		 * 
+		 *
 		 * \param in InputDevice& Reference to a smart pointer
 		 * for the input device where the route starts.
 		 * \param out OutputDevice& End point of the route.
@@ -694,14 +694,14 @@ namespace mutabor {
 		 * \param iFrom start of the range for the input filter. Its meaning depends on the input filter type.
 		 * \param iTo end of the range for the input filter. Its meaning depends on the input filter type.
 		 * \param box box to be used. Values less than 0 indicate a pass through route or a GMN box.
-		 * \param active indicates whether the events on the route may 
+		 * \param active indicates whether the events on the route may
 		 * change the tuning of the box. Regardless of this setting the
-		 * box referenced by the box parameter will influence the 
+		 * box referenced by the box parameter will influence the
 		 * tuning of the events in this route.
 		 * \param oFrom Start of the range of the output filter (will be interpreted by the output device.
 		 * \param oTo End of the reange of the output fileter (will be interpreted by the output device
 		 * \param oNoDrum On MIDI like devices avoid the channel usually used for percussion.
-		 * 
+		 *
 		 * \return Route created by this function (smart pointer).
 		 */
 		virtual RouteClass * DoCreate(
@@ -715,8 +715,8 @@ namespace mutabor {
 			int oFrom,
 			int oTo,
 			bool oNoDrum) const __attribute__ ((malloc));
-	
-	
+
+
 		/// load the routes from a tree based configuration
 		/** \param config conifiguration to be read from
 		 */
@@ -724,7 +724,7 @@ namespace mutabor {
 
 		/// write the routes to the configuration
 		/** \param config configuration to be written to
-		 */ 
+		 */
 		virtual void DoSaveRoutes(tree_storage & config) const;
 
 		static RouteFactory * factory;				 /**< Pointer to the current factory */
