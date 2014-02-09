@@ -47,18 +47,19 @@
 
 
 #include "wx/aui/aui.h"
-#include "wx/toolbar.h"
+//#include "wx/toolbar.h"
 #include "wx/docview.h"
 
-/// Main mutabor frame class
-/** This class is used to create the main windows
- */
+class wxToolBar;
 
 namespace mutaborGUI {
 
 	class MutView; // see MutView.h
 	class MutDocument; // see MutDocument.h
 
+	/// Main mutabor frame class
+	/** This class is used to create the main windows
+	 */
 	class MutFrame : public wxDocChildFrame
 	{
 
