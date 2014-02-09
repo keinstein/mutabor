@@ -609,13 +609,17 @@ namespace mutabor {
 					controller(i, newctrl, value);
 				} else if (0x10000 <= newctrl && newctrl < 0x20000) {
 					controller(i,midi::REGISTERED_PARAMETER_COARSE, (newctrl >> 8) & 0x7F);
+					Cd[i].set_controller(midi::REGISTERED_PARAMETER_COARSE,(newctrl >> 8) & 0x7F);
 					controller(i,midi::REGISTERED_PARAMETER_FINE, newctrl & 0x7F);
+					Cd[i].set_controller(midi::REGISTERED_PARAMETER_FINE, newctrl & 0x7F);
 
 					controller(i,midi::DATA_ENTRY_COARSE, (value >> 7) & 0x7F);
 					controller(i,midi::DATA_ENTRY_FINE, value & 0x7F);
 				} else if (newctrl <= 0x30000) {
-					controller(i,midi::REGISTERED_PARAMETER_COARSE, (newctrl >> 8) & 0x7F);
-					controller(i,midi::REGISTERED_PARAMETER_FINE, newctrl & 0x7F);
+					controller(i,midi::NON_REGISTERED_PARAMETER_COARSE, (newctrl >> 8) & 0x7F);
+					Cd[i].set_controller(midi::NON_REGISTERED_PARAMETER_COARSE,(newctrl >> 8) & 0x7F);
+					controller(i,midi::NON_REGISTERED_PARAMETER_FINE, newctrl & 0x7F);
+					Cd[i].set_controller(midi::NON_REGISTERED_PARAMETER_COARSE, newctrl & 0x7F);
 
 					controller(i,midi::DATA_ENTRY_COARSE, (value >> 7) & 0x7F);
 					controller(i,midi::DATA_ENTRY_FINE, value & 0x7F);
