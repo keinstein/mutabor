@@ -1,4 +1,4 @@
-/** \file 
+/** \file
  ********************************************************************
  * Interface to the boost library
  *
@@ -228,8 +228,9 @@ namespace boost {
 			}
 
 
+#if !defined(BOOST_NO_MEMBER_TEMPLATES) || defined(BOOST_MSVC6_MEMBER_TEMPLATES)
 			template<class U>
-			intrusive_ptr & operator=(U const & rhs)
+			intrusive_ptr & operator=(intrusive_ptr<U> const & rhs)
 			{
 				if (backtrace.get_global_print())
 					backtrace.set_print();
@@ -238,6 +239,30 @@ namespace boost {
 					 this,this->get());
 				return *this;
 			}
+#endif
+
+			intrusive_ptr & operator=(intrusive_ptr const & rhs)
+			{
+				if (backtrace.get_global_print())
+					backtrace.set_print();
+				base::operator=(static_cast<base const &>(rhs));
+				DEBUGLOG(smartptr,_T("New value %p -> %p"),
+					 this,this->get());
+				return *this;
+			}
+
+			intrusive_ptr & operator=(T * rhs)
+			{
+				if (backtrace.get_global_print())
+					backtrace.set_print();
+				base::operator=(rhs);
+				DEBUGLOG(smartptr,_T("New value %p -> %p"),
+					 this,this->get());
+				return *this;
+			}
+
+
+
 
 			// Move support
 
