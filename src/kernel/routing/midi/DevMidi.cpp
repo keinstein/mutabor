@@ -217,15 +217,8 @@ OutputMidiPort:\n\
 		}
 		InputMidiPort * thisPort = static_cast<InputMidiPort *>(userData);
 
-		if (message->size() > 4) {
-			thisPort -> Proceed(message, 0, 0);
-			return;
-		}
-
-		for (int i = message->size()-1; i >= 0; i--)
-			data = ((data << 8) | ((unsigned char)(*message)[i]));
-
-		thisPort->Proceed(data,0,0);
+		thisPort -> Proceed(message, 0, 0);
+		return;
 	}
 
 #else
@@ -462,6 +455,7 @@ InputMidiPort:\n\
 	}
 #endif
 
+#if 0
 // Routen testen und jenachdem entsprechend Codeverarbeitung
 	InputMidiPort::proceed_bool InputMidiPort::shouldProceed(Route R, DWORD midiCode, int data)
 	{
@@ -486,24 +480,20 @@ InputMidiPort:\n\
 		}
 		return ProceedNo;
 	}
+#endif
 
 	InputMidiPort::proceed_bool InputMidiPort::shouldProceed(Route R, const std::vector<unsigned char > * midiCode, int data)
 	{
 		mutASSERT(midiCode);
-		if (midiCode->at(0) != midi::SYSTEM) 
-			UNREACHABLEC;
-		
-		return ProceedYes;
-#if 0
-		switch ( R->Type ) {
+		switch ( R->GetType() ) {
 		case RTchannel:
-			if (R->Check(midiCode & 0x0F)) 
+			if (R->Check(midiCode->at(0) & 0x0F)) 
 				return ProceedYes;
 			break;
 		case RTstaff:
-			if ( ((midiCode & 0xF0) != 0x80 && 
-			      (midiCode & 0xF0) != 0x90) 
-			     || R->Check((midiCode >> 8) & 0xFF) )
+			if ( ((midiCode->at(0) & 0xF0) != 0x80 && 
+			      (midiCode->at(0) & 0xF0) != 0x90) 
+			     || R->Check(midiCode->at(1)) )
 				return ProceedYes;
 			break;
 
@@ -515,7 +505,6 @@ InputMidiPort:\n\
 			UNREACHABLEC;
 		}
 		return ProceedNo;
-#endif
 	}
 
 	MidiPortFactory::~MidiPortFactory() {}

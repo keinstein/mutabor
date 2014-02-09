@@ -754,7 +754,9 @@ namespace mutabor {
 		virtual wxString TowxString() const;
 #endif
 
+#if 0
 		proceed_bool shouldProceed(Route R, DWORD midiCode,  int track = 0);
+#endif
 		proceed_bool shouldProceed(Route R, 
 					   const std::vector<unsigned char > * midiCode,  
 					   int data =0);

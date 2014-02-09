@@ -204,24 +204,28 @@ namespace mutabor {
 			}
 		}
 
-		void MidiAnalysis(DWORD midiCode) {
+		void MidiAnalysis(const std::vector<unsigned char > * midiCode) {
+#if 0
 			/// \todo Delegate midi data as Message to the box.
 			static const int midilength[8] = {
 				3, 3, 3, 3, 2, 2, 3, 1
 			};
+#endif
 
 			if (!(box && box->IsNormal() && Active )) return;
-			if (!(midiCode & 0x80)) {
+			if (!(midiCode->at(0) & 0x80)) {
 				UNREACHABLEC;
 				return;
 			}
-
-			int len = midilength[(midiCode & 0x70) >> 4];
+#if 0
+			int len = midilength[(midiCode->at(0) & 0x70) >> 4];
 			for (int i = 0; i <  len; i++) {
 				if (box)
 					box->MidiAnalysis(midiCode & 0xff);
 				midiCode >>= 8;
 			}
+#endif
+			if (box) box->MidiAnalysis(midiCode);
 		}
 
 		void MidiOut(midi_string & data) {

@@ -158,10 +158,18 @@ public:
 				   int data =0) { return ProceedYes; }
 
 	void NoteOn(int channel, int inkey, int velocity) {
-		Proceed(mutabor::midi::NOTE_ON | (channel & 0x0f)| ((inkey & 0x7f) << 8)  | (velocity & 0x7f) << 16);
+		std::vector <unsigned char > message(3);
+		message[0] = mutabor::midi::NOTE_ON | (channel & 0x0f);
+		message[1] = inkey & 0x7f;
+		message[2] = velocity & 0x7f;
+		Proceed(&message);
 	}
 	void NoteOff(int channel, int inkey, int velocity) {
-		Proceed(mutabor::midi::NOTE_OFF | (channel & 0x0f)| ((inkey & 0x7f) << 8)  | (velocity & 0x7f) << 16);
+		std::vector <unsigned char > message(3);
+		message[0] = mutabor::midi::NOTE_OFF | (channel & 0x0f);
+		message[1] = inkey & 0x7f;
+		message[2] = velocity & 0x7f;
+		Proceed(&message);
 	}
 
 };

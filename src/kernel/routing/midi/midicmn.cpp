@@ -798,6 +798,9 @@ namespace mutabor {
 		}
 	}
 
+
+#if 0
+#warning remove this function
 	template <class D>
 	void CommonMidiInput<D>::ProceedRoute(DWORD midiCode, Route route, int channel_offset)
 	{
@@ -896,13 +899,16 @@ namespace mutabor {
 		route->MidiAnalysis(midiCode);
 
 	}
+#endif
 
 	template <class D>
 	void CommonMidiInput<D>::ProceedRoute(const std::vector<unsigned char > * midiCode, Route route, int channel_offset)
 	{
-#warning "Unimplemented SysEx ProceedRoute"
-		return;
 
+		if (!route) {
+			UNREACHABLEC;
+			return;
+		}
 		DEBUGLOG (midifile, _T("Code: %p, Active: %d, Out: %p"),
 			  (void*)midiCode,
 			  route->GetActive(),
@@ -993,6 +999,8 @@ namespace mutabor {
 
 		}
 
+		route->MidiAnalysis(midiCode);
+#if 0
 		// Midianalyse
 		static const int midilength[8] = {
 			3, 3, 3, 3, 2, 2, 3, 1
@@ -1002,6 +1010,7 @@ namespace mutabor {
 			for (int i = 0; i < midilength[MidiStatus >> 5]; i++) {
 				box->MidiAnalysis(midiCode->at(i));
 			}
+#endif
 	}
 
 
@@ -1012,6 +1021,7 @@ namespace mutabor {
 	 * \param data     Additional data that might be necessardy
 	 */// Routen testen und jenachdem entsprechend Codeverarbeitung
 
+#if 0
 	template <class D>
 	void CommonMidiInput<D>::Proceed(DWORD midiCode, int data, int channel_offset)
 	{
@@ -1040,6 +1050,7 @@ namespace mutabor {
 			}
 		}
 	}
+#endif
 
 	/**
 	 * Check which routes shall work on the midi code and forward the code.
@@ -1071,7 +1082,7 @@ namespace mutabor {
 			}
 		if (!DidOut) {
 			for (routeListType::iterator R = elseroutes.begin();
-			     R != this->routes.end(); R++) {
+			     R != elseroutes.end(); R++) {
 				ProceedRoute(midiCode,*R, channel_offset);
 			}
 		}

@@ -717,20 +717,10 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 			Track::base message = Tracks[nr].ReadMessage();
 
 			uint8_t status = message[0];
-			int a = status;
 
 			if ( status  <  midi::SYSTEM ) // normaler midi code
 			{
 				
-				int l = message.size();
-				mutASSERT(l<4);
-				int shift = 8;
-
-				for (int i = 1; i < l; i++)
-				{
-					a += (int)(message[i]) << shift;
-					shift += 8;
-				}
 			}
 			else switch (status) {
 				case midi::SYSEX_START:
@@ -802,13 +792,13 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 				}
 				break;
 				case midi::SONG_POSITION: 
-					a += message[1] << (8 + message[2]) << 16;
+					// a += message[1] << (8 + message[2]) << 16;
 					break;
 				case midi::SONG_SELECT:
-					a += message[1] << 8;
+					// a += message[1] << 8;
 					break;
 				}
-			Proceed(a, nr, nr << 4);
+			Proceed(&message, nr, nr << 4);
 
 			Delta = Tracks[nr].ReadDelta();
 		
@@ -851,6 +841,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 	
 
 // Routen testen und jenachdem entsprechend Codeverarbeitung
+#if 0
 	InputMidiFile::proceed_bool InputMidiFile::shouldProceed(Route R, DWORD midiCode, int track)
 	{
 		DEBUGLOG(midifile,_T("midiCode: %x, track %d"),midiCode,track);
@@ -876,20 +867,20 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 		}
 		return ProceedNo;
 	}
+#endif
 	InputMidiFile::proceed_bool InputMidiFile::shouldProceed(Route R, 
 								 const std::vector<unsigned char > * midiCode,
 								 int track)
 	{
 		mutASSERT(midiCode);
-		if (midiCode->at(0) != midi::SYSTEM) 
-			UNREACHABLEC;
 
+		//		DEBUGLOG(midifile,_T("midiCode: %x, track %d"),midiCode,track);
 		switch ( R->GetType() ) {
 		case RTchannel:
-//			if ( R->Check(midiCode & 0x0F) ) {
+			if ( R->Check(midiCode->at(0) & 0x0F) ) {
 				return ProceedYes;
-//			}
-//			break;
+			}
+			break;
 
 		case RTstaff:
 			if ( R->Check(track) ) {
@@ -897,8 +888,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 			}
 			break;
 		case RTelse:
-//			return ProceedElse;
-			return ProceedYes;
+			return ProceedElse;
 			
 		case RTall:
 			return ProceedYes;

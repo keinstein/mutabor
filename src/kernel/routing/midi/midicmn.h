@@ -800,7 +800,9 @@ namespace mutabor {
 	class CommonMidiInput:public D {
 	public:
 		typedef D parenttype;
+#if 0
 		void Proceed(DWORD midiCode, int data =0, int channel_offset = 0);
+#endif
 		void Proceed(const std::vector<unsigned char > * midiCode, int data =0, int channel_offset = 0);
 
 	protected:
@@ -813,9 +815,13 @@ namespace mutabor {
 		enum proceed_bool {ProceedYes,ProceedNo,ProceedElse};
 
 
+#if 0
 		void ProceedRoute(DWORD midiCode, Route route, int channel_offset);
+#endif
 		void ProceedRoute(const std::vector<unsigned char > * midiCode, Route route, int channel_offset);
+#if 0
 		virtual proceed_bool shouldProceed(Route R, DWORD midiCode,  int data =0) = 0;
+#endif
 		virtual proceed_bool shouldProceed(Route R,
 						   const std::vector<unsigned char > * midiCode,
 						   int data =0) = 0;
