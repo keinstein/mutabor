@@ -1,4 +1,4 @@
-/** \file
+/** \file -*- C++ -*-
  ********************************************************************
  * Some MIDI macros
  *
@@ -236,6 +236,7 @@ namespace mutabor {
 			HOLD_PEDAL_ON_OFF        = 0x40,
 			PORTAMENTO_ON_OFF        = 0x41,
 			SOSTENUTO_ON_OFF         = 0x42,
+			CHORD_HOLD_PEDAL_ON_OFF  = 0x42,
 			SOFT_PEDAL_ON_OFF        = 0x43,
 			LEGATO_PEDAL_ON_OFF      = 0x44,
 			HOLD_2_PEDAL_ON_OFF      = 0x45,
@@ -296,19 +297,30 @@ namespace mutabor {
 			POLY_ON                  = 0x7F // (127)
 		};
 
+
 #define DEFAULT_PANIC ALL_SOUND_OFF
 		enum midi_controller_values {
-			CONTROLLER_ON           = 0x7F,
-			CONTROLLER_OFF          = 0X00
+			CONTROLLER_MAX            = 0x7F,
+			CONTROLLER_ON             = 0x7F,
+			CONTROLLER_MIN_ON         = 0x40,
+			CONTROLLER_CENTRE         = 0x40,
+			CONTROLLER_MAX_OFF        = 0x3F,
+			CONTROLLER_OFF            = 0X00,
+			CONTROLLER_UNKNOWN        = -1,
+			CONTROLLER_UNKNOWN_NOSEND = -2
 		};
 
 		enum midi_registered_parameters {
 			// Form: 0x1MMLL
+			FIRST_RPN              = 0x10000,
 			PITCH_BEND_SENSITIVITY = 0x10000,
 			CHANNEL_FINE_TUNING    = 0x10001,
 			CHANNEL_COARSE_TUNING  = 0x10002,
 			MODULATION_DEPTH_RANGE = 0x10005,
-			RPN_NULL               = 0x17F7F
+			RPN_NULL               = 0x17F7F,
+			LAST_RPN               = 0x17F7F,
+			FIRST_NRPN             = 0x20000,
+			LAST_NRPN              = 0x27F7F
 		};
 
 
@@ -352,6 +364,110 @@ namespace mutabor {
 
 		inline bool store_running_status(uint8_t status) {
 			return is_channel_message(status);
+		}
+
+		/**
+		 * Check whether a given controller is one of the hold switches
+		 *
+		 * \param controller controller to be checked
+		 *
+		 * \retval true if it is a holding controller
+		 * \retval false if it is not a holding controller
+		 *
+		 * \sa \ref mutabor::ChannelData::get_hold()
+		 */
+		inline bool is_hold(int controller) {
+			switch(controller) {
+			case HOLD_PEDAL_ON_OFF:
+			case SOSTENUTO_ON_OFF:
+				// = CHORD_HOLD_PEDAL_ON_OFF
+			case LEGATO_PEDAL_ON_OFF:
+			case HOLD_2_PEDAL_ON_OFF:
+				return true;
+			}
+			return false;
+		}
+
+		/**
+		 * Return a list of hold controllers.
+		 * This function returns an integer array of controllers that
+		 * keep notes sounding after their regular end.
+		 *
+		 *
+		 * \return list of hold controller ids.
+		 */
+
+		inline const int * get_holds() {
+			static const int values [] = {
+				HOLD_PEDAL_ON_OFF,
+				SOSTENUTO_ON_OFF,
+				// = CHORD_HOLD_PEDAL_ON_OFF
+				LEGATO_PEDAL_ON_OFF,
+				HOLD_2_PEDAL_ON_OFF,
+				-1
+			};
+			return values;
+		}
+
+		inline int get_default_controller_value(int ctrl) {
+			/* The corresponding specification is RP
+			   15. It is availlable at
+			   http://www.midi.org/techspecs/rp15.php */
+			if ((ctrl >= midi::FIRST_RPN && ctrl <= midi::LAST_RPN)
+			    || (ctrl >= midi::FIRST_NRPN && ctrl <= midi::LAST_NRPN)) {
+				return CONTROLLER_UNKNOWN;
+			}
+			switch (ctrl) {
+			case EXPRESSION_COARSE:
+			case EXPRESSION_FINE:
+			case NON_REGISTERED_PARAMETER_FINE:
+			case NON_REGISTERED_PARAMETER_COARSE:
+			case REGISTERED_PARAMETER_FINE:
+			case REGISTERED_PARAMETER_COARSE:
+				return CONTROLLER_MAX;
+			case BALANCE_COARSE:
+				return CONTROLLER_CENTRE;
+			case BANK_FINE:
+			case BANK_COARSE:
+			case VOLUME_COARSE:
+			case PAN_POSITION_COARSE:
+			case EFFECTS_LEVEL:
+			case TREMULO_LEVEL:
+			case CHORUS_LEVEL:
+			case CELESTE_LEVEL:
+			case PHASER_LEVEL:
+			case SOUND_VARIATION:
+			case SOUND_TIMBRE:
+			case SOUND_RELEASE_TIME:
+			case SOUND_ATTACK_TIME:
+			case SOUND_BRIGHTNESS:
+			case SOUND_DECAY_TIME:
+			case SOUND_VIBRATO_RATE:
+			case SOUND_VIBRATO_DEPTH:
+			case SOUND_VIBRATO_DELAY:
+			case SOUND_10:
+				return CONTROLLER_UNKNOWN;
+			case DATA_ENTRY_COARSE:
+			case DATA_ENTRY_FINE:
+			case DATA_BUTTON_INCREMENT:
+			case DATA_BUTTON_DECREMENT:
+			case ALL_SOUND_OFF:
+			case ALL_CONTROLLERS_OFF:
+			case LOCAL_ON_OFF:
+			case ALL_NOTES_OFF:
+			case OMNI_OFF:
+			case OMNI_ON:
+			case MONO_ON:
+			case POLY_ON:
+				// do not reset
+				return CONTROLLER_UNKNOWN_NOSEND;
+			case MODULATION_WHEEL_COARSE:
+			case MODULATION_WHEEL_FINE:
+			default:
+				break;
+			}
+			return 0;
+
 		}
 
 
