@@ -51,7 +51,7 @@ void RouteTest::testDestroyAll() {
 	connect(r,In);
 	connect(r,Out);
 	connect(r,box);
-	In = NULL;
+	In.reset();
 	Out = NULL;
 	box = NULL;
 	r = NULL;

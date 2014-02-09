@@ -112,6 +112,13 @@ public:
 
 	void Save(mutabor::tree_storage&, const mutabor::RouteClass*){}
 	void Load(mutabor::tree_storage&, mutabor::RouteClass*){}
+	virtual mutabor::ChannelData & GetChannelData(const mutabor::InputDeviceClass::current_keys_type::entry & key) const
+	{ 
+		return const_cast<mutabor::ChannelData & >(Cd);
+	}
+
+protected:
+	static const mutabor::ChannelData Cd;
 };
 
 class CommonFileDeviceTest : public CPPUNIT_NS::TestFixture {

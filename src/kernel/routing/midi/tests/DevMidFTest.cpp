@@ -4827,43 +4827,47 @@ void  OutputMidiFileTest::testBatchPlay1()
 
 
 	DataStr = _T("\
- 04 04 02 18 08 00 e0 00  40 00 b0 7a 00 00 b0 7d   …………………… @……z………}\n\
- 00 00 b0 7f 00 00 b0 65  00 00 b0 64 00 00 b0 06   …………………e ………d…………\n\
- 02 00 b0 26 00 00 e1 00  40 00 b1 7a 00 00 b1 7d   ………&………… @……z………}\n\
- 00 00 b1 7f 00 00 b1 65  00 00 b1 64 00 00 b1 06   …………………e ………d…………\n\
- 02 00 b1 26 00 00 e2 00  40 00 b2 7a 00 00 b2 7d   ………&………… @……z………}\n\
- 00 00 b2 7f 00 00 b2 65  00 00 b2 64 00 00 b2 06   …………………e ………d…………\n\
- 02 00 b2 26 00 00 e3 00  40 00 b3 7a 00 00 b3 7d   ………&………… @……z………}\n\
- 00 00 b3 7f 00 00 b3 65  00 00 b3 64 00 00 b3 06   …………………e ………d…………\n\
- 02 00 b3 26 00 00 e4 00  40 00 b4 7a 00 00 b4 7d   ………&………… @……z………}\n\
- 00 00 b4 7f 00 00 b4 65  00 00 b4 64 00 00 b4 06   …………………e ………d…………\n\
- 02 00 b4 26 00 00 e5 00  40 00 b5 7a 00 00 b5 7d   ………&………… @……z………}\n\
- 00 00 b5 7f 00 00 b5 65  00 00 b5 64 00 00 b5 06   …………………e ………d…………\n\
- 02 00 b5 26 00 00 e6 00  40 00 b6 7a 00 00 b6 7d   ………&………… @……z………}\n\
- 00 00 b6 7f 00 00 b6 65  00 00 b6 64 00 00 b6 06   …………………e ………d…………\n\
- 02 00 b6 26 00 00 e7 00  40 00 b7 7a 00 00 b7 7d   ………&………… @……z………}\n\
- 00 00 b7 7f 00 00 b7 65  00 00 b7 64 00 00 b7 06   …………………e ………d…………\n\
- 02 00 b7 26 00 00 e8 00  40 00 b8 7a 00 00 b8 7d   ………&………… @……z………}\n\
- 00 00 b8 7f 00 00 b8 65  00 00 b8 64 00 00 b8 06   …………………e ………d…………\n\
- 02 00 b8 26 00 00 e9 00  40 00 b9 7a 00 00 b9 7d   ………&………… @……z………}\n\
- 00 00 b9 7f 00 00 b9 65  00 00 b9 64 00 00 b9 06   …………………e ………d…………\n\
- 02 00 b9 26 00 00 ea 00  40 00 ba 7a 00 00 ba 7d   ………&………… @……z………}\n\
- 00 00 ba 7f 00 00 ba 65  00 00 ba 64 00 00 ba 06   …………………e ………d…………\n\
- 02 00 ba 26 00 00 eb 00  40 00 bb 7a 00 00 bb 7d   ………&………… @……z………}\n\
- 00 00 bb 7f 00 00 bb 65  00 00 bb 64 00 00 bb 06   …………………e ………d…………\n\
- 02 00 bb 26 00 00 ec 00  40 00 bc 7a 00 00 bc 7d   ………&………… @……z………}\n\
- 00 00 bc 7f 00 00 bc 65  00 00 bc 64 00 00 bc 06   …………………e ………d…………\n\
- 02 00 bc 26 00 00 ed 00  40 00 bd 7a 00 00 bd 7d   ………&………… @……z………}\n\
- 00 00 bd 7f 00 00 bd 65  00 00 bd 64 00 00 bd 06   …………………e ………d…………\n\
- 02 00 bd 26 00 00 ee 00  40 00 be 7a 00 00 be 7d   ………&………… @……z………}\n\
- 00 00 be 7f 00 00 be 65  00 00 be 64 00 00 be 06   …………………e ………d…………\n\
- 02 00 be 26 00 00 ef 00  40 00 bf 7a 00 00 bf 7d   ………&………… @……z………}\n\
- 00 00 bf 7f 00 00 bf 65  00 00 bf 64 00 00 bf 06   …………………e ………d…………\n\
+  04 ·  04 ·  02 ·  18 ·  08 ·  00 ·  e0 ·  00 ·    40 @  00 ·  b0 ·  7a z  00 ·  00 ·  b0 ·  7d }\n\
+  00 ·  00 ·  b0 ·  7f ·  00 ·  00 ·  b0 ·  65 e    00 ·  00 ·  b0 ·  64 d  00 ·  00 ·  b0 ·  06 ·\n\
+  02 ·  00 ·  b0 ·  26 &  00 ·  00 ·  e1 ·  00 ·    40 @  00 ·  b1 ·  7a z  00 ·  00 ·  b1 ·  7d }\n\
+  00 ·  00 ·  b1 ·  7f ·  00 ·  00 ·  b1 ·  65 e    00 ·  00 ·  b1 ·  64 d  00 ·  00 ·  b1 ·  06 ·\n\
+  02 ·  00 ·  b1 ·  26 &  00 ·  00 ·  e2 ·  00 ·    40 @  00 ·  b2 ·  7a z  00 ·  00 ·  b2 ·  7d }\n\
+  00 ·  00 ·  b2 ·  7f ·  00 ·  00 ·  b2 ·  65 e    00 ·  00 ·  b2 ·  64 d  00 ·  00 ·  b2 ·  06 ·\n\
+  02 ·  00 ·  b2 ·  26 &  00 ·  00 ·  e3 ·  00 ·    40 @  00 ·  b3 ·  7a z  00 ·  00 ·  b3 ·  7d }\n\
+  00 ·  00 ·  b3 ·  7f ·  00 ·  00 ·  b3 ·  65 e    00 ·  00 ·  b3 ·  64 d  00 ·  00 ·  b3 ·  06 ·\n\
+  02 ·  00 ·  b3 ·  26 &  00 ·  00 ·  e4 ·  00 ·    40 @  00 ·  b4 ·  7a z  00 ·  00 ·  b4 ·  7d }\n\
+  00 ·  00 ·  b4 ·  7f ·  00 ·  00 ·  b4 ·  65 e    00 ·  00 ·  b4 ·  64 d  00 ·  00 ·  b4 ·  06 ·\n\
+  02 ·  00 ·  b4 ·  26 &  00 ·  00 ·  e5 ·  00 ·    40 @  00 ·  b5 ·  7a z  00 ·  00 ·  b5 ·  7d }\n\
+  00 ·  00 ·  b5 ·  7f ·  00 ·  00 ·  b5 ·  65 e    00 ·  00 ·  b5 ·  64 d  00 ·  00 ·  b5 ·  06 ·\n\
+  02 ·  00 ·  b5 ·  26 &  00 ·  00 ·  e6 ·  00 ·    40 @  00 ·  b6 ·  7a z  00 ·  00 ·  b6 ·  7d }\n\
+  00 ·  00 ·  b6 ·  7f ·  00 ·  00 ·  b6 ·  65 e    00 ·  00 ·  b6 ·  64 d  00 ·  00 ·  b6 ·  06 ·\n\
+  02 ·  00 ·  b6 ·  26 &  00 ·  00 ·  e7 ·  00 ·    40 @  00 ·  b7 ·  7a z  00 ·  00 ·  b7 ·  7d }\n\
+  00 ·  00 ·  b7 ·  7f ·  00 ·  00 ·  b7 ·  65 e    00 ·  00 ·  b7 ·  64 d  00 ·  00 ·  b7 ·  06 ·\n\
+  02 ·  00 ·  b7 ·  26 &  00 ·  00 ·  e8 ·  00 ·    40 @  00 ·  b8 ·  7a z  00 ·  00 ·  b8 ·  7d }\n\
+  00 ·  00 ·  b8 ·  7f ·  00 ·  00 ·  b8 ·  65 e    00 ·  00 ·  b8 ·  64 d  00 ·  00 ·  b8 ·  06 ·\n\
+  02 ·  00 ·  b8 ·  26 &  00 ·  00 ·  e9 ·  00 ·    40 @  00 ·  b9 ·  7a z  00 ·  00 ·  b9 ·  7d }\n\
+  00 ·  00 ·  b9 ·  7f ·  00 ·  00 ·  b9 ·  65 e    00 ·  00 ·  b9 ·  64 d  00 ·  00 ·  b9 ·  06 ·\n\
+  02 ·  00 ·  b9 ·  26 &  00 ·  00 ·  ea ·  00 ·    40 @  00 ·  ba ·  7a z  00 ·  00 ·  ba ·  7d }\n\
+  00 ·  00 ·  ba ·  7f ·  00 ·  00 ·  ba ·  65 e    00 ·  00 ·  ba ·  64 d  00 ·  00 ·  ba ·  06 ·\n\
+  02 ·  00 ·  ba ·  26 &  00 ·  00 ·  eb ·  00 ·    40 @  00 ·  bb ·  7a z  00 ·  00 ·  bb ·  7d }\n\
+  00 ·  00 ·  bb ·  7f ·  00 ·  00 ·  bb ·  65 e    00 ·  00 ·  bb ·  64 d  00 ·  00 ·  bb ·  06 ·\n\
+  02 ·  00 ·  bb ·  26 &  00 ·  00 ·  ec ·  00 ·    40 @  00 ·  bc ·  7a z  00 ·  00 ·  bc ·  7d }\n\
+  00 ·  00 ·  bc ·  7f ·  00 ·  00 ·  bc ·  65 e    00 ·  00 ·  bc ·  64 d  00 ·  00 ·  bc ·  06 ·\n\
+  02 ·  00 ·  bc ·  26 &  00 ·  00 ·  ed ·  00 ·    40 @  00 ·  bd ·  7a z  00 ·  00 ·  bd ·  7d }\n\
+  00 ·  00 ·  bd ·  7f ·  00 ·  00 ·  bd ·  65 e    00 ·  00 ·  bd ·  64 d  00 ·  00 ·  bd ·  06 ·\n\
+  02 ·  00 ·  bd ·  26 &  00 ·  00 ·  ee ·  00 ·    40 @  00 ·  be ·  7a z  00 ·  00 ·  be ·  7d }\n\
+  00 ·  00 ·  be ·  7f ·  00 ·  00 ·  be ·  65 e    00 ·  00 ·  be ·  64 d  00 ·  00 ·  be ·  06 ·\n\
+  02 ·  00 ·  be ·  26 &  00 ·  00 ·  ef ·  00 ·    40 @  00 ·  bf ·  7a z  00 ·  00 ·  bf ·  7d }\n\
+  00 ·  00 ·  bf ·  7f ·  00 ·  00 ·  bf ·  65 e    00 ·  00 ·  bf ·  64 d  00 ·  00 ·  bf ·  06 ·\n\
 ");
 
-	CheckStr = _T(" 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 13 00 ff  51 03 07 d0 00 00 ff 58   rk……………… Q………………X\n")
-		+ DataStr + _T(" 02 00 bf 26 00 00 ff 2f  00                        ………&………/ …\n");
+	CheckStr = _T("\
+  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n\
+  72 r  6b k  00 ·  00 ·  02 ·  13 ·  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n\
+")
+		+ DataStr + _T("\
+  02 ·  00 ·  bf ·  26 &  00 ·  00 ·  ff ·  2f /    00 ·\n\
+");
 
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
 	CPPUNIT_ASSERT(box->Open());
@@ -4913,9 +4917,13 @@ void  OutputMidiFileTest::testBatchPlay1()
 	delta = in -> PrepareNextEvent();
 	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
 
-	CheckStr = _T(" 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 19 00 ff  51 03 07 d0 00 00 ff 58   rk……………… Q………………X\n")
-		+ DataStr + _T(" 02 00 bf 26 00 81 a9 4f  90 3c 7f 00 ff 2f 00      ………&………O …<………/…\n");
+	CheckStr = _T("\
+  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n\
+  72 r  6b k  00 ·  00 ·  02 ·  19 ·  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n\
+")
+		+ DataStr + _T("\
+  02 ·  00 ·  bf ·  26 &  00 ·  81 ·  a9 ·  4f O    90 ·  3c <  7f ·  00 ·  ff ·  2f /  00 ·\n\
+");
 
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
 	CPPUNIT_ASSERT(delta == 6287200);
@@ -4949,46 +4957,63 @@ void  OutputMidiFileTest::testBatchPlay1()
 	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
 
 
-	DataStr += _T(" 02 00 bf 26 00 81 a9 4f  90 3c 7f d2 67 91 40 1f   ………&………O …<……g…@…\n");
+	DataStr += _T("\
+  02 ·  00 ·  bf ·  26 &  00 ·  81 ·  a9 ·  4f O    90 ·  3c <  7f ·  d2 ·  67 g  91 ·  40 @  1f ·\n\
+");
 
-	CheckStr = _T(" 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 1e 00 ff  51 03 07 d0 00 00 ff 58   rk……………… Q………………X\n")
-		+ DataStr + _T(" 00 ff 2f 00                                        ……/…\n");
-
-	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
-	CPPUNIT_ASSERT(delta == 10330000);
-	mutabor::CurrentTime += delta;
-
-	delta = in -> PrepareNextEvent();
-	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
-
-	CheckStr = _T(" 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 23 00 ff  51 03 07 d0 00 00 ff 58   rk………#…… Q………………X\n")
-		+ DataStr + _T(" d0 5a 81 40 40 00 ff 2f  00                        …Z…@@……/ …\n");
-
-	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
-	CPPUNIT_ASSERT(delta == 10330000);
-	mutabor::CurrentTime += delta;
-
-	delta = in -> PrepareNextEvent();
-	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
-
-	CheckStr = _T(" 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 28 00 ff  51 03 07 d0 00 00 ff 58   rk………(…… Q………………X\n")
-		+ DataStr + _T(" d0 5a 81 40 40 d0 5a 92  43 3f 00 ff 2f 00         …Z…@@…Z… C?……/…\n");
-
-
-	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
-	CPPUNIT_ASSERT(delta == 10330000);
-	mutabor::CurrentTime += delta;
-
-	delta = in -> PrepareNextEvent();
-	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
-	CheckStr = _T(" 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 2d 00 ff  51 03 07 d0 00 00 ff 58   rk………-…… Q………………X\n")
+	CheckStr = _T("\
+  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n\
+  72 r  6b k  00 ·  00 ·  02 ·  1e ·  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n\
+")
 		+ DataStr + _T("\
- d0 5a 81 40 40 d0 5a 92  43 3f d0 5a 82 43 40 00   …Z…@@…Z… C?…Z…C@…\n\
- ff 2f 00                                           …/…\n");
+  00 ·  ff ·  2f /  00 ·\n\
+");
+
+	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 10330000);
+	mutabor::CurrentTime += delta;
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
+
+	CheckStr = _T("\
+  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n\
+  72 r  6b k  00 ·  00 ·  02 ·  23 #  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n\
+")
+		+ DataStr + _T("\
+  d0 ·  5a Z  81 ·  40 @  40 @  00 ·  ff ·  2f /    00 ·\n\
+");
+
+	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 10330000);
+	mutabor::CurrentTime += delta;
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
+
+	CheckStr = _T("\
+  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n\
+  72 r  6b k  00 ·  00 ·  02 ·  28 (  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n\
+")
+		+ DataStr + _T("\
+  d0 ·  5a Z  81 ·  40 @  40 @  d0 ·  5a Z  92 ·    43 C  3f ?  00 ·  ff ·  2f /  00 ·\n\
+");
+
+
+	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 10330000);
+	mutabor::CurrentTime += delta;
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
+	CheckStr = _T("\
+  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n\
+  72 r  6b k  00 ·  00 ·  02 ·  2d -  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n\
+")
+		+ DataStr + _T("\
+  d0 ·  5a Z  81 ·  40 @  40 @  d0 ·  5a Z  92 ·    43 C  3f ?  d0 ·  5a Z  82 ·  43 C  40 @  00 ·\n\
+  ff ·  2f /  00 ·\n\
+");
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
 	CPPUNIT_ASSERT(delta == 7809480);
 	mutabor::CurrentTime += delta;
@@ -5002,10 +5027,16 @@ void  OutputMidiFileTest::testBatchPlay1()
 	delta = in -> PrepareNextEvent();
 	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
 
-	DataStr += _T(" d0 5a 81 40 40 d0 5a 92  43 3f d0 5a 82 43 40 ec   …Z…@@…Z… C?…Z…C@…\n");
-	CheckStr = _T(" 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 32 00 ff  51 03 07 d0 00 00 ff 58   rk………2…… Q………………X\n")
-		+ DataStr + _T(" 56 93 34 7f 00 ff 2f 00                            V…4………/…\n");
+	DataStr += _T("\
+  d0 ·  5a Z  81 ·  40 @  40 @  d0 ·  5a Z  92 ·    43 C  3f ?  d0 ·  5a Z  82 ·  43 C  40 @  ec ·\n\
+");
+	CheckStr = _T("\
+  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n\
+  72 r  6b k  00 ·  00 ·  02 ·  32 2  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n\
+")
+		+ DataStr + _T("\
+  56 V  93 ·  34 4  7f ·  00 ·  ff ·  2f /  00 ·\n\
+");
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
 	CPPUNIT_ASSERT(delta == 200000);
 	mutabor::CurrentTime += delta;
@@ -5067,19 +5098,27 @@ void  OutputMidiFileTest::testBatchPlay1()
 	delta = in -> PrepareNextEvent();
 	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
 
-	CheckStr = _T(" 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 37 00 ff  51 03 07 d0 00 00 ff 58   rk………7…… Q………………X\n")
-		+ DataStr + _T(" 56 93 34 7f e9 58 83 34  40 00 ff 2f 00            V…4……X…4 @……/…\n");
+	CheckStr = _T("\
+  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n\
+  72 r  6b k  00 ·  00 ·  02 ·  37 7  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n\
+")
+		+ DataStr + _T("\
+  56 V  93 ·  34 4  7f ·  e9 ·  58 X  83 ·  34 4    40 @  00 ·  ff ·  2f /  00 ·\n\
+");
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
 	CPPUNIT_ASSERT(delta == 13510000);
 	mutabor::CurrentTime += delta;
 
 	delta = in -> PrepareNextEvent();
 	DEBUGLOG(midiio,_T("delta = %d, Current time = %ld"),delta,mutabor::CurrentTime.Get());
-	CheckStr = _T(" 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 3c 00 ff  51 03 07 d0 00 00 ff 58   rk………<…… Q………………X\n")
-		+ DataStr + _T(" 56 93 34 7f e9 58 83 34  40 e9 46 80 3c 7f 00 ff   V…4……X…4 @…F…<………\n\
- 2f 00                                              /…\n");
+	CheckStr = _T("\
+  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n\
+  72 r  6b k  00 ·  00 ·  02 ·  3c <  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n\
+")
+		+ DataStr + _T("\
+  56 V  93 ·  34 4  7f ·  e9 ·  58 X  83 ·  34 4    40 @  e9 ·  46 F  80 ·  3c <  7f ·  00 ·  ff ·\n\
+  2f /  00 ·\n\
+");
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
 	CPPUNIT_ASSERT(delta == MUTABOR_NO_DELTA);
 
@@ -5111,43 +5150,46 @@ void  OutputMidiFileTest::testBatchPlay1()
 	    system states */
 
 	CheckStr = _T("\
- 4d 54 68 64 00 00 00 06  00 00 00 01 e7 28 4d 54   MThd………… ……………(MT\n\
- 72 6b 00 00 02 33 00 ff  51 03 07 d0 00 00 ff 58   rk………3…… Q………………X\n\
- 04 04 02 18 08 00 e0 00  40 00 b0 7a 00 00 b0 7d   …………………… @……z………}\n\
- 00 00 b0 7f 00 00 b0 65  00 00 b0 64 00 00 b0 06   …………………e ………d…………\n\
- 02 00 b0 26 00 00 e1 00  40 00 b1 7a 00 00 b1 7d   ………&………… @……z………}\n\
- 00 00 b1 7f 00 00 b1 65  00 00 b1 64 00 00 b1 06   …………………e ………d…………\n\
- 02 00 b1 26 00 00 e2 00  40 00 b2 7a 00 00 b2 7d   ………&………… @……z………}\n\
- 00 00 b2 7f 00 00 b2 65  00 00 b2 64 00 00 b2 06   …………………e ………d…………\n\
- 02 00 b2 26 00 00 e3 00  40 00 b3 7a 00 00 b3 7d   ………&………… @……z………}\n\
- 00 00 b3 7f 00 00 b3 65  00 00 b3 64 00 00 b3 06   …………………e ………d…………\n\
- 02 00 b3 26 00 00 e4 00  40 00 b4 7a 00 00 b4 7d   ………&………… @……z………}\n\
- 00 00 b4 7f 00 00 b4 65  00 00 b4 64 00 00 b4 06   …………………e ………d…………\n\
- 02 00 b4 26 00 00 e5 00  40 00 b5 7a 00 00 b5 7d   ………&………… @……z………}\n\
- 00 00 b5 7f 00 00 b5 65  00 00 b5 64 00 00 b5 06   …………………e ………d…………\n\
- 02 00 b5 26 00 00 e6 00  40 00 b6 7a 00 00 b6 7d   ………&………… @……z………}\n\
- 00 00 b6 7f 00 00 b6 65  00 00 b6 64 00 00 b6 06   …………………e ………d…………\n\
- 02 00 b6 26 00 00 e7 00  40 00 b7 7a 00 00 b7 7d   ………&………… @……z………}\n\
- 00 00 b7 7f 00 00 b7 65  00 00 b7 64 00 00 b7 06   …………………e ………d…………\n\
- 02 00 b7 26 00 00 e8 00  40 00 b8 7a 00 00 b8 7d   ………&………… @……z………}\n\
- 00 00 b8 7f 00 00 b8 65  00 00 b8 64 00 00 b8 06   …………………e ………d…………\n\
- 02 00 b8 26 00 00 e9 00  40 00 b9 7a 00 00 b9 7d   ………&………… @……z………}\n\
- 00 00 b9 7f 00 00 b9 65  00 00 b9 64 00 00 b9 06   …………………e ………d…………\n\
- 02 00 b9 26 00 00 ea 00  40 00 ba 7a 00 00 ba 7d   ………&………… @……z………}\n\
- 00 00 ba 7f 00 00 ba 65  00 00 ba 64 00 00 ba 06   …………………e ………d…………\n\
- 02 00 ba 26 00 00 eb 00  40 00 bb 7a 00 00 bb 7d   ………&………… @……z………}\n\
- 00 00 bb 7f 00 00 bb 65  00 00 bb 64 00 00 bb 06   …………………e ………d…………\n\
- 02 00 bb 26 00 00 ec 00  40 00 bc 7a 00 00 bc 7d   ………&………… @……z………}\n\
- 00 00 bc 7f 00 00 bc 65  00 00 bc 64 00 00 bc 06   …………………e ………d…………\n\
- 02 00 bc 26 00 00 ed 00  40 00 bd 7a 00 00 bd 7d   ………&………… @……z………}\n\
- 00 00 bd 7f 00 00 bd 65  00 00 bd 64 00 00 bd 06   …………………e ………d…………\n\
- 02 00 bd 26 00 00 ee 00  40 00 be 7a 00 00 be 7d   ………&………… @……z………}\n\
- 00 00 be 7f 00 00 be 65  00 00 be 64 00 00 be 06   …………………e ………d…………\n\
- 02 00 be 26 00 00 ef 00  40 00 bf 7a 00 00 bf 7d   ………&………… @……z………}\n\
- 00 00 bf 7f 00 00 bf 65  00 00 bf 64 00 00 bf 06   …………………e ………d…………\n\
- 02 00 bf 26 00 00 90 3c  7f 00 91 40 1f 00 81 40   ………&………< ………@………@\n\
- 40 00 92 43 3f 00 82 43  40 00 93 34 7f 00 83 34   @……C?……C @……4………4\n\
- 40 00 80 3c 7f 00 ff 2f  00                        @……<………/ …\n");
+  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n\
+  72 r  6b k  00 ·  00 ·  02 ·  53 S  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n\
+  04 ·  04 ·  02 ·  18 ·  08 ·  00 ·  e0 ·  00 ·    40 @  00 ·  b0 ·  7a z  00 ·  00 ·  b0 ·  7d }\n\
+  00 ·  00 ·  b0 ·  7f ·  00 ·  00 ·  b0 ·  65 e    00 ·  00 ·  b0 ·  64 d  00 ·  00 ·  b0 ·  06 ·\n\
+  02 ·  00 ·  b0 ·  26 &  00 ·  00 ·  e1 ·  00 ·    40 @  00 ·  b1 ·  7a z  00 ·  00 ·  b1 ·  7d }\n\
+  00 ·  00 ·  b1 ·  7f ·  00 ·  00 ·  b1 ·  65 e    00 ·  00 ·  b1 ·  64 d  00 ·  00 ·  b1 ·  06 ·\n\
+  02 ·  00 ·  b1 ·  26 &  00 ·  00 ·  e2 ·  00 ·    40 @  00 ·  b2 ·  7a z  00 ·  00 ·  b2 ·  7d }\n\
+  00 ·  00 ·  b2 ·  7f ·  00 ·  00 ·  b2 ·  65 e    00 ·  00 ·  b2 ·  64 d  00 ·  00 ·  b2 ·  06 ·\n\
+  02 ·  00 ·  b2 ·  26 &  00 ·  00 ·  e3 ·  00 ·    40 @  00 ·  b3 ·  7a z  00 ·  00 ·  b3 ·  7d }\n\
+  00 ·  00 ·  b3 ·  7f ·  00 ·  00 ·  b3 ·  65 e    00 ·  00 ·  b3 ·  64 d  00 ·  00 ·  b3 ·  06 ·\n\
+  02 ·  00 ·  b3 ·  26 &  00 ·  00 ·  e4 ·  00 ·    40 @  00 ·  b4 ·  7a z  00 ·  00 ·  b4 ·  7d }\n\
+  00 ·  00 ·  b4 ·  7f ·  00 ·  00 ·  b4 ·  65 e    00 ·  00 ·  b4 ·  64 d  00 ·  00 ·  b4 ·  06 ·\n\
+  02 ·  00 ·  b4 ·  26 &  00 ·  00 ·  e5 ·  00 ·    40 @  00 ·  b5 ·  7a z  00 ·  00 ·  b5 ·  7d }\n\
+  00 ·  00 ·  b5 ·  7f ·  00 ·  00 ·  b5 ·  65 e    00 ·  00 ·  b5 ·  64 d  00 ·  00 ·  b5 ·  06 ·\n\
+  02 ·  00 ·  b5 ·  26 &  00 ·  00 ·  e6 ·  00 ·    40 @  00 ·  b6 ·  7a z  00 ·  00 ·  b6 ·  7d }\n\
+  00 ·  00 ·  b6 ·  7f ·  00 ·  00 ·  b6 ·  65 e    00 ·  00 ·  b6 ·  64 d  00 ·  00 ·  b6 ·  06 ·\n\
+  02 ·  00 ·  b6 ·  26 &  00 ·  00 ·  e7 ·  00 ·    40 @  00 ·  b7 ·  7a z  00 ·  00 ·  b7 ·  7d }\n\
+  00 ·  00 ·  b7 ·  7f ·  00 ·  00 ·  b7 ·  65 e    00 ·  00 ·  b7 ·  64 d  00 ·  00 ·  b7 ·  06 ·\n\
+  02 ·  00 ·  b7 ·  26 &  00 ·  00 ·  e8 ·  00 ·    40 @  00 ·  b8 ·  7a z  00 ·  00 ·  b8 ·  7d }\n\
+  00 ·  00 ·  b8 ·  7f ·  00 ·  00 ·  b8 ·  65 e    00 ·  00 ·  b8 ·  64 d  00 ·  00 ·  b8 ·  06 ·\n\
+  02 ·  00 ·  b8 ·  26 &  00 ·  00 ·  e9 ·  00 ·    40 @  00 ·  b9 ·  7a z  00 ·  00 ·  b9 ·  7d }\n\
+  00 ·  00 ·  b9 ·  7f ·  00 ·  00 ·  b9 ·  65 e    00 ·  00 ·  b9 ·  64 d  00 ·  00 ·  b9 ·  06 ·\n\
+  02 ·  00 ·  b9 ·  26 &  00 ·  00 ·  ea ·  00 ·    40 @  00 ·  ba ·  7a z  00 ·  00 ·  ba ·  7d }\n\
+  00 ·  00 ·  ba ·  7f ·  00 ·  00 ·  ba ·  65 e    00 ·  00 ·  ba ·  64 d  00 ·  00 ·  ba ·  06 ·\n\
+  02 ·  00 ·  ba ·  26 &  00 ·  00 ·  eb ·  00 ·    40 @  00 ·  bb ·  7a z  00 ·  00 ·  bb ·  7d }\n\
+  00 ·  00 ·  bb ·  7f ·  00 ·  00 ·  bb ·  65 e    00 ·  00 ·  bb ·  64 d  00 ·  00 ·  bb ·  06 ·\n\
+  02 ·  00 ·  bb ·  26 &  00 ·  00 ·  ec ·  00 ·    40 @  00 ·  bc ·  7a z  00 ·  00 ·  bc ·  7d }\n\
+  00 ·  00 ·  bc ·  7f ·  00 ·  00 ·  bc ·  65 e    00 ·  00 ·  bc ·  64 d  00 ·  00 ·  bc ·  06 ·\n\
+  02 ·  00 ·  bc ·  26 &  00 ·  00 ·  ed ·  00 ·    40 @  00 ·  bd ·  7a z  00 ·  00 ·  bd ·  7d }\n\
+  00 ·  00 ·  bd ·  7f ·  00 ·  00 ·  bd ·  65 e    00 ·  00 ·  bd ·  64 d  00 ·  00 ·  bd ·  06 ·\n\
+  02 ·  00 ·  bd ·  26 &  00 ·  00 ·  ee ·  00 ·    40 @  00 ·  be ·  7a z  00 ·  00 ·  be ·  7d }\n\
+  00 ·  00 ·  be ·  7f ·  00 ·  00 ·  be ·  65 e    00 ·  00 ·  be ·  64 d  00 ·  00 ·  be ·  06 ·\n\
+  02 ·  00 ·  be ·  26 &  00 ·  00 ·  ef ·  00 ·    40 @  00 ·  bf ·  7a z  00 ·  00 ·  bf ·  7d }\n\
+  00 ·  00 ·  bf ·  7f ·  00 ·  00 ·  bf ·  65 e    00 ·  00 ·  bf ·  64 d  00 ·  00 ·  bf ·  06 ·\n\
+  02 ·  00 ·  bf ·  26 &  00 ·  00 ·  90 ·  3c <    7f ·  00 ·  b0 ·  65 e  00 ·  00 ·  b0 ·  64 d\n\
+  00 ·  00 ·  91 ·  40 @  1f ·  00 ·  b1 ·  65 e    00 ·  00 ·  b1 ·  64 d  00 ·  00 ·  81 ·  40 @\n\
+  40 @  00 ·  92 ·  43 C  3f ?  00 ·  b2 ·  65 e    00 ·  00 ·  b2 ·  64 d  00 ·  00 ·  82 ·  43 C\n\
+  40 @  00 ·  93 ·  34 4  7f ·  00 ·  b3 ·  65 e    00 ·  00 ·  b3 ·  64 d  00 ·  00 ·  83 ·  34 4\n\
+  40 @  00 ·  80 ·  3c <  7f ·  00 ·  ff ·  2f /    00 ·\n\
+");
 
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
 }

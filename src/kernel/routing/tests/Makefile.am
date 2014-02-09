@@ -36,7 +36,8 @@ testcppunit_SOURCES = \
 	RouteTest.cpp \
 	BoxTest.h \
 	BoxTest.cpp \
-	CommonFileDeviceTest.h
+	CommonFileDeviceTest.h \
+	CommonFileDeviceTest.cpp
 
 nodist_testcppunit_SOURCES = \
 	debugPaths.cpp
