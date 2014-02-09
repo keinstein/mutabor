@@ -223,11 +223,11 @@ void CommonMidiOutputTest::testNoteOnOff()
 	DEBUGLOG(midiio,_T("123"));
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  0: b0 40 00\n  0: 90 38 60\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  0: 90 38 60\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,60,97,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  1: b1 40 00\n  1: 91 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  1: 91 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,63,98,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  2: b2 40 00\n  2: 92 3f 62\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  2: 92 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	out->NoteOff(box,56,53,route.get(),0,false);
 	CPPUNIT_ASSERT( out->Check(_T("  0: 80 38 35\n"), __LINE__, _T(__FILE__)) );
@@ -239,11 +239,11 @@ void CommonMidiOutputTest::testNoteOnOff()
 	DEBUGLOG(midiio,_T("132"));
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  3: b3 40 00\n  3: 93 38 60\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  3: 93 38 60\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,60,97,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  4: b4 40 00\n  4: 94 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  4: 94 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,63,98,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  5: b5 40 00\n  5: 95 3f 62\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  5: 95 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	out->NoteOff(box,56,53,route.get(),0,false);
 	CPPUNIT_ASSERT( out->Check(_T("  3: 83 38 35\n"), __LINE__, _T(__FILE__)) );
@@ -255,11 +255,11 @@ void CommonMidiOutputTest::testNoteOnOff()
 	DEBUGLOG(midiio,_T("213"));
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  6: b6 40 00\n  6: 96 38 60\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  6: 96 38 60\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,60,97,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  7: b7 40 00\n  7: 97 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  7: 97 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,63,98,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  8: b8 40 00\n  8: 98 3f 62\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  8: 98 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	out->NoteOff(box,60,54,route.get(),0,false);
 	CPPUNIT_ASSERT( out->Check(_T("  7: 87 3c 36\n"), __LINE__, _T(__FILE__)) );
@@ -271,11 +271,11 @@ void CommonMidiOutputTest::testNoteOnOff()
 	DEBUGLOG(midiio,_T("231"));
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 10: ba 40 00\n 10: 9a 38 60\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 10: 9a 38 60\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,60,97,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 11: bb 40 00\n 11: 9b 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 11: 9b 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,63,98,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 12: bc 40 00\n 12: 9c 3f 62\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 12: 9c 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	out->NoteOff(box,60,54,route.get(),0,false);
 	CPPUNIT_ASSERT( out->Check(_T(" 11: 8b 3c 36\n"), __LINE__, _T(__FILE__)) );
@@ -287,11 +287,11 @@ void CommonMidiOutputTest::testNoteOnOff()
 	DEBUGLOG(midiio,_T("312"));
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 13: bd 40 00\n 13: 9d 38 60\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 13: 9d 38 60\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,60,97,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 14: be 40 00\n 14: 9e 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 14: 9e 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,63,98,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 15: bf 40 00\n 15: 9f 3f 62\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 15: 9f 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	out->NoteOff(box,63,55,route.get(),0,false);
 	CPPUNIT_ASSERT( out->Check(_T(" 15: 8f 3f 37\n"), __LINE__, _T(__FILE__)) );
@@ -466,39 +466,39 @@ void CommonMidiOutputTest::testMoreNotesThanChannels()
 	DEBUGLOG(midiio,_T("123"));
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  0: b0 40 00\n  0: 90 38 60\n"), __LINE__, _T(__FILE__)) );
+	CPPUNIT_ASSERT( out->Check(_T("  0: 90 38 60\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOn(box,60,97,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  1: b1 40 00\n  1: 91 3c 61\n"), __LINE__, _T(__FILE__)) );
+	CPPUNIT_ASSERT( out->Check(_T("  1: 91 3c 61\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOn(box,63,98,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  2: b2 40 00\n  2: 92 3f 62\n"), __LINE__, _T(__FILE__)) );
+	CPPUNIT_ASSERT( out->Check(_T("  2: 92 3f 62\n"), __LINE__, _T(__FILE__)) );
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  3: b3 40 00\n  3: 93 38 60\n"), __LINE__, _T(__FILE__)) );
+	CPPUNIT_ASSERT( out->Check(_T("  3: 93 38 60\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOn(box,60,97,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  4: b4 40 00\n  4: 94 3c 61\n"), __LINE__, _T(__FILE__)) );
+	CPPUNIT_ASSERT( out->Check(_T("  4: 94 3c 61\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOn(box,63,98,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  5: b5 40 00\n  5: 95 3f 62\n"), __LINE__, _T(__FILE__)) );
+	CPPUNIT_ASSERT( out->Check(_T("  5: 95 3f 62\n"), __LINE__, _T(__FILE__)) );
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  6: b6 40 00\n  6: 96 38 60\n"), __LINE__, _T(__FILE__)) );
+	CPPUNIT_ASSERT( out->Check(_T("  6: 96 38 60\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOn(box,60,97,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  7: b7 40 00\n  7: 97 3c 61\n"), __LINE__, _T(__FILE__)) );
+	CPPUNIT_ASSERT( out->Check(_T("  7: 97 3c 61\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOn(box,63,98,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  8: b8 40 00\n  8: 98 3f 62\n"), __LINE__, _T(__FILE__)) );
+	CPPUNIT_ASSERT( out->Check(_T("  8: 98 3f 62\n"), __LINE__, _T(__FILE__)) );
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 10: ba 40 00\n 10: 9a 38 60\n"), __LINE__, _T(__FILE__)) );
+	CPPUNIT_ASSERT( out->Check(_T(" 10: 9a 38 60\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOn(box,60,97,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 11: bb 40 00\n 11: 9b 3c 61\n"), __LINE__, _T(__FILE__)) );
+	CPPUNIT_ASSERT( out->Check(_T(" 11: 9b 3c 61\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOn(box,63,98,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 12: bc 40 00\n 12: 9c 3f 62\n"), __LINE__, _T(__FILE__)) );
+	CPPUNIT_ASSERT( out->Check(_T(" 12: 9c 3f 62\n"), __LINE__, _T(__FILE__)) );
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 13: bd 40 00\n 13: 9d 38 60\n"), __LINE__, _T(__FILE__)) );
+	CPPUNIT_ASSERT( out->Check(_T(" 13: 9d 38 60\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOn(box,60,97,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 14: be 40 00\n 14: 9e 3c 61\n"), __LINE__, _T(__FILE__)) );
+	CPPUNIT_ASSERT( out->Check(_T(" 14: 9e 3c 61\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOn(box,63,98,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 15: bf 40 00\n 15: 9f 3f 62\n"), __LINE__, _T(__FILE__)) );
+	CPPUNIT_ASSERT( out->Check(_T(" 15: 9f 3f 62\n"), __LINE__, _T(__FILE__)) );
 
 
 	out->NoteOn(box,64,99,route.get(),0,cd);
@@ -737,11 +737,11 @@ void CommonMidiInputTest::testPanic()
 	DEBUGLOG(midiio,_T("123"));
 
 	in->NoteOn(0,56,96);
-	CPPUNIT_ASSERT( out->Check(_T("  0: b0 40 00\n  0: 90 38 60\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  0: 90 38 60\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,60,97);
-	CPPUNIT_ASSERT( out->Check(_T("  1: b1 40 00\n  1: 91 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  1: 91 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,63,98);
-	CPPUNIT_ASSERT( out->Check(_T("  2: b2 40 00\n  2: 92 3f 62\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  2: 92 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	in->NoteOff(0,56,53);
 	CPPUNIT_ASSERT( out->Check(_T("  0: 80 38 35\n"), __LINE__, _T(__FILE__) ) );
@@ -753,11 +753,11 @@ void CommonMidiInputTest::testPanic()
 	DEBUGLOG(midiio,_T("132"));
 
 	in->NoteOn(0,56,96);
-	CPPUNIT_ASSERT( out->Check(_T("  3: b3 40 00\n  3: 93 38 60\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  3: 93 38 60\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,60,97);
-	CPPUNIT_ASSERT( out->Check(_T("  4: b4 40 00\n  4: 94 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  4: 94 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,63,98);
-	CPPUNIT_ASSERT( out->Check(_T("  5: b5 40 00\n  5: 95 3f 62\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  5: 95 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	in->NoteOff(0,56,53);
 	CPPUNIT_ASSERT( out->Check(_T("  3: 83 38 35\n"), __LINE__, _T(__FILE__) ) );
@@ -769,11 +769,11 @@ void CommonMidiInputTest::testPanic()
 	DEBUGLOG(midiio,_T("213"));
 
 	in->NoteOn(0,56,96);
-	CPPUNIT_ASSERT( out->Check(_T("  6: b6 40 00\n  6: 96 38 60\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  6: 96 38 60\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,60,97);
-	CPPUNIT_ASSERT( out->Check(_T("  7: b7 40 00\n  7: 97 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  7: 97 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,63,98);
-	CPPUNIT_ASSERT( out->Check(_T("  8: b8 40 00\n  8: 98 3f 62\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  8: 98 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	in->NoteOff(0,60,54);
 	CPPUNIT_ASSERT( out->Check(_T("  7: 87 3c 36\n"), __LINE__, _T(__FILE__) ) );
@@ -785,11 +785,11 @@ void CommonMidiInputTest::testPanic()
 	DEBUGLOG(midiio,_T("231"));
 
 	in->NoteOn(0,56,96);
-	CPPUNIT_ASSERT( out->Check(_T(" 10: ba 40 00\n 10: 9a 38 60\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 10: 9a 38 60\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,60,97);
-	CPPUNIT_ASSERT( out->Check(_T(" 11: bb 40 00\n 11: 9b 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 11: 9b 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,63,98);
-	CPPUNIT_ASSERT( out->Check(_T(" 12: bc 40 00\n 12: 9c 3f 62\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 12: 9c 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	in->NoteOff(0,60,54);
 	CPPUNIT_ASSERT( out->Check(_T(" 11: 8b 3c 36\n"), __LINE__, _T(__FILE__) ) );
@@ -801,11 +801,11 @@ void CommonMidiInputTest::testPanic()
 	DEBUGLOG(midiio,_T("312"));
 
 	in->NoteOn(0,56,96);
-	CPPUNIT_ASSERT( out->Check(_T(" 13: bd 40 00\n 13: 9d 38 60\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 13: 9d 38 60\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,60,97);
-	CPPUNIT_ASSERT( out->Check(_T(" 14: be 40 00\n 14: 9e 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 14: 9e 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,63,98);
-	CPPUNIT_ASSERT( out->Check(_T(" 15: bf 40 00\n 15: 9f 3f 62\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 15: 9f 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	in->NoteOff(0,63,55);
 	CPPUNIT_ASSERT( out->Check(_T(" 15: 8f 3f 37\n"), __LINE__, _T(__FILE__) ) );
@@ -895,18 +895,68 @@ void CommonMidiInputTest::testPanic()
 	CPPUNIT_ASSERT( out->Check(_T("  0: 80 3f 37\n"), __LINE__, _T(__FILE__) ) );
 
 	in->Panic(mutabor::midi::DEFAULT_PANIC);
-	CPPUNIT_ASSERT( out->Check(_T("  3: 83 3f 62\n"
-				      "  4: 84 3f 62\n"
-				      "  8: 88 3f 62\n"
-				      " 10: 8a 3f 62\n"
-				      " 14: 8e 3f 62\n"
-				      "  2: 82 3c 61\n"
-				      "  5: 85 3c 61\n"
-				      "  6: 86 3c 61\n"
-				      " 12: 8c 3c 61\n"
-				      " 13: 8d 3c 61\n"
-				      " 11: 8b 38 60\n"
-				      " 15: 8f 38 60\n"), 
+	CPPUNIT_ASSERT( out->Check(_T("\
+  2: b2 40 00\n\
+  3: b3 40 00\n\
+  4: b4 40 00\n\
+  5: b5 40 00\n\
+  6: b6 40 00\n\
+  8: b8 40 00\n\
+ 10: ba 40 00\n\
+ 11: bb 40 00\n\
+ 12: bc 40 00\n\
+ 13: bd 40 00\n\
+ 14: be 40 00\n\
+ 15: bf 40 00\n\
+  2: b2 42 00\n\
+  3: b3 42 00\n\
+  4: b4 42 00\n\
+  5: b5 42 00\n\
+  6: b6 42 00\n\
+  8: b8 42 00\n\
+ 10: ba 42 00\n\
+ 11: bb 42 00\n\
+ 12: bc 42 00\n\
+ 13: bd 42 00\n\
+ 14: be 42 00\n\
+ 15: bf 42 00\n\
+  2: b2 44 00\n\
+  3: b3 44 00\n\
+  4: b4 44 00\n\
+  5: b5 44 00\n\
+  6: b6 44 00\n\
+  8: b8 44 00\n\
+ 10: ba 44 00\n\
+ 11: bb 44 00\n\
+ 12: bc 44 00\n\
+ 13: bd 44 00\n\
+ 14: be 44 00\n\
+ 15: bf 44 00\n\
+  2: b2 45 00\n\
+  3: b3 45 00\n\
+  4: b4 45 00\n\
+  5: b5 45 00\n\
+  6: b6 45 00\n\
+  8: b8 45 00\n\
+ 10: ba 45 00\n\
+ 11: bb 45 00\n\
+ 12: bc 45 00\n\
+ 13: bd 45 00\n\
+ 14: be 45 00\n\
+ 15: bf 45 00\n\
+  3: 83 3f 62\n\
+  4: 84 3f 62\n\
+  8: 88 3f 62\n\
+ 10: 8a 3f 62\n\
+ 14: 8e 3f 62\n\
+  2: 82 3c 61\n\
+  5: 85 3c 61\n\
+  6: 86 3c 61\n\
+ 12: 8c 3c 61\n\
+ 13: 8d 3c 61\n\
+ 11: 8b 38 60\n\
+ 15: 8f 38 60\n\
+"), 
 				   __LINE__, 
 				   _T(__FILE__) ) );
 
@@ -1093,11 +1143,11 @@ void CommonMidiInputTest::testGlobalPanic()
 	DEBUGLOG(midiio,_T("123"));
 
 	in->NoteOn(0,56,96);
-	CPPUNIT_ASSERT( out->Check(_T("  0: b0 40 00\n  0: 90 38 60\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  0: 90 38 60\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,60,97);
-	CPPUNIT_ASSERT( out->Check(_T("  1: b1 40 00\n  1: 91 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  1: 91 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,63,98);
-	CPPUNIT_ASSERT( out->Check(_T("  2: b2 40 00\n  2: 92 3f 62\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  2: 92 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	in->NoteOff(0,56,53);
 	CPPUNIT_ASSERT( out->Check(_T("  0: 80 38 35\n"), __LINE__, _T(__FILE__) ) );
@@ -1109,11 +1159,11 @@ void CommonMidiInputTest::testGlobalPanic()
 	DEBUGLOG(midiio,_T("132"));
 
 	in->NoteOn(0,56,96);
-	CPPUNIT_ASSERT( out->Check(_T("  3: b3 40 00\n  3: 93 38 60\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  3: 93 38 60\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,60,97);
-	CPPUNIT_ASSERT( out->Check(_T("  4: b4 40 00\n  4: 94 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  4: 94 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,63,98);
-	CPPUNIT_ASSERT( out->Check(_T("  5: b5 40 00\n  5: 95 3f 62\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  5: 95 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	in->NoteOff(0,56,53);
 	CPPUNIT_ASSERT( out->Check(_T("  3: 83 38 35\n"), __LINE__, _T(__FILE__) ) );
@@ -1125,11 +1175,11 @@ void CommonMidiInputTest::testGlobalPanic()
 	DEBUGLOG(midiio,_T("213"));
 
 	in->NoteOn(0,56,96);
-	CPPUNIT_ASSERT( out->Check(_T("  6: b6 40 00\n  6: 96 38 60\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  6: 96 38 60\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,60,97);
-	CPPUNIT_ASSERT( out->Check(_T("  7: b7 40 00\n  7: 97 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  7: 97 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,63,98);
-	CPPUNIT_ASSERT( out->Check(_T("  8: b8 40 00\n  8: 98 3f 62\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T("  8: 98 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	in->NoteOff(0,60,54);
 	CPPUNIT_ASSERT( out->Check(_T("  7: 87 3c 36\n"), __LINE__, _T(__FILE__) ) );
@@ -1141,11 +1191,11 @@ void CommonMidiInputTest::testGlobalPanic()
 	DEBUGLOG(midiio,_T("231"));
 
 	in->NoteOn(0,56,96);
-	CPPUNIT_ASSERT( out->Check(_T(" 10: ba 40 00\n 10: 9a 38 60\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 10: 9a 38 60\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,60,97);
-	CPPUNIT_ASSERT( out->Check(_T(" 11: bb 40 00\n 11: 9b 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 11: 9b 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,63,98);
-	CPPUNIT_ASSERT( out->Check(_T(" 12: bc 40 00\n 12: 9c 3f 62\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 12: 9c 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	in->NoteOff(0,60,54);
 	CPPUNIT_ASSERT( out->Check(_T(" 11: 8b 3c 36\n"), __LINE__, _T(__FILE__) ) );
@@ -1157,11 +1207,11 @@ void CommonMidiInputTest::testGlobalPanic()
 	DEBUGLOG(midiio,_T("312"));
 
 	in->NoteOn(0,56,96);
-	CPPUNIT_ASSERT( out->Check(_T(" 13: bd 40 00\n 13: 9d 38 60\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 13: 9d 38 60\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,60,97);
-	CPPUNIT_ASSERT( out->Check(_T(" 14: be 40 00\n 14: 9e 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 14: 9e 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	in->NoteOn(0,63,98);
-	CPPUNIT_ASSERT( out->Check(_T(" 15: bf 40 00\n 15: 9f 3f 62\n"), __LINE__, _T(__FILE__) ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 15: 9f 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	in->NoteOff(0,63,55);
 	CPPUNIT_ASSERT( out->Check(_T(" 15: 8f 3f 37\n"), __LINE__, _T(__FILE__) ) );
@@ -1251,34 +1301,83 @@ void CommonMidiInputTest::testGlobalPanic()
 	CPPUNIT_ASSERT( out->Check(_T("  0: 80 3f 37\n"), __LINE__, _T(__FILE__) ) );
 
 	mutabor::Panic(mutabor::midi::DEFAULT_PANIC);
-	CPPUNIT_ASSERT( out->Check(_T("  3: 83 3f 62\n"
-				      "  4: 84 3f 62\n"
-				      "  8: 88 3f 62\n"
-				      " 10: 8a 3f 62\n"
-				      " 14: 8e 3f 62\n"
-				      "  2: 82 3c 61\n"
-				      "  5: 85 3c 61\n"
-				      "  6: 86 3c 61\n"
-				      " 12: 8c 3c 61\n"
-				      " 13: 8d 3c 61\n"
-				      " 11: 8b 38 60\n"
-				      " 15: 8f 38 60\n"
-				      "  0: b0 78 00\n"
-				      "  1: b1 78 00\n"
-				      "  2: b2 78 00\n"
-				      "  3: b3 78 00\n"
-				      "  4: b4 78 00\n"
-				      "  5: b5 78 00\n"
-				      "  6: b6 78 00\n"
-				      "  7: b7 78 00\n"
-				      "  8: b8 78 00\n"
-				      "  9: b9 78 00\n"
-				      " 10: ba 78 00\n"
-				      " 11: bb 78 00\n"
-				      " 12: bc 78 00\n"
-				      " 13: bd 78 00\n"
-				      " 14: be 78 00\n"
-				      " 15: bf 78 00\n"), 
+	CPPUNIT_ASSERT( out->Check(_T("\
+  2: b2 40 00\n\
+  3: b3 40 00\n\
+  4: b4 40 00\n\
+  5: b5 40 00\n\
+  6: b6 40 00\n\
+  8: b8 40 00\n\
+ 10: ba 40 00\n\
+ 11: bb 40 00\n\
+ 12: bc 40 00\n\
+ 13: bd 40 00\n\
+ 14: be 40 00\n\
+ 15: bf 40 00\n\
+  2: b2 42 00\n\
+  3: b3 42 00\n\
+  4: b4 42 00\n\
+  5: b5 42 00\n\
+  6: b6 42 00\n\
+  8: b8 42 00\n\
+ 10: ba 42 00\n\
+ 11: bb 42 00\n\
+ 12: bc 42 00\n\
+ 13: bd 42 00\n\
+ 14: be 42 00\n\
+ 15: bf 42 00\n\
+  2: b2 44 00\n\
+  3: b3 44 00\n\
+  4: b4 44 00\n\
+  5: b5 44 00\n\
+  6: b6 44 00\n\
+  8: b8 44 00\n\
+ 10: ba 44 00\n\
+ 11: bb 44 00\n\
+ 12: bc 44 00\n\
+ 13: bd 44 00\n\
+ 14: be 44 00\n\
+ 15: bf 44 00\n\
+  2: b2 45 00\n\
+  3: b3 45 00\n\
+  4: b4 45 00\n\
+  5: b5 45 00\n\
+  6: b6 45 00\n\
+  8: b8 45 00\n\
+ 10: ba 45 00\n\
+ 11: bb 45 00\n\
+ 12: bc 45 00\n\
+ 13: bd 45 00\n\
+ 14: be 45 00\n\
+ 15: bf 45 00\n\
+  3: 83 3f 62\n\
+  4: 84 3f 62\n\
+  8: 88 3f 62\n\
+ 10: 8a 3f 62\n\
+ 14: 8e 3f 62\n\
+  2: 82 3c 61\n\
+  5: 85 3c 61\n\
+  6: 86 3c 61\n\
+ 12: 8c 3c 61\n\
+ 13: 8d 3c 61\n\
+ 11: 8b 38 60\n\
+ 15: 8f 38 60\n\
+  0: b0 78 00\n\
+  1: b1 78 00\n\
+  2: b2 78 00\n\
+  3: b3 78 00\n\
+  4: b4 78 00\n\
+  5: b5 78 00\n\
+  6: b6 78 00\n\
+  7: b7 78 00\n\
+  8: b8 78 00\n\
+  9: b9 78 00\n\
+ 10: ba 78 00\n\
+ 11: bb 78 00\n\
+ 12: bc 78 00\n\
+ 13: bd 78 00\n\
+ 14: be 78 00\n\
+"), 
 				   __LINE__, 
 				   _T(__FILE__) ) );
 

@@ -3,7 +3,7 @@
 * GIS - devices
 *
 * Copyright:   (c) 1998-2011 TU Dresden
-* \author  
+* \author
 * R. Krauße,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \license GPL
@@ -22,6 +22,7 @@
 *    along with this program; if not, write to the Free Software
 *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
+* \todo Implement handling of controllers
 ********************************************************************
 * \addtogroup route
 * \{
@@ -73,7 +74,7 @@ namespace mutabor {
 				Head = 0;
 			}
 
-		OutputGis(const mutStringRef name, 
+		OutputGis(const mutStringRef name,
 			  int id = -1) : OutputDeviceClass(name, id)
 			{
 				Head = new GisWriteHead(0, name);
@@ -84,34 +85,34 @@ namespace mutabor {
 			{
 				delete Head;
 			}
-	
+
 		/// Save current device settings in a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be saved.
 		 */
 		virtual void Save (tree_storage & config);
-	
+
 		/// Save route settings (filter settings) for a given route
-		/** Some route settings (e.g. filter settings) are device type 
+		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function saves them in a tree storage.
 		 * \argument config (tree_storage *) Storage class, where the data will be saved.
 		 * \argument route (Route) Route whos data shall be saved.
 		 */
 		virtual void Save (tree_storage & config, const RouteClass * route);
-	
+
 		/// Load current device settings from a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be loaded from.
 		 */
 		virtual void Load (tree_storage & config);
-	
+
 		/// Loade route settings (filter settings) for a given route
-		/** Some route settings (e.g. filter settings) are device type 
+		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function loads them from a tree storage.
 		 * \argument config (tree_storage *) Storage class, where the data will be restored from.
 		 * \argument route (Route) Route whos data shall be loaded.
 		 */
 		virtual void Load (tree_storage & config, RouteClass * route);
 
-	
+
 		virtual bool IsOpen() {
 			return false;
 		}
@@ -121,11 +122,11 @@ namespace mutabor {
 				CloseAllSubs(Head);
 			};
 
-		virtual void SetName(const wxString & s) 
+		virtual void SetName(const wxString & s)
 			{
 				if (s != Name) {
 					bool reopen = IsOpen();
-					if (reopen) 
+					if (reopen)
 						Close();
 
 					Name = s;
@@ -162,18 +163,18 @@ namespace mutabor {
 #pragma warning(push) // Save warning settings.
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
 #endif
-		virtual void do_NoteOn(mutabor::Box box, 
-				    int taste, 
+		virtual void do_NoteOn(mutabor::Box box,
+				    int taste,
 				    int velo,
-				    RouteClass * r, 
-				    size_t id, 
+				    RouteClass * r,
+				    size_t id,
 				    const ChannelData &cd)
 			{};
 
-		virtual void do_NoteOff(mutabor::Box box, 
+		virtual void do_NoteOff(mutabor::Box box,
 				     int taste,
-				     int velo, 
-				     RouteClass * r, 
+				     int velo,
+				     RouteClass * r,
 				     size_t id,
 				     bool is_note_on)
 			{};
@@ -207,9 +208,9 @@ namespace mutabor {
 
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
-#endif 
+#endif
 
-	
+
 	};
 
 // InputGis ------------------------------------------------------------
@@ -222,9 +223,9 @@ namespace mutabor {
 		GisToken *Data;
 		GisReadArtHead *Head;
 
-		InputGis(const mutStringRef name = mutEmptyString, 
+		InputGis(const mutStringRef name = mutEmptyString,
 			 mutabor::MutaborModeType mode
-			 = mutabor::DeviceStop, 
+			 = mutabor::DeviceStop,
 			 int id = -1)
 			: CommonFileInputDevice(name,mode,id)
 			{
@@ -236,18 +237,18 @@ namespace mutabor {
 		typedef CommonFileInputDevice base;
 
 		virtual ~InputGis() {}
-	
+
 		/// Save route settings (filter settings) for a given route
-		/** Some route settings (e.g. filter settings) are device type 
+		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function saves them in a tree storage.
 		 * \argument config (tree_storage *) Storage class, where the data will be saved.
 		 * \argument route (Route ) Route whos data shall be saved.
 		 */
 		virtual void Save (tree_storage & config, const RouteClass * route);
-	
-	
+
+
 		/// Loade route settings (filter settings) for a given route
-		/** Some route settings (e.g. filter settings) are device type 
+		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function loads them from a tree storage.
 		 * \argument config (tree_storage *) Storage class, where the data will be restored from.
 		 * \argument route (Route) Route whos data shall be loaded.
@@ -256,7 +257,7 @@ namespace mutabor {
 
 		virtual void Close();
 		virtual void Stop();
-	
+
 		virtual bool Open();
 		virtual void Panic(int type);
 
@@ -278,6 +279,11 @@ namespace mutabor {
 			return N_("GIS input file");
 		}
 
+		virtual ChannelData & GetChannelData(const current_keys_type::entry & key) const {
+			return const_cast<ChannelData &>(channel_data);
+		}
+
+
 #ifdef WX
 		virtual wxString TowxString() const {
 			return InputDeviceClass::TowxString() +
@@ -287,9 +293,10 @@ namespace mutabor {
 						 minDelta);
 		}
 #endif
-	
+
 
 	private:
+		static const ChannelData channel_data; /// currently unused
 		mutint64 minDelta;  // in ticks
 //		UINT TimerId;
 //    long SpeedFactor;
@@ -297,7 +304,7 @@ namespace mutabor {
 
 	};
 
-	class GisFactory:public DeviceFactory { 
+	class GisFactory:public DeviceFactory {
 	public:
 		GisFactory(size_t id = DTGis):
 			DeviceFactory(id) {}
@@ -310,11 +317,11 @@ namespace mutabor {
 			}
 
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name, 
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name,
 								    int id = -1) const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name, 
-								  mutabor::MutaborModeType mode, 
+
+		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name,
+								  mutabor::MutaborModeType mode,
 								  int id = -1) const;
 	};
 

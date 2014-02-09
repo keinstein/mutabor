@@ -174,9 +174,9 @@ namespace mutabor {
 		// a simple implementation with room for improvements
 		// first pass: revert changes that have been made
 		for(ChannelData::controller_vector::const_iterator i
-			    = Cd[channel].get_first_changed_controller(Cd[channel]);
+			    = Cd[channel].get_first_changed_controller(input);
 		    Cd[channel].is_changed_controller(i);
-		    i = Cd[channel].get_next_changed_controller(Cd[channel],i)) {
+		    i = Cd[channel].get_next_changed_controller(input,i)) {
 			int number =  *i;
 
 			// avoid setting controllers that are hard to undo
@@ -275,16 +275,16 @@ namespace mutabor {
 		bool set_sound = false;
 		sound = input_channel_data.get_program();
 		if (sound != -1 && output_data.get_program() != sound)
-			set_sound =true;
+			set_sound = true;
 		bank_fine = input_channel_data.get_bank_fine();
 		bank_coarse = input_channel_data.get_bank_coarse();
 
 		if (bank_fine != -1 && output_data.get_bank_fine() != bank_fine) {
-			set_sound =true;
+			set_sound = true;
 			if (bank_coarse == -1)
 				bank_coarse = output_data.get_bank_coarse();
 		} else if (bank_coarse != -1 && output_data.get_bank_coarse() != bank_coarse) {
-			set_sound =true;
+			set_sound = true;
 			if (bank_fine == -1)
 				bank_fine = output_data.get_bank_fine();
 		}
@@ -297,6 +297,22 @@ namespace mutabor {
 			output_data.set_controller(midi::BANK_FINE,bank_fine);
 			output_data.program_change(sound);
 		}
+
+		for(ChannelData::controller_vector::const_iterator i
+			    = input_channel_data.get_first_changed_controller();
+		    input_channel_data.is_changed_controller(i);
+		    i = input_channel_data.get_next_changed_controller(i)) {
+			switch (*i) {
+			case midi::BANK_COARSE:
+			case midi::BANK_FINE:
+				int value = input_channel_data.get_controller(*i);
+				if (value >= 0) {
+					controller(channel,*i,value);
+					output_data.set_controller(*i,value);
+				}
+			}
+		}
+
 	}
 
 	template<class T, class D>
@@ -339,29 +355,36 @@ namespace mutabor {
  		pitch_bend_type note = pitch_and_bend(freq);
 		int8_t controller_value;
 
+		/** \todo write a test that checks for negative controller values */
+		for (const int * i = midi::get_holds();
+		     *i >= 0; i++) {
+			if ( output_data.get_controller(*i) !=
+			     (controller_value
+			      = input_channel_data.get_controller(*i)) ) {
+				if (controller_value >= 0) {
+					controller(channel,*i, controller_value);
+					output_data.set_controller(*i, controller_value);
+				}
+			}
+		}
+
 		if ( note.bend != output_data.get_bend() ) {
 			pitch_bend(channel,note.bend);
 			output_data.set_bend(note.bend);
 
-			// Switch off sustain if necessary
-			if ( output_data.get_controller(midi::HOLD_PEDAL_ON_OFF)) {
-				controller(channel,
-					   midi::HOLD_PEDAL_ON_OFF,
-					   midi::CONTROLLER_OFF);
-				output_data.set_controller(midi::HOLD_PEDAL_ON_OFF,
-							   midi::CONTROLLER_OFF);
+			// Switch off any hold pedal if necessary
+			for (const int * i = midi::get_holds();
+			     *i >= 0; i++) {
+				if ( output_data.get_controller(*i) > midi::CONTROLLER_OFF) {
+					controller(channel,
+						   *i,
+						   midi::CONTROLLER_OFF);
+					output_data.set_controller(*i,
+								   midi::CONTROLLER_OFF);
+				}
 			}
 		}
 
-		if ( output_data.get_controller(midi::HOLD_PEDAL_ON_OFF) !=
-		     (controller_value
-		      = input_channel_data.get_controller(midi::HOLD_PEDAL_ON_OFF)) ) {
-			controller(channel,
-				   midi::HOLD_PEDAL_ON_OFF,
-				   controller_value);
-			output_data.set_controller(midi::HOLD_PEDAL_ON_OFF,
-						   controller_value);
-		}
 
 		CopyProgramChange(input_channel_data, output_data, channel);
 
@@ -428,7 +451,7 @@ namespace mutabor {
 
 
 					if (is_note_on
-					    || Cd[i].get_controller(midi::HOLD_PEDAL_ON_OFF))
+					    || Cd[i].get_hold())
 						channel_queue.sustain_channel(i);
 					else
 						channel_queue.free_channel(i);
@@ -449,7 +472,7 @@ namespace mutabor {
 
 		for (int channel = 0; channel < 16; channel++)
 			if ( (ton_auf_kanal[channel].active
-			      || Cd[channel].get_controller(midi::HOLD_PEDAL_ON_OFF)>0 )
+			      || Cd[channel].get_hold())
 			     && ton_auf_kanal[channel].channel == route->get_session_id()) {
 
 				TAK & tone = ton_auf_kanal[channel];
@@ -472,17 +495,26 @@ namespace mutabor {
 
 				// evtl. Ton ausschalten
 				if ( SwitchTone ) {
-					bool sustain = Cd[channel].get_controller(midi::HOLD_PEDAL_ON_OFF);
-					if ( sustain ) {
-						/* temporary sowith hold off */
-						controller(channel,midi::HOLD_PEDAL_ON_OFF,0);
+					/* temporary switch hold off */
+					for (const int * i = midi::get_holds();
+					     *i >= 0; i++) {
+						if ( Cd[channel].get_controller(*i)
+						     > midi::CONTROLLER_OFF ) {
+							controller(channel,*i,
+								   midi::CONTROLLER_OFF);
+						}
 					}
 
 					note_off(channel,tone.outkey.pitch, 0);
 
-					if (sustain)
-						controller(channel,midi::HOLD_PEDAL_ON_OFF,
-							   Cd[channel].get_controller(midi::HOLD_PEDAL_ON_OFF));
+					for (const int * i = midi::get_holds();
+					     *i >= 0; i++) {
+						if (Cd[channel].get_controller(*i)
+						    > midi::CONTROLLER_OFF) {
+							controller(channel,*i,
+								   Cd[channel].get_controller(*i));
+						}
+					}
 
 				} else if (newpb.bend == oldpb.bend) continue;
 
@@ -497,6 +529,7 @@ namespace mutabor {
 			}
 	}
 
+#warning do not save LOCAL_ON_OFF in the controller.
 	template<class T, class D>
 	void  CommonMidiOutput<T,D>::do_Controller(int mutabor_channel,
 						   int ctrl,
@@ -517,50 +550,57 @@ namespace mutabor {
 			     && (id == ChannelData::IGNORE_UNIQUE_ID
 				 || ton_auf_kanal[i].unique_id == id)
 			     && (ton_auf_kanal[i].active
-				 || Cd[i].get_controller(midi::HOLD_PEDAL_ON_OFF) > 0x40)) {
-				if (Cd[i].get_controller(ctrl) == value) {
+				 || Cd[i].get_hold())) {
+
+				switch (ctrl) {
+				case midi::ALL_CONTROLLERS_OFF: {
+#if 0
+					ChannelData data;
+					data.MidiReset();
+					do_UpdateControllers(i, data);
+#endif
+					/** \todo handle chord hold */
+					/** \todo implement immediate
+					    controller reset, don't
+					    wait for the next tone */
+				}
+				case midi::ALL_SOUND_OFF:
+				case midi::ALL_NOTES_OFF:
+				case midi::OMNI_OFF:
+				case midi::OMNI_ON:
+				case midi::MONO_ON:
+				case midi::POLY_ON:
+					continue;
+				}
+
+
+				int newctrl = Cd[i].get_index(ctrl);
+
+				if (Cd[i].get_controller(ctrl) == value ||
+				    (ctrl == newctrl && Cd[i].get_controller(newctrl) == value)) {
 					switch (ctrl) {
 					case midi::DATA_ENTRY_COARSE:
 					case midi::DATA_ENTRY_FINE:
 					case midi::DATA_BUTTON_INCREMENT:
 					case midi::DATA_BUTTON_DECREMENT:
-					case midi::ALL_CONTROLLERS_OFF:
-					case midi::ALL_SOUND_OFF:
-					case midi::ALL_NOTES_OFF:
-					case midi::OMNI_OFF:
-					case midi::OMNI_ON:
-					case midi::MONO_ON:
-					case midi::POLY_ON:
-					case midi::LOCAL_ON_OFF:
 						break;
 					default:
 						continue;
 					}
 				}
-				switch (ctrl) {
-					case midi::ALL_CONTROLLERS_OFF:
-					case midi::ALL_SOUND_OFF:
-					case midi::ALL_NOTES_OFF:
-					case midi::OMNI_OFF:
-					case midi::OMNI_ON:
-					case midi::MONO_ON:
-					case midi::POLY_ON:
-						ChannelData data;
-							data.Reset();
-						do_UpdateControllers(i, data);
-						continue;
-				}
-
-				int newctrl = Cd[i].get_index(ctrl);
-				if (ctrl == newctrl && Cd[i].get_controller(newctrl) == value)
-				    continue;
 
 				// this might change the index (e.g. RPN/NRPN coarse/fine)
-				Cd[i].set_controller(ctrl, value);
+				switch (ctrl) {
+				case midi::LOCAL_ON_OFF:
+					newctrl = ctrl;
+					break;
+				default:
+					Cd[i].set_controller(ctrl, value);
+					newctrl = Cd[i].get_index(ctrl);
+					if (newctrl != ctrl)
+						value = Cd[i].get_controller(newctrl);
 
-
-
-				newctrl = Cd[i].get_index(ctrl);
+				}
 
 				if (newctrl == -1) continue;
 
@@ -571,20 +611,20 @@ namespace mutabor {
 					controller(i,midi::REGISTERED_PARAMETER_COARSE, (newctrl >> 8) & 0x7F);
 					controller(i,midi::REGISTERED_PARAMETER_FINE, newctrl & 0x7F);
 
-					controller(i,midi::DATA_ENTRY_COARSE, value >> 7 & 0x7F);
+					controller(i,midi::DATA_ENTRY_COARSE, (value >> 7) & 0x7F);
 					controller(i,midi::DATA_ENTRY_FINE, value & 0x7F);
 				} else if (newctrl <= 0x30000) {
 					controller(i,midi::REGISTERED_PARAMETER_COARSE, (newctrl >> 8) & 0x7F);
 					controller(i,midi::REGISTERED_PARAMETER_FINE, newctrl & 0x7F);
 
-					controller(i,midi::DATA_ENTRY_COARSE, value >> 7 & 0x7F);
+					controller(i,midi::DATA_ENTRY_COARSE, (value >> 7) & 0x7F);
 					controller(i,midi::DATA_ENTRY_FINE, value & 0x7F);
 				}
 
 				// sustained section contains only inactive MIDI channels
-				if (newctrl == midi::HOLD_PEDAL_ON_OFF
+				if (midi::is_hold(newctrl)
 				    && !ton_auf_kanal[i].active) {
-					channel_queue.sustain_channel(i, value > 0x40);
+					channel_queue.sustain_channel(i, Cd[i].get_hold());
 				}
 			}
 	}
@@ -781,7 +821,7 @@ namespace mutabor {
 		if (!this->isOpen) return;
 		TRACEC;
 
-		for (int i = 0; i < 16; i++) {
+		for (int i = 0; i < GetMaxChannel(); i++) {
 			controller(i,type,0);
 			ton_auf_kanal[i].active = false;
 			ton_auf_kanal[i].inkey=0;
@@ -792,10 +832,6 @@ namespace mutabor {
 		channel_queue.init();
 
 		nKeyOn = 0;
-
-		for (int i = 0; i < GetMaxChannel(); i++) {
-			controller(i,type,0);
-		}
 	}
 
 
@@ -811,7 +847,7 @@ namespace mutabor {
 		DEBUGLOG (midifile, _T("Code: %x, Active: %d, Out: %p"),midiCode,
 			  route->GetActive(),
 			  (void*)route->GetOutputDevice().get());
-		BYTE MidiChannel = midiCode & 0x0F;
+		BYTE MidiChannel = (midiCode & 0x0F) + channel_offset;
 		BYTE MidiStatus  = midiCode & 0xF0;
 		DEBUGLOG (midifile, _T("Status: %x"), MidiStatus);
 
@@ -847,20 +883,22 @@ namespace mutabor {
 			/* cases that need special treatment */
 			switch ((midiCode >> 8) & 0xff) {
 			case midi::ALL_CONTROLLERS_OFF:
-				propagate = panic = reset = true;
-				break;
+				reset = true;
 			case midi::ALL_SOUND_OFF:
 			case midi::ALL_NOTES_OFF:
 			case midi::OMNI_OFF:
 			case midi::OMNI_ON:
 			case midi::MONO_ON:
 			case midi::POLY_ON:
+			case midi::LOCAL_ON_OFF:
 				propagate = false;
 				panic = true;
 				break;
-			case midi::LOCAL_ON_OFF:
-				panic = true;
+				/*
+			case midi::CHORD_HOLD_PEDAL_ON_OFF:
+				propagate = false;
 				break;
+				*/
 			}
 
 			if (propagate)
@@ -871,7 +909,7 @@ namespace mutabor {
 				this->Panic((midiCode >> 8) & 0xff,MidiChannel);
 
 			if (reset)
-				channel_data[MidiChannel].Reset();
+				channel_data[MidiChannel].MidiReset();
 
 			// always propagate as we need to store the correct result.
 			route -> Controller((midiCode >>  8) & 0xff,
@@ -951,22 +989,23 @@ namespace mutabor {
 			/* cases that need special treatment */
 			switch (midiCode -> at(1)) {
 			case midi::ALL_CONTROLLERS_OFF:
-				propagate = panic = reset = true;
-				break;
+				reset = true;
 			case midi::ALL_SOUND_OFF:
 			case midi::ALL_NOTES_OFF:
 			case midi::OMNI_OFF:
 			case midi::OMNI_ON:
 			case midi::MONO_ON:
 			case midi::POLY_ON:
+			case midi::LOCAL_ON_OFF:
 				propagate = false;
 				panic = true;
 				break;
-			case midi::LOCAL_ON_OFF:
-				panic = true;
+				/*
+			case midi::CHORD_HOLD_PEDAL_ON_OFF:
+				propagate = false;
 				break;
+				*/
 			}
-			break;
 
 			if (propagate)
 				channel_data[MidiChannel].set_controller(midiCode->at(1),
@@ -974,11 +1013,10 @@ namespace mutabor {
 			if (panic)
 				this->Panic(midiCode->at(1),MidiChannel);
 			if (reset)
-				channel_data[MidiChannel].Reset();
-			if (propagate)
-				route -> Controller(midiCode->at(1),
-						    midiCode->at(2),
-						    MidiChannel);
+				channel_data[MidiChannel].MidiReset();
+			route -> Controller(midiCode->at(1),
+					    midiCode->at(2),
+					    MidiChannel);
 		}
 			break;
 		case midi::KEY_PRESSURE:

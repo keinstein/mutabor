@@ -101,9 +101,9 @@ namespace mutabor {
 		typedef std::vector<int> controller_vector;
 		static const size_t IGNORE_UNIQUE_ID = ULONG_MAX;
 
-		ChannelData(int sound = -1,
-			    int8_t sustain = 0):controller(128,-1),
-						controller_changed(128,-1),
+		ChannelData(int sound = -1/*,
+					    int8_t sustain = 0*/):controller(128,-1),
+						controller_changed(256,-1),
 						first_unchanged(0),
 						looped(false),
 						data_is_rpn(true),
@@ -112,12 +112,14 @@ namespace mutabor {
 						bank_fine(-1),
 						bend(0)
 		{
+			/*
 			controller[midi::HOLD_PEDAL_ON_OFF] = sustain;
 			if (sustain != 0) {
 				controller_changed[first_unchanged]
 					= midi::HOLD_PEDAL_ON_OFF;
 				first_unchanged++;
 			}
+			*/
 		}
 
 		void Reset()
@@ -134,9 +136,19 @@ namespace mutabor {
 			bank_coarse = -1;
 			bank_fine = -1;
 			bend = 0;
-
-
 		}
+
+		/**
+		 * Reset the controllers according to the MIDI
+		 * standard.
+		 *
+		 * This function resets the Midi Controllers according
+		 * to RP15 from the MMA.
+		 *
+		 * \sa http://www.midi.org/techspecs/rp15.php
+		 *
+		 */
+		void MidiReset();
 
 		int set_controller(size_t number, int8_t data) {
 
@@ -168,7 +180,7 @@ namespace mutabor {
 				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != -1
 				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != 0x7f
 				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != 0x7f) {
-					param = 0x20000
+					param = midi::FIRST_NRPN
 						| controller[midi::NON_REGISTERED_PARAMETER_COARSE] << 8
 						| controller[midi::NON_REGISTERED_PARAMETER_FINE];
 				} else if (data_is_rpn
@@ -176,7 +188,7 @@ namespace mutabor {
 					   && controller[midi::REGISTERED_PARAMETER_COARSE] != -1
 					   && controller[midi::REGISTERED_PARAMETER_FINE] != 0x7f
 					   && controller[midi::REGISTERED_PARAMETER_COARSE] != 0x7f) {
-					param = 0x10000
+					param = midi::FIRST_RPN
 						| controller[midi::REGISTERED_PARAMETER_COARSE] << 8
 						| controller[midi::REGISTERED_PARAMETER_FINE];
 				}
@@ -288,12 +300,88 @@ namespace mutabor {
 			return controller[number];
 		}
 
+		/**
+		 * Check whether one of the hold switches is active
+		 *
+		 * \retval true if the channel is holding notes
+		 * \retval false if the notes are expected to stop
+		 * immediately
+		 *
+		 * \sa \ref midi::is_hold()
+		 */
+		bool get_hold() const {
+			return (get_controller(midi::HOLD_PEDAL_ON_OFF) >= midi::CONTROLLER_MIN_ON
+				|| get_controller(midi::SOSTENUTO_ON_OFF) >= midi::CONTROLLER_MIN_ON
+				|| get_controller(midi::LEGATO_PEDAL_ON_OFF) >= midi::CONTROLLER_MIN_ON
+				|| get_controller(midi::HOLD_2_PEDAL_ON_OFF) >= midi::CONTROLLER_MIN_ON);
+		}
+
+
+		/**
+		 * Get the first changed controller.
+		 *
+		 *
+		 * \return Iterator to the first changed controller.
+		 *
+		 * \todo Provide changed_controller iterator type
+		 */
+		controller_vector::const_iterator get_first_changed_controller() const {
+			controller_vector::const_iterator retval = controller_changed.begin();
+			if (retval == controller_changed.end())
+				return retval;
+			if (*retval != -1)
+				return retval;
+			return get_next_changed_controller(retval);
+		}
+		/**
+		 * Get the first changed controller that differs from
+		 * the corresponding controller in another channel.
+		 *
+		 * \param other The channel data we compare ourselves to.
+		 *
+		 * \return iterator to the first differently changed controller.
+		 */
 		controller_vector::const_iterator get_first_changed_controller(const ChannelData & other) const {
 			controller_vector::const_iterator retval = controller_changed.begin();
-			if (*retval == -1 || controller[*retval]==other.controller[*retval])
+			if (retval == controller_changed.end())
+				return retval;
+			if (*retval != -1 && controller[*retval] != other.controller[*retval])
 				return retval;
 			return get_next_changed_controller(other,retval);
 		}
+
+		/**
+		 * Get the first changed controller.
+		 *
+		 * \param last last position of the iterator.
+		 *
+		 * \return Iterator to the first changed controller.
+		 *
+		 * \todo Provide changed_controller iterator type
+		 */
+		controller_vector::const_iterator get_next_changed_controller(controller_vector::const_iterator last) const {
+			mutASSERT(controller_changed.begin() <= last);
+			mutASSERT(last < controller_changed.end());
+			controller_vector::const_iterator retval = last;
+			do {
+				++retval;
+				mutASSERT(retval == controller_changed.end()
+					  || *retval == -1
+					  || (size_t)(*retval) < controller.size());
+			} while (retval != controller_changed.end()
+				 && (*retval == -1));
+			return retval;
+		}
+
+		/**
+		 * Get the first changed controller that differs from
+		 * the corresponding controller in another channel.
+		 *
+		 * \param other The channel data we compare ourselves to.
+		 * \param last last position of the iterator.
+		 *
+		 * \return iterator to the first differently changed controller.
+		 */
 		controller_vector::const_iterator get_next_changed_controller(const ChannelData & other,
 									      controller_vector::const_iterator last) const {
 			mutASSERT(controller_changed.begin() <= last);
@@ -301,9 +389,13 @@ namespace mutabor {
 			controller_vector::const_iterator retval = last;
 			do {
 				++retval;
-			} while (retval != controller_changed.end() && (*retval != -1)
-				 && (size_t)(*retval) < other.controller.size()
-				 && controller[*retval] == other.controller[*retval]);
+				mutASSERT(retval == controller_changed.end()
+					  || *retval == -1
+					  || (size_t)(*retval) < controller.size());
+			} while (retval != controller_changed.end()
+				 && ((*retval == -1)
+				     || ( (size_t)(*retval) < other.controller.size()
+					  && controller[*retval] == other.controller[*retval])));
 			return retval;
 		}
 
@@ -320,15 +412,26 @@ namespace mutabor {
 		void program_change(int program) {
 			Sound = program;
 			int8_t data = controller[midi::BANK_COARSE];
-			if (data != -1) bank_coarse = data;
+			if (data != -1) {
+				bank_coarse = data;
+				controller[midi::BANK_COARSE] = -1;
+			}
+
 			data = controller[midi::BANK_FINE];
-			if (data != -1) bank_fine = data;
+			if (data != -1) {
+				bank_fine = data;
+				controller[midi::BANK_FINE] = -1;
+			}
 		}
 
 		void program_change(const ChannelData & o) {
 			Sound = o.Sound;
 			bank_coarse = o.bank_coarse;
+			if (controller[midi::BANK_COARSE] == bank_coarse)
+				controller[midi::BANK_COARSE] = -1;
 			bank_fine = o.bank_fine;
+			if (controller[midi::BANK_FINE] == bank_coarse)
+				controller[midi::BANK_FINE] = -1;
 		}
 
 		bool is_compatible (const ChannelData &cd) const {
@@ -817,6 +920,18 @@ namespace mutabor {
 			CommonTypedDeviceAPI<OutputDeviceClass>(name, id),
 			write_lock() {}
 
+		/**
+		 * Really Send the beginning of a sounding note.
+		 *
+		 * \param box   Mutabor box that contains the tuning information
+		 * \param taste input key from file or keyboard
+		 * \param velo  key press velocity
+		 * \param r     route that has been used to transmit the note
+		 * \param id    an additional number that is used to make the note unique
+		 * \param input_channel_data current device settings (Controllers, Sound, etc.)
+		 *
+		 * \sa \ref OutputDeviceClass::NoteOn, \ref OutputDeviceClass::NoteOff
+		 */
 		virtual void do_NoteOn(Box box,
 				    int taste,
 				    int velo,
@@ -1122,6 +1237,8 @@ namespace mutabor {
 		void Panic(int type);
 		void Panic(int type, size_t unique_id);
 
+
+		virtual ChannelData & GetChannelData(const current_keys_type::entry & key) const  = 0;
 
 	protected:
 		current_keys_type current_keys;

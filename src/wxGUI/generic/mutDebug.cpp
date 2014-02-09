@@ -503,21 +503,35 @@ mutString StreamToHex(mutStreamBuffer * buf)
 
 	for (unsigned char * i = start; i < end ; i++ ) {
 		if ((i-start) && !((i-start)%16)){
+#if 0 
 			retval += _T("   ") + clearstring + _T("\n");
 			clearstring = _T("");
 			clearstring.Alloc(9);
+#else
+			retval += _T("\n");
+#endif
 		}
 		else if ((i-start) && !((i-start)%8)) {
-			retval += _T(" ");
+			retval += _T("  ");
+#if 0
 			clearstring += _T(" ");
+#endif
 		}
-		retval += wxString::Format(_T(" %02x"),*i);
+		retval += wxString::Format(_T("  %02x "),*i);
 		tmpchar = *i;
+#if 0
 		if (32 <= tmpchar && tmpchar < 127)
 			clearstring += tmpchar;
 		else
-			clearstring += _T("…");
+			clearstring += _T("·");
+#else
+		if (32 <= tmpchar && tmpchar < 127)
+			retval += tmpchar;
+		else
+			retval += _T("·");
+#endif
 	}
+#if 0
 	for (size_t j = 15-((end-start+15) % 16); j ; j--) {
 		retval += _T("   ");
 	}
@@ -526,6 +540,9 @@ mutString StreamToHex(mutStreamBuffer * buf)
 		retval += _T(" ");
 
 	retval += _T("   ") + clearstring + _T("\n");
+#else
+	retval +=_T("\n");
+#endif
 	return retval;
 }
 #endif

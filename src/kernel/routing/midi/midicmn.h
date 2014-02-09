@@ -570,6 +570,25 @@ namespace mutabor {
 					nKeyOn(0) {}
 
 		bool do_Open();
+
+		/**
+		 * Really send the beginning of a sounding note.
+		 *
+		 * \param box   Mutabor box that contains the tuning information
+		 * \param taste input key from file or keyboard
+		 * \param velo  key press velocity
+		 * \param r     route that has been used to transmit the note
+		 * \param id    an additional number that is used to make the note unique
+		 * \param input_channel_data current device settings (Controllers, Sound, etc.)
+		 *
+		 * \sa \ref OutputDeviceClass::NoteOn, \ref OutputDeviceClass::NoteOff
+		 *
+		 * \todo currently portamento and legato switches may not work as
+		 * the device does not know which notes from different channels should
+		 * be combined
+		 *
+		 */
+
 		void do_NoteOn(Box box,
 			    int inkey,
 			    int velocity,
@@ -804,6 +823,10 @@ namespace mutabor {
 		void Proceed(DWORD midiCode, int data =0, int channel_offset = 0);
 #endif
 		void Proceed(const std::vector<unsigned char > * midiCode, int data =0, int channel_offset = 0);
+
+		virtual ChannelData & GetChannelData(const InputDeviceClass::current_keys_type::entry & key) const {
+			return const_cast<ChannelData &>(channel_data[key.unique_id]);
+		}
 
 	protected:
 

@@ -4,9 +4,8 @@
  *
  * Copyright:   (c) 1998-2011 TU Dresden
  *              changes after 2011-11 (c) the authors
- * \author
- * R. Krauße,
- * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author R. Krauße,
+ * \author Tobias Schlemmer <keinstein@users.berlios.de>
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

@@ -23,7 +23,7 @@
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
- *
+ * \bug Chord hold currently holds all notes. It must be saved note specific.
  ********************************************************************
  *\addtogroup route
  *\{
@@ -44,6 +44,42 @@
 
 
 namespace mutabor {
+
+	void ChannelData::MidiReset() {
+		/* RP 15 spec is availlable at http://www.midi.org/techspecs/rp15.php */
+		controller_vector::iterator start = controller.begin();
+		for (controller_vector::iterator i = start;
+		     i != controller.end();
+		     ++i) {
+			int value = *i;
+			if (value < 0)
+				continue;
+			int ctrl = i-start;
+			int newvalue = midi::get_default_controller_value(ctrl);
+			if (newvalue >= 0) {
+				set_controller(ctrl,newvalue);
+			}
+		}
+		// we do not send the reset controllers message so we 
+		// may not forget the changed controllers
+
+		// first_unchanged = 0;
+		// looped = false;
+
+		// program change should not be reset
+		// Sound = -1;
+
+		// bank should not be reset
+		// bank_coarse = -1;
+		//bank_fine = -1;
+
+		bend = 0;
+
+		// todo:
+		// channel pressure = 0
+		// polyphonic pressure = 0 for all notes
+	}
+
 	template <> size_t idtype<Device>::idpool(0);
 
 	void Device::runtime_error(int type, const mutStringRef message, va_list & args) {
@@ -328,7 +364,12 @@ OutputDeviceClass:\n\
 		size_t j = 0;
 		DEBUGLOG(routing,_T(""));
 		for (i = current_keys.begin();i!= current_keys.end();i++) {
-#warning do something like route->Controller (SUSTAIN, CONTROLLER_OFF)
+			for (const int * k = midi::get_holds();
+			     *k >= 0; k++) {
+				i->route->Controller(*k,
+						     midi::CONTROLLER_OFF,
+						     i->unique_id);
+			}
 			i->route->NoteOff(i->key,i->velocity,i->unique_id);
 			j++;
 		}
@@ -337,7 +378,8 @@ OutputDeviceClass:\n\
 			current_keys.clear();
 		}
 	}
-
+	
+	/** \todo move implementation to midicmn and Co. */
 	void InputDeviceClass::ResumeKeys() {
 		ScopedLock lock(write_lock);
 
@@ -349,6 +391,12 @@ OutputDeviceClass:\n\
 				 i->key,
 				 (unsigned long)i->route->get_session_id(),
 				 (unsigned long)i->unique_id);
+			for (const int * k = midi::get_holds();
+			     *k >= 0; k++) {
+				i->route->Controller(*k,
+						     GetChannelData(*i).get_controller(*k),
+						     i->unique_id);
+			}
 			i->route->NoteOn(i->key,
 					 i->velocity,
 					 i->unique_id,
@@ -372,7 +420,12 @@ OutputDeviceClass:\n\
 			tmp.add(*i);
 		}
 		while ((i = tmp.begin())!= tmp.end()) {
-#warning do something like route->Controller (SUSTAIN, CONTROLLER_OFF)
+			for (const int * j = midi::get_holds();
+			     *j >= 0; j++) {
+				i->route->Controller(*j,
+						     midi::CONTROLLER_OFF,
+						     i->unique_id);
+			}
 			// Maps have constant entries
 			DoNoteOff(const_cast<Route &>(i->route),
 				i->key,i->velocity,i->unique_id);

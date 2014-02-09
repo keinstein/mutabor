@@ -1,4 +1,4 @@
-/** \file 
+/** \file
  ********************************************************************
  * GUIDO Music Notation file
  *
@@ -172,7 +172,7 @@ namespace mutabor {
 /// Save current device settings in a tree storage
 /** \argument config (tree_storage) storage class, where the data will be saved.
  */
-	void OutputGis::Save (tree_storage & config) 
+	void OutputGis::Save (tree_storage & config)
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
@@ -182,7 +182,7 @@ namespace mutabor {
 	}
 
 /// Save route settings (filter settings) for a given route
-/** Some route settings (e.g. filter settings) are device type 
+/** Some route settings (e.g. filter settings) are device type
  * specific. This function saves them in a tree storage.
  * \argument config (tree_storage *) Storage class, where the data will be saved.
  * \argument route (Route ) Route whos data shall be saved.
@@ -213,7 +213,7 @@ namespace mutabor {
 	}
 
 /// Load route settings (filter settings) for a given route
-/** Some route settings (e.g. filter settings) are device type 
+/** Some route settings (e.g. filter settings) are device type
  * specific. This function loads them from a tree storage.
  * \argument config (tree_storage *) Storage class, where the data will be restored from.
  * \argument route (Route ) Route whos data shall be loaded.
@@ -231,9 +231,15 @@ namespace mutabor {
 	}
 
 
+	/**
+	 * Channel data (controllers etc.), currently used to provide
+	 * the corresponding function.
+	 */
+
+	const ChannelData InputGis::channel_data; /// currently unused
 
 /// Save route settings (filter settings) for a given route
-/** Some route settings (e.g. filter settings) are device type 
+/** Some route settings (e.g. filter settings) are device type
  * specific. This function saves them in a tree storage.
  * \argument config (tree_storage *) Storage class, where the data will be saved.
  * \argument route (Route ) Route whos data shall be saved.
@@ -250,7 +256,7 @@ namespace mutabor {
 	}
 
 /// Load route settings (filter settings) for a given route
-/** Some route settings (e.g. filter settings) are device type 
+/** Some route settings (e.g. filter settings) are device type
  * specific. This function loads them from a tree storage.
  * \argument config (tree_storage *) Storage class, where the data will be restored from.
  * \argument route (Route ) Route whos data shall be loaded.
@@ -280,10 +286,10 @@ namespace mutabor {
 			DEBUGLOG (gmnfile, _T("Issuing Compiler warning 9..."));
 
 			runtime_error(true,
-				      _("Error in GUIDO file “%s” positon (%d, %d): %s"), 
-				      C_STR(Name), 
-				      GspErrorLineNr, 
-				      GspErrorPos, 
+				      _("Error in GUIDO file “%s” positon (%d, %d): %s"),
+				      C_STR(Name),
+				      GspErrorLineNr,
+				      GspErrorPos,
 				      mutC_STR(GspErrorText[GspError]));
 
 			DEBUGLOG (gmnfile, _T("... done"));
@@ -299,7 +305,7 @@ namespace mutabor {
 		    //  Head->Prev = Head;
 		    DEBUGLOG (gmnfile, _T("Head = %p"),Head);
 		    // Mode setzen
-		    Mode = DeviceStop; 
+		    Mode = DeviceStop;
 		*/
 		// initialisieren
 		DEBUGLOG (gmnfile, _T("Head = %p"),(void*)Head);
@@ -309,7 +315,7 @@ namespace mutabor {
 	void InputGis::Close()
 	{
 		base::Close();
-		
+
 		// Speicher freigeben
 
 		if ( Mode == DeviceCompileError )
@@ -394,7 +400,7 @@ namespace mutabor {
 		}
 	}
 
-	ChannelData Cd(0, 0);
+	ChannelData Cd(0);
 
 	void InputGis::Proceed(GisReadArtHead *h, char turn, Route route)
 	{
@@ -465,7 +471,7 @@ namespace mutabor {
 			case 1:
 				NoteOff(route,
 					/* box, */
-					Key, 
+					Key,
 					h->GetIntensity(turn),
 					/* route.get(), */
 					0/* ,
@@ -498,7 +504,7 @@ namespace mutabor {
 		bool DidOut = false;
 		DEBUGLOG (gmnfile, _T("staff: %d, DidOut: %d"),staff, DidOut);
 
-		for (routeListType::iterator R = routes.begin(); 
+		for (routeListType::iterator R = routes.begin();
 		     R!= routes.end(); R++) {
 			DEBUGLOG (gmnfile, _T("Route type: %d, DidOut: %d"),
 				  (*R)->GetType(), DidOut);
@@ -606,10 +612,10 @@ namespace mutabor {
 			DEBUGLOG (gmnfile, _T("h->Delta = %ld"),h->Delta);
 
 			if ( h->Delta > 0 ) {// header in normal state
-				DEBUGLOG (gmnfile, 
+				DEBUGLOG (gmnfile,
 					  _T("Time: %ld/%ld, delta: %ld, speed: %d"),
 					  h->Time.numerator(),
-					  h->Time.denominator(), 
+					  h->Time.denominator(),
 					  delta,
 					  h->GetSpeedFactor());
 				h->Time -= frac(delta, h->GetSpeedFactor());
@@ -701,7 +707,7 @@ namespace mutabor {
 				h->Delta = (h->GetSpeedFactor() * h->Time.numerator())
 					/ h->Time.denominator();
 
-				DEBUGLOG (gmnfile, _T("h->Delta = %d * %ld / %ld = %ld"), 
+				DEBUGLOG (gmnfile, _T("h->Delta = %d * %ld / %ld = %ld"),
 					  h->GetSpeedFactor(),
 					  h->Time.numerator(), h->Time.denominator(), h->Delta);
 
@@ -740,7 +746,7 @@ namespace mutabor {
 
 	GisFactory::~GisFactory() {}
 
-	OutputDeviceClass * GisFactory::DoCreateOutput (const mutStringRef name, 
+	OutputDeviceClass * GisFactory::DoCreateOutput (const mutStringRef name,
 							int id) const
 	{
 		return new OutputGis(name,id);
@@ -748,15 +754,15 @@ namespace mutabor {
 
 
 
-	InputDeviceClass * GisFactory::DoCreateInput (const mutStringRef name, 
-						      MutaborModeType mode, 
+	InputDeviceClass * GisFactory::DoCreateInput (const mutStringRef name,
+						      MutaborModeType mode,
 						      int id) const
 	{
 		InputGis * dev = new InputGis(name,mode,id);
 		switch (mode) {
 		case DevicePause:
 		case DeviceStop:
-			dev -> Open(); 
+			dev -> Open();
 			break;
 		case DevicePlay:
 			dev -> Open();

@@ -15,7 +15,11 @@ EXTRA_DIST = \
 	midi1_source.mid \
 	midi1_source.txt \
 	bug019010.mid \
-	bug019010.txt
+	bug019010.txt \
+	controller.txt \
+	controller.mid \
+	bank_select.txt \
+	bank_select.mid
 
 check_SCRIPTS = playmidi1.mid
 
@@ -57,6 +61,9 @@ nodist_midiopenfail1_SOURCES = \
 
 
 if HAVE_CPPUNIT
+check_SCRIPTS += \
+	$(srcdir)/all_controller_off.mid
+
 TESTS += \
 	testcppunit$(EXEEXT)
 
