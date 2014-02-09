@@ -1,0 +1,1183 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed" kind="struct" prot="public">
+    <compoundname>mutabor::hidden::mutabor_logic_parsed</compoundname>
+    <includes refid="d6/d0c/Parser_8h" local="no">Parser.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac3d0f4d5c0c5138d8b6a71c6e22e5a3f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_logic_parsed::refcount</definition>
+        <argsstring></argsstring>
+        <name>refcount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="101" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="101" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a0100ef29d3db11aac48d981ec5d686e2" compoundref="d1/dce/box_8cpp" startline="50" endline="69">mutabor::hidden::mutabor_set_logic</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1adb4511f897874f6268aa7c1081f3dd07" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="dc/d19/structmutabor_1_1hidden_1_1intervall" kindref="compound">intervall</ref> *</type>
+        <definition>struct intervall* mutabor::hidden::mutabor_logic_parsed::list_of_intervalle</definition>
+        <argsstring></argsstring>
+        <name>list_of_intervalle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="102" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="102" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga308dccbb03ecf89669b0baeff27bbb03" compoundref="d3/dca/Interval_8cpp" startline="350" endline="378">mutabor::hidden::check_komplex_intervall</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="659" endline="700">mutabor::BoxClass::Compile</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga32d069bf3b61bb44351df1b9953ef001" compoundref="d3/dca/Interval_8cpp" startline="50" endline="85">get_intervall_wert</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a13be16de4afa817ab00ab75ab01ce4a2" compoundref="d3/da0/TabGen_8cpp" startline="87" endline="124">mutabor::hidden::get_komplex_faktor</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a41e35ca2ae8353b95a2d639c4f7da764" compoundref="dc/df5/Parser_8cpp" startline="1083" endline="1109">mutabor::hidden::get_new_intervall</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a3fd55b23aa4babe61a2d59a222be8694" compoundref="dc/df5/Parser_8cpp" startline="1111" endline="1134">mutabor::hidden::get_new_intervall_komplex</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4f6812ce7bcbd0bc4048f7492ccbb0b4" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor::hidden::mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac9fe6aecab8d96ffe3c4ef5f60a63a65" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d6/dea/structmutabor_1_1hidden_1_1ton" kindref="compound">ton</ref> *</type>
+        <definition>struct ton* mutabor::hidden::mutabor_logic_parsed::list_of_toene</definition>
+        <argsstring></argsstring>
+        <name>list_of_toene</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="103" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="103" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a2d099a673ba52487288bd99458e10ee5" compoundref="dc/df5/Parser_8cpp" startline="2953" endline="3546">mutabor::hidden::check_konsistenz</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="659" endline="700">mutabor::BoxClass::Compile</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a0142a41964e335f5ef5d0aaf5889e8f6" compoundref="d3/da0/TabGen_8cpp" startline="464" endline="511">mutabor::hidden::expandiere_tonsystem</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ab9ff977378709656672c6e1685e93084" compoundref="d3/da0/TabGen_8cpp" startline="127" endline="133">mutabor::hidden::get_komplex_frequenz</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1abc8462b97c0123e4368e7614c26abb06" compoundref="dc/df5/Parser_8cpp" startline="1140" endline="1161">mutabor::hidden::get_new_ton_absolut</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a61a35dd4a9770ffd9dae313cbbebec3a" compoundref="dc/df5/Parser_8cpp" startline="1189" endline="1230">mutabor::hidden::get_new_ton_komplex_negative</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a6a0dbd751491f5085c11429581b7a371" compoundref="dc/df5/Parser_8cpp" startline="1164" endline="1187">mutabor::hidden::get_new_ton_komplex_positive</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4f6812ce7bcbd0bc4048f7492ccbb0b4" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor::hidden::mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1aab9097503c7f7fc14fbde2f3b4e9b812" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="da/d01/structmutabor_1_1hidden_1_1tonsystem" kindref="compound">tonsystem</ref> *</type>
+        <definition>struct tonsystem* mutabor::hidden::mutabor_logic_parsed::list_of_tonsysteme</definition>
+        <argsstring></argsstring>
+        <name>list_of_tonsysteme</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="104" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="104" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1acba1a0dc6569d4ae588ce6b398aea8ba" compoundref="dc/df5/Parser_8cpp" startline="2696" endline="2861">mutabor::hidden::check_aktionen</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a2d099a673ba52487288bd99458e10ee5" compoundref="dc/df5/Parser_8cpp" startline="2953" endline="3546">mutabor::hidden::check_konsistenz</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="659" endline="700">mutabor::BoxClass::Compile</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4ef02782584fd7bc601362b61382da4a" compoundref="d3/da0/TabGen_8cpp" startline="514" endline="584">mutabor::hidden::expandiere_logik</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1abf9897e39c397c08f78f643a7bb0d707" compoundref="d3/da0/TabGen_8cpp" startline="836" endline="887">mutabor::hidden::expandiere_name</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a2b04ccd2220b6e08ce8e3f59601769f0" compoundref="dc/df5/Parser_8cpp" startline="1258" endline="1281">mutabor::hidden::get_new_tonsystem</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ab5fc1ffde629114171cc0ef961f384e7" compoundref="dc/df5/Parser_8cpp" startline="1283" endline="1321">mutabor::hidden::get_new_tonsystem_negative</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4f6812ce7bcbd0bc4048f7492ccbb0b4" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor::hidden::mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ab88c371aef925696f7e8553c290ebe5b" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="db/d91/structmutabor_1_1hidden_1_1umstimmung" kindref="compound">umstimmung</ref> *</type>
+        <definition>struct umstimmung* mutabor::hidden::mutabor_logic_parsed::list_of_umstimmungen</definition>
+        <argsstring></argsstring>
+        <name>list_of_umstimmungen</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="105" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="105" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1acba1a0dc6569d4ae588ce6b398aea8ba" compoundref="dc/df5/Parser_8cpp" startline="2696" endline="2861">mutabor::hidden::check_aktionen</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a2d099a673ba52487288bd99458e10ee5" compoundref="dc/df5/Parser_8cpp" startline="2953" endline="3546">mutabor::hidden::check_konsistenz</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="659" endline="700">mutabor::BoxClass::Compile</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4ef02782584fd7bc601362b61382da4a" compoundref="d3/da0/TabGen_8cpp" startline="514" endline="584">mutabor::hidden::expandiere_logik</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1abf9897e39c397c08f78f643a7bb0d707" compoundref="d3/da0/TabGen_8cpp" startline="836" endline="887">mutabor::hidden::expandiere_name</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ad3b04cefde80ba35a02c0273057ee5b0" compoundref="dc/df5/Parser_8cpp" startline="1393" endline="1406">mutabor::hidden::get_new_umstimmung</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4b2009e8cc09b75ec9301ea80017914a" compoundref="dc/df5/Parser_8cpp" startline="1333" endline="1353">mutabor::hidden::init_umstimmung</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4f6812ce7bcbd0bc4048f7492ccbb0b4" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor::hidden::mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af4ab6aa5e6bdbef0811a65f4fba4a0d9" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="dd/d47/structmutabor_1_1hidden_1_1harmonie" kindref="compound">harmonie</ref> *</type>
+        <definition>struct harmonie* mutabor::hidden::mutabor_logic_parsed::list_of_harmonien</definition>
+        <argsstring></argsstring>
+        <name>list_of_harmonien</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="106" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="106" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a85db01aa3ef317a2f8bcf6112335218e" compoundref="dc/df5/Parser_8cpp" startline="2547" endline="2692">mutabor::hidden::check_ausloeser</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a93b7ba17e5f9f0a08a323c5eff6e6f1b" compoundref="d3/da0/TabGen_8cpp" startline="939" endline="973">mutabor::hidden::expand_pattern</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1acf43d0f11320a770db9f40fbcddc3d80" compoundref="dc/df5/Parser_8cpp" startline="2016" endline="2037">mutabor::hidden::get_new_harmonie</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4f6812ce7bcbd0bc4048f7492ccbb0b4" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor::hidden::mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a40fd46a37eaf5053447ae20018271338" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="df/dc6/structmutabor_1_1hidden_1_1logik" kindref="compound">logik</ref> *</type>
+        <definition>struct logik* mutabor::hidden::mutabor_logic_parsed::list_of_logiken</definition>
+        <argsstring></argsstring>
+        <name>list_of_logiken</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="107" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="107" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1acba1a0dc6569d4ae588ce6b398aea8ba" compoundref="dc/df5/Parser_8cpp" startline="2696" endline="2861">mutabor::hidden::check_aktionen</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a2d099a673ba52487288bd99458e10ee5" compoundref="dc/df5/Parser_8cpp" startline="2953" endline="3546">mutabor::hidden::check_konsistenz</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="659" endline="700">mutabor::BoxClass::Compile</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a5b50b41814c8ac579c5ee30bcd35ead0" compoundref="d3/da0/TabGen_8cpp" startline="1304" endline="1381">mutabor::hidden::expand_decition_tree</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4ef02782584fd7bc601362b61382da4a" compoundref="d3/da0/TabGen_8cpp" startline="514" endline="584">mutabor::hidden::expandiere_logik</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1abf9897e39c397c08f78f643a7bb0d707" compoundref="d3/da0/TabGen_8cpp" startline="836" endline="887">mutabor::hidden::expandiere_name</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a895bbe0ce0327ba13ef50eb2a44bbdb5" compoundref="dc/df5/Parser_8cpp" startline="2197" endline="2222">mutabor::hidden::get_new_logik</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4f6812ce7bcbd0bc4048f7492ccbb0b4" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor::hidden::mutabor_programm_einlesen</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a3743806389c9cac36fdf308192341ca1" compoundref="dc/df5/Parser_8cpp" startline="2224" endline="2234">mutabor::hidden::vervollstaendige_logik</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1afcc7c46bc21cd7e44107566026aaec2a" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="db/d5d/structmutabor_1_1hidden_1_1instrument" kindref="compound">instrument</ref> *</type>
+        <definition>struct instrument* mutabor::hidden::mutabor_logic_parsed::list_of_instrumente</definition>
+        <argsstring></argsstring>
+        <name>list_of_instrumente</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="108" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="108" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4f6812ce7bcbd0bc4048f7492ccbb0b4" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor::hidden::mutabor_programm_einlesen</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1adba78ecb3b78bc8ca619f97f0e9eedb2" compoundref="df/d33/mut_8cc" startline="1454" endline="3183">mutabor::hidden::yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac417fd2bdbc440684d1fbde60c703322" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="db/d5d/structmutabor_1_1hidden_1_1instrument" kindref="compound">instrument</ref> *</type>
+        <definition>struct instrument* mutabor::hidden::mutabor_logic_parsed::list_of_config_instrumente</definition>
+        <argsstring></argsstring>
+        <name>list_of_config_instrumente</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="109" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="109" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ad3315e3cb4efce81719452b2e1493373" compoundref="db/d80/Runtime_8cpp" startline="235" endline="252">mutabor::hidden::GetChannels</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4f6812ce7bcbd0bc4048f7492ccbb0b4" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor::hidden::mutabor_programm_einlesen</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a43a87a4bc69cdfe430d789bd84c96f7c" compoundref="db/d80/Runtime_8cpp" startline="254" endline="256">mutabor::hidden::SetChannels</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a4d703ca0cb55c86e4c7c00a5c99bf499" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d6/dea/structmutabor_1_1hidden_1_1ton" kindref="compound">ton</ref> *</type>
+        <definition>struct ton* mutabor::hidden::mutabor_logic_parsed::ton_ohne_namen</definition>
+        <argsstring></argsstring>
+        <name>ton_ohne_namen</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="110" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="110" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a630fac675bf5af19317db5a33103c566" compoundref="dc/df5/Parser_8cpp" startline="70" endline="78">mutabor::hidden::allgemeine_initialisierungen</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a90646451f6a5e07cbc30d3667d75daea" compoundref="dc/df5/Parser_8cpp" startline="165" endline="172">mutabor::hidden::get_ton</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ad7027982a10a204eeeba70d7e4adb78f" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d0/db6/structmutabor_1_1hidden_1_1constant__memory" kindref="compound">constant_memory</ref> *</type>
+        <definition>struct constant_memory* mutabor::hidden::mutabor_logic_parsed::list_of_constants</definition>
+        <argsstring></argsstring>
+        <name>list_of_constants</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="111" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="111" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4f6812ce7bcbd0bc4048f7492ccbb0b4" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor::hidden::mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a892b06e5363d0513dcadb966f804b1f1" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d6/dea/structmutabor_1_1hidden_1_1ton" kindref="compound">ton</ref> *</type>
+        <definition>struct ton* mutabor::hidden::mutabor_logic_parsed::ton_liste</definition>
+        <argsstring></argsstring>
+        <name>ton_liste</name>
+        <briefdescription>
+<para>Collect the different tones of a tone system This list will be emptied after a tone system is read. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="118" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="118" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a1f78b370fd6aa726092ca8e45514f109" compoundref="dc/df5/Parser_8cpp" startline="1241" endline="1256">mutabor::hidden::get_new_ton_in_tonsystem</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a2b04ccd2220b6e08ce8e3f59601769f0" compoundref="dc/df5/Parser_8cpp" startline="1258" endline="1281">mutabor::hidden::get_new_tonsystem</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ab5fc1ffde629114171cc0ef961f384e7" compoundref="dc/df5/Parser_8cpp" startline="1283" endline="1321">mutabor::hidden::get_new_tonsystem_negative</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a6622ef423e84df097b1f9af65739aed0" compoundref="dc/df5/Parser_8cpp" startline="1235" endline="1239">mutabor::hidden::init_ton_liste</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a61dc6f083130e98d1af7df87f70716b5" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_logic_parsed::tmp_vor_taste</definition>
+        <argsstring></argsstring>
+        <name>tmp_vor_taste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="119" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="119" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aea164739fa1e8b6ea4364452ee241e7f" compoundref="dc/df5/Parser_8cpp" startline="2111" endline="2120">mutabor::hidden::get_ausloeser_harmonie</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a677caa4804c4d7c2f37c57d88aa21828" compoundref="dc/df5/Parser_8cpp" startline="2122" endline="2131">mutabor::hidden::get_ausloeser_harmonie_form</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1af58e8acdc35f2d86bcf0e5ad77e17b6f" compoundref="dc/df5/Parser_8cpp" startline="2079" endline="2087">mutabor::hidden::get_harmoniebezeichner</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a5d0f31e5ee565162c318db04682f4354" prot="public" static="no" mutable="no">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> char *</type>
+        <definition>const char* mutabor::hidden::mutabor_logic_parsed::tmp_name</definition>
+        <argsstring></argsstring>
+        <name>tmp_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="120" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="120" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aea164739fa1e8b6ea4364452ee241e7f" compoundref="dc/df5/Parser_8cpp" startline="2111" endline="2120">mutabor::hidden::get_ausloeser_harmonie</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a677caa4804c4d7c2f37c57d88aa21828" compoundref="dc/df5/Parser_8cpp" startline="2122" endline="2131">mutabor::hidden::get_ausloeser_harmonie_form</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1af58e8acdc35f2d86bcf0e5ad77e17b6f" compoundref="dc/df5/Parser_8cpp" startline="2079" endline="2087">mutabor::hidden::get_harmoniebezeichner</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ad47213b1ad4a3a688de6a97f8bdf6f32" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_logic_parsed::tmp_nach_taste</definition>
+        <argsstring></argsstring>
+        <name>tmp_nach_taste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="121" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="121" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aea164739fa1e8b6ea4364452ee241e7f" compoundref="dc/df5/Parser_8cpp" startline="2111" endline="2120">mutabor::hidden::get_ausloeser_harmonie</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a677caa4804c4d7c2f37c57d88aa21828" compoundref="dc/df5/Parser_8cpp" startline="2122" endline="2131">mutabor::hidden::get_ausloeser_harmonie_form</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1af58e8acdc35f2d86bcf0e5ad77e17b6f" compoundref="dc/df5/Parser_8cpp" startline="2079" endline="2087">mutabor::hidden::get_harmoniebezeichner</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a1f0a59b8565035f2a7750aacb78480a5" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="df/d4f/structmutabor_1_1hidden_1_1ausloeser" kindref="compound">ausloeser</ref> *</type>
+        <definition>struct ausloeser* mutabor::hidden::mutabor_logic_parsed::tmp_ausloeser</definition>
+        <argsstring></argsstring>
+        <name>tmp_ausloeser</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="122" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="122" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a6e7429ba63c6fbb3107f8ac4665bd970" compoundref="dc/df5/Parser_8cpp" startline="2102" endline="2109">mutabor::hidden::get_ausloeser_default</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aea164739fa1e8b6ea4364452ee241e7f" compoundref="dc/df5/Parser_8cpp" startline="2111" endline="2120">mutabor::hidden::get_ausloeser_harmonie</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a677caa4804c4d7c2f37c57d88aa21828" compoundref="dc/df5/Parser_8cpp" startline="2122" endline="2131">mutabor::hidden::get_ausloeser_harmonie_form</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa087545814b83dfb968830c778ab6864" compoundref="dc/df5/Parser_8cpp" startline="2150" endline="2159">mutabor::hidden::get_ausloeser_midi_in</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ab6d26dd28051e4321f4b8e50a1ebf7df" compoundref="dc/df5/Parser_8cpp" startline="2133" endline="2148">mutabor::hidden::get_ausloeser_taste</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aad95fbd69bd103e593daa085c84cfaf6" compoundref="dc/df5/Parser_8cpp" startline="2096" endline="2100">mutabor::hidden::get_last_ausloeser</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a3dbddf5ab27dafb5445093c7fd39bde8" compoundref="dc/df5/Parser_8cpp" startline="2090" endline="2094">mutabor::hidden::init_ausloeser</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a051199e11be05396f41786c6a35e380d" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="df/d55/structmutabor_1_1hidden_1_1anweisung" kindref="compound">anweisung</ref> *</type>
+        <definition>struct anweisung* mutabor::hidden::mutabor_logic_parsed::tmp_anweisungsliste</definition>
+        <argsstring></argsstring>
+        <name>tmp_anweisungsliste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="123" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="123" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a12c9f25239d6deae2fee99cf041f405b" compoundref="dc/df5/Parser_8cpp" startline="2174" endline="2178">mutabor::hidden::get_last_anweisungs_liste</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a94d74e9e09fd25dbf282668a6fde0613" compoundref="dc/df5/Parser_8cpp" startline="2180" endline="2195">mutabor::hidden::get_new_anweisung</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a173a930850fa0cd105b77a1af9753c57" compoundref="dc/df5/Parser_8cpp" startline="2168" endline="2172">mutabor::hidden::init_anweisungs_liste</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a4d007fe9fc59e343f819f5fc86a6b4f5" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="db/d91/structmutabor_1_1hidden_1_1umstimmung" kindref="compound">umstimmung</ref> *</type>
+        <definition>struct umstimmung* mutabor::hidden::mutabor_logic_parsed::tmp_umstimmung</definition>
+        <argsstring></argsstring>
+        <name>tmp_umstimmung</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="124" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="124" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ad3b04cefde80ba35a02c0273057ee5b0" compoundref="dc/df5/Parser_8cpp" startline="1393" endline="1406">mutabor::hidden::get_new_umstimmung</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1afb0029eb8496e34e63e74253aa69799b" compoundref="dc/df5/Parser_8cpp" startline="1448" endline="1455">mutabor::hidden::get_umstimmung_breite_abs</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a9ed4653c927ff7a428a47e7785f9c417" compoundref="dc/df5/Parser_8cpp" startline="1457" endline="1467">mutabor::hidden::get_umstimmung_breite_rel</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1abc74118c512da5bc3d57a1af68330e08" compoundref="dc/df5/Parser_8cpp" startline="1974" endline="1981">mutabor::hidden::get_umstimmung_midi_out</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a679ee48c12684be739a1e25e9e681237" compoundref="dc/df5/Parser_8cpp" startline="1428" endline="1435">mutabor::hidden::get_umstimmung_taste_abs</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ae8c57ffaa63d79e19d22378b1ce2fa39" compoundref="dc/df5/Parser_8cpp" startline="1437" endline="1446">mutabor::hidden::get_umstimmung_taste_rel</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1acf99854b0d79f9cb64b8777518a9f9e4" compoundref="dc/df5/Parser_8cpp" startline="1561" endline="1567">mutabor::hidden::get_umstimmung_tonhoehe_veraendert</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ac39b6e4c29bd68ce6e4535256068cdaf" compoundref="dc/df5/Parser_8cpp" startline="1841" endline="1905">mutabor::hidden::get_umstimmung_umstimm_case</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a1e6822eca15dc64949fe268922704ca6" compoundref="dc/df5/Parser_8cpp" startline="1672" endline="1729">mutabor::hidden::get_umstimmung_umstimmungs_bund</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a54124cff0930ab2ec34948b7408347d5" compoundref="dc/df5/Parser_8cpp" startline="1569" endline="1574">mutabor::hidden::get_umstimmung_wiederholung_abs</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4869a3151441c237856eef0ad0c69a9a" compoundref="dc/df5/Parser_8cpp" startline="1576" endline="1595">mutabor::hidden::get_umstimmung_wiederholung_abs_negative</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a39d30e1a582abb0f61941afbd68f3b55" compoundref="dc/df5/Parser_8cpp" startline="1606" endline="1615">mutabor::hidden::get_umstimmung_wiederholung_rel_negative</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1af7e760be07de9441e3ebd0087ebef4f2" compoundref="dc/df5/Parser_8cpp" startline="1598" endline="1604">mutabor::hidden::get_umstimmung_wiederholung_rel_positive</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4b2009e8cc09b75ec9301ea80017914a" compoundref="dc/df5/Parser_8cpp" startline="1333" endline="1353">mutabor::hidden::init_umstimmung</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1adba78ecb3b78bc8ca619f97f0e9eedb2" compoundref="df/d33/mut_8cc" startline="1454" endline="3183">mutabor::hidden::yyparse</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a8189a252e4db850c2f7c224a53c4e6a1" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d6/dea/structmutabor_1_1hidden_1_1ton" kindref="compound">ton</ref> *</type>
+        <definition>struct ton* mutabor::hidden::mutabor_logic_parsed::tmp_tonliste</definition>
+        <argsstring></argsstring>
+        <name>tmp_tonliste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="125" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="125" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a3521fea8c664ee15602ee996189012fe" compoundref="dc/df5/Parser_8cpp" startline="1480" endline="1503">mutabor::hidden::get_new_umstimm_expression</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a311b9bce537212ac5d087c73a000b635" compoundref="dc/df5/Parser_8cpp" startline="1531" endline="1558">mutabor::hidden::get_new_umstimm_expression_negative</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aca9e570f03a86acef6c45ef5467a0fdd" compoundref="dc/df5/Parser_8cpp" startline="1506" endline="1528">mutabor::hidden::get_new_umstimm_expression_positive</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1acf99854b0d79f9cb64b8777518a9f9e4" compoundref="dc/df5/Parser_8cpp" startline="1561" endline="1567">mutabor::hidden::get_umstimmung_tonhoehe_veraendert</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a74239285e55c82b6f7a0531561a83793" compoundref="dc/df5/Parser_8cpp" startline="1474" endline="1478">mutabor::hidden::init_umstimm_expression_list</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a417f1330312f024a7ea14216352e1291" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d0/d0b/structmutabor_1_1hidden_1_1case__liste" kindref="compound">case_liste</ref> *</type>
+        <definition>struct case_liste* mutabor::hidden::mutabor_logic_parsed::tmp_umstimmungs_case_liste</definition>
+        <argsstring></argsstring>
+        <name>tmp_umstimmungs_case_liste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="126" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="126" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ac39b6e4c29bd68ce6e4535256068cdaf" compoundref="dc/df5/Parser_8cpp" startline="1841" endline="1905">mutabor::hidden::get_umstimmung_umstimm_case</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a3f97b5d2d0c4017b623a3249938e8a18" compoundref="dc/df5/Parser_8cpp" startline="1814" endline="1831">mutabor::hidden::get_umstimmungs_case_default_element</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a6333b10af586226751825c0e226e26cd" compoundref="dc/df5/Parser_8cpp" startline="1796" endline="1812">mutabor::hidden::get_umstimmungs_case_zahl_element</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a6ddbaafcc67c482d01d54bcac50bc0f3" compoundref="dc/df5/Parser_8cpp" startline="1835" endline="1839">mutabor::hidden::init_umstimmungs_case_liste</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ace3ce0930160e2ec7ce3efd56ef3161f" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d5/d35/structmutabor_1_1hidden_1_1midiliste" kindref="compound">midiliste</ref> *</type>
+        <definition>struct midiliste* mutabor::hidden::mutabor_logic_parsed::list_of_integers</definition>
+        <argsstring></argsstring>
+        <name>list_of_integers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="127" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="127" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a93bea77ad4b3540bde5e3c17c9dff520" compoundref="dc/df5/Parser_8cpp" startline="245" endline="249">mutabor::hidden::get_last_integersequenz</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a5c98a110a50b9faadddee7cfafc308ab" compoundref="dc/df5/Parser_8cpp" startline="232" endline="243">mutabor::hidden::get_new_integer_in_integersequenz</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ac99f9ea4f65c8ce4f2788824ec1eb66c" compoundref="dc/df5/Parser_8cpp" startline="225" endline="229">mutabor::hidden::init_integersequenz</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ab3117bb6cff8856dcfd0bf35772e322d" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d4/d9f/structmutabor_1_1hidden_1_1parameter__list" kindref="compound">parameter_list</ref> *</type>
+        <definition>struct parameter_list* mutabor::hidden::mutabor_logic_parsed::list_of_names</definition>
+        <argsstring></argsstring>
+        <name>list_of_names</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="128" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="128" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1adc01229077119d658f5638265dec0994" compoundref="dc/df5/Parser_8cpp" startline="257" endline="261">mutabor::hidden::init_parameter_liste</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a036b0b81f0b1a184db6c5d67f9e432c5" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d7/ddb/structmutabor_1_1hidden_1_1argument__list" kindref="compound">argument_list</ref> *</type>
+        <definition>struct argument_list* mutabor::hidden::mutabor_logic_parsed::list_of_argumente</definition>
+        <argsstring></argsstring>
+        <name>list_of_argumente</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="129" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="129" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a01209dc05773514c3f0d03d7e47e3fe2" compoundref="dc/df5/Parser_8cpp" startline="340" endline="344">mutabor::hidden::init_argument_liste</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae2e3624de813657f343215178845edff" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d0/d96/structmutabor_1_1hidden_1_1aktions__liste" kindref="compound">aktions_liste</ref> *</type>
+        <definition>struct aktions_liste* mutabor::hidden::mutabor_logic_parsed::list_of_aktionen</definition>
+        <argsstring></argsstring>
+        <name>list_of_aktionen</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="130" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="130" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a81bbf37e9392bf30cff9c2c60572fb26" compoundref="dc/df5/Parser_8cpp" startline="469" endline="473">mutabor::hidden::get_last_aktions_liste</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a2b01f471a436715efe5832346e79e607" compoundref="dc/df5/Parser_8cpp" startline="424" endline="440">mutabor::hidden::get_new_aktion_aufruf_element</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ac377a0babb3e6870eb5446bbf765131b" compoundref="dc/df5/Parser_8cpp" startline="457" endline="467">mutabor::hidden::get_new_aktion_harmony_analysis</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a7fcc5582dc41e104355644719d3a266e" compoundref="dc/df5/Parser_8cpp" startline="442" endline="455">mutabor::hidden::get_new_aktion_midi_out_element</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ac003da3df825071250037e2cab99256a" compoundref="dc/df5/Parser_8cpp" startline="417" endline="421">mutabor::hidden::init_aktions_liste</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a9e4dadfc6e35afd6cb799f07e7bbd5f8" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="da/dd2/structmutabor_1_1hidden_1_1komplex__intervall" kindref="compound">komplex_intervall</ref> *</type>
+        <definition>struct komplex_intervall* mutabor::hidden::mutabor_logic_parsed::the_komplex_liste</definition>
+        <argsstring></argsstring>
+        <name>the_komplex_liste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="131" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="131" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ae363af11981b1f8a8c50251b3b9a6c12" compoundref="dc/df5/Parser_8cpp" startline="503" endline="507">mutabor::hidden::get_last_komplex_intervall</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a1eb5aa585224ec5898edbb84d528f6ef" compoundref="dc/df5/Parser_8cpp" startline="483" endline="501">mutabor::hidden::get_new_faktor_anteil</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a29411f595d065fef7caaad95f81820d6" compoundref="dc/df5/Parser_8cpp" startline="477" endline="481">mutabor::hidden::init_komplex_ton_list</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1aeda97d66b507e220620fe09e8fe7cecc" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d7/d45/structmutabor_1_1hidden_1_1taste" kindref="compound">taste</ref> *</type>
+        <definition>struct taste* mutabor::hidden::mutabor_logic_parsed::tmp_tastenliste</definition>
+        <argsstring></argsstring>
+        <name>tmp_tastenliste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="132" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="132" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1acf43d0f11320a770db9f40fbcddc3d80" compoundref="dc/df5/Parser_8cpp" startline="2016" endline="2037">mutabor::hidden::get_new_harmonie</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4c8981c602564b7546e3c6eb06881a2c" compoundref="dc/df5/Parser_8cpp" startline="1996" endline="2014">mutabor::hidden::get_new_taste</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a7e52446e0d0733d5c4df17e3b1e2da64" compoundref="dc/df5/Parser_8cpp" startline="1990" endline="1994">mutabor::hidden::init_tastenliste</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="db/d5d/structmutabor_1_1hidden_1_1instrument" kindref="compound">instrument</ref> *</type>
+        <definition>struct instrument* mutabor::hidden::mutabor_logic_parsed::lauf_instrument</definition>
+        <argsstring></argsstring>
+        <name>lauf_instrument</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="133" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="133" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ad3315e3cb4efce81719452b2e1493373" compoundref="db/d80/Runtime_8cpp" startline="235" endline="252">mutabor::hidden::GetChannels</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a6f4784a5297be93910361c3bb0736b12" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="dd/d53/structmutabor_1_1hidden_1_1interpreter__parameter__list" kindref="compound">interpreter_parameter_list</ref></type>
+        <definition>struct interpreter_parameter_list mutabor::hidden::mutabor_logic_parsed::start_parameters</definition>
+        <argsstring></argsstring>
+        <name>start_parameters</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="133" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae8bd3d7f7a492ae7316d2a23e0fdb353" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t mutabor::hidden::mutabor_logic_parsed::constant_count</definition>
+        <argsstring></argsstring>
+        <name>constant_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="136" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af528f998c156cd72787678c5e154ee4a" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t mutabor::hidden::mutabor_logic_parsed::parameter_count</definition>
+        <argsstring></argsstring>
+        <name>parameter_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="137" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="137" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1acc98857416d668261e627ea99aa63e48" compoundref="df/d23/Execute_8cpp" startline="193" endline="268">mutabor::hidden::call_actions</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a237f866755e35778c4d93c5df821e797" compoundref="dc/df5/Parser_8cpp" startline="277" endline="285">mutabor::hidden::enumerate_parameters</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a9b1595285b4ee039f3b23c374f742cb9" compoundref="d3/da0/TabGen_8cpp" startline="229" endline="290">mutabor::hidden::generate_argument_list</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a6d17f7a8fa346bf5d4d50fd26a77aa7d" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d1/da9/structmutabor_1_1hidden_1_1harmonie__ereignis" kindref="compound">harmonie_ereignis</ref> *</type>
+        <definition>struct harmonie_ereignis* mutabor::hidden::mutabor_logic_parsed::global_harmonies</definition>
+        <argsstring></argsstring>
+        <name>global_harmonies</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="140" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="140" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a5b50b41814c8ac579c5ee30bcd35ead0" compoundref="d3/da0/TabGen_8cpp" startline="1304" endline="1381">mutabor::hidden::expand_decition_tree</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1af0e0c3bfa8b6c1dfaf5ee0ec26b9759b" compoundref="d3/da0/TabGen_8cpp" startline="1230" endline="1271">mutabor::hidden::expandiere_in_globale_liste</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga5fbfe9126390dc61fa0f4795cc68e0b4" compoundref="dd/dc6/Box_8cpp" startline="566" endline="584">mutabor::BoxClass::GetLogics</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ad46e31479601ee104a6b87f23c5028c3" compoundref="df/d23/Execute_8cpp" startline="875" endline="907">mutabor::hidden::HarmonyAnalysis</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ad3b8dddfaa1a2bbacdd78f0c002e38eb" compoundref="d3/da0/TabGen_8cpp" startline="976" endline="1091">mutabor::hidden::insert_in_globale_liste</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a5f7f967bfaae99670031311890034ebc" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis" kindref="compound">keyboard_ereignis</ref> *</type>
+        <definition>struct keyboard_ereignis* mutabor::hidden::mutabor_logic_parsed::global_keystrokes</definition>
+        <argsstring></argsstring>
+        <name>global_keystrokes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="141" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="141" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a5b50b41814c8ac579c5ee30bcd35ead0" compoundref="d3/da0/TabGen_8cpp" startline="1304" endline="1381">mutabor::hidden::expand_decition_tree</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1af0e0c3bfa8b6c1dfaf5ee0ec26b9759b" compoundref="d3/da0/TabGen_8cpp" startline="1230" endline="1271">mutabor::hidden::expandiere_in_globale_liste</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ac1bb1758a4029fba875fd56baa9b3dd8" compoundref="df/d23/Execute_8cpp" startline="1085" endline="1119">mutabor::hidden::generic_keyboard_analysis</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga5fbfe9126390dc61fa0f4795cc68e0b4" compoundref="dd/dc6/Box_8cpp" startline="566" endline="584">mutabor::BoxClass::GetLogics</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ad3b8dddfaa1a2bbacdd78f0c002e38eb" compoundref="d3/da0/TabGen_8cpp" startline="976" endline="1091">mutabor::hidden::insert_in_globale_liste</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa14a856b5e9347dde97d417efbb5dfc8" compoundref="dd/dc6/Box_8cpp" startline="750" endline="754">mutabor::BoxClass::IsLogicKey</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a599eefae116273429b56c2b95283365b" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d0/ddd/structmutabor_1_1hidden_1_1midi__ereignis" kindref="compound">midi_ereignis</ref> *</type>
+        <definition>struct midi_ereignis* mutabor::hidden::mutabor_logic_parsed::global_midi_inputs</definition>
+        <argsstring></argsstring>
+        <name>global_midi_inputs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="142" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="142" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a5b50b41814c8ac579c5ee30bcd35ead0" compoundref="d3/da0/TabGen_8cpp" startline="1304" endline="1381">mutabor::hidden::expand_decition_tree</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1af0e0c3bfa8b6c1dfaf5ee0ec26b9759b" compoundref="d3/da0/TabGen_8cpp" startline="1230" endline="1271">mutabor::hidden::expandiere_in_globale_liste</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga5fbfe9126390dc61fa0f4795cc68e0b4" compoundref="dd/dc6/Box_8cpp" startline="566" endline="584">mutabor::BoxClass::GetLogics</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ad3b8dddfaa1a2bbacdd78f0c002e38eb" compoundref="d3/da0/TabGen_8cpp" startline="976" endline="1091">mutabor::hidden::insert_in_globale_liste</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a52b63b9bbbd159ea50e682a504b0e9b8" compoundref="df/d23/Execute_8cpp" startline="1027" endline="1061">mutabor::hidden::MidiAnalysis</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a93708455dd552303dd55096dd0879fbc" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="db/d71/structmutabor_1_1hidden_1_1mutabor__syntax__heap" kindref="compound">mutabor_syntax_heap</ref></type>
+        <definition>struct mutabor_syntax_heap mutabor::hidden::mutabor_logic_parsed::heap</definition>
+        <argsstring></argsstring>
+        <name>heap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="142" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="144" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a89ba87b0e079700339d0135a2c1ce770" compoundref="da/d02/Hilfs_8cpp" startline="287" endline="308">mutabor::hidden::loesche_syntax_speicher</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ad8ff783d284e0e18b3b9c854a97c0087" compoundref="da/d02/Hilfs_8cpp" startline="154" endline="234">mutabor::hidden::xmalloc</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aace3211515e24c8717c38370668d41f0" compoundref="da/d02/Hilfs_8cpp" startline="236" endline="267">mutabor::hidden::xrealloc</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a742cd5038e8faef86ff2eea81286520a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_logic_parsed::anzahl_toene</definition>
+        <argsstring></argsstring>
+        <name>anzahl_toene</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="159" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="159" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ab9d42437ab872d1731782bd34f84c796" compoundref="dc/df5/Parser_8cpp" startline="2398" endline="2509">mutabor::hidden::berechne_toene_absolut</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1adfdc087a9ae7b7da685895af8b949294" compoundref="dc/df5/Parser_8cpp" startline="2338" endline="2359">mutabor::hidden::test_zyklen</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ab8f911466bb16ec57685d95ceb884049" compoundref="dc/df5/Parser_8cpp" startline="2321" endline="2336">mutabor::hidden::ton_nummer</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac555bb683ec90abdb69598e108497c8a" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d6/dea/structmutabor_1_1hidden_1_1ton" kindref="compound">ton</ref> **</type>
+        <definition>struct ton** mutabor::hidden::mutabor_logic_parsed::toene</definition>
+        <argsstring></argsstring>
+        <name>toene</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="160" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="160" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ab9d42437ab872d1731782bd34f84c796" compoundref="dc/df5/Parser_8cpp" startline="2398" endline="2509">mutabor::hidden::berechne_toene_absolut</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a36e7aaf02fe2796b0ba696de3cb36ce4" compoundref="dc/df5/Parser_8cpp" startline="2361" endline="2396">mutabor::hidden::berechne_ton_endgueltig</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1adfdc087a9ae7b7da685895af8b949294" compoundref="dc/df5/Parser_8cpp" startline="2338" endline="2359">mutabor::hidden::test_zyklen</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ab8f911466bb16ec57685d95ceb884049" compoundref="dc/df5/Parser_8cpp" startline="2321" endline="2336">mutabor::hidden::ton_nummer</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a7b5fb2bff3bff995f1d6eeca11534820" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* mutabor::hidden::mutabor_logic_parsed::visited</definition>
+        <argsstring></argsstring>
+        <name>visited</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="161" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="161" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ab9d42437ab872d1731782bd34f84c796" compoundref="dc/df5/Parser_8cpp" startline="2398" endline="2509">mutabor::hidden::berechne_toene_absolut</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1adfdc087a9ae7b7da685895af8b949294" compoundref="dc/df5/Parser_8cpp" startline="2338" endline="2359">mutabor::hidden::test_zyklen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a3cd864cd46c80f8ad48d8ed37a35d703" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* mutabor::hidden::mutabor_logic_parsed::matrix</definition>
+        <argsstring></argsstring>
+        <name>matrix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="162" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="162" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ab9d42437ab872d1731782bd34f84c796" compoundref="dc/df5/Parser_8cpp" startline="2398" endline="2509">mutabor::hidden::berechne_toene_absolut</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1adfdc087a9ae7b7da685895af8b949294" compoundref="dc/df5/Parser_8cpp" startline="2338" endline="2359">mutabor::hidden::test_zyklen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a672e976350e96b79be3fec5437d0f7ce" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_logic_parsed::anzahl_umstimmungen_und_logiken</definition>
+        <argsstring></argsstring>
+        <name>anzahl_umstimmungen_und_logiken</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="171" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="171" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a2d099a673ba52487288bd99458e10ee5" compoundref="dc/df5/Parser_8cpp" startline="2953" endline="3546">mutabor::hidden::check_konsistenz</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1af2fdf2a33db2905499bbc9b700bf102b" compoundref="dc/df5/Parser_8cpp" startline="2901" endline="2920">mutabor::hidden::test_zyklen_nummer</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1adfe05aaa84fab3b2afa96f23800bc748" compoundref="dc/df5/Parser_8cpp" startline="2922" endline="2947">mutabor::hidden::u_test_zyklen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a9944bd0dd6f338dc98725647721acc50" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d8/d82/structmutabor_1_1hidden_1_1umst__oder__logik" kindref="compound">umst_oder_logik</ref> *</type>
+        <definition>struct umst_oder_logik* mutabor::hidden::mutabor_logic_parsed::zyklen_feld</definition>
+        <argsstring></argsstring>
+        <name>zyklen_feld</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="172" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="172" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a2d099a673ba52487288bd99458e10ee5" compoundref="dc/df5/Parser_8cpp" startline="2953" endline="3546">mutabor::hidden::check_konsistenz</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1af2fdf2a33db2905499bbc9b700bf102b" compoundref="dc/df5/Parser_8cpp" startline="2901" endline="2920">mutabor::hidden::test_zyklen_nummer</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1adfe05aaa84fab3b2afa96f23800bc748" compoundref="dc/df5/Parser_8cpp" startline="2922" endline="2947">mutabor::hidden::u_test_zyklen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a50c1b7860c56d674fe733e6e91e1bc9e" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* mutabor::hidden::mutabor_logic_parsed::u_visited</definition>
+        <argsstring></argsstring>
+        <name>u_visited</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="174" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="174" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a2d099a673ba52487288bd99458e10ee5" compoundref="dc/df5/Parser_8cpp" startline="2953" endline="3546">mutabor::hidden::check_konsistenz</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1adfe05aaa84fab3b2afa96f23800bc748" compoundref="dc/df5/Parser_8cpp" startline="2922" endline="2947">mutabor::hidden::u_test_zyklen</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae87fff6f12d55d3689e9844fec582274" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* mutabor::hidden::mutabor_logic_parsed::u_matrix</definition>
+        <argsstring></argsstring>
+        <name>u_matrix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="175" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="175" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a2d099a673ba52487288bd99458e10ee5" compoundref="dc/df5/Parser_8cpp" startline="2953" endline="3546">mutabor::hidden::check_konsistenz</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1adfe05aaa84fab3b2afa96f23800bc748" compoundref="dc/df5/Parser_8cpp" startline="2922" endline="2947">mutabor::hidden::u_test_zyklen</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3772">
+        <label>mutabor::hidden::interpreter_argument_list</label>
+        <link refid="de/dd8/structmutabor_1_1hidden_1_1interpreter__argument__list"/>
+        <childnode refid="3773" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+      </node>
+      <node id="3779">
+        <label>mutabor::hidden::ton</label>
+        <link refid="d6/dea/structmutabor_1_1hidden_1_1ton"/>
+        <childnode refid="3777" relation="usage">
+          <edgelabel>komplex_liste</edgelabel>
+        </childnode>
+        <childnode refid="3779" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3781">
+        <label>mutabor::hidden::umst_oder_logik</label>
+        <link refid="d8/d82/structmutabor_1_1hidden_1_1umst__oder__logik"/>
+        <childnode refid="3762" relation="usage">
+          <edgelabel>logik</edgelabel>
+        </childnode>
+        <childnode refid="3776" relation="usage">
+          <edgelabel>umstimmung</edgelabel>
+        </childnode>
+      </node>
+      <node id="3788">
+        <label>mutabor::hidden::interpreter_parameter_list</label>
+        <link refid="dd/d53/structmutabor_1_1hidden_1_1interpreter__parameter__list"/>
+        <childnode refid="3788" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3775">
+        <label>mutabor::hidden::case_element</label>
+        <link refid="d4/d71/structmutabor_1_1hidden_1_1case__element"/>
+        <childnode refid="3760" relation="usage">
+          <edgelabel>case_aktion</edgelabel>
+        </childnode>
+        <childnode refid="3775" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3774">
+        <label>mutabor::hidden::ton_einstell</label>
+        <link refid="df/dfd/structmutabor_1_1hidden_1_1ton__einstell"/>
+        <childnode refid="3774" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3760">
+        <label>mutabor::hidden::do_aktion</label>
+        <link refid="de/dab/structmutabor_1_1hidden_1_1do__aktion"/>
+        <childnode refid="3760" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3761" relation="usage">
+          <edgelabel>out_liste</edgelabel>
+        </childnode>
+        <childnode refid="3762" relation="usage">
+          <edgelabel>logic</edgelabel>
+        </childnode>
+        <childnode refid="3772" relation="usage">
+          <edgelabel>secondary_arguments</edgelabel>
+          <edgelabel>arguments</edgelabel>
+        </childnode>
+        <childnode refid="3774" relation="usage">
+          <edgelabel>tonliste</edgelabel>
+        </childnode>
+        <childnode refid="3775" relation="usage">
+          <edgelabel>umst_case</edgelabel>
+        </childnode>
+        <childnode refid="3776" relation="usage">
+          <edgelabel>retuning</edgelabel>
+        </childnode>
+        <childnode refid="3780" relation="usage">
+          <edgelabel>tonsystem</edgelabel>
+        </childnode>
+      </node>
+      <node id="3770">
+        <label>mutabor::hidden::harmonie_ereignis</label>
+        <link refid="d1/da9/structmutabor_1_1hidden_1_1harmonie__ereignis"/>
+        <childnode refid="3760" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+        <childnode refid="3771" relation="usage">
+          <edgelabel>pattern</edgelabel>
+        </childnode>
+        <childnode refid="3762" relation="usage">
+          <edgelabel>the_logik_to_expand</edgelabel>
+        </childnode>
+        <childnode refid="3770" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3771">
+        <label>mutabor::hidden::PTRN</label>
+        <link refid="d1/d5c/structmutabor_1_1hidden_1_1PTRN"/>
+      </node>
+      <node id="3777">
+        <label>mutabor::hidden::komplex_intervall</label>
+        <link refid="da/dd2/structmutabor_1_1hidden_1_1komplex__intervall"/>
+        <childnode refid="3777" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3785">
+        <label>mutabor::hidden::heap_element</label>
+        <link refid="d0/d37/structmutabor_1_1hidden_1_1heap__element"/>
+        <childnode refid="3785" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3784">
+        <label>mutabor::hidden::mutabor_syntax_heap</label>
+        <link refid="db/d71/structmutabor_1_1hidden_1_1mutabor__syntax__heap"/>
+        <childnode refid="3785" relation="usage">
+          <edgelabel>heap_to_use_syntax</edgelabel>
+          <edgelabel>syntax_heap</edgelabel>
+        </childnode>
+      </node>
+      <node id="3769">
+        <label>mutabor::hidden::keyboard_ereignis</label>
+        <link refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis"/>
+        <childnode refid="3760" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+        <childnode refid="3762" relation="usage">
+          <edgelabel>the_logik_to_expand</edgelabel>
+        </childnode>
+        <childnode refid="3769" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3765">
+        <label>mutabor::hidden::aktions_liste</label>
+        <link refid="d0/d96/structmutabor_1_1hidden_1_1aktions__liste"/>
+        <childnode refid="3761" relation="usage">
+          <edgelabel>midi_code</edgelabel>
+        </childnode>
+        <childnode refid="3765" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3766" relation="usage">
+          <edgelabel>argument_liste</edgelabel>
+        </childnode>
+      </node>
+      <node id="3776">
+        <label>mutabor::hidden::umstimmung</label>
+        <link refid="db/d91/structmutabor_1_1hidden_1_1umstimmung"/>
+        <childnode refid="3761" relation="usage">
+          <edgelabel>out_liste</edgelabel>
+        </childnode>
+        <childnode refid="3777" relation="usage">
+          <edgelabel>komplex_liste</edgelabel>
+        </childnode>
+        <childnode refid="3778" relation="usage">
+          <edgelabel>umstimmungs_case_liste</edgelabel>
+        </childnode>
+        <childnode refid="3776" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3765" relation="usage">
+          <edgelabel>aktions_liste</edgelabel>
+        </childnode>
+        <childnode refid="3768" relation="usage">
+          <edgelabel>parameter_liste</edgelabel>
+        </childnode>
+        <childnode refid="3779" relation="usage">
+          <edgelabel>tonliste</edgelabel>
+        </childnode>
+        <childnode refid="3766" relation="usage">
+          <edgelabel>argument_liste</edgelabel>
+        </childnode>
+      </node>
+      <node id="3756">
+        <label>mutabor::hidden::mutabor_logic_parsed</label>
+        <link refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed"/>
+        <childnode refid="3757" relation="usage">
+          <edgelabel>tmp_tastenliste</edgelabel>
+        </childnode>
+        <childnode refid="3758" relation="usage">
+          <edgelabel>lauf_instrument</edgelabel>
+          <edgelabel>list_of_instrumente</edgelabel>
+          <edgelabel>list_of_config_instrumente</edgelabel>
+        </childnode>
+        <childnode refid="3759" relation="usage">
+          <edgelabel>global_midi_inputs</edgelabel>
+        </childnode>
+        <childnode refid="3763" relation="usage">
+          <edgelabel>tmp_ausloeser</edgelabel>
+        </childnode>
+        <childnode refid="3781" relation="usage">
+          <edgelabel>zyklen_feld</edgelabel>
+        </childnode>
+        <childnode refid="3764" relation="usage">
+          <edgelabel>tmp_anweisungsliste</edgelabel>
+        </childnode>
+        <childnode refid="3782" relation="usage">
+          <edgelabel>list_of_harmonien</edgelabel>
+        </childnode>
+        <childnode refid="3783" relation="usage">
+          <edgelabel>list_of_tonsysteme</edgelabel>
+        </childnode>
+        <childnode refid="3777" relation="usage">
+          <edgelabel>the_komplex_liste</edgelabel>
+        </childnode>
+        <childnode refid="3761" relation="usage">
+          <edgelabel>list_of_integers</edgelabel>
+        </childnode>
+        <childnode refid="3784" relation="usage">
+          <edgelabel>heap</edgelabel>
+        </childnode>
+        <childnode refid="3786" relation="usage">
+          <edgelabel>list_of_constants</edgelabel>
+        </childnode>
+        <childnode refid="3762" relation="usage">
+          <edgelabel>list_of_logiken</edgelabel>
+        </childnode>
+        <childnode refid="3778" relation="usage">
+          <edgelabel>tmp_umstimmungs_case_liste</edgelabel>
+        </childnode>
+        <childnode refid="3769" relation="usage">
+          <edgelabel>global_keystrokes</edgelabel>
+        </childnode>
+        <childnode refid="3770" relation="usage">
+          <edgelabel>global_harmonies</edgelabel>
+        </childnode>
+        <childnode refid="3765" relation="usage">
+          <edgelabel>list_of_aktionen</edgelabel>
+        </childnode>
+        <childnode refid="3768" relation="usage">
+          <edgelabel>list_of_names</edgelabel>
+        </childnode>
+        <childnode refid="3776" relation="usage">
+          <edgelabel>list_of_umstimmungen</edgelabel>
+          <edgelabel>tmp_umstimmung</edgelabel>
+        </childnode>
+        <childnode refid="3787" relation="usage">
+          <edgelabel>list_of_intervalle</edgelabel>
+        </childnode>
+        <childnode refid="3788" relation="usage">
+          <edgelabel>start_parameters</edgelabel>
+        </childnode>
+        <childnode refid="3766" relation="usage">
+          <edgelabel>list_of_argumente</edgelabel>
+        </childnode>
+        <childnode refid="3779" relation="usage">
+          <edgelabel>list_of_toene</edgelabel>
+          <edgelabel>tmp_tonliste</edgelabel>
+          <edgelabel>ton_liste</edgelabel>
+          <edgelabel>toene</edgelabel>
+          <edgelabel>ton_ohne_namen</edgelabel>
+        </childnode>
+      </node>
+      <node id="3773">
+        <label>mutabor::hidden::interpreter_argument</label>
+        <link refid="d5/d64/unionmutabor_1_1hidden_1_1interpreter__argument"/>
+      </node>
+      <node id="3787">
+        <label>mutabor::hidden::intervall</label>
+        <link refid="dc/d19/structmutabor_1_1hidden_1_1intervall"/>
+        <childnode refid="3777" relation="usage">
+          <edgelabel>komplex_liste</edgelabel>
+        </childnode>
+        <childnode refid="3787" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3757">
+        <label>mutabor::hidden::taste</label>
+        <link refid="d7/d45/structmutabor_1_1hidden_1_1taste"/>
+        <childnode refid="3757" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3767">
+        <label>mutabor::hidden::argument</label>
+        <link refid="d8/d96/structmutabor_1_1hidden_1_1argument"/>
+        <childnode refid="3768" relation="usage">
+          <edgelabel>parameter</edgelabel>
+        </childnode>
+      </node>
+      <node id="3766">
+        <label>mutabor::hidden::argument_list</label>
+        <link refid="d7/ddb/structmutabor_1_1hidden_1_1argument__list"/>
+        <childnode refid="3767" relation="usage">
+          <edgelabel>argument</edgelabel>
+        </childnode>
+        <childnode refid="3766" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3762">
+        <label>mutabor::hidden::logik</label>
+        <link refid="df/dc6/structmutabor_1_1hidden_1_1logik"/>
+        <childnode refid="3759" relation="usage">
+          <edgelabel>midi_input_list</edgelabel>
+        </childnode>
+        <childnode refid="3760" relation="usage">
+          <edgelabel>einstimmung</edgelabel>
+        </childnode>
+        <childnode refid="3763" relation="usage">
+          <edgelabel>ausloeser</edgelabel>
+        </childnode>
+        <childnode refid="3764" relation="usage">
+          <edgelabel>anweisungsliste</edgelabel>
+        </childnode>
+        <childnode refid="3762" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3769" relation="usage">
+          <edgelabel>keystroke_list</edgelabel>
+        </childnode>
+        <childnode refid="3770" relation="usage">
+          <edgelabel>harmony_list</edgelabel>
+        </childnode>
+      </node>
+      <node id="3783">
+        <label>mutabor::hidden::tonsystem</label>
+        <link refid="da/d01/structmutabor_1_1hidden_1_1tonsystem"/>
+        <childnode refid="3783" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3777" relation="usage">
+          <edgelabel>periode</edgelabel>
+        </childnode>
+        <childnode refid="3779" relation="usage">
+          <edgelabel>toene</edgelabel>
+        </childnode>
+      </node>
+      <node id="3764">
+        <label>mutabor::hidden::anweisung</label>
+        <link refid="df/d55/structmutabor_1_1hidden_1_1anweisung"/>
+        <childnode refid="3763" relation="usage">
+          <edgelabel>ausloeser</edgelabel>
+        </childnode>
+        <childnode refid="3764" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3765" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+      </node>
+      <node id="3780">
+        <label>mutabor::hidden::TSYS</label>
+        <link refid="d4/dc1/structmutabor_1_1hidden_1_1TSYS"/>
+      </node>
+      <node id="3782">
+        <label>mutabor::hidden::harmonie</label>
+        <link refid="dd/d47/structmutabor_1_1hidden_1_1harmonie"/>
+        <childnode refid="3757" relation="usage">
+          <edgelabel>tastenliste</edgelabel>
+        </childnode>
+        <childnode refid="3782" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3778">
+        <label>mutabor::hidden::case_liste</label>
+        <link refid="d0/d0b/structmutabor_1_1hidden_1_1case__liste"/>
+        <childnode refid="3778" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3765" relation="usage">
+          <edgelabel>case_aktion</edgelabel>
+        </childnode>
+      </node>
+      <node id="3768">
+        <label>mutabor::hidden::parameter_list</label>
+        <link refid="d4/d9f/structmutabor_1_1hidden_1_1parameter__list"/>
+        <childnode refid="3768" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3759">
+        <label>mutabor::hidden::midi_ereignis</label>
+        <link refid="d0/ddd/structmutabor_1_1hidden_1_1midi__ereignis"/>
+        <childnode refid="3759" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3760" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+        <childnode refid="3762" relation="usage">
+          <edgelabel>the_logik_to_expand</edgelabel>
+        </childnode>
+      </node>
+      <node id="3786">
+        <label>mutabor::hidden::constant_memory</label>
+        <link refid="d0/db6/structmutabor_1_1hidden_1_1constant__memory"/>
+        <childnode refid="3786" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3763">
+        <label>mutabor::hidden::ausloeser</label>
+        <link refid="df/d4f/structmutabor_1_1hidden_1_1ausloeser"/>
+        <childnode refid="3761" relation="usage">
+          <edgelabel>midi_code</edgelabel>
+        </childnode>
+      </node>
+      <node id="3761">
+        <label>mutabor::hidden::midiliste</label>
+        <link refid="d5/d35/structmutabor_1_1hidden_1_1midiliste"/>
+        <childnode refid="3761" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3758">
+        <label>mutabor::hidden::instrument</label>
+        <link refid="db/d5d/structmutabor_1_1hidden_1_1instrument"/>
+        <childnode refid="3758" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="100" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="100" bodyend="178"/>
+    <listofallmembers>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a742cd5038e8faef86ff2eea81286520a" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>anzahl_toene</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a672e976350e96b79be3fec5437d0f7ce" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>anzahl_umstimmungen_und_logiken</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae8bd3d7f7a492ae7316d2a23e0fdb353" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>constant_count</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a6d17f7a8fa346bf5d4d50fd26a77aa7d" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>global_harmonies</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a5f7f967bfaae99670031311890034ebc" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>global_keystrokes</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a599eefae116273429b56c2b95283365b" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>global_midi_inputs</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a93708455dd552303dd55096dd0879fbc" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>heap</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>lauf_instrument</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae2e3624de813657f343215178845edff" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>list_of_aktionen</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a036b0b81f0b1a184db6c5d67f9e432c5" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>list_of_argumente</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac417fd2bdbc440684d1fbde60c703322" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>list_of_config_instrumente</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ad7027982a10a204eeeba70d7e4adb78f" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>list_of_constants</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af4ab6aa5e6bdbef0811a65f4fba4a0d9" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>list_of_harmonien</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1afcc7c46bc21cd7e44107566026aaec2a" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>list_of_instrumente</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ace3ce0930160e2ec7ce3efd56ef3161f" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>list_of_integers</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1adb4511f897874f6268aa7c1081f3dd07" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>list_of_intervalle</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a40fd46a37eaf5053447ae20018271338" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>list_of_logiken</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ab3117bb6cff8856dcfd0bf35772e322d" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>list_of_names</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac9fe6aecab8d96ffe3c4ef5f60a63a65" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>list_of_toene</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1aab9097503c7f7fc14fbde2f3b4e9b812" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>list_of_tonsysteme</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ab88c371aef925696f7e8553c290ebe5b" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>list_of_umstimmungen</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a3cd864cd46c80f8ad48d8ed37a35d703" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>matrix</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af528f998c156cd72787678c5e154ee4a" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>parameter_count</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac3d0f4d5c0c5138d8b6a71c6e22e5a3f" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>refcount</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a6f4784a5297be93910361c3bb0736b12" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>start_parameters</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a9e4dadfc6e35afd6cb799f07e7bbd5f8" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>the_komplex_liste</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a051199e11be05396f41786c6a35e380d" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>tmp_anweisungsliste</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a1f0a59b8565035f2a7750aacb78480a5" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>tmp_ausloeser</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ad47213b1ad4a3a688de6a97f8bdf6f32" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>tmp_nach_taste</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a5d0f31e5ee565162c318db04682f4354" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>tmp_name</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1aeda97d66b507e220620fe09e8fe7cecc" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>tmp_tastenliste</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a8189a252e4db850c2f7c224a53c4e6a1" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>tmp_tonliste</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a4d007fe9fc59e343f819f5fc86a6b4f5" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>tmp_umstimmung</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a417f1330312f024a7ea14216352e1291" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>tmp_umstimmungs_case_liste</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a61dc6f083130e98d1af7df87f70716b5" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>tmp_vor_taste</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac555bb683ec90abdb69598e108497c8a" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>toene</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a892b06e5363d0513dcadb966f804b1f1" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>ton_liste</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a4d703ca0cb55c86e4c7c00a5c99bf499" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>ton_ohne_namen</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae87fff6f12d55d3689e9844fec582274" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>u_matrix</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a50c1b7860c56d674fe733e6e91e1bc9e" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>u_visited</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a7b5fb2bff3bff995f1d6eeca11534820" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>visited</name></member>
+      <member refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a9944bd0dd6f338dc98725647721acc50" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_logic_parsed</scope><name>zyklen_feld</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

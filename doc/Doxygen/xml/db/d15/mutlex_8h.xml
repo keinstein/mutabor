@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="db/d15/mutlex_8h" kind="file">
     <compoundname>mutlex.h</compoundname>
     <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
@@ -8,56 +8,188 @@
     <includedby refid="d0/dc8/mutlex_8cc" local="yes">src/kernel/mutlex.cc</includedby>
     <includedby refid="dc/d0c/stclanguage_8cpp" local="yes">src/wxGUI/stclanguage.cpp</includedby>
     <incdepgraph>
-      <node id="14210">
+      <node id="19857">
+        <label>list</label>
+      </node>
+      <node id="19850">
         <label>stdarg.h</label>
       </node>
-      <node id="14213">
+      <node id="19876">
         <label>FlexLexer.h</label>
       </node>
-      <node id="14209">
+      <node id="19865">
+        <label>wx/cmdline.h</label>
+      </node>
+      <node id="19853">
+        <label>wx/stdpaths.h</label>
+      </node>
+      <node id="19849">
         <label>src/kernel/Defs.h</label>
         <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="14210" relation="include">
+        <childnode refid="19850" relation="include">
         </childnode>
-        <childnode refid="14211" relation="include">
+        <childnode refid="19851" relation="include">
+        </childnode>
+        <childnode refid="19870" relation="include">
+        </childnode>
+        <childnode refid="19871" relation="include">
+        </childnode>
+        <childnode refid="19864" relation="include">
+        </childnode>
+        <childnode refid="19872" relation="include">
+        </childnode>
+        <childnode refid="19873" relation="include">
         </childnode>
       </node>
-      <node id="14211">
-        <label>wx/msw/wrapwin.h</label>
+      <node id="19864">
+        <label>stdint.h</label>
       </node>
-      <node id="14212">
+      <node id="19870">
+        <label>wx/wxchar.h</label>
+      </node>
+      <node id="19859">
+        <label>wx/image.h</label>
+      </node>
+      <node id="19874">
+        <label>string</label>
+      </node>
+      <node id="19869">
+        <label>mutDebugFlags.h</label>
+        <link refid="d7/d49/mutDebugFlags_8h"/>
+      </node>
+      <node id="19852">
+        <label>wx/window.h</label>
+      </node>
+      <node id="19871">
+        <label>wx/intl.h</label>
+      </node>
+      <node id="19858">
+        <label>src/wxGUI/Mutabor.rh</label>
+        <link refid="d9/d64/Mutabor_8rh"/>
+        <childnode refid="19849" relation="include">
+        </childnode>
+      </node>
+      <node id="19854">
+        <label>wx/filename.h</label>
+      </node>
+      <node id="19856">
+        <label>typeinfo</label>
+      </node>
+      <node id="19867">
+        <label>wx/debug.h</label>
+      </node>
+      <node id="19862">
+        <label>cstdio</label>
+      </node>
+      <node id="19861">
+        <label>bitset</label>
+      </node>
+      <node id="19851">
+        <label>src/wxGUI/generic/mhDefs.h</label>
+        <link refid="d0/d68/mhDefs_8h"/>
+        <childnode refid="19849" relation="include">
+        </childnode>
+        <childnode refid="19852" relation="include">
+        </childnode>
+        <childnode refid="19853" relation="include">
+        </childnode>
+        <childnode refid="19854" relation="include">
+        </childnode>
+        <childnode refid="19855" relation="include">
+        </childnode>
+        <childnode refid="19856" relation="include">
+        </childnode>
+        <childnode refid="19857" relation="include">
+        </childnode>
+        <childnode refid="19858" relation="include">
+        </childnode>
+        <childnode refid="19859" relation="include">
+        </childnode>
+        <childnode refid="19860" relation="include">
+        </childnode>
+      </node>
+      <node id="19863">
+        <label>vector</label>
+      </node>
+      <node id="19860">
+        <label>mutDebug.h</label>
+        <link refid="de/de1/mutDebug_8h"/>
+        <childnode refid="19861" relation="include">
+        </childnode>
+        <childnode refid="19855" relation="include">
+        </childnode>
+        <childnode refid="19862" relation="include">
+        </childnode>
+        <childnode refid="19863" relation="include">
+        </childnode>
+        <childnode refid="19864" relation="include">
+        </childnode>
+        <childnode refid="19865" relation="include">
+        </childnode>
+        <childnode refid="19866" relation="include">
+        </childnode>
+        <childnode refid="19867" relation="include">
+        </childnode>
+        <childnode refid="19868" relation="include">
+        </childnode>
+        <childnode refid="19869" relation="include">
+        </childnode>
+      </node>
+      <node id="19873">
+        <label>src/wxintl/libintl.h</label>
+        <link refid="d4/d64/libintl_8h"/>
+        <childnode refid="19849" relation="include">
+        </childnode>
+        <childnode refid="19874" relation="include">
+        </childnode>
+      </node>
+      <node id="19866">
+        <label>wx/string.h</label>
+      </node>
+      <node id="19855">
+        <label>iostream</label>
+      </node>
+      <node id="19875">
         <label>src/kernel/mut.hh</label>
         <link refid="d6/d4e/mut_8hh"/>
       </node>
-      <node id="14208">
+      <node id="19868">
+        <label>wx/thread.h</label>
+      </node>
+      <node id="19848">
         <label>src/kernel/mutlex.h</label>
         <link refid="mutlex.h"/>
-        <childnode refid="14209" relation="include">
+        <childnode refid="19849" relation="include">
         </childnode>
-        <childnode refid="14212" relation="include">
+        <childnode refid="19875" relation="include">
         </childnode>
-        <childnode refid="14213" relation="include">
+        <childnode refid="19876" relation="include">
         </childnode>
+      </node>
+      <node id="19872">
+        <label>wx/setup.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="14216">
+      <node id="19879">
         <label>src/wxGUI/stclanguage.cpp</label>
         <link refid="dc/d0c/stclanguage_8cpp"/>
       </node>
-      <node id="14215">
+      <node id="19878">
         <label>src/kernel/mutlex.cc</label>
         <link refid="d0/dc8/mutlex_8cc"/>
       </node>
-      <node id="14214">
+      <node id="19877">
         <label>src/kernel/mutlex.h</label>
         <link refid="mutlex.h"/>
-        <childnode refid="14215" relation="include">
+        <childnode refid="19878" relation="include">
         </childnode>
-        <childnode refid="14216" relation="include">
+        <childnode refid="19879" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
+    <innerclass refid="d3/d6c/unionmutabor_1_1hidden_1_1YYSTYPE" prot="public">mutabor::hidden::YYSTYPE</innerclass>
+    <innerclass refid="d8/d4e/structmutabor_1_1hidden_1_1YYLTYPE" prot="public">mutabor::hidden::YYLTYPE</innerclass>
     <innerclass refid="d0/df6/classmutabor_1_1mutabor__lexer" prot="public">mutabor::mutabor_lexer</innerclass>
     <innernamespace refid="d6/daa/namespacemutabor">mutabor</innernamespace>
     <innernamespace refid="d6/dbb/namespacemutabor_1_1hidden">mutabor::hidden</innernamespace>
@@ -120,7 +252,7 @@
 <codeline lineno="35"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>(!defined(HEADERFILENAME_PRECOMPILED))</highlight></codeline>
 <codeline lineno="36"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifndef<sp/>PRECOMPILE</highlight></codeline>
 <codeline lineno="37" refid="d9/d7c/group__kernel_1gaf184f62bfda5323d1e6ba65aa8d02e94" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>HEADERFILENAME</highlight></codeline>
-<codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="38" refid="d6/d4e/mut_8hh_1a853b3bfad6d2b2ff693dce81182e0c2e" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="39"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
@@ -128,8 +260,8 @@
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">src/kernel/Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">hidden<sp/>{</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="46" refid="d6/d4e/mut_8hh_1a69ca0fbcc6d7aa5e8f47b11fc0048208" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">hidden<sp/>{</highlight></codeline>
+<codeline lineno="47" refid="d6/dbb/namespacemutabor_1_1hidden_1a25155c4f13625a44b75b562bff7b5a14" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d6/d4e/mut_8hh" kindref="compound">src/kernel/mut.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -161,34 +293,34 @@
 <codeline lineno="77"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
-<codeline lineno="80" refid="d0/df6/classmutabor_1_1mutabor__lexer" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d0/df6/classmutabor_1_1mutabor__lexer" kindref="compound">mutabor_lexer</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>mutabor_lexer_FlexLexer<sp/>{</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="82" refid="d0/df6/classmutabor_1_1mutabor__lexer_1a38ab406ad192735669c6cae757c30606" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a38ab406ad192735669c6cae757c30606" kindref="member">mutabor_lexer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/></highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len):<ref refid="d9/d7c/group__kernel_1gaf699458ba5331ddec7e15a878f42f8f5" kindref="member">yyFlexLexer</ref>(),</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a80b2e1a787dad6637abc1b18c6def04e" kindref="member">buffer</ref>(string),</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a4ffdf4abb2f1ab57e9118437e1b151f4" kindref="member">buflen</ref>(len),</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a1a654a3e8d50e1f20602241c3601aad3" kindref="member">position</ref>(0),</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a5df00819b0bf6341d610d9a753f794f2" kindref="member">report_parameters</ref>(true),</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1af7c9ef0575906820d1363e98a0842ee5" kindref="member">yylval</ref>(new<sp/>mutabor::hidden::<ref refid="da/d7e/unionYYSTYPE" kindref="compound">YYSTYPE</ref>)<sp/>{}</highlight></codeline>
-<codeline lineno="89" refid="d0/df6/classmutabor_1_1mutabor__lexer_1ab66f52f2ab91b63e4782ba749058e43b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1ab66f52f2ab91b63e4782ba749058e43b" kindref="member">~mutabor_lexer</ref>()<sp/>{<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1af7c9ef0575906820d1363e98a0842ee5" kindref="member">yylval</ref>;<sp/>}</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a6c1fb2469053ed3ef5bf7553b48147f2" kindref="member">yylex</ref>();</highlight></codeline>
-<codeline lineno="92" refid="d0/df6/classmutabor_1_1mutabor__lexer_1af53e52611293bc67ba01ca619f90054a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1af53e52611293bc67ba01ca619f90054a" kindref="member">free_identifier</ref>()<sp/>{<sp/>free(<ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1af7c9ef0575906820d1363e98a0842ee5" kindref="member">yylval</ref>-&gt;identifier);<sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1af7c9ef0575906820d1363e98a0842ee5" kindref="member">yylval</ref>-&gt;identifier<sp/>=<sp/>NULL;<sp/>}</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="94" refid="d0/df6/classmutabor_1_1mutabor__lexer_1af2f4fede5bd9c57faf1bdf656ed12371" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1af2f4fede5bd9c57faf1bdf656ed12371" kindref="member">LexerInput</ref>(<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>buf,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max_size<sp/>)<sp/>{</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size<sp/>=<sp/>std::min(max_size,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)(<ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a4ffdf4abb2f1ab57e9118437e1b151f4" kindref="member">buflen</ref><sp/>-<sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a1a654a3e8d50e1f20602241c3601aad3" kindref="member">position</ref>));</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(buf,<ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a80b2e1a787dad6637abc1b18c6def04e" kindref="member">buffer</ref>,size);</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a1a654a3e8d50e1f20602241c3601aad3" kindref="member">position</ref><sp/>+=<sp/>size;</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::max(size,0);</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="100" refid="d0/df6/classmutabor_1_1mutabor__lexer_1a80b2e1a787dad6637abc1b18c6def04e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a80b2e1a787dad6637abc1b18c6def04e" kindref="member">buffer</ref>;</highlight></codeline>
-<codeline lineno="101" refid="d0/df6/classmutabor_1_1mutabor__lexer_1a4ffdf4abb2f1ab57e9118437e1b151f4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a4ffdf4abb2f1ab57e9118437e1b151f4" kindref="member">buflen</ref>;</highlight></codeline>
-<codeline lineno="102" refid="d0/df6/classmutabor_1_1mutabor__lexer_1a1a654a3e8d50e1f20602241c3601aad3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a1a654a3e8d50e1f20602241c3601aad3" kindref="member">position</ref>;</highlight></codeline>
-<codeline lineno="103" refid="d0/df6/classmutabor_1_1mutabor__lexer_1a5df00819b0bf6341d610d9a753f794f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a5df00819b0bf6341d610d9a753f794f2" kindref="member">report_parameters</ref>;</highlight></codeline>
-<codeline lineno="104" refid="d0/df6/classmutabor_1_1mutabor__lexer_1af7c9ef0575906820d1363e98a0842ee5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/d33/mut_8cc_1a09fb1f7c65e10ed0f0c1aa8ef7ce16b5" kindref="member">mutabor::hidden::YYSTYPE</ref><sp/>*<sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1af7c9ef0575906820d1363e98a0842ee5" kindref="member">yylval</ref>;</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="d6/d4e/mut_8hh_1afab30a2b83d2de70bb5b6950073d9436" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">mutabor_lexer:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>mutabor_lexer_FlexLexer<sp/>{</highlight></codeline>
+<codeline lineno="81" refid="d6/d4e/mut_8hh_1a45f5d6d40e3abea87a5941b0056234aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="82" refid="d6/d4e/mut_8hh_1aee9421b95d46262a12f2eab723748a3e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a38ab406ad192735669c6cae757c30606" kindref="member">mutabor_lexer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/></highlight></codeline>
+<codeline lineno="83" refid="d6/d4e/mut_8hh_1a86dcb2c0f62a6efc11cee23029937277" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len):<ref refid="d9/d7c/group__kernel_1gaf699458ba5331ddec7e15a878f42f8f5" kindref="member">yyFlexLexer</ref>(),</highlight></codeline>
+<codeline lineno="84" refid="d6/d4e/mut_8hh_1a63b2a3f7bd37f14f94e1a3df717fd0f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a80b2e1a787dad6637abc1b18c6def04e" kindref="member">buffer</ref>(string),</highlight></codeline>
+<codeline lineno="85" refid="d6/d4e/mut_8hh_1ac542b38bc09dd028a0060d778d467b20" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a4ffdf4abb2f1ab57e9118437e1b151f4" kindref="member">buflen</ref>(len),</highlight></codeline>
+<codeline lineno="86" refid="d6/d4e/mut_8hh_1af8cce028dac21602620da61df1b6dfda" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a1a654a3e8d50e1f20602241c3601aad3" kindref="member">position</ref>(0),</highlight></codeline>
+<codeline lineno="87" refid="d6/d4e/mut_8hh_1a6ef55fbbf39a92becc360d6a4ab9d0f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a5df00819b0bf6341d610d9a753f794f2" kindref="member">report_parameters</ref>(true),</highlight></codeline>
+<codeline lineno="88" refid="d6/d4e/mut_8hh_1ae5ba2a8e5c1748bb6acbf6ddf1647d52" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1af7c9ef0575906820d1363e98a0842ee5" kindref="member">yylval</ref>(new<sp/>mutabor::hidden::<ref refid="da/d7e/unionYYSTYPE" kindref="compound">YYSTYPE</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="89" refid="d6/d4e/mut_8hh_1ae312dfebe81598d0f9762703345ccc28" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1ab66f52f2ab91b63e4782ba749058e43b" kindref="member">~mutabor_lexer</ref>()<sp/>{<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1af7c9ef0575906820d1363e98a0842ee5" kindref="member">yylval</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="90" refid="d6/d4e/mut_8hh_1ad04b0b44942731afe6bd2ec58dde5f02" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="91" refid="d6/d4e/mut_8hh_1a7ff5a6d8c2a7ab27b050f90e4f3d4589" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a6c1fb2469053ed3ef5bf7553b48147f2" kindref="member">yylex</ref>();</highlight></codeline>
+<codeline lineno="92" refid="d6/d4e/mut_8hh_1a6b122787c40075849163b73ca9fdd0aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1af53e52611293bc67ba01ca619f90054a" kindref="member">free_identifier</ref>()<sp/>{<sp/>free(<ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1af7c9ef0575906820d1363e98a0842ee5" kindref="member">yylval</ref>-&gt;<ref refid="d3/d6c/unionmutabor_1_1hidden_1_1YYSTYPE_1a90664571e9d5d6cabe4c478b7282b49a" kindref="member">identifier</ref>);<sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1af7c9ef0575906820d1363e98a0842ee5" kindref="member">yylval</ref>-&gt;<ref refid="d3/d6c/unionmutabor_1_1hidden_1_1YYSTYPE_1a90664571e9d5d6cabe4c478b7282b49a" kindref="member">identifier</ref><sp/>=<sp/>NULL;<sp/>}</highlight></codeline>
+<codeline lineno="93" refid="d6/d4e/mut_8hh_1a28548fb40e01028502e454a8d609496a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="94" refid="d6/d4e/mut_8hh_1a7df9c20e185856ecb0952b9749495ba2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1af2f4fede5bd9c57faf1bdf656ed12371" kindref="member">LexerInput</ref>(<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>buf,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max_size<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="95" refid="d6/d4e/mut_8hh_1a0d72fb8dd436cba2bba26a18e220f6d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size<sp/>=<sp/>std::min(max_size,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)(<ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a4ffdf4abb2f1ab57e9118437e1b151f4" kindref="member">buflen</ref><sp/>-<sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a1a654a3e8d50e1f20602241c3601aad3" kindref="member">position</ref>));</highlight></codeline>
+<codeline lineno="96" refid="d6/d4e/mut_8hh_1a1d123df35bccfd2914d66a77776672fc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(buf,<ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a80b2e1a787dad6637abc1b18c6def04e" kindref="member">buffer</ref>,size);</highlight></codeline>
+<codeline lineno="97" refid="d6/d4e/mut_8hh_1a3c325ef76ade79cde57531d899d4931b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a1a654a3e8d50e1f20602241c3601aad3" kindref="member">position</ref><sp/>+=<sp/>size;</highlight></codeline>
+<codeline lineno="98" refid="d6/d4e/mut_8hh_1a8bf001e71de46ff3b91e93b465c369d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::max(size,0);</highlight></codeline>
+<codeline lineno="99" refid="d6/d4e/mut_8hh_1a82ba2f7498f79e347cc81dea98a7e2c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100" refid="d6/d4e/mut_8hh_1a1e5a318cdc097558bc72fb14523727eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a80b2e1a787dad6637abc1b18c6def04e" kindref="member">buffer</ref>;</highlight></codeline>
+<codeline lineno="101" refid="d6/d4e/mut_8hh_1ac180ed55d564de35f1c82c88dec1a7ce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a4ffdf4abb2f1ab57e9118437e1b151f4" kindref="member">buflen</ref>;</highlight></codeline>
+<codeline lineno="102" refid="d6/d4e/mut_8hh_1affb6deaac9468699fa8e68a55bd4d9ef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a1a654a3e8d50e1f20602241c3601aad3" kindref="member">position</ref>;</highlight></codeline>
+<codeline lineno="103" refid="d6/d4e/mut_8hh_1a1db62ca03eaf420b6c02c1a853e228eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1a5df00819b0bf6341d610d9a753f794f2" kindref="member">report_parameters</ref>;</highlight></codeline>
+<codeline lineno="104" refid="d6/d4e/mut_8hh_1a9928d70e291367b5c7820a8d10027588" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d3/d6c/unionmutabor_1_1hidden_1_1YYSTYPE" kindref="compound">mutabor::hidden::YYSTYPE</ref><sp/>*<sp/><ref refid="d0/df6/classmutabor_1_1mutabor__lexer_1af7c9ef0575906820d1363e98a0842ee5" kindref="member">yylval</ref>;</highlight></codeline>
+<codeline lineno="105" refid="d6/d4e/mut_8hh_1a2f4deafe036725d63bfc1b2759044608" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="106" refid="d6/d4e/mut_8hh_1a2c32e47c19107d66dedf8598c63e60d1" refkind="member"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="107" refid="d6/d4e/mut_8hh_1a0a6e4f442093223f5d85044945d4d91d" refkind="member"><highlight class="normal"></highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight></codeline>
 <codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>precompiled</highlight></codeline>
 <codeline lineno="110"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>header<sp/>loaded</highlight></codeline>

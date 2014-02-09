@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="dc/d0e/structmutabor_1_1hidden_1_1mutabor__key__index__type" kind="struct" prot="public">
+    <compoundname>mutabor::hidden::mutabor_key_index_type</compoundname>
+    <includes refid="dc/d19/box_8h" local="no">box.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="dc/d0e/structmutabor_1_1hidden_1_1mutabor__key__index__type_1af90184d5a80caec8b6bb7681d2ab6fd1" prot="public" static="no" mutable="no">
+        <type><ref refid="dc/d21/structmutabor_1_1hidden_1_1mutabor__note__type" kindref="compound">mutabor_note_type</ref></type>
+        <definition>mutabor_note_type mutabor::hidden::mutabor_key_index_type::key[1&lt;&lt; MUT_BOX_MAX_KEY_INDEX_LOG]</definition>
+        <argsstring>[1&lt;&lt; MUT_BOX_MAX_KEY_INDEX_LOG]</argsstring>
+        <name>key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.h" line="100" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.h" bodystart="100" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4c60e0b1ccd5c76473b01e52cd18b296" compoundref="dc/d19/box_8h" startline="315" endline="376">mutabor::hidden::mutabor_create_key_in_box</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa65a2eb3d61a3e4712601a6cdfd537e0" compoundref="dc/d19/box_8h" startline="215" endline="227">mutabor::hidden::mutabor_find_key_in_box</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ae99a4ea1d2fbe5b06b6f82ca731b1ac8" compoundref="d1/dce/box_8cpp" startline="129" endline="154">mutabor::hidden::mutabor_initialize_box</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ab6a19d017b052a605d37e586ac797b67" compoundref="d1/dce/box_8cpp" startline="182" endline="192">mutabor::hidden::mutabor_initialize_keyplane</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aae3452ca02e1414b69fe8a589508faaa" compoundref="d1/dce/box_8cpp" startline="72" endline="94">mutabor::hidden::mutabor_reset_keys</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="dc/d0e/structmutabor_1_1hidden_1_1mutabor__key__index__type_1a2aa426db26b61bacfa4143d06842cbcc" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="dc/d0e/structmutabor_1_1hidden_1_1mutabor__key__index__type" kindref="compound">mutabor_key_index_type</ref> *</type>
+        <definition>struct mutabor_key_index_type* mutabor::hidden::mutabor_key_index_type::next</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.h" line="101" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.h" bodystart="101" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4c60e0b1ccd5c76473b01e52cd18b296" compoundref="dc/d19/box_8h" startline="315" endline="376">mutabor::hidden::mutabor_create_key_in_box</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa65a2eb3d61a3e4712601a6cdfd537e0" compoundref="dc/d19/box_8h" startline="215" endline="227">mutabor::hidden::mutabor_find_key_in_box</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ab6a19d017b052a605d37e586ac797b67" compoundref="d1/dce/box_8cpp" startline="182" endline="192">mutabor::hidden::mutabor_initialize_keyplane</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3746">
+        <label>mutabor::hidden::mutabor_note_type</label>
+        <link refid="dc/d21/structmutabor_1_1hidden_1_1mutabor__note__type"/>
+      </node>
+      <node id="3745">
+        <label>mutabor::hidden::mutabor_key_index_type</label>
+        <link refid="dc/d0e/structmutabor_1_1hidden_1_1mutabor__key__index__type"/>
+        <childnode refid="3745" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3746" relation="usage">
+          <edgelabel>key</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.h" line="99" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/box.h" bodystart="99" bodyend="103"/>
+    <listofallmembers>
+      <member refid="dc/d0e/structmutabor_1_1hidden_1_1mutabor__key__index__type_1af90184d5a80caec8b6bb7681d2ab6fd1" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_key_index_type</scope><name>key</name></member>
+      <member refid="dc/d0e/structmutabor_1_1hidden_1_1mutabor__key__index__type_1a2aa426db26b61bacfa4143d06842cbcc" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_key_index_type</scope><name>next</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d9/dc1/infile_8cpp" kind="file">
     <compoundname>infile.cpp</compoundname>
     <includes local="no">string.h</includes>
@@ -8,34 +8,34 @@
     <includes local="yes">InFile.h</includes>
     <includes refid="d4/d47/GrafKern_8h" local="yes">GrafKern.h</includes>
     <incdepgraph>
-      <node id="12771">
+      <node id="17948">
         <label>stdlib.h</label>
       </node>
-      <node id="12774">
+      <node id="17951">
         <label>GrafKern.h</label>
         <link refid="d4/d47/GrafKern_8h"/>
       </node>
-      <node id="12769">
+      <node id="17946">
         <label>src/gmut/infile.cpp</label>
         <link refid="infile.cpp"/>
-        <childnode refid="12770" relation="include">
+        <childnode refid="17947" relation="include">
         </childnode>
-        <childnode refid="12771" relation="include">
+        <childnode refid="17948" relation="include">
         </childnode>
-        <childnode refid="12772" relation="include">
+        <childnode refid="17949" relation="include">
         </childnode>
-        <childnode refid="12773" relation="include">
+        <childnode refid="17950" relation="include">
         </childnode>
-        <childnode refid="12774" relation="include">
+        <childnode refid="17951" relation="include">
         </childnode>
       </node>
-      <node id="12770">
+      <node id="17947">
         <label>string.h</label>
       </node>
-      <node id="12772">
+      <node id="17949">
         <label>math.h</label>
       </node>
-      <node id="12773">
+      <node id="17950">
         <label>InFile.h</label>
       </node>
     </incdepgraph>
@@ -67,7 +67,7 @@
       </sectiondef>
       <sectiondef kind="var">
       <memberdef kind="variable" id="d9/dc1/infile_8cpp_1ab4da9c8ceadd429b5806c1d8e1e242c4" prot="public" static="no" mutable="no">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char TrennZeichen[]</definition>
         <argsstring>[]</argsstring>
         <name>TrennZeichen</name>
@@ -82,7 +82,7 @@
         <referencedby refid="dc/ddd/classInFile_1af324cb1bae0b218ca7dae2aa923428fa" compoundref="d9/dc1/infile_8cpp" startline="98" endline="119">InFile::CheckNewToken</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d9/dc1/infile_8cpp_1abf75ebe2213254bbd464b81a65b6f8f8" prot="public" static="no" mutable="no">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char ZahlZeichen[]</definition>
         <argsstring>[]</argsstring>
         <name>ZahlZeichen</name>
@@ -97,7 +97,7 @@
         <referencedby refid="dc/ddd/classInFile_1aaadb642faf0c2ad1231f6e2b4ad88d07" compoundref="d9/dc1/infile_8cpp" startline="19" endline="84">InFile::ReadToken</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d9/dc1/infile_8cpp_1a23f5c808c97426a2bea6a35886006d79" prot="public" static="no" mutable="no">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char SignZeichen[]</definition>
         <argsstring>[]</argsstring>
         <name>SignZeichen</name>
@@ -112,7 +112,7 @@
         <referencedby refid="dc/ddd/classInFile_1aaadb642faf0c2ad1231f6e2b4ad88d07" compoundref="d9/dc1/infile_8cpp" startline="19" endline="84">InFile::ReadToken</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d9/dc1/infile_8cpp_1ade86100f53d6c094e58270a48d070656" prot="public" static="no" mutable="no">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char HexaZeichen[]</definition>
         <argsstring>[]</argsstring>
         <name>HexaZeichen</name>
@@ -127,7 +127,7 @@
         <referencedby refid="dc/ddd/classInFile_1aaadb642faf0c2ad1231f6e2b4ad88d07" compoundref="d9/dc1/infile_8cpp" startline="19" endline="84">InFile::ReadToken</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d9/dc1/infile_8cpp_1ae7ce02c9b082e0aa44f15dbd49800c3c" prot="public" static="no" mutable="no">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char StringZeichen[]</definition>
         <argsstring>[]</argsstring>
         <name>StringZeichen</name>
@@ -343,10 +343,10 @@ char<sp/>InFile::CheckNewToken()
 <codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment">//<sp/>liest<sp/>neue<sp/>Zeile<sp/>in<sp/>s</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="88"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>eof()<sp/>)<sp/>{<sp/><ref refid="dc/ddd/classInFile_1a6783f545d40281c18e83296f87aeca71" kindref="member">TokenType</ref><sp/>=<sp/><ref refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5aaffedff66c98c1bc186e2c35cdc7ab66" kindref="member">TT_EOF</ref>;<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/>}</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>bad()<sp/>)<sp/>{<sp/><ref refid="dc/ddd/classInFile_1a6783f545d40281c18e83296f87aeca71" kindref="member">TokenType</ref><sp/>=<sp/><ref refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5a63aedd7b3e899b727bea4b28f41ca51d" kindref="member">TT_ERROR</ref>;<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="d5/dee/group__route_1ga27a1c72438b4005fdc9b5b0d16705279" kindref="member">bad</ref>()<sp/>)<sp/>{<sp/><ref refid="dc/ddd/classInFile_1a6783f545d40281c18e83296f87aeca71" kindref="member">TokenType</ref><sp/>=<sp/><ref refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5a63aedd7b3e899b727bea4b28f41ca51d" kindref="member">TT_ERROR</ref>;<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/>}</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/>getline(<ref refid="dc/ddd/classInFile_1afb59ee109172ac54e1a5fc6d1bff2392" kindref="member">s1</ref>,<sp/><ref refid="de/d69/infile_8h_1a4da78e242f22b09371e5deda081e032a" kindref="member">LMAX_LINE</ref>);</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="dc/ddd/classInFile_1a82721b5f29d280221a7dd3c518a719c8" kindref="member">Line</ref>++;</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>bad()<sp/>)<sp/>{<sp/><ref refid="dc/ddd/classInFile_1a6783f545d40281c18e83296f87aeca71" kindref="member">TokenType</ref><sp/>=<sp/><ref refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5a63aedd7b3e899b727bea4b28f41ca51d" kindref="member">TT_ERROR</ref>;<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="d5/dee/group__route_1ga27a1c72438b4005fdc9b5b0d16705279" kindref="member">bad</ref>()<sp/>)<sp/>{<sp/><ref refid="dc/ddd/classInFile_1a6783f545d40281c18e83296f87aeca71" kindref="member">TokenType</ref><sp/>=<sp/><ref refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5a63aedd7b3e899b727bea4b28f41ca51d" kindref="member">TT_ERROR</ref>;<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/>}</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><ref refid="dc/ddd/classInFile_1add3fc638f920fe2cea0d07bf353e58b4" kindref="member">s</ref><sp/>=<sp/><ref refid="dc/ddd/classInFile_1afb59ee109172ac54e1a5fc6d1bff2392" kindref="member">s1</ref>;</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
 <codeline lineno="96"><highlight class="normal">}</highlight></codeline>

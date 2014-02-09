@@ -3,7 +3,7 @@
 <title>src/wxGUI/IconShape.cpp Quellcode</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -252,7 +252,7 @@
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="comment">//    Enable(true);</span></div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="comment">//                SetBackgroundColour(BoxColor(GetId()));</span></div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        Icon = GetMutIcon(); <span class="comment">// this must be before create</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(Icon.IsOk());</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <a class="code" href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a>(Icon.IsOk());</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keywordflow">if</span> (!parenttype::Create(parent,</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                              <span class="keywordtype">id</span>,</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                              wxDefaultPosition,</div>
@@ -330,8 +330,8 @@
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(gui,_T(<span class="stringliteral">&quot;s1: (%d,%d), maxBorderSize: (%d,%d)&quot;</span>),</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                 s2.x,s2.y,2*maxBorderSize.x,2*maxBorderSize.y);</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(!maxBorderSize.x || s2.x &lt;= 2*maxBorderSize.x);</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(!maxBorderSize.y || s2.y &lt;= 2*maxBorderSize.y);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <a class="code" href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a>(!maxBorderSize.x || s2.x &lt;= 2*maxBorderSize.x);</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <a class="code" href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a>(!maxBorderSize.y || s2.y &lt;= 2*maxBorderSize.y);</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        s += maxBorderSize + maxBorderSize;</div>
@@ -516,301 +516,304 @@
 <div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;        }</div>
 <div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;Icon ok.&quot;</span>));</div>
 <div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;        <span class="keywordtype">int</span> x = 0, y = borderOffset.y;</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;        <span class="keywordtype">int</span> y = borderOffset.y;</div>
 <div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;        wxPoint center(size.width/2,y + GetIcon().GetHeight()/2);</div>
 <div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;</div>
 <div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;        <span class="keywordflow">for</span> (mutpointlist::iterator i = usedperimeterpoints.begin();</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;             i != usedperimeterpoints.end();i++) {</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;             i != usedperimeterpoints.end();++i) {</div>
 <div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;                DrawPerimeterPoint(dc,center, *i);</div>
 <div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        }</div>
 <div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;</div>
 <div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;        <span class="keywordflow">if</span> (GetIcon().IsOk()) {</div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;Size: %dx%d&quot;</span>),GetIcon().GetHeight(),</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;                         GetIcon().GetWidth());</div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;                x = (size.width-GetIcon().GetWidth())/2;</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;<span class="preprocessor">#if __WXMAC__ || __WXGTK__</span></div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;<span class="preprocessor"></span>                x -= maxBorderSize.x - borderOffset.x;</div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;<span class="preprocessor"></span>                dc.DrawIcon(GetIcon(), x, y);</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;        }</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;</div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;Focus %p and this %p&quot;</span>),(<span class="keywordtype">void</span>*)this-&gt;FindFocus(),(<span class="keywordtype">void</span>*)<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;<span class="comment">/*  Draw a black bock around focused item </span></div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;<span class="comment">        if (FindFocus() == this) {</span></div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;<span class="comment">                DEBUGLOG (other, _T(&quot;Painting Box&quot;));</span></div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;<span class="comment">                dc.SetPen(*wxBLACK_PEN);</span></div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;<span class="comment">                dc.SetBrush(*wxTRANSPARENT_BRUSH);</span></div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;<span class="comment">                dc.DrawRectangle(0,0,size.width,size.height);</span></div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;<span class="comment">        }</span></div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;}</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00549"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#gafb46b285ddfcaf567dadb66d6abafc53">  549</a></span>&#160;wxPoint <a class="code" href="../../df/dd1/group__GUI.html#gafb46b285ddfcaf567dadb66d6abafc53">MutIconShapeClass&lt;T&gt;::GetPerimeterPoint</a>(<span class="keyword">const</span> wxPoint &amp;i,<span class="keyword">const</span> wxPoint &amp;o, wxWindow * paintingWindow)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;<span class="comment">//      wxPoint inner = ScreenToClient(i); unused</span></div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        wxPoint myoffset = GetPositionInWindow(paintingWindow);</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;        wxPoint outer = o - myoffset;</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(routinggui,_T(<span class="stringliteral">&quot;outer (%d,%d) is in device (%d,%d)&quot;</span>),o.x,o.y,outer.x,outer.y);</div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;        wxRect iconRect = this-&gt;GetIconRect();</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(routinggui,_T(<span class="stringliteral">&quot;Icon rect: x=%d, y=%d, w=%d, h=%d&quot;</span>),iconRect.x,iconRect.y,iconRect.width,iconRect.height);</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;        wxPoint iconCenter(iconRect.x+iconRect.width/2,</div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;                           iconRect.y+iconRect.height/2);</div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(routinggui,_T(<span class="stringliteral">&quot;center = (%d,%d)&quot;</span>), iconCenter.x, iconCenter.y);</div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;<span class="comment">        wxRect screenRect = this-&gt;GetScreenRect();</span></div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;<span class="comment">        // transform Screen rect to upper left and </span></div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;<span class="comment">        wxPoint upperLeft(this-&gt;ScreenToClient(wxPoint(screenRect.x,screenRect.y)));</span></div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;<span class="comment">        wxPoint lowerRight(this-&gt;ScreenToClient(wxPoint(screenRect.x+screenRect.width,screenRect.y+screenRect.height)));</span></div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;        wxRect screenRect = this-&gt;GetClientRect();</div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        wxPoint upperLeft(screenRect.x,screenRect.y);</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;        wxPoint lowerRight(screenRect.x+screenRect.width,screenRect.y+screenRect.height);</div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(routinggui,_T(<span class="stringliteral">&quot;Rectangle: (%d,%d) -- (%d,%d)&quot;</span>),upperLeft.x, upperLeft.y, lowerRight.x, lowerRight.y);</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;</div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        wxPoint perimeterpoint(0,0);</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;        <span class="keywordflow">if</span> (lowerRight.x &lt;= outer.x) {</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;                perimeterpoint.x = lowerRight.x;</div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;                perimeterpoint.y = iconCenter.y;</div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (outer.x &lt;= upperLeft.x) {</div>
-<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;                perimeterpoint.x = upperLeft.x;</div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;                perimeterpoint.y = iconCenter.y;</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (outer.y &lt;= upperLeft.y) {</div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;                perimeterpoint.x = iconCenter.x;</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;                perimeterpoint.y = upperLeft.y;</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (lowerRight.y &lt;= outer.y) {</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;                perimeterpoint.x = iconCenter.x;</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;                perimeterpoint.y = lowerRight.y;</div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;                perimeterpoint = iconCenter;</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        }</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;</div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;        mutpointlist::iterator pos = std::find(usedperimeterpoints.begin(),</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;                                               usedperimeterpoints.end(),</div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;                                               perimeterpoint);</div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;        <span class="keywordflow">if</span> (pos == usedperimeterpoints.end())</div>
-<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;                usedperimeterpoints.push_back(perimeterpoint);</div>
-<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;</div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;        wxPoint retval = perimeterpoint + myoffset;</div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(routinggui,_T(<span class="stringliteral">&quot;perimeter point (%d,%d), returning (%d,%d)&quot;</span>), </div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;                 perimeterpoint.x,perimeterpoint.y,retval.x,retval.y);</div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        <span class="keywordflow">return</span> retval;</div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;                <span class="keywordtype">int</span> x = 0;</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;Size: %dx%d&quot;</span>),GetIcon().GetHeight(),</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;                         GetIcon().GetWidth());</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;                x = (size.width-GetIcon().GetWidth())/2;</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;<span class="preprocessor">#if __WXMAC__ || __WXGTK__</span></div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;<span class="preprocessor"></span>                x -= maxBorderSize.x - borderOffset.x;</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;<span class="preprocessor"></span>                dc.DrawIcon(GetIcon(), x, y);</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;        }</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;Focus %p and this %p&quot;</span>),(<span class="keywordtype">void</span>*)this-&gt;FindFocus(),(<span class="keywordtype">void</span>*)<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;<span class="comment">/*  Draw a black bock around focused item </span></div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;<span class="comment">        if (FindFocus() == this) {</span></div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;<span class="comment">                DEBUGLOG (other, _T(&quot;Painting Box&quot;));</span></div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;<span class="comment">                dc.SetPen(*wxBLACK_PEN);</span></div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;<span class="comment">                dc.SetBrush(*wxTRANSPARENT_BRUSH);</span></div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;<span class="comment">                dc.DrawRectangle(0,0,size.width,size.height);</span></div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;}</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00550"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#gafb46b285ddfcaf567dadb66d6abafc53">  550</a></span>&#160;wxPoint <a class="code" href="../../df/dd1/group__GUI.html#gafb46b285ddfcaf567dadb66d6abafc53">MutIconShapeClass&lt;T&gt;::GetPerimeterPoint</a>(<span class="keyword">const</span> wxPoint &amp;i,<span class="keyword">const</span> wxPoint &amp;o, wxWindow * paintingWindow)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;<span class="comment">//      wxPoint inner = ScreenToClient(i); unused</span></div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;        wxPoint myoffset = GetPositionInWindow(paintingWindow);</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;        wxPoint outer = o - myoffset;</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(routinggui,_T(<span class="stringliteral">&quot;outer (%d,%d) is in device (%d,%d)&quot;</span>),o.x,o.y,outer.x,outer.y);</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;        wxRect iconRect = this-&gt;GetIconRect();</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(routinggui,_T(<span class="stringliteral">&quot;Icon rect: x=%d, y=%d, w=%d, h=%d&quot;</span>),iconRect.x,iconRect.y,iconRect.width,iconRect.height);</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;        wxPoint iconCenter(iconRect.x+iconRect.width/2,</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;                           iconRect.y+iconRect.height/2);</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(routinggui,_T(<span class="stringliteral">&quot;center = (%d,%d)&quot;</span>), iconCenter.x, iconCenter.y);</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;<span class="comment">        wxRect screenRect = this-&gt;GetScreenRect();</span></div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;<span class="comment">        // transform Screen rect to upper left and </span></div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;<span class="comment">        wxPoint upperLeft(this-&gt;ScreenToClient(wxPoint(screenRect.x,screenRect.y)));</span></div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;<span class="comment">        wxPoint lowerRight(this-&gt;ScreenToClient(wxPoint(screenRect.x+screenRect.width,screenRect.y+screenRect.height)));</span></div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        wxRect screenRect = this-&gt;GetClientRect();</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;        wxPoint upperLeft(screenRect.x,screenRect.y);</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;        wxPoint lowerRight(screenRect.x+screenRect.width,screenRect.y+screenRect.height);</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(routinggui,_T(<span class="stringliteral">&quot;Rectangle: (%d,%d) -- (%d,%d)&quot;</span>),upperLeft.x, upperLeft.y, lowerRight.x, lowerRight.y);</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;        wxPoint perimeterpoint(0,0);</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;        <span class="keywordflow">if</span> (lowerRight.x &lt;= outer.x) {</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;                perimeterpoint.x = lowerRight.x;</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;                perimeterpoint.y = iconCenter.y;</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (outer.x &lt;= upperLeft.x) {</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;                perimeterpoint.x = upperLeft.x;</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;                perimeterpoint.y = iconCenter.y;</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (outer.y &lt;= upperLeft.y) {</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;                perimeterpoint.x = iconCenter.x;</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;                perimeterpoint.y = upperLeft.y;</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (lowerRight.y &lt;= outer.y) {</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;                perimeterpoint.x = iconCenter.x;</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;                perimeterpoint.y = lowerRight.y;</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;                perimeterpoint = iconCenter;</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;        }</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;        mutpointlist::iterator pos = std::find(usedperimeterpoints.begin(),</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;                                               usedperimeterpoints.end(),</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;                                               perimeterpoint);</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;        <span class="keywordflow">if</span> (pos == usedperimeterpoints.end())</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;                usedperimeterpoints.push_back(perimeterpoint);</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;        wxPoint retval = perimeterpoint + myoffset;</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(routinggui,_T(<span class="stringliteral">&quot;perimeter point (%d,%d), returning (%d,%d)&quot;</span>), </div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;                 perimeterpoint.x,perimeterpoint.y,retval.x,retval.y);</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;        <span class="keywordflow">return</span> retval;</div>
 <div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;</div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;<span class="preprocessor"></span>        wxRect r = this-&gt;GetRect();</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;Rect: (%d,%d) -- (%d,%d)&quot;</span>),r.x,r.y,r.x+r.width,r.y+r.height);</div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;Points: i = (%d,%d), o = (%d, %d)&quot;</span>),i.x,i.y,o.x,o.y);</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;        wxRect ir = this-&gt;GetIconRect();</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;<span class="preprocessor"></span>        std::cerr.flush();</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;        <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(r.Contains(i));</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;        wxPoint p;</div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;        <span class="keywordtype">int</span> xoffset = 0;</div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;<span class="preprocessor">#if __WXMAC__ &amp;&amp; 0</span></div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;<span class="preprocessor"></span>        xoffset = this-&gt;GetWindowBorderSize().x/2;</div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;        r.y += borderOffset.y;</div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;<span class="preprocessor">#if __WXMAC__</span></div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;<span class="preprocessor"></span>        r.y += maxBorderSize.y - borderOffset.y;</div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;<span class="preprocessor"></span>        <span class="keywordflow">if</span> (r.x+r.width &lt;= o.x) {</div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;                p.x = r.x + r.width + xoffset;</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;                p.y = ir.y + ir.height/2;</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (r.x &gt;= o.x) {</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;                p.x = r.x - xoffset;</div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;                p.y = ir.y + ir.height/2;</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (r.y &lt;= o.y) {</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;                p.x = r.x + r.width/2;</div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;                p.y = r.y;</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (r.y + r.height &gt;= o.y) {</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;                p.x = r.x + r.width/2;</div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;                p.y = r.y + r.height;</div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;        } <span class="keywordflow">else</span> p = o;</div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;<span class="preprocessor"></span>        wxRect r = this-&gt;GetRect();</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;Rect: (%d,%d) -- (%d,%d)&quot;</span>),r.x,r.y,r.x+r.width,r.y+r.height);</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;Points: i = (%d,%d), o = (%d, %d)&quot;</span>),i.x,i.y,o.x,o.y);</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;        wxRect ir = this-&gt;GetIconRect();</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;<span class="preprocessor"></span>        std::cerr.flush();</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;        <a class="code" href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a>(r.Contains(i));</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;        wxPoint p;</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;        <span class="keywordtype">int</span> xoffset = 0;</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;<span class="preprocessor">#if __WXMAC__ &amp;&amp; 0</span></div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;<span class="preprocessor"></span>        xoffset = this-&gt;GetWindowBorderSize().x/2;</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;        r.y += borderOffset.y;</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;<span class="preprocessor">#if __WXMAC__</span></div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;<span class="preprocessor"></span>        r.y += maxBorderSize.y - borderOffset.y;</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;<span class="preprocessor"></span>        <span class="keywordflow">if</span> (r.x+r.width &lt;= o.x) {</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;                p.x = r.x + r.width + xoffset;</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;                p.y = ir.y + ir.height/2;</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (r.x &gt;= o.x) {</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;                p.x = r.x - xoffset;</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;                p.y = ir.y + ir.height/2;</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (r.y &lt;= o.y) {</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;                p.x = r.x + r.width/2;</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;                p.y = r.y;</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (r.y + r.height &gt;= o.y) {</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;                p.x = r.x + r.width/2;</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;                p.y = r.y + r.height;</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;        } <span class="keywordflow">else</span> p = o;</div>
 <div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;</div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;        mutpointlist::iterator pos = std::find(usedperimeterpoints.begin(),</div>
-<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;                                               usedperimeterpoints.end(),</div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;                                               p);</div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;        <span class="keywordflow">if</span> (pos == usedperimeterpoints.end())</div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;                usedperimeterpoints.push_back(p);</div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;</div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;<span class="preprocessor">#if __WXGTK__ &amp;&amp; 0</span></div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;<span class="preprocessor"></span>        p.y += maxBorderSize.y - this-&gt;GetWindowBorderSize().y / 2;</div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;<span class="preprocessor"></span>        <span class="keywordflow">return</span> p;</div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00650"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#gaff550c99aecc9d9fc9989bef770f791b">  650</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/dd1/group__GUI.html#gaff550c99aecc9d9fc9989bef770f791b">MutIconShapeClass&lt;T&gt;::DrawPerimeterPoint</a>(wxDC &amp; dc, </div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;                                              <span class="keyword">const</span> wxPoint &amp; center, </div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;                                              wxPoint p)<span class="keyword"> const </span></div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;        dc.DrawLine(center, p);</div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;<span class="preprocessor"></span>        wxRect origin(this-&gt;GetRect());</div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;        p.x -= origin.x;</div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;        p.y -= origin.y;</div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;<span class="preprocessor">#if __WXMAC__</span></div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;<span class="preprocessor"></span>        p.x -= maxBorderSize.x - borderOffset.x;</div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;        p.y -= maxBorderSize.y - borderOffset.y;</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;<span class="preprocessor">#elif __WXGTK__</span></div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;<span class="preprocessor"></span>        p -= maxBorderSize;</div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;        <span class="keywordflow">if</span> (p.x &gt; center.x) p.x += maxBorderSize.x;</div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;        <span class="keywordflow">else</span> p.x -= maxBorderSize.x;</div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;<span class="preprocessor"></span>        dc.DrawLine(center, p);</div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;<span class="preprocessor"></span>  }</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;        mutpointlist::iterator pos = std::find(usedperimeterpoints.begin(),</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;                                               usedperimeterpoints.end(),</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;                                               p);</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;        <span class="keywordflow">if</span> (pos == usedperimeterpoints.end())</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;                usedperimeterpoints.push_back(p);</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;<span class="preprocessor">#if __WXGTK__ &amp;&amp; 0</span></div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;<span class="preprocessor"></span>        p.y += maxBorderSize.y - this-&gt;GetWindowBorderSize().y / 2;</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;<span class="preprocessor"></span>        <span class="keywordflow">return</span> p;</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00651"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#gaff550c99aecc9d9fc9989bef770f791b">  651</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/dd1/group__GUI.html#gaff550c99aecc9d9fc9989bef770f791b">MutIconShapeClass&lt;T&gt;::DrawPerimeterPoint</a>(wxDC &amp; dc, </div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;                                              <span class="keyword">const</span> wxPoint &amp; center, </div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;                                              wxPoint p)<span class="keyword"> const </span></div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;        dc.DrawLine(center, p);</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;<span class="preprocessor"></span>        wxRect origin(this-&gt;GetRect());</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;        p.x -= origin.x;</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;        p.y -= origin.y;</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;<span class="preprocessor">#if __WXMAC__</span></div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;<span class="preprocessor"></span>        p.x -= maxBorderSize.x - borderOffset.x;</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;        p.y -= maxBorderSize.y - borderOffset.y;</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;<span class="preprocessor">#elif __WXGTK__</span></div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;<span class="preprocessor"></span>        p -= maxBorderSize;</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;        <span class="keywordflow">if</span> (p.x &gt; center.x) p.x += maxBorderSize.x;</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;        <span class="keywordflow">else</span> p.x -= maxBorderSize.x;</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;<span class="preprocessor"></span>        dc.DrawLine(center, p);</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;<span class="preprocessor"></span>  }</div>
 <div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;</div>
 <div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;</div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00674"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#gaa81293c8ad433bd7799ff6886da801c8">  674</a></span>&#160;wxPoint <a class="code" href="../../df/dd1/group__GUI.html#gaa81293c8ad433bd7799ff6886da801c8">MutIconShapeClass&lt;T&gt;::GetPositionInWindow</a>(<span class="keyword">const</span> wxWindow * win)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;        wxPoint p(0,0);</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;        <span class="keyword">const</span> wxWindow * tmp = <span class="keyword">this</span>;</div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;        <span class="keywordflow">while</span> (tmp &amp;&amp; tmp != win) {</div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;                p += tmp-&gt;GetPosition();</div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;                wxSize border = (tmp-&gt;GetSize() - tmp-&gt;GetClientSize());</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;                p += border.Scale(0.5,0.5);</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;                tmp = tmp-&gt;GetParent();</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;        }</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;        <span class="keywordflow">return</span> tmp ? p:wxPoint(0,0);</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;}</div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00688"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#ga902ef06d34f93cfeec3d2920e5c11b22">  688</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/dd1/group__GUI.html#ga902ef06d34f93cfeec3d2920e5c11b22">MutIconShapeClass&lt;T&gt;::LineTo</a>(wxDC &amp;dc, <span class="keyword">const</span> wxPoint &amp; p,</div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;                                  <span class="keyword">const</span> wxRect &amp; screenpos)<span class="keyword">  const</span></div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;        wxRect rect = this-&gt;GetRect();</div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;        wxPoint p1(rect.x + rect.width/2, </div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;                   rect.y + Icon.GetHeight()/2 + borderOffset.y);</div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;        wxPoint origin(screenpos.x,screenpos.y);</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;        dc.DrawLine(p1+origin,p+origin);</div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;}</div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00701"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#ga07f28cc023ae8756e9f9f87f95ad5409">  701</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/dd1/group__GUI.html#ga07f28cc023ae8756e9f9f87f95ad5409">MutIconShapeClass&lt;T&gt;::Recompute</a>() </div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;{</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;}</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00707"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#ga71692d75ec3c362f4bcb53c75d57b4c2">  707</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/dd1/group__GUI.html#ga71692d75ec3c362f4bcb53c75d57b4c2">MutIconShapeClass&lt;T&gt;::Layout</a>() {</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;        <span class="comment">//ClearPerimeterPoints();</span></div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;        wxRect rect = this-&gt;GetClientRect();</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;        <span class="keywordtype">int</span> w = rect.width, <a class="code" href="../../d3/d26/mutgis_8cpp.html#a26506d124b947beae862c007bc8195bb">h</a> = rect.height, </div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;                y = Icon.GetHeight() +  borderOffset.y;</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;        w -= 2* borderOffset.x;</div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;        <a class="code" href="../../d3/d26/mutgis_8cpp.html#a26506d124b947beae862c007bc8195bb">h</a> -= 2* borderOffset.y;</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;        <span class="keywordflow">if</span> (staticText) {</div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;<span class="comment">//              y+= Icon.GetHeight();</span></div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;                staticText-&gt;Move(borderOffset.x,y);</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;                staticText-&gt;CentreOnParent(wxHORIZONTAL);</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;                wxSize s = staticText-&gt;GetSize();</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;                y += s.y;</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;        }</div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;        <span class="comment">// If there is a sizer, use it instead of the constraints</span></div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;        <span class="keywordflow">if</span> ( this-&gt;GetSizer() )</div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;        {</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;sizer&quot;</span>));</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;                wxRect sizerrect(borderOffset.x,y,w,<a class="code" href="../../d3/d26/mutgis_8cpp.html#a26506d124b947beae862c007bc8195bb">h</a>);</div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;<span class="preprocessor">#if __WXMAC__   //adjust the sizer to the right size inside</span></div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;<span class="preprocessor"></span>                sizerrect=wxRect(0,y,rect.width,rect.height);</div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;                sizerrect.x -= maxBorderSize.x - borderOffset.x;</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;<span class="comment">//              sizerrect.width -= 2*sizerrect.x; </span></div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;<span class="preprocessor"></span>                this-&gt;GetSizer()-&gt;SetDimension( sizerrect.x,</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;                                                sizerrect.y,</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;                                                sizerrect.width,</div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;                                                sizerrect.height );</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga391d61b0297bf03db59dad4f6b8457ab">PRINTSIZER</a>(this-&gt;GetSizer());</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;        }</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;<span class="preprocessor">#if 0 // \todo implement this if it is needed</span></div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;<span class="preprocessor"></span><span class="comment">// the constraints destroy the window placement</span></div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;<span class="preprocessor">#if wxUSE_CONSTRAINTS</span></div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;<span class="preprocessor"></span>        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;        {</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;constraints&quot;</span>));</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;                this-&gt;SatisfyConstraints(); <span class="comment">// Find the right constraints values</span></div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;                this-&gt;SetConstraintSizes(); <span class="comment">// Recursively set the real window sizes</span></div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;        }</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;<span class="preprocessor"></span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;}</div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00753"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#ga6a32ece47417189c5f20868fbb6600c2">  753</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/dd1/group__GUI.html#ga6a32ece47417189c5f20868fbb6600c2">MutIconShapeClass&lt;T&gt;::DeleteSelf</a>()</div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;{</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;        this-&gt;Destroy();</div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;<span class="preprocessor">#if 0 </span></div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;<span class="preprocessor"></span>        <span class="comment">// old mouse event proof implementation</span></div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;        <span class="comment">// has been used as long as we handled the event</span></div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;        <span class="comment">// inside the mouse event handler;</span></div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;        Hide();</div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;        wxCloseEvent event(wxEVT_CLOSE_WINDOW, m_windowId);</div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;        <span class="keyword">event</span>.SetEventObject(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;        <span class="keyword">event</span>.SetCanVeto(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;        </div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;        GetEventHandler()-&gt;AddPendingEvent(event);</div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;</div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;<span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="../../d5/d12/classMutIconShapeClass.html">MutIconShapeClass&lt;wxControl&gt;</a>;</div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;<span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="../../d5/d12/classMutIconShapeClass.html">MutIconShapeClass&lt;MutPanel&gt;</a>;</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00675"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#gaa81293c8ad433bd7799ff6886da801c8">  675</a></span>&#160;wxPoint <a class="code" href="../../df/dd1/group__GUI.html#gaa81293c8ad433bd7799ff6886da801c8">MutIconShapeClass&lt;T&gt;::GetPositionInWindow</a>(<span class="keyword">const</span> wxWindow * win)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;        wxPoint p(0,0);</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;        <span class="keyword">const</span> wxWindow * tmp = <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;        <span class="keywordflow">while</span> (tmp &amp;&amp; tmp != win) {</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;                p += tmp-&gt;GetPosition();</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;                wxSize border = (tmp-&gt;GetSize() - tmp-&gt;GetClientSize());</div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;                p += border.Scale(0.5,0.5);</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;                tmp = tmp-&gt;GetParent();</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;        }</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;        <span class="keywordflow">return</span> tmp ? p:wxPoint(0,0);</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;}</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00689"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#ga902ef06d34f93cfeec3d2920e5c11b22">  689</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/dd1/group__GUI.html#ga902ef06d34f93cfeec3d2920e5c11b22">MutIconShapeClass&lt;T&gt;::LineTo</a>(wxDC &amp;dc, <span class="keyword">const</span> wxPoint &amp; p,</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;                                  <span class="keyword">const</span> wxRect &amp; screenpos)<span class="keyword">  const</span></div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;<span class="preprocessor"></span>        wxRect rect = this-&gt;GetRect();</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;        wxPoint p1(rect.x + rect.width/2, </div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;                   rect.y + Icon.GetHeight()/2 + borderOffset.y);</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;        wxPoint origin(screenpos.x,screenpos.y);</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;        dc.DrawLine(p1+origin,p+origin);</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00704"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#ga07f28cc023ae8756e9f9f87f95ad5409">  704</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/dd1/group__GUI.html#ga07f28cc023ae8756e9f9f87f95ad5409">MutIconShapeClass&lt;T&gt;::Recompute</a>() </div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;{</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;}</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00710"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#ga71692d75ec3c362f4bcb53c75d57b4c2">  710</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/dd1/group__GUI.html#ga71692d75ec3c362f4bcb53c75d57b4c2">MutIconShapeClass&lt;T&gt;::Layout</a>() {</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;        <span class="comment">//ClearPerimeterPoints();</span></div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;        wxRect rect = this-&gt;GetClientRect();</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;        <span class="keywordtype">int</span> w = rect.width, <a class="code" href="../../d3/d26/mutgis_8cpp.html#a26506d124b947beae862c007bc8195bb">h</a> = rect.height, </div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;                y = Icon.GetHeight() +  borderOffset.y;</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;        w -= 2* borderOffset.x;</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;        <a class="code" href="../../d3/d26/mutgis_8cpp.html#a26506d124b947beae862c007bc8195bb">h</a> -= 2* borderOffset.y;</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;        <span class="keywordflow">if</span> (staticText) {</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;<span class="comment">//              y+= Icon.GetHeight();</span></div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;                staticText-&gt;Move(borderOffset.x,y);</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;                staticText-&gt;CentreOnParent(wxHORIZONTAL);</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;                wxSize s = staticText-&gt;GetSize();</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                y += s.y;</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;        }</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;        <span class="comment">// If there is a sizer, use it instead of the constraints</span></div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;        <span class="keywordflow">if</span> ( this-&gt;GetSizer() )</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;        {</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;sizer&quot;</span>));</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;                wxRect sizerrect(borderOffset.x,y,w,<a class="code" href="../../d3/d26/mutgis_8cpp.html#a26506d124b947beae862c007bc8195bb">h</a>);</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;<span class="preprocessor">#if __WXMAC__   //adjust the sizer to the right size inside</span></div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;<span class="preprocessor"></span>                sizerrect=wxRect(0,y,rect.width,rect.height);</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;                sizerrect.x -= maxBorderSize.x - borderOffset.x;</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;<span class="comment">//              sizerrect.width -= 2*sizerrect.x; </span></div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;<span class="preprocessor"></span>                this-&gt;GetSizer()-&gt;SetDimension( sizerrect.x,</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;                                                sizerrect.y,</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;                                                sizerrect.width,</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;                                                sizerrect.height );</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;                <a class="code" href="../../df/dd1/group__GUI.html#ga5c431abc9c0a0312979fc8f0f2c32971">PRINTSIZER</a>(this-&gt;GetSizer());</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;        }</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;<span class="preprocessor">#if 0 // \todo implement this if it is needed</span></div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;<span class="preprocessor"></span><span class="comment">// the constraints destroy the window placement</span></div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;<span class="preprocessor">#if wxUSE_CONSTRAINTS</span></div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;<span class="preprocessor"></span>        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;        {</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, _T(<span class="stringliteral">&quot;constraints&quot;</span>));</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;                this-&gt;SatisfyConstraints(); <span class="comment">// Find the right constraints values</span></div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;                this-&gt;SetConstraintSizes(); <span class="comment">// Recursively set the real window sizes</span></div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;        }</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;<span class="preprocessor"></span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;}</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00756"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#ga6a32ece47417189c5f20868fbb6600c2">  756</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/dd1/group__GUI.html#ga6a32ece47417189c5f20868fbb6600c2">MutIconShapeClass&lt;T&gt;::DeleteSelf</a>()</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;{</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;        this-&gt;Destroy();</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;<span class="preprocessor">#if 0 </span></div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;<span class="preprocessor"></span>        <span class="comment">// old mouse event proof implementation</span></div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;        <span class="comment">// has been used as long as we handled the event</span></div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;        <span class="comment">// inside the mouse event handler;</span></div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;        Hide();</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;        wxCloseEvent event(wxEVT_CLOSE_WINDOW, m_windowId);</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;        <span class="keyword">event</span>.SetEventObject(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;        <span class="keyword">event</span>.SetCanVeto(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;        </div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;        GetEventHandler()-&gt;AddPendingEvent(event);</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;<span class="preprocessor"></span>}</div>
 <div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;</div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;</div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;<span class="comment"> * \}</span></div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;<span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="../../d5/d12/classMutIconShapeClass.html">MutIconShapeClass&lt;wxControl&gt;</a>;</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;<span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="../../d5/d12/classMutIconShapeClass.html">MutIconShapeClass&lt;MutPanel&gt;</a>;</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;<span class="comment"> * \}</span></div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;<span class="comment"> */</span></div>
 <div class="ttc" id="classMutPanel_html"><div class="ttname"><a href="../../df/df2/classMutPanel.html">MutPanel</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d1d/Panel_8h_source.html#l00060">Panel.h:60</a></div></div>
-<div class="ttc" id="group__debug_html_ga391d61b0297bf03db59dad4f6b8457ab"><div class="ttname"><a href="../../de/db7/group__debug.html#ga391d61b0297bf03db59dad4f6b8457ab">PRINTSIZER</a></div><div class="ttdeci">#define PRINTSIZER(X)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00133">mutDebug.h:133</a></div></div>
 <div class="ttc" id="group__GUI_html_ga370557a6690e8f868b6244a50e5f5607"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga370557a6690e8f868b6244a50e5f5607">MutIconShapeClass::GotFocus</a></div><div class="ttdeci">virtual void GotFocus()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00404">IconShape.cpp:404</a></div></div>
-<div class="ttc" id="group__GUI_html_ga26f8a3927e5cf8a5b0c22aba23d408d7"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga26f8a3927e5cf8a5b0c22aba23d408d7">BEGIN_EVENT_TABLE_TEMPLATE1</a></div><div class="ttdeci">BEGIN_EVENT_TABLE_TEMPLATE1(MutIconShapeClass, T, T) EVT_SIZE(MutIconShapeClass</div><div class="ttdoc">wx &amp;gt;= 2.9.0 uses its own template support </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00086">IconShape.cpp:86</a></div></div>
+<div class="ttc" id="group__GUI_html_ga26f8a3927e5cf8a5b0c22aba23d408d7"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga26f8a3927e5cf8a5b0c22aba23d408d7">BEGIN_EVENT_TABLE_TEMPLATE1</a></div><div class="ttdeci">BEGIN_EVENT_TABLE_TEMPLATE1(MutIconShapeClass, T, T) EVT_SIZE(MutIconShapeClass</div><div class="ttdoc">wx &gt;= 2.9.0 uses its own template support </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00086">IconShape.cpp:86</a></div></div>
 <div class="ttc" id="mutgis_8cpp_html_a26506d124b947beae862c007bc8195bb"><div class="ttname"><a href="../../d3/d26/mutgis_8cpp.html#a26506d124b947beae862c007bc8195bb">h</a></div><div class="ttdeci">GisReadArtHead * h</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d26/mutgis_8cpp_source.html#l00005">mutgis.cpp:5</a></div></div>
-<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00141">mutDebug.h:141</a></div></div>
-<div class="ttc" id="group__debug_html_ga9de22df51e7efa23154a04eab9e66cad"><div class="ttname"><a href="../../de/db7/group__debug.html#ga9de22df51e7efa23154a04eab9e66cad">DEBUGLOGTYPE</a></div><div class="ttdeci">#define DEBUGLOGTYPE(level, type,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00143">mutDebug.h:143</a></div></div>
+<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00146">mutDebug.h:146</a></div></div>
+<div class="ttc" id="group__debug_html_ga9de22df51e7efa23154a04eab9e66cad"><div class="ttname"><a href="../../de/db7/group__debug.html#ga9de22df51e7efa23154a04eab9e66cad">DEBUGLOGTYPE</a></div><div class="ttdeci">#define DEBUGLOGTYPE(level, type,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00148">mutDebug.h:148</a></div></div>
 <div class="ttc" id="classMutIconShapeClass_html"><div class="ttname"><a href="../../d5/d12/classMutIconShapeClass.html">MutIconShapeClass</a></div><div class="ttdoc">An icon control with static text. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d6f/IconShape_8h_source.html#l00068">IconShape.h:68</a></div></div>
 <div class="ttc" id="group__GUI_html_ga9d72cf755410c0f9e357ab6dd04cc02c"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga9d72cf755410c0f9e357ab6dd04cc02c">MutIconShapeClass::OnKillFocus</a></div><div class="ttdeci">void OnKillFocus(wxFocusEvent &amp;event)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00452">IconShape.cpp:452</a></div></div>
 <div class="ttc" id="group__kernel_html_gaedf3113729faf15522da4884cc137733"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gaedf3113729faf15522da4884cc137733">mutUnused</a></div><div class="ttdeci">#define mutUnused(expr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00079">Defs.h:79</a></div></div>
 <div class="ttc" id="group__GUI_html_ga51e3d99a30d436db152030e42a36afee"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga51e3d99a30d436db152030e42a36afee">MutIconShapeClass::OnDraw</a></div><div class="ttdeci">virtual void OnDraw(wxDC &amp;dc)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00493">IconShape.cpp:493</a></div></div>
 <div class="ttc" id="group__GUI_html_gadba3c3c1619d41c27ec47e150e9aefcc"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gadba3c3c1619d41c27ec47e150e9aefcc">MutIconShapeClass::LostFocus</a></div><div class="ttdeci">virtual void LostFocus()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00436">IconShape.cpp:436</a></div></div>
-<div class="ttc" id="group__GUI_html_ga6a32ece47417189c5f20868fbb6600c2"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga6a32ece47417189c5f20868fbb6600c2">MutIconShapeClass::DeleteSelf</a></div><div class="ttdeci">void DeleteSelf() __attribute__((deprecated))</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00753">IconShape.cpp:753</a></div></div>
-<div class="ttc" id="group__debug_html_ga86acd9c1c30c8cb1831b46da11b1ec62"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a></div><div class="ttdeci">#define TRACEC</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00146">mutDebug.h:146</a></div></div>
+<div class="ttc" id="group__GUI_html_ga6a32ece47417189c5f20868fbb6600c2"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga6a32ece47417189c5f20868fbb6600c2">MutIconShapeClass::DeleteSelf</a></div><div class="ttdeci">void DeleteSelf() __attribute__((deprecated))</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00756">IconShape.cpp:756</a></div></div>
+<div class="ttc" id="group__debug_html_ga86acd9c1c30c8cb1831b46da11b1ec62"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a></div><div class="ttdeci">#define TRACEC</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00151">mutDebug.h:151</a></div></div>
 <div class="ttc" id="group__GUI_html_ga7dae318216460a766030e900f8cc34ad"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga7dae318216460a766030e900f8cc34ad">EVT_SIZE</a></div><div class="ttdeci">wxControl EVT_SIZE(MutPanel::OnSize) EVT_SET_FOCUS(MutPanel</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d10/Panel_8cpp_source.html#l00123">Panel.cpp:123</a></div></div>
 <div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
-<div class="ttc" id="group__GUI_html_ga902ef06d34f93cfeec3d2920e5c11b22"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga902ef06d34f93cfeec3d2920e5c11b22">MutIconShapeClass::LineTo</a></div><div class="ttdeci">virtual void LineTo(wxDC &amp;dc, const wxPoint &amp;p, const wxRect &amp;screenpos) const </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00688">IconShape.cpp:688</a></div></div>
+<div class="ttc" id="group__GUI_html_ga902ef06d34f93cfeec3d2920e5c11b22"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga902ef06d34f93cfeec3d2920e5c11b22">MutIconShapeClass::LineTo</a></div><div class="ttdeci">virtual void LineTo(wxDC &amp;dc, const wxPoint &amp;p, const wxRect &amp;screenpos) const </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00689">IconShape.cpp:689</a></div></div>
 <div class="ttc" id="IconShape_8cpp_html_a30ef876fedc77e6354cebc5b8fac025f"><div class="ttname"><a href="../../dc/d76/IconShape_8cpp.html#a30ef876fedc77e6354cebc5b8fac025f">IMPLEMENT_DYNAMIC_CLASS_TEMPLATE1</a></div><div class="ttdeci">#define IMPLEMENT_DYNAMIC_CLASS_TEMPLATE1(name, basename, T1)</div></div>
-<div class="ttc" id="group__kernel_html_ga77bd8e5b959213dd8bcd48dc513f6013"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a></div><div class="ttdeci">#define mutASSERT(cond)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00223">Defs.h:223</a></div></div>
-<div class="ttc" id="group__GUI_html_gaff550c99aecc9d9fc9989bef770f791b"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gaff550c99aecc9d9fc9989bef770f791b">MutIconShapeClass::DrawPerimeterPoint</a></div><div class="ttdeci">virtual void DrawPerimeterPoint(wxDC &amp;dc, const wxPoint &amp;center, wxPoint p) const </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00650">IconShape.cpp:650</a></div></div>
+<div class="ttc" id="group__GUI_html_gaff550c99aecc9d9fc9989bef770f791b"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gaff550c99aecc9d9fc9989bef770f791b">MutIconShapeClass::DrawPerimeterPoint</a></div><div class="ttdeci">virtual void DrawPerimeterPoint(wxDC &amp;dc, const wxPoint &amp;center, wxPoint p) const </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00651">IconShape.cpp:651</a></div></div>
 <div class="ttc" id="group__GUI_html_ga7f1d22cc86025045416ba687dee7f41f"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga7f1d22cc86025045416ba687dee7f41f">MutIconShapeClass::OnMove</a></div><div class="ttdeci">void OnMove(wxMoveEvent &amp;event)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00477">IconShape.cpp:477</a></div></div>
-<div class="ttc" id="group__GUI_html_ga07f28cc023ae8756e9f9f87f95ad5409"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga07f28cc023ae8756e9f9f87f95ad5409">MutIconShapeClass::Recompute</a></div><div class="ttdeci">virtual bool Recompute()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00701">IconShape.cpp:701</a></div></div>
+<div class="ttc" id="group__GUI_html_ga07f28cc023ae8756e9f9f87f95ad5409"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga07f28cc023ae8756e9f9f87f95ad5409">MutIconShapeClass::Recompute</a></div><div class="ttdeci">virtual bool Recompute()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00704">IconShape.cpp:704</a></div></div>
 <div class="ttc" id="group__GUI_html_ga6fa093d611e95444ae1b2a60aebf6ec6"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga6fa093d611e95444ae1b2a60aebf6ec6">MutIconShapeClass::Destroy</a></div><div class="ttdeci">virtual bool Destroy()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00286">IconShape.cpp:286</a></div></div>
-<div class="ttc" id="group__GUI_html_ga71692d75ec3c362f4bcb53c75d57b4c2"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga71692d75ec3c362f4bcb53c75d57b4c2">MutIconShapeClass::Layout</a></div><div class="ttdeci">virtual bool Layout()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00707">IconShape.cpp:707</a></div></div>
-<div class="ttc" id="MutDocManager_8cpp_html_a9e7a087c5c550acffcd802f4b40bd609"><div class="ttname"><a href="../../dd/db0/MutDocManager_8cpp.html#a9e7a087c5c550acffcd802f4b40bd609">END_EVENT_TABLE</a></div><div class="ttdeci">MutDocManager::CmExecuteLogic END_EVENT_TABLE() namespace mutaborGUI</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db0/MutDocManager_8cpp_source.html#l00087">MutDocManager.cpp:87</a></div></div>
+<div class="ttc" id="group__GUI_html_ga5c431abc9c0a0312979fc8f0f2c32971"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga5c431abc9c0a0312979fc8f0f2c32971">PRINTSIZER</a></div><div class="ttdeci">void PRINTSIZER(wxSizer *sizer, const wxString &amp;offset=_T(&quot;&quot;))</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d2f/mxDefs_8cpp_source.html#l00158">mxDefs.cpp:158</a></div></div>
+<div class="ttc" id="group__GUI_html_ga71692d75ec3c362f4bcb53c75d57b4c2"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga71692d75ec3c362f4bcb53c75d57b4c2">MutIconShapeClass::Layout</a></div><div class="ttdeci">virtual bool Layout()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00710">IconShape.cpp:710</a></div></div>
+<div class="ttc" id="MutDocManager_8cpp_html_a9e7a087c5c550acffcd802f4b40bd609"><div class="ttname"><a href="../../dd/db0/MutDocManager_8cpp.html#a9e7a087c5c550acffcd802f4b40bd609">END_EVENT_TABLE</a></div><div class="ttdeci">MutDocManager::CmExecuteLogic END_EVENT_TABLE() namespace mutaborGUI</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db0/MutDocManager_8cpp_source.html#l00050">MutDocManager.cpp:50</a></div></div>
 <div class="ttc" id="IconShape_8h_html"><div class="ttname"><a href="../../d5/d6f/IconShape_8h.html">IconShape.h</a></div><div class="ttdoc">Icon shape. </div></div>
 <div class="ttc" id="group__GUI_html_ga7e20bf5dd47deb647e8458e0ab985521"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga7e20bf5dd47deb647e8458e0ab985521">MutIconShapeClass::OnMouseClick</a></div><div class="ttdeci">void OnMouseClick(wxMouseEvent &amp;event)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00460">IconShape.cpp:460</a></div></div>
 <div class="ttc" id="group__GUI_html_gafb111fbc128036409103a64b8f106cec"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gafb111fbc128036409103a64b8f106cec">MutIconShapeClass::DoGetBestSize</a></div><div class="ttdeci">virtual wxSize DoGetBestSize() const </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00303">IconShape.cpp:303</a></div></div>
 <div class="ttc" id="group__GUI_html_ga013ce0ee08027e1344b6310c98a3e432"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga013ce0ee08027e1344b6310c98a3e432">MutIconShapeClass::OnSize</a></div><div class="ttdeci">void OnSize(wxSizeEvent &amp;event)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00469">IconShape.cpp:469</a></div></div>
+<div class="ttc" id="group__kernel_html_ga565c8973b3b2a87c7f9c7c7aabb9665e"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a></div><div class="ttdeci">#define mutASSERT</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00222">Defs.h:222</a></div></div>
 <div class="ttc" id="group__GUI_html_gac4fa33b7ec3b0cdd4e7007c836fbcf00"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gac4fa33b7ec3b0cdd4e7007c836fbcf00">MutIconShapeClass::UpdateBorder</a></div><div class="ttdeci">virtual void UpdateBorder(long flag)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00353">IconShape.cpp:353</a></div></div>
-<div class="ttc" id="group__GUI_html_gaa81293c8ad433bd7799ff6886da801c8"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gaa81293c8ad433bd7799ff6886da801c8">MutIconShapeClass::GetPositionInWindow</a></div><div class="ttdeci">virtual wxPoint GetPositionInWindow(const wxWindow *win) const </div><div class="ttdoc">Tries to find the correct position of the window in a parent window. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00674">IconShape.cpp:674</a></div></div>
-<div class="ttc" id="group__GUI_html_gafb46b285ddfcaf567dadb66d6abafc53"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gafb46b285ddfcaf567dadb66d6abafc53">MutIconShapeClass::GetPerimeterPoint</a></div><div class="ttdeci">virtual wxPoint GetPerimeterPoint(const wxPoint &amp;i, const wxPoint &amp;o, wxWindow *paintingWindow) const </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00549">IconShape.cpp:549</a></div></div>
+<div class="ttc" id="group__GUI_html_gaa81293c8ad433bd7799ff6886da801c8"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gaa81293c8ad433bd7799ff6886da801c8">MutIconShapeClass::GetPositionInWindow</a></div><div class="ttdeci">virtual wxPoint GetPositionInWindow(const wxWindow *win) const </div><div class="ttdoc">Tries to find the correct position of the window in a parent window. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00675">IconShape.cpp:675</a></div></div>
+<div class="ttc" id="group__GUI_html_gafb46b285ddfcaf567dadb66d6abafc53"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gafb46b285ddfcaf567dadb66d6abafc53">MutIconShapeClass::GetPerimeterPoint</a></div><div class="ttdeci">virtual wxPoint GetPerimeterPoint(const wxPoint &amp;i, const wxPoint &amp;o, wxWindow *paintingWindow) const </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00550">IconShape.cpp:550</a></div></div>
 <div class="ttc" id="group__GUI_html_ga2db78f04d6d7a26ab29da7faa0954def"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga2db78f04d6d7a26ab29da7faa0954def">MutIconShapeClass::OnPaint</a></div><div class="ttdeci">void OnPaint(wxPaintEvent &amp;event)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00485">IconShape.cpp:485</a></div></div>
 <div class="ttc" id="group__GUI_html_gaddcd0a2c19d082c4ab3e7fb17ec9d316"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gaddcd0a2c19d082c4ab3e7fb17ec9d316">MutIconShapeClass::OnGetFocus</a></div><div class="ttdeci">void OnGetFocus(wxFocusEvent &amp;event)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d76/IconShape_8cpp_source.html#l00444">IconShape.cpp:444</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:36 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:14 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

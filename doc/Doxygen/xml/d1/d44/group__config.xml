@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d1/d44/group__config" kind="group">
     <compoundname>config</compoundname>
     <title>Configuration system</title>
@@ -23,8 +23,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="147" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" bodystart="147" bodyend="151"/>
-        <references refid="d5/dee/group__route_1ga8ffdbcbb93567fd8aea32fcb8a09bafe" compoundref="d1/d65/Route_8h" startline="644" endline="650">mutabor::RouteFactory::LoadRoutes</references>
-        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1503">IMPLEMENT_APP</referencedby>
+        <references refid="d5/dee/group__route_1ga8ffdbcbb93567fd8aea32fcb8a09bafe" compoundref="d1/d65/Route_8h" startline="653" endline="659">mutabor::RouteFactory::LoadRoutes</references>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1502">IMPLEMENT_APP</referencedby>
       </memberdef>
       <memberdef kind="function" id="d1/d44/group__config_1ga711cccb60856959ada469b72a188047d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -42,8 +42,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="153" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" bodystart="153" bodyend="157"/>
-        <references refid="d5/dee/group__route_1ga7967d16e41377608b99ae06048d60254" compoundref="d1/d65/Route_8h" startline="655" endline="661">mutabor::RouteFactory::SaveRoutes</references>
-        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1503">IMPLEMENT_APP</referencedby>
+        <references refid="d5/dee/group__route_1ga7967d16e41377608b99ae06048d60254" compoundref="d1/d65/Route_8h" startline="664" endline="670">mutabor::RouteFactory::SaveRoutes</references>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1502">IMPLEMENT_APP</referencedby>
       </memberdef>
       <memberdef kind="function" id="d1/d44/group__config_1ga1cc13e816941bfda9d932bbbc01adc30" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>long</type>
@@ -363,10 +363,12 @@
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="101" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="86" bodyend="106"/>
         <references refid="d9/de4/structconfigtree_1_1state_1ad4514ef56c2bdbcb6b7c4dabd7f043f8" compoundref="d5/d6b/configtree_8h" startline="60">configtree::state::chdepth</references>
         <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
         <references refid="d1/d44/group__config_1gab636a7b132498318e2e5c295f4278842" compoundref="d4/d26/configtree_8cpp" startline="228" endline="231">configtree::GetPath</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a323934dc786f32ba266a202b746f49ff" compoundref="d5/d6b/configtree_8h" startline="64">configtree::state::group</references>
         <references refid="d9/de4/structconfigtree_1_1state_1a96c937da41adcfcb941a1b782e869a71" compoundref="d5/d6b/configtree_8h" startline="61">configtree::state::leafid</references>
-        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a777737892758fea84c7ce5a975d175d1" compoundref="d5/d6b/configtree_8h" startline="63">configtree::state::oldpath</references>
         <references refid="d1/d44/group__config_1ga515d665453d65bd383a6d36f106cb0f2" compoundref="d4/d26/configtree_8cpp" startline="233" endline="237">configtree::SetPath</references>
         <references refid="d8/d7f/classconfigtree_1a2997797df3303c0fcadb85c3a29eccc3" compoundref="d5/d6b/configtree_8h" startline="77">configtree::states</references>
         <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
@@ -396,8 +398,10 @@
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="102" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="108" bodyend="123"/>
         <references refid="d9/de4/structconfigtree_1_1state_1ad4514ef56c2bdbcb6b7c4dabd7f043f8" compoundref="d5/d6b/configtree_8h" startline="60">configtree::state::chdepth</references>
         <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a323934dc786f32ba266a202b746f49ff" compoundref="d5/d6b/configtree_8h" startline="64">configtree::state::group</references>
         <references refid="d9/de4/structconfigtree_1_1state_1a96c937da41adcfcb941a1b782e869a71" compoundref="d5/d6b/configtree_8h" startline="61">configtree::state::leafid</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a777737892758fea84c7ce5a975d175d1" compoundref="d5/d6b/configtree_8h" startline="63">configtree::state::oldpath</references>
         <references refid="d8/d7f/classconfigtree_1a2997797df3303c0fcadb85c3a29eccc3" compoundref="d5/d6b/configtree_8h" startline="77">configtree::states</references>
         <references refid="d1/d44/group__config_1ga2c54863d019f420bff002cb76a4b519f" compoundref="d4/d26/configtree_8cpp" startline="86" endline="106">configtree::toLeaf</references>
       </memberdef>
@@ -426,9 +430,11 @@
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="112" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="125" bodyend="153"/>
         <references refid="d9/de4/structconfigtree_1_1state_1ad4514ef56c2bdbcb6b7c4dabd7f043f8" compoundref="d5/d6b/configtree_8h" startline="60">configtree::state::chdepth</references>
         <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a323934dc786f32ba266a202b746f49ff" compoundref="d5/d6b/configtree_8h" startline="64">configtree::state::group</references>
         <references refid="d9/de4/structconfigtree_1_1state_1a96c937da41adcfcb941a1b782e869a71" compoundref="d5/d6b/configtree_8h" startline="61">configtree::state::leafid</references>
-        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a777737892758fea84c7ce5a975d175d1" compoundref="d5/d6b/configtree_8h" startline="63">configtree::state::oldpath</references>
         <references refid="d8/d7f/classconfigtree_1a2997797df3303c0fcadb85c3a29eccc3" compoundref="d5/d6b/configtree_8h" startline="77">configtree::states</references>
         <references refid="d1/d44/group__config_1ga2c54863d019f420bff002cb76a4b519f" compoundref="d4/d26/configtree_8cpp" startline="86" endline="106">configtree::toLeaf</references>
       </memberdef>
@@ -456,8 +462,8 @@
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="122" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="156" bodyend="192"/>
         <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
-        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
         <references refid="d1/d44/group__config_1ga515d665453d65bd383a6d36f106cb0f2" compoundref="d4/d26/configtree_8cpp" startline="233" endline="237">configtree::SetPath</references>
         <references refid="d8/d7f/classconfigtree_1a2997797df3303c0fcadb85c3a29eccc3" compoundref="d5/d6b/configtree_8h" startline="77">configtree::states</references>
       </memberdef>
@@ -481,9 +487,11 @@
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="123" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="195" bodyend="226"/>
         <references refid="d9/de4/structconfigtree_1_1state_1ad4514ef56c2bdbcb6b7c4dabd7f043f8" compoundref="d5/d6b/configtree_8h" startline="60">configtree::state::chdepth</references>
         <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a323934dc786f32ba266a202b746f49ff" compoundref="d5/d6b/configtree_8h" startline="64">configtree::state::group</references>
         <references refid="d9/de4/structconfigtree_1_1state_1a96c937da41adcfcb941a1b782e869a71" compoundref="d5/d6b/configtree_8h" startline="61">configtree::state::leafid</references>
-        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a777737892758fea84c7ce5a975d175d1" compoundref="d5/d6b/configtree_8h" startline="63">configtree::state::oldpath</references>
         <references refid="d1/d44/group__config_1ga515d665453d65bd383a6d36f106cb0f2" compoundref="d4/d26/configtree_8cpp" startline="233" endline="237">configtree::SetPath</references>
         <references refid="d8/d7f/classconfigtree_1a2997797df3303c0fcadb85c3a29eccc3" compoundref="d5/d6b/configtree_8h" startline="77">configtree::states</references>
         <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
@@ -530,7 +538,7 @@
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="126" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="233" bodyend="237"/>
         <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
         <referencedby refid="d1/d44/group__config_1ga2c54863d019f420bff002cb76a4b519f" compoundref="d4/d26/configtree_8cpp" startline="86" endline="106">configtree::toLeaf</referencedby>
         <referencedby refid="d1/d44/group__config_1gaba4af6230f51279af880fd0644ef37a2" compoundref="d4/d26/configtree_8cpp" startline="156" endline="192">configtree::toNextLeaf</referencedby>
         <referencedby refid="d1/d44/group__config_1ga3b8d3fac8b8769cc93ead97d80ad0359" compoundref="d4/d26/configtree_8cpp" startline="195" endline="226">configtree::toParent</referencedby>

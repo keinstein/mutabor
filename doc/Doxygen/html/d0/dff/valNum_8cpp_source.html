@@ -3,7 +3,7 @@
 <title>src/wxGUI/generic/valNum.cpp Quellcode</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -200,7 +200,7 @@
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordflow">if</span> ( !wxTextValidator::TransferFromWindow() )</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <span class="keywordflow">return</span> FALSE;</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="../../df/d33/mut_8cc.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = m_stringValue-&gt;ToLong(m_intValue);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordtype">bool</span> res = m_stringValue-&gt;ToLong(m_intValue);</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(other,_T(<span class="stringliteral">&quot;before enabler&quot;</span>));</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
@@ -230,15 +230,14 @@
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">// mode: c++</span></div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">// End:</span></div>
 <div class="ttc" id="valNum_8h_html"><div class="ttname"><a href="../../d7/d3d/valNum_8h.html">valNum.h</a></div><div class="ttdoc">Validator for numeric text. </div></div>
-<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00141">mutDebug.h:141</a></div></div>
-<div class="ttc" id="group__debug_html_ga86acd9c1c30c8cb1831b46da11b1ec62"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a></div><div class="ttdeci">#define TRACEC</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00146">mutDebug.h:146</a></div></div>
+<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00146">mutDebug.h:146</a></div></div>
+<div class="ttc" id="group__debug_html_ga86acd9c1c30c8cb1831b46da11b1ec62"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a></div><div class="ttdeci">#define TRACEC</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00151">mutDebug.h:151</a></div></div>
 <div class="ttc" id="group__docview_html_ga6ec13dcf56fb697ed3fc3f815657c4fa"><div class="ttname"><a href="../../da/d79/group__docview.html#ga6ec13dcf56fb697ed3fc3f815657c4fa">IMPLEMENT_DYNAMIC_CLASS</a></div><div class="ttdeci">IMPLEMENT_DYNAMIC_CLASS(MutCommandProcessor, wxCommandProcessor) IMPLEMENT_DYNAMIC_CLASS(MutDocument</div></div>
 <div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
 <div class="ttc" id="group__route_html_ga23ee5f5f1dcdcf81c4ea7c3fe44acbdc"><div class="ttname"><a href="../../d5/dee/group__route.html#ga23ee5f5f1dcdcf81c4ea7c3fe44acbdc">Copy</a></div><div class="ttdeci">TagList * Copy(TagList *list)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/da0/GIS__Head_8cpp_source.html#l00445">GIS_Head.cpp:445</a></div></div>
 <div class="ttc" id="group__kernel_html_gae4dfd7b0d66121016d6466d2ff10e8ba"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a></div><div class="ttdeci">#define _</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/Execute_8cpp_source.html#l00057">Execute.cpp:57</a></div></div>
-<div class="ttc" id="mut_8cc_html_a5e111f6687f261e4e28bd6528e7f5b48"><div class="ttname"><a href="../../df/d33/mut_8cc.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a></div><div class="ttdeci">return res</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/mut_8cc_source.html#l01168">mut.cc:1168</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:36 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:14 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

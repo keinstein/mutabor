@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d7/d76/mutgis_8h" kind="file">
     <compoundname>mutgis.h</compoundname>
     <includes local="yes">gis_head.h</includes>
     <includedby refid="d3/d26/mutgis_8cpp" local="yes">src/gmut/mutgis.cpp</includedby>
     <incdepgraph>
-      <node id="12799">
+      <node id="17976">
         <label>src/gmut/mutgis.h</label>
         <link refid="mutgis.h"/>
-        <childnode refid="12800" relation="include">
+        <childnode refid="17977" relation="include">
         </childnode>
       </node>
-      <node id="12800">
+      <node id="17977">
         <label>gis_head.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="12801">
+      <node id="17978">
         <label>src/gmut/mutgis.h</label>
         <link refid="mutgis.h"/>
-        <childnode refid="12802" relation="include">
+        <childnode refid="17979" relation="include">
         </childnode>
       </node>
-      <node id="12802">
+      <node id="17979">
         <label>src/gmut/mutgis.cpp</label>
         <link refid="d3/d26/mutgis_8cpp"/>
       </node>
@@ -56,13 +56,14 @@
         <referencedby refid="d5/dee/group__route_1ga3b5491c6e864dc9569bc8490ebc06a86" compoundref="d7/da0/GIS__Head_8cpp" startline="1512" endline="1560">CloseAllSubs</referencedby>
         <referencedby refid="d5/dee/group__route_1ga5d5d7313fc7047f4bd9c58d2c98bbb41" compoundref="d7/da0/GIS__Head_8cpp" startline="1151" endline="1182">GisWriteHead::CloseSubs</referencedby>
         <referencedby refid="df/dd1/group__GUI_1gafb111fbc128036409103a64b8f106cec" compoundref="dc/d76/IconShape_8cpp" startline="303" endline="349">MutIconShapeClass&lt; T &gt;::DoGetBestSize</referencedby>
+        <referencedby refid="dd/db0/MutDocManager_8cpp_1a9e7a087c5c550acffcd802f4b40bd609" compoundref="dd/db0/MutDocManager_8cpp" startline="50" endline="339">END_EVENT_TABLE</referencedby>
         <referencedby refid="d5/dee/group__route_1ga7e9cd532053e6cae27e9b95654b11f20" compoundref="d7/da0/GIS__Head_8cpp" startline="1448" endline="1503">GetMatchingHeader</referencedby>
         <referencedby refid="d5/dee/group__route_1ga18fbf3c45269dd19a140358c3e6441f8" compoundref="d7/da0/GIS__Head_8cpp" startline="656" endline="748">GisReadArtHeadOn</referencedby>
         <referencedby refid="d5/dee/group__route_1gad4848886a12c401c58db274c7e87e087" compoundref="d7/da0/GIS__Head_8cpp" startline="371" endline="438">GisReadHeadOn</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1503">IMPLEMENT_APP</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga71692d75ec3c362f4bcb53c75d57b4c2" compoundref="dc/d76/IconShape_8cpp" startline="707" endline="750">MutIconShapeClass&lt; T &gt;::Layout</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1502">IMPLEMENT_APP</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga71692d75ec3c362f4bcb53c75d57b4c2" compoundref="dc/d76/IconShape_8cpp" startline="710" endline="753">MutIconShapeClass&lt; T &gt;::Layout</referencedby>
         <referencedby refid="d5/da4/classmutaborGUI_1_1MutTag_1a87c9f5a3d5f56fce01b9e107b69ec756" compoundref="df/d11/MutLogicWnd_8cpp" startline="125" endline="134">mutaborGUI::MutTag::PaintCenteredText</referencedby>
-        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" compoundref="db/d78/DevGIS_8cpp" startline="572" endline="738">mutabor::InputGis::ReadOn</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" compoundref="db/d78/DevGIS_8cpp" startline="578" endline="744">mutabor::InputGis::ReadOn</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -96,9 +97,9 @@
 <codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;gis_head.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="d9/db2/classGisWriteHead" kindref="compound">GisWriteHead</ref><sp/>*<ref refid="d7/d76/mutgis_8h_1af3d1383d4905d67434912b2156498b8c" kindref="member">WHead</ref>;</highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="d4/d4c/classGisReadArtHead" kindref="compound">GisReadArtHead</ref><sp/>*<ref refid="d3/d26/mutgis_8cpp_1a26506d124b947beae862c007bc8195bb" kindref="member">h</ref>;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="d4/d4c/classGisReadArtHead" kindref="compound">GisReadArtHead</ref><sp/>*<ref refid="d7/d76/mutgis_8h_1a26506d124b947beae862c007bc8195bb" kindref="member">h</ref>;</highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d3/d26/mutgis_8cpp_1ac202b5e6365f4a52a12a4baac0ab5625" kindref="member">set_synthesizer_typ_pointers_gis</ref>(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d7/d76/mutgis_8h_1ac202b5e6365f4a52a12a4baac0ab5625" kindref="member">set_synthesizer_typ_pointers_gis</ref>(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>);</highlight></codeline>
     </programlisting>
     <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mutgis.h"/>
   </compounddef>

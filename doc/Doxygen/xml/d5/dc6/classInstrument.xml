@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d5/dc6/classInstrument" kind="class" prot="public">
     <compoundname>Instrument</compoundname>
       <sectiondef kind="public-attrib">
@@ -34,7 +34,7 @@
         <referencedby refid="d5/dc6/classInstrument_1ad1cf2ce5018294b15c35a7985d7c9262" compoundref="d4/df2/mis_8cpp" startline="80" endline="87">Instrument</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d5/dc6/classInstrument_1a25c281d21e4dd66e41a65ea981de05c3" prot="public" static="no" mutable="no">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char Instrument::Von</definition>
         <argsstring></argsstring>
         <name>Von</name>
@@ -50,7 +50,7 @@
         <referencedby refid="d5/d67/classMisFile_1a1c3662b5cbdfd72092550ccd7161edd8" compoundref="d4/df2/mis_8cpp" startline="297" endline="316">MisFile::NoteOff</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d5/dc6/classInstrument_1a71995b3b274865a56ad7d613acb57d8a" prot="public" static="no" mutable="no">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char Instrument::Bis</definition>
         <argsstring></argsstring>
         <name>Bis</name>
@@ -65,7 +65,7 @@
         <referencedby refid="d5/dc6/classInstrument_1ad1cf2ce5018294b15c35a7985d7c9262" compoundref="d4/df2/mis_8cpp" startline="80" endline="87">Instrument</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d5/dc6/classInstrument_1a38ae55b27b94b68405c27112db8e853e" prot="public" static="no" mutable="no">
-        <type>signed <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>signed char</type>
         <definition>signed char Instrument::Sound</definition>
         <argsstring></argsstring>
         <name>Sound</name>
@@ -91,11 +91,11 @@
           <declname>id</declname>
         </param>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <type>char</type>
           <declname>von</declname>
         </param>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <type>char</type>
           <declname>bis</declname>
         </param>
         <param>
@@ -122,10 +122,10 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3179">
+      <node id="3407">
         <label>Instrument</label>
         <link refid="d5/dc6/classInstrument"/>
-        <childnode refid="3179" relation="usage">
+        <childnode refid="3407" relation="usage">
           <edgelabel>Next</edgelabel>
         </childnode>
       </node>

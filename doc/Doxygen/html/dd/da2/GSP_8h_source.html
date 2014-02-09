@@ -3,7 +3,7 @@
 <title>src/kernel/routing/gmn/GSP.h Quellcode</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -61,8 +61,8 @@
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">// #define GMN_STRICT</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#ifndef WX</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../d5/dee/group__route.html#ga587c6ceaa3ec1b5d8431233a7297cb54">   63</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define GSP_MAX_SEP 8000  // maximal length of a comment</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../d5/dee/group__route.html#gaae4d1f458f2006775314db1c3b3c42dd">   64</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define GSP_MAX_LINE 1000  // maximal length of a line</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define GSP_MAX_SEP 8000  // maximal length of a comment</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define GSP_MAX_LINE 1000  // maximal length of a line</span></div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="../../d5/dee/group__route.html#gaa4464ff6ab3dd87c61ec9862a68c5e51">GspCurrentLineNr</a>;    <span class="comment">// curent line parser deals with</span></div>
@@ -76,16 +76,16 @@
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="../../d5/dee/group__route.html#gaccb293565ac1505218ca2cb37a75b696">GspError</a>;           <span class="comment">// error id</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#ifdef WX</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga7e6a85a8235f7b6e5f1ab363345262a8">mutString</a> <a class="code" href="../../d5/dee/group__route.html#gad78ff14ef0e12b5d3c88f659314e3de3">Sep</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga7e6a85a8235f7b6e5f1ab363345262a8">mutString</a> <a class="code" href="../../d5/dee/group__route.html#gaf3fc82eba6d1b2b56c2c005983e86fbf">Sep</a>;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="keywordtype">char</span>[<a class="code" href="../../d5/dee/group__route.html#ga587c6ceaa3ec1b5d8431233a7297cb54">GSP_MAX_SEP</a>];</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="keywordtype">char</span>[GSP_MAX_SEP];</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="../../d5/dee/group__route.html#gacfdd0d8043f384fba0dff7914f762924">SepPos</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="../../d5/dee/group__route.html#gaaa118d2fc4dc761820ea2ce334562d4c">SepPos</a>;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> mutTranslationChar *<a class="code" href="../../d5/dee/group__route.html#ga4f0f62ff19812efd72a38e6acb062a9c">GspErrorText</a>[];</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga66f2a821381f322d5b779e5004013591">mutTranslationChar</a> *<a class="code" href="../../d5/dee/group__route.html#ga4f0f62ff19812efd72a38e6acb062a9c">GspErrorText</a>[];</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d5/dee/group__route.html#ga3a3d77c8ba291f43ea136911892c5d5a">GspParse</a>(<span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga7e6a85a8235f7b6e5f1ab363345262a8">mutString</a> &amp;FileName);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
@@ -97,22 +97,22 @@
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="ttc" id="group__route_html_ga587c6ceaa3ec1b5d8431233a7297cb54"><div class="ttname"><a href="../../d5/dee/group__route.html#ga587c6ceaa3ec1b5d8431233a7297cb54">GSP_MAX_SEP</a></div><div class="ttdeci">#define GSP_MAX_SEP</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/da2/GSP_8h_source.html#l00063">GSP.h:63</a></div></div>
-<div class="ttc" id="group__route_html_gacfdd0d8043f384fba0dff7914f762924"><div class="ttname"><a href="../../d5/dee/group__route.html#gacfdd0d8043f384fba0dff7914f762924">SepPos</a></div><div class="ttdeci">int SepPos</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d9e/GSP_8cpp_source.html#l00069">GSP.cpp:69</a></div></div>
 <div class="ttc" id="group__route_html_gad6532c6916f8eab5ddcd1e3cc7a1eb73"><div class="ttname"><a href="../../d5/dee/group__route.html#gad6532c6916f8eab5ddcd1e3cc7a1eb73">GspErrorLine</a></div><div class="ttdeci">mutString GspErrorLine</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d9e/GSP_8cpp_source.html#l00050">GSP.cpp:50</a></div></div>
 <div class="ttc" id="group__route_html_ga0a8cafd3bcd5e0e04dfa8610f5e5fbae"><div class="ttname"><a href="../../d5/dee/group__route.html#ga0a8cafd3bcd5e0e04dfa8610f5e5fbae">GspErrorPos</a></div><div class="ttdeci">int GspErrorPos</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d9e/GSP_8cpp_source.html#l00049">GSP.cpp:49</a></div></div>
 <div class="ttc" id="group__route_html_gaccb293565ac1505218ca2cb37a75b696"><div class="ttname"><a href="../../d5/dee/group__route.html#gaccb293565ac1505218ca2cb37a75b696">GspError</a></div><div class="ttdeci">int GspError</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d9e/GSP_8cpp_source.html#l00051">GSP.cpp:51</a></div></div>
+<div class="ttc" id="group__kernel_html_ga66f2a821381f322d5b779e5004013591"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga66f2a821381f322d5b779e5004013591">mutTranslationChar</a></div><div class="ttdeci">#define mutTranslationChar</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00163">Defs.h:163</a></div></div>
 <div class="ttc" id="group__route_html_ga3a3d77c8ba291f43ea136911892c5d5a"><div class="ttname"><a href="../../d5/dee/group__route.html#ga3a3d77c8ba291f43ea136911892c5d5a">GspParse</a></div><div class="ttdeci">int GspParse(const mutString &amp;FileName)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d9e/GSP_8cpp_source.html#l00786">GSP.cpp:786</a></div></div>
 <div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
 <div class="ttc" id="group__route_html_ga4f0f62ff19812efd72a38e6acb062a9c"><div class="ttname"><a href="../../d5/dee/group__route.html#ga4f0f62ff19812efd72a38e6acb062a9c">GspErrorText</a></div><div class="ttdeci">const mutTranslationChar * GspErrorText[]</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/de1/GSP__Err_8cpp_source.html#l00031">GSP_Err.cpp:31</a></div></div>
 <div class="ttc" id="GIS_8h_html"><div class="ttname"><a href="../../dd/d4d/GIS_8h.html">GIS.h</a></div><div class="ttdoc">Description. </div></div>
-<div class="ttc" id="group__kernel_html_ga7e6a85a8235f7b6e5f1ab363345262a8"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga7e6a85a8235f7b6e5f1ab363345262a8">mutString</a></div><div class="ttdeci">#define mutString</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00169">Defs.h:169</a></div></div>
+<div class="ttc" id="group__kernel_html_ga7e6a85a8235f7b6e5f1ab363345262a8"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga7e6a85a8235f7b6e5f1ab363345262a8">mutString</a></div><div class="ttdeci">#define mutString</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00084">Defs.h:84</a></div></div>
 <div class="ttc" id="group__route_html_gaa4464ff6ab3dd87c61ec9862a68c5e51"><div class="ttname"><a href="../../d5/dee/group__route.html#gaa4464ff6ab3dd87c61ec9862a68c5e51">GspCurrentLineNr</a></div><div class="ttdeci">int GspCurrentLineNr</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d9e/GSP_8cpp_source.html#l00047">GSP.cpp:47</a></div></div>
 <div class="ttc" id="Frac_8h_html"><div class="ttname"><a href="../../df/d4f/Frac_8h.html">Frac.h</a></div><div class="ttdoc">Fraction class for Mutabor. </div></div>
+<div class="ttc" id="group__route_html_gaaa118d2fc4dc761820ea2ce334562d4c"><div class="ttname"><a href="../../d5/dee/group__route.html#gaaa118d2fc4dc761820ea2ce334562d4c">SepPos</a></div><div class="ttdeci">size_t SepPos()</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d9e/GSP_8cpp_source.html#l00060">GSP.cpp:60</a></div></div>
 <div class="ttc" id="group__route_html_ga171f5381bbd5e457d35c7fb9d96658ed"><div class="ttname"><a href="../../d5/dee/group__route.html#ga171f5381bbd5e457d35c7fb9d96658ed">GspErrorLineNr</a></div><div class="ttdeci">int GspErrorLineNr</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d9e/GSP_8cpp_source.html#l00048">GSP.cpp:48</a></div></div>
-<div class="ttc" id="group__route_html_gad78ff14ef0e12b5d3c88f659314e3de3"><div class="ttname"><a href="../../d5/dee/group__route.html#gad78ff14ef0e12b5d3c88f659314e3de3">Sep</a></div><div class="ttdeci">char Sep[GSP_MAX_SEP]</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d9e/GSP_8cpp_source.html#l00068">GSP.cpp:68</a></div></div>
+<div class="ttc" id="group__route_html_gaf3fc82eba6d1b2b56c2c005983e86fbf"><div class="ttname"><a href="../../d5/dee/group__route.html#gaf3fc82eba6d1b2b56c2c005983e86fbf">Sep</a></div><div class="ttdeci">mutString Sep</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d9e/GSP_8cpp_source.html#l00059">GSP.cpp:59</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:36 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:13 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

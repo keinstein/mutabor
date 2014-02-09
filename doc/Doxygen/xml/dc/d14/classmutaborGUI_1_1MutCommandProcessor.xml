@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="dc/d14/classmutaborGUI_1_1MutCommandProcessor" kind="class" prot="public">
     <compoundname>mutaborGUI::MutCommandProcessor</compoundname>
     <basecompoundref prot="private" virt="non-virtual">wxCommandProcessor</basecompoundref>
@@ -252,36 +252,36 @@
     <detaileddescription>
 <para>This class proviedes a command forwarder for wxStyledTextControl. Since Scintalla uses its internal document/view framework it is overkill to implement a doubling. The best would be if wxSTC exposes the model to wxWidgets thus that it can be used easily. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="3593">
+      <node id="3863">
         <label>wxCommandProcessor</label>
       </node>
-      <node id="3592">
+      <node id="3862">
         <label>mutaborGUI::MutCommandProcessor</label>
         <link refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor"/>
-        <childnode refid="3593" relation="private-inheritance">
+        <childnode refid="3863" relation="private-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3595">
+      <node id="3865">
         <label>wxCommandProcessor</label>
       </node>
-      <node id="3594">
+      <node id="3864">
         <label>mutaborGUI::MutCommandProcessor</label>
         <link refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor"/>
-        <childnode refid="3595" relation="private-inheritance">
+        <childnode refid="3865" relation="private-inheritance">
         </childnode>
-        <childnode refid="3596" relation="usage">
+        <childnode refid="3866" relation="usage">
           <edgelabel>document</edgelabel>
         </childnode>
       </node>
-      <node id="3597">
+      <node id="3867">
         <label>wxDocument</label>
       </node>
-      <node id="3596">
+      <node id="3866">
         <label>mutaborGUI::MutDocument</label>
         <link refid="de/dd5/classmutaborGUI_1_1MutDocument"/>
-        <childnode refid="3597" relation="public-inheritance">
+        <childnode refid="3867" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

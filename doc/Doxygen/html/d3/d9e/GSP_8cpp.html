@@ -3,7 +3,7 @@
 <title>src/kernel/routing/gmn/GSP.cpp-Dateireferenz</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -39,22 +39,26 @@
 <a href="#details">Mehr ...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../dd/da2/GSP_8h_source.html">GSP.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../dc/ddd/GSP__File_8h_source.html">GSP_File.h</a>&quot;</code><br/>
-<code>#include &lt;string.h&gt;</code><br/>
+<code>#include &quot;wx/wxchar.h&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include-Abhängigkeitsdiagramm für GSP.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dd/df7/GSP_8cpp__incl.png" border="0" usemap="#src_2kernel_2routing_2gmn_2GSP_8cpp" alt=""/></div>
 <map name="src_2kernel_2routing_2gmn_2GSP_8cpp" id="src_2kernel_2routing_2gmn_2GSP_8cpp">
-<area shape="rect" id="node3" href="../../dd/da2/GSP_8h.html" title="Description. " alt="" coords="189,177,248,205"/><area shape="rect" id="node26" href="../../dc/ddd/GSP__File_8h.html" title="file input of gsp (GMN Soft Parser) " alt="" coords="153,99,241,127"/><area shape="rect" id="node5" href="../../d1/d73/Defs_8h.html" title="Common definitions. " alt="" coords="43,409,171,437"/><area shape="rect" id="node11" href="../../df/d4f/Frac_8h.html" title="Fraction class for Mutabor. " alt="" coords="189,331,315,359"/><area shape="rect" id="node18" href="../../dd/d4d/GIS_8h.html" title="Description. " alt="" coords="256,254,312,282"/></map>
+<area shape="rect" id="node3" href="../../dd/da2/GSP_8h.html" title="Description. " alt="" coords="1372,177,1431,205"/><area shape="rect" id="node75" href="../../dc/ddd/GSP__File_8h.html" title="file input of gsp (GMN Soft Parser) " alt="" coords="1439,99,1527,127"/><area shape="rect" id="node5" href="../../d1/d73/Defs_8h.html" title="Common definitions. " alt="" coords="1368,409,1496,437"/><area shape="rect" id="node62" href="../../df/d4f/Frac_8h.html" title="Fraction class for Mutabor. " alt="" coords="1035,331,1160,359"/><area shape="rect" id="node67" href="../../dd/d4d/GIS_8h.html" title="Description. " alt="" coords="1241,254,1297,282"/><area shape="rect" id="node9" href="../../d0/d68/mhDefs_8h.html" title="src/wxGUI/generic/mhDefs.h" alt="" coords="1004,486,1204,514"/><area shape="rect" id="node57" href="../../d4/d64/libintl_8h.html" title="src/wxintl/libintl.h" alt="" coords="1680,486,1808,514"/><area shape="rect" id="node24" href="../../d9/d64/Mutabor_8rh.html" title="src/wxGUI/Mutabor.rh" alt="" coords="1393,563,1551,591"/><area shape="rect" id="node29" href="../../de/de1/mutDebug_8h.html" title="Main debugging functions. " alt="" coords="500,563,601,591"/><area shape="rect" id="node48" href="../../d7/d49/mutDebugFlags_8h.html" title="Debug flags for mutabor debug mode. " alt="" coords="240,641,373,669"/></map>
 </div>
 </div>
 <p><a href="../../d3/d9e/GSP_8cpp_source.html">gehe zum Quellcode dieser Datei</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Makrodefinitionen</h2></td></tr>
+<tr class="memitem:gaae3dbfff6c4ae90c8e94977db0449962"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gaae3dbfff6c4ae90c8e94977db0449962">SepPos</a>&#160;&#160;&#160;SepPos()</td></tr>
+<tr class="separator:gaae3dbfff6c4ae90c8e94977db0449962"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga62b86345e5dd991ff25d78a46c64897f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga62b86345e5dd991ff25d78a46c64897f">BracketDeep</a>&#160;&#160;&#160;(Brackets.Len())</td></tr>
+<tr class="separator:ga62b86345e5dd991ff25d78a46c64897f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7b99dc1e1c86b4897498c2d436ead1b5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga7b99dc1e1c86b4897498c2d436ead1b5">NEW_LINE</a>&#160;&#160;&#160;<a class="el" href="../../d9/d7c/group__kernel.html#gab0bf0415f048ff66e8cd015b484a3a09">mutT</a>(&quot;\n&quot;)</td></tr>
 <tr class="separator:ga7b99dc1e1c86b4897498c2d436ead1b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa8ddf20cdd716b652e76e23e5e700893"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gaa8ddf20cdd716b652e76e23e5e700893">uchar</a>&#160;&#160;&#160;unsigned <a class="el" href="../../d5/dee/group__route.html#gafdffe3ab26a7d4cd9d6521731a6f396a">char</a></td></tr>
+<tr class="memitem:gaa8ddf20cdd716b652e76e23e5e700893"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gaa8ddf20cdd716b652e76e23e5e700893">uchar</a>&#160;&#160;&#160;unsigned char</td></tr>
 <tr class="separator:gaa8ddf20cdd716b652e76e23e5e700893"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga931a0a33f52b22e7b09ed3046969ef8a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga931a0a33f52b22e7b09ed3046969ef8a">CHAR0</a>&#160;&#160;&#160;<a class="el" href="../../d5/dee/group__route.html#ga5eafb3c54b7a4150acd7a8c54c3f962b">CurrentLine</a>[<a class="el" href="../../d5/dee/group__route.html#ga432140b36c09b0144e6b524eb28168c3">CurrentPos</a>]</td></tr>
 <tr class="separator:ga931a0a33f52b22e7b09ed3046969ef8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -65,14 +69,14 @@ Makrodefinitionen</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funktionen</h2></td></tr>
-<tr class="memitem:gac72d3298fe5a76798f17e7dfb23b854b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gac72d3298fe5a76798f17e7dfb23b854b">AddStr</a> (<a class="el" href="../../d5/dee/group__route.html#gafdffe3ab26a7d4cd9d6521731a6f396a">char</a> *Target, int &amp;Pos, <a class="el" href="../../d5/dee/group__route.html#gafdffe3ab26a7d4cd9d6521731a6f396a">char</a> *Source)</td></tr>
-<tr class="separator:gac72d3298fe5a76798f17e7dfb23b854b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad9c2e2177c93c1401568b6621a5dcb21"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gad9c2e2177c93c1401568b6621a5dcb21">CharIn</a> (<a class="el" href="../../d9/d7c/group__kernel.html#ga13c03a937e32254ea17154104db5208a">mutChar</a> c, <a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> <a class="el" href="../../d9/d7c/group__kernel.html#ga7e6a85a8235f7b6e5f1ab363345262a8">mutString</a> s)</td></tr>
-<tr class="separator:gad9c2e2177c93c1401568b6621a5dcb21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa118d2fc4dc761820ea2ce334562d4c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gaaa118d2fc4dc761820ea2ce334562d4c">SepPos</a> ()</td></tr>
+<tr class="separator:gaaa118d2fc4dc761820ea2ce334562d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga97880ef3dd8ea5c626bbbc121e84f0ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga97880ef3dd8ea5c626bbbc121e84f0ab">AddStr</a> (<a class="el" href="../../d9/d7c/group__kernel.html#ga7e6a85a8235f7b6e5f1ab363345262a8">mutString</a> &amp;Target, int Pos, <a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> <a class="el" href="../../d9/d7c/group__kernel.html#ga7e6a85a8235f7b6e5f1ab363345262a8">mutString</a> &amp;Source)</td></tr>
+<tr class="separator:ga97880ef3dd8ea5c626bbbc121e84f0ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2f4ddf9d47cbe1054c7b4873400accf0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga2f4ddf9d47cbe1054c7b4873400accf0">CharIn</a> (<a class="el" href="../../d9/d7c/group__kernel.html#ga13c03a937e32254ea17154104db5208a">mutChar</a> c, <a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> <a class="el" href="../../d9/d7c/group__kernel.html#ga13c03a937e32254ea17154104db5208a">mutChar</a> *s)</td></tr>
+<tr class="separator:ga2f4ddf9d47cbe1054c7b4873400accf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaba034c2fc770c5e324ea5ee50da15c62"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gaba034c2fc770c5e324ea5ee50da15c62">IsLetter</a> (<a class="el" href="../../d9/d7c/group__kernel.html#ga13c03a937e32254ea17154104db5208a">mutChar</a> c)</td></tr>
 <tr class="separator:gaba034c2fc770c5e324ea5ee50da15c62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga17c7d596e1c273e2a92d9bbbb2dbc965"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga17c7d596e1c273e2a92d9bbbb2dbc965">IsNumber</a> (<a class="el" href="../../d9/d7c/group__kernel.html#ga13c03a937e32254ea17154104db5208a">mutChar</a> c)</td></tr>
-<tr class="separator:ga17c7d596e1c273e2a92d9bbbb2dbc965"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga749a4c14ec15d842ddb08b5364293db9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga749a4c14ec15d842ddb08b5364293db9">DoError</a> (int nr, int pos=-1)</td></tr>
 <tr class="separator:ga749a4c14ec15d842ddb08b5364293db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9bc41555100693a2c7e3d439d8555874"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga9bc41555100693a2c7e3d439d8555874">CheckError</a> (int nr)</td></tr>
@@ -116,21 +120,17 @@ Variablen</h2></td></tr>
 <tr class="separator:gad20f7d0760ccf961b403e3c7571c99d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1d74dfb5071a026d76c68180061f10f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d7c/group__kernel.html#ga7e6a85a8235f7b6e5f1ab363345262a8">mutString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga1d74dfb5071a026d76c68180061f10f7">PossibleErrorLine</a></td></tr>
 <tr class="separator:ga1d74dfb5071a026d76c68180061f10f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad78ff14ef0e12b5d3c88f659314e3de3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/dee/group__route.html#gafdffe3ab26a7d4cd9d6521731a6f396a">char</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gad78ff14ef0e12b5d3c88f659314e3de3">Sep</a> [<a class="el" href="../../d5/dee/group__route.html#ga587c6ceaa3ec1b5d8431233a7297cb54">GSP_MAX_SEP</a>]</td></tr>
-<tr class="separator:gad78ff14ef0e12b5d3c88f659314e3de3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacfdd0d8043f384fba0dff7914f762924"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gacfdd0d8043f384fba0dff7914f762924">SepPos</a></td></tr>
-<tr class="separator:gacfdd0d8043f384fba0dff7914f762924"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga01ba84ddfb419ae78a9b4719dc4bcf64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/dee/group__route.html#gafdffe3ab26a7d4cd9d6521731a6f396a">char</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga01ba84ddfb419ae78a9b4719dc4bcf64">ParaMode</a></td></tr>
+<tr class="memitem:gaf3fc82eba6d1b2b56c2c005983e86fbf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d7c/group__kernel.html#ga7e6a85a8235f7b6e5f1ab363345262a8">mutString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gaf3fc82eba6d1b2b56c2c005983e86fbf">Sep</a> = <a class="el" href="../../d9/d7c/group__kernel.html#ga610d7c4be5ea54d60cc7ba385f0f03f7">mutEmptyString</a></td></tr>
+<tr class="separator:gaf3fc82eba6d1b2b56c2c005983e86fbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga01ba84ddfb419ae78a9b4719dc4bcf64"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga01ba84ddfb419ae78a9b4719dc4bcf64">ParaMode</a></td></tr>
 <tr class="separator:ga01ba84ddfb419ae78a9b4719dc4bcf64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3dc094027a660ddab419285d5f5e0728"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/dee/group__route.html#gafdffe3ab26a7d4cd9d6521731a6f396a">char</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga3dc094027a660ddab419285d5f5e0728">Komma</a></td></tr>
+<tr class="memitem:ga3dc094027a660ddab419285d5f5e0728"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga3dc094027a660ddab419285d5f5e0728">Komma</a></td></tr>
 <tr class="separator:ga3dc094027a660ddab419285d5f5e0728"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad04bf294c598c676ba3e4e04056ed2f1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gad04bf294c598c676ba3e4e04056ed2f1">NumberLength</a></td></tr>
 <tr class="separator:gad04bf294c598c676ba3e4e04056ed2f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga50aa32362039eef241f1a100fdfbfde4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga50aa32362039eef241f1a100fdfbfde4">BracketDeep</a></td></tr>
-<tr class="separator:ga50aa32362039eef241f1a100fdfbfde4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab4c6070c0d1f3355396bf307c4400aa3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/dee/group__route.html#gafdffe3ab26a7d4cd9d6521731a6f396a">char</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gab4c6070c0d1f3355396bf307c4400aa3">Brackets</a> [200]</td></tr>
-<tr class="separator:gab4c6070c0d1f3355396bf307c4400aa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2a47fc6fa3fad3071a0459d56b2823ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/dee/group__route.html#gafdffe3ab26a7d4cd9d6521731a6f396a">char</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga2a47fc6fa3fad3071a0459d56b2823ac">LastTag</a></td></tr>
+<tr class="memitem:ga3266eaf819ce3ea562acf827a0634611"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d7c/group__kernel.html#ga7e6a85a8235f7b6e5f1ab363345262a8">mutString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga3266eaf819ce3ea562acf827a0634611">Brackets</a> = <a class="el" href="../../d9/d7c/group__kernel.html#ga610d7c4be5ea54d60cc7ba385f0f03f7">mutEmptyString</a></td></tr>
+<tr class="separator:ga3266eaf819ce3ea562acf827a0634611"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2a47fc6fa3fad3071a0459d56b2823ac"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga2a47fc6fa3fad3071a0459d56b2823ac">LastTag</a></td></tr>
 <tr class="separator:ga2a47fc6fa3fad3071a0459d56b2823ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf482b236d88ad4a0248dbc7a4086cf35"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gaf482b236d88ad4a0248dbc7a4086cf35">octave</a></td></tr>
 <tr class="separator:gaf482b236d88ad4a0248dbc7a4086cf35"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -170,6 +170,6 @@ Variablen</h2></td></tr>
 <p>Definiert in Datei <a class="el" href="../../d3/d9e/GSP_8cpp_source.html">GSP.cpp</a>.</p>
 </div></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:39 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:17 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

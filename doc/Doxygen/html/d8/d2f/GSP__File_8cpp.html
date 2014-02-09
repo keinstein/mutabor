@@ -3,7 +3,7 @@
 <title>src/kernel/routing/gmn/GSP_File.cpp-Dateireferenz</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -37,13 +37,13 @@
 <p>Description.  
 <a href="#details">Mehr ...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../dc/ddd/GSP__File_8h_source.html">GSP_File.h</a>&quot;</code><br/>
-<code>#include &lt;fstream&gt;</code><br/>
+<code>#include &quot;wx/textfile.h&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include-Abhängigkeitsdiagramm für GSP_File.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d3/d17/GSP__File_8cpp__incl.png" border="0" usemap="#src_2kernel_2routing_2gmn_2GSP__File_8cpp" alt=""/></div>
 <map name="src_2kernel_2routing_2gmn_2GSP__File_8cpp" id="src_2kernel_2routing_2gmn_2GSP__File_8cpp">
-<area shape="rect" id="node3" href="../../dc/ddd/GSP__File_8h.html" title="file input of gsp (GMN Soft Parser) " alt="" coords="64,99,152,127"/><area shape="rect" id="node5" href="../../d1/d73/Defs_8h.html" title="Common definitions. " alt="" coords="43,425,171,453"/><area shape="rect" id="node11" href="../../dd/da2/GSP_8h.html" title="Description. " alt="" coords="97,177,231,221"/><area shape="rect" id="node14" href="../../df/d4f/Frac_8h.html" title="Fraction class for Mutabor. " alt="" coords="191,347,316,375"/><area shape="rect" id="node21" href="../../dd/d4d/GIS_8h.html" title="Description. " alt="" coords="225,270,281,298"/></map>
+<area shape="rect" id="node3" href="../../dc/ddd/GSP__File_8h.html" title="file input of gsp (GMN Soft Parser) " alt="" coords="531,99,619,127"/><area shape="rect" id="node5" href="../../d1/d73/Defs_8h.html" title="Common definitions. " alt="" coords="468,425,596,453"/><area shape="rect" id="node62" href="../../dd/da2/GSP_8h.html" title="Description. " alt="" coords="577,177,711,221"/><area shape="rect" id="node9" href="../../d0/d68/mhDefs_8h.html" title="src/wxGUI/generic/mhDefs.h" alt="" coords="611,502,811,530"/><area shape="rect" id="node57" href="../../d4/d64/libintl_8h.html" title="src/wxintl/libintl.h" alt="" coords="77,502,205,530"/><area shape="rect" id="node24" href="../../d9/d64/Mutabor_8rh.html" title="src/wxGUI/Mutabor.rh" alt="" coords="209,579,367,607"/><area shape="rect" id="node29" href="../../de/de1/mutDebug_8h.html" title="Main debugging functions. " alt="" coords="391,579,492,607"/><area shape="rect" id="node48" href="../../d7/d49/mutDebugFlags_8h.html" title="Debug flags for mutabor debug mode. " alt="" coords="632,657,765,685"/><area shape="rect" id="node65" href="../../df/d4f/Frac_8h.html" title="Fraction class for Mutabor. " alt="" coords="829,347,955,375"/><area shape="rect" id="node70" href="../../dd/d4d/GIS_8h.html" title="Description. " alt="" coords="651,270,707,298"/></map>
 </div>
 </div>
 <p><a href="../../d8/d2f/GSP__File_8cpp_source.html">gehe zum Quellcode dieser Datei</a></p>
@@ -59,14 +59,18 @@ Funktionen</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variablen</h2></td></tr>
-<tr class="memitem:gaa6006307ce77a3c5e4803b4d70bc8f8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d7c/group__kernel.html#ga13c03a937e32254ea17154104db5208a">mutChar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gaa6006307ce77a3c5e4803b4d70bc8f8a">CurrentLine</a> [<a class="el" href="../../d5/dee/group__route.html#gaae4d1f458f2006775314db1c3b3c42dd">GSP_MAX_LINE</a>]</td></tr>
-<tr class="separator:gaa6006307ce77a3c5e4803b4d70bc8f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5eafb3c54b7a4150acd7a8c54c3f962b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d7c/group__kernel.html#ga7e6a85a8235f7b6e5f1ab363345262a8">mutString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga5eafb3c54b7a4150acd7a8c54c3f962b">CurrentLine</a></td></tr>
+<tr class="separator:ga5eafb3c54b7a4150acd7a8c54c3f962b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga432140b36c09b0144e6b524eb28168c3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga432140b36c09b0144e6b524eb28168c3">CurrentPos</a></td></tr>
 <tr class="separator:ga432140b36c09b0144e6b524eb28168c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga21b703155e944d426cea6dff26aad408"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga21b703155e944d426cea6dff26aad408">Eof</a></td></tr>
 <tr class="separator:ga21b703155e944d426cea6dff26aad408"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaaf8254358716886caba45ee8b969f9db"><td class="memItemLeft" align="right" valign="top">mutTextStream *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gaaf8254358716886caba45ee8b969f9db">File</a></td></tr>
+<tr class="memitem:gaaf8254358716886caba45ee8b969f9db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d7c/group__kernel.html#ga39d6df55b4e48072279dff24d1dad20b">mutTextStream</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gaaf8254358716886caba45ee8b969f9db">File</a></td></tr>
 <tr class="separator:gaaf8254358716886caba45ee8b969f9db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaedeffc7d23da25d52b9a50045189fe2b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gaedeffc7d23da25d52b9a50045189fe2b">initialized</a> = false</td></tr>
+<tr class="separator:gaedeffc7d23da25d52b9a50045189fe2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga27a1c72438b4005fdc9b5b0d16705279"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga27a1c72438b4005fdc9b5b0d16705279">bad</a> = 0</td></tr>
+<tr class="separator:ga27a1c72438b4005fdc9b5b0d16705279"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
 <div class="textblock"><p>Description. </p>
@@ -84,6 +88,6 @@ Variablen</h2></td></tr>
 <p>Definiert in Datei <a class="el" href="../../d8/d2f/GSP__File_8cpp_source.html">GSP_File.cpp</a>.</p>
 </div></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:40 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:17 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

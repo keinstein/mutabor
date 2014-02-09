@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d3/d14/gmut_8cpp" kind="file">
     <compoundname>gmut.cpp</compoundname>
     <includes local="no">fstream</includes>
@@ -10,44 +10,44 @@
     <includes refid="d9/d63/ext_8h" local="yes">ext.h</includes>
     <includes local="yes">device.h</includes>
     <incdepgraph>
-      <node id="12755">
+      <node id="17932">
         <label>device.h</label>
       </node>
-      <node id="12748">
+      <node id="17925">
         <label>src/gmut/gmut.cpp</label>
         <link refid="gmut.cpp"/>
-        <childnode refid="12749" relation="include">
+        <childnode refid="17926" relation="include">
         </childnode>
-        <childnode refid="12750" relation="include">
+        <childnode refid="17927" relation="include">
         </childnode>
-        <childnode refid="12751" relation="include">
+        <childnode refid="17928" relation="include">
         </childnode>
-        <childnode refid="12752" relation="include">
+        <childnode refid="17929" relation="include">
         </childnode>
-        <childnode refid="12753" relation="include">
+        <childnode refid="17930" relation="include">
         </childnode>
-        <childnode refid="12754" relation="include">
+        <childnode refid="17931" relation="include">
         </childnode>
-        <childnode refid="12755" relation="include">
+        <childnode refid="17932" relation="include">
         </childnode>
       </node>
-      <node id="12754">
+      <node id="17931">
         <label>ext.h</label>
         <link refid="d9/d63/ext_8h"/>
       </node>
-      <node id="12749">
+      <node id="17926">
         <label>fstream</label>
       </node>
-      <node id="12751">
+      <node id="17928">
         <label>hilfs.h</label>
       </node>
-      <node id="12753">
+      <node id="17930">
         <label>execute.h</label>
       </node>
-      <node id="12750">
+      <node id="17927">
         <label>gis_head.h</label>
       </node>
-      <node id="12752">
+      <node id="17929">
         <label>grafkern.h</label>
       </node>
     </incdepgraph>
@@ -127,7 +127,7 @@
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="28" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="28" bodyend="-1"/>
         <referencedby refid="d3/d14/gmut_8cpp_1aa4fbd34cae8e303c82cf546234111c10" compoundref="d3/d14/gmut_8cpp" startline="153" endline="185">GMutCompile</referencedby>
-        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="652" endline="693">mutabor::BoxClass::Compile</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="659" endline="700">mutabor::BoxClass::Compile</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d3/d14/gmut_8cpp_1a4888f39ae97354de4bdb34c49a664230" prot="public" static="no" mutable="no">
         <type><ref refid="d3/d14/gmut_8cpp_1a10654c1ff59b193bd9821efc34c3e901" kindref="member">InListTag</ref> *</type>
@@ -183,7 +183,7 @@
         <argsstring>(char *name)</argsstring>
         <name>GetInFile</name>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>name</declname>
         </param>
         <briefdescription>
@@ -197,7 +197,7 @@
         <references refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" compoundref="d3/d14/gmut_8cpp" startline="26">Echo</references>
         <references refid="d3/d14/gmut_8cpp_1a97ae9edf79edb0778febfe0c6ffa4d9a" compoundref="d3/d14/gmut_8cpp" startline="50">Error</references>
         <references refid="d4/d5b/ext_8cpp_1a3c3f9179b542575b1a4a011ebf30a6cb" compoundref="d4/d5b/ext_8cpp" startline="20" endline="29">ExtCheck</references>
-        <references refid="d5/dee/group__route_1gab095232f6f6d76781fd5603d4b453306" compoundref="dc/de7/GIS_8cpp" startline="844" endline="864">GisParse</references>
+        <references refid="d5/dee/group__route_1gab095232f6f6d76781fd5603d4b453306" compoundref="dc/de7/GIS_8cpp" startline="891" endline="911">GisParse</references>
         <references refid="d5/dee/group__route_1gaccb293565ac1505218ca2cb37a75b696" compoundref="d3/d9e/GSP_8cpp" startline="51">GspError</references>
         <references refid="d5/dee/group__route_1gad6532c6916f8eab5ddcd1e3cc7a1eb73" compoundref="d3/d9e/GSP_8cpp" startline="50">GspErrorLine</references>
         <references refid="d5/dee/group__route_1ga171f5381bbd5e457d35c7fb9d96658ed" compoundref="d3/d9e/GSP_8cpp" startline="48">GspErrorLineNr</references>
@@ -213,7 +213,7 @@
         <argsstring>(char *name)</argsstring>
         <name>GetOutFile</name>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>name</declname>
         </param>
         <briefdescription>
@@ -243,7 +243,7 @@
           <declname>Out</declname>
         </param>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>s</declname>
         </param>
         <briefdescription>
@@ -253,19 +253,19 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="103" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="103" bodyend="149"/>
-        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45eaf43f088132d41bd9b008a37e561bb218" compoundref="d1/d65/Route_8h" startline="79">mutabor::RTall</references>
-        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45ea50bfca9bacf204a403c6f37b47af802c" compoundref="d1/d65/Route_8h" startline="81">mutabor::RTchannel</references>
-        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45eac3c8aee25fc8afe5bafcb3de4a403bd9" compoundref="d1/d65/Route_8h" startline="80">mutabor::RTelse</references>
-        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45eaa42b7d5ee257d648d6469bbcb456a723" compoundref="d1/d65/Route_8h" startline="82">mutabor::RTstaff</references>
+        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45eaf43f088132d41bd9b008a37e561bb218" compoundref="d1/d65/Route_8h" startline="80">mutabor::RTall</references>
+        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45ea50bfca9bacf204a403c6f37b47af802c" compoundref="d1/d65/Route_8h" startline="82">mutabor::RTchannel</references>
+        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45eac3c8aee25fc8afe5bafcb3de4a403bd9" compoundref="d1/d65/Route_8h" startline="81">mutabor::RTelse</references>
+        <references refid="d5/dee/group__route_1gga40717007e1ff5cfd3b0255fa4db7f45eaa42b7d5ee257d648d6469bbcb456a723" compoundref="d1/d65/Route_8h" startline="83">mutabor::RTstaff</references>
         <referencedby refid="d3/d14/gmut_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="d3/d14/gmut_8cpp" startline="214" endline="344">main</referencedby>
       </memberdef>
       <memberdef kind="function" id="d3/d14/gmut_8cpp_1aa4fbd34cae8e303c82cf546234111c10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char GMutCompile</definition>
         <argsstring>(char *fileName)</argsstring>
         <name>GMutCompile</name>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>fileName</declname>
         </param>
         <briefdescription>
@@ -276,9 +276,9 @@
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="153" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="153" bodyend="185"/>
         <references refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" compoundref="d3/d14/gmut_8cpp" startline="26">Echo</references>
-        <references refid="df/d33/mut_8cc_1a5b7b0e2c382a96cab95f08c679b4a004" compoundref="df/d33/mut_8cc" startline="3676" endline="3680">init_yylex</references>
-        <references refid="d9/d7c/group__kernel_1ga6cdadb41b8ac72cc80f2bccd24b7fefc" compoundref="da/d02/Hilfs_8cpp" startline="287" endline="308">loesche_syntax_speicher</references>
-        <references refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</references>
+        <references refid="d1/de1/Mut__Tab_8cpp_1a77980177a457976be153c83a9d266da5" compoundref="d1/de1/Mut__Tab_8cpp" startline="1821" endline="1825">init_yylex</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1a89ba87b0e079700339d0135a2c1ce770" compoundref="da/d02/Hilfs_8cpp" startline="287" endline="308">mutabor::hidden::loesche_syntax_speicher</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1a4f6812ce7bcbd0bc4048f7492ccbb0b4" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor::hidden::mutabor_programm_einlesen</references>
         <references refid="dc/d7e/group__runtime_1ga1faa8705b3fd5029a295edfdcdf1a67f" compoundref="d3/d14/gmut_8cpp" startline="28">weiter_gehts_nach_compilerfehler</references>
         <referencedby refid="d3/d14/gmut_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="d3/d14/gmut_8cpp" startline="214" endline="344">main</referencedby>
       </memberdef>
@@ -307,7 +307,7 @@
           <declname>argc</declname>
         </param>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>argv</declname>
           <array>[]</array>
         </param>
@@ -326,14 +326,14 @@
         <references refid="d3/d14/gmut_8cpp_1aee88fa8d3b0cd8d6a11f527df5bd36ab" compoundref="d3/d14/gmut_8cpp" startline="84" endline="101">GetOutFile</references>
         <references refid="d3/d14/gmut_8cpp_1aa4fbd34cae8e303c82cf546234111c10" compoundref="d3/d14/gmut_8cpp" startline="153" endline="185">GMutCompile</references>
         <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861a2d3629aea860ee3797112abeb3918fbf" compoundref="dd/d4d/GIS_8h" startline="117">GTUnknown</references>
-        <references refid="d5/dee/group__route_1gabdcdbd5c4e38b64953fe0f9437b0728c" compoundref="d2/dc0/Device_8cpp" startline="678" endline="686">mutabor::InClose</references>
-        <references refid="d5/dee/group__route_1ga62392b7bae873580941a3fd51d561c5a" compoundref="d2/dc0/Device_8cpp" startline="658" endline="676">mutabor::InOpen</references>
+        <references refid="d5/dee/group__route_1gabdcdbd5c4e38b64953fe0f9437b0728c" compoundref="d2/dc0/Device_8cpp" startline="740" endline="748">mutabor::InClose</references>
+        <references refid="d5/dee/group__route_1ga62392b7bae873580941a3fd51d561c5a" compoundref="d2/dc0/Device_8cpp" startline="720" endline="738">mutabor::InOpen</references>
         <references refid="dd/d15/gmutdos_8cpp_1ac5486a878ff37e3a05545f509f3aafe6" compoundref="dd/d15/gmutdos_8cpp" startline="70" endline="89">KeyboardIn</references>
         <references refid="d5/d4e/structOUTLISTTAG_1a670525f4785a3cb7b291caac12035f73" compoundref="d3/d14/gmut_8cpp" startline="40">OUTLISTTAG::Next</references>
-        <references refid="d5/dee/group__route_1ga4d42d1c81c1ca0eae29ecc54ddc1f8ac" compoundref="d2/dc0/Device_8cpp" startline="650" endline="656">mutabor::OutAddTime</references>
-        <references refid="d5/dee/group__route_1ga9cb4f84d3ef2e5a1b33d74bd62e7c803" compoundref="d2/dc0/Device_8cpp" startline="642" endline="648">mutabor::OutClose</references>
+        <references refid="d5/dee/group__route_1ga4d42d1c81c1ca0eae29ecc54ddc1f8ac" compoundref="d2/dc0/Device_8cpp" startline="712" endline="718">mutabor::OutAddTime</references>
+        <references refid="d5/dee/group__route_1ga9cb4f84d3ef2e5a1b33d74bd62e7c803" compoundref="d2/dc0/Device_8cpp" startline="704" endline="710">mutabor::OutClose</references>
         <references refid="d3/d14/gmut_8cpp_1a62f02a8134267275ee78e53a65d1427b" compoundref="d3/d14/gmut_8cpp" startline="48">OUTLISTDATA</references>
-        <references refid="d5/dee/group__route_1gae91713cff685de57ed4cdf4fd6f52b11" compoundref="d2/dc0/Device_8cpp" startline="624" endline="640">mutabor::OutOpen</references>
+        <references refid="d5/dee/group__route_1gae91713cff685de57ed4cdf4fd6f52b11" compoundref="d2/dc0/Device_8cpp" startline="686" endline="702">mutabor::OutOpen</references>
         <references refid="d3/d14/gmut_8cpp_1ae964ff8411b4fdcaf65cb5529aea4bef" compoundref="d3/d14/gmut_8cpp" startline="187" endline="210">PrintHelp</references>
       </memberdef>
       </sectiondef>
@@ -498,12 +498,12 @@
 <codeline lineno="155"><highlight class="normal"></highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!setjmp(<ref refid="dc/d7e/group__runtime_1ga1faa8705b3fd5029a295edfdcdf1a67f" kindref="member">weiter_gehts_nach_compilerfehler</ref>)<sp/>)</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga6cdadb41b8ac72cc80f2bccd24b7fefc" kindref="member">loesche_syntax_speicher</ref>();</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/d33/mut_8cc_1a5b7b0e2c382a96cab95f08c679b4a004" kindref="member">init_yylex</ref><sp/>();</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a89ba87b0e079700339d0135a2c1ce770" kindref="member">loesche_syntax_speicher</ref>();</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/de1/Mut__Tab_8cpp_1a77980177a457976be153c83a9d266da5" kindref="member">init_yylex</ref><sp/>();</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"></highlight></codeline>
 <codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mutabor<sp/>parsing<sp/>file:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>fileName<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" kindref="member">mutabor_programm_einlesen</ref><sp/>(<sp/>fileName<sp/>);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a4f6812ce7bcbd0bc4048f7492ccbb0b4" kindref="member">mutabor_programm_einlesen</ref><sp/>(<sp/>fileName<sp/>);</highlight></codeline>
 <codeline lineno="164"><highlight class="normal"></highlight></codeline>
 <codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>calc_declaration_numbers(1);</highlight></codeline>
 <codeline lineno="166"><highlight class="normal"></highlight></codeline>
@@ -554,7 +554,7 @@
 <codeline lineno="211"><highlight class="normal"></highlight></codeline>
 <codeline lineno="212"><highlight class="normal"></highlight><highlight class="comment">//<sp/>##################################################################</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="213"><highlight class="normal"></highlight></codeline>
-<codeline lineno="214" refid="d3/d14/gmut_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/d21/gmn2midi_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>argv<sp/>[])</highlight></codeline>
+<codeline lineno="214" refid="d3/d14/gmut_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d3/d14/gmut_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>argv<sp/>[])</highlight></codeline>
 <codeline lineno="215"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>read<sp/>mutabor<sp/>file<sp/>and<sp/>output<sp/>options</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="217"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*MutFile<sp/>=<sp/>0;</highlight></codeline>

@@ -3,7 +3,7 @@
 <title>mutabor::MidiPortOutputProvider Klassenreferenz</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -229,14 +229,14 @@ Geschützte Attribute</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00086">86</a> der Datei <a class="el" href="../../d4/da2/DevMidi_8h_source.html">DevMidi.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00057">_</a>, <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00266">device</a>, <a class="el" href="../../de/d11/Execute_8h_source.html#l00079">error</a>, <a class="el" href="../../d1/d73/Defs_8h_source.html#l00168">mutChar</a>, <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00265">port</a> und <a class="el" href="../../de/d05/Device_8h_source.html#l00432">mutabor::Device::runtime_error()</a>.</p>
+<p>Benutzt <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00057">_</a>, <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00266">device</a>, <a class="el" href="../../de/d11/Execute_8h_source.html#l00078">mutabor::hidden::error</a>, <a class="el" href="../../d1/d73/Defs_8h_source.html#l00083">mutChar</a>, <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00265">port</a> und <a class="el" href="../../de/d05/Device_8h_source.html#l00552">mutabor::Device::runtime_error()</a>.</p>
 
 <p>Wird benutzt von <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00369">mutabor::OutputMidiPort::do_Open()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                                           {</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#ifdef RTMIDI</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor"></span>                        <span class="keywordflow">try</span> {</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                <a class="code" href="../../d2/db3/classmutabor_1_1MidiPortOutputProvider.html#a634b95300906fdfe9fb9876ec4d63ace">port</a> = <span class="keyword">new</span> RtMidiOut(RtMidi::UNSPECIFIED, PACKAGE_STRING);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                        } <span class="keywordflow">catch</span> (RtError &amp;<a class="code" href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96ad606e435413ea0944dd00d49e901e4ed">error</a>) {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                        } <span class="keywordflow">catch</span> (RtError &amp;<a class="code" href="../../d6/dbb/namespacemutabor_1_1hidden.html#abe559f59025d3ee3e626c4c3cbd9cacdaafc406698afb7ff8be5c847b414a288f">error</a>) {</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                <a class="code" href="../../d2/db3/classmutabor_1_1MidiPortOutputProvider.html#ab3786d867facf91f50a84d6633d30bf1">device</a>-&gt;<a class="code" href="../../d5/dee/group__route.html#ga8ee3b1752e55aea0e7230d4268a8c305">runtime_error</a>(<span class="keyword">false</span>,</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                                      <a class="code" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>(<span class="stringliteral">&quot;Can not open ouput Midi devices due to memory allocation  problems.&quot;</span>));</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
@@ -257,10 +257,10 @@ Geschützte Attribute</h2></td></tr>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor"></span>                        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                }</div>
-<div class="ttc" id="group__route_html_ga8ee3b1752e55aea0e7230d4268a8c305"><div class="ttname"><a href="../../d5/dee/group__route.html#ga8ee3b1752e55aea0e7230d4268a8c305">mutabor::Device::runtime_error</a></div><div class="ttdeci">void runtime_error(int type, mutString message,...)</div><div class="ttdoc">Process an error message. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00432">Device.h:432</a></div></div>
-<div class="ttc" id="group__kernel_html_ggafeebd36c5713e8438dcf17e926f8ad96ad606e435413ea0944dd00d49e901e4ed"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96ad606e435413ea0944dd00d49e901e4ed">error</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d11/Execute_8h_source.html#l00079">Execute.h:79</a></div></div>
+<div class="ttc" id="group__route_html_ga8ee3b1752e55aea0e7230d4268a8c305"><div class="ttname"><a href="../../d5/dee/group__route.html#ga8ee3b1752e55aea0e7230d4268a8c305">mutabor::Device::runtime_error</a></div><div class="ttdeci">void runtime_error(int type, mutString message,...)</div><div class="ttdoc">Process an error message. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00552">Device.h:552</a></div></div>
 <div class="ttc" id="classmutabor_1_1MidiPortOutputProvider_html_a634b95300906fdfe9fb9876ec4d63ace"><div class="ttname"><a href="../../d2/db3/classmutabor_1_1MidiPortOutputProvider.html#a634b95300906fdfe9fb9876ec4d63ace">mutabor::MidiPortOutputProvider::port</a></div><div class="ttdeci">RtMidiOut * port</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/da2/DevMidi_8h_source.html#l00265">DevMidi.h:265</a></div></div>
-<div class="ttc" id="group__kernel_html_ga13c03a937e32254ea17154104db5208a"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga13c03a937e32254ea17154104db5208a">mutChar</a></div><div class="ttdeci">#define mutChar</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00168">Defs.h:168</a></div></div>
+<div class="ttc" id="group__kernel_html_ga13c03a937e32254ea17154104db5208a"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga13c03a937e32254ea17154104db5208a">mutChar</a></div><div class="ttdeci">#define mutChar</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00083">Defs.h:83</a></div></div>
+<div class="ttc" id="namespacemutabor_1_1hidden_html_abe559f59025d3ee3e626c4c3cbd9cacdaafc406698afb7ff8be5c847b414a288f"><div class="ttname"><a href="../../d6/dbb/namespacemutabor_1_1hidden.html#abe559f59025d3ee3e626c4c3cbd9cacdaafc406698afb7ff8be5c847b414a288f">mutabor::hidden::error</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d11/Execute_8h_source.html#l00078">Execute.h:78</a></div></div>
 <div class="ttc" id="group__kernel_html_gae4dfd7b0d66121016d6466d2ff10e8ba"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a></div><div class="ttdeci">#define _</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/Execute_8cpp_source.html#l00057">Execute.cpp:57</a></div></div>
 <div class="ttc" id="classmutabor_1_1MidiPortOutputProvider_html_ab3786d867facf91f50a84d6633d30bf1"><div class="ttname"><a href="../../d2/db3/classmutabor_1_1MidiPortOutputProvider.html#ab3786d867facf91f50a84d6633d30bf1">mutabor::MidiPortOutputProvider::device</a></div><div class="ttdeci">mutabor::Device * device</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/da2/DevMidi_8h_source.html#l00266">DevMidi.h:266</a></div></div>
 </div><!-- fragment -->
@@ -356,11 +356,11 @@ Geschützte Attribute</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00140">140</a> der Datei <a class="el" href="../../d4/da2/DevMidi_8h_source.html">DevMidi.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../d1/d73/Defs_8h_source.html#l00223">mutASSERT</a>, <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00163">RawMsg()</a> und <a class="el" href="../../d0/d68/mhDefs_8h_source.html#l00148">UNREACHABLEC</a>.</p>
+<p>Benutzt <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00168">mutabor::midi::CHANNEL_MASK</a>, <a class="el" href="../../d1/d73/Defs_8h_source.html#l00222">mutASSERT</a>, <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00163">RawMsg()</a>, <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00147">mutabor::midi::SYSTEM</a>, <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00167">mutabor::midi::TYPE_MASK</a> und <a class="el" href="../../d0/d68/mhDefs_8h_source.html#l00148">UNREACHABLEC</a>.</p>
 <div class="fragment"><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                                                                     {</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                        <span class="keywordflow">if</span> ((byte1 &amp; midi::TYPE_MASK) != midi::SYSTEM) {</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(!(byte1 &amp; midi::CHANNEL_MASK));</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(channel &lt; 0x10);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                        <span class="keywordflow">if</span> ((byte1 &amp; <a class="code" href="../../d6/d7c/namespacemutabor_1_1midi.html#a61487f8f3f95832d7519d0c8dcc5b40ea9f439d666fbc455c95a8057763ab8f18">midi::TYPE_MASK</a>) != <a class="code" href="../../d6/d7c/namespacemutabor_1_1midi.html#a61487f8f3f95832d7519d0c8dcc5b40eab3977b2c3228dda6d08ad9177f350676">midi::SYSTEM</a>) {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a>(!(byte1 &amp; <a class="code" href="../../d6/d7c/namespacemutabor_1_1midi.html#a61487f8f3f95832d7519d0c8dcc5b40eab15ee99712034c677e9dd5ea82333077">midi::CHANNEL_MASK</a>));</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a>(channel &lt; 0x10);</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                                byte1 |= channel;</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                        } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                                <a class="code" href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a>;</div>
@@ -368,8 +368,11 @@ Geschützte Attribute</h2></td></tr>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="../../d2/db3/classmutabor_1_1MidiPortOutputProvider.html#a4d1202dc65c31c46a7aeb650b913ef31">RawMsg</a>(channel,byte1,byte2,byte3);</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                }</div>
 <div class="ttc" id="classmutabor_1_1MidiPortOutputProvider_html_a4d1202dc65c31c46a7aeb650b913ef31"><div class="ttname"><a href="../../d2/db3/classmutabor_1_1MidiPortOutputProvider.html#a4d1202dc65c31c46a7aeb650b913ef31">mutabor::MidiPortOutputProvider::RawMsg</a></div><div class="ttdeci">MidiPortOutputProvider &amp; RawMsg(int channel, uint8_t byte1, uint8_t byte2, uint8_t byte3)</div><div class="ttdoc">Outputs a raw three-byte message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/da2/DevMidi_8h_source.html#l00163">DevMidi.h:163</a></div></div>
-<div class="ttc" id="group__kernel_html_ga77bd8e5b959213dd8bcd48dc513f6013"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a></div><div class="ttdeci">#define mutASSERT(cond)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00223">Defs.h:223</a></div></div>
+<div class="ttc" id="namespacemutabor_1_1midi_html_a61487f8f3f95832d7519d0c8dcc5b40eab15ee99712034c677e9dd5ea82333077"><div class="ttname"><a href="../../d6/d7c/namespacemutabor_1_1midi.html#a61487f8f3f95832d7519d0c8dcc5b40eab15ee99712034c677e9dd5ea82333077">mutabor::midi::CHANNEL_MASK</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/dfd/MidiKern_8h_source.html#l00168">MidiKern.h:168</a></div></div>
+<div class="ttc" id="group__kernel_html_ga565c8973b3b2a87c7f9c7c7aabb9665e"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a></div><div class="ttdeci">#define mutASSERT</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00222">Defs.h:222</a></div></div>
 <div class="ttc" id="group__GUI_html_ga21a35e4a9e56bbe15aded747eb5a7147"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a></div><div class="ttdeci">#define UNREACHABLEC</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00148">mhDefs.h:148</a></div></div>
+<div class="ttc" id="namespacemutabor_1_1midi_html_a61487f8f3f95832d7519d0c8dcc5b40ea9f439d666fbc455c95a8057763ab8f18"><div class="ttname"><a href="../../d6/d7c/namespacemutabor_1_1midi.html#a61487f8f3f95832d7519d0c8dcc5b40ea9f439d666fbc455c95a8057763ab8f18">mutabor::midi::TYPE_MASK</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/dfd/MidiKern_8h_source.html#l00167">MidiKern.h:167</a></div></div>
+<div class="ttc" id="namespacemutabor_1_1midi_html_a61487f8f3f95832d7519d0c8dcc5b40eab3977b2c3228dda6d08ad9177f350676"><div class="ttname"><a href="../../d6/d7c/namespacemutabor_1_1midi.html#a61487f8f3f95832d7519d0c8dcc5b40eab3977b2c3228dda6d08ad9177f350676">mutabor::midi::SYSTEM</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/dfd/MidiKern_8h_source.html#l00147">MidiKern.h:147</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -423,11 +426,11 @@ Geschützte Attribute</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00185">185</a> der Datei <a class="el" href="../../d4/da2/DevMidi_8h_source.html">DevMidi.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../d1/d73/Defs_8h_source.html#l00223">mutASSERT</a>, <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00163">RawMsg()</a> und <a class="el" href="../../d0/d68/mhDefs_8h_source.html#l00148">UNREACHABLEC</a>.</p>
+<p>Benutzt <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00168">mutabor::midi::CHANNEL_MASK</a>, <a class="el" href="../../d1/d73/Defs_8h_source.html#l00222">mutASSERT</a>, <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00163">RawMsg()</a>, <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00147">mutabor::midi::SYSTEM</a>, <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00167">mutabor::midi::TYPE_MASK</a> und <a class="el" href="../../d0/d68/mhDefs_8h_source.html#l00148">UNREACHABLEC</a>.</p>
 <div class="fragment"><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                                                                     {</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                        <span class="keywordflow">if</span> ((byte1 &amp; midi::TYPE_MASK) != midi::SYSTEM) {</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(!(byte1 &amp; midi::CHANNEL_MASK));</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(channel &lt; 0x10);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                        <span class="keywordflow">if</span> ((byte1 &amp; <a class="code" href="../../d6/d7c/namespacemutabor_1_1midi.html#a61487f8f3f95832d7519d0c8dcc5b40ea9f439d666fbc455c95a8057763ab8f18">midi::TYPE_MASK</a>) != <a class="code" href="../../d6/d7c/namespacemutabor_1_1midi.html#a61487f8f3f95832d7519d0c8dcc5b40eab3977b2c3228dda6d08ad9177f350676">midi::SYSTEM</a>) {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a>(!(byte1 &amp; <a class="code" href="../../d6/d7c/namespacemutabor_1_1midi.html#a61487f8f3f95832d7519d0c8dcc5b40eab15ee99712034c677e9dd5ea82333077">midi::CHANNEL_MASK</a>));</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a>(channel &lt; 0x10);</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                                byte1 |= channel;</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                        } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                                <a class="code" href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a>;</div>
@@ -436,8 +439,11 @@ Geschützte Attribute</h2></td></tr>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="../../d2/db3/classmutabor_1_1MidiPortOutputProvider.html#a4d1202dc65c31c46a7aeb650b913ef31">RawMsg</a>(channel,byte1,byte2);</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                }</div>
 <div class="ttc" id="classmutabor_1_1MidiPortOutputProvider_html_a4d1202dc65c31c46a7aeb650b913ef31"><div class="ttname"><a href="../../d2/db3/classmutabor_1_1MidiPortOutputProvider.html#a4d1202dc65c31c46a7aeb650b913ef31">mutabor::MidiPortOutputProvider::RawMsg</a></div><div class="ttdeci">MidiPortOutputProvider &amp; RawMsg(int channel, uint8_t byte1, uint8_t byte2, uint8_t byte3)</div><div class="ttdoc">Outputs a raw three-byte message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/da2/DevMidi_8h_source.html#l00163">DevMidi.h:163</a></div></div>
-<div class="ttc" id="group__kernel_html_ga77bd8e5b959213dd8bcd48dc513f6013"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a></div><div class="ttdeci">#define mutASSERT(cond)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00223">Defs.h:223</a></div></div>
+<div class="ttc" id="namespacemutabor_1_1midi_html_a61487f8f3f95832d7519d0c8dcc5b40eab15ee99712034c677e9dd5ea82333077"><div class="ttname"><a href="../../d6/d7c/namespacemutabor_1_1midi.html#a61487f8f3f95832d7519d0c8dcc5b40eab15ee99712034c677e9dd5ea82333077">mutabor::midi::CHANNEL_MASK</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/dfd/MidiKern_8h_source.html#l00168">MidiKern.h:168</a></div></div>
+<div class="ttc" id="group__kernel_html_ga565c8973b3b2a87c7f9c7c7aabb9665e"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a></div><div class="ttdeci">#define mutASSERT</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00222">Defs.h:222</a></div></div>
 <div class="ttc" id="group__GUI_html_ga21a35e4a9e56bbe15aded747eb5a7147"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a></div><div class="ttdeci">#define UNREACHABLEC</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00148">mhDefs.h:148</a></div></div>
+<div class="ttc" id="namespacemutabor_1_1midi_html_a61487f8f3f95832d7519d0c8dcc5b40ea9f439d666fbc455c95a8057763ab8f18"><div class="ttname"><a href="../../d6/d7c/namespacemutabor_1_1midi.html#a61487f8f3f95832d7519d0c8dcc5b40ea9f439d666fbc455c95a8057763ab8f18">mutabor::midi::TYPE_MASK</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/dfd/MidiKern_8h_source.html#l00167">MidiKern.h:167</a></div></div>
+<div class="ttc" id="namespacemutabor_1_1midi_html_a61487f8f3f95832d7519d0c8dcc5b40eab3977b2c3228dda6d08ad9177f350676"><div class="ttname"><a href="../../d6/d7c/namespacemutabor_1_1midi.html#a61487f8f3f95832d7519d0c8dcc5b40eab3977b2c3228dda6d08ad9177f350676">mutabor::midi::SYSTEM</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/dfd/MidiKern_8h_source.html#l00147">MidiKern.h:147</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -619,9 +625,9 @@ Geschützte Attribute</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00224">224</a> der Datei <a class="el" href="../../d4/da2/DevMidi_8h_source.html">DevMidi.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../d1/d73/Defs_8h_source.html#l00223">mutASSERT</a> und <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00265">port</a>.</p>
+<p>Benutzt <a class="el" href="../../d1/d73/Defs_8h_source.html#l00222">mutASSERT</a> und <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00265">port</a>.</p>
 <div class="fragment"><div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                                                                             {</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                        <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(channel == -1);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                        <a class="code" href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a>(channel == -1);</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                        std::vector&lt;unsigned char&gt; message(1);</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                        message[0] = byte1;</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                        </div>
@@ -629,7 +635,7 @@ Geschützte Attribute</h2></td></tr>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                }</div>
 <div class="ttc" id="classmutabor_1_1MidiPortOutputProvider_html_a634b95300906fdfe9fb9876ec4d63ace"><div class="ttname"><a href="../../d2/db3/classmutabor_1_1MidiPortOutputProvider.html#a634b95300906fdfe9fb9876ec4d63ace">mutabor::MidiPortOutputProvider::port</a></div><div class="ttdeci">RtMidiOut * port</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/da2/DevMidi_8h_source.html#l00265">DevMidi.h:265</a></div></div>
-<div class="ttc" id="group__kernel_html_ga77bd8e5b959213dd8bcd48dc513f6013"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a></div><div class="ttdeci">#define mutASSERT(cond)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00223">Defs.h:223</a></div></div>
+<div class="ttc" id="group__kernel_html_ga565c8973b3b2a87c7f9c7c7aabb9665e"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a></div><div class="ttdeci">#define mutASSERT</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00222">Defs.h:222</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -686,16 +692,16 @@ template&lt;class i &gt; </div>
 
 <p>Definiert in Zeile <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00244">244</a> der Datei <a class="el" href="../../d4/da2/DevMidi_8h_source.html">DevMidi.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00265">port</a> und <a class="el" href="../../d0/d68/mhDefs_8h_source.html#l00148">UNREACHABLEC</a>.</p>
+<p>Benutzt <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00265">port</a>, <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00166">mutabor::midi::STARTBYTE_MASK</a>, <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00149">mutabor::midi::SYSEX_START</a> und <a class="el" href="../../d0/d68/mhDefs_8h_source.html#l00148">UNREACHABLEC</a>.</p>
 <div class="fragment"><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                                                          {</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                        <span class="keywordflow">if</span> (from == to) <span class="keywordflow">return</span> * <span class="keyword">this</span>;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                        <span class="keywordflow">if</span> ((*from) &amp; midi::STARTBYTE_MASK) {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                        <span class="keywordflow">if</span> ((*from) &amp; <a class="code" href="../../d6/d7c/namespacemutabor_1_1midi.html#a61487f8f3f95832d7519d0c8dcc5b40eacb47ba03df90c8782b579b91f6d95bd3">midi::STARTBYTE_MASK</a>) {</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                                <a class="code" href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a>;</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                                <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                        }</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                        std::vector&lt;unsigned char&gt; message(to - from + 1);</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                        message[0] = midi::SYSEX_START;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                        message[0] = <a class="code" href="../../d6/d7c/namespacemutabor_1_1midi.html#a61487f8f3f95832d7519d0c8dcc5b40ea9b1eab461457cda726681eedea0a5505">midi::SYSEX_START</a>;</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                        <span class="keywordtype">size_t</span> i = 1;</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                        <span class="keywordflow">while</span> (from != to) {</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                                message[i++] = (*(from++));</div>
@@ -704,7 +710,9 @@ template&lt;class i &gt; </div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                        <a class="code" href="../../d2/db3/classmutabor_1_1MidiPortOutputProvider.html#a634b95300906fdfe9fb9876ec4d63ace">port</a>-&gt;sendMessage(&amp;message);</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                }</div>
+<div class="ttc" id="namespacemutabor_1_1midi_html_a61487f8f3f95832d7519d0c8dcc5b40ea9b1eab461457cda726681eedea0a5505"><div class="ttname"><a href="../../d6/d7c/namespacemutabor_1_1midi.html#a61487f8f3f95832d7519d0c8dcc5b40ea9b1eab461457cda726681eedea0a5505">mutabor::midi::SYSEX_START</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/dfd/MidiKern_8h_source.html#l00149">MidiKern.h:149</a></div></div>
 <div class="ttc" id="classmutabor_1_1MidiPortOutputProvider_html_a634b95300906fdfe9fb9876ec4d63ace"><div class="ttname"><a href="../../d2/db3/classmutabor_1_1MidiPortOutputProvider.html#a634b95300906fdfe9fb9876ec4d63ace">mutabor::MidiPortOutputProvider::port</a></div><div class="ttdeci">RtMidiOut * port</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/da2/DevMidi_8h_source.html#l00265">DevMidi.h:265</a></div></div>
+<div class="ttc" id="namespacemutabor_1_1midi_html_a61487f8f3f95832d7519d0c8dcc5b40eacb47ba03df90c8782b579b91f6d95bd3"><div class="ttname"><a href="../../d6/d7c/namespacemutabor_1_1midi.html#a61487f8f3f95832d7519d0c8dcc5b40eacb47ba03df90c8782b579b91f6d95bd3">mutabor::midi::STARTBYTE_MASK</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/dfd/MidiKern_8h_source.html#l00166">MidiKern.h:166</a></div></div>
 <div class="ttc" id="group__GUI_html_ga21a35e4a9e56bbe15aded747eb5a7147"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a></div><div class="ttdeci">#define UNREACHABLEC</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00148">mhDefs.h:148</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -763,6 +771,6 @@ template&lt;class i &gt; </div>
 </ul>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:54 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:29 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

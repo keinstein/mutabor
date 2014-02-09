@@ -3,7 +3,7 @@
 <title>GTAK Klassenreferenz</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -42,7 +42,7 @@ Zusammengehörigkeiten von GTAK:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Öffentliche Methoden</h2></td></tr>
-<tr class="memitem:abe5f84fba1a18cb3f924aa208e8f5e20"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d9f/classGTAK.html#abe5f84fba1a18cb3f924aa208e8f5e20">GTAK</a> (int instr, int <a class="el" href="../../d1/db5/structtaste.html">taste</a>, <a class="el" href="../../d9/d18/classGisNote.html">GisNote</a> *note, <a class="el" href="../../d8/d9f/classGTAK.html">GTAK</a> *next=0)</td></tr>
+<tr class="memitem:abe5f84fba1a18cb3f924aa208e8f5e20"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d9f/classGTAK.html#abe5f84fba1a18cb3f924aa208e8f5e20">GTAK</a> (int instr, int taste, <a class="el" href="../../d9/d18/classGisNote.html">GisNote</a> *note, <a class="el" href="../../d8/d9f/classGTAK.html">GTAK</a> *next=0)</td></tr>
 <tr class="separator:abe5f84fba1a18cb3f924aa208e8f5e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ba0360bed09a51d30b64b89e559a8f0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d9f/classGTAK.html#a1ba0360bed09a51d30b64b89e559a8f0">~GTAK</a> ()</td></tr>
 <tr class="separator:a1ba0360bed09a51d30b64b89e559a8f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,11 +110,10 @@ Zusammengehörigkeiten von GTAK:</div>
 <div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;         {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                <a class="code" href="../../d8/d9f/classGTAK.html#abda54d707a2c70f748b841a7399795fd">Next</a> = next;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                <a class="code" href="../../d8/d9f/classGTAK.html#a599a8bda7d4d4aeafb1ee3acd848ac76">Note</a> = note;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                <a class="code" href="../../d8/d9f/classGTAK.html#a7923d484e9bfc65b74422d5de0dd38a2">Id</a> = (instr &lt;&lt; 8) + <a class="code" href="../../d1/db5/structtaste.html">taste</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                <a class="code" href="../../d8/d9f/classGTAK.html#a7923d484e9bfc65b74422d5de0dd38a2">Id</a> = (instr &lt;&lt; 8) + taste;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;         }</div>
 <div class="ttc" id="classGTAK_html_abda54d707a2c70f748b841a7399795fd"><div class="ttname"><a href="../../d8/d9f/classGTAK.html#abda54d707a2c70f748b841a7399795fd">GTAK::Next</a></div><div class="ttdeci">GTAK * Next</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d26/mutgis_8cpp_source.html#l00010">mutgis.cpp:10</a></div></div>
 <div class="ttc" id="classGTAK_html_a7923d484e9bfc65b74422d5de0dd38a2"><div class="ttname"><a href="../../d8/d9f/classGTAK.html#a7923d484e9bfc65b74422d5de0dd38a2">GTAK::Id</a></div><div class="ttdeci">int Id</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d26/mutgis_8cpp_source.html#l00012">mutgis.cpp:12</a></div></div>
-<div class="ttc" id="structtaste_html"><div class="ttname"><a href="../../d1/db5/structtaste.html">taste</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d40/Global_8h_source.html#l00334">Global.h:334</a></div></div>
 <div class="ttc" id="classGTAK_html_a599a8bda7d4d4aeafb1ee3acd848ac76"><div class="ttname"><a href="../../d8/d9f/classGTAK.html#a599a8bda7d4d4aeafb1ee3acd848ac76">GTAK::Note</a></div><div class="ttdeci">GisNote * Note</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d26/mutgis_8cpp_source.html#l00011">mutgis.cpp:11</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -204,6 +203,6 @@ Zusammengehörigkeiten von GTAK:</div>
 </ul>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:50 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:25 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

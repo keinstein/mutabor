@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d0/df6/classmutabor_1_1mutabor__lexer" kind="class" prot="public">
     <compoundname>mutabor::mutabor_lexer</compoundname>
     <basecompoundref prot="public" virt="non-virtual">mutabor_lexer_FlexLexer</basecompoundref>
     <includes refid="db/d15/mutlex_8h" local="no">mutlex.h</includes>
       <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="d0/df6/classmutabor_1_1mutabor__lexer_1a80b2e1a787dad6637abc1b18c6def04e" prot="protected" static="no" mutable="no">
-        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> char *</type>
         <definition>const char* mutabor::mutabor_lexer::buffer</definition>
         <argsstring></argsstring>
         <name>buffer</name>
@@ -17,7 +17,6 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" line="100" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" bodystart="100" bodyend="-1"/>
-        <referencedby refid="d0/df6/classmutabor_1_1mutabor__lexer_1af2f4fede5bd9c57faf1bdf656ed12371" compoundref="db/d15/mutlex_8h" startline="94" endline="99">LexerInput</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d0/df6/classmutabor_1_1mutabor__lexer_1a4ffdf4abb2f1ab57e9118437e1b151f4" prot="protected" static="no" mutable="no">
         <type>size_t</type>
@@ -31,7 +30,6 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" line="101" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" bodystart="101" bodyend="-1"/>
-        <referencedby refid="d0/df6/classmutabor_1_1mutabor__lexer_1af2f4fede5bd9c57faf1bdf656ed12371" compoundref="db/d15/mutlex_8h" startline="94" endline="99">LexerInput</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d0/df6/classmutabor_1_1mutabor__lexer_1a1a654a3e8d50e1f20602241c3601aad3" prot="protected" static="no" mutable="no">
         <type>size_t</type>
@@ -45,7 +43,6 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" line="102" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" bodystart="102" bodyend="-1"/>
-        <referencedby refid="d0/df6/classmutabor_1_1mutabor__lexer_1af2f4fede5bd9c57faf1bdf656ed12371" compoundref="db/d15/mutlex_8h" startline="94" endline="99">LexerInput</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d0/df6/classmutabor_1_1mutabor__lexer_1a5df00819b0bf6341d610d9a753f794f2" prot="protected" static="no" mutable="no">
         <type>bool</type>
@@ -61,7 +58,7 @@
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" line="103" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" bodystart="103" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d0/df6/classmutabor_1_1mutabor__lexer_1af7c9ef0575906820d1363e98a0842ee5" prot="protected" static="no" mutable="no">
-        <type><ref refid="d6/d4e/mut_8hh_1a09fb1f7c65e10ed0f0c1aa8ef7ce16b5" kindref="member">mutabor::hidden::YYSTYPE</ref> *</type>
+        <type><ref refid="d3/d6c/unionmutabor_1_1hidden_1_1YYSTYPE" kindref="compound">mutabor::hidden::YYSTYPE</ref> *</type>
         <definition>mutabor::hidden::YYSTYPE* mutabor::mutabor_lexer::yylval</definition>
         <argsstring></argsstring>
         <name>yylval</name>
@@ -72,8 +69,6 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" line="104" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" bodystart="104" bodyend="-1"/>
-        <referencedby refid="d0/df6/classmutabor_1_1mutabor__lexer_1af53e52611293bc67ba01ca619f90054a" compoundref="db/d15/mutlex_8h" startline="92" endline="92">free_identifier</referencedby>
-        <referencedby refid="d0/df6/classmutabor_1_1mutabor__lexer_1ab66f52f2ab91b63e4782ba749058e43b" compoundref="db/d15/mutlex_8h" startline="89" endline="89">~mutabor_lexer</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -83,7 +78,7 @@
         <argsstring>(const char *string, size_t len)</argsstring>
         <name>mutabor_lexer</name>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> char *</type>
           <declname>string</declname>
         </param>
         <param>
@@ -110,7 +105,6 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" line="89" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" bodystart="89" bodyend="89"/>
-        <references refid="d0/df6/classmutabor_1_1mutabor__lexer_1af7c9ef0575906820d1363e98a0842ee5" compoundref="db/d15/mutlex_8h" startline="104">yylval</references>
       </memberdef>
       <memberdef kind="function" id="d0/df6/classmutabor_1_1mutabor__lexer_1a6c1fb2469053ed3ef5bf7553b48147f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -138,7 +132,6 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" line="92" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" bodystart="92" bodyend="92"/>
-        <references refid="d0/df6/classmutabor_1_1mutabor__lexer_1af7c9ef0575906820d1363e98a0842ee5" compoundref="db/d15/mutlex_8h" startline="104">yylval</references>
         <referencedby refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a30e777b67eb50a9c08427266b9bd08c9" compoundref="dc/d0c/stclanguage_8cpp" startline="368" endline="568">mutaborGUI::MutSTCLexer::OnStyleNeeded</referencedby>
       </memberdef>
       </sectiondef>
@@ -149,7 +142,7 @@
         <argsstring>(char *buf, int max_size)</argsstring>
         <name>LexerInput</name>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>buf</declname>
         </param>
         <param>
@@ -163,9 +156,6 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" line="94" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" bodystart="94" bodyend="99"/>
-        <references refid="d0/df6/classmutabor_1_1mutabor__lexer_1a80b2e1a787dad6637abc1b18c6def04e" compoundref="db/d15/mutlex_8h" startline="100">buffer</references>
-        <references refid="d0/df6/classmutabor_1_1mutabor__lexer_1a4ffdf4abb2f1ab57e9118437e1b151f4" compoundref="db/d15/mutlex_8h" startline="101">buflen</references>
-        <references refid="d0/df6/classmutabor_1_1mutabor__lexer_1a1a654a3e8d50e1f20602241c3601aad3" compoundref="db/d15/mutlex_8h" startline="102">position</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -173,25 +163,62 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3481">
+      <node id="3747">
         <label>mutabor::mutabor_lexer</label>
         <link refid="d0/df6/classmutabor_1_1mutabor__lexer"/>
-        <childnode refid="3482" relation="public-inheritance">
+        <childnode refid="3748" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3482">
+      <node id="3748">
         <label>mutabor_lexer_FlexLexer</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3483">
+      <node id="3749">
         <label>mutabor::mutabor_lexer</label>
         <link refid="d0/df6/classmutabor_1_1mutabor__lexer"/>
-        <childnode refid="3484" relation="public-inheritance">
+        <childnode refid="3750" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3751" relation="usage">
+          <edgelabel>yylval</edgelabel>
         </childnode>
       </node>
-      <node id="3484">
+      <node id="3754">
+        <label>mutabor::hidden::argument</label>
+        <link refid="d8/d96/structmutabor_1_1hidden_1_1argument"/>
+        <childnode refid="3752" relation="usage">
+          <edgelabel>parameter</edgelabel>
+        </childnode>
+      </node>
+      <node id="3750">
         <label>mutabor_lexer_FlexLexer</label>
+      </node>
+      <node id="3753">
+        <label>mutabor::hidden::argument_list</label>
+        <link refid="d7/ddb/structmutabor_1_1hidden_1_1argument__list"/>
+        <childnode refid="3754" relation="usage">
+          <edgelabel>argument</edgelabel>
+        </childnode>
+        <childnode refid="3753" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3752">
+        <label>mutabor::hidden::parameter_list</label>
+        <link refid="d4/d9f/structmutabor_1_1hidden_1_1parameter__list"/>
+        <childnode refid="3752" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3751">
+        <label>mutabor::hidden::YYSTYPE</label>
+        <link refid="d3/d6c/unionmutabor_1_1hidden_1_1YYSTYPE"/>
+        <childnode refid="3752" relation="usage">
+          <edgelabel>parameters</edgelabel>
+        </childnode>
+        <childnode refid="3753" relation="usage">
+          <edgelabel>arguments</edgelabel>
+        </childnode>
       </node>
     </collaborationgraph>
     <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" line="80" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mutlex.h" bodystart="80" bodyend="105"/>

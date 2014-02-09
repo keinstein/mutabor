@@ -3,7 +3,7 @@
 <title>src/wxGUI/generic/mutDebug.h-Dateireferenz</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -29,7 +29,9 @@
   <div class="summary">
 <a href="#nested-classes">Klassen</a> &#124;
 <a href="#define-members">Makrodefinitionen</a> &#124;
-<a href="#func-members">Funktionen</a>  </div>
+<a href="#typedef-members">Typdefinitionen</a> &#124;
+<a href="#func-members">Funktionen</a> &#124;
+<a href="#var-members">Variablen</a>  </div>
   <div class="headertitle">
 <div class="title">mutDebug.h-Dateireferenz</div>  </div>
 </div><!--header-->
@@ -37,62 +39,98 @@
 
 <p>Main debugging functions.  
 <a href="#details">Mehr ...</a></p>
-<div class="textblock"><div class="dynheader">
+<div class="textblock"><code>#include &lt;bitset&gt;</code><br/>
+<code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;cstdio&gt;</code><br/>
+<code>#include &lt;vector&gt;</code><br/>
+<code>#include &lt;stdint.h&gt;</code><br/>
+<code>#include &quot;wx/cmdline.h&quot;</code><br/>
+<code>#include &quot;wx/string.h&quot;</code><br/>
+<code>#include &quot;wx/debug.h&quot;</code><br/>
+<code>#include &quot;wx/thread.h&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d7/d49/mutDebugFlags_8h_source.html">mutDebugFlags.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Include-Abhängigkeitsdiagramm für mutDebug.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d3/d35/mutDebug_8h__incl.png" border="0" usemap="#src_2wxGUI_2generic_2mutDebug_8h" alt=""/></div>
+<map name="src_2wxGUI_2generic_2mutDebug_8h" id="src_2wxGUI_2generic_2mutDebug_8h">
+<area shape="rect" id="node21" href="../../d7/d49/mutDebugFlags_8h.html" title="Debug flags for mutabor debug mode. " alt="" coords="931,83,1064,111"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
 Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../df/df3/mutDebug_8h__dep__incl.png" border="0" usemap="#src_2wxGUI_2generic_2mutDebug_8hdep" alt=""/></div>
 <map name="src_2wxGUI_2generic_2mutDebug_8hdep" id="src_2wxGUI_2generic_2mutDebug_8hdep">
-<area shape="rect" id="node3" href="../../d0/d68/mhDefs_8h.html" title="src/wxGUI/generic/mhDefs.h" alt="" coords="2213,83,2413,111"/><area shape="rect" id="node17" href="../../d5/d1c/MutApp_8cpp.html" title="Mutabor Application. " alt="" coords="1443,486,1605,514"/><area shape="rect" id="node5" href="../../d2/d2f/mxDefs_8cpp.html" title="Uncategorized definitions. " alt="" coords="2135,161,2348,189"/><area shape="rect" id="node7" href="../../d2/df9/MutChild_8h.html" title="Mutabor Mutabor Child Frame management. " alt="" coords="309,161,464,189"/><area shape="rect" id="node11" href="../../dc/df3/MutFrame_8cpp.html" title="Mutabor Frame. " alt="" coords="259,409,437,437"/><area shape="rect" id="node32" href="../../d1/da4/MutEditFile_8cpp.html" title="Mutabor Edit window for Mutabor&#45;files. " alt="" coords="2295,409,2476,437"/><area shape="rect" id="node35" href="../../dc/def/MutRouteWnd_8cpp.html" title="Routing window. " alt="" coords="2697,409,2900,437"/><area shape="rect" id="node9" href="../../da/d72/MutChild_8cpp.html" title="src/wxGUI/MutChild.cpp" alt="" coords="367,323,537,351"/><area shape="rect" id="node13" href="../../dd/db5/MutFrame_8h.html" title="src/wxGUI/MutFrame.h" alt="" coords="1011,238,1173,266"/><area shape="rect" id="node45" href="../../df/d11/MutLogicWnd_8cpp.html" title="Logic window. " alt="" coords="44,323,241,351"/><area shape="rect" id="node65" href="../../d6/d81/MutLogicWnd_8h.html" title="src/wxGUI/MutLogicWnd.h" alt="" coords="231,238,415,266"/><area shape="rect" id="node15" href="../../d2/dd3/GUIBoxData_8cpp.html" title="src/wxGUI/GUIBoxData.cpp" alt="" coords="532,409,724,437"/><area shape="rect" id="node19" href="../../db/dc1/MutApp_8h.html" title="src/wxGUI/MutApp.h" alt="" coords="1604,323,1753,351"/><area shape="rect" id="node27" href="../../d9/d8f/MutConfDlg_8h.html" title="src/wxGUI/MutConfDlg.h" alt="" coords="2500,409,2673,437"/><area shape="rect" id="node37" href="../../d8/d33/MutView_8cpp.html" title="Document/View View class for Mutabor source files. " alt="" coords="1321,409,1487,437"/><area shape="rect" id="node48" href="../../df/d3c/MutTextBox_8cpp.html" title="Textbox for Lists. " alt="" coords="612,323,799,351"/><area shape="rect" id="node51" href="../../d0/d9e/MutView_8h.html" title="src/wxGUI/MutView.h" alt="" coords="1129,323,1281,351"/><area shape="rect" id="node60" href="../../d9/d94/DeviceShape_8cpp.html" title="Device shape base class for route window. " alt="" coords="823,315,1004,359"/><area shape="rect" id="node62" href="../../d4/dee/GUIRoute_8cpp.html" title="src/wxGUI/Routing/GUIRoute.cpp" alt="" coords="1305,323,1529,351"/><area shape="rect" id="node21" href="../../d4/dc0/mutDebug_8cpp.html" title="Some functions and classes to help to debug Mutabor. " alt="" coords="1561,409,1796,437"/><area shape="rect" id="node25" href="../../d7/db6/MutBitmaps_8cpp.html" title="Mutabor Bitmaps. " alt="" coords="1820,409,2012,437"/><area shape="rect" id="node30" href="../../d6/d3b/MutDocument_8cpp.html" title="Document/View Document class for Mutabor source files. " alt="" coords="1092,409,1297,437"/><area shape="rect" id="node39" href="../../d1/d28/RouteIcons_8cpp.html" title="Devices base classes. " alt="" coords="2036,409,2271,437"/><area shape="rect" id="node54" href="../../dd/db0/MutDocManager_8cpp.html" title="src/wxGUI/MutDocManager.cpp" alt="" coords="799,409,1017,437"/></map>
+<area shape="rect" id="node3" href="../../d0/d68/mhDefs_8h.html" title="src/wxGUI/generic/mhDefs.h" alt="" coords="2359,83,2559,111"/><area shape="rect" id="node35" href="../../d4/dc0/mutDebug_8cpp.html" title="Some functions and classes to help to debug Mutabor. " alt="" coords="3547,713,3781,741"/><area shape="rect" id="node37" href="../../d5/d1c/MutApp_8cpp.html" title="Mutabor Application. " alt="" coords="1468,806,1631,834"/><area shape="rect" id="node5" href="../../d1/d73/Defs_8h.html" title="Common definitions. " alt="" coords="2140,161,2268,189"/><area shape="rect" id="node23" href="../../dc/df3/MutFrame_8cpp.html" title="Mutabor Frame. " alt="" coords="159,806,337,834"/><area shape="rect" id="node25" href="../../d1/da4/MutEditFile_8cpp.html" title="Mutabor Edit window for Mutabor&#45;files. " alt="" coords="2167,713,2348,741"/><area shape="rect" id="node41" href="../../dc/def/MutRouteWnd_8cpp.html" title="Routing window. " alt="" coords="3269,713,3472,741"/><area shape="rect" id="node180" href="../../d2/df9/MutChild_8h.html" title="Mutabor Mutabor Child Frame management. " alt="" coords="5,246,160,274"/><area shape="rect" id="node183" href="../../d2/d2f/mxDefs_8cpp.html" title="Uncategorized definitions. " alt="" coords="3864,246,4077,274"/><area shape="rect" id="node7" href="../../d1/da4/boost-interface_8h.html" title="Interface to the boost library. " alt="" coords="1944,339,2141,367"/><area shape="rect" id="node9" href="../../d1/d65/Route_8h.html" title="Routing. " alt="" coords="2017,425,2151,469"/><area shape="rect" id="node11" href="../../de/d0f/Box_8h.html" title="Mutabor Box for C++. " alt="" coords="1597,518,1731,562"/><area shape="rect" id="node13" href="../../d4/d7c/CompDlg_8h.html" title="Compilation dialog box. " alt="" coords="1392,619,1549,647"/><area shape="rect" id="node15" href="../../d5/d84/Runtime_8h.html" title="Runtime functions of the (mainly C) old kernel of Mutabor. " alt="" coords="956,713,1108,741"/><area shape="rect" id="node17" href="../../df/d23/Execute_8cpp.html" title="src/kernel/Execute.cpp" alt="" coords="615,806,780,834"/><area shape="rect" id="node19" href="../../d9/d6a/CommonFileDevice-inlines_8h.html" title="src/kernel/routing\l/CommonFileDevice&#45;inlines.h" alt="" coords="1043,798,1248,842"/><area shape="rect" id="node21" href="../../dc/d72/CommonFileDevice_8cpp.html" title="src/kernel/routing\l/CommonFileDevice.cpp" alt="" coords="1581,891,1755,935"/><area shape="rect" id="node27" href="../../d2/d2c/Route-inlines_8h.html" title="src/kernel/routing\l/Route&#45;inlines.h" alt="" coords="1877,611,2011,655"/><area shape="rect" id="node30" href="../../d6/d9a/Box-inlines_8h.html" title="src/kernel/routing\l/Box&#45;inlines.h" alt="" coords="1284,705,1417,749"/><area shape="rect" id="node33" href="../../d2/dc0/Device_8cpp.html" title="Devices for routing. " alt="" coords="2529,798,2663,842"/><area shape="rect" id="node45" href="../../d1/db5/GIS__Head_8h.html" title="Description. " alt="" coords="2276,611,2409,655"/><area shape="rect" id="node47" href="../../da/d81/DevGIS_8h.html" title="src/kernel/routing\l/gmn/DevGIS.h" alt="" coords="2372,705,2505,749"/><area shape="rect" id="node51" href="../../de/d05/Device_8h.html" title="Routing. " alt="" coords="2404,518,2537,562"/><area shape="rect" id="node56" href="../../d9/d17/CommonFileDevice_8h.html" title="src/kernel/routing\l/CommonFileDevice.h" alt="" coords="2035,611,2195,655"/><area shape="rect" id="node60" href="../../da/d3c/DevMidF_8h.html" title="src/kernel/routing\l/midi/DevMidF.h" alt="" coords="2529,705,2663,749"/><area shape="rect" id="node64" href="../../d8/d4d/Device-inlines_8h.html" title="src/kernel/routing\l/Device&#45;inlines.h" alt="" coords="3476,611,3609,655"/><area shape="rect" id="node68" href="../../de/d21/midicmn_8h.html" title="src/kernel/routing\l/midi/midicmn.h" alt="" coords="2509,611,2643,655"/><area shape="rect" id="node70" href="../../d4/da2/DevMidi_8h.html" title="Classes for midi port. " alt="" coords="2009,705,2143,749"/><area shape="rect" id="node80" href="../../d9/d64/Mutabor_8rh.html" title="src/wxGUI/Mutabor.rh" alt="" coords="3683,246,3840,274"/><area shape="rect" id="node83" href="../../d4/d64/libintl_8h.html" title="src/wxintl/libintl.h" alt="" coords="2723,246,2851,274"/><area shape="rect" id="node86" href="../../db/dd5/thread_8h.html" title="src/kernel/routing\l/thread.h" alt="" coords="1957,238,2091,282"/><area shape="rect" id="node90" href="../../db/d41/timing_8h.html" title="src/kernel/routing\l/timing.h" alt="" coords="2421,425,2555,469"/><area shape="rect" id="node94" href="../../dc/d19/box_8h.html" title="Description: Collect all properties, which are used by boxes. " alt="" coords="637,433,760,461"/><area shape="rect" id="node96" href="../../d6/d0c/Parser_8h.html" title="src/kernel/Parser.h" alt="" coords="536,526,675,554"/><area shape="rect" id="node99" href="../../d2/d32/Hilfs_8h.html" title="Description. " alt="" coords="336,526,461,554"/><area shape="rect" id="node104" href="../../d0/dc8/mutlex_8cc.html" title="src/kernel/mutlex.cc" alt="" coords="3005,526,3155,554"/><area shape="rect" id="node106" href="../../dd/d40/Global_8h.html" title="Global definitions (formerly in mutabor DLL) " alt="" coords="437,246,576,274"/><area shape="rect" id="node109" href="../../d2/dd8/Interpre_8h.html" title="Interpreter for the logic at runtime. " alt="" coords="640,339,789,367"/><area shape="rect" id="node116" href="../../de/d11/Execute_8h.html" title="Execute tuning changes. " alt="" coords="813,339,963,367"/><area shape="rect" id="node124" href="../../d6/d68/TabGen_8h.html" title="Table generators for the Mutabor engine. " alt="" coords="2875,246,3021,274"/><area shape="rect" id="node126" href="../../d2/d0e/Errors_8h.html" title="Error descriptions for Mutabor. " alt="" coords="3045,246,3184,274"/><area shape="rect" id="node129" href="../../da/dfd/MidiKern_8h.html" title="src/kernel/MidiKern.h" alt="" coords="2525,339,2677,367"/><area shape="rect" id="node139" href="../../db/dbe/treestorage_8h.html" title="abstract class for tree like storage " alt="" coords="1696,339,1869,367"/><area shape="rect" id="node144" href="../../d3/daf/resourceload_8h.html" title="src/wxGUI/resourceload.h" alt="" coords="1341,526,1523,554"/><area shape="rect" id="node149" href="../../dd/d4d/GIS_8h.html" title="Description. " alt="" coords="2267,331,2400,375"/><area shape="rect" id="node153" href="../../dd/da2/GSP_8h.html" title="Description. " alt="" coords="1544,425,1677,469"/><area shape="rect" id="node155" href="../../df/d4f/Frac_8h.html" title="Fraction class for Mutabor. " alt="" coords="1808,246,1933,274"/><area shape="rect" id="node161" href="../../d1/d55/Interval_8h.html" title="Description. " alt="" coords="3208,246,3355,274"/><area shape="rect" id="node164" href="../../db/d15/mutlex_8h.html" title="src/kernel/mutlex.h" alt="" coords="3007,433,3151,461"/></map>
 </div>
 </div>
 <p><a href="../../de/de1/mutDebug_8h_source.html">gehe zum Quellcode dieser Datei</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Klassen</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d82/structnogetflag.html">nogetflag</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dbc/structdebugFlags.html">debugFlags</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d16/structdebugFlags_1_1flagtype.html">debugFlags::flagtype</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d5f/structdebugFlags_1_1nogetflag.html">debugFlags::nogetflag</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/de5/structdebugFlags_1_1nosetflag.html">debugFlags::nosetflag</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d82/classwatchedPtr.html">watchedPtr&lt; T, flag, P &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d45/classmutabor__backtrace.html">mutabor_backtrace</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Makrodefinitionen</h2></td></tr>
-<tr class="memitem:gad51281d5c23e4daa2d7f85fc94935239"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gad51281d5c23e4daa2d7f85fc94935239">isDebugFlag</a>(level)&#160;&#160;&#160;false</td></tr>
+<tr class="memitem:a105f28eeee4fcf945785d64adfe0c03c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de1/mutDebug_8h.html#a105f28eeee4fcf945785d64adfe0c03c">DEBUGFLAG</a>(flag, description)&#160;&#160;&#160;bool flag:1;</td></tr>
+<tr class="separator:a105f28eeee4fcf945785d64adfe0c03c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a105f28eeee4fcf945785d64adfe0c03c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de1/mutDebug_8h.html#a105f28eeee4fcf945785d64adfe0c03c">DEBUGFLAG</a>(flag, description)</td></tr>
+<tr class="separator:a105f28eeee4fcf945785d64adfe0c03c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad51281d5c23e4daa2d7f85fc94935239"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gad51281d5c23e4daa2d7f85fc94935239">isDebugFlag</a>(level)&#160;&#160;&#160;(debugFlags::flags.level)</td></tr>
 <tr class="separator:gad51281d5c23e4daa2d7f85fc94935239"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7c13600c17b7e363d86333bfc6aa54f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga7c13600c17b7e363d86333bfc6aa54f3">DEBUGLOGBASEINT</a>(...)&#160;&#160;&#160;do {} <a class="el" href="../../d0/dc8/mutlex_8cc.html#a8fdafe3be7e00ce3d4f0cb50a9a5eb39">while</a> (0)</td></tr>
-<tr class="separator:ga7c13600c17b7e363d86333bfc6aa54f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3afe596b4b512260d559f255fb3bf1ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga3afe596b4b512260d559f255fb3bf1ac">DEBUGLOGBASE</a>(...)&#160;&#160;&#160;do {} <a class="el" href="../../d0/dc8/mutlex_8cc.html#a8fdafe3be7e00ce3d4f0cb50a9a5eb39">while</a> (0)</td></tr>
-<tr class="separator:ga3afe596b4b512260d559f255fb3bf1ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga391d61b0297bf03db59dad4f6b8457ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga391d61b0297bf03db59dad4f6b8457ab">PRINTSIZER</a>(X)&#160;&#160;&#160;do {} <a class="el" href="../../d0/dc8/mutlex_8cc.html#a8fdafe3be7e00ce3d4f0cb50a9a5eb39">while</a> (0)</td></tr>
-<tr class="separator:ga391d61b0297bf03db59dad4f6b8457ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0191db36d7964b7c93f9e7b540a48db2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga0191db36d7964b7c93f9e7b540a48db2">mutRefCast</a>(type, value)&#160;&#160;&#160;static_cast&lt;type &amp;&gt;(value)</td></tr>
+<tr class="memitem:gab475101c1cda2d31db31ead0063256cd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gab475101c1cda2d31db31ead0063256cd">DEBUGLOGBASEINT</a>(level, strlevel, type,...)</td></tr>
+<tr class="separator:gab475101c1cda2d31db31ead0063256cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad560e978679769465ab60d51d4f1d1f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gad560e978679769465ab60d51d4f1d1f6">DEBUGLOGBASE</a>(level, type,...)&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#gab475101c1cda2d31db31ead0063256cd">DEBUGLOGBASEINT</a>(debugFlags::flags.level,#level,type,__VA_ARGS__)</td></tr>
+<tr class="separator:gad560e978679769465ab60d51d4f1d1f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0191db36d7964b7c93f9e7b540a48db2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga0191db36d7964b7c93f9e7b540a48db2">mutRefCast</a>(type, value)&#160;&#160;&#160;dynamic_cast&lt;type &amp;&gt;(value)</td></tr>
 <tr class="separator:ga0191db36d7964b7c93f9e7b540a48db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9aed8740f47ad4601d8252e4e77fc46b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga9aed8740f47ad4601d8252e4e77fc46b">mutPtrCast</a>(type, value)&#160;&#160;&#160;static_cast&lt;type *&gt;(value)</td></tr>
+<tr class="memitem:ga9aed8740f47ad4601d8252e4e77fc46b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga9aed8740f47ad4601d8252e4e77fc46b">mutPtrCast</a>(type, value)&#160;&#160;&#160;(wxASSERT(dynamic_cast&lt;type *&gt;(value)), dynamic_cast&lt;type *&gt;(value))</td></tr>
 <tr class="separator:ga9aed8740f47ad4601d8252e4e77fc46b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1cb0494257f81c4e6622c0502ab0059b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga1cb0494257f81c4e6622c0502ab0059b">mutPtrDynCast</a>(type, value)&#160;&#160;&#160;dynamic_cast&lt;type *&gt;(value)</td></tr>
-<tr class="separator:ga1cb0494257f81c4e6622c0502ab0059b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga86ae1dca49d692e6adabb3ba38154f09"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(level,...)&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga3afe596b4b512260d559f255fb3bf1ac">DEBUGLOGBASE</a>(level, typeid(*this).name(),__VA_ARGS__)</td></tr>
+<tr class="memitem:ga4d3b42c436f8c66f00fb8a700bff9110"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga4d3b42c436f8c66f00fb8a700bff9110">mutPtrDynCast</a>&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga9aed8740f47ad4601d8252e4e77fc46b">mutPtrCast</a></td></tr>
+<tr class="separator:ga4d3b42c436f8c66f00fb8a700bff9110"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga86ae1dca49d692e6adabb3ba38154f09"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(level,...)&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#gad560e978679769465ab60d51d4f1d1f6">DEBUGLOGBASE</a>(level, typeid(*this).name(),__VA_ARGS__)</td></tr>
 <tr class="separator:ga86ae1dca49d692e6adabb3ba38154f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad0fa697ccfdac1d20857a4359add2996"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gad0fa697ccfdac1d20857a4359add2996">DEBUGLOG2</a>(level,...)&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga3afe596b4b512260d559f255fb3bf1ac">DEBUGLOGBASE</a>(level, _T(&quot;&quot;),__VA_ARGS__)</td></tr>
+<tr class="memitem:gad0fa697ccfdac1d20857a4359add2996"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gad0fa697ccfdac1d20857a4359add2996">DEBUGLOG2</a>(level,...)&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#gad560e978679769465ab60d51d4f1d1f6">DEBUGLOGBASE</a>(level, _T(&quot;&quot;),__VA_ARGS__)</td></tr>
 <tr class="separator:gad0fa697ccfdac1d20857a4359add2996"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9de22df51e7efa23154a04eab9e66cad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga9de22df51e7efa23154a04eab9e66cad">DEBUGLOGTYPE</a>(level, type,...)&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga3afe596b4b512260d559f255fb3bf1ac">DEBUGLOGBASE</a>(level, typeid(type).name(), __VA_ARGS__)</td></tr>
+<tr class="memitem:ga9de22df51e7efa23154a04eab9e66cad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga9de22df51e7efa23154a04eab9e66cad">DEBUGLOGTYPE</a>(level, type,...)&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#gad560e978679769465ab60d51d4f1d1f6">DEBUGLOGBASE</a>(level, typeid(type).name(), __VA_ARGS__)</td></tr>
 <tr class="separator:ga9de22df51e7efa23154a04eab9e66cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9f7c0ab5b0db6d8abc460bd962667633"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga9f7c0ab5b0db6d8abc460bd962667633">DEBUGLOGTYPEINT</a>(level, strlevel, type,...)&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga7c13600c17b7e363d86333bfc6aa54f3">DEBUGLOGBASEINT</a>(level, strlevel, typeid(type).name(), __VA_ARGS__)</td></tr>
+<tr class="memitem:ga9f7c0ab5b0db6d8abc460bd962667633"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga9f7c0ab5b0db6d8abc460bd962667633">DEBUGLOGTYPEINT</a>(level, strlevel, type,...)&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#gab475101c1cda2d31db31ead0063256cd">DEBUGLOGBASEINT</a>(level, strlevel, typeid(type).name(), __VA_ARGS__)</td></tr>
 <tr class="separator:ga9f7c0ab5b0db6d8abc460bd962667633"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaad9cc64d45a76ba0d37c00f8cd9caa37"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gaad9cc64d45a76ba0d37c00f8cd9caa37">TRACE</a>&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga3afe596b4b512260d559f255fb3bf1ac">DEBUGLOGBASE</a>(trace,_T(&quot;&quot;),_T(&quot;.&quot;))</td></tr>
+<tr class="memitem:gaad9cc64d45a76ba0d37c00f8cd9caa37"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gaad9cc64d45a76ba0d37c00f8cd9caa37">TRACE</a>&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#gad560e978679769465ab60d51d4f1d1f6">DEBUGLOGBASE</a>(trace,_T(&quot;&quot;),_T(&quot;.&quot;))</td></tr>
 <tr class="separator:gaad9cc64d45a76ba0d37c00f8cd9caa37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga86acd9c1c30c8cb1831b46da11b1ec62"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(trace,_T(&quot;.&quot;))</td></tr>
 <tr class="separator:ga86acd9c1c30c8cb1831b46da11b1ec62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga556434a0102a112e3dd0c2849d5e36fd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga556434a0102a112e3dd0c2849d5e36fd">TRACET</a>(type)&#160;&#160;&#160;<a class="el" href="../../de/db7/group__debug.html#ga9de22df51e7efa23154a04eab9e66cad">DEBUGLOGTYPE</a>(trace,type,_T(&quot;.&quot;))</td></tr>
 <tr class="separator:ga556434a0102a112e3dd0c2849d5e36fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaab4d9ab34f40c3e65ae4b48e25aec5d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gaab4d9ab34f40c3e65ae4b48e25aec5d0">WATCHEDPTR</a>(T, f, P)&#160;&#160;&#160;<a class="el" href="../../dd/d82/classwatchedPtr.html">watchedPtr</a>&lt;T,<a class="el" href="../../d2/d82/structnogetflag.html">nogetflag</a>,P&gt;</td></tr>
+<tr class="memitem:gaab4d9ab34f40c3e65ae4b48e25aec5d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gaab4d9ab34f40c3e65ae4b48e25aec5d0">WATCHEDPTR</a>(T, f, P)&#160;&#160;&#160;<a class="el" href="../../dd/d82/classwatchedPtr.html">watchedPtr</a>&lt;T,debugFlags::get##f,P&gt;</td></tr>
 <tr class="separator:gaab4d9ab34f40c3e65ae4b48e25aec5d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac36bf26db9b8eee44c2ecf1aedd244c6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gac36bf26db9b8eee44c2ecf1aedd244c6">DEFWATCHEDPTR</a></td></tr>
 <tr class="separator:gac36bf26db9b8eee44c2ecf1aedd244c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga69f1fd7d0d4f34dbea0acff2e92b7460"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga69f1fd7d0d4f34dbea0acff2e92b7460">debug_destroy_class</a>(ptr)&#160;&#160;&#160;debug_destroy_class(ptr,__FILE__,__LINE__)</td></tr>
 <tr class="separator:ga69f1fd7d0d4f34dbea0acff2e92b7460"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typdefinitionen</h2></td></tr>
+<tr class="memitem:ga905e23bdc4c01a85a39bc52a66a1460f"><td class="memItemLeft" align="right" valign="top">typedef wxMutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga905e23bdc4c01a85a39bc52a66a1460f">debugMutex</a></td></tr>
+<tr class="separator:ga905e23bdc4c01a85a39bc52a66a1460f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe7c6cfa83e54e848cd7a5bf7212c5f9"><td class="memItemLeft" align="right" valign="top">typedef wxMutexLocker&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gafe7c6cfa83e54e848cd7a5bf7212c5f9">debugScopedLock</a></td></tr>
+<tr class="separator:gafe7c6cfa83e54e848cd7a5bf7212c5f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funktionen</h2></td></tr>
+<tr class="memitem:gae7c707573d355e5f9014404f474678c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gae7c707573d355e5f9014404f474678c5">MutInitConsole</a> ()</td></tr>
+<tr class="separator:gae7c707573d355e5f9014404f474678c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga33e4d2337c0d8d97f3f9527159d490a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga33e4d2337c0d8d97f3f9527159d490a0">debug_destroy_class</a> (void *ptr, std::string file, int l)</td></tr>
 <tr class="separator:ga33e4d2337c0d8d97f3f9527159d490a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad832f7644d01ea65a5de5dc9ba942d11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gad832f7644d01ea65a5de5dc9ba942d11">debug_destruct_class</a> (void *ptr)</td></tr>
@@ -101,8 +139,15 @@ Funktionen</h2></td></tr>
 <tr class="separator:ga15f8c412cd184d3b64d2deac2e3f74e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga886d7604932ac35111800f57ea4a5a43"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga886d7604932ac35111800f57ea4a5a43">debug_is_all_deleted</a> ()</td></tr>
 <tr class="separator:ga886d7604932ac35111800f57ea4a5a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac908946f1bdd24771819f3aa4e618102"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gac908946f1bdd24771819f3aa4e618102">print_stacktrace</a> (bool flag)</td></tr>
+<tr class="separator:gac908946f1bdd24771819f3aa4e618102"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga711968cbebc4d3b87c0c9f765213bbd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga711968cbebc4d3b87c0c9f765213bbd4">mutAssertFailure</a> (<a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> wxChar *file, int line, <a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> wxChar *func, <a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> wxChar *cond, <a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> wxChar *msg)</td></tr>
 <tr class="separator:ga711968cbebc4d3b87c0c9f765213bbd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variablen</h2></td></tr>
+<tr class="memitem:gaf536fca98e75ff393f391b9bee51c85d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/db7/group__debug.html#ga905e23bdc4c01a85a39bc52a66a1460f">debugMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gaf536fca98e75ff393f391b9bee51c85d">debugmutex</a></td></tr>
+<tr class="separator:gaf536fca98e75ff393f391b9bee51c85d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
 <div class="textblock"><p>Main debugging functions. </p>
@@ -113,8 +158,73 @@ Funktionen</h2></td></tr>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA </p>
 
 <p>Definiert in Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Makro-Dokumentation</h2>
+<a class="anchor" id="a105f28eeee4fcf945785d64adfe0c03c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGFLAG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">flag, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">description&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;bool flag:1;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00088">88</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a105f28eeee4fcf945785d64adfe0c03c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGFLAG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">flag, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">description&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Wert:</b><div class="fragment"><div class="line"><span class="keyword">struct </span>get ## flag {                                    \</div>
+<div class="line">                bool operator()()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> flags.flag; }  \</div>
+<div class="line">        };                                                      \</div>
+<div class="line">        struct set ## flag {                                    \</div>
+<div class="line">                void operator()(<span class="keywordtype">bool</span> value=<span class="keyword">true</span>)<span class="keyword"> const </span>{        \</div>
+<div class="line">                        flags.flag = value;                     \</div>
+<div class="line">                }                                               \</div>
+<div class="line">        };</div>
+</div><!-- fragment -->
+<p>Definiert in Zeile <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00088">88</a> der Datei <a class="el" href="../../de/de1/mutDebug_8h_source.html">mutDebug.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:41 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:19 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

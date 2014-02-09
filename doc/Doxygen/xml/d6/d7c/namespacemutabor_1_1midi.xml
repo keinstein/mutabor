@@ -1,0 +1,1416 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="d6/d7c/namespacemutabor_1_1midi" kind="namespace">
+    <compoundname>mutabor::midi</compoundname>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40e" prot="public" static="no">
+        <name>midi_command</name>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ead35b3866e37a78e1cc4295e63979ef6e" prot="public">
+          <name>NOTE_OFF</name>
+          <initializer>= 0x80</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eabcf966a1839e3e35f6e60752e80b1d1a" prot="public">
+          <name>NOTE_ON</name>
+          <initializer>= 0x90</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea61a700f046f099b73b86870d9c4e3e9a" prot="public">
+          <name>AFTER_TOUCH</name>
+          <initializer>= 0xA0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eab6eb91d4667f9fb9f162bbeae3ed23d2" prot="public">
+          <name>KEY_PRESSURE</name>
+          <initializer>= 0xA0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eabd8152734c0a8cb12f11f2b164df0e75" prot="public">
+          <name>CONTROLLER</name>
+          <initializer>= 0xB0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eaa7c0c9dd640fb213255c9b5176623009" prot="public">
+          <name>PROGRAM_CHANGE</name>
+          <initializer>= 0xC0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea36825b9d33417a47a35f079501d2f8c7" prot="public">
+          <name>CHANNEL_PRESSURE</name>
+          <initializer>= 0xD0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea3c3c04675b1977717bbeefbe2296e7c6" prot="public">
+          <name>PITCH_BEND</name>
+          <initializer>= 0xE0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eab3977b2c3228dda6d08ad9177f350676" prot="public">
+          <name>SYSTEM</name>
+          <initializer>= 0xF0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea9b1eab461457cda726681eedea0a5505" prot="public">
+          <name>SYSEX_START</name>
+          <initializer>= 0xF0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ead1fac92a547fa123ca5500c075908ca4" prot="public">
+          <name>QUARTER_FRAME</name>
+          <initializer>= 0xF1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea26a84b354a54afaf1c0929ca48337ea4" prot="public">
+          <name>SONG_POSITION</name>
+          <initializer>= 0xF2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eac05c2c255ba453932c6bd2385c67a2fd" prot="public">
+          <name>SONG_SELECT</name>
+          <initializer>= 0xF3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea23cf0840cf227463d6d436b1375c465c" prot="public">
+          <name>TUNE_REQUEST</name>
+          <initializer>= 0xF6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea0a53af595ed2e1a23a8c671e3e043a62" prot="public">
+          <name>SYSEX_END</name>
+          <initializer>= 0xF7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eaa974601792066f75ac4a0a45f1655ba2" prot="public">
+          <name>CLOCK</name>
+          <initializer>= 0xF8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea97cae8ff9181e0c31077e7f9e4baa004" prot="public">
+          <name>TICK</name>
+          <initializer>= 0xF9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eab9213998abc464824cce1031b47c0938" prot="public">
+          <name>START_PLAY</name>
+          <initializer>= 0xFA</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eab8827c43d0c87b70707e6844eefe02d6" prot="public">
+          <name>CONTINUE_PLAY</name>
+          <initializer>= 0xFB</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea10f6a089ddbb6272bfc0308d104f17df" prot="public">
+          <name>STOP_PLAY</name>
+          <initializer>= 0xFC</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eaea5706f32a51b36323f3f0d9046eed71" prot="public">
+          <name>ACTIVE_SENSE</name>
+          <initializer>= 0xFE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eae1211222a3284d995f61eacd0ea78d24" prot="public">
+          <name>RESET</name>
+          <initializer>= 0xFF</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea597b963d24128a1986fd4baf63ffbdf1" prot="public">
+          <name>META</name>
+          <initializer>= 0xFF</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eacb47ba03df90c8782b579b91f6d95bd3" prot="public">
+          <name>STARTBYTE_MASK</name>
+          <initializer>= 0x80</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea9f439d666fbc455c95a8057763ab8f18" prot="public">
+          <name>TYPE_MASK</name>
+          <initializer>= 0xF0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eab15ee99712034c677e9dd5ea82333077" prot="public">
+          <name>CHANNEL_MASK</name>
+          <initializer>= 0x0F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="138" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="138" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="enum" id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffd" prot="public" static="no">
+        <name>midi_meta_types</name>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffdaf9c293675180fe90b0923e8dafe8542d" prot="public">
+          <name>META_SEQUENCE_NUMBER</name>
+          <initializer>= 0x00</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffda1c7c49c2980dc4722f7fe6bc739b3d91" prot="public">
+          <name>META_EVENT_TEXT</name>
+          <initializer>= 0x01</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffda8e4fd9aa736478342b9b15dbc19b89da" prot="public">
+          <name>META_COPYRIGHT_NOTICE</name>
+          <initializer>= 0x02</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffdac2175bb60384bf1fc2292e0650af9af0" prot="public">
+          <name>META_SEQUENCE_NAME</name>
+          <initializer>= 0x03</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffda69a6993a2dee6c5783934379fbc9805d" prot="public">
+          <name>META_TRACK_NAME</name>
+          <initializer>= 0x03</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffda09683e7e9f34ccf783e6bec3881fd87d" prot="public">
+          <name>META_INSTRUMENT_NAME</name>
+          <initializer>= 0x04</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffdaa61416e825311edacb2c0addad2730a9" prot="public">
+          <name>META_LYRIC</name>
+          <initializer>= 0x05</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffdaf6cb26f4d56de63b9b498ec4f52d95bd" prot="public">
+          <name>META_MARKER</name>
+          <initializer>= 0x06</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffda708593205301dde34bfe5a5d0b69164c" prot="public">
+          <name>META_CUE_POINT</name>
+          <initializer>= 0x07</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffda38f96b4e96e7efa5919ce33df526e3ad" prot="public">
+          <name>META_CHANNEL_PREFIX</name>
+          <initializer>= 0x20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffdaa140735b48da609d6de75ee89c131ae6" prot="public">
+          <name>META_END_OF_TRACK</name>
+          <initializer>= 0x2F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffdade3ddc0af369117acbd511e943cfc9c9" prot="public">
+          <name>META_SET_TEMPO</name>
+          <initializer>= 0x51</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffdaaf2c653030f8e20e9645b2d13c09095a" prot="public">
+          <name>META_SMPTE_OFFSET</name>
+          <initializer>= 0x54</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffda24568318c7af8338f0ddd4baaa96ed02" prot="public">
+          <name>META_TIME_SIGNATURE</name>
+          <initializer>= 0x58</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffdae263bb0c81f7f77264f55aa155f43042" prot="public">
+          <name>META_KEY_SIGNATURE</name>
+          <initializer>= 0x59</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffda68e020237d76f185e93e8fe97f939e4a" prot="public">
+          <name>META_SEQUENCER_SPECIFIC</name>
+          <initializer>= 0x7F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="171" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="171" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="enum" id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690" prot="public" static="no">
+        <name>midi_controller_indices</name>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a72f4639ed6405c3bc9f0a1a418d144e1" prot="public">
+          <name>BANK_COARSE</name>
+          <initializer>= 0x00</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690af630a1b7087e0a28dd1cf7c77fd5b9f8" prot="public">
+          <name>MODULATION_WHEEL_COARSE</name>
+          <initializer>= 0x01</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690af7e42b597def8d28b571c17e1b08f271" prot="public">
+          <name>BREATH_COARSE</name>
+          <initializer>= 0x02</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a54503aec84da7ae3eb3075654b4f039a" prot="public">
+          <name>FOOT_PEDAL_COARSE</name>
+          <initializer>= 0x04</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab907947118e018222105561719762810" prot="public">
+          <name>PORTAMENTO_TIME_COARSE</name>
+          <initializer>= 0x05</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a50f8001256967efcc2ce0bb2e12a7719" prot="public">
+          <name>DATA_ENTRY_COARSE</name>
+          <initializer>= 0x06</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ac13558b51564d48325a17a30bd6ca60c" prot="public">
+          <name>VOLUME_COARSE</name>
+          <initializer>= 0x07</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab8d53ffbe68d697db2ba67efdf7693fb" prot="public">
+          <name>BALANCE_COARSE</name>
+          <initializer>= 0x08</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2ae69cfd358da115d0c12a886b4b7d63" prot="public">
+          <name>PAN_POSITION_COARSE</name>
+          <initializer>= 0x0A</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a4b652cce4c21b0da2bc79a91f6eaea85" prot="public">
+          <name>EXPRESSION_COARSE</name>
+          <initializer>= 0x0B</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690aa786bd389ce2fa182aec162971e665ab" prot="public">
+          <name>EFFECT_CONTROL_1_COARSE</name>
+          <initializer>= 0x0C</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1d9eb03c6803e108acf18ee50d09bbb5" prot="public">
+          <name>EFFECT_CONTROL_2_COARSE</name>
+          <initializer>= 0x0D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a6e016470c55165602a55963dc0639f97" prot="public">
+          <name>GENERAL_PURPOSE_SLIDER_1</name>
+          <initializer>= 0x10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab85a55fbdd75428ea28d9ae1c35b44e7" prot="public">
+          <name>GENERAL_PURPOSE_SLIDER_2</name>
+          <initializer>= 0x11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab42be1493452f5607d77e75e66c38406" prot="public">
+          <name>GENERAL_PURPOSE_SLIDER_3</name>
+          <initializer>= 0x12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a3b3404e6cf73bf30311e7c7beb436bf0" prot="public">
+          <name>GENERAL_PURPOSE_SLIDER_4</name>
+          <initializer>= 0x13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2ae19744f2675efa5adbf496ff0d15af" prot="public">
+          <name>BANK_FINE</name>
+          <initializer>= 0x20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a91793b9a748d32045dde618a1cde3663" prot="public">
+          <name>MODULATION_WHEEL_FINE</name>
+          <initializer>= 0x21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1671cc164b40c98d56ac9fcd08a880fe" prot="public">
+          <name>BREATH_FINE</name>
+          <initializer>= 0x22</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a9408017cd27ff092515409cbeb162a5b" prot="public">
+          <name>FOOT_PEDAL_FINE</name>
+          <initializer>= 0x24</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a6eeb7a3e140d860f8f094cbd4ca43aa6" prot="public">
+          <name>PORTAMENTO_TIME_FINE</name>
+          <initializer>= 0x25</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a22176ce40c18ca09338078a8597983cb" prot="public">
+          <name>DATA_ENTRY_FINE</name>
+          <initializer>= 0x26</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a828f4887d4c445515ceab73a6bee4131" prot="public">
+          <name>VOLUME_FINE</name>
+          <initializer>= 0x27</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690aaa7046a72813995eccc746820fc2c870" prot="public">
+          <name>BALANCE_FINE</name>
+          <initializer>= 0x28</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a980c8da0ae50e930d65e675752b3baab" prot="public">
+          <name>PAN_POSITION_FINE</name>
+          <initializer>= 0x2A</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690adf5280adf17be2bd5275bc9234ff1aca" prot="public">
+          <name>EXPRESSION_FINE</name>
+          <initializer>= 0x2B</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a5223daefb8c342f09d9f56ae59c11c27" prot="public">
+          <name>EFFECT_CONTROL_1_FINE</name>
+          <initializer>= 0x2C</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a8ae59e83cac6296fcc195b8fe255564f" prot="public">
+          <name>EFFECT_CONTROL_2_FINE</name>
+          <initializer>= 0x2D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a5fdd60dfbded8880ad67ef1b3d9fafc5" prot="public">
+          <name>HOLD_PEDAL_ON_OFF</name>
+          <initializer>= 0x40</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ad7f826fbe49c7dcd25aae5f4d8121a2c" prot="public">
+          <name>PORTAMENTO_ON_OFF</name>
+          <initializer>= 0x41</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a01bfd85977a0ae1e40cc9cca8de365d8" prot="public">
+          <name>SOSTENUTO_ON_OFF</name>
+          <initializer>= 0x42</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a68b95d0399e786cacdd105c721930d03" prot="public">
+          <name>CHORD_HOLD_PEDAL_ON_OFF</name>
+          <initializer>= 0x42</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690afce34ace011ae065cd79a02593a6e78e" prot="public">
+          <name>SOFT_PEDAL_ON_OFF</name>
+          <initializer>= 0x43</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a10e8cb47d9f82c5c4e45840da2f31c1a" prot="public">
+          <name>LEGATO_PEDAL_ON_OFF</name>
+          <initializer>= 0x44</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1daafb4ac99543293a3a23e6ca63d1ae" prot="public">
+          <name>HOLD_2_PEDAL_ON_OFF</name>
+          <initializer>= 0x45</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab2c42d6638bdf236afea785485b958f9" prot="public">
+          <name>SOUND_VARIATION</name>
+          <initializer>= 0x46</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ac1254e969482276d569b199b6e7fcfc6" prot="public">
+          <name>SOUND_TIMBRE</name>
+          <initializer>= 0x47</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a01a3ff8faed2d1482c473891b3d22a74" prot="public">
+          <name>SOUND_RELEASE_TIME</name>
+          <initializer>= 0x48</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ad6815b3b7d60ffc86add234d7b980546" prot="public">
+          <name>SOUND_ATTACK_TIME</name>
+          <initializer>= 0x49</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a11d713041ac748f455566a62f1f7a196" prot="public">
+          <name>SOUND_BRIGHTNESS</name>
+          <initializer>= 0x4A</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690aef049305a1911c27cbde99b71d835001" prot="public">
+          <name>SOUND_6</name>
+          <initializer>= 0x4B</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab6d2d20036f301ecfe41ea154161839d" prot="public">
+          <name>SOUND_DECAY_TIME</name>
+          <initializer>= 0x4B</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a6ddcbbdbb91ec43438f2a1f8ce18e557" prot="public">
+          <name>SOUND_7</name>
+          <initializer>= 0x4C</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a6dbfac5ea3e83fe91fcd45216e75a1f4" prot="public">
+          <name>SOUND_VIBRATO_RATE</name>
+          <initializer>= 0x4C</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a4c3f98191ec0dfef34996e5f6823c377" prot="public">
+          <name>SOUND_8</name>
+          <initializer>= 0x4D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690af4770d4535fb1dbd166c2a9e41e7710e" prot="public">
+          <name>SOUND_VIBRATO_DEPTH</name>
+          <initializer>= 0x4D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a02d073ef6e0e152512da2a24496c080d" prot="public">
+          <name>SOUND_9</name>
+          <initializer>= 0x4E</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a972c1e03dc4553efae3ca4d98a0d9df6" prot="public">
+          <name>SOUND_VIBRATO_DELAY</name>
+          <initializer>= 0x4E</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a52b0a6d3715d5431a05c1f83ef07a373" prot="public">
+          <name>SOUND_10</name>
+          <initializer>= 0x4F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a5f77a9f26accc38995c576156002a029" prot="public">
+          <name>GENERAL_PURPOSE_ON_OFF_1</name>
+          <initializer>= 0x50</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690acf7c64b9a0746ac58da3708b4a61b91c" prot="public">
+          <name>GENERAL_PURPOSE_ON_OFF_2</name>
+          <initializer>= 0x51</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a7de791c4b02a8b6ceccd501b21ea033a" prot="public">
+          <name>GENERAL_PURPOSE_ON_OFF_3</name>
+          <initializer>= 0x52</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a41d8abe3a20694780eb9754eea507d09" prot="public">
+          <name>GENERAL_PURPOSE_ON_OFF_4</name>
+          <initializer>= 0x53</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1e421feb8b3b7080e035342e649c6d30" prot="public">
+          <name>EFFECTS_LEVEL</name>
+          <initializer>= 0x5B</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a48bd4b330b9c7fa7386aa4e747302170" prot="public">
+          <name>TREMULO_LEVEL</name>
+          <initializer>= 0x5C</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a54ca8460206d646f3fd8a168f83e8519" prot="public">
+          <name>CHORUS_LEVEL</name>
+          <initializer>= 0x5D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a7c92bed5ab7e12063e3422eaa32941b5" prot="public">
+          <name>CELESTE_LEVEL</name>
+          <initializer>= 0x5E</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a886da9a90f840706cd825b3b09c64f6a" prot="public">
+          <name>PHASER_LEVEL</name>
+          <initializer>= 0x5F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1757a57e5c3c68ee51a6959e2bb840f3" prot="public">
+          <name>DATA_BUTTON_INCREMENT</name>
+          <initializer>= 0x60</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690abf4f3537c3ccdddad0b024f29d6e113a" prot="public">
+          <name>DATA_BUTTON_DECREMENT</name>
+          <initializer>= 0x61</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a771f0abdc9e5112ecd96987d3d02934a" prot="public">
+          <name>NON_REGISTERED_PARAMETER_FINE</name>
+          <initializer>= 0x62</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690af9d82eaeef29ceca61119b1f65bf082b" prot="public">
+          <name>NON_REGISTERED_PARAMETER_COARSE</name>
+          <initializer>= 0x63</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a652b497ded1d78e4983655cb066ebaf7" prot="public">
+          <name>REGISTERED_PARAMETER_FINE</name>
+          <initializer>= 0x64</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ae247831f44bd19de81de26eefa60f88a" prot="public">
+          <name>REGISTERED_PARAMETER_COARSE</name>
+          <initializer>= 0x65</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690aff3ec02ce2ffe0bb1faa74c37349e9f5" prot="public">
+          <name>ALL_SOUND_OFF</name>
+          <initializer>= 0x78</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2a3431989dc0fddea1502205bfc0a586" prot="public">
+          <name>ALL_CONTROLLERS_OFF</name>
+          <initializer>= 0x79</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a97fe532b2fcd5e16112a886fdda11dcb" prot="public">
+          <name>LOCAL_ON_OFF</name>
+          <initializer>= 0x7A</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab041c3cb773862382dd34db3f6a8ca35" prot="public">
+          <name>ALL_NOTES_OFF</name>
+          <initializer>= 0x7B</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab20fc26ad14179a9ba29270509f5c908" prot="public">
+          <name>OMNI_OFF</name>
+          <initializer>= 0x7C</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1869ff44ef4942e884f36fcc707cf561" prot="public">
+          <name>OMNI_ON</name>
+          <initializer>= 0x7D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2932f1c1103e325a6bfab3e7177c0f94" prot="public">
+          <name>MONO_ON</name>
+          <initializer>= 0x7E</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2cf87a8dcfa0c5012d5c0c67b3e090a2" prot="public">
+          <name>POLY_OFF</name>
+          <initializer>= 0x7E</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a355d09b86b55d2949b711e1e5a9a2d04" prot="public">
+          <name>MONO_OFF</name>
+          <initializer>= 0x7F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690aa51ceb9f345863cafa21214dd0db92fa" prot="public">
+          <name>POLY_ON</name>
+          <initializer>= 0x7F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="190" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="190" bodyend="298"/>
+      </memberdef>
+      <memberdef kind="enum" id="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27" prot="public" static="no">
+        <name>midi_controller_values</name>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27a521f863b768cb2f85af8cc11c640c2aa" prot="public">
+          <name>CONTROLLER_MAX</name>
+          <initializer>= 0x7F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27ae4f2d159fa4d3e002cb07a7e8965c3d4" prot="public">
+          <name>CONTROLLER_ON</name>
+          <initializer>= 0x7F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27a89184ca43c6f79a770527b276d683cfd" prot="public">
+          <name>CONTROLLER_MIN_ON</name>
+          <initializer>= 0x40</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27adae27d72b22807637f8854846301a14f" prot="public">
+          <name>CONTROLLER_CENTRE</name>
+          <initializer>= 0x40</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27a81de814270aeba4fda7cbba13e270c31" prot="public">
+          <name>CONTROLLER_MAX_OFF</name>
+          <initializer>= 0x3F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27a87f4758d20b924d208196b5b6070a0c7" prot="public">
+          <name>CONTROLLER_OFF</name>
+          <initializer>= 0X00</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27a93c2ead469cc42fd30ae5ff9f7ee7316" prot="public">
+          <name>CONTROLLER_UNKNOWN</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27ae99e567f1768f734be6b5a47149eafa4" prot="public">
+          <name>CONTROLLER_UNKNOWN_NOSEND</name>
+          <initializer>= -2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="302" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="302" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="enum" id="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108" prot="public" static="no">
+        <name>midi_registered_parameters</name>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108a0940eef2e74ab0138c40cc1d406aa53f" prot="public">
+          <name>FIRST_RPN</name>
+          <initializer>= 0x10000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108aca36497719a3b0763eda347ede9d6f61" prot="public">
+          <name>PITCH_BEND_SENSITIVITY</name>
+          <initializer>= 0x10000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108a02f0d0b982e85f82f24d73fa15a1fa5a" prot="public">
+          <name>CHANNEL_FINE_TUNING</name>
+          <initializer>= 0x10001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108aae56e3ee2740d8f64658184dcee03d26" prot="public">
+          <name>CHANNEL_COARSE_TUNING</name>
+          <initializer>= 0x10002</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108afb40c52bde340a0b86045a12974310d6" prot="public">
+          <name>MODULATION_DEPTH_RANGE</name>
+          <initializer>= 0x10005</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108afd034e24f96d3cc6f2c60fa055e1016f" prot="public">
+          <name>RPN_NULL</name>
+          <initializer>= 0x17F7F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108ad4bff4680d647a9fec2e3280c161f481" prot="public">
+          <name>LAST_RPN</name>
+          <initializer>= 0x17F7F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108ad453d93c5af19a27c911fa5c8d0bbc99" prot="public">
+          <name>FIRST_NRPN</name>
+          <initializer>= 0x20000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108aef33c2409d9b15c4049de13e6536698a" prot="public">
+          <name>LAST_NRPN</name>
+          <initializer>= 0x27F7F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="313" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="313" bodyend="324"/>
+      </memberdef>
+      <memberdef kind="enum" id="d6/d7c/namespacemutabor_1_1midi_1a58a5f0327593d99e36a2f7e9e8118b74" prot="public" static="no">
+        <name>midi_channel_constants</name>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a58a5f0327593d99e36a2f7e9e8118b74acff62ab1e34f1944af0ca1077619ebf2" prot="public">
+          <name>NO_CHANNEL</name>
+          <initializer>= -127</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="327" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="327" bodyend="329"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1a291a2432b14c123b230e0e2c7eea39f8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutabor::midi::get_data_size</definition>
+        <argsstring>(uint8_t status_byte)</argsstring>
+        <name>get_data_size</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>status_byte</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="331" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="331" bodyend="339"/>
+        <referencedby refid="dd/dbe/classmutabor_1_1Track_1ab27de7a5339ed4cd5583989586934b29" compoundref="d0/d6b/DevMidF_8cpp" startline="154" endline="190">mutabor::Track::ReadMessage</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1a18e79a30658f1a5ec4c44cd10bd31086" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::midi::is_system_exclusive</definition>
+        <argsstring>(uint8_t status)</argsstring>
+        <name>is_system_exclusive</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="341" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="341" bodyend="343"/>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea9b1eab461457cda726681eedea0a5505" compoundref="da/dfd/MidiKern_8h" startline="149">SYSEX_START</references>
+        <referencedby refid="d6/d7c/namespacemutabor_1_1midi_1ac13307c04d235af539b64d90e27866e8" compoundref="da/dfd/MidiKern_8h" startline="361" endline="363">reset_running_status</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1a8579e0231a1b648371933a509200a27d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::midi::is_system_common</definition>
+        <argsstring>(uint8_t status)</argsstring>
+        <name>is_system_common</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="345" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="345" bodyend="351"/>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ead1fac92a547fa123ca5500c075908ca4" compoundref="da/dfd/MidiKern_8h" startline="150">QUARTER_FRAME</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea26a84b354a54afaf1c0929ca48337ea4" compoundref="da/dfd/MidiKern_8h" startline="151">SONG_POSITION</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eac05c2c255ba453932c6bd2385c67a2fd" compoundref="da/dfd/MidiKern_8h" startline="152">SONG_SELECT</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea0a53af595ed2e1a23a8c671e3e043a62" compoundref="da/dfd/MidiKern_8h" startline="154">SYSEX_END</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea23cf0840cf227463d6d436b1375c465c" compoundref="da/dfd/MidiKern_8h" startline="153">TUNE_REQUEST</references>
+        <referencedby refid="d6/d7c/namespacemutabor_1_1midi_1ac13307c04d235af539b64d90e27866e8" compoundref="da/dfd/MidiKern_8h" startline="361" endline="363">reset_running_status</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1a31591b44b9aabcae8c3ba2b5a5850cb7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::midi::is_system_realtime</definition>
+        <argsstring>(uint8_t status)</argsstring>
+        <name>is_system_realtime</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="353" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="353" bodyend="355"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1a612325ff68e998e8d1efb158d11bf1e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::midi::is_channel_message</definition>
+        <argsstring>(uint8_t status)</argsstring>
+        <name>is_channel_message</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="357" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="357" bodyend="359"/>
+        <referencedby refid="d6/d7c/namespacemutabor_1_1midi_1af3985350b4eb0864f615c56b84f47a49" compoundref="da/dfd/MidiKern_8h" startline="365" endline="367">store_running_status</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1ac13307c04d235af539b64d90e27866e8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::midi::reset_running_status</definition>
+        <argsstring>(uint8_t status)</argsstring>
+        <name>reset_running_status</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="361" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="361" bodyend="363"/>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a8579e0231a1b648371933a509200a27d" compoundref="da/dfd/MidiKern_8h" startline="345" endline="351">is_system_common</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a18e79a30658f1a5ec4c44cd10bd31086" compoundref="da/dfd/MidiKern_8h" startline="341" endline="343">is_system_exclusive</references>
+        <referencedby refid="dd/dbe/classmutabor_1_1Track_1ab27de7a5339ed4cd5583989586934b29" compoundref="d0/d6b/DevMidF_8cpp" startline="154" endline="190">mutabor::Track::ReadMessage</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1af3985350b4eb0864f615c56b84f47a49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::midi::store_running_status</definition>
+        <argsstring>(uint8_t status)</argsstring>
+        <name>store_running_status</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="365" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="365" bodyend="367"/>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a612325ff68e998e8d1efb158d11bf1e2" compoundref="da/dfd/MidiKern_8h" startline="357" endline="359">is_channel_message</references>
+        <referencedby refid="dd/dbe/classmutabor_1_1Track_1ab27de7a5339ed4cd5583989586934b29" compoundref="d0/d6b/DevMidF_8cpp" startline="154" endline="190">mutabor::Track::ReadMessage</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1ab871bc03cfde745bd68c7a87fab7f367" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutabor::midi::is_hold</definition>
+        <argsstring>(int controller)</argsstring>
+        <name>is_hold</name>
+        <param>
+          <type>int</type>
+          <declname>controller</declname>
+        </param>
+        <briefdescription>
+<para>Check whether a given controller is one of the hold switches. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>controller</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>controller to be checked</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>true</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if it is a holding controller </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>false</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if it is not a holding controller</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="d5/dee/group__route_1ga27ee133b0a462085b983523fbd518b67" kindref="member">mutabor::ChannelData::get_hold()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="379" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="379" bodyend="389"/>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1daafb4ac99543293a3a23e6ca63d1ae" compoundref="da/dfd/MidiKern_8h" startline="242">HOLD_2_PEDAL_ON_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a5fdd60dfbded8880ad67ef1b3d9fafc5" compoundref="da/dfd/MidiKern_8h" startline="236">HOLD_PEDAL_ON_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a10e8cb47d9f82c5c4e45840da2f31c1a" compoundref="da/dfd/MidiKern_8h" startline="241">LEGATO_PEDAL_ON_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a01bfd85977a0ae1e40cc9cca8de365d8" compoundref="da/dfd/MidiKern_8h" startline="238">SOSTENUTO_ON_OFF</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1afed80e409e1ea1e2b0977b9830d892f3" compoundref="d3/d0f/midicmn_8cpp" startline="534" endline="634">mutabor::CommonMidiOutput&lt; T, D &gt;::do_Controller</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1a1e5c287662836cd74f14a7ac10cb3af9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> int *</type>
+        <definition>const int* mutabor::midi::get_holds</definition>
+        <argsstring>()</argsstring>
+        <name>get_holds</name>
+        <briefdescription>
+<para>Return a list of hold controllers. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function returns an integer array of controllers that keep notes sounding after their regular end.</para><para><simplesect kind="return"><para>list of hold controller ids. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="400" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="400" bodyend="410"/>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1daafb4ac99543293a3a23e6ca63d1ae" compoundref="da/dfd/MidiKern_8h" startline="242">HOLD_2_PEDAL_ON_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a5fdd60dfbded8880ad67ef1b3d9fafc5" compoundref="da/dfd/MidiKern_8h" startline="236">HOLD_PEDAL_ON_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a10e8cb47d9f82c5c4e45840da2f31c1a" compoundref="da/dfd/MidiKern_8h" startline="241">LEGATO_PEDAL_ON_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a01bfd85977a0ae1e40cc9cca8de365d8" compoundref="da/dfd/MidiKern_8h" startline="238">SOSTENUTO_ON_OFF</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a23dfccd2e97e799cd8b32dea22306e5c" compoundref="d3/d0f/midicmn_8cpp" startline="319" endline="403">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOn</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ae068c3fe86a1c768f15c0249cdfb11ea" compoundref="d3/d0f/midicmn_8cpp" startline="464" endline="530">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateTones</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga149a7081186d9f03e6ad5a7f21fa9830" compoundref="d2/dc0/Device_8cpp" startline="362" endline="380">mutabor::InputDeviceClass::DoSilenceKeys</referencedby>
+        <referencedby refid="d5/dee/group__route_1gacb942a8c5cee15a375579b29208eddd4" compoundref="d2/dc0/Device_8cpp" startline="411" endline="440">mutabor::InputDeviceClass::Panic</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga85fbc49b0b301e47ff473ef609158582" compoundref="d2/dc0/Device_8cpp" startline="383" endline="408">mutabor::InputDeviceClass::ResumeKeys</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1a498e3411dac0c5e648e22fd7c9a5007f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int mutabor::midi::get_default_controller_value</definition>
+        <argsstring>(int ctrl)</argsstring>
+        <name>get_default_controller_value</name>
+        <param>
+          <type>int</type>
+          <declname>ctrl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="412" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="412" bodyend="471"/>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2a3431989dc0fddea1502205bfc0a586" compoundref="da/dfd/MidiKern_8h" startline="288">ALL_CONTROLLERS_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab041c3cb773862382dd34db3f6a8ca35" compoundref="da/dfd/MidiKern_8h" startline="290">ALL_NOTES_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690aff3ec02ce2ffe0bb1faa74c37349e9f5" compoundref="da/dfd/MidiKern_8h" startline="287">ALL_SOUND_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab8d53ffbe68d697db2ba67efdf7693fb" compoundref="da/dfd/MidiKern_8h" startline="200">BALANCE_COARSE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a72f4639ed6405c3bc9f0a1a418d144e1" compoundref="da/dfd/MidiKern_8h" startline="192">BANK_COARSE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2ae19744f2675efa5adbf496ff0d15af" compoundref="da/dfd/MidiKern_8h" startline="218">BANK_FINE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a7c92bed5ab7e12063e3422eaa32941b5" compoundref="da/dfd/MidiKern_8h" startline="273">CELESTE_LEVEL</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a54ca8460206d646f3fd8a168f83e8519" compoundref="da/dfd/MidiKern_8h" startline="272">CHORUS_LEVEL</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27adae27d72b22807637f8854846301a14f" compoundref="da/dfd/MidiKern_8h" startline="306">CONTROLLER_CENTRE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27a521f863b768cb2f85af8cc11c640c2aa" compoundref="da/dfd/MidiKern_8h" startline="303">CONTROLLER_MAX</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27a93c2ead469cc42fd30ae5ff9f7ee7316" compoundref="da/dfd/MidiKern_8h" startline="309">CONTROLLER_UNKNOWN</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27ae99e567f1768f734be6b5a47149eafa4" compoundref="da/dfd/MidiKern_8h" startline="310">CONTROLLER_UNKNOWN_NOSEND</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690abf4f3537c3ccdddad0b024f29d6e113a" compoundref="da/dfd/MidiKern_8h" startline="278">DATA_BUTTON_DECREMENT</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1757a57e5c3c68ee51a6959e2bb840f3" compoundref="da/dfd/MidiKern_8h" startline="277">DATA_BUTTON_INCREMENT</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a50f8001256967efcc2ce0bb2e12a7719" compoundref="da/dfd/MidiKern_8h" startline="198">DATA_ENTRY_COARSE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a22176ce40c18ca09338078a8597983cb" compoundref="da/dfd/MidiKern_8h" startline="224">DATA_ENTRY_FINE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1e421feb8b3b7080e035342e649c6d30" compoundref="da/dfd/MidiKern_8h" startline="270">EFFECTS_LEVEL</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a4b652cce4c21b0da2bc79a91f6eaea85" compoundref="da/dfd/MidiKern_8h" startline="203">EXPRESSION_COARSE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690adf5280adf17be2bd5275bc9234ff1aca" compoundref="da/dfd/MidiKern_8h" startline="229">EXPRESSION_FINE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108ad453d93c5af19a27c911fa5c8d0bbc99" compoundref="da/dfd/MidiKern_8h" startline="322">FIRST_NRPN</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108a0940eef2e74ab0138c40cc1d406aa53f" compoundref="da/dfd/MidiKern_8h" startline="315">FIRST_RPN</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108aef33c2409d9b15c4049de13e6536698a" compoundref="da/dfd/MidiKern_8h" startline="323">LAST_NRPN</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108ad4bff4680d647a9fec2e3280c161f481" compoundref="da/dfd/MidiKern_8h" startline="321">LAST_RPN</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a97fe532b2fcd5e16112a886fdda11dcb" compoundref="da/dfd/MidiKern_8h" startline="289">LOCAL_ON_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690af630a1b7087e0a28dd1cf7c77fd5b9f8" compoundref="da/dfd/MidiKern_8h" startline="193">MODULATION_WHEEL_COARSE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a91793b9a748d32045dde618a1cde3663" compoundref="da/dfd/MidiKern_8h" startline="219">MODULATION_WHEEL_FINE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2932f1c1103e325a6bfab3e7177c0f94" compoundref="da/dfd/MidiKern_8h" startline="294">MONO_ON</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690af9d82eaeef29ceca61119b1f65bf082b" compoundref="da/dfd/MidiKern_8h" startline="280">NON_REGISTERED_PARAMETER_COARSE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a771f0abdc9e5112ecd96987d3d02934a" compoundref="da/dfd/MidiKern_8h" startline="279">NON_REGISTERED_PARAMETER_FINE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab20fc26ad14179a9ba29270509f5c908" compoundref="da/dfd/MidiKern_8h" startline="291">OMNI_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1869ff44ef4942e884f36fcc707cf561" compoundref="da/dfd/MidiKern_8h" startline="292">OMNI_ON</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2ae69cfd358da115d0c12a886b4b7d63" compoundref="da/dfd/MidiKern_8h" startline="202">PAN_POSITION_COARSE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a886da9a90f840706cd825b3b09c64f6a" compoundref="da/dfd/MidiKern_8h" startline="274">PHASER_LEVEL</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690aa51ceb9f345863cafa21214dd0db92fa" compoundref="da/dfd/MidiKern_8h" startline="297">POLY_ON</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ae247831f44bd19de81de26eefa60f88a" compoundref="da/dfd/MidiKern_8h" startline="282">REGISTERED_PARAMETER_COARSE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a652b497ded1d78e4983655cb066ebaf7" compoundref="da/dfd/MidiKern_8h" startline="281">REGISTERED_PARAMETER_FINE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a52b0a6d3715d5431a05c1f83ef07a373" compoundref="da/dfd/MidiKern_8h" startline="259">SOUND_10</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ad6815b3b7d60ffc86add234d7b980546" compoundref="da/dfd/MidiKern_8h" startline="249">SOUND_ATTACK_TIME</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a11d713041ac748f455566a62f1f7a196" compoundref="da/dfd/MidiKern_8h" startline="250">SOUND_BRIGHTNESS</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab6d2d20036f301ecfe41ea154161839d" compoundref="da/dfd/MidiKern_8h" startline="252">SOUND_DECAY_TIME</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a01a3ff8faed2d1482c473891b3d22a74" compoundref="da/dfd/MidiKern_8h" startline="248">SOUND_RELEASE_TIME</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ac1254e969482276d569b199b6e7fcfc6" compoundref="da/dfd/MidiKern_8h" startline="247">SOUND_TIMBRE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab2c42d6638bdf236afea785485b958f9" compoundref="da/dfd/MidiKern_8h" startline="246">SOUND_VARIATION</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a972c1e03dc4553efae3ca4d98a0d9df6" compoundref="da/dfd/MidiKern_8h" startline="258">SOUND_VIBRATO_DELAY</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690af4770d4535fb1dbd166c2a9e41e7710e" compoundref="da/dfd/MidiKern_8h" startline="256">SOUND_VIBRATO_DEPTH</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a6dbfac5ea3e83fe91fcd45216e75a1f4" compoundref="da/dfd/MidiKern_8h" startline="254">SOUND_VIBRATO_RATE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a48bd4b330b9c7fa7386aa4e747302170" compoundref="da/dfd/MidiKern_8h" startline="271">TREMULO_LEVEL</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ac13558b51564d48325a17a30bd6ca60c" compoundref="da/dfd/MidiKern_8h" startline="199">VOLUME_COARSE</references>
+        <referencedby refid="d5/dee/group__route_1gaad4a56a5ff453c2b257662436578c97c" compoundref="d2/dc0/Device_8cpp" startline="48" endline="81">mutabor::ChannelData::MidiReset</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="136" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,620 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="de/dab/structmutabor_1_1hidden_1_1do__aktion" kind="struct" prot="public">
+    <compoundname>mutabor::hidden::do_aktion</compoundname>
+    <includes refid="d2/dd8/Interpre_8h" local="no">Interpre.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a550f614191207bb9dc8cc1451cd201f4" prot="public" static="no" mutable="no">
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> char *</type>
+        <definition>const char* mutabor::hidden::do_aktion::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="260" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="260" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gaf339df5eedc62b5ce3a0f82fa4419124" compoundref="dd/dc6/Box_8cpp" startline="824" endline="827">mutabor::BoxClass::ActionToString</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aee6e64acc04c4953933ed9f755c9d2a8" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">mutabor::hidden::execute_aktion</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa000ed5832b858ea653a5427b1a975ab" compoundref="d3/da0/TabGen_8cpp" startline="673" endline="832">mutabor::hidden::expandiere_umstimmung</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1ab28c826fa9aa68e0a189b3701ba6c5c5" prot="public" static="no" mutable="no">
+        <type>enum <ref refid="d6/dbb/namespacemutabor_1_1hidden_1a6f932d141f139a3b20f47e6449fbafb1" kindref="member">aufruf_typ</ref></type>
+        <definition>enum aufruf_typ mutabor::hidden::do_aktion::aufruf_typ</definition>
+        <argsstring></argsstring>
+        <name>aufruf_typ</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="260" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="261" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aee6e64acc04c4953933ed9f755c9d2a8" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">mutabor::hidden::execute_aktion</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a0264b459e654bbe92a83c3af56aa4c0e" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="de/dd8/structmutabor_1_1hidden_1_1interpreter__argument__list" kindref="compound">interpreter_argument_list</ref> *</type>
+        <definition>struct interpreter_argument_list* mutabor::hidden::do_aktion::arguments</definition>
+        <argsstring></argsstring>
+        <name>arguments</name>
+        <briefdescription>
+<para>normal argument list </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="262" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="262" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa000ed5832b858ea653a5427b1a975ab" compoundref="d3/da0/TabGen_8cpp" startline="673" endline="832">mutabor::hidden::expandiere_umstimmung</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a3a1ade615ac9bd35feafc6f6177a1e9e" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="de/dd8/structmutabor_1_1hidden_1_1interpreter__argument__list" kindref="compound">interpreter_argument_list</ref> *</type>
+        <definition>struct interpreter_argument_list * mutabor::hidden::do_aktion::secondary_arguments</definition>
+        <argsstring></argsstring>
+        <name>secondary_arguments</name>
+        <briefdescription>
+<para>arguments of the retuning </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="263" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="262" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa000ed5832b858ea653a5427b1a975ab" compoundref="d3/da0/TabGen_8cpp" startline="673" endline="832">mutabor::hidden::expandiere_umstimmung</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a6c5597c5cf6811a579a3b263a68e7ca8" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="df/dc6/structmutabor_1_1hidden_1_1logik" kindref="compound">logik</ref> *</type>
+        <definition>struct logik* mutabor::hidden::do_aktion::logic</definition>
+        <argsstring></argsstring>
+        <name>logic</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="266" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="266" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aee6e64acc04c4953933ed9f755c9d2a8" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">mutabor::hidden::execute_aktion</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4ef02782584fd7bc601362b61382da4a" compoundref="d3/da0/TabGen_8cpp" startline="514" endline="584">mutabor::hidden::expandiere_logik</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1ace9de8f1013c0ba7a03809985d62061c" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="db/d91/structmutabor_1_1hidden_1_1umstimmung" kindref="compound">umstimmung</ref> *</type>
+        <definition>struct umstimmung* mutabor::hidden::do_aktion::retuning</definition>
+        <argsstring></argsstring>
+        <name>retuning</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="267" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="267" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa000ed5832b858ea653a5427b1a975ab" compoundref="d3/da0/TabGen_8cpp" startline="673" endline="832">mutabor::hidden::expandiere_umstimmung</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1af9d8aa3f0c334249c45d2e785cd7f7ef" prot="public" static="no" mutable="no">
+        <type>union mutabor::hidden::do_aktion::@33</type>
+        <definition>union mutabor::hidden::do_aktion::@33  mutabor::hidden::do_aktion::calling</definition>
+        <argsstring></argsstring>
+        <name>calling</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="268" column="1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aee6e64acc04c4953933ed9f755c9d2a8" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">mutabor::hidden::execute_aktion</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1abfc030cdb8533943d8085bc6d95defeb" prot="public" static="no" mutable="no">
+        <type><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ab53c35b078df3997ddc173b6c2c48065" kindref="member">tone_system</ref> *</type>
+        <definition>tone_system* mutabor::hidden::do_aktion::tonsystem</definition>
+        <argsstring></argsstring>
+        <name>tonsystem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="286" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="286" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1acf02e8c8b46c88d58fb07fc16daaa0c5" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::do_aktion::@34::@35</type>
+        <definition>struct mutabor::hidden::do_aktion::@34::@35  mutabor::hidden::do_aktion::aufruf_tonsystem</definition>
+        <argsstring></argsstring>
+        <name>aufruf_tonsystem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="287" column="1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aee6e64acc04c4953933ed9f755c9d2a8" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">mutabor::hidden::execute_aktion</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a0142a41964e335f5ef5d0aaf5889e8f6" compoundref="d3/da0/TabGen_8cpp" startline="464" endline="511">mutabor::hidden::expandiere_tonsystem</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a793e2f134e9969b179ae4a1d1546494a" prot="public" static="no" mutable="no">
+        <type>long</type>
+        <definition>long mutabor::hidden::do_aktion::faktor</definition>
+        <argsstring></argsstring>
+        <name>faktor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="302" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="302" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1ac3110166107d79a39fc36689a62050ca" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::do_aktion::@34::@36</type>
+        <definition>struct mutabor::hidden::do_aktion::@34::@36  mutabor::hidden::do_aktion::aufruf_umst_wiederholung_abs</definition>
+        <argsstring></argsstring>
+        <name>aufruf_umst_wiederholung_abs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="303" column="1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aee6e64acc04c4953933ed9f755c9d2a8" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">mutabor::hidden::execute_aktion</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa000ed5832b858ea653a5427b1a975ab" compoundref="d3/da0/TabGen_8cpp" startline="673" endline="832">mutabor::hidden::expandiere_umstimmung</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a2496e580f3bcdf853a6cb03d2a149ac7" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::do_aktion::@34::@37</type>
+        <definition>struct mutabor::hidden::do_aktion::@34::@37  mutabor::hidden::do_aktion::aufruf_umst_wiederholung_rel</definition>
+        <argsstring></argsstring>
+        <name>aufruf_umst_wiederholung_rel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="307" column="1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa000ed5832b858ea653a5427b1a975ab" compoundref="d3/da0/TabGen_8cpp" startline="673" endline="832">mutabor::hidden::expandiere_umstimmung</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1aa4a84b284b5e5842403b815e76ac1dc4" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char mutabor::hidden::do_aktion::rechenzeichen</definition>
+        <argsstring></argsstring>
+        <name>rechenzeichen</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="314" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="314" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a595002a4d9881d1f1565e6a408c5b453" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::do_aktion::@34::@38</type>
+        <definition>struct mutabor::hidden::do_aktion::@34::@38  mutabor::hidden::do_aktion::aufruf_umst_taste_rel</definition>
+        <argsstring></argsstring>
+        <name>aufruf_umst_taste_rel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="315" column="1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aee6e64acc04c4953933ed9f755c9d2a8" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">mutabor::hidden::execute_aktion</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa000ed5832b858ea653a5427b1a975ab" compoundref="d3/da0/TabGen_8cpp" startline="673" endline="832">mutabor::hidden::expandiere_umstimmung</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1aeb409b47edccc0351d7e2067ab49fe0a" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::do_aktion::@34::@39</type>
+        <definition>struct mutabor::hidden::do_aktion::@34::@39  mutabor::hidden::do_aktion::aufruf_umst_breite_rel</definition>
+        <argsstring></argsstring>
+        <name>aufruf_umst_breite_rel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="323" column="1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aee6e64acc04c4953933ed9f755c9d2a8" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">mutabor::hidden::execute_aktion</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa000ed5832b858ea653a5427b1a975ab" compoundref="d3/da0/TabGen_8cpp" startline="673" endline="832">mutabor::hidden::expandiere_umstimmung</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a18d2e85be89e1e38adb94495995ca372" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="df/dfd/structmutabor_1_1hidden_1_1ton__einstell" kindref="compound">ton_einstell</ref> *</type>
+        <definition>struct ton_einstell* mutabor::hidden::do_aktion::tonliste</definition>
+        <argsstring></argsstring>
+        <name>tonliste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="326" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="326" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a82b9e035d60d2d5b432d880b1b7b31f5" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::do_aktion::@34::@40</type>
+        <definition>struct mutabor::hidden::do_aktion::@34::@40  mutabor::hidden::do_aktion::aufruf_umst_toene_veraendert</definition>
+        <argsstring></argsstring>
+        <name>aufruf_umst_toene_veraendert</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="327" column="1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aee6e64acc04c4953933ed9f755c9d2a8" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">mutabor::hidden::execute_aktion</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa000ed5832b858ea653a5427b1a975ab" compoundref="d3/da0/TabGen_8cpp" startline="673" endline="832">mutabor::hidden::expandiere_umstimmung</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a504ad21ffa25dddf4dd929d1979eccbf" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d4/d71/structmutabor_1_1hidden_1_1case__element" kindref="compound">case_element</ref> *</type>
+        <definition>struct case_element* mutabor::hidden::do_aktion::umst_case</definition>
+        <argsstring></argsstring>
+        <name>umst_case</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="340" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="340" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1ab6fe8698f5b5620cf7475e73a446ea01" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::do_aktion::@34::@41</type>
+        <definition>struct mutabor::hidden::do_aktion::@34::@41  mutabor::hidden::do_aktion::aufruf_umst_umst_case</definition>
+        <argsstring></argsstring>
+        <name>aufruf_umst_umst_case</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="341" column="1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aee6e64acc04c4953933ed9f755c9d2a8" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">mutabor::hidden::execute_aktion</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa000ed5832b858ea653a5427b1a975ab" compoundref="d3/da0/TabGen_8cpp" startline="673" endline="832">mutabor::hidden::expandiere_umstimmung</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1af914df6651e810fba9afb4161eb8a982" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d5/d35/structmutabor_1_1hidden_1_1midiliste" kindref="compound">midiliste</ref> *</type>
+        <definition>struct midiliste* mutabor::hidden::do_aktion::out_liste</definition>
+        <argsstring></argsstring>
+        <name>out_liste</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="344" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="344" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a450997499b12edda993931a7417d11b9" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::do_aktion::@34::@42</type>
+        <definition>struct mutabor::hidden::do_aktion::@34::@42  mutabor::hidden::do_aktion::aufruf_midi_out</definition>
+        <argsstring></argsstring>
+        <name>aufruf_midi_out</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="345" column="1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aee6e64acc04c4953933ed9f755c9d2a8" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">mutabor::hidden::execute_aktion</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa7bb0ca56f82568e79972df4c78d1ca3" compoundref="d3/da0/TabGen_8cpp" startline="889" endline="904">mutabor::hidden::expandiere_midi</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa000ed5832b858ea653a5427b1a975ab" compoundref="d3/da0/TabGen_8cpp" startline="673" endline="832">mutabor::hidden::expandiere_umstimmung</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a49d54eced38a97805425fdd9427a8880" prot="public" static="no" mutable="no">
+        <type>union mutabor::hidden::do_aktion::@34</type>
+        <definition>union mutabor::hidden::do_aktion::@34  mutabor::hidden::do_aktion::u</definition>
+        <argsstring></argsstring>
+        <name>u</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="350" column="1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aee6e64acc04c4953933ed9f755c9d2a8" compoundref="df/d23/Execute_8cpp" startline="270" endline="634">mutabor::hidden::execute_aktion</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="de/dab/structmutabor_1_1hidden_1_1do__aktion_1aafd9e7e3936c5348d17e75afc40cb1c7" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="de/dab/structmutabor_1_1hidden_1_1do__aktion" kindref="compound">do_aktion</ref> *</type>
+        <definition>struct do_aktion* mutabor::hidden::do_aktion::next</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="351" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="351" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ae8449e3bb8e620dd4434217d3782b921" compoundref="d3/da0/TabGen_8cpp" startline="586" endline="624">mutabor::hidden::expand_aktions_liste</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa000ed5832b858ea653a5427b1a975ab" compoundref="d3/da0/TabGen_8cpp" startline="673" endline="832">mutabor::hidden::expandiere_umstimmung</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2917">
+        <label>mutabor::hidden::interpreter_argument_list</label>
+        <link refid="de/dd8/structmutabor_1_1hidden_1_1interpreter__argument__list"/>
+        <childnode refid="2918" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+      </node>
+      <node id="2924">
+        <label>mutabor::hidden::ton</label>
+        <link refid="d6/dea/structmutabor_1_1hidden_1_1ton"/>
+        <childnode refid="2922" relation="usage">
+          <edgelabel>komplex_liste</edgelabel>
+        </childnode>
+        <childnode refid="2924" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="2920">
+        <label>mutabor::hidden::case_element</label>
+        <link refid="d4/d71/structmutabor_1_1hidden_1_1case__element"/>
+        <childnode refid="2904" relation="usage">
+          <edgelabel>case_aktion</edgelabel>
+        </childnode>
+        <childnode refid="2920" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="2919">
+        <label>mutabor::hidden::ton_einstell</label>
+        <link refid="df/dfd/structmutabor_1_1hidden_1_1ton__einstell"/>
+        <childnode refid="2919" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="2904">
+        <label>mutabor::hidden::do_aktion</label>
+        <link refid="de/dab/structmutabor_1_1hidden_1_1do__aktion"/>
+        <childnode refid="2904" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="2905" relation="usage">
+          <edgelabel>out_liste</edgelabel>
+        </childnode>
+        <childnode refid="2906" relation="usage">
+          <edgelabel>logic</edgelabel>
+        </childnode>
+        <childnode refid="2917" relation="usage">
+          <edgelabel>secondary_arguments</edgelabel>
+          <edgelabel>arguments</edgelabel>
+        </childnode>
+        <childnode refid="2919" relation="usage">
+          <edgelabel>tonliste</edgelabel>
+        </childnode>
+        <childnode refid="2920" relation="usage">
+          <edgelabel>umst_case</edgelabel>
+        </childnode>
+        <childnode refid="2921" relation="usage">
+          <edgelabel>retuning</edgelabel>
+        </childnode>
+        <childnode refid="2925" relation="usage">
+          <edgelabel>tonsystem</edgelabel>
+        </childnode>
+      </node>
+      <node id="2915">
+        <label>mutabor::hidden::harmonie_ereignis</label>
+        <link refid="d1/da9/structmutabor_1_1hidden_1_1harmonie__ereignis"/>
+        <childnode refid="2904" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+        <childnode refid="2916" relation="usage">
+          <edgelabel>pattern</edgelabel>
+        </childnode>
+        <childnode refid="2906" relation="usage">
+          <edgelabel>the_logik_to_expand</edgelabel>
+        </childnode>
+        <childnode refid="2915" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="2916">
+        <label>mutabor::hidden::PTRN</label>
+        <link refid="d1/d5c/structmutabor_1_1hidden_1_1PTRN"/>
+      </node>
+      <node id="2922">
+        <label>mutabor::hidden::komplex_intervall</label>
+        <link refid="da/dd2/structmutabor_1_1hidden_1_1komplex__intervall"/>
+        <childnode refid="2922" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="2914">
+        <label>mutabor::hidden::keyboard_ereignis</label>
+        <link refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis"/>
+        <childnode refid="2904" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+        <childnode refid="2906" relation="usage">
+          <edgelabel>the_logik_to_expand</edgelabel>
+        </childnode>
+        <childnode refid="2914" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="2910">
+        <label>mutabor::hidden::aktions_liste</label>
+        <link refid="d0/d96/structmutabor_1_1hidden_1_1aktions__liste"/>
+        <childnode refid="2905" relation="usage">
+          <edgelabel>midi_code</edgelabel>
+        </childnode>
+        <childnode refid="2910" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="2911" relation="usage">
+          <edgelabel>argument_liste</edgelabel>
+        </childnode>
+      </node>
+      <node id="2921">
+        <label>mutabor::hidden::umstimmung</label>
+        <link refid="db/d91/structmutabor_1_1hidden_1_1umstimmung"/>
+        <childnode refid="2905" relation="usage">
+          <edgelabel>out_liste</edgelabel>
+        </childnode>
+        <childnode refid="2922" relation="usage">
+          <edgelabel>komplex_liste</edgelabel>
+        </childnode>
+        <childnode refid="2923" relation="usage">
+          <edgelabel>umstimmungs_case_liste</edgelabel>
+        </childnode>
+        <childnode refid="2921" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="2910" relation="usage">
+          <edgelabel>aktions_liste</edgelabel>
+        </childnode>
+        <childnode refid="2913" relation="usage">
+          <edgelabel>parameter_liste</edgelabel>
+        </childnode>
+        <childnode refid="2924" relation="usage">
+          <edgelabel>tonliste</edgelabel>
+        </childnode>
+        <childnode refid="2911" relation="usage">
+          <edgelabel>argument_liste</edgelabel>
+        </childnode>
+      </node>
+      <node id="2918">
+        <label>mutabor::hidden::interpreter_argument</label>
+        <link refid="d5/d64/unionmutabor_1_1hidden_1_1interpreter__argument"/>
+      </node>
+      <node id="2912">
+        <label>mutabor::hidden::argument</label>
+        <link refid="d8/d96/structmutabor_1_1hidden_1_1argument"/>
+        <childnode refid="2913" relation="usage">
+          <edgelabel>parameter</edgelabel>
+        </childnode>
+      </node>
+      <node id="2911">
+        <label>mutabor::hidden::argument_list</label>
+        <link refid="d7/ddb/structmutabor_1_1hidden_1_1argument__list"/>
+        <childnode refid="2912" relation="usage">
+          <edgelabel>argument</edgelabel>
+        </childnode>
+        <childnode refid="2911" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="2906">
+        <label>mutabor::hidden::logik</label>
+        <link refid="df/dc6/structmutabor_1_1hidden_1_1logik"/>
+        <childnode refid="2907" relation="usage">
+          <edgelabel>midi_input_list</edgelabel>
+        </childnode>
+        <childnode refid="2904" relation="usage">
+          <edgelabel>einstimmung</edgelabel>
+        </childnode>
+        <childnode refid="2908" relation="usage">
+          <edgelabel>ausloeser</edgelabel>
+        </childnode>
+        <childnode refid="2909" relation="usage">
+          <edgelabel>anweisungsliste</edgelabel>
+        </childnode>
+        <childnode refid="2906" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="2914" relation="usage">
+          <edgelabel>keystroke_list</edgelabel>
+        </childnode>
+        <childnode refid="2915" relation="usage">
+          <edgelabel>harmony_list</edgelabel>
+        </childnode>
+      </node>
+      <node id="2909">
+        <label>mutabor::hidden::anweisung</label>
+        <link refid="df/d55/structmutabor_1_1hidden_1_1anweisung"/>
+        <childnode refid="2908" relation="usage">
+          <edgelabel>ausloeser</edgelabel>
+        </childnode>
+        <childnode refid="2909" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="2910" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+      </node>
+      <node id="2925">
+        <label>mutabor::hidden::TSYS</label>
+        <link refid="d4/dc1/structmutabor_1_1hidden_1_1TSYS"/>
+      </node>
+      <node id="2923">
+        <label>mutabor::hidden::case_liste</label>
+        <link refid="d0/d0b/structmutabor_1_1hidden_1_1case__liste"/>
+        <childnode refid="2923" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="2910" relation="usage">
+          <edgelabel>case_aktion</edgelabel>
+        </childnode>
+      </node>
+      <node id="2913">
+        <label>mutabor::hidden::parameter_list</label>
+        <link refid="d4/d9f/structmutabor_1_1hidden_1_1parameter__list"/>
+        <childnode refid="2913" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="2907">
+        <label>mutabor::hidden::midi_ereignis</label>
+        <link refid="d0/ddd/structmutabor_1_1hidden_1_1midi__ereignis"/>
+        <childnode refid="2907" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="2904" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+        <childnode refid="2906" relation="usage">
+          <edgelabel>the_logik_to_expand</edgelabel>
+        </childnode>
+      </node>
+      <node id="2908">
+        <label>mutabor::hidden::ausloeser</label>
+        <link refid="df/d4f/structmutabor_1_1hidden_1_1ausloeser"/>
+        <childnode refid="2905" relation="usage">
+          <edgelabel>midi_code</edgelabel>
+        </childnode>
+      </node>
+      <node id="2905">
+        <label>mutabor::hidden::midiliste</label>
+        <link refid="d5/d35/structmutabor_1_1hidden_1_1midiliste"/>
+        <childnode refid="2905" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" line="255" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Interpre.h" bodystart="254" bodyend="352"/>
+    <listofallmembers>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a0264b459e654bbe92a83c3af56aa4c0e" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>arguments</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a450997499b12edda993931a7417d11b9" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>aufruf_midi_out</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1acf02e8c8b46c88d58fb07fc16daaa0c5" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>aufruf_tonsystem</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1ab28c826fa9aa68e0a189b3701ba6c5c5" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>aufruf_typ</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1aeb409b47edccc0351d7e2067ab49fe0a" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>aufruf_umst_breite_rel</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a595002a4d9881d1f1565e6a408c5b453" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>aufruf_umst_taste_rel</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a82b9e035d60d2d5b432d880b1b7b31f5" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>aufruf_umst_toene_veraendert</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1ab6fe8698f5b5620cf7475e73a446ea01" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>aufruf_umst_umst_case</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1ac3110166107d79a39fc36689a62050ca" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>aufruf_umst_wiederholung_abs</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a2496e580f3bcdf853a6cb03d2a149ac7" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>aufruf_umst_wiederholung_rel</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1af9d8aa3f0c334249c45d2e785cd7f7ef" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>calling</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a793e2f134e9969b179ae4a1d1546494a" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>faktor</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a6c5597c5cf6811a579a3b263a68e7ca8" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>logic</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a550f614191207bb9dc8cc1451cd201f4" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>name</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1aafd9e7e3936c5348d17e75afc40cb1c7" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>next</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1af914df6651e810fba9afb4161eb8a982" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>out_liste</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1aa4a84b284b5e5842403b815e76ac1dc4" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>rechenzeichen</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1ace9de8f1013c0ba7a03809985d62061c" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>retuning</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a3a1ade615ac9bd35feafc6f6177a1e9e" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>secondary_arguments</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a18d2e85be89e1e38adb94495995ca372" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>tonliste</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1abfc030cdb8533943d8085bc6d95defeb" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>tonsystem</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a49d54eced38a97805425fdd9427a8880" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>u</name></member>
+      <member refid="de/dab/structmutabor_1_1hidden_1_1do__aktion_1a504ad21ffa25dddf4dd929d1979eccbf" prot="public" virt="non-virtual"><scope>mutabor::hidden::do_aktion</scope><name>umst_case</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

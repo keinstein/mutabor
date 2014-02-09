@@ -3,7 +3,7 @@
 <title>src/wxGUI/MutView.h Quellcode</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -87,9 +87,9 @@
 <div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="../../d8/dd6/classmutaborGUI_1_1MutView.html#a33890494df2f24c54e1394b054478c9e">   93</a></span>&#160;                <a class="code" href="../../d6/d63/classmutaborGUI_1_1MutFrame.html">MutFrame</a> * <a class="code" href="../../d8/dd6/classmutaborGUI_1_1MutView.html#a33890494df2f24c54e1394b054478c9e">GetMutFrame</a>() { </div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                        wxWindow * f = GetFrame();</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                        <span class="keywordflow">if</span> (f) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(dynamic_cast&lt;MutFrame *&gt;(f));</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a>(dynamic_cast&lt;MutFrame *&gt;(f));</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                        }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                        <span class="keywordflow">return</span> (<a class="code" href="../../d6/d63/classmutaborGUI_1_1MutFrame.html">MutFrame</a> *) f; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="../../d6/d63/classmutaborGUI_1_1MutFrame.html">MutFrame</a> *<span class="keyword">&gt;</span>(f); </div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                }</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                </div>
 <div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../d8/dd6/classmutaborGUI_1_1MutView.html#a0486223c32554bc90e805ab129617db2">  101</a></span>&#160;                DECLARE_EVENT_TABLE()</div>
@@ -111,13 +111,13 @@
 <div class="ttc" id="classmutaborGUI_1_1MutView_html_a1e54454e5df456f2f8cc99bc1c8515e6"><div class="ttname"><a href="../../d8/dd6/classmutaborGUI_1_1MutView.html#a1e54454e5df456f2f8cc99bc1c8515e6">mutaborGUI::MutView::OnDraw</a></div><div class="ttdeci">virtual void OnDraw(wxDC *dc)</div></div>
 <div class="ttc" id="MutFrame_8h_html"><div class="ttname"><a href="../../dd/db5/MutFrame_8h.html">MutFrame.h</a></div></div>
 <div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
-<div class="ttc" id="group__kernel_html_ga77bd8e5b959213dd8bcd48dc513f6013"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a></div><div class="ttdeci">#define mutASSERT(cond)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00223">Defs.h:223</a></div></div>
 <div class="ttc" id="classmutaborGUI_1_1MutView_html_a35cfecb2bb3499bb1deb301c6be441e3"><div class="ttname"><a href="../../d8/dd6/classmutaborGUI_1_1MutView.html#a35cfecb2bb3499bb1deb301c6be441e3">mutaborGUI::MutView::MutView</a></div><div class="ttdeci">MutView()</div></div>
 <div class="ttc" id="classmutaborGUI_1_1MutView_html_a3933aa705cc36fb5959454410b6572db"><div class="ttname"><a href="../../d8/dd6/classmutaborGUI_1_1MutView.html#a3933aa705cc36fb5959454410b6572db">mutaborGUI::MutView::OnActivateView</a></div><div class="ttdeci">virtual void OnActivateView(bool activate, wxView *activeView, wxView *deactiveView)</div></div>
 <div class="ttc" id="classmutaborGUI_1_1MutView_html_a0486223c32554bc90e805ab129617db2"><div class="ttname"><a href="../../d8/dd6/classmutaborGUI_1_1MutView.html#a0486223c32554bc90e805ab129617db2">mutaborGUI::MutView::textsw</a></div><div class="ttdeci">DECLARE_EVENT_TABLE() protected MutEditFile * textsw</div><div class="ttdoc">MutView::ProcessEvent is called indirectly from MutApp event handlers. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d9e/MutView_8h_source.html#l00101">MutView.h:101</a></div></div>
 <div class="ttc" id="classmutaborGUI_1_1MutView_html_ac7673837e9f290a87edbfcf1a433a757"><div class="ttname"><a href="../../d8/dd6/classmutaborGUI_1_1MutView.html#ac7673837e9f290a87edbfcf1a433a757">mutaborGUI::MutView::SetTextsw</a></div><div class="ttdeci">void SetTextsw(MutEditFile *t)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d9e/MutView_8h_source.html#l00092">MutView.h:92</a></div></div>
-<div class="ttc" id="classmutaborGUI_1_1MutFrame_html"><div class="ttname"><a href="../../d6/d63/classmutaborGUI_1_1MutFrame.html">mutaborGUI::MutFrame</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db5/MutFrame_8h_source.html#l00062">MutFrame.h:62</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1MutFrame_html"><div class="ttname"><a href="../../d6/d63/classmutaborGUI_1_1MutFrame.html">mutaborGUI::MutFrame</a></div><div class="ttdoc">Main mutabor frame class. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db5/MutFrame_8h_source.html#l00063">MutFrame.h:63</a></div></div>
 <div class="ttc" id="classmutaborGUI_1_1MutDocument_html"><div class="ttname"><a href="../../de/dd5/classmutaborGUI_1_1MutDocument.html">mutaborGUI::MutDocument</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d00/MutDocument_8h_source.html#l00108">MutDocument.h:108</a></div></div>
+<div class="ttc" id="group__kernel_html_ga565c8973b3b2a87c7f9c7c7aabb9665e"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a></div><div class="ttdeci">#define mutASSERT</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00222">Defs.h:222</a></div></div>
 <div class="ttc" id="classmutaborGUI_1_1MutView_html"><div class="ttname"><a href="../../d8/dd6/classmutaborGUI_1_1MutView.html">mutaborGUI::MutView</a></div><div class="ttdoc">What are the important qualities of a view? A view is registered with its document, and when the view becomes active (ie the user clicks on it) then it will set its document to be the active/current document. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d9e/MutView_8h_source.html#l00065">MutView.h:65</a></div></div>
 <div class="ttc" id="classmutaborGUI_1_1MutEditFile_html"><div class="ttname"><a href="../../de/dfe/classmutaborGUI_1_1MutEditFile.html">mutaborGUI::MutEditFile</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dfb/MutEditFile_8h_source.html#l00062">MutEditFile.h:62</a></div></div>
 <div class="ttc" id="classmutaborGUI_1_1MutView_html_a800c910c7736d85b41993b1bbcee0b36"><div class="ttname"><a href="../../d8/dd6/classmutaborGUI_1_1MutView.html#a800c910c7736d85b41993b1bbcee0b36">mutaborGUI::MutView::OnCreate</a></div><div class="ttdeci">virtual bool OnCreate(wxDocument *doc, long flags)</div></div>
@@ -126,6 +126,6 @@
 <div class="ttc" id="classmutaborGUI_1_1MutView_html_a79d6d38d8ff2f6d7a017d548f0edeb09"><div class="ttname"><a href="../../d8/dd6/classmutaborGUI_1_1MutView.html#a79d6d38d8ff2f6d7a017d548f0edeb09">mutaborGUI::MutView::GetTextsw</a></div><div class="ttdeci">MutEditFile * GetTextsw()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d9e/MutView_8h_source.html#l00091">MutView.h:91</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:36 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:14 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

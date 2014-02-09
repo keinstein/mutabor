@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d9/d20/GUIRouteTest_8cpp" kind="file">
     <compoundname>GUIRouteTest.cpp</compoundname>
+    <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
     <includes local="no">cppunit/extensions/HelperMacros.h</includes>
     <includes local="no">cppunit/portability/Stream.h</includes>
     <includes refid="d0/d8b/GUIRouteTest_8h" local="yes">src/wxGUI/Routing/tests/GUIRouteTest.h</includes>
@@ -10,679 +11,801 @@
     <includes local="yes">wx/frame.h</includes>
     <includes refid="d2/d2c/Route-inlines_8h" local="yes">src/kernel/routing/Route-inlines.h</includes>
     <incdepgraph>
-      <node id="25034">
+      <node id="34959">
         <label>list</label>
       </node>
-      <node id="25080">
+      <node id="35029">
         <label>src/kernel/routing/gmn/GIS_Head.h</label>
         <link refid="d1/db5/GIS__Head_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25081" relation="include">
+        <childnode refid="35030" relation="include">
         </childnode>
-        <childnode refid="25054" relation="include">
+        <childnode refid="35006" relation="include">
         </childnode>
-        <childnode refid="25090" relation="include">
+        <childnode refid="34966" relation="include">
         </childnode>
       </node>
-      <node id="25081">
+      <node id="35030">
         <label>src/kernel/routing/Box.h</label>
         <link refid="de/d0f/Box_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25030" relation="include">
+        <childnode refid="34982" relation="include">
         </childnode>
-        <childnode refid="25032" relation="include">
+        <childnode refid="34984" relation="include">
         </childnode>
-        <childnode refid="25025" relation="include">
+        <childnode refid="34980" relation="include">
         </childnode>
-        <childnode refid="25082" relation="include">
+        <childnode refid="35031" relation="include">
         </childnode>
-        <childnode refid="25084" relation="include">
+        <childnode refid="35033" relation="include">
         </childnode>
-        <childnode refid="25033" relation="include">
+        <childnode refid="34965" relation="include">
         </childnode>
-        <childnode refid="25035" relation="include">
+        <childnode refid="35015" relation="include">
         </childnode>
-        <childnode refid="25064" relation="include">
+        <childnode refid="35016" relation="include">
         </childnode>
-        <childnode refid="25065" relation="include">
+        <childnode refid="34952" relation="include">
         </childnode>
-        <childnode refid="25027" relation="include">
-        </childnode>
-        <childnode refid="25083" relation="include">
+        <childnode refid="35032" relation="include">
         </childnode>
       </node>
-      <node id="25027">
+      <node id="34952">
         <label>stdarg.h</label>
       </node>
-      <node id="25060">
+      <node id="35010">
         <label>src/kernel/routing/timing.h</label>
         <link refid="db/d41/timing_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25029" relation="include">
+        <childnode refid="34981" relation="include">
         </childnode>
-        <childnode refid="25061" relation="include">
+        <childnode refid="35011" relation="include">
         </childnode>
-        <childnode refid="25062" relation="include">
+        <childnode refid="35012" relation="include">
         </childnode>
-        <childnode refid="25036" relation="include">
+        <childnode refid="34986" relation="include">
         </childnode>
-        <childnode refid="25063" relation="include">
+        <childnode refid="34987" relation="include">
         </childnode>
-        <childnode refid="25032" relation="include">
+        <childnode refid="35013" relation="include">
+        </childnode>
+        <childnode refid="34984" relation="include">
         </childnode>
       </node>
-      <node id="25061">
+      <node id="35011">
         <label>limits</label>
       </node>
-      <node id="25082">
+      <node id="35031">
         <label>src/kernel/Execute.h</label>
         <link refid="de/d11/Execute_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25083" relation="include">
+        <childnode refid="35032" relation="include">
         </childnode>
       </node>
-      <node id="25033">
+      <node id="34985">
         <label>boost/intrusive_ptr.hpp</label>
       </node>
-      <node id="25070">
+      <node id="34967">
+        <label>wx/cmdline.h</label>
+      </node>
+      <node id="34955">
+        <label>wx/stdpaths.h</label>
+      </node>
+      <node id="35020">
         <label>src/kernel/routing/midi/midicmn.h</label>
         <link refid="de/d21/midicmn_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25053" relation="include">
+        <childnode refid="35005" relation="include">
         </childnode>
-        <childnode refid="25035" relation="include">
+        <childnode refid="34965" relation="include">
         </childnode>
       </node>
-      <node id="25040">
+      <node id="34992">
         <label>src/wxGUI/generic/muconvauto.h</label>
         <link refid="d1/dcd/muconvauto_8h"/>
-        <childnode refid="25041" relation="include">
+        <childnode refid="34993" relation="include">
         </childnode>
-        <childnode refid="25042" relation="include">
+        <childnode refid="34994" relation="include">
         </childnode>
       </node>
-      <node id="25026">
+      <node id="34951">
         <label>src/kernel/Defs.h</label>
         <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="25027" relation="include">
+        <childnode refid="34952" relation="include">
         </childnode>
-        <childnode refid="25028" relation="include">
+        <childnode refid="34953" relation="include">
+        </childnode>
+        <childnode refid="34972" relation="include">
+        </childnode>
+        <childnode refid="34973" relation="include">
+        </childnode>
+        <childnode refid="34966" relation="include">
+        </childnode>
+        <childnode refid="34974" relation="include">
+        </childnode>
+        <childnode refid="34975" relation="include">
         </childnode>
       </node>
-      <node id="25090">
+      <node id="34966">
         <label>stdint.h</label>
       </node>
-      <node id="25048">
+      <node id="35000">
         <label>wx/containr.h</label>
       </node>
-      <node id="25059">
+      <node id="35009">
         <label>stdlib.h</label>
       </node>
-      <node id="25039">
+      <node id="34972">
+        <label>wx/wxchar.h</label>
+      </node>
+      <node id="34961">
+        <label>wx/image.h</label>
+      </node>
+      <node id="34991">
         <label>src/wxGUI/Routing/RouteLists.h</label>
         <link refid="d4/d70/RouteLists_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25034" relation="include">
+        <childnode refid="34959" relation="include">
         </childnode>
       </node>
-      <node id="25075">
+      <node id="35025">
         <label>src/kernel/routing/CommonFileDevice.h</label>
         <link refid="d9/d17/CommonFileDevice_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25053" relation="include">
+        <childnode refid="35005" relation="include">
         </childnode>
-        <childnode refid="25032" relation="include">
+        <childnode refid="34984" relation="include">
         </childnode>
-        <childnode refid="25061" relation="include">
+        <childnode refid="35011" relation="include">
         </childnode>
-        <childnode refid="25076" relation="include">
+        <childnode refid="34964" relation="include">
         </childnode>
-        <childnode refid="25066" relation="include">
+        <childnode refid="34970" relation="include">
         </childnode>
       </node>
-      <node id="25107">
+      <node id="35053">
         <label>wx/frame.h</label>
       </node>
-      <node id="25072">
+      <node id="35022">
         <label>cassert</label>
       </node>
-      <node id="25049">
+      <node id="35001">
         <label>src/wxGUI/MutIcon.h</label>
         <link refid="df/d37/MutIcon_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
       </node>
-      <node id="25036">
+      <node id="34986">
         <label>stdexcept</label>
       </node>
-      <node id="25089">
+      <node id="35037">
         <label>malloc.h</label>
       </node>
-      <node id="25043">
+      <node id="34995">
         <label>src/wxGUI/Routing/DeviceShape.h</label>
         <link refid="d9/d4d/DeviceShape_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25044" relation="include">
+        <childnode refid="34996" relation="include">
         </childnode>
-        <childnode refid="25025" relation="include">
+        <childnode refid="34980" relation="include">
         </childnode>
-        <childnode refid="25053" relation="include">
+        <childnode refid="35005" relation="include">
         </childnode>
-        <childnode refid="25068" relation="include">
+        <childnode refid="35018" relation="include">
         </childnode>
-        <childnode refid="25039" relation="include">
+        <childnode refid="34991" relation="include">
         </childnode>
-        <childnode refid="25099" relation="include">
+        <childnode refid="35045" relation="include">
         </childnode>
-        <childnode refid="25100" relation="include">
+        <childnode refid="35046" relation="include">
         </childnode>
       </node>
-      <node id="25071">
+      <node id="35021">
         <label>src/kernel/GrafKern.h</label>
         <link refid="d4/d47/GrafKern_8h"/>
       </node>
-      <node id="25078">
+      <node id="35027">
         <label>wx/timer.h</label>
       </node>
-      <node id="25086">
+      <node id="34987">
+        <label>boost/throw_exception.hpp</label>
+      </node>
+      <node id="34976">
         <label>string</label>
       </node>
-      <node id="25068">
+      <node id="35018">
         <label>src/wxGUI/Routing/GUIRoute.h</label>
         <link refid="d6/dfa/GUIRoute_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25053" relation="include">
+        <childnode refid="35005" relation="include">
         </childnode>
-        <childnode refid="25069" relation="include">
+        <childnode refid="35019" relation="include">
         </childnode>
-        <childnode refid="25074" relation="include">
+        <childnode refid="35024" relation="include">
         </childnode>
-        <childnode refid="25079" relation="include">
+        <childnode refid="35028" relation="include">
         </childnode>
-        <childnode refid="25025" relation="include">
+        <childnode refid="34980" relation="include">
         </childnode>
-        <childnode refid="25091" relation="include">
+        <childnode refid="35038" relation="include">
         </childnode>
-        <childnode refid="25039" relation="include">
+        <childnode refid="34991" relation="include">
         </childnode>
-        <childnode refid="25064" relation="include">
+        <childnode refid="35015" relation="include">
         </childnode>
       </node>
-      <node id="25037">
+      <node id="34989">
         <label>src/wxGUI/Routing/DebugRoute.h</label>
         <link refid="d5/d31/DebugRoute_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
       </node>
-      <node id="25099">
+      <node id="35045">
         <label>map</label>
       </node>
-      <node id="25103">
+      <node id="35049">
         <label>src/wxGUI/Routing/BoxIconShape.h</label>
         <link refid="d2/de0/BoxIconShape_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25044" relation="include">
+        <childnode refid="34996" relation="include">
         </childnode>
-        <childnode refid="25104" relation="include">
+        <childnode refid="35050" relation="include">
         </childnode>
       </node>
-      <node id="25074">
+      <node id="35024">
         <label>src/kernel/routing/midi/DevMidF.h</label>
         <link refid="da/d3c/DevMidF_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25075" relation="include">
+        <childnode refid="35025" relation="include">
         </childnode>
-        <childnode refid="25070" relation="include">
+        <childnode refid="35020" relation="include">
         </childnode>
-        <childnode refid="25077" relation="include">
+        <childnode refid="35026" relation="include">
         </childnode>
-        <childnode refid="25078" relation="include">
+        <childnode refid="35027" relation="include">
         </childnode>
       </node>
-      <node id="25052">
+      <node id="35004">
         <label>wx/stattext.h</label>
       </node>
-      <node id="25062">
+      <node id="35012">
         <label>exception</label>
       </node>
-      <node id="25047">
+      <node id="34999">
         <label>wx/control.h</label>
       </node>
-      <node id="25077">
+      <node id="35026">
         <label>fstream</label>
       </node>
-      <node id="25050">
+      <node id="34971">
+        <label>mutDebugFlags.h</label>
+        <link refid="d7/d49/mutDebugFlags_8h"/>
+      </node>
+      <node id="35002">
         <label>wx/defs.h</label>
       </node>
-      <node id="25088">
+      <node id="34954">
+        <label>wx/window.h</label>
+      </node>
+      <node id="35036">
         <label>Interpre.h</label>
         <link refid="d2/dd8/Interpre_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25085" relation="include">
+        <childnode refid="35034" relation="include">
         </childnode>
       </node>
-      <node id="25084">
+      <node id="35014">
+        <label>limits.h</label>
+      </node>
+      <node id="35033">
         <label>src/kernel/box.h</label>
         <link refid="dc/d19/box_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25085" relation="include">
+        <childnode refid="35034" relation="include">
         </childnode>
-        <childnode refid="25088" relation="include">
+        <childnode refid="35036" relation="include">
         </childnode>
-        <childnode refid="25082" relation="include">
+        <childnode refid="35031" relation="include">
         </childnode>
-        <childnode refid="25089" relation="include">
+        <childnode refid="35037" relation="include">
         </childnode>
       </node>
-      <node id="25038">
+      <node id="34990">
         <label>src/wxGUI/MutRouteWnd.h</label>
         <link refid="d3/dd7/MutRouteWnd_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25039" relation="include">
+        <childnode refid="34991" relation="include">
         </childnode>
-        <childnode refid="25040" relation="include">
+        <childnode refid="34992" relation="include">
         </childnode>
-        <childnode refid="25043" relation="include">
+        <childnode refid="34995" relation="include">
         </childnode>
-        <childnode refid="25101" relation="include">
+        <childnode refid="35047" relation="include">
         </childnode>
-        <childnode refid="25106" relation="include">
+        <childnode refid="35052" relation="include">
         </childnode>
       </node>
-      <node id="25094">
+      <node id="34973">
+        <label>wx/intl.h</label>
+      </node>
+      <node id="35041">
         <label>wx/stc/stc.h</label>
       </node>
-      <node id="25092">
+      <node id="35039">
         <label>src/wxGUI/MutEditFile.h</label>
         <link refid="d5/dfb/MutEditFile_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25093" relation="include">
+        <childnode refid="35040" relation="include">
         </childnode>
-        <childnode refid="25040" relation="include">
+        <childnode refid="34992" relation="include">
         </childnode>
-        <childnode refid="25035" relation="include">
+        <childnode refid="34965" relation="include">
         </childnode>
-        <childnode refid="25095" relation="include">
+        <childnode refid="35042" relation="include">
         </childnode>
-        <childnode refid="25096" relation="include">
+        <childnode refid="35043" relation="include">
         </childnode>
-        <childnode refid="25094" relation="include">
+        <childnode refid="35041" relation="include">
         </childnode>
-        <childnode refid="25097" relation="include">
+        <childnode refid="35044" relation="include">
         </childnode>
       </node>
-      <node id="25045">
+      <node id="34997">
         <label>src/wxGUI/Panel.h</label>
         <link refid="d0/d1d/Panel_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25046" relation="include">
+        <childnode refid="34998" relation="include">
         </childnode>
-        <childnode refid="25047" relation="include">
+        <childnode refid="34999" relation="include">
         </childnode>
-        <childnode refid="25048" relation="include">
+        <childnode refid="35000" relation="include">
         </childnode>
       </node>
-      <node id="25105">
+      <node id="34960">
+        <label>src/wxGUI/Mutabor.rh</label>
+        <link refid="d9/d64/Mutabor_8rh"/>
+        <childnode refid="34951" relation="include">
+        </childnode>
+      </node>
+      <node id="34956">
+        <label>wx/filename.h</label>
+      </node>
+      <node id="35051">
         <label>wx/colour.h</label>
       </node>
-      <node id="25023">
+      <node id="34978">
         <label>cppunit/portability/Stream.h</label>
       </node>
-      <node id="25029">
+      <node id="34981">
         <label>src/kernel/MidiKern.h</label>
         <link refid="da/dfd/MidiKern_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
       </node>
-      <node id="25058">
+      <node id="35008">
         <label>string.h</label>
       </node>
-      <node id="25076">
+      <node id="34958">
+        <label>typeinfo</label>
+      </node>
+      <node id="34969">
+        <label>wx/debug.h</label>
+      </node>
+      <node id="34964">
         <label>cstdio</label>
       </node>
-      <node id="25041">
+      <node id="34963">
+        <label>bitset</label>
+      </node>
+      <node id="34993">
         <label>wx/convauto.h</label>
       </node>
-      <node id="25106">
+      <node id="34953">
+        <label>src/wxGUI/generic/mhDefs.h</label>
+        <link refid="d0/d68/mhDefs_8h"/>
+        <childnode refid="34951" relation="include">
+        </childnode>
+        <childnode refid="34954" relation="include">
+        </childnode>
+        <childnode refid="34955" relation="include">
+        </childnode>
+        <childnode refid="34956" relation="include">
+        </childnode>
+        <childnode refid="34957" relation="include">
+        </childnode>
+        <childnode refid="34958" relation="include">
+        </childnode>
+        <childnode refid="34959" relation="include">
+        </childnode>
+        <childnode refid="34960" relation="include">
+        </childnode>
+        <childnode refid="34961" relation="include">
+        </childnode>
+        <childnode refid="34962" relation="include">
+        </childnode>
+      </node>
+      <node id="35052">
         <label>wx/scrolwin.h</label>
       </node>
-      <node id="25035">
+      <node id="34965">
         <label>vector</label>
       </node>
-      <node id="25025">
+      <node id="34962">
+        <label>mutDebug.h</label>
+        <link refid="de/de1/mutDebug_8h"/>
+        <childnode refid="34963" relation="include">
+        </childnode>
+        <childnode refid="34957" relation="include">
+        </childnode>
+        <childnode refid="34964" relation="include">
+        </childnode>
+        <childnode refid="34965" relation="include">
+        </childnode>
+        <childnode refid="34966" relation="include">
+        </childnode>
+        <childnode refid="34967" relation="include">
+        </childnode>
+        <childnode refid="34968" relation="include">
+        </childnode>
+        <childnode refid="34969" relation="include">
+        </childnode>
+        <childnode refid="34970" relation="include">
+        </childnode>
+        <childnode refid="34971" relation="include">
+        </childnode>
+      </node>
+      <node id="34980">
         <label>src/kernel/routing/Route.h</label>
         <link refid="d1/d65/Route_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25029" relation="include">
+        <childnode refid="34981" relation="include">
         </childnode>
-        <childnode refid="25030" relation="include">
+        <childnode refid="34982" relation="include">
         </childnode>
-        <childnode refid="25031" relation="include">
+        <childnode refid="34983" relation="include">
         </childnode>
-        <childnode refid="25033" relation="include">
+        <childnode refid="34959" relation="include">
         </childnode>
-        <childnode refid="25034" relation="include">
+        <childnode refid="34965" relation="include">
         </childnode>
-        <childnode refid="25035" relation="include">
+        <childnode refid="34986" relation="include">
         </childnode>
-        <childnode refid="25036" relation="include">
+        <childnode refid="34987" relation="include">
+        </childnode>
+        <childnode refid="34988" relation="include">
         </childnode>
       </node>
-      <node id="25067">
+      <node id="35017">
         <label>boost/unordered_set.hpp</label>
       </node>
-      <node id="25065">
+      <node id="34975">
+        <label>src/wxintl/libintl.h</label>
+        <link refid="d4/d64/libintl_8h"/>
+        <childnode refid="34951" relation="include">
+        </childnode>
+        <childnode refid="34976" relation="include">
+        </childnode>
+      </node>
+      <node id="35016">
         <label>sstream</label>
       </node>
-      <node id="25097">
+      <node id="35044">
         <label>wx/fontdlg.h</label>
       </node>
-      <node id="25079">
+      <node id="35028">
         <label>src/kernel/routing/gmn/DevGIS.h</label>
         <link refid="da/d81/DevGIS_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25075" relation="include">
+        <childnode refid="35025" relation="include">
         </childnode>
-        <childnode refid="25080" relation="include">
+        <childnode refid="35029" relation="include">
         </childnode>
-        <childnode refid="25078" relation="include">
+        <childnode refid="35027" relation="include">
         </childnode>
       </node>
-      <node id="25056">
+      <node id="34968">
         <label>wx/string.h</label>
       </node>
-      <node id="25054">
+      <node id="35006">
         <label>src/kernel/routing/gmn/GIS.h</label>
         <link refid="dd/d4d/GIS_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25055" relation="include">
+        <childnode refid="35007" relation="include">
         </childnode>
-        <childnode refid="25058" relation="include">
+        <childnode refid="35008" relation="include">
         </childnode>
-        <childnode refid="25059" relation="include">
+        <childnode refid="35009" relation="include">
         </childnode>
       </node>
-      <node id="25069">
+      <node id="35019">
         <label>src/kernel/routing/midi/DevMidi.h</label>
         <link refid="d4/da2/DevMidi_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25070" relation="include">
+        <childnode refid="35020" relation="include">
         </childnode>
-        <childnode refid="25053" relation="include">
+        <childnode refid="35005" relation="include">
         </childnode>
-        <childnode refid="25071" relation="include">
+        <childnode refid="35021" relation="include">
         </childnode>
-        <childnode refid="25072" relation="include">
+        <childnode refid="35022" relation="include">
         </childnode>
-        <childnode refid="25073" relation="include">
+        <childnode refid="35023" relation="include">
         </childnode>
       </node>
-      <node id="25085">
+      <node id="35034">
         <label>Global.h</label>
         <link refid="dd/d40/Global_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25083" relation="include">
+        <childnode refid="35032" relation="include">
         </childnode>
-        <childnode refid="25059" relation="include">
+        <childnode refid="35009" relation="include">
         </childnode>
-        <childnode refid="25027" relation="include">
+        <childnode refid="34952" relation="include">
         </childnode>
-        <childnode refid="25086" relation="include">
+        <childnode refid="34976" relation="include">
         </childnode>
-        <childnode refid="25087" relation="include">
+        <childnode refid="35035" relation="include">
         </childnode>
       </node>
-      <node id="25108">
+      <node id="35054">
         <label>src/kernel/routing/Route-inlines.h</label>
         <link refid="d2/d2c/Route-inlines_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25025" relation="include">
+        <childnode refid="34980" relation="include">
         </childnode>
-        <childnode refid="25053" relation="include">
+        <childnode refid="35005" relation="include">
         </childnode>
-        <childnode refid="25081" relation="include">
+        <childnode refid="35030" relation="include">
         </childnode>
       </node>
-      <node id="25087">
+      <node id="35035">
         <label>math.h</label>
       </node>
-      <node id="25098">
+      <node id="34988">
         <label>wx/config.h</label>
       </node>
-      <node id="25057">
+      <node id="34957">
         <label>iostream</label>
       </node>
-      <node id="25055">
+      <node id="35007">
         <label>src/kernel/Frac.h</label>
         <link refid="df/d4f/Frac_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25056" relation="include">
+        <childnode refid="34968" relation="include">
         </childnode>
-        <childnode refid="25057" relation="include">
+        <childnode refid="34957" relation="include">
         </childnode>
       </node>
-      <node id="25042">
+      <node id="34994">
         <label>wx/strconv.h</label>
       </node>
-      <node id="25100">
+      <node id="35046">
         <label>wx/sizer.h</label>
       </node>
-      <node id="25073">
+      <node id="35023">
         <label>mmsystem.h</label>
       </node>
-      <node id="25028">
-        <label>wx/msw/wrapwin.h</label>
-      </node>
-      <node id="25091">
+      <node id="35038">
         <label>src/wxGUI/GUIBoxData.h</label>
         <link refid="d5/df7/GUIBoxData_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25030" relation="include">
+        <childnode refid="34982" relation="include">
         </childnode>
-        <childnode refid="25081" relation="include">
+        <childnode refid="35030" relation="include">
         </childnode>
-        <childnode refid="25039" relation="include">
+        <childnode refid="34991" relation="include">
         </childnode>
-        <childnode refid="25092" relation="include">
+        <childnode refid="35039" relation="include">
         </childnode>
-        <childnode refid="25035" relation="include">
+        <childnode refid="34965" relation="include">
         </childnode>
-        <childnode refid="25036" relation="include">
+        <childnode refid="34986" relation="include">
         </childnode>
-        <childnode refid="25098" relation="include">
+        <childnode refid="34988" relation="include">
         </childnode>
       </node>
-      <node id="25021">
+      <node id="34950">
         <label>src/wxGUI/Routing/tests/GUIRouteTest.cpp</label>
         <link refid="GUIRouteTest.cpp"/>
-        <childnode refid="25022" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25023" relation="include">
+        <childnode refid="34977" relation="include">
         </childnode>
-        <childnode refid="25024" relation="include">
+        <childnode refid="34978" relation="include">
         </childnode>
-        <childnode refid="25037" relation="include">
+        <childnode refid="34979" relation="include">
         </childnode>
-        <childnode refid="25038" relation="include">
+        <childnode refid="34989" relation="include">
         </childnode>
-        <childnode refid="25107" relation="include">
+        <childnode refid="34990" relation="include">
         </childnode>
-        <childnode refid="25108" relation="include">
+        <childnode refid="35053" relation="include">
+        </childnode>
+        <childnode refid="35054" relation="include">
         </childnode>
       </node>
-      <node id="25066">
+      <node id="34970">
         <label>wx/thread.h</label>
       </node>
-      <node id="25024">
+      <node id="34979">
         <label>src/wxGUI/Routing/tests/GUIRouteTest.h</label>
         <link refid="d0/d8b/GUIRouteTest_8h"/>
-        <childnode refid="25022" relation="include">
+        <childnode refid="34977" relation="include">
         </childnode>
-        <childnode refid="25023" relation="include">
+        <childnode refid="34978" relation="include">
         </childnode>
-        <childnode refid="25025" relation="include">
+        <childnode refid="34980" relation="include">
         </childnode>
       </node>
-      <node id="25032">
+      <node id="34984">
         <label>src/kernel/routing/thread.h</label>
         <link refid="db/dd5/thread_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
+        </childnode>
+        <childnode refid="34970" relation="include">
         </childnode>
       </node>
-      <node id="25022">
+      <node id="34977">
         <label>cppunit/extensions/HelperMacros.h</label>
       </node>
-      <node id="25031">
+      <node id="34983">
         <label>src/kernel/boost-interface.h</label>
         <link refid="d1/da4/boost-interface_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25032" relation="include">
+        <childnode refid="34984" relation="include">
+        </childnode>
+        <childnode refid="34985" relation="include">
         </childnode>
       </node>
-      <node id="25044">
+      <node id="34996">
         <label>src/wxGUI/IconShape.h</label>
         <link refid="d5/d6f/IconShape_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25045" relation="include">
+        <childnode refid="34997" relation="include">
         </childnode>
-        <childnode refid="25049" relation="include">
+        <childnode refid="35001" relation="include">
         </childnode>
-        <childnode refid="25050" relation="include">
+        <childnode refid="35002" relation="include">
         </childnode>
-        <childnode refid="25051" relation="include">
+        <childnode refid="35003" relation="include">
         </childnode>
-        <childnode refid="25052" relation="include">
+        <childnode refid="35004" relation="include">
         </childnode>
       </node>
-      <node id="25104">
+      <node id="35050">
         <label>src/wxGUI/Routing/RouteIcons.h</label>
         <link refid="df/d40/RouteIcons_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25049" relation="include">
+        <childnode refid="35001" relation="include">
         </childnode>
       </node>
-      <node id="25046">
+      <node id="34974">
+        <label>wx/setup.h</label>
+      </node>
+      <node id="34998">
         <label>wx/panel.h</label>
       </node>
-      <node id="25063">
+      <node id="35013">
         <label>wx/stopwatch.h</label>
       </node>
-      <node id="25064">
+      <node id="35015">
         <label>algorithm</label>
       </node>
-      <node id="25053">
+      <node id="35005">
         <label>src/kernel/routing/Device.h</label>
         <link refid="de/d05/Device_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25054" relation="include">
+        <childnode refid="35006" relation="include">
         </childnode>
-        <childnode refid="25025" relation="include">
+        <childnode refid="34980" relation="include">
         </childnode>
-        <childnode refid="25060" relation="include">
+        <childnode refid="35010" relation="include">
         </childnode>
-        <childnode refid="25029" relation="include">
+        <childnode refid="34981" relation="include">
         </childnode>
-        <childnode refid="25035" relation="include">
+        <childnode refid="34965" relation="include">
         </childnode>
-        <childnode refid="25034" relation="include">
+        <childnode refid="34959" relation="include">
         </childnode>
-        <childnode refid="25064" relation="include">
+        <childnode refid="35014" relation="include">
         </childnode>
-        <childnode refid="25065" relation="include">
+        <childnode refid="35015" relation="include">
         </childnode>
-        <childnode refid="25027" relation="include">
+        <childnode refid="35016" relation="include">
         </childnode>
-        <childnode refid="25066" relation="include">
+        <childnode refid="34952" relation="include">
         </childnode>
-        <childnode refid="25063" relation="include">
+        <childnode refid="34970" relation="include">
         </childnode>
-        <childnode refid="25067" relation="include">
+        <childnode refid="35013" relation="include">
+        </childnode>
+        <childnode refid="35017" relation="include">
         </childnode>
       </node>
-      <node id="25051">
+      <node id="35003">
         <label>wx/icon.h</label>
       </node>
-      <node id="25083">
+      <node id="35032">
         <label>stdio.h</label>
       </node>
-      <node id="25095">
+      <node id="35042">
         <label>wx/textctrl.h</label>
       </node>
-      <node id="25093">
+      <node id="35040">
         <label>src/wxGUI/stclanguage.h</label>
         <link refid="d1/de5/stclanguage_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25094" relation="include">
+        <childnode refid="35041" relation="include">
         </childnode>
       </node>
-      <node id="25101">
+      <node id="35047">
         <label>src/wxGUI/Routing/BoxShape.h</label>
         <link refid="d9/d49/BoxShape_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25091" relation="include">
+        <childnode refid="35038" relation="include">
         </childnode>
-        <childnode refid="25068" relation="include">
+        <childnode refid="35018" relation="include">
         </childnode>
-        <childnode refid="25102" relation="include">
+        <childnode refid="35048" relation="include">
         </childnode>
-        <childnode refid="25103" relation="include">
+        <childnode refid="35049" relation="include">
         </childnode>
-        <childnode refid="25053" relation="include">
+        <childnode refid="35005" relation="include">
         </childnode>
-        <childnode refid="25105" relation="include">
+        <childnode refid="35051" relation="include">
         </childnode>
-        <childnode refid="25100" relation="include">
+        <childnode refid="35046" relation="include">
         </childnode>
       </node>
-      <node id="25096">
+      <node id="35043">
         <label>wx/docview.h</label>
       </node>
-      <node id="25102">
+      <node id="35048">
         <label>src/wxGUI/Routing/BoxChannelShape.h</label>
         <link refid="d6/d68/BoxChannelShape_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
-        <childnode refid="25068" relation="include">
+        <childnode refid="35018" relation="include">
         </childnode>
-        <childnode refid="25044" relation="include">
+        <childnode refid="34996" relation="include">
         </childnode>
-        <childnode refid="25100" relation="include">
+        <childnode refid="35046" relation="include">
         </childnode>
       </node>
-      <node id="25030">
+      <node id="34982">
         <label>src/kernel/treestorage.h</label>
         <link refid="db/dbe/treestorage_8h"/>
-        <childnode refid="25026" relation="include">
+        <childnode refid="34951" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -692,192 +815,193 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
-<codeline lineno="28"><highlight class="preprocessor">#include<sp/>&lt;cppunit/extensions/HelperMacros.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cppunit/portability/Stream.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//#include<sp/>&quot;src/kernel/Runtime.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d0/d8b/GUIRouteTest_8h" kindref="compound">src/wxGUI/Routing/tests/GUIRouteTest.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d5/d31/DebugRoute_8h" kindref="compound">src/wxGUI/Routing/DebugRoute.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d3/dd7/MutRouteWnd_8h" kindref="compound">src/wxGUI/MutRouteWnd.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/frame.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d2c/Route-inlines_8h" kindref="compound">src/kernel/routing/Route-inlines.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">mutabor;</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">mutaborGUI;</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43" refid="d2/d7d/group__tests_1ga93fe40e1f8011610ac2cbc370213b609" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d2/d7d/group__tests_1ga93fe40e1f8011610ac2cbc370213b609" kindref="member">GUIRouteTest::setUp</ref>()<sp/></highlight></codeline>
-<codeline lineno="44"><highlight class="normal">{<sp/></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>change<sp/>DEBUGA<sp/>to<sp/>DEBUG<sp/>in<sp/>case<sp/>you<sp/>need<sp/>the<sp/>debug<sp/>output</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>DEBUGA</highlight></codeline>
-<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>debugFlags::flags.timer<sp/>=<sp/>true;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>debugFlags::flags.midifile<sp/>=<sp/>true;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RealTime<sp/>=<sp/>true;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight></codeline>
-<codeline lineno="53" refid="d2/d7d/group__tests_1ga929bcfaa1bfb560bfd3660800e64cee8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d2/d7d/group__tests_1ga929bcfaa1bfb560bfd3660800e64cee8" kindref="member">GUIRouteTest::tearDown</ref>()</highlight></codeline>
-<codeline lineno="54"><highlight class="normal">{<sp/></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>DEBUG</highlight></codeline>
-<codeline lineno="56"><highlight class="preprocessor"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>debugFlags::flags.timer<sp/>=<sp/>false;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>debugFlags::flags.midifile<sp/>=<sp/>false;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>in<sp/>=<sp/>NULL;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight></codeline>
-<codeline lineno="62" refid="d2/d7d/group__tests_1ga18ee48c61ebf6e4dfe52cf111ac07d22" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d2/d7d/group__tests_1ga18ee48c61ebf6e4dfe52cf111ac07d22" kindref="member">GUIRouteTest::testConnect</ref>()</highlight></codeline>
-<codeline lineno="63"><highlight class="normal">{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d60/classmutabor_1_1ScopedOutputDevice" kindref="compound">ScopedOutputDevice</ref><sp/>out1,<sp/>out2;</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d2/d1f/classmutabor_1_1ScopedRoute" kindref="compound">ScopedRoute</ref><sp/>r1,<sp/>r2;</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d02/classmutabor_1_1ScopedInputDevice" kindref="compound">ScopedInputDevice</ref><sp/>in1,<sp/>in2;</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="da/dad/classmutabor_1_1ScopedBox" kindref="compound">ScopedBox</ref><sp/>MyNoBox;</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::auto_ptr&lt;wxWindow&gt;<sp/>parent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>wxFrame(0,wxID_ANY,_T(</highlight><highlight class="stringliteral">&quot;Test&quot;</highlight><highlight class="normal">)));</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d06/classmutaborGUI_1_1MutRouteWnd" kindref="compound">MutRouteWnd</ref><sp/>*<sp/>wnd;</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out1<sp/>=<sp/><ref refid="d5/dee/group__route_1ga7d3885474af8ef38f69056fdff322654" kindref="member">DeviceFactory::CreateOutput</ref>(<ref refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" kindref="member">DTMidiFile</ref>,_T(</highlight><highlight class="stringliteral">&quot;testmidi_output1.mid&quot;</highlight><highlight class="normal">));</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out2<sp/>=<sp/><ref refid="d5/dee/group__route_1ga7d3885474af8ef38f69056fdff322654" kindref="member">DeviceFactory::CreateOutput</ref>(<ref refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" kindref="member">DTMidiFile</ref>,_T(</highlight><highlight class="stringliteral">&quot;testmidi_output2.mid&quot;</highlight><highlight class="normal">));</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MyNoBox<sp/>=<sp/><ref refid="d5/dee/group__route_1ga1b747523cf90d4b44b18f88512405445" kindref="member">BoxFactory::Create</ref>(<ref refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542aeb2ddcbaa727016dcb5229fc6dacc23f" kindref="member">mutabor::NoBox</ref>);</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r1<sp/>=<sp/><ref refid="d5/dee/group__route_1gaf8817ebce7a0d0d9fecacf9bdeff028c" kindref="member">RouteFactory::Create</ref>();</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r2<sp/>=<sp/><ref refid="d5/dee/group__route_1gaf8817ebce7a0d0d9fecacf9bdeff028c" kindref="member">RouteFactory::Create</ref>();</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>in1<sp/>=<sp/><ref refid="d5/dee/group__route_1gae7f6e33308f9b52a914b383280a54068" kindref="member">DeviceFactory::CreateInput</ref>(<ref refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" kindref="member">DTMidiFile</ref>,_T(</highlight><highlight class="stringliteral">&quot;testmidi_input1.mid&quot;</highlight><highlight class="normal">));</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>in2<sp/>=<sp/><ref refid="d5/dee/group__route_1gae7f6e33308f9b52a914b383280a54068" kindref="member">DeviceFactory::CreateInput</ref>(<ref refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" kindref="member">DTMidiFile</ref>,_T(</highlight><highlight class="stringliteral">&quot;testmidi_input2.mid&quot;</highlight><highlight class="normal">));</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1a65c68128daf0c3feda58f55b7aca2e05" kindref="member">connect</ref><sp/>(r1,out1);</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetOutputDevice()<sp/>==<sp/>out1);</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(r1,out1,out2);</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out2-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out2-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetOutputDevice()<sp/>==<sp/>out2);</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out2-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(r1,out2,out1);</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out2-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetOutputDevice()<sp/>==<sp/>out1);</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1adb9659c6b97b933b1997d17e5e790296" kindref="member">disconnect</ref><sp/>(r1,out1);</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1a65c68128daf0c3feda58f55b7aca2e05" kindref="member">connect</ref>(r1,MyNoBox);</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(MyNoBox-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetBox()<sp/>==<sp/>MyNoBox);</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">src/kernel/Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cppunit/extensions/HelperMacros.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cppunit/portability/Stream.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//#include<sp/>&quot;src/kernel/Runtime.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d0/d8b/GUIRouteTest_8h" kindref="compound">src/wxGUI/Routing/tests/GUIRouteTest.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d5/d31/DebugRoute_8h" kindref="compound">src/wxGUI/Routing/DebugRoute.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d3/dd7/MutRouteWnd_8h" kindref="compound">src/wxGUI/MutRouteWnd.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/frame.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d2c/Route-inlines_8h" kindref="compound">src/kernel/routing/Route-inlines.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">mutabor;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">mutaborGUI;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="d2/d7d/group__tests_1ga93fe40e1f8011610ac2cbc370213b609" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d2/d7d/group__tests_1ga93fe40e1f8011610ac2cbc370213b609" kindref="member">GUIRouteTest::setUp</ref>()<sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{<sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>change<sp/>DEBUGA<sp/>to<sp/>DEBUG<sp/>in<sp/>case<sp/>you<sp/>need<sp/>the<sp/>debug<sp/>output</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>DEBUGA</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>debugFlags::flags.timer<sp/>=<sp/>true;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>debugFlags::flags.midifile<sp/>=<sp/>true;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RealTime<sp/>=<sp/>true;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="54" refid="d2/d7d/group__tests_1ga929bcfaa1bfb560bfd3660800e64cee8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d2/d7d/group__tests_1ga929bcfaa1bfb560bfd3660800e64cee8" kindref="member">GUIRouteTest::tearDown</ref>()</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{<sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>DEBUG</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>debugFlags::flags.timer<sp/>=<sp/>false;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>debugFlags::flags.midifile<sp/>=<sp/>false;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>in<sp/>=<sp/>NULL;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="63" refid="d2/d7d/group__tests_1ga18ee48c61ebf6e4dfe52cf111ac07d22" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d2/d7d/group__tests_1ga18ee48c61ebf6e4dfe52cf111ac07d22" kindref="member">GUIRouteTest::testConnect</ref>()</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d60/classmutabor_1_1ScopedOutputDevice" kindref="compound">ScopedOutputDevice</ref><sp/>out1,<sp/>out2;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d2/d1f/classmutabor_1_1ScopedRoute" kindref="compound">ScopedRoute</ref><sp/>r1,<sp/>r2;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d02/classmutabor_1_1ScopedInputDevice" kindref="compound">ScopedInputDevice</ref><sp/>in1,<sp/>in2;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="da/dad/classmutabor_1_1ScopedBox" kindref="compound">ScopedBox</ref><sp/>MyNoBox(NULL);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::auto_ptr&lt;wxWindow&gt;<sp/>parent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>wxFrame(0,wxID_ANY,_T(</highlight><highlight class="stringliteral">&quot;Test&quot;</highlight><highlight class="normal">)));</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d06/classmutaborGUI_1_1MutRouteWnd" kindref="compound">MutRouteWnd</ref><sp/>*<sp/>wnd;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out1<sp/>=<sp/><ref refid="d5/dee/group__route_1ga7d3885474af8ef38f69056fdff322654" kindref="member">DeviceFactory::CreateOutput</ref>(<ref refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" kindref="member">DTMidiFile</ref>,_T(</highlight><highlight class="stringliteral">&quot;testmidi_output1.mid&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out2<sp/>=<sp/><ref refid="d5/dee/group__route_1ga7d3885474af8ef38f69056fdff322654" kindref="member">DeviceFactory::CreateOutput</ref>(<ref refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" kindref="member">DTMidiFile</ref>,_T(</highlight><highlight class="stringliteral">&quot;testmidi_output2.mid&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MyNoBox<sp/>=<sp/><ref refid="d5/dee/group__route_1ga1b747523cf90d4b44b18f88512405445" kindref="member">BoxFactory::Create</ref>(<ref refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542aeb2ddcbaa727016dcb5229fc6dacc23f" kindref="member">mutabor::NoBox</ref>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r1<sp/>=<sp/><ref refid="d5/dee/group__route_1gaf8817ebce7a0d0d9fecacf9bdeff028c" kindref="member">RouteFactory::Create</ref>();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r2<sp/>=<sp/><ref refid="d5/dee/group__route_1gaf8817ebce7a0d0d9fecacf9bdeff028c" kindref="member">RouteFactory::Create</ref>();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>in1<sp/>=<sp/><ref refid="d5/dee/group__route_1gae7f6e33308f9b52a914b383280a54068" kindref="member">DeviceFactory::CreateInput</ref>(<ref refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" kindref="member">DTMidiFile</ref>,_T(</highlight><highlight class="stringliteral">&quot;testmidi_input1.mid&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>in2<sp/>=<sp/><ref refid="d5/dee/group__route_1gae7f6e33308f9b52a914b383280a54068" kindref="member">DeviceFactory::CreateInput</ref>(<ref refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" kindref="member">DTMidiFile</ref>,_T(</highlight><highlight class="stringliteral">&quot;testmidi_input2.mid&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1a65c68128daf0c3feda58f55b7aca2e05" kindref="member">connect</ref><sp/>(r1,out1);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetOutputDevice()<sp/>==<sp/>out1);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(r1,out1,out2);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out2-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out2-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetOutputDevice()<sp/>==<sp/>out2);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out2-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(r1,out2,out1);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out2-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetOutputDevice()<sp/>==<sp/>out1);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1adb9659c6b97b933b1997d17e5e790296" kindref="member">disconnect</ref><sp/>(r1,out1);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1a65c68128daf0c3feda58f55b7aca2e05" kindref="member">connect</ref>(r1,MyNoBox);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(MyNoBox-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetBox()<sp/>==<sp/>MyNoBox);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="109"><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1a65c68128daf0c3feda58f55b7aca2e05" kindref="member">connect</ref><sp/>(r1,in1);</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetInputDevice()<sp/>==<sp/>in1);</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(r1,in1,in2);</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in2-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in2-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetInputDevice()<sp/>==<sp/>in2);</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in2-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(r1,in2,in1);</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in2-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetInputDevice()<sp/>==<sp/>in1);</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1adb9659c6b97b933b1997d17e5e790296" kindref="member">disconnect</ref><sp/>(r1,in1);</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"></highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wnd<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="dc/d06/classmutaborGUI_1_1MutRouteWnd" kindref="compound">MutRouteWnd</ref>(parent.get());</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/></highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1a65c68128daf0c3feda58f55b7aca2e05" kindref="member">connect</ref><sp/>(r1,out1);</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetOutputDevice()<sp/>==<sp/>out1);</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(r1,out1,out2);</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out2-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out2-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetOutputDevice()<sp/>==<sp/>out2);</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out2-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(r1,out2,out1);</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out2-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetOutputDevice()<sp/>==<sp/>out1);</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(out1,r1,r2);</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;GetRoutes().front()<sp/>==<sp/>r2);</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetOutputDevice()<sp/>==<sp/>NULL);</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r2-&gt;GetOutputDevice()<sp/>==<sp/>out1);</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;GetRoutes().front()<sp/>==<sp/>r2);</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1adb9659c6b97b933b1997d17e5e790296" kindref="member">disconnect</ref><sp/>(r2,out1);</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1a65c68128daf0c3feda58f55b7aca2e05" kindref="member">connect</ref><sp/>(r1,in1);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetInputDevice()<sp/>==<sp/>in1);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(r1,in1,in2);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in2-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in2-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetInputDevice()<sp/>==<sp/>in2);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in2-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(r1,in2,in1);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in2-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetInputDevice()<sp/>==<sp/>in1);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1adb9659c6b97b933b1997d17e5e790296" kindref="member">disconnect</ref><sp/>(r1,in1);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wnd<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="dc/d06/classmutaborGUI_1_1MutRouteWnd" kindref="compound">MutRouteWnd</ref>(parent.get());</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1a65c68128daf0c3feda58f55b7aca2e05" kindref="member">connect</ref><sp/>(r1,out1);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetOutputDevice()<sp/>==<sp/>out1);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(r1,out1,out2);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out2-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out2-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetOutputDevice()<sp/>==<sp/>out2);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out2-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(r1,out2,out1);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out2-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetOutputDevice()<sp/>==<sp/>out1);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(out1,r1,r2);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;GetRoutes().front()<sp/>==<sp/>r2);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetOutputDevice()<sp/>==<sp/>NULL);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r2-&gt;GetOutputDevice()<sp/>==<sp/>out1);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(out1-&gt;GetRoutes().front()<sp/>==<sp/>r2);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1adb9659c6b97b933b1997d17e5e790296" kindref="member">disconnect</ref><sp/>(r2,out1);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"></highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1a65c68128daf0c3feda58f55b7aca2e05" kindref="member">connect</ref><sp/>(r1,in1);</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetInputDevice()<sp/>==<sp/>in1);</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(r1,in1,in2);</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in2-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in2-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetInputDevice()<sp/>==<sp/>in2);</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in2-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(r1,in2,in1);</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in2-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetInputDevice()<sp/>==<sp/>in1);</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(in1,r1,r2);</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;GetRoutes().front()<sp/>==<sp/>r2);</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetInputDevice()<sp/>==<sp/>NULL);</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r2-&gt;GetInputDevice()<sp/>==<sp/>in1);</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;GetRoutes().front()<sp/>==<sp/>r2);</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1adb9659c6b97b933b1997d17e5e790296" kindref="member">disconnect</ref><sp/>(r2,in1);</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetInputDevice()<sp/>==<sp/>NULL);</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"></highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>wnd;</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1a65c68128daf0c3feda58f55b7aca2e05" kindref="member">connect</ref><sp/>(r1,in1);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetInputDevice()<sp/>==<sp/>in1);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(r1,in1,in2);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in2-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in2-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetInputDevice()<sp/>==<sp/>in2);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in2-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(r1,in2,in1);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in2-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetInputDevice()<sp/>==<sp/>in1);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;GetRoutes().front()<sp/>==<sp/>r1);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" kindref="member">reconnect</ref><sp/>(in1,r1,r2);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;nRoutes()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;GetRoutes().front()<sp/>==<sp/>r2);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetInputDevice()<sp/>==<sp/>NULL);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r2-&gt;GetInputDevice()<sp/>==<sp/>in1);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;GetRoutes().front()<sp/>==<sp/>r2);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1adb9659c6b97b933b1997d17e5e790296" kindref="member">disconnect</ref><sp/>(r2,in1);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(in1-&gt;nRoutes()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPPUNIT_ASSERT(r1-&gt;GetInputDevice()<sp/>==<sp/>NULL);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" kindref="member">DebugCheckRoutes</ref>();</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>wnd;</highlight></codeline>
 <codeline lineno="203"><highlight class="normal"></highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>this<sp/>is<sp/>done<sp/>automatically:</highlight></codeline>
-<codeline lineno="205"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>in1<sp/>-&gt;<sp/>Destroy();</highlight></codeline>
-<codeline lineno="206"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>in2<sp/>-&gt;<sp/>Destroy();</highlight></codeline>
-<codeline lineno="207"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r1<sp/>-&gt;<sp/>Destroy();</highlight></codeline>
-<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r2<sp/>-&gt;<sp/>Destroy();</highlight></codeline>
-<codeline lineno="209"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out1<sp/>-&gt;<sp/>Destroy();</highlight></codeline>
-<codeline lineno="210"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out2<sp/>-&gt;<sp/>Destroy();</highlight></codeline>
-<codeline lineno="211"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="212"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>this<sp/>is<sp/>done<sp/>automatically:</highlight></codeline>
+<codeline lineno="206"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>in1<sp/>-&gt;<sp/>Destroy();</highlight></codeline>
+<codeline lineno="207"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>in2<sp/>-&gt;<sp/>Destroy();</highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r1<sp/>-&gt;<sp/>Destroy();</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r2<sp/>-&gt;<sp/>Destroy();</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out1<sp/>-&gt;<sp/>Destroy();</highlight></codeline>
+<codeline lineno="211"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out2<sp/>-&gt;<sp/>Destroy();</highlight></codeline>
+<codeline lineno="212"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/Routing/tests/GUIRouteTest.cpp"/>
   </compounddef>

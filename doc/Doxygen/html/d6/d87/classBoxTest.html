@@ -3,7 +3,7 @@
 <title>BoxTest Klassenreferenz</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -306,15 +306,15 @@ Private Methoden</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../df/d01/BoxTest_8h_source.html#l00064">64</a> der Datei <a class="el" href="../../df/d01/BoxTest_8h_source.html">BoxTest.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../de/d0f/Box_8h_source.html#l00115">mutabor::Box0</a>, <a class="el" href="../../de/d0f/Box_8h_source.html#l00739">mutabor::BoxFactory::Create()</a> und <a class="el" href="../../de/d0f/Box_8h_source.html#l00217">mutabor::BoxClass::GetNextFreeBox()</a>.</p>
+<p>Benutzt <a class="el" href="../../de/d0f/Box_8h_source.html#l00115">mutabor::Box0</a>, <a class="el" href="../../de/d0f/Box_8h_source.html#l00731">mutabor::BoxFactory::Create()</a> und <a class="el" href="../../de/d0f/Box_8h_source.html#l00210">mutabor::BoxClass::GetNextFreeBox()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {         </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <a class="code" href="../../d5/dee/group__route.html#ga3f643df8253d674ef503b3c344010646">mutabor::Box</a> <a class="code" href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">Box0</a> = <a class="code" href="../../d5/dee/group__route.html#ga1b747523cf90d4b44b18f88512405445">mutabor::BoxFactory::Create</a>(<a class="code" href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">mutabor::Box0</a>,<a class="code" href="../../d5/dee/group__route.html#ga654c8d02aae488f8ff6f6d0f62b08f7d">mutabor::BoxClass::GetNextFreeBox</a>());</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <a class="code" href="../../da/dad/classmutabor_1_1ScopedBox.html">mutabor::ScopedBox</a> <a class="code" href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">Box0</a> = <a class="code" href="../../d5/dee/group__route.html#ga1b747523cf90d4b44b18f88512405445">mutabor::BoxFactory::Create</a>(<a class="code" href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">mutabor::Box0</a>,<a class="code" href="../../d5/dee/group__route.html#ga654c8d02aae488f8ff6f6d0f62b08f7d">mutabor::BoxClass::GetNextFreeBox</a>());</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                CPPUNIT_ASSERT( Box0-&gt;get_routefile_id() == 0 );</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <a class="code" href="../../d5/dee/group__route.html#ga3f643df8253d674ef503b3c344010646">mutabor::Box</a> Box1 = <a class="code" href="../../d5/dee/group__route.html#ga1b747523cf90d4b44b18f88512405445">mutabor::BoxFactory::Create</a>(<a class="code" href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">mutabor::Box0</a>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <a class="code" href="../../da/dad/classmutabor_1_1ScopedBox.html">mutabor::ScopedBox</a> Box1 = <a class="code" href="../../d5/dee/group__route.html#ga1b747523cf90d4b44b18f88512405445">mutabor::BoxFactory::Create</a>(<a class="code" href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">mutabor::Box0</a>);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                CPPUNIT_ASSERT( Box1-&gt;get_routefile_id() == 1 );</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <a class="code" href="../../d5/dee/group__route.html#ga3f643df8253d674ef503b3c344010646">mutabor::Box</a> Box2 = <a class="code" href="../../d5/dee/group__route.html#ga1b747523cf90d4b44b18f88512405445">mutabor::BoxFactory::Create</a>(<a class="code" href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">mutabor::Box0</a>,5);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <a class="code" href="../../da/dad/classmutabor_1_1ScopedBox.html">mutabor::ScopedBox</a> Box2 = <a class="code" href="../../d5/dee/group__route.html#ga1b747523cf90d4b44b18f88512405445">mutabor::BoxFactory::Create</a>(<a class="code" href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">mutabor::Box0</a>,5);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                CPPUNIT_ASSERT( Box2-&gt;get_routefile_id() == 5 );</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <a class="code" href="../../d5/dee/group__route.html#ga3f643df8253d674ef503b3c344010646">mutabor::Box</a> Box3 = <a class="code" href="../../d5/dee/group__route.html#ga1b747523cf90d4b44b18f88512405445">mutabor::BoxFactory::Create</a>(<a class="code" href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">mutabor::Box0</a>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <a class="code" href="../../da/dad/classmutabor_1_1ScopedBox.html">mutabor::ScopedBox</a> Box3 = <a class="code" href="../../d5/dee/group__route.html#ga1b747523cf90d4b44b18f88512405445">mutabor::BoxFactory::Create</a>(<a class="code" href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">mutabor::Box0</a>);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                CPPUNIT_ASSERT( Box3-&gt;get_routefile_id() == 6 );</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                Box1-&gt;Destroy();</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                Box1=NULL;</div>
@@ -324,19 +324,14 @@ Private Methoden</h2></td></tr>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                CPPUNIT_ASSERT( Box1-&gt;get_routefile_id() == 4 );</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                Box2 = <a class="code" href="../../d5/dee/group__route.html#ga1b747523cf90d4b44b18f88512405445">mutabor::BoxFactory::Create</a>(<a class="code" href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">mutabor::Box0</a>);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                CPPUNIT_ASSERT( Box2-&gt;get_routefile_id() == 7 );</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <a class="code" href="../../d5/dee/group__route.html#ga3f643df8253d674ef503b3c344010646">mutabor::Box</a> Box4 = <a class="code" href="../../d5/dee/group__route.html#ga1b747523cf90d4b44b18f88512405445">mutabor::BoxFactory::Create</a>(<a class="code" href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">mutabor::Box0</a>,5);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <a class="code" href="../../da/dad/classmutabor_1_1ScopedBox.html">mutabor::ScopedBox</a> Box4 = <a class="code" href="../../d5/dee/group__route.html#ga1b747523cf90d4b44b18f88512405445">mutabor::BoxFactory::Create</a>(<a class="code" href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">mutabor::Box0</a>,5);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                CPPUNIT_ASSERT( Box4-&gt;get_routefile_id() == 5 );</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                CPPUNIT_ASSERT( <a class="code" href="../../d5/dee/group__route.html#ga654c8d02aae488f8ff6f6d0f62b08f7d">mutabor::BoxClass::GetNextFreeBox</a>() == 8);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                Box0-&gt;Destroy();</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                Box1-&gt;Destroy();</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                Box2-&gt;Destroy();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                Box3-&gt;Destroy();</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                Box4-&gt;Destroy();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
+<div class="ttc" id="classmutabor_1_1ScopedBox_html"><div class="ttname"><a href="../../da/dad/classmutabor_1_1ScopedBox.html">mutabor::ScopedBox</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00793">Box.h:793</a></div></div>
 <div class="ttc" id="group__route_html_gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9"><div class="ttname"><a href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">mutabor::Box0</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00115">Box.h:115</a></div></div>
-<div class="ttc" id="group__route_html_ga3f643df8253d674ef503b3c344010646"><div class="ttname"><a href="../../d5/dee/group__route.html#ga3f643df8253d674ef503b3c344010646">mutabor::Box</a></div><div class="ttdeci">boost::intrusive_ptr&lt; BoxClass &gt; Box</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00118">Box.h:118</a></div></div>
-<div class="ttc" id="group__route_html_ga654c8d02aae488f8ff6f6d0f62b08f7d"><div class="ttname"><a href="../../d5/dee/group__route.html#ga654c8d02aae488f8ff6f6d0f62b08f7d">mutabor::BoxClass::GetNextFreeBox</a></div><div class="ttdeci">static int GetNextFreeBox()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00217">Box.h:217</a></div></div>
-<div class="ttc" id="group__route_html_ga1b747523cf90d4b44b18f88512405445"><div class="ttname"><a href="../../d5/dee/group__route.html#ga1b747523cf90d4b44b18f88512405445">mutabor::BoxFactory::Create</a></div><div class="ttdeci">static Box Create(int type, int id=NewBox)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00739">Box.h:739</a></div></div>
+<div class="ttc" id="group__route_html_ga654c8d02aae488f8ff6f6d0f62b08f7d"><div class="ttname"><a href="../../d5/dee/group__route.html#ga654c8d02aae488f8ff6f6d0f62b08f7d">mutabor::BoxClass::GetNextFreeBox</a></div><div class="ttdeci">static int GetNextFreeBox()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00210">Box.h:210</a></div></div>
+<div class="ttc" id="group__route_html_ga1b747523cf90d4b44b18f88512405445"><div class="ttname"><a href="../../d5/dee/group__route.html#ga1b747523cf90d4b44b18f88512405445">mutabor::BoxFactory::Create</a></div><div class="ttdeci">static Box Create(int type, int id=NewBox)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00731">Box.h:731</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -346,6 +341,6 @@ Private Methoden</h2></td></tr>
 </ul>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:49 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:24 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

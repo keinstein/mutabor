@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d4/d21/gmn2midi_8cpp" kind="file">
     <compoundname>gmn2midi.cpp</compoundname>
     <includes refid="d9/d63/ext_8h" local="yes">ext.h</includes>
@@ -9,54 +9,54 @@
     <includes local="no">iostream.h</includes>
     <includes refid="d2/d71/mis_8h" local="yes">mis.h</includes>
     <incdepgraph>
-      <node id="12740">
+      <node id="17917">
         <label>gsp.h</label>
       </node>
-      <node id="12746">
+      <node id="17923">
         <label>classlib\arrays.h</label>
       </node>
-      <node id="12741">
+      <node id="17918">
         <label>gis.h</label>
       </node>
-      <node id="12739">
+      <node id="17916">
         <label>ext.h</label>
         <link refid="d9/d63/ext_8h"/>
       </node>
-      <node id="12745">
+      <node id="17922">
         <label>fstream.h</label>
       </node>
-      <node id="12743">
+      <node id="17920">
         <label>iostream.h</label>
       </node>
-      <node id="12738">
+      <node id="17915">
         <label>src/gmut/gmn2midi.cpp</label>
         <link refid="gmn2midi.cpp"/>
-        <childnode refid="12739" relation="include">
+        <childnode refid="17916" relation="include">
         </childnode>
-        <childnode refid="12740" relation="include">
+        <childnode refid="17917" relation="include">
         </childnode>
-        <childnode refid="12741" relation="include">
+        <childnode refid="17918" relation="include">
         </childnode>
-        <childnode refid="12742" relation="include">
+        <childnode refid="17919" relation="include">
         </childnode>
-        <childnode refid="12743" relation="include">
+        <childnode refid="17920" relation="include">
         </childnode>
-        <childnode refid="12744" relation="include">
+        <childnode refid="17921" relation="include">
         </childnode>
       </node>
-      <node id="12742">
+      <node id="17919">
         <label>gis_head.h</label>
       </node>
-      <node id="12744">
+      <node id="17921">
         <label>mis.h</label>
         <link refid="d2/d71/mis_8h"/>
-        <childnode refid="12745" relation="include">
+        <childnode refid="17922" relation="include">
         </childnode>
-        <childnode refid="12746" relation="include">
+        <childnode refid="17923" relation="include">
         </childnode>
-        <childnode refid="12741" relation="include">
+        <childnode refid="17918" relation="include">
         </childnode>
-        <childnode refid="12742" relation="include">
+        <childnode refid="17919" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -88,7 +88,7 @@
           <declname>h</declname>
         </param>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <type>char</type>
           <declname>turn</declname>
         </param>
         <briefdescription>
@@ -113,7 +113,7 @@
           <declname>argc</declname>
         </param>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>argv</declname>
           <array>[]</array>
         </param>
@@ -129,7 +129,7 @@
         <references refid="d7/dcc/classfrac_1a5fda1164b7ace72b6d78dc7e2719c502" compoundref="df/d4f/Frac_8h" startline="64">frac::d</references>
         <references refid="d4/d5b/ext_8cpp_1a2c9a92e9d0453b44d948fe9522f6733c" compoundref="d4/d5b/ext_8cpp" startline="41" endline="50">ExtChange</references>
         <references refid="d4/d5b/ext_8cpp_1a3c3f9179b542575b1a4a011ebf30a6cb" compoundref="d4/d5b/ext_8cpp" startline="20" endline="29">ExtCheck</references>
-        <references refid="d5/dee/group__route_1gab095232f6f6d76781fd5603d4b453306" compoundref="dc/de7/GIS_8cpp" startline="844" endline="864">GisParse</references>
+        <references refid="d5/dee/group__route_1gab095232f6f6d76781fd5603d4b453306" compoundref="dc/de7/GIS_8cpp" startline="891" endline="911">GisParse</references>
         <references refid="d5/dee/group__route_1ga18fbf3c45269dd19a140358c3e6441f8" compoundref="d7/da0/GIS__Head_8cpp" startline="656" endline="748">GisReadArtHeadOn</references>
         <references refid="d5/dee/group__route_1gaccb293565ac1505218ca2cb37a75b696" compoundref="d3/d9e/GSP_8cpp" startline="51">GspError</references>
         <references refid="d5/dee/group__route_1gad6532c6916f8eab5ddcd1e3cc7a1eb73" compoundref="d3/d9e/GSP_8cpp" startline="50">GspErrorLine</references>

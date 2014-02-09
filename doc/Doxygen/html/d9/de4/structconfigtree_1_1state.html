@@ -3,7 +3,7 @@
 <title>configtree::state Strukturreferenz</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -55,6 +55,11 @@
 <tr class="memitem:a96c937da41adcfcb941a1b782e869a71"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/de4/structconfigtree_1_1state.html#a96c937da41adcfcb941a1b782e869a71">leafid</a></td></tr>
 <tr class="memdesc:a96c937da41adcfcb941a1b782e869a71"><td class="mdescLeft">&#160;</td><td class="mdescRight">id from wxWidgets for sequential access  <a href="#a96c937da41adcfcb941a1b782e869a71">Mehr ...</a><br/></td></tr>
 <tr class="separator:a96c937da41adcfcb941a1b782e869a71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a777737892758fea84c7ce5a975d175d1"><td class="memItemLeft" align="right" valign="top">wxString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/de4/structconfigtree_1_1state.html#a777737892758fea84c7ce5a975d175d1">oldpath</a></td></tr>
+<tr class="memdesc:a777737892758fea84c7ce5a975d175d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">back up old path, so that we can check consistency  <a href="#a777737892758fea84c7ce5a975d175d1">Mehr ...</a><br/></td></tr>
+<tr class="separator:a777737892758fea84c7ce5a975d175d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a323934dc786f32ba266a202b746f49ff"><td class="memItemLeft" align="right" valign="top">wxString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/de4/structconfigtree_1_1state.html#a323934dc786f32ba266a202b746f49ff">group</a></td></tr>
+<tr class="separator:a323934dc786f32ba266a202b746f49ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
 <div class="textblock"><p>structure describing the current state </p>
@@ -119,18 +124,20 @@
 
 <p>Definiert in Zeile <a class="el" href="../../d5/d6b/configtree_8h_source.html#l00066">66</a> der Datei <a class="el" href="../../d5/d6b/configtree_8h_source.html">configtree.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../d5/d6b/configtree_8h_source.html#l00060">chdepth</a> und <a class="el" href="../../d5/d6b/configtree_8h_source.html#l00061">leafid</a>.</p>
+<p>Benutzt <a class="el" href="../../d5/d6b/configtree_8h_source.html#l00060">chdepth</a>, <a class="el" href="../../d5/d6b/configtree_8h_source.html#l00064">group</a>, <a class="el" href="../../d5/d6b/configtree_8h_source.html#l00061">leafid</a> und <a class="el" href="../../d5/d6b/configtree_8h_source.html#l00063">oldpath</a>.</p>
 <div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                        {</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                <span class="keywordtype">bool</span> retval = <a class="code" href="../../d9/de4/structconfigtree_1_1state.html#ad4514ef56c2bdbcb6b7c4dabd7f043f8">chdepth</a> == s.chdepth </div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                &amp;&amp; <a class="code" href="../../d9/de4/structconfigtree_1_1state.html#a96c937da41adcfcb941a1b782e869a71">leafid</a> == s.leafid; </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor"></span>                                retval = retval &amp;&amp; oldpath == s.oldpath</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                &amp;&amp; group == s.group;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor"></span>                                retval = retval &amp;&amp; <a class="code" href="../../d9/de4/structconfigtree_1_1state.html#a777737892758fea84c7ce5a975d175d1">oldpath</a> == s.oldpath</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                &amp;&amp; <a class="code" href="../../d9/de4/structconfigtree_1_1state.html#a323934dc786f32ba266a202b746f49ff">group</a> == s.group;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor"></span>                                <span class="keywordflow">return</span> retval;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        }</div>
+<div class="ttc" id="structconfigtree_1_1state_html_a323934dc786f32ba266a202b746f49ff"><div class="ttname"><a href="../../d9/de4/structconfigtree_1_1state.html#a323934dc786f32ba266a202b746f49ff">configtree::state::group</a></div><div class="ttdeci">wxString group</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d6b/configtree_8h_source.html#l00064">configtree.h:64</a></div></div>
 <div class="ttc" id="structconfigtree_1_1state_html_ad4514ef56c2bdbcb6b7c4dabd7f043f8"><div class="ttname"><a href="../../d9/de4/structconfigtree_1_1state.html#ad4514ef56c2bdbcb6b7c4dabd7f043f8">configtree::state::chdepth</a></div><div class="ttdeci">int chdepth</div><div class="ttdoc">depth of last toLeaf... command </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d6b/configtree_8h_source.html#l00060">configtree.h:60</a></div></div>
 <div class="ttc" id="structconfigtree_1_1state_html_a96c937da41adcfcb941a1b782e869a71"><div class="ttname"><a href="../../d9/de4/structconfigtree_1_1state.html#a96c937da41adcfcb941a1b782e869a71">configtree::state::leafid</a></div><div class="ttdeci">long leafid</div><div class="ttdoc">id from wxWidgets for sequential access </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d6b/configtree_8h_source.html#l00061">configtree.h:61</a></div></div>
+<div class="ttc" id="structconfigtree_1_1state_html_a777737892758fea84c7ce5a975d175d1"><div class="ttname"><a href="../../d9/de4/structconfigtree_1_1state.html#a777737892758fea84c7ce5a975d175d1">configtree::state::oldpath</a></div><div class="ttdeci">wxString oldpath</div><div class="ttdoc">back up old path, so that we can check consistency </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d6b/configtree_8h_source.html#l00063">configtree.h:63</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -153,6 +160,22 @@
 
 </div>
 </div>
+<a class="anchor" id="a323934dc786f32ba266a202b746f49ff"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">wxString configtree::state::group</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../d5/d6b/configtree_8h_source.html#l00064">64</a> der Datei <a class="el" href="../../d5/d6b/configtree_8h_source.html">configtree.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d5/d6b/configtree_8h_source.html#l00066">operator==()</a>, <a class="el" href="../../d4/d26/configtree_8cpp_source.html#l00125">configtree::toFirstLeaf()</a>, <a class="el" href="../../d4/d26/configtree_8cpp_source.html#l00086">configtree::toLeaf()</a> und <a class="el" href="../../d4/d26/configtree_8cpp_source.html#l00195">configtree::toParent()</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a96c937da41adcfcb941a1b782e869a71"></a>
 <div class="memitem">
 <div class="memproto">
@@ -171,11 +194,29 @@
 
 </div>
 </div>
+<a class="anchor" id="a777737892758fea84c7ce5a975d175d1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">wxString configtree::state::oldpath</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>back up old path, so that we can check consistency </p>
+
+<p>Definiert in Zeile <a class="el" href="../../d5/d6b/configtree_8h_source.html#l00063">63</a> der Datei <a class="el" href="../../d5/d6b/configtree_8h_source.html">configtree.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d5/d6b/configtree_8h_source.html#l00066">operator==()</a>, <a class="el" href="../../d4/d26/configtree_8cpp_source.html#l00125">configtree::toFirstLeaf()</a>, <a class="el" href="../../d4/d26/configtree_8cpp_source.html#l00086">configtree::toLeaf()</a> und <a class="el" href="../../d4/d26/configtree_8cpp_source.html#l00195">configtree::toParent()</a>.</p>
+
+</div>
+</div>
 <hr/>Die Dokumentation für diese Struktur wurde erzeugt aufgrund der Datei:<ul>
 <li>src/wxGUI/<a class="el" href="../../d5/d6b/configtree_8h_source.html">configtree.h</a></li>
 </ul>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:49 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:25 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

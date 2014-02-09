@@ -1,29 +1,29 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d4/d5b/ext_8cpp" kind="file">
     <compoundname>ext.cpp</compoundname>
     <includes refid="d9/d63/ext_8h" local="yes">ext.h</includes>
     <includes local="no">string.h</includes>
     <incdepgraph>
-      <node id="12729">
+      <node id="17906">
         <label>ext.h</label>
         <link refid="d9/d63/ext_8h"/>
       </node>
-      <node id="12728">
+      <node id="17905">
         <label>src/gmut/ext.cpp</label>
         <link refid="ext.cpp"/>
-        <childnode refid="12729" relation="include">
+        <childnode refid="17906" relation="include">
         </childnode>
-        <childnode refid="12730" relation="include">
+        <childnode refid="17907" relation="include">
         </childnode>
       </node>
-      <node id="12730">
+      <node id="17907">
         <label>string.h</label>
       </node>
     </incdepgraph>
       <sectiondef kind="var">
       <memberdef kind="variable" id="d4/d5b/ext_8cpp_1a01cd5bfe5d49f3c0259251b1d6d2a7b0" prot="public" static="no" mutable="no">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char sHelp[120]</definition>
         <argsstring>[120]</argsstring>
         <name>sHelp</name>
@@ -40,16 +40,16 @@
       </sectiondef>
       <sectiondef kind="func">
       <memberdef kind="function" id="d4/d5b/ext_8cpp_1a3c3f9179b542575b1a4a011ebf30a6cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <type>char *</type>
         <definition>char* ExtCheck</definition>
         <argsstring>(char *fileName, char *extension)</argsstring>
         <name>ExtCheck</name>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>fileName</declname>
         </param>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>extension</declname>
         </param>
         <briefdescription>
@@ -80,16 +80,16 @@
         <referencedby refid="d4/d21/gmn2midi_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="d4/d21/gmn2midi_8cpp" startline="23" endline="74">main</referencedby>
       </memberdef>
       <memberdef kind="function" id="d4/d5b/ext_8cpp_1a2c9a92e9d0453b44d948fe9522f6733c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <type>char *</type>
         <definition>char* ExtChange</definition>
         <argsstring>(char *fileName, char *extension)</argsstring>
         <name>ExtChange</name>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>fileName</declname>
         </param>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>extension</declname>
         </param>
         <briefdescription>

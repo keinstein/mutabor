@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d9/d63/ext_8h" kind="file">
     <compoundname>ext.h</compoundname>
     <includedby refid="d4/d5b/ext_8cpp" local="yes">src/gmut/ext.cpp</includedby>
@@ -7,47 +7,47 @@
     <includedby refid="d3/d14/gmut_8cpp" local="yes">src/gmut/gmut.cpp</includedby>
     <includedby refid="dd/d15/gmutdos_8cpp" local="yes">src/gmut/gmutdos.cpp</includedby>
     <invincdepgraph>
-      <node id="12737">
+      <node id="17914">
         <label>src/gmut/gmutdos.cpp</label>
         <link refid="dd/d15/gmutdos_8cpp"/>
       </node>
-      <node id="12736">
+      <node id="17913">
         <label>src/gmut/gmut.cpp</label>
         <link refid="d3/d14/gmut_8cpp"/>
       </node>
-      <node id="12733">
+      <node id="17910">
         <label>src/gmut/ext.h</label>
         <link refid="ext.h"/>
-        <childnode refid="12734" relation="include">
+        <childnode refid="17911" relation="include">
         </childnode>
-        <childnode refid="12735" relation="include">
+        <childnode refid="17912" relation="include">
         </childnode>
-        <childnode refid="12736" relation="include">
+        <childnode refid="17913" relation="include">
         </childnode>
-        <childnode refid="12737" relation="include">
+        <childnode refid="17914" relation="include">
         </childnode>
       </node>
-      <node id="12734">
+      <node id="17911">
         <label>src/gmut/ext.cpp</label>
         <link refid="d4/d5b/ext_8cpp"/>
       </node>
-      <node id="12735">
+      <node id="17912">
         <label>src/gmut/gmn2midi.cpp</label>
         <link refid="d4/d21/gmn2midi_8cpp"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="func">
       <memberdef kind="function" id="d9/d63/ext_8h_1a3c3f9179b542575b1a4a011ebf30a6cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <type>char *</type>
         <definition>char* ExtCheck</definition>
         <argsstring>(char *fileName, char *extension)</argsstring>
         <name>ExtCheck</name>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>fileName</declname>
         </param>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>extension</declname>
         </param>
         <briefdescription>
@@ -78,16 +78,16 @@
         <referencedby refid="d4/d21/gmn2midi_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="d4/d21/gmn2midi_8cpp" startline="23" endline="74">main</referencedby>
       </memberdef>
       <memberdef kind="function" id="d9/d63/ext_8h_1a2c9a92e9d0453b44d948fe9522f6733c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <type>char *</type>
         <definition>char* ExtChange</definition>
         <argsstring>(char *fileName, char *extension)</argsstring>
         <name>ExtChange</name>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>fileName</declname>
         </param>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>extension</declname>
         </param>
         <briefdescription>
@@ -125,8 +125,8 @@
 <codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>EXT_H</highlight></codeline>
 <codeline lineno="7"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>EXT_H</highlight></codeline>
 <codeline lineno="8"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="d4/d5b/ext_8cpp_1a3c3f9179b542575b1a4a011ebf30a6cb" kindref="member">ExtCheck</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*fileName,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*extension);</highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="d4/d5b/ext_8cpp_1a2c9a92e9d0453b44d948fe9522f6733c" kindref="member">ExtChange</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*fileName,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*extension);</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="d9/d63/ext_8h_1a3c3f9179b542575b1a4a011ebf30a6cb" kindref="member">ExtCheck</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*fileName,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*extension);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="d9/d63/ext_8h_1a2c9a92e9d0453b44d948fe9522f6733c" kindref="member">ExtChange</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*fileName,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*extension);</highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>

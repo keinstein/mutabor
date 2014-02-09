@@ -1,35 +1,165 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="dc/dcb/Action_8cpp" kind="file">
     <compoundname>Action.cpp</compoundname>
     <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
     <includes refid="d7/db9/Action_8h" local="yes">src/wxGUI/Action.h</includes>
     <incdepgraph>
-      <node id="18294">
+      <node id="25859">
+        <label>list</label>
+      </node>
+      <node id="25852">
         <label>stdarg.h</label>
       </node>
-      <node id="18293">
+      <node id="25867">
+        <label>wx/cmdline.h</label>
+      </node>
+      <node id="25855">
+        <label>wx/stdpaths.h</label>
+      </node>
+      <node id="25851">
         <label>src/kernel/Defs.h</label>
         <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="18294" relation="include">
+        <childnode refid="25852" relation="include">
         </childnode>
-        <childnode refid="18295" relation="include">
+        <childnode refid="25853" relation="include">
+        </childnode>
+        <childnode refid="25872" relation="include">
+        </childnode>
+        <childnode refid="25873" relation="include">
+        </childnode>
+        <childnode refid="25866" relation="include">
+        </childnode>
+        <childnode refid="25874" relation="include">
+        </childnode>
+        <childnode refid="25875" relation="include">
         </childnode>
       </node>
-      <node id="18296">
+      <node id="25866">
+        <label>stdint.h</label>
+      </node>
+      <node id="25872">
+        <label>wx/wxchar.h</label>
+      </node>
+      <node id="25861">
+        <label>wx/image.h</label>
+      </node>
+      <node id="25876">
+        <label>string</label>
+      </node>
+      <node id="25877">
         <label>src/wxGUI/Action.h</label>
         <link refid="d7/db9/Action_8h"/>
       </node>
-      <node id="18295">
-        <label>wx/msw/wrapwin.h</label>
+      <node id="25871">
+        <label>mutDebugFlags.h</label>
+        <link refid="d7/d49/mutDebugFlags_8h"/>
       </node>
-      <node id="18292">
+      <node id="25854">
+        <label>wx/window.h</label>
+      </node>
+      <node id="25873">
+        <label>wx/intl.h</label>
+      </node>
+      <node id="25860">
+        <label>src/wxGUI/Mutabor.rh</label>
+        <link refid="d9/d64/Mutabor_8rh"/>
+        <childnode refid="25851" relation="include">
+        </childnode>
+      </node>
+      <node id="25856">
+        <label>wx/filename.h</label>
+      </node>
+      <node id="25858">
+        <label>typeinfo</label>
+      </node>
+      <node id="25869">
+        <label>wx/debug.h</label>
+      </node>
+      <node id="25864">
+        <label>cstdio</label>
+      </node>
+      <node id="25863">
+        <label>bitset</label>
+      </node>
+      <node id="25853">
+        <label>src/wxGUI/generic/mhDefs.h</label>
+        <link refid="d0/d68/mhDefs_8h"/>
+        <childnode refid="25851" relation="include">
+        </childnode>
+        <childnode refid="25854" relation="include">
+        </childnode>
+        <childnode refid="25855" relation="include">
+        </childnode>
+        <childnode refid="25856" relation="include">
+        </childnode>
+        <childnode refid="25857" relation="include">
+        </childnode>
+        <childnode refid="25858" relation="include">
+        </childnode>
+        <childnode refid="25859" relation="include">
+        </childnode>
+        <childnode refid="25860" relation="include">
+        </childnode>
+        <childnode refid="25861" relation="include">
+        </childnode>
+        <childnode refid="25862" relation="include">
+        </childnode>
+      </node>
+      <node id="25865">
+        <label>vector</label>
+      </node>
+      <node id="25862">
+        <label>mutDebug.h</label>
+        <link refid="de/de1/mutDebug_8h"/>
+        <childnode refid="25863" relation="include">
+        </childnode>
+        <childnode refid="25857" relation="include">
+        </childnode>
+        <childnode refid="25864" relation="include">
+        </childnode>
+        <childnode refid="25865" relation="include">
+        </childnode>
+        <childnode refid="25866" relation="include">
+        </childnode>
+        <childnode refid="25867" relation="include">
+        </childnode>
+        <childnode refid="25868" relation="include">
+        </childnode>
+        <childnode refid="25869" relation="include">
+        </childnode>
+        <childnode refid="25870" relation="include">
+        </childnode>
+        <childnode refid="25871" relation="include">
+        </childnode>
+      </node>
+      <node id="25875">
+        <label>src/wxintl/libintl.h</label>
+        <link refid="d4/d64/libintl_8h"/>
+        <childnode refid="25851" relation="include">
+        </childnode>
+        <childnode refid="25876" relation="include">
+        </childnode>
+      </node>
+      <node id="25868">
+        <label>wx/string.h</label>
+      </node>
+      <node id="25857">
+        <label>iostream</label>
+      </node>
+      <node id="25870">
+        <label>wx/thread.h</label>
+      </node>
+      <node id="25850">
         <label>src/wxGUI/Action.cpp</label>
         <link refid="Action.cpp"/>
-        <childnode refid="18293" relation="include">
+        <childnode refid="25851" relation="include">
         </childnode>
-        <childnode refid="18296" relation="include">
+        <childnode refid="25877" relation="include">
         </childnode>
+      </node>
+      <node id="25874">
+        <label>wx/setup.h</label>
       </node>
     </incdepgraph>
     <briefdescription>
@@ -75,9 +205,9 @@ Revision 1.8 2012/02/18 18:17:23 keinstein reset change flag of boxes after read
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">Box</ref>;</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*Name;</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TAktionTrace<sp/>*Next;</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TAktionTrace(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TAktionTrace(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>box,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name)</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">Box</ref><sp/>=<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">Box</ref><sp/>=<sp/>box;</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Name<sp/>=<sp/>strdup(name);</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Next<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -125,17 +255,17 @@ Revision 1.8 2012/02/18 18:17:23 keinstein reset change flag of boxes after read
 <codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>n<sp/>!=<sp/>0;</highlight></codeline>
 <codeline lineno="118"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ACTChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ACTChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>box)</highlight></codeline>
 <codeline lineno="121"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>flag<sp/>=<sp/>mut_box[<ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>].action_changed<sp/>!=<sp/>0;</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mut_box[<ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>].action_changed<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>flag<sp/>=<sp/>mut_box[box].action_changed<sp/>!=<sp/>0;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mut_box[box].action_changed<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>flag;</highlight></codeline>
 <codeline lineno="125"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"></highlight></codeline>
 <codeline lineno="127"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>sAktion[2000];</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ActLineNumbers;</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*GenerateACTString(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>)</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*GenerateACTString(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>box)</highlight></codeline>
 <codeline lineno="131"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcpy(sAktion,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ActLineNumbers<sp/>=<sp/>0;</highlight></codeline>

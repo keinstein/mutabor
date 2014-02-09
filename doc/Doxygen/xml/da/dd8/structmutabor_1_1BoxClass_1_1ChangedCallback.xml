@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="da/dd8/structmutabor_1_1BoxClass_1_1ChangedCallback" kind="struct" prot="public" abstract="yes">
     <compoundname>mutabor::BoxClass::ChangedCallback</compoundname>
     <derivedcompoundref refid="dd/d65/classmutaborGUI_1_1MutLogicWnd" prot="public" virt="non-virtual">mutaborGUI::MutLogicWnd</derivedcompoundref>
@@ -49,7 +49,7 @@
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="134" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="134" bodyend="139"/>
       </memberdef>
       <memberdef kind="typedef" id="d5/dee/group__route_1ga7f52967e436a1c8174d9570a23279afa" prot="public" static="no">
-        <type>mutabor::hidden::do_aktion</type>
+        <type><ref refid="de/dab/structmutabor_1_1hidden_1_1do__aktion" kindref="compound">mutabor::hidden::do_aktion</ref></type>
         <definition>typedef mutabor::hidden::do_aktion mutabor::BoxClass::ChangedCallback::action</definition>
         <argsstring></argsstring>
         <name>action</name>
@@ -134,8 +134,8 @@
         <definition>virtual void mutabor::BoxClass::ChangedCallback::BoxChangedAction</definition>
         <argsstring>(int flags)=0</argsstring>
         <name>BoxChangedAction</name>
-        <reimplementedby refid="dd/d65/classmutaborGUI_1_1MutLogicWnd_1af0102678bb4ba4347a112a3484f0dc85">BoxChangedAction</reimplementedby>
         <reimplementedby refid="df/dd1/group__GUI_1gabbf07bf091187a2d34c508eb6c9b9eaf">BoxChangedAction</reimplementedby>
+        <reimplementedby refid="dd/d65/classmutaborGUI_1_1MutLogicWnd_1af0102678bb4ba4347a112a3484f0dc85">BoxChangedAction</reimplementedby>
         <param>
           <type>int</type>
           <declname>flags</declname>
@@ -147,8 +147,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="155" column="1"/>
-        <referencedby refid="da/dc8/structmutabor_1_1doexecute__flags_1ad237f082de0df48da7e1e2169ee9b067" compoundref="dd/dc6/Box_8cpp" startline="794" endline="796">mutabor::doexecute_flags::operator()</referencedby>
-        <referencedby refid="d0/d36/structmutabor_1_1doexecute__action_1aae32d5dddfa0a389a2212e21d1394963" compoundref="dd/dc6/Box_8cpp" startline="801" endline="803">mutabor::doexecute_action::operator()</referencedby>
+        <referencedby refid="da/dc8/structmutabor_1_1doexecute__flags_1ad237f082de0df48da7e1e2169ee9b067" compoundref="dd/dc6/Box_8cpp" startline="801" endline="803">mutabor::doexecute_flags::operator()</referencedby>
+        <referencedby refid="d0/d36/structmutabor_1_1doexecute__action_1aae32d5dddfa0a389a2212e21d1394963" compoundref="dd/dc6/Box_8cpp" startline="808" endline="810">mutabor::doexecute_action::operator()</referencedby>
       </memberdef>
       <memberdef kind="function" id="d5/dee/group__route_1ga996452825f89b2ada3e9c6a41a32cb90" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -157,7 +157,7 @@
         <name>BoxChangedAction</name>
         <reimplementedby refid="df/dd1/group__GUI_1ga6618e6b8c310bdd7c45a0acec1b1bfa0">BoxChangedAction</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> char *</type>
           <declname>action</declname>
         </param>
         <briefdescription>
@@ -174,26 +174,26 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2410">
+      <node id="2627">
         <label>mutabor::BoxClass::ChangedCallback</label>
         <link refid="da/dd8/structmutabor_1_1BoxClass_1_1ChangedCallback"/>
       </node>
-      <node id="2412">
+      <node id="2629">
         <label>MutTextBox</label>
         <link refid="d6/deb/classMutTextBox"/>
-        <childnode refid="2410" relation="public-inheritance">
+        <childnode refid="2627" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2411">
+      <node id="2628">
         <label>mutaborGUI::MutLogicWnd</label>
         <link refid="dd/d65/classmutaborGUI_1_1MutLogicWnd"/>
-        <childnode refid="2410" relation="public-inheritance">
+        <childnode refid="2627" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2413">
+      <node id="2630">
         <label>mutaborGUI::MutChild</label>
         <link refid="d9/d7a/classmutaborGUI_1_1MutChild"/>
-        <childnode refid="2412" relation="public-inheritance">
+        <childnode refid="2629" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>

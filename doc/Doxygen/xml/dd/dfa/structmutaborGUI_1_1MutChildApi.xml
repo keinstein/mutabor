@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="dd/dfa/structmutaborGUI_1_1MutChildApi" kind="struct" prot="public" abstract="yes">
     <compoundname>mutaborGUI::MutChildApi</compoundname>
     <derivedcompoundref refid="d9/d7a/classmutaborGUI_1_1MutChild" prot="public" virt="non-virtual">mutaborGUI::MutChild</derivedcompoundref>
@@ -33,7 +33,23 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="51" column="1"/>
-        <referencedby refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="699" endline="831">mutaborGUI::MutFrame::CmDoActivate</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="714" endline="857">mutaborGUI::MutFrame::CmDoActivate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/dfa/structmutaborGUI_1_1MutChildApi_1ab86fd9bd14ef73140442ea2c4ccef6c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void mutaborGUI::MutChildApi::BoxChanged</definition>
+        <argsstring>()=0</argsstring>
+        <name>BoxChanged</name>
+        <reimplementedby refid="df/dd1/group__GUI_1ga37d38084aafdad27b4f9629ad34ac45b">BoxChanged</reimplementedby>
+        <reimplementedby refid="dd/d65/classmutaborGUI_1_1MutLogicWnd_1a9d7180fb22ab43a9f0fb6ab6bfdf064a">BoxChanged</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="52" column="1"/>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1ae4571bdbcb0bc425d2d9ef8f88a5c605" compoundref="d2/dd3/GUIBoxData_8cpp" startline="75" endline="130">mutaborGUI::BoxData::set_routefile_id</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -41,25 +57,26 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3590">
+      <node id="3860">
         <label>mutaborGUI::MutLogicWnd</label>
         <link refid="dd/d65/classmutaborGUI_1_1MutLogicWnd"/>
-        <childnode refid="3588" relation="public-inheritance">
+        <childnode refid="3858" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3588">
+      <node id="3858">
         <label>mutaborGUI::MutChildApi</label>
         <link refid="dd/dfa/structmutaborGUI_1_1MutChildApi"/>
       </node>
-      <node id="3589">
+      <node id="3859">
         <label>mutaborGUI::MutChild</label>
         <link refid="d9/d7a/classmutaborGUI_1_1MutChild"/>
-        <childnode refid="3588" relation="public-inheritance">
+        <childnode refid="3858" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="49" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" bodystart="49" bodyend="52"/>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" line="49" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutChild.h" bodystart="49" bodyend="53"/>
     <listofallmembers>
+      <member refid="dd/dfa/structmutaborGUI_1_1MutChildApi_1ab86fd9bd14ef73140442ea2c4ccef6c1" prot="public" virt="pure-virtual"><scope>mutaborGUI::MutChildApi</scope><name>BoxChanged</name></member>
       <member refid="dd/dfa/structmutaborGUI_1_1MutChildApi_1a19c57aea01db04bee9ff272a99c06267" prot="public" virt="pure-virtual"><scope>mutaborGUI::MutChildApi</scope><name>MakeTitle</name></member>
       <member refid="dd/dfa/structmutaborGUI_1_1MutChildApi_1a8b9a24d91911a88037bb0485997e13f2" prot="public" virt="virtual"><scope>mutaborGUI::MutChildApi</scope><name>~MutChildApi</name></member>
     </listofallmembers>

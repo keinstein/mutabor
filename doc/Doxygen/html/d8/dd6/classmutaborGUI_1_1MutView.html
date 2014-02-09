@@ -3,7 +3,7 @@
 <title>mutaborGUI::MutView Klassenreferenz</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -160,17 +160,17 @@ Freundbeziehungen</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d0/d9e/MutView_8h_source.html#l00093">93</a> der Datei <a class="el" href="../../d0/d9e/MutView_8h_source.html">MutView.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../d1/d73/Defs_8h_source.html#l00223">mutASSERT</a>.</p>
+<p>Benutzt <a class="el" href="../../d1/d73/Defs_8h_source.html#l00222">mutASSERT</a>.</p>
 
 <p>Wird benutzt von <a class="el" href="../../d8/d33/MutView_8cpp_source.html#l00053">END_EVENT_TABLE()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                         { </div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                        wxWindow * f = GetFrame();</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                        <span class="keywordflow">if</span> (f) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(dynamic_cast&lt;MutFrame *&gt;(f));</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a>(dynamic_cast&lt;MutFrame *&gt;(f));</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                        }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                        <span class="keywordflow">return</span> (MutFrame *) f; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>MutFrame *<span class="keyword">&gt;</span>(f); </div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                }</div>
-<div class="ttc" id="group__kernel_html_ga77bd8e5b959213dd8bcd48dc513f6013"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a></div><div class="ttdeci">#define mutASSERT(cond)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00223">Defs.h:223</a></div></div>
+<div class="ttc" id="group__kernel_html_ga565c8973b3b2a87c7f9c7c7aabb9665e"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a></div><div class="ttdeci">#define mutASSERT</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00222">Defs.h:222</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -395,7 +395,7 @@ Freundbeziehungen</h2></td></tr>
 
 <p>Benutzt <a class="el" href="../../d0/d9e/MutView_8h_source.html#l00101">textsw</a>.</p>
 
-<p>Wird benutzt von <a class="el" href="../../d1/da4/MutEditFile_8cpp_source.html#l00214">mutaborGUI::MutEditFile::~MutEditFile()</a> und <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00355">mutaborGUI::MutFrame::~MutFrame()</a>.</p>
+<p>Wird benutzt von <a class="el" href="../../d1/da4/MutEditFile_8cpp_source.html#l00214">mutaborGUI::MutEditFile::~MutEditFile()</a> und <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00362">mutaborGUI::MutFrame::~MutFrame()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;{ <a class="code" href="../../d8/dd6/classmutaborGUI_1_1MutView.html#a0486223c32554bc90e805ab129617db2">textsw</a> = t; }</div>
 <div class="ttc" id="classmutaborGUI_1_1MutView_html_a0486223c32554bc90e805ab129617db2"><div class="ttname"><a href="../../d8/dd6/classmutaborGUI_1_1MutView.html#a0486223c32554bc90e805ab129617db2">mutaborGUI::MutView::textsw</a></div><div class="ttdeci">DECLARE_EVENT_TABLE() protected MutEditFile * textsw</div><div class="ttdoc">MutView::ProcessEvent is called indirectly from MutApp event handlers. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d9e/MutView_8h_source.html#l00101">MutView.h:101</a></div></div>
 </div><!-- fragment -->
@@ -452,6 +452,6 @@ Freundbeziehungen</h2></td></tr>
 </ul>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:55 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:33 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

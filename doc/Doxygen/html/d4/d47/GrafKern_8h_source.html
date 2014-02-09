@@ -3,7 +3,7 @@
 <title>src/kernel/GrafKern.h Quellcode</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -62,11 +62,11 @@
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keywordtype">void</span> scanner_protokoll(<span class="keywordtype">int</span> zeichen);</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">void</span> AktionenInit();</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keywordtype">void</span> AktionenMessage(<a class="code" href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a> * <a class="code" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, <span class="keyword">struct</span> <a class="code" href="../../d5/d8c/structdo__aktion.html">do_aktion</a> * aktion);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keywordtype">void</span> AktionenMessage(<a class="code" href="../../d6/dbb/namespacemutabor_1_1hidden.html#abcb81b5b4ff6213bb18cb9eea3ae374e">mutabor_box_type</a> * box, <span class="keyword">struct</span> do_aktion * aktion);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">void</span> fatal_error( <span class="keywordtype">int</span> nummer, ... ) <a class="code" href="../../df/d33/mut_8cc.html#abcbef469be555eac2ee4891044b0e302">__attribute__</a> ((noreturn));</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">void</span> fatal_error( <span class="keywordtype">int</span> nummer, ... ) __attribute__ ((noreturn));</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96a053ee5ee8425fcbcd4c51b3637254eb5">compiler_warning</a>( <span class="keywordtype">int</span> nummer, ... );</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d6/dbb/namespacemutabor_1_1hidden.html#abe559f59025d3ee3e626c4c3cbd9cacdaef2690d5570105e7d864c894778adf49">compiler_warning</a>( <span class="keywordtype">int</span> nummer, ... );</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">void laufzeit_protokoll(const char * formatstring , ... );</span></div>
@@ -77,7 +77,7 @@
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keywordtype">void</span> calc_declaration_numbers(<span class="keywordtype">char</span> withNames = 0);</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga3e60c96057baf1ac52474aeff617ee56">show_line_number</a>( <span class="keywordtype">int</span> n );</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a26b612b5602f4489c3e7cd1d40d3ea5e">show_line_number</a>( <span class="keywordtype">int</span> n );</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#ifdef MUTWIN</span></div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifdef WX</span></div>
@@ -101,11 +101,11 @@
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">#ifdef MUTWIN</span></div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordtype">char</span> * mutabor_do_aktion_to_string(<span class="keyword">struct</span> <a class="code" href="../../d5/d8c/structdo__aktion.html">do_aktion</a> * action, <span class="keywordtype">bool</span> symbolic_parameters);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordtype">char</span> * mutabor_do_aktion_to_string(<span class="keyword">struct</span> do_aktion * action, <span class="keywordtype">bool</span> symbolic_parameters);</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordtype">int</span> GetActString(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> **<a class="code" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, <span class="keywordtype">int</span> **l, <span class="keywordtype">char</span> **s);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordtype">char</span>* GetKeyString(<span class="keywordtype">int</span> <a class="code" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, <span class="keywordtype">char</span> <a class="code" href="../../df/dd1/group__GUI.html#ga381c4b3a1684d0fd1db89edc9ae3490e">asTS</a>);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordtype">char</span>* GetTSString(<span class="keywordtype">int</span> <a class="code" href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a>, <span class="keywordtype">char</span> <a class="code" href="../../df/dd1/group__GUI.html#ga381c4b3a1684d0fd1db89edc9ae3490e">asTS</a>);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordtype">int</span> GetActString(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> **box, <span class="keywordtype">int</span> **l, <span class="keywordtype">char</span> **s);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordtype">char</span>* GetKeyString(<span class="keywordtype">int</span> box, <span class="keywordtype">char</span> <a class="code" href="../../df/dd1/group__GUI.html#ga381c4b3a1684d0fd1db89edc9ae3490e">asTS</a>);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordtype">char</span>* GetTSString(<span class="keywordtype">int</span> box, <span class="keywordtype">char</span> <a class="code" href="../../df/dd1/group__GUI.html#ga381c4b3a1684d0fd1db89edc9ae3490e">asTS</a>);</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordtype">int</span> GetLineNumbers();</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordtype">int</span> GetErrorLine();</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
@@ -137,19 +137,16 @@
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor"></span><div class="ttc" id="CompDlg_8h_html"><div class="ttname"><a href="../../d4/d7c/CompDlg_8h.html">CompDlg.h</a></div><div class="ttdoc">Compilation dialog box. </div></div>
 <div class="ttc" id="Errors_8h_html"><div class="ttname"><a href="../../d2/d0e/Errors_8h.html">Errors.h</a></div><div class="ttdoc">Error descriptions for Mutabor. </div></div>
-<div class="ttc" id="group__kernel_html_ga3e60c96057baf1ac52474aeff617ee56"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga3e60c96057baf1ac52474aeff617ee56">show_line_number</a></div><div class="ttdeci">void show_line_number(mutabor_box_type *box, int line_number)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d11/Execute_8h_source.html#l00161">Execute.h:161</a></div></div>
 <div class="ttc" id="classmutaborGUI_1_1CompDlg_html"><div class="ttname"><a href="../../de/dbd/classmutaborGUI_1_1CompDlg.html">mutaborGUI::CompDlg</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d7c/CompDlg_8h_source.html#l00044">CompDlg.h:44</a></div></div>
-<div class="ttc" id="group__kernel_html_ggafeebd36c5713e8438dcf17e926f8ad96a053ee5ee8425fcbcd4c51b3637254eb5"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ggafeebd36c5713e8438dcf17e926f8ad96a053ee5ee8425fcbcd4c51b3637254eb5">compiler_warning</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d11/Execute_8h_source.html#l00077">Execute.h:77</a></div></div>
 <div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
+<div class="ttc" id="namespacemutabor_1_1hidden_html_a26b612b5602f4489c3e7cd1d40d3ea5e"><div class="ttname"><a href="../../d6/dbb/namespacemutabor_1_1hidden.html#a26b612b5602f4489c3e7cd1d40d3ea5e">mutabor::hidden::show_line_number</a></div><div class="ttdeci">void show_line_number(mutabor_box_type *box, int line_number)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d11/Execute_8h_source.html#l00161">Execute.h:161</a></div></div>
 <div class="ttc" id="group__GUI_html_ga381c4b3a1684d0fd1db89edc9ae3490e"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga381c4b3a1684d0fd1db89edc9ae3490e">mutaborGUI::asTS</a></div><div class="ttdeci">bool asTS</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/df3/MutFrame_8cpp_source.html#l00114">MutFrame.cpp:114</a></div></div>
 <div class="ttc" id="box_8h_html"><div class="ttname"><a href="../../dc/d19/box_8h.html">box.h</a></div><div class="ttdoc">Description: Collect all properties, which are used by boxes. </div></div>
-<div class="ttc" id="mut_8cc_html_abcbef469be555eac2ee4891044b0e302"><div class="ttname"><a href="../../df/d33/mut_8cc.html#abcbef469be555eac2ee4891044b0e302">__attribute__</a></div><div class="ttdeci">__attribute__((__unused__)) static unsigned yy_location_print_(yyo</div></div>
 <div class="ttc" id="Interpre_8h_html"><div class="ttname"><a href="../../d2/dd8/Interpre_8h.html">Interpre.h</a></div><div class="ttdoc">Interpreter for the logic at runtime. </div></div>
-<div class="ttc" id="structdo__aktion_html"><div class="ttname"><a href="../../d5/d8c/structdo__aktion.html">do_aktion</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dd8/Interpre_8h_source.html#l00254">Interpre.h:254</a></div></div>
-<div class="ttc" id="structmutabor__box__type_html"><div class="ttname"><a href="../../d0/d33/structmutabor__box__type.html">mutabor_box_type</a></div><div class="ttdoc">Mutabor box type. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d19/box_8h_source.html#l00116">box.h:116</a></div></div>
-<div class="ttc" id="mut_8cc_html_abffd7f9eb60ee7a611664ca2804eec8f"><div class="ttname"><a href="../../df/d33/mut_8cc.html#abffd7f9eb60ee7a611664ca2804eec8f">box</a></div><div class="ttdeci">mutabor_box_type * box</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/mut_8cc_source.html#l01633">mut.cc:1633</a></div></div>
+<div class="ttc" id="namespacemutabor_1_1hidden_html_abcb81b5b4ff6213bb18cb9eea3ae374e"><div class="ttname"><a href="../../d6/dbb/namespacemutabor_1_1hidden.html#abcb81b5b4ff6213bb18cb9eea3ae374e">mutabor::hidden::mutabor_box_type</a></div><div class="ttdeci">struct mutabor_box_type mutabor_box_type</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d19/box_8h_source.html#l00193">box.h:193</a></div></div>
+<div class="ttc" id="namespacemutabor_1_1hidden_html_abe559f59025d3ee3e626c4c3cbd9cacdaef2690d5570105e7d864c894778adf49"><div class="ttname"><a href="../../d6/dbb/namespacemutabor_1_1hidden.html#abe559f59025d3ee3e626c4c3cbd9cacdaef2690d5570105e7d864c894778adf49">mutabor::hidden::compiler_warning</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d11/Execute_8h_source.html#l00076">Execute.h:76</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:35 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:13 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

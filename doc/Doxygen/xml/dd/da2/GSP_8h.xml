@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="dd/da2/GSP_8h" kind="file">
     <compoundname>GSP.h</compoundname>
     <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
@@ -10,99 +10,223 @@
     <includedby refid="d3/d9e/GSP_8cpp" local="yes">src/kernel/routing/gmn/GSP.cpp</includedby>
     <includedby refid="dc/ddd/GSP__File_8h" local="yes">src/kernel/routing/gmn/GSP_File.h</includedby>
     <incdepgraph>
-      <node id="15365">
+      <node id="21420">
+        <label>list</label>
+      </node>
+      <node id="21413">
         <label>stdarg.h</label>
       </node>
-      <node id="15364">
+      <node id="21428">
+        <label>wx/cmdline.h</label>
+      </node>
+      <node id="21416">
+        <label>wx/stdpaths.h</label>
+      </node>
+      <node id="21412">
         <label>src/kernel/Defs.h</label>
         <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="15365" relation="include">
+        <childnode refid="21413" relation="include">
         </childnode>
-        <childnode refid="15366" relation="include">
+        <childnode refid="21414" relation="include">
+        </childnode>
+        <childnode refid="21433" relation="include">
+        </childnode>
+        <childnode refid="21434" relation="include">
+        </childnode>
+        <childnode refid="21427" relation="include">
+        </childnode>
+        <childnode refid="21435" relation="include">
+        </childnode>
+        <childnode refid="21436" relation="include">
         </childnode>
       </node>
-      <node id="15372">
+      <node id="21427">
+        <label>stdint.h</label>
+      </node>
+      <node id="21441">
         <label>stdlib.h</label>
       </node>
-      <node id="15371">
+      <node id="21433">
+        <label>wx/wxchar.h</label>
+      </node>
+      <node id="21422">
+        <label>wx/image.h</label>
+      </node>
+      <node id="21437">
+        <label>string</label>
+      </node>
+      <node id="21432">
+        <label>mutDebugFlags.h</label>
+        <link refid="d7/d49/mutDebugFlags_8h"/>
+      </node>
+      <node id="21415">
+        <label>wx/window.h</label>
+      </node>
+      <node id="21434">
+        <label>wx/intl.h</label>
+      </node>
+      <node id="21421">
+        <label>src/wxGUI/Mutabor.rh</label>
+        <link refid="d9/d64/Mutabor_8rh"/>
+        <childnode refid="21412" relation="include">
+        </childnode>
+      </node>
+      <node id="21417">
+        <label>wx/filename.h</label>
+      </node>
+      <node id="21440">
         <label>string.h</label>
       </node>
-      <node id="15368">
+      <node id="21419">
+        <label>typeinfo</label>
+      </node>
+      <node id="21430">
+        <label>wx/debug.h</label>
+      </node>
+      <node id="21425">
+        <label>cstdio</label>
+      </node>
+      <node id="21424">
+        <label>bitset</label>
+      </node>
+      <node id="21414">
+        <label>src/wxGUI/generic/mhDefs.h</label>
+        <link refid="d0/d68/mhDefs_8h"/>
+        <childnode refid="21412" relation="include">
+        </childnode>
+        <childnode refid="21415" relation="include">
+        </childnode>
+        <childnode refid="21416" relation="include">
+        </childnode>
+        <childnode refid="21417" relation="include">
+        </childnode>
+        <childnode refid="21418" relation="include">
+        </childnode>
+        <childnode refid="21419" relation="include">
+        </childnode>
+        <childnode refid="21420" relation="include">
+        </childnode>
+        <childnode refid="21421" relation="include">
+        </childnode>
+        <childnode refid="21422" relation="include">
+        </childnode>
+        <childnode refid="21423" relation="include">
+        </childnode>
+      </node>
+      <node id="21426">
+        <label>vector</label>
+      </node>
+      <node id="21423">
+        <label>mutDebug.h</label>
+        <link refid="de/de1/mutDebug_8h"/>
+        <childnode refid="21424" relation="include">
+        </childnode>
+        <childnode refid="21418" relation="include">
+        </childnode>
+        <childnode refid="21425" relation="include">
+        </childnode>
+        <childnode refid="21426" relation="include">
+        </childnode>
+        <childnode refid="21427" relation="include">
+        </childnode>
+        <childnode refid="21428" relation="include">
+        </childnode>
+        <childnode refid="21429" relation="include">
+        </childnode>
+        <childnode refid="21430" relation="include">
+        </childnode>
+        <childnode refid="21431" relation="include">
+        </childnode>
+        <childnode refid="21432" relation="include">
+        </childnode>
+      </node>
+      <node id="21436">
+        <label>src/wxintl/libintl.h</label>
+        <link refid="d4/d64/libintl_8h"/>
+        <childnode refid="21412" relation="include">
+        </childnode>
+        <childnode refid="21437" relation="include">
+        </childnode>
+      </node>
+      <node id="21429">
         <label>wx/string.h</label>
       </node>
-      <node id="15370">
+      <node id="21439">
         <label>GIS.h</label>
         <link refid="dd/d4d/GIS_8h"/>
-        <childnode refid="15364" relation="include">
+        <childnode refid="21412" relation="include">
         </childnode>
-        <childnode refid="15367" relation="include">
+        <childnode refid="21438" relation="include">
         </childnode>
-        <childnode refid="15371" relation="include">
+        <childnode refid="21440" relation="include">
         </childnode>
-        <childnode refid="15372" relation="include">
+        <childnode refid="21441" relation="include">
         </childnode>
       </node>
-      <node id="15363">
+      <node id="21411">
         <label>src/kernel/routing/gmn/GSP.h</label>
         <link refid="GSP.h"/>
-        <childnode refid="15364" relation="include">
+        <childnode refid="21412" relation="include">
         </childnode>
-        <childnode refid="15367" relation="include">
+        <childnode refid="21438" relation="include">
         </childnode>
-        <childnode refid="15370" relation="include">
+        <childnode refid="21439" relation="include">
         </childnode>
       </node>
-      <node id="15369">
+      <node id="21418">
         <label>iostream</label>
       </node>
-      <node id="15367">
+      <node id="21438">
         <label>src/kernel/Frac.h</label>
         <link refid="df/d4f/Frac_8h"/>
-        <childnode refid="15364" relation="include">
+        <childnode refid="21412" relation="include">
         </childnode>
-        <childnode refid="15368" relation="include">
+        <childnode refid="21429" relation="include">
         </childnode>
-        <childnode refid="15369" relation="include">
+        <childnode refid="21418" relation="include">
         </childnode>
       </node>
-      <node id="15366">
-        <label>wx/msw/wrapwin.h</label>
+      <node id="21431">
+        <label>wx/thread.h</label>
+      </node>
+      <node id="21435">
+        <label>wx/setup.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="15376">
+      <node id="21445">
         <label>src/kernel/routing/gmn/GSP.cpp</label>
         <link refid="d3/d9e/GSP_8cpp"/>
       </node>
-      <node id="15373">
+      <node id="21442">
         <label>src/kernel/routing/gmn/GSP.h</label>
         <link refid="GSP.h"/>
-        <childnode refid="15374" relation="include">
+        <childnode refid="21443" relation="include">
         </childnode>
-        <childnode refid="15375" relation="include">
+        <childnode refid="21444" relation="include">
         </childnode>
-        <childnode refid="15376" relation="include">
+        <childnode refid="21445" relation="include">
         </childnode>
-        <childnode refid="15377" relation="include">
+        <childnode refid="21446" relation="include">
         </childnode>
       </node>
-      <node id="15378">
+      <node id="21447">
         <label>src/kernel/routing/gmn/GSP_File.cpp</label>
         <link refid="d8/d2f/GSP__File_8cpp"/>
       </node>
-      <node id="15377">
+      <node id="21446">
         <label>src/kernel/routing/gmn/GSP_File.h</label>
         <link refid="dc/ddd/GSP__File_8h"/>
-        <childnode refid="15376" relation="include">
+        <childnode refid="21445" relation="include">
         </childnode>
-        <childnode refid="15378" relation="include">
+        <childnode refid="21447" relation="include">
         </childnode>
       </node>
-      <node id="15374">
+      <node id="21443">
         <label>src/kernel/routing/gmn/DevGIS.cpp</label>
         <link refid="db/d78/DevGIS_8cpp"/>
       </node>
-      <node id="15375">
+      <node id="21444">
         <label>src/kernel/routing/gmn/GIS.cpp</label>
         <link refid="dc/de7/GIS_8cpp"/>
       </node>
@@ -127,31 +251,6 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP.h" line="55" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP.h" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="define" id="d5/dee/group__route_1ga587c6ceaa3ec1b5d8431233a7297cb54" prot="public" static="no">
-        <name>GSP_MAX_SEP</name>
-        <initializer>8000</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP.h" line="63" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP.h" bodystart="63" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="define" id="d5/dee/group__route_1gaae4d1f458f2006775314db1c3b3c42dd" prot="public" static="no">
-        <name>GSP_MAX_LINE</name>
-        <initializer>1000</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP.h" line="64" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP.h" bodystart="64" bodyend="-1"/>
-        <referencedby refid="d5/dee/group__route_1gaa177fc4bc9824e9329280d353c6fa778" compoundref="d8/d2f/GSP__File_8cpp" startline="83" endline="115">ReadNewLine</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga1831b875c2ba67f02fbfced4d980df6e" compoundref="d3/d9e/GSP_8cpp" startline="493" endline="606">ReadNote</referencedby>
-        <referencedby refid="d5/dee/group__route_1gacb24b008725cbf431122a2d12738a455" compoundref="d3/d9e/GSP_8cpp" startline="402" endline="439">ReadParaStr</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -190,7 +289,7 @@
         <referencedby refid="d3/d14/gmut_8cpp_1a6925268de67bc04207c5ebd990b88b0f" compoundref="d3/d14/gmut_8cpp" startline="54" endline="82">GetInFile</referencedby>
         <referencedby refid="d5/dee/group__route_1ga3a3d77c8ba291f43ea136911892c5d5a" compoundref="d3/d9e/GSP_8cpp" startline="786" endline="827">GspParse</referencedby>
         <referencedby refid="d4/d21/gmn2midi_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="d4/d21/gmn2midi_8cpp" startline="23" endline="74">main</referencedby>
-        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a5f9cd24f25454fe7cbbc87918fe06ab3" compoundref="db/d78/DevGIS_8cpp" startline="270" endline="307">mutabor::InputGis::Open</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a5f9cd24f25454fe7cbbc87918fe06ab3" compoundref="db/d78/DevGIS_8cpp" startline="276" endline="313">mutabor::InputGis::Open</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d5/dee/group__route_1ga0a8cafd3bcd5e0e04dfa8610f5e5fbae" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -209,7 +308,7 @@
         <referencedby refid="d3/d14/gmut_8cpp_1a6925268de67bc04207c5ebd990b88b0f" compoundref="d3/d14/gmut_8cpp" startline="54" endline="82">GetInFile</referencedby>
         <referencedby refid="d5/dee/group__route_1ga3a3d77c8ba291f43ea136911892c5d5a" compoundref="d3/d9e/GSP_8cpp" startline="786" endline="827">GspParse</referencedby>
         <referencedby refid="d4/d21/gmn2midi_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="d4/d21/gmn2midi_8cpp" startline="23" endline="74">main</referencedby>
-        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a5f9cd24f25454fe7cbbc87918fe06ab3" compoundref="db/d78/DevGIS_8cpp" startline="270" endline="307">mutabor::InputGis::Open</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a5f9cd24f25454fe7cbbc87918fe06ab3" compoundref="db/d78/DevGIS_8cpp" startline="276" endline="313">mutabor::InputGis::Open</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d5/dee/group__route_1gad6532c6916f8eab5ddcd1e3cc7a1eb73" prot="public" static="no" mutable="no">
         <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
@@ -248,45 +347,29 @@
         <referencedby refid="d5/dee/group__route_1gae22d45d788df2b4bca8501af2a057a4c" compoundref="d3/d9e/GSP_8cpp" startline="227" endline="333">GetSep</referencedby>
         <referencedby refid="d5/dee/group__route_1ga3a3d77c8ba291f43ea136911892c5d5a" compoundref="d3/d9e/GSP_8cpp" startline="786" endline="827">GspParse</referencedby>
         <referencedby refid="d4/d21/gmn2midi_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="d4/d21/gmn2midi_8cpp" startline="23" endline="74">main</referencedby>
-        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a5f9cd24f25454fe7cbbc87918fe06ab3" compoundref="db/d78/DevGIS_8cpp" startline="270" endline="307">mutabor::InputGis::Open</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a5f9cd24f25454fe7cbbc87918fe06ab3" compoundref="db/d78/DevGIS_8cpp" startline="276" endline="313">mutabor::InputGis::Open</referencedby>
         <referencedby refid="d5/dee/group__route_1ga4183a7693a10a77ad42da85ce894dc6e" compoundref="d3/d9e/GSP_8cpp" startline="442" endline="490">ReadTag</referencedby>
       </memberdef>
-      <memberdef kind="variable" id="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" prot="public" static="no" mutable="no">
-        <type></type>
-        <definition>char[GSP_MAX_SEP]</definition>
-        <argsstring>[GSP_MAX_SEP]</argsstring>
-        <name>char</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP.h" line="81" column="1"/>
-        <referencedby refid="df/dd1/group__GUI_1ga9fabcd1412ba7792daaa89ef40ea7d86" compoundref="d1/da4/MutEditFile_8cpp" startline="986" endline="1000">mutaborGUI::MutEditFile::OnCharAdded</referencedby>
-        <referencedby refid="d5/dee/group__route_1gadd30cf551924b6e57607f265e6ac5d3d" compoundref="d7/da0/GIS__Head_8cpp" startline="516" endline="624">GisReadArtHead::Read</referencedby>
-        <referencedby refid="d5/d67/classMisFile_1a6549dce9ca746ba9832699d92cf85ebb" compoundref="d4/df2/mis_8cpp" startline="144" endline="168">MisFile::Save</referencedby>
-      </memberdef>
-      <memberdef kind="variable" id="d5/dee/group__route_1gacfdd0d8043f384fba0dff7914f762924" prot="public" static="no" mutable="no">
-        <type>int</type>
-        <definition>int SepPos</definition>
+      <memberdef kind="variable" id="d5/dee/group__route_1gaf3fc82eba6d1b2b56c2c005983e86fbf" prot="public" static="no" mutable="no">
+        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+        <definition>mutString Sep</definition>
         <argsstring></argsstring>
-        <name>SepPos</name>
+        <name>Sep</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP.h" line="83" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP.cpp" bodystart="69" bodyend="-1"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP.h" line="78" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP.cpp" bodystart="59" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga8e3ee4893c5a58be1590313f35cc0522" compoundref="d7/da0/GIS__Head_8cpp" startline="873" endline="899">ChordNote::CheckCloseAlter</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaed4a76ec9ff68f62b540d9fc7b6cb5b6" compoundref="d7/da0/GIS__Head_8cpp" startline="901" endline="933">ChordNote::CheckCloseTie</referencedby>
         <referencedby refid="d5/dee/group__route_1gae22d45d788df2b4bca8501af2a057a4c" compoundref="d3/d9e/GSP_8cpp" startline="227" endline="333">GetSep</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga7c3c243a01bf62c1720caa05d48e7ac4" compoundref="d3/d9e/GSP_8cpp" startline="341" endline="369">ReadLong</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga1831b875c2ba67f02fbfced4d980df6e" compoundref="d3/d9e/GSP_8cpp" startline="493" endline="606">ReadNote</referencedby>
-        <referencedby refid="d5/dee/group__route_1gad710851008c142294b2f31bd78d0a681" compoundref="d3/d9e/GSP_8cpp" startline="372" endline="399">ReadParaNumber</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga4183a7693a10a77ad42da85ce894dc6e" compoundref="d3/d9e/GSP_8cpp" startline="442" endline="490">ReadTag</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaaa118d2fc4dc761820ea2ce334562d4c" compoundref="d3/d9e/GSP_8cpp" startline="60" endline="64">SepPos</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga2d8956d3163b39c86512d75dc80b4544" compoundref="d3/d9e/GSP_8cpp" startline="216" endline="221">takesep</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d5/dee/group__route_1ga4f0f62ff19812efd72a38e6acb062a9c" prot="public" static="no" mutable="no">
-        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> mutTranslationChar *</type>
+        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga66f2a821381f322d5b779e5004013591" kindref="member">mutTranslationChar</ref> *</type>
         <definition>const mutTranslationChar* GspErrorText[]</definition>
         <argsstring>[]</argsstring>
         <name>GspErrorText</name>
@@ -299,7 +382,7 @@
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP.h" line="87" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP_Err.cpp" bodystart="31" bodyend="-1"/>
         <referencedby refid="d3/d14/gmut_8cpp_1a6925268de67bc04207c5ebd990b88b0f" compoundref="d3/d14/gmut_8cpp" startline="54" endline="82">GetInFile</referencedby>
         <referencedby refid="d4/d21/gmn2midi_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="d4/d21/gmn2midi_8cpp" startline="23" endline="74">main</referencedby>
-        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a5f9cd24f25454fe7cbbc87918fe06ab3" compoundref="db/d78/DevGIS_8cpp" startline="270" endline="307">mutabor::InputGis::Open</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a5f9cd24f25454fe7cbbc87918fe06ab3" compoundref="db/d78/DevGIS_8cpp" startline="276" endline="313">mutabor::InputGis::Open</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -319,12 +402,12 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP.cpp" line="786" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP.cpp" bodystart="786" bodyend="827"/>
-        <references refid="d5/dee/group__route_1ga50aa32362039eef241f1a100fdfbfde4" compoundref="d3/d9e/GSP_8cpp" startline="81">BracketDeep</references>
-        <references refid="d5/dee/group__route_1gab4c6070c0d1f3355396bf307c4400aa3" compoundref="d3/d9e/GSP_8cpp" startline="82">Brackets</references>
+        <references refid="d5/dee/group__route_1ga62b86345e5dd991ff25d78a46c64897f" compoundref="d3/d9e/GSP_8cpp" startline="78">BracketDeep</references>
+        <references refid="d5/dee/group__route_1ga3266eaf819ce3ea562acf827a0634611" compoundref="d3/d9e/GSP_8cpp" startline="77">Brackets</references>
         <references refid="d5/dee/group__route_1ga931a0a33f52b22e7b09ed3046969ef8a" compoundref="d3/d9e/GSP_8cpp" startline="214">CHAR0</references>
         <references refid="d5/dee/group__route_1ga9bc41555100693a2c7e3d439d8555874" compoundref="d3/d9e/GSP_8cpp" startline="186" endline="201">CheckError</references>
         <references refid="d5/dee/group__route_1ga272f09e93d6493d458e7b6345311c4ed" compoundref="d8/d2f/GSP__File_8cpp" startline="75" endline="79">CloseFile</references>
-        <references refid="d5/dee/group__route_1gaa6006307ce77a3c5e4803b4d70bc8f8a" compoundref="d8/d2f/GSP__File_8cpp" startline="40">CurrentLine</references>
+        <references refid="d5/dee/group__route_1ga5eafb3c54b7a4150acd7a8c54c3f962b" compoundref="d8/d2f/GSP__File_8cpp" startline="38">CurrentLine</references>
         <references refid="d5/dee/group__route_1ga432140b36c09b0144e6b524eb28168c3" compoundref="d8/d2f/GSP__File_8cpp" startline="42">CurrentPos</references>
         <references refid="d5/dee/group__route_1ga749a4c14ec15d842ddb08b5364293db9" compoundref="d3/d9e/GSP_8cpp" startline="167" endline="183">DoError</references>
         <references refid="d5/dee/group__route_1gabcb951ff24d6f0c97e35389dc1224b63" compoundref="d3/d9e/GSP_8cpp" startline="612" endline="781">DoParse</references>
@@ -336,11 +419,11 @@
         <references refid="d5/dee/group__route_1ga171f5381bbd5e457d35c7fb9d96658ed" compoundref="d3/d9e/GSP_8cpp" startline="48">GspErrorLineNr</references>
         <references refid="d5/dee/group__route_1ga0a8cafd3bcd5e0e04dfa8610f5e5fbae" compoundref="d3/d9e/GSP_8cpp" startline="49">GspErrorPos</references>
         <references refid="d5/dee/group__route_1ga2a47fc6fa3fad3071a0459d56b2823ac" compoundref="d3/d9e/GSP_8cpp" startline="84">LastTag</references>
-        <references refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" compoundref="d1/d73/Defs_8h" startline="171">mutEmptyString</references>
+        <references refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" compoundref="d1/d73/Defs_8h" startline="86">mutEmptyString</references>
         <references refid="d5/dee/group__route_1gaf482b236d88ad4a0248dbc7a4086cf35" compoundref="d3/d9e/GSP_8cpp" startline="87">octave</references>
         <references refid="d5/dee/group__route_1ga5d4ed25cd3b9daac41302813632cdef7" compoundref="d8/d2f/GSP__File_8cpp" startline="62" endline="72">OpenFile</references>
-        <references refid="d5/dee/group__route_1ga12c511f884301a9c8890c050e0a1fcaa" compoundref="dc/de7/GIS_8cpp" startline="509" endline="515">StartSep</references>
-        <referencedby refid="d5/dee/group__route_1gab095232f6f6d76781fd5603d4b453306" compoundref="dc/de7/GIS_8cpp" startline="844" endline="864">GisParse</referencedby>
+        <references refid="d5/dee/group__route_1ga12c511f884301a9c8890c050e0a1fcaa" compoundref="dc/de7/GIS_8cpp" startline="555" endline="561">StartSep</references>
+        <referencedby refid="d5/dee/group__route_1gab095232f6f6d76781fd5603d4b453306" compoundref="dc/de7/GIS_8cpp" startline="891" endline="911">GisParse</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -388,8 +471,8 @@ Revision 1.6 2011/11/02 14:31:57 keinstein fix some errors crashing Mutabor on W
 <codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>GMN_STRICT</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>WX</highlight></codeline>
-<codeline lineno="63" refid="d5/dee/group__route_1ga587c6ceaa3ec1b5d8431233a7297cb54" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GSP_MAX_SEP<sp/>8000<sp/><sp/>//<sp/>maximal<sp/>length<sp/>of<sp/>a<sp/>comment</highlight></codeline>
-<codeline lineno="64" refid="d5/dee/group__route_1gaae4d1f458f2006775314db1c3b3c42dd" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GSP_MAX_LINE<sp/>1000<sp/><sp/>//<sp/>maximal<sp/>length<sp/>of<sp/>a<sp/>line</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GSP_MAX_SEP<sp/>8000<sp/><sp/>//<sp/>maximal<sp/>length<sp/>of<sp/>a<sp/>comment</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GSP_MAX_LINE<sp/>1000<sp/><sp/>//<sp/>maximal<sp/>length<sp/>of<sp/>a<sp/>line</highlight></codeline>
 <codeline lineno="65"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="66"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1gaa4464ff6ab3dd87c61ec9862a68c5e51" kindref="member">GspCurrentLineNr</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>curent<sp/>line<sp/>parser<sp/>deals<sp/>with</highlight><highlight class="normal"></highlight></codeline>
@@ -403,16 +486,16 @@ Revision 1.6 2011/11/02 14:31:57 keinstein fix some errors crashing Mutabor on W
 <codeline lineno="75"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><ref refid="d5/dee/group__route_1gaccb293565ac1505218ca2cb37a75b696" kindref="member">GspError</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>error<sp/>id</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>WX</highlight></codeline>
-<codeline lineno="78"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref><sp/><ref refid="d5/dee/group__route_1gad78ff14ef0e12b5d3c88f659314e3de3" kindref="member">Sep</ref>;</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref><sp/><ref refid="d5/dee/group__route_1gaf3fc82eba6d1b2b56c2c005983e86fbf" kindref="member">Sep</ref>;</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
-<codeline lineno="81"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">[<ref refid="d5/dee/group__route_1ga587c6ceaa3ec1b5d8431233a7297cb54" kindref="member">GSP_MAX_SEP</ref>];</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">[GSP_MAX_SEP];</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><ref refid="d5/dee/group__route_1gacfdd0d8043f384fba0dff7914f762924" kindref="member">SepPos</ref>;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><ref refid="d5/dee/group__route_1gaaa118d2fc4dc761820ea2ce334562d4c" kindref="member">SepPos</ref>;</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="86"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mutTranslationChar<sp/>*<ref refid="d5/dee/group__route_1ga4f0f62ff19812efd72a38e6acb062a9c" kindref="member">GspErrorText</ref>[];</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga66f2a821381f322d5b779e5004013591" kindref="member">mutTranslationChar</ref><sp/>*<ref refid="d5/dee/group__route_1ga4f0f62ff19812efd72a38e6acb062a9c" kindref="member">GspErrorText</ref>[];</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ga3a3d77c8ba291f43ea136911892c5d5a" kindref="member">GspParse</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref><sp/>&amp;FileName);</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d8/d97/unionyyalloc" kind="union" prot="public">
     <compoundname>yyalloc</compoundname>
       <sectiondef kind="public-attrib">
@@ -14,8 +14,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mut.cc" line="455" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mut.cc" bodystart="455" bodyend="-1"/>
-        <referencedby refid="df/d33/mut_8cc_1a8a640da1e889232ea97dbfe0d098604b" compoundref="df/d33/mut_8cc" startline="1796" endline="1860">if</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mut.cc" line="452" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mut.cc" bodystart="452" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga5698f4f1e4276000e267f0a760f0c931" compoundref="df/d33/mut_8cc" startline="1454" endline="3183">yyparse</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d8/d97/unionyyalloc_1a9326f4fdc6f737a929444427836d8928" prot="public" static="no" mutable="no">
         <type><ref refid="da/d7e/unionYYSTYPE" kindref="compound">YYSTYPE</ref></type>
@@ -28,8 +28,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mut.cc" line="456" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mut.cc" bodystart="456" bodyend="-1"/>
-        <referencedby refid="df/d33/mut_8cc_1a8a640da1e889232ea97dbfe0d098604b" compoundref="df/d33/mut_8cc" startline="1796" endline="1860">if</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mut.cc" line="453" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mut.cc" bodystart="453" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga5698f4f1e4276000e267f0a760f0c931" compoundref="df/d33/mut_8cc" startline="1454" endline="3183">yyparse</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d8/d97/unionyyalloc_1a542e43248e6afac9af342c2f4e3162fc" prot="public" static="no" mutable="no">
         <type><ref refid="d8/d38/structYYLTYPE" kindref="compound">YYLTYPE</ref></type>
@@ -42,8 +42,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mut.cc" line="457" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mut.cc" bodystart="457" bodyend="-1"/>
-        <referencedby refid="df/d33/mut_8cc_1a8a640da1e889232ea97dbfe0d098604b" compoundref="df/d33/mut_8cc" startline="1796" endline="1860">if</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mut.cc" line="454" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mut.cc" bodystart="454" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga5698f4f1e4276000e267f0a760f0c931" compoundref="df/d33/mut_8cc" startline="1454" endline="3183">yyparse</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -51,56 +51,56 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4369">
+      <node id="4432">
         <label>argument</label>
         <link refid="d2/d74/structargument"/>
-        <childnode refid="4367" relation="usage">
+        <childnode refid="4430" relation="usage">
           <edgelabel>parameter</edgelabel>
         </childnode>
       </node>
-      <node id="4365">
+      <node id="4428">
         <label>yyalloc</label>
         <link refid="d8/d97/unionyyalloc"/>
-        <childnode refid="4366" relation="usage">
+        <childnode refid="4429" relation="usage">
           <edgelabel>yyvs_alloc</edgelabel>
         </childnode>
-        <childnode refid="4370" relation="usage">
+        <childnode refid="4433" relation="usage">
           <edgelabel>yyls_alloc</edgelabel>
         </childnode>
       </node>
-      <node id="4370">
+      <node id="4433">
         <label>YYLTYPE</label>
         <link refid="d8/d38/structYYLTYPE"/>
       </node>
-      <node id="4367">
+      <node id="4430">
         <label>parameter_list</label>
         <link refid="d8/d28/structparameter__list"/>
-        <childnode refid="4367" relation="usage">
+        <childnode refid="4430" relation="usage">
           <edgelabel>next</edgelabel>
         </childnode>
       </node>
-      <node id="4366">
+      <node id="4429">
         <label>YYSTYPE</label>
         <link refid="da/d7e/unionYYSTYPE"/>
-        <childnode refid="4367" relation="usage">
+        <childnode refid="4430" relation="usage">
           <edgelabel>parameters</edgelabel>
         </childnode>
-        <childnode refid="4368" relation="usage">
+        <childnode refid="4431" relation="usage">
           <edgelabel>arguments</edgelabel>
         </childnode>
       </node>
-      <node id="4368">
+      <node id="4431">
         <label>argument_list</label>
         <link refid="d2/d3f/structargument__list"/>
-        <childnode refid="4369" relation="usage">
+        <childnode refid="4432" relation="usage">
           <edgelabel>argument</edgelabel>
         </childnode>
-        <childnode refid="4368" relation="usage">
+        <childnode refid="4431" relation="usage">
           <edgelabel>next</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mut.cc" line="454" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mut.cc" bodystart="453" bodyend="458"/>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mut.cc" line="451" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/mut.cc" bodystart="450" bodyend="455"/>
     <listofallmembers>
       <member refid="d8/d97/unionyyalloc_1a542e43248e6afac9af342c2f4e3162fc" prot="public" virt="non-virtual"><scope>yyalloc</scope><name>yyls_alloc</name></member>
       <member refid="d8/d97/unionyyalloc_1a4800e0520a89a4789afa7b5d82197e65" prot="public" virt="non-virtual"><scope>yyalloc</scope><name>yyss_alloc</name></member>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d9/d93/classCompileDlg" kind="class" prot="public">
     <compoundname>CompileDlg</compoundname>
     <basecompoundref prot="public" virt="non-virtual">wxDialog</basecompoundref>
@@ -107,6 +107,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" line="55" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/xrc/wxresource.h" bodystart="55" bodyend="-1"/>
+        <referencedby refid="d9/d93/classCompileDlg_1a3d69fa748183a0616a483d8f27f10fc6" compoundref="d2/dc0/wxresource_8h" startline="62" endline="75">InitWidgetsFromXRC</referencedby>
+        <referencedby refid="de/dbd/classmutaborGUI_1_1CompDlg_1a238f17580359a5c65945781a1fef9226" compoundref="d4/d7c/CompDlg_8h" startline="69" endline="108">mutaborGUI::CompDlg::SetStatus</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d9/d93/classCompileDlg_1a5566b647f8d4042182524608a0f32988" prot="protected" static="no" mutable="no">
         <type>wxStaticText *</type>
@@ -192,6 +194,7 @@
         <references refid="d9/d93/classCompileDlg_1afca432a8c5b8e7294e2d522bd7e45142" compoundref="d2/dc0/wxresource_8h" startline="50">line</references>
         <references refid="d9/d93/classCompileDlg_1aacb00d63af0bc5c532c9d08b75dd025b" compoundref="d2/dc0/wxresource_8h" startline="51">logic</references>
         <references refid="d9/d93/classCompileDlg_1a0d5ed1cba42668c6f778e66fe8141770" compoundref="d2/dc0/wxresource_8h" startline="58">message</references>
+        <references refid="d9/d93/classCompileDlg_1a1d9e8f0ba7894e832c0bb6156d124763" compoundref="d2/dc0/wxresource_8h" startline="55">tone_system</references>
         <references refid="d9/d93/classCompileDlg_1a58118c07cb5020b22c983eb5902ed662" compoundref="d2/dc0/wxresource_8h" startline="52">tonelabel</references>
         <references refid="d9/d93/classCompileDlg_1a486dfa9c6ee9ade93db4e0944e891f8d" compoundref="d2/dc0/wxresource_8h" startline="53">tones</references>
         <references refid="d9/d93/classCompileDlg_1a39fb7315cd8348861f0e9817eca5a1f3" compoundref="d2/dc0/wxresource_8h" startline="54">tunes</references>
@@ -225,30 +228,30 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2582">
+      <node id="2800">
         <label>CompileDlg</label>
         <link refid="d9/d93/classCompileDlg"/>
-        <childnode refid="2583" relation="public-inheritance">
+        <childnode refid="2801" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2583">
+      <node id="2801">
         <label>wxDialog</label>
       </node>
-      <node id="2584">
+      <node id="2802">
         <label>mutaborGUI::CompDlg</label>
         <link refid="de/dbd/classmutaborGUI_1_1CompDlg"/>
-        <childnode refid="2582" relation="public-inheritance">
+        <childnode refid="2800" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2585">
+      <node id="2803">
         <label>CompileDlg</label>
         <link refid="d9/d93/classCompileDlg"/>
-        <childnode refid="2586" relation="public-inheritance">
+        <childnode refid="2804" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2586">
+      <node id="2804">
         <label>wxDialog</label>
       </node>
     </collaborationgraph>

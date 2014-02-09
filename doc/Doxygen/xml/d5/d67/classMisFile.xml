@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d5/d67/classMisFile" kind="class" prot="public">
     <compoundname>MisFile</compoundname>
     <basecompoundref prot="public" virt="non-virtual">TByteArray</basecompoundref>
     <includes refid="d2/d71/mis_8h" local="no">mis.h</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="d5/d67/classMisFile_1ada4e18dc8f04c937dcb86337f1c4cc0f" prot="public" static="no" mutable="no">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char MisFile::Type</definition>
         <argsstring></argsstring>
         <name>Type</name>
@@ -57,7 +57,7 @@
         <referencedby refid="d5/d67/classMisFile_1aa7384911209dce2e873193481e44e5e8" compoundref="d4/df2/mis_8cpp" startline="188" endline="209">WriteInit</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d5/d67/classMisFile_1abb44eeac727adc9f82e699495188286d" prot="public" static="no" mutable="no">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <type>char *</type>
         <definition>char* MisFile::Id</definition>
         <argsstring></argsstring>
         <name>Id</name>
@@ -71,7 +71,7 @@
         <referencedby refid="d5/d67/classMisFile_1a62ce05c84b7f98448fada8ae9c196cff" compoundref="d2/d71/mis_8h" startline="58" endline="69">MisFile</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d5/d67/classMisFile_1a2d54dd3393aed1c1e161419580b129ee" prot="public" static="no" mutable="no">
-        <type>DWORD</type>
+        <type><ref refid="d9/d7c/group__kernel_1gaa39b39d94407451a6ec0226479db68cf" kindref="member">DWORD</ref></type>
         <definition>DWORD MisFile::Time</definition>
         <argsstring></argsstring>
         <name>Time</name>
@@ -172,7 +172,7 @@
         <argsstring>(char *id)</argsstring>
         <name>MisFile</name>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>id</declname>
         </param>
         <briefdescription>
@@ -206,7 +206,7 @@
         <references refid="d5/d67/classMisFile_1ad68e86799a7580c55b2d9716c166352b" compoundref="d2/d71/mis_8h" startline="54">Tracks</references>
       </memberdef>
       <memberdef kind="function" id="d5/d67/classMisFile_1a5a9dc1c0f793d04e30145f79d4b81269" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>BYTE</type>
+        <type><ref refid="d9/d7c/group__kernel_1gaec93e83855ac17c3c25c55c37ca186dd" kindref="member">BYTE</ref></type>
         <definition>BYTE MisFile::Get</definition>
         <argsstring>(int i)</argsstring>
         <name>Get</name>
@@ -229,7 +229,7 @@
         <argsstring>(char *fileName=&quot;tmp.mid&quot;)</argsstring>
         <name>Load</name>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>fileName</declname>
           <defval>&quot;tmp.mid&quot;</defval>
         </param>
@@ -240,10 +240,11 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="75" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="105" bodyend="141"/>
+        <references refid="d9/d7c/group__kernel_1gaec93e83855ac17c3c25c55c37ca186dd" compoundref="d1/d73/Defs_8h" startline="63">BYTE</references>
+        <references refid="d9/d7c/group__kernel_1gaa39b39d94407451a6ec0226479db68cf" compoundref="d1/d73/Defs_8h" startline="62">DWORD</references>
         <references refid="da/dd9/classMisTrack_1ac3cd696a8208cca03fff5f830eceaea0" compoundref="d4/df2/mis_8cpp" startline="341" endline="365">MisTrack::Load</references>
         <references refid="da/dd9/classMisTrack_1a47a8b892d8f4c2ebd8478fab84b77112" compoundref="d2/d71/mis_8h" startline="96">MisTrack::Next</references>
         <references refid="d4/df2/mis_8cpp_1a26cb06e647f72c1f728a65970fbd0a62" compoundref="d4/df2/mis_8cpp" startline="27" endline="33">ReadLength</references>
-        <references refid="df/d33/mut_8cc_1a5e111f6687f261e4e28bd6528e7f5b48" compoundref="df/d33/mut_8cc" startline="1168">res</references>
         <references refid="d5/d67/classMisFile_1a32a883a7105299c4924fd09b74ead91c" compoundref="d2/d71/mis_8h" startline="51">Speed</references>
         <references refid="d5/d67/classMisFile_1ad68e86799a7580c55b2d9716c166352b" compoundref="d2/d71/mis_8h" startline="54">Tracks</references>
         <references refid="d5/d67/classMisFile_1ada4e18dc8f04c937dcb86337f1c4cc0f" compoundref="d2/d71/mis_8h" startline="49">Type</references>
@@ -254,7 +255,7 @@
         <argsstring>(char *fileName=&quot;tmp.mid&quot;)</argsstring>
         <name>Save</name>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>fileName</declname>
           <defval>&quot;tmp.mid&quot;</defval>
         </param>
@@ -265,10 +266,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="76" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="144" bodyend="168"/>
-        <references refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a">char</references>
+        <references refid="d9/d7c/group__kernel_1gaa39b39d94407451a6ec0226479db68cf" compoundref="d1/d73/Defs_8h" startline="62">DWORD</references>
         <references refid="d5/d67/classMisFile_1a5a9dc1c0f793d04e30145f79d4b81269" compoundref="d2/d71/mis_8h" startline="74" endline="74">Get</references>
         <references refid="d5/d67/classMisFile_1a1b345a78b8cd3eb8a69a29ceb1c2af2e" compoundref="d2/d71/mis_8h" startline="50">nTrack</references>
-        <references refid="df/d33/mut_8cc_1a5e111f6687f261e4e28bd6528e7f5b48" compoundref="df/d33/mut_8cc" startline="1168">res</references>
         <references refid="da/dd9/classMisTrack_1abd2d94ec58b936bdab44739a708fec4e" compoundref="d4/df2/mis_8cpp" startline="368" endline="384">MisTrack::Save</references>
         <references refid="d5/d67/classMisFile_1a32a883a7105299c4924fd09b74ead91c" compoundref="d2/d71/mis_8h" startline="51">Speed</references>
         <references refid="d5/d67/classMisFile_1ad68e86799a7580c55b2d9716c166352b" compoundref="d2/d71/mis_8h" startline="54">Tracks</references>
@@ -293,12 +293,12 @@
         <references refid="d5/d67/classMisFile_1ad68e86799a7580c55b2d9716c166352b" compoundref="d2/d71/mis_8h" startline="54">Tracks</references>
       </memberdef>
       <memberdef kind="function" id="d5/d67/classMisFile_1a0d0597ab24ad139932d2ee6838a8a4fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>DWORD</type>
+        <type><ref refid="d9/d7c/group__kernel_1gaa39b39d94407451a6ec0226479db68cf" kindref="member">DWORD</ref></type>
         <definition>DWORD MisFile::ReadOn</definition>
         <argsstring>(DWORD deltaTime=0, MisReadProceed *proceed=MisReadDummy)</argsstring>
         <name>ReadOn</name>
         <param>
-          <type>DWORD</type>
+          <type><ref refid="d9/d7c/group__kernel_1gaa39b39d94407451a6ec0226479db68cf" kindref="member">DWORD</ref></type>
           <declname>deltaTime</declname>
           <defval>0</defval>
         </param>
@@ -370,7 +370,7 @@
         <argsstring>(DWORD midi, MisTrack *track, int trackId)</argsstring>
         <name>WriteMis</name>
         <param>
-          <type>DWORD</type>
+          <type><ref refid="d9/d7c/group__kernel_1gaa39b39d94407451a6ec0226479db68cf" kindref="member">DWORD</ref></type>
           <declname>midi</declname>
         </param>
         <param>
@@ -397,7 +397,7 @@
         <argsstring>(DWORD deltaTime)</argsstring>
         <name>CountOnDeltaTime</name>
         <param>
-          <type>DWORD</type>
+          <type><ref refid="d9/d7c/group__kernel_1gaa39b39d94407451a6ec0226479db68cf" kindref="member">DWORD</ref></type>
           <declname>deltaTime</declname>
         </param>
         <briefdescription>
@@ -422,11 +422,11 @@
           <declname>id</declname>
         </param>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <type>char</type>
           <declname>von</declname>
         </param>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <type>char</type>
           <declname>bis</declname>
         </param>
         <briefdescription>
@@ -470,7 +470,7 @@
         <referencedby refid="d5/d67/classMisFile_1a1c3662b5cbdfd72092550ccd7161edd8" compoundref="d4/df2/mis_8cpp" startline="297" endline="316">NoteOff</referencedby>
       </memberdef>
       <memberdef kind="function" id="d5/d67/classMisFile_1a2be093cb1ceb3ae8bc21471f4d952f10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char MisFile::GetChannel</definition>
         <argsstring>(int Instrument, int Pitch, signed char sound)</argsstring>
         <name>GetChannel</name>
@@ -483,7 +483,7 @@
           <declname>Pitch</declname>
         </param>
         <param>
-          <type>signed <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <type>signed char</type>
           <declname>sound</declname>
         </param>
         <briefdescription>
@@ -515,7 +515,7 @@
           <declname>pitch</declname>
         </param>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <type>char</type>
           <declname>intensity</declname>
         </param>
         <param>
@@ -554,7 +554,7 @@
           <declname>pitch</declname>
         </param>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <type>char</type>
           <declname>intensity</declname>
         </param>
         <param>
@@ -594,7 +594,7 @@
           <declname>token</declname>
         </param>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+          <type>char</type>
           <declname>turn</declname>
         </param>
         <param>
@@ -608,10 +608,10 @@
         <inbodydescription>
 <para>return GetMatchingTrack(id)-&gt;WriteGis(token, turn, intensity); </para>        </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.h" line="88" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/mis.cpp" bodystart="318" bodyend="337"/>
-        <references refid="d4/d4c/classGisReadArtHead_1a9bed839549e03d5ae0eaad70628320ec" compoundref="d1/db5/GIS__Head_8h" startline="259" endline="265">GisReadArtHead::GetAlter</references>
-        <references refid="d5/dee/group__route_1ga48508764452cf587dd6f5c57e6b877a2" compoundref="dc/de7/GIS_8cpp" startline="787" endline="793">GetGisType</references>
-        <references refid="d4/d4c/classGisReadArtHead_1ae85369c6a4620fda2195bccc6df769d6" compoundref="d1/db5/GIS__Head_8h" startline="236" endline="249">GisReadArtHead::GetIntensity</references>
-        <references refid="d4/d4c/classGisReadArtHead_1a91c3ad947f585525ef47ebeb16fc00f3" compoundref="d1/db5/GIS__Head_8h" startline="251" endline="257">GisReadArtHead::GetOctave</references>
+        <references refid="d4/d4c/classGisReadArtHead_1a9bed839549e03d5ae0eaad70628320ec" compoundref="d1/db5/GIS__Head_8h" startline="262" endline="268">GisReadArtHead::GetAlter</references>
+        <references refid="d5/dee/group__route_1ga48508764452cf587dd6f5c57e6b877a2" compoundref="dc/de7/GIS_8cpp" startline="833" endline="839">GetGisType</references>
+        <references refid="d4/d4c/classGisReadArtHead_1ae85369c6a4620fda2195bccc6df769d6" compoundref="d1/db5/GIS__Head_8h" startline="239" endline="252">GisReadArtHead::GetIntensity</references>
+        <references refid="d4/d4c/classGisReadArtHead_1a91c3ad947f585525ef47ebeb16fc00f3" compoundref="d1/db5/GIS__Head_8h" startline="254" endline="260">GisReadArtHead::GetOctave</references>
         <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861a4b64e411111d6f015cd6421b13889b9e" compoundref="dd/d4d/GIS_8h" startline="123">GTNote</references>
         <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861aebc8ed1642dd35c57de5b08b246474a3" compoundref="dd/d4d/GIS_8h" startline="120">GTTag</references>
         <references refid="d5/d67/classMisFile_1a1c3662b5cbdfd72092550ccd7161edd8" compoundref="d4/df2/mis_8cpp" startline="297" endline="316">NoteOff</references>
@@ -624,65 +624,65 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3408">
+      <node id="3669">
         <label>TByteArray</label>
       </node>
-      <node id="3407">
+      <node id="3668">
         <label>MisFile</label>
         <link refid="d5/d67/classMisFile"/>
-        <childnode refid="3408" relation="public-inheritance">
+        <childnode refid="3669" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3414">
+      <node id="3675">
         <label>Channel</label>
         <link refid="d3/dfe/structChannel"/>
       </node>
-      <node id="3413">
+      <node id="3674">
         <label>MisTrack</label>
         <link refid="da/dd9/classMisTrack"/>
-        <childnode refid="3410" relation="public-inheritance">
+        <childnode refid="3671" relation="public-inheritance">
         </childnode>
-        <childnode refid="3413" relation="usage">
+        <childnode refid="3674" relation="usage">
           <edgelabel>Next</edgelabel>
         </childnode>
-        <childnode refid="3409" relation="usage">
+        <childnode refid="3670" relation="usage">
           <edgelabel>File</edgelabel>
         </childnode>
       </node>
-      <node id="3411">
+      <node id="3672">
         <label>Instrument</label>
         <link refid="d5/dc6/classInstrument"/>
-        <childnode refid="3411" relation="usage">
+        <childnode refid="3672" relation="usage">
           <edgelabel>Next</edgelabel>
         </childnode>
       </node>
-      <node id="3410">
+      <node id="3671">
         <label>TByteArray</label>
       </node>
-      <node id="3409">
+      <node id="3670">
         <label>MisFile</label>
         <link refid="d5/d67/classMisFile"/>
-        <childnode refid="3410" relation="public-inheritance">
+        <childnode refid="3671" relation="public-inheritance">
         </childnode>
-        <childnode refid="3411" relation="usage">
+        <childnode refid="3672" relation="usage">
           <edgelabel>Instruments</edgelabel>
         </childnode>
-        <childnode refid="3412" relation="usage">
+        <childnode refid="3673" relation="usage">
           <edgelabel>Notes</edgelabel>
         </childnode>
-        <childnode refid="3413" relation="usage">
+        <childnode refid="3674" relation="usage">
           <edgelabel>Tracks</edgelabel>
         </childnode>
-        <childnode refid="3414" relation="usage">
+        <childnode refid="3675" relation="usage">
           <edgelabel>Channels</edgelabel>
         </childnode>
       </node>
-      <node id="3412">
+      <node id="3673">
         <label>MisNote</label>
         <link refid="db/dfb/classMisNote"/>
-        <childnode refid="3412" relation="usage">
+        <childnode refid="3673" relation="usage">
           <edgelabel>Next</edgelabel>
         </childnode>
       </node>

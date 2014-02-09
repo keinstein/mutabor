@@ -3,7 +3,7 @@
 <title>mutaborGUI::CompDlg Klassenreferenz</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -447,7 +447,7 @@ Weitere Geerbte Elemente</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d4/d7c/CompDlg_8h_source.html#l00069">69</a> der Datei <a class="el" href="../../d4/d7c/CompDlg_8h_source.html">CompDlg.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../d2/dc0/wxresource_8h_source.html#l00057">CompileDlg::chars</a>, <a class="el" href="../../d2/dc0/wxresource_8h_source.html#l00051">CompileDlg::logic</a> und <a class="el" href="../../d2/dc0/wxresource_8h_source.html#l00054">CompileDlg::tunes</a>.</p>
+<p>Benutzt <a class="el" href="../../d2/dc0/wxresource_8h_source.html#l00057">CompileDlg::chars</a>, <a class="el" href="../../d2/dc0/wxresource_8h_source.html#l00051">CompileDlg::logic</a>, <a class="el" href="../../d2/dc0/wxresource_8h_source.html#l00055">CompileDlg::tone_system</a> und <a class="el" href="../../d2/dc0/wxresource_8h_source.html#l00054">CompileDlg::tunes</a>.</p>
 <div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        {</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="../../d9/d93/classCompileDlg.html#aacb00d63af0bc5c532c9d08b75dd025b">logic</a>) {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                        <a class="code" href="../../d9/d93/classCompileDlg.html#aacb00d63af0bc5c532c9d08b75dd025b">logic</a>-&gt;SetLabel(wxString::Format(_T(<span class="stringliteral">&quot;%i&quot;</span>),logics));</div>
@@ -464,9 +464,9 @@ Weitere Geerbte Elemente</h2></td></tr>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                        <a class="code" href="../../d9/d93/classCompileDlg.html#a39fb7315cd8348861f0e9817eca5a1f3">tunes</a>-&gt;InvalidateBestSize();</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                }</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="../../d4/d2a/structTSYS.html">tone_system</a>) {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                        <a class="code" href="../../d4/d2a/structTSYS.html">tone_system</a>-&gt;SetLabel(wxString::Format(_T(<span class="stringliteral">&quot;%i&quot;</span>),tone_systems));</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                        <a class="code" href="../../d4/d2a/structTSYS.html">tone_system</a>-&gt;InvalidateBestSize();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="../../d9/d93/classCompileDlg.html#a1d9e8f0ba7894e832c0bb6156d124763">tone_system</a>) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                        <a class="code" href="../../d9/d93/classCompileDlg.html#a1d9e8f0ba7894e832c0bb6156d124763">tone_system</a>-&gt;SetLabel(wxString::Format(_T(<span class="stringliteral">&quot;%i&quot;</span>),tone_systems));</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                        <a class="code" href="../../d9/d93/classCompileDlg.html#a1d9e8f0ba7894e832c0bb6156d124763">tone_system</a>-&gt;InvalidateBestSize();</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                                }</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                <span class="keywordflow">if</span> (this-&gt;<a class="code" href="../../d9/d93/classCompileDlg.html#a5566b647f8d4042182524608a0f32988">intervals</a>) {</div>
@@ -484,8 +484,8 @@ Weitere Geerbte Elemente</h2></td></tr>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                        }</div>
 <div class="ttc" id="classCompileDlg_html_a39fb7315cd8348861f0e9817eca5a1f3"><div class="ttname"><a href="../../d9/d93/classCompileDlg.html#a39fb7315cd8348861f0e9817eca5a1f3">CompileDlg::tunes</a></div><div class="ttdeci">wxStaticText * tunes</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc0/wxresource_8h_source.html#l00054">wxresource.h:54</a></div></div>
 <div class="ttc" id="classCompileDlg_html_a486dfa9c6ee9ade93db4e0944e891f8d"><div class="ttname"><a href="../../d9/d93/classCompileDlg.html#a486dfa9c6ee9ade93db4e0944e891f8d">CompileDlg::tones</a></div><div class="ttdeci">wxStaticText * tones</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc0/wxresource_8h_source.html#l00053">wxresource.h:53</a></div></div>
+<div class="ttc" id="classCompileDlg_html_a1d9e8f0ba7894e832c0bb6156d124763"><div class="ttname"><a href="../../d9/d93/classCompileDlg.html#a1d9e8f0ba7894e832c0bb6156d124763">CompileDlg::tone_system</a></div><div class="ttdeci">wxStaticText * tone_system</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc0/wxresource_8h_source.html#l00055">wxresource.h:55</a></div></div>
 <div class="ttc" id="classCompileDlg_html_a24da82e9f5c606d5711d141de9b67629"><div class="ttname"><a href="../../d9/d93/classCompileDlg.html#a24da82e9f5c606d5711d141de9b67629">CompileDlg::chars</a></div><div class="ttdeci">wxStaticText * chars</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc0/wxresource_8h_source.html#l00057">wxresource.h:57</a></div></div>
-<div class="ttc" id="structTSYS_html"><div class="ttname"><a href="../../d4/d2a/structTSYS.html">TSYS</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dd8/Interpre_8h_source.html#l00071">Interpre.h:71</a></div></div>
 <div class="ttc" id="classCompileDlg_html_a5566b647f8d4042182524608a0f32988"><div class="ttname"><a href="../../d9/d93/classCompileDlg.html#a5566b647f8d4042182524608a0f32988">CompileDlg::intervals</a></div><div class="ttdeci">wxStaticText * intervals</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc0/wxresource_8h_source.html#l00056">wxresource.h:56</a></div></div>
 <div class="ttc" id="classCompileDlg_html_aacb00d63af0bc5c532c9d08b75dd025b"><div class="ttname"><a href="../../d9/d93/classCompileDlg.html#aacb00d63af0bc5c532c9d08b75dd025b">CompileDlg::logic</a></div><div class="ttdeci">wxStaticText * logic</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc0/wxresource_8h_source.html#l00051">wxresource.h:51</a></div></div>
 </div><!-- fragment -->
@@ -533,6 +533,6 @@ Weitere Geerbte Elemente</h2></td></tr>
 </ul>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:55 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:32 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

@@ -1,570 +1,778 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d1/de5/stclanguage_8h" kind="file">
     <compoundname>stclanguage.h</compoundname>
     <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
     <includes local="yes">wx/stc/stc.h</includes>
+    <includedby refid="d5/dfb/MutEditFile_8h" local="yes">src/wxGUI/MutEditFile.h</includedby>
     <includedby refid="d5/d1c/MutApp_8cpp" local="yes">src/wxGUI/MutApp.cpp</includedby>
     <includedby refid="d1/da4/MutEditFile_8cpp" local="yes">src/wxGUI/MutEditFile.cpp</includedby>
-    <includedby refid="d5/dfb/MutEditFile_8h" local="yes">src/wxGUI/MutEditFile.h</includedby>
     <includedby refid="dc/d0c/stclanguage_8cpp" local="yes">src/wxGUI/stclanguage.cpp</includedby>
     <incdepgraph>
-      <node id="25228">
+      <node id="35267">
+        <label>list</label>
+      </node>
+      <node id="35260">
         <label>stdarg.h</label>
       </node>
-      <node id="25227">
+      <node id="35275">
+        <label>wx/cmdline.h</label>
+      </node>
+      <node id="35263">
+        <label>wx/stdpaths.h</label>
+      </node>
+      <node id="35259">
         <label>src/kernel/Defs.h</label>
         <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="25228" relation="include">
+        <childnode refid="35260" relation="include">
         </childnode>
-        <childnode refid="25229" relation="include">
+        <childnode refid="35261" relation="include">
+        </childnode>
+        <childnode refid="35280" relation="include">
+        </childnode>
+        <childnode refid="35281" relation="include">
+        </childnode>
+        <childnode refid="35274" relation="include">
+        </childnode>
+        <childnode refid="35282" relation="include">
+        </childnode>
+        <childnode refid="35283" relation="include">
         </childnode>
       </node>
-      <node id="25230">
+      <node id="35274">
+        <label>stdint.h</label>
+      </node>
+      <node id="35280">
+        <label>wx/wxchar.h</label>
+      </node>
+      <node id="35269">
+        <label>wx/image.h</label>
+      </node>
+      <node id="35284">
+        <label>string</label>
+      </node>
+      <node id="35279">
+        <label>mutDebugFlags.h</label>
+        <link refid="d7/d49/mutDebugFlags_8h"/>
+      </node>
+      <node id="35262">
+        <label>wx/window.h</label>
+      </node>
+      <node id="35281">
+        <label>wx/intl.h</label>
+      </node>
+      <node id="35285">
         <label>wx/stc/stc.h</label>
       </node>
-      <node id="25229">
-        <label>wx/msw/wrapwin.h</label>
+      <node id="35268">
+        <label>src/wxGUI/Mutabor.rh</label>
+        <link refid="d9/d64/Mutabor_8rh"/>
+        <childnode refid="35259" relation="include">
+        </childnode>
       </node>
-      <node id="25226">
+      <node id="35264">
+        <label>wx/filename.h</label>
+      </node>
+      <node id="35266">
+        <label>typeinfo</label>
+      </node>
+      <node id="35277">
+        <label>wx/debug.h</label>
+      </node>
+      <node id="35272">
+        <label>cstdio</label>
+      </node>
+      <node id="35271">
+        <label>bitset</label>
+      </node>
+      <node id="35261">
+        <label>src/wxGUI/generic/mhDefs.h</label>
+        <link refid="d0/d68/mhDefs_8h"/>
+        <childnode refid="35259" relation="include">
+        </childnode>
+        <childnode refid="35262" relation="include">
+        </childnode>
+        <childnode refid="35263" relation="include">
+        </childnode>
+        <childnode refid="35264" relation="include">
+        </childnode>
+        <childnode refid="35265" relation="include">
+        </childnode>
+        <childnode refid="35266" relation="include">
+        </childnode>
+        <childnode refid="35267" relation="include">
+        </childnode>
+        <childnode refid="35268" relation="include">
+        </childnode>
+        <childnode refid="35269" relation="include">
+        </childnode>
+        <childnode refid="35270" relation="include">
+        </childnode>
+      </node>
+      <node id="35273">
+        <label>vector</label>
+      </node>
+      <node id="35270">
+        <label>mutDebug.h</label>
+        <link refid="de/de1/mutDebug_8h"/>
+        <childnode refid="35271" relation="include">
+        </childnode>
+        <childnode refid="35265" relation="include">
+        </childnode>
+        <childnode refid="35272" relation="include">
+        </childnode>
+        <childnode refid="35273" relation="include">
+        </childnode>
+        <childnode refid="35274" relation="include">
+        </childnode>
+        <childnode refid="35275" relation="include">
+        </childnode>
+        <childnode refid="35276" relation="include">
+        </childnode>
+        <childnode refid="35277" relation="include">
+        </childnode>
+        <childnode refid="35278" relation="include">
+        </childnode>
+        <childnode refid="35279" relation="include">
+        </childnode>
+      </node>
+      <node id="35283">
+        <label>src/wxintl/libintl.h</label>
+        <link refid="d4/d64/libintl_8h"/>
+        <childnode refid="35259" relation="include">
+        </childnode>
+        <childnode refid="35284" relation="include">
+        </childnode>
+      </node>
+      <node id="35276">
+        <label>wx/string.h</label>
+      </node>
+      <node id="35265">
+        <label>iostream</label>
+      </node>
+      <node id="35278">
+        <label>wx/thread.h</label>
+      </node>
+      <node id="35282">
+        <label>wx/setup.h</label>
+      </node>
+      <node id="35258">
         <label>src/wxGUI/stclanguage.h</label>
         <link refid="stclanguage.h"/>
-        <childnode refid="25227" relation="include">
+        <childnode refid="35259" relation="include">
         </childnode>
-        <childnode refid="25230" relation="include">
+        <childnode refid="35285" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="25273">
+      <node id="35335">
         <label>src/wxGUI/Routing/BoxDlg.h</label>
         <link refid="d9/dd2/BoxDlg_8h"/>
-        <childnode refid="25238" relation="include">
+        <childnode refid="35305" relation="include">
         </childnode>
-        <childnode refid="25239" relation="include">
+        <childnode refid="35306" relation="include">
         </childnode>
-        <childnode refid="25260" relation="include">
+        <childnode refid="35307" relation="include">
         </childnode>
-        <childnode refid="25240" relation="include">
+        <childnode refid="35308" relation="include">
         </childnode>
-        <childnode refid="25259" relation="include">
+        <childnode refid="35309" relation="include">
         </childnode>
-        <childnode refid="25261" relation="include">
+        <childnode refid="35311" relation="include">
         </childnode>
       </node>
-      <node id="25285">
+      <node id="35301">
         <label>src/wxGUI/Routing/tests/main.cpp</label>
         <link refid="da/dee/wxGUI_2Routing_2tests_2main_8cpp"/>
       </node>
-      <node id="25263">
+      <node id="35313">
         <label>src/wxGUI/Routing/NewOutputDeviceShape.cpp</label>
         <link refid="d1/d73/NewOutputDeviceShape_8cpp"/>
       </node>
-      <node id="25281">
+      <node id="35337">
         <label>src/wxGUI/Routing/NewOutputDeviceShape.h</label>
         <link refid="df/d7b/NewOutputDeviceShape_8h"/>
-        <childnode refid="25238" relation="include">
+        <childnode refid="35305" relation="include">
         </childnode>
-        <childnode refid="25263" relation="include">
+        <childnode refid="35313" relation="include">
         </childnode>
       </node>
-      <node id="25233">
+      <node id="35297">
+        <label>src/kernel/routing/tests/main.cpp</label>
+        <link refid="d1/de6/kernel_2routing_2tests_2main_8cpp"/>
+      </node>
+      <node id="35325">
         <label>src/wxGUI/MutEditFile.cpp</label>
         <link refid="d1/da4/MutEditFile_8cpp"/>
       </node>
-      <node id="25286">
+      <node id="35302">
         <label>src/wxGUI/tests/main.cpp</label>
         <link refid="d9/d27/wxGUI_2tests_2main_8cpp"/>
       </node>
-      <node id="25238">
+      <node id="35305">
         <label>src/wxGUI/MutRouteWnd.cpp</label>
         <link refid="dc/def/MutRouteWnd_8cpp"/>
       </node>
-      <node id="25280">
+      <node id="35336">
         <label>src/wxGUI/Routing/NewInputDeviceShape.h</label>
         <link refid="d5/dba/NewInputDeviceShape_8h"/>
-        <childnode refid="25238" relation="include">
+        <childnode refid="35305" relation="include">
         </childnode>
-        <childnode refid="25262" relation="include">
+        <childnode refid="35312" relation="include">
         </childnode>
       </node>
-      <node id="25260">
+      <node id="35307">
         <label>src/wxGUI/Routing/BoxDlg.cpp</label>
         <link refid="d3/d2a/BoxDlg_8cpp"/>
       </node>
-      <node id="25261">
+      <node id="35311">
         <label>src/wxGUI/Routing/NewBoxShape.cpp</label>
         <link refid="d8/dba/NewBoxShape_8cpp"/>
       </node>
-      <node id="25245">
+      <node id="35332">
         <label>src/wxGUI/MutLogicWnd.cpp</label>
         <link refid="df/d11/MutLogicWnd_8cpp"/>
       </node>
-      <node id="25267">
+      <node id="35315">
         <label>src/wxGUI/Routing/OutputMidiDeviceShape.cpp</label>
         <link refid="d6/d68/OutputMidiDeviceShape_8cpp"/>
       </node>
-      <node id="25266">
+      <node id="35314">
         <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp</label>
         <link refid="d3/d21/OutputGuidoFileDeviceShape_8cpp"/>
       </node>
-      <node id="25250">
-        <label>src/wxGUI/MutApp.h</label>
-        <link refid="db/dc1/MutApp_8h"/>
-        <childnode refid="25251" relation="include">
-        </childnode>
-        <childnode refid="25237" relation="include">
-        </childnode>
-        <childnode refid="25232" relation="include">
-        </childnode>
-        <childnode refid="25252" relation="include">
-        </childnode>
-        <childnode refid="25253" relation="include">
-        </childnode>
-        <childnode refid="25254" relation="include">
-        </childnode>
-        <childnode refid="25233" relation="include">
-        </childnode>
-        <childnode refid="25242" relation="include">
-        </childnode>
-        <childnode refid="25238" relation="include">
-        </childnode>
-        <childnode refid="25255" relation="include">
-        </childnode>
-        <childnode refid="25256" relation="include">
-        </childnode>
-      </node>
-      <node id="25246">
+      <node id="35333">
         <label>src/wxGUI/MutTextBox.cpp</label>
         <link refid="df/d3c/MutTextBox_8cpp"/>
       </node>
-      <node id="25272">
+      <node id="35318">
+        <label>src/wxGUI/MutApp.h</label>
+        <link refid="db/dc1/MutApp_8h"/>
+        <childnode refid="35319" relation="include">
+        </childnode>
+        <childnode refid="35320" relation="include">
+        </childnode>
+        <childnode refid="35321" relation="include">
+        </childnode>
+        <childnode refid="35322" relation="include">
+        </childnode>
+        <childnode refid="35323" relation="include">
+        </childnode>
+        <childnode refid="35324" relation="include">
+        </childnode>
+        <childnode refid="35325" relation="include">
+        </childnode>
+        <childnode refid="35326" relation="include">
+        </childnode>
+        <childnode refid="35305" relation="include">
+        </childnode>
+        <childnode refid="35327" relation="include">
+        </childnode>
+        <childnode refid="35310" relation="include">
+        </childnode>
+        <childnode refid="35328" relation="include">
+        </childnode>
+      </node>
+      <node id="35291">
+        <label>src/wxGUI/Routing/DebugRoute.cpp</label>
+        <link refid="d9/d27/DebugRoute_8cpp"/>
+        <childnode refid="35292" relation="include">
+        </childnode>
+        <childnode refid="35293" relation="include">
+        </childnode>
+        <childnode refid="35294" relation="include">
+        </childnode>
+        <childnode refid="35295" relation="include">
+        </childnode>
+        <childnode refid="35296" relation="include">
+        </childnode>
+        <childnode refid="35297" relation="include">
+        </childnode>
+        <childnode refid="35298" relation="include">
+        </childnode>
+        <childnode refid="35299" relation="include">
+        </childnode>
+        <childnode refid="35300" relation="include">
+        </childnode>
+        <childnode refid="35301" relation="include">
+        </childnode>
+        <childnode refid="35302" relation="include">
+        </childnode>
+      </node>
+      <node id="35290">
         <label>src/wxGUI/Routing/DeviceShape.h</label>
         <link refid="d9/d4d/DeviceShape_8h"/>
-        <childnode refid="25248" relation="include">
+        <childnode refid="35291" relation="include">
         </childnode>
-        <childnode refid="25239" relation="include">
+        <childnode refid="35303" relation="include">
         </childnode>
-        <childnode refid="25260" relation="include">
+        <childnode refid="35304" relation="include">
         </childnode>
-        <childnode refid="25273" relation="include">
+        <childnode refid="35335" relation="include">
         </childnode>
-        <childnode refid="25240" relation="include">
+        <childnode refid="35336" relation="include">
         </childnode>
-        <childnode refid="25259" relation="include">
+        <childnode refid="35337" relation="include">
         </childnode>
-        <childnode refid="25265" relation="include">
+        <childnode refid="35306" relation="include">
         </childnode>
-        <childnode refid="25241" relation="include">
+        <childnode refid="35307" relation="include">
         </childnode>
-        <childnode refid="25274" relation="include">
+        <childnode refid="35308" relation="include">
         </childnode>
-        <childnode refid="25278" relation="include">
+        <childnode refid="35309" relation="include">
         </childnode>
-        <childnode refid="25280" relation="include">
+        <childnode refid="35310" relation="include">
         </childnode>
-        <childnode refid="25281" relation="include">
+        <childnode refid="35338" relation="include">
         </childnode>
-        <childnode refid="25282" relation="include">
+        <childnode refid="35339" relation="include">
         </childnode>
-        <childnode refid="25283" relation="include">
+        <childnode refid="35340" relation="include">
         </childnode>
-        <childnode refid="25284" relation="include">
+        <childnode refid="35341" relation="include">
+        </childnode>
+        <childnode refid="35345" relation="include">
         </childnode>
       </node>
-      <node id="25270">
+      <node id="35289">
         <label>src/wxGUI/Routing/GUIRoute.h</label>
         <link refid="d6/dfa/GUIRoute_8h"/>
-        <childnode refid="25232" relation="include">
+        <childnode refid="35290" relation="include">
         </childnode>
-        <childnode refid="25271" relation="include">
+        <childnode refid="35347" relation="include">
         </childnode>
-        <childnode refid="25247" relation="include">
+        <childnode refid="35350" relation="include">
         </childnode>
-        <childnode refid="25259" relation="include">
+        <childnode refid="35304" relation="include">
         </childnode>
-        <childnode refid="25272" relation="include">
+        <childnode refid="35321" relation="include">
         </childnode>
-        <childnode refid="25265" relation="include">
+        <childnode refid="35309" relation="include">
         </childnode>
-        <childnode refid="25241" relation="include">
+        <childnode refid="35310" relation="include">
         </childnode>
-        <childnode refid="25274" relation="include">
+        <childnode refid="35341" relation="include">
         </childnode>
-        <childnode refid="25285" relation="include">
+        <childnode refid="35301" relation="include">
         </childnode>
-        <childnode refid="25286" relation="include">
+        <childnode refid="35302" relation="include">
         </childnode>
       </node>
-      <node id="25258">
+      <node id="35330">
         <label>src/wxGUI/MutDocManager.cpp</label>
         <link refid="dd/db0/MutDocManager_8cpp"/>
       </node>
-      <node id="25244">
+      <node id="35331">
         <label>src/wxGUI/MutChild.cpp</label>
         <link refid="da/d72/MutChild_8cpp"/>
       </node>
-      <node id="25232">
+      <node id="35321">
         <label>src/wxGUI/MutApp.cpp</label>
         <link refid="d5/d1c/MutApp_8cpp"/>
       </node>
-      <node id="25283">
+      <node id="35338">
         <label>src/wxGUI/Routing/OutputMidiDeviceShape.h</label>
         <link refid="d8/dcb/OutputMidiDeviceShape_8h"/>
-        <childnode refid="25241" relation="include">
+        <childnode refid="35310" relation="include">
         </childnode>
-        <childnode refid="25267" relation="include">
+        <childnode refid="35315" relation="include">
         </childnode>
       </node>
-      <node id="25282">
+      <node id="35340">
         <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.h</label>
         <link refid="db/d77/OutputGuidoFileDeviceShape_8h"/>
-        <childnode refid="25241" relation="include">
+        <childnode refid="35310" relation="include">
         </childnode>
-        <childnode refid="25266" relation="include">
+        <childnode refid="35314" relation="include">
         </childnode>
       </node>
-      <node id="25269">
+      <node id="35295">
+        <label>src/kernel/routing/midi/tests/midiopenfail1.cpp</label>
+        <link refid="da/ddb/midiopenfail1_8cpp"/>
+      </node>
+      <node id="35349">
         <label>src/wxGUI/Routing/NewBoxShape.h</label>
         <link refid="d4/dcc/NewBoxShape_8h"/>
-        <childnode refid="25237" relation="include">
+        <childnode refid="35320" relation="include">
         </childnode>
-        <childnode refid="25238" relation="include">
+        <childnode refid="35305" relation="include">
         </childnode>
-        <childnode refid="25241" relation="include">
+        <childnode refid="35310" relation="include">
         </childnode>
-        <childnode refid="25261" relation="include">
+        <childnode refid="35311" relation="include">
         </childnode>
       </node>
-      <node id="25243">
+      <node id="35351">
         <label>src/wxGUI/MutLogicWnd.h</label>
         <link refid="d6/d81/MutLogicWnd_8h"/>
-        <childnode refid="25237" relation="include">
+        <childnode refid="35320" relation="include">
         </childnode>
-        <childnode refid="25244" relation="include">
+        <childnode refid="35331" relation="include">
         </childnode>
-        <childnode refid="25242" relation="include">
+        <childnode refid="35326" relation="include">
         </childnode>
-        <childnode refid="25245" relation="include">
+        <childnode refid="35332" relation="include">
         </childnode>
       </node>
-      <node id="25254">
+      <node id="35324">
         <label>src/wxGUI/MutDocument.cpp</label>
         <link refid="d6/d3b/MutDocument_8cpp"/>
       </node>
-      <node id="25248">
+      <node id="35303">
         <label>src/wxGUI/MutRouteWnd.h</label>
         <link refid="d3/dd7/MutRouteWnd_8h"/>
-        <childnode refid="25242" relation="include">
+        <childnode refid="35291" relation="include">
         </childnode>
-        <childnode refid="25249" relation="include">
+        <childnode refid="35304" relation="include">
         </childnode>
-        <childnode refid="25245" relation="include">
+        <childnode refid="35317" relation="include">
         </childnode>
-        <childnode refid="25238" relation="include">
+        <childnode refid="35326" relation="include">
         </childnode>
-        <childnode refid="25239" relation="include">
+        <childnode refid="35332" relation="include">
         </childnode>
-        <childnode refid="25260" relation="include">
+        <childnode refid="35305" relation="include">
         </childnode>
-        <childnode refid="25240" relation="include">
+        <childnode refid="35306" relation="include">
         </childnode>
-        <childnode refid="25241" relation="include">
+        <childnode refid="35307" relation="include">
         </childnode>
-        <childnode refid="25261" relation="include">
+        <childnode refid="35308" relation="include">
         </childnode>
-        <childnode refid="25262" relation="include">
+        <childnode refid="35310" relation="include">
         </childnode>
-        <childnode refid="25263" relation="include">
+        <childnode refid="35311" relation="include">
         </childnode>
-        <childnode refid="25264" relation="include">
+        <childnode refid="35312" relation="include">
+        </childnode>
+        <childnode refid="35313" relation="include">
+        </childnode>
+        <childnode refid="35334" relation="include">
         </childnode>
       </node>
-      <node id="25234">
+      <node id="35287">
         <label>src/wxGUI/MutEditFile.h</label>
         <link refid="d5/dfb/MutEditFile_8h"/>
-        <childnode refid="25235" relation="include">
+        <childnode refid="35288" relation="include">
         </childnode>
-        <childnode refid="25244" relation="include">
+        <childnode refid="35317" relation="include">
         </childnode>
-        <childnode refid="25233" relation="include">
+        <childnode refid="35331" relation="include">
         </childnode>
-        <childnode refid="25249" relation="include">
+        <childnode refid="35325" relation="include">
         </childnode>
       </node>
-      <node id="25253">
+      <node id="35322">
         <label>src/wxGUI/MutConfDlg.h</label>
         <link refid="d9/d8f/MutConfDlg_8h"/>
-        <childnode refid="25232" relation="include">
+        <childnode refid="35321" relation="include">
         </childnode>
       </node>
-      <node id="25259">
+      <node id="35300">
+        <label>src/tests/wxlinktest2.cpp</label>
+        <link refid="df/d13/wxlinktest2_8cpp"/>
+      </node>
+      <node id="35309">
         <label>src/wxGUI/Routing/DeviceShape.cpp</label>
         <link refid="d9/d94/DeviceShape_8cpp"/>
       </node>
-      <node id="25255">
+      <node id="35292">
+        <label>src/kernel/routing/gmn/tests/gmnopenfail1.cpp</label>
+        <link refid="d0/dd6/gmnopenfail1_8cpp"/>
+      </node>
+      <node id="35327">
         <label>src/wxGUI/MutView.cpp</label>
         <link refid="d8/d33/MutView_8cpp"/>
       </node>
-      <node id="25284">
+      <node id="35339">
         <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.h</label>
         <link refid="d4/de8/OutputMidiFileDeviceShape_8h"/>
-        <childnode refid="25241" relation="include">
+        <childnode refid="35310" relation="include">
         </childnode>
-        <childnode refid="25268" relation="include">
+        <childnode refid="35316" relation="include">
         </childnode>
       </node>
-      <node id="25287">
+      <node id="35352">
         <label>src/wxGUI/stclanguage.cpp</label>
         <link refid="dc/d0c/stclanguage_8cpp"/>
       </node>
-      <node id="25277">
+      <node id="35344">
         <label>src/wxGUI/Routing/InputMidiDeviceShape.cpp</label>
         <link refid="d1/d14/InputMidiDeviceShape_8cpp"/>
       </node>
-      <node id="25239">
+      <node id="35306">
         <label>src/wxGUI/Routing/BoxChannelShape.cpp</label>
         <link refid="d9/d24/BoxChannelShape_8cpp"/>
       </node>
-      <node id="25242">
+      <node id="35326">
         <label>src/wxGUI/MutFrame.cpp</label>
         <link refid="dc/df3/MutFrame_8cpp"/>
       </node>
-      <node id="25279">
+      <node id="35296">
+        <label>src/kernel/routing/midi/tests/playmidi1.cpp</label>
+        <link refid="d9/dfe/playmidi1_8cpp"/>
+      </node>
+      <node id="35346">
         <label>src/wxGUI/Routing/InputMidiFileDeviceShape.cpp</label>
         <link refid="d3/de3/InputMidiFileDeviceShape_8cpp"/>
       </node>
-      <node id="25256">
+      <node id="35299">
+        <label>src/kernel/tests/main.cpp</label>
+        <link refid="d5/dd0/kernel_2tests_2main_8cpp"/>
+      </node>
+      <node id="35328">
         <label>src/wxGUI/Routing/RouteIcons.cpp</label>
         <link refid="d1/d28/RouteIcons_8cpp"/>
       </node>
-      <node id="25276">
+      <node id="35343">
         <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.cpp</label>
         <link refid="d8/da8/InputGuidoFileDeviceShape_8cpp"/>
       </node>
-      <node id="25275">
+      <node id="35342">
         <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.h</label>
         <link refid="d9/d0d/InputGuidoFileDeviceShape_8h"/>
-        <childnode refid="25241" relation="include">
+        <childnode refid="35310" relation="include">
         </childnode>
-        <childnode refid="25276" relation="include">
+        <childnode refid="35343" relation="include">
         </childnode>
       </node>
-      <node id="25257">
+      <node id="35329">
         <label>src/wxGUI/MutView.h</label>
         <link refid="d0/d9e/MutView_8h"/>
-        <childnode refid="25232" relation="include">
+        <childnode refid="35321" relation="include">
         </childnode>
-        <childnode refid="25258" relation="include">
+        <childnode refid="35330" relation="include">
         </childnode>
-        <childnode refid="25254" relation="include">
+        <childnode refid="35324" relation="include">
         </childnode>
-        <childnode refid="25233" relation="include">
+        <childnode refid="35325" relation="include">
         </childnode>
-        <childnode refid="25242" relation="include">
+        <childnode refid="35326" relation="include">
         </childnode>
-        <childnode refid="25255" relation="include">
+        <childnode refid="35327" relation="include">
         </childnode>
       </node>
-      <node id="25252">
+      <node id="35323">
         <label>src/wxGUI/MutBitmaps.cpp</label>
         <link refid="d7/db6/MutBitmaps_8cpp"/>
       </node>
-      <node id="25241">
+      <node id="35310">
         <label>src/wxGUI/Routing/GUIRoute.cpp</label>
         <link refid="d4/dee/GUIRoute_8cpp"/>
       </node>
-      <node id="25235">
+      <node id="35288">
         <label>src/wxGUI/GUIBoxData.h</label>
         <link refid="d5/df7/GUIBoxData_8h"/>
-        <childnode refid="25236" relation="include">
+        <childnode refid="35289" relation="include">
         </childnode>
-        <childnode refid="25237" relation="include">
+        <childnode refid="35347" relation="include">
         </childnode>
-        <childnode refid="25242" relation="include">
+        <childnode refid="35348" relation="include">
         </childnode>
-        <childnode refid="25243" relation="include">
+        <childnode refid="35320" relation="include">
         </childnode>
-        <childnode refid="25246" relation="include">
+        <childnode refid="35351" relation="include">
         </childnode>
-        <childnode refid="25240" relation="include">
+        <childnode refid="35326" relation="include">
         </childnode>
-        <childnode refid="25247" relation="include">
+        <childnode refid="35333" relation="include">
         </childnode>
-        <childnode refid="25270" relation="include">
+        <childnode refid="35308" relation="include">
         </childnode>
       </node>
-      <node id="25264">
+      <node id="35334">
         <label>src/wxGUI/Routing/tests/GUIRouteTest.cpp</label>
         <link refid="d9/d20/GUIRouteTest_8cpp"/>
       </node>
-      <node id="25278">
+      <node id="35298">
+        <label>src/kernel/routing/tests/timer1.cpp</label>
+        <link refid="d9/d9a/timer1_8cpp"/>
+      </node>
+      <node id="35345">
         <label>src/wxGUI/Routing/InputMidiFileDeviceShape.h</label>
         <link refid="d1/da8/InputMidiFileDeviceShape_8h"/>
-        <childnode refid="25241" relation="include">
+        <childnode refid="35310" relation="include">
         </childnode>
-        <childnode refid="25279" relation="include">
+        <childnode refid="35346" relation="include">
         </childnode>
       </node>
-      <node id="25265">
+      <node id="35304">
         <label>src/wxGUI/Routing/GUIRoute-inlines.h</label>
         <link refid="d2/d73/GUIRoute-inlines_8h"/>
-        <childnode refid="25238" relation="include">
+        <childnode refid="35291" relation="include">
         </childnode>
-        <childnode refid="25239" relation="include">
+        <childnode refid="35305" relation="include">
         </childnode>
-        <childnode refid="25260" relation="include">
+        <childnode refid="35306" relation="include">
         </childnode>
-        <childnode refid="25240" relation="include">
+        <childnode refid="35307" relation="include">
         </childnode>
-        <childnode refid="25259" relation="include">
+        <childnode refid="35308" relation="include">
         </childnode>
-        <childnode refid="25241" relation="include">
+        <childnode refid="35309" relation="include">
         </childnode>
-        <childnode refid="25261" relation="include">
+        <childnode refid="35310" relation="include">
         </childnode>
-        <childnode refid="25262" relation="include">
+        <childnode refid="35311" relation="include">
         </childnode>
-        <childnode refid="25263" relation="include">
+        <childnode refid="35312" relation="include">
         </childnode>
-        <childnode refid="25266" relation="include">
+        <childnode refid="35313" relation="include">
         </childnode>
-        <childnode refid="25267" relation="include">
+        <childnode refid="35314" relation="include">
         </childnode>
-        <childnode refid="25268" relation="include">
+        <childnode refid="35315" relation="include">
+        </childnode>
+        <childnode refid="35316" relation="include">
         </childnode>
       </node>
-      <node id="25249">
+      <node id="35317">
         <label>src/wxGUI/MutFrame.h</label>
         <link refid="dd/db5/MutFrame_8h"/>
-        <childnode refid="25237" relation="include">
+        <childnode refid="35318" relation="include">
         </childnode>
-        <childnode refid="25232" relation="include">
+        <childnode refid="35320" relation="include">
         </childnode>
-        <childnode refid="25250" relation="include">
+        <childnode refid="35321" relation="include">
         </childnode>
-        <childnode refid="25244" relation="include">
+        <childnode refid="35329" relation="include">
         </childnode>
-        <childnode refid="25253" relation="include">
+        <childnode refid="35322" relation="include">
         </childnode>
-        <childnode refid="25233" relation="include">
+        <childnode refid="35331" relation="include">
         </childnode>
-        <childnode refid="25242" relation="include">
+        <childnode refid="35325" relation="include">
         </childnode>
-        <childnode refid="25245" relation="include">
+        <childnode refid="35326" relation="include">
         </childnode>
-        <childnode refid="25238" relation="include">
+        <childnode refid="35332" relation="include">
         </childnode>
-        <childnode refid="25246" relation="include">
+        <childnode refid="35305" relation="include">
         </childnode>
-        <childnode refid="25255" relation="include">
+        <childnode refid="35333" relation="include">
         </childnode>
-        <childnode refid="25257" relation="include">
+        <childnode refid="35327" relation="include">
         </childnode>
-        <childnode refid="25259" relation="include">
+        <childnode refid="35309" relation="include">
         </childnode>
-        <childnode refid="25241" relation="include">
+        <childnode refid="35310" relation="include">
         </childnode>
       </node>
-      <node id="25251">
+      <node id="35319">
         <label>src/wxGUI/generic/mutDebug.cpp</label>
         <link refid="d4/dc0/mutDebug_8cpp"/>
       </node>
-      <node id="25236">
+      <node id="35348">
         <label>src/wxGUI/GUIBoxData-inlines.h</label>
         <link refid="d5/d12/GUIBoxData-inlines_8h"/>
-        <childnode refid="25237" relation="include">
+        <childnode refid="35291" relation="include">
         </childnode>
-        <childnode refid="25238" relation="include">
+        <childnode refid="35320" relation="include">
         </childnode>
-        <childnode refid="25239" relation="include">
+        <childnode refid="35305" relation="include">
         </childnode>
-        <childnode refid="25240" relation="include">
+        <childnode refid="35306" relation="include">
         </childnode>
-        <childnode refid="25241" relation="include">
+        <childnode refid="35308" relation="include">
+        </childnode>
+        <childnode refid="35310" relation="include">
         </childnode>
       </node>
-      <node id="25268">
+      <node id="35316">
         <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp</label>
         <link refid="d5/d00/OutputMidiFileDeviceShape_8cpp"/>
       </node>
-      <node id="25274">
+      <node id="35341">
         <label>src/wxGUI/Routing/InputMidiDeviceShape.h</label>
         <link refid="d3/d5e/InputMidiDeviceShape_8h"/>
-        <childnode refid="25241" relation="include">
+        <childnode refid="35310" relation="include">
         </childnode>
-        <childnode refid="25275" relation="include">
+        <childnode refid="35342" relation="include">
         </childnode>
-        <childnode refid="25277" relation="include">
+        <childnode refid="35344" relation="include">
         </childnode>
       </node>
-      <node id="25237">
+      <node id="35320">
         <label>src/wxGUI/GUIBoxData.cpp</label>
         <link refid="d2/dd3/GUIBoxData_8cpp"/>
       </node>
-      <node id="25231">
+      <node id="35286">
         <label>src/wxGUI/stclanguage.h</label>
         <link refid="stclanguage.h"/>
-        <childnode refid="25232" relation="include">
+        <childnode refid="35287" relation="include">
         </childnode>
-        <childnode refid="25233" relation="include">
+        <childnode refid="35321" relation="include">
         </childnode>
-        <childnode refid="25234" relation="include">
+        <childnode refid="35325" relation="include">
         </childnode>
-        <childnode refid="25287" relation="include">
+        <childnode refid="35352" relation="include">
         </childnode>
       </node>
-      <node id="25247">
+      <node id="35347">
         <label>src/wxGUI/Routing/BoxShape.h</label>
         <link refid="d9/d49/BoxShape_8h"/>
-        <childnode refid="25236" relation="include">
+        <childnode refid="35303" relation="include">
         </childnode>
-        <childnode refid="25248" relation="include">
+        <childnode refid="35291" relation="include">
         </childnode>
-        <childnode refid="25246" relation="include">
+        <childnode refid="35304" relation="include">
         </childnode>
-        <childnode refid="25239" relation="include">
+        <childnode refid="35348" relation="include">
         </childnode>
-        <childnode refid="25260" relation="include">
+        <childnode refid="35349" relation="include">
         </childnode>
-        <childnode refid="25240" relation="include">
+        <childnode refid="35333" relation="include">
         </childnode>
-        <childnode refid="25265" relation="include">
+        <childnode refid="35306" relation="include">
         </childnode>
-        <childnode refid="25241" relation="include">
+        <childnode refid="35307" relation="include">
         </childnode>
-        <childnode refid="25261" relation="include">
+        <childnode refid="35308" relation="include">
         </childnode>
-        <childnode refid="25269" relation="include">
+        <childnode refid="35310" relation="include">
         </childnode>
-        <childnode refid="25262" relation="include">
+        <childnode refid="35311" relation="include">
         </childnode>
-        <childnode refid="25256" relation="include">
+        <childnode refid="35312" relation="include">
+        </childnode>
+        <childnode refid="35328" relation="include">
         </childnode>
       </node>
-      <node id="25271">
+      <node id="35350">
         <label>src/wxGUI/Routing/BoxChannelShape.h</label>
         <link refid="d6/d68/BoxChannelShape_8h"/>
-        <childnode refid="25239" relation="include">
+        <childnode refid="35347" relation="include">
         </childnode>
-        <childnode refid="25240" relation="include">
+        <childnode refid="35291" relation="include">
         </childnode>
-        <childnode refid="25247" relation="include">
+        <childnode refid="35306" relation="include">
         </childnode>
-        <childnode refid="25259" relation="include">
+        <childnode refid="35308" relation="include">
         </childnode>
-        <childnode refid="25241" relation="include">
+        <childnode refid="35309" relation="include">
         </childnode>
-        <childnode refid="25261" relation="include">
+        <childnode refid="35310" relation="include">
         </childnode>
-        <childnode refid="25262" relation="include">
+        <childnode refid="35311" relation="include">
+        </childnode>
+        <childnode refid="35312" relation="include">
         </childnode>
       </node>
-      <node id="25240">
+      <node id="35308">
         <label>src/wxGUI/Routing/BoxShape.cpp</label>
         <link refid="d8/db4/BoxShape_8cpp"/>
       </node>
-      <node id="25262">
+      <node id="35293">
+        <label>src/kernel/routing/gmn/tests/playgmn1.cpp</label>
+        <link refid="d3/d06/playgmn1_8cpp"/>
+      </node>
+      <node id="35294">
+        <label>src/kernel/routing/midi/tests/main.cpp</label>
+        <link refid="df/d72/kernel_2routing_2midi_2tests_2main_8cpp"/>
+      </node>
+      <node id="35312">
         <label>src/wxGUI/Routing/NewInputDeviceShape.cpp</label>
         <link refid="df/d62/NewInputDeviceShape_8cpp"/>
       </node>

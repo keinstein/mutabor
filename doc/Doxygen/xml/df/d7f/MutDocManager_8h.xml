@@ -1,129 +1,265 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="df/d7f/MutDocManager_8h" kind="file">
     <compoundname>MutDocManager.h</compoundname>
     <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
     <includes local="yes">wx/docview.h</includes>
     <includes local="yes">wx/event.h</includes>
-    <includedby refid="d5/d1c/MutApp_8cpp" local="yes">src/wxGUI/MutApp.cpp</includedby>
     <includedby refid="db/dc1/MutApp_8h" local="yes">src/wxGUI/MutApp.h</includedby>
+    <includedby refid="d5/d1c/MutApp_8cpp" local="yes">src/wxGUI/MutApp.cpp</includedby>
     <includedby refid="dd/db0/MutDocManager_8cpp" local="yes">src/wxGUI/MutDocManager.cpp</includedby>
     <incdepgraph>
-      <node id="19969">
+      <node id="28666">
+        <label>list</label>
+      </node>
+      <node id="28659">
         <label>stdarg.h</label>
       </node>
-      <node id="19972">
+      <node id="28685">
         <label>wx/event.h</label>
       </node>
-      <node id="19968">
+      <node id="28674">
+        <label>wx/cmdline.h</label>
+      </node>
+      <node id="28662">
+        <label>wx/stdpaths.h</label>
+      </node>
+      <node id="28658">
         <label>src/kernel/Defs.h</label>
         <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="19969" relation="include">
+        <childnode refid="28659" relation="include">
         </childnode>
-        <childnode refid="19970" relation="include">
+        <childnode refid="28660" relation="include">
+        </childnode>
+        <childnode refid="28679" relation="include">
+        </childnode>
+        <childnode refid="28680" relation="include">
+        </childnode>
+        <childnode refid="28673" relation="include">
+        </childnode>
+        <childnode refid="28681" relation="include">
+        </childnode>
+        <childnode refid="28682" relation="include">
         </childnode>
       </node>
-      <node id="19967">
+      <node id="28673">
+        <label>stdint.h</label>
+      </node>
+      <node id="28679">
+        <label>wx/wxchar.h</label>
+      </node>
+      <node id="28668">
+        <label>wx/image.h</label>
+      </node>
+      <node id="28683">
+        <label>string</label>
+      </node>
+      <node id="28678">
+        <label>mutDebugFlags.h</label>
+        <link refid="d7/d49/mutDebugFlags_8h"/>
+      </node>
+      <node id="28661">
+        <label>wx/window.h</label>
+      </node>
+      <node id="28680">
+        <label>wx/intl.h</label>
+      </node>
+      <node id="28667">
+        <label>src/wxGUI/Mutabor.rh</label>
+        <link refid="d9/d64/Mutabor_8rh"/>
+        <childnode refid="28658" relation="include">
+        </childnode>
+      </node>
+      <node id="28663">
+        <label>wx/filename.h</label>
+      </node>
+      <node id="28665">
+        <label>typeinfo</label>
+      </node>
+      <node id="28676">
+        <label>wx/debug.h</label>
+      </node>
+      <node id="28671">
+        <label>cstdio</label>
+      </node>
+      <node id="28670">
+        <label>bitset</label>
+      </node>
+      <node id="28660">
+        <label>src/wxGUI/generic/mhDefs.h</label>
+        <link refid="d0/d68/mhDefs_8h"/>
+        <childnode refid="28658" relation="include">
+        </childnode>
+        <childnode refid="28661" relation="include">
+        </childnode>
+        <childnode refid="28662" relation="include">
+        </childnode>
+        <childnode refid="28663" relation="include">
+        </childnode>
+        <childnode refid="28664" relation="include">
+        </childnode>
+        <childnode refid="28665" relation="include">
+        </childnode>
+        <childnode refid="28666" relation="include">
+        </childnode>
+        <childnode refid="28667" relation="include">
+        </childnode>
+        <childnode refid="28668" relation="include">
+        </childnode>
+        <childnode refid="28669" relation="include">
+        </childnode>
+      </node>
+      <node id="28672">
+        <label>vector</label>
+      </node>
+      <node id="28669">
+        <label>mutDebug.h</label>
+        <link refid="de/de1/mutDebug_8h"/>
+        <childnode refid="28670" relation="include">
+        </childnode>
+        <childnode refid="28664" relation="include">
+        </childnode>
+        <childnode refid="28671" relation="include">
+        </childnode>
+        <childnode refid="28672" relation="include">
+        </childnode>
+        <childnode refid="28673" relation="include">
+        </childnode>
+        <childnode refid="28674" relation="include">
+        </childnode>
+        <childnode refid="28675" relation="include">
+        </childnode>
+        <childnode refid="28676" relation="include">
+        </childnode>
+        <childnode refid="28677" relation="include">
+        </childnode>
+        <childnode refid="28678" relation="include">
+        </childnode>
+      </node>
+      <node id="28682">
+        <label>src/wxintl/libintl.h</label>
+        <link refid="d4/d64/libintl_8h"/>
+        <childnode refid="28658" relation="include">
+        </childnode>
+        <childnode refid="28683" relation="include">
+        </childnode>
+      </node>
+      <node id="28675">
+        <label>wx/string.h</label>
+      </node>
+      <node id="28664">
+        <label>iostream</label>
+      </node>
+      <node id="28657">
         <label>src/wxGUI/MutDocManager.h</label>
         <link refid="MutDocManager.h"/>
-        <childnode refid="19968" relation="include">
+        <childnode refid="28658" relation="include">
         </childnode>
-        <childnode refid="19971" relation="include">
+        <childnode refid="28684" relation="include">
         </childnode>
-        <childnode refid="19972" relation="include">
+        <childnode refid="28685" relation="include">
         </childnode>
       </node>
-      <node id="19970">
-        <label>wx/msw/wrapwin.h</label>
+      <node id="28677">
+        <label>wx/thread.h</label>
       </node>
-      <node id="19971">
+      <node id="28681">
+        <label>wx/setup.h</label>
+      </node>
+      <node id="28684">
         <label>wx/docview.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="19981">
+      <node id="28694">
         <label>src/wxGUI/MutEditFile.cpp</label>
         <link refid="d1/da4/MutEditFile_8cpp"/>
       </node>
-      <node id="19983">
+      <node id="28696">
         <label>src/wxGUI/MutRouteWnd.cpp</label>
         <link refid="dc/def/MutRouteWnd_8cpp"/>
       </node>
-      <node id="19975">
+      <node id="28687">
         <label>src/wxGUI/MutApp.h</label>
         <link refid="db/dc1/MutApp_8h"/>
-        <childnode refid="19976" relation="include">
+        <childnode refid="28688" relation="include">
         </childnode>
-        <childnode refid="19977" relation="include">
+        <childnode refid="28689" relation="include">
         </childnode>
-        <childnode refid="19974" relation="include">
+        <childnode refid="28690" relation="include">
         </childnode>
-        <childnode refid="19978" relation="include">
+        <childnode refid="28691" relation="include">
         </childnode>
-        <childnode refid="19979" relation="include">
+        <childnode refid="28692" relation="include">
         </childnode>
-        <childnode refid="19980" relation="include">
+        <childnode refid="28693" relation="include">
         </childnode>
-        <childnode refid="19981" relation="include">
+        <childnode refid="28694" relation="include">
         </childnode>
-        <childnode refid="19982" relation="include">
+        <childnode refid="28695" relation="include">
         </childnode>
-        <childnode refid="19983" relation="include">
+        <childnode refid="28696" relation="include">
         </childnode>
-        <childnode refid="19984" relation="include">
+        <childnode refid="28697" relation="include">
         </childnode>
-        <childnode refid="19985" relation="include">
+        <childnode refid="28698" relation="include">
+        </childnode>
+        <childnode refid="28699" relation="include">
         </childnode>
       </node>
-      <node id="19986">
+      <node id="28700">
         <label>src/wxGUI/MutDocManager.cpp</label>
         <link refid="dd/db0/MutDocManager_8cpp"/>
       </node>
-      <node id="19974">
+      <node id="28690">
         <label>src/wxGUI/MutApp.cpp</label>
         <link refid="d5/d1c/MutApp_8cpp"/>
       </node>
-      <node id="19980">
+      <node id="28693">
         <label>src/wxGUI/MutDocument.cpp</label>
         <link refid="d6/d3b/MutDocument_8cpp"/>
       </node>
-      <node id="19979">
+      <node id="28691">
         <label>src/wxGUI/MutConfDlg.h</label>
         <link refid="d9/d8f/MutConfDlg_8h"/>
-        <childnode refid="19974" relation="include">
+        <childnode refid="28690" relation="include">
         </childnode>
       </node>
-      <node id="19984">
+      <node id="28697">
         <label>src/wxGUI/MutView.cpp</label>
         <link refid="d8/d33/MutView_8cpp"/>
       </node>
-      <node id="19982">
+      <node id="28695">
         <label>src/wxGUI/MutFrame.cpp</label>
         <link refid="dc/df3/MutFrame_8cpp"/>
       </node>
-      <node id="19985">
+      <node id="28699">
         <label>src/wxGUI/Routing/RouteIcons.cpp</label>
         <link refid="d1/d28/RouteIcons_8cpp"/>
       </node>
-      <node id="19973">
+      <node id="28686">
         <label>src/wxGUI/MutDocManager.h</label>
         <link refid="MutDocManager.h"/>
-        <childnode refid="19974" relation="include">
+        <childnode refid="28687" relation="include">
         </childnode>
-        <childnode refid="19975" relation="include">
+        <childnode refid="28690" relation="include">
         </childnode>
-        <childnode refid="19986" relation="include">
+        <childnode refid="28700" relation="include">
         </childnode>
       </node>
-      <node id="19978">
+      <node id="28692">
         <label>src/wxGUI/MutBitmaps.cpp</label>
         <link refid="d7/db6/MutBitmaps_8cpp"/>
       </node>
-      <node id="19976">
+      <node id="28698">
+        <label>src/wxGUI/Routing/GUIRoute.cpp</label>
+        <link refid="d4/dee/GUIRoute_8cpp"/>
+      </node>
+      <node id="28688">
         <label>src/wxGUI/generic/mutDebug.cpp</label>
         <link refid="d4/dc0/mutDebug_8cpp"/>
       </node>
-      <node id="19977">
+      <node id="28689">
         <label>src/wxGUI/GUIBoxData.cpp</label>
         <link refid="d2/dd3/GUIBoxData_8cpp"/>
       </node>
@@ -187,18 +323,29 @@
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>wxString<sp/><ref refid="d5/d75/classmutaborGUI_1_1MutDocManager_1a3d310b2f0cbcf5e50a9098eda3c9fe5e" kindref="member">MakeFrameTitle</ref>(wxDocument*<sp/>doc);</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d5/d75/classmutaborGUI_1_1MutDocManager_1ac873be14b62dff95b5efed7c8676c282" kindref="member">CmExecuteLogic</ref>(wxCommandEvent&amp;<sp/>event);</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="64"></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d5/d75/classmutaborGUI_1_1MutDocManager_1a6011984c09cfff66ea0b7f293993ad32" kindref="member">TryParent</ref>(wxEvent&amp;<sp/>event);<sp/></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DECLARE_EVENT_TABLE()</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="75"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="76"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d5/d75/classmutaborGUI_1_1MutDocManager_1a3a192e986df198e4839e79609b64bf71" kindref="member">ConnectToApp</ref>(wxEvtHandler<sp/>*<sp/>handler);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d5/d75/classmutaborGUI_1_1MutDocManager_1a1a733dba2eacab866c5250a08970bfa7" kindref="member">DisconnectFromApp</ref>(wxEvtHandler<sp/>*<sp/>handler);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>We<sp/>are<sp/>using<sp/>Connect<sp/>for<sp/>the<sp/>event<sp/>handling<sp/>so<sp/>the</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>following<sp/>is<sp/>not<sp/>needed<sp/>anymore.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="83"></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>TryParent(wxEvent&amp;<sp/>event);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="90"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>C&gt;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d5/d75/classmutaborGUI_1_1MutDocManager_1ad94e776314c7ad975d46610d492a2546" kindref="member">doConnect</ref>(C<sp/>&amp;<sp/>Connect);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DECLARE_EVENT_TABLE()</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="98"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="99"><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
     <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocManager.h"/>
   </compounddef>

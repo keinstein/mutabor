@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="d4/d45/classmutabor__backtrace" kind="class" prot="public">
+    <compoundname>mutabor_backtrace</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::vector&lt; uintptr_t &gt;</basecompoundref>
+    <includes refid="de/de1/mutDebug_8h" local="no">mutDebug.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="d4/d45/classmutabor__backtrace_1a672320a021c377ee154455edd2c2dd6e" prot="public" static="no">
+        <type>std::vector&lt; uintptr_t &gt;</type>
+        <definition>typedef std::vector&lt;uintptr_t&gt; mutabor_backtrace::base</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="228" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d4/d45/classmutabor__backtrace_1a9909fb7bec011a0a11eb5287e5e9e14d" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool mutabor_backtrace::print</definition>
+        <argsstring></argsstring>
+        <name>print</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="235" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="235" bodyend="-1"/>
+        <referencedby refid="d4/d45/classmutabor__backtrace_1ab355342e9b0ba201c18b1f945ada2e88" compoundref="de/de1/mutDebug_8h" startline="231" endline="231">set_print</referencedby>
+        <referencedby refid="de/db7/group__debug_1gad04af9201a5649108455c10b1787cd30" compoundref="d4/dc0/mutDebug_8cpp" startline="274" endline="287">~mutabor_backtrace</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d45/classmutabor__backtrace_1ac304c36ca09ab5b7770863c5d1f1f33c" prot="protected" static="no" mutable="no">
+        <type>backtrace_state *</type>
+        <definition>backtrace_state* mutabor_backtrace::state</definition>
+        <argsstring></argsstring>
+        <name>state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="237" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="237" bodyend="-1"/>
+        <referencedby refid="de/db7/group__debug_1gacf669b6b407936b57ce523f2495b14e5" compoundref="d4/dc0/mutDebug_8cpp" startline="258" endline="272">mutabor_backtrace</referencedby>
+        <referencedby refid="de/db7/group__debug_1gad04af9201a5649108455c10b1787cd30" compoundref="d4/dc0/mutDebug_8cpp" startline="274" endline="287">~mutabor_backtrace</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="de/db7/group__debug_1gab38e217fe5df37bba254aa77148ccf3e" prot="protected" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool mutabor_backtrace::global_print</definition>
+        <argsstring></argsstring>
+        <name>global_print</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="236" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="236" bodyend="-1"/>
+        <referencedby refid="d4/d45/classmutabor__backtrace_1a98f8ea51cbd7d1f31c46045410611f34" compoundref="de/de1/mutDebug_8h" startline="233" endline="233">get_global_print</referencedby>
+        <referencedby refid="d4/d45/classmutabor__backtrace_1a3e248f923b5345cae72dfa2d5f6ec5e9" compoundref="de/de1/mutDebug_8h" startline="232" endline="232">set_global_print</referencedby>
+        <referencedby refid="de/db7/group__debug_1gad04af9201a5649108455c10b1787cd30" compoundref="d4/dc0/mutDebug_8cpp" startline="274" endline="287">~mutabor_backtrace</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/db7/group__debug_1gacf669b6b407936b57ce523f2495b14e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mutabor_backtrace::mutabor_backtrace</definition>
+        <argsstring>(int omit_count=0)</argsstring>
+        <name>mutabor_backtrace</name>
+        <param>
+          <type>int</type>
+          <declname>omit_count</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="229" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.cpp" bodystart="258" bodyend="272"/>
+        <references refid="de/db7/group__debug_1gac02de6aa3a93ae4b13da0a2e7a592ded" compoundref="d4/dc0/mutDebug_8cpp" startline="162" endline="168">mutabor_backtrace_error_callback</references>
+        <references refid="de/db7/group__debug_1gafc024e9f82514ab86f8b25d653f832a0" compoundref="d4/dc0/mutDebug_8cpp" startline="248" endline="256">mutabor_save_backtrace_callback</references>
+        <references refid="d4/d45/classmutabor__backtrace_1ac304c36ca09ab5b7770863c5d1f1f33c" compoundref="de/de1/mutDebug_8h" startline="237">state</references>
+      </memberdef>
+      <memberdef kind="function" id="de/db7/group__debug_1gad04af9201a5649108455c10b1787cd30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mutabor_backtrace::~mutabor_backtrace</definition>
+        <argsstring>()</argsstring>
+        <name>~mutabor_backtrace</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="230" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.cpp" bodystart="274" bodyend="287"/>
+        <references refid="de/db7/group__debug_1gab38e217fe5df37bba254aa77148ccf3e" compoundref="de/de1/mutDebug_8h" startline="236">global_print</references>
+        <references refid="de/db7/group__debug_1gac02de6aa3a93ae4b13da0a2e7a592ded" compoundref="d4/dc0/mutDebug_8cpp" startline="162" endline="168">mutabor_backtrace_error_callback</references>
+        <references refid="de/db7/group__debug_1gadaa58b72f0f8891f902786c9f7185c38" compoundref="d4/dc0/mutDebug_8cpp" startline="171" endline="183">mutabor_backtrace_print_callback</references>
+        <references refid="d4/d45/classmutabor__backtrace_1a9909fb7bec011a0a11eb5287e5e9e14d" compoundref="de/de1/mutDebug_8h" startline="235">print</references>
+        <references refid="d4/d45/classmutabor__backtrace_1ac304c36ca09ab5b7770863c5d1f1f33c" compoundref="de/de1/mutDebug_8h" startline="237">state</references>
+      </memberdef>
+      <memberdef kind="function" id="d4/d45/classmutabor__backtrace_1ab355342e9b0ba201c18b1f945ada2e88" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor_backtrace::set_print</definition>
+        <argsstring>(bool p=true)</argsstring>
+        <name>set_print</name>
+        <param>
+          <type>bool</type>
+          <declname>p</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="231" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="231" bodyend="231"/>
+        <references refid="d4/d45/classmutabor__backtrace_1a9909fb7bec011a0a11eb5287e5e9e14d" compoundref="de/de1/mutDebug_8h" startline="235">print</references>
+        <referencedby refid="d2/d3e/classboost_1_1mutabor_1_1intrusive__ptr_1ae2ea0d46a001cfd9787236dafb190bda" compoundref="d1/da4/boost-interface_8h" startline="233" endline="241">boost::mutabor::intrusive_ptr&lt; T &gt;::operator=</referencedby>
+        <referencedby refid="d2/d3e/classboost_1_1mutabor_1_1intrusive__ptr_1a4f03dfd15a0388a69fbd9c8d51e2c293" compoundref="d1/da4/boost-interface_8h" startline="318" endline="320">boost::mutabor::intrusive_ptr&lt; T &gt;::print_backtrace</referencedby>
+        <referencedby refid="d2/d3e/classboost_1_1mutabor_1_1intrusive__ptr_1a8a875437368fce5b4e55fb2da8663a74" compoundref="d1/da4/boost-interface_8h" startline="216" endline="228">boost::mutabor::intrusive_ptr&lt; T &gt;::~intrusive_ptr</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="d4/d45/classmutabor__backtrace_1a3e248f923b5345cae72dfa2d5f6ec5e9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void mutabor_backtrace::set_global_print</definition>
+        <argsstring>(bool p=true)</argsstring>
+        <name>set_global_print</name>
+        <param>
+          <type>bool</type>
+          <declname>p</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="232" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="232" bodyend="232"/>
+        <references refid="de/db7/group__debug_1gab38e217fe5df37bba254aa77148ccf3e" compoundref="de/de1/mutDebug_8h" startline="236">global_print</references>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1502">IMPLEMENT_APP</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d4/d45/classmutabor__backtrace_1a98f8ea51cbd7d1f31c46045410611f34" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool mutabor_backtrace::get_global_print</definition>
+        <argsstring>()</argsstring>
+        <name>get_global_print</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="233" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="233" bodyend="233"/>
+        <references refid="de/db7/group__debug_1gab38e217fe5df37bba254aa77148ccf3e" compoundref="de/de1/mutDebug_8h" startline="236">global_print</references>
+        <referencedby refid="d2/d3e/classboost_1_1mutabor_1_1intrusive__ptr_1ae2ea0d46a001cfd9787236dafb190bda" compoundref="d1/da4/boost-interface_8h" startline="233" endline="241">boost::mutabor::intrusive_ptr&lt; T &gt;::operator=</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3691">
+        <label>std::vector&lt; uintptr_t &gt;</label>
+      </node>
+      <node id="3690">
+        <label>mutabor_backtrace</label>
+        <link refid="d4/d45/classmutabor__backtrace"/>
+        <childnode refid="3691" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3694">
+        <label>T</label>
+      </node>
+      <node id="3693">
+        <label>std::vector&lt; uintptr_t &gt;</label>
+        <childnode refid="3694" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="3692">
+        <label>mutabor_backtrace</label>
+        <link refid="d4/d45/classmutabor__backtrace"/>
+        <childnode refid="3693" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="226" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="226" bodyend="238"/>
+    <listofallmembers>
+      <member refid="d4/d45/classmutabor__backtrace_1a672320a021c377ee154455edd2c2dd6e" prot="public" virt="non-virtual"><scope>mutabor_backtrace</scope><name>base</name></member>
+      <member refid="dd/d4e/classstd_1_1vector_1a2396209900e8f592db1f0b2467f7d899" prot="public" virt="non-virtual"><scope>mutabor_backtrace</scope><name>elements</name></member>
+      <member refid="d4/d45/classmutabor__backtrace_1a98f8ea51cbd7d1f31c46045410611f34" prot="public" virt="non-virtual"><scope>mutabor_backtrace</scope><name>get_global_print</name></member>
+      <member refid="de/db7/group__debug_1gab38e217fe5df37bba254aa77148ccf3e" prot="protected" virt="non-virtual"><scope>mutabor_backtrace</scope><name>global_print</name></member>
+      <member refid="de/db7/group__debug_1gacf669b6b407936b57ce523f2495b14e5" prot="public" virt="non-virtual"><scope>mutabor_backtrace</scope><name>mutabor_backtrace</name></member>
+      <member refid="d4/d45/classmutabor__backtrace_1a9909fb7bec011a0a11eb5287e5e9e14d" prot="protected" virt="non-virtual"><scope>mutabor_backtrace</scope><name>print</name></member>
+      <member refid="d4/d45/classmutabor__backtrace_1a3e248f923b5345cae72dfa2d5f6ec5e9" prot="public" virt="non-virtual"><scope>mutabor_backtrace</scope><name>set_global_print</name></member>
+      <member refid="d4/d45/classmutabor__backtrace_1ab355342e9b0ba201c18b1f945ada2e88" prot="public" virt="non-virtual"><scope>mutabor_backtrace</scope><name>set_print</name></member>
+      <member refid="d4/d45/classmutabor__backtrace_1ac304c36ca09ab5b7770863c5d1f1f33c" prot="protected" virt="non-virtual"><scope>mutabor_backtrace</scope><name>state</name></member>
+      <member refid="de/db7/group__debug_1gad04af9201a5649108455c10b1787cd30" prot="public" virt="non-virtual"><scope>mutabor_backtrace</scope><name>~mutabor_backtrace</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

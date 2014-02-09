@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d2/db3/classmutabor_1_1MidiPortOutputProvider" kind="class" prot="public">
     <compoundname>mutabor::MidiPortOutputProvider</compoundname>
     <includes refid="d4/da2/DevMidi_8h" local="no">DevMidi.h</includes>
@@ -92,10 +92,10 @@
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidi.h" line="86" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidi.h" bodystart="86" bodyend="110"/>
         <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
         <references refid="d2/db3/classmutabor_1_1MidiPortOutputProvider_1ab3786d867facf91f50a84d6633d30bf1" compoundref="d4/da2/DevMidi_8h" startline="266">device</references>
-        <references refid="d9/d7c/group__kernel_1ggafeebd36c5713e8438dcf17e926f8ad96ad606e435413ea0944dd00d49e901e4ed" compoundref="de/d11/Execute_8h" startline="79">error</references>
-        <references refid="d9/d7c/group__kernel_1ga13c03a937e32254ea17154104db5208a" compoundref="d1/d73/Defs_8h" startline="168">mutChar</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdaafc406698afb7ff8be5c847b414a288f" compoundref="de/d11/Execute_8h" startline="78">mutabor::hidden::error</references>
+        <references refid="d9/d7c/group__kernel_1ga13c03a937e32254ea17154104db5208a" compoundref="d1/d73/Defs_8h" startline="83">mutChar</references>
         <references refid="d2/db3/classmutabor_1_1MidiPortOutputProvider_1a634b95300906fdfe9fb9876ec4d63ace" compoundref="d4/da2/DevMidi_8h" startline="265">port</references>
-        <references refid="d5/dee/group__route_1ga8ee3b1752e55aea0e7230d4268a8c305" compoundref="de/d05/Device_8h" startline="432" endline="436">mutabor::Device::runtime_error</references>
+        <references refid="d5/dee/group__route_1ga8ee3b1752e55aea0e7230d4268a8c305" compoundref="de/d05/Device_8h" startline="552" endline="556">mutabor::Device::runtime_error</references>
         <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1a7f77f5b9b90ee57c7a7082fa85be2d84" compoundref="d4/da2/DevMidi_8h" startline="369" endline="373">mutabor::OutputMidiPort::do_Open</referencedby>
       </memberdef>
       <memberdef kind="function" id="d2/db3/classmutabor_1_1MidiPortOutputProvider_1a6cdcaf7e2d99a85b6a772988dd2072c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -184,8 +184,11 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidi.h" line="140" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidi.h" bodystart="140" bodyend="152"/>
-        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eab15ee99712034c677e9dd5ea82333077" compoundref="da/dfd/MidiKern_8h" startline="168">mutabor::midi::CHANNEL_MASK</references>
+        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
         <references refid="d2/db3/classmutabor_1_1MidiPortOutputProvider_1a4d1202dc65c31c46a7aeb650b913ef31" compoundref="d4/da2/DevMidi_8h" startline="163" endline="174">RawMsg</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eab3977b2c3228dda6d08ad9177f350676" compoundref="da/dfd/MidiKern_8h" startline="147">mutabor::midi::SYSTEM</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea9f439d666fbc455c95a8057763ab8f18" compoundref="da/dfd/MidiKern_8h" startline="167">mutabor::midi::TYPE_MASK</references>
         <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
       </memberdef>
       <memberdef kind="function" id="d2/db3/classmutabor_1_1MidiPortOutputProvider_1a4d1202dc65c31c46a7aeb650b913ef31" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -294,8 +297,11 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidi.h" line="185" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidi.h" bodystart="185" bodyend="197"/>
-        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eab15ee99712034c677e9dd5ea82333077" compoundref="da/dfd/MidiKern_8h" startline="168">mutabor::midi::CHANNEL_MASK</references>
+        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
         <references refid="d2/db3/classmutabor_1_1MidiPortOutputProvider_1a4d1202dc65c31c46a7aeb650b913ef31" compoundref="d4/da2/DevMidi_8h" startline="163" endline="174">RawMsg</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eab3977b2c3228dda6d08ad9177f350676" compoundref="da/dfd/MidiKern_8h" startline="147">mutabor::midi::SYSTEM</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea9f439d666fbc455c95a8057763ab8f18" compoundref="da/dfd/MidiKern_8h" startline="167">mutabor::midi::TYPE_MASK</references>
         <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
       </memberdef>
       <memberdef kind="function" id="d2/db3/classmutabor_1_1MidiPortOutputProvider_1accb24cbb0cb163aadd15cd260ba16a1d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -374,7 +380,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidi.h" line="224" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidi.h" bodystart="224" bodyend="231"/>
-        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
         <references refid="d2/db3/classmutabor_1_1MidiPortOutputProvider_1a634b95300906fdfe9fb9876ec4d63ace" compoundref="d4/da2/DevMidi_8h" startline="265">port</references>
       </memberdef>
       <memberdef kind="function" id="d2/db3/classmutabor_1_1MidiPortOutputProvider_1aaa5025cfeb84d53611ec495f3b46786c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -429,6 +435,8 @@
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidi.h" line="244" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidi.h" bodystart="244" bodyend="262"/>
         <references refid="d2/db3/classmutabor_1_1MidiPortOutputProvider_1a634b95300906fdfe9fb9876ec4d63ace" compoundref="d4/da2/DevMidi_8h" startline="265">port</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eacb47ba03df90c8782b579b91f6d95bd3" compoundref="da/dfd/MidiKern_8h" startline="166">mutabor::midi::STARTBYTE_MASK</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea9b1eab461457cda726681eedea0a5505" compoundref="da/dfd/MidiKern_8h" startline="149">mutabor::midi::SYSEX_START</references>
         <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
       </memberdef>
       </sectiondef>
@@ -437,47 +445,47 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3402">
+      <node id="3663">
         <label>T</label>
       </node>
-      <node id="3400">
+      <node id="3661">
         <label>mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;</label>
         <link refid="db/d05/classmutabor_1_1TRouteClass"/>
-        <childnode refid="3401" relation="usage">
+        <childnode refid="3662" relation="usage">
           <edgelabel>routeList</edgelabel>
         </childnode>
-        <childnode refid="3403" relation="usage">
+        <childnode refid="3664" relation="usage">
           <edgelabel>session_id</edgelabel>
         </childnode>
       </node>
-      <node id="3403">
+      <node id="3664">
         <label>mutabor::idtype&lt; mutabor::TRouteClass&lt; InputDevice, OutputDevice &gt; &gt;</label>
         <link refid="d7/dce/classmutabor_1_1idtype"/>
       </node>
-      <node id="3404">
+      <node id="3665">
         <label>mutabor::idtype&lt; mutabor::Device &gt;</label>
         <link refid="d7/dce/classmutabor_1_1idtype"/>
       </node>
-      <node id="3399">
+      <node id="3660">
         <label>mutabor::Device</label>
         <link refid="db/db4/classmutabor_1_1Device"/>
-        <childnode refid="3400" relation="usage">
+        <childnode refid="3661" relation="usage">
           <edgelabel>routes</edgelabel>
         </childnode>
-        <childnode refid="3404" relation="usage">
+        <childnode refid="3665" relation="usage">
           <edgelabel>session_id</edgelabel>
         </childnode>
       </node>
-      <node id="3401">
+      <node id="3662">
         <label>std::list&lt; T &gt;</label>
-        <childnode refid="3402" relation="usage">
+        <childnode refid="3663" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
-      <node id="3398">
+      <node id="3659">
         <label>mutabor::MidiPortOutputProvider</label>
         <link refid="d2/db3/classmutabor_1_1MidiPortOutputProvider"/>
-        <childnode refid="3399" relation="usage">
+        <childnode refid="3660" relation="usage">
           <edgelabel>device</edgelabel>
         </childnode>
       </node>

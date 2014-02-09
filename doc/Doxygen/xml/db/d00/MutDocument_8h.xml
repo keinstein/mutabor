@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="db/d00/MutDocument_8h" kind="file">
     <compoundname>MutDocument.h</compoundname>
     <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
@@ -11,69 +11,199 @@
     <includedby refid="dc/df3/MutFrame_8cpp" local="yes">src/wxGUI/MutFrame.cpp</includedby>
     <includedby refid="d8/d33/MutView_8cpp" local="yes">src/wxGUI/MutView.cpp</includedby>
     <incdepgraph>
-      <node id="20104">
+      <node id="28833">
+        <label>list</label>
+      </node>
+      <node id="28826">
         <label>stdarg.h</label>
       </node>
-      <node id="20103">
+      <node id="28841">
+        <label>wx/cmdline.h</label>
+      </node>
+      <node id="28829">
+        <label>wx/stdpaths.h</label>
+      </node>
+      <node id="28825">
         <label>src/kernel/Defs.h</label>
         <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="20104" relation="include">
+        <childnode refid="28826" relation="include">
         </childnode>
-        <childnode refid="20105" relation="include">
+        <childnode refid="28827" relation="include">
+        </childnode>
+        <childnode refid="28846" relation="include">
+        </childnode>
+        <childnode refid="28847" relation="include">
+        </childnode>
+        <childnode refid="28840" relation="include">
+        </childnode>
+        <childnode refid="28848" relation="include">
+        </childnode>
+        <childnode refid="28849" relation="include">
         </childnode>
       </node>
-      <node id="20102">
+      <node id="28840">
+        <label>stdint.h</label>
+      </node>
+      <node id="28846">
+        <label>wx/wxchar.h</label>
+      </node>
+      <node id="28835">
+        <label>wx/image.h</label>
+      </node>
+      <node id="28850">
+        <label>string</label>
+      </node>
+      <node id="28845">
+        <label>mutDebugFlags.h</label>
+        <link refid="d7/d49/mutDebugFlags_8h"/>
+      </node>
+      <node id="28828">
+        <label>wx/window.h</label>
+      </node>
+      <node id="28847">
+        <label>wx/intl.h</label>
+      </node>
+      <node id="28824">
         <label>src/wxGUI/MutDocument.h</label>
         <link refid="MutDocument.h"/>
-        <childnode refid="20103" relation="include">
+        <childnode refid="28825" relation="include">
         </childnode>
-        <childnode refid="20106" relation="include">
+        <childnode refid="28851" relation="include">
         </childnode>
-        <childnode refid="20107" relation="include">
+        <childnode refid="28852" relation="include">
         </childnode>
       </node>
-      <node id="20105">
-        <label>wx/msw/wrapwin.h</label>
+      <node id="28834">
+        <label>src/wxGUI/Mutabor.rh</label>
+        <link refid="d9/d64/Mutabor_8rh"/>
+        <childnode refid="28825" relation="include">
+        </childnode>
       </node>
-      <node id="20107">
+      <node id="28830">
+        <label>wx/filename.h</label>
+      </node>
+      <node id="28832">
+        <label>typeinfo</label>
+      </node>
+      <node id="28843">
+        <label>wx/debug.h</label>
+      </node>
+      <node id="28838">
+        <label>cstdio</label>
+      </node>
+      <node id="28837">
+        <label>bitset</label>
+      </node>
+      <node id="28827">
+        <label>src/wxGUI/generic/mhDefs.h</label>
+        <link refid="d0/d68/mhDefs_8h"/>
+        <childnode refid="28825" relation="include">
+        </childnode>
+        <childnode refid="28828" relation="include">
+        </childnode>
+        <childnode refid="28829" relation="include">
+        </childnode>
+        <childnode refid="28830" relation="include">
+        </childnode>
+        <childnode refid="28831" relation="include">
+        </childnode>
+        <childnode refid="28832" relation="include">
+        </childnode>
+        <childnode refid="28833" relation="include">
+        </childnode>
+        <childnode refid="28834" relation="include">
+        </childnode>
+        <childnode refid="28835" relation="include">
+        </childnode>
+        <childnode refid="28836" relation="include">
+        </childnode>
+      </node>
+      <node id="28839">
+        <label>vector</label>
+      </node>
+      <node id="28836">
+        <label>mutDebug.h</label>
+        <link refid="de/de1/mutDebug_8h"/>
+        <childnode refid="28837" relation="include">
+        </childnode>
+        <childnode refid="28831" relation="include">
+        </childnode>
+        <childnode refid="28838" relation="include">
+        </childnode>
+        <childnode refid="28839" relation="include">
+        </childnode>
+        <childnode refid="28840" relation="include">
+        </childnode>
+        <childnode refid="28841" relation="include">
+        </childnode>
+        <childnode refid="28842" relation="include">
+        </childnode>
+        <childnode refid="28843" relation="include">
+        </childnode>
+        <childnode refid="28844" relation="include">
+        </childnode>
+        <childnode refid="28845" relation="include">
+        </childnode>
+      </node>
+      <node id="28849">
+        <label>src/wxintl/libintl.h</label>
+        <link refid="d4/d64/libintl_8h"/>
+        <childnode refid="28825" relation="include">
+        </childnode>
+        <childnode refid="28850" relation="include">
+        </childnode>
+      </node>
+      <node id="28842">
+        <label>wx/string.h</label>
+      </node>
+      <node id="28831">
+        <label>iostream</label>
+      </node>
+      <node id="28852">
         <label>wx/cmdproc.h</label>
       </node>
-      <node id="20106">
+      <node id="28844">
+        <label>wx/thread.h</label>
+      </node>
+      <node id="28848">
+        <label>wx/setup.h</label>
+      </node>
+      <node id="28851">
         <label>wx/docview.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="20110">
+      <node id="28855">
         <label>src/wxGUI/MutDocManager.cpp</label>
         <link refid="dd/db0/MutDocManager_8cpp"/>
       </node>
-      <node id="20109">
+      <node id="28854">
         <label>src/wxGUI/MutApp.cpp</label>
         <link refid="d5/d1c/MutApp_8cpp"/>
       </node>
-      <node id="20111">
+      <node id="28856">
         <label>src/wxGUI/MutDocument.cpp</label>
         <link refid="d6/d3b/MutDocument_8cpp"/>
       </node>
-      <node id="20108">
+      <node id="28853">
         <label>src/wxGUI/MutDocument.h</label>
         <link refid="MutDocument.h"/>
-        <childnode refid="20109" relation="include">
+        <childnode refid="28854" relation="include">
         </childnode>
-        <childnode refid="20110" relation="include">
+        <childnode refid="28855" relation="include">
         </childnode>
-        <childnode refid="20111" relation="include">
+        <childnode refid="28856" relation="include">
         </childnode>
-        <childnode refid="20112" relation="include">
+        <childnode refid="28857" relation="include">
         </childnode>
-        <childnode refid="20113" relation="include">
+        <childnode refid="28858" relation="include">
         </childnode>
       </node>
-      <node id="20113">
+      <node id="28858">
         <label>src/wxGUI/MutView.cpp</label>
         <link refid="d8/d33/MutView_8cpp"/>
       </node>
-      <node id="20112">
+      <node id="28857">
         <label>src/wxGUI/MutFrame.cpp</label>
         <link refid="dc/df3/MutFrame_8cpp"/>
       </node>

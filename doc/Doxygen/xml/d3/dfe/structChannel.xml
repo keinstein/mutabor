@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d3/dfe/structChannel" kind="struct" prot="public">
     <compoundname>Channel</compoundname>
     <includes refid="d2/d71/mis_8h" local="no">mis.h</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="d3/dfe/structChannel_1a27f174b2ee01796966771fb2d65630a5" prot="public" static="no" mutable="no">
-        <type>WORD</type>
+        <type><ref refid="d9/d7c/group__kernel_1ga4cfc63e05db4883dc4b60a1245a9ffc5" kindref="member">WORD</ref></type>
         <definition>WORD Channel::Pitch</definition>
         <argsstring></argsstring>
         <name>Pitch</name>
@@ -21,7 +21,7 @@
         <referencedby refid="d5/d67/classMisFile_1aa7384911209dce2e873193481e44e5e8" compoundref="d4/df2/mis_8cpp" startline="188" endline="209">MisFile::WriteInit</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d3/dfe/structChannel_1af128cbb30a6bbfceb6aa6133608e49da" prot="public" static="no" mutable="no">
-        <type>signed <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>signed char</type>
         <definition>signed char Channel::Sound</definition>
         <argsstring></argsstring>
         <name>Sound</name>
@@ -36,7 +36,7 @@
         <referencedby refid="d5/d67/classMisFile_1aa7384911209dce2e873193481e44e5e8" compoundref="d4/df2/mis_8cpp" startline="188" endline="209">MisFile::WriteInit</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d3/dfe/structChannel_1aa6d536be5f9f9481444df2b816ad6f6b" prot="public" static="no" mutable="no">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char Channel::Track</definition>
         <argsstring></argsstring>
         <name>Track</name>
@@ -50,7 +50,7 @@
         <referencedby refid="d5/d67/classMisFile_1aa7384911209dce2e873193481e44e5e8" compoundref="d4/df2/mis_8cpp" startline="188" endline="209">MisFile::WriteInit</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d3/dfe/structChannel_1a7378c50b14adcc3529519765169af413" prot="public" static="no" mutable="no">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char Channel::nNotesOn</definition>
         <argsstring></argsstring>
         <name>nNotesOn</name>

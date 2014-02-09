@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="de/d4d/classmutaborGUI_1_1MutApp" kind="class" prot="public">
     <compoundname>mutaborGUI::MutApp</compoundname>
     <basecompoundref prot="public" virt="non-virtual">wxApp</basecompoundref>
@@ -187,6 +187,39 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="122" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a5af24c873ab0a6da1eb95436ce07557f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::OnAssertFailure</definition>
+        <argsstring>(const wxChar *file, int line, const wxChar *func, const wxChar *cond, const wxChar *msg)</argsstring>
+        <name>OnAssertFailure</name>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxChar *</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxChar *</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxChar *</type>
+          <declname>cond</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxChar *</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="124" column="1"/>
       </memberdef>
       <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1aa24dc84db1e1ad6ddcb2e84de62b6be7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -488,6 +521,24 @@
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="184" column="1"/>
       </memberdef>
+      <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1a1468acecf2374f68c1da0c7005753455" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutApp::CmCallExit</definition>
+        <argsstring>(wxCommandEvent &amp;event)</argsstring>
+        <name>CmCallExit</name>
+        <param>
+          <type>wxCommandEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>Exit immediately with exit() </para>        </briefdescription>
+        <detaileddescription>
+<para>This function meight be helpful in compiling </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="188" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" bodystart="188" bodyend="192"/>
+        <references refid="d9/d7c/group__kernel_1gaedf3113729faf15522da4884cc137733" compoundref="d1/d73/Defs_8h" startline="79">mutUnused</references>
+      </memberdef>
       <memberdef kind="function" id="de/d4d/classmutaborGUI_1_1MutApp_1aa3cb7184058bca09bc4b408914b84ff8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="d6/d63/classmutaborGUI_1_1MutFrame" kindref="compound">MutFrame</ref> *</type>
         <definition>MutFrame* mutaborGUI::MutApp::CreateMainFrame</definition>
@@ -722,7 +773,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" line="262" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutApp.h" bodystart="262" bodyend="269"/>
-        <references refid="df/dd1/group__GUI_1gaf8ced57287d870cf59d79766ba10c431" compoundref="dd/db5/MutFrame_8h" startline="260" endline="263">mutaborGUI::MutFrame::HasClient</references>
+        <references refid="df/dd1/group__GUI_1gaf8ced57287d870cf59d79766ba10c431" compoundref="dd/db5/MutFrame_8h" startline="276" endline="279">mutaborGUI::MutFrame::HasClient</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -944,36 +995,36 @@
     <detaileddescription>
 <para>This class is the main application class of Mutabor. It handles initialization, exiting and on Mac OS also the application menu. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="3537">
+      <node id="3807">
         <label>mutaborGUI::MutApp</label>
         <link refid="de/d4d/classmutaborGUI_1_1MutApp"/>
-        <childnode refid="3538" relation="public-inheritance">
+        <childnode refid="3808" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3538">
+      <node id="3808">
         <label>wxApp</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3539">
+      <node id="3809">
         <label>mutaborGUI::MutApp</label>
         <link refid="de/d4d/classmutaborGUI_1_1MutApp"/>
-        <childnode refid="3540" relation="public-inheritance">
+        <childnode refid="3810" relation="public-inheritance">
         </childnode>
-        <childnode refid="3541" relation="usage">
+        <childnode refid="3811" relation="usage">
           <edgelabel>document_manager</edgelabel>
         </childnode>
       </node>
-      <node id="3541">
+      <node id="3811">
         <label>mutaborGUI::MutDocManager</label>
         <link refid="d5/d75/classmutaborGUI_1_1MutDocManager"/>
-        <childnode refid="3542" relation="public-inheritance">
+        <childnode refid="3812" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3540">
+      <node id="3810">
         <label>wxApp</label>
       </node>
-      <node id="3542">
+      <node id="3812">
         <label>wxDocManager</label>
       </node>
     </collaborationgraph>
@@ -981,6 +1032,7 @@
     <listofallmembers>
       <member refid="de/d4d/classmutaborGUI_1_1MutApp_1ae72468eafd76aef2ba3bef5c9fa0c3d3" prot="private" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>AppAbout</name></member>
       <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a38f89b19f67ce1683b51c9d2c7ee89a2" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>CmAbout</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a1468acecf2374f68c1da0c7005753455" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>CmCallExit</name></member>
       <member refid="de/d4d/classmutaborGUI_1_1MutApp_1afab30573b0faed30a59a0b762e2e240e" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>CmError</name></member>
       <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a31287e30f087cf6ff4ddb3a45bec1a7a" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>CmFileNew</name></member>
       <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a501093e6ab3b751375d2c73541d3e017" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>CmFileOpen</name></member>
@@ -1008,6 +1060,7 @@
       <member refid="de/d4d/classmutaborGUI_1_1MutApp_1ae3e15c9261df7e580c9eec59452e28bb" prot="private" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>MakeViewMenu</name></member>
       <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a0d883de6f9ce01ae15c82e819ff1a645" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>MenuType</name></member>
       <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a26c0f93b277560c1289cc4cbb5422f21" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>MustOpenFrame</name></member>
+      <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a5af24c873ab0a6da1eb95436ce07557f" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>OnAssertFailure</name></member>
       <member refid="de/d4d/classmutaborGUI_1_1MutApp_1ab38d002781e4c2a0d91a0c71641d601d" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>OnCmdLineParsed</name></member>
       <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a61a02abda1a4cfaf850f261cc7c33e01" prot="public" virt="non-virtual"><scope>mutaborGUI::MutApp</scope><name>OnExceptionInMainLoop</name></member>
       <member refid="de/d4d/classmutaborGUI_1_1MutApp_1a0352b835edadd00811c5a5fa6029b3d9" prot="public" virt="virtual"><scope>mutaborGUI::MutApp</scope><name>OnExit</name></member>

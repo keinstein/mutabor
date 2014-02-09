@@ -3,7 +3,7 @@
 <title>src/wxGUI/Routing/tests/main.cpp Quellcode</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -30,69 +30,72 @@
 <div class="title">main.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="../../da/dee/wxGUI_2Routing_2tests_2main_8cpp.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d0/d8b/GUIRouteTest_8h.html">src/wxGUI/Routing/tests/GUIRouteTest.h</a>&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../df/d40/RouteIcons_8h.html">src/wxGUI/Routing/RouteIcons.h</a>&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d6/dfa/GUIRoute_8h.html">src/wxGUI/Routing/GUIRoute.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d2c/Route-inlines_8h.html">src/kernel/routing/Route-inlines.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;wx/app.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;cppunit/ui/text/TestRunner.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;cppunit/TestResult.h&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;cppunit/BriefTestProgressListener.h&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// Skip the GUI related checks from DebugRoute.cpp</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">//#define no_wxGUI 1</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d9/d27/DebugRoute_8cpp.html">src/wxGUI/Routing/DebugRoute.cpp</a>&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//#undef no_wxGUI</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">int</span> </div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="../../da/dee/wxGUI_2Routing_2tests_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">   16</a></span>&#160;<a class="code" href="../../d4/d21/gmn2midi_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, <span class="stringliteral">&quot;program&quot;</span>);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        wxInitializer initializer;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">if</span> ( !initializer )</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                fprintf(stderr, <span class="stringliteral">&quot;Failed to initialize the wxWidgets library, aborting.&quot;</span>);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        }</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="comment">// We are using .png files for some extra bitmaps.</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        wxImageHandler * pnghandler = <span class="keyword">new</span> wxPNGHandler;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        wxImage::AddHandler(pnghandler);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        wxImage::AddHandler(<span class="keyword">new</span> wxGIFHandler);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="../../dc/df2/group__GUIroute.html#ga8969a5851d449dcd587bbf78b608b6ea">mutaborGUI::initMutIconShapes</a>();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="../../db/d94/namespacemutaborGUI.html#a4c90dd895094f104b2bdfd906fca6f24">mutaborGUI::InitGUIRouteFactories</a>();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#ifdef _GLIBCXX_DEBUG</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"></span>        std::clog &lt;&lt; <span class="stringliteral">&quot;In case of segmentation faults assure that cppunit is compiled using -D_GLIBCXX_DEBUG&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        CPPUNIT_NS::TextUi::TestRunner runner;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        CppUnit::BriefTestProgressListener listener; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        runner.eventManager().addListener(&amp;listener);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        runner.addTest( GUIRouteTest::suite() );</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">bool</span> wasSuccessful = runner.run();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">return</span> wasSuccessful ? 0 : 1;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<a href="../../da/dee/wxGUI_2Routing_2tests_2main_8cpp.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d73/Defs_8h.html">src/kernel/Defs.h</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d0/d8b/GUIRouteTest_8h.html">src/wxGUI/Routing/tests/GUIRouteTest.h</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../df/d40/RouteIcons_8h.html">src/wxGUI/Routing/RouteIcons.h</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d6/dfa/GUIRoute_8h.html">src/wxGUI/Routing/GUIRoute.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d2c/Route-inlines_8h.html">src/kernel/routing/Route-inlines.h</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;wx/app.h&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;cppunit/ui/text/TestRunner.h&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;cppunit/TestResult.h&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;cppunit/BriefTestProgressListener.h&gt;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">// Skip the GUI related checks from DebugRoute.cpp</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">//#define no_wxGUI 1</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d9/d27/DebugRoute_8cpp.html">src/wxGUI/Routing/DebugRoute.cpp</a>&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">//#undef no_wxGUI</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">int</span> </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<a class="code" href="../../df/d72/kernel_2routing_2midi_2tests_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, <span class="stringliteral">&quot;program&quot;</span>);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        wxInitializer initializer;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">if</span> ( !initializer )</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                fprintf(stderr, <span class="stringliteral">&quot;Failed to initialize the wxWidgets library, aborting.&quot;</span>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="comment">// We are using .png files for some extra bitmaps.</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        wxImageHandler * pnghandler = <span class="keyword">new</span> wxPNGHandler;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        wxImage::AddHandler(pnghandler);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        wxImage::AddHandler(<span class="keyword">new</span> wxGIFHandler);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <a class="code" href="../../dc/df2/group__GUIroute.html#ga8969a5851d449dcd587bbf78b608b6ea">mutaborGUI::initMutIconShapes</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <a class="code" href="../../db/d94/namespacemutaborGUI.html#a4c90dd895094f104b2bdfd906fca6f24">mutaborGUI::InitGUIRouteFactories</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#ifdef _GLIBCXX_DEBUG</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor"></span>        std::clog &lt;&lt; <span class="stringliteral">&quot;In case of segmentation faults assure that cppunit is compiled using -D_GLIBCXX_DEBUG&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        CPPUNIT_NS::TextUi::TestRunner runner;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        CppUnit::BriefTestProgressListener listener; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        runner.eventManager().addListener(&amp;listener);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        runner.addTest( GUIRouteTest::suite() );</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">bool</span> wasSuccessful = runner.run();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">return</span> wasSuccessful ? 0 : 1;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
 <div class="ttc" id="DebugRoute_8cpp_html"><div class="ttname"><a href="../../d9/d27/DebugRoute_8cpp.html">DebugRoute.cpp</a></div><div class="ttdoc">Debug functions for routing system. </div></div>
-<div class="ttc" id="namespacemutaborGUI_html_a4c90dd895094f104b2bdfd906fca6f24"><div class="ttname"><a href="../../db/d94/namespacemutaborGUI.html#a4c90dd895094f104b2bdfd906fca6f24">mutaborGUI::InitGUIRouteFactories</a></div><div class="ttdeci">void InitGUIRouteFactories()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dee/GUIRoute_8cpp_source.html#l00987">GUIRoute.cpp:987</a></div></div>
+<div class="ttc" id="namespacemutaborGUI_html_a4c90dd895094f104b2bdfd906fca6f24"><div class="ttname"><a href="../../db/d94/namespacemutaborGUI.html#a4c90dd895094f104b2bdfd906fca6f24">mutaborGUI::InitGUIRouteFactories</a></div><div class="ttdeci">void InitGUIRouteFactories()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dee/GUIRoute_8cpp_source.html#l01001">GUIRoute.cpp:1001</a></div></div>
 <div class="ttc" id="Route-inlines_8h_html"><div class="ttname"><a href="../../d2/d2c/Route-inlines_8h.html">Route-inlines.h</a></div></div>
+<div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
 <div class="ttc" id="GUIRouteTest_8h_html"><div class="ttname"><a href="../../d0/d8b/GUIRouteTest_8h.html">GUIRouteTest.h</a></div></div>
 <div class="ttc" id="GUIRoute_8h_html"><div class="ttname"><a href="../../d6/dfa/GUIRoute_8h.html">GUIRoute.h</a></div></div>
 <div class="ttc" id="group__GUIroute_html_ga8969a5851d449dcd587bbf78b608b6ea"><div class="ttname"><a href="../../dc/df2/group__GUIroute.html#ga8969a5851d449dcd587bbf78b608b6ea">mutaborGUI::initMutIconShapes</a></div><div class="ttdeci">bool initMutIconShapes()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d28/RouteIcons_8cpp_source.html#l00064">RouteIcons.cpp:64</a></div></div>
-<div class="ttc" id="gmn2midi_8cpp_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="../../d4/d21/gmn2midi_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d21/gmn2midi_8cpp_source.html#l00023">gmn2midi.cpp:23</a></div></div>
 <div class="ttc" id="RouteIcons_8h_html"><div class="ttname"><a href="../../df/d40/RouteIcons_8h.html">RouteIcons.h</a></div><div class="ttdoc">Devices base classes. </div></div>
+<div class="ttc" id="kernel_2routing_2midi_2tests_2main_8cpp_html_a3c04138a5bfe5d72780bb7e82a18e627"><div class="ttname"><a href="../../df/d72/kernel_2routing_2midi_2tests_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a></div><div class="ttdeci">int main(int argc, char **argv)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/kernel_2routing_2midi_2tests_2main_8cpp_source.html#l00015">main.cpp:15</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:36 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:13 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

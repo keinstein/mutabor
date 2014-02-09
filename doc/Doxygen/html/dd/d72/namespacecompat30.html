@@ -3,7 +3,7 @@
 <title>compat30-Namensbereichsreferenz</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -139,7 +139,7 @@ Funktionen</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../dd/db8/RouteCompat_8cpp_source.html#l00048">48</a> der Datei <a class="el" href="../../dd/db8/RouteCompat_8cpp_source.html">RouteCompat.cpp</a>.</p>
 
-<p>Benutzt <a class="el" href="../../d5/dee/group__route.html#ga0003618beb50da006e94e57baf9f7afa">mutabor::CommonTypedDeviceAPI&lt; OutputDeviceClass &gt;::GetDevice()</a> und <a class="el" href="../../de/d05/Device_8h_source.html#l00357">mutabor::Device::IDTypeFile</a>.</p>
+<p>Benutzt <a class="el" href="../../d5/dee/group__route.html#ga0003618beb50da006e94e57baf9f7afa">mutabor::CommonTypedDeviceAPI&lt; OutputDeviceClass &gt;::GetDevice()</a> und <a class="el" href="../../de/d05/Device_8h_source.html#l00477">mutabor::Device::IDTypeFile</a>.</p>
 
 <p>Wird benutzt von <a class="el" href="../../dd/db8/RouteCompat_8cpp_source.html#l00124">LoadRoutes()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {</div>
@@ -148,7 +148,7 @@ Funktionen</h2></td></tr>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <a class="code" href="../../d5/dee/group__route.html#gaa9af06d2b801f5fbf129acc683bb764d">OutputDevice</a> Out = OutputDeviceClass::GetDevice(nr, Device::IDTypeFile);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <span class="keywordflow">return</span> Out;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
-<div class="ttc" id="group__route_html_gaa9af06d2b801f5fbf129acc683bb764d"><div class="ttname"><a href="../../d5/dee/group__route.html#gaa9af06d2b801f5fbf129acc683bb764d">mutabor::OutputDevice</a></div><div class="ttdeci">CommonTypedDeviceAPI&lt; OutputDeviceClass &gt;::DevicePtr OutputDevice</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00689">Device.h:689</a></div></div>
+<div class="ttc" id="group__route_html_gaa9af06d2b801f5fbf129acc683bb764d"><div class="ttname"><a href="../../d5/dee/group__route.html#gaa9af06d2b801f5fbf129acc683bb764d">mutabor::OutputDevice</a></div><div class="ttdeci">CommonTypedDeviceAPI&lt; OutputDeviceClass &gt;::DevicePtr OutputDevice</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00809">Device.h:809</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -176,7 +176,9 @@ Funktionen</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../dd/db8/RouteCompat_8cpp_source.html#l00079">79</a> der Datei <a class="el" href="../../dd/db8/RouteCompat_8cpp_source.html">RouteCompat.cpp</a>.</p>
 
-<p>Benutzt <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00142">DEBUGLOG2</a>.</p>
+<p>Benutzt <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00147">DEBUGLOG2</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../dd/db8/RouteCompat_8cpp_source.html#l00124">LoadRoutes()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        {</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                wxString DTName[] =  { _T(<span class="stringliteral">&quot;&quot;</span>), _T(<span class="stringliteral">&quot;MIDIPORT&quot;</span>), _T(<span class="stringliteral">&quot;MIDIFILE&quot;</span>), _T(<span class="stringliteral">&quot;GMN&quot;</span>) };</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordtype">int</span> i;</div>
@@ -191,8 +193,8 @@ Funktionen</h2></td></tr>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                </div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="keywordflow">return</span> (<a class="code" href="../../d5/dee/group__route.html#ga84f84d78781fc500cd66ee58b0efc83a">DevType</a>)i;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
-<div class="ttc" id="group__route_html_ga84f84d78781fc500cd66ee58b0efc83a"><div class="ttname"><a href="../../d5/dee/group__route.html#ga84f84d78781fc500cd66ee58b0efc83a">mutabor::DevType</a></div><div class="ttdeci">DevType</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00087">Device.h:87</a></div></div>
-<div class="ttc" id="group__debug_html_gad0fa697ccfdac1d20857a4359add2996"><div class="ttname"><a href="../../de/db7/group__debug.html#gad0fa697ccfdac1d20857a4359add2996">DEBUGLOG2</a></div><div class="ttdeci">#define DEBUGLOG2(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00142">mutDebug.h:142</a></div></div>
+<div class="ttc" id="group__route_html_ga84f84d78781fc500cd66ee58b0efc83a"><div class="ttname"><a href="../../d5/dee/group__route.html#ga84f84d78781fc500cd66ee58b0efc83a">mutabor::DevType</a></div><div class="ttdeci">DevType</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00089">Device.h:89</a></div></div>
+<div class="ttc" id="group__debug_html_gad0fa697ccfdac1d20857a4359add2996"><div class="ttname"><a href="../../de/db7/group__debug.html#gad0fa697ccfdac1d20857a4359add2996">DEBUGLOG2</a></div><div class="ttdeci">#define DEBUGLOG2(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00147">mutDebug.h:147</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -230,7 +232,7 @@ Funktionen</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../dd/db8/RouteCompat_8cpp_source.html#l00062">62</a> der Datei <a class="el" href="../../dd/db8/RouteCompat_8cpp_source.html">RouteCompat.cpp</a>.</p>
 
-<p>Benutzt <a class="el" href="../../d8/dfb/Route_8cpp_source.html#l00052">mutabor::RTName</a>.</p>
+<p>Benutzt <a class="el" href="../../d8/dfb/Route_8cpp_source.html#l00049">mutabor::RTName</a>.</p>
 
 <p>Wird benutzt von <a class="el" href="../../dd/db8/RouteCompat_8cpp_source.html#l00124">LoadRoutes()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
@@ -247,13 +249,13 @@ Funktionen</h2></td></tr>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                </div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="keywordflow">return</span> (<a class="code" href="../../d5/dee/group__route.html#ga40717007e1ff5cfd3b0255fa4db7f45e">RouteType</a>) i;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
-<div class="ttc" id="group__route_html_ga40717007e1ff5cfd3b0255fa4db7f45e"><div class="ttname"><a href="../../d5/dee/group__route.html#ga40717007e1ff5cfd3b0255fa4db7f45e">mutabor::RouteType</a></div><div class="ttdeci">RouteType</div><div class="ttdoc">Type of route input filter. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00077">Route.h:77</a></div></div>
-<div class="ttc" id="group__route_html_ga8d43e4a77d5dae69f317be216d9b021a"><div class="ttname"><a href="../../d5/dee/group__route.html#ga8d43e4a77d5dae69f317be216d9b021a">mutabor::RTName</a></div><div class="ttdeci">const mutString RTName[]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dfb/Route_8cpp_source.html#l00052">Route.cpp:52</a></div></div>
+<div class="ttc" id="group__route_html_ga40717007e1ff5cfd3b0255fa4db7f45e"><div class="ttname"><a href="../../d5/dee/group__route.html#ga40717007e1ff5cfd3b0255fa4db7f45e">mutabor::RouteType</a></div><div class="ttdeci">RouteType</div><div class="ttdoc">Type of route input filter. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d65/Route_8h_source.html#l00078">Route.h:78</a></div></div>
+<div class="ttc" id="group__route_html_ga8d43e4a77d5dae69f317be216d9b021a"><div class="ttname"><a href="../../d5/dee/group__route.html#ga8d43e4a77d5dae69f317be216d9b021a">mutabor::RTName</a></div><div class="ttdeci">const mutString RTName[]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dfb/Route_8cpp_source.html#l00049">Route.cpp:49</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:52 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:28 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

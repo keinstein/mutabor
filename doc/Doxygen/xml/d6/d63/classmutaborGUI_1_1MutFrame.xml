@@ -1,9 +1,39 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d6/d63/classmutaborGUI_1_1MutFrame" kind="class" prot="public">
     <compoundname>mutaborGUI::MutFrame</compoundname>
     <basecompoundref prot="public" virt="non-virtual">wxDocChildFrame</basecompoundref>
     <includes refid="dd/db5/MutFrame_8h" local="no">MutFrame.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="df/dd1/group__GUI_1ga518b236ea12f528eae1bc501990668db" prot="public" static="no">
+        <type>wxDocChildFrame</type>
+        <definition>typedef wxDocChildFrame mutaborGUI::MutFrame::base</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="67" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="df/dd1/group__GUI_1gae6d75f162a2898921c8aaee5077cbbf8" prot="private" static="no">
+        <type>std::map&lt; int, <ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">mutabor::Box</ref> &gt;</type>
+        <definition>typedef std::map&lt;int,mutabor::Box&gt; mutaborGUI::MutFrame::boxCommandMap</definition>
+        <argsstring></argsstring>
+        <name>boxCommandMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="346" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="346" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="df/dd1/group__GUI_1ga599ad88292d54088557bbd9cded3d572" prot="private" static="no" mutable="no">
         <type>wxMenu *</type>
@@ -16,9 +46,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="313" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="313" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1ga3fed5adaa39f791dcc143e5583e6bfec" compoundref="dc/df3/MutFrame_8cpp" startline="302" endline="350">MutFrame</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga92579516ef934c53592e1f06a679a015" compoundref="dd/db5/MutFrame_8h" startline="283" endline="283">SetEditMenu</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="329" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="329" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1ga3fed5adaa39f791dcc143e5583e6bfec" compoundref="dc/df3/MutFrame_8cpp" startline="309" endline="357">MutFrame</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga92579516ef934c53592e1f06a679a015" compoundref="dd/db5/MutFrame_8h" startline="299" endline="299">SetEditMenu</referencedby>
       </memberdef>
       <memberdef kind="variable" id="df/dd1/group__GUI_1ga94ce1d783318194a673567dab4b82739" prot="private" static="no" mutable="no">
         <type>wxMenu *</type>
@@ -31,10 +61,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="314" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="314" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1ga3fed5adaa39f791dcc143e5583e6bfec" compoundref="dc/df3/MutFrame_8cpp" startline="302" endline="350">MutFrame</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga9fae70164c8a1f151e948accede55300" compoundref="dd/db5/MutFrame_8h" startline="282" endline="282">SetFileMenu</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga2255fbb1b03e902ac19724c508ed1f9a" compoundref="dc/df3/MutFrame_8cpp" startline="355" endline="371">~MutFrame</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="330" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="330" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1ga3fed5adaa39f791dcc143e5583e6bfec" compoundref="dc/df3/MutFrame_8cpp" startline="309" endline="357">MutFrame</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga9fae70164c8a1f151e948accede55300" compoundref="dd/db5/MutFrame_8h" startline="298" endline="298">SetFileMenu</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga2255fbb1b03e902ac19724c508ed1f9a" compoundref="dc/df3/MutFrame_8cpp" startline="362" endline="377">~MutFrame</referencedby>
       </memberdef>
       <memberdef kind="variable" id="df/dd1/group__GUI_1gaeb84687e2849862c1c19842923986ccc" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -47,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="324" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="324" bodyend="-1"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="340" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="340" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" prot="private" static="no" mutable="no">
         <type>wxAuiManager</type>
@@ -60,20 +90,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="326" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="326" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1gae1c89fe3498f15f1d499e98d6cc26866" compoundref="dc/df3/MutFrame_8cpp" startline="1747" endline="1812">CloseAll</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga53b1990e041472bf1266f54c164ad190" compoundref="dd/db5/MutFrame_8h" startline="292" endline="309">CloseClientWindow</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="699" endline="831">CmDoActivate</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gaf462ef9b546ada58aab30393ba563ec8" compoundref="dc/df3/MutFrame_8cpp" startline="980" endline="1013">CmRoutes</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gaac1a7d32f9f3800a5bfb690a5125e162" compoundref="dc/df3/MutFrame_8cpp" startline="1121" endline="1148">DoBoxWindowsClose</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gaa1bf774bdb8339a85aedd19958ec5e2e" compoundref="dc/df3/MutFrame_8cpp" startline="912" endline="943">DoStop</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga7e68e5a9877baf9b0774517910fc297f" compoundref="dc/df3/MutFrame_8cpp" startline="459" endline="495">EventPassOn</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga82f6d2b897a39f36707456252f9bd516" compoundref="dc/df3/MutFrame_8cpp" startline="1698" endline="1701">GetDockArt</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gab33eb3253f68355c6778c0fcd6fee21a" compoundref="dc/df3/MutFrame_8cpp" startline="1017" endline="1042">LogicWinOpen</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga3fed5adaa39f791dcc143e5583e6bfec" compoundref="dc/df3/MutFrame_8cpp" startline="302" endline="350">MutFrame</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga178efc5eccb11e4a6b43129eeeaae563" compoundref="dc/df3/MutFrame_8cpp" startline="651" endline="670">SetClient</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gad5b0693526e79475688bcb1ea0a679d5" compoundref="dc/df3/MutFrame_8cpp" startline="1152" endline="1228">TextBoxOpen</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga2255fbb1b03e902ac19724c508ed1f9a" compoundref="dc/df3/MutFrame_8cpp" startline="355" endline="371">~MutFrame</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="342" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="342" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gae1c89fe3498f15f1d499e98d6cc26866" compoundref="dc/df3/MutFrame_8cpp" startline="1798" endline="1863">CloseAll</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga53b1990e041472bf1266f54c164ad190" compoundref="dd/db5/MutFrame_8h" startline="308" endline="325">CloseClientWindow</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="714" endline="857">CmDoActivate</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaf462ef9b546ada58aab30393ba563ec8" compoundref="dc/df3/MutFrame_8cpp" startline="1014" endline="1047">CmRoutes</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaac1a7d32f9f3800a5bfb690a5125e162" compoundref="dc/df3/MutFrame_8cpp" startline="1155" endline="1182">DoBoxWindowsClose</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaa1bf774bdb8339a85aedd19958ec5e2e" compoundref="dc/df3/MutFrame_8cpp" startline="944" endline="975">DoStop</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga7e68e5a9877baf9b0774517910fc297f" compoundref="dc/df3/MutFrame_8cpp" startline="465" endline="501">EventPassOn</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga82f6d2b897a39f36707456252f9bd516" compoundref="dc/df3/MutFrame_8cpp" startline="1749" endline="1752">GetDockArt</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gab33eb3253f68355c6778c0fcd6fee21a" compoundref="dc/df3/MutFrame_8cpp" startline="1051" endline="1076">LogicWinOpen</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga3fed5adaa39f791dcc143e5583e6bfec" compoundref="dc/df3/MutFrame_8cpp" startline="309" endline="357">MutFrame</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga178efc5eccb11e4a6b43129eeeaae563" compoundref="dc/df3/MutFrame_8cpp" startline="666" endline="685">SetClient</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gad5b0693526e79475688bcb1ea0a679d5" compoundref="dc/df3/MutFrame_8cpp" startline="1186" endline="1262">TextBoxOpen</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga2255fbb1b03e902ac19724c508ed1f9a" compoundref="dc/df3/MutFrame_8cpp" startline="362" endline="377">~MutFrame</referencedby>
       </memberdef>
       <memberdef kind="variable" id="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" prot="private" static="no" mutable="no">
         <type>wxWindow *</type>
@@ -86,22 +116,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="334" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="334" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1ga4e4f2e1968bed5fa639c34b02c1c1316" compoundref="dc/df3/MutFrame_8cpp" startline="964" endline="970">CeActivate</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga146b84c9401e3da843c148c5bcb697d1" compoundref="dc/df3/MutFrame_8cpp" startline="546" endline="564">CmFileNew</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga0bd91229d7dd30901944246960f0ac8f" compoundref="dc/df3/MutFrame_8cpp" startline="567" endline="614">CmFileOpen</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gaf462ef9b546ada58aab30393ba563ec8" compoundref="dc/df3/MutFrame_8cpp" startline="980" endline="1013">CmRoutes</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gaf8ced57287d870cf59d79766ba10c431" compoundref="dd/db5/MutFrame_8h" startline="260" endline="263">HasClient</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gab33eb3253f68355c6778c0fcd6fee21a" compoundref="dc/df3/MutFrame_8cpp" startline="1017" endline="1042">LogicWinOpen</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga3fed5adaa39f791dcc143e5583e6bfec" compoundref="dc/df3/MutFrame_8cpp" startline="302" endline="350">MutFrame</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gae0acf3a3914c5e7e16b66e8bddf647cd" compoundref="dc/df3/MutFrame_8cpp" startline="1692" endline="1696">OnEraseBackground</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga5f93d6d12658f3457841aef52e29d946" compoundref="dc/df3/MutFrame_8cpp" startline="622" endline="645">OpenFile</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga62a3b37198b063c892c9dd2c5c4e6c99" compoundref="dc/df3/MutFrame_8cpp" startline="422" endline="439">PassEventToEditor</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga269b907a2d67e58896446c029edf517a" compoundref="dc/df3/MutFrame_8cpp" startline="450" endline="457">PassEventToEditorFind</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gab9d6cb85a174e0a800aefd4413f4f090" compoundref="dc/df3/MutFrame_8cpp" startline="441" endline="448">PassEventToEditorUI</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gac8ac8a268e19dced35d4feb396dfc73a" compoundref="dd/db5/MutFrame_8h" startline="268" endline="280">repaint_route</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga178efc5eccb11e4a6b43129eeeaae563" compoundref="dc/df3/MutFrame_8cpp" startline="651" endline="670">SetClient</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gad5b0693526e79475688bcb1ea0a679d5" compoundref="dc/df3/MutFrame_8cpp" startline="1152" endline="1228">TextBoxOpen</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="343" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="343" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1ga4e4f2e1968bed5fa639c34b02c1c1316" compoundref="dc/df3/MutFrame_8cpp" startline="995" endline="1003">CeActivate</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga146b84c9401e3da843c148c5bcb697d1" compoundref="dc/df3/MutFrame_8cpp" startline="561" endline="579">CmFileNew</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga0bd91229d7dd30901944246960f0ac8f" compoundref="dc/df3/MutFrame_8cpp" startline="582" endline="629">CmFileOpen</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaf462ef9b546ada58aab30393ba563ec8" compoundref="dc/df3/MutFrame_8cpp" startline="1014" endline="1047">CmRoutes</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaf8ced57287d870cf59d79766ba10c431" compoundref="dd/db5/MutFrame_8h" startline="276" endline="279">HasClient</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gab33eb3253f68355c6778c0fcd6fee21a" compoundref="dc/df3/MutFrame_8cpp" startline="1051" endline="1076">LogicWinOpen</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga3fed5adaa39f791dcc143e5583e6bfec" compoundref="dc/df3/MutFrame_8cpp" startline="309" endline="357">MutFrame</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gae0acf3a3914c5e7e16b66e8bddf647cd" compoundref="dc/df3/MutFrame_8cpp" startline="1743" endline="1747">OnEraseBackground</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga5f93d6d12658f3457841aef52e29d946" compoundref="dc/df3/MutFrame_8cpp" startline="637" endline="660">OpenFile</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga62a3b37198b063c892c9dd2c5c4e6c99" compoundref="dc/df3/MutFrame_8cpp" startline="428" endline="445">PassEventToEditor</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga269b907a2d67e58896446c029edf517a" compoundref="dc/df3/MutFrame_8cpp" startline="456" endline="463">PassEventToEditorFind</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gab9d6cb85a174e0a800aefd4413f4f090" compoundref="dc/df3/MutFrame_8cpp" startline="447" endline="454">PassEventToEditorUI</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gac8ac8a268e19dced35d4feb396dfc73a" compoundref="dd/db5/MutFrame_8h" startline="284" endline="296">repaint_route</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga178efc5eccb11e4a6b43129eeeaae563" compoundref="dc/df3/MutFrame_8cpp" startline="666" endline="685">SetClient</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gad5b0693526e79475688bcb1ea0a679d5" compoundref="dc/df3/MutFrame_8cpp" startline="1186" endline="1262">TextBoxOpen</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-attrib">
@@ -116,20 +146,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="336" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="336" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1gaf19aef18c229953beb7ba146dd6386ee" compoundref="dd/db5/MutFrame_8h" startline="239" endline="242">BoxWindowsClose</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga6c92c28ea6b295956f949d6fd95cac5d" compoundref="dd/db5/MutFrame_8h" startline="234" endline="237">BoxWindowsOpen</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="699" endline="831">CmDoActivate</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gaa1bf774bdb8339a85aedd19958ec5e2e" compoundref="dc/df3/MutFrame_8cpp" startline="912" endline="943">DoStop</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gac20ee7f229af7195bd01bbe506a2d6f1" compoundref="dd/db5/MutFrame_8h" startline="285" endline="288">GetActiveDocument</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gaa4448e4dc73ad9a152ae506a3d251860" compoundref="dd/db5/MutFrame_8h" startline="289" endline="291">GetActiveWindow</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gae2ff4873b386b189c8d668877479aa3c" compoundref="dc/df3/MutFrame_8cpp" startline="497" endline="523">OnCloseWindow</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga5f8058ce90acb4d2325b5a30082d66d8" compoundref="dc/df3/MutFrame_8cpp" startline="877" endline="910">RaiseLogic</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gaf9255d2d0dba0775d76160c5f5549ee9" compoundref="dc/df3/MutFrame_8cpp" startline="1862" endline="1869">RaiseTheFrame</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1044" endline="1103">ToggleTextBox</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="345" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="345" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gaf19aef18c229953beb7ba146dd6386ee" compoundref="dd/db5/MutFrame_8h" startline="253" endline="256">BoxWindowsClose</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga6c92c28ea6b295956f949d6fd95cac5d" compoundref="dd/db5/MutFrame_8h" startline="248" endline="251">BoxWindowsOpen</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="714" endline="857">CmDoActivate</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaa1bf774bdb8339a85aedd19958ec5e2e" compoundref="dc/df3/MutFrame_8cpp" startline="944" endline="975">DoStop</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gac20ee7f229af7195bd01bbe506a2d6f1" compoundref="dd/db5/MutFrame_8h" startline="301" endline="304">GetActiveDocument</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaa4448e4dc73ad9a152ae506a3d251860" compoundref="dd/db5/MutFrame_8h" startline="305" endline="307">GetActiveWindow</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gae2ff4873b386b189c8d668877479aa3c" compoundref="dc/df3/MutFrame_8cpp" startline="512" endline="538">OnCloseWindow</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga5f8058ce90acb4d2325b5a30082d66d8" compoundref="dc/df3/MutFrame_8cpp" startline="903" endline="942">RaiseLogic</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaf9255d2d0dba0775d76160c5f5549ee9" compoundref="dc/df3/MutFrame_8cpp" startline="1994" endline="2001">RaiseTheFrame</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1078" endline="1137">ToggleTextBox</referencedby>
       </memberdef>
       <memberdef kind="variable" id="df/dd1/group__GUI_1ga13cda4120aac0afe3585f8b80def467d" prot="private" static="yes" mutable="no">
-        <type>std::map&lt; int, <ref refid="d5/dee/group__route_1ga3f643df8253d674ef503b3c344010646" kindref="member">mutabor::Box</ref> &gt;</type>
+        <type><ref refid="df/dd1/group__GUI_1gae6d75f162a2898921c8aaee5077cbbf8" kindref="member">boxCommandMap</ref></type>
         <definition>std::map&lt; int, mutabor::Box &gt; mutaborGUI::MutFrame::boxCommandIds</definition>
         <argsstring></argsstring>
         <name>boxCommandIds</name>
@@ -139,9 +169,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="337" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="337" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1ga5f8058ce90acb4d2325b5a30082d66d8" compoundref="dc/df3/MutFrame_8cpp" startline="877" endline="910">RaiseLogic</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" compoundref="dc/df3/MutFrame_8cpp" startline="1814" endline="1860">UpdateBoxMenu</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="347" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="347" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1ga46362f403222b9caa889955f64806842" compoundref="dc/df3/MutFrame_8cpp" startline="1865" endline="1870">Destroy</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga5f8058ce90acb4d2325b5a30082d66d8" compoundref="dc/df3/MutFrame_8cpp" startline="903" endline="942">RaiseLogic</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" compoundref="dc/df3/MutFrame_8cpp" startline="1872" endline="1992">UpdateBoxMenu</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -180,7 +211,7 @@
 <para>This constructor creates a new main window. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="70" column="1"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="72" column="1"/>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga3fed5adaa39f791dcc143e5583e6bfec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -233,13 +264,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="74" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="302" bodyend="350"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="76" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="309" bodyend="357"/>
         <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
-        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="326">auimanager</references>
-        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="334">client</references>
-        <references refid="df/dd1/group__GUI_1ga5b947133233083a4b0a5968aaeee5f04" compoundref="dc/df3/MutFrame_8cpp" startline="1712" endline="1739">DetermineFrameSize</references>
-        <references refid="df/dd1/group__GUI_1ga599ad88292d54088557bbd9cded3d572" compoundref="dd/db5/MutFrame_8h" startline="313">editmenu</references>
-        <references refid="df/dd1/group__GUI_1ga94ce1d783318194a673567dab4b82739" compoundref="dd/db5/MutFrame_8h" startline="314">filemenu</references>
+        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="342">auimanager</references>
+        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="343">client</references>
+        <references refid="df/dd1/group__GUI_1ga5b947133233083a4b0a5968aaeee5f04" compoundref="dc/df3/MutFrame_8cpp" startline="1763" endline="1790">DetermineFrameSize</references>
+        <references refid="df/dd1/group__GUI_1ga599ad88292d54088557bbd9cded3d572" compoundref="dd/db5/MutFrame_8h" startline="329">editmenu</references>
+        <references refid="df/dd1/group__GUI_1ga94ce1d783318194a673567dab4b82739" compoundref="dd/db5/MutFrame_8h" startline="330">filemenu</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga2255fbb1b03e902ac19724c508ed1f9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -252,10 +283,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="86" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="355" bodyend="371"/>
-        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="326">auimanager</references>
-        <references refid="df/dd1/group__GUI_1ga94ce1d783318194a673567dab4b82739" compoundref="dd/db5/MutFrame_8h" startline="314">filemenu</references>
-        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="88" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="362" bodyend="377"/>
+        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="342">auimanager</references>
+        <references refid="df/dd1/group__GUI_1ga94ce1d783318194a673567dab4b82739" compoundref="dd/db5/MutFrame_8h" startline="330">filemenu</references>
+        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
         <references refid="d8/dd6/classmutaborGUI_1_1MutView_1ac7673837e9f290a87edbfcf1a433a757" compoundref="d0/d9e/MutView_8h" startline="92" endline="92">mutaborGUI::MutView::SetTextsw</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga62a3b37198b063c892c9dd2c5c4e6c99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -281,11 +312,9 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="101" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="422" bodyend="439"/>
-        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="334">client</references>
-        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a0676d9cc30a02688fa502fb8bafb3768" compoundref="d9/d64/Mutabor_8rh" startline="164">mutaborGUI::CM_MOVE_DOWN</references>
-        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a5911663dec038f068e3f8d276600e054" compoundref="d9/d64/Mutabor_8rh" startline="163">mutaborGUI::CM_MOVE_UP</references>
-        <referencedby refid="df/dd1/group__GUI_1ga0bd91229d7dd30901944246960f0ac8f" compoundref="dc/df3/MutFrame_8cpp" startline="567" endline="614">CmFileOpen</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="103" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="428" bodyend="445"/>
+        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="343">client</references>
+        <referencedby refid="df/dd1/group__GUI_1ga0bd91229d7dd30901944246960f0ac8f" compoundref="dc/df3/MutFrame_8cpp" startline="582" endline="629">CmFileOpen</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gab9d6cb85a174e0a800aefd4413f4f090" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -310,8 +339,8 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="107" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="441" bodyend="448"/>
-        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="334">client</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="109" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="447" bodyend="454"/>
+        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="343">client</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga269b907a2d67e58896446c029edf517a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -336,8 +365,8 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="113" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="450" bodyend="457"/>
-        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="334">client</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="115" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="456" bodyend="463"/>
+        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="343">client</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga7e68e5a9877baf9b0774517910fc297f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -362,9 +391,35 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="120" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="459" bodyend="495"/>
-        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="326">auimanager</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="122" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="465" bodyend="501"/>
+        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="342">auimanager</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+      </memberdef>
+      <memberdef kind="function" id="df/dd1/group__GUI_1gaffa7a23f201dad5011b51b9672526788" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutaborGUI::MutFrame::OnAuiChildEvent</definition>
+        <argsstring>(wxAuiManagerEvent &amp;event)</argsstring>
+        <name>OnAuiChildEvent</name>
+        <param>
+          <type>wxAuiManagerEvent &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+<para>This function informs the child windows about AUI events. </para>        </briefdescription>
+        <detaileddescription>
+<para>It is an event handler AUI events.</para><para><simplesect kind="note"><para>The AUI manager does not inform the childs directly.</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>event</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Event as passed by wxWidgets. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="133" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="503" bodyend="510"/>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gae2ff4873b386b189c8d668877479aa3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -381,11 +436,12 @@
 <para>This function tries to determine, if we can close the current window. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="125" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="497" bodyend="523"/>
-        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="336">ActiveWindow</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
-        <references refid="df/dd1/group__GUI_1ga48b49c447803e118c718351890df5d1d" compoundref="dc/df3/MutFrame_8cpp" startline="1472" endline="1487">SaveState</references>
-        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="138" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="512" bodyend="538"/>
+        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="345">ActiveWindow</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+        <references refid="df/dd1/group__GUI_1ga46362f403222b9caa889955f64806842" compoundref="dc/df3/MutFrame_8cpp" startline="1865" endline="1870">Destroy</references>
+        <references refid="df/dd1/group__GUI_1ga48b49c447803e118c718351890df5d1d" compoundref="dc/df3/MutFrame_8cpp" startline="1523" endline="1538">SaveState</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="151">TRACEC</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gaf1739c816bfd0b2d3a0f1946651be582" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -402,7 +458,7 @@
 <para>This function call the paint function </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="129" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="525" bodyend="541"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="142" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="540" bodyend="556"/>
         <references refid="d9/d7c/group__kernel_1gaedf3113729faf15522da4884cc137733" compoundref="d1/d73/Defs_8h" startline="79">mutUnused</references>
         <references refid="df/dd1/group__GUI_1ga80c3080d0917e2078ecd401c6e4ad33a" compoundref="d0/d68/mhDefs_8h" startline="144">STUBC</references>
       </memberdef>
@@ -422,11 +478,11 @@
 <para>Handle new file event if we don&apos;t have a client yet. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="133" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="546" bodyend="564"/>
-        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="334">client</references>
-        <references refid="df/dd1/group__GUI_1ga5f93d6d12658f3457841aef52e29d946" compoundref="dc/df3/MutFrame_8cpp" startline="622" endline="645">OpenFile</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="146" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="561" bodyend="579"/>
+        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="343">client</references>
+        <references refid="df/dd1/group__GUI_1ga5f93d6d12658f3457841aef52e29d946" compoundref="dc/df3/MutFrame_8cpp" startline="637" endline="660">OpenFile</references>
         <references refid="df/dd1/group__GUI_1ga80c3080d0917e2078ecd401c6e4ad33a" compoundref="d0/d68/mhDefs_8h" startline="144">STUBC</references>
-        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1503">IMPLEMENT_APP</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1502">IMPLEMENT_APP</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga0bd91229d7dd30901944246960f0ac8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -444,17 +500,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="136" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="567" bodyend="614"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="149" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="582" bodyend="629"/>
         <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
-        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="334">client</references>
-        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a3c451dffd4d31b10f1371f3778531ab8" compoundref="d9/d64/Mutabor_8rh" startline="74">mutaborGUI::CM_ACTIVATE</references>
-        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a4a3ddde2676e7be85542c0a42c0db4ba" compoundref="d9/d64/Mutabor_8rh" startline="70">mutaborGUI::CM_EXECUTE</references>
+        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="343">client</references>
         <references refid="d9/d64/Mutabor_8rh_1a90e12f9eca1903822664d9b7759c2a4f" compoundref="d9/d64/Mutabor_8rh" startline="56">CM_FILEOPEN</references>
         <references refid="d9/d64/Mutabor_8rh_1a3c5a2f14af5ee9c36d82c2a7c52bce9a" compoundref="d9/d64/Mutabor_8rh" startline="60">CM_FILESAVEAS</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
         <references refid="df/dd1/group__GUI_1gaa4cd1dc8d3c14b92b0ed908f9dcb0b61" compoundref="d2/d2f/mxDefs_8cpp" startline="42" endline="148">FileNameDialog</references>
-        <references refid="df/dd1/group__GUI_1ga5f93d6d12658f3457841aef52e29d946" compoundref="dc/df3/MutFrame_8cpp" startline="622" endline="645">OpenFile</references>
-        <references refid="df/dd1/group__GUI_1ga62a3b37198b063c892c9dd2c5c4e6c99" compoundref="dc/df3/MutFrame_8cpp" startline="422" endline="439">PassEventToEditor</references>
+        <references refid="df/dd1/group__GUI_1ga5f93d6d12658f3457841aef52e29d946" compoundref="dc/df3/MutFrame_8cpp" startline="637" endline="660">OpenFile</references>
+        <references refid="df/dd1/group__GUI_1ga62a3b37198b063c892c9dd2c5c4e6c99" compoundref="dc/df3/MutFrame_8cpp" startline="428" endline="445">PassEventToEditor</references>
         <references refid="df/dd1/group__GUI_1ga80c3080d0917e2078ecd401c6e4ad33a" compoundref="d0/d68/mhDefs_8h" startline="144">STUBC</references>
         <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
       </memberdef>
@@ -483,21 +537,21 @@
 <para>Path of the file to open </para></parameterdescription>
 </parameteritem>
 </parameterlist>
-<xrefsect id="dd/da0/todo_1_todo000026"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>file loading fails silently if it is not in the systems encoding. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<xrefsect id="dd/da0/todo_1_todo000033"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>file loading fails silently if it is not in the systems encoding. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="139" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="622" bodyend="645"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="152" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="637" bodyend="660"/>
         <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
         <references refid="dc/df3/MutFrame_8cpp_1a237e4d19d7046d08c4cc00a45808feaf" compoundref="dc/df3/MutFrame_8cpp" startline="109">APPNAME</references>
-        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="334">client</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="343">client</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
         <references refid="df/dd1/group__GUI_1ga8cf6088f1fd98447ede66e3113898189" compoundref="d1/da4/MutEditFile_8cpp" startline="1166" endline="1182">mutaborGUI::MutEditFile::LoadFile</references>
         <references refid="d9/d7c/group__kernel_1gaedf3113729faf15522da4884cc137733" compoundref="d1/d73/Defs_8h" startline="79">mutUnused</references>
-        <references refid="df/dd1/group__GUI_1ga178efc5eccb11e4a6b43129eeeaae563" compoundref="dc/df3/MutFrame_8cpp" startline="651" endline="670">SetClient</references>
+        <references refid="df/dd1/group__GUI_1ga178efc5eccb11e4a6b43129eeeaae563" compoundref="dc/df3/MutFrame_8cpp" startline="666" endline="685">SetClient</references>
         <references refid="df/dd1/group__GUI_1ga80c3080d0917e2078ecd401c6e4ad33a" compoundref="d0/d68/mhDefs_8h" startline="144">STUBC</references>
-        <referencedby refid="df/dd1/group__GUI_1ga146b84c9401e3da843c148c5bcb697d1" compoundref="dc/df3/MutFrame_8cpp" startline="546" endline="564">CmFileNew</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga0bd91229d7dd30901944246960f0ac8f" compoundref="dc/df3/MutFrame_8cpp" startline="567" endline="614">CmFileOpen</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1503">IMPLEMENT_APP</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga146b84c9401e3da843c148c5bcb697d1" compoundref="dc/df3/MutFrame_8cpp" startline="561" endline="579">CmFileNew</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga0bd91229d7dd30901944246960f0ac8f" compoundref="dc/df3/MutFrame_8cpp" startline="582" endline="629">CmFileOpen</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1502">IMPLEMENT_APP</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga178efc5eccb11e4a6b43129eeeaae563" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -526,12 +580,12 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="142" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="651" bodyend="670"/>
-        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="326">auimanager</references>
-        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="334">client</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
-        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
-        <referencedby refid="df/dd1/group__GUI_1ga5f93d6d12658f3457841aef52e29d946" compoundref="dc/df3/MutFrame_8cpp" startline="622" endline="645">OpenFile</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="155" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="666" bodyend="685"/>
+        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="342">auimanager</references>
+        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="343">client</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
+        <referencedby refid="df/dd1/group__GUI_1ga5f93d6d12658f3457841aef52e29d946" compoundref="dc/df3/MutFrame_8cpp" startline="637" endline="660">OpenFile</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga9f75d1496fc62d4e0cf7219d0ce0b229" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -548,7 +602,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="146" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="146" bodyend="146"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="159" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="159" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -565,32 +619,34 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="152" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="699" bodyend="831"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="165" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="714" bodyend="857"/>
         <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
-        <references refid="d5/dee/group__route_1ga78fd6677b66302ae6305c6b9fa99d35c" compoundref="dd/dc6/Box_8cpp" startline="454" endline="470">mutabor::BoxClass::ActivateAll</references>
-        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="336">ActiveWindow</references>
+        <references refid="d5/dee/group__route_1ga78fd6677b66302ae6305c6b9fa99d35c" compoundref="dd/dc6/Box_8cpp" startline="459" endline="475">mutabor::BoxClass::ActivateAll</references>
+        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="345">ActiveWindow</references>
         <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a1db64862aae993ebcf4203b68fc8ebd9" compoundref="d9/d6e/StatusBar_8h" startline="119" endline="128">mutaborGUI::StatusBar::AllSetActive</references>
-        <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a15bed87c5a0ef8e7f20b5a9d8fa53867" compoundref="d9/d6e/StatusBar_8h" startline="165" endline="196">mutaborGUI::StatusBar::AllSetPlaystate</references>
-        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="326">auimanager</references>
-        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
-        <references refid="df/dd1/group__GUI_1ga6c92c28ea6b295956f949d6fd95cac5d" compoundref="dd/db5/MutFrame_8h" startline="234" endline="237">BoxWindowsOpen</references>
-        <references refid="df/dd1/group__GUI_1ga9f387b950a812c3815291654546e7249" compoundref="dc/df3/MutFrame_8cpp" startline="1872" endline="1909">mutaborGUI::CheckBoxesUsed</references>
+        <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a15bed87c5a0ef8e7f20b5a9d8fa53867" compoundref="d9/d6e/StatusBar_8h" startline="165" endline="195">mutaborGUI::StatusBar::AllSetPlaystate</references>
+        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="342">auimanager</references>
+        <references refid="df/dd1/group__GUI_1ga6c92c28ea6b295956f949d6fd95cac5d" compoundref="dd/db5/MutFrame_8h" startline="248" endline="251">BoxWindowsOpen</references>
+        <references refid="df/dd1/group__GUI_1ga9f387b950a812c3815291654546e7249" compoundref="dc/df3/MutFrame_8cpp" startline="2004" endline="2041">mutaborGUI::CheckBoxesUsed</references>
         <references refid="dc/df3/MutFrame_8cpp_1ab3f4b5e7915a18cbe36b6deb0f1fb3af" compoundref="dc/df3/MutFrame_8cpp" startline="134">Compiled</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
-        <references refid="d5/dee/group__route_1gac05e39da29f9915758102a26aeadba8b" compoundref="dd/dc6/Box_8cpp" startline="227" endline="249">mutabor::BoxClass::GetBox</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+        <references refid="d5/dee/group__route_1gac05e39da29f9915758102a26aeadba8b" compoundref="dd/dc6/Box_8cpp" startline="230" endline="252">mutabor::BoxClass::GetBox</references>
+        <references refid="d5/dee/group__route_1gac71327653b27bcbd7f4eee505629e847" compoundref="de/d0f/Box_8h" startline="262" endline="264">mutabor::BoxClass::GetBoxList</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1ae374c75a2de6e38f0fed2ea50a2af2a1" compoundref="d5/df7/GUIBoxData_8h" startline="171" endline="173">mutaborGUI::BoxData::GetLogicWindow</references>
         <references refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" compoundref="dc/df3/MutFrame_8cpp" startline="119">mutaborGUI::LogicOn</references>
         <references refid="dd/dfa/structmutaborGUI_1_1MutChildApi_1a19c57aea01db04bee9ff272a99c06267">mutaborGUI::MutChildApi::MakeTitle</references>
-        <references refid="d9/d7c/group__kernel_1ga62f2752bfa77e306c30a7f4881965da0" compoundref="d1/dce/box_8cpp" startline="47">minimal_box_used</references>
-        <references refid="d5/dee/group__route_1ga0d3410de3b825f475daa3575bb3816a6" compoundref="d2/dc0/Device_8cpp" startline="688" endline="709">mutabor::NeedsRealTime</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1acc64dc72a70c14ccc41cac795aabd307" compoundref="d1/dce/box_8cpp" startline="47">mutabor::hidden::minimal_box_used</references>
+        <references refid="d5/dee/group__route_1ga0d3410de3b825f475daa3575bb3816a6" compoundref="d2/dc0/Device_8cpp" startline="750" endline="771">mutabor::NeedsRealTime</references>
         <references refid="df/dd1/group__GUI_1ga62f1f5e2647acaa8ffec50da588efe2b" compoundref="dc/df3/MutFrame_8cpp" startline="117">mutaborGUI::OWM</references>
-        <references refid="df/dd1/group__GUI_1gac8ac8a268e19dced35d4feb396dfc73a" compoundref="dd/db5/MutFrame_8h" startline="268" endline="280">repaint_route</references>
+        <references refid="df/dd1/group__GUI_1gac8ac8a268e19dced35d4feb396dfc73a" compoundref="dd/db5/MutFrame_8h" startline="284" endline="296">repaint_route</references>
         <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a6299a024e3aed702b368e41d4def15ebad405c9068f9a69f01af42b2741cefc34" compoundref="d9/d6e/StatusBar_8h" startline="63">mutaborGUI::StatusBar::Stop</references>
-        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
-        <references refid="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" compoundref="dc/df3/MutFrame_8cpp" startline="1814" endline="1860">UpdateBoxMenu</references>
+        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="260" endline="263">mutaborGUI::ToGUIBase</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="151">TRACEC</references>
+        <references refid="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" compoundref="dc/df3/MutFrame_8cpp" startline="1872" endline="1992">UpdateBoxMenu</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceae937307bc58d33519881b7c7c1504b8d" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_ACT</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_KEY</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea4c2189084175f9895cc08b5fbfa1aaac" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_ROUTE</references>
-        <referencedby refid="df/dd1/group__GUI_1ga5a4513e94b9462c378e6cd73d87e2d1a" compoundref="dc/df3/MutFrame_8cpp" startline="1543" endline="1570">CmInDevPlay</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga5a4513e94b9462c378e6cd73d87e2d1a" compoundref="dc/df3/MutFrame_8cpp" startline="1594" endline="1621">CmInDevPlay</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga5f8058ce90acb4d2325b5a30082d66d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -607,18 +663,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="154" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="877" bodyend="910"/>
-        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="336">ActiveWindow</references>
-        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
-        <references refid="df/dd1/group__GUI_1ga13cda4120aac0afe3585f8b80def467d" compoundref="dd/db5/MutFrame_8h" startline="337">boxCommandIds</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
-        <references refid="df/d08/classmutaborGUI_1_1BoxData_1ae374c75a2de6e38f0fed2ea50a2af2a1" compoundref="d5/df7/GUIBoxData_8h" startline="174" endline="176">mutaborGUI::BoxData::GetLogicWindow</references>
-        <references refid="d5/dee/group__route_1ga850f9bf66734b7432b688b8e82f242a7" compoundref="d7/da0/GIS__Head_8cpp" startline="39">muT</references>
-        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
-        <references refid="df/dd1/group__GUI_1gaf9255d2d0dba0775d76160c5f5549ee9" compoundref="dc/df3/MutFrame_8cpp" startline="1862" endline="1869">RaiseTheFrame</references>
-        <references refid="db/d94/namespacemutaborGUI_1afb35365f69e843a5384e16a6d361ab88" compoundref="d5/df7/GUIBoxData_8h" startline="373" endline="375">mutaborGUI::SetCurrentBox</references>
-        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="307" endline="310">mutaborGUI::ToGUIBase</references>
-        <referencedby refid="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" compoundref="dc/df3/MutFrame_8cpp" startline="1814" endline="1860">UpdateBoxMenu</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="167" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="903" bodyend="942"/>
+        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="345">ActiveWindow</references>
+        <references refid="df/dd1/group__GUI_1ga13cda4120aac0afe3585f8b80def467d" compoundref="dd/db5/MutFrame_8h" startline="347">boxCommandIds</references>
+        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34aed3aef3da42fd68c649bc57f62af1ba3" compoundref="d9/d64/Mutabor_8rh" startline="85">mutaborGUI::CM_BOX</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+        <references refid="db/d94/namespacemutaborGUI_1a745c67aebc06f39e9e563db7f2d4dee2" compoundref="d5/df7/GUIBoxData_8h" startline="323" endline="325">mutaborGUI::GetCurrentBox</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1ae374c75a2de6e38f0fed2ea50a2af2a1" compoundref="d5/df7/GUIBoxData_8h" startline="171" endline="173">mutaborGUI::BoxData::GetLogicWindow</references>
+        <references refid="df/dd1/group__GUI_1gadca9fd6d212f349f16ce384a3651ac08" compoundref="d0/d68/mhDefs_8h" startline="75" endline="82">muT</references>
+        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
+        <references refid="df/dd1/group__GUI_1gaf9255d2d0dba0775d76160c5f5549ee9" compoundref="dc/df3/MutFrame_8cpp" startline="1994" endline="2001">RaiseTheFrame</references>
+        <references refid="db/d94/namespacemutaborGUI_1afb35365f69e843a5384e16a6d361ab88" compoundref="d5/df7/GUIBoxData_8h" startline="326" endline="328">mutaborGUI::SetCurrentBox</references>
+        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="260" endline="263">mutaborGUI::ToGUIBase</references>
+        <referencedby refid="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" compoundref="dc/df3/MutFrame_8cpp" startline="1872" endline="1992">UpdateBoxMenu</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gaefd099e8785db34efe528c39942f5875" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>wxMenuItem *</type>
@@ -635,10 +692,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="156" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="833" bodyend="841"/>
-        <references refid="df/dd1/group__GUI_1ga3134f7c30527359639e0e44ae373c4df" compoundref="dc/df3/MutFrame_8cpp" startline="843" endline="875">ClearSubMenu</references>
-        <referencedby refid="df/dd1/group__GUI_1gaa1bf774bdb8339a85aedd19958ec5e2e" compoundref="dc/df3/MutFrame_8cpp" startline="912" endline="943">DoStop</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" compoundref="dc/df3/MutFrame_8cpp" startline="1814" endline="1860">UpdateBoxMenu</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="169" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="859" bodyend="867"/>
+        <references refid="df/dd1/group__GUI_1ga3134f7c30527359639e0e44ae373c4df" compoundref="dc/df3/MutFrame_8cpp" startline="869" endline="901">ClearSubMenu</references>
+        <referencedby refid="df/dd1/group__GUI_1gaa1bf774bdb8339a85aedd19958ec5e2e" compoundref="dc/df3/MutFrame_8cpp" startline="944" endline="975">DoStop</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" compoundref="dc/df3/MutFrame_8cpp" startline="1872" endline="1992">UpdateBoxMenu</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga3134f7c30527359639e0e44ae373c4df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -655,9 +712,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="158" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="843" bodyend="875"/>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
-        <referencedby refid="df/dd1/group__GUI_1gaefd099e8785db34efe528c39942f5875" compoundref="dc/df3/MutFrame_8cpp" startline="833" endline="841">ClearMenuItem</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="171" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="869" bodyend="901"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+        <referencedby refid="df/dd1/group__GUI_1gaefd099e8785db34efe528c39942f5875" compoundref="dc/df3/MutFrame_8cpp" startline="859" endline="867">ClearMenuItem</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gaa1bf774bdb8339a85aedd19958ec5e2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -670,21 +727,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="160" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="912" bodyend="943"/>
-        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="336">ActiveWindow</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="173" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="944" bodyend="975"/>
+        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="345">ActiveWindow</references>
         <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a1db64862aae993ebcf4203b68fc8ebd9" compoundref="d9/d6e/StatusBar_8h" startline="119" endline="128">mutaborGUI::StatusBar::AllSetActive</references>
-        <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a15bed87c5a0ef8e7f20b5a9d8fa53867" compoundref="d9/d6e/StatusBar_8h" startline="165" endline="196">mutaborGUI::StatusBar::AllSetPlaystate</references>
-        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="326">auimanager</references>
-        <references refid="df/dd1/group__GUI_1gaefd099e8785db34efe528c39942f5875" compoundref="dc/df3/MutFrame_8cpp" startline="833" endline="841">ClearMenuItem</references>
+        <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a15bed87c5a0ef8e7f20b5a9d8fa53867" compoundref="d9/d6e/StatusBar_8h" startline="165" endline="195">mutaborGUI::StatusBar::AllSetPlaystate</references>
+        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="342">auimanager</references>
+        <references refid="df/dd1/group__GUI_1gaefd099e8785db34efe528c39942f5875" compoundref="dc/df3/MutFrame_8cpp" startline="859" endline="867">ClearMenuItem</references>
         <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a4f65cfc9725dd23d8d35c823dcbd7375" compoundref="d9/d64/Mutabor_8rh" startline="84">mutaborGUI::CM_SELECTBOX</references>
         <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a6299a024e3aed702b368e41d4def15eba89ce56b53d57d6fc3d25f9efb8f2ca1c" compoundref="d9/d6e/StatusBar_8h" startline="62">mutaborGUI::StatusBar::Hide</references>
         <references refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" compoundref="dc/df3/MutFrame_8cpp" startline="119">mutaborGUI::LogicOn</references>
-        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
-        <references refid="df/dd1/group__GUI_1gac8ac8a268e19dced35d4feb396dfc73a" compoundref="dd/db5/MutFrame_8h" startline="268" endline="280">repaint_route</references>
-        <references refid="d5/dee/group__route_1ga5c1bd0ee999d45e7de7fd7cd5b5128a8" compoundref="dd/dc6/Box_8cpp" startline="472" endline="477">mutabor::BoxClass::StopAll</references>
-        <references refid="df/dd1/group__GUI_1ga7b08d9c48c92842846fd402b494fe8a5" compoundref="dc/df3/MutFrame_8cpp" startline="1518" endline="1533">StopInDev</references>
-        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
-        <referencedby refid="df/dd1/group__GUI_1ga10facf6c383b2abfe79499f1e1a8fe0c" compoundref="dc/df3/MutFrame_8cpp" startline="945" endline="949">CmStop</referencedby>
+        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
+        <references refid="df/dd1/group__GUI_1gac8ac8a268e19dced35d4feb396dfc73a" compoundref="dd/db5/MutFrame_8h" startline="284" endline="296">repaint_route</references>
+        <references refid="d5/dee/group__route_1ga5c1bd0ee999d45e7de7fd7cd5b5128a8" compoundref="dd/dc6/Box_8cpp" startline="477" endline="482">mutabor::BoxClass::StopAll</references>
+        <references refid="df/dd1/group__GUI_1ga7b08d9c48c92842846fd402b494fe8a5" compoundref="dc/df3/MutFrame_8cpp" startline="1569" endline="1584">StopInDev</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="151">TRACEC</references>
+        <referencedby refid="df/dd1/group__GUI_1ga10facf6c383b2abfe79499f1e1a8fe0c" compoundref="dc/df3/MutFrame_8cpp" startline="977" endline="981">CmStop</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga10facf6c383b2abfe79499f1e1a8fe0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -702,8 +759,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="162" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="945" bodyend="949"/>
-        <references refid="df/dd1/group__GUI_1gaa1bf774bdb8339a85aedd19958ec5e2e" compoundref="dc/df3/MutFrame_8cpp" startline="912" endline="943">DoStop</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="175" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="977" bodyend="981"/>
+        <references refid="df/dd1/group__GUI_1gaa1bf774bdb8339a85aedd19958ec5e2e" compoundref="dc/df3/MutFrame_8cpp" startline="944" endline="975">DoStop</references>
         <references refid="d9/d7c/group__kernel_1gaedf3113729faf15522da4884cc137733" compoundref="d1/d73/Defs_8h" startline="79">mutUnused</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga9074c3dfdc134fcac6d93acee46a78e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -722,9 +779,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="164" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="951" bodyend="955"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="177" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="983" bodyend="987"/>
+        <references refid="da/dfd/MidiKern_8h_1a1efafbfc344aae50bc9b9e5f51731d00" compoundref="da/dfd/MidiKern_8h" startline="301">DEFAULT_PANIC</references>
         <references refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" compoundref="dc/df3/MutFrame_8cpp" startline="119">mutaborGUI::LogicOn</references>
-        <references refid="d5/dee/group__route_1gad4092c9965b9f85607cf343adbfa8649" compoundref="dd/dc6/Box_8cpp" startline="979" endline="990">mutabor::Panic</references>
+        <references refid="d5/dee/group__route_1gad4092c9965b9f85607cf343adbfa8649" compoundref="dd/dc6/Box_8cpp" startline="990" endline="1001">mutabor::Panic</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga343beb1278cea7edca58a78e2722d6f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -741,7 +799,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="166" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="957" bodyend="961"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="179" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="989" bodyend="992"/>
         <references refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" compoundref="dc/df3/MutFrame_8cpp" startline="119">mutaborGUI::LogicOn</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga4e4f2e1968bed5fa639c34b02c1c1316" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -759,8 +817,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="168" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="964" bodyend="970"/>
-        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="334">client</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="181" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="995" bodyend="1003"/>
+        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="343">client</references>
         <references refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" compoundref="dc/df3/MutFrame_8cpp" startline="119">mutaborGUI::LogicOn</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga6824afa3fffb4da4686630fb9db1ca72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -778,7 +836,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="170" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="972" bodyend="976"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="183" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1005" bodyend="1011"/>
         <references refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" compoundref="dc/df3/MutFrame_8cpp" startline="119">mutaborGUI::LogicOn</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gaf462ef9b546ada58aab30393ba563ec8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -796,16 +854,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="172" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="980" bodyend="1013"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="185" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1014" bodyend="1047"/>
         <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
-        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="326">auimanager</references>
-        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="334">client</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
+        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="342">auimanager</references>
+        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="343">client</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
         <references refid="df/dd1/group__GUI_1ga575c1c328e852b50c975ed6581902562" compoundref="d0/d68/mhDefs_8h" startline="55">ICON</references>
         <references refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" compoundref="dc/df3/MutFrame_8cpp" startline="119">mutaborGUI::LogicOn</references>
-        <references refid="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" compoundref="dc/df3/MutFrame_8cpp" startline="1814" endline="1860">UpdateBoxMenu</references>
+        <references refid="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" compoundref="dc/df3/MutFrame_8cpp" startline="1872" endline="1992">UpdateBoxMenu</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea4c2189084175f9895cc08b5fbfa1aaac" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_ROUTE</references>
-        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1503">IMPLEMENT_APP</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1502">IMPLEMENT_APP</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga30fc9c2bda837473b15c1e92e8a1a6be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -823,8 +881,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="174" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1230" bodyend="1233"/>
-        <references refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1044" endline="1103">ToggleTextBox</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="188" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1264" bodyend="1267"/>
+        <references refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1078" endline="1137">ToggleTextBox</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_KEY</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gaadb0580101199ca8cbd0001100008bdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -843,8 +901,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="176" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1235" bodyend="1238"/>
-        <references refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1044" endline="1103">ToggleTextBox</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="190" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1269" bodyend="1272"/>
+        <references refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1078" endline="1137">ToggleTextBox</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceaae61f5d40072b5edcdc2fc86c21cab88" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_TS</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gac023c15e8f6256fb1050ad85ef0a34b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -863,8 +921,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="178" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1240" bodyend="1243"/>
-        <references refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1044" endline="1103">ToggleTextBox</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="192" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1274" bodyend="1277"/>
+        <references refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1078" endline="1137">ToggleTextBox</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceae937307bc58d33519881b7c7c1504b8d" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_ACT</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga17fa80177e2ebb6a2ded6989a2bcc31d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -883,7 +941,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="180" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1245" bodyend="1274"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="194" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1279" bodyend="1308"/>
         <references refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" compoundref="dc/df3/MutFrame_8cpp" startline="119">mutaborGUI::LogicOn</references>
         <references refid="df/dd1/group__GUI_1ga62f1f5e2647acaa8ffec50da588efe2b" compoundref="dc/df3/MutFrame_8cpp" startline="117">mutaborGUI::OWM</references>
         <references refid="df/dd1/group__GUI_1ga80c3080d0917e2078ecd401c6e4ad33a" compoundref="d0/d68/mhDefs_8h" startline="144">STUBC</references>
@@ -904,7 +962,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="182" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1276" bodyend="1304"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="196" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1310" bodyend="1338"/>
         <references refid="df/dd1/group__GUI_1ga23f4645d6693c0a2b3fc0e29ca79a3d3" compoundref="dc/df3/MutFrame_8cpp" startline="118">mutaborGUI::CAW</references>
         <references refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" compoundref="dc/df3/MutFrame_8cpp" startline="119">mutaborGUI::LogicOn</references>
         <references refid="df/dd1/group__GUI_1ga80c3080d0917e2078ecd401c6e4ad33a" compoundref="d0/d68/mhDefs_8h" startline="144">STUBC</references>
@@ -924,11 +982,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="184" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1306" bodyend="1311"/>
-        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
-        <references refid="db/d94/namespacemutaborGUI_1a745c67aebc06f39e9e563db7f2d4dee2" compoundref="d5/df7/GUIBoxData_8h" startline="370" endline="372">mutaborGUI::GetCurrentBox</references>
-        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="307" endline="310">mutaborGUI::ToGUIBase</references>
-        <references refid="df/d08/classmutaborGUI_1_1BoxData_1a2f3d064c29331dbf1caaa81c95ba36a6" compoundref="d5/df7/GUIBoxData_8h" startline="112" endline="114">mutaborGUI::BoxData::WantKeyWindow</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="198" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1340" bodyend="1362"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+        <references refid="d5/dee/group__route_1gaac7f20b287fc3a75e8c2f477a7a87884" compoundref="de/d0f/Box_8h" startline="204" endline="206">mutabor::BoxClass::get_routefile_id</references>
+        <references refid="db/d94/namespacemutaborGUI_1a745c67aebc06f39e9e563db7f2d4dee2" compoundref="d5/df7/GUIBoxData_8h" startline="323" endline="325">mutaborGUI::GetCurrentBox</references>
+        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="260" endline="263">mutaborGUI::ToGUIBase</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1a2f3d064c29331dbf1caaa81c95ba36a6" compoundref="d5/df7/GUIBoxData_8h" startline="109" endline="111">mutaborGUI::BoxData::WantKeyWindow</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gafba0582bd53b3d6cd5da2f23baf0113c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -945,11 +1004,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="186" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1313" bodyend="1318"/>
-        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
-        <references refid="db/d94/namespacemutaborGUI_1a745c67aebc06f39e9e563db7f2d4dee2" compoundref="d5/df7/GUIBoxData_8h" startline="370" endline="372">mutaborGUI::GetCurrentBox</references>
-        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="307" endline="310">mutaborGUI::ToGUIBase</references>
-        <references refid="df/d08/classmutaborGUI_1_1BoxData_1a794008e16f0266b85708b349122a804f" compoundref="d5/df7/GUIBoxData_8h" startline="123" endline="125">mutaborGUI::BoxData::WantTonesystemWindow</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="200" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1364" bodyend="1369"/>
+        <references refid="db/d94/namespacemutaborGUI_1a745c67aebc06f39e9e563db7f2d4dee2" compoundref="d5/df7/GUIBoxData_8h" startline="323" endline="325">mutaborGUI::GetCurrentBox</references>
+        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="260" endline="263">mutaborGUI::ToGUIBase</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1a794008e16f0266b85708b349122a804f" compoundref="d5/df7/GUIBoxData_8h" startline="120" endline="122">mutaborGUI::BoxData::WantTonesystemWindow</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga7eafc0dfa6d9af87d31b98cc3a994bed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -966,11 +1024,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="188" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1320" bodyend="1325"/>
-        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
-        <references refid="db/d94/namespacemutaborGUI_1a745c67aebc06f39e9e563db7f2d4dee2" compoundref="d5/df7/GUIBoxData_8h" startline="370" endline="372">mutaborGUI::GetCurrentBox</references>
-        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="307" endline="310">mutaborGUI::ToGUIBase</references>
-        <references refid="df/d08/classmutaborGUI_1_1BoxData_1aec62ec4dcdb53aaf5361454e48599b63" compoundref="d5/df7/GUIBoxData_8h" startline="134" endline="136">mutaborGUI::BoxData::WantActionsWindow</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="202" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1371" bodyend="1376"/>
+        <references refid="db/d94/namespacemutaborGUI_1a745c67aebc06f39e9e563db7f2d4dee2" compoundref="d5/df7/GUIBoxData_8h" startline="323" endline="325">mutaborGUI::GetCurrentBox</references>
+        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="260" endline="263">mutaborGUI::ToGUIBase</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1aec62ec4dcdb53aaf5361454e48599b63" compoundref="d5/df7/GUIBoxData_8h" startline="131" endline="133">mutaborGUI::BoxData::WantActionsWindow</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga96333bb76a3308c4a3bcb8d45e58fb86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -987,7 +1044,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="190" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1327" bodyend="1330"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="204" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1378" bodyend="1381"/>
         <references refid="df/dd1/group__GUI_1ga62f1f5e2647acaa8ffec50da588efe2b" compoundref="dc/df3/MutFrame_8cpp" startline="117">mutaborGUI::OWM</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gacdb81065ff9f819eabab9053d558e7de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1005,7 +1062,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="192" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1332" bodyend="1335"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="206" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1383" bodyend="1386"/>
         <references refid="df/dd1/group__GUI_1ga23f4645d6693c0a2b3fc0e29ca79a3d3" compoundref="dc/df3/MutFrame_8cpp" startline="118">mutaborGUI::CAW</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga5b297b8c5bd4317759acc98a1417dfa4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1024,9 +1081,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="195" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1536" bodyend="1541"/>
-        <references refid="df/dd1/group__GUI_1gac8ac8a268e19dced35d4feb396dfc73a" compoundref="dd/db5/MutFrame_8h" startline="268" endline="280">repaint_route</references>
-        <references refid="df/dd1/group__GUI_1ga7b08d9c48c92842846fd402b494fe8a5" compoundref="dc/df3/MutFrame_8cpp" startline="1518" endline="1533">StopInDev</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="209" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1587" bodyend="1592"/>
+        <references refid="df/dd1/group__GUI_1gac8ac8a268e19dced35d4feb396dfc73a" compoundref="dd/db5/MutFrame_8h" startline="284" endline="296">repaint_route</references>
+        <references refid="df/dd1/group__GUI_1ga7b08d9c48c92842846fd402b494fe8a5" compoundref="dc/df3/MutFrame_8cpp" startline="1569" endline="1584">StopInDev</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga5a4513e94b9462c378e6cd73d87e2d1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1044,16 +1101,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="197" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1543" bodyend="1570"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="211" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1594" bodyend="1621"/>
         <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
-        <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a15bed87c5a0ef8e7f20b5a9d8fa53867" compoundref="d9/d6e/StatusBar_8h" startline="165" endline="196">mutaborGUI::StatusBar::AllSetPlaystate</references>
-        <references refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="699" endline="831">CmDoActivate</references>
+        <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a15bed87c5a0ef8e7f20b5a9d8fa53867" compoundref="d9/d6e/StatusBar_8h" startline="165" endline="195">mutaborGUI::StatusBar::AllSetPlaystate</references>
+        <references refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="714" endline="857">CmDoActivate</references>
         <references refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" compoundref="d1/dca/timing_8cpp" startline="43">mutabor::CurrentTime</references>
-        <references refid="d7/dda/classmutabor_1_1CurrentTimer_1a14c65fde17d030dfd6b5380573475ca4" compoundref="db/d41/timing_8h" startline="475" endline="475">mutabor::CurrentTimer::isRealtime</references>
+        <references refid="d7/dda/classmutabor_1_1CurrentTimer_1a14c65fde17d030dfd6b5380573475ca4" compoundref="db/d41/timing_8h" startline="477" endline="477">mutabor::CurrentTimer::isRealtime</references>
         <references refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" compoundref="dc/df3/MutFrame_8cpp" startline="119">mutaborGUI::LogicOn</references>
         <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a6299a024e3aed702b368e41d4def15eba5d7ce8179fcbb755ee59673d35b66c55" compoundref="d9/d6e/StatusBar_8h" startline="65">mutaborGUI::StatusBar::Play</references>
-        <references refid="df/dd1/group__GUI_1gac8ac8a268e19dced35d4feb396dfc73a" compoundref="dd/db5/MutFrame_8h" startline="268" endline="280">repaint_route</references>
-        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <references refid="df/dd1/group__GUI_1gac8ac8a268e19dced35d4feb396dfc73a" compoundref="dd/db5/MutFrame_8h" startline="284" endline="296">repaint_route</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="151">TRACEC</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gaa50bd73abb3fd23ae2e9e4120eb036ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1071,11 +1128,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="199" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1572" bodyend="1586"/>
-        <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a15bed87c5a0ef8e7f20b5a9d8fa53867" compoundref="d9/d6e/StatusBar_8h" startline="165" endline="196">mutaborGUI::StatusBar::AllSetPlaystate</references>
-        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8" compoundref="de/d05/Device_8h" startline="78">mutabor::DevicePlay</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="213" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1623" bodyend="1637"/>
+        <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a15bed87c5a0ef8e7f20b5a9d8fa53867" compoundref="d9/d6e/StatusBar_8h" startline="165" endline="195">mutaborGUI::StatusBar::AllSetPlaystate</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8" compoundref="de/d05/Device_8h" startline="79">mutabor::DevicePlay</references>
         <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a6299a024e3aed702b368e41d4def15ebaa08b58f6fffde4c6f3012198b4c317c8" compoundref="d9/d6e/StatusBar_8h" startline="64">mutaborGUI::StatusBar::Pause</references>
-        <references refid="df/dd1/group__GUI_1gac8ac8a268e19dced35d4feb396dfc73a" compoundref="dd/db5/MutFrame_8h" startline="268" endline="280">repaint_route</references>
+        <references refid="df/dd1/group__GUI_1gac8ac8a268e19dced35d4feb396dfc73a" compoundref="dd/db5/MutFrame_8h" startline="284" endline="296">repaint_route</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga7b08d9c48c92842846fd402b494fe8a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1088,13 +1145,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="201" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1518" bodyend="1533"/>
-        <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a15bed87c5a0ef8e7f20b5a9d8fa53867" compoundref="d9/d6e/StatusBar_8h" startline="165" endline="196">mutaborGUI::StatusBar::AllSetPlaystate</references>
-        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a86530be4e7e984649e049f17857b8e5e" compoundref="de/d05/Device_8h" startline="79">mutabor::DevicePause</references>
-        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8" compoundref="de/d05/Device_8h" startline="78">mutabor::DevicePlay</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="215" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1569" bodyend="1584"/>
+        <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a15bed87c5a0ef8e7f20b5a9d8fa53867" compoundref="d9/d6e/StatusBar_8h" startline="165" endline="195">mutaborGUI::StatusBar::AllSetPlaystate</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a86530be4e7e984649e049f17857b8e5e" compoundref="de/d05/Device_8h" startline="80">mutabor::DevicePause</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8" compoundref="de/d05/Device_8h" startline="79">mutabor::DevicePlay</references>
         <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a6299a024e3aed702b368e41d4def15ebad405c9068f9a69f01af42b2741cefc34" compoundref="d9/d6e/StatusBar_8h" startline="63">mutaborGUI::StatusBar::Stop</references>
-        <referencedby refid="df/dd1/group__GUI_1ga5b297b8c5bd4317759acc98a1417dfa4" compoundref="dc/df3/MutFrame_8cpp" startline="1536" endline="1541">CmInDevStop</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gaa1bf774bdb8339a85aedd19958ec5e2e" compoundref="dc/df3/MutFrame_8cpp" startline="912" endline="943">DoStop</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga5b297b8c5bd4317759acc98a1417dfa4" compoundref="dc/df3/MutFrame_8cpp" startline="1587" endline="1592">CmInDevStop</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaa1bf774bdb8339a85aedd19958ec5e2e" compoundref="dc/df3/MutFrame_8cpp" startline="944" endline="975">DoStop</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga0f5848e23c37010dadb840fd65bca607" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1111,10 +1168,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="203" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1588" bodyend="1602"/>
-        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a86530be4e7e984649e049f17857b8e5e" compoundref="de/d05/Device_8h" startline="79">mutabor::DevicePause</references>
-        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8" compoundref="de/d05/Device_8h" startline="78">mutabor::DevicePlay</references>
-        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" compoundref="de/d05/Device_8h" startline="89">mutabor::DTMidiFile</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="217" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1639" bodyend="1653"/>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a86530be4e7e984649e049f17857b8e5e" compoundref="de/d05/Device_8h" startline="80">mutabor::DevicePause</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8" compoundref="de/d05/Device_8h" startline="79">mutabor::DevicePlay</references>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" compoundref="de/d05/Device_8h" startline="91">mutabor::DTMidiFile</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gaf363a681cc899333fe32177dae463415" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1131,11 +1188,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="205" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1604" bodyend="1635"/>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
-        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a86530be4e7e984649e049f17857b8e5e" compoundref="de/d05/Device_8h" startline="79">mutabor::DevicePause</references>
-        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649" compoundref="de/d05/Device_8h" startline="77">mutabor::DeviceStop</references>
-        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" compoundref="de/d05/Device_8h" startline="89">mutabor::DTMidiFile</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="219" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1655" bodyend="1686"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a86530be4e7e984649e049f17857b8e5e" compoundref="de/d05/Device_8h" startline="80">mutabor::DevicePause</references>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649" compoundref="de/d05/Device_8h" startline="78">mutabor::DeviceStop</references>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" compoundref="de/d05/Device_8h" startline="91">mutabor::DTMidiFile</references>
         <references refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" compoundref="dc/df3/MutFrame_8cpp" startline="119">mutaborGUI::LogicOn</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga01656aed48f351dbd0b002ff70580daa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1153,9 +1210,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="207" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1637" bodyend="1668"/>
-        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8" compoundref="de/d05/Device_8h" startline="78">mutabor::DevicePlay</references>
-        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" compoundref="de/d05/Device_8h" startline="89">mutabor::DTMidiFile</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="221" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1688" bodyend="1719"/>
+        <references refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8" compoundref="de/d05/Device_8h" startline="79">mutabor::DevicePlay</references>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" compoundref="de/d05/Device_8h" startline="91">mutabor::DTMidiFile</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gac7e3db117f7d92938827e3383cdb279b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1172,7 +1229,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="209" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1670" bodyend="1673"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="223" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1721" bodyend="1724"/>
         <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
         <references refid="dc/df3/MutFrame_8cpp_1a237e4d19d7046d08c4cc00a45808feaf" compoundref="dc/df3/MutFrame_8cpp" startline="109">APPNAME</references>
       </memberdef>
@@ -1192,7 +1249,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="212" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1676" bodyend="1679"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="226" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1727" bodyend="1730"/>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gae0acf3a3914c5e7e16b66e8bddf647cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1209,8 +1266,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="217" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1692" bodyend="1696"/>
-        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="334">client</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="231" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1743" bodyend="1747"/>
+        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="343">client</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga18533c180c915b25abc319b329241691" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1227,7 +1284,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="219" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1705" bodyend="1708"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="233" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1756" bodyend="1759"/>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga82f6d2b897a39f36707456252f9bd516" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>wxAuiDockArt *</type>
@@ -1240,8 +1297,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="221" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1698" bodyend="1701"/>
-        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="326">auimanager</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="235" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1749" bodyend="1752"/>
+        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="342">auimanager</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga48b49c447803e118c718351890df5d1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1254,8 +1311,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="226" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1472" bodyend="1487"/>
-        <referencedby refid="df/dd1/group__GUI_1gae2ff4873b386b189c8d668877479aa3c" compoundref="dc/df3/MutFrame_8cpp" startline="497" endline="523">OnCloseWindow</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="240" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1523" bodyend="1538"/>
+        <referencedby refid="df/dd1/group__GUI_1gae2ff4873b386b189c8d668877479aa3c" compoundref="dc/df3/MutFrame_8cpp" startline="512" endline="538">OnCloseWindow</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gab7b127698096bd2c8082d45f6097eaba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1267,9 +1324,9 @@
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
-<para><xrefsect id="dd/da0/todo_1_todo000027"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>implement this function </para></xrefdescription></xrefsect></para>        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="228" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1489" bodyend="1514"/>
-        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1503">IMPLEMENT_APP</referencedby>
+<para><xrefsect id="dd/da0/todo_1_todo000034"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>implement this function </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="242" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1540" bodyend="1565"/>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1502">IMPLEMENT_APP</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gab33eb3253f68355c6778c0fcd6fee21a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1286,12 +1343,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="230" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1017" bodyend="1042"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="244" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1051" bodyend="1076"/>
         <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
-        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="326">auimanager</references>
-        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="334">client</references>
-        <references refid="dd/d65/classmutaborGUI_1_1MutLogicWnd_1a7f6c8d2cac18ff33e0aeaff64b7db0bf" compoundref="df/d11/MutLogicWnd_8cpp" startline="374" endline="378">mutaborGUI::MutLogicWnd::MakeTitle</references>
-        <references refid="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" compoundref="dc/df3/MutFrame_8cpp" startline="1814" endline="1860">UpdateBoxMenu</references>
+        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="342">auimanager</references>
+        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="343">client</references>
+        <references refid="dd/d65/classmutaborGUI_1_1MutLogicWnd_1a7f6c8d2cac18ff33e0aeaff64b7db0bf" compoundref="df/d11/MutLogicWnd_8cpp" startline="265" endline="269">mutaborGUI::MutLogicWnd::MakeTitle</references>
+        <references refid="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" compoundref="dc/df3/MutFrame_8cpp" startline="1872" endline="1992">UpdateBoxMenu</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea4c2189084175f9895cc08b5fbfa1aaac" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_ROUTE</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1309,25 +1366,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="232" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1044" bodyend="1103"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="246" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1078" bodyend="1137"/>
         <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
-        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="336">ActiveWindow</references>
-        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
-        <references refid="df/dd1/group__GUI_1ga53b1990e041472bf1266f54c164ad190" compoundref="dd/db5/MutFrame_8h" startline="292" endline="309">CloseClientWindow</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
-        <references refid="df/d08/classmutaborGUI_1_1BoxData_1ae64c30ac35e87ed79add141a2c860977" compoundref="d5/df7/GUIBoxData_8h" startline="142" endline="144">mutaborGUI::BoxData::GetActionsWindow</references>
-        <references refid="db/d94/namespacemutaborGUI_1a745c67aebc06f39e9e563db7f2d4dee2" compoundref="d5/df7/GUIBoxData_8h" startline="370" endline="372">mutaborGUI::GetCurrentBox</references>
-        <references refid="df/d08/classmutaborGUI_1_1BoxData_1a300e019613d78652e08d6adfa02b31da" compoundref="d5/df7/GUIBoxData_8h" startline="120" endline="122">mutaborGUI::BoxData::GetKeyWindow</references>
-        <references refid="df/d08/classmutaborGUI_1_1BoxData_1adfd56a8e8aa8ac6418b81975c0e39089" compoundref="d5/df7/GUIBoxData_8h" startline="131" endline="133">mutaborGUI::BoxData::GetTonesystemWindow</references>
-        <references refid="df/dd1/group__GUI_1ga7ad6b2305e866ae3936c307f5f9f4c04" compoundref="da/d72/MutChild_8cpp" startline="228" endline="264">mutaborGUI::IsOpen</references>
+        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="345">ActiveWindow</references>
+        <references refid="df/dd1/group__GUI_1ga53b1990e041472bf1266f54c164ad190" compoundref="dd/db5/MutFrame_8h" startline="308" endline="325">CloseClientWindow</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1ae64c30ac35e87ed79add141a2c860977" compoundref="d5/df7/GUIBoxData_8h" startline="139" endline="141">mutaborGUI::BoxData::GetActionsWindow</references>
+        <references refid="db/d94/namespacemutaborGUI_1a745c67aebc06f39e9e563db7f2d4dee2" compoundref="d5/df7/GUIBoxData_8h" startline="323" endline="325">mutaborGUI::GetCurrentBox</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1a300e019613d78652e08d6adfa02b31da" compoundref="d5/df7/GUIBoxData_8h" startline="117" endline="119">mutaborGUI::BoxData::GetKeyWindow</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1adfd56a8e8aa8ac6418b81975c0e39089" compoundref="d5/df7/GUIBoxData_8h" startline="128" endline="130">mutaborGUI::BoxData::GetTonesystemWindow</references>
+        <references refid="df/dd1/group__GUI_1ga7ad6b2305e866ae3936c307f5f9f4c04" compoundref="da/d72/MutChild_8cpp" startline="265" endline="301">mutaborGUI::IsOpen</references>
         <references refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" compoundref="dc/df3/MutFrame_8cpp" startline="119">mutaborGUI::LogicOn</references>
-        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
-        <references refid="df/dd1/group__GUI_1gad5b0693526e79475688bcb1ea0a679d5" compoundref="dc/df3/MutFrame_8cpp" startline="1152" endline="1228">TextBoxOpen</references>
-        <references refid="df/d08/classmutaborGUI_1_1BoxData_1a2e76be30863725b29fc242878b15527e" compoundref="d5/df7/GUIBoxData_8h" startline="165" endline="168">mutaborGUI::BoxData::ToggleActionsWindow</references>
-        <references refid="df/d08/classmutaborGUI_1_1BoxData_1a2a88814f16a740e122022b6d62f02487" compoundref="d5/df7/GUIBoxData_8h" startline="156" endline="158">mutaborGUI::BoxData::ToggleKeyWindow</references>
-        <references refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1044" endline="1103">ToggleTextBox</references>
-        <references refid="df/d08/classmutaborGUI_1_1BoxData_1acf7342f1d727b39b24a9b0168ae9ed17" compoundref="d5/df7/GUIBoxData_8h" startline="160" endline="163">mutaborGUI::BoxData::ToggleTonesystemWindow</references>
-        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="307" endline="310">mutaborGUI::ToGUIBase</references>
+        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
+        <references refid="df/dd1/group__GUI_1gad5b0693526e79475688bcb1ea0a679d5" compoundref="dc/df3/MutFrame_8cpp" startline="1186" endline="1262">TextBoxOpen</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1a2e76be30863725b29fc242878b15527e" compoundref="d5/df7/GUIBoxData_8h" startline="162" endline="165">mutaborGUI::BoxData::ToggleActionsWindow</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1a2a88814f16a740e122022b6d62f02487" compoundref="d5/df7/GUIBoxData_8h" startline="153" endline="155">mutaborGUI::BoxData::ToggleKeyWindow</references>
+        <references refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1078" endline="1137">ToggleTextBox</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1acf7342f1d727b39b24a9b0168ae9ed17" compoundref="d5/df7/GUIBoxData_8h" startline="157" endline="160">mutaborGUI::BoxData::ToggleTonesystemWindow</references>
+        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="260" endline="263">mutaborGUI::ToGUIBase</references>
         <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceae937307bc58d33519881b7c7c1504b8d" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_ACT</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea1d665d031d51cb0ef5c5ac4d8f4f7921" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_EDIT</references>
@@ -1336,10 +1392,10 @@
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_NULL</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea4c2189084175f9895cc08b5fbfa1aaac" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_ROUTE</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceaae61f5d40072b5edcdc2fc86c21cab88" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_TS</references>
-        <referencedby refid="df/dd1/group__GUI_1gac023c15e8f6256fb1050ad85ef0a34b8" compoundref="dc/df3/MutFrame_8cpp" startline="1240" endline="1243">CmToggleAct</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga30fc9c2bda837473b15c1e92e8a1a6be" compoundref="dc/df3/MutFrame_8cpp" startline="1230" endline="1233">CmToggleKey</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gaadb0580101199ca8cbd0001100008bdd" compoundref="dc/df3/MutFrame_8cpp" startline="1235" endline="1238">CmToggleTS</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1044" endline="1103">ToggleTextBox</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gac023c15e8f6256fb1050ad85ef0a34b8" compoundref="dc/df3/MutFrame_8cpp" startline="1274" endline="1277">CmToggleAct</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga30fc9c2bda837473b15c1e92e8a1a6be" compoundref="dc/df3/MutFrame_8cpp" startline="1264" endline="1267">CmToggleKey</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaadb0580101199ca8cbd0001100008bdd" compoundref="dc/df3/MutFrame_8cpp" startline="1269" endline="1272">CmToggleTS</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1078" endline="1137">ToggleTextBox</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga280eac776bd3847f009c0da3b25565ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1361,11 +1417,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="244" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1106" bodyend="1119"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="258" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1140" bodyend="1153"/>
         <references refid="d9/d7c/group__kernel_1gaedf3113729faf15522da4884cc137733" compoundref="d1/d73/Defs_8h" startline="79">mutUnused</references>
         <references refid="df/dd1/group__GUI_1ga80c3080d0917e2078ecd401c6e4ad33a" compoundref="d0/d68/mhDefs_8h" startline="144">STUBC</references>
-        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="307" endline="310">mutaborGUI::ToGUIBase</references>
-        <referencedby refid="df/dd1/group__GUI_1ga6c92c28ea6b295956f949d6fd95cac5d" compoundref="dd/db5/MutFrame_8h" startline="234" endline="237">BoxWindowsOpen</referencedby>
+        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="260" endline="263">mutaborGUI::ToGUIBase</references>
+        <referencedby refid="df/dd1/group__GUI_1ga6c92c28ea6b295956f949d6fd95cac5d" compoundref="dd/db5/MutFrame_8h" startline="248" endline="251">BoxWindowsOpen</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gaac1a7d32f9f3800a5bfb690a5125e162" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1387,18 +1443,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="245" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1121" bodyend="1148"/>
-        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="326">auimanager</references>
-        <references refid="df/dd1/group__GUI_1ga53b1990e041472bf1266f54c164ad190" compoundref="dd/db5/MutFrame_8h" startline="292" endline="309">CloseClientWindow</references>
-        <references refid="df/d08/classmutaborGUI_1_1BoxData_1ae64c30ac35e87ed79add141a2c860977" compoundref="d5/df7/GUIBoxData_8h" startline="142" endline="144">mutaborGUI::BoxData::GetActionsWindow</references>
-        <references refid="df/d08/classmutaborGUI_1_1BoxData_1a300e019613d78652e08d6adfa02b31da" compoundref="d5/df7/GUIBoxData_8h" startline="120" endline="122">mutaborGUI::BoxData::GetKeyWindow</references>
-        <references refid="df/d08/classmutaborGUI_1_1BoxData_1ae374c75a2de6e38f0fed2ea50a2af2a1" compoundref="d5/df7/GUIBoxData_8h" startline="174" endline="176">mutaborGUI::BoxData::GetLogicWindow</references>
-        <references refid="df/d08/classmutaborGUI_1_1BoxData_1adfd56a8e8aa8ac6418b81975c0e39089" compoundref="d5/df7/GUIBoxData_8h" startline="131" endline="133">mutaborGUI::BoxData::GetTonesystemWindow</references>
-        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="307" endline="310">mutaborGUI::ToGUIBase</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="259" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1155" bodyend="1182"/>
+        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="342">auimanager</references>
+        <references refid="df/dd1/group__GUI_1ga53b1990e041472bf1266f54c164ad190" compoundref="dd/db5/MutFrame_8h" startline="308" endline="325">CloseClientWindow</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1ae64c30ac35e87ed79add141a2c860977" compoundref="d5/df7/GUIBoxData_8h" startline="139" endline="141">mutaborGUI::BoxData::GetActionsWindow</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1a300e019613d78652e08d6adfa02b31da" compoundref="d5/df7/GUIBoxData_8h" startline="117" endline="119">mutaborGUI::BoxData::GetKeyWindow</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1ae374c75a2de6e38f0fed2ea50a2af2a1" compoundref="d5/df7/GUIBoxData_8h" startline="171" endline="173">mutaborGUI::BoxData::GetLogicWindow</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1adfd56a8e8aa8ac6418b81975c0e39089" compoundref="d5/df7/GUIBoxData_8h" startline="128" endline="130">mutaborGUI::BoxData::GetTonesystemWindow</references>
+        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="260" endline="263">mutaborGUI::ToGUIBase</references>
         <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
-        <references refid="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" compoundref="dc/df3/MutFrame_8cpp" startline="1814" endline="1860">UpdateBoxMenu</references>
+        <references refid="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" compoundref="dc/df3/MutFrame_8cpp" startline="1872" endline="1992">UpdateBoxMenu</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea4c2189084175f9895cc08b5fbfa1aaac" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_ROUTE</references>
-        <referencedby refid="df/dd1/group__GUI_1gaf19aef18c229953beb7ba146dd6386ee" compoundref="dd/db5/MutFrame_8h" startline="239" endline="242">BoxWindowsClose</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaf19aef18c229953beb7ba146dd6386ee" compoundref="dd/db5/MutFrame_8h" startline="253" endline="256">BoxWindowsClose</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gad5b0693526e79475688bcb1ea0a679d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1424,20 +1480,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="247" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1152" bodyend="1228"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="261" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1186" bodyend="1262"/>
         <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
         <references refid="df/dd1/group__GUI_1ga381c4b3a1684d0fd1db89edc9ae3490e" compoundref="dc/df3/MutFrame_8cpp" startline="114">mutaborGUI::asTS</references>
-        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="326">auimanager</references>
+        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="342">auimanager</references>
         <references refid="df/dd1/group__GUI_1ga23f4645d6693c0a2b3fc0e29ca79a3d3" compoundref="dc/df3/MutFrame_8cpp" startline="118">mutaborGUI::CAW</references>
-        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="334">client</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
-        <references refid="df/dd1/group__GUI_1ga57d4206b3b320a19253627c553bb9e73" compoundref="df/d3c/MutTextBox_8cpp" startline="359" endline="366">MutTextBox::GetAllActions</references>
-        <references refid="df/dd1/group__GUI_1ga258706178cefc7956890d984d3921b8d" compoundref="df/d3c/MutTextBox_8cpp" startline="368" endline="375">MutTextBox::GetBoxActions</references>
-        <references refid="df/dd1/group__GUI_1gaf4c49c1e3274833700ecb454d72c2b96" compoundref="df/d3c/MutTextBox_8cpp" startline="249" endline="292">MutTextBox::GetKeys</references>
+        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="343">client</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+        <references refid="df/dd1/group__GUI_1ga57d4206b3b320a19253627c553bb9e73" compoundref="df/d3c/MutTextBox_8cpp" startline="366" endline="373">MutTextBox::GetAllActions</references>
+        <references refid="df/dd1/group__GUI_1ga258706178cefc7956890d984d3921b8d" compoundref="df/d3c/MutTextBox_8cpp" startline="375" endline="382">MutTextBox::GetBoxActions</references>
+        <references refid="df/dd1/group__GUI_1gaf4c49c1e3274833700ecb454d72c2b96" compoundref="df/d3c/MutTextBox_8cpp" startline="256" endline="299">MutTextBox::GetKeys</references>
         <references refid="d6/deb/classMutTextBox_1a0609465680f5fb63dfedfa503f39fed3" compoundref="de/d3b/MutTextBox_8h" startline="156" endline="159">MutTextBox::GetKind</references>
-        <references refid="df/dd1/group__GUI_1ga4b4fe68712431b7ed40d699cd1b9155f" compoundref="df/d3c/MutTextBox_8cpp" startline="294" endline="357">MutTextBox::GetToneSystem</references>
-        <references refid="d9/d7a/classmutaborGUI_1_1MutChild_1a168e8b6a612c129526281f21b44bb3c0" compoundref="d2/df9/MutChild_8h" startline="69" endline="71">mutaborGUI::MutChild::MakeTitle</references>
-        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="df/dd1/group__GUI_1ga4b4fe68712431b7ed40d699cd1b9155f" compoundref="df/d3c/MutTextBox_8cpp" startline="301" endline="364">MutTextBox::GetToneSystem</references>
+        <references refid="d9/d7a/classmutaborGUI_1_1MutChild_1a168e8b6a612c129526281f21b44bb3c0" compoundref="d2/df9/MutChild_8h" startline="70" endline="72">mutaborGUI::MutChild::MakeTitle</references>
+        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
         <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542aeb2ddcbaa727016dcb5229fc6dacc23f" compoundref="de/d0f/Box_8h" startline="113">mutabor::NoBox</references>
         <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceae937307bc58d33519881b7c7c1504b8d" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_ACT</references>
@@ -1447,8 +1503,8 @@
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_NULL</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea4c2189084175f9895cc08b5fbfa1aaac" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_ROUTE</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceaae61f5d40072b5edcdc2fc86c21cab88" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_TS</references>
-        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1ab26b4050180fd5202231f3588d3faf36" compoundref="d2/dd3/GUIBoxData_8cpp" startline="277" endline="305">mutaborGUI::BoxData::DoOpen</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1044" endline="1103">ToggleTextBox</referencedby>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1ab26b4050180fd5202231f3588d3faf36" compoundref="d2/dd3/GUIBoxData_8cpp" startline="306" endline="334">mutaborGUI::BoxData::DoOpen</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1078" endline="1137">ToggleTextBox</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga0184b1745c93fbcf4a86ce9daf067b43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1461,7 +1517,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="251" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1337" bodyend="1354"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="265" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1388" bodyend="1405"/>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga4616e79face5f49c0e18f267b2bc35f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1474,7 +1530,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="253" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1356" bodyend="1360"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="267" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1407" bodyend="1411"/>
         <references refid="db/d94/namespacemutaborGUI_1aed25a2c852848dff7eea71c81fea2401" compoundref="dc/df3/MutFrame_8cpp" startline="120">mutaborGUI::ChildToClose</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gae1c89fe3498f15f1d499e98d6cc26866" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1501,14 +1557,14 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="255" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1747" bodyend="1812"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="269" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1798" bodyend="1863"/>
         <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
-        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="326">auimanager</references>
-        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
-        <references refid="df/dd1/group__GUI_1ga53b1990e041472bf1266f54c164ad190" compoundref="dd/db5/MutFrame_8h" startline="292" endline="309">CloseClientWindow</references>
-        <references refid="d9/d7c/group__kernel_1ga62f2752bfa77e306c30a7f4881965da0" compoundref="d1/dce/box_8cpp" startline="47">minimal_box_used</references>
-        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
+        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="342">auimanager</references>
+        <references refid="df/dd1/group__GUI_1ga53b1990e041472bf1266f54c164ad190" compoundref="dd/db5/MutFrame_8h" startline="308" endline="325">CloseClientWindow</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1acc64dc72a70c14ccc41cac795aabd307" compoundref="d1/dce/box_8cpp" startline="47">mutabor::hidden::minimal_box_used</references>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="151">TRACEC</references>
         <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+        <references refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a152e50d57e4cf161793379f2a786c764" compoundref="dc/d19/box_8h" startline="119">mutabor::hidden::mutabor_box_type::userdata</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceae937307bc58d33519881b7c7c1504b8d" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_ACT</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea1d665d031d51cb0ef5c5ac4d8f4f7921" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_EDIT</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceadf9ce473418fb17b331ef210dd6d6ae5" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_KEY</references>
@@ -1516,6 +1572,21 @@
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea8f0adc331f661c84f56895e900ad4705" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_NULL</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea4c2189084175f9895cc08b5fbfa1aaac" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_ROUTE</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1ceaae61f5d40072b5edcdc2fc86c21cab88" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_TS</references>
+      </memberdef>
+      <memberdef kind="function" id="df/dd1/group__GUI_1ga46362f403222b9caa889955f64806842" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mutaborGUI::MutFrame::Destroy</definition>
+        <argsstring>()</argsstring>
+        <name>Destroy</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="271" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1865" bodyend="1870"/>
+        <references refid="df/dd1/group__GUI_1ga13cda4120aac0afe3585f8b80def467d" compoundref="dd/db5/MutFrame_8h" startline="347">boxCommandIds</references>
+        <referencedby refid="df/dd1/group__GUI_1gae2ff4873b386b189c8d668877479aa3c" compoundref="dc/df3/MutFrame_8cpp" startline="512" endline="538">OnCloseWindow</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga5b947133233083a4b0a5968aaeee5f04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>wxRect</type>
@@ -1528,9 +1599,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="257" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1712" bodyend="1739"/>
-        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="146">TRACEC</references>
-        <referencedby refid="df/dd1/group__GUI_1ga3fed5adaa39f791dcc143e5583e6bfec" compoundref="dc/df3/MutFrame_8cpp" startline="302" endline="350">MutFrame</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="273" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1763" bodyend="1790"/>
+        <references refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" compoundref="de/de1/mutDebug_8h" startline="151">TRACEC</references>
+        <referencedby refid="df/dd1/group__GUI_1ga3fed5adaa39f791dcc143e5583e6bfec" compoundref="dc/df3/MutFrame_8cpp" startline="309" endline="357">MutFrame</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gaf8ced57287d870cf59d79766ba10c431" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -1543,8 +1614,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="260" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="260" bodyend="263"/>
-        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="334">client</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="276" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="276" bodyend="279"/>
+        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="343">client</references>
         <referencedby refid="de/d4d/classmutaborGUI_1_1MutApp_1a26c0f93b277560c1289cc4cbb5422f21" compoundref="db/dc1/MutApp_8h" startline="262" endline="269">mutaborGUI::MutApp::MustOpenFrame</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1558,20 +1629,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="265" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1814" bodyend="1860"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="281" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1872" bodyend="1992"/>
         <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
-        <references refid="df/dd1/group__GUI_1ga13cda4120aac0afe3585f8b80def467d" compoundref="dd/db5/MutFrame_8h" startline="337">boxCommandIds</references>
-        <references refid="df/dd1/group__GUI_1gaefd099e8785db34efe528c39942f5875" compoundref="dc/df3/MutFrame_8cpp" startline="833" endline="841">ClearMenuItem</references>
+        <references refid="df/dd1/group__GUI_1ga13cda4120aac0afe3585f8b80def467d" compoundref="dd/db5/MutFrame_8h" startline="347">boxCommandIds</references>
+        <references refid="df/dd1/group__GUI_1gaefd099e8785db34efe528c39942f5875" compoundref="dc/df3/MutFrame_8cpp" startline="859" endline="867">ClearMenuItem</references>
+        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a3c451dffd4d31b10f1371f3778531ab8" compoundref="d9/d64/Mutabor_8rh" startline="74">mutaborGUI::CM_ACTIVATE</references>
+        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34aed3aef3da42fd68c649bc57f62af1ba3" compoundref="d9/d64/Mutabor_8rh" startline="85">mutaborGUI::CM_BOX</references>
         <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a4f65cfc9725dd23d8d35c823dcbd7375" compoundref="d9/d64/Mutabor_8rh" startline="84">mutaborGUI::CM_SELECTBOX</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
-        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
-        <references refid="df/dd1/group__GUI_1ga5f8058ce90acb4d2325b5a30082d66d8" compoundref="dc/df3/MutFrame_8cpp" startline="877" endline="910">RaiseLogic</references>
-        <referencedby refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="699" endline="831">CmDoActivate</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gaf462ef9b546ada58aab30393ba563ec8" compoundref="dc/df3/MutFrame_8cpp" startline="980" endline="1013">CmRoutes</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gaac1a7d32f9f3800a5bfb690a5125e162" compoundref="dc/df3/MutFrame_8cpp" startline="1121" endline="1148">DoBoxWindowsClose</referencedby>
-        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1a684ed3207623117eeab3befa6fa83dfb" compoundref="d2/dd3/GUIBoxData_8cpp" startline="307" endline="345">mutaborGUI::BoxData::DoClose</referencedby>
-        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1ab26b4050180fd5202231f3588d3faf36" compoundref="d2/dd3/GUIBoxData_8cpp" startline="277" endline="305">mutaborGUI::BoxData::DoOpen</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gab33eb3253f68355c6778c0fcd6fee21a" compoundref="dc/df3/MutFrame_8cpp" startline="1017" endline="1042">LogicWinOpen</referencedby>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+        <references refid="d5/dee/group__route_1gac71327653b27bcbd7f4eee505629e847" compoundref="de/d0f/Box_8h" startline="262" endline="264">mutabor::BoxClass::GetBoxList</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1a849dfad864076302ee0d8bfecd6746cb" compoundref="d5/df7/GUIBoxData_8h" startline="211" endline="213">mutaborGUI::BoxData::GetCurrentBox</references>
+        <references refid="df/d08/classmutaborGUI_1_1BoxData_1ae374c75a2de6e38f0fed2ea50a2af2a1" compoundref="d5/df7/GUIBoxData_8h" startline="171" endline="173">mutaborGUI::BoxData::GetLogicWindow</references>
+        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
+        <references refid="df/dd1/group__GUI_1ga5f8058ce90acb4d2325b5a30082d66d8" compoundref="dc/df3/MutFrame_8cpp" startline="903" endline="942">RaiseLogic</references>
+        <references refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="260" endline="263">mutaborGUI::ToGUIBase</references>
+        <referencedby refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="714" endline="857">CmDoActivate</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaf462ef9b546ada58aab30393ba563ec8" compoundref="dc/df3/MutFrame_8cpp" startline="1014" endline="1047">CmRoutes</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaac1a7d32f9f3800a5bfb690a5125e162" compoundref="dc/df3/MutFrame_8cpp" startline="1155" endline="1182">DoBoxWindowsClose</referencedby>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1a684ed3207623117eeab3befa6fa83dfb" compoundref="d2/dd3/GUIBoxData_8cpp" startline="336" endline="374">mutaborGUI::BoxData::DoClose</referencedby>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1ab26b4050180fd5202231f3588d3faf36" compoundref="d2/dd3/GUIBoxData_8cpp" startline="306" endline="334">mutaborGUI::BoxData::DoOpen</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gab33eb3253f68355c6778c0fcd6fee21a" compoundref="dc/df3/MutFrame_8cpp" startline="1051" endline="1076">LogicWinOpen</referencedby>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1ae4571bdbcb0bc425d2d9ef8f88a5c605" compoundref="d2/dd3/GUIBoxData_8cpp" startline="75" endline="130">mutaborGUI::BoxData::set_routefile_id</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gaf9255d2d0dba0775d76160c5f5549ee9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1584,9 +1662,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="266" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1862" bodyend="1869"/>
-        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="336">ActiveWindow</references>
-        <referencedby refid="df/dd1/group__GUI_1ga5f8058ce90acb4d2325b5a30082d66d8" compoundref="dc/df3/MutFrame_8cpp" startline="877" endline="910">RaiseLogic</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="282" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.cpp" bodystart="1994" bodyend="2001"/>
+        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="345">ActiveWindow</references>
+        <referencedby refid="df/dd1/group__GUI_1ga5f8058ce90acb4d2325b5a30082d66d8" compoundref="dc/df3/MutFrame_8cpp" startline="903" endline="942">RaiseLogic</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga9fae70164c8a1f151e948accede55300" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -1603,9 +1681,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="282" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="282" bodyend="282"/>
-        <references refid="df/dd1/group__GUI_1ga94ce1d783318194a673567dab4b82739" compoundref="dd/db5/MutFrame_8h" startline="314">filemenu</references>
-        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1503">IMPLEMENT_APP</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="298" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="298" bodyend="298"/>
+        <references refid="df/dd1/group__GUI_1ga94ce1d783318194a673567dab4b82739" compoundref="dd/db5/MutFrame_8h" startline="330">filemenu</references>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1502">IMPLEMENT_APP</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga92579516ef934c53592e1f06a679a015" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -1622,8 +1700,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="283" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="283" bodyend="283"/>
-        <references refid="df/dd1/group__GUI_1ga599ad88292d54088557bbd9cded3d572" compoundref="dd/db5/MutFrame_8h" startline="313">editmenu</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="299" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="299" bodyend="299"/>
+        <references refid="df/dd1/group__GUI_1ga599ad88292d54088557bbd9cded3d572" compoundref="dd/db5/MutFrame_8h" startline="329">editmenu</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga53b1990e041472bf1266f54c164ad190" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -1645,14 +1723,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="292" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="292" bodyend="309"/>
-        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="326">auimanager</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG</references>
-        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
-        <referencedby refid="df/dd1/group__GUI_1gae1c89fe3498f15f1d499e98d6cc26866" compoundref="dc/df3/MutFrame_8cpp" startline="1747" endline="1812">CloseAll</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gaac1a7d32f9f3800a5bfb690a5125e162" compoundref="dc/df3/MutFrame_8cpp" startline="1121" endline="1148">DoBoxWindowsClose</referencedby>
-        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1a684ed3207623117eeab3befa6fa83dfb" compoundref="d2/dd3/GUIBoxData_8cpp" startline="307" endline="345">mutaborGUI::BoxData::DoClose</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1044" endline="1103">ToggleTextBox</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="308" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="308" bodyend="325"/>
+        <references refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" compoundref="dd/db5/MutFrame_8h" startline="342">auimanager</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
+        <referencedby refid="df/dd1/group__GUI_1gae1c89fe3498f15f1d499e98d6cc26866" compoundref="dc/df3/MutFrame_8cpp" startline="1798" endline="1863">CloseAll</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaac1a7d32f9f3800a5bfb690a5125e162" compoundref="dc/df3/MutFrame_8cpp" startline="1155" endline="1182">DoBoxWindowsClose</referencedby>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1a684ed3207623117eeab3befa6fa83dfb" compoundref="d2/dd3/GUIBoxData_8cpp" startline="336" endline="374">mutaborGUI::BoxData::DoClose</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1078" endline="1137">ToggleTextBox</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -1676,10 +1754,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="234" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="234" bodyend="237"/>
-        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="336">ActiveWindow</references>
-        <references refid="df/dd1/group__GUI_1ga280eac776bd3847f009c0da3b25565ba" compoundref="dc/df3/MutFrame_8cpp" startline="1106" endline="1119">DoBoxWindowsOpen</references>
-        <referencedby refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="699" endline="831">CmDoActivate</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="248" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="248" bodyend="251"/>
+        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="345">ActiveWindow</references>
+        <references refid="df/dd1/group__GUI_1ga280eac776bd3847f009c0da3b25565ba" compoundref="dc/df3/MutFrame_8cpp" startline="1140" endline="1153">DoBoxWindowsOpen</references>
+        <referencedby refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="714" endline="857">CmDoActivate</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gaf19aef18c229953beb7ba146dd6386ee" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -1701,9 +1779,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="239" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="239" bodyend="242"/>
-        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="336">ActiveWindow</references>
-        <references refid="df/dd1/group__GUI_1gaac1a7d32f9f3800a5bfb690a5125e162" compoundref="dc/df3/MutFrame_8cpp" startline="1121" endline="1148">DoBoxWindowsClose</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="253" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="253" bodyend="256"/>
+        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="345">ActiveWindow</references>
+        <references refid="df/dd1/group__GUI_1gaac1a7d32f9f3800a5bfb690a5125e162" compoundref="dc/df3/MutFrame_8cpp" startline="1155" endline="1182">DoBoxWindowsClose</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gac8ac8a268e19dced35d4feb396dfc73a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -1716,14 +1794,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="268" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="268" bodyend="280"/>
-        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="334">client</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="284" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="284" bodyend="296"/>
+        <references refid="df/dd1/group__GUI_1gacb3a3b191f8bf3706b6e305abcef0078" compoundref="dd/db5/MutFrame_8h" startline="343">client</references>
         <references refid="df/dd1/group__GUI_1gga855392e978305d8c7a4bf5f1c78be1cea4c2189084175f9895cc08b5fbfa1aaac" compoundref="de/d3b/MutTextBox_8h" startline="51">WK_ROUTE</references>
-        <referencedby refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="699" endline="831">CmDoActivate</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gaa50bd73abb3fd23ae2e9e4120eb036ea" compoundref="dc/df3/MutFrame_8cpp" startline="1572" endline="1586">CmInDevPause</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga5a4513e94b9462c378e6cd73d87e2d1a" compoundref="dc/df3/MutFrame_8cpp" startline="1543" endline="1570">CmInDevPlay</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga5b297b8c5bd4317759acc98a1417dfa4" compoundref="dc/df3/MutFrame_8cpp" startline="1536" endline="1541">CmInDevStop</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gaa1bf774bdb8339a85aedd19958ec5e2e" compoundref="dc/df3/MutFrame_8cpp" startline="912" endline="943">DoStop</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="714" endline="857">CmDoActivate</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaa50bd73abb3fd23ae2e9e4120eb036ea" compoundref="dc/df3/MutFrame_8cpp" startline="1623" endline="1637">CmInDevPause</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga5a4513e94b9462c378e6cd73d87e2d1a" compoundref="dc/df3/MutFrame_8cpp" startline="1594" endline="1621">CmInDevPlay</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga5b297b8c5bd4317759acc98a1417dfa4" compoundref="dc/df3/MutFrame_8cpp" startline="1587" endline="1592">CmInDevStop</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaa1bf774bdb8339a85aedd19958ec5e2e" compoundref="dc/df3/MutFrame_8cpp" startline="944" endline="975">DoStop</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gac20ee7f229af7195bd01bbe506a2d6f1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>wxDocument *</type>
@@ -1736,8 +1814,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="285" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="285" bodyend="288"/>
-        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="336">ActiveWindow</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="301" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="301" bodyend="304"/>
+        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="345">ActiveWindow</references>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1gaa4448e4dc73ad9a152ae506a3d251860" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="d6/d63/classmutaborGUI_1_1MutFrame" kindref="compound">MutFrame</ref> *</type>
@@ -1750,9 +1828,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="289" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="289" bodyend="291"/>
-        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="336">ActiveWindow</references>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="305" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="305" bodyend="307"/>
+        <references refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" compoundref="dd/db5/MutFrame_8h" startline="345">ActiveWindow</references>
         <referencedby refid="da/d79/group__docview_1ga113841024d2d545e8a68c7c7de47f144" compoundref="d6/d3b/MutDocument_8cpp" startline="55" endline="388">BEGIN_EVENT_TABLE</referencedby>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1ae4571bdbcb0bc425d2d9ef8f88a5c605" compoundref="d2/dd3/GUIBoxData_8cpp" startline="75" endline="130">mutaborGUI::BoxData::set_routefile_id</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -1783,53 +1862,67 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="316" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="316" bodyend="322"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="332" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="332" bodyend="338"/>
         <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a6299a024e3aed702b368e41d4def15eba89ce56b53d57d6fc3d25f9efb8f2ca1c" compoundref="d9/d6e/StatusBar_8h" startline="62">mutaborGUI::StatusBar::Hide</references>
         <references refid="df/dd1/group__GUI_1gac4455732ccaf5c1736bddb59790b6f92" compoundref="dc/df3/MutFrame_8cpp" startline="119">mutaborGUI::LogicOn</references>
         <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1aa02166fd6402e602df4d1dc55e8b1100" compoundref="d9/d6e/StatusBar_8h" startline="130" endline="138">mutaborGUI::StatusBar::SetActive</references>
-        <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a3ffe75b2356050dbc02ab9b45df74167" compoundref="d9/d6e/StatusBar_8h" startline="198" endline="225">mutaborGUI::StatusBar::SetPlaystate</references>
+        <references refid="dc/d00/classmutaborGUI_1_1StatusBar_1a3ffe75b2356050dbc02ab9b45df74167" compoundref="d9/d6e/StatusBar_8h" startline="197" endline="224">mutaborGUI::StatusBar::SetPlaystate</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
-    </briefdescription>
+<para>Main mutabor frame class. </para>    </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para>This class is used to create the main windows </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="3647">
+      <node id="3917">
         <label>wxDocChildFrame</label>
       </node>
-      <node id="3646">
+      <node id="3916">
         <label>mutaborGUI::MutFrame</label>
         <link refid="d6/d63/classmutaborGUI_1_1MutFrame"/>
-        <childnode refid="3647" relation="public-inheritance">
+        <childnode refid="3917" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3649">
+      <node id="3919">
         <label>wxDocChildFrame</label>
       </node>
-      <node id="3650">
-        <label>std::map&lt; int, mutabor::Box &gt;</label>
+      <node id="3921">
+        <label>K</label>
       </node>
-      <node id="3648">
+      <node id="3922">
+        <label>T</label>
+      </node>
+      <node id="3920">
+        <label>std::map&lt; K, T &gt;</label>
+        <childnode refid="3921" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+        <childnode refid="3922" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="3918">
         <label>mutaborGUI::MutFrame</label>
         <link refid="d6/d63/classmutaborGUI_1_1MutFrame"/>
-        <childnode refid="3649" relation="public-inheritance">
+        <childnode refid="3919" relation="public-inheritance">
         </childnode>
-        <childnode refid="3648" relation="usage">
-          <edgelabel>ActiveWindow</edgelabel>
-        </childnode>
-        <childnode refid="3650" relation="usage">
+        <childnode refid="3920" relation="usage">
           <edgelabel>boxCommandIds</edgelabel>
+        </childnode>
+        <childnode refid="3918" relation="usage">
+          <edgelabel>ActiveWindow</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="63" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="62" bodyend="339"/>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" line="64" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutFrame.h" bodystart="63" bodyend="349"/>
     <listofallmembers>
       <member refid="df/dd1/group__GUI_1ga4901e5318b2b2e3050acd7dd4841b214" prot="private" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>ActiveWindow</name></member>
       <member refid="df/dd1/group__GUI_1ga3a2f6e167f649467a81abd6c8ba537bc" prot="private" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>auimanager</name></member>
+      <member refid="df/dd1/group__GUI_1ga518b236ea12f528eae1bc501990668db" prot="public" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>base</name></member>
       <member refid="df/dd1/group__GUI_1ga13cda4120aac0afe3585f8b80def467d" prot="private" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>boxCommandIds</name></member>
+      <member refid="df/dd1/group__GUI_1gae6d75f162a2898921c8aaee5077cbbf8" prot="private" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>boxCommandMap</name></member>
       <member refid="df/dd1/group__GUI_1gaf19aef18c229953beb7ba146dd6386ee" prot="public" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>BoxWindowsClose</name></member>
       <member refid="df/dd1/group__GUI_1ga6c92c28ea6b295956f949d6fd95cac5d" prot="public" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>BoxWindowsOpen</name></member>
       <member refid="df/dd1/group__GUI_1ga4e4f2e1968bed5fa639c34b02c1c1316" prot="public" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>CeActivate</name></member>
@@ -1866,6 +1959,7 @@
       <member refid="df/dd1/group__GUI_1ga17fa80177e2ebb6a2ded6989a2bcc31d" prot="public" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>CmToggleOWM</name></member>
       <member refid="df/dd1/group__GUI_1gaadb0580101199ca8cbd0001100008bdd" prot="public" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>CmToggleTS</name></member>
       <member refid="df/dd1/group__GUI_1gaeb84687e2849862c1c19842923986ccc" prot="private" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>curStatusImg</name></member>
+      <member refid="df/dd1/group__GUI_1ga46362f403222b9caa889955f64806842" prot="public" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>Destroy</name></member>
       <member refid="df/dd1/group__GUI_1ga5b947133233083a4b0a5968aaeee5f04" prot="public" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>DetermineFrameSize</name></member>
       <member refid="df/dd1/group__GUI_1gaac1a7d32f9f3800a5bfb690a5125e162" prot="public" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>DoBoxWindowsClose</name></member>
       <member refid="df/dd1/group__GUI_1ga280eac776bd3847f009c0da3b25565ba" prot="public" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>DoBoxWindowsOpen</name></member>
@@ -1880,6 +1974,7 @@
       <member refid="df/dd1/group__GUI_1gab33eb3253f68355c6778c0fcd6fee21a" prot="public" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>LogicWinOpen</name></member>
       <member refid="df/dd1/group__GUI_1ga5ae6c71b617b17cc1870c4d11ad64e3c" prot="public" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>MutFrame</name></member>
       <member refid="df/dd1/group__GUI_1ga3fed5adaa39f791dcc143e5583e6bfec" prot="public" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>MutFrame</name></member>
+      <member refid="df/dd1/group__GUI_1gaffa7a23f201dad5011b51b9672526788" prot="public" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>OnAuiChildEvent</name></member>
       <member refid="df/dd1/group__GUI_1gae2ff4873b386b189c8d668877479aa3c" prot="public" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>OnCloseWindow</name></member>
       <member refid="df/dd1/group__GUI_1ga59e0c26f68a7fb2e0aca5e0748c6462d" prot="private" virt="virtual"><scope>mutaborGUI::MutFrame</scope><name>OnCreateStatusBar</name></member>
       <member refid="df/dd1/group__GUI_1gae0acf3a3914c5e7e16b66e8bddf647cd" prot="public" virt="non-virtual"><scope>mutaborGUI::MutFrame</scope><name>OnEraseBackground</name></member>

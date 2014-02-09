@@ -3,7 +3,7 @@
 <title>src/wxGUI/Routing/NewInputDeviceShape.cpp Quellcode</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -55,7 +55,7 @@
 <div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../dc/df2/group__GUIroute.html#ga0d08040e0353a0525e25f52d0dc7ebcd">   50</a></span>&#160;        <span class="keywordtype">bool</span> MutNewInputDeviceShape::replaceSelfBy (<a class="code" href="../../d3/d4c/classmutaborGUI_1_1MutDeviceShape.html">MutInputDeviceShape</a>  * newshape)</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <a class="code" href="../../dc/d06/classmutaborGUI_1_1MutRouteWnd.html">MutRouteWnd</a> * p = <span class="keyword">dynamic_cast&lt;</span><a class="code" href="../../dc/d06/classmutaborGUI_1_1MutRouteWnd.html">MutRouteWnd</a> *<span class="keyword">&gt;</span> (m_parent);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(p);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a>(p);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="comment">// the &quot;New device&quot; icon won&#39;t be replaced, so we just append the device</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                p-&gt;<a class="code" href="../../dc/d06/classmutaborGUI_1_1MutRouteWnd.html#a00125762b84acb51b6fcfde4a69dd350">AddInputDevice</a>(newshape,sizerFlags);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
@@ -78,14 +78,14 @@
 <div class="ttc" id="group__docview_html_ga6ec13dcf56fb697ed3fc3f815657c4fa"><div class="ttname"><a href="../../da/d79/group__docview.html#ga6ec13dcf56fb697ed3fc3f815657c4fa">IMPLEMENT_DYNAMIC_CLASS</a></div><div class="ttdeci">IMPLEMENT_DYNAMIC_CLASS(MutCommandProcessor, wxCommandProcessor) IMPLEMENT_DYNAMIC_CLASS(MutDocument</div></div>
 <div class="ttc" id="InputDevDlg_8h_html"><div class="ttname"><a href="../../d9/d12/InputDevDlg_8h.html">InputDevDlg.h</a></div></div>
 <div class="ttc" id="classmutaborGUI_1_1MutRouteWnd_html"><div class="ttname"><a href="../../dc/d06/classmutaborGUI_1_1MutRouteWnd.html">mutaborGUI::MutRouteWnd</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dd7/MutRouteWnd_8h_source.html#l00061">MutRouteWnd.h:61</a></div></div>
-<div class="ttc" id="group__kernel_html_ga77bd8e5b959213dd8bcd48dc513f6013"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a></div><div class="ttdeci">#define mutASSERT(cond)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00223">Defs.h:223</a></div></div>
-<div class="ttc" id="group__route_html_gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae"><div class="ttname"><a href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae">mutabor::DTNotSet</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00089">Device.h:89</a></div></div>
+<div class="ttc" id="group__route_html_gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae"><div class="ttname"><a href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae">mutabor::DTNotSet</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00091">Device.h:91</a></div></div>
 <div class="ttc" id="classmutaborGUI_1_1MutNewInputDeviceShape_html"><div class="ttname"><a href="../../d5/d81/classmutaborGUI_1_1MutNewInputDeviceShape.html">mutaborGUI::MutNewInputDeviceShape</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dba/NewInputDeviceShape_8h_source.html#l00062">NewInputDeviceShape.h:62</a></div></div>
 <div class="ttc" id="BoxChannelShape_8h_html"><div class="ttname"><a href="../../d6/d68/BoxChannelShape_8h.html">BoxChannelShape.h</a></div><div class="ttdoc">Box shape for route window. </div></div>
 <div class="ttc" id="classmutaborGUI_1_1MutRouteWnd_html_a00125762b84acb51b6fcfde4a69dd350"><div class="ttname"><a href="../../dc/d06/classmutaborGUI_1_1MutRouteWnd.html#a00125762b84acb51b6fcfde4a69dd350">mutaborGUI::MutRouteWnd::AddInputDevice</a></div><div class="ttdeci">bool AddInputDevice(MutInputDeviceShape *device, const wxSizerFlags &amp;flags)</div><div class="ttdoc">Adds an input device shape. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dd7/MutRouteWnd_8h_source.html#l00161">MutRouteWnd.h:161</a></div></div>
+<div class="ttc" id="group__kernel_html_ga565c8973b3b2a87c7f9c7c7aabb9665e"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a></div><div class="ttdeci">#define mutASSERT</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00222">Defs.h:222</a></div></div>
 <div class="ttc" id="GUIRoute-inlines_8h_html"><div class="ttname"><a href="../../d2/d73/GUIRoute-inlines_8h.html">GUIRoute-inlines.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:37 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:14 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

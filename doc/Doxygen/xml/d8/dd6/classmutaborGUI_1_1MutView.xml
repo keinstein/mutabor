@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d8/dd6/classmutaborGUI_1_1MutView" kind="class" prot="public">
     <compoundname>mutaborGUI::MutView</compoundname>
     <basecompoundref prot="public" virt="non-virtual">wxView</basecompoundref>
@@ -206,7 +206,7 @@
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" line="92" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" bodystart="92" bodyend="92"/>
         <references refid="d8/dd6/classmutaborGUI_1_1MutView_1a0486223c32554bc90e805ab129617db2" compoundref="d0/d9e/MutView_8h" startline="101">textsw</references>
         <referencedby refid="df/dd1/group__GUI_1gae695a8906050edfa64dddeef8c206219" compoundref="d1/da4/MutEditFile_8cpp" startline="214" endline="219">mutaborGUI::MutEditFile::~MutEditFile</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga2255fbb1b03e902ac19724c508ed1f9a" compoundref="dc/df3/MutFrame_8cpp" startline="355" endline="371">mutaborGUI::MutFrame::~MutFrame</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga2255fbb1b03e902ac19724c508ed1f9a" compoundref="dc/df3/MutFrame_8cpp" startline="362" endline="377">mutaborGUI::MutFrame::~MutFrame</referencedby>
       </memberdef>
       <memberdef kind="function" id="d8/dd6/classmutaborGUI_1_1MutView_1a33890494df2f24c54e1394b054478c9e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="d6/d63/classmutaborGUI_1_1MutFrame" kindref="compound">MutFrame</ref> *</type>
@@ -220,7 +220,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" line="93" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutView.h" bodystart="93" bodyend="99"/>
-        <references refid="d9/d7c/group__kernel_1ga77bd8e5b959213dd8bcd48dc513f6013" compoundref="d1/d73/Defs_8h" startline="223">mutASSERT</references>
+        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
         <referencedby refid="da/d79/group__docview_1ga4c3dd53c5437b3993953311811a9a415" compoundref="d8/d33/MutView_8cpp" startline="53" endline="217">END_EVENT_TABLE</referencedby>
       </memberdef>
       </sectiondef>
@@ -229,52 +229,52 @@
     <detaileddescription>
 <para>What else? it will receive instructions from the document to update (ie redraw) when the document changes, and close when the document closes, and do something when the document changes its filename (eg the user does a save_as). Does the view need an event table? no I think its methods get called by direct pointer access p-&gt;method etc. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="3844">
+      <node id="4116">
         <label>wxView</label>
       </node>
-      <node id="3843">
+      <node id="4115">
         <label>mutaborGUI::MutView</label>
         <link refid="d8/dd6/classmutaborGUI_1_1MutView"/>
-        <childnode refid="3844" relation="public-inheritance">
+        <childnode refid="4116" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3846">
+      <node id="4118">
         <label>wxView</label>
       </node>
-      <node id="3849">
+      <node id="4121">
         <label>mutaborGUI::MutSTCLexer</label>
         <link refid="d1/dea/classmutaborGUI_1_1MutSTCLexer"/>
       </node>
-      <node id="3848">
+      <node id="4120">
         <label>wxStyledTextCtrl</label>
       </node>
-      <node id="3847">
+      <node id="4119">
         <label>mutaborGUI::MutEditFile</label>
         <link refid="de/dfe/classmutaborGUI_1_1MutEditFile"/>
-        <childnode refid="3848" relation="public-inheritance">
+        <childnode refid="4120" relation="public-inheritance">
         </childnode>
-        <childnode refid="3849" relation="usage">
+        <childnode refid="4121" relation="usage">
           <edgelabel>lexer</edgelabel>
         </childnode>
-        <childnode refid="3850" relation="usage">
+        <childnode refid="4122" relation="usage">
           <edgelabel>m_language</edgelabel>
         </childnode>
-        <childnode refid="3845" relation="usage">
+        <childnode refid="4117" relation="usage">
           <edgelabel>view</edgelabel>
         </childnode>
       </node>
-      <node id="3850">
+      <node id="4122">
         <label>mutaborGUI::LanguageInfo</label>
         <link refid="d4/d4a/structmutaborGUI_1_1LanguageInfo"/>
       </node>
-      <node id="3845">
+      <node id="4117">
         <label>mutaborGUI::MutView</label>
         <link refid="d8/dd6/classmutaborGUI_1_1MutView"/>
-        <childnode refid="3846" relation="public-inheritance">
+        <childnode refid="4118" relation="public-inheritance">
         </childnode>
-        <childnode refid="3847" relation="usage">
+        <childnode refid="4119" relation="usage">
           <edgelabel>textsw</edgelabel>
         </childnode>
       </node>

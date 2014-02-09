@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="db/d71/structmutabor_1_1hidden_1_1mutabor__syntax__heap" kind="struct" prot="public">
+    <compoundname>mutabor::hidden::mutabor_syntax_heap</compoundname>
+    <includes refid="d6/d0c/Parser_8h" local="no">Parser.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="db/d71/structmutabor_1_1hidden_1_1mutabor__syntax__heap_1affc63ac16b3c9726fa821f41e68d361c" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d0/d37/structmutabor_1_1hidden_1_1heap__element" kindref="compound">heap_element</ref> *</type>
+        <definition>struct heap_element* mutabor::hidden::mutabor_syntax_heap::syntax_heap</definition>
+        <argsstring></argsstring>
+        <name>syntax_heap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="83" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="83" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a89ba87b0e079700339d0135a2c1ce770" compoundref="da/d02/Hilfs_8cpp" startline="287" endline="308">mutabor::hidden::loesche_syntax_speicher</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ad8ff783d284e0e18b3b9c854a97c0087" compoundref="da/d02/Hilfs_8cpp" startline="154" endline="234">mutabor::hidden::xmalloc</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="db/d71/structmutabor_1_1hidden_1_1mutabor__syntax__heap_1aa0facc8a6995e0a5e429999648c29ee0" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d0/d37/structmutabor_1_1hidden_1_1heap__element" kindref="compound">heap_element</ref> *</type>
+        <definition>struct heap_element* mutabor::hidden::mutabor_syntax_heap::heap_to_use_syntax</definition>
+        <argsstring></argsstring>
+        <name>heap_to_use_syntax</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="84" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="84" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a89ba87b0e079700339d0135a2c1ce770" compoundref="da/d02/Hilfs_8cpp" startline="287" endline="308">mutabor::hidden::loesche_syntax_speicher</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ad8ff783d284e0e18b3b9c854a97c0087" compoundref="da/d02/Hilfs_8cpp" startline="154" endline="234">mutabor::hidden::xmalloc</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aace3211515e24c8717c38370668d41f0" compoundref="da/d02/Hilfs_8cpp" startline="236" endline="267">mutabor::hidden::xrealloc</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3795">
+        <label>mutabor::hidden::heap_element</label>
+        <link refid="d0/d37/structmutabor_1_1hidden_1_1heap__element"/>
+        <childnode refid="3795" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3794">
+        <label>mutabor::hidden::mutabor_syntax_heap</label>
+        <link refid="db/d71/structmutabor_1_1hidden_1_1mutabor__syntax__heap"/>
+        <childnode refid="3795" relation="usage">
+          <edgelabel>heap_to_use_syntax</edgelabel>
+          <edgelabel>syntax_heap</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="82" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="82" bodyend="85"/>
+    <listofallmembers>
+      <member refid="db/d71/structmutabor_1_1hidden_1_1mutabor__syntax__heap_1aa0facc8a6995e0a5e429999648c29ee0" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_syntax_heap</scope><name>heap_to_use_syntax</name></member>
+      <member refid="db/d71/structmutabor_1_1hidden_1_1mutabor__syntax__heap_1affc63ac16b3c9726fa821f41e68d361c" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_syntax_heap</scope><name>syntax_heap</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="dc/ddd/classInFile" kind="class" prot="public">
     <compoundname>InFile</compoundname>
     <basecompoundref prot="public" virt="non-virtual">ifstream</basecompoundref>
     <includes refid="de/d69/infile_8h" local="no">infile.h</includes>
       <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="dc/ddd/classInFile_1afb59ee109172ac54e1a5fc6d1bff2392" prot="protected" static="no" mutable="no">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char InFile::s1[LMAX_LINE]</definition>
         <argsstring>[LMAX_LINE]</argsstring>
         <name>s1</name>
@@ -21,7 +21,7 @@
         <referencedby refid="dc/ddd/classInFile_1a9f39f32a77384cc84d354243428499b7" compoundref="d9/dc1/infile_8cpp" startline="86" endline="96">NewLine</referencedby>
       </memberdef>
       <memberdef kind="variable" id="dc/ddd/classInFile_1add3fc638f920fe2cea0d07bf353e58b4" prot="protected" static="no" mutable="no">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <type>char *</type>
         <definition>char * InFile::s</definition>
         <argsstring></argsstring>
         <name>s</name>
@@ -55,7 +55,7 @@
         <referencedby refid="dc/ddd/classInFile_1aaadb642faf0c2ad1231f6e2b4ad88d07" compoundref="d9/dc1/infile_8cpp" startline="19" endline="84">ReadToken</referencedby>
       </memberdef>
       <memberdef kind="variable" id="dc/ddd/classInFile_1a26803830de35bdde8b0c4f069bc71749" prot="protected" static="no" mutable="no">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char InFile::String[LMAX_LINE]</definition>
         <argsstring>[LMAX_LINE]</argsstring>
         <name>String</name>
@@ -125,7 +125,7 @@
         <argsstring>(const char *Name)</argsstring>
         <name>InFile</name>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> char *</type>
           <declname>Name</declname>
         </param>
         <briefdescription>
@@ -160,7 +160,7 @@
         <argsstring>(char *str=0, int max=0)</argsstring>
         <name>ReadToken</name>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>str</declname>
           <defval>0</defval>
         </param>
@@ -209,7 +209,7 @@
         <references refid="dc/ddd/classInFile_1a6783f545d40281c18e83296f87aeca71" compoundref="de/d69/infile_8h" startline="17">TokenType</references>
       </memberdef>
       <memberdef kind="function" id="dc/ddd/classInFile_1ac2cab1717b2576ed0c06e9e65bcabf4f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+        <type>char *</type>
         <definition>char* InFile::GetString</definition>
         <argsstring>()</argsstring>
         <name>GetString</name>
@@ -223,7 +223,7 @@
         <references refid="dc/ddd/classInFile_1a26803830de35bdde8b0c4f069bc71749" compoundref="de/d69/infile_8h" startline="18">String</references>
       </memberdef>
       <memberdef kind="function" id="dc/ddd/classInFile_1a18afb5c6b58d997bf73fa12f301c4a4c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char InFile::GetSign</definition>
         <argsstring>()</argsstring>
         <name>GetSign</name>
@@ -281,7 +281,7 @@
       </sectiondef>
       <sectiondef kind="private-func">
       <memberdef kind="function" id="dc/ddd/classInFile_1a9f39f32a77384cc84d354243428499b7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char InFile::NewLine</definition>
         <argsstring>()</argsstring>
         <name>NewLine</name>
@@ -292,6 +292,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="34" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.cpp" bodystart="86" bodyend="96"/>
+        <references refid="d5/dee/group__route_1ga27a1c72438b4005fdc9b5b0d16705279" compoundref="d8/d2f/GSP__File_8cpp" startline="51">bad</references>
         <references refid="dc/ddd/classInFile_1a82721b5f29d280221a7dd3c518a719c8" compoundref="de/d69/infile_8h" startline="21">Line</references>
         <references refid="de/d69/infile_8h_1a4da78e242f22b09371e5deda081e032a" compoundref="de/d69/infile_8h" startline="6">LMAX_LINE</references>
         <references refid="dc/ddd/classInFile_1add3fc638f920fe2cea0d07bf353e58b4" compoundref="de/d69/infile_8h" startline="16">s</references>
@@ -302,7 +303,7 @@
         <referencedby refid="dc/ddd/classInFile_1af324cb1bae0b218ca7dae2aa923428fa" compoundref="d9/dc1/infile_8cpp" startline="98" endline="119">CheckNewToken</referencedby>
       </memberdef>
       <memberdef kind="function" id="dc/ddd/classInFile_1af324cb1bae0b218ca7dae2aa923428fa" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char InFile::CheckNewToken</definition>
         <argsstring>()</argsstring>
         <name>CheckNewToken</name>
@@ -325,24 +326,24 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3021">
+      <node id="3247">
         <label>InFile</label>
         <link refid="dc/ddd/classInFile"/>
-        <childnode refid="3022" relation="public-inheritance">
+        <childnode refid="3248" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3022">
+      <node id="3248">
         <label>ifstream</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3023">
+      <node id="3249">
         <label>InFile</label>
         <link refid="dc/ddd/classInFile"/>
-        <childnode refid="3024" relation="public-inheritance">
+        <childnode refid="3250" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3024">
+      <node id="3250">
         <label>ifstream</label>
       </node>
     </collaborationgraph>

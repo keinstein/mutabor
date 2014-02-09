@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="dd/d15/gmutdos_8cpp" kind="file">
     <compoundname>gmutdos.cpp</compoundname>
     <includes local="no">iostream</includes>
@@ -13,59 +13,59 @@
     <includes local="yes">execute.h</includes>
     <includes refid="d9/d63/ext_8h" local="yes">ext.h</includes>
     <incdepgraph>
-      <node id="12757">
+      <node id="17934">
         <label>src/gmut/gmutdos.cpp</label>
         <link refid="gmutdos.cpp"/>
-        <childnode refid="12758" relation="include">
+        <childnode refid="17935" relation="include">
         </childnode>
-        <childnode refid="12759" relation="include">
+        <childnode refid="17936" relation="include">
         </childnode>
-        <childnode refid="12760" relation="include">
+        <childnode refid="17937" relation="include">
         </childnode>
-        <childnode refid="12761" relation="include">
+        <childnode refid="17938" relation="include">
         </childnode>
-        <childnode refid="12762" relation="include">
+        <childnode refid="17939" relation="include">
         </childnode>
-        <childnode refid="12763" relation="include">
+        <childnode refid="17940" relation="include">
         </childnode>
-        <childnode refid="12764" relation="include">
+        <childnode refid="17941" relation="include">
         </childnode>
-        <childnode refid="12765" relation="include">
+        <childnode refid="17942" relation="include">
         </childnode>
-        <childnode refid="12766" relation="include">
+        <childnode refid="17943" relation="include">
         </childnode>
-        <childnode refid="12767" relation="include">
+        <childnode refid="17944" relation="include">
         </childnode>
       </node>
-      <node id="12760">
+      <node id="17937">
         <label>setjmp.h</label>
       </node>
-      <node id="12762">
+      <node id="17939">
         <label>global.h</label>
       </node>
-      <node id="12767">
+      <node id="17944">
         <label>ext.h</label>
         <link refid="d9/d63/ext_8h"/>
       </node>
-      <node id="12759">
+      <node id="17936">
         <label>fstream</label>
       </node>
-      <node id="12761">
+      <node id="17938">
         <label>string.h</label>
       </node>
-      <node id="12765">
+      <node id="17942">
         <label>midikern.h</label>
       </node>
-      <node id="12758">
+      <node id="17935">
         <label>iostream</label>
       </node>
-      <node id="12763">
+      <node id="17940">
         <label>hilfs.h</label>
       </node>
-      <node id="12766">
+      <node id="17943">
         <label>execute.h</label>
       </node>
-      <node id="12764">
+      <node id="17941">
         <label>grafkern.h</label>
       </node>
     </incdepgraph>
@@ -83,6 +83,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmutdos.cpp" line="29" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmutdos.cpp" bodystart="29" bodyend="-1"/>
+        <referencedby refid="dd/d15/gmutdos_8cpp_1aa4fbd34cae8e303c82cf546234111c10" compoundref="dd/d15/gmutdos_8cpp" startline="33" endline="68">GMutCompile</referencedby>
+        <referencedby refid="dd/d15/gmutdos_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="dd/d15/gmutdos_8cpp" startline="159" endline="285">main</referencedby>
       </memberdef>
       <memberdef kind="variable" id="dc/d7e/group__runtime_1ga1faa8705b3fd5029a295edfdcdf1a67f" prot="public" static="no" mutable="no">
         <type>jmp_buf</type>
@@ -96,16 +98,17 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmutdos.cpp" line="31" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmutdos.cpp" bodystart="31" bodyend="-1"/>
+        <referencedby refid="dd/d15/gmutdos_8cpp_1aa4fbd34cae8e303c82cf546234111c10" compoundref="dd/d15/gmutdos_8cpp" startline="33" endline="68">GMutCompile</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
       <memberdef kind="function" id="dd/d15/gmutdos_8cpp_1aa4fbd34cae8e303c82cf546234111c10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
+        <type>char</type>
         <definition>char GMutCompile</definition>
         <argsstring>(char *fileName)</argsstring>
         <name>GMutCompile</name>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>fileName</declname>
         </param>
         <briefdescription>
@@ -115,11 +118,12 @@
         <inbodydescription>
 <para>show_line_number(-1); </para>        </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmutdos.cpp" line="33" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmutdos.cpp" bodystart="33" bodyend="68"/>
-        <references refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" compoundref="d3/d14/gmut_8cpp" startline="26">Echo</references>
-        <references refid="df/d33/mut_8cc_1a5b7b0e2c382a96cab95f08c679b4a004" compoundref="df/d33/mut_8cc" startline="3676" endline="3680">init_yylex</references>
-        <references refid="d9/d7c/group__kernel_1ga6cdadb41b8ac72cc80f2bccd24b7fefc" compoundref="da/d02/Hilfs_8cpp" startline="287" endline="308">loesche_syntax_speicher</references>
-        <references refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor_programm_einlesen</references>
-        <references refid="dc/d7e/group__runtime_1ga1faa8705b3fd5029a295edfdcdf1a67f" compoundref="d3/d14/gmut_8cpp" startline="28">weiter_gehts_nach_compilerfehler</references>
+        <references refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" compoundref="dd/d15/gmutdos_8cpp" startline="29">Echo</references>
+        <references refid="d1/de1/Mut__Tab_8cpp_1a77980177a457976be153c83a9d266da5" compoundref="d1/de1/Mut__Tab_8cpp" startline="1821" endline="1825">init_yylex</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1a89ba87b0e079700339d0135a2c1ce770" compoundref="da/d02/Hilfs_8cpp" startline="287" endline="308">mutabor::hidden::loesche_syntax_speicher</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1a4f6812ce7bcbd0bc4048f7492ccbb0b4" compoundref="dc/df5/Parser_8cpp" startline="614" endline="931">mutabor::hidden::mutabor_programm_einlesen</references>
+        <references refid="dc/d7e/group__runtime_1ga1faa8705b3fd5029a295edfdcdf1a67f" compoundref="dd/d15/gmutdos_8cpp" startline="31">weiter_gehts_nach_compilerfehler</references>
+        <referencedby refid="dd/d15/gmutdos_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="dd/d15/gmutdos_8cpp" startline="159" endline="285">main</referencedby>
       </memberdef>
       <memberdef kind="function" id="dd/d15/gmutdos_8cpp_1ac5486a878ff37e3a05545f509f3aafe6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -131,7 +135,7 @@
           <declname>box</declname>
         </param>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>keys</declname>
         </param>
         <briefdescription>
@@ -141,9 +145,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmutdos.cpp" line="70" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmutdos.cpp" bodystart="70" bodyend="89"/>
-        <references refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" compoundref="df/d33/mut_8cc" startline="1633">box</references>
-        <references refid="d9/d7c/group__kernel_1ga90b7952bd46fc5da51548304c7730b37">keyboard_analyse</references>
-        <referencedby refid="d5/dee/group__route_1ga13107b8947c626559e972a2676816097" compoundref="de/d0f/Box_8h" startline="532" endline="535">mutabor::BoxClass::KeyboardAnalysis</referencedby>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1aed14bb400a205b14c5911e1bc4ddba71">mutabor::hidden::keyboard_analyse</references>
         <referencedby refid="d3/d14/gmut_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="d3/d14/gmut_8cpp" startline="214" endline="344">main</referencedby>
       </memberdef>
       <memberdef kind="function" id="dd/d15/gmutdos_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -156,7 +158,7 @@
           <declname>argc</declname>
         </param>
         <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
+          <type>char *</type>
           <declname>argv</declname>
           <array>[]</array>
         </param>
@@ -167,9 +169,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmutdos.cpp" line="159" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmutdos.cpp" bodystart="159" bodyend="285"/>
-        <references refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" compoundref="d3/d14/gmut_8cpp" startline="26">Echo</references>
+        <references refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" compoundref="dd/d15/gmutdos_8cpp" startline="29">Echo</references>
         <references refid="d4/d5b/ext_8cpp_1a3c3f9179b542575b1a4a011ebf30a6cb" compoundref="d4/d5b/ext_8cpp" startline="20" endline="29">ExtCheck</references>
-        <references refid="d3/d14/gmut_8cpp_1aa4fbd34cae8e303c82cf546234111c10" compoundref="d3/d14/gmut_8cpp" startline="153" endline="185">GMutCompile</references>
+        <references refid="dd/d15/gmutdos_8cpp_1aa4fbd34cae8e303c82cf546234111c10" compoundref="dd/d15/gmutdos_8cpp" startline="33" endline="68">GMutCompile</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -205,49 +207,49 @@
 <codeline lineno="26"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//OutGis<sp/>*Write;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29" refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" refkind="member"><highlight class="normal">std::ostream<sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>=<sp/>&amp;std::cout;</highlight></codeline>
+<codeline lineno="29" refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" refkind="member"><highlight class="normal">std::ostream<sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>=<sp/>&amp;std::cout;</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="31" refid="dc/d7e/group__runtime_1ga1faa8705b3fd5029a295edfdcdf1a67f" refkind="member"><highlight class="normal">jmp_buf<sp/><ref refid="dc/d7e/group__runtime_1ga1faa8705b3fd5029a295edfdcdf1a67f" kindref="member">weiter_gehts_nach_compilerfehler</ref>;</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33" refid="dd/d15/gmutdos_8cpp_1aa4fbd34cae8e303c82cf546234111c10" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="d3/d14/gmut_8cpp_1aa4fbd34cae8e303c82cf546234111c10" kindref="member">GMutCompile</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*fileName)</highlight></codeline>
+<codeline lineno="33" refid="dd/d15/gmutdos_8cpp_1aa4fbd34cae8e303c82cf546234111c10" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="dd/d15/gmutdos_8cpp_1aa4fbd34cae8e303c82cf546234111c10" kindref="member">GMutCompile</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*fileName)</highlight></codeline>
 <codeline lineno="34"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!setjmp(<ref refid="dc/d7e/group__runtime_1ga1faa8705b3fd5029a295edfdcdf1a67f" kindref="member">weiter_gehts_nach_compilerfehler</ref>)<sp/>)</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga6cdadb41b8ac72cc80f2bccd24b7fefc" kindref="member">loesche_syntax_speicher</ref>();</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/d33/mut_8cc_1a5b7b0e2c382a96cab95f08c679b4a004" kindref="member">init_yylex</ref><sp/>();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a89ba87b0e079700339d0135a2c1ce770" kindref="member">loesche_syntax_speicher</ref>();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/de1/Mut__Tab_8cpp_1a77980177a457976be153c83a9d266da5" kindref="member">init_yylex</ref><sp/>();</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mutabor<sp/>parsing<sp/>file:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>fileName<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mutabor<sp/>parsing<sp/>file:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>fileName<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga9733bb2ee682ffff8a155dd6b1b93e8c" kindref="member">mutabor_programm_einlesen</ref><sp/>(<sp/>fileName<sp/>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a4f6812ce7bcbd0bc4048f7492ccbb0b4" kindref="member">mutabor_programm_einlesen</ref><sp/>(<sp/>fileName<sp/>);</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>calc_declaration_numbers(1);</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/>sd1<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/>sd2<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/>sd1<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/>sd2<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Generating<sp/>tables\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Generating<sp/>tables\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutabor_tabellen_generator();</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Translation<sp/>successful<sp/>!\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>error<sp/>occured<sp/>!\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Translation<sp/>successful<sp/>!\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>error<sp/>occured<sp/>!\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Translation<sp/>interrupted<sp/>!\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>Fmeldung;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Translation<sp/>interrupted<sp/>!\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>Fmeldung;</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="68"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70" refid="dd/d15/gmutdos_8cpp_1ac5486a878ff37e3a05545f509f3aafe6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d15/gmutdos_8cpp_1ac5486a878ff37e3a05545f509f3aafe6" kindref="member">KeyboardIn</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*keys)</highlight></codeline>
+<codeline lineno="70" refid="dd/d15/gmutdos_8cpp_1ac5486a878ff37e3a05545f509f3aafe6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d15/gmutdos_8cpp_1ac5486a878ff37e3a05545f509f3aafe6" kindref="member">KeyboardIn</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>box,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*keys)</highlight></codeline>
 <codeline lineno="71"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/>aktuelles_keyboard_instrument<sp/>=<sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>aktuelles_keyboard_instrument<sp/>=<sp/>box;</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>TonSystem<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=<sp/>0;<sp/>i<sp/>&lt;<sp/>strlen(keys);<sp/>i++)</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
@@ -259,9 +261,9 @@
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal"><sp/>&lt;=<sp/>c<sp/>&amp;&amp;<sp/>c<sp/>&lt;=<sp/></highlight><highlight class="charliteral">&apos;z&apos;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>TonSystem<sp/>)</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga90b7952bd46fc5da51548304c7730b37" kindref="member">keyboard_analyse</ref>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>c,<sp/>0);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aed14bb400a205b14c5911e1bc4ddba71" kindref="member">keyboard_analyse</ref>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>c,<sp/>0);</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga90b7952bd46fc5da51548304c7730b37" kindref="member">keyboard_analyse</ref>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>c);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aed14bb400a205b14c5911e1bc4ddba71" kindref="member">keyboard_analyse</ref>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>c);</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TonSystem<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="89"><highlight class="normal">}</highlight></codeline>
@@ -334,7 +336,7 @@
 <codeline lineno="156"><highlight class="comment"></highlight></codeline>
 <codeline lineno="157"><highlight class="comment">//<sp/>##################################################################</highlight></codeline>
 <codeline lineno="158"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="159" refid="dd/d15/gmutdos_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/d21/gmn2midi_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>argv<sp/>[])</highlight></codeline>
+<codeline lineno="159" refid="dd/d15/gmutdos_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dd/d15/gmutdos_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>argv<sp/>[])</highlight></codeline>
 <codeline lineno="160"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>read<sp/>parameters</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*MutFile<sp/>=<sp/>0;</highlight></codeline>
@@ -347,13 +349,13 @@
 <codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strlwr(argv[i]);</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!strcmp(&amp;argv[i][1],<sp/></highlight><highlight class="stringliteral">&quot;silent&quot;</highlight><highlight class="normal">)<sp/>)</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>ofstream(</highlight><highlight class="stringliteral">&quot;nul:&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>ofstream(</highlight><highlight class="stringliteral">&quot;nul:&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!strcmp(&amp;argv[i][1],<sp/></highlight><highlight class="stringliteral">&quot;help&quot;</highlight><highlight class="normal">)<sp/>||<sp/>!strcmp(&amp;argv[i][1],<sp/></highlight><highlight class="stringliteral">&quot;h&quot;</highlight><highlight class="normal">)<sp/>||<sp/>!strcmp(&amp;argv[i][1],<sp/></highlight><highlight class="stringliteral">&quot;?&quot;</highlight><highlight class="normal">))</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Help<sp/>=<sp/>1;</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!strcmp(&amp;argv[i][1],<sp/></highlight><highlight class="stringliteral">&quot;report&quot;</highlight><highlight class="normal">)<sp/>)</highlight></codeline>
 <codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>ofstream(</highlight><highlight class="stringliteral">&quot;gmut.rep&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>ofstream(</highlight><highlight class="stringliteral">&quot;gmut.rep&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>parameter</highlight><highlight class="normal"></highlight></codeline>
@@ -371,24 +373,24 @@
 <codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcat(KeyBoard,<sp/>argv[i]);</highlight></codeline>
 <codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="195"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>info<sp/>text</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;GMut<sp/>-<sp/>GUIDO<sp/>Mutabor<sp/>converter,<sp/>TU<sp/>Dresden,<sp/>R.K.<sp/>1998,<sp/>Version<sp/>0.60\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;GMut<sp/>-<sp/>GUIDO<sp/>Mutabor<sp/>converter,<sp/>TU<sp/>Dresden,<sp/>R.K.<sp/>1998,<sp/>Version<sp/>0.60\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>Help<sp/>)</highlight></codeline>
 <codeline lineno="198"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;for<sp/>more<sp/>information<sp/>please<sp/>visit:\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>http://rcswww.urz.tu-dresden.de/~rkrausse/gmut.htm\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Usage:<sp/>gmut<sp/>mutfile[.mut]<sp/>gmnfile[.gmn]<sp/>[InitKeys]<sp/>[options]\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>mutfile<sp/><sp/><sp/><sp/>Mutabor<sp/>file<sp/>as<sp/>used<sp/>for<sp/>Mutabor<sp/>II,<sp/>Extension<sp/>.mut\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>gmnfile<sp/><sp/><sp/><sp/>Music<sp/>file<sp/>in<sp/>GUIDO<sp/>Music<sp/>Notation\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>InitKeys<sp/><sp/><sp/>Sequenz<sp/>of<sp/>computer<sp/>keys<sp/>as<sp/>input<sp/>for<sp/>instrument<sp/>0\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(to<sp/>force<sp/>tonsystems<sp/>instead<sp/>of<sp/>logics<sp/>use<sp/>leading<sp/>\&quot;&amp;\&quot;)\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>Options:\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>/silent<sp/><sp/>Convert<sp/>with<sp/>no<sp/>echo<sp/>at<sp/>all\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>/report<sp/><sp/>Report<sp/>into<sp/>file<sp/>gmut.rep\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="d3/d14/gmut_8cpp_1a4e1ae98e000869d3339e04cba114b2a2" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>/help<sp/><sp/><sp/><sp/>Shows<sp/>this<sp/>help<sp/>screen\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;for<sp/>more<sp/>information<sp/>please<sp/>visit:\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>http://rcswww.urz.tu-dresden.de/~rkrausse/gmut.htm\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Usage:<sp/>gmut<sp/>mutfile[.mut]<sp/>gmnfile[.gmn]<sp/>[InitKeys]<sp/>[options]\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>mutfile<sp/><sp/><sp/><sp/>Mutabor<sp/>file<sp/>as<sp/>used<sp/>for<sp/>Mutabor<sp/>II,<sp/>Extension<sp/>.mut\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>gmnfile<sp/><sp/><sp/><sp/>Music<sp/>file<sp/>in<sp/>GUIDO<sp/>Music<sp/>Notation\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>InitKeys<sp/><sp/><sp/>Sequenz<sp/>of<sp/>computer<sp/>keys<sp/>as<sp/>input<sp/>for<sp/>instrument<sp/>0\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(to<sp/>force<sp/>tonsystems<sp/>instead<sp/>of<sp/>logics<sp/>use<sp/>leading<sp/>\&quot;&amp;\&quot;)\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>Options:\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>/silent<sp/><sp/>Convert<sp/>with<sp/>no<sp/>echo<sp/>at<sp/>all\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>/report<sp/><sp/>Report<sp/>into<sp/>file<sp/>gmut.rep\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="dd/d15/gmutdos_8cpp_1a750e8eaef18de399448ac107643b7da5" kindref="member">Echo</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>/help<sp/><sp/><sp/><sp/>Shows<sp/>this<sp/>help<sp/>screen\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="210"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="211"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!GMNFile<sp/>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;<sp/></highlight><highlight class="comment">//<sp/>to<sp/>few<sp/>parameters</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>read<sp/>*.mut<sp/>file</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<ref refid="d3/d14/gmut_8cpp_1aa4fbd34cae8e303c82cf546234111c10" kindref="member">GMutCompile</ref>(<ref refid="d4/d5b/ext_8cpp_1a3c3f9179b542575b1a4a011ebf30a6cb" kindref="member">ExtCheck</ref>(MutFile,<sp/></highlight><highlight class="stringliteral">&quot;mut&quot;</highlight><highlight class="normal">))<sp/>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<ref refid="dd/d15/gmutdos_8cpp_1aa4fbd34cae8e303c82cf546234111c10" kindref="member">GMutCompile</ref>(<ref refid="d4/d5b/ext_8cpp_1a3c3f9179b542575b1a4a011ebf30a6cb" kindref="member">ExtCheck</ref>(MutFile,<sp/></highlight><highlight class="stringliteral">&quot;mut&quot;</highlight><highlight class="normal">))<sp/>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="214"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>read<sp/>*.gmn<sp/>file</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="215"><highlight class="normal"></highlight><highlight class="comment">/*<sp/><sp/>*Echo<sp/>&lt;&lt;<sp/>&quot;GSP<sp/>parsing<sp/>file:<sp/>&quot;<sp/>&lt;&lt;<sp/>ExtCheck(GMNFile,<sp/>&quot;gmn&quot;)<sp/>&lt;&lt;<sp/>&quot;<sp/>...&quot;;</highlight></codeline>
 <codeline lineno="216"><highlight class="comment"><sp/><sp/>GisToken<sp/>*GisFile<sp/>=<sp/>GisParse(ExtCheck(GMNFile,<sp/>&quot;gmn&quot;));</highlight></codeline>

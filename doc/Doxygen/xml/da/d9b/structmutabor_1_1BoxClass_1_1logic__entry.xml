@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="da/d9b/structmutabor_1_1BoxClass_1_1logic__entry" kind="struct" prot="public">
     <compoundname>mutabor::BoxClass::logic_entry</compoundname>
     <includes refid="de/d0f/Box_8h" local="no">Box.h</includes>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="387" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="387" bodyend="387"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="380" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="380" bodyend="380"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="387" column="1"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="380" column="1"/>
       </memberdef>
       <memberdef kind="variable" id="d5/dee/group__route_1ga61e9df18c5a6d79b62b51861b4aee023" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -61,11 +61,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="388" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="388" bodyend="-1"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="381" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="381" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="d5/dee/group__route_1gaede56de5fbc9ac90e3324e1d74e23fc8" prot="public" static="no" mutable="no">
-        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
-        <definition>mutString mutabor::BoxClass::logic_entry::name</definition>
+      <memberdef kind="variable" id="d5/dee/group__route_1gab2df614acd29a57a670bb4b3c220ecc8" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string mutabor::BoxClass::logic_entry::name</definition>
         <argsstring></argsstring>
         <name>name</name>
         <briefdescription>
@@ -74,12 +74,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="389" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="389" bodyend="-1"/>
-        <referencedby refid="d6/daa/namespacemutabor_1a35337f936c419173b816485e8a610643" compoundref="dd/dc6/Box_8cpp" startline="479" endline="502">mutabor::append_triggers</referencedby>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="382" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="382" bodyend="-1"/>
+        <referencedby refid="d6/daa/namespacemutabor_1aa30b389dfd682214bbe90832609797be" compoundref="dd/dc6/Box_8cpp" startline="511" endline="537">mutabor::append_triggers</referencedby>
       </memberdef>
-      <memberdef kind="variable" id="d5/dee/group__route_1gad02bd2c1a303f0f548d4d76f8619d759" prot="public" static="no" mutable="no">
-        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
-        <definition>mutString mutabor::BoxClass::logic_entry::startTuning</definition>
+      <memberdef kind="variable" id="d5/dee/group__route_1ga8f49764a5ca9cf8d212afeb0d0070cda" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string mutabor::BoxClass::logic_entry::startTuning</definition>
         <argsstring></argsstring>
         <name>startTuning</name>
         <briefdescription>
@@ -88,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="390" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="390" bodyend="-1"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="383" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="383" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d5/dee/group__route_1ga75b5b41c3edbeef42de5f93072a20f9f" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -101,10 +101,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="391" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="391" bodyend="-1"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="384" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="384" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d5/dee/group__route_1ga1369e44d7916a5ed33353d6c33b4081e" prot="public" static="no" mutable="no">
-        <type>struct <ref refid="d0/d2f/structany__trigger" kindref="compound">any_trigger</ref></type>
+        <type>struct <ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger" kindref="compound">any_trigger</ref></type>
         <definition>struct any_trigger mutabor::BoxClass::logic_entry::trigger</definition>
         <argsstring></argsstring>
         <name>trigger</name>
@@ -114,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="391" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="392" bodyend="-1"/>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="384" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="385" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -122,27 +122,300 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3229">
-        <label>any_trigger</label>
+      <node id="3480">
+        <label>mutabor::hidden::interpreter_argument_list</label>
+        <link refid="de/dd8/structmutabor_1_1hidden_1_1interpreter__argument__list"/>
+        <childnode refid="3481" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
       </node>
-      <node id="3228">
+      <node id="3487">
+        <label>mutabor::hidden::ton</label>
+        <link refid="d6/dea/structmutabor_1_1hidden_1_1ton"/>
+        <childnode refid="3485" relation="usage">
+          <edgelabel>komplex_liste</edgelabel>
+        </childnode>
+        <childnode refid="3487" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3483">
+        <label>mutabor::hidden::case_element</label>
+        <link refid="d4/d71/structmutabor_1_1hidden_1_1case__element"/>
+        <childnode refid="3468" relation="usage">
+          <edgelabel>case_aktion</edgelabel>
+        </childnode>
+        <childnode refid="3483" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3482">
+        <label>mutabor::hidden::ton_einstell</label>
+        <link refid="df/dfd/structmutabor_1_1hidden_1_1ton__einstell"/>
+        <childnode refid="3482" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3468">
+        <label>mutabor::hidden::do_aktion</label>
+        <link refid="de/dab/structmutabor_1_1hidden_1_1do__aktion"/>
+        <childnode refid="3468" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3469" relation="usage">
+          <edgelabel>out_liste</edgelabel>
+        </childnode>
+        <childnode refid="3470" relation="usage">
+          <edgelabel>logic</edgelabel>
+        </childnode>
+        <childnode refid="3480" relation="usage">
+          <edgelabel>secondary_arguments</edgelabel>
+          <edgelabel>arguments</edgelabel>
+        </childnode>
+        <childnode refid="3482" relation="usage">
+          <edgelabel>tonliste</edgelabel>
+        </childnode>
+        <childnode refid="3483" relation="usage">
+          <edgelabel>umst_case</edgelabel>
+        </childnode>
+        <childnode refid="3484" relation="usage">
+          <edgelabel>retuning</edgelabel>
+        </childnode>
+        <childnode refid="3488" relation="usage">
+          <edgelabel>tonsystem</edgelabel>
+        </childnode>
+      </node>
+      <node id="3478">
+        <label>mutabor::hidden::harmonie_ereignis</label>
+        <link refid="d1/da9/structmutabor_1_1hidden_1_1harmonie__ereignis"/>
+        <childnode refid="3468" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+        <childnode refid="3479" relation="usage">
+          <edgelabel>pattern</edgelabel>
+        </childnode>
+        <childnode refid="3470" relation="usage">
+          <edgelabel>the_logik_to_expand</edgelabel>
+        </childnode>
+        <childnode refid="3478" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3466">
+        <label>mutabor::hidden::any_trigger</label>
+        <link refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger"/>
+        <childnode refid="3467" relation="usage">
+          <edgelabel>midi_trigger</edgelabel>
+        </childnode>
+        <childnode refid="3477" relation="usage">
+          <edgelabel>key_trigger</edgelabel>
+        </childnode>
+        <childnode refid="3478" relation="usage">
+          <edgelabel>harmony_trigger</edgelabel>
+        </childnode>
+      </node>
+      <node id="3479">
+        <label>mutabor::hidden::PTRN</label>
+        <link refid="d1/d5c/structmutabor_1_1hidden_1_1PTRN"/>
+      </node>
+      <node id="3485">
+        <label>mutabor::hidden::komplex_intervall</label>
+        <link refid="da/dd2/structmutabor_1_1hidden_1_1komplex__intervall"/>
+        <childnode refid="3485" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3477">
+        <label>mutabor::hidden::keyboard_ereignis</label>
+        <link refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis"/>
+        <childnode refid="3468" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+        <childnode refid="3470" relation="usage">
+          <edgelabel>the_logik_to_expand</edgelabel>
+        </childnode>
+        <childnode refid="3477" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3473">
+        <label>mutabor::hidden::aktions_liste</label>
+        <link refid="d0/d96/structmutabor_1_1hidden_1_1aktions__liste"/>
+        <childnode refid="3469" relation="usage">
+          <edgelabel>midi_code</edgelabel>
+        </childnode>
+        <childnode refid="3473" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3474" relation="usage">
+          <edgelabel>argument_liste</edgelabel>
+        </childnode>
+      </node>
+      <node id="3484">
+        <label>mutabor::hidden::umstimmung</label>
+        <link refid="db/d91/structmutabor_1_1hidden_1_1umstimmung"/>
+        <childnode refid="3469" relation="usage">
+          <edgelabel>out_liste</edgelabel>
+        </childnode>
+        <childnode refid="3485" relation="usage">
+          <edgelabel>komplex_liste</edgelabel>
+        </childnode>
+        <childnode refid="3486" relation="usage">
+          <edgelabel>umstimmungs_case_liste</edgelabel>
+        </childnode>
+        <childnode refid="3484" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3473" relation="usage">
+          <edgelabel>aktions_liste</edgelabel>
+        </childnode>
+        <childnode refid="3476" relation="usage">
+          <edgelabel>parameter_liste</edgelabel>
+        </childnode>
+        <childnode refid="3487" relation="usage">
+          <edgelabel>tonliste</edgelabel>
+        </childnode>
+        <childnode refid="3474" relation="usage">
+          <edgelabel>argument_liste</edgelabel>
+        </childnode>
+      </node>
+      <node id="3481">
+        <label>mutabor::hidden::interpreter_argument</label>
+        <link refid="d5/d64/unionmutabor_1_1hidden_1_1interpreter__argument"/>
+      </node>
+      <node id="3490">
+        <label>std::basic_string&lt; char &gt;</label>
+      </node>
+      <node id="3475">
+        <label>mutabor::hidden::argument</label>
+        <link refid="d8/d96/structmutabor_1_1hidden_1_1argument"/>
+        <childnode refid="3476" relation="usage">
+          <edgelabel>parameter</edgelabel>
+        </childnode>
+      </node>
+      <node id="3474">
+        <label>mutabor::hidden::argument_list</label>
+        <link refid="d7/ddb/structmutabor_1_1hidden_1_1argument__list"/>
+        <childnode refid="3475" relation="usage">
+          <edgelabel>argument</edgelabel>
+        </childnode>
+        <childnode refid="3474" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3470">
+        <label>mutabor::hidden::logik</label>
+        <link refid="df/dc6/structmutabor_1_1hidden_1_1logik"/>
+        <childnode refid="3467" relation="usage">
+          <edgelabel>midi_input_list</edgelabel>
+        </childnode>
+        <childnode refid="3468" relation="usage">
+          <edgelabel>einstimmung</edgelabel>
+        </childnode>
+        <childnode refid="3471" relation="usage">
+          <edgelabel>ausloeser</edgelabel>
+        </childnode>
+        <childnode refid="3472" relation="usage">
+          <edgelabel>anweisungsliste</edgelabel>
+        </childnode>
+        <childnode refid="3470" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3477" relation="usage">
+          <edgelabel>keystroke_list</edgelabel>
+        </childnode>
+        <childnode refid="3478" relation="usage">
+          <edgelabel>harmony_list</edgelabel>
+        </childnode>
+      </node>
+      <node id="3465">
         <label>mutabor::BoxClass::logic_entry</label>
         <link refid="da/d9b/structmutabor_1_1BoxClass_1_1logic__entry"/>
-        <childnode refid="3229" relation="usage">
+        <childnode refid="3466" relation="usage">
           <edgelabel>trigger</edgelabel>
+        </childnode>
+        <childnode refid="3489" relation="usage">
+          <edgelabel>startTuning</edgelabel>
+          <edgelabel>name</edgelabel>
+        </childnode>
+      </node>
+      <node id="3472">
+        <label>mutabor::hidden::anweisung</label>
+        <link refid="df/d55/structmutabor_1_1hidden_1_1anweisung"/>
+        <childnode refid="3471" relation="usage">
+          <edgelabel>ausloeser</edgelabel>
+        </childnode>
+        <childnode refid="3472" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3473" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+      </node>
+      <node id="3488">
+        <label>mutabor::hidden::TSYS</label>
+        <link refid="d4/dc1/structmutabor_1_1hidden_1_1TSYS"/>
+      </node>
+      <node id="3486">
+        <label>mutabor::hidden::case_liste</label>
+        <link refid="d0/d0b/structmutabor_1_1hidden_1_1case__liste"/>
+        <childnode refid="3486" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3473" relation="usage">
+          <edgelabel>case_aktion</edgelabel>
+        </childnode>
+      </node>
+      <node id="3476">
+        <label>mutabor::hidden::parameter_list</label>
+        <link refid="d4/d9f/structmutabor_1_1hidden_1_1parameter__list"/>
+        <childnode refid="3476" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3467">
+        <label>mutabor::hidden::midi_ereignis</label>
+        <link refid="d0/ddd/structmutabor_1_1hidden_1_1midi__ereignis"/>
+        <childnode refid="3467" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="3468" relation="usage">
+          <edgelabel>aktion</edgelabel>
+        </childnode>
+        <childnode refid="3470" relation="usage">
+          <edgelabel>the_logik_to_expand</edgelabel>
+        </childnode>
+      </node>
+      <node id="3471">
+        <label>mutabor::hidden::ausloeser</label>
+        <link refid="df/d4f/structmutabor_1_1hidden_1_1ausloeser"/>
+        <childnode refid="3469" relation="usage">
+          <edgelabel>midi_code</edgelabel>
+        </childnode>
+      </node>
+      <node id="3469">
+        <label>mutabor::hidden::midiliste</label>
+        <link refid="d5/d35/structmutabor_1_1hidden_1_1midiliste"/>
+        <childnode refid="3469" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3489">
+        <label>std::string</label>
+        <childnode refid="3490" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="386" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="386" bodyend="393"/>
+    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="379" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="379" bodyend="386"/>
     <listofallmembers>
       <member refid="d5/dee/group__route_1ga61e9df18c5a6d79b62b51861b4aee023" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::logic_entry</scope><name>active</name></member>
       <member refid="d5/dee/group__route_1gga08459fd10583083a77a5090f5b2554faad8b0ba5af7922ab4eb427ab6fd58ee4a" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::logic_entry</scope><name>CurrentLogic</name></member>
       <member refid="d5/dee/group__route_1gab2db39887dc4f67149b9803704947488" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::logic_entry</scope><name>flags</name></member>
       <member refid="d5/dee/group__route_1ga75b5b41c3edbeef42de5f93072a20f9f" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::logic_entry</scope><name>key</name></member>
       <member refid="d5/dee/group__route_1gga08459fd10583083a77a5090f5b2554faaaf5dc7c8c66ac66cb003faededef152f" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::logic_entry</scope><name>Logic</name></member>
-      <member refid="d5/dee/group__route_1gaede56de5fbc9ac90e3324e1d74e23fc8" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::logic_entry</scope><name>name</name></member>
+      <member refid="d5/dee/group__route_1gab2df614acd29a57a670bb4b3c220ecc8" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::logic_entry</scope><name>name</name></member>
       <member refid="d5/dee/group__route_1gga08459fd10583083a77a5090f5b2554faac0a87a303d0b77a6ec7912eaf079919b" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::logic_entry</scope><name>none</name></member>
-      <member refid="d5/dee/group__route_1gad02bd2c1a303f0f548d4d76f8619d759" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::logic_entry</scope><name>startTuning</name></member>
+      <member refid="d5/dee/group__route_1ga8f49764a5ca9cf8d212afeb0d0070cda" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::logic_entry</scope><name>startTuning</name></member>
       <member refid="d5/dee/group__route_1ga1369e44d7916a5ed33353d6c33b4081e" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::logic_entry</scope><name>trigger</name></member>
     </listofallmembers>
   </compounddef>

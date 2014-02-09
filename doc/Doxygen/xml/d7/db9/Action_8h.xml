@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d7/db9/Action_8h" kind="file">
     <compoundname>Action.h</compoundname>
     <includedby refid="dc/dcb/Action_8cpp" local="yes">src/wxGUI/Action.cpp</includedby>
@@ -7,31 +7,31 @@
     <includedby refid="dc/df3/MutFrame_8cpp" local="yes">src/wxGUI/MutFrame.cpp</includedby>
     <includedby refid="df/d3c/MutTextBox_8cpp" local="yes">src/wxGUI/MutTextBox.cpp</includedby>
     <invincdepgraph>
-      <node id="18303">
+      <node id="25884">
         <label>src/wxGUI/MutTextBox.cpp</label>
         <link refid="df/d3c/MutTextBox_8cpp"/>
       </node>
-      <node id="18301">
+      <node id="25882">
         <label>src/wxGUI/MutApp.cpp</label>
         <link refid="d5/d1c/MutApp_8cpp"/>
       </node>
-      <node id="18299">
+      <node id="25880">
         <label>src/wxGUI/Action.h</label>
         <link refid="Action.h"/>
-        <childnode refid="18300" relation="include">
+        <childnode refid="25881" relation="include">
         </childnode>
-        <childnode refid="18301" relation="include">
+        <childnode refid="25882" relation="include">
         </childnode>
-        <childnode refid="18302" relation="include">
+        <childnode refid="25883" relation="include">
         </childnode>
-        <childnode refid="18303" relation="include">
+        <childnode refid="25884" relation="include">
         </childnode>
       </node>
-      <node id="18302">
+      <node id="25883">
         <label>src/wxGUI/MutFrame.cpp</label>
         <link refid="dc/df3/MutFrame_8cpp"/>
       </node>
-      <node id="18300">
+      <node id="25881">
         <label>src/wxGUI/Action.cpp</label>
         <link refid="dc/dcb/Action_8cpp"/>
       </node>
@@ -69,9 +69,9 @@
 <codeline lineno="27"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MUWX_ACTION_H_PRECOMPILED</highlight></codeline>
 <codeline lineno="28"><highlight class="preprocessor"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>AktionTraceReset();</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>TakeOverActions();</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ACTChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ACTChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>box);</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//char<sp/>sAktion[2000//int<sp/>ActLineNumbers;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*GenerateACTString(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d33/mut_8cc_1abffd7f9eb60ee7a611664ca2804eec8f" kindref="member">box</ref>);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*GenerateACTString(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>box);</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*GenerateCAWString();</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>precompile</highlight></codeline>

@@ -3,7 +3,7 @@
 <title>mutaborGUI::InputDevDlg Klassenreferenz</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -250,7 +250,7 @@ Weitere Geerbte Elemente</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d4/d8f/InputDevDlg_8cpp_source.html#l00190">190</a> der Datei <a class="el" href="../../d4/d8f/InputDevDlg_8cpp_source.html">InputDevDlg.cpp</a>.</p>
 
-<p>Benutzt <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00141">DEBUGLOG</a>.</p>
+<p>Benutzt <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00146">DEBUGLOG</a>.</p>
 <div class="fragment"><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        {</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                TypeData * Data;</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="../../d8/d43/classInputDevDlgBase.html#a0736e4730352df1088f34708b12ed54d">DeviceChoice</a>-&gt;GetCount(); i++) {</div>
@@ -262,7 +262,7 @@ Weitere Geerbte Elemente</h2></td></tr>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                }</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                <span class="keywordflow">return</span> wxNOT_FOUND;</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        }</div>
-<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00141">mutDebug.h:141</a></div></div>
+<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00146">mutDebug.h:146</a></div></div>
 <div class="ttc" id="classInputDevDlgBase_html_a0736e4730352df1088f34708b12ed54d"><div class="ttname"><a href="../../d8/d43/classInputDevDlgBase.html#a0736e4730352df1088f34708b12ed54d">InputDevDlgBase::DeviceChoice</a></div><div class="ttdeci">wxChoice * DeviceChoice</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc0/wxresource_8h_source.html#l00141">wxresource.h:141</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -473,20 +473,20 @@ Weitere Geerbte Elemente</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d9/d12/InputDevDlg_8h_source.html#l00166">166</a> der Datei <a class="el" href="../../d9/d12/InputDevDlg_8h_source.html">InputDevDlg.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../d2/dc0/wxresource_8h_source.html#l00141">InputDevDlgBase::DeviceChoice</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00089">mutabor::DTNotSet</a> und <a class="el" href="../../d1/d73/Defs_8h_source.html#l00223">mutASSERT</a>.</p>
+<p>Benutzt <a class="el" href="../../d2/dc0/wxresource_8h_source.html#l00141">InputDevDlgBase::DeviceChoice</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00091">mutabor::DTNotSet</a> und <a class="el" href="../../d1/d73/Defs_8h_source.html#l00222">mutASSERT</a>.</p>
 <div class="fragment"><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                        {</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                                <span class="keywordtype">int</span> Type = <a class="code" href="../../d8/d43/classInputDevDlgBase.html#a0736e4730352df1088f34708b12ed54d">DeviceChoice</a>-&gt;GetSelection();</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                                <span class="keywordflow">if</span> (Type == wxNOT_FOUND) <span class="keywordflow">return</span> <a class="code" href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae">mutabor::DTNotSet</a>;</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a> (dynamic_cast&lt;TypeData *&gt;(<a class="code" href="../../d8/d43/classInputDevDlgBase.html#a0736e4730352df1088f34708b12ed54d">DeviceChoice</a>-&gt;GetClientObject(Type)));</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a> (dynamic_cast&lt;TypeData *&gt;(<a class="code" href="../../d8/d43/classInputDevDlgBase.html#a0736e4730352df1088f34708b12ed54d">DeviceChoice</a>-&gt;GetClientObject(Type)));</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                                TypeData * obj = (TypeData *)<a class="code" href="../../d8/d43/classInputDevDlgBase.html#a0736e4730352df1088f34708b12ed54d">DeviceChoice</a>-&gt;GetClientObject(Type);</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                                <span class="keywordflow">if</span> (obj) <span class="keywordflow">return</span>  *obj;</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                                <span class="keywordflow">else</span> <span class="keywordflow">return</span> <a class="code" href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae">mutabor::DTNotSet</a>;</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                        }</div>
 <div class="ttc" id="classInputDevDlgBase_html_a0736e4730352df1088f34708b12ed54d"><div class="ttname"><a href="../../d8/d43/classInputDevDlgBase.html#a0736e4730352df1088f34708b12ed54d">InputDevDlgBase::DeviceChoice</a></div><div class="ttdeci">wxChoice * DeviceChoice</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc0/wxresource_8h_source.html#l00141">wxresource.h:141</a></div></div>
-<div class="ttc" id="group__kernel_html_ga77bd8e5b959213dd8bcd48dc513f6013"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a></div><div class="ttdeci">#define mutASSERT(cond)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00223">Defs.h:223</a></div></div>
-<div class="ttc" id="group__route_html_gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae"><div class="ttname"><a href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae">mutabor::DTNotSet</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00089">Device.h:89</a></div></div>
+<div class="ttc" id="group__route_html_gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae"><div class="ttname"><a href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae">mutabor::DTNotSet</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00091">Device.h:91</a></div></div>
+<div class="ttc" id="group__kernel_html_ga565c8973b3b2a87c7f9c7c7aabb9665e"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a></div><div class="ttdeci">#define mutASSERT</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00222">Defs.h:222</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -533,13 +533,13 @@ Weitere Geerbte Elemente</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d4/d8f/InputDevDlg_8cpp_source.html#l00182">182</a> der Datei <a class="el" href="../../d4/d8f/InputDevDlg_8cpp_source.html">InputDevDlg.cpp</a>.</p>
 
-<p>Benutzt <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00141">DEBUGLOG</a>.</p>
+<p>Benutzt <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00146">DEBUGLOG</a>.</p>
 <div class="fragment"><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        {</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other,_T (<span class="stringliteral">&quot;Path changed: %s&quot;</span>),event.GetPath().c_str());</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                GetSizer()-&gt;SetSizeHints(<span class="keyword">this</span>);</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                Fit();</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        }</div>
-<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00141">mutDebug.h:141</a></div></div>
+<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00146">mutDebug.h:146</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -596,13 +596,13 @@ Weitere Geerbte Elemente</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d9/d12/InputDevDlg_8h_source.html#l00158">158</a> der Datei <a class="el" href="../../d9/d12/InputDevDlg_8h_source.html">InputDevDlg.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00141">DEBUGLOG</a> und <a class="el" href="../../d2/dc0/wxresource_8h_source.html#l00144">InputDevDlgBase::GuidoFilePicker</a>.</p>
+<p>Benutzt <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00146">DEBUGLOG</a> und <a class="el" href="../../d2/dc0/wxresource_8h_source.html#l00144">InputDevDlgBase::GuidoFilePicker</a>.</p>
 <div class="fragment"><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                        {</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(other, value);</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                                <a class="code" href="../../d8/d43/classInputDevDlgBase.html#a51d44c84339d8016d8d51357f86fff90">GuidoFilePicker</a>-&gt;SetPath(value);</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                                Update();</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                        }</div>
-<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00141">mutDebug.h:141</a></div></div>
+<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00146">mutDebug.h:146</a></div></div>
 <div class="ttc" id="classInputDevDlgBase_html_a51d44c84339d8016d8d51357f86fff90"><div class="ttname"><a href="../../d8/d43/classInputDevDlgBase.html#a51d44c84339d8016d8d51357f86fff90">InputDevDlgBase::GuidoFilePicker</a></div><div class="ttdeci">wxFilePickerCtrl * GuidoFilePicker</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc0/wxresource_8h_source.html#l00144">wxresource.h:144</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -631,13 +631,13 @@ Weitere Geerbte Elemente</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d9/d12/InputDevDlg_8h_source.html#l00131">131</a> der Datei <a class="el" href="../../d9/d12/InputDevDlg_8h_source.html">InputDevDlg.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00141">DEBUGLOG</a> und <a class="el" href="../../d2/dc0/wxresource_8h_source.html#l00142">InputDevDlgBase::PortChoice</a>.</p>
+<p>Benutzt <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00146">DEBUGLOG</a> und <a class="el" href="../../d2/dc0/wxresource_8h_source.html#l00142">InputDevDlgBase::PortChoice</a>.</p>
 <div class="fragment"><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                        {</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(other, _T(<span class="stringliteral">&quot;%d&quot;</span>),value);</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                                <a class="code" href="../../d8/d43/classInputDevDlgBase.html#af3de8d4a8a464e0523752bf5bcb78663">PortChoice</a>-&gt;SetSelection (value) ;</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                                Update();</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                        }</div>
-<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00141">mutDebug.h:141</a></div></div>
+<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00146">mutDebug.h:146</a></div></div>
 <div class="ttc" id="classInputDevDlgBase_html_af3de8d4a8a464e0523752bf5bcb78663"><div class="ttname"><a href="../../d8/d43/classInputDevDlgBase.html#af3de8d4a8a464e0523752bf5bcb78663">InputDevDlgBase::PortChoice</a></div><div class="ttdeci">wxChoice * PortChoice</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc0/wxresource_8h_source.html#l00142">wxresource.h:142</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -666,14 +666,14 @@ Weitere Geerbte Elemente</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d9/d12/InputDevDlg_8h_source.html#l00144">144</a> der Datei <a class="el" href="../../d9/d12/InputDevDlg_8h_source.html">InputDevDlg.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00141">DEBUGLOG</a> und <a class="el" href="../../d2/dc0/wxresource_8h_source.html#l00143">InputDevDlgBase::MidiFilePicker</a>.</p>
+<p>Benutzt <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00146">DEBUGLOG</a> und <a class="el" href="../../d2/dc0/wxresource_8h_source.html#l00143">InputDevDlgBase::MidiFilePicker</a>.</p>
 <div class="fragment"><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                        {</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(other, value);</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                                <a class="code" href="../../d8/d43/classInputDevDlgBase.html#ac7c2085386dfb40fae60b4463c4c51ab">MidiFilePicker</a>-&gt;SetPath(value);</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                                Update();</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(other, _T(<span class="stringliteral">&quot;done&quot;</span>));</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                        }</div>
-<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00141">mutDebug.h:141</a></div></div>
+<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00146">mutDebug.h:146</a></div></div>
 <div class="ttc" id="classInputDevDlgBase_html_ac7c2085386dfb40fae60b4463c4c51ab"><div class="ttname"><a href="../../d8/d43/classInputDevDlgBase.html#ac7c2085386dfb40fae60b4463c4c51ab">InputDevDlgBase::MidiFilePicker</a></div><div class="ttdeci">wxFilePickerCtrl * MidiFilePicker</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc0/wxresource_8h_source.html#l00143">wxresource.h:143</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -702,13 +702,13 @@ Weitere Geerbte Elemente</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d9/d12/InputDevDlg_8h_source.html#l00178">178</a> der Datei <a class="el" href="../../d9/d12/InputDevDlg_8h_source.html">InputDevDlg.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00141">DEBUGLOG</a> und <a class="el" href="../../d4/d8f/InputDevDlg_8cpp_source.html#l00131">UpdateLayout()</a>.</p>
+<p>Benutzt <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00146">DEBUGLOG</a> und <a class="el" href="../../d4/d8f/InputDevDlg_8cpp_source.html#l00131">UpdateLayout()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                        {</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(other, _T(<span class="stringliteral">&quot;%d&quot;</span>),value);</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                                <a class="code" href="../../d2/dcc/classmutaborGUI_1_1InputDevDlg.html#a5c90c0dd6ebe468f541301700c0c0e72">UpdateLayout</a>(value);</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                                Update();</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                        }</div>
-<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00141">mutDebug.h:141</a></div></div>
+<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00146">mutDebug.h:146</a></div></div>
 <div class="ttc" id="classmutaborGUI_1_1InputDevDlg_html_a5c90c0dd6ebe468f541301700c0c0e72"><div class="ttname"><a href="../../d2/dcc/classmutaborGUI_1_1InputDevDlg.html#a5c90c0dd6ebe468f541301700c0c0e72">mutaborGUI::InputDevDlg::UpdateLayout</a></div><div class="ttdeci">void UpdateLayout(mutabor::DevType type)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d8f/InputDevDlg_8cpp_source.html#l00131">InputDevDlg.cpp:131</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -760,7 +760,7 @@ Weitere Geerbte Elemente</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d4/d8f/InputDevDlg_8cpp_source.html#l00131">131</a> der Datei <a class="el" href="../../d4/d8f/InputDevDlg_8cpp_source.html">InputDevDlg.cpp</a>.</p>
 
-<p>Benutzt <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00057">_</a>, <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00141">DEBUGLOG</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00089">mutabor::DTGis</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00089">mutabor::DTMidiFile</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00089">mutabor::DTMidiPort</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00089">mutabor::DTNotSet</a> und <a class="el" href="../../de/d05/Device_8h_source.html#l00089">mutabor::DTUnknown</a>.</p>
+<p>Benutzt <a class="el" href="../../df/d23/Execute_8cpp_source.html#l00057">_</a>, <a class="el" href="../../de/de1/mutDebug_8h_source.html#l00146">DEBUGLOG</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00091">mutabor::DTGis</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00091">mutabor::DTMidiFile</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00091">mutabor::DTMidiPort</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00091">mutabor::DTNotSet</a> und <a class="el" href="../../de/d05/Device_8h_source.html#l00091">mutabor::DTUnknown</a>.</p>
 
 <p>Wird benutzt von <a class="el" href="../../d9/d12/InputDevDlg_8h_source.html#l00178">SetType()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        {</div>
@@ -801,14 +801,14 @@ Weitere Geerbte Elemente</h2></td></tr>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                GetSizer()-&gt;SetSizeHints(<span class="keyword">this</span>);</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                Fit();</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        }</div>
-<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00141">mutDebug.h:141</a></div></div>
+<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00146">mutDebug.h:146</a></div></div>
 <div class="ttc" id="classInputDevDlgBase_html_a0736e4730352df1088f34708b12ed54d"><div class="ttname"><a href="../../d8/d43/classInputDevDlgBase.html#a0736e4730352df1088f34708b12ed54d">InputDevDlgBase::DeviceChoice</a></div><div class="ttdeci">wxChoice * DeviceChoice</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc0/wxresource_8h_source.html#l00141">wxresource.h:141</a></div></div>
-<div class="ttc" id="group__route_html_gga84f84d78781fc500cd66ee58b0efc83aa2b2fa6564c9620ec4de6c1440688c984"><div class="ttname"><a href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa2b2fa6564c9620ec4de6c1440688c984">mutabor::DTGis</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00089">Device.h:89</a></div></div>
-<div class="ttc" id="group__route_html_gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011"><div class="ttname"><a href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011">mutabor::DTMidiFile</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00089">Device.h:89</a></div></div>
-<div class="ttc" id="group__route_html_gga84f84d78781fc500cd66ee58b0efc83aa896ab52de20803c767b4941638b0ce5c"><div class="ttname"><a href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa896ab52de20803c767b4941638b0ce5c">mutabor::DTUnknown</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00089">Device.h:89</a></div></div>
-<div class="ttc" id="group__route_html_gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae"><div class="ttname"><a href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae">mutabor::DTNotSet</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00089">Device.h:89</a></div></div>
+<div class="ttc" id="group__route_html_gga84f84d78781fc500cd66ee58b0efc83aa2b2fa6564c9620ec4de6c1440688c984"><div class="ttname"><a href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa2b2fa6564c9620ec4de6c1440688c984">mutabor::DTGis</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00091">Device.h:91</a></div></div>
+<div class="ttc" id="group__route_html_gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011"><div class="ttname"><a href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011">mutabor::DTMidiFile</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00091">Device.h:91</a></div></div>
+<div class="ttc" id="group__route_html_gga84f84d78781fc500cd66ee58b0efc83aa896ab52de20803c767b4941638b0ce5c"><div class="ttname"><a href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa896ab52de20803c767b4941638b0ce5c">mutabor::DTUnknown</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00091">Device.h:91</a></div></div>
+<div class="ttc" id="group__route_html_gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae"><div class="ttname"><a href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae">mutabor::DTNotSet</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00091">Device.h:91</a></div></div>
 <div class="ttc" id="group__kernel_html_gae4dfd7b0d66121016d6466d2ff10e8ba"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a></div><div class="ttdeci">#define _</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/Execute_8cpp_source.html#l00057">Execute.cpp:57</a></div></div>
-<div class="ttc" id="group__route_html_gga84f84d78781fc500cd66ee58b0efc83aa6fc00580b26fa48d6ac5d51fe78129e0"><div class="ttname"><a href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa6fc00580b26fa48d6ac5d51fe78129e0">mutabor::DTMidiPort</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00089">Device.h:89</a></div></div>
+<div class="ttc" id="group__route_html_gga84f84d78781fc500cd66ee58b0efc83aa6fc00580b26fa48d6ac5d51fe78129e0"><div class="ttname"><a href="../../d5/dee/group__route.html#gga84f84d78781fc500cd66ee58b0efc83aa6fc00580b26fa48d6ac5d51fe78129e0">mutabor::DTMidiPort</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00091">Device.h:91</a></div></div>
 <div class="ttc" id="classmutaborGUI_1_1InputDevDlg_html_aadc66f786c6f7e00a5ef49f13612bcba"><div class="ttname"><a href="../../d2/dcc/classmutaborGUI_1_1InputDevDlg.html#aadc66f786c6f7e00a5ef49f13612bcba">mutaborGUI::InputDevDlg::FindType</a></div><div class="ttdeci">int FindType(mutabor::DevType t)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d8f/InputDevDlg_8cpp_source.html#l00190">InputDevDlg.cpp:190</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -819,6 +819,6 @@ Weitere Geerbte Elemente</h2></td></tr>
 </ul>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:56 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:34 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

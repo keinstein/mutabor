@@ -3,7 +3,7 @@
 <title>src/wxGUI/MutDocManager.cpp Quellcode</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -31,135 +31,334 @@
 </div><!--header-->
 <div class="contents">
 <a href="../../dd/db0/MutDocManager_8cpp.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">// availlable groups: GUI, route, kernel, src/wxGUI, debug</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">// headers</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d73/Defs_8h.html">src/kernel/Defs.h</a>&quot;</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../df/d7f/MutDocManager_8h.html">src/wxGUI/MutDocManager.h</a>&quot;</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d0/d9e/MutView_8h.html">src/wxGUI/MutView.h</a>&quot;</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../db/d00/MutDocument_8h.html">src/wxGUI/MutDocument.h</a>&quot;</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d2c/Route-inlines_8h.html">src/kernel/routing/Route-inlines.h</a>&quot;</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#ifdef __BORLANDC__</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #pragma hdrstop</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html">mutaborGUI::MutDocManager</a>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<a class="code" href="../../df/dd1/group__GUI.html#gae91e1ff5ac7d0866e88220faba0a463b">BEGIN_EVENT_TABLE</a>(<a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html">MutDocManager</a>, wxDocManager)</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<a class="code" href="../../df/dd1/group__GUI.html#gad55fc6bb312f54a3c5b462e193777bb1">EVT_MENU</a>(<a class="code" href="../../db/d94/namespacemutaborGUI.html#a2a08133c5c0cbb22dd229213615f8a34a4a3ddde2676e7be85542c0a42c0db4ba">CM_EXECUTE</a>, <a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html">MutDocManager</a>::CmExecuteLogic)</div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="../../dd/db0/MutDocManager_8cpp.html#a9e7a087c5c550acffcd802f4b40bd609">   87</a></span>&#160;<a class="code" href="../../dd/db0/MutDocManager_8cpp.html#a9e7a087c5c550acffcd802f4b40bd609">END_EVENT_TABLE</a>()</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;namespace mutaborGUI {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordtype">bool</span> MutDocManager::TryParent(wxEvent&amp; event)</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#gaedf3113729faf15522da4884cc137733">mutUnused</a>(event);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="comment">// if we must pass some events to the Application, </span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="comment">// they must be handled here somehow replacing false</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor"></span>                <span class="comment">// Implementation in Event.cpp:</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <span class="keywordflow">if</span> ( wxTheApp &amp;&amp; <span class="keyword">false</span> )</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                        <span class="comment">// Special case: don&#39;t pass wxEVT_IDLE to wxApp, since it&#39;ll always</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                        <span class="comment">// swallow it. wxEVT_IDLE is sent explicitly to wxApp so it will be</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                        <span class="comment">// processed appropriately via SearchEventTable.</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                        <span class="keywordflow">if</span> ( event.GetEventType() != wxEVT_IDLE )</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                        {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                                <span class="keywordflow">if</span> ( wxTheApp-&gt;ProcessEvent(event) )</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                                        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                        }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="comment">// Extend event processing to search the view&#39;s event table</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#ad418398238f09a8fdd8bea5a77d8ac82">MutDocManager::ProcessEvent</a>(wxEvent&amp; event)</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <span class="keywordflow">if</span> (!wxEvtHandler::ProcessEvent(event))</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                        wxView* view = GetCurrentView();</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(eventqueue,_T(<span class="stringliteral">&quot;View: %p&quot;</span>),</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                                 (<span class="keywordtype">void</span>*)(dynamic_cast&lt;MutView *&gt;(view)));</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                        <span class="keywordflow">if</span> (view &amp;&amp; view-&gt;ProcessEvent(event))</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                        <span class="keywordflow">else</span> <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        }</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="comment">// Make a frame title (override this to do something different)</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="comment">// If docName is empty, a document is not currently active.</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        wxString <a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#a3d310b2f0cbcf5e50a9098eda3c9fe5e">MutDocManager::MakeFrameTitle</a>(wxDocument* doc)</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                wxString appName = wxTheApp-&gt;GetAppName();</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                wxString title;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                <span class="keywordflow">if</span> (!doc)</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                        title = appName;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                {</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                        wxString docName;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="preprocessor">#if wxCHECK_VERSION(2,9,0)</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor"></span>                        docName = doc-&gt;GetUserReadableName();</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor"></span>                        doc-&gt;GetPrintableName(docName);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor"></span>                        title = docName + wxString(<a class="code" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>(<span class="stringliteral">&quot; - &quot;</span>)) + _T(<a class="code" href="../../dc/df3/MutFrame_8cpp.html#a1c0439e4355794c09b64274849eb0279">PACKAGE_NAME</a>);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                }</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                <span class="keywordflow">return</span> title;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#ac873be14b62dff95b5efed7c8676c282">MutDocManager::CmExecuteLogic</a>(wxCommandEvent&amp; event) </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        {</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#gaedf3113729faf15522da4884cc137733">mutUnused</a>(event);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                wxDocument * doc = CreateDocument( wxEmptyString, 0);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <span class="keywordflow">if</span> ( !doc )</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                        OnOpenFileFailure();</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                }</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(dynamic_cast&lt;MutDocument *&gt;(doc));</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                wxView * view = doc-&gt;GetFirstView();</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                <span class="keywordflow">if</span> (!view) {</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                        <a class="code" href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a>;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// availlable groups: GUI, route, kernel, src/wxGUI, debug</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">// headers</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d73/Defs_8h.html">src/kernel/Defs.h</a>&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../df/d7f/MutDocManager_8h.html">src/wxGUI/MutDocManager.h</a>&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d0/d9e/MutView_8h.html">src/wxGUI/MutView.h</a>&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../db/d00/MutDocument_8h.html">src/wxGUI/MutDocument.h</a>&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d2c/Route-inlines_8h.html">src/kernel/routing/Route-inlines.h</a>&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#ifdef __BORLANDC__</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #pragma hdrstop</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html">mutaborGUI::MutDocManager</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<a class="code" href="../../dd/db0/MutDocManager_8cpp.html#aa525413726728783186ed6f6ae1fb574">BEGIN_EVENT_TABLE</a>(<a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html">MutDocManager</a>, wxDocManager)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<a class="code" href="../../df/dd1/group__GUI.html#gad55fc6bb312f54a3c5b462e193777bb1">EVT_MENU</a>(<a class="code" href="../../db/d94/namespacemutaborGUI.html#a2a08133c5c0cbb22dd229213615f8a34a4a3ddde2676e7be85542c0a42c0db4ba">CM_EXECUTE</a>, <a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html">MutDocManager</a>::CmExecuteLogic)</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../dd/db0/MutDocManager_8cpp.html#a9e7a087c5c550acffcd802f4b40bd609">   50</a></span>&#160;<a class="code" href="../../dd/db0/MutDocManager_8cpp.html#a9e7a087c5c550acffcd802f4b40bd609">END_EVENT_TABLE</a>()</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;namespace mutaborGUI {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor"></span>        <span class="keywordtype">bool</span> MutDocManager::TryParent(wxEvent&amp; event)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#gaedf3113729faf15522da4884cc137733">mutUnused</a>(event);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="comment">// if we must pass some events to the Application,</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="comment">// they must be handled here somehow replacing false</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor"></span>                <span class="comment">// Implementation in Event.cpp:</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="keywordflow">if</span> ( wxTheApp &amp;&amp; <span class="keyword">false</span> )</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                        <span class="comment">// Special case: don&#39;t pass wxEVT_IDLE to wxApp, since it&#39;ll always</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                        <span class="comment">// swallow it. wxEVT_IDLE is sent explicitly to wxApp so it will be</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                        <span class="comment">// processed appropriately via SearchEventTable.</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                        <span class="keywordflow">if</span> ( event.GetEventType() != wxEVT_IDLE )</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                        {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                <span class="keywordflow">if</span> ( wxTheApp-&gt;ProcessEvent(event) )</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="comment">// Extend event processing to search the view&#39;s event table</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#ad418398238f09a8fdd8bea5a77d8ac82">MutDocManager::ProcessEvent</a>(wxEvent&amp; event)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">if</span> (!wxEvtHandler::ProcessEvent(event))</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        wxView* view = GetCurrentView();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(eventqueue,_T(<span class="stringliteral">&quot;View: %p&quot;</span>),</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                 (<span class="keywordtype">void</span>*)(dynamic_cast&lt;MutView *&gt;(view)));</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        <span class="keywordflow">if</span> (view &amp;&amp; view-&gt;ProcessEvent(event))</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                        <span class="keywordflow">else</span> <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="comment">// Make a frame title (override this to do something different)</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="comment">// If docName is empty, a document is not currently active.</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        wxString <a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#a3d310b2f0cbcf5e50a9098eda3c9fe5e">MutDocManager::MakeFrameTitle</a>(wxDocument* doc)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                wxString appName = wxTheApp-&gt;GetAppName();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                wxString title;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <span class="keywordflow">if</span> (!doc)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                        title = appName;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                        wxString docName;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#if wxCHECK_VERSION(2,9,0)</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor"></span>                        docName = doc-&gt;GetUserReadableName();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor"></span>                        doc-&gt;GetPrintableName(docName);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor"></span>                        title = docName + wxString(<a class="code" href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a>(<span class="stringliteral">&quot; - &quot;</span>)) + _T(<a class="code" href="../../dc/df3/MutFrame_8cpp.html#a1c0439e4355794c09b64274849eb0279">PACKAGE_NAME</a>);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <span class="keywordflow">return</span> title;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#ac873be14b62dff95b5efed7c8676c282">MutDocManager::CmExecuteLogic</a>(wxCommandEvent&amp; event)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#gaedf3113729faf15522da4884cc137733">mutUnused</a>(event);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                wxDocument * doc = CreateDocument( wxEmptyString, 0);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordflow">if</span> ( !doc )</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                        OnOpenFileFailure();</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a>(dynamic_cast&lt;MutDocument *&gt;(doc));</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                wxView * view = doc-&gt;GetFirstView();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keywordflow">if</span> (!view) {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                        <a class="code" href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                wxWindow * f = view-&gt;GetFrame();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                <span class="keywordflow">if</span> (!f) {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                        <a class="code" href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a>;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a>(dynamic_cast&lt;MutFrame *&gt;(f));</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                wxCommandEvent ev(wxEVT_COMMAND_MENU_SELECTED,</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                                  <a class="code" href="../../db/d94/namespacemutaborGUI.html#a2a08133c5c0cbb22dd229213615f8a34a3c451dffd4d31b10f1371f3778531ab8">CM_ACTIVATE</a>);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                f-&gt;GetEventHandler()-&gt;ProcessEvent(ev);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keyword">class </span>MutDocManagerEventConnector {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                MutDocManagerEventConnector(wxEvtHandler * <a class="code" href="../../d3/d26/mutgis_8cpp.html#a26506d124b947beae862c007bc8195bb">h</a>):handler(h) {}</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                MutDocManagerEventConnector &amp; operator () (<span class="keywordtype">int</span> <span class="keywordtype">id</span>,</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                             wxEventType eventType,</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                             wxObjectEventFunction <span class="keyword">function</span>,</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                             wxObject* userData = NULL,</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                             wxEvtHandler* eventSink = NULL) {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                        handler -&gt; Connect(<span class="keywordtype">id</span>, eventType, <span class="keyword">function</span>, userData, eventSink);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                wxEvtHandler * handler;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        };</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keyword">class </span>MutDocManagerEventDisconnector {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                MutDocManagerEventDisconnector(wxEvtHandler * <a class="code" href="../../d3/d26/mutgis_8cpp.html#a26506d124b947beae862c007bc8195bb">h</a>):handler(h) {}</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                MutDocManagerEventDisconnector &amp; operator () (<span class="keywordtype">int</span> <span class="keywordtype">id</span>,</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                             wxEventType eventType,</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                             wxObjectEventFunction <span class="keyword">function</span>,</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                             wxObject* userData = NULL,</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                             wxEvtHandler* eventSink = NULL) {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                        handler -&gt; Disconnect(<span class="keywordtype">id</span>, eventType, <span class="keyword">function</span>, userData, eventSink);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                        <span class="keywordflow">return</span> * <span class="keyword">this</span>;</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                }</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                wxWindow * f = view-&gt;GetFrame();</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <span class="keywordflow">if</span> (!f) {</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                        <a class="code" href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a>;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                }</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                <a class="code" href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a>(dynamic_cast&lt;MutFrame *&gt;(f));</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                wxCommandEvent ev(wxEVT_COMMAND_MENU_SELECTED,</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                                  <a class="code" href="../../db/d94/namespacemutaborGUI.html#a2a08133c5c0cbb22dd229213615f8a34a3c451dffd4d31b10f1371f3778531ab8">CM_ACTIVATE</a>);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                f-&gt;GetEventHandler()-&gt;ProcessEvent(ev);</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        }</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;}</div>
-<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00141">mutDebug.h:141</a></div></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                wxEvtHandler * handler;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        };</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">class</span> C&gt;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#ad94e776314c7ad975d46610d492a2546">MutDocManager::doConnect</a>(C &amp; Connect) {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                <span class="comment">// original handlers</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                Connect(wxID_OPEN,</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                        wxEVT_COMMAND_MENU_SELECTED,</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                        wxCommandEventHandler( wxDocManager::OnFileOpen ),</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                Connect(wxID_CLOSE,</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                        wxEVT_COMMAND_MENU_SELECTED,</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                        wxCommandEventHandler( wxDocManager::OnFileClose ),</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                Connect(wxID_CLOSE_ALL,</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                        wxEVT_COMMAND_MENU_SELECTED,</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                        wxCommandEventHandler( wxDocManager::OnFileCloseAll ),</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                Connect(wxID_REVERT,</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                        wxEVT_COMMAND_MENU_SELECTED,</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                        wxCommandEventHandler( wxDocManager::OnFileRevert ),</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                Connect(wxID_NEW,</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                        wxEVT_COMMAND_MENU_SELECTED,</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                        wxCommandEventHandler( wxDocManager::OnFileNew ),</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                Connect(wxID_SAVE,</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                        wxEVT_COMMAND_MENU_SELECTED,</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                        wxCommandEventHandler( wxDocManager::OnFileSave ),</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                Connect(wxID_SAVEAS,</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                        wxEVT_COMMAND_MENU_SELECTED,</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                        wxCommandEventHandler( wxDocManager::OnFileSaveAs ),</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                Connect(wxID_UNDO,</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                        wxEVT_COMMAND_MENU_SELECTED,</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                        wxCommandEventHandler( wxDocManager::OnUndo ),</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                Connect(wxID_REDO,</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                        wxEVT_COMMAND_MENU_SELECTED,</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                        wxCommandEventHandler( wxDocManager::OnRedo ),</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                Connect(wxID_OPEN,</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                        wxEVT_UPDATE_UI,</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                        wxUpdateUIEventHandler( wxDocManager::OnUpdateFileOpen ),</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="preprocessor">#if wxCHECK_VERSION(2,9,0)</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor"></span>                Connect(wxID_CLOSE,</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                        wxEVT_UPDATE_UI,</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                        wxUpdateUIEventHandler( wxDocManager::OnUpdateDisableIfNoDoc ),</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                Connect(wxID_CLOSE_ALL,</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                        wxEVT_UPDATE_UI,</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                        wxUpdateUIEventHandler( wxDocManager::OnUpdateDisableIfNoDoc ),</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="preprocessor"></span>                Connect(wxID_CLOSE,</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                        wxEVT_UPDATE_UI,</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                        wxUpdateUIEventHandler( wxDocManager::OnUpdateFileClose ),</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                Connect(wxID_CLOSE_ALL,</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                        wxEVT_UPDATE_UI,</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                        wxUpdateUIEventHandler( wxDocManager::OnUpdateFileClose ),</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="preprocessor"></span>                Connect(wxID_REVERT,</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                        wxEVT_UPDATE_UI,</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                        wxUpdateUIEventHandler( wxDocManager::OnUpdateFileRevert ),</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                Connect(wxID_NEW,</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                        wxEVT_UPDATE_UI,</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                        wxUpdateUIEventHandler( wxDocManager::OnUpdateFileNew ),</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                Connect(wxID_SAVE,</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                        wxEVT_UPDATE_UI,</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                        wxUpdateUIEventHandler( wxDocManager::OnUpdateFileSave ),</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                Connect(wxID_SAVEAS,</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                        wxEVT_UPDATE_UI,</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                        wxUpdateUIEventHandler( wxDocManager::OnUpdateFileSaveAs ),</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                Connect(wxID_UNDO,</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                        wxEVT_UPDATE_UI,</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                        wxUpdateUIEventHandler( wxDocManager::OnUpdateUndo ),</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                Connect(wxID_REDO,</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                        wxEVT_UPDATE_UI,</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                        wxUpdateUIEventHandler( wxDocManager::OnUpdateRedo ),</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="preprocessor">#if wxUSE_PRINTING_ARCHITECTURE</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="preprocessor"></span>                Connect(wxID_PRINT,</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                        wxEVT_COMMAND_MENU_SELECTED,</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                        wxCommandEventHandler( wxDocManager::OnPrint ),</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                Connect(wxID_PREVIEW,</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                        wxEVT_COMMAND_MENU_SELECTED,</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                        wxCommandEventHandler( wxDocManager::OnPreview ),</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="preprocessor">#if wxCHECK_VERSION(2,9,0)</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="preprocessor"></span>                Connect(wxID_PRINT,</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                        wxEVT_UPDATE_UI,</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                        wxUpdateUIEventHandler( wxDocManager::OnUpdateDisableIfNoDoc ),</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                Connect(wxID_PREVIEW,</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                        wxEVT_UPDATE_UI,</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                        wxUpdateUIEventHandler( wxDocManager::OnUpdateDisableIfNoDoc ),</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="preprocessor"></span>                Connect(wxID_PRINT,</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                        wxEVT_UPDATE_UI,</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                        wxUpdateUIEventHandler( wxDocManager::OnUpdatePrint ),</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                Connect(wxID_PREVIEW,</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                        wxEVT_UPDATE_UI,</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                        wxUpdateUIEventHandler( wxDocManager::OnUpdatePreview ),</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                <span class="comment">// our own handlers</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                Connect(CM_EXECUTE,</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                        wxEVT_COMMAND_MENU_SELECTED,</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                        wxCommandEventHandler(<a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#ac873be14b62dff95b5efed7c8676c282">MutDocManager::CmExecuteLogic</a>),</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                        NULL,</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                        <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        }</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#a3a192e986df198e4839e79609b64bf71">MutDocManager::ConnectToApp</a>(wxEvtHandler * handler) {</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                MutDocManagerEventConnector Connect(handler);</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                <a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#ad94e776314c7ad975d46610d492a2546">doConnect</a>(Connect);</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        }</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#a1a733dba2eacab866c5250a08970bfa7">MutDocManager::DisconnectFromApp</a>(wxEvtHandler * handler) {</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                MutDocManagerEventDisconnector Disconnect(handler);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                <a class="code" href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#ad94e776314c7ad975d46610d492a2546">doConnect</a>(Disconnect);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        }</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;}</div>
+<div class="ttc" id="mutgis_8cpp_html_a26506d124b947beae862c007bc8195bb"><div class="ttname"><a href="../../d3/d26/mutgis_8cpp.html#a26506d124b947beae862c007bc8195bb">h</a></div><div class="ttdeci">GisReadArtHead * h</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d26/mutgis_8cpp_source.html#l00005">mutgis.cpp:5</a></div></div>
+<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00146">mutDebug.h:146</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1MutDocManager_html_a1a733dba2eacab866c5250a08970bfa7"><div class="ttname"><a href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#a1a733dba2eacab866c5250a08970bfa7">mutaborGUI::MutDocManager::DisconnectFromApp</a></div><div class="ttdeci">void DisconnectFromApp(wxEvtHandler *handler)</div><div class="ttdoc">Disconnect the event handling functions from the events. </div></div>
 <div class="ttc" id="MutDocManager_8h_html"><div class="ttname"><a href="../../df/d7f/MutDocManager_8h.html">MutDocManager.h</a></div></div>
 <div class="ttc" id="group__kernel_html_gaedf3113729faf15522da4884cc137733"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gaedf3113729faf15522da4884cc137733">mutUnused</a></div><div class="ttdeci">#define mutUnused(expr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00079">Defs.h:79</a></div></div>
-<div class="ttc" id="group__debug_html_ga86acd9c1c30c8cb1831b46da11b1ec62"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a></div><div class="ttdeci">#define TRACEC</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00146">mutDebug.h:146</a></div></div>
+<div class="ttc" id="group__debug_html_ga86acd9c1c30c8cb1831b46da11b1ec62"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a></div><div class="ttdeci">#define TRACEC</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00151">mutDebug.h:151</a></div></div>
 <div class="ttc" id="classmutaborGUI_1_1MutDocManager_html"><div class="ttname"><a href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html">mutaborGUI::MutDocManager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7f/MutDocManager_8h_source.html#l00052">MutDocManager.h:52</a></div></div>
 <div class="ttc" id="Route-inlines_8h_html"><div class="ttname"><a href="../../d2/d2c/Route-inlines_8h.html">Route-inlines.h</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1MutDocManager_html_a3a192e986df198e4839e79609b64bf71"><div class="ttname"><a href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#a3a192e986df198e4839e79609b64bf71">mutaborGUI::MutDocManager::ConnectToApp</a></div><div class="ttdeci">void ConnectToApp(wxEvtHandler *handler)</div><div class="ttdoc">Connect the event handling functions to the events. </div></div>
 <div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
-<div class="ttc" id="classmutaborGUI_1_1MutDocManager_html_ad418398238f09a8fdd8bea5a77d8ac82"><div class="ttname"><a href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#ad418398238f09a8fdd8bea5a77d8ac82">mutaborGUI::MutDocManager::ProcessEvent</a></div><div class="ttdeci">bool ProcessEvent(wxEvent &amp;event)</div><div class="ttdoc">Extend event processing to search the view&amp;#39;s event table. </div></div>
+<div class="ttc" id="classmutaborGUI_1_1MutDocManager_html_ad418398238f09a8fdd8bea5a77d8ac82"><div class="ttname"><a href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#ad418398238f09a8fdd8bea5a77d8ac82">mutaborGUI::MutDocManager::ProcessEvent</a></div><div class="ttdeci">bool ProcessEvent(wxEvent &amp;event)</div><div class="ttdoc">Extend event processing to search the view&#39;s event table. </div></div>
 <div class="ttc" id="classmutaborGUI_1_1MutDocManager_html_a3d310b2f0cbcf5e50a9098eda3c9fe5e"><div class="ttname"><a href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#a3d310b2f0cbcf5e50a9098eda3c9fe5e">mutaborGUI::MutDocManager::MakeFrameTitle</a></div><div class="ttdeci">virtual wxString MakeFrameTitle(wxDocument *doc)</div><div class="ttdoc">calculate the frame title </div></div>
-<div class="ttc" id="group__kernel_html_ga77bd8e5b959213dd8bcd48dc513f6013"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga77bd8e5b959213dd8bcd48dc513f6013">mutASSERT</a></div><div class="ttdeci">#define mutASSERT(cond)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00223">Defs.h:223</a></div></div>
 <div class="ttc" id="MutView_8h_html"><div class="ttname"><a href="../../d0/d9e/MutView_8h.html">MutView.h</a></div></div>
+<div class="ttc" id="classmutaborGUI_1_1MutDocManager_html_ad94e776314c7ad975d46610d492a2546"><div class="ttname"><a href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#ad94e776314c7ad975d46610d492a2546">mutaborGUI::MutDocManager::doConnect</a></div><div class="ttdeci">void doConnect(C &amp;Connect)</div></div>
+<div class="ttc" id="MutDocManager_8cpp_html_aa525413726728783186ed6f6ae1fb574"><div class="ttname"><a href="../../dd/db0/MutDocManager_8cpp.html#aa525413726728783186ed6f6ae1fb574">BEGIN_EVENT_TABLE</a></div><div class="ttdeci">BEGIN_EVENT_TABLE(MutDocManager, wxDocManager) EVT_MENU(CM_EXECUTE</div></div>
 <div class="ttc" id="group__kernel_html_gae4dfd7b0d66121016d6466d2ff10e8ba"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a></div><div class="ttdeci">#define _</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/Execute_8cpp_source.html#l00057">Execute.cpp:57</a></div></div>
-<div class="ttc" id="MutDocManager_8cpp_html_a9e7a087c5c550acffcd802f4b40bd609"><div class="ttname"><a href="../../dd/db0/MutDocManager_8cpp.html#a9e7a087c5c550acffcd802f4b40bd609">END_EVENT_TABLE</a></div><div class="ttdeci">MutDocManager::CmExecuteLogic END_EVENT_TABLE() namespace mutaborGUI</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db0/MutDocManager_8cpp_source.html#l00087">MutDocManager.cpp:87</a></div></div>
+<div class="ttc" id="MutDocManager_8cpp_html_a9e7a087c5c550acffcd802f4b40bd609"><div class="ttname"><a href="../../dd/db0/MutDocManager_8cpp.html#a9e7a087c5c550acffcd802f4b40bd609">END_EVENT_TABLE</a></div><div class="ttdeci">MutDocManager::CmExecuteLogic END_EVENT_TABLE() namespace mutaborGUI</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db0/MutDocManager_8cpp_source.html#l00050">MutDocManager.cpp:50</a></div></div>
 <div class="ttc" id="group__GUI_html_gad55fc6bb312f54a3c5b462e193777bb1"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gad55fc6bb312f54a3c5b462e193777bb1">EVT_MENU</a></div><div class="ttdeci">MutEditFile::CmCompile EVT_MENU(CM_COMPACT, MutEditFile::CmCompAct) EVT_MENU(CM_ACTIVATE</div></div>
-<div class="ttc" id="group__GUI_html_gae91e1ff5ac7d0866e88220faba0a463b"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gae91e1ff5ac7d0866e88220faba0a463b">mutaborGUI::BEGIN_EVENT_TABLE</a></div><div class="ttdeci">BEGIN_EVENT_TABLE(MutChild, MutTextBox) EVT_ACTIVATE(MutChild</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d72/MutChild_8cpp_source.html#l00077">MutChild.cpp:77</a></div></div>
+<div class="ttc" id="group__kernel_html_ga565c8973b3b2a87c7f9c7c7aabb9665e"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga565c8973b3b2a87c7f9c7c7aabb9665e">mutASSERT</a></div><div class="ttdeci">#define mutASSERT</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00222">Defs.h:222</a></div></div>
 <div class="ttc" id="group__GUI_html_ga21a35e4a9e56bbe15aded747eb5a7147"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga21a35e4a9e56bbe15aded747eb5a7147">UNREACHABLEC</a></div><div class="ttdeci">#define UNREACHABLEC</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00148">mhDefs.h:148</a></div></div>
 <div class="ttc" id="namespacemutaborGUI_html_a2a08133c5c0cbb22dd229213615f8a34a3c451dffd4d31b10f1371f3778531ab8"><div class="ttname"><a href="../../db/d94/namespacemutaborGUI.html#a2a08133c5c0cbb22dd229213615f8a34a3c451dffd4d31b10f1371f3778531ab8">mutaborGUI::CM_ACTIVATE</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d64/Mutabor_8rh_source.html#l00074">Mutabor.rh:74</a></div></div>
 <div class="ttc" id="namespacemutaborGUI_html_a2a08133c5c0cbb22dd229213615f8a34a4a3ddde2676e7be85542c0a42c0db4ba"><div class="ttname"><a href="../../db/d94/namespacemutaborGUI.html#a2a08133c5c0cbb22dd229213615f8a34a4a3ddde2676e7be85542c0a42c0db4ba">mutaborGUI::CM_EXECUTE</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d64/Mutabor_8rh_source.html#l00070">Mutabor.rh:70</a></div></div>
@@ -168,6 +367,6 @@
 <div class="ttc" id="classmutaborGUI_1_1MutDocManager_html_ac873be14b62dff95b5efed7c8676c282"><div class="ttname"><a href="../../d5/d75/classmutaborGUI_1_1MutDocManager.html#ac873be14b62dff95b5efed7c8676c282">mutaborGUI::MutDocManager::CmExecuteLogic</a></div><div class="ttdeci">void CmExecuteLogic(wxCommandEvent &amp;event)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:36 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:14 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

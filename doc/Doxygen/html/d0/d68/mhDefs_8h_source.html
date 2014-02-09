@@ -3,7 +3,7 @@
 <title>src/wxGUI/generic/mhDefs.h Quellcode</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.5 -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Hauptseite</span></a></li>
@@ -78,7 +78,7 @@
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#ifdef WX</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">inline</span> wxString <a class="code" href="../../d5/dee/group__route.html#ga850f9bf66734b7432b688b8e82f242a7">muT</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * x) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#gadca9fd6d212f349f16ce384a3651ac08">   75</a></span>&#160;<span class="keyword">inline</span> wxString <a class="code" href="../../df/dd1/group__GUI.html#gadca9fd6d212f349f16ce384a3651ac08">muT</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * x) {</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">if</span> (!x || !(*x)) <span class="keywordflow">return</span> wxEmptyString;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        wxString retval = wxString::FromUTF8(x);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">if</span> (retval.IsEmpty()) {</div>
@@ -86,12 +86,12 @@
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> retval;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">inline</span> wxString <a class="code" href="../../d5/dee/group__route.html#ga850f9bf66734b7432b688b8e82f242a7">muT</a>(<span class="keyword">const</span> wxChar * x) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#gaaa1c5de53c3675494d7799245dbf19f6">   83</a></span>&#160;<span class="keyword">inline</span> wxString <a class="code" href="../../df/dd1/group__GUI.html#gadca9fd6d212f349f16ce384a3651ac08">muT</a>(<span class="keyword">const</span> wxChar * x) {</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">if</span> (!x || !(*x)) <span class="keywordflow">return</span> wxEmptyString;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">return</span> wxString(x);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">inline</span> wxString <a class="code" href="../../d5/dee/group__route.html#ga850f9bf66734b7432b688b8e82f242a7">muT</a>(<span class="keyword">const</span> std::string &amp; s) {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d5/dee/group__route.html#ga850f9bf66734b7432b688b8e82f242a7">muT</a>(s.c_str());</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#gaed63c8970b5affba3f8bc68e3b864da6">   87</a></span>&#160;<span class="keyword">inline</span> wxString <a class="code" href="../../df/dd1/group__GUI.html#gadca9fd6d212f349f16ce384a3651ac08">muT</a>(<span class="keyword">const</span> std::string &amp; s) {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../df/dd1/group__GUI.html#gadca9fd6d212f349f16ce384a3651ac08">muT</a>(s.c_str());</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#if defined(WX) &amp;&amp; (defined(UNICODE) || wxUSE_WCHAR_T)</span></div>
@@ -100,7 +100,7 @@
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#define mumT(x) _T(x)</span></div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define mumT(x) _T(x)</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#ga11cc9e6666233e32a07139d7c0398f53">   97</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define mumT(x) _T(x)</span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
@@ -160,13 +160,13 @@
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        wxWindowList &amp; list = win-&gt;GetChildren();</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keywordflow">for</span> (wxWindowList::iterator i = list.begin();</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;             i != list.end();</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;             i++)</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;             ++i)</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                <a class="code" href="../../df/dd1/group__GUI.html#ga2a872f3b72580721d229f33e169659e4">UpdateRecursive</a>(*i);</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        win-&gt;Update();</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor"></span><span class="keywordtype">void</span> <a class="code" href="../../de/db7/group__debug.html#ga391d61b0297bf03db59dad4f6b8457ab">PRINTSIZER</a> (wxSizer * sizer, <span class="keyword">const</span> wxString &amp; offset = _T (<span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor"></span><span class="keywordtype">void</span> <a class="code" href="../../df/dd1/group__GUI.html#ga5c431abc9c0a0312979fc8f0f2c32971">PRINTSIZER</a> (wxSizer * sizer, <span class="keyword">const</span> wxString &amp; offset = _T (<span class="stringliteral">&quot;&quot;</span>));</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor"></span><span class="comment">//#ifdef __WXGTK__</span></div>
 <div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="../../df/dd1/group__GUI.html#ga28e9bd173a76d9590eece649cb49e2b2">  175</a></span>&#160;<span class="preprocessor">#define MDI_FORCE_EXTERN</span></div>
@@ -177,7 +177,6 @@
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
-<div class="ttc" id="group__debug_html_ga391d61b0297bf03db59dad4f6b8457ab"><div class="ttname"><a href="../../de/db7/group__debug.html#ga391d61b0297bf03db59dad4f6b8457ab">PRINTSIZER</a></div><div class="ttdeci">#define PRINTSIZER(X)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00133">mutDebug.h:133</a></div></div>
 <div class="ttc" id="mutDebug_8h_html"><div class="ttname"><a href="../../de/de1/mutDebug_8h.html">mutDebug.h</a></div><div class="ttdoc">Main debugging functions. </div></div>
 <div class="ttc" id="structMutFileDataType_html_a3d7e82f6091cfff9bd136bc1f41b4598"><div class="ttname"><a href="../../dc/dd4/structMutFileDataType.html#a3d7e82f6091cfff9bd136bc1f41b4598">MutFileDataType::type</a></div><div class="ttdeci">enum MutFileDataType::@46 type</div></div>
 <div class="ttc" id="structMutFileDataType_html_aaa2276f5f1f0fc5d083f7098808bf94da6f93dc737f54602ba83a37cb965daddf"><div class="ttname"><a href="../../dc/dd4/structMutFileDataType.html#aaa2276f5f1f0fc5d083f7098808bf94da6f93dc737f54602ba83a37cb965daddf">MutFileDataType::Unknown</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00106">mhDefs.h:106</a></div></div>
@@ -189,16 +188,17 @@
 <div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
 <div class="ttc" id="structMutFileDataType_html_aaa2276f5f1f0fc5d083f7098808bf94da3a55ff7b025c54e97dfb9ac70a9c5369"><div class="ttname"><a href="../../dc/dd4/structMutFileDataType.html#aaa2276f5f1f0fc5d083f7098808bf94da3a55ff7b025c54e97dfb9ac70a9c5369">MutFileDataType::TextRoute</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00107">mhDefs.h:107</a></div></div>
 <div class="ttc" id="group__GUI_html_ga2a872f3b72580721d229f33e169659e4"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga2a872f3b72580721d229f33e169659e4">UpdateRecursive</a></div><div class="ttdeci">void UpdateRecursive(wxWindow *win)</div><div class="ttdoc">Call update on a Window hierarchy recursively. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00161">mhDefs.h:161</a></div></div>
-<div class="ttc" id="group__route_html_ga850f9bf66734b7432b688b8e82f242a7"><div class="ttname"><a href="../../d5/dee/group__route.html#ga850f9bf66734b7432b688b8e82f242a7">muT</a></div><div class="ttdeci">#define muT(x)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/da0/GIS__Head_8cpp_source.html#l00039">GIS_Head.cpp:39</a></div></div>
 <div class="ttc" id="structMutFileDataType_html"><div class="ttname"><a href="../../dc/dd4/structMutFileDataType.html">MutFileDataType</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00102">mhDefs.h:102</a></div></div>
 <div class="ttc" id="structMutFileDataType_html_a5f958fe0b3dc63fb9dabfe8d7b2ea453"><div class="ttname"><a href="../../dc/dd4/structMutFileDataType.html#a5f958fe0b3dc63fb9dabfe8d7b2ea453">MutFileDataType::MutFileDataType</a></div><div class="ttdeci">MutFileDataType()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00115">mhDefs.h:115</a></div></div>
 <div class="ttc" id="group__GUI_html_ga941e3630f4cd737a978421e590018ddf"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga941e3630f4cd737a978421e590018ddf">mutpointlist</a></div><div class="ttdeci">std::list&lt; wxPoint &gt; mutpointlist</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00178">mhDefs.h:178</a></div></div>
+<div class="ttc" id="group__GUI_html_ga5c431abc9c0a0312979fc8f0f2c32971"><div class="ttname"><a href="../../df/dd1/group__GUI.html#ga5c431abc9c0a0312979fc8f0f2c32971">PRINTSIZER</a></div><div class="ttdeci">void PRINTSIZER(wxSizer *sizer, const wxString &amp;offset=_T(&quot;&quot;))</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d2f/mxDefs_8cpp_source.html#l00158">mxDefs.cpp:158</a></div></div>
 <div class="ttc" id="structMutFileDataType_html_aaa2276f5f1f0fc5d083f7098808bf94da8b19c67db033830dd90a3bdffc7cab75"><div class="ttname"><a href="../../dc/dd4/structMutFileDataType.html#aaa2276f5f1f0fc5d083f7098808bf94da8b19c67db033830dd90a3bdffc7cab75">MutFileDataType::LogicSource</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00110">mhDefs.h:110</a></div></div>
 <div class="ttc" id="Mutabor_8rh_html_a90e12f9eca1903822664d9b7759c2a4f"><div class="ttname"><a href="../../d9/d64/Mutabor_8rh.html#a90e12f9eca1903822664d9b7759c2a4f">CM_FILEOPEN</a></div><div class="ttdeci">#define CM_FILEOPEN</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d64/Mutabor_8rh_source.html#l00056">Mutabor.rh:56</a></div></div>
 <div class="ttc" id="group__GUI_html_gaa4cd1dc8d3c14b92b0ed908f9dcb0b61"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gaa4cd1dc8d3c14b92b0ed908f9dcb0b61">FileNameDialog</a></div><div class="ttdeci">MutFileDataType FileNameDialog(wxWindow *parent, int Command=CM_FILEOPEN, wxString Filename=wxEmptyString)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d2f/mxDefs_8cpp_source.html#l00042">mxDefs.cpp:42</a></div></div>
+<div class="ttc" id="group__GUI_html_gadca9fd6d212f349f16ce384a3651ac08"><div class="ttname"><a href="../../df/dd1/group__GUI.html#gadca9fd6d212f349f16ce384a3651ac08">muT</a></div><div class="ttdeci">wxString muT(const char *x)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00075">mhDefs.h:75</a></div></div>
 <div class="ttc" id="structMutFileDataType_html_aaa2276f5f1f0fc5d083f7098808bf94da053ea7a913becf1600f84b46fce2b26b"><div class="ttname"><a href="../../dc/dd4/structMutFileDataType.html#aaa2276f5f1f0fc5d083f7098808bf94da053ea7a913becf1600f84b46fce2b26b">MutFileDataType::UTF8TextRoute</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d68/mhDefs_8h_source.html#l00108">mhDefs.h:108</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Dez 7 2013 09:32:36 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.5</small></address>
+Erzeugt am Son Feb 9 2014 18:39:13 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

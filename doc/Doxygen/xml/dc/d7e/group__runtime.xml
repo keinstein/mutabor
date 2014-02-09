@@ -1,8 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="dc/d7e/group__runtime" kind="group">
     <compoundname>runtime</compoundname>
     <title>Runtime functions</title>
+    <innernamespace refid="d6/daa/namespacemutabor">mutabor</innernamespace>
       <sectiondef kind="var">
       <memberdef kind="variable" id="dc/d7e/group__runtime_1ga1faa8705b3fd5029a295edfdcdf1a67f" prot="public" static="no" mutable="no">
         <type>jmp_buf</type>
@@ -15,38 +16,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" line="55" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="dc/d7e/group__runtime_1ga3d20277bede54ba5cb6ef270236a2361" prot="public" static="no" mutable="no">
-        <type>struct <ref refid="d8/d8e/structkeyboard__ereignis" kindref="compound">keyboard_ereignis</ref> *</type>
-        <definition>struct keyboard_ereignis* last</definition>
-        <argsstring></argsstring>
-        <name>last</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" line="149" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" bodystart="149" bodyend="-1"/>
-        <referencedby refid="d5/dee/group__route_1ga8cb74609cdd9a293be8d2ab4fb287cef" compoundref="de/d05/Device_8h" startline="280" endline="291">mutabor::ChannelData::get_next_changed_controller</referencedby>
-        <referencedby refid="d9/d7c/group__kernel_1gaab6aec3dae497f4d0b26de1ba0a566f5" compoundref="dc/d19/box_8h" startline="314" endline="376">mutabor_create_key_in_box</referencedby>
-        <referencedby refid="d9/d7c/group__kernel_1ga5923b730f4274effdaef7fcd42a9ac00" compoundref="d1/da7/boxTest_8cpp" startline="89" endline="114">boxTest::testAddKey</referencedby>
-        <referencedby refid="d9/d7c/group__kernel_1gad39950425be30e376a4ffe04627f2feb" compoundref="d1/da7/boxTest_8cpp" startline="140" endline="161">boxTest::testDeleteKey</referencedby>
-      </memberdef>
-      <memberdef kind="variable" id="dc/d7e/group__runtime_1ga1faa8705b3fd5029a295edfdcdf1a67f" prot="public" static="no" mutable="no">
-        <type>jmp_buf</type>
-        <definition>jmp_buf weiter_gehts_nach_compilerfehler</definition>
-        <argsstring></argsstring>
-        <name>weiter_gehts_nach_compilerfehler</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.h" line="65" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="28" bodyend="-1"/>
-        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="652" endline="693">mutabor::BoxClass::Compile</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="659" endline="700">mutabor::BoxClass::Compile</referencedby>
         <referencedby refid="d3/d14/gmut_8cpp_1aa4fbd34cae8e303c82cf546234111c10" compoundref="d3/d14/gmut_8cpp" startline="153" endline="185">GMutCompile</referencedby>
       </memberdef>
       </sectiondef>
@@ -103,9 +74,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="97" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="97" bodyend="100"/>
-        <referencedby refid="d9/d7c/group__kernel_1ga2c6a360c780adc8cdda172a1a26c164b" compoundref="d3/da0/TabGen_8cpp" startline="396" endline="461">expand_tonliste</referencedby>
-        <referencedby refid="d9/d7c/group__kernel_1ga13b966770b2c6d5e64470a014a958058" compoundref="d3/da0/TabGen_8cpp" startline="464" endline="511">expandiere_tonsystem</referencedby>
-        <referencedby refid="d9/d7c/group__kernel_1ga17b03e17223aab80aa95d596a74bdc2d" compoundref="d3/da0/TabGen_8cpp" startline="672" endline="831">expandiere_umstimmung</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a06d33414c5a23651dec1aa8193dba1a1" compoundref="d3/da0/TabGen_8cpp" startline="396" endline="461">mutabor::hidden::expand_tonliste</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a0142a41964e335f5ef5d0aaf5889e8f6" compoundref="d3/da0/TabGen_8cpp" startline="464" endline="511">mutabor::hidden::expandiere_tonsystem</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa000ed5832b858ea653a5427b1a975ab" compoundref="d3/da0/TabGen_8cpp" startline="673" endline="832">mutabor::hidden::expandiere_umstimmung</referencedby>
         <referencedby refid="dc/d7e/group__runtime_1ga75b1f89dad10b88284519cbb2614645a" compoundref="da/dfd/MidiKern_8h" startline="128" endline="131">mutabor_convert_frequency_to_pitch</referencedby>
       </memberdef>
       <memberdef kind="function" id="dc/d7e/group__runtime_1ga1e59191746ae9cbf6887d301df07de08" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -134,8 +105,8 @@
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="113" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="113" bodyend="116"/>
         <references refid="dc/d7e/group__runtime_1ga0109fd489949911d8bbc77d028490657" compoundref="da/dfd/MidiKern_8h" startline="82" endline="85">mutabor_convert_pitch_to_factor</references>
-        <referencedby refid="df/dd1/group__GUI_1gaf4c49c1e3274833700ecb454d72c2b96" compoundref="df/d3c/MutTextBox_8cpp" startline="249" endline="292">MutTextBox::GetKeys</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1ga4b4fe68712431b7ed40d699cd1b9155f" compoundref="df/d3c/MutTextBox_8cpp" startline="294" endline="357">MutTextBox::GetToneSystem</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaf4c49c1e3274833700ecb454d72c2b96" compoundref="df/d3c/MutTextBox_8cpp" startline="256" endline="299">MutTextBox::GetKeys</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga4b4fe68712431b7ed40d699cd1b9155f" compoundref="df/d3c/MutTextBox_8cpp" startline="301" endline="364">MutTextBox::GetToneSystem</referencedby>
       </memberdef>
       <memberdef kind="function" id="dc/d7e/group__runtime_1ga75b1f89dad10b88284519cbb2614645a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>double</type>
@@ -163,209 +134,8 @@
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="128" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="128" bodyend="131"/>
         <references refid="dc/d7e/group__runtime_1ga61ca1dd93b657fbc223f241919ac2da2" compoundref="da/dfd/MidiKern_8h" startline="97" endline="100">mutabor_convert_factor_to_pitch</references>
-        <referencedby refid="d9/d7c/group__kernel_1ga2c6a360c780adc8cdda172a1a26c164b" compoundref="d3/da0/TabGen_8cpp" startline="396" endline="461">expand_tonliste</referencedby>
-        <referencedby refid="d9/d7c/group__kernel_1ga13b966770b2c6d5e64470a014a958058" compoundref="d3/da0/TabGen_8cpp" startline="464" endline="511">expandiere_tonsystem</referencedby>
-      </memberdef>
-      <memberdef kind="function" id="dc/d7e/group__runtime_1gabcf963f3b449cab5ee813f93e577f777" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool TSChanged</definition>
-        <argsstring>(mutabor_box_type *box)</argsstring>
-        <name>TSChanged</name>
-        <param>
-          <type><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
-          <declname>box</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" line="206" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" bodystart="206" bodyend="214"/>
-        <references refid="d4/d2a/structTSYS_1a40b61cf1ffb61fee185a714d0ad3cb5e" compoundref="d2/dd8/Interpre_8h" startline="74">TSYS::breite</references>
-        <references refid="d0/d33/structmutabor__box__type_1a950c0883d38d396f04837b5999d812d7" compoundref="dc/d19/box_8h" startline="154">mutabor_box_type::last_tonesystem</references>
-        <references refid="d0/d33/structmutabor__box__type_1a055c695aa5bc8ce01b64e4598ca77e8f" compoundref="dc/d19/box_8h" startline="152">mutabor_box_type::tonesystem</references>
-      </memberdef>
-      <memberdef kind="function" id="dc/d7e/group__runtime_1ga5e01376e7205f06ada8473bceab22bed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void GetInDevicesMode</definition>
-        <argsstring>(enum MutaborModeType *mode)</argsstring>
-        <name>GetInDevicesMode</name>
-        <param>
-          <type>enum MutaborModeType *</type>
-          <declname>mode</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" line="224" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" bodystart="224" bodyend="232"/>
-        <references refid="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" compoundref="de/d05/Device_8h" startline="606" endline="608">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::GetDeviceList</references>
-      </memberdef>
-      <memberdef kind="function" id="dc/d7e/group__runtime_1gacd1e984f955655cb7d57b37569685bed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
-        <definition>char GetChannels</definition>
-        <argsstring>(mutabor_box_type *box, char start, int &amp;base, int &amp;from, int &amp;to, int &amp;thru)</argsstring>
-        <name>GetChannels</name>
-        <param>
-          <type><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
-          <declname>box</declname>
-        </param>
-        <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref></type>
-          <declname>start</declname>
-        </param>
-        <param>
-          <type>int &amp;</type>
-          <declname>base</declname>
-        </param>
-        <param>
-          <type>int &amp;</type>
-          <declname>from</declname>
-        </param>
-        <param>
-          <type>int &amp;</type>
-          <declname>to</declname>
-        </param>
-        <param>
-          <type>int &amp;</type>
-          <declname>thru</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" line="235" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" bodystart="235" bodyend="252"/>
-        <references refid="d0/d33/structmutabor__box__type_1adaff5b982df1fe1a858d7e322601a7f7" compoundref="dc/d19/box_8h" startline="180">mutabor_box_type::file</references>
-        <references refid="d7/d21/structmutabor__logic__parsed_1a17f55cfb3cf4e4aec46cd9e5b0425040" compoundref="d6/d0c/Parser_8h" startline="133">mutabor_logic_parsed::lauf_instrument</references>
-        <references refid="d7/d21/structmutabor__logic__parsed_1adb7b6cc1ab5fe4fd2fd24d2f94623ce8" compoundref="d6/d0c/Parser_8h" startline="109">mutabor_logic_parsed::list_of_config_instrumente</references>
-        <references refid="d8/d8e/structkeyboard__ereignis_1af1b2473a78f0e30c9ef3826b6a5f90ae" compoundref="d2/dd8/Interpre_8h" startline="370">keyboard_ereignis::next</references>
-        <referencedby refid="dc/df2/group__GUIroute_1ga18d2239d72bbc464a53764b63b59ddef" compoundref="d8/db4/BoxShape_8cpp" startline="191" endline="211">mutaborGUI::MutBoxShape::AddChannel</referencedby>
-      </memberdef>
-      <memberdef kind="function" id="dc/d7e/group__runtime_1ga67e4c654aa6bfe3944304471e91956d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void SetChannels</definition>
-        <argsstring>(mutabor_box_type *box, int base, int from, int to, int thru)</argsstring>
-        <name>SetChannels</name>
-        <param>
-          <type><ref refid="d0/d33/structmutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
-          <declname>box</declname>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>base</declname>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>from</declname>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>to</declname>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>thru</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" line="254" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" bodystart="254" bodyend="256"/>
-        <references refid="d0/d33/structmutabor__box__type_1adaff5b982df1fe1a858d7e322601a7f7" compoundref="dc/d19/box_8h" startline="180">mutabor_box_type::file</references>
-        <references refid="d9/d7c/group__kernel_1ga30c24ac2380ae3f51495f58ebc70dacc" compoundref="dc/df5/Parser_8cpp" startline="2238" endline="2309">get_instrument_dekl</references>
-        <references refid="d7/d21/structmutabor__logic__parsed_1adb7b6cc1ab5fe4fd2fd24d2f94623ce8" compoundref="d6/d0c/Parser_8h" startline="109">mutabor_logic_parsed::list_of_config_instrumente</references>
-      </memberdef>
-      <memberdef kind="function" id="dc/d7e/group__runtime_1ga8bf27a28fe26e2709084705600715834" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool GetELine</definition>
-        <argsstring>(const wxString &amp;p, size_t &amp;i, wxString &amp;s)</argsstring>
-        <name>GetELine</name>
-        <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxString &amp;</type>
-          <declname>p</declname>
-        </param>
-        <param>
-          <type>size_t &amp;</type>
-          <declname>i</declname>
-        </param>
-        <param>
-          <type>wxString &amp;</type>
-          <declname>s</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" line="261" column="1"/>
-      </memberdef>
-      <memberdef kind="function" id="dc/d7e/group__runtime_1gadec35174fd85c6cbe34d8103b026532a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>DevType</type>
-        <definition>DevType Str2DT</definition>
-        <argsstring>(const wxString &amp;type)</argsstring>
-        <name>Str2DT</name>
-        <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxString &amp;</type>
-          <declname>type</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" line="263" column="1"/>
-        <referencedby refid="d5/dee/group__route_1ga83268772461a3fb8219d0c9ce088f1cb" compoundref="dd/db8/RouteCompat_8cpp" startline="124" endline="323">compat30::LoadRoutes</referencedby>
-      </memberdef>
-      <memberdef kind="function" id="dc/d7e/group__runtime_1gaaa5aa8190692f01ca59c4828320b4cc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool GetLine</definition>
-        <argsstring>(char **p, char *s)</argsstring>
-        <name>GetLine</name>
-        <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> **</type>
-          <declname>p</declname>
-        </param>
-        <param>
-          <type><ref refid="d5/dee/group__route_1gafdffe3ab26a7d4cd9d6521731a6f396a" kindref="member">char</ref> *</type>
-          <declname>s</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" line="266" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" bodystart="266" bodyend="290"/>
-      </memberdef>
-      <memberdef kind="function" id="dc/d7e/group__runtime_1gaad640d15310e214fe9dfaa45bb2baa52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void GetTimerData</definition>
-        <argsstring>(UINT &amp;min, UINT &amp;max)</argsstring>
-        <name>GetTimerData</name>
-        <param>
-          <type><ref refid="dc/d7e/group__runtime_1ga45c20c14d3d8790a22153d08ab2eb2ff" kindref="member">UINT</ref> &amp;</type>
-          <declname>min</declname>
-        </param>
-        <param>
-          <type><ref refid="dc/d7e/group__runtime_1ga45c20c14d3d8790a22153d08ab2eb2ff" kindref="member">UINT</ref> &amp;</type>
-          <declname>max</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" line="321" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" bodystart="321" bodyend="330"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a06d33414c5a23651dec1aa8193dba1a1" compoundref="d3/da0/TabGen_8cpp" startline="396" endline="461">mutabor::hidden::expand_tonliste</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a0142a41964e335f5ef5d0aaf5889e8f6" compoundref="d3/da0/TabGen_8cpp" startline="464" endline="511">mutabor::hidden::expandiere_tonsystem</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="define">
@@ -399,21 +169,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="53" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="53" bodyend="-1"/>
-        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ac4ebdd04cc1b0b2ca5bddd9283d77464" compoundref="d3/d0f/midicmn_8cpp" startline="319" endline="374">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOff</referencedby>
-        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1abf8c289438dc78db52b32f807ad5d0b7" compoundref="d3/d0f/midicmn_8cpp" startline="140" endline="163">mutabor::CommonMidiOutput&lt; T, D &gt;::EmergencyFindChannel</referencedby>
-        <referencedby refid="d5/d1c/classmutabor_1_1ChannelFilter_1a56c3d9c2157ed82f96b9efa893baab3e" compoundref="d3/d0f/midicmn_8cpp" startline="123" endline="128">mutabor::ChannelFilter::operator()</referencedby>
-      </memberdef>
-      <memberdef kind="define" id="dc/d7e/group__runtime_1gaaa9c8dc328349cf18c6a068a6cdfcd85" prot="public" static="no">
-        <name>GETLINE</name>
-        <initializer><ref refid="d0/dc8/mutlex_8cc_1ad4a65b873df5c05570846b5413b41dfd" kindref="member">if</ref> ( !<ref refid="dc/d7e/group__runtime_1ga8bf27a28fe26e2709084705600715834" kindref="member">GetELine</ref>(config, i, s) )		\
-		return</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" line="292" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" bodystart="292" bodyend="-1"/>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ac4ebdd04cc1b0b2ca5bddd9283d77464" compoundref="d3/d0f/midicmn_8cpp" startline="406" endline="461">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOff</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1abf8c289438dc78db52b32f807ad5d0b7" compoundref="d3/d0f/midicmn_8cpp" startline="146" endline="169">mutabor::CommonMidiOutput&lt; T, D &gt;::EmergencyFindChannel</referencedby>
+        <referencedby refid="d5/d1c/classmutabor_1_1ChannelFilter_1a56c3d9c2157ed82f96b9efa893baab3e" compoundref="d3/d0f/midicmn_8cpp" startline="129" endline="134">mutabor::ChannelFilter::operator()</referencedby>
       </memberdef>
       <memberdef kind="define" id="dc/d7e/group__runtime_1gabd075f0556c9ce6f682b5a71c3191863" prot="public" static="no">
         <name>MU32_RUNTIME_H</name>

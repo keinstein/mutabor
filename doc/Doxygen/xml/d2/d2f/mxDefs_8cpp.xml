@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d2/d2f/mxDefs_8cpp" kind="file">
     <compoundname>mxDefs.cpp</compoundname>
     <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
@@ -8,96 +8,171 @@
     <includes local="yes">wx/log.h</includes>
     <includes local="yes">wx/sizer.h</includes>
     <incdepgraph>
-      <node id="18732">
+      <node id="26967">
         <label>list</label>
       </node>
-      <node id="18724">
+      <node id="26960">
         <label>stdarg.h</label>
       </node>
-      <node id="18728">
+      <node id="26975">
+        <label>wx/cmdline.h</label>
+      </node>
+      <node id="26963">
         <label>wx/stdpaths.h</label>
       </node>
-      <node id="18723">
+      <node id="26959">
         <label>src/kernel/Defs.h</label>
         <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="18724" relation="include">
+        <childnode refid="26960" relation="include">
         </childnode>
-        <childnode refid="18725" relation="include">
+        <childnode refid="26961" relation="include">
+        </childnode>
+        <childnode refid="26980" relation="include">
+        </childnode>
+        <childnode refid="26981" relation="include">
+        </childnode>
+        <childnode refid="26974" relation="include">
+        </childnode>
+        <childnode refid="26982" relation="include">
+        </childnode>
+        <childnode refid="26983" relation="include">
         </childnode>
       </node>
-      <node id="18734">
+      <node id="26974">
+        <label>stdint.h</label>
+      </node>
+      <node id="26980">
+        <label>wx/wxchar.h</label>
+      </node>
+      <node id="26969">
         <label>wx/image.h</label>
       </node>
-      <node id="18727">
+      <node id="26984">
+        <label>string</label>
+      </node>
+      <node id="26979">
+        <label>mutDebugFlags.h</label>
+        <link refid="d7/d49/mutDebugFlags_8h"/>
+      </node>
+      <node id="26962">
         <label>wx/window.h</label>
       </node>
-      <node id="18733">
+      <node id="26981">
+        <label>wx/intl.h</label>
+      </node>
+      <node id="26968">
         <label>src/wxGUI/Mutabor.rh</label>
         <link refid="d9/d64/Mutabor_8rh"/>
-        <childnode refid="18723" relation="include">
+        <childnode refid="26959" relation="include">
         </childnode>
       </node>
-      <node id="18729">
+      <node id="26964">
         <label>wx/filename.h</label>
       </node>
-      <node id="18731">
+      <node id="26966">
         <label>typeinfo</label>
       </node>
-      <node id="18726">
+      <node id="26977">
+        <label>wx/debug.h</label>
+      </node>
+      <node id="26972">
+        <label>cstdio</label>
+      </node>
+      <node id="26971">
+        <label>bitset</label>
+      </node>
+      <node id="26961">
         <label>src/wxGUI/generic/mhDefs.h</label>
         <link refid="d0/d68/mhDefs_8h"/>
-        <childnode refid="18723" relation="include">
+        <childnode refid="26959" relation="include">
         </childnode>
-        <childnode refid="18727" relation="include">
+        <childnode refid="26962" relation="include">
         </childnode>
-        <childnode refid="18728" relation="include">
+        <childnode refid="26963" relation="include">
         </childnode>
-        <childnode refid="18729" relation="include">
+        <childnode refid="26964" relation="include">
         </childnode>
-        <childnode refid="18730" relation="include">
+        <childnode refid="26965" relation="include">
         </childnode>
-        <childnode refid="18731" relation="include">
+        <childnode refid="26966" relation="include">
         </childnode>
-        <childnode refid="18732" relation="include">
+        <childnode refid="26967" relation="include">
         </childnode>
-        <childnode refid="18733" relation="include">
+        <childnode refid="26968" relation="include">
         </childnode>
-        <childnode refid="18734" relation="include">
+        <childnode refid="26969" relation="include">
         </childnode>
-        <childnode refid="18735" relation="include">
+        <childnode refid="26970" relation="include">
         </childnode>
       </node>
-      <node id="18735">
+      <node id="26973">
+        <label>vector</label>
+      </node>
+      <node id="26970">
         <label>mutDebug.h</label>
         <link refid="de/de1/mutDebug_8h"/>
+        <childnode refid="26971" relation="include">
+        </childnode>
+        <childnode refid="26965" relation="include">
+        </childnode>
+        <childnode refid="26972" relation="include">
+        </childnode>
+        <childnode refid="26973" relation="include">
+        </childnode>
+        <childnode refid="26974" relation="include">
+        </childnode>
+        <childnode refid="26975" relation="include">
+        </childnode>
+        <childnode refid="26976" relation="include">
+        </childnode>
+        <childnode refid="26977" relation="include">
+        </childnode>
+        <childnode refid="26978" relation="include">
+        </childnode>
+        <childnode refid="26979" relation="include">
+        </childnode>
       </node>
-      <node id="18736">
+      <node id="26985">
         <label>wx/filedlg.h</label>
       </node>
-      <node id="18737">
+      <node id="26983">
+        <label>src/wxintl/libintl.h</label>
+        <link refid="d4/d64/libintl_8h"/>
+        <childnode refid="26959" relation="include">
+        </childnode>
+        <childnode refid="26984" relation="include">
+        </childnode>
+      </node>
+      <node id="26976">
+        <label>wx/string.h</label>
+      </node>
+      <node id="26986">
         <label>wx/log.h</label>
       </node>
-      <node id="18730">
+      <node id="26965">
         <label>iostream</label>
       </node>
-      <node id="18738">
+      <node id="26987">
         <label>wx/sizer.h</label>
       </node>
-      <node id="18725">
-        <label>wx/msw/wrapwin.h</label>
+      <node id="26978">
+        <label>wx/thread.h</label>
       </node>
-      <node id="18722">
+      <node id="26982">
+        <label>wx/setup.h</label>
+      </node>
+      <node id="26958">
         <label>src/wxGUI/generic/mxDefs.cpp</label>
         <link refid="mxDefs.cpp"/>
-        <childnode refid="18723" relation="include">
+        <childnode refid="26959" relation="include">
         </childnode>
-        <childnode refid="18726" relation="include">
+        <childnode refid="26961" relation="include">
         </childnode>
-        <childnode refid="18736" relation="include">
+        <childnode refid="26985" relation="include">
         </childnode>
-        <childnode refid="18737" relation="include">
+        <childnode refid="26986" relation="include">
         </childnode>
-        <childnode refid="18738" relation="include">
+        <childnode refid="26987" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -133,21 +208,21 @@
         <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a4a3ddde2676e7be85542c0a42c0db4ba" compoundref="d9/d64/Mutabor_8rh" startline="70">mutaborGUI::CM_EXECUTE</references>
         <references refid="d9/d64/Mutabor_8rh_1a90e12f9eca1903822664d9b7759c2a4f" compoundref="d9/d64/Mutabor_8rh" startline="56">CM_FILEOPEN</references>
         <references refid="d9/d64/Mutabor_8rh_1a3c5a2f14af5ee9c36d82c2a7c52bce9a" compoundref="d9/d64/Mutabor_8rh" startline="60">CM_FILESAVEAS</references>
-        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a8b860a934193b378226ea7c437f3202d" compoundref="d9/d64/Mutabor_8rh" startline="86">mutaborGUI::CM_ROUTELOAD</references>
-        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a7e2439fb70f07ce6cfc176fafb532f1a" compoundref="d9/d64/Mutabor_8rh" startline="87">mutaborGUI::CM_ROUTESAVE</references>
-        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34afec421310e3ec0444f8d12543477d41a" compoundref="d9/d64/Mutabor_8rh" startline="88">mutaborGUI::CM_ROUTESAVEAS</references>
-        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="de/de1/mutDebug_8h" startline="142">DEBUGLOG2</references>
+        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a8b860a934193b378226ea7c437f3202d" compoundref="d9/d64/Mutabor_8rh" startline="87">mutaborGUI::CM_ROUTELOAD</references>
+        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34a7e2439fb70f07ce6cfc176fafb532f1a" compoundref="d9/d64/Mutabor_8rh" startline="88">mutaborGUI::CM_ROUTESAVE</references>
+        <references refid="db/d94/namespacemutaborGUI_1a2a08133c5c0cbb22dd229213615f8a34afec421310e3ec0444f8d12543477d41a" compoundref="d9/d64/Mutabor_8rh" startline="89">mutaborGUI::CM_ROUTESAVEAS</references>
+        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="de/de1/mutDebug_8h" startline="147">DEBUGLOG2</references>
         <references refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da8b19c67db033830dd90a3bdffc7cab75" compoundref="d0/d68/mhDefs_8h" startline="110">MutFileDataType::LogicSource</references>
         <references refid="dc/dd4/structMutFileDataType_1aeaadee03a788a9c3f071c423f484f046" compoundref="d0/d68/mhDefs_8h" startline="103">MutFileDataType::name</references>
         <references refid="dc/dd4/structMutFileDataType_1a3d7e82f6091cfff9bd136bc1f41b4598">MutFileDataType::type</references>
         <references refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da6f93dc737f54602ba83a37cb965daddf" compoundref="d0/d68/mhDefs_8h" startline="106">MutFileDataType::Unknown</references>
         <references refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94da053ea7a913becf1600f84b46fce2b26b" compoundref="d0/d68/mhDefs_8h" startline="108">MutFileDataType::UTF8TextRoute</references>
         <references refid="dc/dd4/structMutFileDataType_1aaa2276f5f1f0fc5d083f7098808bf94daf88744e38f46c995394ca5027c84c5f6" compoundref="d0/d68/mhDefs_8h" startline="109">MutFileDataType::XMLRoute1</references>
-        <referencedby refid="df/dd1/group__GUI_1ga0bd91229d7dd30901944246960f0ac8f" compoundref="dc/df3/MutFrame_8cpp" startline="567" endline="614">mutaborGUI::MutFrame::CmFileOpen</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga0bd91229d7dd30901944246960f0ac8f" compoundref="dc/df3/MutFrame_8cpp" startline="582" endline="629">mutaborGUI::MutFrame::CmFileOpen</referencedby>
         <referencedby refid="df/dd1/group__GUI_1ga32ac26aebb3a2368c60285b39b30422b" compoundref="d1/da4/MutEditFile_8cpp" startline="386" endline="404">mutaborGUI::MutEditFile::CmFileSaveAs</referencedby>
         <referencedby refid="dc/df2/group__GUIroute_1ga24bfe10e24a2431758a4ee4e8153291e" compoundref="dc/def/MutRouteWnd_8cpp" startline="422" endline="522">mutaborGUI::MutRouteWnd::CmRouteLoad</referencedby>
         <referencedby refid="dc/df2/group__GUIroute_1ga6e292c98b7e68b4b9f846d186786e11d" compoundref="dc/def/MutRouteWnd_8cpp" startline="601" endline="633">mutaborGUI::MutRouteWnd::CmRouteSaveAs</referencedby>
-        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1503">IMPLEMENT_APP</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1502">IMPLEMENT_APP</referencedby>
       </memberdef>
       <memberdef kind="function" id="df/dd1/group__GUI_1ga49f3b489f6e01165a786ba55352f628a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -170,8 +245,36 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mxDefs.cpp" line="150" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mxDefs.cpp" bodystart="150" bodyend="155"/>
-        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="de/de1/mutDebug_8h" startline="142">DEBUGLOG2</references>
+        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="de/de1/mutDebug_8h" startline="147">DEBUGLOG2</references>
         <references refid="d9/d7c/group__kernel_1gaedf3113729faf15522da4884cc137733" compoundref="d1/d73/Defs_8h" startline="79">mutUnused</references>
+      </memberdef>
+      <memberdef kind="function" id="df/dd1/group__GUI_1ga5c431abc9c0a0312979fc8f0f2c32971" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PRINTSIZER</definition>
+        <argsstring>(wxSizer *sizer, const wxString &amp;offset=_T(&quot;&quot;))</argsstring>
+        <name>PRINTSIZER</name>
+        <param>
+          <type>wxSizer *</type>
+          <declname>sizer</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxString &amp;</type>
+          <declname>offset</declname>
+          <defval>_T(&quot;&quot;)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mhDefs.h" line="172" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mxDefs.cpp" bodystart="158" bodyend="202"/>
+        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="de/de1/mutDebug_8h" startline="147">DEBUGLOG2</references>
+        <references refid="de/db7/group__debug_1ga9de22df51e7efa23154a04eab9e66cad" compoundref="de/de1/mutDebug_8h" startline="148">DEBUGLOGTYPE</references>
+        <referencedby refid="dc/df2/group__GUIroute_1gac5b914e50fab6c89fdece37be8314b52" compoundref="dc/def/MutRouteWnd_8cpp" startline="248" endline="262">mutaborGUI::MutRouteWnd::InitDevices</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga374d8bfbca7ba97b2da54620fc8a3a1c" compoundref="dc/def/MutRouteWnd_8cpp" startline="201" endline="246">mutaborGUI::MutRouteWnd::InitShapes</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga71692d75ec3c362f4bcb53c75d57b4c2" compoundref="dc/d76/IconShape_8cpp" startline="710" endline="753">MutIconShapeClass&lt; T &gt;::Layout</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gabafe8aa54e795f4ef7eb5ef86b2f8049" compoundref="dc/def/MutRouteWnd_8cpp" startline="719" endline="736">mutaborGUI::MutRouteWnd::OnDraw</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -309,7 +412,7 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="155"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"></highlight></codeline>
 <codeline lineno="157"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>DEBUG</highlight></codeline>
-<codeline lineno="158"><highlight class="preprocessor"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga391d61b0297bf03db59dad4f6b8457ab" kindref="member">PRINTSIZER</ref><sp/>(wxSizer<sp/>*<sp/>sizer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString<sp/>&amp;<sp/>offset)<sp/></highlight></codeline>
+<codeline lineno="158" refid="df/dd1/group__GUI_1ga5c431abc9c0a0312979fc8f0f2c32971" refkind="member"><highlight class="preprocessor"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga5c431abc9c0a0312979fc8f0f2c32971" kindref="member">PRINTSIZER</ref><sp/>(wxSizer<sp/>*<sp/>sizer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString<sp/>&amp;<sp/>offset)<sp/></highlight></codeline>
 <codeline lineno="159"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!sizer)<sp/><ref refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" kindref="member">DEBUGLOG2</ref><sp/>(other,_T(</highlight><highlight class="stringliteral">&quot;NULL<sp/>Pointer.&quot;</highlight><highlight class="normal">));</highlight></codeline>
 <codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga9de22df51e7efa23154a04eab9e66cad" kindref="member">DEBUGLOGTYPE</ref><sp/>(other,<sp/>*sizer,<sp/>_T<sp/>(</highlight><highlight class="stringliteral">&quot;%sSizer:<sp/>%p<sp/>to<sp/>Window<sp/>%p&quot;</highlight><highlight class="normal">),</highlight></codeline>
@@ -317,7 +420,7 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*)sizer,(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*)sizer-&gt;GetContainingWindow<sp/>());</highlight></codeline>
 <codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxSizerItemList<sp/>&amp;childs<sp/>=<sp/>sizer<sp/>-&gt;<sp/>GetChildren<sp/>();</highlight></codeline>
 <codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(wxSizerItemList::iterator<sp/>i<sp/>=<sp/>childs.begin<sp/>();</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i!=childs.end<sp/>();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i!=childs.end<sp/>();<sp/>++i)<sp/>{</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxSizerItem<sp/>*<sp/>item<sp/>=<sp/>*i;</highlight></codeline>
 <codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxRect<sp/>rect<sp/>=<sp/>item-&gt;GetRect<sp/>();</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(item-&gt;IsSizer<sp/>())<sp/>{</highlight></codeline>
@@ -328,7 +431,7 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_T<sp/>(</highlight><highlight class="stringliteral">&quot;shown&quot;</highlight><highlight class="normal">):_T<sp/>(</highlight><highlight class="stringliteral">&quot;hidden&quot;</highlight><highlight class="normal">)),</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rect.x,rect.y,<sp/>rect.x+rect.width,</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rect.y+rect.height);</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga391d61b0297bf03db59dad4f6b8457ab" kindref="member">PRINTSIZER</ref><sp/>(item-&gt;GetSizer<sp/>(),<sp/>offset<sp/>+<sp/>_T<sp/>(</highlight><highlight class="stringliteral">&quot;<sp/>|<sp/>&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga5c431abc9c0a0312979fc8f0f2c32971" kindref="member">PRINTSIZER</ref><sp/>(item-&gt;GetSizer<sp/>(),<sp/>offset<sp/>+<sp/>_T<sp/>(</highlight><highlight class="stringliteral">&quot;<sp/>|<sp/>&quot;</highlight><highlight class="normal">));</highlight></codeline>
 <codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(item<sp/>-&gt;<sp/>IsWindow<sp/>())<sp/>{</highlight></codeline>
 <codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxWindow<sp/>*<sp/>window<sp/>=<sp/>item-&gt;GetWindow<sp/>();</highlight></codeline>
 <codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga9de22df51e7efa23154a04eab9e66cad" kindref="member">DEBUGLOGTYPE</ref><sp/>(other,<sp/>*window,<sp/></highlight></codeline>
@@ -340,7 +443,7 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rect.x,rect.y,<sp/>rect.x+rect.width,</highlight></codeline>
 <codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rect.y+rect.height);</highlight></codeline>
 <codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(window<sp/>-&gt;<sp/>GetSizer())<sp/></highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga391d61b0297bf03db59dad4f6b8457ab" kindref="member">PRINTSIZER</ref>(window<sp/>-&gt;<sp/>GetSizer(),<sp/>offset<sp/>+<sp/>_T(</highlight><highlight class="stringliteral">&quot;<sp/>[]<sp/>&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga5c431abc9c0a0312979fc8f0f2c32971" kindref="member">PRINTSIZER</ref>(window<sp/>-&gt;<sp/>GetSizer(),<sp/>offset<sp/>+<sp/>_T(</highlight><highlight class="stringliteral">&quot;<sp/>[]<sp/>&quot;</highlight><highlight class="normal">));</highlight></codeline>
 <codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(item<sp/>-&gt;<sp/>IsSpacer<sp/>())<sp/>{</highlight></codeline>
 <codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxSize<sp/>size<sp/>=<sp/>item-&gt;GetSpacer<sp/>();</highlight></codeline>
 <codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga9de22df51e7efa23154a04eab9e66cad" kindref="member">DEBUGLOGTYPE</ref><sp/>(other,<sp/>size,</highlight></codeline>

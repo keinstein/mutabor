@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/kernel/routing/midi/tests/test.c Quellcode</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.6 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
+      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
+      <li><a href="../../modules.html"><span>Module</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cbd7f246bdf7dc0a50281a272327e6ed.html">kernel</a></li><li class="navelem"><a class="el" href="../../dir_02be4fa82aae8ff4c4cc45bceb47856f.html">routing</a></li><li class="navelem"><a class="el" href="../../dir_9991dc3f13b86ed5072092a2559a4881.html">midi</a></li><li class="navelem"><a class="el" href="../../dir_8ee8f6b640f4690c3ec10d7bf1c91fbf.html">tests</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">test.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d8/db9/test_8c.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="../../d8/db9/test_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">    3</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/db9/test_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>() {</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;        <span class="keywordtype">int</span> time = 0;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;        <span class="keywordtype">int</span> value = 55;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 127 ; i++) {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;                printf(<span class="stringliteral">&quot;%d Param ch=1 con=%d val=%d\n&quot;</span>,++time,i,value);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;                value += 55;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;                value %= 0x80;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                printf(<span class="stringliteral">&quot;%d Param ch=1 con=%d val=%d\n&quot;</span>,++time,i,value);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                value += 55;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                value %= 0x80;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                printf(<span class="stringliteral">&quot;%d Param ch=1 con=%d val=%d\n&quot;</span>,++time,i,0);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                printf(<span class="stringliteral">&quot;%d Param ch=1 con=%d val=%d\n&quot;</span>,++time,i,value);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                value += 55;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                value %= 0x80;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        }</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
+<div class="ttc" id="test_8c_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="../../d8/db9/test_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/db9/test_8c_source.html#l00003">test.c:3</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Son Feb 9 2014 18:39:13 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+</body>
+</html>
