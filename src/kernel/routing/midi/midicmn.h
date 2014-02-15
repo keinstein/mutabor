@@ -638,6 +638,50 @@ namespace mutabor {
 		}
 		void do_UpdateControllers(int channel, const ChannelData & input_channel_data);
 		/**
+		 * Copy a single controller value and output it apropriately
+		 *
+		 * \param input   Source
+		 * \param output  Destination
+		 * \param channel MIDI channel
+		 * \param ctrl    controller to be copied
+		 */
+		void CopyController(const ChannelData & input,
+				    ChannelData & output,
+				    int channel,
+				    int number);
+
+		enum OutputParameterType {
+			RPN,
+			NRPN
+		};
+
+		/**
+		 * Outputs a registered or non registered parameter
+		 * according to the state of a given \ref ChannelData
+		 * object.
+		 *
+		 * \param data cannel data holding the output mirror
+		 * state
+		 * \param channel channel the parameter shall be
+		 * sent to
+		 * \param type type: RPN or NRPN
+		 * \param value value: The new value that shall be
+		 * transmitted
+		 * \param old_value the value that shall be considered
+		 * to be the current state of the output device. This
+		 * may be different from the current state of data to
+		 * allow preprocessing in the calling function
+		 * \param ctrl     Controller that shall be transmitted
+		 * \param newctrl  New value of the controller for internal use.
+		 */
+		void OutputParameter(ChannelData & data,
+				     int channel,
+				     OutputParameterType type,
+				     int value,
+				     int old_value,
+				     int ctrl);
+
+		/**
 		 * Sends a pitchbend signal.
 		 *
 		 * \param channel Channel on which the data shall be sent.

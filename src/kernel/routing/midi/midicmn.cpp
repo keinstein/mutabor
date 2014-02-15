@@ -1,33 +1,33 @@
 /** \file               -*- C++ -*-
- ********************************************************************
- * Common midi functions
- *
- * Copyright:   (c) 2012 Tobias Schlemmer
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date
- * $Date: 2011/09/27 20:13:26 $
- * \version $Version$
- * \license GPL
- *
- *    This program is free software; you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation; either version 2 of the License, or
- *    (at your option) any later version.
- *
- *    This program is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with this program; if not, write to the Free Software
- *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- *
- ********************************************************************
- * \addtogroup route
- * \{
- ********************************************************************/
+********************************************************************
+* Common midi functions
+*
+* Copyright:   (c) 2012 Tobias Schlemmer
+* \author  Tobias Schlemmer <keinstein@users.berlios.de>
+* \date
+* $Date: 2011/09/27 20:13:26 $
+* \version $Version$
+* \license GPL
+*
+*    This program is free software; you can redistribute it and/or modify
+*    it under the terms of the GNU General Public License as published by
+*    the Free Software Foundation; either version 2 of the License, or
+*    (at your option) any later version.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU General Public License for more details.
+*
+*    You should have received a copy of the GNU General Public License
+*    along with this program; if not, write to the Free Software
+*    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*
+*
+********************************************************************
+* \addtogroup route
+* \{
+********************************************************************/
 // availlable groups: GUI, route, kernel, muwx, debug, docview
 
 /* we guard a little bit complicated to ensure the references are set right
@@ -41,7 +41,7 @@
 
 
 #ifdef __BORLANDC__
-    #pragma hdrstop
+#pragma hdrstop
 #endif
 
 
@@ -182,20 +182,25 @@ namespace mutabor {
 			// avoid setting controllers that are hard to undo
 			switch (number) {
 				// data entry helper are marked as to be set
-				case midi::DATA_ENTRY_COARSE:
-				case midi::DATA_ENTRY_FINE:
-				case midi::DATA_BUTTON_INCREMENT:
-				case midi::DATA_BUTTON_DECREMENT:
-				case midi::NON_REGISTERED_PARAMETER_FINE:
-				case midi::NON_REGISTERED_PARAMETER_COARSE:
-				case midi::REGISTERED_PARAMETER_FINE:
-				case midi::REGISTERED_PARAMETER_COARSE:
-					Cd[channel].set_controller(number,-1);
-					continue;
+			case midi::DATA_ENTRY_COARSE:
+			case midi::DATA_ENTRY_FINE:
+			case midi::DATA_BUTTON_INCREMENT:
+			case midi::DATA_BUTTON_DECREMENT:
+			case midi::NON_REGISTERED_PARAMETER_FINE:
+			case midi::NON_REGISTERED_PARAMETER_COARSE:
+			case midi::REGISTERED_PARAMETER_FINE:
+			case midi::REGISTERED_PARAMETER_COARSE:
+				Cd[channel].set_controller(number,-1);
+				continue;
 			}
+
+			CopyController(input, Cd[channel], channel, number);
+#if 0
 
 			int value = input.get_controller(number);
 			int ctrl = Cd[channel].get_index(number);
+			int tmpctrl = Cd[channel].get_index(midi::DATA_ENTRY_COARSE);
+			int tmpval = Cd[channel].get_controller(ctrl);
 
 			if (ctrl == number &&
 			    (value < 0
@@ -206,25 +211,84 @@ namespace mutabor {
 			// this might change the index
 			Cd[channel].set_controller(number,value);
 			ctrl = Cd[channel].get_index(number);
+			value = input.get_controller(ctrl);
 
 			if (ctrl == -1) continue;
 
-			if (ctrl < 0x10000) {
+			if (ctrl < midi::FIRST_RPN) {
 				mutASSERT(value < 0x80);
 				controller(channel, ctrl, value);
-			} else if (0x10000 <= ctrl && ctrl < 0x20000) {
-				controller(channel,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
-				controller(channel,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+			} else if (midi::FIRST_RPN <= ctrl
+				   && ctrl <= midi::LAST_RPN) {
+				OutputParameter(Cd[channel],
+						channel,
+						RPN,
+						value,
+						tmpval,
+						ctrl);
+#if 0
+				if (tmpval != value) {
+					if (0x10000 > tmpctrl
+					    ||  tmpctrl >= 0x20000
+					    || Cd[channel].get_controller(midi::REGISTERED_PARAMETER_COARSE)
+					    != input.get_controller(midi::REGISTERED_PARAMETER_COARSE)
+					    || Cd[channel].get_controller(midi::REGISTERED_PARAMETER_FINE)
+					    != input.get_controller(midi::REGISTERED_PARAMETER_FINE)) {
+						controller(channel,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
+						Cd[channel].set_controller(midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
+						controller(channel,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+						Cd[channel].set_controller(midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+					}
 
-				controller(channel,midi::DATA_ENTRY_COARSE, value >> 7 & 0x7F);
-				controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
-			} else if (ctrl <= 0x30000) {
-				controller(channel,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
-				controller(channel,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+					if (!(value & (0x80 << 8))
+					    && (tmpval & (0x7F << 8)) != (value & (0x7F << 8))) {
+						controller(channel,midi::DATA_ENTRY_COARSE, (value >> 8) & 0x7F);
+					}
+					if (!(value & 80)
+					    && (tmpval & 0x7F) != (value & 0x7F)) {
+						controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
+					}
+					if (tmpval != value)
+						Cd[channel].set_controller(ctrl,value);
+				}
+#endif
+			} else if (midi::FIRST_NRPN <= ctrl
+				   && ctrl <= midi::LAST_NRPN) {
+				OutputParameter(Cd[channel],
+						channel,
+						RPN,
+						value,
+						tmpval,
+						ctrl);
+#if 0
 
-				controller(channel,midi::DATA_ENTRY_COARSE, value >> 7 & 0x7F);
-				controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
+				if (tmpval != value) {
+					if (0x20000 > tmpctrl
+					    ||  tmpctrl >= 0x30000
+					    || Cd[channel].get_controller(midi::NON_REGISTERED_PARAMETER_COARSE)
+					    != input.get_controller(midi::NON_REGISTERED_PARAMETER_COARSE)
+					    || Cd[channel].get_controller(midi::NON_REGISTERED_PARAMETER_FINE)
+					    != input.get_controller(midi::NON_REGISTERED_PARAMETER_FINE)) {
+						controller(channel,midi::NON_REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
+						Cd[channel].set_controller(midi::NON_REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
+						controller(channel,midi::NON_REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+						Cd[channel].set_controller(midi::NON_REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+					}
+
+					if (!(value & (0x80 << 8))
+					    && (tmpval & (0x7F << 8)) != (value & (0x7F << 8))) {
+						controller(channel,midi::DATA_ENTRY_COARSE, (value >> 8) & 0x7F);
+					}
+					if (!(value & 0x80)
+					    && (tmpval & 0x7F) != (value & 0x7F)) {
+						controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
+					}
+					if (tmpval != value)
+						Cd[channel].set_controller(ctrl,value);
+				}
+#endif
 			}
+#endif
 		}
 
 
@@ -233,8 +297,12 @@ namespace mutabor {
 		    input.is_changed_controller(i);
 		    i = input.get_next_changed_controller(Cd[channel],i)) {
 			int number =  *i;
+			CopyController(input, Cd[channel], channel, number);
+#if 0
 			int value =   input.get_controller(number);
 			int ctrl = Cd[channel].get_index(number);
+			int tmpctrl = Cd[channel].get_index(midi::DATA_ENTRY_COARSE);
+			int tmpval = Cd[channel].get_controller(ctrl);
 
 			if (ctrl == number &&
 			    Cd[channel].get_controller(ctrl) == value)
@@ -243,25 +311,129 @@ namespace mutabor {
 			// this might change the index
 			Cd[channel].set_controller(number,value);
 			ctrl = Cd[channel].get_index(number);
+			value = input.get_controller(ctrl);
 
 			if (ctrl == -1) continue;
 
-			if (ctrl < 0x10000) {
+			if (ctrl < midi::FIRST_RPN) {
 				mutASSERT(value < 0x80);
 				controller(channel, ctrl, value);
-			} else if (0x10000 <= ctrl && ctrl < 0x20000) {
-				controller(channel,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
-				controller(channel,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+			} else if (midi::FIRST_RPN <= ctrl && ctrl <= midi::LAST_RPN) {
+				OutputParameter(Cd[channel],
+						channel,
+						RPN,
+						value,
+						tmpval,
+						ctrl);
+#if 0
+				if (tmpval != value) {
+					if (0x10000 > tmpctrl
+					    ||  tmpctrl >= 0x20000
+					    || Cd[channel].get_controller(midi::REGISTERED_PARAMETER_COARSE)
+					    != input.get_controller(midi::REGISTERED_PARAMETER_COARSE)
+					    || Cd[channel].get_controller(midi::REGISTERED_PARAMETER_COARSE)
+					    != input.get_controller(midi::REGISTERED_PARAMETER_COARSE)) {
+						controller(channel,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
+						Cd[channel].set_controller(midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
+						controller(channel,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+						Cd[channel].set_controller(midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+					}
 
-				controller(channel,midi::DATA_ENTRY_COARSE, value >> 7 & 0x7F);
-				controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
-			} else if (ctrl <= 0x30000) {
-				controller(channel,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
-				controller(channel,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+					if (!(value & (0x80 << 8))
+					    && (tmpval & (0x7F << 7)) != (value & (0x7F << 8))) {
+						controller(channel,midi::DATA_ENTRY_COARSE, value >> 8 & 0x7F);
+					}
+					if (!(value & 0x80)
+					    && (tmpval & 0x7F) != (value & 0x7F)) {
+						controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
+					}
+					if (tmpval != value)
+						Cd[channel].set_controller(ctrl,value);
+				}
+#endif
+			} else if (ctrl >= midi::FIRST_NRPN
+				   && ctrl <= midi::LAST_NRPN) {
+				OutputParameter(Cd[channel],
+						channel,
+						NRPN,
+						value,
+						tmpval,
+						ctrl);
+#if 0
+				if (tmpval != value) {
+					if (0x20000 > tmpctrl
+					    ||  tmpctrl >= 0x30000
+					    || Cd[channel].get_controller(midi::NON_REGISTERED_PARAMETER_COARSE)
+					    != input.get_controller(midi::NON_REGISTERED_PARAMETER_COARSE)
+					    || Cd[channel].get_controller(midi::NON_REGISTERED_PARAMETER_COARSE)
+					    != input.get_controller(midi::NON_REGISTERED_PARAMETER_COARSE)) {
+						controller(channel,midi::NON_REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
+						Cd[channel].set_controller(midi::NON_REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
+						controller(channel,midi::NON_REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+						Cd[channel].set_controller(midi::NON_REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+					}
 
-				controller(channel,midi::DATA_ENTRY_COARSE, value >> 7 & 0x7F);
-				controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
+					if (!(value & (0x80 << 8))
+					    && (tmpval & (0x7F << 7)) != (value & (0x7F << 7))) {
+						controller(channel,midi::DATA_ENTRY_COARSE, (value >> 8) & 0x7F);
+					}
+					if (!(value & 0x80)
+					    && (tmpval & 0x7F) != (value & 0x7F)) {
+						controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
+					}
+					if (tmpval != value)
+						Cd[channel].set_controller(ctrl,value);
+				}
+#endif
 			}
+#endif
+		}
+	}
+
+	template<class T, class D>
+	void
+	CommonMidiOutput<T,D>::CopyController(const ChannelData & input,
+					      ChannelData & output,
+					      int channel,
+					      int number) {
+
+		int value = input.get_controller(number);
+		int ctrl = output.get_index(number);
+		int tmpctrl = output.get_index(midi::DATA_ENTRY_COARSE);
+		int tmpval = output.get_controller(ctrl);
+
+		if (ctrl == number &&
+		    (value < 0
+		     || output.get_controller(ctrl) == value))
+			return;
+
+
+		// this might change the index
+		output.set_controller(number,value);
+		ctrl = output.get_index(number);
+		value = input.get_controller(ctrl);
+
+		if (ctrl == -1) return;
+
+		if (ctrl < midi::FIRST_RPN) {
+			mutASSERT(value < 0x80);
+			controller(channel, ctrl, value);
+		} else if (midi::FIRST_RPN <= ctrl
+			   && ctrl <= midi::LAST_RPN) {
+			OutputParameter(output,
+					channel,
+					RPN,
+					value,
+					tmpval,
+					ctrl);
+		} else if (midi::FIRST_NRPN <= ctrl
+			   && ctrl <= midi::LAST_NRPN) {
+			OutputParameter(output,
+					channel,
+					RPN,
+					value,
+					tmpval,
+					ctrl);
 		}
 	}
 
@@ -317,11 +489,11 @@ namespace mutabor {
 
 	template<class T, class D>
 	void CommonMidiOutput<T,D>::do_NoteOn(Box box,
-				      int inkey,
-				      int velocity,
-				      RouteClass * r,
-				      size_t id,
-				      const ChannelData & input_channel_data)
+					      int inkey,
+					      int velocity,
+					      RouteClass * r,
+					      size_t id,
+					      const ChannelData & input_channel_data)
 	{
 		mutASSERT(this->isOpen);
 		if (!ChannelFilter(r).check()) {
@@ -331,8 +503,8 @@ namespace mutabor {
 
 		DEBUGLOG (midiio, _T("box %p, inkey %d, velocity %d, id %d"),
 			  box.get(), inkey, velocity, (int)id);
-//		int free = 16, freeSus = r->OTo, freeVelocitycity = 64, freeSusVelocitycity = 64, s;
-//		DWORD p;
+		//		int free = 16, freeSus = r->OTo, freeVelocitycity = 64, freeSusVelocitycity = 64, s;
+		//		DWORD p;
 		long freq;
 
 		if ( !box ) {
@@ -352,7 +524,7 @@ namespace mutabor {
 
 		int channel = *pos;
 		ChannelData & output_data = Cd[channel];
- 		pitch_bend_type note = pitch_and_bend(freq);
+		pitch_bend_type note = pitch_and_bend(freq);
 		int8_t controller_value;
 
 		/** \todo write a test that checks for negative controller values */
@@ -404,12 +576,12 @@ namespace mutabor {
 
 	template<class T, class D>
 	void CommonMidiOutput<T,D>::do_NoteOff(Box box,
-				       int inkey,
-				       int velo,
-				       RouteClass * r,
-				       size_t id,
-				       bool is_note_on /* = false */
-		)
+					       int inkey,
+					       int velo,
+					       RouteClass * r,
+					       size_t id,
+					       bool is_note_on /* = false */
+					       )
 	{
 		mutASSERT(this->isOpen);
 		if (!r || r == NULL) {
@@ -421,8 +593,8 @@ namespace mutabor {
 
 
 		/* This schouldn't be necessary
-		if ( !velo ) //3 ?? notwendig?
-			velo = 64;
+		   if ( !velo ) //3 ?? notwendig?
+		   velo = 64;
 		*/
 
 
@@ -575,6 +747,7 @@ namespace mutabor {
 
 
 				int newctrl = Cd[i].get_index(ctrl);
+				int old_value = Cd[i].get_controller(newctrl);
 
 				if (Cd[i].get_controller(ctrl) == value ||
 				    (ctrl == newctrl && Cd[i].get_controller(newctrl) == value)) {
@@ -602,27 +775,27 @@ namespace mutabor {
 
 				}
 
-				if (newctrl == -1) continue;
+				if (newctrl == midi::CONTROLLER_UNKNOWN) continue;
 
-				if (newctrl < 0x10000) {
+				if (newctrl < midi::FIRST_RPN) {
 					mutASSERT(value < 0x80);
 					controller(i, newctrl, value);
-				} else if (0x10000 <= newctrl && newctrl < 0x20000) {
-					controller(i,midi::REGISTERED_PARAMETER_COARSE, (newctrl >> 8) & 0x7F);
-					Cd[i].set_controller(midi::REGISTERED_PARAMETER_COARSE,(newctrl >> 8) & 0x7F);
-					controller(i,midi::REGISTERED_PARAMETER_FINE, newctrl & 0x7F);
-					Cd[i].set_controller(midi::REGISTERED_PARAMETER_FINE, newctrl & 0x7F);
-
-					controller(i,midi::DATA_ENTRY_COARSE, (value >> 7) & 0x7F);
-					controller(i,midi::DATA_ENTRY_FINE, value & 0x7F);
-				} else if (newctrl <= 0x30000) {
-					controller(i,midi::NON_REGISTERED_PARAMETER_COARSE, (newctrl >> 8) & 0x7F);
-					Cd[i].set_controller(midi::NON_REGISTERED_PARAMETER_COARSE,(newctrl >> 8) & 0x7F);
-					controller(i,midi::NON_REGISTERED_PARAMETER_FINE, newctrl & 0x7F);
-					Cd[i].set_controller(midi::NON_REGISTERED_PARAMETER_COARSE, newctrl & 0x7F);
-
-					controller(i,midi::DATA_ENTRY_COARSE, (value >> 7) & 0x7F);
-					controller(i,midi::DATA_ENTRY_FINE, value & 0x7F);
+				} else if (midi::FIRST_RPN <= newctrl
+					   && newctrl <= midi::LAST_RPN) {
+					OutputParameter(Cd[i],
+							i,
+							RPN,
+							value,
+							old_value,
+							newctrl);
+				} else if (newctrl >= midi::FIRST_NRPN &&
+					   newctrl <= midi::LAST_NRPN) {
+					OutputParameter(Cd[i],
+							i,
+							NRPN,
+							value,
+							old_value,
+							newctrl);
 				}
 
 				// sustained section contains only inactive MIDI channels
@@ -633,19 +806,71 @@ namespace mutabor {
 			}
 	}
 
-	/*
-	void CommonMidiOutput<T,D>::Sustain(int channel, const ChannelData & cd)
-	{
-		mutASSERT(this->isOpen);
-		for (int i = 0; i < 16; i++)
-			if ( ton_auf_kanal[i].active && ton_auf_kanal[i].channel == channel ) {
-				int8_t controller_value = cd.get_controller(midi::HOLD_PEDAL_ON_OFF);
-				controller(i, midi::HOLD_PEDAL_ON_OFF, controller_value);
-				Cd[i].set_controller(midi::HOLD_PEDAL_ON_OFF, controller_value);
+	template<class T, class D>
+	void  CommonMidiOutput<T,D>::OutputParameter(ChannelData & data,
+						     int channel,
+						     OutputParameterType type,
+						     int value,
+						     int old_value,
+						     int ctrl) {
+		if (old_value == value)
+			return;
 
-				channel_queue.sustain_channel(i);
-			}
+		int minctrl, maxctrl, coarse_number, fine_number;
+		switch (type) {
+		case RPN:
+			minctrl = midi::FIRST_RPN;
+			maxctrl = midi::LAST_RPN;
+			coarse_number = midi::REGISTERED_PARAMETER_COARSE;
+			fine_number = midi::REGISTERED_PARAMETER_FINE;
+			break;
+		case NRPN:
+			minctrl = midi::FIRST_NRPN;
+			maxctrl = midi::LAST_NRPN;
+			coarse_number = midi::NON_REGISTERED_PARAMETER_COARSE;
+			fine_number = midi::NON_REGISTERED_PARAMETER_FINE;
+			break;
+		default:
+			UNREACHABLEC;
+		}
+		int tmpctrl = data.get_index(midi::DATA_ENTRY_COARSE);
+		if(minctrl > tmpctrl
+		   ||  tmpctrl > maxctrl
+		   || data.get_controller(coarse_number)
+		   != ((ctrl >> 8) & 0x7f)
+		   || data.get_controller(fine_number)
+		   != (ctrl & 0x7f)) {
+			controller(channel, coarse_number, (ctrl >> 8) & 0x7F);
+			data.set_controller(coarse_number, (ctrl >> 8) & 0x7F);
+			controller(channel, fine_number, ctrl & 0x7F);
+			data.set_controller(fine_number, ctrl & 0x7F);
+		}
+
+
+		if ((old_value & (0x7F << 8)) != (value & (0x7F << 8))) {
+			controller(channel, midi::DATA_ENTRY_COARSE, (value >> 8) & 0x7F);
+		}
+		if ((old_value & 0x7F) != (value & 0x7F)) {
+			controller(channel, midi::DATA_ENTRY_FINE, value & 0x7F);
+		}
+		if (old_value != value)
+			data.set_controller(ctrl,value);
 	}
+
+
+	/*
+	  void CommonMidiOutput<T,D>::Sustain(int channel, const ChannelData & cd)
+	  {
+	  mutASSERT(this->isOpen);
+	  for (int i = 0; i < 16; i++)
+	  if ( ton_auf_kanal[i].active && ton_auf_kanal[i].channel == channel ) {
+	  int8_t controller_value = cd.get_controller(midi::HOLD_PEDAL_ON_OFF);
+	  controller(i, midi::HOLD_PEDAL_ON_OFF, controller_value);
+	  Cd[i].set_controller(midi::HOLD_PEDAL_ON_OFF, controller_value);
+
+	  channel_queue.sustain_channel(i);
+	  }
+	  }
 	*/
 
 	template<class T, class D>
@@ -759,7 +984,7 @@ namespace mutabor {
 				case midi::CONTINUE_PLAY:
 				case midi::STOP_PLAY:
 				case midi::ACTIVE_SENSE:
- 				case midi::RESET:
+				case midi::RESET:
 					Out.RawMsg(channel, p[pos]);
 				default:
 					pos++;
@@ -800,7 +1025,7 @@ namespace mutabor {
 		for (int i = 0; i < 16; i++) {
 			if ( ton_auf_kanal[i].active )
 				mutASSERT(ton_auf_kanal[i].channel != r->get_session_id() );
-					//do_NoteOff(r->GetBox(), ton_auf_kanal[i].inkey, 64, r, ton_auf_kanal[i].unique_id, false);
+			//do_NoteOff(r->GetBox(), ton_auf_kanal[i].inkey, 64, r, ton_auf_kanal[i].unique_id, false);
 		}
 #endif
 	}
@@ -860,19 +1085,19 @@ namespace mutabor {
 		case midi::NOTE_ON: // Note On
 			if ( (midiCode & 0x7f0000) > 0 ) {
 				this->NoteOn(route,
-				       (midiCode >> 8) & 0xff,
-				       (midiCode >> 16) & 0xff,
-				       MidiChannel,
-				       channel_data[MidiChannel],
-				       NULL);
+					     (midiCode >> 8) & 0xff,
+					     (midiCode >> 16) & 0xff,
+					     MidiChannel,
+					     channel_data[MidiChannel],
+					     NULL);
 				break;
 			}
 
 		case midi::NOTE_OFF: // Note Off
 			this->NoteOff(route,
-				(midiCode >> 8) & 0xff,
-				(midiCode >> 16) & 0xff,
-				MidiChannel);
+				      (midiCode >> 8) & 0xff,
+				      (midiCode >> 16) & 0xff,
+				      MidiChannel);
 			break;
 
 		case midi::PROGRAM_CHANGE: // Programm Change
@@ -899,9 +1124,9 @@ namespace mutabor {
 				panic = true;
 				break;
 				/*
-			case midi::CHORD_HOLD_PEDAL_ON_OFF:
-				propagate = false;
-				break;
+				  case midi::CHORD_HOLD_PEDAL_ON_OFF:
+				  propagate = false;
+				  break;
 				*/
 			}
 
@@ -1005,15 +1230,15 @@ namespace mutabor {
 				panic = true;
 				break;
 				/*
-			case midi::CHORD_HOLD_PEDAL_ON_OFF:
-				propagate = false;
-				break;
+				  case midi::CHORD_HOLD_PEDAL_ON_OFF:
+				  propagate = false;
+				  break;
 				*/
 			}
 
 			if (propagate)
 				channel_data[MidiChannel].set_controller(midiCode->at(1),
-							       midiCode->at(2));
+									 midiCode->at(2));
 			if (panic)
 				this->Panic(midiCode->at(1),MidiChannel);
 			if (reset)
@@ -1034,7 +1259,7 @@ namespace mutabor {
 #if 0
 			if ( route->GetOutputDevice() )
 				route->GetOutputDevice()->MidiOut(pData,
-                                nData);
+								  nData);
 #else
                         ;
 #endif
