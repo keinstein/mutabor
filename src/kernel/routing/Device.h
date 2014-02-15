@@ -345,6 +345,8 @@ namespace mutabor {
 			controller_vector::const_iterator retval = controller_changed.begin();
 			if (retval == controller_changed.end())
 				return retval;
+			if (*retval >= 0  && other.controller.size() <= (size_t)*retval)
+				return retval;
 			if (*retval != -1 && controller[*retval] != other.controller[*retval])
 				return retval;
 			return get_next_changed_controller(other,retval);
@@ -394,7 +396,8 @@ namespace mutabor {
 					  || (size_t)(*retval) < controller.size());
 			} while (retval != controller_changed.end()
 				 && ((*retval == -1)
-				     || ( (size_t)(*retval) < other.controller.size()
+				     || ( *retval >= 0
+					  && (size_t)(*retval) < other.controller.size()
 					  && controller[*retval] == other.controller[*retval])));
 			return retval;
 		}
