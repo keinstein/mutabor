@@ -153,7 +153,7 @@ namespace mutabor {
 		int set_controller(size_t number, int8_t data) {
 
 			if (controller.size() <= number)
-				controller.resize(number +1);
+				controller.resize(number +1,-1);
 			int retval = controller[number];
 			int param = -1;
 			DEBUGLOG(midiio,_T("ctrl: %d, %d => %d"),(int)number,(int)retval,(int)data);
@@ -194,7 +194,7 @@ namespace mutabor {
 				}
 				if (param != -1) {
 					if (controller.size() <= (size_t) param)
-						controller.resize(param+1);
+						controller.resize(param+1,-1);
 					switch (number) {
 					case midi::DATA_BUTTON_INCREMENT:
 						controller[param]++;
