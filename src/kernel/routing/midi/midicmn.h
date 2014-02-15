@@ -608,6 +608,11 @@ namespace mutabor {
 				   int controller,
 				   int value,
 				   size_t id);
+		void  do_Controller(ChannelData & output,
+				    int channel,
+				    int ctrl,
+				    int value);
+
 //		void Sustain(int channel, const ChannelData & cd);
 		int do_GetChannel(int inkey, size_t channel, size_t id);
 		void do_SplitOut (BYTE * p, size_t n);

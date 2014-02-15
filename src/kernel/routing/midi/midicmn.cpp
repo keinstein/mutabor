@@ -195,100 +195,6 @@ namespace mutabor {
 			}
 
 			CopyController(input, Cd[channel], channel, number);
-#if 0
-
-			int value = input.get_controller(number);
-			int ctrl = Cd[channel].get_index(number);
-			int tmpctrl = Cd[channel].get_index(midi::DATA_ENTRY_COARSE);
-			int tmpval = Cd[channel].get_controller(ctrl);
-
-			if (ctrl == number &&
-			    (value < 0
-			     || Cd[channel].get_controller(ctrl) == value))
-				continue;
-
-
-			// this might change the index
-			Cd[channel].set_controller(number,value);
-			ctrl = Cd[channel].get_index(number);
-			value = input.get_controller(ctrl);
-
-			if (ctrl == -1) continue;
-
-			if (ctrl < midi::FIRST_RPN) {
-				mutASSERT(value < 0x80);
-				controller(channel, ctrl, value);
-			} else if (midi::FIRST_RPN <= ctrl
-				   && ctrl <= midi::LAST_RPN) {
-				OutputParameter(Cd[channel],
-						channel,
-						RPN,
-						value,
-						tmpval,
-						ctrl);
-#if 0
-				if (tmpval != value) {
-					if (0x10000 > tmpctrl
-					    ||  tmpctrl >= 0x20000
-					    || Cd[channel].get_controller(midi::REGISTERED_PARAMETER_COARSE)
-					    != input.get_controller(midi::REGISTERED_PARAMETER_COARSE)
-					    || Cd[channel].get_controller(midi::REGISTERED_PARAMETER_FINE)
-					    != input.get_controller(midi::REGISTERED_PARAMETER_FINE)) {
-						controller(channel,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
-						Cd[channel].set_controller(midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
-						controller(channel,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
-						Cd[channel].set_controller(midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
-					}
-
-					if (!(value & (0x80 << 8))
-					    && (tmpval & (0x7F << 8)) != (value & (0x7F << 8))) {
-						controller(channel,midi::DATA_ENTRY_COARSE, (value >> 8) & 0x7F);
-					}
-					if (!(value & 80)
-					    && (tmpval & 0x7F) != (value & 0x7F)) {
-						controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
-					}
-					if (tmpval != value)
-						Cd[channel].set_controller(ctrl,value);
-				}
-#endif
-			} else if (midi::FIRST_NRPN <= ctrl
-				   && ctrl <= midi::LAST_NRPN) {
-				OutputParameter(Cd[channel],
-						channel,
-						RPN,
-						value,
-						tmpval,
-						ctrl);
-#if 0
-
-				if (tmpval != value) {
-					if (0x20000 > tmpctrl
-					    ||  tmpctrl >= 0x30000
-					    || Cd[channel].get_controller(midi::NON_REGISTERED_PARAMETER_COARSE)
-					    != input.get_controller(midi::NON_REGISTERED_PARAMETER_COARSE)
-					    || Cd[channel].get_controller(midi::NON_REGISTERED_PARAMETER_FINE)
-					    != input.get_controller(midi::NON_REGISTERED_PARAMETER_FINE)) {
-						controller(channel,midi::NON_REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
-						Cd[channel].set_controller(midi::NON_REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
-						controller(channel,midi::NON_REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
-						Cd[channel].set_controller(midi::NON_REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
-					}
-
-					if (!(value & (0x80 << 8))
-					    && (tmpval & (0x7F << 8)) != (value & (0x7F << 8))) {
-						controller(channel,midi::DATA_ENTRY_COARSE, (value >> 8) & 0x7F);
-					}
-					if (!(value & 0x80)
-					    && (tmpval & 0x7F) != (value & 0x7F)) {
-						controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
-					}
-					if (tmpval != value)
-						Cd[channel].set_controller(ctrl,value);
-				}
-#endif
-			}
-#endif
 		}
 
 
@@ -298,95 +204,6 @@ namespace mutabor {
 		    i = input.get_next_changed_controller(Cd[channel],i)) {
 			int number =  *i;
 			CopyController(input, Cd[channel], channel, number);
-#if 0
-			int value =   input.get_controller(number);
-			int ctrl = Cd[channel].get_index(number);
-			int tmpctrl = Cd[channel].get_index(midi::DATA_ENTRY_COARSE);
-			int tmpval = Cd[channel].get_controller(ctrl);
-
-			if (ctrl == number &&
-			    Cd[channel].get_controller(ctrl) == value)
-				continue;
-
-			// this might change the index
-			Cd[channel].set_controller(number,value);
-			ctrl = Cd[channel].get_index(number);
-			value = input.get_controller(ctrl);
-
-			if (ctrl == -1) continue;
-
-			if (ctrl < midi::FIRST_RPN) {
-				mutASSERT(value < 0x80);
-				controller(channel, ctrl, value);
-			} else if (midi::FIRST_RPN <= ctrl && ctrl <= midi::LAST_RPN) {
-				OutputParameter(Cd[channel],
-						channel,
-						RPN,
-						value,
-						tmpval,
-						ctrl);
-#if 0
-				if (tmpval != value) {
-					if (0x10000 > tmpctrl
-					    ||  tmpctrl >= 0x20000
-					    || Cd[channel].get_controller(midi::REGISTERED_PARAMETER_COARSE)
-					    != input.get_controller(midi::REGISTERED_PARAMETER_COARSE)
-					    || Cd[channel].get_controller(midi::REGISTERED_PARAMETER_COARSE)
-					    != input.get_controller(midi::REGISTERED_PARAMETER_COARSE)) {
-						controller(channel,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
-						Cd[channel].set_controller(midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
-						controller(channel,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
-						Cd[channel].set_controller(midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
-					}
-
-					if (!(value & (0x80 << 8))
-					    && (tmpval & (0x7F << 7)) != (value & (0x7F << 8))) {
-						controller(channel,midi::DATA_ENTRY_COARSE, value >> 8 & 0x7F);
-					}
-					if (!(value & 0x80)
-					    && (tmpval & 0x7F) != (value & 0x7F)) {
-						controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
-					}
-					if (tmpval != value)
-						Cd[channel].set_controller(ctrl,value);
-				}
-#endif
-			} else if (ctrl >= midi::FIRST_NRPN
-				   && ctrl <= midi::LAST_NRPN) {
-				OutputParameter(Cd[channel],
-						channel,
-						NRPN,
-						value,
-						tmpval,
-						ctrl);
-#if 0
-				if (tmpval != value) {
-					if (0x20000 > tmpctrl
-					    ||  tmpctrl >= 0x30000
-					    || Cd[channel].get_controller(midi::NON_REGISTERED_PARAMETER_COARSE)
-					    != input.get_controller(midi::NON_REGISTERED_PARAMETER_COARSE)
-					    || Cd[channel].get_controller(midi::NON_REGISTERED_PARAMETER_COARSE)
-					    != input.get_controller(midi::NON_REGISTERED_PARAMETER_COARSE)) {
-						controller(channel,midi::NON_REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
-						Cd[channel].set_controller(midi::NON_REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
-						controller(channel,midi::NON_REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
-						Cd[channel].set_controller(midi::NON_REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
-					}
-
-					if (!(value & (0x80 << 8))
-					    && (tmpval & (0x7F << 7)) != (value & (0x7F << 7))) {
-						controller(channel,midi::DATA_ENTRY_COARSE, (value >> 8) & 0x7F);
-					}
-					if (!(value & 0x80)
-					    && (tmpval & 0x7F) != (value & 0x7F)) {
-						controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
-					}
-					if (tmpval != value)
-						Cd[channel].set_controller(ctrl,value);
-				}
-#endif
-			}
-#endif
 		}
 	}
 
@@ -398,43 +215,9 @@ namespace mutabor {
 					      int number) {
 
 		int value = input.get_controller(number);
-		int ctrl = output.get_index(number);
-		int tmpctrl = output.get_index(midi::DATA_ENTRY_COARSE);
-		int tmpval = output.get_controller(ctrl);
-
-		if (ctrl == number &&
-		    (value < 0
-		     || output.get_controller(ctrl) == value))
+		if (value < 0)
 			return;
-
-
-		// this might change the index
-		output.set_controller(number,value);
-		ctrl = output.get_index(number);
-		value = input.get_controller(ctrl);
-
-		if (ctrl == -1) return;
-
-		if (ctrl < midi::FIRST_RPN) {
-			mutASSERT(value < 0x80);
-			controller(channel, ctrl, value);
-		} else if (midi::FIRST_RPN <= ctrl
-			   && ctrl <= midi::LAST_RPN) {
-			OutputParameter(output,
-					channel,
-					RPN,
-					value,
-					tmpval,
-					ctrl);
-		} else if (midi::FIRST_NRPN <= ctrl
-			   && ctrl <= midi::LAST_NRPN) {
-			OutputParameter(output,
-					channel,
-					RPN,
-					value,
-					tmpval,
-					ctrl);
-		}
+		do_Controller(output, channel, number, value);
 	}
 
 
@@ -723,87 +506,107 @@ namespace mutabor {
 				 || ton_auf_kanal[i].unique_id == id)
 			     && (ton_auf_kanal[i].active
 				 || Cd[i].get_hold())) {
-
-				switch (ctrl) {
-				case midi::ALL_CONTROLLERS_OFF: {
-#if 0
-					ChannelData data;
-					data.MidiReset();
-					do_UpdateControllers(i, data);
-#endif
-					/** \todo handle chord hold */
-					/** \todo implement immediate
-					    controller reset, don't
-					    wait for the next tone */
-				}
-				case midi::ALL_SOUND_OFF:
-				case midi::ALL_NOTES_OFF:
-				case midi::OMNI_OFF:
-				case midi::OMNI_ON:
-				case midi::MONO_ON:
-				case midi::POLY_ON:
-					continue;
-				}
-
-
-				int newctrl = Cd[i].get_index(ctrl);
-				int old_value = Cd[i].get_controller(newctrl);
-
-				if (Cd[i].get_controller(ctrl) == value ||
-				    (ctrl == newctrl && Cd[i].get_controller(newctrl) == value)) {
-					switch (ctrl) {
-					case midi::DATA_ENTRY_COARSE:
-					case midi::DATA_ENTRY_FINE:
-					case midi::DATA_BUTTON_INCREMENT:
-					case midi::DATA_BUTTON_DECREMENT:
-						break;
-					default:
-						continue;
-					}
-				}
-
-				// this might change the index (e.g. RPN/NRPN coarse/fine)
-				switch (ctrl) {
-				case midi::LOCAL_ON_OFF:
-					newctrl = ctrl;
-					break;
-				default:
-					Cd[i].set_controller(ctrl, value);
-					newctrl = Cd[i].get_index(ctrl);
-					if (newctrl != ctrl)
-						value = Cd[i].get_controller(newctrl);
-
-				}
-
-				if (newctrl == midi::CONTROLLER_UNKNOWN) continue;
-
-				if (newctrl < midi::FIRST_RPN) {
-					mutASSERT(value < 0x80);
-					controller(i, newctrl, value);
-				} else if (midi::FIRST_RPN <= newctrl
-					   && newctrl <= midi::LAST_RPN) {
-					OutputParameter(Cd[i],
-							i,
-							RPN,
-							value,
-							old_value,
-							newctrl);
-				} else if (newctrl >= midi::FIRST_NRPN &&
-					   newctrl <= midi::LAST_NRPN) {
-					OutputParameter(Cd[i],
-							i,
-							NRPN,
-							value,
-							old_value,
-							newctrl);
-				}
-
-				// sustained section contains only inactive MIDI channels
-				if (midi::is_hold(newctrl)
-				    && !ton_auf_kanal[i].active) {
-					channel_queue.sustain_channel(i, Cd[i].get_hold());
-				}
+				do_Controller(Cd[i], i, ctrl, value);
 			}
+	}
+
+	template<class T, class D>
+	void  CommonMidiOutput<T,D>::do_Controller(ChannelData & output,
+						   int channel,
+						   int ctrl,
+						   int value)
+	{
+		mutASSERT(this->isOpen
+			  || ctrl == midi::PITCH_BEND_SENSITIVITY
+			  || ctrl == midi::LOCAL_ON_OFF
+			  || ctrl == midi::OMNI_ON
+			  || ctrl == midi::POLY_ON);
+
+		switch (ctrl) {
+		case midi::ALL_CONTROLLERS_OFF: {
+#if 0
+			ChannelData data;
+			data.MidiReset();
+			do_UpdateControllers(channel, data);
+#endif
+			/** \todo handle chord hold */
+			/** \todo implement immediate
+			    controller reset, don't
+			    wait for the next tone */
+		}
+		case midi::ALL_SOUND_OFF:
+		case midi::ALL_NOTES_OFF:
+		case midi::OMNI_OFF:
+		case midi::OMNI_ON:
+		case midi::MONO_ON:
+		case midi::POLY_ON:
+			return;
+		}
+
+
+		int newctrl = output.get_index(ctrl);
+		int old_value = output.get_controller(newctrl);
+
+		if (output.get_controller(ctrl) == value ||
+		    (ctrl == newctrl && output.get_controller(newctrl) == value)) {
+			switch (ctrl) {
+			case midi::DATA_ENTRY_COARSE:
+			case midi::DATA_ENTRY_FINE:
+			case midi::DATA_BUTTON_INCREMENT:
+			case midi::DATA_BUTTON_DECREMENT:
+				break;
+			default:
+				return;
+			}
+		}
+
+		// this might change the index (e.g. RPN/NRPN coarse/fine)
+		switch (ctrl) {
+		case midi::LOCAL_ON_OFF:
+			newctrl = ctrl;
+			break;
+		default:
+			output.set_controller(ctrl, value);
+			newctrl = output.get_index(ctrl);
+			if (newctrl != ctrl)
+				value = output.get_controller(newctrl);
+
+		}
+
+		switch (newctrl) {
+		case midi::CONTROLLER_UNKNOWN:
+			return;
+		case midi::PITCH_BEND_SENSITIVITY:
+			value = bending_range << 8;
+			break;
+		}
+
+		if (newctrl < midi::FIRST_RPN) {
+			mutASSERT(value < 0x80);
+			controller(channel, newctrl, value);
+		} else if (midi::FIRST_RPN <= newctrl
+			   && newctrl <= midi::LAST_RPN) {
+			OutputParameter(output,
+					channel,
+					RPN,
+					value,
+					old_value,
+					newctrl);
+		} else if (newctrl >= midi::FIRST_NRPN &&
+			   newctrl <= midi::LAST_NRPN) {
+			OutputParameter(output,
+					channel,
+					NRPN,
+					value,
+					old_value,
+					newctrl);
+		}
+
+		// sustained section contains only inactive MIDI channels
+		if (midi::is_hold(newctrl)
+		    && !ton_auf_kanal[channel].active) {
+			channel_queue.sustain_channel(channel, output.get_hold());
+		}
 	}
 
 	template<class T, class D>
