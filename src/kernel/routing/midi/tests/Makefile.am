@@ -62,7 +62,12 @@ nodist_midiopenfail1_SOURCES = \
 
 if HAVE_CPPUNIT
 check_SCRIPTS += \
-	$(srcdir)/all_controller_off.mid
+	$(srcdir)/midi1_source.mid \
+	$(srcdir)/bug019010.mid \
+	$(srcdir)/bank_select.mid \
+	$(srcdir)/all_controller_off.mid \
+	$(srcdir)/rpn_nrpn.mid \
+	$(srcdir)/controller.mid
 
 TESTS += \
 	testcppunit$(EXEEXT)

@@ -71,6 +71,7 @@ class InputMidiFileTest : public CPPUNIT_NS::TestFixture
 	CPPUNIT_TEST( testBug019010 );
 	CPPUNIT_TEST( testBankSelect );
 	CPPUNIT_TEST( testAllControllerOff );
+	CPPUNIT_TEST( testRpnNrpn );
 	CPPUNIT_TEST( testControllerPlay );
 	CPPUNIT_TEST_SUITE_END();
 
@@ -143,6 +144,7 @@ public:
 	void testBug019010();
 	void testBankSelect();
 	void testAllControllerOff();
+	void testRpnNrpn();
 	void testControllerPlay();
 
 #if __WXMSW__
