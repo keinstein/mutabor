@@ -150,7 +150,7 @@ namespace mutabor {
 		 */
 		void MidiReset();
 
-		int set_controller(size_t number, int8_t data) {
+		int set_controller(size_t number, int data) {
 
 			if (controller.size() <= number)
 				controller.resize(number +1,-1);
@@ -175,7 +175,7 @@ namespace mutabor {
 			case midi::DATA_ENTRY_FINE:
 			case midi::DATA_BUTTON_INCREMENT:
 			case midi::DATA_BUTTON_DECREMENT:
- 				if (!data_is_rpn
+				if (!data_is_rpn
 				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != -1
 				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != -1
 				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != 0x7f
@@ -197,17 +197,43 @@ namespace mutabor {
 						controller.resize(param+1,-1);
 					switch (number) {
 					case midi::DATA_BUTTON_INCREMENT:
-						controller[param]++;
+						if (!(controller[param]&0x80)) {
+							// skip the sign bit for lsb
+							int value = controller[param];
+							value++;
+							if (value & 0x80) {
+								if (!(value & 0x8000))
+									value += 0x100;
+								value &= ~((int)0xff);
+							}
+							controller[param] = value;
+						}
 						break;
 					case midi::DATA_BUTTON_DECREMENT:
-						controller[param]--;
+						if (!(controller[param]&0x80)) {
+							int value = controller[param];
+							bool hasmsb = !(value & 0x8000);
+							value--;
+							if (value & 0x80) {
+								if (!hasmsb) {
+									value |= 0xFF00;
+								}
+								value &= ~((int)0x80);
+							}
+						}
 						break;
-					case midi::DATA_ENTRY_COARSE:
-					case midi::DATA_ENTRY_FINE:
-						int value = (controller[midi::DATA_ENTRY_COARSE]) << 8
-							|| (controller[midi::DATA_ENTRY_COARSE]);
-						if (!(value & 0x8080))
-							controller[param] = value;
+					case midi::DATA_ENTRY_COARSE: {
+						int value = (controller[param] & 0xFF) | ((data & 0xFF) << 8);
+						if (controller[param] != value)
+							set_controller(param,value);
+					}
+						break;
+					case midi::DATA_ENTRY_FINE: {
+						int value = (controller[param] & 0xff00)| (data & 0xff);
+						if (controller[param] != value)
+							set_controller(param,value);
+					}
+						break;
 					}
 				}
 				break;
@@ -229,7 +255,7 @@ namespace mutabor {
 			if (!found)
 				index = first_unchanged++;
 
-			controller_changed[index] = (param == -1 ? number : param);
+			controller_changed[index] = number;
 
 			return retval;
 		}
@@ -248,7 +274,7 @@ namespace mutabor {
 				// address for later use, so return not -1
 			case midi::NON_REGISTERED_PARAMETER_FINE:
 			case midi::NON_REGISTERED_PARAMETER_COARSE:
- 				if (controller[midi::NON_REGISTERED_PARAMETER_FINE] != -1
+				if (controller[midi::NON_REGISTERED_PARAMETER_FINE] != -1
 				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != -1
 				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != 0x7f
 				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != 0x7f) {
@@ -272,7 +298,7 @@ namespace mutabor {
 			case midi::DATA_ENTRY_FINE:
 			case midi::DATA_BUTTON_INCREMENT:
 			case midi::DATA_BUTTON_DECREMENT:
- 				if (!data_is_rpn
+				if (!data_is_rpn
 				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != -1
 				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != -1
 				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != 0x7f
