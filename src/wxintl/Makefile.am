@@ -4,7 +4,9 @@ include $(top_srcdir)/common-rules.mk
 noinst_LIBRARIES = libwxintl.a
 libwxintl_a_HEADRES = libintl.h
 #BUILT_SOURCES = $(top_builddir)/intl/libintl.h
-libwxintl_a_SOURCES = libintl.cpp
+libwxintl_a_SOURCES = \
+	libintl.cpp \
+	libintl.h
 
 all: all-@USE_INCLUDED_LIBWXINTL@
 all-yes: $(BUILT_SOURCES) all-am #libintl.h charset.alias ref-add.sed ref-del.sed

@@ -230,6 +230,7 @@ libmutaborrouting_a_INLINEHEADERS = \
 
 
 libmutaborrouting_a_INDENTHEADERS = \
+		src/kernel/boost-interface.h \
 		src/kernel/routing/gmn/DevGIS.h \
 		src/kernel/routing/gmn/GIS_Head.h \
 		src/kernel/routing/gmn/GIS.h \
