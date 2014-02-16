@@ -123,6 +123,7 @@ double get_wert_komplex_intervall (mutabor_box_type * box, struct komplex_interv
 
 ****************************************************************/
 
+#if 0
 static int anzahl_intervalle;       /* so viele Intervalle wurden gelesen */
 
 static struct intervall ** intervalle;    /* Feld von Intervallen zum schnelleren Zugriff
@@ -135,7 +136,9 @@ static char * matrix;          /* Adjazenzmatrix (auf sie darf nur ueber
 
                                   das folgende Makro zugegriffen werden !*/
 
-#define adjazent(a,b) matrix [ (a) * anzahl_intervalle * sizeof (char) \
+#endif
+
+#define adjacent(file,a,b) file->interval_matrix [ (a) * file->interval_count * sizeof (char) \
                              + (b) * sizeof (char)]
 
 int intervall_list_laenge (struct intervall *list)
@@ -161,8 +164,8 @@ static int intervall_nummer (mutabor_box_type * box, const char *name)
 {
 	int i;
 
-	for (i=0; i<anzahl_intervalle; i++)
-		if ( ! strcasecmp (name, intervalle[i]->name)) return i;
+	for (i=0; i<box->file->interval_count; i++)
+		if ( ! strcasecmp (name, box->file->check_intervals[i]->name)) return i;
 
 	mutabor_error_message(box,
 			      compiler_error,
@@ -176,20 +179,20 @@ static void test_zyklen (mutabor_box_type * box, int startknoten)
 {
 	int i;
 
-	for (i=0; i<anzahl_intervalle; i++) {
-		if (adjazent (startknoten, i)) {
-			if (visited [i]) {
+	for (i=0; i<box->file->interval_count; i++) {
+		if (adjacent (box->file, startknoten, i)) {
+			if (box->file->visited_intervals [i]) {
 				mutabor_error_message(box,
 						      compiler_error,
 				              _("Intervals %s and %s depend on each other"),
-					      (intervalle [startknoten]->name),
-					      intervalle [i]->name);
+					      (box->file->check_intervals [startknoten]->name),
+					      box->file->check_intervals [i]->name);
 			}
 
-			visited [i] = 1;
+			box->file->visited_intervals [i] = 1;
 
 			test_zyklen (box, i);
-			visited [i] = 0;
+			box->file->visited_intervals [i] = 0;
 		}
 	}
 }
@@ -199,7 +202,7 @@ static void berechne_intervall_endgueltig (mutabor_box_type * box, int k)
 	int b;
 	double help;
 
-	switch (intervalle[k]->intervall_typ) {
+	switch (box->file->check_intervals[k]->intervall_typ) {
 
 	case intervall_absolut:         /* hier nichts zu tun */
 		break;
@@ -208,7 +211,7 @@ static void berechne_intervall_endgueltig (mutabor_box_type * box, int k)
 
 		struct komplex_intervall * lauf;
 
-		for (lauf = intervalle[k]->u.intervall_komplex.komplex_liste;
+		for (lauf = box->file->check_intervals[k]->u.intervall_komplex.komplex_liste;
 		                lauf;
 		                lauf = lauf -> next) {
 			b = intervall_nummer (box, lauf -> name);
@@ -216,10 +219,10 @@ static void berechne_intervall_endgueltig (mutabor_box_type * box, int k)
 		}
 
 		help = get_wert_komplex_intervall (box,
-						   intervalle[k]->u.intervall_komplex.komplex_liste);
+						   box->file->check_intervals[k]->u.intervall_komplex.komplex_liste);
 
-		intervalle[k]->intervall_typ = intervall_absolut;
-		intervalle[k]->u.intervall_absolut.intervall_wert = help;
+		box->file->check_intervals[k]->intervall_typ = intervall_absolut;
+		box->file->check_intervals[k]->u.intervall_absolut.intervall_wert = help;
 	}
 		break;
 		
@@ -237,46 +240,46 @@ void berechne_intervalle_absolut (mutabor_box_type * box, struct intervall * lis
 {
 	int i,j,k;
 
-	anzahl_intervalle = intervall_list_laenge (list_of_intervalle);
+	box->file->interval_count = intervall_list_laenge (list_of_intervalle);
 
-	intervalle = (intervall* *) xalloca (box, sizeof(struct intervall *) * anzahl_intervalle);
-	visited = (char*) xalloca (box, sizeof(char) * anzahl_intervalle);
-	matrix = (char*) xalloca (box, sizeof(char) * anzahl_intervalle * anzahl_intervalle);
+	box->file->check_intervals = (intervall* *) xalloca (box, sizeof(struct intervall *) * box->file->interval_count);
+	box->file->visited_intervals = (char*) xalloca (box, sizeof(char) * box->file->interval_count);
+	box->file->interval_matrix = (char*) xalloca (box, sizeof(char) * box->file->interval_count * box->file->interval_count);
 
 
 	/* Feld mit intervallen initialisieren (zum schnelleren Zugriff) */
 
-	belege_intervalle (intervalle, list_of_intervalle);
+	belege_intervalle (box->file->check_intervals, list_of_intervalle);
 
 	/* Adjazenzmatrix initialisieren (Kein Intervall hängt vom anderen ab) */
 
-	for (i=0; i<anzahl_intervalle; i++)
+	for (i=0; i<box->file->interval_count; i++)
 	{
-		for (j=0; j<anzahl_intervalle; j++) {
-			adjazent (i,j) = 0;
+		for (j=0; j<box->file->interval_count; j++) {
+			adjacent (box->file, i,j) = 0;
 		}
 	}
 
 	/* Adjazenzmatrix initialisieren (Abhängigkeiten eintragen) */
 
-	for (i=0; i<anzahl_intervalle; i++)
+	for (i=0; i<box->file->interval_count; i++)
 	{
-		if (intervalle[i]->intervall_typ == intervall_absolut)  /* alles ok */ ;
-		else if (intervalle[i]->intervall_typ == intervall_komplex) {
+		if (box->file->check_intervals[i]->intervall_typ == intervall_absolut)  /* alles ok */ ;
+		else if (box->file->check_intervals[i]->intervall_typ == intervall_komplex) {
 
 			struct komplex_intervall * lauf;
 
-			for (lauf = intervalle[i]->u.intervall_komplex.komplex_liste;
+			for (lauf = box->file->check_intervals[i]->u.intervall_komplex.komplex_liste;
 			                lauf;
 			                lauf = lauf -> next) {
-				adjazent (i, intervall_nummer (box, lauf -> name)) = 1;
+				adjacent (box->file, i, intervall_nummer (box, lauf -> name)) = 1;
 			}
 		} else {
 			mutabor_error_message(box,
 					      internal_error,
 					      _("Undefined interval type %d for interval %s."),
-					      intervalle[i]->intervall_typ,
-					      (intervalle[i]->name));
+					      box->file->check_intervals[i]->intervall_typ,
+					      (box->file->check_intervals[i]->name));
 		}
 	}
 
@@ -285,13 +288,13 @@ void berechne_intervalle_absolut (mutabor_box_type * box, struct intervall * lis
 
 	printf ("Matrix:\n");
 
-	for (i=0; i<anzahl_intervalle; i++)
+	for (i=0; i<box->file->interval_count; i++)
 	{
-		printf ("%s -> ", intervalle[i]->name);
+		printf ("%s -> ", box->file->check_intervals[i]->name);
 
-		for (j=0; j<anzahl_intervalle; j++) {
-			if (adjazent (i,j))
-				printf ("%s  ", intervalle[j]->name);
+		for (j=0; j<box->file->interval_count; j++) {
+			if (adjacent (box->file, i,j))
+				printf ("%s  ", box->file->check_intervals[j]->name);
 		}
 
 		printf ("\n");
@@ -303,19 +306,19 @@ void berechne_intervalle_absolut (mutabor_box_type * box, struct intervall * lis
 
 	/* auf Zyklenfreiheit Pruefen */
 
-	for (k=0; k<anzahl_intervalle; k++)
-		visited [k] = 0;
+	for (k=0; k<box->file->interval_count; k++)
+		box->file->visited_intervals [k] = 0;
 
-	for (k=0; k<anzahl_intervalle; k++)
+	for (k=0; k<box->file->interval_count; k++)
 	{
-		visited [k] = 1;
+		box->file->visited_intervals [k] = 1;
 		test_zyklen (box, k);
-		visited [k] = 0;
+		box->file->visited_intervals [k] = 0;
 	}
 
 	/* Toene endgueltig berechnen */
 
-	for (k=0; k<anzahl_intervalle; k++)
+	for (k=0; k<box->file->interval_count; k++)
 		berechne_intervall_endgueltig (box, k);
 
 #ifdef DEBUG_ANZEIGE_3
@@ -323,13 +326,13 @@ void berechne_intervalle_absolut (mutabor_box_type * box, struct intervall * lis
 
 	printf ("Matrix:\n");
 
-	for (i=0; i<anzahl_intervalle; i++)
+	for (i=0; i<box->file->interval_count; i++)
 	{
-		printf ("%s -> ", intervalle[i]->name);
+		printf ("%s -> ", box->file->check_intervals[i]->name);
 
-		for (j=0; j<anzahl_intervalle; j++) {
-			if (adjazent (i,j))
-				printf ("%s  ", intervalle[j]->name);
+		for (j=0; j<box->file->interval_count; j++) {
+			if (adjacent (box->file, i,j))
+				printf ("%s  ", box->file->check_intervals[j]->name);
 		}
 
 		printf ("\n");
@@ -339,9 +342,9 @@ void berechne_intervalle_absolut (mutabor_box_type * box, struct intervall * lis
 
 #endif
 
-	xde_alloca (intervalle);
-	xde_alloca (visited);
-	xde_alloca (matrix);
+	xde_alloca (box->file->check_intervals);
+	xde_alloca (box->file->visited_intervals);
+	xde_alloca (box->file->interval_matrix);
 
 }
 

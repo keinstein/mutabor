@@ -136,6 +136,7 @@ struct mutabor_logic_parsed {
 	size_t constant_count;
 	size_t parameter_count;
 
+
 	/* some triggers that are always active if the logic is active. E.g., the main triggers of logics */
 	struct harmonie_ereignis * global_harmonies; /*< harmony triggers that are always active */
 	struct keyboard_ereignis * global_keystrokes; /*< keyboard triggers that are always active */
@@ -156,10 +157,16 @@ struct mutabor_logic_parsed {
 
 	****************************************************************/
 
+	/* some variables to support loop checking */
+	size_t interval_count;              /*< size of read intervals */
+	struct intervall ** check_intervals; /*< fast access to intervals */
+	char * visited_intervals;                     /*< mark traversed nodes */
+	char * interval_matrix;            /*< directed graph containing the loops */
+
 	int anzahl_toene;       /*< Number of read tones */
 	struct ton ** toene;    /*< faster access than using lists */
-	char * visited;         /* marker for traversing */
-	char * matrix;          /* Adjacency matrix access only using the macro mutabor_adjacent */
+	char * visited_tones;         /* marker for traversing */
+	char * tone_matrix;          /* Adjacency matrix access only using the macro mutabor_adjacent */
 
 	/**************************************************************
             Es wird ein azyklischer Graph der Umstimmungen

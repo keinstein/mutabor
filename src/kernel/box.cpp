@@ -41,11 +41,11 @@ namespace mutabor {
 
 //tone_system *free_tonesystem = NULL;
 //mutabor_box_type mut_box[MAX_BOX];
-int laufzeit_meldungen_erlaubt = 0;
-int aktuelles_midi_instrument = 0;
+// int laufzeit_meldungen_erlaubt = 0;
+			// int aktuelles_midi_instrument = 0;
 /* int aktuelle_keyboard_box = 0; */
 size_t minimal_box_used = 0;
-int keys_changed_sum = 0;
+			// int keys_changed_sum = 0;
 
 void mutabor_set_logic(struct mutabor_box_type * box, struct mutabor_logic_parsed * logic) {
 	if (logic == box->file) return;

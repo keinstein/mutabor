@@ -169,11 +169,11 @@ typedef struct mutabor_box_type mutabor_box_type;
 
 
 //extern mutabor_box_type mut_box[MAX_BOX];
-extern int laufzeit_meldungen_erlaubt;
-extern int aktuelles_midi_instrument;
+// extern int laufzeit_meldungen_erlaubt;
+			// extern int aktuelles_midi_instrument;
 extern size_t minimal_box_used;
 
-extern int keys_changed_sum;
+			// extern int keys_changed_sum;
 void mutabor_set_logic(struct mutabor_box_type * box, struct mutabor_logic_parsed * logic);
 void mutabor_reset_keys(struct mutabor_box_type * box);
 void mutabor_reset_box(struct mutabor_box_type * box);

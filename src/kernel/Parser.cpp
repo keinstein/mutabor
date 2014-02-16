@@ -2341,8 +2341,8 @@ static void belege_toene (struct ton **toene, struct ton * liste)
 
 	TRACE;
 	for (i=0; i<box->file->anzahl_toene; i++) {
-		if (mutabor_adjacent (box->file->matrix, startknoten, i)) {
-			if (box->file->visited [i]) {
+		if (mutabor_adjacent (box->file->tone_matrix, startknoten, i)) {
+			if (box->file->visited_tones [i]) {
 				mutabor_error_message(box,
 						      compiler_error,
 						      _("Tones %s and %s depend on each other."),
@@ -2350,10 +2350,10 @@ static void belege_toene (struct ton **toene, struct ton * liste)
 						      (box->file->toene [i]->name));
 			}
 
-			box->file->visited [i] = 1;
+			box->file->visited_tones [i] = 1;
 
 			test_zyklen (box,i);
-			box->file->visited [i] = 0;
+			box->file->visited_tones [i] = 0;
 		}
 	}
 }
@@ -2403,8 +2403,8 @@ static void berechne_ton_endgueltig (mutabor_box_type * box, int k)
 	box->file->anzahl_toene = ton_list_laenge (list_of_toene);
 
 	box->file->toene = (ton* *) xalloca (box, sizeof(struct ton *) * box->file->anzahl_toene);
-	box->file->visited = (char*) xalloca (box, sizeof(char) * box->file->anzahl_toene);
-	box->file->matrix = (char*) xalloca (box, sizeof(char) * box->file->anzahl_toene * box->file->anzahl_toene);
+	box->file->visited_tones = (char*) xalloca (box, sizeof(char) * box->file->anzahl_toene);
+	box->file->tone_matrix = (char*) xalloca (box, sizeof(char) * box->file->anzahl_toene * box->file->anzahl_toene);
 
 
 	/* Feld mit toenen initialisieren (zum schnelleren Zugriff) */
@@ -2416,7 +2416,7 @@ static void berechne_ton_endgueltig (mutabor_box_type * box, int k)
 	for (i=0; i<box->file->anzahl_toene; i++)
 		{
 			for (j=0; j<box->file->anzahl_toene; j++) {
-				mutabor_adjacent (box->file->matrix, i,j) = 0;
+				mutabor_adjacent (box->file->tone_matrix, i,j) = 0;
 			}
 		}
 
@@ -2427,7 +2427,7 @@ static void berechne_ton_endgueltig (mutabor_box_type * box, int k)
 			switch (box->file->toene[i]->ton_typ) {
 			case ton_absolut: break;  /* alles ok */ ;
 			case ton_komplex:
-				mutabor_adjacent (box->file->matrix, 
+				mutabor_adjacent (box->file->tone_matrix, 
 						  i, 
 						  ton_nummer (box, box->file->toene[i]->u.ton_komplex.bezugston)) = 1;
 				break;
@@ -2451,7 +2451,7 @@ static void berechne_ton_endgueltig (mutabor_box_type * box, int k)
 				printf ("%s -> ", box->file->toene[i]->name);
 
 				for (j=0; j<box->file->anzahl_toene; j++) {
-					if (mutabor_adjacent (box->file->matrix, i,j))
+					if (mutabor_adjacent (box->file->tone_matrix, i,j))
 						printf ("%s  ", box->file->toene[j]->name);
 				}
 			
@@ -2466,13 +2466,13 @@ static void berechne_ton_endgueltig (mutabor_box_type * box, int k)
 	/* auf Zyklenfreiheit Pruefen */
 
 	for (k=0; k<box->file->anzahl_toene; k++)
-		box->file->visited [k] = 0;
+		box->file->visited_tones [k] = 0;
 
 	for (k=0; k<box->file->anzahl_toene; k++)
 		{
-			box->file->visited [k] = 1;
+			box->file->visited_tones [k] = 1;
 			test_zyklen (box,k);
-			box->file->visited [k] = 0;
+			box->file->visited_tones [k] = 0;
 		}
 
 	/* Toene endgueltig berechnen */
@@ -2491,7 +2491,7 @@ static void berechne_ton_endgueltig (mutabor_box_type * box, int k)
 				printf ("%s -> ", box->file->toene[i]->name);
 
 				for (j=0; j<box->file->anzahl_toene; j++) {
-					if (mutabor_adjacent (box->file->matrix, i,j))
+					if (mutabor_adjacent (box->file->tone_matrix, i,j))
 						printf ("%s  ", box->file->toene[j]->name);
 				}
 
@@ -2503,8 +2503,8 @@ static void berechne_ton_endgueltig (mutabor_box_type * box, int k)
 #endif
 
 	xde_alloca (box->file->toene);
-	xde_alloca (box->file->visited);
-	xde_alloca (box->file->matrix);
+	xde_alloca (box->file->visited_tones);
+	xde_alloca (box->file->tone_matrix);
 
 }
 
