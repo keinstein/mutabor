@@ -163,15 +163,15 @@ int main(int argc, char **argv)
 	in -> SetName(_T(SRCDIR) _T("/gmn1_source.gmn"));
 //	mutabor::InputDevice prevent_from_deletion(in);
 	if (!(in -> Open())) {
-		DEBUGLOG2(always,_T("Open faild. Exiting."));
+		DEBUGLOG2(always,_T("Open failed. Exiting."));
 		exit(1);
 	}
 	in -> Play();
 	in -> Close();
 
-	wxThread::ExitCode e = in->WaitForDeviceFinish();
+	//e = in->WaitForDeviceFinish();
 	//int e = 0;
 //	std::clog << "Deviation min: " << tim->min << " max: " << tim->max << std::endl;
-	return (intptr_t)e; 
+	return 0;
 }
 ///\}

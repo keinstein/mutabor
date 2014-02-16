@@ -65,32 +65,32 @@ namespace mutabor {
 	protected:
 		CommonFileOutputDevice(): OutputDeviceClass() {}
 
-		CommonFileOutputDevice(const mutStringRef name, 
+		CommonFileOutputDevice(const mutStringRef name,
 				       int id = -1)
 			: OutputDeviceClass(name, id) { }
  	public:
 		virtual ~CommonFileOutputDevice() {};
-	
+
 		/// Save current device settings in a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be saved.
 		 */
 		virtual void Save (tree_storage & config);
-	
-	
-	
+
+
+
 		/// Load current device settings from a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be loaded from.
 		 */
 		virtual void Load (tree_storage & config);
-	
+
 		virtual bool do_Open();
 		virtual void Close();
 
-		virtual void SetName(const wxString & s) 
+		virtual void SetName(const wxString & s)
 			{
 				if (s != Name) {
 					bool reopen = IsOpen();
-					if (reopen) 
+					if (reopen)
 						Close();
 
 					Name = s;
@@ -99,7 +99,7 @@ namespace mutabor {
 						Open();
 				}
 			}
-		
+
 
 		virtual mutString GetTypeName () const {
 			mutASSERT(false);
@@ -123,14 +123,14 @@ namespace mutabor {
 	public:
  		class FileTimer: public Thread
 		{
-	      
+
 			boost::intrusive_ptr<CommonFileInputDevice> file;
 		public:
 			FileTimer(CommonFileInputDevice * f,
 				  ThreadKind kind = wxTHREAD_DETACHED) : wxThread(kind),
 									 file(f)
 			{}
-			
+
 			virtual ~FileTimer() {
 				mutASSERT(!file);
 				if (file) {
@@ -159,7 +159,7 @@ namespace mutabor {
 				}
 				file.reset();
 			}
-			
+
 			void ClearFile() {
 				file.reset();
 			}
@@ -177,46 +177,58 @@ namespace mutabor {
 			if (isOpen) Close();
 			mutASSERT(timer == NULL);
 		};
-	
+
 		/// Save current device settings in a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be saved.
 		 */
 		virtual void Save (tree_storage & config);
-	
+
 		/// Load current device settings from a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be loaded from.
 		 */
 		virtual void Load (tree_storage & config);
 
-	
+
 		virtual bool Open();
 		virtual void Close();
 		virtual void Stop();
 		virtual void Play();
 		virtual void Pause();
 
+		/**
+		 * Reset the timing and music data after stopping the device.
+		 *
+		 */
+		virtual void doResetTime() {}
+
+		/**
+		 * Do some cleanup if necessary after stopping the thread.
+		 *
+		 */
+		virtual void threadCleanUp() {}
+
 		virtual void SetName(const wxString & s) {
 			if (s != Name) {
 				bool reopen = IsOpen();
-				if (reopen) 
+				if (reopen)
 					Close();
 
 				Name = s;
 
-				if (reopen) 
+				if (reopen)
 					Open();
 			}
 		}
 
-		/** 
+		/**
 		 * Sets the thread kind for the next thread that is
 		 * being generated. If we have already a timer thread
-		 * then the thread kind will not be changed, but the 
+		 * then the thread kind will not be changed, but the
 		 * value is stored for the next generated thread.
-		 * 
+		 *
 		 * \param k thread kind to be saved
-		 * 
-		 * \retval true if everything is ok.  
+		 *
+		 * \retval true if everything is ok.
 		 * \retval false if there is a thread that
 		 * could not be updated.
 		 */
@@ -225,21 +237,23 @@ namespace mutabor {
 			return !timer;
 		}
 
-		/** 
+		/**
 		 * Issue an error message and stop the device.
-		 * 
-		 * 
+		 *
+		 *
 		 * \return Error exit code.
 		 */
 		wxThread::ExitCode exception_error();
 
-		/** 
+		/**
 		 * Play the file.
 		 * This function is called from the
 		 * thread object. It plays the file using sleep
 		 * operations.
 		 */
 		wxThread::ExitCode ThreadPlay(FileTimer * timer);
+
+
 		wxThread::ExitCode WaitForDeviceFinish() {
 			mutASSERT(timer);
 			if (timer) {
@@ -258,14 +272,14 @@ namespace mutabor {
 					if (timer->IsDetached()) {
 						switch (Mode) {
 						case DevicePlay:
-						case DevicePause: 
+						case DevicePause:
 						case DeviceStop:
 							return 0;
 						case DeviceTimingError:
 						case DeviceCompileError:
 						default:
 							return (void *)Mode;
-							
+
 						}
 					}
 				} else return timer;
@@ -276,11 +290,11 @@ namespace mutabor {
 		virtual mutString GetTypeName () const {
 			return N_("Generic input file");
 		}
-	
+
 #ifdef WX
 		virtual wxString TowxString() const;
 #endif
-		
+
 	protected:
 		FileTimer * timer;             //< timer thread for the file player
 		/// Signals to communicate with the player thread
@@ -298,10 +312,10 @@ namespace mutabor {
 			RequestPanic = 8       //< request Panic() before stopping the device
 		};
 		/* volatile is handled inside the class */
-		safe_integer<int> threadsignal; //< signal 
+		safe_integer<int> threadsignal; //< signal
 		Mutex waitMutex, threadReady, lockMode, exitLock;
 		ThreadCondition waitCondition;
-		/** 
+		/**
 		 * Fixed offset for the relative time the file returns.
 		 */
 		volatile mutint64 referenceTime; // ms
@@ -318,10 +332,10 @@ namespace mutabor {
 					 pauseTime(0),
 					 threadkind(wxTHREAD_DETACHED) { }
 
-		CommonFileInputDevice(wxString name, 
+		CommonFileInputDevice(wxString name,
 				      MutaborModeType mode,
-				      int id): InputDeviceClass(name, 
-								mode, 
+				      int id): InputDeviceClass(name,
+								mode,
 								id),
 					       timer(NULL),
 					       threadsignal (Nothing),
@@ -334,7 +348,7 @@ namespace mutabor {
 	};
 
 
-	class CommonFileDeviceFactory:public DeviceFactory { 
+	class CommonFileDeviceFactory:public DeviceFactory {
 	public:
 		CommonFileDeviceFactory(size_t id = 0):
 			DeviceFactory(id) {}
@@ -348,24 +362,24 @@ namespace mutabor {
 
 
 		virtual mutabor::OutputDeviceClass * DoCreateOutput() const = 0;
-		
+
 		virtual mutabor::InputDeviceClass * DoCreateInput() const = 0;
 		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
-							     const mutStringRef name, 
+							     const mutStringRef name,
 							     int id = -1) const = 0;
-		
+
 		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
-							   const mutStringRef name, 
+							   const mutStringRef name,
 							   int id = -1) const = 0;
 
 		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
-							     const mutStringRef name, 
-							     mutabor::MutaborModeType mode, 
+							     const mutStringRef name,
+							     mutabor::MutaborModeType mode,
 							     int id = -1) const = 0;
-		
+
 		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
-							   const mutStringRef name, 
-							   mutabor::MutaborModeType mode, 
+							   const mutStringRef name,
+							   mutabor::MutaborModeType mode,
 							   int id = -1) const = 0;
 	};
 

@@ -483,6 +483,7 @@ namespace mutabor {
 				if (threadsignal & ResetTime) {
 					nextEvent = wxLL(0); // in μs
 					playTime  = wxLL(0); // in μs
+					doResetTime();
 					threadsignal &= ~(int)ResetTime;
 				} 
 				reference = referenceTime;
@@ -563,6 +564,7 @@ namespace mutabor {
 			 threadsignal.get());
 		// assure that Close() has done its worke before exiting
 		exitLock.Lock();
+		threadCleanUp();
 		waitMutex.Unlock();
 		exitLock.Unlock();
 		return e;

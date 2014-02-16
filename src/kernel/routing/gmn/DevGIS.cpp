@@ -340,6 +340,15 @@ namespace mutabor {
 		if ( Mode == DeviceCompileError )
 			return;
 
+		if (!Head) doResetTime();
+
+		// Delta-Times lesen
+		minDelta = 0;
+		Mode = DeviceStop;
+		Panic(midi::DEFAULT_PANIC);
+	}
+
+	void InputGis::doResetTime() {
 		// Header auf Start setzen
 		if ( Head ) {
 			delete Head;
@@ -354,10 +363,8 @@ namespace mutabor {
 		//  Head->Prev = Head;
 		Head->PrevPtr = (GisReadHead**)&Head;
 		DEBUGLOG (gmnfile, _T("Head = %p"),(void*)Head);
-		// Delta-Times lesen
-		minDelta = 0;
-		Mode = DeviceStop;
-		Panic(midi::DEFAULT_PANIC);
+
+		base::doResetTime();
 	}
 
 	void InputGis::Panic(int type) {
@@ -498,6 +505,7 @@ namespace mutabor {
 	{
 		mutASSERT(h);
 		mutASSERT(h->Cursor);
+		mutASSERT((h->Id).Len());
 		DEBUGLOG (gmnfile, _T("h->Id = '%s' (%d), Id = '%s' (%d)"),
 			  (h->Id).c_str(),(int)(h->Id).Len(), Name.c_str(),(int) Name.Len());
 		mutChar staff = h->Id[mutLen(Name)];

@@ -255,10 +255,11 @@ namespace mutabor {
 		 */
 		virtual void Load (tree_storage & config, RouteClass * route);
 
+		virtual bool Open();
 		virtual void Close();
 		virtual void Stop();
+		virtual void doResetTime();
 
-		virtual bool Open();
 		virtual void Panic(int type);
 
 		void Proceed(GisReadArtHead *h, char turn, Route route);
