@@ -45,7 +45,7 @@ xs *
 #include "src/kernel/routing/midi/midicmn.h"
 //#include "src/wxGUI/generic/mhDefs.h"
 #include "src/kernel/routing/Device.h"
-#include "src/kernel/GrafKern.h"
+//#include "src/kernel/GrafKern.h"
 
 #ifndef MU32_ROUTING_MIDI_DEVMIDI_H_PRECOMPILED
 #define MU32_ROUTING_MIDI_DEVMIDI_H_PRECOMPILED

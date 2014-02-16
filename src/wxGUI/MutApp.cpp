@@ -62,7 +62,6 @@
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/MutConfDlg.h"
 #include "src/wxGUI/resourceload.h"
-#include "src/wxGUI/Action.h"
 #include "src/wxGUI/stclanguage.h"
 #include "src/wxGUI/MutDocManager.h"
 #include "src/wxGUI/Routing/GUIRoute.h"

@@ -41,7 +41,7 @@
 #include "src/kernel/Global.h"
 #include "src/kernel/Execute.h"
 #include "src/kernel/box.h"
-#include "src/kernel/GrafKern.h"
+//#include "src/kernel/GrafKern.h"
 #include "src/kernel/MidiKern.h"
 #include "src/kernel/Hilfs.h"
 #include "src/kernel/Runtime.h"
@@ -127,9 +127,11 @@ namespace mutabor {
 	}
 
 
-	int protokollfunktionen_aktiv=0;
-	int protokollfunktion_aktionsausgabe=0;
+#if 0
+			int protokollfunktionen_aktiv=0;
+			int protokollfunktion_aktionsausgabe=0;
 	int zeige_aktuelles_tonsystem=0;
+#endif
 
 
 	//#define KEY_WATCH  //protokoll in keys_changed // alte Vaiante

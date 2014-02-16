@@ -287,7 +287,6 @@ libmutaborkernel_a_INDENTHEADERS = \
 		src/kernel/Execute.h \
 		src/kernel/Frac.h \
 		src/kernel/Global.h \
-		src/kernel/GrafKern.h \
 		src/kernel/Hilfs.h \
 		src/kernel/Interpre.h \
 		src/kernel/Interval.h \
@@ -304,7 +303,6 @@ libmutaborkernel_a_INDENTS = \
 		src/kernel/Errors.cpp \
 		src/kernel/Execute.cpp \
 		src/kernel/Frac.cpp \
-		src/kernel/GrafKern.cpp \
 		src/kernel/Hilfs.cpp \
 		src/kernel/Interval.cpp \
 		src/kernel/Parser.cpp \

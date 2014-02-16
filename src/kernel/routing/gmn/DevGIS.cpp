@@ -30,7 +30,7 @@
 #include "src/kernel/routing/gmn/GSP.h"
 #include <math.h>
 #include "src/kernel/MidiKern.h"
-#include "src/kernel/GrafKern.h"
+//#include "src/kernel/GrafKern.h"
 #include "src/kernel/routing/Route-inlines.h"
 
 #ifdef RTMIDI

@@ -13,7 +13,7 @@
  * \addtogroup kernel
  * \{
  ********************************************************************/
-#include "GrafKern.h"
+//#include "GrafKern.h"
 #include "Errors.h"
 
 #if defined(WX)

@@ -36,7 +36,7 @@
 #include "Device.h"
 #include <algorithm>
 #include "src/wxGUI/Routing/DebugRoute.h"
-#include "src/kernel/GrafKern.h"
+//#include "src/kernel/GrafKern.h"
 
 namespace mutabor {
 // Route ------------------------------------------------------------

@@ -50,11 +50,6 @@ namespace mutabor {
 		extern "C" {
 #endif
 
-/*** Das sind die Anfangslisten des Interpreters **/
-
-
-
-long anzahl_eingelesene_zeichen;
 
 /***** Dies ist die Hauptprozedur um eine Aktion in die
        Laufzeit-Tabellen einzutragen. Liefert Zeiger auf

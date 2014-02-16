@@ -156,23 +156,6 @@ struct mutabor_box_type {
 	struct logik * current_logic;    /*< currently active logic */
 	struct any_trigger last_trigger; /*< last trigger that has been matched */
 
-#if 0
-	/* Certain linked lists for events, 
-	 either obsolete or moved to current_logic or file */
-	struct harmonie_ereignis *  first_harmony;
-	struct harmonie_ereignis ** last_global_harmony;
-	struct harmonie_ereignis ** first_local_harmony;
-	struct keyboard_ereignis *  first_keyboard;
-	struct keyboard_ereignis ** last_global_keyboard;
-	struct keyboard_ereignis ** first_local_keyboard;
-	struct midi_ereignis     *  first_midi;
-	struct midi_ereignis     ** last_global_midi;
-	struct midi_ereignis     ** first_local_midi;
-
-	/** protocol trace has been moved to the application code*/
-	struct action_protocol * protocol;
-	struct action_protocol ** nextprotocol;
-#endif
 
 	/** cache constants see struct cache_konstanten. */
 	struct mini_heap * runtime_heap;
@@ -181,14 +164,6 @@ struct mutabor_box_type {
 
 	struct mutabor_box_flags flags;
 
-#if 0
-        // flags
-        unsigned int used:1; //< box currently in use or wasting memory
-        unsigned int keys_changed:1;
-        unsigned int logic_changed:1;
-        unsigned int action_changed:1;
-	unsigned int tonesys_changed:1; /*< Has tonesystem changed since last called. (still unsupported) \todo implement tonesys_changed */
-#endif
 };
 typedef struct mutabor_box_type mutabor_box_type;
 

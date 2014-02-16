@@ -391,10 +391,6 @@ struct harmonie_ereignis
 
 
 
-extern int laufzeit_meldungen_erlaubt; /* Hier gibt es 2 Level:
-
-                                          0=keine Meldungen,
-                                          1=normale Meldungen */
 
 
 

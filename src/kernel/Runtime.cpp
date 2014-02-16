@@ -32,7 +32,7 @@
 #include "src/kernel/Parser.h"
 
 #include "src/kernel/Hilfs.h"
-#include "src/kernel/GrafKern.h"
+//#include "src/kernel/GrafKern.h"
 
 #include "src/kernel/Runtime.h"
 #include "src/kernel/Execute.h"
@@ -54,154 +54,10 @@ namespace mutabor {
 
 jmp_buf weiter_gehts_nach_compilerfehler;
 
-#if 0
-// NoRealTime - Aktionen
-
-void NRT_Play() {
-
-#pragma warning "NRT_Play() must be revised"
-
-	// start all devices
-	const mutabor::InputDeviceList & list = 
-		mutabor::InputDeviceClass::GetDeviceList();
-	for (mutabor::InputDeviceList::const_iterator In = list.begin();
-	     In != list.end(); In++)
-		boost::const_pointer_cast<InputDeviceClass>(*In)->Play();
-
-	// time slices
-	bool Working = true;
-
-	while ( Working ) {
-		Working = false;
-
-		for (mutabor::InputDeviceList::const_iterator In =  list.begin();
-		     In != list.end(); In++)
-			if ( (*In)->GetMode() == 1 
-			     && (*In)->GetType() == DTMidiFile ) {
-				/// \todo reimplement Non realtime playing
-				STUB;
-//				boost::const_pointer_cast<InputDeviceClass>(*In)
-//					->IncDelta();
-				Working = true;
-			}
-
-		CurrentTime.Notify();
-	}
-
-	for (mutabor::InputDeviceList::const_iterator In =  list.begin();
-	     In != list.end(); In++)
-		boost::const_pointer_cast<InputDeviceClass>(*In)->Stop();
-
-//	InDevChanged = 1;
-}
-
-void  InDeviceAction(int inDevNr, enum MutaborModeType action) {
-//  return; entkoppeln (zum debuggen)
-
-	if ( !RealTime ) {
-		NRT_Play();
-		return;
-	}
-
-	const InputDeviceList & list = 
-		InputDeviceClass::GetDeviceList();
-	InputDeviceList::const_iterator In = 
-		list.begin();
-
-	while ( In != list.end() && inDevNr-- ) In++;
-
-	if ( In == list.end() 
-	     || (*In)->GetMode() == DeviceCompileError ) 
-		return;
-
-	switch ( action ) {
- 	case DeviceStop:
-		boost::const_pointer_cast<InputDeviceClass>(*In)->Stop();
-		break;
-
-	case DevicePlay:
-		boost::const_pointer_cast<InputDeviceClass>(*In)->Play();
-		break;
-
-	case DevicePause:
-		boost::const_pointer_cast<InputDeviceClass>(*In)->Pause();
-		break;
-
-	case DeviceUnregistered:
-		std::cerr << "Device is unregistered. Aborting.";
-		abort();
-
-	case DeviceCompileError:
-		std::cerr << "Unhandled compile error. Aborting.";
-		abort();
-
-	case DeviceTimingError:
-		std::cerr << "Unhandled timing error. Aborting.";
-		abort();
-	}
-}
-
-bool  CheckNeedsRealTime() {
-	return NeedsRealTime();
-}
-#endif
-
-struct keyboard_ereignis *last;
-
 #if 0 
-#warning Use dynamic string management for GetMutTag
-char  GetMutTag(char &isLogic, 
-			      char **text, 
-			      char *einsttext, 
-			      char &key, 
-			      mutabor_box_type * box) {
-	if (!box || box == NULL) {
-		if ( last ) last = last->next;
-	} else  {
-		last = box->first_keyboard;
-	}
-
-	if ( !last ) return 0;
-
-	key = last->taste;
-
-	*text = mutabor_do_aktion_to_string(last->aktion,false);
-
-	isLogic = ( last->the_logik_to_expand != NULL );
-
-	if ( isLogic && last->the_logik_to_expand->einstimmungs_name ) {
-		strncpy(einsttext, last->the_logik_to_expand->einstimmungs_name, 199);
-	        einsttext[199]=0;
-	} else
-		einsttext[0] = 0;
-
-	return 1;
-}
-
-char IsLogicKey(mutabor_box_type * box, char key) {
-
-	struct keyboard_ereignis *last = box->first_keyboard;
-
-	while ( last ) {
-		if ( key == last->taste )
-			return last->the_logik_to_expand != NULL;
-
-		last = last->next;
-	}
-
-	return 0;
-}
+struct keyboard_ereignis *last;
 #endif
 
-#if 0
-bool KeyChanged(mutabor_box_type * box) {
-	int flag = box->keys_changed;
-	box->keys_changed = 0;
-	return flag;
-}
-#endif
-
-//tone_system last_tonsystem[MAX_BOX]; moved to box
 
 bool  TSChanged(mutabor_box_type * box) {
 	int flag = memcmp(&(box->last_tonesystem),
@@ -212,14 +68,6 @@ bool  TSChanged(mutabor_box_type * box) {
 	box->last_tonesystem = *(box->tonesystem);
 	return flag;
 }
-
-#if 0
-bool  InDevicesChanged() {
-//	char flag = InDevChanged;
-	InDevChanged = 0;
-	return flag;
-}
-#endif
 
 void  GetInDevicesMode(enum MutaborModeType *mode) {
 	int nr = 0;

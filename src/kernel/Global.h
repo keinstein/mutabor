@@ -503,25 +503,6 @@ int loesche_speicher_total( void );
 ///#define MAXLINE_AKTIONEN 18
 #define LINE_DRAW_QUANTUM 17
 
-			//extern char KeepSound;
-
-/*void disable_protokoll_frame( void );
-void enable_protokoll_frame( void ); */
-
-/* TV_Protokoll
-
-extern char laufzeit_tonsystem_string[MAXLINE_AKTIONEN][30];
-extern int protokoll_ausgabezeile;*/
-
-/* Protokollsteuerung :
-extern int protokollfunktionen_aktiv;
-extern int protokollfunktion_aktionsausgabe;
-extern char * laufzeit_aktionen_string[MAXLINE_AKTIONEN];
-extern char laufzeit_tonsystem_string[MAXLINE_AKTIONEN][30];
-extern char aktionen_puffer[MAXLINE_AKTIONEN][30];
-extern int aktionen_puffer_in;
-extern int aktionen_puffer_out; */
-
 
 #ifdef __cplusplus
 		} // extern "C"
