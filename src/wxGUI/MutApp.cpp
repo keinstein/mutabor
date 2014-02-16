@@ -130,7 +130,7 @@ namespace mutaborGUI {
 #if wxUSE_PRINTING_ARCHITECTURE
 	EVT_MENU (wxID_PRINT_SETUP,            MutApp::OnPrintSetup)
 #endif
-	EVT_MENU_RANGE(wxID_FILE1, wxID_FILE9, MutApp::OnMRUFile)	
+	EVT_MENU_RANGE(wxID_FILE1, wxID_FILE9, MutApp::OnMRUFile)
 	EVT_MENU(CM_ROUTES,                    MutApp::CmRoutes)
 	EVT_MENU(CM_ROUTELOAD,                 MutApp::CmRouteLoad)
 	EVT_MENU(CM_ROUTESAVE,                 MutApp::CmRouteSave)
@@ -141,7 +141,7 @@ namespace mutaborGUI {
 	EVT_MENU(CM_HELPINDEX,                 MutApp::CmHelp)
 	EVT_MENU(CM_HELPSEARCH,                MutApp::CmHelp)
 	EVT_MENU(CM_HELPONHELP,                MutApp::CmHelp)
-	EVT_MENU(CM_ABOUT,                     MutApp::CmAbout) 
+	EVT_MENU(CM_ABOUT,                     MutApp::CmAbout)
 	EVT_MENU(CM_EXIT,                      MutApp::CmQuit)
 #ifdef DEBUG
 	EVT_MENU(cmCallExitId,                 MutApp::CmCallExit)
@@ -152,7 +152,7 @@ namespace mutaborGUI {
 	bool MutApp::OnInit()
 	{
 		/* Short form for
-		   for (int i = MUT_FIRST; i < MUT_LAST; i++) 
+		   for (int i = MUT_FIRST; i < MUT_LAST; i++)
 		   wxRegisterId(i);
 		*/
 		wxRegisterId(MUT_LAST);
@@ -164,7 +164,7 @@ namespace mutaborGUI {
 #ifdef DEBUG
 		std::cerr << "Starting Mutabor..." << std::endl;
 #endif
-        
+
 		wxStandardPaths& sp = (wxStandardPaths &) wxStandardPaths::Get();
 
 #ifdef __LINUX__
@@ -205,40 +205,40 @@ namespace mutaborGUI {
 		std::cout << "ConfigDir:        "
 
 			  << (const char *)(sp.GetConfigDir().ToUTF8()) << std::endl;
-		std::cout 
+		std::cout
 			  << "DataDir:          "
 			  << (const char *)(sp.GetDataDir().ToUTF8()) << std::endl;
-		std::cout 
+		std::cout
 			  << "DocumentsDir:     "
 			  << (const char *)(sp.GetDocumentsDir().ToUTF8()) << std::endl;
-		std::cout 
+		std::cout
 			  << "ExecutablePath:   "
 			  << (const char *)(sp.GetExecutablePath().ToUTF8()) << std::endl;
 
 #if defined(__UNIX__) && !defined(__WXMAC__)
-		std::cout 
+		std::cout
 			  << "InstallPrefix:    " << (const char *)(sp.GetInstallPrefix().ToUTF8())
 			  << std::endl;
 #endif
-		std::cout 
+		std::cout
 			  << "LocalDataDir:     " << (const char *)(sp.GetLocalDataDir().ToUTF8())
 			  << std::endl;
-		std::cout 
+		std::cout
 			  << "PluginsDir:       " << (const char *)(sp.GetPluginsDir().ToUTF8())
 			  << std::endl;
-		std::cout 
+		std::cout
 			  << "ResourcesDir:     " << (const char *)(sp.GetResourcesDir().ToUTF8())
 			  << std::endl;
-		std::cout 
+		std::cout
 			  << "TempDir:          " << (const char *)(sp.GetTempDir().ToUTF8())
 			  << std::endl;
-		std::cout 
+		std::cout
 			  << "UserConfigDir:    " << (const char *)(sp.GetUserConfigDir().ToUTF8())
 			  << std::endl;
-		std::cout 
+		std::cout
 			  << "UserDataDir:      " << (const char *)(sp.GetUserDataDir().ToUTF8())
 			  << std::endl;
-		std::cout 
+		std::cout
 			  << "UserLocalDataDir: " << (const char *)(sp.GetUserLocalDataDir().ToUTF8())
 			  << std::endl;
 
@@ -247,17 +247,17 @@ namespace mutaborGUI {
 			<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(),
 								      sp.ResourceCat_None).ToUTF8())
 			<< std::endl;
-		std::cout 
+		std::cout
 			<< "LocalizedResourcesDir(Can,Messages): "
 			<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(),
 								      sp.ResourceCat_Messages).ToUTF8())
 			<< std::endl;
-		std::cout 
+		std::cout
 			<< "LocalizedResourcesDir(): "
 			<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetName(),
 								      sp.ResourceCat_None).ToUTF8())
 			<< std::endl;
-		std::cout 
+		std::cout
 			<< "LocalizedResourcesDir(Messages): "
 			<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetName(),
 								      sp.ResourceCat_Messages).ToUTF8())
@@ -293,7 +293,7 @@ namespace mutaborGUI {
 		wxImageHandler * pnghandler = new wxPNGHandler;
 		wxImage::AddHandler(pnghandler);
 		wxImage::AddHandler(new wxGIFHandler);
-	
+
 		wxFileSystem::AddHandler(new wxZipFSHandler);
 
 		wxXmlResource::Get()->InitAllHandlers();
@@ -320,17 +320,17 @@ namespace mutaborGUI {
 		//  restrict to having <= 1 doc open at any time
 //	document_manager->SetMaxDocsOpen(5);
 		//  establish a doc template for the doc,view pair
-		new wxDocTemplate(document_manager, 
-				  _("Mutabor logic file"), 
-				  wxT("*.mut"), 
-				  wxT("") /*dir*/, 
-				  wxT("mut"), 
-				  wxT("mutabor_logic_document"), 
-				  wxT("mutabor_logic_view"), 
-				  CLASSINFO(mutaborGUI::MutDocument), 
+		new wxDocTemplate(document_manager,
+				  _("Mutabor logic file"),
+				  wxT("*.mut"),
+				  wxT("") /*dir*/,
+				  wxT("mut"),
+				  wxT("mutabor_logic_document"),
+				  wxT("mutabor_logic_view"),
+				  CLASSINFO(mutaborGUI::MutDocument),
 				  CLASSINFO(mutaborGUI::MutView) );
 		document_manager->ConnectToApp(this);
-#if defined(__WXMAC__) && defined(__WXCARBON__) 
+#if defined(__WXMAC__) && defined(__WXCARBON__)
 		wxFileName::MacRegisterDefaultTypeAndCreator( wxT("mut") , 'MUTA' , 'MUTA' ) ;
 #endif
 
@@ -348,12 +348,12 @@ namespace mutaborGUI {
 		MakeViewMenu(menuBar,ProgramMenu);
 		MakeHelpMenu(menuBar);
 		wxMenuBar::MacSetCommonMenuBar(menuBar);
-	
+
 #endif
 
 		// RestoreState needs initialized MIDI
 		initialize_box_data();
-		MidiInit();       
+		MidiInit();
 		initMutIconShapes();
 		InitGUIRouteFactories();
 		//		InitGUIBoxFactories();
@@ -364,7 +364,7 @@ namespace mutaborGUI {
 		// This call parses the command line
 		if (!wxApp::OnInit()) return false;
 
-		
+
 		if (!GetTopWindow()) {
 			MutFrame * frame = CreateMainFrame(RouteMenu);
 			frame->RestoreState();
@@ -385,7 +385,7 @@ namespace mutaborGUI {
 
 	void MutApp::OnInitCmdLine(wxCmdLineParser&  parser) {
 		const wxCmdLineEntryDesc cmdLineDesc[] = {
-			{ wxCMD_LINE_PARAM,  NULL, NULL, _("logic file"), 
+			{ wxCMD_LINE_PARAM,  NULL, NULL, _("logic file"),
 			  wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_MULTIPLE|wxCMD_LINE_PARAM_OPTIONAL },
 			{ wxCMD_LINE_NONE }
 		};
@@ -397,7 +397,7 @@ namespace mutaborGUI {
 		debugFlags::InitCommandLine(parser);
 #endif
 
-	
+
 	}
 
 	bool MutApp::OnCmdLineParsed(wxCmdLineParser&  parser) {
@@ -425,9 +425,9 @@ namespace mutaborGUI {
 		return true;
 	}
 
-	void MutApp::OnUnhandledException() { 
+	void MutApp::OnUnhandledException() {
 		try {
-			throw; 
+			throw;
 		} catch (std::exception e) {
 			std::cerr << "Unhandled exception: " << e.what() << std::endl <<
 				boost::current_exception_diagnostic_information();
@@ -439,24 +439,9 @@ namespace mutaborGUI {
 		abort();
 #endif
 	}
-	bool MutApp::OnExceptionInMainLoop() { 
+	bool MutApp::OnExceptionInMainLoop() {
 		try {
-			throw; 
-		} catch (std::exception e) {
-			std::cerr << "Unhandled exception: " << e.what() << std::endl <<
-				boost::current_exception_diagnostic_information();
-		} catch(...) {
-			std::cerr << "Unhandled exception!" << std::endl <<
-				boost::current_exception_diagnostic_information();
-			return 1; //or whatever...
-		}
-#ifdef DEBUG
-		abort();
-#endif
-	}
-	void MutApp::OnFatalException() { 
-		try {
-			throw; 
+			throw;
 		} catch (std::exception e) {
 			std::cerr << "Unhandled exception: " << e.what() << std::endl <<
 				boost::current_exception_diagnostic_information();
@@ -467,18 +452,33 @@ namespace mutaborGUI {
 #ifdef DEBUG
 		abort();
 #endif
+		return true; // continue
 	}
-	
+	void MutApp::OnFatalException() {
+		try {
+			throw;
+		} catch (std::exception e) {
+			std::cerr << "Unhandled exception: " << e.what() << std::endl <<
+				boost::current_exception_diagnostic_information();
+		} catch(...) {
+			std::cerr << "Unhandled exception!" << std::endl <<
+				boost::current_exception_diagnostic_information();
+		}
+#ifdef DEBUG
+		abort();
+#endif
+	}
+
 #ifdef DEBUG
 	void MutApp::OnAssertFailure(const wxChar *file,
 				    int line,
 				    const wxChar *func,
 				    const wxChar *cond,
 				    const wxChar *msg)
- 	{
+	{
 
 		mutAssertFailure(file,line,func,cond,msg);
- 	} 	
+	}
 #endif
 
 
@@ -508,7 +508,7 @@ namespace mutaborGUI {
 			 event.GetId(),
 			 (int)event.GetEventType()
 			);
-		if (!(document_manager->ProcessEvent(event))) 
+		if (!(document_manager->ProcessEvent(event)))
 			event.Skip();
 	}
 	void MutApp::PassEventToDocManagerUPD(wxUpdateUIEvent& event)
@@ -575,7 +575,7 @@ namespace mutaborGUI {
 
 		if (config) {
 			//we don't need the return value as we are using validators
-			//int value = 
+			//int value =
 			config->ShowModal();
 			config->Destroy();
 		}
@@ -709,7 +709,7 @@ namespace mutaborGUI {
 
 
 	// Give it an icon
-	MutFrame* MutApp::InitMainFrame(MenuType type, MutFrame * frame) 
+	MutFrame* MutApp::InitMainFrame(MenuType type, MutFrame * frame)
 	{
 #ifdef __WXMSW__
 		frame->SetIcon(wxIcon(_T("mutabor_icn")));
@@ -784,7 +784,7 @@ namespace mutaborGUI {
 		if ( !path )
 			return;
 
-		if (MustOpenFrame(frame)) 
+		if (MustOpenFrame(frame))
 			frame = CreateMainFrame(EditorMenu);
 
 		frame->OpenFile(path);
@@ -821,7 +821,7 @@ namespace mutaborGUI {
 			 (void*)wxWindow::FindWindowById(WK_ROUTE),
 			 (void*)dynamic_cast <MutFrame *>(wxWindow::FindWindowById(WK_ROUTE)));
 
-		MutFrame * frame = 
+		MutFrame * frame =
 			dynamic_cast<MutFrame*>(wxWindow::FindWindowById(WK_ROUTE));
 
 		if (!frame) {
@@ -895,7 +895,7 @@ namespace mutaborGUI {
 			break;
 		}
 	}
-	
+
 	/// Show an error message from somewhere in the program
 	void CmError(wxCommandEvent& event) {
 		mutabor::error_type type = (mutabor::error_type) event.GetInt();
@@ -970,16 +970,16 @@ namespace mutaborGUI {
 
 		Yield();
 
-		/* make a copy of the top level window list as the 
+		/* make a copy of the top level window list as the
 		   list may change or not, this depends on actions, we
-		   don't have control over */ 
+		   don't have control over */
 		wxWindowList frames = wxTopLevelWindows;
 
 		for (wxWindowList::iterator i = frames.begin();
 		     i!= frames.end();
 		     i++) {
 			wxWindow * window = *i;
-			if (wxTopLevelWindows.Find(window) == NULL) 
+			if (wxTopLevelWindows.Find(window) == NULL)
 				continue;
 			if (! window->Close()) {
 //			wxIdleEvent::SetMode(imode);
@@ -1000,28 +1000,28 @@ namespace mutaborGUI {
 		wxFileName rcname(file);
 		wxString dir = rcname.GetPath();
 		wxChar sep = rcname.GetPathSeparator();
-		if (dir.empty()) 
+		if (dir.empty())
 			rcname.SetPath(srcdir);
-		else 
+		else
 			rcname.SetPath(srcdir + sep + dir);
 		if (rcname.IsFileReadable()) {
 			return rcname.GetFullPath();
-		} 
-		if (dir.empty()) 
+		}
+		if (dir.empty())
 			rcname.SetPath(top_srcdir);
-		else 
+		else
 			rcname.SetPath(top_srcdir + sep + dir);
 		if (rcname.IsFileReadable()) {
 			return rcname.GetFullPath();
-		} 
+		}
 		rcname.SetPath(mutString(top_srcdir) + _T("/Images/Icons/png/"));
-		if (dir.empty()) 
+		if (dir.empty())
 			rcname.SetPath(mutString(top_srcdir) + _T("/Images/Icons/png/"));
-		else 
+		else
 			rcname.SetPath(mutString(top_srcdir) + _T("/Images/Icons/png/") + dir);
 		if (rcname.IsFileReadable()) {
 			return rcname.GetFullPath();
-		} 
+		}
 		std::cout << (const char *)rcname.GetFullPath().ToUTF8() << std::endl;
 		return file;
 
@@ -1052,9 +1052,9 @@ namespace mutaborGUI {
 	wxMenu * MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)
 	{
 		wxMenu * menu = new wxMenu;
-		menu->Append( CM_FILENEW, _("&New\tCtrl+N"), 
+		menu->Append( CM_FILENEW, _("&New\tCtrl+N"),
 			      _("Create a new logic file."));
-		menu->Append( CM_FILEOPEN, _("&Open...\tCtrl+O"), 
+		menu->Append( CM_FILEOPEN, _("&Open...\tCtrl+O"),
 			      _("Open a logic file in editor window"));
 
 		if (type == EditorMenu || type == RouteMenu) {
@@ -1065,7 +1065,7 @@ namespace mutaborGUI {
 
 		menu->AppendSeparator();
 
-		menu->Append( CM_EXECUTE, _("&Execute\tCtrl+F9"), 
+		menu->Append( CM_EXECUTE, _("&Execute\tCtrl+F9"),
 			      _("Load a logic file an immediately activate it"));
 
 #if (defined(__WXMAC__) || defined(__WXCOCOA__))
@@ -1077,7 +1077,7 @@ namespace mutaborGUI {
 			menu->Append (CM_PROPERTIES,
 				      _("Proper&ties ...\tCtrl+I"),
 				      _("Get some information about the currently edited file"));
-		} 
+		}
 		menu->Append (wxID_PREFERENCES);
 
 
@@ -1126,12 +1126,12 @@ namespace mutaborGUI {
 		menu->Append (wxID_CLEAR);
 		menu->AppendSeparator();
 		menu->Append (wxID_SELECTALL);
-		menu->Append (CM_SELECTLINE, 
+		menu->Append (CM_SELECTLINE,
 			      _("Select &line\tCtrl+Shift+L"),
 			      _("Select the complete line at cursor position"));
 		menu->AppendSeparator();
 		menu->Append (wxID_FIND);
-		menu->Append (CM_FINDNEXT, 
+		menu->Append (CM_FINDNEXT,
 			      _("Find &next\tCtrl+G"),
 			      _("Continue last search"));
 		menu->Append (wxID_REPLACE);
@@ -1139,10 +1139,10 @@ namespace mutaborGUI {
 			      _("Replace &again\tShift+F4"),
 			      _("Go on with replacement"));
 		menu->AppendSeparator();
-		menu->Append (CM_BRACEMATCH, 
+		menu->Append (CM_BRACEMATCH,
 			      _("&Match brace\tCtrl+M"),
 			      _("Find matching brace and select all contained characters"));
-		menu->Append (CM_GOTO, 
+		menu->Append (CM_GOTO,
 			      _("&Goto Line...\tCtrl+L"),
 			      _("Jump to a specific line"));
 		menu->AppendSeparator();
@@ -1150,10 +1150,10 @@ namespace mutaborGUI {
 		menu->Append (wxID_UNINDENT);
 
 		wxMenu *menuOptions = new wxMenu;
-		menuOptions->AppendCheckItem (CM_OVERTYPE, 
+		menuOptions->AppendCheckItem (CM_OVERTYPE,
 					      _("&Overwrite mode\tIns"),
 					      _("Replace the caracters at the caret position by the ones you type in"));
-		menuOptions->AppendCheckItem (CM_WRAPMODEON, 
+		menuOptions->AppendCheckItem (CM_WRAPMODEON,
 					      _("&Wrap mode\tCtrl+U"),
 					      _("Automatic line breaking while inserting text"));
 		menuOptions->AppendCheckItem (CM_READONLY,
@@ -1162,16 +1162,16 @@ namespace mutaborGUI {
 
 		// change case submenu
 		wxMenu *menuChangeCase = new wxMenu;
-		menuChangeCase->Append (CM_CHANGEUPPER, 
+		menuChangeCase->Append (CM_CHANGEUPPER,
 					_("&Upper case"),
 					_("Change the current selection to upper case"));
-		menuChangeCase->Append (CM_CHANGELOWER, 
+		menuChangeCase->Append (CM_CHANGELOWER,
 					_("&Lower case"),
 					_("Change the current selection to lower case"));
 
 		// convert EOL submenu
 		wxMenu *menuConvertEOL = new wxMenu;
-		menuConvertEOL->Append (CM_CONVERTCR, 
+		menuConvertEOL->Append (CM_CONVERTCR,
 					_("CR (&Linux/MAC OS X)"),
 					_("Change line endings to carrage return only (Unix style)"));
 		menuConvertEOL->Append (CM_CONVERTCRLF,
@@ -1183,14 +1183,14 @@ namespace mutaborGUI {
 
 		menu->Append (wxID_ANY, _("Edit options ..."), menuOptions);
 		menu->Append (CM_CHANGECASE, _("Change &case to ..."), menuChangeCase);
-		menu->Append (CM_CONVERTEOL, 
-			      _("Convert line &endings to ..."), 
+		menu->Append (CM_CONVERTEOL,
+			      _("Convert line &endings to ..."),
 			      menuConvertEOL);
 
 		menuBar->Append(menu, _("&Edit"));
 	}
 
-	
+
 	void MutApp::MakeLogicMenu(wxMenuBar * menuBar)
 	{
 		wxMenu * menu = new wxMenu;
@@ -1206,24 +1206,24 @@ namespace mutaborGUI {
 	{
 		wxMenu * menu = new wxMenu;
 		if (type == RouteMenu) {
-			menu->Append( CM_MOVE_UP, _("&Move icon up\tShift+Up"), 
+			menu->Append( CM_MOVE_UP, _("&Move icon up\tShift+Up"),
 				      _("Moves the device or box upwards in the window."));
-			menu->Append( CM_MOVE_DOWN, _("&Move icon down\tShift+Down"), 
+			menu->Append( CM_MOVE_DOWN, _("&Move icon down\tShift+Down"),
 				      _("Moves the device or box downwards in the window."));
 			menu->AppendSeparator();
 		}
-		menu->Append( CM_ROUTELOAD, _("&Load routes"), 
+		menu->Append( CM_ROUTELOAD, _("&Load routes"),
 			      _("Load the current route configuration from a file"));
-		menu->Append( CM_ROUTESAVE, _("&Save routes"), 
+		menu->Append( CM_ROUTESAVE, _("&Save routes"),
 			      _("Save current route configuration to a file."));
-		menu->Append( CM_ROUTESAVEAS, _("Save routes &as"), 
+		menu->Append( CM_ROUTESAVEAS, _("Save routes &as"),
 			      _("Save current route configuration to a file with a new name."));
 		menuBar->Append(menu, _("&Routes"));
 	}
 
 	void MutApp::MakeViewMenu(wxMenuBar * menuBar, MenuType type)
 	{
-	
+
 
 		wxMenu * menu = new wxMenu;
 		if (type == EditorMenu) {
@@ -1242,11 +1242,11 @@ namespace mutaborGUI {
 			menuCharset->Append (CM_CHARSETUTF8, _("&UTF-8 (International)"));
 			menuCharset->Append (CM_CHARSETUTF8, _("Uni&code (same as UTF-8)"));
 
-			menu->Append (CM_HILIGHTLANG, 
-				      _("&Hilight language..."), 
+			menu->Append (CM_HILIGHTLANG,
+				      _("&Hilight language..."),
 				      menuHilight);
 			menu->AppendSeparator();
-			menu->AppendCheckItem (CM_FOLDTOGGLE, 
+			menu->AppendCheckItem (CM_FOLDTOGGLE,
 					       _("&Toggle current fold\tCtrl+T"));
 			menu->AppendSeparator();
 			menu->AppendCheckItem (CM_DISPLAYEOL, _("Show line &endings"));
@@ -1258,10 +1258,10 @@ namespace mutaborGUI {
 			menu->Append (CM_USECHARSET, _("Use &code page of..."), menuCharset);
 			menu->AppendSeparator();
 		}
-	
-		/*	menu->AppendCheckItem( IDW_STATUSBAR, _("&Status bar"), 
+
+		/*	menu->AppendCheckItem( IDW_STATUSBAR, _("&Status bar"),
 			_("Toggle status bar on/off"));
-			menu->AppendCheckItem( IDW_TOOLBAR, _("&Toolbar"), 
+			menu->AppendCheckItem( IDW_TOOLBAR, _("&Toolbar"),
 			_("Toggle tool bar on/off"));
 			menu->AppendSeparator();
 		*/
@@ -1269,21 +1269,21 @@ namespace mutaborGUI {
 			if (type != EditorMenu) {
 				menu->AppendSeparator();
 			}
-			menu->AppendCheckItem( CM_TOGGLEKEY, _("Current ke&ys\tF5"), 
+			menu->AppendCheckItem( CM_TOGGLEKEY, _("Current ke&ys\tF5"),
 					       _("Show current keys window"));
-			menu->AppendCheckItem( CM_TOGGLETS, _("&Tone system\tF6"), 
+			menu->AppendCheckItem( CM_TOGGLETS, _("&Tone system\tF6"),
 					       _("Show tone system window"));
-			menu->AppendCheckItem( CM_TOGGLEACT, _("&Actions\tF7"), 
+			menu->AppendCheckItem( CM_TOGGLEACT, _("&Actions\tF7"),
 					       _("Show current actions window"));
 		}
-		menu->AppendCheckItem( CM_ROUTES, _("&Routes\tF11"), 
+		menu->AppendCheckItem( CM_ROUTES, _("&Routes\tF11"),
 				       _("Open route configuration window"));
 
 		if (type != ProgramMenu) {
 			/*	  menu->AppendSeparator();
-				  menu->AppendCheckItem( CM_OWM, _("&One window mode"), 
+				  menu->AppendCheckItem( CM_OWM, _("&One window mode"),
 				  _("Toggle logic satus window: one each or one common"));
-				  menu->AppendCheckItem( CM_CAW, _("One &common action window"), 
+				  menu->AppendCheckItem( CM_CAW, _("One &common action window"),
 				  _("Toggle action window mode: one each or one common"));
 			*/
 			menu->AppendSeparator();
@@ -1297,11 +1297,11 @@ namespace mutaborGUI {
 	void MutApp::MakeSequencerMenu(wxMenuBar * menuBar)
 	{
 		wxMenu * menu = new wxMenu;
-		menu->Append( CM_INDEVPLAY, _("&Play"), 
+		menu->Append( CM_INDEVPLAY, _("&Play"),
 			      _("Start playing the music from input file devices"));
-		menu->Append( CM_INDEVSTOP, _("St&op"), 
+		menu->Append( CM_INDEVSTOP, _("St&op"),
 			      _("Stop playing the music from input file devices"));
-		menu->Append( CM_INDEVPAUSE, _("P&ause"), 
+		menu->Append( CM_INDEVPAUSE, _("P&ause"),
 			      _("Pause plaing the music from input file devices"));
 		menuBar->Append(menu, _("&Sequencer"));
 	}
@@ -1311,30 +1311,30 @@ namespace mutaborGUI {
 
 	{
 		wxMenu * menu = new wxMenu;
-		menu->Append( CM_HELP, _("Online &Help\tF1"), 
+		menu->Append( CM_HELP, _("Online &Help\tF1"),
 			      _("Open the help Window"));
-		menu->Append( CM_HELPHANDBOOK, _("&Manual"), 
+		menu->Append( CM_HELPHANDBOOK, _("&Manual"),
 			      _("Open the manual"));
-		menu->Append( CM_HELPREFERENCE, _("Language &reference"), 
+		menu->Append( CM_HELPREFERENCE, _("Language &reference"),
 			      _("Open the Mutabor language reference"));
 		menu->AppendSeparator();
-		menu->Append( CM_HELPINDEX, _("&Index"), 
+		menu->Append( CM_HELPINDEX, _("&Index"),
 			      _("Open the help index"));
-		menu->Append( CM_HELPSEARCH, _("&Search"), 
+		menu->Append( CM_HELPSEARCH, _("&Search"),
 			      _("Search the help system for a specific keyword"));
 		menu->AppendSeparator();
-		menu->Append( CM_HELPONHELP, _("Help &on help"), 
+		menu->Append( CM_HELPONHELP, _("Help &on help"),
 			      _("Show Help about the help system"));
 
 #if !(defined(__WXMAC__) || defined(__WXCOCOA__))
 		menu->AppendSeparator();
 #endif
 
-		menu->Append( CM_ABOUT, _("&About"), 
+		menu->Append( CM_ABOUT, _("&About"),
 			      _("Show information about the program"));
 #ifdef DEBUG
 		menu->AppendSeparator();
-		menu->Append( cmCallExitId, _("Stop"), 
+		menu->Append( cmCallExitId, _("Stop"),
 			      _("Stop the current program"));
 #endif
 		menuBar->Append(menu, _("&Help"));
@@ -1440,7 +1440,7 @@ namespace mutaborGUI {
 			int max = document_manager->GetHistoryFilesCount();
 			wxFileHistory * h = document_manager->GetFileHistory();
 			if (h)
-				for (int i = max-1; i >= 0; i--) 
+				for (int i = max-1; i >= 0; i--)
 					h -> RemoveFileFromHistory(i);
 		}
 
@@ -1456,7 +1456,7 @@ namespace mutaborGUI {
 		config->SetPath(_T(".."));
 
 		MutRouteWnd * routewnd=NULL;
-		MutFrame * frame = 
+		MutFrame * frame =
 			dynamic_cast<MutFrame*>(wxWindow::FindWindowById(WK_ROUTE));
 		if (frame) {
 			wxWindowList & list = frame->GetChildren();
@@ -1468,7 +1468,7 @@ namespace mutaborGUI {
 /*		if (routewnd) {
 			routewnd->ClearDevices();
 		}
-*/	
+*/
 		// emty lists
 		TRACE;
 		RouteClass::ClearRouteList();
