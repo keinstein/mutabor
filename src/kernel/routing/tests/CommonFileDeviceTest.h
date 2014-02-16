@@ -165,7 +165,8 @@ public:
 	{
 		testCommonFileDeviceTimer * tim = new testCommonFileDeviceTimer();
 		CPPUNIT_ASSERT(tim);
-		mutabor::InputDevice prevent_from_deletion(tim);
+		mutabor::ScopedInputDevice prevent_from_deletion;
+		prevent_from_deletion = tim;
 		DEBUGLOG(timer,_T("Opening..."));
 		tim->Open();
 		CPPUNIT_ASSERT(tim->GetMode()==mutabor::DeviceStop);

@@ -150,6 +150,8 @@ int main(int argc, char **argv)
 	}
 
 	testCommonFileDeviceTimer * tim = new testCommonFileDeviceTimer();
+	mutabor::ScopedInputDevice guard;
+	guard = tim;
 	if (tim == NULL) {
 		std::clog << "Class construction failed." << std::endl;
 		exit(-1);
@@ -161,7 +163,6 @@ int main(int argc, char **argv)
 	wxThread::ExitCode e = tim->WaitForDeviceFinish();
 	std::clog << "Deviation min: " << tim->min << " max: " << tim->max << std::endl;
 	
-
 	return (intptr_t)e; 
 }
 ///\}
