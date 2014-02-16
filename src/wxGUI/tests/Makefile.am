@@ -4,6 +4,9 @@ include $(top_srcdir)/common-linklibs.mk
 TESTS =
 check_PROGRAMS = 
 
+CLEANFILES += \
+	texidlist.tex
+
 if HAVE_CPPUNIT
 TESTS += \
 	testcppunit$(EXEEXT)

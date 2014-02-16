@@ -19,7 +19,14 @@ EXTRA_DIST = \
 	controller.txt \
 	controller.mid \
 	bank_select.txt \
-	bank_select.mid
+	bank_select.mid \
+	all_controller_off.txt \
+	all_controller_off.mid \
+	rpn_nrpn.txt \
+	rpn_nrpn.mid \
+	controller.txt \
+	controller.mid
+
 
 check_SCRIPTS = playmidi1.mid
 

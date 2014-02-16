@@ -61,16 +61,17 @@ CLEANFILES =
 
 all-local: icons
 install-data-local: install-icons
-unintall-data-local: uninstall-icons
+# there is no uninstall-data-local target in Automake
+uninstall-local: uninstall-icons
 #icons: $(ICONDATA)
 
 if COND_INKSCAPE
 CLEANFILES += Makefile.dep
 Makefile.dep: Makefile
-	echo $(PNGICONS)
-	echo $(ICONDATA)
-	echo '# -*- Makefile -*-' > "$@"
-	for d in `echo $(PNGICONS:.png=)|tr ' ' '\n' |sort -u`; \
+	@echo PNG icons: $(PNGICONS)
+	@echo icon data: $(ICONDATA)
+	@echo '# -*- Makefile -*-' > "$@"
+	@for d in `echo $(PNGICONS:.png=)|tr ' ' '\n' |sort -u`; \
 	do \
 		( echo -e "icons: $(PNGSIZEICONDIR)/@DST@" ; \
 		echo -e "$(PNGSIZEICONDIR)/@DST@: $@" ; \
@@ -104,9 +105,7 @@ install-icons: icons
 
 uninstall-icons:
 	@$(NORMAL_UNINSTALL)
-	@list='$(ICONDATA)'; test -n "$(icondatadir)" || list=; \
-	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
-	dir='$(DESTDIR)$(icondatadir)'; $(iconuninstallfromdir)
+	cd '$(DESTDIR)$(icondatadir)' && rm -rf $(PNGICONS)
 
 
 -include Makefile.dep

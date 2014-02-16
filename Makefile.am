@@ -53,6 +53,7 @@ EXTRA_DIST = config.rpath \
 	Examples/english/instr.mut \
 	Examples/english/midi.mut \
 	Examples/english/nix.mut \
+	Examples/english/tutorial.mut \
 	Examples/german/Cdur.mut \
 	Examples/german/Cohen.mut \
 	Examples/german/Demo.mut \

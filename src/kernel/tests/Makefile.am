@@ -1,6 +1,11 @@
 include $(top_srcdir)/common-rules.mk
 include $(top_srcdir)/common-linklibs.mk
 
+
+EXTRA_DIST = \
+	all.mut
+
+
 if HAVE_CPPUNIT
 TESTS = \
 	testcppunit$(EXEEXT)
@@ -30,6 +35,7 @@ testcppunit_LDADD = \
 	$(CPPUNIT_LIBS)
 
 endif
+
 
 
 
