@@ -60,13 +60,10 @@
 #include "src/wxGUI/MutDocument.h"
 #include "src/wxGUI/MutView.h"
 #include "src/wxGUI/MutChild.h"
-//#include "Mutabor.rh"
 #include "src/wxGUI/MutApp.h"
 
 #include "src/wxGUI/generic/mhDefs.h"
 #include "src/kernel/Runtime.h"
-//#include "src/kernel/GrafKern.h"
-#include "src/wxGUI/Action.h"
 #include "src/wxGUI/MutRouteWnd.h"
 #include "src/wxGUI/MutLogicWnd.h"
 #include "src/wxGUI/MutTextBox.h"
