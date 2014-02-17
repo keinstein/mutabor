@@ -603,9 +603,11 @@ inline static void call_actions (mutabor_box_type * box,
 						free(oldparameters);
 					}
 					if (parameters) {
+						oldparameters = parameters;
 						asprintf(& name,"%s: MidiOut(%s)",aktion->name?aktion->name:"",parameters);
+						free(oldparameters);
 					} else {
-						strdup(name);
+						name = strdup(aktion->name);
 					}
 
 					mutabor_midi_out(box, aktion->u.aufruf_midi_out.out_liste);
@@ -998,14 +1000,37 @@ Please, report this error to the MUTABOR team."),
 	}
 
 	static inline bool local_midi_analysis(mutabor_box_type * box,
-					      struct midi_ereignis * event,
-					      BYTE midiByte)
+					       struct midi_ereignis * event,
+					       const uint8_t * message,
+					       size_t size)
 	{
 		struct midi_ereignis * index;
+		int * scan_pos;
+		const uint8_t * msg_pos, *msg_last = message + size;
+		int current;
+		if (!message || !size)
+			return false;
 		for (index = event;
 		     index;
 		     index=index->next) {
-#warning error in midi analysis: boxes must not change the logic data this must be done somehow else
+			msg_pos = message;
+
+			for (scan_pos = index->first_pos;
+			     *scan_pos != -1; ++scan_pos) {
+				if (msg_pos == msg_last) break;
+				current = *msg_pos;
+				if ((current & 0x80) && ((current & 0xF0) != 0xF0))
+					current &= 0xf0;
+				if (current != *scan_pos) break;
+				++msg_pos;
+			}
+			if (*scan_pos == -1) break;
+
+#if 0
+			/* warning: error in midi analysis: boxes must
+			   not change the logic data this must be done
+			   somehow else
+			 */
 			if ( *(index->scan_pos) != midiByte )
 				index->scan_pos = index->first_pos;
 			else {
@@ -1013,10 +1038,11 @@ Please, report this error to the MUTABOR team."),
 				if ( *(index->scan_pos) == -1 )
 					break;
 			}
+#endif
 		}
 
 		if ( index ) {
-			box->last_trigger.type         = any_trigger::midi;
+			box->last_trigger.type = any_trigger::midi;
 			box->last_trigger.midi_trigger = index;
 			call_actions( box, index->aktion, NULL);
 			mutabor_update(box,mutabor_action_changed);
@@ -1026,7 +1052,7 @@ Please, report this error to the MUTABOR team."),
 	}
 
 
-	void MidiAnalysis(mutabor_box_type * box, BYTE midiByte)
+	void MidiAnalysis(mutabor_box_type * box, const uint8_t * message, size_t size)
 	{
 		bool retval = false;
 		struct midi_ereignis * first, * secound;
@@ -1039,9 +1065,6 @@ Please, report this error to the MUTABOR team."),
 			return;
 		}
 		TRACE;
-
-		if ( midiByte & 0x80 && midiByte < 0xf0)
-			midiByte &= 0xF0;
 
 		if (box->flags.local_midi_before_global) {
 			first = box->current_logic != NULL ?
@@ -1056,10 +1079,10 @@ Please, report this error to the MUTABOR team."),
 		}
 
 		retval = first != NULL ?
-			local_midi_analysis(box, first, midiByte):
+			local_midi_analysis(box, first, message, size):
 			false;
 		if (!retval && secound != NULL)
-			retval = local_midi_analysis(box, secound, midiByte);
+			retval = local_midi_analysis(box, secound, message, size);
 	}
 
 	static inline bool local_keyboard_analysis(mutabor_box_type * box,

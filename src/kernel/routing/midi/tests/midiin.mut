@@ -1,0 +1,7 @@
+LOGIC
+    MidiTest midiin(#b0,#30,1) =
+    [
+	midiin(#b0,48,0) -> midiout(#90, 01, #7f)
+	midiin(#90,60,127) -> midiout(#80, 01, #7f)
+    ] 
+

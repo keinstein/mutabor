@@ -1065,7 +1065,7 @@ void insert_in_globale_liste (mutabor_box_type * box, struct logik * lauf)
 			/* Werte eintragen */
 
 			(*temp_midi) -> first_pos =
-			        (*temp_midi) -> scan_pos =
+				//     (*temp_midi) -> scan_pos =
 				create_midi_scan_liste (box, lauf->ausloeser->u.ausloeser_midi_in.midi_code);
 			(*temp_midi) -> name = lauf->name;
 			(*temp_midi) -> aktion=NULL;
@@ -1201,7 +1201,7 @@ void insert_in_lokale_liste (mutabor_box_type * box,
 			*temp_midi  = (midi_ereignis*) xmalloc(box, (size_t)sizeof(struct midi_ereignis));
 			/* Werte eintragen */
 			(*temp_midi) -> first_pos =
-			        (*temp_midi) -> scan_pos =
+				//     (*temp_midi) -> scan_pos =
 				create_midi_scan_liste (box, lauf->ausloeser->u.ausloeser_midi_in.midi_code);
 			(*temp_midi) -> name = logic->name;
 			(*temp_midi) -> aktion=

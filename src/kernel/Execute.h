@@ -201,7 +201,7 @@ namespace mutabor {
 
 			void AddKey(mutabor_box_type * box, int taste, size_t id, size_t channel, void * userdata);
 			void DeleteKey(mutabor_box_type * box, int taste, size_t id, size_t channel);
-			void MidiAnalysis(mutabor_box_type * box, BYTE midiByte);
+			void MidiAnalysis(mutabor_box_type * box, const uint8_t * message, size_t size);
 
 			void KeyboardAnalyse(mutabor_box_type * box, int taste, char isLogic);
 			void KeyboardAnalyseSimple(mutabor_box_type * box, int taste);

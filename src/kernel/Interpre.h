@@ -354,7 +354,7 @@ struct do_aktion
 struct midi_ereignis
 {
 	int * first_pos;
-	int * scan_pos;
+	//	int * scan_pos;
 	const char * name;
 	struct do_aktion * aktion;
 	struct logik * the_logik_to_expand;

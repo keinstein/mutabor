@@ -73,6 +73,8 @@ class InputMidiFileTest : public CPPUNIT_NS::TestFixture
 	CPPUNIT_TEST( testAllControllerOff );
 	CPPUNIT_TEST( testRpnNrpn );
 	CPPUNIT_TEST( testControllerPlay );
+	CPPUNIT_TEST( testBoxMidiIn );
+
 	CPPUNIT_TEST_SUITE_END();
 
 protected:
@@ -146,6 +148,7 @@ public:
 	void testAllControllerOff();
 	void testRpnNrpn();
 	void testControllerPlay();
+	void testBoxMidiIn();
 
 #if __WXMSW__
 protected:

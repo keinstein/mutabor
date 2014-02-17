@@ -25,7 +25,10 @@ EXTRA_DIST = \
 	rpn_nrpn.txt \
 	rpn_nrpn.mid \
 	controller.txt \
-	controller.mid
+	controller.mid \
+	midiin.txt \
+	midiin.mid \
+	midiin.mut
 
 
 check_SCRIPTS = playmidi1.mid
@@ -74,7 +77,8 @@ check_SCRIPTS += \
 	$(srcdir)/bank_select.mid \
 	$(srcdir)/all_controller_off.mid \
 	$(srcdir)/rpn_nrpn.mid \
-	$(srcdir)/controller.mid
+	$(srcdir)/controller.mid \
+	$(srcdir)/midiin.mid
 
 TESTS += \
 	testcppunit$(EXEEXT)
