@@ -42,13 +42,14 @@
 
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/Route.h"
+#include "src/kernel/routing/Device.h"
+#include "src/kernel/routing/Box.h"
+#include "src/kernel/routing/event.h"
 
 #ifndef MU32_ROUTING_ROUTE_INLINES_H_PRECOMPILED
 #define MU32_ROUTING_ROUTE_INLINES_H_PRECOMPILED
 
 // system headers which do seldom change
-#include "src/kernel/routing/Device.h"
-#include "src/kernel/routing/Box.h"
 
 
 namespace mutabor {
@@ -235,6 +236,13 @@ namespace mutabor {
 		if (box) disconnect(self,box);
 	}
 
+	template <class I, class O, class B>
+	inline void TRouteClass<I,O,B>::handle_event(event e) {
+		if (Out) {
+			e->set_box(box);
+			Out->handle_event(e);
+		}
+	}
 
 	inline Route RouteFactory::Create(InputDevice & in,
 					  OutputDevice & out,

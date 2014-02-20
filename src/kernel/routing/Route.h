@@ -92,6 +92,8 @@ namespace mutabor {
 	class ChannelData;
 	class BoxClass;
 	typedef boost::intrusive_ptr<BoxClass> Box;
+	class event_class;
+	typedef boost::intrusive_ptr<event_class> event;
 
 	class RouteFactory;
 
@@ -237,6 +239,8 @@ namespace mutabor {
 			if (Out && Out->IsOpen())
 				Out->UpdateTones(this);
 		}
+
+		void handle_event(event e);
 
 		int GetChannel(int key, size_t channel, size_t id) {
 			if (channel == session_id())

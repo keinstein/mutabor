@@ -615,6 +615,7 @@ namespace mutabor {
 
 //		void Sustain(int channel, const ChannelData & cd);
 		int do_GetChannel(int inkey, size_t channel, size_t id);
+		void do_handle_event(event & e);
 		void do_SplitOut (BYTE * p, size_t n);
 		void do_Quiet(Route r, int type);
 		void do_Quiet(Route r, int type, size_t id);

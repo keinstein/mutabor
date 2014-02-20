@@ -136,6 +136,7 @@ namespace mutabor {
 	namespace midi {
 
 		enum midi_command {
+			UNKNOWN_EVENT           = 0x00,
 			NOTE_OFF                = 0x80,
 			NOTE_ON                 = 0x90,
 			AFTER_TOUCH             = 0xA0,

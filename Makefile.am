@@ -246,6 +246,7 @@ libmutaborrouting_a_INDENTHEADERS = \
 		src/kernel/routing/Device.h \
 		src/kernel/routing/Route.h \
 		src/kernel/routing/Box.h \
+		src/kernel/routing/event.h \
 		src/kernel/routing/RouteCompat.h \
 		src/kernel/routing/timing.h \
 		src/kernel/routing/thread.h

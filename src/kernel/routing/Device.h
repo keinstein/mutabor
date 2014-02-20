@@ -901,6 +901,11 @@ namespace mutabor {
 			ScopedLock lock(write_lock);
 			do_MidiOut(p,n);
 		}
+
+		void handle_event(event e) {
+			ScopedLock lock(write_lock);
+			do_handle_event(e);
+		}
 		void Quiet(Route r, int type) {
 			ScopedLock lock(write_lock);
 			do_Quiet(r,type);
@@ -984,6 +989,7 @@ namespace mutabor {
 		virtual void do_AddTime(frac time) = 0;
 		virtual void do_MidiOut(mutabor::Box box, midi_string data) = 0;
 		virtual void do_MidiOut(BYTE *p, size_t n) = 0;
+		virtual void do_handle_event(event & e) = 0;
 		virtual void do_Quiet(Route r, int type) = 0;
 		virtual void do_Quiet(Route r, int type, size_t id) = 0;
 		virtual void do_Panic(int type) { STUBC; };

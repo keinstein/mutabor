@@ -818,6 +818,15 @@ namespace mutabor {
 		}
 	}
 
+
+	template<class T, class D>
+	void CommonMidiOutput<T,D>::do_handle_event(event & e) {
+		switch(e->get_type()) {
+		default:
+			; // ignore;
+		}
+	}
+
 	template<class T, class D>
 	void CommonMidiOutput<T,D>::do_Quiet(Route r, int type)
 	{
