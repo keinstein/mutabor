@@ -822,6 +822,20 @@ namespace mutabor {
 	template<class T, class D>
 	void CommonMidiOutput<T,D>::do_handle_event(event & e) {
 		switch(e->get_type()) {
+		case midi::KEY_PRESSURE: {
+			key_pressure_event *ev
+				= static_cast<key_pressure_event *>(e.get());
+			int key = ev->get_note();
+			int channel = do_GetChannel(key,
+						    ev->get_route_channel(),
+						    ev->get_unique_id());
+			if (channel != midi::NO_CHANNEL)
+				Out(channel,
+				    midi::KEY_PRESSURE,
+				    key,
+				    ev->get_pressure());
+		}
+			break;
 		default:
 			; // ignore;
 		}
@@ -957,9 +971,14 @@ namespace mutabor {
 		}
 			break;
 		case midi::KEY_PRESSURE:
-#warning "implement key_pressure"
-		case midi::CHANNEL_PRESSURE: // Key Pressure, Controler, Channel Pressure
-#warning "implement channel_pressure"
+#warning "implement channel pressure"
+		case midi::CHANNEL_PRESSURE: {
+			event e = create_event(midiCode,
+					       MidiChannel);
+			e -> set_route(route);
+			route -> handle_event (e);
+		}
+
 			break;
 
 		case midi::SYSTEM:

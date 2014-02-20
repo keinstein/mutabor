@@ -28,7 +28,9 @@ EXTRA_DIST = \
 	controller.mid \
 	midiin.txt \
 	midiin.mid \
-	midiin.mut
+	midiin.mut \
+	aftertouch.txt \
+	aftertouch.mid
 
 
 check_SCRIPTS = playmidi1.mid
@@ -78,7 +80,8 @@ check_SCRIPTS += \
 	$(srcdir)/all_controller_off.mid \
 	$(srcdir)/rpn_nrpn.mid \
 	$(srcdir)/controller.mid \
-	$(srcdir)/midiin.mid
+	$(srcdir)/midiin.mid \
+	$(srcdir)/aftertouch.mid
 
 TESTS += \
 	testcppunit$(EXEEXT)
