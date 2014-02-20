@@ -120,7 +120,7 @@ namespace mutabor {
 		 */
 		void set_quarter_duration(mutint64 d) { 
 			if (d <= 0) 
-				boost::throw_exception(std::range_error("duration must be positive"));
+				BOOST_THROW_EXCEPTION(std::range_error("duration must be positive"));
 			quarter_duration = d;
 		}
 

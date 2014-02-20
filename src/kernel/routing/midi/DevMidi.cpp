@@ -516,7 +516,7 @@ InputMidiPort:\n\
 								     int id) const
 	{
 		OutputMidiPort * port = new OutputMidiPort(name,id);
-		if (!port) boost::throw_exception(DeviceNotCreated());
+		if (!port) BOOST_THROW_EXCEPTION(DeviceNotCreated());
 		return port;
 	}
 
@@ -550,7 +550,7 @@ InputMidiPort:\n\
 								     int id) const
 	{
  		InputMidiPort * port = new InputMidiPort(name,mode,id);
-		if (!port) boost::throw_exception(DeviceNotCreated());
+		if (!port) BOOST_THROW_EXCEPTION(DeviceNotCreated());
 		return port;
 	}
 

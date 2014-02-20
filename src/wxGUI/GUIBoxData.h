@@ -283,12 +283,12 @@ namespace mutaborGUI {
 			if (type < 0) type = 0;
 			mutASSERT(type >= 0);
 			if (factories.size() <=(size_t) type) {
-				boost::throw_exception( FactoryNotFound(type));
+				BOOST_THROW_EXCEPTION( FactoryNotFound(type));
 				UNREACHABLECT(BoxFactory);
 				return NULL;
 			}
 			if (!factories[type]) 
-				boost::throw_exception( FactoryNotFound(type));
+				BOOST_THROW_EXCEPTION( FactoryNotFound(type));
 			BoxFactory * factory = factories[type];
 			mutASSERT(dynamic_cast<GUIBoxFactory *> (factory));
 			return (static_cast<GUIBoxFactory *>(factory))->

@@ -274,7 +274,7 @@ namespace mutabor {
 			return r;
 		} else {
 
-			boost::throw_exception( RouteFactoryNotSet());
+			BOOST_THROW_EXCEPTION( RouteFactoryNotSet());
 
 //			UNREACHABLECT(RouteFactory);
 			return NULL;

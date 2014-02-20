@@ -59,7 +59,7 @@ namespace mutabor {
 			quotient = quarter_divisions / myfps;
 			retval.second = quotient & 0xFF;
 			if (quarter_divisions % myfps) {
-				boost::throw_exception( std::range_error(gettext_noop("frame rate does not divide time divisiens")));
+				BOOST_THROW_EXCEPTION( std::range_error(gettext_noop("frame rate does not divide time divisiens")));
 			}
 			
 		} else { 
@@ -70,7 +70,7 @@ namespace mutabor {
 			else if (!(quarter_divisions % 24)) 
 				fps = 24;
 			else {
-				boost::throw_exception( std::range_error(gettext_noop("frame rate does not divide time divisiens")));
+				BOOST_THROW_EXCEPTION( std::range_error(gettext_noop("frame rate does not divide time divisiens")));
 			}
 
 			quotient = quarter_divisions / fps;
@@ -79,7 +79,7 @@ namespace mutabor {
 		}
 
 		if (quotient > 0xFF) {
-			boost::throw_exception( std::range_error(gettext_noop("time division is too high for current frame rate")));
+			BOOST_THROW_EXCEPTION( std::range_error(gettext_noop("time division is too high for current frame rate")));
 		}
 
 		DEBUGLOG(midifile,_T("%lx: %x %x"),
@@ -93,13 +93,13 @@ namespace mutabor {
 		if (!(bfps & 0x80)) {
 			// quarter divisions
 			if (!bfps && ! bcount) 
-				boost::throw_exception( std::range_error(gettext_noop("Trying to set bad midi header parameters")));
+				BOOST_THROW_EXCEPTION( std::range_error(gettext_noop("Trying to set bad midi header parameters")));
 			quarter_divisions = (((int) bfps) << 8) + bcount;
 			is_fixed_ticks = false;
 			return;
 		}
 		if (! bcount) 
-			boost::throw_exception( std::range_error(gettext_noop("Trying to set bad midi header parameters")));
+			BOOST_THROW_EXCEPTION( std::range_error(gettext_noop("Trying to set bad midi header parameters")));
 		is_fixed_ticks = true;
 		fps = 0x100 - (int) bfps;
 		if (fps == 29) fps = 30; // ignoring NTSC 29.97Hz frame dropping should be ok.

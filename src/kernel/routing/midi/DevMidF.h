@@ -230,7 +230,7 @@ namespace mutabor {
 				count >>= 7;
 			}
 			if (count) 
-				boost::throw_exception(delta_length_error(gettext_noop("trying to write number > 0x0FFFFFFF")));
+				BOOST_THROW_EXCEPTION(delta_length_error(gettext_noop("trying to write number > 0x0FFFFFFF")));
 
 			if (i == 0) i++;
 			while (--i) 
@@ -309,7 +309,7 @@ namespace mutabor {
 			 
 
 			if (from == to) {
-				boost::throw_exception(message_length_error(
+				BOOST_THROW_EXCEPTION(message_length_error(
 									    gettext_noop("The system exclusive message must contain at least a device id.")));
 			}
 
@@ -317,7 +317,7 @@ namespace mutabor {
 			if (tmp_sysex_id == 0) {
 				i myfrom = from + 1;
 				if (to - myfrom < 2) {
-					boost::throw_exception(wrong_id(gettext_noop("System exclusive message contains an invalid device id")));
+					BOOST_THROW_EXCEPTION(wrong_id(gettext_noop("System exclusive message contains an invalid device id")));
 				}		
 				tmp_sysex_id = 0x10000 | ((*(myfrom++)) << 8);
 				tmp_sysex_id |= ((*myfrom) << 8);
@@ -326,7 +326,7 @@ namespace mutabor {
 			if (!running_sysex) {
 				sysex_id = tmp_sysex_id;
 			} else if (sysex_id != tmp_sysex_id) {
-				boost::throw_exception(wrong_id(gettext_noop("Device id of continuation package deos not match the id of the system exclusive message")));
+				BOOST_THROW_EXCEPTION(wrong_id(gettext_noop("Device id of continuation package deos not match the id of the system exclusive message")));
 			}
 
 			if (delta == MUTABOR_NO_DELTA) {

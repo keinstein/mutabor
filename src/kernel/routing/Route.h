@@ -593,7 +593,7 @@ namespace mutabor {
 			if (factory)
 				return factory->DoCreate();
 			else
-				boost::throw_exception(RouteFactoryNotSet());
+				BOOST_THROW_EXCEPTION(RouteFactoryNotSet());
 			return NULL;
 		}
 
@@ -642,7 +642,7 @@ namespace mutabor {
 			if (factory)
 				delete factory;
 			else
-				boost::throw_exception( RouteFactoryNotSet());
+				BOOST_THROW_EXCEPTION( RouteFactoryNotSet());
 //				UNREACHABLECT(RouteFactory);
 		}
 
@@ -654,7 +654,7 @@ namespace mutabor {
 			if (factory)
 				factory->DoLoadRoutes(config);
 			else
-				boost::throw_exception( RouteFactoryNotSet());
+				BOOST_THROW_EXCEPTION( RouteFactoryNotSet());
 //				UNREACHABLECT(RouteFactory);
 		}
 
@@ -665,7 +665,7 @@ namespace mutabor {
 			if (factory)
 				factory->DoSaveRoutes(config);
 			else
-				boost::throw_exception( RouteFactoryNotSet());
+				BOOST_THROW_EXCEPTION( RouteFactoryNotSet());
 			// UNREACHABLECT(RouteFactory);
 		}
 	protected:

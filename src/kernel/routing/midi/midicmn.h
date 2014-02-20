@@ -695,9 +695,9 @@ namespace mutabor {
 		void pitch_bend(int channel, int value) {
 			const int pitch_bend_border = 0x40 << 7;
 			if (value >= pitch_bend_border)
-				boost::throw_exception(TooHighPitchBend());
+				BOOST_THROW_EXCEPTION(TooHighPitchBend());
 			if (value < -(pitch_bend_border))
-				boost::throw_exception(TooSmallPitchBend());
+				BOOST_THROW_EXCEPTION(TooSmallPitchBend());
 
 			int pb = value + pitch_bend_border;
 			DEBUGLOG2(midiio,_T("MIDI_PITCH(%x/%d,%x/%d) = %x/%d (%x/%d, %x/%d, %x/%d)"),

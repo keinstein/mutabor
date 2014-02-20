@@ -141,7 +141,7 @@ namespace mutabor {
 		int i =0 ; 
 		do {
 			if (++i > 4) {
-				boost::throw_exception(delta_length_error(gettext_noop("Number contains too many bytes")));
+				BOOST_THROW_EXCEPTION(delta_length_error(gettext_noop("Number contains too many bytes")));
 			}
 			a = at(position);
 			position++;
@@ -161,7 +161,7 @@ namespace mutabor {
 				running_status = status;
 		} else status = running_status;
 		if (! (status & 0x80)) {
-			boost::throw_exception(invalid_status (gettext_noop("Invalid status byte")));
+			BOOST_THROW_EXCEPTION(invalid_status (gettext_noop("Invalid status byte")));
 		}
 
 		size_t offset = 1;
