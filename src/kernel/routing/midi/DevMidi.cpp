@@ -208,7 +208,6 @@ OutputMidiPort:\n\
 	void mycallback( double deltatime, std::vector< unsigned char > *message, void *userData )
 	{
 		mutUnused(deltatime);
-		DWORD data = 0;
 
 		mutASSERT(userData);
 		mutASSERT(message);

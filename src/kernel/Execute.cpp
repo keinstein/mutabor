@@ -543,7 +543,7 @@ inline static void call_actions (mutabor_box_type * box,
 						char * params, * oldparams;
 						if (parameters->size)
 							asprintf(&params, "%d", parameters->data[0]);
-						for (int i = 1; i < parameters->size; i++) {
+						for (size_t i = 1; i < parameters->size; i++) {
 							oldparams = params;
 							asprintf(&params, _("%s,%d"),
 								 oldparams,

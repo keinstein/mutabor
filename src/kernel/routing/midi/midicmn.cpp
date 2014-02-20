@@ -484,7 +484,6 @@ namespace mutabor {
 			}
 	}
 
-#warning do not save LOCAL_ON_OFF in the controller.
 	template<class T, class D>
 	void  CommonMidiOutput<T,D>::do_Controller(int mutabor_channel,
 						   int ctrl,

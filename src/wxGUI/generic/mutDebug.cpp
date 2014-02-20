@@ -181,7 +181,7 @@ static int mutabor_backtrace_print_callback (void *data,
 		 function == NULL ? "???" : function);
 	return 0;
 }
-static int mutabor_backtrace_simple_print_callback (void *data,
+int mutabor_backtrace_simple_print_callback (void *data,
 						    uintptr_t pc)
 {
 	fprintf (stderr, "%lx \n",
