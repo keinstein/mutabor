@@ -615,7 +615,18 @@ namespace mutabor {
 
 //		void Sustain(int channel, const ChannelData & cd);
 		int do_GetChannel(int inkey, size_t channel, size_t id);
-		void do_handle_event(event & e);
+		/**
+		 * Act or send data according to a given evnt type. The event types are
+		 * defined in \ref event.h.
+		 *
+		 * \note This function acts only on those events that
+		 *       are handled equally in all MIDI
+		 *       devices. Other events (e.g. META events)
+		 *       should be handled in the corresponding subclass.
+		 *
+		 * \param e event to be acted on.
+		 */
+		void do_handle_event(event e);
 		void do_SplitOut (BYTE * p, size_t n);
 		void do_Quiet(Route r, int type);
 		void do_Quiet(Route r, int type, size_t id);

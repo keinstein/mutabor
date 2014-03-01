@@ -761,6 +761,8 @@ namespace mutabor {
 	extern const mutString DevTypeName[];
 
 }
+
+#include "src/kernel/routing/event.h"
 #endif /* PRECOMPILED */
 #endif
 

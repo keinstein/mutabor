@@ -820,7 +820,7 @@ namespace mutabor {
 
 
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::do_handle_event(event & e) {
+	void CommonMidiOutput<T,D>::do_handle_event(event e) {
 		switch(e->get_type()) {
 		case midi::KEY_PRESSURE: {
 			key_pressure_event *ev
@@ -830,12 +830,66 @@ namespace mutabor {
 						    ev->get_route_channel(),
 						    ev->get_unique_id());
 			if (channel != midi::NO_CHANNEL)
-				Out(channel,
-				    midi::KEY_PRESSURE,
-				    key,
-				    ev->get_pressure());
+				key_pressure(channel,
+					     key,
+					     ev->get_pressure());
 		}
 			break;
+		case midi::CONTROLLER: {
+			controller_event *ev
+				= static_cast<controller_event *>(e.get());
+			do_Controller(ev->get_route_channel(),
+				      ev->get_controller(),
+				      ev->get_value(),
+				      ev->get_unique_id());
+		}
+			break;
+		case midi::CLOCK:
+		case midi::TICK:
+		case midi::START_PLAY:
+		case midi::CONTINUE_PLAY:
+		case midi::STOP_PLAY:
+		case midi::RESET:
+		case midi::TUNE_REQUEST:
+		case midi::ACTIVE_SENSE:
+		case midi::SYSTEM_UNDEFINED1:
+		case midi::SYSTEM_UNDEFINED2:
+		case midi::SYSEX_END:
+		case midi::REALTIME_UNDEFINED:
+			system(e->get_type());
+			break;
+		case midi::QUARTER_FRAME:{
+			quarter_frame_event * ev
+				= static_cast<quarter_frame_event *>(e.get());
+			quarter_frame(ev->get_quarter_type(),
+				      ev->get_quarter_values());
+		}
+			break;
+		case midi::SONG_POSITION: {
+			song_position_event * ev
+				= static_cast<song_position_event *>(e.get());
+
+			song_position(ev->get_position());
+		}
+			break;
+		case midi::SONG_SELECT: {
+			song_select_event * ev
+				= static_cast<song_select_event *>(e.get());
+
+			song_select(ev->get_song());
+		}
+			break;
+
+		case midi::SYSEX_START: {
+			sysex_event * ev
+				= static_cast<sysex_event *>(e.get());
+
+			const std::vector<unsigned char> & msg
+				= ev->get_message();
+			Out.SendSysEx(-1,msg.begin(),msg.end());
+		}
+			break;
+
 		default:
 			; // ignore;
 		}
@@ -849,7 +903,8 @@ namespace mutabor {
 #ifdef DEBUG
 		for (int i = 0; i < 16; i++) {
 			if ( ton_auf_kanal[i].active )
-				mutASSERT(ton_auf_kanal[i].channel != r->get_session_id() );
+				mutASSERT(ton_auf_kanal[i].channel
+					  != r->get_session_id() );
 			//do_NoteOff(r->GetBox(), ton_auf_kanal[i].inkey, 64, r, ton_auf_kanal[i].unique_id, false);
 		}
 #endif
@@ -903,8 +958,8 @@ namespace mutabor {
 			  route->GetActive(),
 			  (void*)route->GetOutputDevice().get());
 		Box box = route->GetBox();
-		BYTE MidiChannel = (midiCode->at(0) & 0x0F) + channel_offset;
-		BYTE MidiStatus  = midiCode->at(0) & 0xF0;
+		unsigned char MidiChannel = (midiCode->at(0) & 0x0F) + channel_offset;
+		unsigned char MidiStatus  = midiCode->at(0) & 0xF0;
 		DEBUGLOG (midifile, _T("Status: %x"), MidiStatus);
 
 		switch ( MidiStatus ) {
@@ -965,14 +1020,18 @@ namespace mutabor {
 				this->Panic(midiCode->at(1),MidiChannel);
 			if (reset)
 				channel_data[MidiChannel].MidiReset();
-			route -> Controller(midiCode->at(1),
-					    midiCode->at(2),
-					    MidiChannel);
+
+			event e = create_event(midiCode,
+					       MidiChannel);
+			e -> set_route(route);
+			route -> handle_event (e);
 		}
 			break;
-		case midi::KEY_PRESSURE:
-#warning "implement channel pressure"
-		case midi::CHANNEL_PRESSURE: {
+		case midi::CHANNEL_PRESSURE:
+			channel_data[MidiChannel].set_controller(midi::CHANNEL_PRESSURE_VAL,
+								 midiCode->at(1));
+			// … and create a proper event.
+		case midi::KEY_PRESSURE: {
 			event e = create_event(midiCode,
 					       MidiChannel);
 			e -> set_route(route);
@@ -980,18 +1039,39 @@ namespace mutabor {
 		}
 
 			break;
-
 		case midi::SYSTEM:
-#warning "implement system messsages"
-#if 0
-			if ( route->GetOutputDevice() )
-				route->GetOutputDevice()->MidiOut(pData,
-								  nData);
-#else
-                        ;
-#endif
+			/** \todo handle all these messages in mutabor */
+			switch(midiCode->at(0)) {
+			case midi::SYSTEM_UNDEFINED1:
+			case midi::SYSTEM_UNDEFINED2:
+			case midi::SYSEX_END:
+			case midi::REALTIME_UNDEFINED:
+			case midi::CLOCK:
+			case midi::TICK:
+			case midi::SONG_SELECT:
+			case midi::SONG_POSITION:
+			case midi::QUARTER_FRAME:
+			case midi::START_PLAY:
+			case midi::CONTINUE_PLAY:
+			case midi::STOP_PLAY:
+			case midi::TUNE_REQUEST:
+			case midi::ACTIVE_SENSE:
+				/* unimplemented or intentionally ignored */
+				break;
 
+			case midi::META:
+				if (midiCode->size() == 1)
+					break;
+			case midi::SYSEX_START: {
+				event e = create_event(midiCode,
+						       MidiChannel);
+				e -> set_route(route);
+				route -> handle_event (e);
+			}
+				break;
+			}
 		}
+
 
 		route->MidiAnalysis(midiCode);
 	}
@@ -1009,6 +1089,48 @@ namespace mutabor {
 	{
 		bool DidOut = 0;
 		routeListType elseroutes;
+
+		unsigned char MidiStatus  = midiCode->at(0);
+		unsigned char MidiChannel = (midiCode->at(0) & 0x0F) + channel_offset;
+
+		switch ( MidiStatus ) {
+		case midi::SYSTEM_UNDEFINED1:
+		case midi::SYSTEM_UNDEFINED2:
+		case midi::SYSEX_END:
+		case midi::REALTIME_UNDEFINED:
+		case midi::ACTIVE_SENSE:
+		case midi::STOP_PLAY:
+		case midi::START_PLAY:
+		case midi::CONTINUE_PLAY:
+		case midi::CLOCK:
+		case midi::TICK:
+		case midi::QUARTER_FRAME:
+			// song select and song position should be handled
+			// in the input device
+		case midi::SONG_SELECT:
+		case midi::SONG_POSITION:
+			return;
+			/* unimplemented or intentionally ignored */
+		case midi::TUNE_REQUEST: {
+			event e = create_event(midiCode,
+						 MidiChannel);
+			OutputDeviceClass::all_handle_event(e);
+		}
+			return;
+		case midi::META:
+			if (midiCode->size() == 1) {
+				// this is the position where we must reset Mutabor
+				return;
+			} // otherwise we pass the event to the output devices
+		case midi::SYSEX_START: {
+			event e = create_event(midiCode,
+						 MidiChannel);
+			this->outputs_handle_event(e);
+		}
+			return;
+		}
+
+
 
 		for (routeListType::iterator R = this->routes.begin();
 		     R != this->routes.end(); R++)

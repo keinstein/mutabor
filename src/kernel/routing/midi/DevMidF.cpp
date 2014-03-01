@@ -716,92 +716,52 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 			Tracks[nr].PassDelta(Delta);
 			Track::base message = Tracks[nr].ReadMessage();
 
-			uint8_t status = message[0];
-
-			if ( status  <  midi::SYSTEM ) // normaler midi code
-			{
-				
-			}
-			else switch (status) {
-				case midi::SYSEX_START:
-				case midi::SYSEX_END:
-				{
-#warning Implement SysEx handling in MIDI files
-				} 
-				break;
-				case midi::META: // meta event
-				{
-					uint8_t meta_type = message[1];
-
-/// \todo how do we deal with wrong meta event lenghts? If the rest the file is syntactically intact we can proceed.
-					switch (meta_type) {
-#if 0
-// according to the MIDI specification the time signature provides
-// interpretation for metronomes, but not for delta times
-					case midi::META_TIME_SIGNATURE: 
-						if (message.size() >= 2+4) {
-							TicksPerQuarter = Track[nr][TrackPos[nr]+2];
-							DEBUGLOG(midifile,_T("Change time signature to  %d ticks/qarter"),
-								 TicksPerQuarter);
-						}
+			if (message.size() >= 2 && message[0] == midi::META) {
+				switch (message[1]) {
+				case midi::META_END_OF_TRACK:
+					Tracks[nr].Stop();
+					Delta = MUTABOR_NO_DELTA;
+					break;
+				case midi::META_SET_TEMPO: {
+					size_t j,e;
+					set_tempo_event *ev
+						= static_cast<set_tempo_event*>
+						(create_event(&message,-1));
+					if (!ev) {
 						break;
-#endif
-					case midi::META_SET_TEMPO:
-						if (message.size() >= 2+3) {
-							long NewQuarterDuration =
-								(((int)message[2]) << 16) +
-								(((int)message[3]) << 8) +
-								(((int)message[4]));
-						
-							size_t j,e;
-							// file type 0
-							// must not
-							// have more
-							// than 1
-							// track file
-							// we treat it
-							// like type
-							// one even
-							// though
-							// files with
-							// multiple
-							// tracks are
-							// corrupted.
-							// type 2 has
-							// independent
-							// tracks
-							if (FileType > 1) {
-								j = nr; e = nr+1;
-							} else {
-								j = 0; e = Tracks.size();
-							}
-							for (; j < e; j++ )
-								Tracks[j].SetQuarterDuration(NewQuarterDuration, 
-											     true, 
-											     j>nr ? deltatime - time: (mutint64)0);
-							
-							DEBUGLOG(midifile,
-								 _T("Change tempo to %ldμs per quarter (next event after %ld)"),
-								 NewQuarterDuration, minDelta);
-						}
-						break;
-					case midi::META_END_OF_TRACK:
-						Tracks[nr].Stop();
-						return MUTABOR_NO_DELTA;
 					}
+					event guard = ev;
+
+					// file type 0 must not have more than
+					// 1 track file we treat it like type
+					// one even though files with multiple
+					// tracks are corrupted.  type 2 has
+					// independent tracks
+					if (FileType > 1) {
+						j = nr; e = nr+1;
+					} else {
+						j = 0; e = Tracks.size();
+					}
+					for (; j < e; j++ )
+						Tracks[j].SetQuarterDuration(ev->get_tempo(),
+									     true,
+									     j>nr ? deltatime - time: (mutint64)0);
+
+					DEBUGLOG(midifile,
+						 _T("Change tempo to %ldμs per quarter (next event after %ld)"),
+						 ev->get_tempo(), minDelta);
 				}
-				break;
-				case midi::SONG_POSITION: 
-					// a += message[1] << (8 + message[2]) << 16;
-					break;
-				case midi::SONG_SELECT:
-					// a += message[1] << 8;
-					break;
+
 				}
+			}
+
 			Proceed(&message, nr, nr << 4);
 
+			if (Delta ==  MUTABOR_NO_DELTA)
+				return Delta;
+
 			Delta = Tracks[nr].ReadDelta();
-		
+
 			DEBUGLOG(midifile,
 				 _T("Next event on Track %d after %ld μs"),
 				 (int)nr, Delta);
@@ -822,6 +782,44 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 //(((BYTE*)(&midiCode))[i])
 
 // f¸r bestimmte Route Codeverarbeitung
+	void InputMidiFile::Proceed(const std::vector<unsigned char > * midiCode, int data, int channel_offset) {
+		/** \todo implement system messages */
+		BYTE MidiChannel = (midiCode->at(0) & 0x0F) + channel_offset;
+		BYTE MidiStatus  = midiCode->at(0);
+		DEBUGLOG (midifile, _T("Status: %x"), MidiStatus);
+
+		switch ( MidiStatus ) {
+		case midi::CLOCK:
+		case midi::TICK:
+		case midi::SYSTEM_UNDEFINED1:
+		case midi::SYSTEM_UNDEFINED2:
+		case midi::SYSEX_END:
+		case midi::REALTIME_UNDEFINED:
+		case midi::ACTIVE_SENSE:
+		case midi::STOP_PLAY:
+		case midi::START_PLAY:
+		case midi::CONTINUE_PLAY:
+		case midi::QUARTER_FRAME:
+			/* unimplemented or intentionally ignored */
+			return;
+		case midi::SONG_SELECT:
+		case midi::SONG_POSITION: {
+			event e = create_event(midiCode,
+					       MidiChannel);
+			OutputDeviceClass::all_handle_event(e);
+		}
+			return;
+			// the following are handled by midicmn.cpp
+		case midi::META:
+		case midi::TUNE_REQUEST:
+		case midi::SYSEX_START:
+		default:
+			break;
+		}
+
+		base::Proceed(midiCode, data, channel_offset);
+	}
+
 
 	
 #ifdef WX

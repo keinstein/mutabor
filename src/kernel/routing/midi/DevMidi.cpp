@@ -32,6 +32,7 @@
 #include "src/kernel/MidiKern.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "wx/msgdlg.h"
+#include <boost/foreach.hpp>
 
 // OutputMidiPort ------------------------------------------------------
 
@@ -504,6 +505,57 @@ InputMidiPort:\n\
 			UNREACHABLEC;
 		}
 		return ProceedNo;
+	}
+
+
+	void InputMidiPort::Proceed(const std::vector<unsigned char > * midiCode, int data, int channel_offset) {
+		/** \todo implement system messages */
+		BYTE MidiChannel = (midiCode->at(0) & 0x0F) + channel_offset;
+		BYTE MidiStatus  = midiCode->at(0);
+		DEBUGLOG (midifile, _T("Status: %x"), MidiStatus);
+
+		switch ( MidiStatus ) {
+		case midi::SYSTEM_UNDEFINED1:
+		case midi::SYSTEM_UNDEFINED2:
+		case midi::SYSEX_END:
+		case midi::REALTIME_UNDEFINED:
+		case midi::ACTIVE_SENSE:
+			/* unimplemented or intentionally ignored */
+			return;
+
+		case midi::STOP_PLAY:{
+			InputDeviceClass::PauseAll();
+			event e = create_event(midiCode, MidiChannel);
+			OutputDeviceClass::all_handle_event(e);
+		}
+			return;
+		case midi::START_PLAY:
+			InputDeviceClass::StopAll();
+		case midi::CONTINUE_PLAY: {
+			event e = create_event(midiCode, MidiChannel);
+			OutputDeviceClass::all_handle_event(e);
+			InputDeviceClass::RealtimePlay();
+		}
+			return;
+		case midi::CLOCK:
+		case midi::TICK:
+		case midi::SONG_SELECT:
+		case midi::SONG_POSITION:
+		case midi::QUARTER_FRAME: {
+			event e = create_event(midiCode,
+						 MidiChannel);
+			OutputDeviceClass::all_handle_event(e);
+		}
+			return;
+			// the following are handled by midicmn.cpp
+		case midi::TUNE_REQUEST:
+		case midi::META:
+		case midi::SYSEX_START:
+		default:
+			break;
+		}
+
+		parentType::Proceed(midiCode, data, channel_offset);
 	}
 
 	MidiPortFactory::~MidiPortFactory() {}

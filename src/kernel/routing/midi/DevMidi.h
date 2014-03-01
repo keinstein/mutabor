@@ -495,13 +495,13 @@ namespace mutabor {
 #pragma warning(pop) // Restore warnings to previous state.
 #endif 
 
-#if 0
-		proceed_bool shouldProceed(Route R, DWORD midiCode, int data = 0);
-#endif
 		proceed_bool shouldProceed(Route R, 
 					   const std::vector<unsigned char > * midiCode,  
 					   int data =0);
 	
+		void Proceed(const std::vector<unsigned char > * midiCode, int data =0, int channel_offset = 0);
+
+
 		virtual int GetMaxChannel() const { return 15; }
 		virtual int GetMinChannel() const { return 0; }
 		virtual int GetMaxKey() const { return 127; }
