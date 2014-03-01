@@ -700,7 +700,7 @@ AC_CACHE_CHECK([syntax for signalling printf format attributes], ac_cv_format_ar
 ])
 
 AS_IF(test "$ac_cv_format_arg" != __attribute_format_arg,
-    AC_DEFINE_UNQUOTED(__attribute_format_arg__(number),[$ac_cv_format_arg],[Define if the compiler does not support __attribute_format_arg__]))
+    AC_DEFINE_UNQUOTED(__mutabor_attribute_format_arg__(number,parameter),[$ac_cv_format_arg],[Define if the compiler does not support __attribute_format_arg__]))
 
 AC_LANG_POP(C++)
 
@@ -726,6 +726,7 @@ tmpcppflags="$CPPFLAGS"
 CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
 AC_CHECK_HEADERS([boost/intrusive_ptr.hpp])
 AC_CHECK_HEADERS([boost/rational.hpp])
+AC_CHECK_HEADERS([boost/foreach.hpp])
 AC_CHECK_HEADERS([boost/spirit/core.hpp])
 AC_CHECK_HEADERS([boost/spirit/actor/push_back_actor.hpp])
 AC_CHECK_HEADERS([boost/exception/diagnostic_information.hpp])
