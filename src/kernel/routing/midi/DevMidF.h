@@ -3,10 +3,10 @@
  * Device providing MIDI files.
  *
  * Copyright:   (c) 1998-2011 TU Dresden
- * \author 
+ * \author
  * R.Krauße,
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
+ * \date
  * $Date: 2011/11/02 14:31:58 $
  * \version $Revision: 1.8 $
  * \license GPL
@@ -77,37 +77,37 @@ namespace mutabor {
 
 		class delta_length_error:public std::range_error {
 		public:
-			explicit delta_length_error (const std::string& what_arg): 
+			explicit delta_length_error (const std::string& what_arg):
 				range_error(what_arg) {}
 		};
 		class invalid_status:public std::range_error {
 		public:
-			explicit invalid_status (const std::string& what_arg): 
+			explicit invalid_status (const std::string& what_arg):
 				range_error(what_arg) {}
 		};
 		class message_length_error:public std::range_error {
 		public:
-			explicit message_length_error (const std::string& what_arg): 
+			explicit message_length_error (const std::string& what_arg):
 				range_error(what_arg) {}
 		};
 		class wrong_id:public std::range_error {
 		public:
-			explicit wrong_id (const std::string& what_arg): 
+			explicit wrong_id (const std::string& what_arg):
 				range_error(what_arg) {}
 		};
 
-		Track(): base(), 
+		Track(): base(),
 			 Time(0),
 			 timing(),
-			 position(0), 
-			 current_delta(MUTABOR_NO_DELTA), 
+			 position(0),
+			 current_delta(MUTABOR_NO_DELTA),
 			 remaining_delta(0),
 			 running_status(0),
 			 running_sysex(false),
 			 sysex_id() {
 			reserve(100);
 			DEBUGLOG(midifile,_T("%s"), (this->c_str()));
-				 
+
 		}
 
 		Track(timing_params p): base(),
@@ -122,13 +122,13 @@ namespace mutabor {
 			reserve(100);
 			DEBUGLOG(midifile,_T("%s"), (this->c_str()));
 		}
-					
+
 
 		~Track() {}
 
 		size_t GetPosition() { return position; }
-		void ResetPosition(size_t p, bool resettiming = false) { 
-			position = 0; 
+		void ResetPosition(size_t p, bool resettiming = false) {
+			position = 0;
 			running_status = 0;
 			running_sysex = false;
 			if (resettiming) {
@@ -139,37 +139,37 @@ namespace mutabor {
 			DEBUGLOG(midifile,_T("%s"), (this->c_str()));
  		}
 
-		void ResetDelta() { 
+		void ResetDelta() {
 			DEBUGLOG(midifile,_T("resetting remaining delta to 0"));
 			remaining_delta = 0;
 		}
 		mutint64 GetDelta() { return remaining_delta; }
 		mutint64 ReadDelta();
-		mutint64 PassDelta(mutint64 p) { 
+		mutint64 PassDelta(mutint64 p) {
 			mutASSERT(p >= 0);
 			mutASSERT(remaining_delta != MUTABOR_NO_DELTA);
 			mutASSERT(p != MUTABOR_NO_DELTA);
 			DEBUGLOG(midifile,_T("remaining_delta = %ld - %ld"),remaining_delta, p);
-			if (p  == MUTABOR_NO_DELTA) 
+			if (p  == MUTABOR_NO_DELTA)
 				return remaining_delta = MUTABOR_NO_DELTA;
 			if (remaining_delta == MUTABOR_NO_DELTA)
 				return remaining_delta;
-			return remaining_delta -= p; 
+			return remaining_delta -= p;
 		}
-		mutint64 UpdateDelta() { 
+		mutint64 UpdateDelta() {
 			mutASSERT(remaining_delta != MUTABOR_NO_DELTA);
 			mutASSERT(current_delta != MUTABOR_NO_DELTA);
 			DEBUGLOG(midifile,_T("remaining_delta = %ld + %ld"),remaining_delta, current_delta);
-			if (current_delta  == MUTABOR_NO_DELTA) 
+			if (current_delta  == MUTABOR_NO_DELTA)
 				return remaining_delta = MUTABOR_NO_DELTA;
-			if (remaining_delta == MUTABOR_NO_DELTA) 
+			if (remaining_delta == MUTABOR_NO_DELTA)
 				return remaining_delta;
-			return remaining_delta += current_delta; 
+			return remaining_delta += current_delta;
 		}
 		void WriteDelta();
 
 		void SetQuarterDuration(mutint64 new_duration,
-					bool update = false, 
+					bool update = false,
 					mutint64 offset = 0) {
 			if (!update) {
 				timing.set_quarter_duration(new_duration);
@@ -185,7 +185,7 @@ namespace mutabor {
 			if (remaining_delta == MUTABOR_NO_DELTA)
 				return;
 			mutint64 remaining_remaining_delta = remaining_delta - offset;
-			
+
 			remaining_delta = timing_params::update_duration_midi(remaining_remaining_delta,
 									      old,
 									      timing)
@@ -196,7 +196,7 @@ namespace mutabor {
 #if 0
 		// this is not needed at the moment
 		void SetTicksPerQuarter(mutint64 new_ticks,
-					bool update = false, 
+					bool update = false,
 					mutint64 offset = 0) {
 			if (!update) {
 				timing.set_ticks(new_ticks);
@@ -204,7 +204,7 @@ namespace mutabor {
 			}
 			timing_params old(timing);
 			timing.set_ticks(new_tiks);
-			if (remaining_delta == MUTABOR_NO_DELTA) 
+			if (remaining_delta == MUTABOR_NO_DELTA)
 				return;
 
 			remaining_delta = timing_params::update_duration(remaining_delta-offset,
@@ -229,16 +229,16 @@ namespace mutabor {
 				tmp[i++] = count & 0x7f;
 				count >>= 7;
 			}
-			if (count) 
+			if (count)
 				BOOST_THROW_EXCEPTION(delta_length_error(gettext_noop("trying to write number > 0x0FFFFFFF")));
 
 			if (i == 0) i++;
-			while (--i) 
+			while (--i)
 				push_back(tmp[i] | 0x80);
 			push_back(tmp[0]);
 		}
 		void WriteLength(mutOFstream &os, size_t l);
-	
+
 		void MidiOut(uint8_t c1, uint8_t c2, uint8_t c3) {
 			FixSysEx();
 			WriteDelta();
@@ -263,16 +263,16 @@ namespace mutabor {
 		template <class i>
 		void WriteLongChunk(i from, i to, size_t offset = 0) {
 			size_t count = (to - from) + offset;
-			
+
 			size_t c = count+offset;
-			if (capacity() < size()+c+4) 
+			if (capacity() < size()+c+4)
 				reserve (size()+c+4);
 			WriteNumber(count+offset);
 			while (from != to)
 				push_back(*(from++));
 		}
 
-		template <class i> 
+		template <class i>
 		void SendMeta (uint8_t type, i from, i to, mutint64 delta = MUTABOR_NO_DELTA) {
 			if (type & midi::STARTBYTE_MASK) {
 				UNREACHABLEC;
@@ -289,7 +289,7 @@ namespace mutabor {
 			WriteLongChunk(from,to,delta,0);
 		}
 
-		template <class i> 
+		template <class i>
 		void SendSysEx (i from, i to, mutint64 delta = MUTABOR_NO_DELTA) {
 			if ((*from) & midi::STARTBYTE_MASK) {
 				UNREACHABLEC;
@@ -302,11 +302,11 @@ namespace mutabor {
 		}
 
 		template <class i>
-		void SendSysExCont (i from, i to, 
-				    mutint64 delta = MUTABOR_NO_DELTA, 
+		void SendSysExCont (i from, i to,
+				    mutint64 delta = MUTABOR_NO_DELTA,
 				    size_t offset = 0)
 			{
-			 
+
 
 			if (from == to) {
 				BOOST_THROW_EXCEPTION(message_length_error(
@@ -318,7 +318,7 @@ namespace mutabor {
 				i myfrom = from + 1;
 				if (to - myfrom < 2) {
 					BOOST_THROW_EXCEPTION(wrong_id(gettext_noop("System exclusive message contains an invalid device id")));
-				}		
+				}
 				tmp_sysex_id = 0x10000 | ((*(myfrom++)) << 8);
 				tmp_sysex_id |= ((*myfrom) << 8);
 			}
@@ -334,7 +334,7 @@ namespace mutabor {
 			} else {
 				WriteNumber(delta);
 			}
-			
+
 			push_back(running_sysex?midi::SYSEX_END:midi::SYSEX_START);
 			WriteLongChunk(from, to, offset);
 
@@ -413,14 +413,14 @@ namespace mutabor {
 			Tracks.Save(os);
 		}
 
-		/** 
+		/**
 		 * Outputs a three-byte message.
-		 * 
+		 *
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
-		 *        subdevices is managed by the OutputProvider 
-		 * \param byte1 1st byte 
-		 * \param byte2 2nd byte 
+		 *        subdevices is managed by the OutputProvider
+		 * \param byte1 1st byte
+		 * \param byte2 2nd byte
 		 * \param byte3 3rd byte
 		 */
 		MidiFileOutputProvider & operator() (int channel,
@@ -437,30 +437,30 @@ namespace mutabor {
 			return RawMsg(channel,byte1,byte2,byte3);
 		}
 
-		/** 
+		/**
 		 * Outputs a raw three-byte message.
-		 * 
+		 *
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
-		 *        subdevices is managed by the OutputProvider 
-		 * \param byte1 1st byte 
-		 * \param byte2 2nd byte 
+		 *        subdevices is managed by the OutputProvider
+		 * \param byte1 1st byte
+		 * \param byte2 2nd byte
 		 * \param byte3 3rd byte
 		 */
 		MidiFileOutputProvider & RawMsg (int channel,
 						 uint8_t byte1,
 						 uint8_t byte2,
-						 uint8_t byte3) { 
+						 uint8_t byte3) {
 			Tracks.MidiOut(byte1,byte2,byte3);
 			return *this;
 		}
 
-		/** 
+		/**
 		 * Outputs a two-byte message.
-		 * 
+		 *
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
-		 *        subdevices is managed by the OutputProvider 
+		 *        subdevices is managed by the OutputProvider
 		 * \param byte1 1st byte
 		 * \param byte2 2nd byte
 		 */
@@ -474,16 +474,16 @@ namespace mutabor {
 			} else {
 				UNREACHABLEC;
 			}
-			
+
 			return RawMsg(channel,byte1,byte2);
 		}
 
-		/** 
+		/**
 		 * Outputs a two-byte message.
-		 * 
+		 *
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
-		 *        subdevices is managed by the OutputProvider 
+		 *        subdevices is managed by the OutputProvider
 		 * \param byte1 1st byte
 		 * \param byte2 2nd byte
 		 */
@@ -494,12 +494,12 @@ namespace mutabor {
 			return *this;
 		}
 
-		/** 
+		/**
 		 * Outputs a one-byte message.
-		 * 
+		 *
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
-		 *        subdevices is managed by the OutputProvider 
+		 *        subdevices is managed by the OutputProvider
 		 * \param byte1 1st byte
 		 */
 		MidiFileOutputProvider & RawMsg (int channel, uint8_t byte1) {
@@ -507,10 +507,10 @@ namespace mutabor {
 			return *this;
 		}
 
-		/** 
-		 * Outputs a system exclusive message. The message must include 
+		/**
+		 * Outputs a system exclusive message. The message must include
 		 * a valid device id.
-		 * 
+		 *
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
 		 *        subdevices is managed by the OutputProvider (ignored)
@@ -525,9 +525,9 @@ namespace mutabor {
 			return *this;
 		}
 
-		/** 
+		/**
 		 * Write the MIDI file to a stream.
-		 * 
+		 *
 		 * \param os stream to write to
 		 */
 		void Save(mutOFstream &os) {
@@ -535,7 +535,7 @@ namespace mutabor {
 
 			// Let's try to generate Format 0 files: 1 Track including all information.
 
-			uint8_t Header[14] = { 
+			uint8_t Header[14] = {
 				// File header
 				'M', 'T', 'h', 'd', // Chunk type MIDI file header
 				0, 0, 0, 6,         // chunk length
@@ -555,7 +555,7 @@ namespace mutabor {
 		Device * device;
 		Track Tracks;
 	};
-	
+
 
 
 	// OutMidiFile ------------------------------------------------------
@@ -568,60 +568,60 @@ namespace mutabor {
 		typedef CommonMidiOutput<MidiFileOutputProvider,CommonFileOutputDevice> base;
 
 		virtual ~OutputMidiFile() {};
-	
+
 		/// Save current device settings in a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be saved.
 		 */
 		virtual void Save (tree_storage & config);
-	
+
 		/// Save route settings (filter settings) for a given route
-		/** Some route settings (e.g. filter settings) are device type 
+		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function saves them in a tree storage.
 		 * \argument config (tree_storage *) Storage class, where the data will be saved.
 		 * \argument route (Route ) Route whos data shall be saved.
 		 */
 		virtual void Save (tree_storage & config, const RouteClass * route);
-	
-	
+
+
 		/// Load current device settings from a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be loaded from.
 		 */
 		virtual void Load (tree_storage & config);
-	
+
 		/// Loade route settings (filter settings) for a given route
-		/** Some route settings (e.g. filter settings) are device type 
+		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function loads them from a tree storage.
 		 * \argument config (tree_storage *) Storage class, where the data will be restored from.
 		 * \argument route (Route ) Route whos data shall be loaded.
 		 */
 		virtual void Load (tree_storage & config, RouteClass * route);
 
-	
+
 		virtual void Close();
-		virtual void SetName(const wxString & s) 
-			{
-				if (s != Name) {
-					bool reopen = IsOpen();
-					if (reopen) 
-						Close();
+		virtual void SetName(const wxString & s)
+		{
+			if (s != Name) {
+				bool reopen = IsOpen();
+				if (reopen)
+					Close();
 
-					Name = s;
+				Name = s;
 
-					if (reopen)
-						Open();
-				}
+				if (reopen)
+					Open();
 			}
-		
+		}
+
 
 		virtual DevType GetType() const
-			{
-				return DTMidiFile;
-			}
+		{
+			return DTMidiFile;
+		}
 
-	
+
 		virtual int GetMaxChannel() const { return 15; }
 		virtual int GetMinChannel() const { return 0; }
-	
+
 		virtual mutString GetTypeName () const {
 			return N_("MIDI output file");
 		}
@@ -636,8 +636,8 @@ namespace mutabor {
 	protected:
 		OutputMidiFile(): base() {}
 
-		OutputMidiFile(const mutStringRef name, 
-			       int id = -1, 
+		OutputMidiFile(const mutStringRef name,
+			       int id = -1,
 			       int bendingRange = 2)
 			: base(name, id, bendingRange) {}
 
@@ -647,14 +647,14 @@ namespace mutabor {
 #endif
 
 		virtual void do_Gis(GisToken * token, char turn)
-			{};
+		{};
 
 		virtual void do_AddTime(frac time)
-			{};
+		{};
 
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
-#endif 
+#endif
 
 	};
 
@@ -673,37 +673,37 @@ namespace mutabor {
 				 Busy(false),
 				 timing() { }
 
-		InputMidiFile(mutString name, 
+		InputMidiFile(mutString name,
 			      MutaborModeType mode,
-			      int id): base(name, 
-					    mode, 
+			      int id): base(name,
+					    mode,
 					    id),
 				       Tracks(),
-				       Busy(false), 
+				       Busy(false),
 				       timing() {}
 
 	public:
 		virtual ~InputMidiFile()
 			{};
-	
+
 		/// Save route settings (filter settings) for a given route
-		/** Some route settings (e.g. filter settings) are device type 
+		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function saves them in a tree storage.
 		 * \argument config (tree_storage *) Storage class, where the data will be saved.
 		 * \argument route (Route ) Route whos data shall be saved.
 		 */
 		virtual void Save (tree_storage & config, const RouteClass * route);
-	
-	
+
+
 		/// Loade route settings (filter settings) for a given route
-		/** Some route settings (e.g. filter settings) are device type 
+		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function loads them from a tree storage.
 		 * \argument config (tree_storage *) Storage class, where the data will be restored from.
 		 * \argument route (Route ) Route whos data shall be loaded.
 		 */
 		virtual void Load (tree_storage & config, RouteClass * route);
 
-	
+
 		virtual bool Open();
 		virtual void Close();
 		virtual void Stop();
@@ -722,25 +722,25 @@ namespace mutabor {
 
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
-#endif 
-	
+#endif
+
 		virtual DevType GetType() const	{
 			return DTMidiFile;
 		}
 
 
-		/** 
-		 * Go on to the next event. 
+		/**
+		 * Go on to the next event.
 		 * This function must be
 		 * provided by the device. It advices it to prepare
 		 * the next event and return the time frame in
 		 * milliseconds from the start of the piece.
-		 * 
+		 *
 		 * \return mutint64 Temporal position of the next event in the
 		 * piece.
 		 */
 		virtual mutint64 PrepareNextEvent();
-	
+
 		virtual int GetMaxChannel() const { return 15; }
 		virtual int GetMinChannel() const { return 0; }
 		virtual int GetMaxTrack() const { return 0xFFFF; }
@@ -749,7 +749,7 @@ namespace mutabor {
 		virtual mutString GetTypeName () const {
 			return N_("MIDI input file");
 		}
-	
+
 #ifdef WX
 		virtual wxString TowxString() const;
 #endif
@@ -769,7 +769,7 @@ namespace mutabor {
 	};
 
 
-	class MidiFileFactory:public DeviceFactory { 
+	class MidiFileFactory:public DeviceFactory {
 	public:
 		MidiFileFactory(size_t id = DTMidiFile):
 			DeviceFactory(id) {}
@@ -782,11 +782,11 @@ namespace mutabor {
 			}
 
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name, 
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name,
 								    int id = -1) const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name, 
-								  mutabor::MutaborModeType mode, 
+
+		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name,
+								  mutabor::MutaborModeType mode,
 								  int id = -1) const;
 	};
 

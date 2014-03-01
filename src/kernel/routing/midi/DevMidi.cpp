@@ -1,4 +1,4 @@
-/** \file 
+/** \file
  ********************************************************************
  * Midi Port IO (Mutabor layer)
  *
@@ -34,6 +34,7 @@
 #include "wx/msgdlg.h"
 #include <boost/foreach.hpp>
 
+
 // OutputMidiPort ------------------------------------------------------
 
 //static long freq ;
@@ -55,7 +56,7 @@ namespace mutabor {
 	template class CommonMidiInput<InputDeviceClass>;
 
 	using namespace midi;
-	
+
 	extern  RtMidiOut * rtmidiout;
 	extern RtMidiIn *rtmidiin;
 
@@ -77,7 +78,7 @@ namespace mutabor {
         /// Save current device settings in a tree storage
         /** \argument config (tree_storage) storage class, where the data will be saved.
 	 */
-	void OutputMidiPort::Save (tree_storage & config) 
+	void OutputMidiPort::Save (tree_storage & config)
 	{
 		config.Write(_T("Device Id"),DevId);
 		config.Write(_T("Device Name"),Name);
@@ -85,7 +86,7 @@ namespace mutabor {
 	}
 
         /// Save route settings (filter settings) for a given route
-	/** Some route settings (e.g. filter settings) are device type 
+	/** Some route settings (e.g. filter settings) are device type
 	 * specific. This function saves them in a tree storage.
 	 * \argument config (tree_storage *) Storage class, where the data will be saved.
 	 * \argument route (Route ) Route whos data shall be saved.
@@ -96,7 +97,7 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		mutASSERT(route);
-		
+
 		config.toLeaf(_T("Midi Output"));
 		config.Write(_T("Avoid Drum Channel"), route->OutputAvoidDrumChannel());
 		config.Write(_T("Channel Range From"), route->GetOutputFrom());
@@ -122,7 +123,7 @@ namespace mutabor {
 	}
 
 /// Loade route settings (filter settings) for a given route
-/** Some route settings (e.g. filter settings) are device type 
+/** Some route settings (e.g. filter settings) are device type
  * specific. This function loads them from a tree storage.
  * \argument config (tree_storage *) Storage class, where the data will be restored from.
  * \argument route (Route) Route whos data shall be loaded.
@@ -166,13 +167,13 @@ namespace mutabor {
 
 
 #if 0
-	void OutputMidiPort::ReadData(wxConfigBase * config) 
+	void OutputMidiPort::ReadData(wxConfigBase * config)
 	{
 		midi.SetBendingRange(config->Read(_("Bending_Range"),
 						  DEFAULT_BENDING_RANGE));
 	}
 
-	void OutputMidiPort::WriteData(wxConfigBase * config) 
+	void OutputMidiPort::WriteData(wxConfigBase * config)
 	{
 		config->Write(_("Bending_Range"), (long)bending_range);
 	}
@@ -239,7 +240,7 @@ OutputMidiPort:\n\
 /// Save current device settings in a tree storage
 /** \argument config (tree_storage) storage class, where the data will be saved.
  */
-	void InputMidiPort::Save (tree_storage & config) 
+	void InputMidiPort::Save (tree_storage & config)
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
@@ -250,7 +251,7 @@ OutputMidiPort:\n\
 	}
 
 /// Save route settings (filter settings) for a given route
-/** Some route settings (e.g. filter settings) are device type 
+/** Some route settings (e.g. filter settings) are device type
  * specific. This function saves them in a tree storage.
  * \argument config (tree_storage *) Storage class, where the data will be saved.
  * \argument route (Route ) Route whos data shall be saved.
@@ -263,7 +264,7 @@ OutputMidiPort:\n\
 		config.toLeaf(_T("Midi Input"));
 		config.Write(_T("Filter Type"), route->GetType());
 		switch(route->GetType()) {
-		case RTchannel: 
+		case RTchannel:
 			config.Write(_T("Channel From"), route->GetInputFrom());
 			config.Write(_T("Channel To"), route->GetInputTo());
 			break;
@@ -289,15 +290,15 @@ OutputMidiPort:\n\
 		wxString oldpath = config.GetPath();
 #endif
 		DevId = config.Read(_T("Device Id"), 0);
-		Name  = config.Read(_T("Device Name"), 
-				    (rtmidiin?(	
+		Name  = config.Read(_T("Device Name"),
+				    (rtmidiin?(
 				    rtmidiin->getPortCount()?
 				    muT(rtmidiin->getPortName(0).c_str()):wxString(_("Unknown"))):wxString(_("no device"))));
 		mutASSERT(oldpath == config.GetPath());
 	}
 
 /// Loade route settings (filter settings) for a given route
-/** Some route settings (e.g. filter settings) are device type 
+/** Some route settings (e.g. filter settings) are device type
  * specific. This function loads them from a tree storage.
  * \argument config (tree_storage *) Storage class, where the data will be restored from.
  * \argument route (Route ) Route whos data shall be loaded.
@@ -310,7 +311,7 @@ OutputMidiPort:\n\
 		config.toLeaf(_T("Midi Input"));
 		route->SetType((RouteType) config.Read(_T("Filter Type"), (int) RTchannel));
 		switch(route->GetType()) {
-		case RTchannel: 
+		case RTchannel:
 		{
 			int oldfrom, oldto;
 			route->SetInputFrom(oldfrom = config.Read(_T("Channel From"), GetMinChannel()));
@@ -386,8 +387,8 @@ OutputMidiPort:\n\
 			hMidiIn = new RtMidiIn(RtMidi::UNSPECIFIED, PACKAGE_STRING);
 		} catch (RtError &error) {
 			runtime_error(false,
-				      _("Can not open Midi input device no. %d (%s)."), 
-				      DevId, 
+				      _("Can not open Midi input device no. %d (%s)."),
+				      DevId,
 				      (const mutChar *)(GetName().c_str()));
 			return false;
 		}
@@ -396,8 +397,8 @@ OutputMidiPort:\n\
 			hMidiIn->openPort(DevId,(const char *)(GetName().ToUTF8()));
 		} catch (RtError &error) {
 			runtime_error(false,
-				      _("Can not open Midi input device no. %d (%s)."), 
-				      DevId, 
+				      _("Can not open Midi input device no. %d (%s)."),
+				      DevId,
 				      (const mutChar *)(GetName().c_str()));
 			return false;
 		}
@@ -406,8 +407,8 @@ OutputMidiPort:\n\
 			hMidiIn->setCallback(mycallback, this);
 		} catch (RtError & error) {
 			runtime_error(false,
-				      _("Can not open Midi input device no. %d (%s)."), 
-				      DevId, 
+				      _("Can not open Midi input device no. %d (%s)."),
+				      DevId,
 				      (const mutChar *)(GetName().c_str()));
 		}
 
@@ -455,44 +456,18 @@ InputMidiPort:\n\
 	}
 #endif
 
-#if 0
-// Routen testen und jenachdem entsprechend Codeverarbeitung
-	InputMidiPort::proceed_bool InputMidiPort::shouldProceed(Route R, DWORD midiCode, int data)
-	{
-		switch ( R->GetType() ) {
-		case RTchannel:
-			if (R->Check(midiCode & 0x0F)) 
-				return ProceedYes;
-			break;
-		case RTstaff:
-			if ( ((midiCode & 0xF0) != 0x80 && 
-			      (midiCode & 0xF0) != 0x90) 
-			     || R->Check((midiCode >> 8) & 0xFF) )
-				return ProceedYes;
-			break;
-
-		case RTelse:
-			return ProceedElse;
-		case RTall:
-			return ProceedYes;
-		default:
-			UNREACHABLEC;
-		}
-		return ProceedNo;
-	}
-#endif
 
 	InputMidiPort::proceed_bool InputMidiPort::shouldProceed(Route R, const std::vector<unsigned char > * midiCode, int data)
 	{
 		mutASSERT(midiCode);
 		switch ( R->GetType() ) {
 		case RTchannel:
-			if (R->Check(midiCode->at(0) & 0x0F)) 
+			if (R->Check(midiCode->at(0) & 0x0F))
 				return ProceedYes;
 			break;
 		case RTstaff:
-			if ( ((midiCode->at(0) & 0xF0) != 0x80 && 
-			      (midiCode->at(0) & 0xF0) != 0x90) 
+			if ( ((midiCode->at(0) & 0xF0) != 0x80 &&
+			      (midiCode->at(0) & 0xF0) != 0x90)
 			     || R->Check(midiCode->at(1)) )
 				return ProceedYes;
 			break;
@@ -561,9 +536,9 @@ InputMidiPort:\n\
 	MidiPortFactory::~MidiPortFactory() {}
 
 
-		
 
-	mutabor::OutputDeviceClass * MidiPortFactory::DoCreateOutput(const mutStringRef name, 
+
+	mutabor::OutputDeviceClass * MidiPortFactory::DoCreateOutput(const mutStringRef name,
 								     int id) const
 	{
 		OutputMidiPort * port = new OutputMidiPort(name,id);
@@ -573,8 +548,8 @@ InputMidiPort:\n\
 
 /*
 	mutabor::OutputDeviceClass *  MidiPortFactory::DoCreateOutput (int devId,
-							   const mutStringRef name, 
-							   MutaborModeType mode, 
+							   const mutStringRef name,
+							   MutaborModeType mode,
 							   int id) const
 	{
 		OutputMidiPort * port = new OutputMidiPort(devId,name,id);
@@ -584,7 +559,7 @@ InputMidiPort:\n\
 		case DevicePause:
 		case DeviceStop:
 		case DevicePlay:
-			port -> Open() ; 
+			port -> Open() ;
 			break;
 		case DeviceUnregistered:
 		case DeviceCompileError:
@@ -596,8 +571,8 @@ InputMidiPort:\n\
 	}
 */
 
-	mutabor::InputDeviceClass *  MidiPortFactory::DoCreateInput (const mutStringRef name, 
-								     MutaborModeType mode, 
+	mutabor::InputDeviceClass *  MidiPortFactory::DoCreateInput (const mutStringRef name,
+								     MutaborModeType mode,
 								     int id) const
 	{
  		InputMidiPort * port = new InputMidiPort(name,mode,id);
