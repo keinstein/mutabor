@@ -252,12 +252,21 @@ namespace mutabor {
 
 	class sysex_event: public event_class {
 	public:
-		sysex_event(size_t id,
-			    const std::vector<unsigned char> & data):msg(data) {
+		sysex_event(size_t id):msg() {
 			type = midi::SYSEX_START;
 			input_channel = -1;
 			route_channel = std::numeric_limits<size_t>::max();
 			unique_id = id;
+		}
+
+		sysex_event(size_t id,
+			    const std::vector<unsigned char> & data):msg(data.begin()+1, data.end()-1) {
+			type = midi::SYSEX_START;
+			input_channel = -1;
+			route_channel = std::numeric_limits<size_t>::max();
+			unique_id = id;
+			mutASSERT(data[0] == 0xF0);
+			mutASSERT(*(data.rbegin()) == 0xF7);
 			sysex.data = msg.data();
 		}
 
@@ -572,9 +581,9 @@ namespace mutabor {
 		mutASSERT(code);
 		switch (code -> at(0)) {
 		case midi::SYSEX_START:
-			if (!code) {
+			if (code->size() < 2) {
 				std::vector<unsigned char> tmp;
-				return new meta_event(unique_id, tmp);
+				return new sysex_event(unique_id);
 			}
 			return new sysex_event (unique_id,*code);
 		case midi::QUARTER_FRAME:

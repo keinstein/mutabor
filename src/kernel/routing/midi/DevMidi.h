@@ -238,7 +238,8 @@ namespace mutabor {
 		 *        to. How channels are split into tracks or
 		 *        subdevices is managed by the OutputProvider (ignored)
 		 * \param from iterator pointing to the beginning of the message.
-		 * \param to iterator pointing just after the end of the message.
+		 * \param to iterator pointing just after the end of the message. 
+		 * \note the final 0xf7 is sent automatically.
 		 */
 		template<class i>
 		MidiPortOutputProvider & SendSysEx (int channel,
@@ -250,12 +251,13 @@ namespace mutabor {
 				return *this;
 			}
 
-			std::vector<unsigned char> message(to - from + 1);
+			std::vector<unsigned char> message(to - from + 2);
 			message[0] = midi::SYSEX_START;
 			size_t i = 1;
 			while (from != to) {
 				message[i++] = (*(from++));
 			}
+			message[i] = midi::SYSEX_END;
 			
 			port->sendMessage(&message);
 			return *this;
