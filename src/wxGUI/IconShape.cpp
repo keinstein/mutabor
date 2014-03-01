@@ -52,8 +52,8 @@
 
 #elif wxCHECK_VERSION(2,8,10)
 // Checked version is 2.8.10
-#else 
-#warning Your wxWidgets version may be too old template support. Expect compiler errros.
+#else
+#warning Your wxWidgets version may be too old template support. Expect compiler errors.
 #endif
 
 
@@ -139,7 +139,7 @@ template<> wxClassInfo MutIconShapeClass<wxControl>::ms_classInfo
 
 */
 /*
-template<typename T>							
+template<typename T>
 wxClassInfo MutIconShapeClass<T>::ms_classInfo(wxT("MutIconShapeClass<T>"),
 					       &T::ms_classInfo,
 					       NULL,
@@ -173,22 +173,22 @@ wxClassInfo *MutIconShapeClass<T>::GetClassInfo() const
 #endif
 
 template<class T>
-wxClassInfo MutIconShapeClass<T>::ms_classInfo(L"MutIconShapeClass<T>", 
-					  &T::ms_classInfo, __null, 
-					  (int) sizeof(MutIconShapeClass), 
-					  (wxObjectConstructorFn) 
-					  MutIconShapeClass<T>::wxCreateObject); 
+wxClassInfo MutIconShapeClass<T>::ms_classInfo(L"MutIconShapeClass<T>",
+					  &T::ms_classInfo, __null,
+					  (int) sizeof(MutIconShapeClass),
+					  (wxObjectConstructorFn)
+					  MutIconShapeClass<T>::wxCreateObject);
 
 template<class T>
-wxClassInfo *MutIconShapeClass<T>::GetClassInfo() const 
-{ 
-	return &MutIconShapeClass<T>::ms_classInfo; 
+wxClassInfo *MutIconShapeClass<T>::GetClassInfo() const
+{
+	return &MutIconShapeClass<T>::ms_classInfo;
 }
 
 template<class T>
-wxObject* MutIconShapeClass<T>::wxCreateObject() 
-{ 
-	return new MutIconShapeClass; 
+wxObject* MutIconShapeClass<T>::wxCreateObject()
+{
+	return new MutIconShapeClass;
 }
 // end of IMPLEMENT_DYNAMIC_CLASS
 
@@ -213,15 +213,15 @@ wxObject* MutIconShapeClass<T>::wxCreateObject()
 #endif
 
 template <class T>
-const wxEventTable MutIconShapeClass<T>::sm_eventTable = { 
-	&T::sm_eventTable, 
-	&MutIconShapeClass<T>::sm_eventTableEntries[0] 
-}; 
+const wxEventTable MutIconShapeClass<T>::sm_eventTable = {
+	&T::sm_eventTable,
+	&MutIconShapeClass<T>::sm_eventTableEntries[0]
+};
 
 template <class T>
-const wxEventTable *MutIconShapeClass<T>::GetEventTable() const 
+const wxEventTable *MutIconShapeClass<T>::GetEventTable() const
 {
-	return &MutIconShapeClass<T>::sm_eventTable; 
+	return &MutIconShapeClass<T>::sm_eventTable;
 }
 
 template <class T>
@@ -229,10 +229,10 @@ wxEventHashTable MutIconShapeClass<T>::sm_eventHashTable(MutIconShapeClass<T>::s
 
 
 template <class T>
-wxEventHashTable &MutIconShapeClass<T>::GetEventHashTable() const 
-{ 
-	return MutIconShapeClass<T>::sm_eventHashTable; 
-} 
+wxEventHashTable &MutIconShapeClass<T>::GetEventHashTable() const
+{
+	return MutIconShapeClass<T>::sm_eventHashTable;
+}
 
 template <class T>
 const wxEventTableEntry MutIconShapeClass<T>::sm_eventTableEntries[] = {
@@ -272,9 +272,9 @@ bool MutIconShapeClass<T>::Create (wxWindow * parent, wxWindowID id)
 	maxBorderSize.IncTo(tmpBorderSize);
 	maxBorderSize.IncTo(wxSize(0,0));
 	maxBorderSize.IncBy(wxSize(1,1));
-#if __WXGTK__ 
+#if __WXGTK__
 	borderOffset = wxSize(0,0);
-#else 
+#else
 	borderOffset = maxBorderSize;
 //#else
 //	borderOffset = maxBorderSize - tmpBorderSize;
@@ -284,7 +284,7 @@ bool MutIconShapeClass<T>::Create (wxWindow * parent, wxWindowID id)
 
 
 template<typename T>
-bool MutIconShapeClass<T>::Destroy() 
+bool MutIconShapeClass<T>::Destroy()
 {
 	this->Hide();
 	wxSizer * sizer = this->GetContainingSizer();
@@ -295,21 +295,21 @@ bool MutIconShapeClass<T>::Destroy()
 
 	if ( !wxPendingDelete.Member(this) )
         wxPendingDelete.Append(this);
-	
+
 	return true;
 }
 
 
 template<typename T>
-wxSize MutIconShapeClass<T>::DoGetBestSize() const 
+wxSize MutIconShapeClass<T>::DoGetBestSize() const
 {
 	//  wxSize s(GetWindowBorderSize()/2);
 	wxSize s(0,0);
 	wxSize s1(0,0);
 	DEBUGLOG (other, _T("best size: %dx%d"),s.x,s.y);
 //	return s;
-	
-	
+
+
 	if (staticText) s += staticText->GetBestSize();
 	DEBUGLOG (other, _T("staticText %p best size: %dx%d"),(void*)&staticText,s.x,s.y);
 	if (GetIcon().IsOk()) {
@@ -336,11 +336,11 @@ wxSize MutIconShapeClass<T>::DoGetBestSize() const
 #endif
 
 	s += maxBorderSize + maxBorderSize;
-	
+
 	// s1 = MutPanel::DoGetBestSize();
         // call to base class not needed.
 	DEBUGLOG (other, _T("our %p parent best size: %dx%d"),(void*)this,s1.x,s1.y);
-	
+
 	s1.IncTo(s);
 
 	DEBUGLOG (other, _T("our %p best size: %dx%d"),(void*)this,s.x,s.y);
@@ -382,7 +382,7 @@ template<typename T>
 	}
 
 	wxSizer * sizer = this->GetSizer();
-	if (sizer) 
+	if (sizer)
 		sizer->SetSizeHints(this);
 	this->Fit();
 
@@ -392,7 +392,7 @@ template<typename T>
 	size += maxBorderSize + maxBorderSize;
 //	ClearPerimeterPoints();
 	this->GetParent()->RefreshRect(wxRect(pos.x,pos.y,size.x,size.y));
-#if __WXGTK__ 
+#if __WXGTK__
 	this->Refresh(true);
 //	this->Update();
 #endif
@@ -491,7 +491,7 @@ void MutIconShapeClass<T>::OnPaint( wxPaintEvent& WXUNUSED(event) )
 }
 
 template<typename T>
-void MutIconShapeClass<T>::OnDraw (wxDC & dc) 
+void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 {
 	wxRect size = this->GetRect();
 #if __WXMSW__
@@ -506,7 +506,7 @@ void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 			dc.DrawLine(i,i,i,size.height-i);
 		}
 	}
-#endif 
+#endif
 
 	DEBUGLOG (other, _T("Checking icon"));
 
@@ -537,7 +537,7 @@ void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 	}
 
 	DEBUGLOG (other, _T("Focus %p and this %p"),(void*)this->FindFocus(),(void*)this);
-/*  Draw a black bock around focused item 
+/*  Draw a black bock around focused item
 	if (FindFocus() == this) {
 		DEBUGLOG (other, _T("Painting Box"));
 		dc.SetPen(*wxBLACK_PEN);
@@ -560,7 +560,7 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 	DEBUGLOG(routinggui,_T("center = (%d,%d)"), iconCenter.x, iconCenter.y);
 /*
 	wxRect screenRect = this->GetScreenRect();
-	// transform Screen rect to upper left and 
+	// transform Screen rect to upper left and
 	wxPoint upperLeft(this->ScreenToClient(wxPoint(screenRect.x,screenRect.y)));
 	wxPoint lowerRight(this->ScreenToClient(wxPoint(screenRect.x+screenRect.width,screenRect.y+screenRect.height)));
 */
@@ -594,7 +594,7 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 
 	wxPoint retval = perimeterpoint + myoffset;
 
-	DEBUGLOG(routinggui,_T("perimeter point (%d,%d), returning (%d,%d)"), 
+	DEBUGLOG(routinggui,_T("perimeter point (%d,%d), returning (%d,%d)"),
 		 perimeterpoint.x,perimeterpoint.y,retval.x,retval.y);
 
 	return retval;
@@ -649,9 +649,9 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 }
 
 template<typename T>
-void MutIconShapeClass<T>::DrawPerimeterPoint(wxDC & dc, 
-					      const wxPoint & center, 
-					      wxPoint p) const 
+void MutIconShapeClass<T>::DrawPerimeterPoint(wxDC & dc,
+					      const wxPoint & center,
+					      wxPoint p) const
 {
 	dc.DrawLine(center, p);
 #if 0
@@ -693,7 +693,7 @@ void MutIconShapeClass<T>::LineTo(wxDC &dc, const wxPoint & p,
 	return;
 #if 0
 	wxRect rect = this->GetRect();
-	wxPoint p1(rect.x + rect.width/2, 
+	wxPoint p1(rect.x + rect.width/2,
 		   rect.y + Icon.GetHeight()/2 + borderOffset.y);
 	wxPoint origin(screenpos.x,screenpos.y);
 	dc.DrawLine(p1+origin,p+origin);
@@ -702,7 +702,7 @@ void MutIconShapeClass<T>::LineTo(wxDC &dc, const wxPoint & p,
 
 
 template<typename T>
-bool MutIconShapeClass<T>::Recompute() 
+bool MutIconShapeClass<T>::Recompute()
 {
 	return true;
 }
@@ -711,7 +711,7 @@ template<typename T>
 bool MutIconShapeClass<T>::Layout() {
 	//ClearPerimeterPoints();
 	wxRect rect = this->GetClientRect();
-	int w = rect.width, h = rect.height, 
+	int w = rect.width, h = rect.height,
 		y = Icon.GetHeight() +	borderOffset.y;
 
 	w -= 2* borderOffset.x;
@@ -731,7 +731,7 @@ bool MutIconShapeClass<T>::Layout() {
 #if __WXMAC__   //adjust the sizer to the right size inside
 		sizerrect=wxRect(0,y,rect.width,rect.height);
 		sizerrect.x -= maxBorderSize.x - borderOffset.x;
-//		sizerrect.width -= 2*sizerrect.x; 
+//		sizerrect.width -= 2*sizerrect.x;
 #endif
 		this->GetSizer()->SetDimension( sizerrect.x,
 						sizerrect.y,
@@ -759,7 +759,7 @@ void MutIconShapeClass<T>::DeleteSelf()
 	this->Destroy();
 	return;
 
-#if 0 
+#if 0
 	// old mouse event proof implementation
 	// has been used as long as we handled the event
 	// inside the mouse event handler;
@@ -767,7 +767,7 @@ void MutIconShapeClass<T>::DeleteSelf()
 	wxCloseEvent event(wxEVT_CLOSE_WINDOW, m_windowId);
 	event.SetEventObject(this);
 	event.SetCanVeto(false);
-	
+
 	GetEventHandler()->AddPendingEvent(event);
 #endif
 }

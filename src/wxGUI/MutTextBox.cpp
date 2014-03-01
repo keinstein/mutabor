@@ -361,22 +361,16 @@ void MutTextBox::GetToneSystem(bool asTS)
 
 }
 
+#if 0
+/** \todo remove this code */
 void MutTextBox::GetAllActions ()
 {
-#warning write this code
-#if 0
-	/** \todo write this code */
 	NewText(GenerateCAWString());
-#endif
 }
 
 void MutTextBox::GetBoxActions()
 {
-#warning write this code
-#if 0
-	/** \todo write this code */
 	NewText(GenerateACTString(box));
-#endif
 }
 
 void MutTextBox::NewText(char *s, bool newTitle)
@@ -446,6 +440,7 @@ void MutTextBox::NewText(const wxString &s, bool newTitle)
 	    ColorBar2->MoveWindow(1, 1, 1, 1000, true);
 	  }*/
 }
+#endif
 
 
 wxString MutTextBox::MakeTitle() const {
@@ -459,18 +454,6 @@ wxString MutTextBox::MakeTitle() const {
 }
 
 
-/*wx void MutTextBox::EvSize(uint sizeType, TSize &size)
-{
-  TListBox::EvSize(sizeType, size);
-  TRect R = GetWindowRect();
-  TRect RC = ColorBar1->GetWindowRect();
-  if ( GetTopIndex() == 0 )
-  {
-    ColorBar1->MoveWindow(1, 1, 1000, 1, true);
-    ColorBar2->MoveWindow(1, 1, 1, 1000, true);
-  }
-}
-*/
 
 /*wx void MutTextBox::EvChar(uint key, uint repeatCount, uint flags)
 {
@@ -486,19 +469,5 @@ wxString MutTextBox::MakeTitle() const {
       KeyboardAnalyseSimple(Box(), key);
   }
 }*/
-
-/*wx void MutTextBox::EvSetFocus(HWND hWndLostFocus)
-{
-  TListBox::EvSetFocus(hWndLostFocus);
-}
-
-void
-MutTextBox::EvRButtonDown(uint, TPoint& point)
-{
-  RightButtonMenu(this, point);
-}*/
-
-
-
 
 ///\}
