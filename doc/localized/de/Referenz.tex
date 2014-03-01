@@ -698,9 +698,15 @@ Ton der Fundamentaltonleiter zutrifft. Wird eine solchermaßen
 verschobene Harmonie erkannt, gilt der Auslöser als erfüllt
 und der Wert \texttt{ABSTAND}\index{ABSTAND} wird entsprechend der Harmonieanalyse gesetzt.
 
-Wenn bei der Harmonie eine Bezugstaste\index{Bezugstaste}
- angegeben wurde, dann wird
+Wenn bei der Harmonie eine Bezugstaste\index{Bezugstaste} angegeben wurde, dann wird
 die Harmonie-Analyse relativ um die Bezugstaste verschoben durchgeführt.
+
+Eine besondere Form der Harmonie"=Auslöser wird durch das
+Schlüsselwort \texttt{ANSONSTEN}\index{ANSONSTEN} gekennzeichnet. Dieser Zweig wird
+dann ausgeführt, wenn die Harmonieanalyse bei keinem der anderen
+Harmoniezweige fündig geworden ist. Dabei ist es unerheblich, ob in
+der darauffolgenden MIDI"=Analyse ein passendes MIDI"=Ereignis
+gefunden wird.
 
     \input{syn20.pic}
 
@@ -708,7 +714,7 @@ die Harmonie-Analyse relativ um die Bezugstaste verschoben durchgeführt.
 \subsection{MIDI-Ereignisse}\index{Auslöser!MIDI-Ereignis}\label{sec:midi-ereignisse}
 MIDI-Ereignisse werden mit dem Wort \emph{MIDIIN}\index{MIDIIN}
 eingeleitet und
-sind eine eingeklammerte Folge von Zahlen. Bei Zahlen ist die sedezimale
+sind eine eingeklammerte Folge von Zahlen. Bei Zahlen ist die hexadezimale
 Schreibweise zulässig (\#\emph{ziffern}).\index{\#}
 Die erste Zahl muss im Bereich von
 128 bis 255 liegen, also ein Status-Byte sein. Alle weiteren Zahlen
@@ -718,12 +724,20 @@ Die tatsächliche Kanalnummer wird dem jeweiligen
 Instrument/MIDI-Kanal zugeordnet,
 so daß ein MIDI-Ereignis sich jeweils auf das richtige
 Instrument/MIDI-Kanal bezieht.
+\iffalse
 Die Status-Bytes\index{Status-Byte}
  \emph{Note-On\index{Note-On} (\#90)}, \emph{Note-Off\index{Note-Off}
   (\#80)} und
 \emph{System-Byte\index{System-Byte}
  (\#F0 - \#FF)} werden nicht in die MIDI-Analyse
 einbezogen.
+\fi
+
+Midinachrichten werden immer im Ganzen mit der Referenz"=Bytefolge
+verglichen. Dadurch ergibt sich die Einschränkung, dass ein
+MIDI"=Auslöser maximal eine MIDI"=Nachricht umfassen kann. Längere
+MIDI"=Sequenzen können über aufeinanderfolgende Logikaufrufe
+realisiert werden.
 
     \input{syn21.pic}
 

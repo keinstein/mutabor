@@ -1105,6 +1105,11 @@ die Harmonie-Analyse relativ um die Bezugstaste verschoben
 durchgeführt.
 \fi
 
+A special form of MIDI triggers is denoted by the keyword
+\keyword{ELSE}\index{ELSE}. This branch will be executed if the harmony analysis
+fails to recognise the current pattern. This is \textbf{not}
+influenced by the raw MIDI analysis, which follows afterwards.
+
 \input{syn20.pic}
 
 \helpsection{trigger-MIDI}{REFERENCE_TRIGGER_MIDI}
@@ -1120,9 +1125,11 @@ four bits (channel number) must be zeros. The channel number will be
 filled in according to the chosen instrument/MIDI channel such that
 the MIDI event corresponds to that instrument/MIDI channel.
 
+\iffalse % the following is not true
 The status bytes\index{status byte} \textit{note on (\#90)},
 \textit{note off (\#80)} and \textit{system byte (\#F0 --- \#FF)} are
 not considered in the MIDI analysis.
+\fi
 
 \iffalse
 MIDI-Ereignisse werden mit dem Wort {\it MIDIIN}\index{MIDIIN}
@@ -1144,6 +1151,10 @@ Die Status-Bytes\index{Status-Byte}
  (\#F0 - \#FF)} werden nicht in die MIDI-Analyse
 einbezogen.
 \fi
+
+MIDI bytes are compared messagewise. This leads to the restriction,
+that the longest MIDI trigger is a MIDI message. Longer MIDI triggers
+can be realised by chaing logics with the corresponding triggers.
 
     \input{syn21.pic}
 

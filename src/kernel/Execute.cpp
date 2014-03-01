@@ -856,7 +856,6 @@ inline static void call_actions (mutabor_box_type * box,
 				break;
 
 			case mutabor_is_else_path: // default
-#warning This seems odd check, when mutabor is running
 				TRACE;
 				box->last_trigger.type            = any_trigger::harmony;
 				box->last_trigger.harmony_trigger = index;
