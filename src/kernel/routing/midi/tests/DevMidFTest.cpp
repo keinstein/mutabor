@@ -5846,7 +5846,10 @@ void  InputMidiFileTest::testAfterTouch()
 0   0: 90 3c 7f\n\
 1   0: a0 3c 08\n\
 200   1: 91 3c 7f\n\
+202   0: d0 0c\n\
+202   1: d1 0c\n\
 500   0: 80 3c 40\n\
+501   1: d1 0d\n\
 502   1: a1 3c 0f\n\
 540   1: 81 3c 40\n\
 546 ...closed.\n\
