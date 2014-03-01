@@ -48,8 +48,6 @@
 // the following file is not compiled independently
 #include "src/kernel/routing/midi/midicmn.cpp"
 
-#warning Verify handling of SysEx messages for realtime MIDI and timing dependent devices
-
 namespace mutabor {
 
 	template class CommonMidiOutput<MidiPortOutputProvider,OutputDeviceClass>;
@@ -59,21 +57,6 @@ namespace mutabor {
 
 	extern  RtMidiOut * rtmidiout;
 	extern RtMidiIn *rtmidiin;
-
-#if 0 // old windows code
-#define MIDI_OUT3(code1, code2, code3)			\
-	midiOutShortMsg(hMidiOut,			\
-			((DWORD) (code3) << 16) +	\
-			((DWORD) (code2) << 8) +	\
-			((DWORD) (code1)))
-
-#define MIDI_OUT2(code1, code2)				\
-	midiOutShortMsg(hMidiOut,			\
-			((DWORD) (code2) << 8) +	\
-			((DWORD) (code1)))
-#endif
-
-
 
         /// Save current device settings in a tree storage
         /** \argument config (tree_storage) storage class, where the data will be saved.

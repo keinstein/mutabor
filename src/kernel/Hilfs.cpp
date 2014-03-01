@@ -1,4 +1,4 @@
-/** \file 
+/** \file
  ********************************************************************
  * Heap management
  *
@@ -102,9 +102,9 @@ void * xalloca (mutabor_box_type * box, size_t size)
 	if (help == NULL) {
 		DEBUGLOG2(other,_T("malloc(%d) failed."),(int)size);
 		mutabor_error_message (box,
-				       error, 
+				       error,
 				       _("Not enough memory for mutabor in source file"));
-				       
+
 		return NULL;
 	}
 
@@ -216,17 +216,17 @@ void * xmalloc (mutabor_box_type * box, size_t size)
 					      _("Could not allocate syntax heap chunk."));
 			return NULL;
 		}
-		
+
 		box->file->heap.heap_to_use_syntax = box->file->heap.heap_to_use_syntax -> next;
 
 		box->file->heap.heap_to_use_syntax -> next = NULL;
 		box->file->heap.heap_to_use_syntax -> anzahl_belegt = size + OFFSET;
-		{ 
+		{
 			void * tmp = (void*)box->file->heap.heap_to_use_syntax -> inhalt;
 			size_t * tmp2 = (size_t *) tmp;
 			*tmp2 = size;
 			/* Original code:
-			 * (size_t *)&(heap_to_use_syntax -> inhalt [ 0 ]) = size; 
+			 * (size_t *)&(heap_to_use_syntax -> inhalt [ 0 ]) = size;
 			 */
 		}
 		return & box->file->heap.heap_to_use_syntax -> inhalt [ OFFSET ] ;
@@ -258,9 +258,9 @@ void * xrealloc (mutabor_box_type * box, void * block, size_t newsize)
 		} else {
 			DEBUGLOG2(other,_T("xmalloc (%d) failed"),(int)newsize);
 			mutabor_error_message (box,
-					       error, 
+					       error,
 					       _("Reallocation of memory failed."));
-				       
+
 			return NULL;
 		}
 	}
@@ -277,9 +277,9 @@ void * xcalloc (mutabor_box_type * box, size_t anzahl, size_t size)
 	} else {
 		DEBUGLOG2(other,_T("xmalloc(%d * %d) failed"),(int)anzahl,(int)size);
 		mutabor_error_message (box,
-				       error, 
+				       error,
 				       _("Not enough memory."));
-				       
+
 		return NULL;
 	}
 }

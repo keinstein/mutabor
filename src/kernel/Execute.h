@@ -211,40 +211,6 @@ namespace mutabor {
 			void KeyboardAnalyse(mutabor_box_type * box, int taste, char isLogic);
 			void KeyboardAnalyseSimple(mutabor_box_type * box, int taste);
 
-//			void FlushUpdateUI();
-
-
-/* interal definitions */
-
-
-#if 0
-
-
-#define FLUSH_UPDATE_UI FlushUpdateUI()
-
-// berechnet die Tonigkeit einer Taste bzgl. tonsystem
-inline int GET_INDEX(int key, tone_system * tonsystem) {
-	mutASSERT(tonsystem);
-	int retval = (key - tonsystem->anker) % tonsystem->breite;
-	return retval < 0 ? retval + tonsystem->breite : retval;
-}
-
-// berechnet die 'Oktavlage' einer taste bzgl. tonsystem
-inline int GET_ABSTAND(int taste, tone_system * tonsystem) {
-	mutASSERT(tonsystem);
-	int retval = (int)(taste - (tonsystem->anker % tonsystem->breite)) / tonsystem->breite;
-	retval -= ((int)tonsystem->anker  / tonsystem->breite);
-	return retval;
-}
-#endif
-
-#if 0
-#define GET_ABSTAND(taste,tonsystem)					\
-	( (int)((taste)-( (tonsystem)->anker % (tonsystem)->breite ))	\
-	  / (tonsystem)->breite -((int) (tonsystem)->anker		\
-				  / (tonsystem)->breite ))
-#endif
-
 #ifdef __cplusplus
 		} // extern "C"
 	} // namespace hidden
