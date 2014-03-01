@@ -291,6 +291,9 @@ int loesche_syntax_speicher ( mutabor_box_type * box)
 
 	if (!box || !box->file) return 0;
 
+	if (box->file->refcount)
+		return 1;
+
 	lauf = box->file->heap.syntax_heap;
 	while (lauf) {
 		struct heap_element * help = lauf->next;

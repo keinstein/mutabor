@@ -48,13 +48,6 @@ extern "C" {
 }
 }
 
-static void lock_callback(typename mutabor::hidden::mutabor_logic_parsed * logic) {
-	std::cerr << "warning: logic locking is not implemented" << std::endl;
-}
-
-static void unlock_callback(mutabor::hidden::mutabor_logic_parsed * logic) {
-	std::cerr << "warning: logic unlocking is not implemented" << std::endl;
-}
 
 
 struct mutabor::hidden::mutabor_callback_type test_backend_callbacks  = {
@@ -63,8 +56,9 @@ struct mutabor::hidden::mutabor_callback_type test_backend_callbacks  = {
 	error_callback,
 	mutabor::BoxClass::compile_callback,
 	mutabor::BoxClass::log_action,
-	lock_callback,
-	unlock_callback
+	mutabor::BoxClass::lock_callback,
+	mutabor::BoxClass::unlock_callback,
+	mutabor::BoxClass::free_mutex_callback
 };
 
 

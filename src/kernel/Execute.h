@@ -119,6 +119,7 @@ namespace mutabor {
 				mutabor_callback_log_action * log_action;
 				mutabor_callback_lock_logic * lock_logic;
 				mutabor_callback_lock_logic * unlock_logic;
+				mutabor_callback_lock_logic * free_mutex;
 			};
 
 			extern struct mutabor_callback_type * mutabor_callbacks;
@@ -173,6 +174,10 @@ namespace mutabor {
 
 			inline void mutabor_unlock_logic(mutabor_logic_parsed * logic) {
 				mutabor_callbacks->unlock_logic(logic);
+			}
+
+			inline void mutabor_free_logic_mutex(mutabor_logic_parsed * logic) {
+				mutabor_callbacks->free_mutex(logic);
 			}
 
 

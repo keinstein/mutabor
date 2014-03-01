@@ -625,6 +625,9 @@ namespace mutabor {
 		std::string ActionToString(ChangedCallback::action * action);
 		static void log_action(mutabor_box_type * box, const char * action);
 		static void UpdateCallback(struct mutabor_box_type * b, unsigned int flags);
+		static void lock_callback(hidden::mutabor_logic_parsed * logic);
+		static void unlock_callback(hidden::mutabor_logic_parsed * logic);
+		static void free_mutex_callback(hidden::mutabor_logic_parsed * logic);
 	protected:
 		struct BoxLock: public ScopedLock {
 			Box box;

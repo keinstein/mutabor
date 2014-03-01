@@ -57,7 +57,12 @@ void mutabor_set_logic(struct mutabor_box_type * box, struct mutabor_logic_parse
 		mutabor_lock_logic(box->file);
 		box->file->refcount--;
 		if (!box->file->refcount) {
+			mutabor_logic_parsed * oldlogic = box->file;
 			loesche_syntax_speicher(box);
+			box->file = NULL;
+			mutabor_unlock_logic(oldlogic);
+			mutabor_free_logic_mutex(oldlogic);
+			free(oldlogic);
 		} else {
 			mutabor_unlock_logic(box->file);
 		}

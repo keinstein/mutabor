@@ -862,7 +862,7 @@ namespace mutabor {
 		box->runtime_error(type, message);
 	}
 
-	static void lock_callback(mutabor_logic_parsed * logic) {
+	void BoxClass::lock_callback(mutabor_logic_parsed * logic) {
 		if (!logic->mutex) {
 			logic->mutex = new Mutex;
 		}
@@ -871,10 +871,18 @@ namespace mutabor {
 		}
 	}
 
-	static void unlock_callback(mutabor_logic_parsed * logic) {
+	void BoxClass::unlock_callback(mutabor_logic_parsed * logic) {
 		mutASSERT(logic->mutex);
 		if (logic->mutex) {
 			static_cast<Mutex *>(logic->mutex)->Unlock();
+		}
+	}
+
+	void BoxClass::free_mutex_callback(mutabor_logic_parsed * logic) {
+		mutASSERT(logic->mutex);
+		if (logic->mutex) {
+			Mutex * m = static_cast<Mutex *>(logic->mutex);
+			delete m;
 		}
 	}
 
@@ -894,7 +902,8 @@ namespace mutabor {
 		BoxClass::compile_callback,
 		log_action,
 		lock_callback,
-		unlock_callback
+		unlock_callback,
+		free_mutex_callback
 	};
 
 

@@ -112,7 +112,8 @@ namespace mutabor {
 		mutabor_default_update_display,
 		mutabor_default_log_action,
 		mutabor_default_lock,
-		mutabor_default_lock          /* default unlock is empty if lock is empty */
+		mutabor_default_lock,          /* default unlock is empty if lock is empty */
+		mutabor_default_lock
 	};
 
 	mutabor_callback_type * mutabor_callbacks = & default_callbacks;
