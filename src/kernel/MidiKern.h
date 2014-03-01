@@ -151,6 +151,8 @@ namespace mutabor {
 			QUARTER_FRAME           = 0xF1,
 			SONG_POSITION           = 0xF2,
 			SONG_SELECT             = 0xF3,
+			SYSTEM_UNDEFINED1       = 0xF4,
+			SYSTEM_UNDEFINED2       = 0xF5,
 			TUNE_REQUEST            = 0xF6,
 			SYSEX_END               = 0xF7,
 			/* system realtime */
@@ -159,14 +161,37 @@ namespace mutabor {
 			START_PLAY              = 0xFA,
 			CONTINUE_PLAY           = 0xFB,
 			STOP_PLAY               = 0xFC,
+			REALTIME_UNDEFINED      = 0xFD,
 			ACTIVE_SENSE            = 0xFE,
 			RESET                   = 0xFF,
-			META                    = 0xFF,
 
 			/* message group masks */
 			STARTBYTE_MASK          = 0x80,
 			TYPE_MASK               = 0xF0,
-			CHANNEL_MASK            = 0x0F
+			CHANNEL_MASK            = 0x0F,
+
+			/* mapped meta event types for internal use */
+			META                    = 0xFF,  /*< general meta signature */
+			FIRST_META              = 0x100, /*< firest individual meta event */
+			SEQUENCE_NUMBER         = 0x100,
+			EVENT_TEXT              = 0x101,
+			COPYRIGHT_NOTICE        = 0x102,
+			SEQUENCE_NAME           = 0x103,
+			TRACK_NAME              = 0x103,
+			INSTRUMENT_NAME         = 0x104,
+			LYRIC                   = 0x105,
+			MARKER                  = 0x106,
+			CUE_POINT               = 0x107,
+			CHANNEL_SELECT          = 0x120,
+			END_OF_TRACK            = 0x12F,
+			SET_TEMPO               = 0x151,
+			SMPTE_OFFSET            = 0x154,
+			TIME_SIGNATURE          = 0x158,
+			KEY_SIGNATURE           = 0x159,
+			SEQUENCER_SPECIFIC      = 0x17F,
+			UNKNOWN_META            = 0x200,
+			LAST_META               = 0x200  /*< last individual meta event */
+
 		};
 
 		enum midi_meta_types {
@@ -298,6 +323,12 @@ namespace mutabor {
 			POLY_ON                  = 0x7F // (127)
 		};
 
+		enum non_midi_controllers {
+			FIRST_NON_MIDI_CONTROLLER = 0x80,
+			CHANNEL_PRESSURE_VAL      = 0x80,
+			END_NON_MIDI_CONTROLLER
+		};
+
 
 #define DEFAULT_PANIC ALL_SOUND_OFF
 		enum midi_controller_values {
@@ -323,6 +354,7 @@ namespace mutabor {
 			FIRST_NRPN             = 0x20000,
 			LAST_NRPN              = 0x27F7F
 		};
+
 
 
 		enum midi_channel_constants {
