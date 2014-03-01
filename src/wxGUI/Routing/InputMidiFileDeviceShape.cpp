@@ -154,7 +154,7 @@ namespace mutaborGUI {
 
 	void MutInputMidiFileDeviceShape::DoDeviceNotification(wxCommandEvent & event)
 	{
-		if (device->IsOpen() && !playbuttons) {
+		if (device && device->IsOpen() && !playbuttons) {
 			createPlayButtons();
 		}
 		MutInputDeviceShape::DoDeviceNotification(event);
