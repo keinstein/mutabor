@@ -1570,6 +1570,12 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 	void MutFrame::StopInDev()
 	{
 		StatusBar::AllSetPlaystate(StatusBar::Stop,true);
+
+		InputDeviceClass::StopAll();
+		event e = new stop_play_event(-1);
+		OutputDeviceClass::all_handle_event(e);
+
+#if 0
 		const InputDeviceList & list =
 			InputDeviceClass::GetDeviceList();
 		for ( InputDeviceList::const_iterator In = list.begin();
@@ -1582,6 +1588,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 					-> Stop();
 			}
 		}
+#endif
 	}
 
 
@@ -1592,15 +1599,23 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		// SetStatus(1-LogicOn);
 	}
 
-	void MutFrame::CmInDevPlay(wxCommandEvent& event)
+	void MutFrame::CmInDevPlay(wxCommandEvent& ev)
 	{
 		TRACEC;
 
 		if ( !LogicOn )
-			CmDoActivate(event);
+			CmDoActivate(ev);
 
 		StatusBar::AllSetPlaystate(StatusBar::Play,true);
 		if (CurrentTime.isRealtime()) {
+			event e;
+			if (InputDeviceClass::was_last_stop()) {
+				e = new start_play_event(-1);
+			} else {
+				e = new continue_play_event(-1);
+			}
+			OutputDeviceClass::all_handle_event(e);
+
 			InputDeviceClass::RealtimePlay();
 			//SetStatus(SG_PLAY);
 		} else {
@@ -1621,9 +1636,14 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		repaint_route();
 	}
 
-	void MutFrame::CmInDevPause(wxCommandEvent& WXUNUSED(event))
+	void MutFrame::CmInDevPause(wxCommandEvent& WXUNUSED(ev))
 	{
 		StatusBar::AllSetPlaystate(StatusBar::Pause,true);
+		InputDeviceClass::PauseAll();
+		event e = new stop_play_event(-1);
+		OutputDeviceClass::all_handle_event(e);
+
+#if 0
 		const InputDeviceList & list =
 			InputDeviceClass::GetDeviceList();
 		for ( InputDeviceList::const_iterator In = list.begin();
@@ -1633,6 +1653,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 					-> Pause();
 			}
 		}
+#endif
 		repaint_route();
 		// SetStatus(SG_PAUSE);
 	}
