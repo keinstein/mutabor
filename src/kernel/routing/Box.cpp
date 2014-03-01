@@ -862,14 +862,20 @@ namespace mutabor {
 		box->runtime_error(type, message);
 	}
 
-#warning implement logic locking
 	static void lock_callback(mutabor_logic_parsed * logic) {
-		std::cerr << "warning: logic locking is not implemented" << std::endl;
+		if (!logic->mutex) {
+			logic->mutex = new Mutex;
+		}
+		if (logic->mutex) {
+			static_cast<Mutex *>(logic->mutex)->Lock();
+		}
 	}
 
-#warning implement logic unlocking
 	static void unlock_callback(mutabor_logic_parsed * logic) {
-		std::cerr << "warning: logic unlocking is not implemented" << std::endl;
+		mutASSERT(logic->mutex);
+		if (logic->mutex) {
+			static_cast<Mutex *>(logic->mutex)->Unlock();
+		}
 	}
 
 

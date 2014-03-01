@@ -99,6 +99,7 @@ struct constant_memory
 
 struct mutabor_logic_parsed {
 	int refcount;
+	void * mutex;
 	struct intervall      *  list_of_intervalle;
 	struct ton            *  list_of_toene;
 	struct tonsystem      *  list_of_tonsysteme;
