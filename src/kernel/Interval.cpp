@@ -162,9 +162,7 @@ static void belege_intervalle (struct intervall **intervalle, struct intervall *
 
 static int intervall_nummer (mutabor_box_type * box, const char *name)
 {
-	int i;
-
-	for (i=0; i<box->file->interval_count; i++)
+	for (size_t i=0; i<box->file->interval_count; i++)
 		if ( ! strcasecmp (name, box->file->check_intervals[i]->name)) return i;
 
 	mutabor_error_message(box,
@@ -177,9 +175,7 @@ static int intervall_nummer (mutabor_box_type * box, const char *name)
 
 static void test_zyklen (mutabor_box_type * box, int startknoten)
 {
-	int i;
-
-	for (i=0; i<box->file->interval_count; i++) {
+	for (size_t i=0; i<box->file->interval_count; i++) {
 		if (adjacent (box->file, startknoten, i)) {
 			if (box->file->visited_intervals [i]) {
 				mutabor_error_message(box,
@@ -238,7 +234,7 @@ static void berechne_intervall_endgueltig (mutabor_box_type * box, int k)
 void berechne_intervalle_absolut (mutabor_box_type * box, struct intervall * list_of_intervalle)
 
 {
-	int i,j,k;
+	size_t i,j;
 
 	box->file->interval_count = intervall_list_laenge (list_of_intervalle);
 
@@ -306,20 +302,20 @@ void berechne_intervalle_absolut (mutabor_box_type * box, struct intervall * lis
 
 	/* auf Zyklenfreiheit Pruefen */
 
-	for (k=0; k<box->file->interval_count; k++)
-		box->file->visited_intervals [k] = 0;
+	for (i=0; i<box->file->interval_count; i++)
+		box->file->visited_intervals [i] = 0;
 
-	for (k=0; k<box->file->interval_count; k++)
+	for (i=0; i<box->file->interval_count; i++)
 	{
-		box->file->visited_intervals [k] = 1;
-		test_zyklen (box, k);
-		box->file->visited_intervals [k] = 0;
+		box->file->visited_intervals [i] = 1;
+		test_zyklen (box, i);
+		box->file->visited_intervals [i] = 0;
 	}
 
 	/* Toene endgueltig berechnen */
 
-	for (k=0; k<box->file->interval_count; k++)
-		berechne_intervall_endgueltig (box, k);
+	for (i=0; i<box->file->interval_count; i++)
+		berechne_intervall_endgueltig (box, i);
 
 #ifdef DEBUG_ANZEIGE_3
 	/* Adjazenzmatrix anzeigen */
