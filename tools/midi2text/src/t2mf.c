@@ -64,8 +64,7 @@ static void gethex();
 
 static FILE *F;
 
-fileputc(c)
-int c;
+int fileputc(int c)
 {
     return putc(c, F);
 }

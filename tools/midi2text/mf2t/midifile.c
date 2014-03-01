@@ -62,32 +62,32 @@ void exit(), free();
 /* public stuff */
 
 /* Functions to be called while processing the MIDI file. */
-int (*Mf_getc)() = NULLFUNC;
-int (*Mf_error)() = NULLFUNC;
-int (*Mf_header)() = NULLFUNC;
-int (*Mf_starttrack)() = NULLFUNC;
-int (*Mf_endtrack)() = NULLFUNC;
-int (*Mf_on)() = NULLFUNC;
-int (*Mf_off)() = NULLFUNC;
-int (*Mf_pressure)() = NULLFUNC;
-int (*Mf_parameter)() = NULLFUNC;
-int (*Mf_pitchbend)() = NULLFUNC;
-int (*Mf_program)() = NULLFUNC;
-int (*Mf_chanpressure)() = NULLFUNC;
-int (*Mf_sysex)() = NULLFUNC;
-int (*Mf_arbitrary)() = NULLFUNC;
-int (*Mf_metamisc)() = NULLFUNC;
-int (*Mf_seqnum)() = NULLFUNC;
-int (*Mf_eot)() = NULLFUNC;
-int (*Mf_smpte)() = NULLFUNC;
-int (*Mf_tempo)() = NULLFUNC;
-int (*Mf_timesig)() = NULLFUNC;
-int (*Mf_keysig)() = NULLFUNC;
-int (*Mf_sqspecific)() = NULLFUNC;
-int (*Mf_text)() = NULLFUNC;
+int  (*Mf_getc)() = NULLFUNC;
+void  (*Mf_error)(char * s) = NULLFUNC;
+void  (*Mf_header)(int format, int ntrks, int division) = NULLFUNC;
+void (*Mf_starttrack)() = NULLFUNC;
+void (*Mf_endtrack)() = NULLFUNC;
+void (*Mf_on)(int chan, int pitch, int vol) = NULLFUNC;
+void (*Mf_off)(int chan, int pitch, int vol) = NULLFUNC;
+void (*Mf_pressure)(int chan, int pitch, int press) = NULLFUNC;
+void (*Mf_parameter)(int chan, int control, int value) = NULLFUNC;
+void (*Mf_pitchbend)(int chan, int lsb, int msb) = NULLFUNC;
+void (*Mf_program)(int chan, int program) = NULLFUNC;
+void (*Mf_chanpressure)(int chan, int press) = NULLFUNC;
+void (*Mf_sysex)(int leng, char *mess) = NULLFUNC;
+void (*Mf_arbitrary)(int leng, char *mess) = NULLFUNC;
+void (*Mf_metamisc)(int type, int leng, char *mess) = NULLFUNC;
+void (*Mf_seqnum)(int num) = NULLFUNC;
+void (*Mf_eot)() = NULLFUNC;
+void (*Mf_smpte)(int hr, int mn, int se, int fr, int ff) = NULLFUNC;
+void (*Mf_tempo)(long tempo) = NULLFUNC;
+void (*Mf_timesig)(int nn, int dd, int cc, int bb) = NULLFUNC;
+void (*Mf_keysig)(int sf, int mi) = NULLFUNC;
+void (*Mf_sqspecific)(int leng, char *mess) = NULLFUNC;
+void (*Mf_text)(int type, int leng, char *mess) = NULLFUNC;
 
 /* Functions to implement in order to write a MIDI file */
-int (*Mf_putc)() = NULLFUNC;
+int (*Mf_putc)(int c) = NULLFUNC;
 int (*Mf_wtrack)() = NULLFUNC;
 int (*Mf_wtempotrack)() = NULLFUNC;
 
@@ -116,7 +116,7 @@ static void msginit();
 static int msgleng();
 static void msgadd(int);
 static void biggermsg();
-int eputc(unsigned char);
+int eputc(unsigned char c);
 
 static void mferror(char *);
 
@@ -200,7 +200,7 @@ readtrack()		 /* read a track chunk */
 		2, 2, 2, 2, 1, 1, 2, 0		/* 0x80 through 0xf0 */
 	};
 	long lookfor;
-	int c, c1, type;
+	int c, c1 = -1, type;
 	int sysexcontinue = 0;	/* 1 if last message was an unfinished sysex */
 	int running = 0;	/* 1 when running status used */
 	int status = 0;		/* status value (e.g. 0x90==note-on) */
@@ -240,7 +240,7 @@ readtrack()		 /* read a track chunk */
 
 		if ( needed ) {		/* ie. is it a channel message? */
 
-			if ( !running )
+			if ( !running || c1 == -1 )
 				c1 = egetc();
 			chanmessage( status, c1, (needed>1) ? egetc() : 0 );
 			continue;
@@ -383,9 +383,7 @@ sysex()
 }
 
 static void
-chanmessage(status,c1,c2)
-int status;
-int c1, c2;
+chanmessage(int status, int c1, int c2)
 {
 	int chan = status & 0xf;
 
@@ -956,8 +954,7 @@ int data;
 }
 
 /* write a single character and abort on error */
-int eputc(c)			
-unsigned char c;
+int eputc(unsigned char c)
 {
 	int return_val;
 	

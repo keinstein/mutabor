@@ -71,14 +71,13 @@ FILE * efopen(const char *, const char *);
 long bankno (const char *, int);
 static long getint(const char *);
 static int getbyte(const char *);
-static int fileputc(unsigned char);
+static int fileputc(int c);
 void error(const char *);
 
 
 static FILE *F;
 
-static int fileputc(c)
-unsigned char c;
+static int fileputc(int c)
 {
     return putc(c, F);
 }
@@ -87,10 +86,10 @@ int main(argc,argv)
 int argc;
 char **argv;
 {
-	// FILE *efopen();
+	/*  FILE *efopen(); */
 	int flg;
 
-	while (flg = crack(argc, argv, "Rr", 0)) {
+	while ((flg = crack(argc, argv, "Rr", 0))) {
 		switch (flg) {
 		case 'r':
 		case 'R':

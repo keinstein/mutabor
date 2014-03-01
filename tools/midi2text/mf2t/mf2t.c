@@ -61,7 +61,7 @@ char **argv;
 	int flg;
 	
 	Mf_nomerge = 1;
-	while (flg = crack (argc, argv, "F|f|BbNnTtVvMmHh", 0)) {
+	while ((flg = crack (argc, argv, "F|f|BbNnTtVvMmHh", 0))) {
 		switch (flg) {
 		case 'f':
 		case 'F':
@@ -136,7 +136,7 @@ int filegetc()
 	
 	c = getc(F);
 	
-	// printf("precteno %d, 0x%x\n", precteno, c);
+	/* printf("precteno %d, 0x%x\n", precteno, c); */
 	return(c);
 }
 
@@ -151,7 +151,7 @@ char *mode;
 
 	if ( (f=fopen(name,mode)) == NULL ) {
 		(void) fprintf(stderr,"*** ERROR *** Cannot open '%s'!\n",name);
-		(void) fprintf(stderr,"************* Reason: %d\n", errno);      // vjs - my change
+		(void) fprintf(stderr,"************* Reason: %d\n", errno);      /* vjs - my change */
 		exit(1);
 	}
 	return(f);
@@ -369,7 +369,8 @@ int leng;
 char *mess;
 {
 	prtime();
-	printf("Arb",leng);
+	/* printf("Arb",leng); */
+	printf("Arb");
 	prhex (mess, leng);
 }
 

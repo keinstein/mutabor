@@ -211,7 +211,7 @@ readtrack(void)		 /* read a track chunk */
 		2, 2, 2, 2, 1, 1, 2, 0		/* 0x80 through 0xf0 */
 	};
 	long lookfor;
-	int c, c1, type;
+	int c, c1 = -1, type;
 	int sysexcontinue = 0;	/* 1 if last message was an unfinished sysex */
 	int running = 0;	/* 1 when running status used */
 	int status = 0;		/* status value (e.g. 0x90==note-on) */
@@ -251,7 +251,7 @@ readtrack(void)		 /* read a track chunk */
 
 		if ( needed ) {		/* ie. is it a channel message? */
 
-			if ( !running )
+			if ( !running || c1 == -1 )
 				c1 = egetc();
 			chanmessage( status, c1, (needed>1) ? egetc() : 0 );
 			continue;;
@@ -394,9 +394,7 @@ sysex(void)
 }
 
 static void
-chanmessage(status,c1,c2)
-int status;
-int c1, c2;
+chanmessage(int status, int c1, int c2)
 {
 	int chan = status & 0xf;
 
@@ -787,11 +785,10 @@ unsigned char *data;
  *        data.
  * size - The length of the meta-event data.
  */
-int
-mf_w_meta_event(delta_time, type, data, size)
-unsigned long delta_time;
-unsigned char *data, type;
-unsigned long size;
+int mf_w_meta_event(unsigned long delta_time,
+		    unsigned char type,
+		    unsigned char * data,
+		    unsigned long size)
 {
     int i;
 
@@ -876,10 +873,7 @@ unsigned long tempo;
 }
 
 unsigned long 
-mf_sec2ticks(secs,division,tempo)
-int division;
-unsigned int tempo;
-float secs;
+mf_sec2ticks(float secs, int division, unsigned int tempo)
 {    
 	return (long)(((secs * 1000.0) / 4.0 * division) / tempo);
 }
@@ -966,8 +960,7 @@ int data;
 }
 
 /* write a single character and abort on error */
-static int eputc(c)			
-unsigned char c;
+static int eputc(unsigned char c)			
 {
 	int return_val;
 	

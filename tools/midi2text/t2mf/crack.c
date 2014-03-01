@@ -78,13 +78,13 @@ int crack(argc, argv, flags, ign)
 	    pv = pvcon;
 	else
 	    {
-	    if (++arg_index >= argc) return((int) NULL); 
+	    if (++arg_index >= argc) return 0; 
 	    pv = argv[arg_index];
 	    if (*pv != '-') 
-		return((int) NULL);
+		return 0;
 	    }
 	pv++;		/* skip '-' or prev. flag */
-	if (*pv != NULL)
+	if (*pv != 0)
 	    {
 	    if ((flgp=strchr(flags,*pv)) != NULL)
 		{
@@ -102,6 +102,6 @@ int crack(argc, argv, flags, ign)
 	    }
 	pvcon = NULL;
 	}
-    return((int) NULL);
+    return 0;
     }
 

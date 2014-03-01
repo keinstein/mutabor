@@ -32,7 +32,8 @@ extern int (*Mf_wtrack)();
 extern int (*Mf_wtempotrack)();
 float mf_ticks2sec(unsigned long, int, unsigned int);
 unsigned long mf_sec2ticks(float, int, unsigned int);
-// void mfwrite();
+/* void mfwrite(); */
+void mfwrite(int format,int ntracks, int division, FILE * fp) ;
 void mfread();
 
 extern int mf_w_midi_event(unsigned long, unsigned int, unsigned int, unsigned char *, unsigned long);

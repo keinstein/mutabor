@@ -176,68 +176,68 @@ int format, ntrks, division;
 	TrksToDo = ntrks;
 }
 
-mytrstart()
+void mytrstart()
 {
 	printf("MTrk\n");
 	TrkNr ++;
 }
 
-mytrend()
+void mytrend()
 {
 	printf("TrkEnd\n");
 	--TrksToDo;
 }
 
-mynon(chan,pitch,vol)
+void mynon(chan,pitch,vol)
 int chan, pitch, vol;
 {
 	prtime();
 	printf(Onmsg,chan+1,mknote(pitch),vol);
 }
 
-mynoff(chan,pitch,vol)
+void mynoff(chan,pitch,vol)
 int chan, pitch, vol;
 {
 	prtime();
 	printf(Offmsg,chan+1,mknote(pitch),vol);
 }
 
-mypressure(chan,pitch,press)
+void mypressure(chan,pitch,press)
 int chan, pitch, press;
 {
 	prtime();
 	printf(PoPrmsg,chan+1,mknote(pitch),press);
 }
 
-myparameter(chan,control,value)
+void myparameter(chan,control,value)
 int chan, control, value;
 {
 	prtime();
 	printf(Parmsg,chan+1,control,value);
 }
 
-mypitchbend(chan,lsb,msb)
+void mypitchbend(chan,lsb,msb)
 int chan, lsb, msb;
 {
 	prtime();
 	printf(Pbmsg,chan+1,128*msb+lsb);
 }
 
-myprogram(chan,program)
+void myprogram(chan,program)
 int chan, program;
 {
 	prtime();
 	printf(PrChmsg,chan+1,program);
 }
 
-mychanpressure(chan,press)
+void mychanpressure(chan,press)
 int chan, press;
 {
 	prtime();
 	printf(ChPrmsg,chan+1,press);
 }
 
-mysysex(leng,mess)
+void mysysex(leng,mess)
 int leng;
 char *mess;
 {
@@ -246,7 +246,7 @@ char *mess;
 	prhex (mess, leng);
 }
 
-mymmisc(type,leng,mess)
+void mymmisc(type,leng,mess)
 int type, leng;
 char *mess;
 {
@@ -255,7 +255,7 @@ char *mess;
 	prhex (mess, leng);
 }
 
-mymspecial(leng,mess)
+void mymspecial(leng,mess)
 int leng;
 char *mess;
 {
@@ -264,7 +264,7 @@ char *mess;
 	prhex (mess, leng);
 }
 
-mymtext(type,leng,mess)
+void mymtext(type,leng,mess)
 int type, leng;
 char *mess;
 {
@@ -291,34 +291,34 @@ char *mess;
 	prtext (mess, leng);
 }
 
-mymseq(num)
+void mymseq(num)
 int num;
 {
 	prtime();
 	printf("SeqNr %d\n",num);
 }
 
-mymeot()
+void mymeot()
 {
 	prtime();
 	printf("Meta TrkEnd\n");
 }
 
-mykeysig(sf,mi)
+void mykeysig(sf,mi)
 int sf, mi;
 {
 	prtime();
 	printf("KeySig %d %s\n", (sf>127?sf-256:sf), (mi?"minor":"major"));
 }
 
-mytempo(tempo)
+void mytempo(tempo)
 long tempo;
 {
 	prtime();
 	printf("Tempo %ld\n",tempo);
 }
 
-mytimesig(nn,dd,cc,bb)
+void mytimesig(nn,dd,cc,bb)
 int nn, dd, cc, bb;
 {
 	int denom = 1;
@@ -333,7 +333,7 @@ int nn, dd, cc, bb;
 	Beat = 4 * Clicks / denom;
 }
 
-mysmpte(hr,mn,se,fr,ff)
+void mysmpte(hr,mn,se,fr,ff)
 int hr, mn, se, fr, ff;
 {
 	prtime();
@@ -341,7 +341,7 @@ int hr, mn, se, fr, ff;
 		hr,mn,se,fr,ff);
 }
 
-myarbitrary(leng,mess)
+void myarbitrary(leng,mess)
 int leng;
 char *mess;
 {
@@ -350,7 +350,7 @@ char *mess;
 	prhex (mess, leng);
 }
 
-prtime()
+void prtime()
 {
 	if (times) {
 		long m = (Mf_currtime-T0)/Beat;
@@ -360,7 +360,7 @@ prtime()
 		printf("%ld ",Mf_currtime);
 }
 
-prtext(p, leng)
+void prtext(p, leng)
 unsigned char *p; int leng;
 {
 	int n, c;
@@ -408,7 +408,7 @@ unsigned char *p; int leng;
 	printf("\"\n");
 }
 
-prhex(p, leng)
+void prhex(p, leng)
 unsigned char *p; int leng;
 {
 	int n;
@@ -428,7 +428,7 @@ unsigned char *p; int leng;
 	
 }
 
-initfuncs()
+void initfuncs()
 {
 	Mf_error = error;
 	Mf_header =  myheader;
