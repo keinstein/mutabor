@@ -196,7 +196,7 @@ namespace mutabor {
 		virtual void do_MidiOut(DWORD data, size_t n) {};
 		virtual void do_MidiOut(BYTE *p, size_t n)	{};
 		virtual void do_MidiOut(mutabor::Box box, midi_string data) {};
-		virtual void do_handle_event(event & e) {};
+		virtual void do_handle_event(event e) {};
 		virtual void do_AddTime(frac time)
 			{
 				Head->AddTime(time);
@@ -260,8 +260,6 @@ namespace mutabor {
 		virtual void Close();
 		virtual void Stop();
 		virtual void doResetTime();
-
-		virtual void Panic(int type);
 
 		void Proceed(GisReadArtHead *h, char turn, Route route);
 		void ProceedRoute(GisReadArtHead *h, char turn);

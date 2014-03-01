@@ -367,10 +367,6 @@ namespace mutabor {
 		base::doResetTime();
 	}
 
-	void InputGis::Panic(int type) {
-#warning "Implement Panic()"
-	}
-
         // Gis arbeitet auf "tick" - Basis, ein tick = 1ms
 	mutint64 InputGis::PrepareNextEvent()
 	{
