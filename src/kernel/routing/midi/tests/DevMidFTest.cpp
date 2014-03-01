@@ -5857,5 +5857,220 @@ void  InputMidiFileTest::testAfterTouch()
 
 }
 
+void  InputMidiFileTest::testSysEx()
+{
+#ifdef DEBUG
+//	debugFlags::flags.timer = true;
+//	debugFlags::flags.midiio = true;
+//	debugFlags::flags.midifile = true;
+#endif
+
+	// input device is set up during setUp
+	CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().size() == 1);
+	CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
+	CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());
+	CPPUNIT_ASSERT(mutabor::BoxClass::GetBoxList().empty());
+
+	mutabor::ScopedOutputDevice guard;
+	midicmnOutputDevice * out;
+	mutabor::ScopedBox box(NULL);
+	mutabor::ScopedRoute  route;
+	mutabor::ChannelData cd;
+
+	route = mutabor::RouteFactory::Create();
+	box = mutabor::BoxFactory::Create(mutabor::Box0,0);
+	connect(route,box);
+	mutabor::initialize_box_data();
+
+	wxString name = srcdir;
+	name += _T("/midiin.mut");
+
+	wxFile file(name);
+	CPPUNIT_ASSERT(file.IsOpened());
+	wxFileOffset length = file.Length();
+	char * logic_string = (char *) malloc(length+1);
+	CPPUNIT_ASSERT(file.Read(logic_string, length) == length);
+	logic_string[length] = 0;
+
+	MyCompileCallback callback;
+	CPPUNIT_ASSERT(box->Compile(&callback, logic_string));
+	free(logic_string);
+	logic_string = NULL;
+
+	route->SetActive(true);
+
+
+	mutabor::CurrentTime.UseRealtime(true);
+	out = new midicmnOutputDevice(_T("Test"));
+	out->SetBendingRange(2);
+	//out = new midicmnOutputDevice(3,_T("Test"));
+	guard = out;
+
+	connect(route,guard);
+	route->SetOutputFrom (0);
+	route->SetOutputTo (15);
+	route->OutputAvoidDrumChannel (true);
+
+	connect(route, in);
+
+	CPPUNIT_ASSERT( in );
+	in -> SetName(_T(SRCDIR) _T("/sysex.mid"));
+
+
+	// First check: Input device provides the correct delta times
+	mutabor::CurrentTime.UseRealtime(false);
+	mutabor::CurrentTime = 0;
+
+//	in -> Play(wxTHREAD_JOINABLE);
+	mutabor::InputDeviceClass::BatchPlay();
+
+	CPPUNIT_ASSERT(out->Check(_T("\
+0 Opened...\n\
+0   0: e0 00 40\n\
+0   0: b0 7a 00\n\
+0   0: b0 7d 00\n\
+0   0: b0 7f 00\n\
+0   0: b0 65 00\n\
+0   0: b0 64 00\n\
+0   0: b0 06 02\n\
+0   0: b0 26 00\n\
+0   1: e1 00 40\n\
+0   1: b1 7a 00\n\
+0   1: b1 7d 00\n\
+0   1: b1 7f 00\n\
+0   1: b1 65 00\n\
+0   1: b1 64 00\n\
+0   1: b1 06 02\n\
+0   1: b1 26 00\n\
+0   2: e2 00 40\n\
+0   2: b2 7a 00\n\
+0   2: b2 7d 00\n\
+0   2: b2 7f 00\n\
+0   2: b2 65 00\n\
+0   2: b2 64 00\n\
+0   2: b2 06 02\n\
+0   2: b2 26 00\n\
+0   3: e3 00 40\n\
+0   3: b3 7a 00\n\
+0   3: b3 7d 00\n\
+0   3: b3 7f 00\n\
+0   3: b3 65 00\n\
+0   3: b3 64 00\n\
+0   3: b3 06 02\n\
+0   3: b3 26 00\n\
+0   4: e4 00 40\n\
+0   4: b4 7a 00\n\
+0   4: b4 7d 00\n\
+0   4: b4 7f 00\n\
+0   4: b4 65 00\n\
+0   4: b4 64 00\n\
+0   4: b4 06 02\n\
+0   4: b4 26 00\n\
+0   5: e5 00 40\n\
+0   5: b5 7a 00\n\
+0   5: b5 7d 00\n\
+0   5: b5 7f 00\n\
+0   5: b5 65 00\n\
+0   5: b5 64 00\n\
+0   5: b5 06 02\n\
+0   5: b5 26 00\n\
+0   6: e6 00 40\n\
+0   6: b6 7a 00\n\
+0   6: b6 7d 00\n\
+0   6: b6 7f 00\n\
+0   6: b6 65 00\n\
+0   6: b6 64 00\n\
+0   6: b6 06 02\n\
+0   6: b6 26 00\n\
+0   7: e7 00 40\n\
+0   7: b7 7a 00\n\
+0   7: b7 7d 00\n\
+0   7: b7 7f 00\n\
+0   7: b7 65 00\n\
+0   7: b7 64 00\n\
+0   7: b7 06 02\n\
+0   7: b7 26 00\n\
+0   8: e8 00 40\n\
+0   8: b8 7a 00\n\
+0   8: b8 7d 00\n\
+0   8: b8 7f 00\n\
+0   8: b8 65 00\n\
+0   8: b8 64 00\n\
+0   8: b8 06 02\n\
+0   8: b8 26 00\n\
+0   9: e9 00 40\n\
+0   9: b9 7a 00\n\
+0   9: b9 7d 00\n\
+0   9: b9 7f 00\n\
+0   9: b9 65 00\n\
+0   9: b9 64 00\n\
+0   9: b9 06 02\n\
+0   9: b9 26 00\n\
+0  10: ea 00 40\n\
+0  10: ba 7a 00\n\
+0  10: ba 7d 00\n\
+0  10: ba 7f 00\n\
+0  10: ba 65 00\n\
+0  10: ba 64 00\n\
+0  10: ba 06 02\n\
+0  10: ba 26 00\n\
+0  11: eb 00 40\n\
+0  11: bb 7a 00\n\
+0  11: bb 7d 00\n\
+0  11: bb 7f 00\n\
+0  11: bb 65 00\n\
+0  11: bb 64 00\n\
+0  11: bb 06 02\n\
+0  11: bb 26 00\n\
+0  12: ec 00 40\n\
+0  12: bc 7a 00\n\
+0  12: bc 7d 00\n\
+0  12: bc 7f 00\n\
+0  12: bc 65 00\n\
+0  12: bc 64 00\n\
+0  12: bc 06 02\n\
+0  12: bc 26 00\n\
+0  13: ed 00 40\n\
+0  13: bd 7a 00\n\
+0  13: bd 7d 00\n\
+0  13: bd 7f 00\n\
+0  13: bd 65 00\n\
+0  13: bd 64 00\n\
+0  13: bd 06 02\n\
+0  13: bd 26 00\n\
+0  14: ee 00 40\n\
+0  14: be 7a 00\n\
+0  14: be 7d 00\n\
+0  14: be 7f 00\n\
+0  14: be 65 00\n\
+0  14: be 64 00\n\
+0  14: be 06 02\n\
+0  14: be 26 00\n\
+0  15: ef 00 40\n\
+0  15: bf 7a 00\n\
+0  15: bf 7d 00\n\
+0  15: bf 7f 00\n\
+0  15: bf 65 00\n\
+0  15: bf 64 00\n\
+0  15: bf 06 02\n\
+0  15: bf 26 00\n\
+0  -1: SysEx 01 00 7f 01 End\n\
+1  -1: SysEx 7e 01 7f 03 End\n\
+2  -1: SysEx 7e 0a 7e 02 End\n\
+3  -1: SysEx 7e 00 01 02 7d 04 End\n\
+4  -1: SysEx 7e 00 03 04 7c 05 End\n\
+5  -1: SysEx 7e 02 7b 06 End\n\
+6  -1: SysEx 7e 03 01 23 45 08 01 00 00 02 00 00 00 00 00 02 00 00 01 End\n\
+7  -1: SysEx 7e 04 03 01 23 End\n\
+8  -1: SysEx 7e 05 02 07 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 7e End\n\
+9  -1: SysEx 7e 06 05 01 23 45 01 02 01 01 00 00 02 00 00 End\n\
+10  -1: SysEx 7e 07 05 02 23 45 01 00 End\n\
+11  -1: SysEx 7e 08 06 01 End\n\
+12  -1: SysEx 7e 09 06 02 08 7e 6d 5c 4b 00 04 00 00 End\n\
+546 ...closed.\n\
+"),__LINE__,_T(__FILE__)));
+
+}
+
 
 ///\}
