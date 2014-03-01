@@ -765,8 +765,52 @@ namespace mutabor {
 			Out(channel,midi::NOTE_OFF, pitch, velocity);
 		}
 
+		void key_pressure(int channel, int key, int pressure) {
+			Out(channel,midi::KEY_PRESSURE, key, pressure);
+		}
 
+		/**
+		 * Send a single byte system message.
+		 *
+		 * \param type Type of the message;
+		 */
+		void system(int type) {
+			Out.RawMsg(-1,type);
+		}
 
+		/**
+		 * Send a quarter frame event.
+		 *
+		 * \param type   quarter frame type (may set only the lowest 3 bits)
+		 * \param values qarter frame value (may set only the lowest 4 bits)
+		 */
+		void quarter_frame(int type, int values) {
+			if ((type & 0x07) == type
+			    && (values & 0x0f) == values) {
+				Out.RawMsg(midi::QUARTER_FRAME,
+					   (type << 4) | values);
+			}
+		}
+
+		/**
+		 * Send a song positon event.
+		 *
+		 * \param position Position to be sent. Must be
+		 * between 0x0000 and 0x3fff.
+		 */
+		void song_position(int position) {
+			if (position & ~((int) 0x3fff))
+				return;
+			Out.RawMsg(midi::SONG_POSITION,
+				   position & 0x7f,
+				   position >> 7);
+		}
+
+		void song_select(int song) {
+			if (song & ~((int) 0x7f))
+				return;
+			Out.RawMsg(midi::SONG_SELECT, song);
+		}
 
 		long fix_bend(long bend) {
 			long retval;
