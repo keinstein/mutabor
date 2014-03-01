@@ -764,8 +764,17 @@ namespace mutabor {
 		}
 
 		void controller(int channel, int controller, int value) {
+			mutASSERT(0 <= value && value < 0x80);
 			DEBUGLOG(midiio,_T("ch: %d, ctrl: %d, value: %d"),channel, controller, value);
-			Out(channel,midi::CONTROLLER, controller, value);
+			switch (controller) {
+			case midi::CHANNEL_PRESSURE_VAL: {
+				Out(channel,midi::CHANNEL_PRESSURE, value);
+			}
+			default:
+				if (controller >= 0 && controller < 0x80) {
+					Out(channel,midi::CONTROLLER, controller, value);
+				}
+			}
 		}
 
 		void note_on(int channel, int pitch, int velocity) {
