@@ -29,7 +29,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mutabor 3.1.0alpha0\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2014-02-16 16:51+0100\n"
+"POT-Creation-Date: 2014-02-24 21:06+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.berlios.de>\n"
 "Language-Team: English <mutabor@mailbox.tu-dresden.de>\n"
@@ -516,12 +516,12 @@ msgstr ""
 msgid "%s %x"
 msgstr ""
 
-#: src/kernel/Execute.cpp:622
+#: src/kernel/Execute.cpp:624
 #, c-format
 msgid "Unexpected action type: %d"
 msgstr "Unexpected action type: %d"
 
-#: src/kernel/Execute.cpp:868
+#: src/kernel/Execute.cpp:870
 #, c-format
 msgid ""
 "Undefined harmonic harmony class %d in HarmonyAnalysis().\n"
@@ -1089,17 +1089,17 @@ msgstr "GIS input file."
 msgid "Device base class"
 msgstr "Device base class"
 
-#: src/kernel/routing/Device.h:931
+#: src/kernel/routing/Device.h:937
 msgid "Undefined output device"
 msgstr "Undefined output device"
 
-#: src/kernel/routing/Device.h:1196
+#: src/kernel/routing/Device.h:1203
 msgid "Undefined input device"
 msgstr "Undefined input device"
 
 #: src/kernel/routing/Route.cpp:336 src/kernel/routing/Route.cpp:384
-#: src/kernel/routing/midi/DevMidi.cpp:118
-#: src/kernel/routing/midi/DevMidi.cpp:295
+#: src/kernel/routing/midi/DevMidi.cpp:120
+#: src/kernel/routing/midi/DevMidi.cpp:296
 msgid "Unknown"
 msgstr "Unknown"
 
@@ -1116,16 +1116,16 @@ msgstr "Midi File"
 msgid "GUIDO .gmn File"
 msgstr "GUIDO .gmn File"
 
-#: src/kernel/routing/Route.h:127
+#: src/kernel/routing/Route.h:129
 #, fuzzy
 msgid "No such output device"
 msgstr "No output device"
 
-#: src/kernel/routing/Route.h:572
+#: src/kernel/routing/Route.h:576
 msgid "Route factory already set"
 msgstr ""
 
-#: src/kernel/routing/Route.h:577
+#: src/kernel/routing/Route.h:581
 msgid ""
 "Trying to create a route without the correct factory. You (the programmer) "
 "must create one!"
@@ -1149,7 +1149,7 @@ msgstr "Error in GMN-File %s position(%d, %d): %s"
 msgid "GIS output file"
 msgstr "GIS output file."
 
-#: src/kernel/routing/gmn/DevGIS.h:280
+#: src/kernel/routing/gmn/DevGIS.h:279
 #, fuzzy
 msgid "GIS input file"
 msgstr "GIS input file."
@@ -1227,13 +1227,13 @@ msgstr "Range without preceeding tag."
 msgid "Number contains too many bytes"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:164
-#, fuzzy
-msgid "Invalid status byte"
+#: src/kernel/routing/midi/DevMidF.cpp:165
+#, fuzzy, c-format
+msgid "Invalid status byte: %x  at position %d"
 msgstr "status byte"
 
-#: src/kernel/routing/midi/DevMidF.cpp:328
-#: src/kernel/routing/midi/DevMidF.cpp:460
+#: src/kernel/routing/midi/DevMidF.cpp:332
+#: src/kernel/routing/midi/DevMidF.cpp:464
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -1242,23 +1242,23 @@ msgstr ""
 "The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The "
 "current route had to be corrected."
 
-#: src/kernel/routing/midi/DevMidF.cpp:330
-#: src/kernel/routing/midi/DevMidF.cpp:462
-#: src/kernel/routing/midi/DevMidF.cpp:490
-#: src/kernel/routing/midi/DevMidi.cpp:160
-#: src/kernel/routing/midi/DevMidi.cpp:338
-#: src/kernel/routing/midi/DevMidi.cpp:367
+#: src/kernel/routing/midi/DevMidF.cpp:334
+#: src/kernel/routing/midi/DevMidF.cpp:466
+#: src/kernel/routing/midi/DevMidF.cpp:494
+#: src/kernel/routing/midi/DevMidi.cpp:162
+#: src/kernel/routing/midi/DevMidi.cpp:339
+#: src/kernel/routing/midi/DevMidi.cpp:368
 msgid "Warning loading route"
 msgstr "Warning loading route"
 
-#: src/kernel/routing/midi/DevMidF.cpp:369
-#: src/kernel/routing/midi/DevMidF.cpp:375
-#: src/kernel/routing/midi/DevMidi.cpp:170
-#: src/kernel/routing/midi/DevMidi.cpp:176
+#: src/kernel/routing/midi/DevMidF.cpp:373
+#: src/kernel/routing/midi/DevMidF.cpp:379
+#: src/kernel/routing/midi/DevMidi.cpp:172
+#: src/kernel/routing/midi/DevMidi.cpp:178
 msgid "Bending_Range"
 msgstr "Bending_Range"
 
-#: src/kernel/routing/midi/DevMidF.cpp:488
+#: src/kernel/routing/midi/DevMidF.cpp:492
 #, c-format
 msgid ""
 "The Track range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -1267,47 +1267,47 @@ msgstr ""
 "The Track range %d--%d of the MIDI file %s must be inside %d--%d. The "
 "current route had to be corrected."
 
-#: src/kernel/routing/midi/DevMidF.cpp:519
+#: src/kernel/routing/midi/DevMidF.cpp:523
 #, c-format
 msgid "Can not open Midi input file '%s'."
 msgstr "Can not open Midi input file '%s'."
 
-#: src/kernel/routing/midi/DevMidF.cpp:529
+#: src/kernel/routing/midi/DevMidF.cpp:533
 #, fuzzy, c-format
 msgid "File '%s' is not a valid midi file."
 msgstr "The string “%s”s not a valid file name."
 
-#: src/kernel/routing/midi/DevMidF.cpp:538
+#: src/kernel/routing/midi/DevMidF.cpp:542
 #, c-format
 msgid "Unknown header (chunk length %d) in file '%s'."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:551
+#: src/kernel/routing/midi/DevMidF.cpp:555
 #, fuzzy, c-format
 msgid "Unknown file typ %d in file '%s'."
 msgstr "Unknown device type %d."
 
-#: src/kernel/routing/midi/DevMidF.cpp:569
+#: src/kernel/routing/midi/DevMidF.cpp:573
 #, c-format
 msgid "Midi file '%s' has corrupted timing information."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:589
+#: src/kernel/routing/midi/DevMidF.cpp:593
 #, c-format
 msgid "Could not allocate memory for the track list of file '%s'."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:597
+#: src/kernel/routing/midi/DevMidF.cpp:601
 #, c-format
 msgid "File '%s' has a broken track header."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:614
+#: src/kernel/routing/midi/DevMidF.cpp:618
 #, c-format
 msgid "Could not allocate data for track %d of MIDI input file '%s'."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:631
+#: src/kernel/routing/midi/DevMidF.cpp:635
 #, c-format
 msgid ""
 "The MIDI input file “%s” is corrupted. This has been detected while reading "
@@ -1340,14 +1340,14 @@ msgstr "MIDI output file"
 msgid "MIDI input file"
 msgstr "MIDI input file"
 
-#: src/kernel/routing/midi/DevMidi.cpp:118
-#: src/kernel/routing/midi/DevMidi.cpp:295
+#: src/kernel/routing/midi/DevMidi.cpp:120
+#: src/kernel/routing/midi/DevMidi.cpp:296
 #: src/kernel/routing/midi/DevMidi.h:323 src/kernel/routing/midi/DevMidi.h:467
 #: src/wxGUI/Routing/DeviceShape.cpp:566 src/wxGUI/Routing/DeviceShape.cpp:605
 msgid "no device"
 msgstr "no device"
 
-#: src/kernel/routing/midi/DevMidi.cpp:158
+#: src/kernel/routing/midi/DevMidi.cpp:160
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI output device %s must be inside %d--%d. "
@@ -1356,7 +1356,7 @@ msgstr ""
 "The Channel range %d--%d of the MIDI output device %s must be inside %d--%d. "
 "The current route had to be corrected."
 
-#: src/kernel/routing/midi/DevMidi.cpp:336
+#: src/kernel/routing/midi/DevMidi.cpp:337
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. "
@@ -1365,7 +1365,7 @@ msgstr ""
 "The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. "
 "The current route had to be corrected."
 
-#: src/kernel/routing/midi/DevMidi.cpp:365
+#: src/kernel/routing/midi/DevMidi.cpp:366
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI input device must be inside %d--%d. The "
@@ -1374,9 +1374,9 @@ msgstr ""
 "The Channel range %d--%d of the MIDI input device must be inside %d--%d. The "
 "current route had to be corrected."
 
-#: src/kernel/routing/midi/DevMidi.cpp:389
-#: src/kernel/routing/midi/DevMidi.cpp:399
-#: src/kernel/routing/midi/DevMidi.cpp:409
+#: src/kernel/routing/midi/DevMidi.cpp:390
+#: src/kernel/routing/midi/DevMidi.cpp:400
+#: src/kernel/routing/midi/DevMidi.cpp:410
 #, c-format
 msgid "Can not open Midi input device no. %d (%s)."
 msgstr "Can not open Midi input device no. %d (%s)."
@@ -2093,7 +2093,7 @@ msgstr "The compile dialog could not be loaded."
 
 #: src/wxGUI/MutChild.cpp:131 src/wxGUI/MutChild.cpp:216
 #: src/wxGUI/MutChild.cpp:318 src/wxGUI/MutChild.cpp:356
-#: src/wxGUI/MutFrame.cpp:1102 src/wxGUI/MutFrame.cpp:1225
+#: src/wxGUI/MutFrame.cpp:1102 src/wxGUI/MutFrame.cpp:1229
 #: src/wxGUI/MutTextBox.cpp:125 src/wxGUI/MutTextBox.cpp:219
 msgid "Unexpected value: WK_LOGIC"
 msgstr "Unexpected value: WK_LOGIC"
@@ -2101,8 +2101,8 @@ msgstr "Unexpected value: WK_LOGIC"
 #: src/wxGUI/MutChild.cpp:135 src/wxGUI/MutChild.cpp:220
 #: src/wxGUI/MutChild.cpp:285 src/wxGUI/MutChild.cpp:322
 #: src/wxGUI/MutChild.cpp:360 src/wxGUI/MutChild.cpp:413
-#: src/wxGUI/MutFrame.cpp:1106 src/wxGUI/MutFrame.cpp:1229
-#: src/wxGUI/MutFrame.cpp:1828 src/wxGUI/MutTextBox.cpp:129
+#: src/wxGUI/MutFrame.cpp:1106 src/wxGUI/MutFrame.cpp:1233
+#: src/wxGUI/MutFrame.cpp:1832 src/wxGUI/MutTextBox.cpp:129
 #: src/wxGUI/MutTextBox.cpp:170 src/wxGUI/MutTextBox.cpp:174
 #: src/wxGUI/MutTextBox.cpp:223
 msgid "Unexpected value: WK_ROUTE"
@@ -2111,8 +2111,8 @@ msgstr "Unexpected value: WK_ROUTE"
 #: src/wxGUI/MutChild.cpp:139 src/wxGUI/MutChild.cpp:224
 #: src/wxGUI/MutChild.cpp:289 src/wxGUI/MutChild.cpp:326
 #: src/wxGUI/MutChild.cpp:364 src/wxGUI/MutChild.cpp:417
-#: src/wxGUI/MutFrame.cpp:1110 src/wxGUI/MutFrame.cpp:1233
-#: src/wxGUI/MutFrame.cpp:1832 src/wxGUI/MutTextBox.cpp:133
+#: src/wxGUI/MutFrame.cpp:1110 src/wxGUI/MutFrame.cpp:1237
+#: src/wxGUI/MutFrame.cpp:1836 src/wxGUI/MutTextBox.cpp:133
 #: src/wxGUI/MutTextBox.cpp:178 src/wxGUI/MutTextBox.cpp:227
 msgid "Unexpected value: WK_EDIT"
 msgstr "Unexpected value: WK_EDIT"
@@ -2120,7 +2120,7 @@ msgstr "Unexpected value: WK_EDIT"
 #: src/wxGUI/MutChild.cpp:143 src/wxGUI/MutChild.cpp:228
 #: src/wxGUI/MutChild.cpp:293 src/wxGUI/MutChild.cpp:330
 #: src/wxGUI/MutChild.cpp:368 src/wxGUI/MutChild.cpp:421
-#: src/wxGUI/MutFrame.cpp:1114 src/wxGUI/MutFrame.cpp:1237
+#: src/wxGUI/MutFrame.cpp:1114 src/wxGUI/MutFrame.cpp:1241
 #: src/wxGUI/MutTextBox.cpp:137 src/wxGUI/MutTextBox.cpp:182
 #: src/wxGUI/MutTextBox.cpp:231
 msgid "Unexpected value: WK_NULL"
@@ -2129,8 +2129,8 @@ msgstr "Unexpected value: WK_NULL"
 #: src/wxGUI/MutChild.cpp:147 src/wxGUI/MutChild.cpp:232
 #: src/wxGUI/MutChild.cpp:297 src/wxGUI/MutChild.cpp:334
 #: src/wxGUI/MutChild.cpp:372 src/wxGUI/MutChild.cpp:425
-#: src/wxGUI/MutFrame.cpp:1118 src/wxGUI/MutFrame.cpp:1241
-#: src/wxGUI/MutFrame.cpp:1848 src/wxGUI/MutTextBox.cpp:141
+#: src/wxGUI/MutFrame.cpp:1118 src/wxGUI/MutFrame.cpp:1245
+#: src/wxGUI/MutFrame.cpp:1852 src/wxGUI/MutTextBox.cpp:141
 #: src/wxGUI/MutTextBox.cpp:186
 #, c-format
 msgid "Unexpected window kind: %d"
@@ -2393,7 +2393,7 @@ msgstr "Unexpected Event in MutFrame::CmFileOpen: %d"
 msgid "noname.mut"
 msgstr "noname.mut"
 
-#: src/wxGUI/MutFrame.cpp:653 src/wxGUI/MutFrame.cpp:1720
+#: src/wxGUI/MutFrame.cpp:653 src/wxGUI/MutFrame.cpp:1724
 #, c-format
 msgid "%s -- %s"
 msgstr "%s -- %s"
@@ -2439,53 +2439,53 @@ msgstr "Routes"
 msgid "(unknown)"
 msgstr "Unknown"
 
-#: src/wxGUI/MutFrame.cpp:1423
+#: src/wxGUI/MutFrame.cpp:1427
 msgid "MutFrame::WindowSize:  not implemented"
 msgstr "MutFrame::WindowSize:  not implemented"
 
-#: src/wxGUI/MutFrame.cpp:1604
+#: src/wxGUI/MutFrame.cpp:1608
 msgid "The conversion finished successfully."
 msgstr ""
 
-#: src/wxGUI/MutFrame.cpp:1605 src/wxGUI/MutFrame.cpp:1611
+#: src/wxGUI/MutFrame.cpp:1609 src/wxGUI/MutFrame.cpp:1615
 #, fuzzy
 msgid "Conversion error"
 msgstr "Activation error"
 
-#: src/wxGUI/MutFrame.cpp:1897
+#: src/wxGUI/MutFrame.cpp:1901
 msgid "&Raise current box\tCtrl+B"
 msgstr ""
 
-#: src/wxGUI/MutFrame.cpp:1898
+#: src/wxGUI/MutFrame.cpp:1902
 msgid "This item activates the window of the currently selectcd box"
 msgstr ""
 
-#: src/wxGUI/MutFrame.cpp:1944
+#: src/wxGUI/MutFrame.cpp:1946
 #, fuzzy, c-format
 msgid "Box %d got a new id %d"
 msgstr "Box %d got id %d"
 
-#: src/wxGUI/MutFrame.cpp:1950
+#: src/wxGUI/MutFrame.cpp:1952
 #, c-format
 msgid "Currently %d items in box menu"
 msgstr "Currently %d items in box menu"
 
-#: src/wxGUI/MutFrame.cpp:1953
+#: src/wxGUI/MutFrame.cpp:1955
 #, c-format
 msgid "Appending menu for box %d with id %d"
 msgstr "Appending menu for box %d with id %d"
 
-#: src/wxGUI/MutFrame.cpp:1955
+#: src/wxGUI/MutFrame.cpp:1957
 #, c-format
 msgid "Select box %d\tCtrl+%d"
 msgstr "Select box %d\tCtrl+%d"
 
-#: src/wxGUI/MutFrame.cpp:1958
+#: src/wxGUI/MutFrame.cpp:1960
 #, c-format
 msgid "Select box %d as the active Box for box specific commands."
 msgstr "Select box %d as the active Box for box specific commands."
 
-#: src/wxGUI/MutFrame.cpp:1973
+#: src/wxGUI/MutFrame.cpp:1975
 #, fuzzy, c-format
 msgid "Connecting command with id %d for box command %d"
 msgstr "Connecting command with id %d for box %d"
@@ -2495,27 +2495,27 @@ msgstr "Connecting command with id %d for box %d"
 msgid "Logic: %s - Box %d"
 msgstr "Logic: %s - Box %d"
 
-#: src/wxGUI/MutRouteWnd.cpp:444 src/wxGUI/MutRouteWnd.cpp:626
+#: src/wxGUI/MutRouteWnd.cpp:432 src/wxGUI/MutRouteWnd.cpp:614
 #, c-format
 msgid "The string '%s' is not a valid file name."
 msgstr "The string â%sâ is not a valid file name."
 
-#: src/wxGUI/MutRouteWnd.cpp:457 src/wxGUI/MutRouteWnd.cpp:476
+#: src/wxGUI/MutRouteWnd.cpp:445 src/wxGUI/MutRouteWnd.cpp:464
 #, c-format
 msgid "File '%s' couldn't be loaded"
 msgstr "File â%sâ couldn't be loaded"
 
-#: src/wxGUI/MutRouteWnd.cpp:466
+#: src/wxGUI/MutRouteWnd.cpp:454
 #, c-format
 msgid "File '%s' could be opened, but not loaded."
 msgstr "File â%sâ could be opened, but not loaded."
 
-#: src/wxGUI/MutRouteWnd.cpp:562
+#: src/wxGUI/MutRouteWnd.cpp:550
 #, c-format
 msgid "Cannot open routes file '%s' for writing."
 msgstr "Cannot open routes file â%sâ for writing."
 
-#: src/wxGUI/MutRouteWnd.cpp:581
+#: src/wxGUI/MutRouteWnd.cpp:569
 #, c-format
 msgid "Error writing file '%s'."
 msgstr "Error writing file '%s'."
@@ -2590,17 +2590,17 @@ msgstr "&Preferences"
 msgid "%2u : %8.1lf Hz (%6.2lf HT)"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:453
+#: src/wxGUI/MutTextBox.cpp:448
 #, fuzzy
 msgid "Actions - all boxes"
 msgstr "Actions at Box %d"
 
-#: src/wxGUI/MutTextBox.cpp:455
+#: src/wxGUI/MutTextBox.cpp:450
 #, fuzzy, c-format
 msgid "%s - %s"
 msgstr "%s -- %s"
 
-#: src/wxGUI/MutTextBox.cpp:457
+#: src/wxGUI/MutTextBox.cpp:452
 #, fuzzy
 msgid "unknown"
 msgstr "Unknown"
