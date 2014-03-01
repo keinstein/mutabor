@@ -1214,11 +1214,15 @@ To start the translation hit the play button or select “Play” from the “Se
 			break;
 
 		case WK_ACT:
+			/* nothing to be done.
+			   The actions window starts empty. */
+#if 0
 			if (CAW) {
 				client->GetAllActions();
 			} else {
 				client->GetBoxActions();
 			}
+#endif
 			break;
 
 		case WK_LOGIC:
@@ -1786,6 +1790,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		return normal;
 	}
 
+#if 0
 /// Close all child windows of given kind
 /** This function closes all child windows of the given kind.
  *
@@ -1797,7 +1802,6 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 
 #warning reimplement this or remove the function
-#if 0
 		TRACEC;
 
 		auimanager.Update();
@@ -1856,8 +1860,8 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		} while (box);
 		Thaw();
 		auimanager.Update();
-#endif
 	}
+#endif
 
 	bool MutFrame::Destroy() {
 		bool retval = base::Destroy();
@@ -1916,7 +1920,6 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 			// maybe CM_ACTIVATE is somewhat descriptive, here.
 			int command_id = CM_ACTIVATE;
 			boxCommandMap::iterator freecmd = tmpmap.end();
-			bool new_command_id = false;
 			for (boxCommandMap::iterator i = tmpmap.begin();
 			     i != tmpmap.end();
 			     ++i) {
@@ -1936,7 +1939,6 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 			if (command_id == CM_ACTIVATE) {
 				if (freecmd == tmpmap.end()) {
 					command_id = wxNewId();
-					new_command_id = true;
 				} else {
 					command_id = freecmd->first;
 					tmpmap.erase(freecmd);
@@ -1998,10 +2000,10 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 	}
 
 
+#if 0
 	void CheckBoxesUsed()
 	{
 #warning Check whether CheckBoxesUsed is in use
-#if 0
 		for (int i = 0; i < MAX_BOX; i++) {
 			mutabor_box_type & b = mut_box[i];
 			b.id = i;
@@ -2034,32 +2036,8 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 			} else b.next_used = 0;
 		}
 		minimal_box_used = last_used;
-#endif
-	}
-
-#if 0
-	int SmallestBoxUsed()
-
-	{
-		int Box = MAX_BOX; // unused value
-
-		const InputDeviceList & list =
-			InputDeviceClass::GetDeviceList();
-		for ( InputDeviceList::const_iterator In = list.begin();
-		      In != list.end(); In++) {
-			const routeListType & routes = (*In)->GetRoutes();
-			for ( routeListType::const_iterator R = routes.begin();
-			      R != routes.end(); R++) {
-				if ( (*R)->GetBox() >= 0 ) {
-					Box = STD_PRE::min(Box, (*R)->GetBox());
-				}
-			}
-		}
-		if ( Box == MAX_BOX )
-			return 0;
-		else
-			return Box;
 	}
 #endif
+
 }
 //\}

@@ -94,7 +94,7 @@ extern "C" {
 		} else {
 			STUB;
 		} 
-		return "";
+		return const_cast<char *>("");
 	}
 
 	/* Specify that the DOMAINNAME message catalog will be found
@@ -107,7 +107,7 @@ extern "C" {
 		else {
 			STUB;
 		}
-		return "";
+		return const_cast<char *>("");
 	}
 
 #if 0

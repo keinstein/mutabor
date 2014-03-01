@@ -400,7 +400,6 @@ namespace mutaborGUI {
 		} else if (!GetRoot() || !current_node) return;
 		bool cont = false;
 		do {
-			node_type * last_node;
 			cont = tokenizer.HasMoreTokens();
 			if (!name || name == _T(".")) {
 				goto loop_step;
@@ -421,9 +420,7 @@ namespace mutaborGUI {
 				goto loop_step;
 			}
 			node = current_node->GetChildren();
-			last_node = node;
 			while (node && node -> GetName() != name) {
-				last_node = node;
 				node = node->GetNext();
 			}
 			if (!node) {

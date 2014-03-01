@@ -45,7 +45,8 @@
     \todo Check out how wxWidgets 2.9 supports templates */
 
 
-#if wxCHECK_VERSION(2,9,0) 
+#if wxCHECK_VERSION(4,0,0)
+// look
 #warning Check out how to use templates with IMPLEMENT_DYNAMIC_CLASS
 #warning Check out how to use templates with BEGIN_EVENT_TABLE
 

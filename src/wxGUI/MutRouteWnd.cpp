@@ -213,21 +213,9 @@ void MutRouteWnd::InitShapes()
 	InputDevices.push_back(newin);
 	
 	mutASSERT(Boxes.empty());
-#warning here are some problems with newbox
-#if 0
-	/* this code should not be necessary */
-	mutabor::Box newbox = mutabor::BoxClass::GetOrCreateBox(NewBox);
-	BoxData * box = ToGUIBase(newbox);
-	DEBUGLOG(routing,_T("Adding box shape for box %d (list of %d)"),
-		 NewBox,(int)(box->GetShapes().size()));	
-#endif
 	MutBoxShape * boxShape = new NewMutBoxShape(this,wxID_ANY);
 	GetSizer()->Add(boxShape, flags);
 	Boxes.push_back(boxShape);
-#if 0
-	DEBUGLOG(routing,_T("Adding box shape for box %d (list of %d now)"),
-		 NewBox,(int)(box->GetShapes().size()));	
-#endif
 
 	mutASSERT(OutputDevices.empty());
 	MutOutputDeviceShape * newout = new MutNewOutputDeviceShape(this,wxID_ANY);
@@ -741,7 +729,6 @@ void MutRouteWnd::OnMoveShape(wxCommandEvent& event) {
 	if (dynamic_cast<MutBoxShape *>(win) || 
 	    dynamic_cast<MutInputDeviceShape *>(win) || 
 	    dynamic_cast<MutOutputDeviceShape *>(win)) {
-#warning Enable this as soon as the classes catch the event
 		wxPostEvent(win,event);	
 	}
 }
