@@ -585,7 +585,9 @@ namespace mutabor {
 		}
 
 		/// Process an error message (doing the real work)
-		virtual void runtime_error(int type, const mutStringRef message, va_list & args);
+		virtual void runtime_error(int type,
+					   const mutStringRef message,
+					   va_list & args);
 
 
 		const wxString & GetName() const {
@@ -812,6 +814,7 @@ namespace mutabor {
 #ifdef WX
 		virtual wxString TowxString() const;
 #endif
+
 	protected:
 		static void AppendToDeviceList (DevicePtr dev);
 		static void RemoveFromDeviceList (DevicePtr  dev);
@@ -838,6 +841,7 @@ namespace mutabor {
 	class OutputDeviceCLass;
 	typedef CommonTypedDeviceAPI<OutputDeviceClass>::DevicePtr OutputDevice;
 	typedef CommonTypedDeviceAPI<OutputDeviceClass>::listtype OutputDeviceList;
+	typedef std::set<OutputDevice> OutputDeviceSet;
 	class OutputDeviceClass: public CommonTypedDeviceAPI<OutputDeviceClass>
 	{
 		friend class DeviceFactory;
@@ -905,6 +909,14 @@ namespace mutabor {
 		void handle_event(event e) {
 			ScopedLock lock(write_lock);
 			do_handle_event(e);
+		}
+
+		static void all_handle_event(event e) {
+			for (OutputDeviceList::iterator i = deviceList.begin();
+			     i != deviceList.end(); ++i) {
+				(*i) -> handle_event (e);
+			}
+
 		}
 		void Quiet(Route r, int type) {
 			ScopedLock lock(write_lock);
@@ -989,7 +1001,7 @@ namespace mutabor {
 		virtual void do_AddTime(frac time) = 0;
 		virtual void do_MidiOut(mutabor::Box box, midi_string data) = 0;
 		virtual void do_MidiOut(BYTE *p, size_t n) = 0;
-		virtual void do_handle_event(event & e) = 0;
+		virtual void do_handle_event(event e) = 0;
 		virtual void do_Quiet(Route r, int type) = 0;
 		virtual void do_Quiet(Route r, int type, size_t id) = 0;
 		virtual void do_Panic(int type) { STUBC; };
@@ -1120,6 +1132,8 @@ namespace mutabor {
 			Mode = DeviceStop;
 		}
 
+
+
                 /** Command the device to play music.
 		 * This function starts playing the music of the device at the curren position.
 		 */
@@ -1139,6 +1153,33 @@ namespace mutabor {
 		 * The the realtime mode allows interactive playing together with the integrated sequencer.
 		 */
 		static void RealtimePlay();
+
+		/**
+		 * Stop all inupt devices.
+		 */
+		static void StopAll() {
+			for (listtype::iterator i = deviceList.begin();
+			     i != deviceList.end(); ++i) {
+				if ( (*i)->GetMode() == DevicePlay
+				     || (*i)->GetMode() == DevicePause ) {
+					(*i)->Stop();
+				}
+			}
+			last_was_stop = true;
+		}
+		/**
+		 * Pause all input devices.
+		 *
+		 */
+		static void PauseAll() {
+			for (listtype::iterator i = deviceList.begin();
+			     i != deviceList.end(); ++i) {
+				(*i)->Pause();
+			}
+			last_was_stop = false;
+		}
+
+		static bool was_last_stop() { return last_was_stop; }
 
 #if (!wxCHECK_VERSION(2,9,2))
 		enum wxThreadWait {
@@ -1278,6 +1319,7 @@ namespace mutabor {
 	protected:
 		current_keys_type current_keys;
 		Mutex write_lock;
+		static bool last_was_stop;
 
 		InputDeviceClass(const mutStringRef name = mutEmptyString,
 				 mutabor::MutaborModeType m = DeviceStop,
@@ -1285,6 +1327,20 @@ namespace mutabor {
 			CommonTypedDeviceAPI<InputDeviceClass>(name, id)
 		{
 			Mode = m;
+		}
+
+		void outputs_handle_event(event e) {
+			OutputDeviceSet set;
+			for (routeListType::iterator i=routes.begin();
+				     i != routes.end(); ++i) {
+				OutputDevice o = (*i)->GetOutputDevice();
+				if (o)
+					set.insert(o);
+			}
+			for (OutputDeviceSet::iterator i = set.begin(); i != set.end(); ++i) {
+				(*i) -> handle_event (e);
+			}
+
 		}
 
 	};

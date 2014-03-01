@@ -359,6 +359,9 @@ OutputDeviceClass:\n\
 	}
 #endif
 
+
+	bool InputDeviceClass::last_was_stop = true;
+
 	void InputDeviceClass::DoSilenceKeys(bool remove) {
 		current_keys_type::iterator i;
 		size_t j = 0;
@@ -505,6 +508,7 @@ OutputDeviceClass:\n\
 	}
 
 	void InputDeviceClass::RealtimePlay() {
+		last_was_stop = false;
 		for (InputDeviceList::iterator i = deviceList.begin();
 		     i != deviceList.end(); i++) {
 			(*i)->Play();
