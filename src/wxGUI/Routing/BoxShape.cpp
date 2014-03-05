@@ -99,14 +99,12 @@ namespace mutaborGUI {
 	bool MutBoxShape::Create(wxWindow * parent,wxWindowID wid, Box & b)
 	{
 		if (!b) return false;
-		bool fine =
-			MutBoxIconShape::Create(parent,wid);
+		bool fine = Create(parent,wid);
 		if (!fine) return false;
 		channels = new wxBoxSizer(wxVERTICAL);
 		SetSizer(channels);
 		//	SetAutoLayout(true); done by SetSizer()
 		//	m_icon = new MutBoxIconShape(this,-1);
-		m_icon = this;
 		if (!m_icon) return false;
 
 		connect(b,this);
@@ -134,6 +132,10 @@ namespace mutaborGUI {
 	}
 
 	void MutBoxShape::BoxChanged() {
+		if (!box) {
+			SetBackgroundStyle(wxBG_STYLE_SYSTEM);
+			return;
+		}
 		BoxData * guibox = ToGUIBase(box);
 		int boxId = box->get_routefile_id();
 		switch (boxId) {

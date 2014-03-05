@@ -91,6 +91,7 @@ namespace mutaborGUI {
 		virtual ~MutBoxShape();
 
 		bool Create(wxWindow * parent, wxWindowID wid) {
+			m_icon = this;
 			return MutBoxIconShape::Create(parent,wid);
 		}
 		bool Create(wxWindow * parent,wxWindowID wid, mutabor::Box & b);
@@ -206,20 +207,6 @@ namespace mutaborGUI {
 		//  override to hide/show the static box as well
 //	virtual void ShowItems (bool show);
 
-#if 0
-		virtual void Add(BoxData * box);
-		virtual bool Remove(BoxData * box);
-
-		void Attatch(BoxData * box) {
-			box->Attatch(this);
-		}
-		bool Detatch(BoxData * box) {
-			return box->Detatch(this);
-		}
-		bool Delete(BoxData * box) {
-			return box->Delete(this);
-		}
-#endif
 
 		virtual void DrawLines(wxGraphicsContext & dc,
 				       wxWindow * paintingWindow,
@@ -277,8 +264,8 @@ namespace mutaborGUI {
 		void SetBox(bool nullify = true) {
 			if (nullify)
 				box.reset();
-			m_icon->SetLabel(_("No Box / Though mode"));
-			m_icon->SetBackgroundStyle(wxBG_STYLE_SYSTEM);
+			SetLabel(_("No Box / Though mode"));
+			SetBackgroundStyle(wxBG_STYLE_SYSTEM);
 		}
 		void SetBox(mutabor::Box & b, bool layout=true);
 		DECLARE_CLASS(MutBoxShape)

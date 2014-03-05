@@ -72,6 +72,8 @@ namespace mutaborGUI {
 		bool Create (wxWindow * parent, wxWindowID wid)	{ 
 			if (!MutBoxShape::Create(parent, 
 						 wid)) return false;
+			m_icon->SetLabel(_("New Box"));
+			m_icon->SetBackgroundStyle(wxBG_STYLE_SYSTEM);
 			return true;
 		}
 

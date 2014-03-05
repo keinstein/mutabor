@@ -28,6 +28,7 @@
 #include "src/kernel/Defs.h"
 #include "src/wxGUI/Routing/BoxIconShape.h"
 #include "wx/graphics.h"
+#include "wx/dcclient.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "MutRouteWnd.h"
@@ -44,7 +45,7 @@ namespace mutaborGUI {
 		borderOther = 0;
 	}
 
-	void MutBoxIconShape::OnDraw (wxDC & dc)
+	void MutBoxIconShape::OnDraw (wxPaintDC & dc)
 	{
 		DEBUGLOG (other, _T("Checking icon"));
 
@@ -74,6 +75,10 @@ namespace mutaborGUI {
 		}
 #endif
 
+		wxGraphicsContext * gc = wxGraphicsContext::Create( dc );
+		if (!gc) return;
+
+
 
 		y += borderOffset.y;
 		if (staticText) y += staticText->GetSize().y;
@@ -81,14 +86,16 @@ namespace mutaborGUI {
 			DEBUGLOG (other, _T("Size: %dx%d"),GetIcon().GetHeight(),
 				  GetIcon().GetWidth());
 			x = (size.width-GetIcon().GetWidth())/2;
-#ifdef __WXMAC__
+#if __WXMAC__ || __WXGTK__
 			x -= maxBorderSize.x - borderOffset.x;
 #endif
-			dc.DrawIcon(GetIcon(), x, y);
+			const wxIcon & icon = GetIcon();
+			gc->DrawIcon(GetIcon(), x, y, icon.GetWidth(), icon.GetHeight());
 		}
 
 		size.width -= 2* borderOffset.x;
 		size.height -= 2* borderOffset.y;
+		delete gc;
 
 	}
 

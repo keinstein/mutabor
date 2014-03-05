@@ -92,7 +92,7 @@ namespace mutaborGUI {
 
 		void GetBordersForSizer(int &borderTop, int &borderOther) const;
  
-		virtual void OnDraw (wxDC & dc);
+		virtual void OnDraw (wxPaintDC & dc);
 		virtual bool Layout();
 
 		MutIcon & GetMutIcon () {
