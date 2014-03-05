@@ -52,7 +52,8 @@
 #include "wx/defs.h"
 #include "wx/icon.h"
 #include "wx/stattext.h"
-
+class wxGraphicsContext;
+class wxPaintDC;
 
 class NoTabStaticText:public wxStaticText {
 public:
@@ -76,7 +77,7 @@ protected:
 	mutable mutpointlist usedperimeterpoints;
 
 public:
-	
+
 	MutIconShapeClass():parenttype(),Icon(),staticText(NULL) { }
 
 	MutIconShapeClass(wxWindow * parent, wxWindowID id):parenttype(),
@@ -85,11 +86,11 @@ public:
 	{
 		Create(parent, id);
 	}
-	
+
 	bool Create (wxWindow * parent, wxWindowID id = wxID_ANY);
-	
+
 	virtual ~MutIconShapeClass() {}
-	
+
 	virtual bool Destroy();
 
 	void SetIcon(const MutIcon & icon) {
@@ -101,7 +102,7 @@ public:
 	}
 
 	void SetLabel(const wxString & st ) {
-		if (!staticText) 
+		if (!staticText)
 			staticText = new NoTabStaticText(this,wxID_ANY,_T(""));
 		mutASSERT(staticText);
 		if (!staticText) return;
@@ -111,7 +112,7 @@ public:
 	}
 	/// Calculates the Icon to be used.
 	virtual MutIcon & GetMutIcon ()  { return MutNullIcon; }
-  
+
 	virtual wxSize DoGetBestSize() const;
 
 	virtual void UpdateBorder(long flag);
@@ -120,20 +121,20 @@ public:
         // calls layout for layout constraints and sizers
 	void OnSize(wxSizeEvent& event);
 	void OnGetFocus(wxFocusEvent & event) ;
-	void OnKillFocus(wxFocusEvent & event); 
-	
+	void OnKillFocus(wxFocusEvent & event);
+
 	void OnMouseClick(wxMouseEvent & event);
 
 	void         OnPaint (wxPaintEvent &event ) ;
 	void OnMove(wxMoveEvent &event);
-	virtual void OnDraw (wxDC & dc);
+	virtual void OnDraw (wxPaintDC & dc);
 	virtual wxPoint GetPerimeterPoint( const wxPoint &i,
-					   const wxPoint &o, 
+					   const wxPoint &o,
 					   wxWindow * paintingWindow ) const;
-	virtual void DrawPerimeterPoint(wxDC & dc, 
-					const wxPoint & center, 
+	virtual void DrawPerimeterPoint(wxGraphicsContext & gc,
+					const wxPoint & center,
 					wxPoint p) const;
-	virtual wxRect GetIconRect() const 
+	virtual wxRect GetIconRect() const
 	{
 		wxRect r = this->GetClientSize();
 		int iw = Icon.GetWidth();
@@ -141,26 +142,23 @@ public:
 		r.x += maxBorderSize.x;
 		r.y += maxBorderSize.y;
 
-		return wxRect((r.width - iw)/2, 
+		return wxRect((r.width - iw)/2,
 			      0,
 			      iw,
 			      Icon.GetHeight());
 	}
 
-        /** 
+        /**
 	 * Tries to find the correct position of the window in a parent window.
-	 * 
+	 *
 	 * \param win parent window.
-	 * 
+	 *
 	 * \return position in win
 	 */
 	virtual wxPoint GetPositionInWindow(const wxWindow * win) const;
 
-	virtual void LineTo (wxDC & dc , 
-			     const wxPoint & p,
-			     const wxRect & screenpos) const;
 	virtual bool Recompute();
-	
+
 	virtual bool Layout();
 	virtual void Fit() {
 		this->SetSize(this->GetBestSize());
@@ -177,14 +175,14 @@ public:
 		mutUnused(event);
 		DEBUGLOG(other, _T("Destroying"));
 		this->Destroy();
-	}	
+	}
 
 	void ClearPerimeterPoints() {
 		usedperimeterpoints.clear();
 	}
 private:
 	DECLARE_DYNAMIC_CLASS_NO_COPY(MutIconShapeClass)
-	DECLARE_EVENT_TABLE() 
+	DECLARE_EVENT_TABLE()
 };
 
 typedef MutIconShapeClass<wxControl> MutIconShape;

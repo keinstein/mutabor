@@ -32,7 +32,7 @@
 #include "src/wxGUI/IconShape.h"
 #include "wx/defs.h"
 #include "wx/sizer.h"
-#include "wx/dc.h"
+#include "wx/graphics.h"
 #include "wx/dcclient.h"
 #include <algorithm>
 //#include "MutApp.h"
@@ -491,7 +491,7 @@ void MutIconShapeClass<T>::OnPaint( wxPaintEvent& WXUNUSED(event) )
 }
 
 template<typename T>
-void MutIconShapeClass<T>::OnDraw (wxDC & dc)
+void MutIconShapeClass<T>::OnDraw (wxPaintDC & dc)
 {
 	wxRect size = this->GetRect();
 #if __WXMSW__
@@ -520,9 +520,17 @@ void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 	int y = borderOffset.y;
 	wxPoint center(size.width/2,y + GetIcon().GetHeight()/2);
 
+	wxGraphicsContext * gc = wxGraphicsContext::Create( dc );
+	if (!gc) {
+		return;
+	}
+
+	wxPen pen(*wxBLACK,2);
+	gc->SetPen(pen);
+
 	for (mutpointlist::iterator i = usedperimeterpoints.begin();
 	     i != usedperimeterpoints.end();++i) {
-		DrawPerimeterPoint(dc,center, *i);
+		DrawPerimeterPoint(*gc,center, *i);
 	}
 
 	if (GetIcon().IsOk()) {
@@ -536,15 +544,9 @@ void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 		dc.DrawIcon(GetIcon(), x, y);
 	}
 
+	delete gc;
+
 	DEBUGLOG (other, _T("Focus %p and this %p"),(void*)this->FindFocus(),(void*)this);
-/*  Draw a black bock around focused item
-	if (FindFocus() == this) {
-		DEBUGLOG (other, _T("Painting Box"));
-		dc.SetPen(*wxBLACK_PEN);
-		dc.SetBrush(*wxTRANSPARENT_BRUSH);
-		dc.DrawRectangle(0,0,size.width,size.height);
-	}
-*/
 }
 
 template<typename T>
@@ -649,25 +651,14 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 }
 
 template<typename T>
-void MutIconShapeClass<T>::DrawPerimeterPoint(wxDC & dc,
+void MutIconShapeClass<T>::DrawPerimeterPoint(wxGraphicsContext & gc,
 					      const wxPoint & center,
 					      wxPoint p) const
 {
-	dc.DrawLine(center, p);
-#if 0
-	wxRect origin(this->GetRect());
-	p.x -= origin.x;
-	p.y -= origin.y;
-#if __WXMAC__
-	p.x -= maxBorderSize.x - borderOffset.x;
-	p.y -= maxBorderSize.y - borderOffset.y;
-#elif __WXGTK__
-	p -= maxBorderSize;
-	if (p.x > center.x) p.x += maxBorderSize.x;
-	else p.x -= maxBorderSize.x;
-#endif
-	dc.DrawLine(center, p);
-#endif
+	wxGraphicsPath path = gc.CreatePath();
+	path.MoveToPoint(center);
+	path.AddLineToPoint(p);
+	gc.StrokePath(path);
   }
 
 
@@ -684,20 +675,6 @@ wxPoint MutIconShapeClass<T>::GetPositionInWindow(const wxWindow * win) const {
 		tmp = tmp->GetParent();
 	}
 	return tmp ? p:wxPoint(0,0);
-}
-
-template<typename T>
-void MutIconShapeClass<T>::LineTo(wxDC &dc, const wxPoint & p,
-				  const wxRect & screenpos)  const
-{
-	return;
-#if 0
-	wxRect rect = this->GetRect();
-	wxPoint p1(rect.x + rect.width/2,
-		   rect.y + Icon.GetHeight()/2 + borderOffset.y);
-	wxPoint origin(screenpos.x,screenpos.y);
-	dc.DrawLine(p1+origin,p+origin);
-#endif
 }
 
 

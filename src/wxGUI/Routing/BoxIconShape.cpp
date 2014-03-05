@@ -27,7 +27,7 @@
  ********************************************************************/
 #include "src/kernel/Defs.h"
 #include "src/wxGUI/Routing/BoxIconShape.h"
-#include "wx/dc.h"
+#include "wx/graphics.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "MutRouteWnd.h"
@@ -44,7 +44,7 @@ namespace mutaborGUI {
 		borderOther = 0;
 	}
 
-	void MutBoxIconShape::OnDraw (wxDC & dc) 
+	void MutBoxIconShape::OnDraw (wxDC & dc)
 	{
 		DEBUGLOG (other, _T("Checking icon"));
 
@@ -60,7 +60,7 @@ namespace mutaborGUI {
 		y = 0;
 		wxRect size = GetRect();
 
-#if __WXMSW__ 
+#if __WXMSW__
 		if (wxWindow::FindFocus() == this) {
 			// MSW doesn't allow to change the border
 			for (int i = 0 ; i < maxBorderSize.x - 1 ; i++) {
@@ -72,7 +72,7 @@ namespace mutaborGUI {
 				dc.DrawLine(i,i,i,size.height-i);
 			}
 		}
-#endif 
+#endif
 
 
 		y += borderOffset.y;
@@ -81,27 +81,15 @@ namespace mutaborGUI {
 			DEBUGLOG (other, _T("Size: %dx%d"),GetIcon().GetHeight(),
 				  GetIcon().GetWidth());
 			x = (size.width-GetIcon().GetWidth())/2;
-#ifdef __WXMAC__ 
+#ifdef __WXMAC__
 			x -= maxBorderSize.x - borderOffset.x;
 #endif
 			dc.DrawIcon(GetIcon(), x, y);
 		}
-		
+
 		size.width -= 2* borderOffset.x;
 		size.height -= 2* borderOffset.y;
 
-#if 0 // done by changing border
-		DEBUGLOG (other, _T("Focus %p and this %p"),FindFocus(),this);
-		if (FindFocus() == this) {
-			DEBUGLOG (other, _T("Painting Box"));
-			dc.SetPen(*wxBLACK_PEN);
-			dc.SetBrush(*wxTRANSPARENT_BRUSH);
-			dc.DrawRectangle(borderOffset.x,
-					 borderOffset.y,
-					 size.width,
-					 size.height);
-		}
-#endif
 	}
 
 	bool MutBoxIconShape::Layout() {

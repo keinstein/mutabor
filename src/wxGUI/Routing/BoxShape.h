@@ -87,8 +87,8 @@ namespace mutaborGUI {
 			MutBoxIconShape(),m_icon(NULL),channels(NULL),box(NULL) {
 			Create(parent,wid,b);
 		}
-  
-		virtual ~MutBoxShape(); 
+
+		virtual ~MutBoxShape();
 
 		bool Create(wxWindow * parent, wxWindowID wid) {
 			return MutBoxIconShape::Create(parent,wid);
@@ -110,11 +110,11 @@ namespace mutaborGUI {
 
 		virtual bool SetBackgroundColour(const wxColour& colour);
 
-		/** 
+		/**
 		 * Move the box in the box list and update the GUI
-		 * according to the new order. This function provides the 
+		 * according to the new order. This function provides the
 		 * event handler that is called from the GUI.
-		 * 
+		 *
 		 * \param event wxCommandEvent containing the request
 		 */
 		void CmMoveIcon (wxCommandEvent & event);
@@ -125,10 +125,10 @@ namespace mutaborGUI {
 		    when the object is deleted during processing of mouse
 		    events, we send us a new event using the event queue.
 		*/
-		void LeftDblClickEvent (wxMouseEvent & event) { 
+		void LeftDblClickEvent (wxMouseEvent & event) {
 			wxCommandEvent command(wxEVT_COMMAND_MENU_SELECTED,
-					       CM_LEFT_DOUBLE_CLICK); 
-			wxPostEvent(this,command); 
+					       CM_LEFT_DOUBLE_CLICK);
+			wxPostEvent(this,command);
 		}
 		/// Process a double click
 		/** Since programs might produce segmentation faults
@@ -137,7 +137,7 @@ namespace mutaborGUI {
 		*/
 		void CmLeftDblClick (wxCommandEvent& event) {
 			mutUnused(event);
-			DoLeftDblClick(); 
+			DoLeftDblClick();
 		}
 
 
@@ -146,7 +146,7 @@ namespace mutaborGUI {
 		BoxDlg * ShowBoxDialog() const;
 		virtual void InitializeDialog(BoxDlg * dlg) const;
 
-		
+
 		//		virtual MutBoxChannelShape * AddChannel(mutabor::Route & route);
 		virtual MutBoxChannelShape * AddChannel(RoutePanel * panel);
 
@@ -155,7 +155,7 @@ namespace mutaborGUI {
 			TRACEC;
 			if (box || !b)
 				UNREACHABLEC;
-			else 
+			else
 				SetBox(b, true);
 			TRACEC;
 		};
@@ -169,7 +169,7 @@ namespace mutaborGUI {
 			if (box != oldbox) {
 				UNREACHABLEC;
 				return false;
-			} else 
+			} else
 				SetBox(newbox);
 			TRACEC;
 			return true;
@@ -184,7 +184,7 @@ namespace mutaborGUI {
 			} else {
 				SetBox();
 			}
-			
+
 			TRACEC;
 			return true;
 		}
@@ -196,7 +196,7 @@ namespace mutaborGUI {
 		virtual bool HasChannel(const mutabor::Route & route);
 
 		virtual void AddPossibleOutput(MutOutputDeviceShape * device);
-	
+
 
 //	virtual void SetLabel(const wxString &s);
 
@@ -209,7 +209,7 @@ namespace mutaborGUI {
 #if 0
 		virtual void Add(BoxData * box);
 		virtual bool Remove(BoxData * box);
-		
+
 		void Attatch(BoxData * box) {
 			box->Attatch(this);
 		}
@@ -221,37 +221,38 @@ namespace mutaborGUI {
 		}
 #endif
 
-		virtual void DrawLines(wxDC & dc, 
-				       wxWindow * paintingWindow);
-  
+		virtual void DrawLines(wxGraphicsContext & dc,
+				       wxWindow * paintingWindow,
+				       const wxPoint & origin);
+
 		virtual bool Detach( wxWindow *window );
-		virtual bool Detach( wxSizer *sizer ) 
+		virtual bool Detach( wxSizer *sizer )
 			{
-				if (channels) 
-					return channels -> Detach(sizer); 
-				else 
+				if (channels)
+					return channels -> Detach(sizer);
+				else
 					return false;
 			}
-		virtual bool Detach( int index ) 
-			{ 
-				if (channels) 
+		virtual bool Detach( int index )
+			{
+				if (channels)
 					return channels -> Detach(index);
-				else 
+				else
 					return false;
 			}
 		virtual bool replaceSelfBy (MutBoxShape  * newshape);
 		virtual bool DeleteBox ();
-	
+
 		virtual bool readDialog (BoxDlg * boxdlg);
 		virtual bool CanHandleType (int  type) { return true; }
 		mutabor::Box GetBox() const { return box; }
 
 		wxSizer * GetChannels() const { return channels; }
-		
-		/** 
+
+		/**
 		 * Updates the Display of the Box shape after a change
 		 * of the box that must be honoured by this shape.
-		 * 
+		 *
 		 */
 		void BoxChanged();
 	protected:
@@ -260,10 +261,10 @@ namespace mutaborGUI {
 		mutabor::Box box;
 		static wxSizerFlags sizerFlags;
 
-		/** 
+		/**
 		 * Move the box in the box list and update the GUI
 		 * according to the new order.
-		 * 
+		 *
 		 * \param count number of entries the device should be moved
 		 *              up. Negative values indicate downwards direction.
 		 */
@@ -271,7 +272,7 @@ namespace mutaborGUI {
 				box->MoveInList(count);
 		}
 
-	
+
 	private:
 		void SetBox(bool nullify = true) {
 			if (nullify)
@@ -290,7 +291,7 @@ namespace mutaborGUI {
 
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
-#endif 
+#endif
 
 #endif				/* BOXSHAPE_H_PRECOMPILED */
 #endif				/* BOXSHAPE_H */

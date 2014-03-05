@@ -74,13 +74,13 @@ namespace mutaborGUI {
 	protected:
 
 		/// Constructor
-		/** Constructor for MutBoxChannelShape. This function 
-		    constructs a window via Create(), which calles the 
+		/** Constructor for MutBoxChannelShape. This function
+		    constructs a window via Create(), which calles the
 		    corresponding attatch function.
 		*/
-		MutBoxChannelShape (wxWindow * p = NULL, wxWindowID id = wxID_ANY, 
+		MutBoxChannelShape (wxWindow * p = NULL, wxWindowID id = wxID_ANY,
 				    mutabor::Route r=NULL):MutIconShape(),
-							   route(NULL), 
+							   route(NULL),
 							   input(NULL),
 							   output(NULL)
 		{
@@ -93,17 +93,17 @@ namespace mutaborGUI {
 		virtual ~MutBoxChannelShape();
 
 		// can this window have focus?
-		virtual bool AcceptsFocus() const { 
+		virtual bool AcceptsFocus() const {
 			//return false;
 			return IsShown() && IsEnabled();
 		}
-		
+
 
 		virtual bool Destroy();
 
 		/// Create the window
-		/** This function does the work of window creation and 
-		    connects to the underlying route if necessary. It will 
+		/** This function does the work of window creation and
+		    connects to the underlying route if necessary. It will
 		    complain if a route is already attached to the channel shape.
 		    \param wxWindow * p parent window
 		    \param wxWindowId id id of the shape
@@ -111,7 +111,7 @@ namespace mutaborGUI {
 		    \retval true if everything is ok
 		    \retval false if an error has occured
 		*/
-		bool Create (wxWindow * p = NULL, wxWindowID id = wxID_ANY, 
+		bool Create (wxWindow * p = NULL, wxWindowID id = wxID_ANY,
 			     mutabor::Route r=NULL);
 
 		/*****************************************/
@@ -120,9 +120,9 @@ namespace mutaborGUI {
 
 		virtual void GotFocus() ;
 		virtual void LostFocus() ;
-		
 
-		void LeftDblClickEvent (wxMouseEvent & event) { 
+
+		void LeftDblClickEvent (wxMouseEvent & event) {
 			GetParent()->GetEventHandler()->ProcessEvent(event);
 		}
 
@@ -132,10 +132,10 @@ namespace mutaborGUI {
 		    when the object is deleted during processing of mouse
 		    events, we send us a new event using the event queue.
 		*/
-		void LeftDblClickEvent (wxMouseEvent & event) { 
+		void LeftDblClickEvent (wxMouseEvent & event) {
 			wxCommandEvent command(wxEVT_COMMAND_MENU_SELECTED,
-					       CM_LEFT_DOUBLE_CLICK); 
-			wxPostEvent(this,command); 
+					       CM_LEFT_DOUBLE_CLICK);
+			wxPostEvent(this,command);
 		}
 		/// Process a double click
 		/** Since programs might produce segmentation faults
@@ -143,10 +143,10 @@ namespace mutaborGUI {
 		    events, we send us a new event using the event queue.
 		*/
 		void CmLeftDblClick (wxCommandEvent& event) {
-			DoLeftDblClick(); 
+			DoLeftDblClick();
 		}
 #endif
-		
+
 
 #if defined(_MSC_VER)
 #pragma warning(push) // Save warning settings.
@@ -156,26 +156,26 @@ namespace mutaborGUI {
 		/*****************************************/
 		// Connection management
 		/*****************************************/
-	
+
 		/// add a new output device
 		virtual void Add (MutOutputDeviceShape * out);
 		/// add a new input device
 		virtual void Add (MutInputDeviceShape * in);
-		/// add a new route 
+		/// add a new route
 		virtual void Add (mutabor::Route & r);
 		/// add a new box shape
 		virtual void Add (MutBoxShape * box) { /* handled by box */ }
-	      
+
 		/// replace an existing output device
-		virtual bool Replace (MutOutputDeviceShape * olddev, 
+		virtual bool Replace (MutOutputDeviceShape * olddev,
 				      MutOutputDeviceShape * newdev);
 		/// replace an existing input device
-		virtual bool Replace (MutInputDeviceShape * olddev, 
+		virtual bool Replace (MutInputDeviceShape * olddev,
 				      MutInputDeviceShape * newdev);
-		/// replace an existing route 
+		/// replace an existing route
 		virtual bool Replace (mutabor::Route & oldroute,
 				      mutabor::Route & newroute);
-		/// replace a box shape 
+		/// replace a box shape
 		virtual bool Replace (MutBoxShape * oldbox,
 				      MutBoxShape * newbox) {
 			/* handled by box */
@@ -196,18 +196,18 @@ namespace mutaborGUI {
 
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
-#endif 
+#endif
 
 #if 0
-		// fortunately we can distinguish devices 
+		// fortunately we can distinguish devices
 		// and shapes by their pointer types
 
 		/// add a new device shape
 		template <class deviceshape>
 		void Attatch (deviceshape * dev) {
-			if (dev) 
+			if (dev)
 				Attatch(dev->GetDevice());
-			else 
+			else
 				UNREACHABLEC;
 		}
 
@@ -216,15 +216,15 @@ namespace mutaborGUI {
 		void Attatch (boost::intrusive_ptr<device> dev) {
 			if (route)
 				connect(route,dev);
-			else 
+			else
 				UNREACHABLEC;
 		}
 
 		/// replace an existing device shape
 		template <class deviceshape>
-		bool Reconnect (deviceshape * olddev, 
+		bool Reconnect (deviceshape * olddev,
 				deviceshape * newdev) {
-			if (olddev && newdev) 
+			if (olddev && newdev)
 				return Reconnect(olddev->GetDevice(),
 						 newdev->GetDevice());
 			else {
@@ -234,9 +234,9 @@ namespace mutaborGUI {
 		}
 		/// Replace current input or output device with a new one
 		template <class device>
-		bool Reconnect(boost::intrusive_ptr<device> & olddev, 
+		bool Reconnect(boost::intrusive_ptr<device> & olddev,
 			       boost::intrusive_ptr<device> & newdev) {
-			if (route) 
+			if (route)
 				return reconnect(route,olddev,newdev);
 			UNREACHABLEC;
 			return false;
@@ -244,52 +244,53 @@ namespace mutaborGUI {
 
 		void Attatch(mutabor::Route & r);
 		void Detatch(mutabor::Route & r);
-#endif		
-		
-		mutabor::Route & GetRoute() const { 
-			return const_cast<mutabor::Route &>(route); 
+#endif
+
+		mutabor::Route & GetRoute() const {
+			return const_cast<mutabor::Route &>(route);
 		}
-		const MutInputDeviceShape * GetInput() const { 
-			return input; 
+		const MutInputDeviceShape * GetInput() const {
+			return input;
 		}
-		MutInputDeviceShape * GetInput() { 
-			return input; 
+		MutInputDeviceShape * GetInput() {
+			return input;
 		}
-		const MutOutputDeviceShape * GetOutput() const { 
-			return output; 
+		const MutOutputDeviceShape * GetOutput() const {
+			return output;
 		}
-		MutOutputDeviceShape * GetOutput() { 
-			return output; 
+		MutOutputDeviceShape * GetOutput() {
+			return output;
 		}
 
-		GUIRoute * GetGUIRoute() const { 
-			return static_cast<GUIRoute *>(route.get()); 
+		GUIRoute * GetGUIRoute() const {
+			return static_cast<GUIRoute *>(route.get());
 		}
 
-		static void CreateRoutePanel(MutBoxChannelShape * channel, 
-					     MutRouteWnd * parentwin, 
-					     wxWindow * routeWindow, 
+		static void CreateRoutePanel(MutBoxChannelShape * channel,
+					     MutRouteWnd * parentwin,
+					     wxWindow * routeWindow,
 					     const mutabor::Box & box);
-		static void InitializeInputFilter(InputFilterPanel * panel, 
+		static void InitializeInputFilter(InputFilterPanel * panel,
 						  MutRouteWnd * par,
 						  MutBoxChannelShape * shape = NULL);
-		static void InitializeRoute(RoutePanel * panel, 
+		static void InitializeRoute(RoutePanel * panel,
 					    MutRouteWnd * par,
 					    MutBoxChannelShape * shape = NULL,
 					    mutabor::Box b = NULL);
-		
-		static void InitializeOutputFilter(OutputFilterPanel * panel, 
+
+		static void InitializeOutputFilter(OutputFilterPanel * panel,
 						   MutRouteWnd * par,
 						   MutBoxChannelShape * shape = NULL);
 		virtual void ReadPanel(RoutePanel * panel);
 
-		virtual void DrawLines(wxDC & dc, 
-				       wxWindow * paintingWindow) const;
+		virtual void DrawLines(wxGraphicsContext & dc,
+				       wxWindow * paintingWindow,
+				       const wxPoint & origin) const;
 		virtual wxPoint GetPerimeterPoint(const wxPoint &i,
 						  const wxPoint &o,
 						  wxWindow * paintingWindow) const;
-		virtual void DrawPerimeterPoint(wxDC & dc, 
-						const wxPoint & center, 
+		virtual void DrawPerimeterPoint(wxDC & dc,
+						const wxPoint & center,
 						wxPoint p) const;
 		virtual void Refresh(bool eraseBackground = true, const wxRect* rect = NULL);
 		/// Detaches the channel from a box shape.

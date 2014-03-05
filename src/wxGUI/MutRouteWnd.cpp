@@ -1,4 +1,4 @@
-/** \file 
+/** \file
  ********************************************************************
  * Routing window
  *
@@ -38,6 +38,7 @@
 #include "wx/log.h"
 #include "wx/dc.h"
 #include "wx/dcclient.h"
+#include "wx/graphics.h"
 
 //#include "src/kernel/Runtime.h"
 #include "src/wxGUI/generic/mhDefs.h"
@@ -131,10 +132,10 @@ wxEND_FLAGS( MutRouteWndStyle )
 IMPLEMENT_DYNAMIC_CLASS_XTI(MutRouteWnd, wxScrolledWindow,"MutRouteWnd.h")
 
 wxBEGIN_PROPERTIES_TABLE(MutRouteWnd)
-    wxPROPERTY_FLAGS( WindowStyle , 
-		      MutRouteWndStyle , long , 
-		      SetWindowStyleFlag , GetWindowStyleFlag , 
-		      EMPTY_MACROVALUE, 0 /*flags*/ , 
+    wxPROPERTY_FLAGS( WindowStyle ,
+		      MutRouteWndStyle , long ,
+		      SetWindowStyleFlag , GetWindowStyleFlag ,
+		      EMPTY_MACROVALUE, 0 /*flags*/ ,
 		      wxT("Helpstring") , wxT("group")) // style
 // style wxTAB_TRAVERSAL
 wxEND_PROPERTIES_TABLE()
@@ -142,15 +143,15 @@ wxEND_PROPERTIES_TABLE()
 wxBEGIN_HANDLERS_TABLE(MutRouteWnd)
 wxEND_HANDLERS_TABLE()
 
-wxCONSTRUCTOR_5( MutRouteWnd , 
-		 wxWindow* , 
-		 Parent , 
-		 wxWindowID , 
-		 Id , 
-		 wxPoint , 
-		 Position , 
-		 wxSize , Size , 
-		 long , 
+wxCONSTRUCTOR_5( MutRouteWnd ,
+		 wxWindow* ,
+		 Parent ,
+		 wxWindowID ,
+		 Id ,
+		 wxPoint ,
+		 Position ,
+		 wxSize , Size ,
+		 long ,
 		 WindowStyle )
 
 #else
@@ -177,14 +178,14 @@ END_EVENT_TABLE()
 MutFileDataType MutRouteWnd::MurFileData;
 
 MutRouteWnd::MutRouteWnd(wxWindow *parent, const wxPoint& pos, const wxSize& size)
-        : wxScrolledWindow(parent, wxID_ANY, pos, size, 
+        : wxScrolledWindow(parent, wxID_ANY, pos, size,
                            wxVSCROLL|wxHSCROLL|wxTAB_TRAVERSAL, wxT("Route")),
 	  InputSizer(NULL),
 	  OutputSizer(NULL),
 	  BoxSizer(NULL)
 {
 // This leeds to “assert !m_winParent failed in SetContainerWindow(),
-//        even if the container is commented out 
+//        even if the container is commented out
 //        -> m_container is defined elsewhere
 // that it works means that we already have a control container
 //	m_container.SetContainerWindow(this);
@@ -206,12 +207,12 @@ void MutRouteWnd::InitShapes()
         flags.Align(wxALIGN_CENTER_VERTICAL | wxALIGN_CENTER_HORIZONTAL);
         flags.Proportion(1);
         flags.TripleBorder();
-	
+
 	mutASSERT(InputDevices.empty());
 	MutInputDeviceShape * newin = new MutNewInputDeviceShape(this,wxID_ANY);
 	GetSizer()->Add(newin, flags);
 	InputDevices.push_back(newin);
-	
+
 	mutASSERT(Boxes.empty());
 	MutBoxShape * boxShape = new NewMutBoxShape(this,wxID_ANY);
 	GetSizer()->Add(boxShape, flags);
@@ -233,7 +234,7 @@ void MutRouteWnd::InitShapes()
 	DebugCheckRoutes();
 }
 
-void MutRouteWnd::InitDevices() 
+void MutRouteWnd::InitDevices()
 {
         Freeze();
 	createInputDevices(MutInputDeviceShape::GetSizerFlags());
@@ -246,7 +247,7 @@ void MutRouteWnd::InitDevices()
         Thaw();
 
         PRINTSIZER(GetSizer());
-	DebugCheckRoutes();  
+	DebugCheckRoutes();
 }
 
 void MutRouteWnd::ClearDevices()
@@ -266,14 +267,14 @@ void MutRouteWnd::createInputDevices(wxSizerFlags flags)
 		GetSizer()->Add(InputSizer, 0, wxEXPAND);
 	}
 
-	const InputDeviceList & list = 
+	const InputDeviceList & list =
 		InputDeviceClass::GetDeviceList();
-	for ( InputDeviceList::const_iterator In = list.begin(); 
+	for ( InputDeviceList::const_iterator In = list.begin();
 	      In != list.end(); In++) {
-                DEBUGLOG (other, _T("In the loop %p"), 
+                DEBUGLOG (other, _T("In the loop %p"),
 			  (void*)(*In).get());
 		TRACEC;
-                MutInputDeviceShape * newin = 
+                MutInputDeviceShape * newin =
 			GUIDeviceFactory::CreateShape(const_cast<InputDevice &>(*In),
 						      this);
 		TRACEC;
@@ -299,7 +300,7 @@ void MutRouteWnd::createBoxes(wxSizerFlags flags)
         MutBoxShape::SetSizerFlags(flags);
 
 	if (!BoxSizer) {
-		BoxSizer = new wxGridSizer (1);			
+		BoxSizer = new wxGridSizer (1);
 		GetSizer()->Add(BoxSizer, 0, wxEXPAND);
 	}
 
@@ -312,7 +313,7 @@ void MutRouteWnd::createBoxes(wxSizerFlags flags)
 		mutASSERT(Box);
 		if (!Box) continue;
 		mutASSERT(!Box->GetShape(this));
-		boxShape = 
+		boxShape =
 			GUIBoxFactory::CreateBoxShape(*box,this);
                 if (!boxShape) {
                         UNREACHABLEC;
@@ -320,7 +321,7 @@ void MutRouteWnd::createBoxes(wxSizerFlags flags)
                 }
 		AddBox(boxShape, flags);
         }
-	
+
 }
 
 void MutRouteWnd::createRoutes(wxSizerFlags flags)
@@ -354,7 +355,7 @@ void MutRouteWnd::createRoutes(wxSizerFlags flags)
 			outputshape->Add(channel);
 		}
 #endif
-        }	
+        }
 }
 
 void MutRouteWnd::ClearBoxes()
@@ -372,18 +373,18 @@ void MutRouteWnd::createOutputDevices(wxSizerFlags flags)
 {
 	TRACEC;
 	MutOutputDeviceShape::SetSizerFlags(flags);
-	
+
 	if (!OutputSizer) {
 		OutputSizer = new wxGridSizer (1);
 		GetSizer()->Add(OutputSizer, 0, wxEXPAND | wxALL,0);
 	}
 
-	const OutputDeviceList & list = 
+	const OutputDeviceList & list =
 		OutputDeviceClass::GetDeviceList();
-	for ( OutputDeviceList::const_iterator Out = list.begin(); 
+	for ( OutputDeviceList::const_iterator Out = list.begin();
 	      Out != list.end(); Out++) {
 		TRACEC;
-                MutOutputDeviceShape * newout =  
+                MutOutputDeviceShape * newout =
 			GUIDeviceFactory::CreateShape(
 				const_cast<OutputDevice &>(*Out),this);
 
@@ -411,11 +412,11 @@ void MutRouteWnd::CmRouteLoad(wxCommandEvent& event)
 {
 	// it's our task
 	event.Skip(false);
-	
+
 	MutFileDataType filedata = FileNameDialog(wxGetApp().GetTopWindow(),
 						  event.GetId());
-	
-	
+
+
 	switch (filedata.type) {
 	case MutFileDataType::Canceled:
 		return;
@@ -433,10 +434,10 @@ void MutRouteWnd::CmRouteLoad(wxCommandEvent& event)
 		           filedata.name.GetFullPath().c_str());
 		return;
 	}
-	
+
 	MurFileData = filedata;
 
-	
+
 	switch (MurFileData.type) {
 	case MutFileDataType::TextRoute:
 	case MutFileDataType::UTF8TextRoute: {
@@ -481,11 +482,11 @@ void MutRouteWnd::CmRouteLoad(wxCommandEvent& event)
 		UNREACHABLE;
 		return;
 	}
-	
+
 	// Activate the Route window
 	wxGetApp().CmRoutes(event);
 	MutRouteWnd * routewnd=NULL;
-	MutFrame * frame = 
+	MutFrame * frame =
 	  dynamic_cast<MutFrame*>(wxWindow::FindWindowById(WK_ROUTE));
 	if (frame) {
 	  wxWindowList & list = frame->GetChildren();
@@ -502,7 +503,7 @@ void MutRouteWnd::CmRouteLoad(wxCommandEvent& event)
 	  routewnd->FitInside();
 	  routewnd->Refresh();
 	}
-	
+
 	DebugCheckRoutes();
 
 	wxCommandEvent ev(wxEVT_COMMAND_MENU_SELECTED,CM_ROUTES);
@@ -513,7 +514,7 @@ void MutRouteWnd::CmRouteSave(wxCommandEvent& event)
 {
 	TRACET(MutFrame);
 	event.Skip(false);
-	
+
 	switch (MurFileData.type) {
 	case MutFileDataType::Canceled:
 		return;
@@ -532,40 +533,40 @@ void MutRouteWnd::CmRouteSave(wxCommandEvent& event)
 		UNREACHABLE;
 		return;
 	}
-	
+
 	/* not applicable, since the file might not yet exsist
 	 if (!MurFileData.name.IsFileWritable()) {
-	 wxLogError(_("Cannot write to routes file '%s'."), 
+	 wxLogError(_("Cannot write to routes file '%s'."),
 	 MurFileData.name.GetFullPath().c_str());
 	 return;
 	 }
 	 */
-	
+
 	switch (MurFileData.type) {
 	case MutFileDataType::TextRoute:
 	case MutFileDataType::UTF8TextRoute: {
 		wxFFile file(MurFileData.name.GetFullPath(), _T("w"));
-		
+
 		if (!file.IsOpened()) {
 			wxLogError(_("Cannot open routes file '%s' for writing."),
 				   MurFileData.name.GetFullPath().c_str());
 			return;
 		}
-	
+
 		wxString RouteConfig;
-	
+
 		compat30::SaveRoutes(RouteConfig);
-	
-		wxMBConv &converter = MurFileData.type == MutFileDataType::UTF8TextRoute ? 
+
+		wxMBConv &converter = MurFileData.type == MutFileDataType::UTF8TextRoute ?
 			(wxMBConv&)wxConvUTF8 : (wxMBConv&)wxConvISO8859_1;
-	
+
 		if (file.Write(_T("# Mutabor 3.x routes configuration\n"),
 			       converter))
 			if (file.Write(RouteConfig, converter)) {
 				file.Close();
 				return;
 			}
-	
+
 		wxLogError(_("Error writing file '%s'."),
 			   MurFileData.name.GetFullPath().c_str());
 		file.Close();
@@ -575,7 +576,7 @@ void MutRouteWnd::CmRouteSave(wxCommandEvent& event)
 		xmltree document(_T("mutabor-routes"),true);
 		mutabor::RouteFactory::SaveRoutes(document);
 		document.Save(MurFileData.name.GetFullPath());
-			
+
 	}
 		break;
 	case MutFileDataType::Canceled:
@@ -589,15 +590,15 @@ void MutRouteWnd::CmRouteSave(wxCommandEvent& event)
 void MutRouteWnd::CmRouteSaveAs(wxCommandEvent& event)
 {
 	TRACET(MutFrame);
-	
+
 	// it's our task
 	event.Skip(false);
-	
-	
+
+
 	MutFileDataType file = FileNameDialog(wxGetApp().GetTopWindow(),
 					      event.GetId(),
 					      MurFileData.name.GetFullPath());
-	
+
 	switch (file.type) {
 	case MutFileDataType::Canceled:
 		return;
@@ -615,7 +616,7 @@ void MutRouteWnd::CmRouteSaveAs(wxCommandEvent& event)
 		           file.name.GetFullPath().c_str());
 		return;
 	}
-	
+
 	MurFileData = file;
 	CmRouteSave(event);
 }
@@ -694,7 +695,7 @@ void MutRouteWnd::OnSize(wxSizeEvent& event)
 #endif
 }
 
-void MutRouteWnd::OnPaint(wxPaintEvent & event) 
+void MutRouteWnd::OnPaint(wxPaintEvent & event)
 {
 	wxPaintDC dc(this);
 	DoPrepareDC(dc);
@@ -704,7 +705,7 @@ void MutRouteWnd::OnPaint(wxPaintEvent & event)
 
 
 
-void MutRouteWnd::OnDraw(wxDC& dc)
+void MutRouteWnd::OnDraw(wxPaintDC& dc)
 {
         wxScrolledWindow::OnDraw(dc);
         PRINTSIZER(GetSizer());
@@ -713,23 +714,30 @@ void MutRouteWnd::OnDraw(wxDC& dc)
                 UNREACHABLEC;
                 return;
         }
+
+	wxGraphicsContext * gc = wxGraphicsContext::Create( dc );
+	if (!gc) return;
+
+	wxPoint origin(dc.DeviceToLogicalX(0), dc.DeviceToLogicalY(0));
+
         wxSizerItemList & list = BoxSizer->GetChildren();
         for (wxSizerItemList::const_iterator i = list.begin(); i != list.end(); i++) {
                 MutBoxShape * box = static_cast<MutBoxShape * > ((*i)->GetWindow());
 		mutASSERT(dynamic_cast<MutBoxShape *> ((*i)->GetWindow()));
 		DEBUGLOG(routinggui,_T("Redrawing box %p"),box);
 		if (box)
-			box->DrawLines(dc,this);
+			box->DrawLines(*gc,this, origin);
         }
+	delete gc;
 }
 
 void MutRouteWnd::OnMoveShape(wxCommandEvent& event) {
 	DEBUGLOG(routinggui,_T("Move Event: %d"),(int)event.GetId());
 	wxWindow * win = FindFocus();
-	if (dynamic_cast<MutBoxShape *>(win) || 
-	    dynamic_cast<MutInputDeviceShape *>(win) || 
+	if (dynamic_cast<MutBoxShape *>(win) ||
+	    dynamic_cast<MutInputDeviceShape *>(win) ||
 	    dynamic_cast<MutOutputDeviceShape *>(win)) {
-		wxPostEvent(win,event);	
+		wxPostEvent(win,event);
 	}
 }
 
@@ -747,7 +755,7 @@ void MutRouteWnd::MoveShape(wxWindow * shape, int newpos, wxSizer * sizer) {
 	list.Insert(newpos,item);
 	shape->MoveBeforeInTabOrder(nextsibling);
 	GetSizer()->SetItemMinSize(shape, -1 ,-1);
-	
+
 	Thaw();
 	InvalidateBestSize();
 	Layout();
@@ -775,7 +783,7 @@ void MutRouteWnd::MoveShape(MutInputDeviceShape * shape, int newpos) {
 	list.Insert(newpos,item);
 	shape->MoveBeforeInTabOrder(nextsibling);
 	GetSizer()->SetItemMinSize(shape, -1 ,-1);
-	
+
 	Thaw();
 	Layout();
 	FitInside();

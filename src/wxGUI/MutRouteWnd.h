@@ -242,7 +242,7 @@ namespace mutaborGUI {
 		void OnSize(wxSizeEvent& event);
 		virtual void FitInside();
 		void OnPaint(wxPaintEvent & event);
-		virtual void OnDraw(wxDC& dc);
+		virtual void OnDraw(wxPaintDC& dc);
 		void OnMoveShape(wxCommandEvent& event);
 		
 		template<class T>
