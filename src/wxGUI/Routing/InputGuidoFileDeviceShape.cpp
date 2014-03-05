@@ -195,6 +195,14 @@ namespace mutaborGUI {
 	}
 
 
+	void MutInputGuidoFileDeviceShape::DoDeviceNotification(wxCommandEvent & event)
+	{
+		if (device && device->IsOpen() && !playbuttons) {
+			createPlayButtons();
+		}
+		MutInputDeviceShape::DoDeviceNotification(event);
+	}
+
 	IMPLEMENT_DYNAMIC_CLASS(MutInputGuidoFileDeviceShape, MutInputDeviceShape)
 }
 /*
