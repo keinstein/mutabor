@@ -68,28 +68,6 @@ extern jmp_buf weiter_gehts_nach_compilerfehler;
 //  void  InDeviceActionAll(char action);
 //void  InDeviceAction(int inDevNr, enum mutabor::MutaborModeType action);
 
-#if 0
-char  IsLogicKey(mutabor_box_type * box, char key);
-// box = -1 ... weiterlesen in angefangener Liste
-char  GetMutTag(char &isLogic, char **text, char *einsttext, char &key, mutabor_box_type * box);
-bool  KeyChanged(int box);
-bool  TSChanged(int box);
-bool  InDevicesChanged();
-void  GetInDevicesMode(enum mutabor::MutaborModeType *mode);
-void  GetDrivers(int *driver);
-void  SetDrivers(int *driver);
-char  GetChannels(char start, int &base, int &from, int &to, int &thru);
-void  SetChannels(int base, int from, int to, int thru);
-void  SetAktuellesKeyboardInstrument(int instr);
-mutabor_box_type *  GetAktuellesKeyboardInstrument();
-
-#ifndef WX
-void  ScanDevices(char *config);
-#endif
-
-mutabor::OutputDevice GetOut(int nr);
-void  GetTimerData(UINT &min, UINT &max);
-#endif 
 
 #endif /* precompiled */
 #endif
