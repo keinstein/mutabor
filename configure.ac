@@ -18,7 +18,7 @@ then
 	AC_MSG_RESULT(${XCODE_VERSION_MAJOR})
 	ac_cv_prog_CC="gcc-$GCC_VERSION"
 	ac_cv_prog_CXX="g++-$GCC_VERSION"
-else 
+else
 	AC_MSG_RESULT(no)
 fi
 
@@ -102,8 +102,8 @@ AC_LANG_PUSH(C++)
 tmpcxxflags="$CXXFLAGS"
 CXXFLAGS="$CXXFLAGS -pipe"
 AC_MSG_CHECKING([whether $CXX supports -pipe])
-AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-		[AC_MSG_RESULT([yes])], 
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+		[AC_MSG_RESULT([yes])],
 		[CXXFLAGS="$tmpcxxflags"]
 		[AC_MSG_RESULT([no])])
 AC_LANG_POP(C++)
@@ -111,8 +111,8 @@ AC_LANG_PUSH(C)
 tmpcflags="$CFLAGS"
 CFLAGS="$CFLAGS -pipe"
 AC_MSG_CHECKING([whether $CC supports -pipe])
-AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-		[AC_MSG_RESULT([yes])], 
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+		[AC_MSG_RESULT([yes])],
 		[CFLAGS="$tmpcflags"]
 		[AC_MSG_RESULT([no])])
 AC_LANG_POP(C)
@@ -133,16 +133,16 @@ AC_ARG_ENABLE(debug,
 	       	       tmpcxxflags="$CXXFLAGS"
 	       	       CXXFLAGS="$CXXFLAGS $flag"
 		       AC_MSG_CHECKING([whether $CXX supports $flag])
-      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	      	                         [AC_MSG_RESULT([yes])], 
+      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+	      	                         [AC_MSG_RESULT([yes])],
 					 [CXXFLAGS="$tmpcxxflags"
               			         AC_MSG_RESULT([no])])
 		       AC_LANG_PUSH(C)
 	       	       tmpcflags="$CFLAGS"
 	       	       CFLAGS="$CFLAGS $flag"
 		       AC_MSG_CHECKING([whether $CC supports $flag])
-      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	      	                         [AC_MSG_RESULT([yes])], 
+      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+	      	                         [AC_MSG_RESULT([yes])],
 					 [CFLAGS="$tmpcflags"
               			         AC_MSG_RESULT([no])])
 		       AC_LANG_POP(C)
@@ -153,99 +153,127 @@ dnl	       tmplibs="$LIBS"
 dnl	       CXXFLAGS="$CXXFLAGS -fmudflapth"
 dnl	       LIBS="-lmudflapth"
 dnl	       AC_MSG_CHECKING([whether $CXX supports  -fmudflapth -lmudflapth])
-dnl      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-dnl	       			[AC_MSG_RESULT([yes])], 
+dnl      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+dnl	       			[AC_MSG_RESULT([yes])],
 dnl				[CXXFLAGS="$tmpcxxflags"
 dnl				LIBS="$tmplibs"]
 dnl	       			[AC_MSG_RESULT([no])])
 dnl
-	       case "$host_os" in 
+	       case "$host_os" in
 	       darwin*)
 	       	       tmpcxxflags="$CXXFLAGS"
 	       	       CXXFLAGS="$CXXFLAGS -ggdb"
 		       	       AC_MSG_CHECKING([whether $CXX supports -ggdb])
-			       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-					       	 [AC_MSG_RESULT([yes])], 
+			       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+					       	 [AC_MSG_RESULT([yes])],
 						 [CXXFLAGS="$tmpcxxflags"]
 	       					 [AC_MSG_RESULT([no])])
 		       AC_LANG_PUSH(C)
 	       	       tmpcxxflags="$CFLAGS"
 	       	       CXXFLAGS="$CFLAGS -ggdb"
 		       	       AC_MSG_CHECKING([whether $CC supports -ggdb])
-			       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-					       	 [AC_MSG_RESULT([yes])], 
+			       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+					       	 [AC_MSG_RESULT([yes])],
 						 [CFLAGS="$tmpcflags"]
 	       					 [AC_MSG_RESULT([no])])
                        AC_LANG_POP(C)
 			;;
 	       esac
-      	       AC_LANG_POP(C++)	       
+      	       AC_LANG_POP(C++)
 	       wxflags="--debug"
 ])
 
-AC_ARG_ENABLE(address-sanitizer,
-	AS_HELP_STRING([--enable-address-sanitizer],[Enable gcc/clang address santizer]),
-	[AS_IF(test "$enableval" = yes,
-	       
-	       AC_LANG_PUSH(C++)
-	       for flag in  -fsanitize=address  -fno-omit-frame-pointer  -fno-common
-	       do
-	       	       tmpcxxflags="$CXXFLAGS"
-	       	       CXXFLAGS="$CXXFLAGS $flag"
-		       AC_MSG_CHECKING([whether $CXX supports $flag])
-      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	      	                         [AC_MSG_RESULT([yes])], 
-					 [CXXFLAGS="$tmpcxxflags"
-              			         AC_MSG_RESULT([no])])
-			AC_LANG_PUSH(C)
-			tmpcflags="$CFLAGS"
-			CFLAGS="$CFLAGS $flag"
-			AC_MSG_CHECKING([whether $CC supports $flag])
-			AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	      	                          [AC_MSG_RESULT([yes])], 
-				 	  [CFLAGS="$tmpcflags"
-              			          AC_MSG_RESULT([no])])
-			AC_LANG_POP(C)
-	       done
-	       )
-	]
-)	
 
-AC_ARG_ENABLE(thread-sanitizer,
-	AS_HELP_STRING([--enable-thread-sanitizer],[Enable gcc/clang thread santizer]),
+AC_ARG_ENABLE(oink-support,
+	AS_HELP_STRING([--enable-oink-support],[Prepare sources for Oink checks]),
 	[AS_IF(test "$enableval" = yes,
-	       for flag in  -fsanitize=thread  -fno-omit-frame-pointer  -fno-common -fPIC
+	       AC_LANG_PUSH(C++)
+	       for flag in -save-temps
 	       do
 	       	       tmpcxxflags="$CXXFLAGS"
 	       	       CXXFLAGS="$CXXFLAGS $flag"
 		       AC_MSG_CHECKING([whether $CXX supports $flag])
-      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	      	                         [AC_MSG_RESULT([yes])], 
+      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+	      	                         [AC_MSG_RESULT([yes])],
 					 [CXXFLAGS="$tmpcxxflags"
               			         AC_MSG_RESULT([no])])
 		       AC_LANG_PUSH(C)
 	       	       tmpcflags="$CFLAGS"
 	       	       CFLAGS="$CFLAGS $flag"
 		       AC_MSG_CHECKING([whether $CC supports $flag])
-      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	      	                         [AC_MSG_RESULT([yes])], 
+      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+	      	                         [AC_MSG_RESULT([yes])],
 					 [CFLAGS="$tmpcflags"
               			         AC_MSG_RESULT([no])])
-	       	       AC_LANG_POP(C)
+		       AC_LANG_POP(C)
 	       done
-	       for flag in  -pie
+      	       AC_LANG_POP(C++)
+	  )
+])
+
+AC_ARG_ENABLE(address-sanitizer,
+	AS_HELP_STRING([--enable-address-sanitizer],[Enable gcc/clang address santizer]),
+	[AS_IF(test "$enableval" = yes,
+
+	       AC_LANG_PUSH(C++)
+	       for flag in  -fsanitize=address  -fno-omit-frame-pointer  -fno-common
 	       do
-	       	       tmpldflags="$LDFLAGS"
-	       	       LDFLAGS="$LDFLAGS $flag"
-		       AC_MSG_CHECKING([whether $LD supports $flag])
-      	       	       AC_LINK_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	      	                         [AC_MSG_RESULT([yes])], 
-					 [LDFLAGS="$tmpldflags"
-              			         AC_MSG_RESULT([no])])
+		       tmpcxxflags="$CXXFLAGS"
+		       CXXFLAGS="$CXXFLAGS $flag"
+		       AC_MSG_CHECKING([whether $CXX supports $flag])
+		       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+		                         [AC_MSG_RESULT([yes])],
+					 [CXXFLAGS="$tmpcxxflags"
+			         AC_MSG_RESULT([no])])
+			AC_LANG_PUSH(C)
+			tmpcflags="$CFLAGS"
+			CFLAGS="$CFLAGS $flag"
+			AC_MSG_CHECKING([whether $CC supports $flag])
+			AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+		                          [AC_MSG_RESULT([yes])],
+					  [CFLAGS="$tmpcflags"
+			          AC_MSG_RESULT([no])])
+			AC_LANG_POP(C)
 	       done
 	       )
 	]
-)	
+)
+
+AC_ARG_ENABLE(thread-sanitizer,
+	AS_HELP_STRING([--enable-thread-sanitizer],[Enable gcc/clang thread santizer]),
+	[AS_IF(test "$enableval" = yes,
+	       for flag in  -fsanitize=thread  -fno-omit-frame-pointer  -fno-common -fPIC
+	       do
+		       tmpcxxflags="$CXXFLAGS"
+		       CXXFLAGS="$CXXFLAGS $flag"
+		       AC_MSG_CHECKING([whether $CXX supports $flag])
+		       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+		                         [AC_MSG_RESULT([yes])],
+					 [CXXFLAGS="$tmpcxxflags"
+			         AC_MSG_RESULT([no])])
+		       AC_LANG_PUSH(C)
+		       tmpcflags="$CFLAGS"
+		       CFLAGS="$CFLAGS $flag"
+		       AC_MSG_CHECKING([whether $CC supports $flag])
+		       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+		                         [AC_MSG_RESULT([yes])],
+					 [CFLAGS="$tmpcflags"
+			         AC_MSG_RESULT([no])])
+		       AC_LANG_POP(C)
+	       done
+	       for flag in  -pie
+	       do
+		       tmpldflags="$LDFLAGS"
+		       LDFLAGS="$LDFLAGS $flag"
+		       AC_MSG_CHECKING([whether $LD supports $flag])
+		       AC_LINK_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+		                         [AC_MSG_RESULT([yes])],
+					 [LDFLAGS="$tmpldflags"
+			         AC_MSG_RESULT([no])])
+	       done
+	       )
+	]
+)
 
 AC_ARG_ENABLE(ansi,
 	AS_HELP_STRING([--enable-ansi],[Enable strict ansi compiling and warnings]),
@@ -290,11 +318,11 @@ AM_CONDITIONAL(COND_PERL, test -n "$PERL")
 AS_IF(test -z "$PERL",
   AC_MSG_WARN([
           Some source files are generated using Perl. But I could not find
-	  Perl. So changing those files will possibly have not the desired 
+	  Perl. So changing those files will possibly have not the desired
 	  effect.
 
-	  Simple compiling should work fine. Otherwise complain at 
-	     $PACKAGE_BUGREPORT 
+	  Simple compiling should work fine. Otherwise complain at
+	     $PACKAGE_BUGREPORT
 	  please.
 ]))
 
@@ -309,7 +337,7 @@ AS_IF(test "$cxx_cv_iso_for_loop_scope" = yes,
   AC_DEFINE(REUSE(x), x, [Define if variables must be declared again in for loops]),
   AC_DEFINE(REUSE(x), , [Define if variables must be declared again in for loops]))
 #./  AC_DEFINE_UNQUOTED(MUST_REUSE, [$cxx_iso_for_loop_scope]))
-  
+
 # Checks for libraries.
 AC_CHECK_LIB(m,pow)
 AC_CHECK_LIB(backtrace,backtrace_print)
@@ -327,24 +355,24 @@ copydlls=false
 
 echo $host_os
 
-case "$host_os" in 
+case "$host_os" in
 dnl GNU/Linux on an Intel or compatible
 *linux*)
 	AC_LANG_PUSH(C++)
 	tmpcxxflags="$CXXFLAGS"
 	CXXFLAGS="$CXXFLAGS -fvisibility-inlines-hidden"
 	AC_MSG_CHECKING([whether $CXX supports -fvisibility-inlines-hidden])
-      	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	 			[AC_MSG_RESULT([yes])], 
+	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+				[AC_MSG_RESULT([yes])],
 				[CXXFLAGS="$tmpcxxflags"]
-	       			[AC_MSG_RESULT([yes])])
-    	AC_LANG_POP(C++)	       
-	
+				[AC_MSG_RESULT([yes])])
+	AC_LANG_POP(C++)
+
 	PLATFORM=linux
-		
+
 	AC_MSG_CHECKING(for MIDI API)
 	AC_ARG_WITH(jack, [  --with-jack = choose JACK server support (mac and linux only)], [
- 		midiapi="$midiapi -D__UNIX_JACK__"
+		midiapi="$midiapi -D__UNIX_JACK__"
 		AC_MSG_RESULT(using JACK)
 		PKG_CHECK_MODULES(JACK,[jack], , AC_MSG_ERROR(JACK support requires the jack library!) ) ], )
 
@@ -362,7 +390,7 @@ dnl GNU/Linux on an Intel or compatible
 	    fi
 	    dnl the 4th argument to PKG_CHECK_MODULES should must be provided to prevent an error message, here
 	    AS_IF(test -n "$PKG_CONFIG",
-	   	    PKG_CHECK_MODULES(JACK,[jack],[midiapi="$midiapi -D__UNIX_JACK__"],))
+		    PKG_CHECK_MODULES(JACK,[jack],[midiapi="$midiapi -D__UNIX_JACK__"],))
 	fi
 
 	if [test "$midiapi" == "";] then
@@ -388,21 +416,21 @@ darwin*)
 
 	 # Look for Core flag
 	 AC_ARG_WITH(core, [  --with-core = choose CoreMidi API support (mac only)], [
-	 	midiapi="$midiapi -D__MACOSX_CORE__"
+		midiapi="$midiapi -D__MACOSX_CORE__"
 		AC_MSG_RESULT(using CoreMidi)
 		AC_CHECK_HEADER(CoreMIDI/CoreMIDI.h, [], [AC_MSG_ERROR(CoreMIDI header files not found!)] )
-    		LIBS="$LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio" ], )
+		LIBS="$LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio" ], )
 
 	# If no api flags specified, use CoreMidi
 	if [test "$midiapi" == "";] then
 	   AC_MSG_RESULT(using both CoreMIDI and Jack if possible)
 	   AC_CHECK_HEADER(CoreMIDI/CoreMIDI.h,[
 		midiapi="$midiapi -D__MACOSX_CORE__"]
-		LIBS="$LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio" 
+		LIBS="$LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio"
 	   , )
 	   dnl the 4th argument to PKG_CHECK_MODULES should must be provided to prevent an error message, here
 	   AS_IF(test -n "$PKG_CONFIG",
-	   	    PKG_CHECK_MODULES(JACK,[jack],[midiapi="$midiapi -D__UNIX_JACK__"],))
+		    PKG_CHECK_MODULES(JACK,[jack],[midiapi="$midiapi -D__UNIX_JACK__"],))
 	fi
 
 	if [test "$midiapi" == "";] then
@@ -425,10 +453,10 @@ darwin*)
 	AC_CHECK_LIB_HEADER(ws2_32,ntohs,[
 	#include <winsock2.h>
 	])
-   	# Look for WinMM flag
+	# Look for WinMM flag
 	AC_ARG_WITH(winmm, [  --with-winmm = choose Windows MultiMedia (MM) API support (windoze only)], [
 	    midiapi="$midiapi -D__WINDOWS_MM__"
-	    ac_includes_default="$ac_includes_default 
+	    ac_includes_default="$ac_includes_default
 #include <windows.h>
 #include <mmsystem.h>
 "
@@ -436,7 +464,7 @@ darwin*)
 	    AC_LIB_WINMM([midiOutGetNumDevs])
 	    AC_LANG_POP(C)
 	    AC_MSG_RESULT(using WinMM)
-	    dnl LIBS="$LIBS -lwinmm 
+	    dnl LIBS="$LIBS -lwinmm
 	    ], )
 
 	AC_ARG_WITH(winks, [  --with-winks = choose kernel streaming support (windoze only)], [
@@ -447,7 +475,7 @@ darwin*)
   # If no api flags specified, use WinMM
   if [test "$api" == "";] then
 	    midiapi="$midiapi -D__WINDOWS_MM__"
-	    ac_includes_default="$ac_includes_default 
+	    ac_includes_default="$ac_includes_default
 #include <windows.h>
 #include <mmsystem.h>
 "
@@ -455,11 +483,11 @@ darwin*)
 	    AC_LIB_WINMM([midiOutGetNumDevs])
 	    AC_LANG_POP(C)
 	    AC_MSG_RESULT(using WinMM)
-	    dnl LIBS="$LIBS -lwinmm 
+	    dnl LIBS="$LIBS -lwinmm
   fi
-	
+
 	if test "$cross_compiling" = yes; then
-		case "$target_os" in 
+		case "$target_os" in
 		mingw*|cygwin*)
 			AC_MSG_NOTICE([
   Cross compiling for windows. Assuming you use a compiler
@@ -470,7 +498,7 @@ darwin*)
 			;;
 		*)
 			AC_MSG_WARN([
-			Cross compiling for $target_os can not detect your 
+			Cross compiling for $target_os can not detect your
 			compiler behavior. Please, contact the author and help
 			supplying needed information!
 			])
@@ -480,19 +508,19 @@ darwin*)
 	tmpcxxflags="$CXXFLAGS"
 	CXXFLAGS="$CXXFLAGS -Wl,-Map,symbols.map"
 	AC_MSG_CHECKING([whether $CXX supports -Wl,-Map,symbols.map])
-      	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	 			[AC_MSG_RESULT([yes])], 
+	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+				[AC_MSG_RESULT([yes])],
 				[CXXFLAGS="$tmpcxxflags"]
-	       			[AC_MSG_RESULT([yes])])
+				[AC_MSG_RESULT([yes])])
 	AC_LANG_POP(C++)
 	AC_LANG_PUSH(C)
 	tmpcflags="$CFLAGS"
 	CFLAGS="$CFLAGS -Wl,-Map,symbols.map"
 	AC_MSG_CHECKING([whether $CC supports ])
-      	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	 			[AC_MSG_RESULT([yes])], 
+	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+				[AC_MSG_RESULT([yes])],
 				[CXXFLAGS="$tmpcxxflags"]
-	       			[AC_MSG_RESULT([yes])])
+				[AC_MSG_RESULT([yes])])
 	AC_LANG_POP(C)
 
 	;;
@@ -501,9 +529,9 @@ darwin*)
 		Your target system could not be recognized. $PACKAGE depends on
 		a working MIDI configuration for your System. So it can't be built
 		without knowing it.
-		
-		Please contact the Development team at 
-		    
+
+		Please contact the Development team at
+
 		    $PACKAGE_BUGREPORT
 
 		and provide the following information:
@@ -527,7 +555,7 @@ if test "$wxWin" != 1 -a -z "$XCode"; then
          AC_MSG_ERROR([
                 wxWindows must be installed on your system
                 but wx-config script couldn't be found.
-     
+
                 Please check that wx-config is in path, the directory
                 where wxWindows libraries are installed (returned by
                 'wx-config --libs' command) is in LD_LIBRARY_PATH or
@@ -560,25 +588,25 @@ AM_CONDITIONAL(WX_INPLACE,test "$wx_is_inplace")
 AS_IF(test "$wx_is_inplace" = yes,
 	   AC_CACHE_CHECK([for wxWidgets locale directories], [ac_cv_wx_locale_dirs],
 	   [
-	   	ac_cv_wx_locale_dirs="`$WX_CONFIG_WITH_ARGS --prefix`/locale"
+		ac_cv_wx_locale_dirs="`$WX_CONFIG_WITH_ARGS --prefix`/locale"
 	   ]),
 	   AC_CACHE_CHECK([for wxWidgets locale directories], [ac_cv_wx_locale_dirs],
 	   [
-	
+
 		for dir in `$WX_CONFIG_WITH_ARGS --prefix` \
-		    /usr /usr/local /opt /opt/local ; 
-		do 
+		    /usr /usr/local /opt /opt/local ;
+		do
 			if test -d "$dir"/share/locale  ; then
 			   found=""
-			   for dirx in "$dir"/share/locale/* 
-			   do 
+			   for dirx in "$dir"/share/locale/*
+			   do
 			      test -f "$dirx"/LC_MESSAGES/wxstd.mo && found="yes"
 			   done
 
 			   if test "$found" = yes ; then
 			      ac_cv_wx_locale_dirs="$ac_cv_wx_locale_dirs $dir/share/locale"
 			   fi
-			fi	
+			fi
 		done
 	  ])
 )
@@ -589,11 +617,11 @@ AC_CACHE_CHECK([where to find support dlls], [ac_cv_mingw_dll_dirs],
 [
        wxsearchdirs=`$WX_CONFIG_PATH --exec-prefix`/lib
        gccsearchdirs=`$CXX $CXXFLAGS -print-search-dirs|\
-       			sed -e '/^libraries:/ { s/^libraries: *=\?//;s/:/ /g; p } ; d'`
+			sed -e '/^libraries:/ { s/^libraries: *=\?//;s/:/ /g; p } ; d'`
        SEARCHDIRS=""
        for d in $wxsearchdirs $gccsearchdirs /usr/share/doc/mingw32-runtime /mingw/lib /mingw/bin  /usr/lib /lib /usr/bin /bin
-       do 
-       	  AS_IF(test -d $d,
+       do
+	  AS_IF(test -d $d,
 	  [ SEARCHDIRS="$SEARCHDIRS $d" ])
        done
        ac_cv_mingw_dll_dirs="$SEARCHDIRS"
@@ -618,7 +646,7 @@ dnl AC_CHECK_HEADERS_ONCE is too restricted to check for C++ headers
 AC_CHECK_HEADERS([FlexLexer.h])
 AM_CONDITIONAL(COND_INTERNAL_FLEXLEXER,test "$ac_cv_header_FlexLexer_h" = "no" )
 AC_LANG_POP(C++)
-ac_includes_default="$ac_includes_default 
+ac_includes_default="$ac_includes_default
 #if HAVE_MALLOC_H
 #  include <malloc.h>
 #endif
@@ -665,7 +693,7 @@ AC_CACHE_CHECK([for variable scope in for loops in C mode], ac_cv_c_scope_reuse,
  AC_COMPILE_IFELSE([
 	AC_LANG_PROGRAM([],[
 	for (int i=1; i<3; i++) ;
-	for (int i=1; i<4; i++) ; 
+	for (int i=1; i<4; i++) ;
 	exit (0);
 	])],[ac_cv_c_scope_reuse=inside],[ac_cv_c_scope_reuse=outside])
 ])
@@ -684,17 +712,17 @@ AC_CACHE_CHECK([syntax for signalling printf format attributes], ac_cv_format_ar
 	],[])],[ac_cv_format_arg="__attribute_format_arg__"],[])
  AS_IF(test -z "$ac_cv_format_arg",
   AC_COMPILE_IFELSE([
-  	AC_LANG_PROGRAM([
+	AC_LANG_PROGRAM([
 	int test (constchar * auto, ...) __attribute__((format_arg(1)));
 	],[])],[ac_cv_format_arg="__attribute__(format_arg(number))"],[]))
  AS_IF(test -z "$ac_cv_format_arg",
   AC_COMPILE_IFELSE([
-  	AC_LANG_PROGRAM([
+	AC_LANG_PROGRAM([
 	int test (constchar * auto, ...) __attribute__((__format_arg__(1)));
 	],[])],[ac_cv_format_arg="__attribute__(format_arg(number))"],[]))
  AS_IF(test -z "$ac_cv_format_arg",
   AC_COMPILE_IFELSE([
-  	AC_LANG_PROGRAM([
+	AC_LANG_PROGRAM([
 	int test (constchar * auto, ...) __attribute__((__format_arg__(1)));
 	],[])],[ac_cv_format_arg="__attribute__(format_arg(number))"],[]))
 ])
@@ -712,7 +740,7 @@ dnl [
 dnl AC_COMPILE_IFELSE([
 dnl	AC_LANG_PROGRAM([],[
 dnl	for (int i=1; i<3; i++) ;
-dnl	for (int i=1; i<4; i++) ; 
+dnl	for (int i=1; i<4; i++) ;
 dnl	exit(0);
 dnl	])],[ac_cv_cxx_scope_reuse=inside],[ac_cv_cxx_scope_reuse=outside])
 dnl ])
@@ -752,11 +780,11 @@ AC_FUNC_MEMCMP
 AC_FUNC_REALLOC
 AC_FUNC_SELECT_ARGTYPES
 AC_FUNC_VPRINTF
-AC_CHECK_FUNCS([memmove pow getcwd gettimeofday memset select stpcpy strchr strstr]) 
+AC_CHECK_FUNCS([memmove pow getcwd gettimeofday memset select stpcpy strchr strstr])
 AC_CHECK_FUNC(strdup)
 AC_FUNCTION_VECTOR_DATA
 
-# Locate CppUnit (minimum version 1.8.0) for testing.  
+# Locate CppUnit (minimum version 1.8.0) for testing.
 AM_PATH_CPPUNIT(1.8.0)
 
 # You can set up an automake conditional and use it to conditionally
@@ -788,47 +816,47 @@ function abspath {
 }
 
 dnl preserve some variables for cross compiling
-# propagate selected configure variables to DISTCHECK_CONFIGURE_FLAGS 
-for v in CPPFLAGS CXX CXXFLAGS CXXCPP LDFLAGS LIBS; do 
+# propagate selected configure variables to DISTCHECK_CONFIGURE_FLAGS
+for v in CPPFLAGS CXX CXXFLAGS CXXCPP LDFLAGS LIBS; do
     eval s=\${$v+set}
     if test "$s" = set
-    then 
+    then
        eval val=\$`echo $v`
-       preserve_flags="${preserve_flags}'${v}=${val}' " 
-    fi 
-done 
-# propagate Host triplets to DISTCHECK_CONFIGURE_FLAGS 
-for v in host build target; do 
+       preserve_flags="${preserve_flags}'${v}=${val}' "
+    fi
+done
+# propagate Host triplets to DISTCHECK_CONFIGURE_FLAGS
+for v in host build target; do
     tmp="${v}_alias"
     eval s=\${$tmp+set}
-    if test "$s" = 'set' ; then 
+    if test "$s" = 'set' ; then
        eval val=\$`echo $tmp`
-       preserve_flags="${preserve_flags}'--${v}=${val}' " 
-    fi 
-done 
-# propagate certain configure options to DISTCHECK_CONFIGURE_FLAGS 
-for v in with-wx-config with-wx-dir with-boost with-cppunit-prefix with-cppunit-exec-prefix ; do 
+       preserve_flags="${preserve_flags}'--${v}=${val}' "
+    fi
+done
+# propagate certain configure options to DISTCHECK_CONFIGURE_FLAGS
+for v in with-wx-config with-wx-dir with-boost with-cppunit-prefix with-cppunit-exec-prefix ; do
     tmp="`echo "$v" | sed -e 's/-/_/g'`"
     eval s=\${$tmp+set}
-    if test "$s" = 'set' ; then 
+    if test "$s" = 'set' ; then
        eval val=\$`echo $tmp`
        val=`abspath "$val"`
-       preserve_flags="${preserve_flags}'--${v}=${val}' " 
-    fi 
-done 
+       preserve_flags="${preserve_flags}'--${v}=${val}' "
+    fi
+done
 DISTCHECK_CONFIGURE_FLAGS="$preserve_flags"
 
-AC_SUBST(DISTCHECK_CONFIGURE_FLAGS)  
+AC_SUBST(DISTCHECK_CONFIGURE_FLAGS)
 AC_SUBST(LIBS)
 
-AC_CONFIG_FILES([  
-po/Makefile.in 
+AC_CONFIG_FILES([
+po/Makefile.in
 Makefile
 intl/Makefile
 src/Makefile
 src/gmut/Makefile
 src/gmut/tests/Makefile
-src/includes/Makefile 
+src/includes/Makefile
 src/includes/mutabor/Makefile
 src/includes/mutabor/tests/Makefile
 src/includes/netinet/Makefile
@@ -873,9 +901,9 @@ dnl  src/libmutabor/lextables/tests/Makefile
 dnl  src/libmutabor/Makefile
 dnl  src/libmutabor/tests/Makefile
 dnl  dnl AC_CONFIG_FILES([
-dnl libmutabor/Makefile 
-dnl libmutabor/tests/Makefile 
-dnl includes/mutabor/Makefile 
+dnl libmutabor/Makefile
+dnl libmutabor/tests/Makefile
+dnl includes/mutabor/Makefile
 dnl ])
 AC_OUTPUT
 
