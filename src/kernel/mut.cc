@@ -1765,7 +1765,7 @@ yyreduce:
     {  mutabor_error_message(box,
 		compiler_error,
 		_("Syntax error in line %d."),
-		FEHLERZEILE); 
+		FEHLERZEILE);
 		}
 #line 1771 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
@@ -1806,23 +1806,23 @@ yyreduce:
 
   case 31:
 #line 243 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { 
+    {
 		  mutabor_error_message(box,
 		                        compiler_error,
 		                        _("Bad interval declaration of intervall %s in line %d."),
 				        ((yyvsp[-2].identifier)),
-				        FEHLERZEILE); 
+				        FEHLERZEILE);
 		}
 #line 1817 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 32:
 #line 250 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { 
+    {
 		mutabor_error_message(box,
 				      compiler_error,
 				      _("Wrong character. Expecting %s in line %d."),
-				      mutT("="),FEHLERZEILE); 
+				      mutT("="),FEHLERZEILE);
 	  }
 #line 1828 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
@@ -1859,12 +1859,12 @@ yyreduce:
 
   case 42:
 #line 286 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { 
+    {
 	      mutabor_error_message(box,
 				    compiler_error,
 				    _("Bad tone declaration of tone %s in line %d."),
 				    ((yyvsp[-2].identifier)),
-				    FEHLERZEILE); 
+				    FEHLERZEILE);
 	}
 #line 1870 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
@@ -1901,7 +1901,7 @@ yyreduce:
 				   mutabor_error_message(box,
 							 compiler_error,
 							 _("Division by (nearly) 0 in line %d."),
-							 FEHLERZEILE);  
+							 FEHLERZEILE);
 		   }
 #line 1907 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
@@ -1914,7 +1914,7 @@ yyreduce:
 				   mutabor_error_message(box,
 							 compiler_error,
 							 _("Division by (nearly) 0 in line %d."),
-							 FEHLERZEILE);  
+							 FEHLERZEILE);
 		   }
 #line 1920 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
@@ -1927,7 +1927,7 @@ yyreduce:
 			     mutabor_error_message(box,
 						   compiler_error,
 						   _("Division by (nearly) 0 in line %d."),
-						   FEHLERZEILE);  
+						   FEHLERZEILE);
 		   }
 #line 1933 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
@@ -1940,7 +1940,7 @@ yyreduce:
 			     mutabor_error_message(box,
 						   compiler_error,
 						   _("Division by (nearly) 0 in line %d."),
-						   FEHLERZEILE);  
+						   FEHLERZEILE);
 		   }
 #line 1946 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
@@ -1965,7 +1965,7 @@ yyreduce:
 			     mutabor_error_message(box,
 						   compiler_error,
 						   _("Division by (nearly) 0 in line %d."),
-						   FEHLERZEILE);  
+						   FEHLERZEILE);
 		   }
 #line 1971 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
@@ -1978,7 +1978,7 @@ yyreduce:
 			     mutabor_error_message(box,
 						   compiler_error,
 						   _("Division by (nearly) 0 in line %d."),
-						   FEHLERZEILE);  
+						   FEHLERZEILE);
 		   }
 #line 1984 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
@@ -2029,7 +2029,7 @@ yyreduce:
 #line 450 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {     mutabor_error_message(box,
 		compiler_error,
-		_("Bad tonesystem declaration in line %d."),		      
+		_("Bad tonesystem declaration in line %d."),
 		FEHLERZEILE);
 		}
 #line 2036 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
@@ -2043,7 +2043,7 @@ yyreduce:
 
   case 73:
 #line 459 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { (yyval.parameters) = (yyvsp[0].parameters); 
+    { (yyval.parameters) = (yyvsp[0].parameters);
                     enumerate_parameters(box,(yyval.parameters));
 		}
 #line 2050 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
@@ -2062,15 +2062,15 @@ yyreduce:
 
   case 76:
 #line 477 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { 
-			(yyval.parameters) = get_new_name_in_parameterlist (box, (yyvsp[0].identifier)); 
+    {
+			(yyval.parameters) = get_new_name_in_parameterlist (box, (yyvsp[0].identifier));
 		}
 #line 2069 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 77:
 #line 480 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { 
+    {
 		    (yyval.parameters) = NULL;
 		    mutabor_error_message(box,
 					  compiler_warning,
@@ -2082,7 +2082,7 @@ yyreduce:
 
   case 78:
 #line 487 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { 
+    {
 			(yyval.parameters) = NULL;
 		        mutabor_error_message(box,
 					  compiler_warning,
@@ -2100,24 +2100,24 @@ yyreduce:
 
   case 80:
 #line 508 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { 
-			(yyval.arguments) = (yyvsp[0].arguments); 
+    {
+			(yyval.arguments) = (yyvsp[0].arguments);
 		}
 #line 2107 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 81:
 #line 514 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { 
-			(yyval.arguments) = (yyvsp[0].arguments); 
+    {
+			(yyval.arguments) = (yyvsp[0].arguments);
 		}
 #line 2115 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 82:
 #line 517 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { 
-			(yyval.arguments) = (yyvsp[-2].arguments); 
+    {
+			(yyval.arguments) = (yyvsp[-2].arguments);
 		        (yyvsp[-2].arguments)->next = (yyvsp[0].arguments);
 		}
 #line 2124 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
@@ -2155,19 +2155,19 @@ yyreduce:
 
   case 91:
 #line 557 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { 
-			init_umstimmung (box, (yyvsp[-1].identifier)); 
-		eintrage_parameterliste_in_umstimmung (box, 
+    {
+			init_umstimmung (box, (yyvsp[-1].identifier));
+		eintrage_parameterliste_in_umstimmung (box,
                                                        box->file->tmp_umstimmung,
- 		                                       NULL);  
+ 		                                       NULL);
 		}
 #line 2165 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 92:
 #line 563 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { 
-			get_new_umstimmung (box); 
+    {
+			get_new_umstimmung (box);
 		}
 #line 2173 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
@@ -2175,41 +2175,41 @@ yyreduce:
   case 93:
 #line 568 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {
-			init_umstimmung (box,(yyvsp[-4].identifier)); 
-		        eintrage_parameterliste_in_umstimmung (box, 
+			init_umstimmung (box,(yyvsp[-4].identifier));
+		        eintrage_parameterliste_in_umstimmung (box,
                                                        box->file->tmp_umstimmung,
- 		                                       (yyvsp[-2].parameters)); 
+ 		                                       (yyvsp[-2].parameters));
 		}
 #line 2184 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 94:
 #line 573 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { 
-			get_new_umstimmung (box); 
+    {
+			get_new_umstimmung (box);
 		}
 #line 2192 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 95:
 #line 578 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { 
+    {
 			init_umstimmung (box,(yyvsp[-4].identifier));
-		        eintrage_parameterliste_in_umstimmung (box, 
+		        eintrage_parameterliste_in_umstimmung (box,
                                                        box->file->tmp_umstimmung,
  		                                       (yyvsp[-2].parameters));
 		        mutabor_error_message(box,
 		                              compiler_error,
 		                              _("Invalid parameter list in retuning %s line %d"),
-		                              (yyvsp[-4].identifier), FEHLERZEILE); 
+		                              (yyvsp[-4].identifier), FEHLERZEILE);
 		}
 #line 2207 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 96:
 #line 587 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { 
-			get_new_umstimmung (box); 
+    {
+			get_new_umstimmung (box);
 		}
 #line 2215 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
@@ -2217,14 +2217,14 @@ yyreduce:
   case 97:
 #line 591 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {
-			init_umstimmung (box,(yyvsp[-2].identifier)); 
-		        eintrage_parameterliste_in_umstimmung (box, 
+			init_umstimmung (box,(yyvsp[-2].identifier));
+		        eintrage_parameterliste_in_umstimmung (box,
                                                        box->file->tmp_umstimmung,
  		                                       NULL);
 		        mutabor_error_message(box,
 		                              compiler_error,
 		                              _("Error while reading %s line %d"),
-                               		      (yyvsp[-2].identifier), FEHLERZEILE); 
+                               		      (yyvsp[-2].identifier), FEHLERZEILE);
 		}
 #line 2230 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
@@ -2522,8 +2522,8 @@ yyreduce:
 
   case 146:
 #line 727 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { 
-		  get_new_aktion_aufruf_element (box,(yyvsp[0].identifier),NULL); 
+    {
+		  get_new_aktion_aufruf_element (box,(yyvsp[0].identifier),NULL);
 	  }
 #line 2529 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
@@ -2668,12 +2668,12 @@ yyreduce:
 
   case 169:
 #line 796 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { 
+    {
 		mutabor_error_message(box,
 				      compiler_error,
 				      _("Bad pattern declaration “%s” at line %d"),
 				      ((yyvsp[-2].identifier)),
-				      FEHLERZEILE); 
+				      FEHLERZEILE);
 	  }
 #line 2679 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
@@ -2828,7 +2828,7 @@ yyreduce:
 
   case 193:
 #line 875 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { get_harmoniebezeichner (box, 
+    { get_harmoniebezeichner (box,
 				  mutabor_harmony_nokey,
 				  0, (yyvsp[0].identifier), 0); }
 #line 2835 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
@@ -2884,10 +2884,10 @@ yyreduce:
 
   case 202:
 #line 895 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { 
+    {
 		mutabor_error_message(box,
 				      compiler_error,
-				      _("Bad MIDI list in line %d"),  
+				      _("Bad MIDI list in line %d"),
 				      FEHLERZEILE );
 	  }
 #line 2894 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
@@ -3214,16 +3214,16 @@ start_lex:
 	    DEBUGLOG2(other,_T("char %x"),c);
 	    if (c == '\n') {
 		    DEBUGLOG2(other,_T("New line"));
-		    if (!(llocp->first_line ++ % LINE_DRAW_QUANTUM)) 
+		    if (!(llocp->first_line ++ % LINE_DRAW_QUANTUM))
 			    show_line_number(box,llocp->first_line);
 	    }
     }
-    
+
     if (c == '"') {
 	    while (box->scanner->anzahl_eingelesene_zeichen ++,
 		   (c= *(box->scanner->pos++)) != '"' && c != EOF )
                     if (c == '\n') llocp->first_line ++;
-        
+
        goto start_lex;
     }
 
@@ -3232,7 +3232,7 @@ start_lex:
 	    return 0;
     }
 
-        
+
     /* char starts a number => parse the number. */
     if (isdigit(c)) {
 	    double zahl = 0.0;
@@ -3261,7 +3261,7 @@ start_lex:
 		    mutASSERT(*(box->scanner->pos) == c);
 		    mutASSERT((box->scanner->pos) >= (box->scanner->data));
 		    box->scanner->anzahl_eingelesene_zeichen --;
-            
+
 		    if (zahl > INT_MAX) {
 			    lvalp->f_value = zahl;
 			    return MUTABOR_TOKEN_F_NUMBER;
@@ -3272,9 +3272,9 @@ start_lex:
 		    }
 	    }
 
-      
+
     }
-    
+
     /* # starts a HEX-number => parse the number. */
     if (c == '#') {
         unsigned int help;
@@ -3298,11 +3298,11 @@ start_lex:
 /* printf("f_number:%lf:\n", lvalp->f_value); */
 
     }
-    
+
     /* Test auf reserved word oder einen Identifier */
     if (isalpha (c) || (c == '_') || (c == '\'') ) {
 
-static struct { 
+static struct {
     const char *word;
     int token;
 } reserved_words [] = {
@@ -3345,15 +3345,15 @@ static struct {
 #if 0
         char *symbuffer = xmalloc ((size_t)(MAX_IDENTIFIER_LEN + 1));
         int i=0;
-        
+
         do {
             if (c == '\'') c = 'i';
             symbuffer[i++] = c;
             c = *(box->scanner->pos++);
-        } while (c != EOF                && 
-                 i < MAX_IDENTIFIER_LEN  && 
+        } while (c != EOF                &&
+                 i < MAX_IDENTIFIER_LEN  &&
                  (isalnum (c) || (c == '_') || (c == '\'') ) );
-        
+
         --(box->scanner->pos);
 	mutASSERT(*(box->scanner->pos) == c);
 	mutASSERT((box->scanner->pos) >= (box->scanner->data));
@@ -3378,9 +3378,9 @@ static struct {
 	    DEBUGLOG2(other,_T("character #%d = %x"),i,c);
             box->scanner->anzahl_eingelesene_zeichen ++;
 
-        } while ((c) && 
+        } while ((c) &&
                  (isalnum (c) || (c == '_') || (c == '\'') ) );
-        
+
         --(box->scanner->pos);
 	mutASSERT(*(box->scanner->pos) == c);
 	mutASSERT((box->scanner->pos) >= (box->scanner->data));
@@ -3390,18 +3390,18 @@ static struct {
 #endif
 
 /* printf("symbuffer:%s:\n", symbuffer); */
-        
+
         for (i=0; reserved_words[i].word; i++) {
             if ( ! strcasecmp (symbuffer, reserved_words[i].word)) {
                 xfree (symbuffer);
                 return reserved_words[i].token;
             }
         }
-        
+
         lvalp->identifier = symbuffer;
         return MUTABOR_TOKEN_IDENTIFIER;
     }
-    
+
     /* Any other character is a token by itself */
     switch (c) {
         case '+':
@@ -3425,15 +3425,15 @@ static struct {
                return c;
     }
 
-    
+
     mutabor_error_message(box,
 			  compiler_error,
 			  _("Invalid character: “%c” = %x at line %d."),
 			  c,c,llocp->first_line + 1);
-    
+
     return 0;  /* um Compilerwarnungen zu vermeiden */
 
-    
+
 } /* yylex */
 
 void init_yylex ()
@@ -3451,6 +3451,6 @@ void init_yylex ()
 
 /* END MUT_TAB.C */
 
-/* 
+/*
  * \}
  */
