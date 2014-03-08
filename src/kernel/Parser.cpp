@@ -1,4 +1,4 @@
-/** \file 
+/** \file
 ********************************************************************
 * Some additional data for the parser
 *
@@ -140,7 +140,7 @@ int get_logik_nummer (mutabor_box_type * box, const char * name, struct logik * 
 		return 0;
 	} else if ( ! strcasecmp (name, liste->name))
 		return 0;
-	
+
 	return 1 + get_logik_nummer (box, name, liste->next);
 }
 
@@ -261,13 +261,13 @@ void init_parameter_liste (mutabor_box_type * box)
 }
 
 
-struct parameter_list * 
+struct parameter_list *
 get_new_name_in_parameterlist (mutabor_box_type * box, const char * name)
 {
 
 	struct parameter_list * retval;
 	TRACE;
-	retval = (parameter_list*) 
+	retval = (parameter_list*)
 	    xmalloc (box, (size_t) sizeof (struct parameter_list));
 	retval -> name = name;
 	retval -> next = NULL;
@@ -280,7 +280,7 @@ void enumerate_parameters (mutabor_box_type * box, struct parameter_list * param
 	parameters -> index = i++;
 	parameters = parameters -> next;
     }
-    if (box->file->parameter_count < i) 
+    if (box->file->parameter_count < i)
 	box->file->parameter_count = i;
 }
 
@@ -292,8 +292,8 @@ static struct parameter_liste * get_last_parameter_liste (mutabor_box_type * box
 		    */
 
 
-static struct parameter_list * 
-get_parameter_by_name (mutabor_box_type * box, 
+static struct parameter_list *
+get_parameter_by_name (mutabor_box_type * box,
 		       const char * search_name,
 		       struct parameter_list * node)
 {
@@ -313,7 +313,7 @@ void print_argumentliste (struct argument_list * this_)
 	if (this_)
 		{
 			switch (this_ -> argument.argument_type) {
-				
+
 			case mutabor_argument_integer:
 				printf (" %d ", this_ -> argument.u.integer.number);
 				break;
@@ -345,7 +345,7 @@ void init_argument_liste (mutabor_box_type * box)
 
 
 struct argument_list *
-get_new_number_in_argument_list (mutabor_box_type * box, 
+get_new_number_in_argument_list (mutabor_box_type * box,
 				 double number)
 
 {
@@ -361,7 +361,7 @@ get_new_number_in_argument_list (mutabor_box_type * box,
 }
 
 struct argument_list *
-get_new_name_in_argument_list (mutabor_box_type * box, 
+get_new_name_in_argument_list (mutabor_box_type * box,
 			       const char * parameter_name)
 {
 
@@ -549,7 +549,7 @@ void setze_nummer_von_abstand_und_zentrum (mutabor_box_type * box)
 
 		struct anweisung * lauf_anw;
 
-		for (lauf_anw=lauf->anweisungsliste; 
+		for (lauf_anw=lauf->anweisungsliste;
 		     lauf_anw; lauf_anw=lauf_anw->next) {
 			if (lauf_anw->aktion->aktions_typ == aktion_aufruf) {
 
@@ -567,7 +567,7 @@ void setze_nummer_von_abstand_und_zentrum (mutabor_box_type * box)
 
 					case mutabor_argument_parameter:
 						TRACE;
-						if ( (! strcasecmp (lauf_arg->argument.u.parameter.parameter_name, "ABSTAND")) 
+						if ( (! strcasecmp (lauf_arg->argument.u.parameter.parameter_name, "ABSTAND"))
 || !strcasecmp (lauf_arg->argument.u.parameter.parameter_name, "DISTANCE")) {
 							lauf_arg->argument.u.parameter.parameter_number = interpreter_parameter_distance;
 						} else if ( (!strcasecmp (lauf_arg->argument.u.parameter.parameter_name,
@@ -577,7 +577,7 @@ void setze_nummer_von_abstand_und_zentrum (mutabor_box_type * box)
 						} else
 							mutabor_error_message(box,
 									      false,
-									      _("Undefined parameter: %s (in call %s from logic %s)"),    
+									      _("Undefined parameter: %s (in call %s from logic %s)"),
 									      (lauf_arg->argument.u.parameter.parameter_name),
 									      (lauf_anw->aktion->u.aktion_aufruf.name),
 									      (lauf->name));
@@ -623,7 +623,7 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 				      filename);
 	}
 	*/
-	
+
 	box->scanner = (mutabor_scanner_data *) calloc(1, sizeof(struct mutabor_scanner_data));
 	box->scanner->data = logic;
 	box->scanner->pos = box->scanner->data;
@@ -654,9 +654,9 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 
 	if ( !box->file->list_of_intervalle )
 		get_new_intervall(box,"__TopSecret__RK__Intervall__", 1.0);
-			   
+
 	berechne_intervalle_absolut (box,box->file->list_of_intervalle);
-			   
+
 	if ( !box->file->list_of_toene )
 		get_new_ton_absolut(box,"__TopSecret__RK__Ton__", 440.0);
 
@@ -678,15 +678,15 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 	check_konsistenz (box);
 
 #ifdef DEBUG
-	
+
 
 	if (isDebugFlag(kernel_parser)) {
 		{ struct intervall * lauf;
 			printf ("\n");
-			
+
 			for (lauf=box->file->list_of_intervalle; lauf; lauf=lauf->next) {
 				if (lauf->intervall_typ == intervall_absolut) {
-					printf ("Name: %s, Wert: %f:\n", 
+					printf ("Name: %s, Wert: %f:\n",
 						lauf->name,
 						lauf->u.intervall_absolut.intervall_wert );
 				} else {
@@ -863,7 +863,7 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 						if (help_case->is_default)
 							printf ("(ANSONSTEN)");
 						else
-							printf ("%d ", 
+							printf ("%d ",
 								help_case->case_label);
 
 						print_action_list(
@@ -1363,7 +1363,7 @@ inline static void link_arguments_to_parameters(mutabor_box_type * box,
 		switch (entry->argument.argument_type) {
 		case mutabor_argument_parameter: {
 			entry->argument.u.parameter.parameter
-				= get_parameter_by_name(box, 
+				= get_parameter_by_name(box,
 							entry->argument.u.parameter.name,
 							parameters);
 
@@ -1397,13 +1397,13 @@ void get_new_umstimmung (mutabor_box_type * box)
 
 	struct umstimmung * * lauf;
 	TRACE;
-	link_arguments_to_parameters(box, 
-				     box->file->tmp_umstimmung -> argument_liste, 
-				     box->file->tmp_umstimmung -> parameter_liste, 
+	link_arguments_to_parameters(box,
+				     box->file->tmp_umstimmung -> argument_liste,
+				     box->file->tmp_umstimmung -> parameter_liste,
 				     box->file->tmp_umstimmung);
 	for (lauf= & box->file->list_of_umstimmungen; * lauf; lauf= & (*lauf)->next) {}
 	(* lauf) = box->file->tmp_umstimmung;
-	
+
 }
 
 
@@ -1435,7 +1435,7 @@ void get_umstimmung_taste_abs (mutabor_box_type * box,
 	//	box->file->tmp_umstimmung -> parameter_liste = get_new_name_in_parameterlist (box, _("key"));
 }
 
-void get_umstimmung_taste_rel (mutabor_box_type * box, 
+void get_umstimmung_taste_rel (mutabor_box_type * box,
 			       argument_list * argument,
 			       char vorzeichen)
 {
@@ -1446,7 +1446,7 @@ void get_umstimmung_taste_rel (mutabor_box_type * box,
 	//	box->file->tmp_umstimmung -> parameter_liste = get_new_name_in_parameterlist (box, _("key difference"));
 }
 
-void get_umstimmung_breite_abs (mutabor_box_type * box, 
+void get_umstimmung_breite_abs (mutabor_box_type * box,
 				argument_list * argument)
 {
 	TRACE;
@@ -1455,7 +1455,7 @@ void get_umstimmung_breite_abs (mutabor_box_type * box,
 	// box->file->tmp_umstimmung -> parameter_liste = get_new_name_in_parameterlist (box, _("width"));
 }
 
-void get_umstimmung_breite_rel (mutabor_box_type * box, 
+void get_umstimmung_breite_rel (mutabor_box_type * box,
 				argument_list * argument,
 				char vorzeichen)
 {
@@ -1478,7 +1478,7 @@ void init_umstimm_expression_list (mutabor_box_type * box)
 	box->file->tmp_tonliste = NULL;
 }
 
-void get_new_umstimm_expression (mutabor_box_type * box, 
+void get_new_umstimm_expression (mutabor_box_type * box,
 				 const char * bezugston)
 
 {
@@ -1696,14 +1696,14 @@ void get_umstimmung_umstimmungs_bund (mutabor_box_type * box)
 							    box->file->tmp_umstimmung -> parameter_liste,
 							    box->file->tmp_umstimmung);
 
-#if 0							    
+#if 0
 				struct argument_list * argument_lauf;
 
 				for (argument_lauf = aktions_lauf -> u.aktion_aufruf.argument_liste;
 				     argument_lauf;
 				     argument_lauf = argument_lauf -> next ) {
 #warning make switch
-					if (argument_lauf -> argument.argument_type 
+					if (argument_lauf -> argument.argument_type
 					    == mutabor_argument_parameter) {
 					    struct parameter_list * param
 						= get_parameter_by_name (box,
@@ -1852,7 +1852,7 @@ void get_umstimmung_umstimm_case (mutabor_box_type * box,
 	/* check, ob die Parameter zulÑssig sind */
 
 	{
-			
+
 		struct case_liste * case_lauf;
 
 		for (case_lauf = box->file->tmp_umstimmung -> u.umstimmung_umstimmungs_case
@@ -1866,7 +1866,7 @@ void get_umstimmung_umstimm_case (mutabor_box_type * box,
 			     aktions_lauf;
 			     aktions_lauf = aktions_lauf -> next) {
 
-				if (aktions_lauf -> aktions_typ != aktion_aufruf) 
+				if (aktions_lauf -> aktions_typ != aktion_aufruf)
 					continue;
 
 				link_arguments_to_parameters(box,
@@ -1882,7 +1882,7 @@ void get_umstimmung_umstimm_case (mutabor_box_type * box,
 #warning make switch
 					if (argument_lauf -> argument.argument_type != mutabor_argument_parameter)
 						continue;
-					struct parameter_list * param 
+					struct parameter_list * param
 					    = get_parameter_by_name (box,
 								     argument_lauf->argument.u.parameter.name,
 								     box->file->tmp_umstimmung -> parameter_liste);
@@ -1914,13 +1914,13 @@ void get_umstimmung_umstimm_case (mutabor_box_type * box,
 			    &(box->file->tmp_umstimmung -> u.umstimmung_umstimmungs_case
 			      .argument),
 			    mutabor_argument_parameter,
-			    0, 
+			    0,
 			    selector);
 	box->file->tmp_umstimmung -> u.umstimmung_umstimmungs_case
 		.umstimmungs_case_liste = box->file->tmp_umstimmungs_case_liste;
 
 #if 0
-	/* arguments to actions are checked as soon as they are parsed 
+	/* arguments to actions are checked as soon as they are parsed
 	   this will change when we use return parameters of reduction rules.
 	   Then, this part must be rewritten and reactivated */
 	/* check whether the argumets are valid */
@@ -1939,7 +1939,7 @@ void get_umstimmung_umstimm_case (mutabor_box_type * box,
 		     aktions_lauf;
 		     aktions_lauf = aktions_lauf -> next) {
 
-		    if (aktions_lauf -> aktions_typ != aktion_aufruf) 
+		    if (aktions_lauf -> aktions_typ != aktion_aufruf)
 			continue;
 
 		    struct argument_list * argument_lauf;
@@ -1948,7 +1948,7 @@ void get_umstimmung_umstimm_case (mutabor_box_type * box,
 			 argument_lauf;
 			 argument_lauf = argument_lauf -> next ) {
 #warning make extra function assign_parameters_to_arguments
-			if (argument_lauf -> argument.argument_type == mutabor_argument_parameter) 
+			if (argument_lauf -> argument.argument_type == mutabor_argument_parameter)
 			    continue;
 			int i = parameter_nummer (box,
 						  argument_lauf->argument.u.parameter.parameter_name,
@@ -2078,13 +2078,15 @@ void get_aktion_aufruf (const char * name)
 
 
  void get_harmoniebezeichner (mutabor_box_type * box,
+			      enum harmony_type flags,
 			      int vor_taste,
 			      const char * name,
 			      int nach_taste)
 {
-	box->file->tmp_vor_taste   = vor_taste;
-	box->file->tmp_name        = name;
-	box->file->tmp_nach_taste  = nach_taste;
+	box->file->tmp_harmony_flags = flags;
+	box->file->tmp_vor_taste     = vor_taste;
+	box->file->tmp_name          = name;
+	box->file->tmp_nach_taste    = nach_taste;
 }
 
 
@@ -2113,22 +2115,28 @@ void get_ausloeser_harmonie (mutabor_box_type * box)
 {
 	TRACE;
 
-	box->file->tmp_ausloeser = (ausloeser*) xmalloc (box, sizeof (struct ausloeser));
-	box->file->tmp_ausloeser -> ausloeser_typ = ausloeser_harmonie;
-	box->file->tmp_ausloeser -> u.ausloeser_harmonie.vortaste  = box->file->tmp_vor_taste;
-	box->file->tmp_ausloeser -> u.ausloeser_harmonie.name      = box->file->tmp_name;
-	box->file->tmp_ausloeser -> u.ausloeser_harmonie.nachtaste = box->file->tmp_nach_taste;
+	ausloeser * trigger =  (ausloeser*) xmalloc (box, sizeof (struct ausloeser));
+	box->file->tmp_ausloeser = trigger;
+
+	trigger -> ausloeser_typ                  = ausloeser_harmonie;
+	trigger -> u.ausloeser_harmonie.type      = box->file->tmp_harmony_flags;
+	trigger -> u.ausloeser_harmonie.vortaste  = box->file->tmp_vor_taste;
+	trigger -> u.ausloeser_harmonie.name      = box->file->tmp_name;
+	trigger -> u.ausloeser_harmonie.nachtaste = box->file->tmp_nach_taste;
 }
 
 void get_ausloeser_harmonie_form (mutabor_box_type * box)
 {
 	TRACE;
 
-	box->file->tmp_ausloeser = (ausloeser*) xmalloc (box, sizeof (struct ausloeser));
-	box->file->tmp_ausloeser -> ausloeser_typ = ausloeser_harmonie_form;
-	box->file->tmp_ausloeser -> u.ausloeser_harmonie_form.vortaste  = box->file->tmp_vor_taste;
-	box->file->tmp_ausloeser -> u.ausloeser_harmonie_form.name      = box->file->tmp_name;
-	box->file->tmp_ausloeser -> u.ausloeser_harmonie_form.nachtaste = box->file->tmp_nach_taste;
+	ausloeser * trigger =  (ausloeser*) xmalloc (box, sizeof (struct ausloeser));
+	box->file->tmp_ausloeser = trigger;
+
+	trigger -> ausloeser_typ = ausloeser_harmonie_form;
+	trigger -> u.ausloeser_harmonie_form.type      = box->file->tmp_harmony_flags;
+	trigger -> u.ausloeser_harmonie_form.vortaste  = box->file->tmp_vor_taste;
+	trigger -> u.ausloeser_harmonie_form.name      = box->file->tmp_name;
+	trigger -> u.ausloeser_harmonie_form.nachtaste = box->file->tmp_nach_taste;
 }
 
  void get_ausloeser_taste (mutabor_box_type * box, const char * name)
@@ -2236,10 +2244,10 @@ void vervollstaendige_logik (mutabor_box_type * box)
 
 /******* Einlesen der Instrumente *******/
 
- void get_instrument_dekl (mutabor_box_type * box, 
-			   int midi_in, 
-			   int midi_von, 
-			   int midi_bis, 
+ void get_instrument_dekl (mutabor_box_type * box,
+			   int midi_in,
+			   int midi_von,
+			   int midi_bis,
 			   int midi_umleit,
 			   struct instrument ** list_to_insert)
 {
@@ -2282,7 +2290,7 @@ void vervollstaendige_logik (mutabor_box_type * box)
 						      compiler_error,
 						      _("Bad MIDI from channel %d (valid: 1...16)"),
 						      midi_von);
-			
+
 			if ( (midi_bis < 1) || (midi_bis > 16) )
 				mutabor_error_message(box,
 						      compiler_error,
@@ -2319,7 +2327,7 @@ static void belege_toene (struct ton **toene, struct ton * liste)
 		}
 }
 
- static int ton_nummer (mutabor_box_type * box, 
+ static int ton_nummer (mutabor_box_type * box,
 			const char *name)
 {
 	int i;
@@ -2428,8 +2436,8 @@ static void berechne_ton_endgueltig (mutabor_box_type * box, int k)
 			switch (box->file->toene[i]->ton_typ) {
 			case ton_absolut: break;  /* alles ok */ ;
 			case ton_komplex:
-				mutabor_adjacent (box->file->tone_matrix, 
-						  i, 
+				mutabor_adjacent (box->file->tone_matrix,
+						  i,
 						  ton_nummer (box, box->file->toene[i]->u.ton_komplex.bezugston)) = 1;
 				break;
 			default:
@@ -2455,7 +2463,7 @@ static void berechne_ton_endgueltig (mutabor_box_type * box, int k)
 					if (mutabor_adjacent (box->file->tone_matrix, i,j))
 						printf ("%s  ", box->file->toene[j]->name);
 				}
-			
+
 				printf ("\n");
 			}
 
@@ -2568,7 +2576,8 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 
 			if (enthalten_in_tastenliste(ausloeser->u.ausloeser_harmonie_form.vortaste,
 						     help_harmonie->tastenliste)
-			    || ausloeser->u.ausloeser_harmonie_form.vortaste == MUTABOR_NO_KEY ) {
+			    || !(ausloeser->u.ausloeser_harmonie_form.type
+				 & mutabor_harmony_prekey )) {
 				/* OK */
 			} else {
 				mutabor_error_message(box,
@@ -2578,24 +2587,28 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 						      (ausloeser->u.ausloeser_harmonie_form.name),
 						      (name));
 				/* Markierung setzen, fuer unmoeglichen Ausloeser */
-				ausloeser->u.ausloeser_harmonie_form.vortaste = MUTABOR_INVALID_KEY;
+				ausloeser->u.ausloeser_harmonie_form.type
+					= mutabor_harmony_invalid;
 			}
 
 			if (enthalten_in_tastenliste
 			    (ausloeser->u.ausloeser_harmonie_form.nachtaste,
 			     help_harmonie->tastenliste) ||
-			    ausloeser->u.ausloeser_harmonie_form.nachtaste
-			    == MUTABOR_NO_KEY ) {
+			    !(ausloeser->u.ausloeser_harmonie_form.type
+			      & mutabor_harmony_postkey )) {
 				/* OK */
 			} else {
 				mutabor_error_message(box,
 						      compiler_warning,
-						      _("Highest chroma %d of harmonic form %s in logic %s is not a member of that harmony. This harmonic form trigger will be ignored."),
+						      _("The highest chroma %d of the harmonic form %s in logic %s is not a member of that harmony.\n\
+\n\
+This harmonic form trigger will be ignored."),
 						      ausloeser->u.ausloeser_harmonie_form.nachtaste,
 						      (ausloeser->u.ausloeser_harmonie_form.name),
 						      (name));
 				/* Markierung setzen, fuer unmoeglichen Ausloeser */
-				ausloeser->u.ausloeser_harmonie_form.nachtaste = MUTABOR_INVALID_KEY;
+				ausloeser->u.ausloeser_harmonie_form.type
+					= mutabor_harmony_invalid;
 			}
 		}
 
@@ -2608,7 +2621,7 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 				mutabor_error_message(box,
 						      compiler_error,
 						      _("Undefined harmony: %s (in logic %s)"),
-						      
+
 						      (ausloeser->u.ausloeser_harmonie.name),
 						      (name));
 			}
@@ -2616,8 +2629,8 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 			if (enthalten_in_tastenliste
 			    (ausloeser->u.ausloeser_harmonie.vortaste,
 			     help_harmonie->tastenliste) ||
-			    ausloeser->u.ausloeser_harmonie.vortaste
-			    == MUTABOR_NO_KEY ) {
+			    !(ausloeser->u.ausloeser_harmonie.type
+			      & mutabor_harmony_prekey )) {
 				/* OK */
 			} else {
 				mutabor_error_message(box,
@@ -2627,14 +2640,15 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 						      (ausloeser->u.ausloeser_harmonie.name),
 						      (name));
 				/* Markierung setzen, fuer unmoeglichen Ausloeser */
-				ausloeser->u.ausloeser_harmonie.vortaste = MUTABOR_INVALID_KEY;
+				ausloeser->u.ausloeser_harmonie.type
+					= mutabor_harmony_invalid;
 			}
 
 			if (enthalten_in_tastenliste
 			    (ausloeser->u.ausloeser_harmonie.nachtaste,
 			     help_harmonie->tastenliste) ||
-			    ausloeser->u.ausloeser_harmonie.nachtaste
-			    == MUTABOR_NO_KEY ) {
+			    !(ausloeser->u.ausloeser_harmonie.type
+			      & mutabor_harmony_postkey)) {
 				/* OK */
 			} else {
 				mutabor_error_message(box,
@@ -2644,7 +2658,8 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 						      (ausloeser->u.ausloeser_harmonie.name),
 						      (name));
 				/* Markierung setzen, fuer unmoeglichen Ausloeser */
-				ausloeser->u.ausloeser_harmonie.nachtaste = MUTABOR_INVALID_KEY;
+				ausloeser->u.ausloeser_harmonie.type
+					= mutabor_harmony_invalid;
 			}
 		}
 
@@ -2659,8 +2674,8 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 				mutabor_error_message(box,
 						      compiler_error,
 						      _("Bad MIDI-Code %x in logic %s (expecting status byte %s )"),
-						      midi_lauf->midi_code, 
-						      (name), 
+						      midi_lauf->midi_code,
+						      (name),
 						      (_("status byte")));
 			}
 
@@ -2714,7 +2729,7 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 							      _("Bad MIDI-Code in logic %s, expecting a byte I got %d=#%x.\n\
 Note: Each number can hold at maximum 3 bytes.\n\
 Trying to recover..."),
-							      (name), 
+							      (name),
 							      midi_lauf->midi_code,
 							      midi_lauf->midi_code);
 				}
@@ -2793,7 +2808,7 @@ Got byte %x. Value corrected."),
 				mutabor_error_message(box,
 						      compiler_warning,
 						      _("Non well defined event %s in logic %s"),
-						      (aktionen->u.aktion_aufruf.name), 
+						      (aktionen->u.aktion_aufruf.name),
 						      (name));
 			}
 
@@ -2803,14 +2818,14 @@ Got byte %x. Value corrected."),
 					mutabor_error_message(box,
 							      compiler_error,
 							      _("In logic %s: Too many parameters while calling retuning %s."),
-							      (name), 
+							      (name),
 							      (aktionen->u.aktion_aufruf.name));
 				} else if (argument_list_laenge (aktionen->u.aktion_aufruf.argument_liste)
 					   < parameter_list_laenge (help_umstimmung->parameter_liste)) {
 					mutabor_error_message(box,
 							      compiler_error,
 							      _("In logic %s: Too few parameters while calling retuning %s."),
-							      (name), 
+							      (name),
 							      (aktionen->u.aktion_aufruf.name));
 				}
 
@@ -2821,7 +2836,7 @@ Got byte %x. Value corrected."),
 					mutabor_error_message(box,
 							      compiler_error,
 							      _("In logic %s: Tonesystem %s must be called without parameters."),
-							      (name), 
+							      (name),
 							      (aktionen->u.aktion_aufruf.name));
 				}
 			} else if (help_logik) {
@@ -2916,7 +2931,7 @@ static void belege_zyklenfeld (struct umst_oder_logik *zyklen_feld,
 			      compiler_error,
 			      _("Undefined retuning: %s"),
 			      (name)); /* Umst.n.dekl. */
-	
+
 	return 0; /* to prevent warnings */
 }
 
@@ -3095,13 +3110,13 @@ static void check_konsistenz (mutabor_box_type * box)
 				     help_aktionen;
 				     help_aktionen = help_aktionen -> next) {
 					if (help_aktionen -> aktions_typ == aktion_aufruf) {
-						
+
 						struct umstimmung * umst =
 							get_umstimmung (help_aktionen -> u.aktion_aufruf.name,
 									box->file->list_of_umstimmungen);
 
 						if (umst == NULL) {
-							
+
 							struct tonsystem * tonsys =
 								parser_get_tonsystem (help_aktionen -> u.aktion_aufruf.name,
 										      box->file->list_of_tonsysteme);
@@ -3133,7 +3148,7 @@ static void check_konsistenz (mutabor_box_type * box)
 									mutabor_error_message(box,
 											      compiler_error,
 											      _("In collection %s : call to %s mustn't have parameters"),
-											      (lauf -> name), 
+											      (lauf -> name),
 											      (help_aktionen -> u.aktion_aufruf.name));
 								}
 							}
@@ -3272,7 +3287,7 @@ static void check_konsistenz (mutabor_box_type * box)
 						      _("Undefined returning type %d detected in\n%s:%d"),
 						      _T(__FILE__),
 						      __LINE__);
-				
+
 				break;
 			}  /* of switch */
 		}  /* of for */
@@ -3286,8 +3301,8 @@ static void check_konsistenz (mutabor_box_type * box)
 			        umstimmungs_list_laenge (box->file->list_of_umstimmungen)
 			        + logik_list_laenge (box->file->list_of_logiken) ;
 
-			box->file->zyklen_feld = 
-				(umst_oder_logik*) xalloca (box, sizeof(struct umst_oder_logik) 
+			box->file->zyklen_feld =
+				(umst_oder_logik*) xalloca (box, sizeof(struct umst_oder_logik)
 							    * box->file->anzahl_umstimmungen_und_logiken);
 			box->file->u_visited = (char*) xalloca (box, sizeof(char) * box->file->anzahl_umstimmungen_und_logiken);
 			box->file->u_matrix = (char*) xalloca (box, sizeof(char) * box->file->anzahl_umstimmungen_und_logiken
@@ -3325,8 +3340,8 @@ static void check_konsistenz (mutabor_box_type * box)
 							    ) {
 								/* Keine Tonsysteme adjazent eintragen */
 
-								mutabor_u_adjacent (box->file->u_matrix, 
-										    i, 
+								mutabor_u_adjacent (box->file->u_matrix,
+										    i,
 										    test_zyklen_nummer (box,
 													lauf->u.aktion_aufruf.name)) = 1;
 							}
@@ -3354,8 +3369,8 @@ static void check_konsistenz (mutabor_box_type * box)
 								    ) {
 									/* Keine Tonsysteme adjazent eintragen */
 
-									mutabor_u_adjacent (box->file->u_matrix, 
-											    i, 
+									mutabor_u_adjacent (box->file->u_matrix,
+											    i,
 											    test_zyklen_nummer (box,
 														lauf->u.aktion_aufruf.name)) = 1;
 								}
@@ -3369,8 +3384,8 @@ static void check_konsistenz (mutabor_box_type * box)
 					                    box->file->list_of_umstimmungen) != NULL) {
 						/* Keine Tonsysteme adjazent eintragen */
 
-						mutabor_u_adjacent (box->file->u_matrix, 
-								    i, 
+						mutabor_u_adjacent (box->file->u_matrix,
+								    i,
 								    test_zyklen_nummer (box,
 											box->file->zyklen_feld[i].u.logik->einstimmungs_name)) = 1;
 					}
@@ -3532,7 +3547,7 @@ static void check_konsistenz (mutabor_box_type * box)
 							if (anweisungs_lauf -> next != NULL)
 								mutabor_error_message(box,
 										      compiler_warning,
-										      _("Event ELSE is last in %s"), 
+										      _("Event ELSE is last in %s"),
 										      (lauf -> name));
 						}
 					}
@@ -3546,9 +3561,9 @@ static void check_konsistenz (mutabor_box_type * box)
 #endif
 }
 
-#if defined(DEBUG_ANZEIGE) || defined(DEBUG) 
+#if defined(DEBUG_ANZEIGE) || defined(DEBUG)
 
-static void print_action (struct aktions_liste * action) 
+static void print_action (struct aktions_liste * action)
 {
 
 	switch (action -> aktions_typ) {
@@ -3558,10 +3573,10 @@ static void print_action (struct aktions_liste * action)
 	case aktion_aufruf: {
 		struct argument_list * help;
 		printf ("                Umstimmungs-name: %s, Parameter: ",
-			action->u.aktion_aufruf.name ? 
+			action->u.aktion_aufruf.name ?
 			action->u.aktion_aufruf.name : "(NULL)");
-		
-		for (help = action->u.aktion_aufruf.argument_liste; 
+
+		for (help = action->u.aktion_aufruf.argument_liste;
 		     help; help = help->next ) {
 			drucke_argument ( & help -> argument );
 		}
@@ -3580,7 +3595,7 @@ static void print_action (struct aktions_liste * action)
 
 
 static void print_action_list(struct aktions_liste * actionlist)
-{ 
+{
  	TRACE;
 	printf("{\n");
 	struct aktions_liste * help_umst;
@@ -3589,7 +3604,7 @@ static void print_action_list(struct aktions_liste * actionlist)
 	     help_umst = help_umst -> next ) {
 		print_action(help_umst);
 	}
-	
+
 	printf("}\n");
 }
 

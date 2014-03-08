@@ -375,7 +375,7 @@ inline static void call_actions (mutabor_box_type * box,
 				case aufruf_umst_wiederholung_abs: {
 					TRACE;
 					mutabor_interval period =
-						aktion->u.aufruf_umst_wiederholung_abs.faktor;
+						aktion->u.aufruf_umst_wiederholung_abs.interval;
 					asprintf(&name, _("%s:[]%f HT"),aktion->name?aktion->name:"",
 							       mutabor_convert_interval_to_pitch(period));
 
@@ -392,11 +392,14 @@ inline static void call_actions (mutabor_box_type * box,
 				case aufruf_umst_wiederholung_rel: {
 					TRACE;
 					mutabor_interval period =
-						aktion->u.aufruf_umst_wiederholung_abs.faktor;
+						aktion->u.aufruf_umst_wiederholung_abs.interval;
 					asprintf(&name, _("%s:[]@+%f HT"),aktion->name?aktion->name:"",
 						 mutabor_convert_interval_to_pitch(period));
 
-					box->tonesystem->periode += period;
+					box->tonesystem->periode
+						= mutabor_add_intervals(box->tonesystem->periode,
+									1,
+									period);
 
 #ifdef NOTES_CORRECT_SOFORT
 					NotesCorrect(box);
@@ -493,7 +496,7 @@ inline static void call_actions (mutabor_box_type * box,
 					break;
 
 				case aufruf_umst_toene_veraendert: {
-					long * ton_zeiger;
+					mutabor_tone * ton_zeiger;
 					struct ton_einstell * lauf;
 					TRACE;
 					asprintf(&name, _("%s:[.,.,.]"),
@@ -507,7 +510,8 @@ inline static void call_actions (mutabor_box_type * box,
 						switch (lauf->ton_einstell_typ) {
 
 						case einstell_stumm:
-							* ton_zeiger = 0;
+							ton_zeiger->active =
+								mutabor_empty_tone;
 
 							break;
 
@@ -516,12 +520,15 @@ inline static void call_actions (mutabor_box_type * box,
 							break;
 
 						case einstell_absolut:
-							* ton_zeiger = lauf->u.einstell_absolut.wert;
+							* ton_zeiger = lauf->tone;
 
 							break;
 
 						case einstell_relativ:
-							* ton_zeiger += lauf->u.einstell_relativ.wert;
+							* ton_zeiger =
+								mutabor_add_interval_to_tone(*ton_zeiger,
+											     1,
+											     lauf->interval);
 
 							break;
 
@@ -683,7 +690,9 @@ inline static void call_actions (mutabor_box_type * box,
 
 		for (i=1; i<tonsys->breite; i++)
 			free_tonesystem->ton[i] =
-				free_tonesystem->ton[0] + tonsys->ton[i]-tonsys->ton[0];
+				mutabor_tone_copy_distance(free_tonesystem->ton[0],
+							   tonsys->ton[i],
+							   tonsys->ton[0]);
 
 		free_tonesystem->anker=neu;
 		free_tonesystem->breite=tonsys->breite;
@@ -704,7 +713,8 @@ inline static void call_actions (mutabor_box_type * box,
 			for (i = tonsys->breite; i < neu; i++)
 				tonsys->ton[i]=mutabor_get_note_frequency((tonsys->anker+i),tonsys);
 		tonsys->periode =
-			mutabor_get_note_frequency(tonsys->anker+neu,tonsys) - mutabor_get_note_frequency(tonsys->anker,tonsys);
+			mutabor_tone_get_interval (mutabor_get_note_frequency(tonsys->anker+neu,tonsys),
+						   mutabor_get_note_frequency(tonsys->anker,tonsys));
 		tonsys->breite=neu;
 	}
 
@@ -797,62 +807,62 @@ inline static void call_actions (mutabor_box_type * box,
 			switch ( index->ist_harmonieform ) {
 			case mutabor_is_no_harmonic_form: // analysiere auf harmonie
 				TRACE;
-				if ( index->vortaste != MUTABOR_INVALID_KEY &&
-				     index->vortaste != MUTABOR_NO_KEY &&
-				     mutabor_get_note_index(tiefste_taste(box), tonesys) != index->vortaste ) {
-					// failed
-				} else {
-					if ( index->nachtaste != MUTABOR_NO_KEY &&
-					     index->nachtaste != MUTABOR_INVALID_KEY &&
-					     mutabor_get_note_index(hoechste_taste(box),tonesys)!=index->nachtaste ) {
-						// failed
-					} else {
-						// teste_harmonie
-
-						if ( compare_harmonie(tonesys->breite,0,harmony,index->pattern) ) {
-							// PASST !!!
-							box->last_trigger.type            = any_trigger::harmony;
-							box->last_trigger.harmony_trigger = index;
-							call_actions(box,
-								     index->aktion,
-								     NULL);
-							mutabor_update(box, mutabor_action_changed);
-							return true;
-						}
-					}
-				}
-
-				break;
-
-			case mutabor_is_harmonic_form: // analysiere auf harmonieform
+				if ( (index->type
+				      & mutabor_harmony_prekey) &&
+				     mutabor_get_note_index(tiefste_taste(box),
+							    tonesys)
+				     != index->vortaste )
+					break;
+				if ( (index->type
+				      & mutabor_harmony_postkey) &&
+				     mutabor_get_note_index(hoechste_taste(box),
+							    tonesys)
+				     !=index->nachtaste )
+					break;
+				if (!compare_harmonie(tonesys->breite,
+						      0,
+						      harmony,
+						      index->pattern) )
+					break;
+				box->last_trigger.type
+					= any_trigger::harmony;
+				box->last_trigger.harmony_trigger = index;
+				call_actions(box,
+					     index->aktion,
+					     NULL);
+				mutabor_update(box, mutabor_action_changed);
+				return true;
+			case mutabor_is_harmonic_form:
+				// analysiere auf harmonieform
 				TRACE;
 				for (int i=0; i<tonesys->breite; i++) {
-					if (  index->vortaste != MUTABOR_INVALID_KEY &&
-					      index->vortaste != MUTABOR_NO_KEY &&
-					      mutabor_get_note_index(tiefste_taste(box)-i, tonesys) != index->vortaste ) {
-						// failed
-					} else {
-						if ( index->nachtaste != MUTABOR_NO_KEY &&
-						     index->nachtaste != MUTABOR_INVALID_KEY &&
-					     	     mutabor_get_note_index(hoechste_taste(box)-i, tonesys) != index->nachtaste ) {
-							// failed
-						} else {
-							// teste_harmonie
+					if ((index->type
+					     & mutabor_harmony_prekey) &&
+					    mutabor_get_note_index(tiefste_taste(box)-i, tonesys)
+					    != index->vortaste )
+						continue;
+					if ((index->type
+					     & mutabor_harmony_postkey) &&
+					    mutabor_get_note_index(hoechste_taste(box)-i, tonesys)
+					    != index->nachtaste )
+						continue;
 
-							if (compare_harmonie(tonesys->breite, i, harmony, index->pattern)) {
-								// PASST !!!
-								box->last_trigger.type            = any_trigger::harmony;
-								box->last_trigger.harmony_trigger = index;
-
-								box->distance = i;
-								call_actions(box,
-									     index->aktion,
-									     NULL);
-								mutabor_update (box,mutabor_action_changed);
-								return true;
-							}
-						}
-					}
+					if (!compare_harmonie(tonesys->breite,
+							      i,
+							      harmony,
+							      index->pattern))
+						continue;
+					// PASST !!!
+					box->last_trigger.type
+						= any_trigger::harmony;
+					box->last_trigger.harmony_trigger
+						= index;
+					box->distance = i;
+					call_actions(box,
+						     index->aktion,
+						     NULL);
+					mutabor_update (box,mutabor_action_changed);
+					return true;
 				}
 				break;
 

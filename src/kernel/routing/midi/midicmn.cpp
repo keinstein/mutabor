@@ -148,20 +148,31 @@ namespace mutabor {
 		// "mittelste Taste weglassen"
 		mutint64 AM = 0; // arithmetisches Mittel der Tasten
 		int j;
-		int free = 0;
+		int free = -1;
 
 		for (j = r->GetOutputFrom(); j <= r->GetOutputTo(); j++)
-			if ( j != DRUMCHANNEL || !r->OutputAvoidDrumChannel() )
-				AM += ton_auf_kanal[j].tuned_key;
+			if ( j != DRUMCHANNEL || !r->OutputAvoidDrumChannel() ) {
+				if (!ton_auf_kanal[j].tuned_key.is_active()) {
+					return channel_queue.reserve_channel(j);
+				}
+				AM += ton_auf_kanal[j].tuned_key.get_value();
+			}
 
 		AM /= r->GetOutputTo() + 1 - r->GetOutputFrom();
+		mutint64 reference = AM;
 
-		for ( j = r->GetOutputFrom(); j <= r->GetOutputTo(); j++ )
-			if ( j != DRUMCHANNEL || !r->OutputAvoidDrumChannel() )
-				if ( abs(AM - (ton_auf_kanal[j].tuned_key))
-				     < abs(AM - (ton_auf_kanal[free].tuned_key) ))
-					free = j;
 
+		for ( j = r->GetOutputFrom(); j <= r->GetOutputTo(); j++ ) {
+			if ( j == DRUMCHANNEL && r->OutputAvoidDrumChannel() )
+				continue;
+
+			mutint64 current
+				= abs(AM - ton_auf_kanal[j].tuned_key.get_value());
+			if (current < reference) {
+				reference = current;
+				free = j;
+			}
+		}
 
 		note_off(free, ton_auf_kanal[free].outkey.pitch, 64);
 
@@ -288,14 +299,15 @@ namespace mutabor {
 			  box.get(), inkey, velocity, (int)id);
 		//		int free = 16, freeSus = r->OTo, freeVelocitycity = 64, freeSusVelocitycity = 64, s;
 		//		DWORD p;
-		long freq;
 
-		if ( !box ) {
-			freq = ((long)inkey) << 24;
-		} else
+		BoxClass::tone freq(inkey);
+
+		if ( box ) {
 			freq = box->get_frequency(inkey);
+		}
 
-		if ( !freq ) return;
+		if ( !freq.is_active() )
+			return;
 
 		channel_queue_type::const_iterator pos =
 			channel_queue.reserve_channel_filtered(ChannelFilter(r));
@@ -439,7 +451,8 @@ namespace mutabor {
 					 tone.outkey.pitch,tone.outkey.pitch,
 					 Cd[channel].get_bend(),Cd[channel].get_bend());
 
-				long freq = route->GetBox()->get_frequency(tone.inkey);
+				BoxClass::tone freq
+					= route->GetBox()->get_frequency(tone.inkey);
 
 				if (freq == tone.tuned_key) continue;
 

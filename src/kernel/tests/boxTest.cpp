@@ -244,17 +244,30 @@ void boxTest::test_init()
 		for (int j = 0 ; j < 2 ; j++) {
 			CPPUNIT_ASSERT(boxes[i].tonesystem_memory[j].anker == 60);
 			CPPUNIT_ASSERT(boxes[i].tonesystem_memory[j].breite == 1);
-			CPPUNIT_ASSERT(boxes[i].tonesystem_memory[j].periode == 1 << 24);
-			CPPUNIT_ASSERT(boxes[i].tonesystem_memory[j].ton[0] == 60 << 24);
-			for (int k = 1 ; k < MUTABOR_KEYRANGE_MAX_WIDTH ; k++)
-				CPPUNIT_ASSERT(boxes[i].tonesystem_memory[j].ton[k] == 0);
+			CPPUNIT_ASSERT(boxes[i].tonesystem_memory[j].periode.active
+				       == hidden::mutabor_active_interval);
+			CPPUNIT_ASSERT(boxes[i].tonesystem_memory[j].periode.value == 1 << 24);
+			CPPUNIT_ASSERT(boxes[i].tonesystem_memory[j].ton[0].active
+				       == hidden::mutabor_active_tone);
+			CPPUNIT_ASSERT(boxes[i].tonesystem_memory[j].ton[0].value == 60 << 24);
+			for (int k = 1 ; k < MUTABOR_KEYRANGE_MAX_WIDTH ; k++) {
+				CPPUNIT_ASSERT(boxes[i].tonesystem_memory[j].ton[k].value == 0);
+				CPPUNIT_ASSERT(boxes[i].tonesystem_memory[j].ton[k].active
+					       == hidden::mutabor_invalid_tone);
+			}
 		}
 		CPPUNIT_ASSERT(boxes[i].last_tonesystem.anker == 60);
 		CPPUNIT_ASSERT(boxes[i].last_tonesystem.breite == 1);
-		CPPUNIT_ASSERT(boxes[i].last_tonesystem.periode == 1 << 24);
-		CPPUNIT_ASSERT(boxes[i].last_tonesystem.ton[0] == 60 << 24);
+		CPPUNIT_ASSERT(boxes[i].last_tonesystem.periode.active
+			       == hidden::mutabor_active_interval);
+		CPPUNIT_ASSERT(boxes[i].last_tonesystem.periode.value == 1 << 24);
+		CPPUNIT_ASSERT(boxes[i].last_tonesystem.ton[0].active
+			       == hidden::mutabor_active_tone);
+		CPPUNIT_ASSERT(boxes[i].last_tonesystem.ton[0].value == 60 << 24);
 		for (int j = 1 ; j < MUTABOR_KEYRANGE_MAX_WIDTH; j++) {
-			CPPUNIT_ASSERT(boxes[i].last_tonesystem.ton[j] == 0);
+			CPPUNIT_ASSERT(boxes[i].last_tonesystem.ton[j].value == 0);
+			CPPUNIT_ASSERT(boxes[i].last_tonesystem.ton[j].active
+				       == hidden::mutabor_invalid_tone);
 		}
 #if 0
 		CPPUNIT_ASSERT(boxes[i].first_harmony == NULL);

@@ -42,6 +42,7 @@
 
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/Device.h"
+#include "src/kernel/routing/Box.h"
 //#include "src/kernel/MidiKern.h"
 
 #ifndef ROUTING_MIDICMN_H_PRECOMPILED
@@ -53,7 +54,6 @@
 #define DEFAULT_BENDING_RANGE 2l
 
 namespace mutabor {
-
 
 	template <class T=char, unsigned int count=16>
 	class channel_queue_template : public std::vector<T> {
@@ -294,7 +294,7 @@ namespace mutabor {
 		int channel;      //< route that broght the note to this device
 		int midi_channel; //< MIDI channel (unsused)
 		size_t unique_id; //< unique id defined by input device
-                long tuned_key;   //< tuned key
+		BoxClass::tone tuned_key;   //< tuned key
 	} TonAufKanal;
 
 
@@ -864,10 +864,10 @@ namespace mutabor {
 			return retval / 0x800; //we can't use >> because of negative values
 		}
 
-		pitch_bend_type pitch_and_bend(long tuned_note) {
+		pitch_bend_type pitch_and_bend(const BoxClass::tone & tuned_note) {
 			pitch_bend_type data;
-			data.bend = tuned_note & 0xffffff;
-			data.pitch = tuned_note >> 24;
+			data.bend = tuned_note.get_bend();
+			data.pitch = tuned_note.get_pitch();
 			if (data.bend >=0x800000) {
 				data.pitch++;
 				data.bend -= 0x1000000;
@@ -880,17 +880,21 @@ namespace mutabor {
 			return  data;
 		}
 
-		pitch_bend_type pitch_and_bend(long tuned_note, const pitch_bend_type & old) {
-			long interval_centre = ((long)old.pitch) << 24;
-			long delta = tuned_note - interval_centre;
-			long interval_range = ((long)bending_range) << 24;
+		pitch_bend_type pitch_and_bend(const BoxClass::tone & tuned_note,
+					       const pitch_bend_type & old) {
 
-			if (delta > interval_range || delta < -interval_range)
+			long interval_centre = old.pitch;
+			long delta = tuned_note.get_pitch() - interval_centre;
+			long new_bend = tuned_note.get_bend() + (delta << 24);
+
+			long interval_range = bending_range << 24;
+
+			if (abs(new_bend) > interval_range)
 				return pitch_and_bend(tuned_note);
 
 			pitch_bend_type data;
 			data.pitch = old.pitch;
-			data.bend = fix_bend(delta);
+			data.bend = fix_bend(new_bend);
 
 			return  data;
 		}

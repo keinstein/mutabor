@@ -30,8 +30,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_YY_SRC_KERNEL_MUT_HH_INCLUDED
-# define YY_YY_SRC_KERNEL_MUT_HH_INCLUDED
+#ifndef YY_YY__MUTABOR_GIT_SRC_KERNEL_MUT_HH_INCLUDED
+# define YY_YY__MUTABOR_GIT_SRC_KERNEL_MUT_HH_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -118,7 +118,7 @@ union YYSTYPE
 			struct argument_list * arguments;  /* argument list */
 			struct parameter_list * parameters; /* parameter list */
 
-#line 122 "src/kernel/mut.hh" /* yacc.c:1909  */
+#line 122 "../../../mutabor-git/src/kernel/mut.hh" /* yacc.c:1909  */
 };
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
@@ -142,4 +142,4 @@ struct YYLTYPE
 
 int yyparse (mutabor_box_type * box);
 
-#endif /* !YY_YY_SRC_KERNEL_MUT_HH_INCLUDED  */
+#endif /* !YY_YY__MUTABOR_GIT_SRC_KERNEL_MUT_HH_INCLUDED  */

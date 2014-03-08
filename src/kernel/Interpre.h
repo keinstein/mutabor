@@ -1,4 +1,4 @@
-/** \file 
+/** \file
  ********************************************************************
  * Interpreter for the logic at runtime.
  *
@@ -63,9 +63,22 @@ namespace mutabor {
 
 void message_tasten_liste( void );
 
-/* Datenstrukturen: */
+enum mutabor_interval_type_constants {
+	mutabor_invalid_interval = 0,
+	mutabor_active_interval = 1,
+	mutabor_empty_interval = 2,
+	mutabor_invalid_tone = 0,
+	mutabor_active_tone = 1,
+	mutabor_empty_tone = 2
+};
 
-typedef long mutabor_interval;
+
+/* Datenstrukturen: */
+typedef struct MUT_INTERVAL {
+	mutabor_interval_type_constants active;
+	mutint64 value;
+} mutabor_interval;
+			//typedef long mutabor_interval;
 typedef mutabor_interval mutabor_tone;
 
 typedef struct TSYS
@@ -76,59 +89,224 @@ typedef struct TSYS
 	mutabor_tone ton[MUTABOR_KEYRANGE_MAX_WIDTH];
 } tone_system;
 
-/** 
+
+/**
+ * Check whether an interval has a defined value or is empty.
+ *
+ * \param interval interval to be checkd.
+ *
+ * \return true if the interval is not set or empty.
+ */
+inline mutabor_interval_type_constants
+mutabor_get_interval_type(mutabor_interval interval) {
+	return interval.active;
+}
+inline  mutabor_interval_type_constants
+mutabor_get_tone_type(mutabor_tone tone) {
+	return tone.active;
+}
+
+inline void mutabor_invalidate_interval(mutabor_interval *interval) {
+	if (interval) interval->active = mutabor_invalid_interval;
+}
+
+inline void mutabor_invalidate_tone(mutabor_tone *tone) {
+	if (tone) tone->active = mutabor_invalid_tone;
+}
+inline void mutabor_clear_interval(mutabor_interval *interval) {
+	if (interval) interval->active = mutabor_empty_interval;
+}
+
+inline void mutabor_clear_tone(mutabor_tone *tone) {
+	if (tone) tone->active = mutabor_empty_tone;
+}
+
+/**
  * Convert an interval to half tone based pitch according to MIDI pitch numbers.
  * The microtonal part is retained in the double return value.
- * 
+ *
  * \param interval Interval in the internal representation of Mutabor.
- * 
+ *
  * \return a double value that represents the interval.
  *         a half tone is represented as 1.00, and an octave as 12.00.
  */
-inline double mutabor_convert_interval_to_pitch(mutabor_interval interval) 
+inline double mutabor_convert_interval_to_pitch(mutabor_interval interval)
 {
-	return ((double) interval ) / (double) (0x01000000);
+	switch(mutabor_get_interval_type(interval)) {
+	case mutabor_empty_interval:
+		return 0;
+	case mutabor_invalid_interval:
+		return -1;
+	case mutabor_active_interval:
+		return ((double) interval.value ) / (double) (0x01000000);
+	default:
+		UNREACHABLE;
+		return -100;
+	}
 }
 
-/** 
+/**
  * Convert an interval from half tone based pitch according to MIDI pitch numbers.
  * The microtonal part can be given in the double value.
- * 
- * \param interval a double value that represents the interval. 
+ *
+ * \param interval a double value that represents the interval.
  *         a semitone is represented as 1.00, and an octave as 12.00
- * 
+ *
  * \return interval in the internal representation of Mutabor.
  */
-inline mutabor_interval mutabor_convert_pitch_to_interval(double interval) 
+inline mutabor_interval mutabor_convert_pitch_to_interval(double interval)
 {
-	return ((double) interval ) * (double) (0x01000000);
+	mutabor_interval retval = {
+		(interval > -1
+		 ? (interval > 0
+		    ? mutabor_active_interval
+		    : mutabor_empty_interval)
+		 : mutabor_invalid_interval),
+		(mutint64)(((double) interval ) * (double) (0x01000000))
+	};
+	return retval;
 }
 
-/** 
+/**
  * Convert a tone to half tone based pitch according to MIDI pitch numbers.
  * The microtonal part is retained in the double return value.
- * 
+ *
  * \param interval Interval in the internal representation of Mutabor.
- * 
+ *
  * \return a double value that represents the tone a' is represented as 69.00
  */
-inline double mutabor_convert_tone_to_pitch(mutabor_tone tone) 
+inline double mutabor_convert_tone_to_pitch(mutabor_tone tone)
 {
-	return 0.0 + mutabor_convert_interval_to_pitch(tone - 0);
+	return 0.0 + mutabor_convert_interval_to_pitch(tone /* - 0 */);
 }
 
-/** 
+/**
  * Convert a tone from half tone based pitch according to MIDI pitch numbers.
  * The microtonal part can be given in the double value.
- * 
- * \param tone a double value that represents the tone. 
+ *
+ * \param tone a double value that represents the tone.
  *         a' is represented as 69.00
- * 
+ *
  * \return tone in the internal representation of Mutabor.
  */
-inline mutabor_tone mutabor_convert_pitch_to_tone(double tone) 
+inline mutabor_tone mutabor_convert_pitch_to_tone(double tone)
 {
-	return 0 + mutabor_convert_pitch_to_interval(tone - 0);
+	return /* 0 + */ mutabor_convert_pitch_to_interval(tone /* - 0 */);
+}
+
+
+inline mutabor_tone mutabor_add_interval_to_tone(const mutabor_tone tone,
+						 int count,
+						 const mutabor_interval interval) {
+	mutabor_tone retval = {
+		tone.active,
+		tone.value + ((mutint64) count) * interval.value
+	};
+	switch (interval.active) {
+	case mutabor_empty_interval:
+		if (tone.active == mutabor_invalid_interval)
+			break;
+	case mutabor_invalid_interval:
+		retval.active = interval.active;
+		break;
+	case mutabor_active_interval:
+		/* do nothing */
+		;
+	}
+	return retval;
+}
+
+inline mutabor_interval mutabor_tone_get_interval(const mutabor_tone t1,
+						  const mutabor_tone t2) {
+	mutabor_interval retval = {
+		t1.active,
+		t1.value - t2.value
+	};
+	switch (t2.active) {
+	case mutabor_empty_tone:
+		if (t1.active == mutabor_invalid_tone)
+			break;
+	case mutabor_invalid_tone:
+		retval.active = t2.active;
+		break;
+	case mutabor_active_tone:
+		/* do nothing */
+		;
+	}
+	return retval;
+}
+
+
+inline mutabor_interval mutabor_add_intervals(const mutabor_interval interval1,
+						 int count,
+						 const mutabor_interval interval2) {
+	mutabor_interval retval = {
+		interval1.active,
+		interval1.value + ((mutint64) count) * interval2.value
+	};
+	switch (interval2.active) {
+	case mutabor_empty_interval:
+		if (interval1.active == mutabor_invalid_interval)
+			break;
+	case mutabor_invalid_interval:
+		retval.active = interval2.active;
+		break;
+	case mutabor_active_interval:
+		/* do nothing */
+		;
+	}
+	return retval;
+}
+/**
+ * Add the distance of t1 - t2 to offset. This function transfers the
+ * interval between two tones to two other tones.
+ *
+ * \param offset    new base tone
+ * \param t1        old tone
+ * \param t2        old base tone
+ *
+ * \return offset + (t1 - t2)
+ */
+inline mutabor_tone mutabor_tone_copy_distance(const mutabor_tone offset,
+					       const mutabor_tone t1,
+					       const mutabor_tone t2) {
+	mutabor_tone retval;
+	if (offset.active == mutabor_invalid_tone ||
+	    t1.active == mutabor_invalid_tone ||
+	    t2.active == mutabor_invalid_tone)
+		retval.active = mutabor_invalid_tone;
+	else if (offset.active == mutabor_empty_tone ||
+		 t1.active == mutabor_empty_tone ||
+		 t2.active == mutabor_empty_tone)
+		retval.active = mutabor_empty_tone;
+	else if (offset.active == mutabor_active_tone &&
+		 t1.active == mutabor_active_tone &&
+		 t2.active == mutabor_active_tone)
+		retval.active = mutabor_active_tone;
+	else
+		retval.active = mutabor_invalid_tone;
+	retval.value = offset.value + (t1.value - t2.value);
+	return retval;
+}
+
+inline int mutabor_get_note_index(int note, tone_system * system) {
+	if (!system) return INT_MIN;
+	int retval = (note - system->anker) % system->breite;
+		return retval < 0 ? retval + system->breite : retval;
+}
+
+inline int mutabor_get_note_distance(int note, tone_system * system) {
+	if (!system) return INT_MIN;
+	int retval = (int)(note - (system->anker % system->breite)) / system->breite;
+	retval -= ((int)system->anker  / system->breite);
+	return retval;
+}
+
+inline mutabor_interval mutabor_get_note_frequency(int note, tone_system * system) {
+	return mutabor_add_interval_to_tone(system->ton[mutabor_get_note_index(note,
+									       system)],
+					    mutabor_get_note_distance(note,system),
+					    system->periode);
 }
 
 
@@ -181,21 +359,20 @@ PATTERNN * get_pattern(int instr);
 /* Standardstrukturen zur Laufzeit f〉 den Interpreter */
 
 
-enum ton_einstell_typ { einstell_stumm, einstell_gleich,
-                        einstell_absolut, einstell_relativ };
+enum ton_einstell_typ {
+	einstell_stumm,
+	einstell_gleich,
+	einstell_absolut,
+	einstell_relativ
+};
 
 struct ton_einstell
 {
 	enum ton_einstell_typ ton_einstell_typ;
 	union {
-		struct {
-			long wert;
-		} einstell_absolut;
-
-		struct {
-			long wert;
-		} einstell_relativ;
-	} u;
+		mutabor_tone     tone;
+		mutabor_interval interval;
+	};
 	struct ton_einstell * next;
 };
 
@@ -231,21 +408,21 @@ struct interpreter_argument_list
 	union interpreter_argument * data;
 	enum argument_typ * types;
 };
-	
+
 
 /*
 typedef int * parameter_liste[16];
 */
 
 enum aufruf_typ { aufruf_logik, aufruf_tonsystem,
-                  aufruf_umst_taste_abs, 
+                  aufruf_umst_taste_abs,
 		  aufruf_umst_breite_abs,
                   aufruf_umst_wiederholung_abs,
                   aufruf_umst_wiederholung_rel,
                   aufruf_umst_taste_rel,
-                  aufruf_umst_breite_rel, 
+                  aufruf_umst_breite_rel,
 		  aufruf_umst_toene_veraendert,
-                  aufruf_umst_umst_bund, 
+                  aufruf_umst_umst_bund,
 		  aufruf_umst_umst_case,
                   aufruf_midi_out,
 		  aufruf_harmony_analysis
@@ -269,7 +446,7 @@ struct do_aktion
 
 	union
 	{
-#if 0 
+#if 0
 	    /* logic is handled in colling */
 		struct {
 		    struct logik * logic;
@@ -299,11 +476,11 @@ struct do_aktion
 #endif
 
 		struct {
-			long faktor;
+			mutabor_interval interval;
 		} aufruf_umst_wiederholung_abs;
 
 		struct {
-			long faktor;
+			mutabor_interval interval;
 		} aufruf_umst_wiederholung_rel;
 
 		struct {
@@ -326,7 +503,7 @@ struct do_aktion
 			struct ton_einstell * tonliste;
 		} aufruf_umst_toene_veraendert;
 
-#if 0 
+#if 0
 		// currently no data fields
 		struct {
 		} aufruf_umst_umst_bund;
@@ -346,7 +523,7 @@ struct do_aktion
 #if 0
 		struct {
 		} aufruf_harmony_analysis;
-#endif 
+#endif
 	} u;
 	struct do_aktion * next;
 };
@@ -380,6 +557,7 @@ struct harmonie_ereignis
 {
 	PATTERNN * pattern;
 	enum is_harmonic_form_collection ist_harmonieform;
+	enum harmony_type type;
 	int vortaste;
 	int nachtaste;
 
@@ -394,7 +572,7 @@ struct harmonie_ereignis
 
 
 
-/* moved to box.h 
+/* moved to box.h
 int liegende_tasten[MAX_BOX][64];
 int liegende_tasten_max[MAX_BOX];
 long last_note_id[MAX_BOX];           // unused

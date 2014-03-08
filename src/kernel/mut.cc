@@ -112,7 +112,7 @@
 #define YYMAXLIMIT (HEAP_PORTION_SYNTAX / sizeof(YYLTYPE) - 1)
                    /* wegen fehlendem alloca in PUREC */
 
-#line 116 "src/kernel/mut.cc" /* yacc.c:339  */
+#line 116 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -132,8 +132,8 @@
 
 /* In a future release of Bison, this section will be replaced
    by #include "y.tab.h".  */
-#ifndef YY_YY_SRC_KERNEL_MUT_HH_INCLUDED
-# define YY_YY_SRC_KERNEL_MUT_HH_INCLUDED
+#ifndef YY_YY__MUTABOR_GIT_SRC_KERNEL_MUT_HH_INCLUDED
+# define YY_YY__MUTABOR_GIT_SRC_KERNEL_MUT_HH_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -220,7 +220,7 @@ union YYSTYPE
 			struct argument_list * arguments;  /* argument list */
 			struct parameter_list * parameters; /* parameter list */
 
-#line 224 "src/kernel/mut.cc" /* yacc.c:355  */
+#line 224 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:355  */
 };
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
@@ -244,7 +244,7 @@ struct YYLTYPE
 
 int yyparse (mutabor_box_type * box);
 
-#endif /* !YY_YY_SRC_KERNEL_MUT_HH_INCLUDED  */
+#endif /* !YY_YY__MUTABOR_GIT_SRC_KERNEL_MUT_HH_INCLUDED  */
 
 /* Copy the second part of user declarations.  */
 #line 150 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:358  */
@@ -262,7 +262,7 @@ void yyerror(YYLTYPE* locp, mutabor_box_type * box, const char* err)
 #define YYLEX_PARAM box
 //#define scanner box
 
-#line 266 "src/kernel/mut.cc" /* yacc.c:358  */
+#line 266 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -583,9 +583,9 @@ static const yytype_uint16 yyrline[] =
      768,   767,   775,   774,   782,   786,   787,   792,   791,   796,
      806,   807,   811,   812,   816,   817,   821,   825,   826,   826,
      834,   833,   839,   838,   846,   847,   852,   852,   856,   856,
-     862,   864,   866,   868,   873,   874,   875,   876,   877,   877,
-     883,   885,   887,   897,   901,   902,   906,   908,   910,   912,
-     914,   919,   920
+     862,   866,   870,   874,   881,   882,   883,   884,   885,   885,
+     891,   893,   895,   905,   909,   910,   914,   916,   918,   920,
+     922,   927,   928
 };
 #endif
 
@@ -1727,37 +1727,37 @@ yyreduce:
         case 4:
 #line 173 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.integer) = '+' ; }
-#line 1731 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1731 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 5:
 #line 174 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.integer) = '-' ; }
-#line 1737 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1737 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 6:
 #line 178 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.integer) = '*' ; }
-#line 1743 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1743 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 7:
 #line 179 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.integer) = '/' ; }
-#line 1749 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1749 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 8:
 #line 183 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.integer) = (yyvsp[0].integer); }
-#line 1755 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1755 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 9:
 #line 184 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.integer) = (yyvsp[0].integer); }
-#line 1761 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1761 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 22:
@@ -1767,13 +1767,13 @@ yyreduce:
 		_("Syntax error in line %d."),
 		FEHLERZEILE); 
 		}
-#line 1771 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1771 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 26:
 #line 218 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
-#line 1777 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1777 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 28:
@@ -1784,7 +1784,7 @@ yyreduce:
 			      mutabor_error_message (box,compiler_error,
 					   _("Bad interval value in %s"),
 					   ((yyvsp[-4].identifier)) ); }
-#line 1788 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1788 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 29:
@@ -1795,13 +1795,13 @@ yyreduce:
 			      mutabor_error_message (box,compiler_error,
 						     _("Bad interval value in %s"),
 						     ((yyvsp[-4].identifier))); }
-#line 1799 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1799 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 30:
 #line 242 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_intervall_komplex (box,(yyvsp[-2].identifier)); }
-#line 1805 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1805 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 31:
@@ -1813,7 +1813,7 @@ yyreduce:
 				        ((yyvsp[-2].identifier)),
 				        FEHLERZEILE); 
 		}
-#line 1817 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1817 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 32:
@@ -1824,37 +1824,37 @@ yyreduce:
 				      _("Wrong character. Expecting %s in line %d."),
 				      mutT("="),FEHLERZEILE); 
 	  }
-#line 1828 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1828 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 36:
 #line 267 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
-#line 1834 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1834 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 38:
 #line 272 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_ton_absolut (box, (yyvsp[-2].identifier), (yyvsp[0].f_value)); }
-#line 1840 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1840 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 39:
 #line 276 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_ton_komplex_negative (box, (yyvsp[-4].identifier), (yyvsp[-2].identifier)); }
-#line 1846 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1846 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 40:
 #line 280 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_ton_komplex_positive (box, (yyvsp[-2].identifier), (yyvsp[0].identifier)); }
-#line 1852 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1852 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 41:
 #line 284 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_ton_komplex_positive (box, (yyvsp[-4].identifier), (yyvsp[-2].identifier)); }
-#line 1858 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1858 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 42:
@@ -1866,31 +1866,31 @@ yyreduce:
 				    ((yyvsp[-2].identifier)),
 				    FEHLERZEILE); 
 	}
-#line 1870 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1870 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 46:
 #line 306 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_faktor_anteil ( box, (double) 1, (yyvsp[0].identifier)); }
-#line 1876 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1876 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 47:
 #line 309 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_faktor_anteil ( box,  (double) -1, (yyvsp[0].identifier)); }
-#line 1882 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1882 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 48:
 #line 312 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_faktor_anteil (box, (yyvsp[-1].f_value), (yyvsp[0].identifier)); }
-#line 1888 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1888 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 49:
 #line 315 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_faktor_anteil (box, -((yyvsp[-1].f_value)), (yyvsp[0].identifier)); }
-#line 1894 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1894 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 50:
@@ -1903,7 +1903,7 @@ yyreduce:
 							 _("Division by (nearly) 0 in line %d."),
 							 FEHLERZEILE);  
 		   }
-#line 1907 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1907 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 51:
@@ -1916,7 +1916,7 @@ yyreduce:
 							 _("Division by (nearly) 0 in line %d."),
 							 FEHLERZEILE);  
 		   }
-#line 1920 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1920 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 52:
@@ -1929,7 +1929,7 @@ yyreduce:
 						   _("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);  
 		   }
-#line 1933 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1933 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 53:
@@ -1942,19 +1942,19 @@ yyreduce:
 						   _("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);  
 		   }
-#line 1946 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1946 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 54:
 #line 373 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_faktor_anteil (box, (double) 1.0 , (yyvsp[0].identifier)); }
-#line 1952 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1952 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 55:
 #line 381 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_faktor_anteil (box, (yyvsp[-1].f_value), (yyvsp[0].identifier)); }
-#line 1958 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1958 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 56:
@@ -1967,7 +1967,7 @@ yyreduce:
 						   _("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);  
 		   }
-#line 1971 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1971 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 57:
@@ -1980,49 +1980,49 @@ yyreduce:
 						   _("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);  
 		   }
-#line 1984 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1984 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 61:
 #line 431 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_ton_liste (box); }
-#line 1990 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1990 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 63:
 #line 436 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
-#line 1996 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 1996 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 64:
 #line 438 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_tonsystem (box, (yyvsp[-7].identifier), (yyvsp[-5].integer)); }
-#line 2002 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2002 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 65:
 #line 440 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
-#line 2008 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2008 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 66:
 #line 442 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_tonsystem_negative (box, (yyvsp[-8].identifier), (yyvsp[-6].integer)); }
-#line 2014 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2014 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 69:
 #line 448 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_ton_in_tonsystem (box, (yyvsp[0].identifier)); }
-#line 2020 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2020 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 70:
 #line 449 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_ton_in_tonsystem (box, NULL); }
-#line 2026 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2026 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 71:
@@ -2032,13 +2032,13 @@ yyreduce:
 		_("Bad tonesystem declaration in line %d."),		      
 		FEHLERZEILE);
 		}
-#line 2036 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2036 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 72:
 #line 458 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.parameters) = NULL; }
-#line 2042 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2042 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 73:
@@ -2046,7 +2046,7 @@ yyreduce:
     { (yyval.parameters) = (yyvsp[0].parameters); 
                     enumerate_parameters(box,(yyval.parameters));
 		}
-#line 2050 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2050 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 75:
@@ -2057,7 +2057,7 @@ yyreduce:
 		        (yyval.parameters)->next = (yyvsp[0].parameters);
    		    } else {(yyval.parameters) = (yyvsp[0].parameters);}
 		}
-#line 2061 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2061 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 76:
@@ -2065,7 +2065,7 @@ yyreduce:
     { 
 			(yyval.parameters) = get_new_name_in_parameterlist (box, (yyvsp[0].identifier)); 
 		}
-#line 2069 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2069 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 77:
@@ -2077,7 +2077,7 @@ yyreduce:
 		                          _("Arguments named “DISTANCE” or “ABSTAND” have a fixed meaning. Using them as parameters as in line %d is not supported. Expect undexpected behaviour."),
 		                          FEHLERZEILE);
 		}
-#line 2081 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2081 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 78:
@@ -2089,13 +2089,13 @@ yyreduce:
 		                          _("Arguments named “DISTANCE” or “ABSTAND” have a fixed meaning. Using them as parameters as in line %d is not supported. Expect undexpected behaviour."),
  		                          FEHLERZEILE);
 		}
-#line 2093 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2093 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 79:
 #line 507 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.arguments) = NULL; }
-#line 2099 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2099 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 80:
@@ -2103,7 +2103,7 @@ yyreduce:
     { 
 			(yyval.arguments) = (yyvsp[0].arguments); 
 		}
-#line 2107 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2107 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 81:
@@ -2111,7 +2111,7 @@ yyreduce:
     { 
 			(yyval.arguments) = (yyvsp[0].arguments); 
 		}
-#line 2115 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2115 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 82:
@@ -2120,37 +2120,37 @@ yyreduce:
 			(yyval.arguments) = (yyvsp[-2].arguments); 
 		        (yyvsp[-2].arguments)->next = (yyvsp[0].arguments);
 		}
-#line 2124 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2124 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 83:
 #line 534 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.arguments) = get_new_name_in_argument_list (box, (yyvsp[0].identifier)) ;  }
-#line 2130 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2130 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 84:
 #line 536 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.arguments) = get_new_number_in_argument_list (box, (yyvsp[0].integer)) ;  }
-#line 2136 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2136 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 85:
 #line 538 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.arguments) = get_new_number_in_argument_list (box, -((yyvsp[0].integer))); }
-#line 2142 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2142 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 86:
 #line 540 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.arguments) = get_new_distance_in_argument_list (box); }
-#line 2148 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2148 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 87:
 #line 542 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.arguments) = get_new_anchor_in_argument_list (box); }
-#line 2154 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2154 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 91:
@@ -2161,7 +2161,7 @@ yyreduce:
                                                        box->file->tmp_umstimmung,
  		                                       NULL);  
 		}
-#line 2165 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2165 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 92:
@@ -2169,7 +2169,7 @@ yyreduce:
     { 
 			get_new_umstimmung (box); 
 		}
-#line 2173 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2173 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 93:
@@ -2180,7 +2180,7 @@ yyreduce:
                                                        box->file->tmp_umstimmung,
  		                                       (yyvsp[-2].parameters)); 
 		}
-#line 2184 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2184 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 94:
@@ -2188,7 +2188,7 @@ yyreduce:
     { 
 			get_new_umstimmung (box); 
 		}
-#line 2192 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2192 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 95:
@@ -2203,7 +2203,7 @@ yyreduce:
 		                              _("Invalid parameter list in retuning %s line %d"),
 		                              (yyvsp[-4].identifier), FEHLERZEILE); 
 		}
-#line 2207 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2207 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 96:
@@ -2211,7 +2211,7 @@ yyreduce:
     { 
 			get_new_umstimmung (box); 
 		}
-#line 2215 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2215 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 97:
@@ -2226,73 +2226,73 @@ yyreduce:
 		                              _("Error while reading %s line %d"),
                                		      (yyvsp[-2].identifier), FEHLERZEILE); 
 		}
-#line 2230 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2230 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 98:
 #line 601 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_umstimmung (box); }
-#line 2236 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2236 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 99:
 #line 605 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2242 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2242 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 100:
 #line 606 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2248 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2248 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 101:
 #line 607 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2254 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2254 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 102:
 #line 608 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2260 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2260 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 103:
 #line 609 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2266 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2266 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 104:
 #line 610 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2272 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2272 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 105:
 #line 611 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2278 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2278 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 106:
 #line 612 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2284 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2284 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 107:
 #line 613 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2290 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2290 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 108:
 #line 614 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2296 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2296 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 109:
@@ -2303,55 +2303,55 @@ yyreduce:
 				      _("Bad retuning in line %d."),
 				      FEHLERZEILE);
 	  }
-#line 2307 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2307 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 110:
 #line 626 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_taste_abs (box, (yyvsp[-2].arguments)); }
-#line 2313 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2313 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 111:
 #line 631 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_taste_rel (box, (yyvsp[-2].arguments), (yyvsp[-3].integer)); }
-#line 2319 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2319 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 112:
 #line 636 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_breite_abs (box, (yyvsp[-2].arguments)); }
-#line 2325 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2325 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 113:
 #line 641 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_breite_rel (box, (yyvsp[-2].arguments), (yyvsp[-3].integer)); }
-#line 2331 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2331 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 114:
 #line 646 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_umstimm_expression_list (box); }
-#line 2337 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2337 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 115:
 #line 648 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_tonhoehe_veraendert (box); }
-#line 2343 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2343 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 116:
 #line 655 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2349 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2349 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 117:
 #line 656 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2355 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2355 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 118:
@@ -2359,25 +2359,25 @@ yyreduce:
     { init_komplex_ton_list(box);
 		  get_new_umstimm_expression (box,NULL);
                    }
-#line 2363 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2363 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 119:
 #line 661 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2369 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2369 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 120:
 #line 665 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2375 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2375 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 121:
 #line 666 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2381 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2381 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 122:
@@ -2385,139 +2385,139 @@ yyreduce:
     { init_komplex_ton_list(box);
 		  get_new_umstimm_expression (box, NULL);
                    }
-#line 2389 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2389 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 124:
 #line 679 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_umstimm_expression (box,(yyvsp[0].identifier)); }
-#line 2395 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2395 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 125:
 #line 680 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_umstimm_expression (box, "@"); }
-#line 2401 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2401 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 126:
 #line 682 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
-#line 2407 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2407 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 127:
 #line 684 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_umstimm_expression_positive (box, (yyvsp[-3].identifier)); }
-#line 2413 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2413 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 128:
 #line 685 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
-#line 2419 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2419 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 129:
 #line 687 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_umstimm_expression_positive (box, "@" ); }
-#line 2425 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2425 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 130:
 #line 688 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
-#line 2431 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2431 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 131:
 #line 690 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_umstimm_expression_negative (box,(yyvsp[-3].identifier)); }
-#line 2437 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2437 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 132:
 #line 691 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
-#line 2443 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2443 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 133:
 #line 693 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_umstimm_expression_negative (box, "@" ); }
-#line 2449 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2449 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 134:
 #line 698 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
-#line 2455 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2455 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 135:
 #line 700 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_wiederholung_abs (box); }
-#line 2461 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2461 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 136:
 #line 701 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
-#line 2467 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2467 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 137:
 #line 703 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_wiederholung_abs_negative (box); }
-#line 2473 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2473 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 138:
 #line 707 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
-#line 2479 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2479 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 139:
 #line 709 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_wiederholung_rel_positive (box); }
-#line 2485 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2485 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 140:
 #line 710 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_komplex_ton_list (box); }
-#line 2491 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2491 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 141:
 #line 712 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_wiederholung_rel_negative (box); }
-#line 2497 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2497 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 142:
 #line 716 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_aktions_liste (box); }
-#line 2503 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2503 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 143:
 #line 718 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_umstimmungs_bund (box); }
-#line 2509 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2509 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 144:
 #line 722 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2515 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2515 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 145:
 #line 723 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2521 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2521 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 146:
@@ -2525,13 +2525,13 @@ yyreduce:
     { 
 		  get_new_aktion_aufruf_element (box,(yyvsp[0].identifier),NULL); 
 	  }
-#line 2529 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2529 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 147:
 #line 731 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_aktion_aufruf_element (box,(yyvsp[-3].identifier), (yyvsp[-1].arguments)); }
-#line 2535 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2535 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 148:
@@ -2543,127 +2543,127 @@ yyreduce:
 						 (yyvsp[-4].identifier),
 						 FEHLERZEILE);
 		    }
-#line 2547 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2547 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 149:
 #line 741 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_integersequenz (box);}
-#line 2553 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2553 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 150:
 #line 743 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_aktion_midi_out_element (box); }
-#line 2559 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2559 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 151:
 #line 744 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_aktion_harmony_analysis(box); }
-#line 2565 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2565 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 152:
 #line 748 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_umstimmungs_case_liste (box); }
-#line 2571 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2571 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 153:
 #line 750 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_umstimm_case (box,(yyvsp[-4].arguments)); }
-#line 2577 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2577 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 154:
 #line 754 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2583 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2583 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 155:
 #line 755 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2589 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2589 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 156:
 #line 760 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_aktions_liste (box); }
-#line 2595 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2595 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 157:
 #line 762 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmungs_case_zahl_element (box,(yyvsp[-4].integer)); }
-#line 2601 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2601 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 158:
 #line 764 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_aktions_liste (box); }
-#line 2607 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2607 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 159:
 #line 766 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmungs_case_zahl_element (box,-((yyvsp[-4].integer))); }
-#line 2613 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2613 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 160:
 #line 768 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_aktions_liste (box); }
-#line 2619 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2619 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 161:
 #line 770 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmungs_case_default_element (box); }
-#line 2625 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2625 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 162:
 #line 775 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_integersequenz (box);}
-#line 2631 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2631 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 163:
 #line 777 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_umstimmung_midi_out (box); }
-#line 2637 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2637 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 164:
 #line 782 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2643 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2643 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 165:
 #line 786 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2649 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2649 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 166:
 #line 787 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2655 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2655 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 167:
 #line 792 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_tastenliste (box); }
-#line 2661 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2661 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 168:
 #line 794 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_harmonie (box, (yyvsp[-6].identifier), (yyvsp[0].integer)); }
-#line 2667 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2667 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 169:
@@ -2675,55 +2675,55 @@ yyreduce:
 				      ((yyvsp[-2].identifier)),
 				      FEHLERZEILE); 
 	  }
-#line 2679 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2679 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 170:
 #line 806 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.integer) = -1; }
-#line 2685 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2685 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 171:
 #line 807 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.integer) = (yyvsp[0].integer); }
-#line 2691 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2691 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 172:
 #line 811 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2697 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2697 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 173:
 #line 812 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2703 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2703 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 174:
 #line 816 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_taste (box, (yyvsp[0].integer), '+'); }
-#line 2709 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2709 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 175:
 #line 817 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_taste (box, (yyvsp[0].integer), '*'); }
-#line 2715 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2715 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 176:
 #line 821 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2721 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2721 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 177:
 #line 825 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2727 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2727 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 178:
@@ -2731,222 +2731,230 @@ yyreduce:
     { init_ausloeser (box);
                          /* f〉 die Anfangsausloesung der Logik */
                        }
-#line 2735 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2735 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 179:
 #line 829 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2741 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2741 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 180:
 #line 834 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_logik (box, (yyvsp[-3].identifier), NULL);
                 init_anweisungs_liste (box); }
-#line 2748 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2748 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 181:
 #line 837 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { vervollstaendige_logik (box); }
-#line 2754 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2754 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 182:
 #line 839 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_logik (box, (yyvsp[-4].identifier), (yyvsp[-1].identifier));
                 init_anweisungs_liste (box); }
-#line 2761 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2761 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 183:
 #line 842 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { vervollstaendige_logik (box); }
-#line 2767 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2767 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 184:
 #line 846 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2773 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2773 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 185:
 #line 847 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2779 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2779 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 186:
 #line 852 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_aktions_liste (box); }
-#line 2785 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2785 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 187:
 #line 854 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_anweisung (box); }
-#line 2791 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2791 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 188:
 #line 856 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_aktions_liste (box); }
-#line 2797 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2797 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 189:
 #line 858 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_anweisung (box); }
-#line 2803 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2803 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 190:
 #line 863 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { get_harmoniebezeichner (box, (yyvsp[-4].integer), (yyvsp[-2].identifier),  (yyvsp[0].integer)); }
-#line 2809 "src/kernel/mut.cc" /* yacc.c:1646  */
+    { get_harmoniebezeichner (box,
+                                  mutabor_harmony_bothkey,
+				  (yyvsp[-4].integer), (yyvsp[-2].identifier),  (yyvsp[0].integer)); }
+#line 2811 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 191:
-#line 865 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { get_harmoniebezeichner (box, MUTABOR_NO_KEY, (yyvsp[-2].identifier),  (yyvsp[0].integer)); }
-#line 2815 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 867 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_harmoniebezeichner (box,
+                                  mutabor_harmony_postkey,
+				  0, (yyvsp[-2].identifier),  (yyvsp[0].integer)); }
+#line 2819 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 192:
-#line 867 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { get_harmoniebezeichner (box, (yyvsp[-2].integer), (yyvsp[0].identifier), MUTABOR_NO_KEY); }
-#line 2821 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 871 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_harmoniebezeichner (box,
+				  mutabor_harmony_prekey,
+				  (yyvsp[-2].integer), (yyvsp[0].identifier), 0); }
+#line 2827 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 193:
-#line 869 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
-    { get_harmoniebezeichner (box,  MUTABOR_NO_KEY, (yyvsp[0].identifier), MUTABOR_NO_KEY); }
-#line 2827 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 875 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+    { get_harmoniebezeichner (box, 
+				  mutabor_harmony_nokey,
+				  0, (yyvsp[0].identifier), 0); }
+#line 2835 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 194:
-#line 873 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 881 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_ausloeser_default (box); }
-#line 2833 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2841 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 195:
-#line 874 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 882 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_ausloeser_harmonie (box); }
-#line 2839 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2847 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 196:
-#line 875 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 883 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_ausloeser_harmonie_form (box); }
-#line 2845 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2853 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 197:
-#line 876 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 884 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_ausloeser_taste (box,(yyvsp[0].identifier)); }
-#line 2851 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2859 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 198:
-#line 877 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 885 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { init_integersequenz (box); }
-#line 2857 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2865 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 199:
-#line 879 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 887 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_ausloeser_midi_in (box); }
-#line 2863 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2871 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 200:
-#line 884 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 892 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_integer_in_integersequenz (box,(yyvsp[0].integer));}
-#line 2869 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2877 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 201:
-#line 886 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 894 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_new_integer_in_integersequenz (box,(yyvsp[0].integer));}
-#line 2875 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2883 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 202:
-#line 887 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 895 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { 
 		mutabor_error_message(box,
 				      compiler_error,
 				      _("Bad MIDI list in line %d"),  
 				      FEHLERZEILE );
 	  }
-#line 2886 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2894 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 203:
-#line 897 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 905 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2892 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2900 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 204:
-#line 901 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 909 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2898 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2906 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 205:
-#line 902 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 910 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {}
-#line 2904 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2912 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 206:
-#line 907 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 915 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_instrument_dekl (box, (yyvsp[-3].integer), (yyvsp[0].integer), (yyvsp[0].integer), 0, & box->file->list_of_instrumente); }
-#line 2910 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2918 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 207:
-#line 909 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 917 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_instrument_dekl (box, (yyvsp[-5].integer), (yyvsp[-2].integer), (yyvsp[0].integer), 0, & box->file->list_of_instrumente); }
-#line 2916 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2924 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 208:
-#line 911 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 919 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_instrument_dekl (box, (yyvsp[-5].integer), 0, 0, (yyvsp[-1].integer), & box->file->list_of_instrumente); }
-#line 2922 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2930 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 209:
-#line 913 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 921 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_instrument_dekl (box, (yyvsp[-6].integer), (yyvsp[-3].integer), (yyvsp[-3].integer), (yyvsp[-1].integer), & box->file->list_of_instrumente); }
-#line 2928 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2936 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 210:
-#line 915 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 923 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { get_instrument_dekl (box, (yyvsp[-8].integer), (yyvsp[-5].integer), (yyvsp[-3].integer), (yyvsp[-1].integer), & box->file->list_of_instrumente); }
-#line 2934 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2942 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 211:
-#line 919 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 927 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.f_value) = (yyvsp[0].f_value) ; }
-#line 2940 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2948 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
   case 212:
-#line 920 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
+#line 928 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     { (yyval.f_value) = (double) (yyvsp[0].integer) ; }
-#line 2946 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2954 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
     break;
 
 
-#line 2950 "src/kernel/mut.cc" /* yacc.c:1646  */
+#line 2958 "../../../mutabor-git/src/kernel/mut.cc" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -3181,7 +3189,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 924 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1906  */
+#line 932 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1906  */
 
 /// \todo check whether this function is necessary for any system but windows
 #ifdef __WXMSW__

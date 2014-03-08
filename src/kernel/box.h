@@ -72,25 +72,6 @@ typedef struct {
 	size_t next;
 } mutabor_note_type;
 
-inline int mutabor_get_note_index(int note, tone_system * system) {
-	if (!system) return INT_MIN;
-	int retval = (note - system->anker) % system->breite;
-		return retval < 0 ? retval + system->breite : retval;	
-}
-
-inline int mutabor_get_note_distance(int note, tone_system * system) {
-	if (!system) return INT_MIN;
-	int retval = (int)(note - (system->anker % system->breite)) / system->breite;
-	retval -= ((int)system->anker  / system->breite);
-	return retval;
-}
-
-inline long mutabor_get_note_frequency(int note, tone_system * system) {
-	if (!system) return LONG_MIN;
-	long retval = system->ton[mutabor_get_note_index(note, system)];
-	if (!retval) return 0;
-	return ((long)system->periode) * mutabor_get_note_distance(note,system) + retval;
-}
 
 #define MUT_BOX_MAX_KEY_INDEX_LOG (6)
 #define MUT_BOX_MAX_KEY_INDEX ((1 << MUT_BOX_MAX_KEY_INDEX_LOG) - 1)

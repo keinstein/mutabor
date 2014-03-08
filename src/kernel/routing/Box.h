@@ -123,6 +123,81 @@ namespace mutabor {
 	class BoxClass
 	{
 	public:
+
+		enum interval_type_constants {
+			invalid_interval = hidden::mutabor_invalid_interval,
+			active_interval = hidden::mutabor_active_interval,
+			empty_interval = hidden::mutabor_empty_interval,
+			invalid_tone = hidden::mutabor_invalid_tone,
+			active_tone = hidden::mutabor_active_tone,
+			empty_tone = hidden::mutabor_empty_tone
+		};
+		class tone: public hidden::mutabor_tone {
+		public:
+			typedef  hidden::mutabor_tone base;
+
+			tone(): base() {
+				active = hidden::mutabor_invalid_tone;
+				value = 0;
+			}
+			tone (base t):base(t) {}
+			tone (mutint64 inkey): base ()
+			{
+				active = hidden::mutabor_active_tone;
+				value = inkey << 24;
+			}
+
+			bool is_ok() {
+				return active != hidden::mutabor_invalid_tone;
+			}
+
+			bool is_active() {
+				return active == hidden::mutabor_active_tone;
+			}
+
+			bool is_empty() {
+				return active == hidden::mutabor_empty_tone;
+			}
+
+			interval_type_constants get_type() const {
+				return (interval_type_constants)
+					hidden::mutabor_get_tone_type(*this);
+			}
+
+			/**
+			 * Return the microtonal part of the in fixed
+			 * point integer format. This format has been
+			 * chosen as some device backends need some
+			 * space for additional calculations. On the
+			 * other hand the 24 bit provides much room to
+			 * avoid rounding errors in the logic.
+			 *
+			 * \return Microtonal part in fixed point
+			 * format with 24 bits after the
+			 * comma. I.e. 0x1000000 denotes one pitch.
+			 */
+			long get_bend() const {
+				return value & 0xFFFFFF;
+			}
+			long get_pitch() const {
+				return value >> 24;
+			}
+			mutint64 get_value () const {
+				return value;
+			}
+			void add_value(mutint64 & retval) const {
+				if (active == hidden::mutabor_active_tone) {
+					retval += value;
+				}
+			}
+
+			bool operator == (const tone & t) const {
+				return active == t.active && value == t.value;
+			}
+		};
+
+		typedef tone interval;
+
 		enum  boxidtype {
 			IDTypeSession,
 			IDTypeFile
@@ -141,7 +216,7 @@ namespace mutabor {
 				if (b) b->Register(this);
 			}
 			~ChangedCallback() {
-				if (box) 
+				if (box)
 					box->Unregister(this);
 			}
 			virtual void SetBox(Box & b) {
@@ -149,7 +224,7 @@ namespace mutabor {
 				if (box)
 					box->Unregister(this);
 				box = b;
-				if (box) 
+				if (box)
 					box->Register(this);
 			}
 			virtual void BoxChangedAction(int flags) = 0;
@@ -217,12 +292,12 @@ namespace mutabor {
 		virtual void Save (tree_storage & config);
 
 		/// Save route settings (filter settings) for a given route
-		/** Some route settings (e.g. filter settings) are device type 
+		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function saves them in a tree storage.
 		 * \argument config (tree_storage *) Storage class, where the data will be saved.
 		 * \argument route (Route) Route whos data shall be saved.
 		 */
-		virtual void Save (tree_storage & config, 
+		virtual void Save (tree_storage & config,
 				   const RouteClass * route);
 
 		/// Load current device settings from a tree storage
@@ -231,12 +306,12 @@ namespace mutabor {
 		virtual void Load (tree_storage & config);
 
 		/// Load route settings (filter settings) for a given route
-		/** Some route settings (e.g. filter settings) are device type 
+		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function loads them from a tree storage.
 		 * \argument config (tree_storage *) Storage class, where the data will be restored from.
 		 * \argument route (Route) Route whos data shall be loaded.
 		 */
-		virtual void Load (tree_storage & config, 
+		virtual void Load (tree_storage & config,
 				   RouteClass * route);
 
 
@@ -246,7 +321,7 @@ namespace mutabor {
 		virtual bool Replace(Route & oldRoute, Route & newRoute);
                 /// remove a route
 		virtual bool Remove(Route & route);
-		/// Move routes to another device 
+		/// Move routes to another device
 		virtual bool MoveRoutes (Box & newclass);
 
 
@@ -259,8 +334,8 @@ namespace mutabor {
 		}
 
 
-		static const listtype & GetBoxList() { 
-			return boxList ; 
+		static const listtype & GetBoxList() {
+			return boxList ;
 		}
 
 
@@ -272,23 +347,23 @@ namespace mutabor {
 		static Box GetBox(int id, boxidtype kind);
 
 
-		/** 
-		 * Return the box that is associated with the corrent id. In case such a box does not 
+		/**
+		 * Return the box that is associated with the corrent id. In case such a box does not
 		 * exist the box is created
-		 * 
+		 *
 		 * \param id  Id to be fetched.
-		 * 
+		 *
 		 * \return Box that has been found or created
 		 */
 		static Box GetOrCreateBox(int id);
 
-		/** 
+		/**
 		 * Move the box in the box list.
-		 * 
+		 *
 		 * \param count Number of places the box should be
 		 * moved up. Negative values indicate downwards
 		 * direction.
-		 * 
+		 *
 		 * \return new position in the box list.
 		 */
 		virtual	int MoveInList(int count);
@@ -300,14 +375,14 @@ namespace mutabor {
 #endif
 				boxList.front()->Destroy();
 #ifdef DEBUG
-				mutASSERT(boxList.empty() || 
+				mutASSERT(boxList.empty() ||
 					 d != boxList.front());
 #endif
 			}
 		}
 
-		/** 
-		 * Disconnect the device from all pairings with routes GUI data or something else. 
+		/**
+		 * Disconnect the device from all pairings with routes GUI data or something else.
 		 *
 		 * This function should be extended in subclasses so
 		 * that after calling it only temporary pointers
@@ -328,10 +403,10 @@ namespace mutabor {
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
 #endif
 		virtual void ReadData(wxConfigBase * config) {};
-		virtual void WriteData(wxConfigBase * config) {};	
+		virtual void WriteData(wxConfigBase * config) {};
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
-#endif 
+#endif
 
 		bool Open() {
 			BoxLock lock(this);
@@ -342,7 +417,7 @@ namespace mutabor {
 
 		void Close() {
 			BoxLock lock(this);
-			if (open) 
+			if (open)
 				DoClose();
 			open = false;
 		}
@@ -351,26 +426,26 @@ namespace mutabor {
 		virtual void DoClose();
 		bool IsOpen() { return open; }
 
-		/** 
+		/**
 		 * Close all boxes.
 		 * This function deactivates all boxes.
-		 * 
+		 *
 		 */
 		static void CloseAll();
 
-		/** 
+		/**
 		 * Activate all boxes. This resets the action traces of all boxes.
 		 * \note Code should be taken from MutFrame::DoActivate
-		 * 
+		 *
 		 * \param isRealtime Shall non-realtime devices (e.g.,
 		 * file devices) act in realtime mode or not
-		 * 
+		 *
 		 * \retval true if Activation succeeded
 		 * \retval false otherwise
 		 */
 		static bool ActivateAll(bool isRealtime);
 
-		/** 
+		/**
 		 * Stop all boxes. This resets the action traces of all boxes.
 		 * \note Code should be taken from Stop()
 		 */
@@ -387,10 +462,10 @@ namespace mutabor {
 
 		typedef std::list<logic_entry> logic_list;
 
-		/** 
+		/**
 		 * Get a list of currently defined logics.
 		 * \note: this function replaces GetMutTag() from Runtime.cpp
-		 * 
+		 *
 		 * \return List of logic descriptions.
 		 */
 		logic_list GetLogics();
@@ -437,8 +512,8 @@ namespace mutabor {
 			virtual void Refresh() = 0;
 			virtual void SetStatus(mutString status) = 0;
 			virtual void SetMessage(mutString message) = 0;
-			virtual void SetStatus(int logics, 
-					       int tones, 
+			virtual void SetStatus(int logics,
+					       int tones,
 					       int tunings,
 					       int tone_systems,
 					       int intervals,
@@ -457,20 +532,20 @@ namespace mutabor {
 		void MidiOut(struct midiliste * outliste);
 		static void MidiOutCallback(struct mutabor::hidden::mutabor_box_type * b,
 				     struct mutabor::hidden::midiliste * outliste);
-		/** 
+		/**
 		 * Update the currently playing tones to the current tone system.
 		 * \note this function was formerly defined as \c NotesCorrect
-		 * 
+		 *
 		 */
 		void UpdateTones();
 
-		/** 
+		/**
 		 * Get the MIDI channel of a given tone
-		 * 
+		 *
 		 * \param note     Note that has been received
 		 * \param channel  Internal unique channel id
 		 * \param id       Internal unique Note id
-		 * 
+		 *
 		 * \return MIDI channel of the note
 		 */
 		int GetChannel(int key, size_t channel, size_t id);
@@ -494,10 +569,10 @@ namespace mutabor {
 
 		bool IsLogicKey(int key);
 
-		/** 
+		/**
 		 * Execute the action associated with a key that is
 		 * pressed on the computer keyboard
-		 * 
+		 *
 		 * \param key    Key that has been pressed.
 		 * \param flags  Flags which type of action should be taken.
 		 */
@@ -514,20 +589,20 @@ namespace mutabor {
 			}
 		}
 
-		/** 
+		/**
 		 * Execute the actions that are associated with the
 		 * characters of a string.  \note: The character “&”
 		 * denotes that the following character will not be a
 		 * logic.
-		 * 
-		 * \param keys 
+		 *
+		 * \param keys
 		 */
 		void KeyboardAnalysis(const mutStringRef keys) {
 			BoxLock lock(this);
 			hidden::KeyboardIn(box,keys.ToUTF8());
 		}
 
-		long get_frequency(int note);
+		tone get_frequency(int note);
 		int get_index(int note);
 		int get_distance(int note);
 
@@ -578,27 +653,27 @@ namespace mutabor {
 		int GetKeyLogic() const { return current_key_logic; }
 #endif
 
-		/** 
+		/**
 		 * Activate the current box.
-		 * This method is called when a box is being activated. Its implementation 
+		 * This method is called when a box is being activated. Its implementation
 		 * should be done in the user code. Otherwise its just a no-op function.
 		 */
 		virtual void Activate () {}
 
-		/** 
-		 * Destroy the current object.  
+		/**
+		 * Destroy the current object.
 		 * This function is
 		 * called when an object shall be deleted. It clears
 		 * up all references to itself so that it will be deleted if it is not needed anymore.
-		 * 
-		 * This functions detatches the device from all routes and calls DoDestroy() afterwards. 
+		 *
+		 * This functions detatches the device from all routes and calls DoDestroy() afterwards.
 		 * Finally the Device is going to removed from the device list.
 		 */
 		virtual void Destroy();
 
 		/// Initialize the internal device identifiers.
-		/** This function sets the internal device ids of 
-		 *  all output devices, starting from 0 and 
+		/** This function sets the internal device ids of
+		 *  all output devices, starting from 0 and
 		 *  incrementing by 1
 		 */
 		static void InitializeIds();
@@ -612,15 +687,15 @@ namespace mutabor {
 
 
 	        /// Return the collected errors and warnings.
-		/** 
-		 * This function is a prototype for potential error message collection in 
+		/**
+		 * This function is a prototype for potential error message collection in
 		 * the GUI part.
-		 * 
+		 *
 		 * \return a string containing the collected error messages
 		 */
-		virtual const mutStringRef get_errors() { 
+		virtual const mutStringRef get_errors() {
 			static mutString nothing = mutEmptyString;
-			return nothing; 
+			return nothing;
 		}
 		std::string ActionToString(ChangedCallback::action * action);
 		static void log_action(mutabor_box_type * box, const char * action);
@@ -688,7 +763,7 @@ namespace mutabor {
 		static void AppendToBoxList (Box dev);
 		static void RemoveFromBoxList (Box  dev);
 		static typename listtype::iterator FindInBoxList (Box b) {
-			typename listtype::iterator i = 
+			typename listtype::iterator i =
 				std::find(boxList.begin(),
 					  boxList.end(),
 					  b);
@@ -706,7 +781,7 @@ namespace mutabor {
 
 
 
-	class BoxFactory { 
+	class BoxFactory {
 	public:
 		struct BoxNotCreated:public std::exception {};
 		struct FactoryNotFound:public std::exception {
@@ -740,7 +815,7 @@ namespace mutabor {
 				UNREACHABLECT(BoxFactory);
 				return NULL;
 			}
-			if (!factories[type]) 
+			if (!factories[type])
 				BOOST_THROW_EXCEPTION(FactoryNotFound(type));
 			return factories[type]->DoCreateBox(id);
 		}
@@ -754,7 +829,7 @@ namespace mutabor {
 						delete factory;
 				}
 				factories.clear();
-			} else 
+			} else
 				UNREACHABLECT(BoxFactory);
 		}
 
@@ -766,7 +841,7 @@ namespace mutabor {
 
 		/// write the routes to the configuration
 		/** \param config configuration to be written to
-		 */ 
+		 */
 		static void SaveBoxes(tree_storage & config);
 
 	protected:
@@ -784,7 +859,7 @@ namespace mutabor {
 
 		/// write the routes to the configuration
 		/** \param config configuration to be written to
-		 */ 
+		 */
 		virtual void DoSaveBoxes(tree_storage & config) const;
 	};
 
@@ -792,7 +867,7 @@ namespace mutabor {
 
 	class ScopedBox: public Box {
 	public:
-		~ScopedBox() { 
+		~ScopedBox() {
 			if (get())
 				get()->Destroy();
 		}
@@ -814,7 +889,7 @@ namespace mutabor {
 	inline Box BoxClass::GetOrCreateBox(int id) {
 		Box b = GetBox(id,IDTypeFile);
 		if (b) return b;
-		else if (id > Box0) 
+		else if (id > Box0)
 			return BoxFactory::Create(Box0,id);
 		else return BoxFactory::Create(id);
 	}
@@ -823,7 +898,7 @@ namespace mutabor {
 
 	inline void BoxClose()
 	{
-		const BoxListType& list = BoxClass::GetBoxList(); 
+		const BoxListType& list = BoxClass::GetBoxList();
 		for (BoxListType::const_iterator b = list.begin();
 		     b != list.end(); b++)
 			(*b)->Close();

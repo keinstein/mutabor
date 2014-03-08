@@ -85,8 +85,6 @@ namespace mutabor {
 #endif
 
 //#define MAX_BOX 256   // Anzahl der Boxen/Instumente
-#define MUTABOR_NO_KEY (INT_MIN+1)
-#define MUTABOR_INVALID_KEY (INT_MIN)
 
 //void init_yylex (void);
 
@@ -357,17 +355,26 @@ enum ausloeser_typ {ausloeser_harmonie, ausloeser_harmonie_form,
                     ausloeser_taste, ausloeser_midi_in,
                     ausloeser_default};
 
+enum harmony_type {
+	mutabor_harmony_nokey   = 0x00,
+	mutabor_harmony_prekey  = 0x01,
+	mutabor_harmony_postkey = 0x02,
+	mutabor_harmony_bothkey = 0x03,
+	mutabor_harmony_invalid = 0x04
+};
 struct ausloeser
 {
 	enum ausloeser_typ ausloeser_typ;
 	union {
 		struct {
+			enum harmony_type type;
 			int vortaste;
 			const char * name;
 			int nachtaste;
 		} ausloeser_harmonie;
 
 		struct {
+			enum harmony_type type;
 			int vortaste;
 			const char * name;
 			int nachtaste;

@@ -334,7 +334,7 @@ namespace mutabor {
 		mutabor_note_type * key;
 		size_t index = 0;
 		while ((key = hidden::mutabor_find_key_in_box(box,
-							      index)) 
+							      index))
 		       != NULL) {
 			if (key -> channel == channel
 			    && key -> id == unique_id)
@@ -344,7 +344,7 @@ namespace mutabor {
 
 		mutASSERT(key == NULL);
 #endif
-		
+
 	}
 
 	void BoxClass::Panic(Route r, int type)
@@ -355,7 +355,7 @@ namespace mutabor {
 		mutabor_note_type * key;
 		size_t index = 0;
 		while ((key = hidden::mutabor_find_key_in_box(box,
-							      index)) 
+							      index))
 		       != NULL) {
 			if (key -> channel == channel)
 				break;
@@ -371,7 +371,7 @@ namespace mutabor {
 		}
 		mutASSERT(key == NULL);
 #endif
-		
+
 	}
 
 	void BoxClass::Panic(int type) {
@@ -465,7 +465,11 @@ namespace mutabor {
 		//AktionenInit();
 
 		// In batch mode Batch Play handles open and close.
-		bool retval = realtime ? OpenAll() : true;
+		bool retval = OpenAll(OpenAllBoxes
+				      | (realtime?
+					 OpenAllOutDevices
+					 | OpenAllInDevices
+					 : 0)) ;
 
 		if (!boxList.empty()) {
 			mutabor::Box b = boxList.front();
@@ -604,12 +608,13 @@ namespace mutabor {
 		mutASSERT(width < MUTABOR_KEYRANGE_MAX_WIDTH);
 		for (int i = 0 ; i < width; i++) {
 			mutabor_tone t = system->ton[i];
-			switch (t) {
-			case MUTABOR_NO_KEY:
+			switch (mutabor_get_tone_type(t)) {
+			case mutabor_empty_tone:
 				break;
-			case MUTABOR_INVALID_KEY:
+			case mutabor_invalid_tone:
 				retval.tones[i].flag = tone_entry::invalid;
 				break;
+			case mutabor_active_tone:
 			default:
 				retval.tones[i] =
 					tone_entry(mutabor_convert_tone_to_pitch(t));
@@ -637,17 +642,18 @@ namespace mutabor {
 		     key = mutabor_find_key_in_box(box,key->next)) {
 
 			int index = key->number;
-			mutabor_tone tone;
+			tone t = get_frequency(index);
 
-			switch (tone=get_frequency(index)) {
-			case MUTABOR_NO_KEY:
+			switch (t.get_type()) {
+			case mutabor_empty_tone:
+				retval[i].index = index;
 				break;
-			case MUTABOR_INVALID_KEY:
+			case mutabor_invalid_tone:
 				retval[i].flag=tone_entry::invalid;
 				break;
 			default:
 				retval[i] = current_tone_entry(index,
-							       mutabor_convert_tone_to_pitch(tone),
+							       mutabor_convert_tone_to_pitch(t),
 							       key->id,
 							       GetChannel(index, key->channel, key->id));
 			}
@@ -754,8 +760,9 @@ namespace mutabor {
 	}
 
 
-	long BoxClass::get_frequency(int note) {
-		if (!box) return LONG_MIN;
+	BoxClass::tone BoxClass::get_frequency(int note) {
+		if (!box)
+			return tone();
 		return mutabor_get_note_frequency(note, box->tonesystem);
 	}
 
@@ -840,14 +847,14 @@ namespace mutabor {
 
 	void BoxClass::MidiOutCallback(struct mutabor::hidden::mutabor_box_type * b,
 				       struct mutabor::hidden::midiliste * outliste) {
-		BoxClass * box = 
+		BoxClass * box =
 			reinterpret_cast<BoxClass *>(b -> userdata);
 		if (!box) return;
 		box->MidiOut(outliste);
 	}
 
 	void BoxClass::compile_callback(struct mutabor_box_type * b, int line_number) {
-		BoxClass * box = 
+		BoxClass * box =
 			reinterpret_cast<BoxClass *>(b -> userdata);
 		if (box->current_compile_callback) {
 			box->current_compile_callback->SetLine(line_number);
@@ -857,7 +864,7 @@ namespace mutabor {
 	static void error_callback(mutabor_box_type * b, error_type type,
 			      const char * message) {
 
-		BoxClass * box = 
+		BoxClass * box =
 			reinterpret_cast<BoxClass *>(b -> userdata);
 		box->runtime_error(type, message);
 	}
@@ -890,7 +897,7 @@ namespace mutabor {
 	void BoxClass::log_action(mutabor_box_type * b,
 				  const char * action) {
 
-		BoxClass * box = 
+		BoxClass * box =
 			reinterpret_cast<BoxClass *>(b -> userdata);
 		box->ExecuteCallbacks(action);
 	}

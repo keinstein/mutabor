@@ -1,4 +1,4 @@
-/** \file               -*- C++ -*-
+/** \file -*- C -*-
  ********************************************************************
  * Parser data sturctures and functions
  *
@@ -117,9 +117,10 @@ struct mutabor_logic_parsed {
 	 * This list will be emptied after a tone system is read
 	 */
 	struct ton * ton_liste;
-	int        tmp_vor_taste;
-	const char *     tmp_name;
-	int        tmp_nach_taste;
+	enum harmony_type  tmp_harmony_flags;
+	int          tmp_vor_taste;
+	const char * tmp_name;
+	int          tmp_nach_taste;
 	struct ausloeser * tmp_ausloeser;
 	struct anweisung * tmp_anweisungsliste;
 	struct umstimmung * tmp_umstimmung;
@@ -216,13 +217,13 @@ struct argument_list * get_new_number_in_argument_list (mutabor_box_type * box, 
 struct argument_list * get_new_name_in_argument_list (mutabor_box_type * box, const char * parameter);
 struct argument_list * get_new_distance_in_argument_list (mutabor_box_type * box);
 struct argument_list * get_new_anchor_in_argument_list (mutabor_box_type * box);
-	
+
 
 void init_aktions_liste (mutabor_box_type * box);
-void get_new_aktion_aufruf_element (mutabor_box_type * box, 
+void get_new_aktion_aufruf_element (mutabor_box_type * box,
 				    const char * name,
 				    struct argument_list * arguments);
-			
+
 void get_new_aktion_midi_out_element (mutabor_box_type * box);
 void get_new_aktion_harmony_analysis(mutabor_box_type * box);
 void init_komplex_ton_list (mutabor_box_type * box);
@@ -278,7 +279,17 @@ void get_umstimmung_midi_out (mutabor_box_type * box);
 void init_tastenliste (mutabor_box_type * box);
 void get_new_taste (mutabor_box_type * box, int taste, char stern);
 void get_new_harmonie (mutabor_box_type * box, const char * name, int bezugstaste);
+/**
+ * Save a harmony temporary harmony descriptor in the parser data.
+ *
+ * \param box        Box the parser belongs to.
+ * \param flags      Flags that tell which keys to use.
+ * \param vor_taste  Lowest key of the described harmony.
+ * \param name       Name of the harmony that shall be used
+ * \param nach_taste Highest key of the described harmony
+ */
 void get_harmoniebezeichner (mutabor_box_type * box,
+			     enum harmony_type flags,
 			     int vor_taste,
                              const char * name,
                              int nach_taste);
