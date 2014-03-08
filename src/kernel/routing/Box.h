@@ -904,7 +904,13 @@ namespace mutabor {
 			(*b)->Close();
 	}
 
-	bool OpenAll();
+	enum {
+		OpenAllBoxes      = 0x01,
+		OpenAllOutDevices = 0x02,
+		OpenAllInDevices  = 0x04
+	};
+
+	bool OpenAll(int mode);
 	void initialize_box_data();
 }
 

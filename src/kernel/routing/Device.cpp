@@ -60,7 +60,7 @@ namespace mutabor {
 				set_controller(ctrl,newvalue);
 			}
 		}
-		// we do not send the reset controllers message so we 
+		// we do not send the reset controllers message so we
 		// may not forget the changed controllers
 
 		// first_unchanged = 0;
@@ -91,7 +91,7 @@ namespace mutabor {
 		mutPrintf(_T("%s: "),(const mutChar *)(t));
 		mutVPrintf(message,args);
 	}
-	
+
 
 #ifdef WX
 	wxString Device::TowxString() const {
@@ -103,7 +103,7 @@ namespace mutabor {
 							(*r)->GetDeviceId(InputDevice()),
 							(*r)->GetBox()?(*r)->GetBox()->get_routefile_id():NoBox,
 							(*r)->GetDeviceId(OutputDevice()));
-		
+
 
 		return wxString::Format(_T("\nDevice:\n\
    session_id    = %lu\n\
@@ -120,7 +120,7 @@ namespace mutabor {
 					(const wxChar *) routeString);
 	}
 #endif
-	
+
 
 	template <class T, class P, class L>
 	CommonTypedDeviceAPI<T,P,L>::~CommonTypedDeviceAPI()
@@ -133,7 +133,7 @@ namespace mutabor {
 			UNREACHABLEC;
 			deviceList.erase(i);
 		}
-#endif		
+#endif
 		debug_destruct_class(this);
 		TRACEC;
 	}
@@ -142,7 +142,7 @@ namespace mutabor {
 	void CommonTypedDeviceAPI<T,P,L>::Add(Route & route) {
 		DEBUGLOG(smartptr,_T("Route; %p"),(void*)route.get());
 #ifdef DEBUG
-		routeListType::const_iterator i = 
+		routeListType::const_iterator i =
 			find(routes.begin(),routes.end(),route);
 		mutASSERT(i == routes.end());
 		mutASSERT(IsInDeviceList(static_cast<thistype *>(this)));
@@ -153,13 +153,13 @@ namespace mutabor {
 	}
 
 	template <class T, class P, class L>
-	bool CommonTypedDeviceAPI<T,P,L>::Replace(Route & oldroute, 
+	bool CommonTypedDeviceAPI<T,P,L>::Replace(Route & oldroute,
 						  Route & newroute) {
 		DEBUGLOG(smartptr,_T("oldroute; %p, newroute; %p"),
 			 (void*)oldroute.get(),(void*)newroute.get());
 		bool found = CommonTypedDeviceAPI<T,P,L>::Remove(oldroute);
 		mutASSERT(found);
-		if (found) 
+		if (found)
 			CommonTypedDeviceAPI<T,P,L>::Add(newroute);
 
 		DEBUGLOG(smartptr,_T("oldroute; %p, newroute; %p"),
@@ -172,7 +172,7 @@ namespace mutabor {
 		DEBUGLOG(smartptr,_T("Route: %p (%d)"),
 			 (void*)route.get(),
 			 (int)intrusive_ptr_get_refcount(route.get()));
-		routeListType::iterator i = 
+		routeListType::iterator i =
 			std::find(routes.begin(),routes.end(),route);
 		bool found = (i != routes.end());
 		mutASSERT(found);
@@ -229,7 +229,7 @@ namespace mutabor {
 	}
 
 	template <class T, class P, class L>
-	typename CommonTypedDeviceAPI<T,P,L>::DevicePtr 
+	typename CommonTypedDeviceAPI<T,P,L>::DevicePtr
 	CommonTypedDeviceAPI<T,P,L>::GetDevice(int id, devidtype kind)
 	{
 		for (typename listtype::iterator i = deviceList.begin();
@@ -275,19 +275,19 @@ namespace mutabor {
 			newpos = pos + count;
 		}
  		if (newpos == deviceList.end()) --newpos;
-		if (count > 0) 
+		if (count > 0)
 			std::rotate (pos, newpos, newpos + 1);
-		else 
+		else
 			std::rotate (newpos, pos, pos + 1);
 		return newpos - deviceList.begin();
-		
+
 	}
 
 
 #ifdef WX
 	template <class T, class P, class L>
 	wxString CommonTypedDeviceAPI<T,P,L>::TowxString() const {
-		return Device::TowxString() 
+		return Device::TowxString()
 			+ wxString::Format(_T("\
 CommonTypedDeviceAPI:\n\
    ptrct    = %d\n\
@@ -298,10 +298,10 @@ CommonTypedDeviceAPI:\n\
 // protected:
 
 	template <class T, class P, class L>
-	void CommonTypedDeviceAPI<T,P,L>::AppendToDeviceList (DevicePtr dev) 
+	void CommonTypedDeviceAPI<T,P,L>::AppendToDeviceList (DevicePtr dev)
 	{
 #ifdef DEBUG
-		typename listtype::iterator i = 
+		typename listtype::iterator i =
 			FindInDeviceList(dev);
 		if (i != deviceList.end()) {
 			UNREACHABLECT(listtype);
@@ -311,29 +311,29 @@ CommonTypedDeviceAPI:\n\
 	}
 
 	template <class T, class P, class L>
-	void CommonTypedDeviceAPI<T,P,L>::RemoveFromDeviceList (DevicePtr dev) 
+	void CommonTypedDeviceAPI<T,P,L>::RemoveFromDeviceList (DevicePtr dev)
 	{
-		typename listtype::iterator i = 
+		typename listtype::iterator i =
 			FindInDeviceList(dev);
 		if (i == deviceList.end()) {
 			UNREACHABLECT(listtype);
-		} else 	
+		} else
 			deviceList.erase(i);
 	}
 
 	template <class T, class P, class L>
-	void CommonTypedDeviceAPI<T,P,L>::TruncateDeviceList (DevicePtr dev) 
+	void CommonTypedDeviceAPI<T,P,L>::TruncateDeviceList (DevicePtr dev)
 	{
 		STUB;
 		return;
 #if 0
 		if (!deviceList) return;
-        
+
 		if (deviceList == dev) {
-			deviceList = NULL; 
+			deviceList = NULL;
 			return;
 		}
-	
+
 		DevicePtr d = deviceList ;
 		while (d->GetNext() && d->GetNext() != dev) {
 			d = d->GetNext();
@@ -381,7 +381,7 @@ OutputDeviceClass:\n\
 			current_keys.clear();
 		}
 	}
-	
+
 	/** \todo move implementation to midicmn and Co. */
 	void InputDeviceClass::ResumeKeys() {
 		ScopedLock lock(write_lock);
@@ -409,9 +409,9 @@ OutputDeviceClass:\n\
 		}
 		DEBUGLOG(routing,_T("revived %lu keys"),(unsigned long)j);
 	}
-	
 
-	void InputDeviceClass::Panic(int type, size_t unique_id) 
+
+	void InputDeviceClass::Panic(int type, size_t unique_id)
 	{
 		ScopedLock lock(write_lock);
 
@@ -465,9 +465,9 @@ OutputDeviceClass:\n\
 		/// \todo implement event types that use timestamps
 		CurrentTime.UseRealtime(false);
 		CurrentTime.Set(0);
-		
 
-		OpenAll();
+
+		OpenAll(OpenAllOutDevices | OpenAllInDevices);
 
 		batch_queue queue;
 
@@ -476,7 +476,7 @@ OutputDeviceClass:\n\
 			(*i)->Play();
 			queue.push(queue_element(0,*i));
 		}
-		
+
 		mutASSERT(CurrentTime.Get() == 0);
 
 		while (!queue.empty()) {
@@ -499,10 +499,12 @@ OutputDeviceClass:\n\
 
 		mutabor::CurrentTime.Stop();
 		mutabor::InClose();
-		mutabor::BoxClose();
+		// mutabor::BoxClose(); // will be handled otherways.
 		mutabor::OutClose();
 
 //		GlobalReset();
+
+
 
 		return true;
 	}
@@ -538,7 +540,7 @@ InputDeviceClass:\n\
 			return;
 		}
 		factories[type] = this;
-		
+
 	}
 
 	DeviceFactory::~DeviceFactory() {}
@@ -549,7 +551,7 @@ InputDeviceClass:\n\
 		wxString oldpath = config.GetPath();
 #endif
 		config.toLeaf(_T("OutputDevices"));
-	
+
 		int i = config.toFirstLeaf(_T("Device"));
 		while (i != wxNOT_FOUND) {
 			DEBUGLOGTYPE(config,OutputDeviceClass,_T("Loading output device with id %d"),i);
@@ -568,7 +570,7 @@ InputDeviceClass:\n\
 			out -> Load(config);
 			i = config.toNextLeaf(_T("Device"));
 		}
-	
+
 		config.toParent(2);
 		mutASSERT(oldpath == config.GetPath());
 	}
@@ -579,10 +581,10 @@ InputDeviceClass:\n\
 		wxString oldpath = config.GetPath();
 #endif
 		config.toLeaf(_T("OutputDevices"));
-	
-		const OutputDeviceList & list = 
+
+		const OutputDeviceList & list =
 			OutputDeviceClass::GetDeviceList();
-		for (OutputDeviceList::const_iterator out = list.begin(); 
+		for (OutputDeviceList::const_iterator out = list.begin();
 		     out != list.end(); out++) {
 			config.toLeaf(_T("Device"),
 				      static_cast<Device *>((*out).get())->get_routefile_id());
@@ -591,7 +593,7 @@ InputDeviceClass:\n\
 			(*out) -> Save (config);
 			config.toParent();
 		}
-	
+
 		config.toParent();
 		mutASSERT(oldpath == config.GetPath());
 	}
@@ -602,7 +604,7 @@ InputDeviceClass:\n\
 		wxString oldpath = config.GetPath();
 #endif
 		config.toLeaf(_T("InputDevices"));
-	
+
 		int i = config.toFirstLeaf(_T("Device"));
 		while (i != wxNOT_FOUND) {
 			DevType type = (DevType) config.Read(_T("Type"), DTMidiPort);
@@ -624,7 +626,7 @@ InputDeviceClass:\n\
 			TRACE;
 			i = config.toNextLeaf(_T("Device"));
 		}
-	
+
 		config.toParent(2);
 		mutASSERT(oldpath == config.GetPath());
 	}
@@ -635,7 +637,7 @@ InputDeviceClass:\n\
 		wxString oldpath = config.GetPath();
 #endif
 		config.toLeaf(_T("InputDevices"));
-	
+
 
 		TRACE;
 		const InputDeviceList & list = InputDeviceClass::GetDeviceList();
@@ -648,7 +650,7 @@ InputDeviceClass:\n\
 			config.toParent();
 		}
 		TRACE;
-	
+
 		config.toParent();
 		mutASSERT(oldpath == config.GetPath());
 	}
@@ -689,12 +691,12 @@ InputDeviceClass:\n\
 
 	bool OutOpen()
 	{
-		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList(); 
+		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList();
 		DEBUGLOG2(midiio,_T("count: %d"),(int)list.size());
 		for (OutputDeviceList::const_iterator Out = list.begin();
 		     Out != list.end(); Out++)
 			if ( !(*Out)->Open() ) {
-				for (OutputDeviceList::const_iterator Out1 
+				for (OutputDeviceList::const_iterator Out1
 					     = list.begin();
 				     Out1 != Out; Out1++)
 					(*Out1)->Close();
@@ -707,7 +709,7 @@ InputDeviceClass:\n\
 
 	void OutClose()
 	{
-		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList(); 
+		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList();
 		for (OutputDeviceList::const_iterator Out = list.begin();
 		     Out != list.end(); Out++)
 			(*Out)->Close();
@@ -715,7 +717,7 @@ InputDeviceClass:\n\
 
 	void OutAddTime(frac time)
 	{
-		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList(); 
+		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList();
 		for (OutputDeviceList::const_iterator Out = list.begin();
 		     Out != list.end(); Out++)
 			(*Out)->AddTime(time);
@@ -724,7 +726,7 @@ InputDeviceClass:\n\
 	bool InOpen()
 	{
 		TRACE;
-		const InputDeviceList& list = InputDeviceClass::GetDeviceList(); 
+		const InputDeviceList& list = InputDeviceClass::GetDeviceList();
 		for (InputDeviceList::const_iterator In = list.begin();
 		     In != list.end(); In++)
 			if ( !(*In)->Open() ) {
@@ -744,7 +746,7 @@ InputDeviceClass:\n\
 	void InClose()
 	{
 		TRACE;
-		const InputDeviceList& list = InputDeviceClass::GetDeviceList(); 
+		const InputDeviceList& list = InputDeviceClass::GetDeviceList();
 		for (InputDeviceList::const_iterator In = list.begin();
 		     In != list.end(); In++)
 			(*In)->Close();
@@ -754,7 +756,7 @@ InputDeviceClass:\n\
 	bool NeedsRealTime()
 	{
 		TRACE;
-		const OutputDeviceList& listo = OutputDeviceClass::GetDeviceList(); 
+		const OutputDeviceList& listo = OutputDeviceClass::GetDeviceList();
 		for (OutputDeviceList::const_iterator Out = listo.begin();
 		     Out != listo.end(); Out++)
 			if ( (*Out)->NeedsRealTime() ) {
@@ -762,7 +764,7 @@ InputDeviceClass:\n\
 				return true;
 			}
 
-		const InputDeviceList& listi = InputDeviceClass::GetDeviceList(); 
+		const InputDeviceList& listi = InputDeviceClass::GetDeviceList();
 		for (InputDeviceList::const_iterator In = listi.begin();
 		     In != listi.end(); In++)
 			if ( (*In)->NeedsRealTime() ) {
@@ -775,7 +777,7 @@ InputDeviceClass:\n\
 	}
 
 
-	
+
 }
 
 /// \}

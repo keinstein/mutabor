@@ -420,23 +420,34 @@ namespace mutabor {
 		}
 	};
 
-	bool OpenAll() {
+	bool OpenAll(int mode) {
 		BoxClass_CallOpen callopen;
-		if (!mutabor::OutOpen())
-			return false;
+		bool openout = mode & OpenAllOutDevices;
+		bool openboxes = mode & OpenAllBoxes;
+		bool openin  = mode & OpenAllInDevices;
+		if (openout)
+			if (!mutabor::OutOpen())
+				return false;
 
-		BoxListType & boxList = const_cast<BoxListType &>(BoxClass::GetBoxList());
-		std::for_each(boxList.begin(),boxList.end(),callopen);
-		if (!callopen.ok) {
-			BoxClass::CloseAll();
-			OutClose();
-			return false;
+		if (openboxes) {
+			BoxListType & boxList = const_cast<BoxListType &>(BoxClass::GetBoxList());
+			std::for_each(boxList.begin(),boxList.end(),callopen);
+			if (!callopen.ok) {
+				BoxClass::CloseAll();
+				if (openout)
+					OutClose();
+				return false;
+			}
 		}
 
-		if (!InOpen() ) {
-			BoxClass::CloseAll();
-			OutClose();
-			return false;
+		if (openin) {
+			if (!InOpen() ) {
+				if (openboxes)
+					BoxClass::CloseAll();
+				if (openout)
+					OutClose();
+				return false;
+			}
 		}
 
 
