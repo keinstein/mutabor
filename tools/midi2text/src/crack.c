@@ -62,6 +62,8 @@
 
 #include <stdio.h>
 
+#include "mf2tfuncts.h"
+
 int arg_index = 0;
 char *arg_option;
 char *pvcon = NULL;
@@ -76,13 +78,13 @@ int crack(argc, argv, flags, ign)
 	    pv = pvcon;
 	else
 	    {
-	    if (++arg_index >= argc) return(NULL); 
+	    if (++arg_index >= argc) return 0; 
 	    pv = argv[arg_index];
 	    if (*pv != '-') 
-		return(NULL);
+		return 0;
 	    }
 	pv++;		/* skip '-' or prev. flag */
-	if (*pv != NULL)
+	if (*pv != 0)
 	    {
 	    if ((flgp=strchr(flags,*pv)) != NULL)
 		{
@@ -100,6 +102,6 @@ int crack(argc, argv, flags, ign)
 	    }
 	pvcon = NULL;
 	}
-    return(NULL);
+    return 0;
     }
 

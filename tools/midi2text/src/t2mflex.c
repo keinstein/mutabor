@@ -74,7 +74,7 @@ void free( void* );
  * so it's got to be a K&R compiler, and therefore there's no standard
  * place from which to include these definitions
  */
-int read();
+int read(void);
 #endif
 
 
@@ -189,7 +189,10 @@ int do_hex = 0;
 int eol_seen = 0;
 int lineno = 1;
 long yyval;
-long bankno();
+extern long bankno (const char *, int);
+extern void error (const char *);
+
+int yylex( void );
 
 #define QUOTE 1
 #define HEX 2

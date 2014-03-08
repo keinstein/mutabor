@@ -12,16 +12,19 @@
  * 
  */
 
-#include <malloc.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <setjmp.h>
+#include <errno.h>
 
 #include <memory.h>
 #include <string.h>
 
 #include "t2mf.h"
+#include "midifile.h"
+#include "mf2tfuncts.h"
 
 #ifdef NO_YYLENG_VAR
 #define	yyleng yylength
@@ -37,6 +40,8 @@ static long T0;
 static char* buffer = 0;
 static int bufsiz = 0, buflen;
 
+extern int yylex();
+
 extern int arg_index;
 extern char *arg_option;
 extern long yyval;
@@ -51,32 +56,40 @@ extern int arg_index;
 extern char *arg_option;
 extern int Mf_RunStat;
 
-static int  mywritetrack();
-static void checkchan();
-static void checknote();
-static void checkval();
-static void splitval();
-static void get16val();
-static void checkcon();
-static void checkprog();
-static void checkeol();
-static void gethex();
+static void checkchan(void);
+static int  mywritetrack(void);
+static void checknote(void);
+static void checkval(void);
+static void splitval(void);
+static void get16val(const char *);
+static void checkcon(void);
+static void checkprog(void);
+static void checkeol(void);
+static void gethex(void);
+static void translate(void);
+FILE * efopen(const char *, const char *);
+long bankno (const char *, int);
+static long getint(const char *);
+static int getbyte(const char *);
+static int fileputc(int c);
+void error(const char *);
+
 
 static FILE *F;
 
-int fileputc(int c)
+static int fileputc(int c)
 {
     return putc(c, F);
 }
 
-main(argc,argv)
+int main(argc,argv)
 int argc;
 char **argv;
 {
-    	FILE *efopen();
+	/*  FILE *efopen(); */
 	int flg;
 
-	while (flg = crack (argc, argv, "Rr", 0)) {
+	while ((flg = crack(argc, argv, "Rr", 0))) {
 		switch (flg) {
 		case 'r':
 		case 'R':
@@ -88,7 +101,7 @@ char **argv;
 	}
 
     if ( arg_index < argc )
-        yyin = efopen (argv[arg_index++], "r");
+        yyin = efopen(argv[arg_index++], "r");
     else
         yyin = stdin;
     if (arg_index < argc )
@@ -100,7 +113,7 @@ char **argv;
 #else
         F = fdopen (fileno(stdout), "wb");
 #endif
-      }
+    }
 
     Mf_putc = fileputc;
     Mf_wtrack = mywritetrack;
@@ -117,13 +130,12 @@ char **argv;
 }
 
 FILE *
-efopen(name,mode)
-char *name;
-char *mode;
+efopen(name, mode)
+const char *name;
+const char *mode;
 {
 
     FILE *f;
-    extern int errno;
 
     if ( (f=fopen(name,mode)) == NULL ) {
         (void) fprintf(stderr,"*** ERROR *** Cannot open '%s'!\n",name);
@@ -133,14 +145,14 @@ char *mode;
     return(f);
 }
 
-error(s)
-char *s;
+void error(s)
+const char *s;
 {
     fprintf(stderr,"Error: %s\n",s);
 }
 
-prs_error(s)
-char *s;
+static void prs_error(s)
+const char *s;
 {
     int c;
     int count;
@@ -156,12 +168,12 @@ char *s;
         longjmp (erjump,1);
 }
 
-syntax()
+static void syntax()
 {
     prs_error ("Syntax error");
 }
 
-translate()
+static void translate(void)
 {
     if (yylex()==MTHD) {
         Format = getint("MFile format");
@@ -180,7 +192,7 @@ translate()
 char data[5];
 int chan;
 
-static int mywritetrack()
+static int mywritetrack(void)
 {
     int opcode, c;
     long currtime = 0;
@@ -219,43 +231,43 @@ static int mywritetrack()
             case ON:
             case OFF:
             case POPR:
-		checkchan();
-		checknote();
-		checkval();
-		mf_w_midi_event (delta, opcode, chan, data, 2L);
-		break;
+				checkchan();
+				checknote();
+				checkval();
+				mf_w_midi_event(delta, opcode, chan, (unsigned char *) data, 2L);
+				break;
 
             case PAR:
-		checkchan();
-		checkcon();
-		checkval();
-		mf_w_midi_event (delta, opcode, chan, data, 2L);
-		break;
+				checkchan();
+				checkcon();
+				checkval();
+				mf_w_midi_event (delta, opcode, chan, (unsigned char *) data, 2L);
+				break;
 		
             case PB:
-		checkchan();
-		splitval();
-		mf_w_midi_event (delta, opcode, chan, data, 2L);
-		break;
+				checkchan();
+				splitval();
+				mf_w_midi_event (delta, opcode, chan, (unsigned char *) data, 2L);
+				break;
 
             case PRCH:
-		checkchan();
-		checkprog();
-		mf_w_midi_event (delta, opcode, chan, data, 1L);
-		break;
+				checkchan();
+				checkprog();
+				mf_w_midi_event (delta, opcode, chan, (unsigned char *) data, 1L);
+				break;
                 
-	    case CHPR:
-		checkchan();
-		checkval();
-		data[0] = data[1];
-		mf_w_midi_event (delta, opcode, chan, data, 1L);
-		break;
+	    	case CHPR:
+				checkchan();
+				checkval();
+				data[0] = data[1];
+				mf_w_midi_event (delta, opcode, chan, (unsigned char *) data, 1L);
+				break;
 	    	
             case SYSEX:
             case ARB:
-	    	gethex();
-		mf_w_sysex_event (delta, buffer, (long)buflen);
-		break;
+	    		gethex();
+				mf_w_sysex_event (delta, (unsigned char *) buffer, (long)buflen);
+				break;
 		
             case TEMPO:
 	    	if (yylex() != INT) syntax();
@@ -263,84 +275,84 @@ static int mywritetrack()
 		break;
 		
             case TIMESIG: {
-	        int nn, denom, cc, bb;
-	        if (yylex() != INT || yylex() != '/') syntax();
-		nn = yyval;
-		denom = getbyte("Denom");
-		cc = getbyte("clocks per click");
-		bb = getbyte("32nd notes per 24 clocks");
-		for (i=0, k=1 ; k<denom; i++, k<<=1);
-		if (k!=denom) error ("Illegal TimeSig");
-		data[0] = nn;
-		data[1] = i;
-		data[2] = cc;
-		data[3] = bb;
-		M0 += (newtime-T0)/(Beat*Measure);
-		T0 = newtime;
-		Measure = nn;
-		Beat = 4 * Clicks / denom;
-		mf_w_meta_event (delta, time_signature, data, 4L);
-		}
-		break;
+	        	int nn, denom, cc, bb;
+	        	if (yylex() != INT || yylex() != '/') syntax();
+				nn = yyval;
+				denom = getbyte("Denom");
+				cc = getbyte("clocks per click");
+				bb = getbyte("32nd notes per 24 clocks");
+				for (i=0, k=1 ; k<denom; i++, k<<=1);
+				if (k!=denom) error ("Illegal TimeSig");
+				data[0] = nn;
+				data[1] = i;
+				data[2] = cc;
+				data[3] = bb;
+				M0 += (newtime-T0)/(Beat*Measure);
+				T0 = newtime;
+				Measure = nn;
+				Beat = 4 * Clicks / denom;
+				mf_w_meta_event(delta, (unsigned char) time_signature, (unsigned char *) data, 4L);
+				}
+				break;
 		
             case SMPTE:
-		for (i=0; i<5; i++) {
-		    data[i] = getbyte("SMPTE");
-		}
-		mf_w_meta_event (delta, smpte_offset, data, 5L);
-		break;
+				for (i=0; i<5; i++) {
+		    		data[i] = getbyte("SMPTE");
+				}
+				mf_w_meta_event (delta, (unsigned char) smpte_offset, (unsigned char *) data, 5L);
+				break;
 		
             case KEYSIG:
-		data[0] = i = getint ("Keysig");
-		if (i<-7 || i>7)
-		    error ("Key Sig must be between -7 and 7");
-		if ((c=yylex()) != MINOR && c != MAJOR)
-			syntax();
-		data[1] = (c == MINOR);
-		mf_w_meta_event (delta, key_signature, data, 2L);
-		break;
+				data[0] = i = getint ("Keysig");
+				if (i<-7 || i>7)
+		    		error ("Key Sig must be between -7 and 7");
+				if ((c=yylex()) != MINOR && c != MAJOR)
+					syntax();
+				data[1] = (c == MINOR);
+				mf_w_meta_event (delta, (unsigned char) key_signature, (unsigned char *) data, 2L);
+				break;
 		
             case SEQNR:
-		get16val ("SeqNr");
-		mf_w_meta_event (delta, sequence_number, data, 2L);
-		break;
+				get16val("SeqNr");
+				mf_w_meta_event (delta, (unsigned char) sequence_number, (unsigned char *) data, 2L);
+				break;
 
-	    case META: {
-	        int type = yylex();
-		switch (type) {
-		case TRKEND:
-		    type = end_of_track;
-		    break;
-		case TEXT:
-		case COPYRIGHT:
-		case SEQNAME:
-		case INSTRNAME:
-		case LYRIC:
-		case MARKER:
-		case CUE:
-		    type -= (META+1);
-		    break;
-		case INT:
-		    type = yyval;
-		    break;
-		default:
-		    prs_error ("Illegal Meta type");
-		}
-		if (type == end_of_track)
-		    buflen = 0;
-		else
-		    gethex();
-		mf_w_meta_event (delta, type, buffer, (long)buflen);
-		break;
-	    }
+	    	case META: {
+	        	int type = yylex();
+				switch (type) {
+				case TRKEND:
+		    		type = end_of_track;
+		    		break;
+				case TEXT:
+				case COPYRIGHT:
+				case SEQNAME:
+				case INSTRNAME:
+				case LYRIC:
+				case MARKER:
+				case CUE:
+		    		type -= (META+1);
+		    		break;
+				case INT:
+		    		type = yyval;
+		    		break;
+				default:
+		    		prs_error ("Illegal Meta type");
+				}
+				if (type == end_of_track)
+		    		buflen = 0;
+				else
+		    		gethex();
+				mf_w_meta_event (delta, (unsigned char) type, (unsigned char *) buffer, (long)buflen);
+				break;
+	    		}
             case SEQSPEC:
-		gethex();
-		mf_w_meta_event (delta, sequencer_specific, buffer, (long)buflen);
-		break;
-	    default:
-	        prs_error ("Unknown input");
-		break;
-	    }
+				gethex();
+				mf_w_meta_event (delta, (unsigned char) sequencer_specific, (unsigned char *) buffer, (long)buflen);
+				break;
+	    	default:
+	        	prs_error ("Unknown input");
+				break;
+	    	}
             currtime = newtime;
         case EOL:
 	    break;
@@ -352,8 +364,8 @@ static int mywritetrack()
     }
 }
 
-getbyte(mess)
-char *mess;
+static int getbyte(mess)
+const char *mess;
 {
     char ermesg[100];
     getint (mess);
@@ -365,8 +377,8 @@ char *mess;
     return yyval;
 }
 
-getint(mess)
-char *mess;
+long getint(mess)
+const char *mess;
 {
     char ermesg[100];
     if (yylex() != INT) {
@@ -377,7 +389,7 @@ char *mess;
     return yyval;
 }
 
-static void checkchan()
+static void checkchan(void)
 {
     if (yylex() != CH || yylex() != INT) syntax();
     if (yyval < 1 || yyval > 16)
@@ -385,11 +397,11 @@ static void checkchan()
     chan = yyval-1;
 }
 
-static void checknote()
+void checknote()
 {
     int c;
     if (yylex() != NOTE || ((c=yylex()) != INT && c != NOTEVAL))
-	syntax();
+		syntax();
     if (c == NOTEVAL) {
         static int notes[] = {
 	    9,		/* a */
@@ -424,7 +436,7 @@ static void checknote()
     data[0] = yyval;
 }
 
-static void checkval()
+void checkval()
 {
     if (yylex() != VAL || yylex() != INT) syntax();
     if (yyval < 0 || yyval > 127)
@@ -432,7 +444,7 @@ static void checkval()
     data[1] = yyval;
 }
 
-static void splitval()
+void splitval(void)
 {
     if (yylex() != VAL || yylex() != INT) syntax();
     if (yyval < 0 || yyval > 16383)
@@ -441,7 +453,7 @@ static void splitval()
     data[1] = yyval/128;
 }
 
-static void get16val()
+static void get16val(const char *str)
 {
     if (yylex() != VAL || yylex() != INT) syntax();
     if (yyval < 0 || yyval > 65535)
@@ -450,7 +462,7 @@ static void get16val()
     data[1] = yyval&0xff;
 }
 
-static void checkcon()
+static void checkcon(void)
 {
     if (yylex() != CON || yylex() != INT)
 	syntax();
@@ -478,7 +490,7 @@ static void checkeol()
 
 static void gethex()
 {
-    int c;
+    unsigned int c;
     buflen = 0;
     do_hex = 1;
     c = yylex();
@@ -496,35 +508,35 @@ static void gethex()
 	while (i<yyleng-1) {
 	    c = yytext[i++];
 rescan:
-	    if (c == '\\') {
-	    	switch (c = yytext[i++]) {
-		case '0':
-		    c = '\0';
-		    break;
-		case 'n':
-		    c = '\n';
-		    break;
-		case 'r':
-		    c = '\r';
-		    break;
-		case 't':
-		    c = '\t';
-		    break;
-		case 'x':
-		    if (sscanf (yytext+i, "%2x", &c) != 1)
-		    	prs_error ("Illegal \\x in string");
-		    i += 2;
-		    break;
-		case '\r':
-		case '\n':
-		    while ((c=yytext[i++])==' '||c=='\t'||c=='\r'||c=='\n')
-		    	/* skip whitespace */;
-		    goto rescan; /* sorry EWD :=) */
-		}
-	    }
-	    buffer[buflen++] = c;
-	}	    
-    }
+			if (c == '\\') {
+				switch (c = yytext[i++]) {
+				case '0':
+					c = '\0';
+					break;
+				case 'n':
+					c = '\n';
+					break;
+				case 'r':
+					c = '\r';
+					break;
+				case 't':
+					c = '\t';
+					break;
+				case 'x':
+					if (sscanf (yytext+i, "%2x", &c) != 1)
+						prs_error ("Illegal \\x in string");
+					i += 2;
+					break;
+				case '\r':
+				case '\n':
+					while ((c=yytext[i++])==' '||c=='\t'||c=='\r'||c=='\n')
+						/* skip whitespace */;
+					goto rescan; /* sorry EWD :=) */
+				} /* end switch */
+			} /* end if */
+		buffer[buflen++] = c;
+		} /* end while */	    
+    } /* end if */
     else if (c == INT) {
 	do {
     	    if (buflen >= bufsiz) {
@@ -547,7 +559,7 @@ rescan:
 }
 
 long bankno (s, n)
-char *s; int n;
+const char *s; int n;
 {
     long res = 0;
     int c;

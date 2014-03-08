@@ -42,18 +42,19 @@
  *          in Electronic Musician magazine, April, 1989.
  * 
  */
-#include "midifile.h"
 #define NULLFUNC 0
 #define NULL 0
 
-/*#define THINK*/
+#define THINK
 
 #ifdef THINK
 #include <stdlib.h>
 #endif
 
 #include <stdio.h>
-#include <malloc.h>
+#include <string.h>
+/* #include <malloc.h> */
+#include "midifile.h"
 
 char *strcpy(), *strcat();
 /*char *malloc();*/
@@ -62,32 +63,32 @@ void exit(), free();
 /* public stuff */
 
 /* Functions to be called while processing the MIDI file. */
-int (*Mf_getc)() = NULLFUNC;
-int (*Mf_error)() = NULLFUNC;
-int (*Mf_header)() = NULLFUNC;
-int (*Mf_starttrack)() = NULLFUNC;
-int (*Mf_endtrack)() = NULLFUNC;
-int (*Mf_on)() = NULLFUNC;
-int (*Mf_off)() = NULLFUNC;
-int (*Mf_pressure)() = NULLFUNC;
-int (*Mf_parameter)() = NULLFUNC;
-int (*Mf_pitchbend)() = NULLFUNC;
-int (*Mf_program)() = NULLFUNC;
-int (*Mf_chanpressure)() = NULLFUNC;
-int (*Mf_sysex)() = NULLFUNC;
-int (*Mf_arbitrary)() = NULLFUNC;
-int (*Mf_metamisc)() = NULLFUNC;
-int (*Mf_seqnum)() = NULLFUNC;
-int (*Mf_eot)() = NULLFUNC;
-int (*Mf_smpte)() = NULLFUNC;
-int (*Mf_tempo)() = NULLFUNC;
-int (*Mf_timesig)() = NULLFUNC;
-int (*Mf_keysig)() = NULLFUNC;
-int (*Mf_sqspecific)() = NULLFUNC;
-int (*Mf_text)() = NULLFUNC;
+int  (*Mf_getc)() = NULLFUNC;
+void  (*Mf_error)(char * s) = NULLFUNC;
+void  (*Mf_header)(int format, int ntrks, int division) = NULLFUNC;
+void (*Mf_starttrack)() = NULLFUNC;
+void (*Mf_endtrack)() = NULLFUNC;
+void (*Mf_on)(int chan, int pitch, int vol) = NULLFUNC;
+void (*Mf_off)(int chan, int pitch, int vol) = NULLFUNC;
+void (*Mf_pressure)(int chan, int pitch, int press) = NULLFUNC;
+void (*Mf_parameter)(int chan, int control, int value) = NULLFUNC;
+void (*Mf_pitchbend)(int chan, int lsb, int msb) = NULLFUNC;
+void (*Mf_program)(int chan, int program) = NULLFUNC;
+void (*Mf_chanpressure)(int chan, int press) = NULLFUNC;
+void (*Mf_sysex)(int leng, char *mess) = NULLFUNC;
+void (*Mf_arbitrary)(int leng, char *mess) = NULLFUNC;
+void (*Mf_metamisc)(int type, int leng, char *mess) = NULLFUNC;
+void (*Mf_seqnum)(int num) = NULLFUNC;
+void (*Mf_eot)() = NULLFUNC;
+void (*Mf_smpte)(int hr, int mn, int se, int fr, int ff) = NULLFUNC;
+void (*Mf_tempo)(long tempo) = NULLFUNC;
+void (*Mf_timesig)(int nn, int dd, int cc, int bb) = NULLFUNC;
+void (*Mf_keysig)(int sf, int mi) = NULLFUNC;
+void (*Mf_sqspecific)(int leng, char *mess) = NULLFUNC;
+void (*Mf_text)(int type, int leng, char *mess) = NULLFUNC;
 
 /* Functions to implement in order to write a MIDI file */
-int (*Mf_putc)() = NULLFUNC;
+int (*Mf_putc)(int c) = NULLFUNC;
 int (*Mf_wtrack)() = NULLFUNC;
 int (*Mf_wtempotrack)() = NULLFUNC;
 
@@ -95,18 +96,43 @@ int Mf_nomerge = 0;		/* 1 => continue'ed system exclusives are */
 				            /* not collapsed. */
 long Mf_currtime = 0L;		/* current time in delta-time units */
 
+void mfread(void);
+void midifile(void);
+
 /* private stuff */
 static long Mf_toberead = 0L;
 static long Mf_numbyteswritten = 0L;
 
-static long readvarinum();
-static long read32bit();
-static long to32bit();
-static int read16bit();
-static int to16bit();
-static char *msg();
-static void readheader();
+static long readvarinum(void);
+static long read32bit(void);
+static long to32bit(int, int, int, int);
+static short int read16bit(void);
+static short int to16bit(int, int);
+static char *msg(void);
+static void readheader(void);
 
+static void badbyte(int);
+static void metaevent(int);
+static int readtrack(void);		 /* read a track chunk */
+static void sysex(void);
+static void chanmessage(int,int,int);
+static void msginit(void);
+static int msgleng(void);
+static void msgadd(int);
+static void biggermsg();
+static int eputc(unsigned char c);			
+
+static void mferror(char *);
+
+static void write32bit(unsigned long);
+static void write16bit(int);
+
+static void mf_w_header_chunk(int, int, int);
+static void WriteVarLen(unsigned long);
+
+void mfwrite(int, int, int, FILE *); 
+
+void
 mfread()	 	/* The only non-static function in this file. */
 {
 	if ( Mf_getc == NULLFUNC )
@@ -118,12 +144,12 @@ mfread()	 	/* The only non-static function in this file. */
 }
 
 /* for backward compatibility with the original lib */
-midifile()
+void midifile()
 {
     mfread();
 }
 
-static
+static int
 readmt(s)		/* read through the "MThd" or "MTrk" header string */
 char *s;
 {
@@ -142,7 +168,7 @@ char *s;
 	return(c);
 }
 
-static
+static int
 egetc()			/* read a single character and abort on EOF */
 {
 	int c = (*Mf_getc)();
@@ -174,7 +200,7 @@ void readheader()		/* read a header chunk */
 		(void) egetc();
 }
 
-static
+static int
 readtrack()		 /* read a track chunk */
 {
 	/* This array is indexed by the high half of a status byte.  It's */
@@ -185,7 +211,7 @@ readtrack()		 /* read a track chunk */
 		2, 2, 2, 2, 1, 1, 2, 0		/* 0x80 through 0xf0 */
 	};
 	long lookfor;
-	int c, c1, type;
+	int c, c1 = -1, type;
 	int sysexcontinue = 0;	/* 1 if last message was an unfinished sysex */
 	int running = 0;	/* 1 when running status used */
 	int status = 0;		/* status value (e.g. 0x90==note-on) */
@@ -225,10 +251,10 @@ readtrack()		 /* read a track chunk */
 
 		if ( needed ) {		/* ie. is it a channel message? */
 
-			if ( !running )
+			if ( !running || c1 == -1 )
 				c1 = egetc();
 			chanmessage( status, c1, (needed>1) ? egetc() : 0 );
-			continue;;
+			continue;
 		}
 
 		switch ( c ) {
@@ -239,7 +265,7 @@ readtrack()		 /* read a track chunk */
 			lookfor = Mf_toberead - readvarinum();
 			msginit();
 
-			while ( Mf_toberead > lookfor )
+			while ( Mf_toberead >= lookfor )
 				msgadd(egetc());
 
 			metaevent(type);
@@ -251,7 +277,7 @@ readtrack()		 /* read a track chunk */
 			msginit();
 			msgadd(0xf0);
 
-			while ( Mf_toberead > lookfor )
+			while ( Mf_toberead >= lookfor )
 				msgadd(c=egetc());
 
 			if ( c==0xf7 || Mf_nomerge==0 )
@@ -289,7 +315,7 @@ readtrack()		 /* read a track chunk */
 	return(1);
 }
 
-static
+static void
 badbyte(c)
 int c;
 {
@@ -299,8 +325,9 @@ int c;
 	mferror(buff);
 }
 
-static
+static void
 metaevent(type)
+int type;
 {
 	int leng = msgleng();
 	char *m = msg();
@@ -359,17 +386,15 @@ metaevent(type)
 	}
 }
 
-static
+static void
 sysex()
 {
 	if ( Mf_sysex )
 		(*Mf_sysex)(msgleng(),msg());
 }
 
-static
-chanmessage(status,c1,c2)
-int status;
-int c1, c2;
+static void
+chanmessage(int status, int c1, int c2)
 {
 	int chan = status & 0xf;
 
@@ -428,6 +453,7 @@ readvarinum()
 
 static long
 to32bit(c1,c2,c3,c4)
+int c1, c2, c3, c4;
 {
 	long value = 0L;
 
@@ -438,14 +464,14 @@ to32bit(c1,c2,c3,c4)
 	return (value);
 }
 
-static
+static short int
 to16bit(c1,c2)
 int c1, c2;
 {
 	return ((c1 & 0xff ) << 8) + (c2 & 0xff);
 }
 
-static long
+static long int
 read32bit()
 {
 	int c1, c2, c3, c4;
@@ -457,7 +483,7 @@ read32bit()
 	return to32bit(c1,c2,c3,c4);
 }
 
-static
+static short int
 read16bit()
 {
 	int c1, c2;
@@ -467,8 +493,7 @@ read16bit()
 }
 
 /* static */
-mferror(s)
-char *s;
+static void mferror(char *s)
 {
 	if ( Mf_error )
 		(*Mf_error)(s);
@@ -484,7 +509,7 @@ static char *Msgbuff = NULL;	/* message buffer */
 static int Msgsize = 0;		/* Size of currently allocated Msg */
 static int Msgindex = 0;	/* index of next available location in Msg */
 
-static
+static void
 msginit()
 {
 	Msgindex = 0;
@@ -496,13 +521,13 @@ msg()
 	return(Msgbuff);
 }
 
-static
+static int
 msgleng()
 {
 	return(Msgindex);
 }
 
-static
+static void
 msgadd(c)
 int c;
 {
@@ -512,15 +537,15 @@ int c;
 	Msgbuff[Msgindex++] = c;
 }
 
-static
+static void
 biggermsg()
 {
-	char *newmess;
+	char *newmess = NULL;
 	char *oldmess = Msgbuff;
 	int oldleng = Msgsize;
 
 	Msgsize += MSGINCREMENT;
-	newmess = (char *) malloc( (unsigned)(sizeof(char)*Msgsize) );
+	newmess = (char *) malloc( (unsigned)(sizeof(char) * Msgsize) );
 
 	if(newmess == NULL)
 		mferror("malloc error!");
@@ -660,7 +685,7 @@ int (*wtrack)();
  	/* track.length = place_marker - offset - (long) sizeof(track); */
 
 #ifdef DEBUG
-printf("length = %d\n",(int) trklength);
+	printf("length = %d\n",(int) trklength);
 #endif
 
  	if(fseek(fp,offset,0) < 0)
@@ -675,13 +700,18 @@ printf("length = %d\n",(int) trklength);
 	fseek(fp,place_marker,0);
 } /* End gen_track_chunk() */
 
+static void 
+write16bit(int data);
+
+static void 
+write32bit(unsigned long data);
+
 
 void 
 mf_w_header_chunk(format,ntracks,division)
 int format,ntracks,division;
 {
     unsigned long ident,length;
-    void write16bit(),write32bit();
     
     ident = MThd;           /* Head chunk identifier                    */
     length = 6;             /* Chunk length                             */
@@ -695,7 +725,7 @@ int format,ntracks,division;
     write16bit(division);
 } /* end gen_header_chunk() */
 
-void WriteVarLen();
+static void WriteVarLen(unsigned long value);
 
 /*
  * mf_w_midi_event()
@@ -743,7 +773,7 @@ unsigned char *data;
     for(i = 0; i < size; i++)
 	eputc(data[i]);
 
-    return(size);
+    return(size); 
 } /* end mf_write MIDI event */
 
 /*
@@ -760,11 +790,10 @@ unsigned char *data;
  *        data.
  * size - The length of the meta-event data.
  */
-int
-mf_w_meta_event(delta_time, type, data, size)
-unsigned long delta_time;
-unsigned char *data,type;
-unsigned long size;
+int mf_w_meta_event(unsigned long delta_time,
+		    unsigned char type,
+		    unsigned char * data,
+		    unsigned long size)
 {
     int i;
 
@@ -849,10 +878,7 @@ unsigned long tempo;
 }
 
 unsigned long 
-mf_sec2ticks(secs,division,tempo)
-int division;
-unsigned int tempo;
-float secs;
+mf_sec2ticks(float secs, int division, unsigned int tempo)
 {    
      return (long)(((secs * 1000.0) / 4.0 * division) / tempo);
 }
@@ -860,26 +886,25 @@ float secs;
 /*
  * Write multi-length bytes to MIDI format files
  */
-void 
-WriteVarLen(value)
-unsigned long value;
+static void 
+WriteVarLen(unsigned long value)
 {
-  unsigned long buffer;
+	unsigned long buffer;
 
-  buffer = value & 0x7f;
-  while((value >>= 7) > 0)
-  {
-	buffer <<= 8;
-	buffer |= 0x80;
-	buffer += (value & 0x7f);
-  }
-  while(1){
-       eputc((unsigned)(buffer & 0xff));
+  	buffer = value & 0x7f;
+  	while((value >>= 7) > 0)
+  	{
+		buffer <<= 8;
+		buffer |= 0x80;
+		buffer += (value & 0x7f);
+  	}
+  	while(1) {
+  		eputc((unsigned)(buffer & 0xff));
        
-	if(buffer & 0x80)
-		buffer >>= 8;
-	else
-		return;
+		if(buffer & 0x80)
+			buffer >>= 8;
+		else
+			return;
 	}
 }/* end of WriteVarLen */
 
@@ -901,9 +926,9 @@ unsigned long ticks;
         return ((float) (((float)(ticks) * (float)(tempo)) / ((float)(division) * 1000000.0)));
     else
     {
-       smpte_format = upperbyte(division);
-       smpte_resolution = lowerbyte(division);
-       return (float) ((float) ticks / (smpte_format * smpte_resolution * 1000000.0));
+       	smpte_format = upperbyte(division);
+       	smpte_resolution = lowerbyte(division);
+       	return (float) ((float) ticks / (smpte_format * smpte_resolution * 1000000.0));
     }
 } /* end of ticks2sec() */
 
@@ -920,9 +945,8 @@ unsigned long ticks;
  * has been true at least on PCs, UNIX machines, and Macintosh's.
  *
  */
-void 
-write32bit(data)
-unsigned long data;
+static void 
+write32bit(unsigned long data)
 {
     eputc((unsigned)((data >> 24) & 0xff));
     eputc((unsigned)((data >> 16) & 0xff));
@@ -930,17 +954,15 @@ unsigned long data;
     eputc((unsigned)(data & 0xff));
 }
 
-void 
-write16bit(data)
-int data;
+static void 
+write16bit(int data)
 {
     eputc((unsigned)((data & 0xff00) >> 8));
     eputc((unsigned)(data & 0xff));
 }
 
 /* write a single character and abort on error */
-eputc(c)			
-unsigned char c;
+static int eputc(unsigned char c)			
 {
 	int return_val;
 	

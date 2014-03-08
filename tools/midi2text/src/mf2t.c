@@ -12,9 +12,12 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <fcntl.h>
+#include <stdlib.h>
 #include <errno.h>
+#include <string.h>
 
 #include "midifile.h"
+#include "mf2tfuncts.h"
 
 static int TrkNr;
 static int TrksToDo = 1;
@@ -24,28 +27,34 @@ static long T0;
 extern int arg_index;
 extern char *arg_option;
 
+/* internal functions - within this source file */
+void initfuncs();
+void prtime();
+void prhex(unsigned char *, int);
+void prtext(unsigned char *, int);
+void printhelp(void);
+int filegetc();
+
+void error(char *);
+
 /* options */
 
-static int fold = 0;		/* fold long lines */
-static int notes = 0;		/* print notes as a-g */
-static int times = 0;		/* print times as Measure/beat/click */
+static int optFold 	= 0;		/* fold long lines */
+static int optNotes = 0;		/* print notes as a-g */
+static int optTimes = 0;		/* print time as Measure/beat/click */
 
-static char *Onmsg  = "On ch=%d n=%s v=%d\n";
-static char *Offmsg = "Off ch=%d n=%s v=%d\n";
-static char *PoPrmsg = "PoPr ch=%d n=%s v=%d\n";
-static char *Parmsg = "Par ch=%d c=%d v=%d\n";
-static char *Pbmsg  = "Pb ch=%d v=%d\n";
-static char *PrChmsg = "PrCh ch=%d p=%d\n";
-static char *ChPrmsg = "ChPr ch=%d v=%d\n";
+static char *Onmsg  	= "On ch=%d n=%s v=%d\n";
+static char *Offmsg 	= "Off ch=%d n=%s v=%d\n";
+static char *PoPrmsg 	= "PoPr ch=%d n=%s v=%d\n";
+static char *Parmsg 	= "Par ch=%d c=%d v=%d\n";
+static char *Pbmsg  	= "Pb ch=%d v=%d\n";
+static char *PrChmsg 	= "PrCh ch=%d p=%d\n";
+static char *ChPrmsg 	= "ChPr ch=%d v=%d\n";
 
 static FILE *F;
 
-inline int filegetc()
-{
-	return(getc(F));
-}
 
-main(argc,argv)
+int main(argc,argv)
 int argc;
 char **argv;
 {
@@ -53,14 +62,14 @@ char **argv;
 	int flg;
 	
 	Mf_nomerge = 1;
-	while (flg = crack (argc, argv, "F|f|BbNnTtVvMm", 0)) {
+	while ((flg = crack (argc, argv, "F|f|BbNnTtVvMmHh", 0))) {
 		switch (flg) {
 		case 'f':
 		case 'F':
 			if (*arg_option)
-				fold = atoi(arg_option);
+				optFold = atoi(arg_option);
 			else
-				fold = 80;
+				optFold = 80;
 			break;
 		case 'm':
 		case 'M':
@@ -68,13 +77,13 @@ char **argv;
 			break;
 		case 'n':
 		case 'N':
-			notes++;
+			optNotes++;
 			break;
 		case 't':
 		case 'T':
 		case 'b':
 		case 'B':
-			times++;
+			optTimes++;
 			break;
 		case 'v':
 		case 'V':
@@ -86,6 +95,10 @@ char **argv;
 			PrChmsg = "ProgCh ch=%d prog=%d\n";
 			ChPrmsg = "ChanPr ch=%d val=%d\n";
 			break;
+		case 'h':
+		case 'H':
+			printhelp();
+			exit(0);
 		case EOF:
 			exit(1);
 		}
@@ -102,7 +115,7 @@ char **argv;
 	      }
 	if (arg_index < argc &&
 		!freopen (argv[arg_index],"w",stdout))
-			error ("Can't open output file");
+			error("Can't open output file");
 
 	initfuncs();
 	Mf_getc = filegetc;
@@ -113,10 +126,21 @@ char **argv;
 	T0 = 0;
 	M0 = 0;
 	mfread();
-	if (ferror(F)) error ("Output file error");
+	if (ferror(F)) error("Output file error");
 	fclose(F);
 	exit(0);
 }
+
+int filegetc()
+{
+	int c;
+	
+	c = getc(F);
+	
+	/* printf("precteno %d, 0x%x\n", precteno, c); */
+	return(c);
+}
+
 
 FILE *
 efopen(name,mode)
@@ -128,17 +152,17 @@ char *mode;
 
 	if ( (f=fopen(name,mode)) == NULL ) {
 		(void) fprintf(stderr,"*** ERROR *** Cannot open '%s'!\n",name);
-		(void) fprintf(stderr,"************* Reason: %s\n",strerror(errno));      // vjs - my change
+		(void) fprintf(stderr,"************* Reason: %s\n",strerror(errno));      /* vjs - my change */
 		exit(1);
 	}
 	return(f);
 }
 
-error(s)
+void error(s)
 char *s;
 {
-    if (TrksToDo <= 0)
-        fprintf(stderr,"Error: Garbage at end %s\n",s);
+        if (TrksToDo <= 0)
+	    	fprintf(stderr,"Error: Garbage at end: %s\n",s);
 	else
 	    fprintf(stderr,"Error: %s\n",s);
 }
@@ -152,18 +176,18 @@ int pitch;
 		{ "c", "c#", "d", "d#", "e", "f", "f#", "g",
 		  "g#", "a", "a#", "b" };
 	static char buf[5];
-	if ( notes )
+	if ( optNotes )
 		sprintf (buf, "%s%d", Notes[pitch % 12], pitch/12);
 	else
 		sprintf (buf, "%d", pitch);
 	return buf;
 }
 
-myheader(format,ntrks,division)
+void myheader(format,ntrks,division)
 int format, ntrks, division;
 {
 	if (division & 0x8000) { /* SMPTE */
-	    times = 0;		 /* Can't do beats */
+	    optTimes = 0;		 /* Can't do beats */
 	    printf("MFile %d %d %d %d\n",format,ntrks,
 	    			-((-(division>>8))&0xff), division&0xff);
 	} else
@@ -243,7 +267,7 @@ char *mess;
 {
 	prtime();
 	printf("SysEx");
-	prhex (mess, leng);
+	prhex(mess, leng);
 }
 
 void mymmisc(type,leng,mess)
@@ -252,7 +276,7 @@ char *mess;
 {
 	prtime();
 	printf("Meta 0x%02x",type);
-	prhex (mess, leng);
+	prhex(mess, leng);
 }
 
 void mymspecial(leng,mess)
@@ -261,7 +285,7 @@ char *mess;
 {
 	prtime();
 	printf("SeqSpec");
-	prhex (mess, leng);
+	prhex(mess, leng);
 }
 
 void mymtext(type,leng,mess)
@@ -346,13 +370,14 @@ int leng;
 char *mess;
 {
 	prtime();
-	printf("Arb",leng);
+	/* printf("Arb",leng); */
+	printf("Arb");
 	prhex (mess, leng);
 }
 
 void prtime()
 {
-	if (times) {
+	if (optTimes) {
 		long m = (Mf_currtime-T0)/Beat;
 		printf ("%ld:%ld:%ld ",
 			m/Measure+M0, m%Measure, (Mf_currtime-T0)%Beat);
@@ -369,7 +394,7 @@ unsigned char *p; int leng;
 	printf("\"");
 	for ( n=0; n<leng; n++ ) {
 		c = *p++;
-		if (fold && pos >= fold) {
+		if (optFold && pos >= optFold) {
 			printf ("\\\n\t");
 			pos = 13;	/* tab + \xab + \ */
 			if (c == ' ' || c == '\t') {
@@ -413,14 +438,15 @@ unsigned char *p; int leng;
 {
 	int n;
 	int pos = 25;
-
-	for ( n=0; n<leng; n++,p++ ) {
-		if (fold && pos >= fold) {
-			printf ("\\\n\t%02x" , *p);
+	unsigned char *ptr = p;
+	
+	for ( n=0; n<leng; n++,ptr++ ) {
+		if (optFold && pos >= optFold) {
+			printf("\\\n\t%02x" , (unsigned char)(*ptr));
 			pos = 14;	/* tab + ab + " ab" + \ */
 		}
 		else {
-			printf(" %02x" , *p);
+			printf(" %02x" , (unsigned char)(*ptr));
 			pos += 3;
 		}
 	}
@@ -428,28 +454,48 @@ unsigned char *p; int leng;
 	
 }
 
+void printhelp(void)
+{
+	printf("\nUsage:\n\n");
+	printf("\tmf2t [-mntvh] [-f[n]] [midifile [textfile]]\n\n");
+	printf("\t\ttranslate midifile to textfile.\n\n");
+	printf("\tWhen textfile is not given, the text is written to standard output.\n");
+	printf("\tWhen midifile is not given it is read from standard input. The meaning\n");
+	printf("\tof the options is:\n\n");
+	printf("\t-m\tmerge partial sysex into a single sysex message\n");
+	printf("\t-n\twrite notes in symbolic rather than numeric form.\n");
+	printf("\t\t A-C optionally followed by # (sharp) followed by octave number.\n");
+	printf("\t-b\tor\n");
+	printf("\t-t\tevent times are written as bar:beat:click rather than a click number\n");
+	printf("\t-v\tuse a slightly more verbose output\n");
+	printf("\t-f<n>	fold long text and hex entries into more lines <n>=line length\n");
+	printf("\t	   (default 80).\n");
+	printf("\t-h\tprint this help text.\n");
+}
+
+
 void initfuncs()
 {
-	Mf_error = error;
-	Mf_header =  myheader;
-	Mf_starttrack =  mytrstart;
-	Mf_endtrack =  mytrend;
-	Mf_on =  mynon;
-	Mf_off =  mynoff;
-	Mf_pressure =  mypressure;
-	Mf_parameter =  myparameter;
-	Mf_pitchbend =  mypitchbend;
-	Mf_program =  myprogram;
+	Mf_error 		=  error;
+	Mf_header 		=  myheader;
+	Mf_starttrack 	=  mytrstart;
+	Mf_endtrack 	=  mytrend;
+	Mf_on 			=  mynon;
+	Mf_off 			=  mynoff;
+	Mf_pressure 	=  mypressure;
+	Mf_parameter 	=  myparameter;
+	Mf_pitchbend 	=  mypitchbend;
+	Mf_program 		=  myprogram;
 	Mf_chanpressure =  mychanpressure;
-	Mf_sysex =  mysysex;
-	Mf_metamisc =  mymmisc;
-	Mf_seqnum =  mymseq;
-	Mf_eot =  mymeot;
-	Mf_timesig =  mytimesig;
-	Mf_smpte =  mysmpte;
-	Mf_tempo =  mytempo;
-	Mf_keysig =  mykeysig;
-	Mf_sqspecific =  mymspecial;
-	Mf_text =  mymtext;
-	Mf_arbitrary =  myarbitrary;
+	Mf_sysex 		=  mysysex;
+	Mf_metamisc 	=  mymmisc;
+	Mf_seqnum 		=  mymseq;
+	Mf_eot 			=  mymeot;
+	Mf_timesig 		=  mytimesig;
+	Mf_smpte 		=  mysmpte;
+	Mf_tempo 		=  mytempo;
+	Mf_keysig 		=  mykeysig;
+	Mf_sqspecific 	=  mymspecial;
+	Mf_text 		=  mymtext;
+	Mf_arbitrary 	=  myarbitrary;
 }

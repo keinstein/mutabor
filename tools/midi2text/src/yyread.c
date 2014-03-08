@@ -4,6 +4,10 @@
 #include <memory.h>
 #include <string.h>
 
+#include <unistd.h>
+
+
+int _yyread(int, char *, int);
 /*
  * read, ignoring CR's
  *
