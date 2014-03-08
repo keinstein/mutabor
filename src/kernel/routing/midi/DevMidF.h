@@ -128,7 +128,7 @@ namespace mutabor {
 
 		size_t GetPosition() { return position; }
 		void ResetPosition(size_t p, bool resettiming = false) {
-			position = 0;
+			position = p;
 			running_status = 0;
 			running_sysex = false;
 			if (resettiming) {
@@ -143,6 +143,12 @@ namespace mutabor {
 			DEBUGLOG(midifile,_T("resetting remaining delta to 0"));
 			remaining_delta = 0;
 		}
+
+		void Reset() {
+			clear();
+			ResetPosition(0,true);
+		}
+
 		mutint64 GetDelta() { return remaining_delta; }
 		mutint64 ReadDelta();
 		mutint64 PassDelta(mutint64 p) {
@@ -404,7 +410,7 @@ namespace mutabor {
 		~MidiFileOutputProvider() {}
 
 		bool Open() {
-			Tracks.clear();
+			Tracks.Reset();
 			return true;
 		}
 
