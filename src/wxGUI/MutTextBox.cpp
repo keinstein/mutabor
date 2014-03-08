@@ -282,14 +282,14 @@ void MutTextBox::GetKeys(bool asTS)
 #endif
 			break;
 		case mutabor::BoxClass::tone_entry::silent:
-			keys.Printf(_("%2d : empty"),i);
+			keys.Printf(_("%3d : empty"),tones[i].index);
 			break;
 		case mutabor::BoxClass::tone_entry::invalid:
-			keys.Printf(_("%2d : invalid tone"),i);
+			keys.Printf(_("%3d : invalid tone"),tones[i].index);
 			break;
 		default:
-			keys.Printf(_("%2d : (unknown type %d)"),
-				    i,tones[i].flag);
+			keys.Printf(_("%3d : (unknown type %d)"),
+				    tones[i].index,tones[i].flag);
 		}
 		Append(keys);
 	}
@@ -340,20 +340,23 @@ void MutTextBox::GetToneSystem(bool asTS)
 			frequency =
 				mutabor_convert_pitch_to_frequency(pitch);
 			if (!asTS) pitch -= reference;
-			keys.Printf(_("%2u : %8.1lf Hz (%6.2lf HT)"),
-				    (unsigned)i,
+			keys.Printf(_("%2lu : %8.1lf Hz (%6.2lf HT)"),
+				    (unsigned long)i,
 				    frequency,
 				    pitch );
 			break;
 		case mutabor::BoxClass::tone_entry::silent:
-			keys.Printf(_("%2d : empty"),i);
+			keys.Printf(_("%2lu : empty"),
+				    (unsigned long)i);
 			break;
 		case mutabor::BoxClass::tone_entry::invalid:
-			keys.Printf(_("%2d : invalid tone"),i);
+			keys.Printf(_("%2lu : invalid tone"),
+				    (unsigned long)i);
 			break;
 		default:
-			keys.Printf(_("%2d : (unknown type %d)"),
-				    i,tonesys.tones[i].flag);
+			keys.Printf(_("%2lu : (unknown type %d)"),
+				    (unsigned long)i,
+				    tonesys.tones[i].flag);
 		}
 		Append(keys);
 	}
