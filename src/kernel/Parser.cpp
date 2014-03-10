@@ -1230,6 +1230,30 @@ void get_new_ton_komplex_negative (mutabor_box_type * box, const char *name, con
 
 }
 
+
+static const char * check_name(mutabor_box_type * box, const char * name) {
+	for (struct tonsystem * lauf = box->file->list_of_tonsysteme;
+	     lauf;
+	     lauf = lauf -> next) {
+		if ( ! strcasecmp (name, lauf -> name)) {
+			return _("There is already a logic with this name.");
+		}
+	}
+	for (struct umstimmung * lauf= box->file->list_of_umstimmungen;
+	     lauf; lauf = lauf -> next) {
+		if ( ! strcasecmp (name, lauf -> name)) {
+			return _("There is already a retuning with this name.");
+		}
+	}
+	for (struct logik * lauf = box->file->list_of_logiken;
+	     lauf; lauf= lauf->next) {
+		if ( ! strcasecmp (name, lauf -> name)) {
+			return _("There is already a logic with this name.");
+		}
+	}
+	return NULL;
+}
+
 /********* Einleseroutinen fuer die Tonsysteme          *********/
 /*         Es wird einfach eine Liste of Tonsysteme aufgebaut  **/
 
@@ -1260,17 +1284,21 @@ void get_new_tonsystem (mutabor_box_type * box, const char * name, int taste)
 
 {
 
+	const char * error = check_name(box,name);
 	struct tonsystem * * lauf;
 	TRACE;
 
-	for (lauf= & box->file->list_of_tonsysteme; * lauf; lauf= & (*lauf)->next) {
-		if ( ! strcasecmp (name, (*lauf)->name)) {
-			mutabor_error_message(box,
-					      compiler_error,
-					      _("The tone system name “%s” was used twice"),
-					      (name)); /* Tonsystemname doppelt */
-		}
+	if (error) {
+		mutabor_error_message(box,
+				      compiler_error,
+				      _("The tone system name %s was used twice. %s"),
+				      (name),
+				      error); /* Logikname doppelt */
 	}
+
+	for (lauf = & box->file->list_of_tonsysteme;
+	     *lauf;
+	     lauf = &(*lauf) -> next);
 
 	(* lauf) = (struct tonsystem*) xmalloc (box, (size_t) sizeof (struct tonsystem));
 	(* lauf) -> name          = name;
@@ -1334,16 +1362,15 @@ void get_new_tonsystem_negative (mutabor_box_type * box, const char * name, int 
 void init_umstimmung (mutabor_box_type * box, const char * name)
 {
 
-	struct umstimmung * lauf;
+	const char * error = check_name(box,name);
 	TRACE;
 
-	for (lauf= box->file->list_of_umstimmungen; lauf; lauf= lauf -> next) {
-		if ( ! strcasecmp (name, lauf -> name)) {
-			mutabor_error_message(box,
-					      compiler_error,
-					      _("The retuning name %s was used twice"),
-					      (name)); /* Umstimmungsname doppelt */
-		}
+	if (error) {
+		mutabor_error_message(box,
+				      compiler_error,
+				      _("The retuning name %s was used twice. %s"),
+				      (name),
+				      error); /* Logikname doppelt */
 	}
 
 	box->file->tmp_umstimmung = (umstimmung*) xmalloc (box, (size_t) sizeof (struct umstimmung));
@@ -2206,17 +2233,22 @@ void get_new_anweisung (mutabor_box_type * box)
  void get_new_logik (mutabor_box_type * box, const char * name)
 {
 
-	struct logik * * lauf;
+	const char * error = check_name(box,name);
+	struct logik ** lauf;
 	TRACE;
 
-	for (lauf= & box->file->list_of_logiken; * lauf; lauf= & (*lauf)->next) {
-		if ( ! strcasecmp (name, (*lauf)->name)) {
-			mutabor_error_message(box,
-					      compiler_error,
-					      _("The logic name %s was used twice"),
-					      (name)); /* Logikname doppelt */
-		}
+
+	if (error) {
+		mutabor_error_message(box,
+				      compiler_error,
+				      _("The logic name %s was used twice. %s"),
+				      (name),
+				      error); /* Logikname doppelt */
 	}
+
+	for (lauf = & box->file->list_of_logiken;
+	     *lauf; lauf= &(*lauf)->next);
+
 
 	(* lauf) = (logik*) xmalloc (box, sizeof (struct logik));
 	(* lauf) -> name                = name;

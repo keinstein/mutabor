@@ -1,7 +1,7 @@
 "     Tuning logics for test phase                           "
 
 LOGIK
-  init_C_maj TASTE C = init_C_maj [
+  C_maj TASTE C = init_C_maj [
   
    taste Q  -> gotoCmajI   
    taste W  -> gotoCmajii  
@@ -15,7 +15,7 @@ LOGIK
    taste Y  -> decreaseB
    taste X  -> increaseB
                                          ]
-  init_A_min TASTE A = init_A_min [ ]
+  A_min TASTE A = init_A_min [ ]
 
 "     In- or decreasing of the B                             "
 

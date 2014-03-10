@@ -843,51 +843,47 @@ static struct do_aktion * expandiere_name (mutabor_box_type * box,
 					   struct argument_list * parameter,
 					   struct interpreter_argument_list * bezugs_liste)
 {
-	struct logik * help_logik;
 	TRACE;
-
 
 	if (name == NULL) return NULL;
 
-
-	help_logik = get_logik (name, box->file->list_of_logiken);
-
-	if (help_logik)
-	{
-		return expandiere_logik (box,help_logik);
-	} else
 	{
 		struct tonsystem * help_tonsystem
 			= parser_get_tonsystem (name, box->file->list_of_tonsysteme);
 
-		if (help_tonsystem) {
-
-
+		if (help_tonsystem)
 			return expandiere_tonsystem (box,help_tonsystem);
 
-		} else {
-			struct umstimmung * help_umstimmung
-				= get_umstimmung (name, box->file->list_of_umstimmungen);
+	}
+	{
+		struct umstimmung * help_umstimmung
+			= get_umstimmung (name, box->file->list_of_umstimmungen);
 
-			if (help_umstimmung) {
+		if (help_umstimmung) {
+			struct interpreter_argument_list * aktuelle_parameter;
+			aktuelle_parameter
+				= generate_argument_list (box, parameter, bezugs_liste);
+			return expandiere_umstimmung (box,
+						      help_umstimmung,
+						      aktuelle_parameter);
 
-				struct interpreter_argument_list * aktuelle_parameter;
-				aktuelle_parameter = generate_argument_list (box, parameter, bezugs_liste);
-				return expandiere_umstimmung (box,
-							      help_umstimmung,
-				                              aktuelle_parameter);
-
-			} else
-				/** \todo check that the conversion succeeds always */
-				mutabor_error_message(box,
-						      compiler_error,
-						      _("Unknown tuning or logic ‘%s’"),
-						      name,
-						      __FILE__, __LINE__);
-
-			return NULL;
 		}
 	}
+	{
+		struct logik * help_logik
+			= get_logik (name, box->file->list_of_logiken);
+
+		if (help_logik)
+			return expandiere_logik (box,help_logik);
+	}
+
+	/** \todo check that the conversion succeeds always */
+	mutabor_error_message(box,
+			      compiler_error,
+			      _("Unknown tuning or logic ‘%s’"),
+			      name,
+			      __FILE__, __LINE__);
+	return NULL;
 
 }
 
