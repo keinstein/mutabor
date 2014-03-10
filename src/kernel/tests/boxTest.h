@@ -39,7 +39,7 @@
 #include "src/kernel/box.h"
 #include <iostream>
 
-class boxTest : public CPPUNIT_NS::TestFixture 
+class boxTest : public CPPUNIT_NS::TestFixture
 {
 	CPPUNIT_TEST_SUITE( boxTest );
 	CPPUNIT_TEST( test_init );
@@ -52,6 +52,7 @@ class boxTest : public CPPUNIT_NS::TestFixture
 	CPPUNIT_TEST( testFindKeyByKey );
 	CPPUNIT_TEST( testBug1Permutation1 );
 	CPPUNIT_TEST( testBug1Permutation2 );
+	CPPUNIT_TEST( testHaronic_form );
 	CPPUNIT_TEST_SUITE_END();
 
 protected:
@@ -65,10 +66,10 @@ public:
 	virtual ~boxTest() {}
 
 	int countTestCases () const
-	{ 
-		return 1; 
+	{
+		return 1;
 	}
-  
+
 	void setUp();
 	void tearDown();
 
@@ -89,6 +90,7 @@ public:
 	void testFindKeyByKey();
 	void testBug1Permutation1 ();
 	void testBug1Permutation2 ();
+	void testHaronic_form ();
 };
 
 #endif

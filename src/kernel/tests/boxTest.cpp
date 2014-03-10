@@ -28,6 +28,18 @@
 #include "src/kernel/Defs.h"
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/portability/Stream.h>
+
+#include "src/kernel/box.h"
+#ifdef DEBUG
+#define YYDEBUG 1
+namespace mutabor {
+	namespace hidden {
+		extern "C" {
+#include "src/kernel/mut.hh"
+		}
+	}
+}
+#endif
 #include "src/kernel/tests/boxTest.h"
 #include "src/kernel/routing/Route.h"
 #include "src/kernel/routing/Route-inlines.h"
@@ -36,7 +48,6 @@
 #include "src/kernel/TabGen.h"
 #include "src/kernel/Parser.h"
 #include "src/kernel/Hilfs.h"
-#include "src/kernel/box.h"
 #include <iostream>
 
 using namespace mutabor;
@@ -45,33 +56,33 @@ using namespace mutabor::hidden;
 /* const int boxTest::MAX_BOX  = 7 ; */
 
 void boxTest::setUp()
-{ 
+{
 #ifdef DEBUG
 	//		debugFlags::flags.kernel_box = true;
 	//		debugFlags::flags.midifile = true;
 #endif
-	for (size_t i = 0; i < 7; i++) 
+	for (size_t i = 0; i < 7; i++)
 		mutabor_initialize_box(&boxes[i], i);
 	// change DEBUGA to DEBUG in case you need the debug output
 	//		RealTime = true;
 }
-  
+
 void boxTest::tearDown()
-{ 
+{
 #ifdef DEBUG
 	//		debugFlags::flags.kernel_box = false;
 	//		debugFlags::flags.midifile = false;
 #endif
 	//		in = NULL;
 }
-  
-void boxTest::testMUT_BOX_MAX_KEY_INDEX() 
+
+void boxTest::testMUT_BOX_MAX_KEY_INDEX()
 {
 	int i = MUT_BOX_MAX_KEY_INDEX + 1;
 	while (!(i & 1))  i = i >> 1;
 	CPPUNIT_ASSERT(i == 1);
 }
-	
+
 
 void boxTest::verifyLastKey(bool force)
 {
@@ -85,13 +96,13 @@ void boxTest::verifyLastKey(bool force)
 		CPPUNIT_ASSERT(note -> next == MUTABOR_NO_NEXT);
 	}
 }
-	
+
 
 void boxTest::testAddKey()
 {
 	// fill using a pattern of coprime numbers. So that we can check correct assumption about filling.
 	// group theory tells us that each modulus by division by MUT_BOX_MAX_KEY_INDEX+1 is contained an equal number of times.
-		
+
 	for (size_t i = 0 ; i < 7 * (MUT_BOX_MAX_KEY_INDEX+1) * 5; i++) {
 		int box = i % 7;
 		int noteidx = (i*5);
@@ -109,7 +120,7 @@ void boxTest::testAddKey()
 		//			std::clog << i << std::endl;
 		verifyLastKey(i >= 6); // i < 6 as last iteration fulfils the condition
 	}
-	//		std::clog << "7 * (MUT_BOX_MAX_KEY_INDEX+1) * 5 = 7 * (" << MUT_BOX_MAX_KEY_INDEX << " + 1) * 5 = " 
+	//		std::clog << "7 * (MUT_BOX_MAX_KEY_INDEX+1) * 5 = 7 * (" << MUT_BOX_MAX_KEY_INDEX << " + 1) * 5 = "
 	//			  << 7 * (MUT_BOX_MAX_KEY_INDEX+1) * 5 << std::endl;
 
 }
@@ -121,7 +132,7 @@ void boxTest::verifyAddKey()
 	for (size_t i = 0 ; i < 7 ; i++) {
 		int mask[MUT_BOX_MAX_KEY_INDEX+1];
 		for (size_t j = 0 ; j <= MUT_BOX_MAX_KEY_INDEX; j++) mask[j] = 0;
-		size_t k = 0; 
+		size_t k = 0;
 		for (size_t j = 0 ; j < 5; j++) {
 			size_t next_k = k + MUT_BOX_MAX_KEY_INDEX+1;
 			for (; k< next_k ; k ++) {
@@ -138,7 +149,7 @@ void boxTest::verifyAddKey()
 	verifyLastKey();
 }
 
-void boxTest::testDeleteKey() 
+void boxTest::testDeleteKey()
 {
 	verifyAddKey();
 	// punch holes at every 5th point. That should hit every elemet that is divisible by 5
@@ -147,21 +158,21 @@ void boxTest::testDeleteKey()
 		size_t last = boxes[0].last_key; // mix pointer and array to test the test
 #if 0
 		std::clog << i << ": "
-			  << "-= " << ((5*i-1) % (MUT_BOX_MAX_KEY_INDEX+1) ) 
+			  << "-= " << ((5*i-1) % (MUT_BOX_MAX_KEY_INDEX+1) )
 			  << " l=" << last
 			  << std::flush;
 #endif
 		mutabor_delete_key_in_box(boxes, (5*i-1)  );
 		//			std::clog << "|" << std::endl;
-		if (i != MUT_BOX_MAX_KEY_INDEX+1) 
+		if (i != MUT_BOX_MAX_KEY_INDEX+1)
 			CPPUNIT_ASSERT(last == boxes[0].last_key);
-		else 
+		else
 			CPPUNIT_ASSERT(last != boxes[0].last_key);
 		verifyLastKey();
 	}
 }
 
-void boxTest::testReaddKey() 
+void boxTest::testReaddKey()
 {
 	testDeleteKey();
 	//		std::clog << "testReaddkey" << std::endl;
@@ -173,7 +184,7 @@ void boxTest::testReaddKey()
 #if 0
 		DEBUGLOG(kernel_box,_T("(%d,%d,%d) -> (%d,%d)"),
 			 note->number,
-			 note->number % (MUT_BOX_MAX_KEY_INDEX+1), 
+			 note->number % (MUT_BOX_MAX_KEY_INDEX+1),
 			 note->id, i,i*5);
 #endif
 		note->number = i;
@@ -181,7 +192,7 @@ void boxTest::testReaddKey()
 		//			DEBUGLOG2(kernel_box,_T("%d == %d?"),boxes[0].last_key, (i+1)*5-1);
 		CPPUNIT_ASSERT(boxes[0].last_key == (i+1)*5-1);
 		verifyLastKey();
-	}		
+	}
 }
 
 
@@ -195,18 +206,18 @@ void boxTest::checkMask()
 		//			DEBUGLOG(kernel_box,_T("[%d, %d]"),key->number,key->number % (MUT_BOX_MAX_KEY_INDEX+1));
 		mask[note->number % (MUT_BOX_MAX_KEY_INDEX+1)]++;
 	}
-			
+
 	for (size_t l  = 0  ;  l <= MUT_BOX_MAX_KEY_INDEX ; l++) {
 		//			DEBUGLOG2(kernel_box,_T("mask[%d] = %d  == %d?"),l,mask[l],(l % 5 ? 6 : 1));
 		CPPUNIT_ASSERT(mask[l] == (l % 5 ? 5 : 5));
 	}
-		
+
 }
 
-/* check adding and deleting of keys. As we must generate many pages for a sufficient check, we must add a huge number 
+/* check adding and deleting of keys. As we must generate many pages for a sufficient check, we must add a huge number
    of entries.
 */
-void boxTest::testAddDeleteKey() 
+void boxTest::testAddDeleteKey()
 {
 	testReaddKey();
 	CPPUNIT_ASSERT(boxes[0].key_count == 5*(MUT_BOX_MAX_KEY_INDEX+1));
@@ -236,7 +247,7 @@ void boxTest::test_init()
   	        CPPUNIT_ASSERT(boxes[i].current_parameters == NULL);
   	        CPPUNIT_ASSERT(boxes[i].parameters == NULL);
   	        CPPUNIT_ASSERT(boxes[i].current_logic == NULL);
-		
+
 		for (int j = 0 ; j < MUTABOR_KEYRANGE_MAX_WIDTH; j++) {
 			CPPUNIT_ASSERT(boxes[i].pattern.tonigkeit[j] == 0);
 		}
@@ -331,9 +342,9 @@ void boxTest::testFindKeyByKey()
 	/* check deleting note 0: 2 cases either with following notes or without, so we must empty all notes */
 	while ((note = mutabor_find_key_in_box(box,0)) != NULL) {
 		mutASSERT(box->key_count > 0);
-		size_t count = 0; 
-		for (mutabor_note_type * note2 = note; 
-		     note2 != NULL; 
+		size_t count = 0;
+		for (mutabor_note_type * note2 = note;
+		     note2 != NULL;
 		     note2 = mutabor_find_key_in_box(box,note2->next))
 			count ++;
 		mutASSERT(box->key_count == count);
@@ -469,5 +480,161 @@ void boxTest::testBug1Permutation2 () {
 	DeleteKey (box,77,1,5);
 	CPPUNIT_ASSERT(box->last_key == 0);
 }
+
+
+void boxTest::testHaronic_form () {
+	mutabor_box_type * box = &boxes[0];
+#ifdef DEBUG
+	yydebug = 0;
+#endif
+	const char * logic_string = "\
+harmony\n\
+    major = { 0, 4, 7, *10 }\n\
+\n\
+retuning \n\
+	tune (testparam) =\n\
+              	@+testparam []\n\
+logic\n\
+    harmony1logic form major =  tune (0) [ \n\
+        form  4 ~ major         -> tune(1)\n\
+        form      major ~  7    -> tune(2)\n\
+        form  7 ~ major ~ 10    -> tune(3)\n\
+        form  7 ~ major ~  2    -> tune(4)\n\
+        form 61 ~ major         -> tune(5)\n\
+        form      major ~ 80    -> tune(6)\n\
+        form 60 ~ major ~ 79    -> tune(7)\n\
+\n\
+              0 ~ major         -> tune(11)\n\
+                  major ~  4    -> tune(12)\n\
+              7 ~ major ~ 10    -> tune(13)\n\
+              7 ~ major ~  2    -> tune(14)\n\
+             61 ~ major         -> tune(15)\n\
+                  major ~ 80    -> tune(16)\n\
+             60 ~ major ~ 79    -> tune(17)\n\
+        ] \n\
+";
+
+
+	loesche_syntax_speicher(box);
+	mutabor_programm_einlesen(box,logic_string);
+	expand_decition_tree(box);
+
+	CPPUNIT_ASSERT(box);
+	CPPUNIT_ASSERT(box->file);
+	struct harmonie_ereignis * current_harmony
+		= box->file->global_harmonies;
+	CPPUNIT_ASSERT(current_harmony);
+	CPPUNIT_ASSERT(current_harmony -> pattern);
+	int pattern[] = { 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 0, 1};
+	for (int i = 0 ; i < 12 ; i++) {
+		CPPUNIT_ASSERT(pattern[i] ==
+			       current_harmony -> pattern->tonigkeit[i]);
+	}
+	CPPUNIT_ASSERT(current_harmony -> vortaste == 0);
+	CPPUNIT_ASSERT(current_harmony -> nachtaste == 0);
+	CPPUNIT_ASSERT(current_harmony -> type == mutabor::hidden::mutabor_harmony_nokey);
+	struct do_aktion * action = current_harmony->aktion;
+	CPPUNIT_ASSERT(!current_harmony->next);
+	CPPUNIT_ASSERT(action);
+	CPPUNIT_ASSERT(action->aufruf_typ == aufruf_logik);
+	CPPUNIT_ASSERT(!action->arguments);
+	CPPUNIT_ASSERT(action->calling.logic);
+	struct logik * the_logic = current_harmony->aktion->calling.logic;
+	CPPUNIT_ASSERT(the_logic);
+	CPPUNIT_ASSERT(current_harmony->the_logik_to_expand == the_logic);
+	CPPUNIT_ASSERT(!strcmp(the_logic->name,"harmony1logic"));
+	CPPUNIT_ASSERT(the_logic->ausloeser);
+	action = the_logic -> einstimmung;
+	CPPUNIT_ASSERT(action);
+	CPPUNIT_ASSERT(!strcmp(action -> name,"tune") );
+	CPPUNIT_ASSERT(action -> aufruf_typ == aufruf_umst_taste_rel);
+	CPPUNIT_ASSERT(action -> arguments);
+	CPPUNIT_ASSERT(action -> arguments -> size == 1);
+	CPPUNIT_ASSERT(action -> arguments -> types);
+	CPPUNIT_ASSERT(action -> arguments -> types[0] == mutabor_argument_integer);
+	CPPUNIT_ASSERT(action -> arguments -> data);
+	CPPUNIT_ASSERT(action -> arguments -> data[0].constant == 0);
+
+	ausloeser * trigger = the_logic->ausloeser;
+	CPPUNIT_ASSERT(trigger -> u.ausloeser_harmonie_form.type == mutabor_harmony_nokey);
+	CPPUNIT_ASSERT(!strcmp(trigger -> u.ausloeser_harmonie_form.name, "major"));
+	current_harmony = the_logic->harmony_list;
+	CPPUNIT_ASSERT(current_harmony);
+	CPPUNIT_ASSERT(current_harmony -> pattern);
+	// pattern[] = { 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 0, 1};
+	for (int i = 0 ; i < 12 ; i++) {
+		CPPUNIT_ASSERT(pattern[i] ==
+			       current_harmony -> pattern->tonigkeit[i]);
+	}
+	CPPUNIT_ASSERT(current_harmony -> ist_harmonieform == mutabor_is_harmonic_form);
+	CPPUNIT_ASSERT(current_harmony -> vortaste == 4);
+	CPPUNIT_ASSERT(current_harmony -> nachtaste == 0);
+	CPPUNIT_ASSERT(current_harmony -> type == mutabor_harmony_prekey);
+
+	CPPUNIT_ASSERT((current_harmony = current_harmony->next)); //next
+	CPPUNIT_ASSERT(current_harmony -> pattern);
+	// pattern[] = { 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 0, 1};
+	for (int i = 0 ; i < 12 ; i++) {
+		CPPUNIT_ASSERT(pattern[i] ==
+			       current_harmony -> pattern->tonigkeit[i]);
+	}
+	CPPUNIT_ASSERT(current_harmony -> ist_harmonieform == mutabor_is_harmonic_form);
+	CPPUNIT_ASSERT(current_harmony -> vortaste == 0);
+	CPPUNIT_ASSERT(current_harmony -> nachtaste == 7);
+	CPPUNIT_ASSERT(current_harmony -> type == mutabor_harmony_postkey);
+
+
+	CPPUNIT_ASSERT((current_harmony = current_harmony->next)); //next
+	CPPUNIT_ASSERT(current_harmony -> pattern);
+	// pattern[] = { 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 0, 1};
+	for (int i = 0 ; i < 12 ; i++) {
+		CPPUNIT_ASSERT(pattern[i] ==
+			       current_harmony -> pattern->tonigkeit[i]);
+	}
+	CPPUNIT_ASSERT(current_harmony -> ist_harmonieform == mutabor_is_harmonic_form);
+	CPPUNIT_ASSERT(current_harmony -> vortaste == 7);
+	CPPUNIT_ASSERT(current_harmony -> nachtaste == 10);
+	CPPUNIT_ASSERT(current_harmony -> type == mutabor_harmony_bothkey);
+
+	CPPUNIT_ASSERT((current_harmony = current_harmony->next)); //next
+	CPPUNIT_ASSERT(current_harmony -> pattern);
+	// pattern[] = { 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 0, 1};
+	for (int i = 0 ; i < 12 ; i++) {
+		CPPUNIT_ASSERT(pattern[i] ==
+			       current_harmony -> pattern->tonigkeit[i]);
+	}
+	CPPUNIT_ASSERT(current_harmony -> ist_harmonieform == mutabor_is_no_harmonic_form);
+	CPPUNIT_ASSERT(current_harmony -> vortaste == 0);
+	CPPUNIT_ASSERT(current_harmony -> nachtaste == 0);
+	CPPUNIT_ASSERT(current_harmony -> type == mutabor_harmony_prekey);
+
+	CPPUNIT_ASSERT((current_harmony = current_harmony->next)); //next
+	CPPUNIT_ASSERT(current_harmony -> pattern);
+	// pattern[] = { 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 0, 1};
+	for (int i = 0 ; i < 12 ; i++) {
+		CPPUNIT_ASSERT(pattern[i] ==
+			       current_harmony -> pattern->tonigkeit[i]);
+	}
+	CPPUNIT_ASSERT(current_harmony -> ist_harmonieform == mutabor_is_no_harmonic_form);
+	CPPUNIT_ASSERT(current_harmony -> vortaste == 0);
+	CPPUNIT_ASSERT(current_harmony -> nachtaste == 4);
+	CPPUNIT_ASSERT(current_harmony -> type == mutabor_harmony_postkey);
+
+	CPPUNIT_ASSERT((current_harmony = current_harmony->next)); //next
+	CPPUNIT_ASSERT(current_harmony -> pattern);
+	// pattern[] = { 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 0, 1};
+	for (int i = 0 ; i < 12 ; i++) {
+		CPPUNIT_ASSERT(pattern[i] ==
+			       current_harmony -> pattern->tonigkeit[i]);
+	}
+	CPPUNIT_ASSERT(current_harmony -> ist_harmonieform == mutabor_is_no_harmonic_form);
+	CPPUNIT_ASSERT(current_harmony -> vortaste == 7);
+	CPPUNIT_ASSERT(current_harmony -> nachtaste == 10);
+	CPPUNIT_ASSERT(current_harmony -> type == mutabor_harmony_bothkey);
+	CPPUNIT_ASSERT(!current_harmony -> next);
+
+	CPPUNIT_ASSERT(box->key_count == 0);
+}
+
 
 ///\}
