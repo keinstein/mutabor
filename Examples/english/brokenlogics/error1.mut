@@ -1,0 +1,24 @@
+harmony
+    major = [ 0 4 7 10* ]
+
+retuning 
+	tune (testparam) =
+              	@+testparam []
+logic
+    harmony1logic form major =  tune (0) [ 
+        form  5 ~ major         -> tune(1)
+        form      major ~  6    -> tune(2)
+        form  7 ~ major ~ 13    -> tune(3)
+        form  7 ~ major ~  2    -> tune(4)
+        form 61 ~ major         -> tune(5)
+        form      major ~ 80    -> tune(6)
+        form 60 ~ major ~ 79    -> tune(7)
+
+              5 ~ major         -> tune(11)
+                  major ~  6    -> tune(12)
+              7 ~ major ~ 13    -> tune(13)
+              7 ~ major ~  2    -> tune(14)
+             61 ~ major         -> tune(15)
+                  major ~ 80    -> tune(16)
+             60 ~ major ~ 79    -> tune(17)
+        ]
