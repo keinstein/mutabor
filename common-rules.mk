@@ -13,7 +13,7 @@ LIBS += $(JACK_LIBS) $(ALSA_LIBS) $(WX_LIBS)
 AM_CFLAGS = $(ALSA_CFLAGS) $(JACK_LIBS)  $(WX_CFLAGS) $(WXINTLCFLAGS)
 AM_CXXFLAGS = $(AM_CFLAGS)
 AM_CXX = $(MAKE) $(AM_MAKEFLAGS) mutabor-precompile && $(CXX)
-AM_YFLAGS = -d -v --report=itemset
+AM_YFLAGS = -d -v --report=all -x --graph
 EXTRA_PROGRAMS = 
 
 TAGS_FILES = $(POTFILES)

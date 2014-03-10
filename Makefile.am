@@ -810,7 +810,9 @@ debuild: dch
 
 check-local: potfilechk
 
-src/kernel/mut.hh: src/kernel/mut.cc
+src/kernel/mut.hh: src/kernel/mut.yy
+	rm -f $(srcdir)/src/kernel/mut.cc
+	$(MAKE) $(srcdir)/src/kernel/mut.cc
 src/kernel/mut.cc: src/kernel/mut.yy
 
 
