@@ -782,19 +782,20 @@ inline static void call_actions (mutabor_box_type * box,
 		TRACE;
 
 		for (i=0;i<breite; i++,startindex++) {
-			if ( vergleich->tonigkeit[i] ) {
-				/* Bedeutung: vergleich: 0(egal) 1(off)   2(on)
-				   laufzeit:          0(off)  >0(on)   */
+			/* vergleich: 0(undefined) 1(off)   2(on)
+			   laufzeit:               0(off)  >0(on)   */
+			if (!vergleich->tonigkeit[i] )
+				continue;
 
-				if ( vergleich->tonigkeit[i]==1 &&
-				     laufzeit->tonigkeit[startindex%breite] )
-					/* vergleich = off, aber laufzeit != off */
-					return 0 ;
-				if ( vergleich->tonigkeit[i]!=1 &&
-				     laufzeit->tonigkeit[startindex%breite]==0 )
-					/* vergleich = on , aber laufzeit = off */
-					return 0 ;
-			}
+			if ( vergleich->tonigkeit[i]==1 &&
+			     laufzeit->tonigkeit[startindex%breite] )
+				/* vergleich = off, but laufzeit != off */
+				return 0 ;
+
+			if ( vergleich->tonigkeit[i] != 1 &&
+			     laufzeit->tonigkeit[startindex%breite]==0 )
+				/* vergleich = on (>=2 or <0) , but laufzeit = off */
+				return 0 ;
 		}
 		return 1;
 	}
