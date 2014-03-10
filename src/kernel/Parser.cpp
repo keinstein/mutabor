@@ -2200,7 +2200,6 @@ void get_ausloeser_midi_in (mutabor_box_type * box)
 
 
 
-
  void init_anweisungs_liste (mutabor_box_type * box)
 {
 	TRACE;
@@ -2604,6 +2603,7 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 						      _("Undefined harmony “%s” in logic %s."),
 						      (ausloeser->u.ausloeser_harmonie_form.name),
 						      (name));
+				return;
 			}
 
 			if (enthalten_in_tastenliste(ausloeser->u.ausloeser_harmonie_form.vortaste,
@@ -2656,6 +2656,7 @@ This harmonic form trigger will be ignored."),
 
 						      (ausloeser->u.ausloeser_harmonie.name),
 						      (name));
+				return;
 			}
 
 			if (enthalten_in_tastenliste

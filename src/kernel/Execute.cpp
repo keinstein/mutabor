@@ -88,7 +88,7 @@ namespace mutabor {
 						  const char * message)
 	{
 		fprintf(stderr,
-			"%s: %s",
+			"%s: %s\n",
 			mutabor_error_type_to_string(type),
 			message);
 	}
@@ -835,6 +835,8 @@ inline static void call_actions (mutabor_box_type * box,
 			case mutabor_is_harmonic_form:
 				// analysiere auf harmonieform
 				TRACE;
+				if (!index->pattern)
+					break;
 				for (int i=0; i<tonesys->breite; i++) {
 					if ((index->type
 					     & mutabor_harmony_prekey) &&

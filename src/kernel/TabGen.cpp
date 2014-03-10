@@ -955,6 +955,7 @@ static int * create_midi_scan_liste (mutabor_box_type * box, struct midiliste * 
 				      compiler_error,
 				      _("Harmony ‘%s’ could not be found."),
 				      harmonie_name);
+		return NULL;
 	}
 
 	help = (PTRN*) xmalloc (box, sizeof (PATTERNN));
