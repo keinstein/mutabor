@@ -50,6 +50,7 @@
 #include <ctype.h>
 #include <limits.h>
 #include <errno.h>
+#include <stdio.h>
 #include "src/kernel/box.h"
 #include "src/kernel/Global.h"
 #include "src/kernel/Parser.h"
@@ -64,6 +65,10 @@
 #endif
 #define _ _mut
 
+#ifdef DEBUG
+#define YYDEBUG 1
+#endif
+
 #ifdef __cplusplus
 	namespace mutabor {
 		namespace hidden {
@@ -72,7 +77,7 @@
 
 #define MAX_IDENTIFIER_LEN 80
 
-#define FEHLERZEILE yylloc.first_line+1
+#define FEHLERZEILE yylloc.first_line
 
 #ifdef alloca
 #undef alloca
@@ -146,6 +151,7 @@
 %type <f_value> GLEITKOMMA_ZAHL
 %type <arguments> argument_list nonempty_argument_list argument_list_element
 %type <parameters> parameter_list nonempty_parameter_list parameter
+%type <identifier> tonsystemdekl2_1
 
 %{
 int yylex(YYSTYPE* lvalp, YYLTYPE* llocp,  mutabor_box_type * box);
@@ -167,6 +173,12 @@ void yyerror(YYLTYPE* locp, mutabor_box_type * box, const char* err)
 
 start : /* empty */
 	|	blocks
+	|  	error blocks {  
+			mutabor_error_message(box,
+		                              compiler_error,
+		                              _("Syntax error in line %d."),
+		                              FEHLERZEILE);
+		}
 ;
 
 addition_or_subtraction :
@@ -191,19 +203,14 @@ blocks:		block
 	|	blocks block
 	;
 
-block:
-        | 	intervalldeklaration
+block:   	intervalldeklaration
         | 	tondeklaration
         |	tonsystemdeklaration
       	| 	umstimmungdeklaration
         | 	harmoniedeklaration
         |  	logikdeklaration
         |  	instrumentdeklaration
-        |  	error block {  mutabor_error_message(box,
-		compiler_error,
-		_("Syntax error in line %d."),
-		FEHLERZEILE);
-		}
+
 ;
 
 intervalldeklaration :
@@ -211,41 +218,38 @@ intervalldeklaration :
 
 intervalldekl1 :
           /* empty */
-        | intervalldekl1 intervalldekl2_1
-      ;
-
-intervalldekl2_1:
-          { init_komplex_ton_list (box); } intervalldekl2
+        | intervalldekl1 intervalldekl2
       ;
 
 intervalldekl2 :
-          MUTABOR_TOKEN_IDENTIFIER '=' GLEITKOMMA_ZAHL ':' GLEITKOMMA_ZAHL
+          MUTABOR_TOKEN_IDENTIFIER '=' 
+		GLEITKOMMA_ZAHL ':' GLEITKOMMA_ZAHL
                     { if ( fabs($5) > 0.001 )
 				    get_new_intervall (box, $1, $3 / $5);
                       else
 			      mutabor_error_message (box,compiler_error,
 					   _("Bad interval value in %s"),
-					   ($1) ); }
+					   ($1) );
+		}
 
-        | MUTABOR_TOKEN_IDENTIFIER '=' GLEITKOMMA_ZAHL MUTABOR_TOKEN_ROOT GLEITKOMMA_ZAHL
+        | MUTABOR_TOKEN_IDENTIFIER '=' 
+		GLEITKOMMA_ZAHL MUTABOR_TOKEN_ROOT GLEITKOMMA_ZAHL
                     { if ( fabs ($3) > 0.001 )
 				    get_new_intervall (box, $1, pow ($5, 1 / $3));
                       else
 			      mutabor_error_message (box,compiler_error,
 						     _("Bad interval value in %s"),
-						     ($1)); }
-/*****
-        | MUTABOR_TOKEN_IDENTIFIER '=' GLEITKOMMA_ZAHL
-                    { get_new_intervall ($1, $3); }
-****/
-	| MUTABOR_TOKEN_IDENTIFIER '=' KOMPLEX_TON_LIST
+						     ($1));
+		}
+	| MUTABOR_TOKEN_IDENTIFIER '=' 
+		KOMPLEX_TON_LIST
 		{ get_new_intervall_komplex (box,$1); }
         | MUTABOR_TOKEN_IDENTIFIER '=' error {
 		  mutabor_error_message(box,
 		                        compiler_error,
-		                        _("Bad interval declaration of intervall %s in line %d."),
-				        ($1),
-				        FEHLERZEILE);
+		_("Bad interval declaration of intervall %s in line %d."),
+		($1),
+		FEHLERZEILE);
 		}
         | MUTABOR_TOKEN_IDENTIFIER error {
 		mutabor_error_message(box,
@@ -255,46 +259,48 @@ intervalldekl2 :
 	  }
       ;
 
+/*****
+        | MUTABOR_TOKEN_IDENTIFIER '=' GLEITKOMMA_ZAHL
+                    { get_new_intervall ($1, $3); }
+****/
 tondeklaration :
         MUTABOR_TOKEN_TONE tondekl1 ;
 
 tondekl1 :
           /* empty */
-	| tondekl1 tondekl2_1
-      ;
-
-tondekl2_1:
-	  { init_komplex_ton_list (box); }  tondekl2
+	| tondekl1 tondekl2
       ;
 
 tondekl2 :
           MUTABOR_TOKEN_IDENTIFIER '=' GLEITKOMMA_ZAHL
 	  { get_new_ton_absolut (box, $1, $3); }
 
-	| MUTABOR_TOKEN_IDENTIFIER '='
-		MUTABOR_TOKEN_IDENTIFIER '-' KOMPLEX_TON_LIST
-	{ get_new_ton_komplex_negative (box, $1, $3); }
+	| 	MUTABOR_TOKEN_IDENTIFIER '='
+		MUTABOR_TOKEN_IDENTIFIER '-' 
+		KOMPLEX_TON_LIST
+		{ get_new_ton_komplex_negative (box, $1, $3); }
 
-	| MUTABOR_TOKEN_IDENTIFIER '='
-		     MUTABOR_TOKEN_IDENTIFIER
+	| 	MUTABOR_TOKEN_IDENTIFIER '='
+		MUTABOR_TOKEN_IDENTIFIER
 	{ get_new_ton_komplex_positive (box, $1, $3); }
 
-	| MUTABOR_TOKEN_IDENTIFIER '='
-		     MUTABOR_TOKEN_IDENTIFIER '+' KOMPLEX_TON_LIST
+	| 	MUTABOR_TOKEN_IDENTIFIER '='
+		MUTABOR_TOKEN_IDENTIFIER '+' 
+		KOMPLEX_TON_LIST
 	{ get_new_ton_komplex_positive (box, $1, $3); }
 
-      | MUTABOR_TOKEN_IDENTIFIER '=' error {
-	      mutabor_error_message(box,
-				    compiler_error,
-				    _("Bad tone declaration of tone %s in line %d."),
-				    ($1),
-				    FEHLERZEILE);
-	}
-      ;
+	| 	MUTABOR_TOKEN_IDENTIFIER '=' error {
+		  mutabor_error_message(box,
+		compiler_error,
+		_("Bad tone declaration of tone %s in line %d."),
+		($1),
+		FEHLERZEILE);
+		}
+		;
 
 KOMPLEX_TON_LIST:
-	  KOMPLEX_TON_START KOMPLEX_TON_LIST_2
-	;
+		KOMPLEX_TON_START KOMPLEX_TON_LIST_2
+		;
 
 
 KOMPLEX_TON_LIST_2 :
@@ -370,7 +376,8 @@ KOMPLEX_TON_1 :
 
 KOMPLEX_TON_START :
 	  MUTABOR_TOKEN_IDENTIFIER
-	  { get_new_faktor_anteil (box, (double) 1.0 , $1); }
+	  { init_komplex_ton_list (box); 
+		get_new_faktor_anteil (box, (double) 1.0 , $1); }
 
 /***
         | '-' MUTABOR_TOKEN_IDENTIFIER
@@ -378,10 +385,12 @@ KOMPLEX_TON_START :
 ***/
 
 	|  GLEITKOMMA_ZAHL MUTABOR_TOKEN_IDENTIFIER
-	{ get_new_faktor_anteil (box, $1, $2); }
+	{ init_komplex_ton_list (box); 
+		get_new_faktor_anteil (box, $1, $2); }
 
         |  '/' GLEITKOMMA_ZAHL MUTABOR_TOKEN_IDENTIFIER
-                   { if ( fabs($2) > 0.001 )
+                   { init_komplex_ton_list (box); 
+		if ( fabs($2) > 0.001 )
 				   get_new_faktor_anteil (box, (double) 1 / ($2), $3);
                      else
 			     mutabor_error_message(box,
@@ -391,7 +400,8 @@ KOMPLEX_TON_START :
 		   }
 
         | GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL MUTABOR_TOKEN_IDENTIFIER
-                   { if ( fabs($3) > 0.001 )
+                   { init_komplex_ton_list (box); 
+		if ( fabs($3) > 0.001 )
 				   get_new_faktor_anteil (box, ($1) / ($3), $4);
                      else
 			     mutabor_error_message(box,
@@ -424,22 +434,22 @@ tonsystemdeklaration :
 
 tonsystemdekl1 :
           /* empty */
-        | tonsystemdekl1 tonsystemdekl2_1
+        | tonsystemdekl1 tonsystemdekl2
       ;
 
-tonsystemdekl2_1:
-         { init_ton_liste (box); } tonsystemdekl2
-      ;
-
-tonsystemdekl2 :
-         MUTABOR_TOKEN_IDENTIFIER '=' MUTABOR_TOKEN_INTEGER '[' tonliste ']'
+tonsystemdekl2_1 :
+         MUTABOR_TOKEN_IDENTIFIER '=' 
+		{ init_ton_liste (box); 
+		$$ = $1;
+		} 
+tonsystemdekl2 : tonsystemdekl2_1 MUTABOR_TOKEN_INTEGER '[' tonliste ']'
                       { init_komplex_ton_list (box); }
                         KOMPLEX_TON_LIST
-			{ get_new_tonsystem (box, $1, $3); }
-      |  MUTABOR_TOKEN_IDENTIFIER '=' MUTABOR_TOKEN_INTEGER '[' tonliste ']'
+			{ get_new_tonsystem (box, $1, $2); }
+	|  	tonsystemdekl2_1 MUTABOR_TOKEN_INTEGER '[' tonliste ']'
                       { init_komplex_ton_list (box); }
                     '-' KOMPLEX_TON_LIST
-		    { get_new_tonsystem_negative (box, $1, $3); }
+		    { get_new_tonsystem_negative (box, $1, $2); }
       ;
 
 tonliste : ton_element | tonliste ',' ton_element ;
@@ -793,13 +803,23 @@ harmonie_dekl_2 :
           tasten_liste '}' bezugs_taste
 	  { get_new_harmonie (box, $1, $7); }
 
-        | MUTABOR_TOKEN_IDENTIFIER '=' error {
+        | MUTABOR_TOKEN_IDENTIFIER '=' '{' error '}' {
 		mutabor_error_message(box,
-				      compiler_error,
-				      _("Bad pattern declaration “%s” at line %d"),
-				      ($1),
-				      FEHLERZEILE);
+		compiler_error,
+		_("There is an error in the chroma list in harmony “%s” at line %d."),
+		($1),
+		FEHLERZEILE);
+                yyclearin;
 	  }
+        | MUTABOR_TOKEN_IDENTIFIER '=' error {
+		  mutabor_error_message(box,
+		                        compiler_error,
+					_("The chroma list must be enclosed in braces '{' '}' in harmony “%s” at line %d."),
+					($1),
+		                        FEHLERZEILE);
+                yyclearin;
+          }
+        | error
         ;
 
 bezugs_taste :
@@ -831,12 +851,16 @@ logik_dekl_1 :
 
 logik_dekl_2 :
           MUTABOR_TOKEN_IDENTIFIER ausloeser '=' '['
-	  { get_new_logik (box, $1, NULL);
+	  { init_aktions_liste (box);
+		get_new_logik (box, $1);
                 init_anweisungs_liste (box); }
           anweisungs_liste ']'
               { vervollstaendige_logik (box); }
-        | MUTABOR_TOKEN_IDENTIFIER ausloeser '=' MUTABOR_TOKEN_IDENTIFIER '['
-	{ get_new_logik (box, $1, $4);
+        | MUTABOR_TOKEN_IDENTIFIER ausloeser '=' 
+		{ init_aktions_liste (box); }
+		aktion
+		'['
+	{ get_new_logik (box, $1);
                 init_anweisungs_liste (box); }
           anweisungs_liste ']'
               { vervollstaendige_logik (box); }
@@ -1069,6 +1093,7 @@ static struct {
 { "TONESYSTEM" , MUTABOR_TOKEN_TONESYSTEM  },
 { "RETUNING"   , MUTABOR_TOKEN_RETUNING },
 { "PATTERN"    , MUTABOR_TOKEN_HARMONY   },
+{ "HARMONY"    , MUTABOR_TOKEN_HARMONY   },
 { "HARMONY_ANALYSIS", MUTABOR_TOKEN_HARMONY_ANALYSIS },
 { "LOGIC"      , MUTABOR_TOKEN_LOGIC      },
 { "SHIFTED"    , MUTABOR_TOKEN_FORM       },
@@ -1180,7 +1205,6 @@ void init_yylex ()
 	//    llocp->first_line = 0;
 	//    box->scanner->anzahl_eingelesene_zeichen = 0;
 }
-
 
 #ifdef __cplusplus
 		}

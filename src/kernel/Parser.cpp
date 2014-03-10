@@ -167,7 +167,7 @@ struct ton * get_ton (mutabor_box_type * box, const char * name, struct ton * li
 	TRACE;
 	if (name==NULL) return(box->file->ton_ohne_namen);
 	if (liste == NULL) return NULL;
- 	if ( ! strcasecmp (name, liste->name)) return liste;
+	if ( ! strcasecmp (name, liste->name)) return liste;
 	return get_ton (box, name, liste->next);
 }
 
@@ -868,7 +868,7 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 
 						print_action_list(
 								  help_case->case_aktion);
- 					}
+					}
 				}
 
 					break;
@@ -899,11 +899,11 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 
 				struct anweisung * anw_lauf;
 				print_ausloeser (box, lauf->ausloeser);
-				printf ("\nName: %s Einstimmung : %s\n",
-					lauf->name,
-					lauf->einstimmungs_name ?
-					lauf->einstimmungs_name :
-					"(NULL)");
+				printf ("\nName: %s Einstimmung : \n",
+					lauf->name);
+				if (lauf->parser_tuning) {
+					print_action (lauf->parser_tuning);
+				}
 
 				for (anw_lauf = lauf->anweisungsliste;
 				     anw_lauf;
@@ -1104,7 +1104,7 @@ void get_new_intervall (mutabor_box_type * box, const char *name, double wert)
 
 	(* lauf) = (intervall*) xmalloc (box, (size_t) sizeof (struct intervall));
 	(* lauf) -> name = name;
- 	(* lauf) -> intervall_typ = intervall_absolut;
+	(* lauf) -> intervall_typ = intervall_absolut;
 	(* lauf) -> u.intervall_absolut.intervall_wert = wert;
 	(* lauf) -> next = NULL;
 }
@@ -1327,7 +1327,7 @@ void get_new_tonsystem_negative (mutabor_box_type * box, const char * name, int 
 /*            init_umstimmung (name);                          **/
 /*         in die dann die Varianten eingetragen werden.       **/
 /*         Zuletzt wird diese Umstimmung in die Liste          **/
-/*         eingehÑngt.					                       **/
+/*         eingehängt.					                       **/
 /*            get_new_umstimmung ();                           **/
 
 
@@ -2203,7 +2203,7 @@ void get_new_anweisung (mutabor_box_type * box)
 
 }
 
- void get_new_logik (mutabor_box_type * box, const char * name, const char * einstimmung)
+ void get_new_logik (mutabor_box_type * box, const char * name)
 {
 
 	struct logik * * lauf;
@@ -2221,7 +2221,7 @@ void get_new_anweisung (mutabor_box_type * box)
 	(* lauf) = (logik*) xmalloc (box, sizeof (struct logik));
 	(* lauf) -> name                = name;
 	(* lauf) -> ausloeser           = get_last_ausloeser (box);
-	(* lauf) -> einstimmungs_name   = einstimmung;
+	(* lauf) -> parser_tuning       = get_last_aktions_liste (box);
 	(* lauf) -> anweisungsliste     = NULL;
 	(* lauf) -> harmony_list        = NULL;
 	(* lauf) -> keystroke_list      = NULL;
@@ -3378,8 +3378,25 @@ static void check_konsistenz (mutabor_box_type * box)
 						}
 					}
 				} else if (box->file->zyklen_feld[i].umst_oder_logik_typ == typ_logik &&
-					   box->file->zyklen_feld[i].u.logik->einstimmungs_name) {
+					   box->file->zyklen_feld[i].u.logik->parser_tuning) {
+					struct aktions_liste *lauf = box->file->zyklen_feld[i].u.logik->parser_tuning;
 
+					for ( ; lauf ; lauf = lauf -> next ) {
+						if (lauf -> aktions_typ == aktion_aufruf) {
+							if (get_umstimmung (lauf -> u.aktion_aufruf.name,
+									    box->file->list_of_umstimmungen) != NULL
+							    || get_logik (lauf -> u.aktion_aufruf.name,
+									  box->file->list_of_logiken) != NULL ) {
+								/* Keine Tonsysteme adjazent eintragen */
+
+								mutabor_u_adjacent (box->file->u_matrix,
+										    i,
+										    test_zyklen_nummer (box,
+													lauf->u.aktion_aufruf.name)) = 1;
+							}
+						}
+					}
+#if 0
 					if (get_umstimmung (box->file->zyklen_feld[i].u.logik->einstimmungs_name,
 					                    box->file->list_of_umstimmungen) != NULL) {
 						/* Keine Tonsysteme adjazent eintragen */
@@ -3389,6 +3406,7 @@ static void check_konsistenz (mutabor_box_type * box)
 								    test_zyklen_nummer (box,
 											box->file->zyklen_feld[i].u.logik->einstimmungs_name)) = 1;
 					}
+#endif
 				}
 			}
 
@@ -3496,6 +3514,9 @@ static void check_konsistenz (mutabor_box_type * box)
 				}
 			}
 
+			if (lauf->parser_tuning)
+				check_aktionen (box, lauf->parser_tuning, lauf->name);
+#if 0
 			if (lauf->einstimmungs_name!=NULL) {
 				if (parser_get_tonsystem (lauf->einstimmungs_name, box->file->list_of_tonsysteme) == NULL) {
 					struct umstimmung * help_umstimmung
@@ -3518,6 +3539,7 @@ static void check_konsistenz (mutabor_box_type * box)
 					}
 				}
 			}
+#endif
 
 			for (anweisungs_lauf = lauf->anweisungsliste,
 				     anzahl_default_ausloeser = 0;
@@ -3596,7 +3618,7 @@ static void print_action (struct aktions_liste * action)
 
 static void print_action_list(struct aktions_liste * actionlist)
 {
- 	TRACE;
+	TRACE;
 	printf("{\n");
 	struct aktions_liste * help_umst;
 	for (help_umst = actionlist;

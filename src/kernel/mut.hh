@@ -110,7 +110,7 @@ extern int yydebug;
 typedef union YYSTYPE YYSTYPE;
 union YYSTYPE
 {
-#line 88 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1909  */
+#line 93 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1909  */
 
 			double      f_value;        /* floating point numbers */
 			int         integer;        /* integers */

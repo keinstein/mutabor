@@ -436,10 +436,12 @@ struct anweisung
 
 struct logik
 {
+	/* parser data */
 	const char * name;
 	struct ausloeser * ausloeser;
-	const char * einstimmungs_name;
+	struct aktions_liste * parser_tuning;
 	struct anweisung * anweisungsliste;
+	/* runtime data */
 	struct logik * next;
 	struct do_aktion * einstimmung;
 	struct harmonie_ereignis * harmony_list;

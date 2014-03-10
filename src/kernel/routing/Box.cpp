@@ -502,8 +502,8 @@ namespace mutabor {
 					    struct keyboard_ereignis * keystrokes) {
 		for (struct keyboard_ereignis * i = keystrokes;
 		     i ; i=i->next) {
-			const char * start_tuning = (i->the_logik_to_expand?
-						     i->the_logik_to_expand->einstimmungs_name:
+			const char * start_tuning = (i->the_logik_to_expand && i->the_logik_to_expand->parser_tuning?
+						     i->the_logik_to_expand->parser_tuning->u.aktion_aufruf.name:
 						     (i->aktion?i->aktion->name:i->name));
 			BoxClass::logic_entry entry = {
 				((i->the_logik_to_expand == NULL)?
@@ -542,7 +542,8 @@ namespace mutabor {
 				 mutabor::hidden::any_trigger::harmony &&
 				 box->last_trigger.harmony_trigger == i),
 				i->name,
-				(i->the_logik_to_expand?i->the_logik_to_expand->einstimmungs_name:
+				(i->the_logik_to_expand && i->the_logik_to_expand->parser_tuning
+				 ?i->the_logik_to_expand->parser_tuning->u.aktion_aufruf.name:
 				 (i->aktion?i->aktion->name:i->name)),
 				-1,
 				trigger
@@ -569,7 +570,8 @@ namespace mutabor {
 				(box->last_trigger.type == mutabor::hidden::any_trigger::midi &&
 				 box->last_trigger.midi_trigger == i),
 				i->name,
-				(i->the_logik_to_expand?i->the_logik_to_expand->einstimmungs_name:
+				(i->the_logik_to_expand && i->the_logik_to_expand->parser_tuning?
+				 i->the_logik_to_expand->parser_tuning->u.aktion_aufruf.name:
 				 (i->aktion?i->aktion->name:i->name)),
 				-1,
 				trigger

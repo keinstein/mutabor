@@ -73,7 +73,10 @@ void insert_in_lokale_liste (mutabor_box_type * box,
 			     struct anweisung * lauf,
                              struct logik * logic);
 
-
+static struct do_aktion *
+expand_aktions_liste (mutabor_box_type * box,
+		      struct aktions_liste * the_liste,
+		      struct interpreter_argument_list * current_parameters);
 
 /**************************************************/
 
@@ -522,35 +525,39 @@ static struct do_aktion * expandiere_logik (mutabor_box_type * box,
 	help -> arguments = NULL;
 	help -> secondary_arguments = NULL;
 
+	/* For initial tuning the search order is changed.
+	   First, we look for tunings or retunings and at last we
+	   search for the rest.
 
-	if (the_logik -> einstimmungs_name &&
+	   Thus, we can add the new behaviour while adding new flexbilty.
+	*/
+	if (the_logik -> parser_tuning &&
 	    the_logik -> einstimmung == NULL )
 	{
-		struct tonsystem * help_tonsystem;
-
 		/* Guard against circular expansion */
 		the_logik -> einstimmung = (struct do_aktion *)NULL + 1;
-		help_tonsystem = parser_get_tonsystem (the_logik->einstimmungs_name,
+		the_logik -> einstimmung
+			= expand_aktions_liste(box,
+					       the_logik->parser_tuning,
+					       NULL);
+#if 0
+		struct tonsystem * help_tonsystem;
+
+		help_tonsystem = parser_get_tonsystem (the_logik->parser_tuning,
 		                                       box->file->list_of_tonsysteme);
 		if (help_tonsystem) {
 			the_logik -> einstimmung = expandiere_tonsystem (box, help_tonsystem);
 		} else {
 			struct umstimmung * help_umstimmung
-				= get_umstimmung (the_logik->einstimmungs_name,
+				= get_umstimmung (the_logik->parser_tuning,
 						  box->file->list_of_umstimmungen);
 			if (help_umstimmung) {
 				the_logik -> einstimmung
 					= expandiere_umstimmung (box, help_umstimmung, NULL);
 			} else {
-				mutabor_error_message(box,
-						      compiler_error,
-						      _("Unable to find the initial tuning or retuning ‘%s’"),
-						      (the_logik->einstimmungs_name));
-				/* reset the guard */
-				/** \todo prevent multiple error messages. maybe use a dummy retuning */
-				the_logik -> einstimmung = NULL;
 			}
 		}
+#endif
 	}
 #if 0
 	else
@@ -579,9 +586,10 @@ static struct do_aktion * expandiere_logik (mutabor_box_type * box,
 	return help;
 }
 
-static struct do_aktion * expand_aktions_liste (mutabor_box_type * box,
-						struct aktions_liste * the_liste,
-						struct interpreter_argument_list * current_parameters)
+static struct do_aktion *
+expand_aktions_liste (mutabor_box_type * box,
+		      struct aktions_liste * the_liste,
+		      struct interpreter_argument_list * current_parameters)
 {
 
 	struct do_aktion * current, * next, ** help;
@@ -592,9 +600,9 @@ static struct do_aktion * expand_aktions_liste (mutabor_box_type * box,
 	switch (the_liste -> aktions_typ) {
 	case aktion_aufruf:
 		current = expandiere_name (box,
-					  the_liste -> u.aktion_aufruf.name,
-		                          the_liste -> u.aktion_aufruf.argument_liste,
-		                          current_parameters);
+					   the_liste -> u.aktion_aufruf.name,
+					   the_liste -> u.aktion_aufruf.argument_liste,
+					   current_parameters);
 		break;
 	case aktion_midi_out:
 		current = expandiere_midi (box, the_liste -> u.aktion_midi_out.midi_code);
@@ -618,6 +626,7 @@ static struct do_aktion * expand_aktions_liste (mutabor_box_type * box,
 	return current;
 
 }
+
 
 
 static struct case_element * expand_case_liste (mutabor_box_type * box,

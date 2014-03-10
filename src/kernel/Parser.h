@@ -301,7 +301,7 @@ void get_ausloeser_taste (mutabor_box_type * box, const char * name);
 void get_ausloeser_midi_in (mutabor_box_type * box);
 void init_anweisungs_liste (mutabor_box_type * box);
 void get_new_anweisung (mutabor_box_type * box);
-void get_new_logik (mutabor_box_type * box, const char * name, const char * einstimmung);
+void get_new_logik (mutabor_box_type * box, const char * name);
 void vervollstaendige_logik (mutabor_box_type * box);
 void get_instrument_dekl (mutabor_box_type * box, int midi_in, int midi_von, int midi_bis, int midi_umleit,
                           struct instrument ** list_to_insert);
