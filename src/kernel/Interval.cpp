@@ -123,20 +123,6 @@ double get_wert_komplex_intervall (mutabor_box_type * box, struct komplex_interv
 
 ****************************************************************/
 
-#if 0
-static int anzahl_intervalle;       /* so viele Intervalle wurden gelesen */
-
-static struct intervall ** intervalle;    /* Feld von Intervallen zum schnelleren Zugriff
-
-                                  als ueber Listen */
-
-static char * visited;         /* Traversierungsmerker */
-
-static char * matrix;          /* Adjazenzmatrix (auf sie darf nur ueber
-
-                                  das folgende Makro zugegriffen werden !*/
-
-#endif
 
 #define adjacent(file,a,b) file->interval_matrix [ (a) * file->interval_count * sizeof (char) \
                              + (b) * sizeof (char)]
@@ -299,8 +285,8 @@ void berechne_intervalle_absolut (mutabor_box_type * box, struct intervall * lis
 	printf ("\n");
 
 #endif
-
-	/* auf Zyklenfreiheit Pruefen */
+	/** \todo we should use Dykstra to reduce complexity */
+	/* Test for cycles  */
 
 	for (i=0; i<box->file->interval_count; i++)
 		box->file->visited_intervals [i] = 0;

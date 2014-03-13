@@ -141,10 +141,10 @@ namespace mutabor {
 				value = 0;
 			}
 			tone (base t):base(t) {}
-			tone (mutint64 inkey): base ()
+			tone (int inkey): base ()
 			{
 				active = hidden::mutabor_active_tone;
-				value = inkey << 24;
+				value = ((mutint64)inkey) << 24;
 			}
 
 			bool is_ok() {

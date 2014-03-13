@@ -42,6 +42,7 @@
 // ---------------------------------------------------------------------------
 
 #include "Defs.h"
+#include "MidiKern.h"
 #include "Global.h"
 
 #ifndef MU32_INTERPRE_H_PRECOMPILED
@@ -130,7 +131,7 @@ inline void mutabor_clear_tone(mutabor_tone *tone) {
  * \return a double value that represents the interval.
  *         a half tone is represented as 1.00, and an octave as 12.00.
  */
-inline double mutabor_convert_interval_to_pitch(mutabor_interval interval)
+inline double mutabor_convert_interval_to_factor(mutabor_interval interval)
 {
 	switch(mutabor_get_interval_type(interval)) {
 	case mutabor_empty_interval:
@@ -138,12 +139,35 @@ inline double mutabor_convert_interval_to_pitch(mutabor_interval interval)
 	case mutabor_invalid_interval:
 		return -1;
 	case mutabor_active_interval:
-		return ((double) interval.value ) / (double) (0x01000000);
+		return mutabor_convert_pitch_to_factor(((double) interval.value ) / (double) (0x01000000));
 	default:
 		UNREACHABLE;
 		return -100;
 	}
 }
+
+/**
+ * Convert an interval from a frequecy factor.
+ * The microtonal part can be given in the double value.
+ *
+ * \param interval a double value that represents the interval.
+ *         a semitone is represented as 1.00, and an octave as 12.00
+ *
+ * \return interval in the internal representation of Mutabor.
+ */
+inline mutabor_interval mutabor_convert_factor_to_interval(double interval)
+{
+	mutabor_interval retval = {
+		(interval > -1
+		 ? (interval > 0
+		    ? mutabor_active_interval
+		    : mutabor_empty_interval)
+		 : mutabor_invalid_interval),
+		(mutint64)(mutabor_convert_factor_to_pitch(interval ) * (double) (0x01000000))
+	};
+	return retval;
+}
+
 
 /**
  * Convert an interval from half tone based pitch according to MIDI pitch numbers.
@@ -153,18 +177,32 @@ inline double mutabor_convert_interval_to_pitch(mutabor_interval interval)
  *         a semitone is represented as 1.00, and an octave as 12.00
  *
  * \return interval in the internal representation of Mutabor.
+ *
+ * \note The resulting interval is always a valid non-nil interval.
  */
-inline mutabor_interval mutabor_convert_pitch_to_interval(double interval)
+inline mutabor_interval mutabor_get_interval_from_pitch(double pitch)
 {
 	mutabor_interval retval = {
-		(interval > -1
-		 ? (interval > 0
-		    ? mutabor_active_interval
-		    : mutabor_empty_interval)
-		 : mutabor_invalid_interval),
-		(mutint64)(((double) interval ) * (double) (0x01000000))
+		mutabor_active_interval,
+		(mutint64)(pitch * (double) (0x01000000))
 	};
 	return retval;
+}
+
+/**
+ * Convert an interval from half tone based pitch according to MIDI pitch numbers.
+ * The microtonal part can be given in the double value.
+ *
+ * \param interval in the internal representation of Mutabor.
+ *
+ * \return  a double value that represents the interval.
+ *         a semitone is represented as 1.00, and an octave as 12.00
+ *
+ * \note The resulting interval is always a valid non-nil interval.
+ */
+inline double mutabor_get_pitch_from_interval(mutabor_interval interval)
+{
+	return (interval.value / (double) (0x01000000));
 }
 
 /**
@@ -175,9 +213,9 @@ inline mutabor_interval mutabor_convert_pitch_to_interval(double interval)
  *
  * \return a double value that represents the tone a' is represented as 69.00
  */
-inline double mutabor_convert_tone_to_pitch(mutabor_tone tone)
+inline double mutabor_convert_tone_to_factor(mutabor_tone tone)
 {
-	return 0.0 + mutabor_convert_interval_to_pitch(tone /* - 0 */);
+	return 0.0 + mutabor_convert_interval_to_factor(tone /* - 0 */);
 }
 
 /**
@@ -189,10 +227,69 @@ inline double mutabor_convert_tone_to_pitch(mutabor_tone tone)
  *
  * \return tone in the internal representation of Mutabor.
  */
-inline mutabor_tone mutabor_convert_pitch_to_tone(double tone)
+inline mutabor_tone mutabor_convert_factor_to_tone(double tone)
 {
-	return /* 0 + */ mutabor_convert_pitch_to_interval(tone /* - 0 */);
+	return /* 0 + */ mutabor_convert_factor_to_interval(tone /* - 0 */);
 }
+
+/**
+ * Convert a tone from half tone based pitch according to MIDI pitch numbers.
+ * The microtonal part can be given in the double value.
+ *
+ * \param frequency a double value that represents the tone.
+ *         a' is represented as 440.00
+ *
+ * \return tone in the internal representation of Mutabor.
+ */
+inline mutabor_tone mutabor_convert_frequency_to_tone(double frequency)
+{
+	mutabor_interval retval = {
+		(frequency > -1
+		 ? (frequency > 0
+		    ? mutabor_active_tone
+		    : mutabor_empty_tone)
+		 : mutabor_invalid_tone),
+		(mutint64)(mutabor_convert_frequency_to_pitch(frequency ) * (double) (0x01000000))
+	};
+	return retval;
+}
+
+/**
+ * Convert an tone from half tone based pitch according to MIDI pitch numbers.
+ * The microtonal part can be given in the double value.
+ *
+ * \param tone a double value that represents the interval.
+ *         a semitone is represented as 1.00, and an octave as 12.00
+ *
+ * \return tone in the internal representation of Mutabor.
+ *
+ * \note The resulting interval is always a valid non-nil interval.
+ */
+inline mutabor_tone mutabor_get_tone_from_pitch(double pitch)
+{
+	mutabor_tone retval = {
+		mutabor_active_tone,
+		(mutint64)(pitch * (double) (0x01000000))
+	};
+	return retval;
+}
+
+/**
+ * Convert an tone from half tone based pitch according to MIDI pitch numbers.
+ * The microtonal part can be given in the double value.
+ *
+ * \param tone in the internal representation of Mutabor.
+ *
+ * \return  a double value that represents the tone.
+ *         a semitone is represented as 1.00, and an octave as 12.00
+ *
+ * \note The resulting interval is always a valid non-nil interval.
+ */
+inline double mutabor_get_pitch_from_tone(mutabor_tone tone)
+{
+	return (tone.value / (double) (0x01000000));
+}
+
 
 
 inline mutabor_tone mutabor_add_interval_to_tone(const mutabor_tone tone,
@@ -292,13 +389,20 @@ inline mutabor_tone mutabor_tone_copy_distance(const mutabor_tone offset,
 inline int mutabor_get_note_index(int note, tone_system * system) {
 	if (!system) return INT_MIN;
 	int retval = (note - system->anker) % system->breite;
-		return retval < 0 ? retval + system->breite : retval;
+	if (retval < 0)  retval += system->breite;
+	mutASSERT(0 <= retval);
+	mutASSERT(retval < system->breite);
+	return retval;
 }
 
 inline int mutabor_get_note_distance(int note, tone_system * system) {
 	if (!system) return INT_MIN;
-	int retval = (int)(note - (system->anker % system->breite)) / system->breite;
-	retval -= ((int)system->anker  / system->breite);
+	int delta = (note - system->anker);
+	int retval = delta / system->breite;
+	if (retval * system->breite > delta) 
+		retval -= 1;
+	mutASSERT(system -> anker + retval * system -> breite <= note);
+	mutASSERT(system -> anker + (retval + 1) * system -> breite > note);
 	return retval;
 }
 

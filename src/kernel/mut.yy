@@ -282,7 +282,10 @@ tondekl2 :
 
 	| 	MUTABOR_TOKEN_IDENTIFIER '='
 		MUTABOR_TOKEN_IDENTIFIER
-	{ get_new_ton_komplex_positive (box, $1, $3); }
+	{
+		init_komplex_ton_list (box);
+		get_new_ton_komplex_positive (box, $1, $3); 
+	}
 
 	| 	MUTABOR_TOKEN_IDENTIFIER '='
 		MUTABOR_TOKEN_IDENTIFIER '+' 

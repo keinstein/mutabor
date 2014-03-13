@@ -175,7 +175,7 @@ struct ton * get_ton (mutabor_box_type * box, const char * name, struct ton * li
 struct intervall * get_intervall (const char * name,
 				  struct intervall * liste)
 {
-	TRACE;
+	TRACE; /** \todo make this function iterative */
 	if (liste == NULL) return NULL;
 	if ( ! strcasecmp (name, liste->name)) return liste;
 	return get_intervall (name, liste->next);

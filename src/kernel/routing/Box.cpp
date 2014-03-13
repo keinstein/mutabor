@@ -613,12 +613,12 @@ namespace mutabor {
 			return retval;
 		retval.anchor = system->anker;
 		retval.period =
-			mutabor_convert_interval_to_pitch(system->periode);
+			mutabor_get_pitch_from_interval(system->periode);
 		int width = system -> breite;
 		if (width <= 0)
 			return retval;
 		retval.tones.resize(width);
-		mutASSERT(width < MUTABOR_KEYRANGE_MAX_WIDTH);
+		mutASSERT(width <= MUTABOR_KEYRANGE_MAX_WIDTH);
 		for (int i = 0 ; i < width; i++) {
 			mutabor_tone t = system->ton[i];
 			switch (mutabor_get_tone_type(t)) {
@@ -630,7 +630,7 @@ namespace mutabor {
 			case mutabor_active_tone:
 			default:
 				retval.tones[i] =
-					tone_entry(mutabor_convert_tone_to_pitch(t));
+					tone_entry(mutabor_get_pitch_from_tone(t));
 			}
 		}
 		return retval;
@@ -666,7 +666,7 @@ namespace mutabor {
 				break;
 			default:
 				retval[i] = current_tone_entry(index,
-							       mutabor_convert_tone_to_pitch(t),
+							       mutabor_get_pitch_from_tone(t),
 							       key->id,
 							       GetChannel(index, key->channel, key->id));
 			}

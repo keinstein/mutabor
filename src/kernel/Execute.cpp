@@ -46,6 +46,7 @@
 #include "src/kernel/Hilfs.h"
 #include "src/kernel/Runtime.h"
 #include "src/kernel/Parser.h"
+#include "src/kernel/Interpre.h"
 #include "src/kernel/routing/Device.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "wx/log.h"
@@ -377,7 +378,7 @@ inline static void call_actions (mutabor_box_type * box,
 					mutabor_interval period =
 						aktion->u.aufruf_umst_wiederholung_abs.interval;
 					asprintf(&name, _("%s:[]%f HT"),aktion->name?aktion->name:"",
-							       mutabor_convert_interval_to_pitch(period));
+							       mutabor_get_pitch_from_interval(period));
 
 					box->tonesystem->periode = period;
 
@@ -394,7 +395,7 @@ inline static void call_actions (mutabor_box_type * box,
 					mutabor_interval period =
 						aktion->u.aufruf_umst_wiederholung_abs.interval;
 					asprintf(&name, _("%s:[]@+%f HT"),aktion->name?aktion->name:"",
-						 mutabor_convert_interval_to_pitch(period));
+						 mutabor_get_pitch_from_interval(period));
 
 					box->tonesystem->periode
 						= mutabor_add_intervals(box->tonesystem->periode,
@@ -549,8 +550,12 @@ inline static void call_actions (mutabor_box_type * box,
 
 					if (aktion->name) {
 						char * params, * oldparams;
-						if (parameters->size)
-							asprintf(&params, "%d", parameters->data[0]);
+						if (!parameters || !parameters->size) {
+							asprintf(&name, "%s", aktion->name);
+							break;
+						}
+
+						asprintf(&params, "%d", parameters->data[0]);
 						for (size_t i = 1; i < parameters->size; i++) {
 							oldparams = params;
 							asprintf(&params, _("%s,%d"),
@@ -597,23 +602,23 @@ inline static void call_actions (mutabor_box_type * box,
 					break;
 
 				case aufruf_midi_out: {
-					char * parameters, * oldparameters;
+					char * params, * oldparams;
 					struct midiliste * i = aktion->u.aufruf_midi_out.out_liste;
 					if (i) {
-						asprintf(&parameters,"%x",i->midi_code);
+						asprintf(&params,"%x",i->midi_code);
 						i = i->next;
-					} else parameters = NULL;
+					} else params = NULL;
 					for (; i ;  i = i->next) {
-						oldparameters = parameters;
-						asprintf(&parameters, _("%s %x"),
-							 oldparameters,
+						oldparams = params;
+						asprintf(&params, _("%s %x"),
+							 oldparams,
 							 i -> midi_code);
-						free(oldparameters);
+						free(oldparams);
 					}
-					if (parameters) {
-						oldparameters = parameters;
-						asprintf(& name,"%s: MidiOut(%s)",aktion->name?aktion->name:"",parameters);
-						free(oldparameters);
+					if (params) {
+						oldparams = params;
+						asprintf(& name,"%s: MidiOut(%s)",aktion->name?aktion->name:"",params);
+						free(oldparams);
 					} else {
 						name = strdup(aktion->name);
 					}

@@ -393,7 +393,7 @@ static int * get_wert_of_argument (mutabor_box_type * box,
 
 static struct ton_einstell * expand_tonliste (mutabor_box_type * box,
 					      struct ton * the_tonliste)
-{
+{ /** \todo make iterative */
 
 	struct ton_einstell * help;
 	TRACE;
@@ -409,9 +409,8 @@ static struct ton_einstell * expand_tonliste (mutabor_box_type * box,
 		if (the_tonliste->name) {
 			help -> ton_einstell_typ = einstell_absolut;
 			help -> tone =
-			        mutabor_convert_pitch_to_tone (
-			                mutabor_convert_frequency_to_pitch(
-			                        the_tonliste->u.ton_absolut.ton_wert));
+				mutabor_convert_frequency_to_tone(
+			                        the_tonliste->u.ton_absolut.ton_wert);
 		} else {
 			help -> ton_einstell_typ = einstell_stumm;
 		}
@@ -426,18 +425,16 @@ static struct ton_einstell * expand_tonliste (mutabor_box_type * box,
 				if (the_tonliste->u.ton_komplex.komplex_liste) {
 					help -> ton_einstell_typ = einstell_relativ;
 					help -> interval =
-					        mutabor_convert_pitch_to_interval (
-					                mutabor_convert_factor_to_pitch (
-									get_komplex_faktor (box, the_tonliste->u.ton_komplex.komplex_liste)));
+					        mutabor_convert_factor_to_interval (
+						       get_komplex_faktor (box, the_tonliste->u.ton_komplex.komplex_liste));
 				} else {
 					help -> ton_einstell_typ = einstell_gleich;
 				}
 			} else { /* normaler ton */
 				help -> ton_einstell_typ = einstell_absolut;
 				help -> tone =
-				        mutabor_convert_pitch_to_tone (
-				                mutabor_convert_frequency_to_pitch (
-								  get_komplex_frequenz (box,the_tonliste)));
+				        mutabor_convert_frequency_to_tone (
+					       get_komplex_frequenz (box,the_tonliste));
 
 			}
 
@@ -477,10 +474,9 @@ static struct do_aktion * expandiere_tonsystem (mutabor_box_type * box,
 	help_tonsystem -> anker = the_tonsystem -> taste;
 	help_tonsystem -> breite = ton_list_laenge (the_tonsystem -> toene);
 	help_tonsystem -> periode =
-	        mutabor_convert_pitch_to_interval (
-	                mutabor_convert_factor_to_pitch (
-					get_wert_komplex_intervall (box,
-								    the_tonsystem -> periode)));
+	        mutabor_convert_factor_to_interval (
+			 get_wert_komplex_intervall (box,
+						     the_tonsystem -> periode));
 
 	{
 
@@ -492,10 +488,10 @@ static struct do_aktion * expandiere_tonsystem (mutabor_box_type * box,
 		                ton_lauf = ton_lauf -> next , i++ ) {
 			if (ton_lauf->name) {
 				help_tonsystem->ton[i] =
-				        mutabor_convert_pitch_to_tone( mutabor_convert_frequency_to_pitch(get_ton (box,
+				        mutabor_convert_frequency_to_tone(get_ton (box,
 										  ton_lauf -> name,
 										  box->file->list_of_toene)
-				                                -> u.ton_absolut.ton_wert));
+				                                -> u.ton_absolut.ton_wert);
 			} else {
 				help_tonsystem->ton[i].active =
 					mutabor_empty_tone ;
@@ -725,10 +721,9 @@ static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
 		help -> aufruf_typ = aufruf_umst_wiederholung_abs;
 
 		help -> u.aufruf_umst_wiederholung_abs.interval =
-		        mutabor_convert_pitch_to_interval (
-		                mutabor_convert_factor_to_pitch (
-						get_wert_komplex_intervall (box,
-									    the_umstimmung->u.umstimmung_wiederholung_abs.komplex_liste)));
+		        mutabor_convert_factor_to_interval (
+			       get_wert_komplex_intervall (box,
+					the_umstimmung->u.umstimmung_wiederholung_abs.komplex_liste));
 
 		break;
 
@@ -737,10 +732,9 @@ static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
 		help -> aufruf_typ = aufruf_umst_wiederholung_rel;
 
 		help -> u.aufruf_umst_wiederholung_rel.interval =
-		        mutabor_convert_pitch_to_interval (
-		                mutabor_convert_factor_to_pitch (
-						get_wert_komplex_intervall (box,
-									    the_umstimmung->u.umstimmung_wiederholung_abs.komplex_liste)));
+		        mutabor_convert_factor_to_interval (
+				get_wert_komplex_intervall (box,
+					the_umstimmung->u.umstimmung_wiederholung_abs.komplex_liste));
 		break;
 
 	case umstimmung_taste_rel:
