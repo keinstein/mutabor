@@ -241,10 +241,10 @@ namespace mutabor {
 		 * \param to iterator pointing just after the end of the message. 
 		 * \note the final 0xf7 is sent automatically.
 		 */
-		template<class i>
+		template<class iterator>
 		MidiPortOutputProvider & SendSysEx (int channel,
-						    i from,
-						    i to) {
+						    iterator from,
+						    iterator to) {
 			if (from == to) return * this;
 			if ((*from) & midi::STARTBYTE_MASK) {
 				UNREACHABLEC;
