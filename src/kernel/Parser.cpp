@@ -2388,6 +2388,9 @@ static void belege_toene (struct ton **toene, struct ton * liste)
 						      _("Tones %s and %s depend on each other."),
 						      (box->file->toene [startknoten]->name),
 						      (box->file->toene [i]->name));
+				box->file->toene [startknoten]-> ton_typ = ton_absolut;
+				box->file->toene [startknoten]-> u.ton_absolut.ton_wert = (60 << 24);
+				return;
 			}
 
 			box->file->visited_tones [i] = 1;
@@ -2985,6 +2988,21 @@ static void belege_zyklenfeld (struct umst_oder_logik *zyklen_feld,
 						      box->file->zyklen_feld [i].umst_oder_logik_typ == typ_umstimmung ?
 						      (box->file->zyklen_feld [i].u.umstimmung->name) :
 						      (box->file->zyklen_feld [i].u.logik->name));
+				switch (box->file->zyklen_feld [startknoten].umst_oder_logik_typ) {
+				case typ_umstimmung: {
+					umstimmung * tmp = box->file->zyklen_feld [startknoten].u.umstimmung;
+					tmp->umstimmung_typ = umstimmung_umstimmungsbund;
+					tmp->u.umstimmung_umstimmungsbund.aktions_liste = NULL;
+				}
+					break;
+				case typ_logik:{
+					logik * tmp = box->file->zyklen_feld [startknoten].u.logik;
+					tmp -> einstimmung = NULL;
+				}
+					break;
+				default: ;
+				}
+				return;
 			}
 
 			box->file->u_visited [i] = 1;

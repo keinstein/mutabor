@@ -53,6 +53,7 @@ class boxTest : public CPPUNIT_NS::TestFixture
 	CPPUNIT_TEST( testBug1Permutation1 );
 	CPPUNIT_TEST( testBug1Permutation2 );
 	CPPUNIT_TEST( testHaronic_form );
+	CPPUNIT_TEST( testCycles );
 	CPPUNIT_TEST_SUITE_END();
 
 protected:
@@ -91,6 +92,7 @@ public:
 	void testBug1Permutation1 ();
 	void testBug1Permutation2 ();
 	void testHaronic_form ();
+	void testCycles ();
 };
 
 #endif

@@ -637,4 +637,51 @@ logic\n\
 }
 
 
+
+void boxTest::testCycles () {
+	mutabor_box_type * box = &boxes[0];
+#ifdef DEBUG
+	yydebug = 0;
+	debugFlags::flags.kernel_parser = true;
+#endif
+	const char * logic_string = "\
+INTERVAL\n\
+	a = a\n\
+TONE\n\
+	b = b\n\
+\n\
+TONESYSTEM\n\
+	t = 60 [ b ] a\n\
+\n\
+RETUNING\n\
+	r1 = { r1, l1 }\n\
+	r2 = { l1 }\n\
+\n\
+LOGIC \n\
+	l1 KEY l = r1 [\n\
+	KEY R -> r2\n\
+	]\n\
+";
+
+
+	loesche_syntax_speicher(box);
+	mutabor_programm_einlesen(box,logic_string);
+	CPPUNIT_ASSERT(box->file);
+	CPPUNIT_ASSERT(box->file->list_of_intervalle);
+	CPPUNIT_ASSERT(box->file->list_of_toene);
+	CPPUNIT_ASSERT(box->file->list_of_tonsysteme);
+	CPPUNIT_ASSERT(box->file->list_of_umstimmungen);
+	CPPUNIT_ASSERT(box->file->list_of_umstimmungen->next);
+	CPPUNIT_ASSERT(!box->file->list_of_harmonien);
+	CPPUNIT_ASSERT(box->file->list_of_logiken);
+	CPPUNIT_ASSERT(box->file->list_of_instrumente);
+	CPPUNIT_ASSERT(!box->file->list_of_config_instrumente);
+	CPPUNIT_ASSERT(box->file->ton_ohne_namen);
+	CPPUNIT_ASSERT(box->file->ton_liste);
+	expand_decition_tree(box);
+
+	CPPUNIT_ASSERT(box->key_count == 0);
+}
+
+
 ///\}

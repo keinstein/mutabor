@@ -169,6 +169,9 @@ static void test_zyklen (mutabor_box_type * box, int startknoten)
 				              _("Intervals %s and %s depend on each other"),
 					      (box->file->check_intervals [startknoten]->name),
 					      box->file->check_intervals [i]->name);
+				box->file->check_intervals [startknoten] -> intervall_typ = intervall_absolut;
+				box->file->check_intervals [startknoten] -> u.intervall_absolut.intervall_wert = 1;
+				return;
 			}
 
 			box->file->visited_intervals [i] = 1;
