@@ -1,0 +1,16 @@
+INTERVAL
+	a = a
+TONE
+	b = b
+
+TONESYSTEM
+	t = 60 [ b ] a
+
+RETUNING
+	r1 = { r1, l1 }
+	r2 = { l1 }
+
+LOGIC
+	l1 KEY l = r1 [
+	KEY R -> r2
+	]
