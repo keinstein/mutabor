@@ -302,6 +302,11 @@ void boxTest::test_init()
 		CPPUNIT_ASSERT(!(boxes[i].action_changed));
 		CPPUNIT_ASSERT(!(boxes[i].tonesys_changed));
 #endif
+		CPPUNIT_ASSERT(!(boxes[i].flags.local_harmony_before_global));
+		CPPUNIT_ASSERT(!(boxes[i].flags.local_keyboard_before_global));
+		CPPUNIT_ASSERT(!(boxes[i].flags.local_midi_before_global));
+		CPPUNIT_ASSERT(!(boxes[i].flags.break_logic));
+		CPPUNIT_ASSERT(!(boxes[i].flags.auto_reset_break_logic));
 	}
 }
 

@@ -45,6 +45,8 @@
 #include "src/kernel/Defs.h"
 #include "src/kernel/treestorage.h"
 #include "src/kernel/routing/thread.h"
+#include "src/kernel/boost-interface.h"
+#include "src/kernel/routing/watchdog.h"
 #include "src/kernel/routing/Route.h"
 #include "src/kernel/Execute.h"
 #include "src/kernel/box.h"
@@ -525,7 +527,7 @@ namespace mutabor {
 		static void compile_callback(struct mutabor_box_type * b, int line_number);
 
 		void MidiAnalysis(const std::vector<unsigned char > * midiCode) {
-			BoxLock lock(this);
+			scoped_watchdog lock(this);
 			hidden::MidiAnalysis(box, midiCode->data(), midiCode->size());
 		}
 
@@ -552,12 +554,12 @@ namespace mutabor {
 
 
 		void AddNote(int note, size_t id, size_t channel, void * userdata) {
-			BoxLock lock(this);
+			scoped_watchdog lock(this);
 			hidden::AddKey(box, note, id, channel, userdata);
 		}
 
 		void DeleteNote(int note, size_t id, int channel) {
-			BoxLock lock(this);
+			scoped_watchdog lock(this);
 			hidden::DeleteKey(box, note, id, channel);
 		}
 
@@ -577,7 +579,7 @@ namespace mutabor {
 		 * \param flags  Flags which type of action should be taken.
 		 */
 		void KeyboardAnalysis(int key, KeyboardFlags flags) {
-			BoxLock lock(this);
+			scoped_watchdog lock(this);
 			switch (flags) {
 			case KeyboardNoLogic:
 			case KeyboardLogic:
@@ -598,13 +600,36 @@ namespace mutabor {
 		 * \param keys
 		 */
 		void KeyboardAnalysis(const mutStringRef keys) {
-			BoxLock lock(this);
+			scoped_watchdog lock(this);
 			hidden::KeyboardIn(box,keys.ToUTF8());
 		}
 
 		tone get_frequency(int note);
 		int get_index(int note);
 		int get_distance(int note);
+
+		/**
+		 * Break the execution of any running logic loops.
+		 *
+		 * \param allow_resume if true allow the next call to
+		 * the logic to resume logic execution
+		 */
+		void interrupt_logic (bool allow_resume = true) {
+			if (box) {
+				box->flags.break_logic = 1;
+				box->flags.auto_reset_break_logic = allow_resume;
+			}
+		}
+
+		/**
+		 * Allow the execution of logic actions after this
+		 * function has been disabled.
+		 *
+		 */
+		void resume_logic () {
+			if (box)
+				box->flags.auto_reset_break_logic = 1;
+		}
 
 		void SetLogic(Box b) {
 			hidden::mutabor_set_logic(box,b->box->file);
@@ -685,6 +710,26 @@ namespace mutabor {
 		/// Process an error message (doing the real work)
 		virtual void runtime_error(error_type type, const char * message);
 
+		/**
+		 * Format and process a runtime error message or warning.
+		 *
+		 * \param type    error type.
+		 * \param format  Format string
+		 */
+		void issue_error(error_type type, const char * format, ...) {
+			char * formatted;
+			va_list args;
+			va_start(args,format);
+			if (vasprintf(&formatted,format,args) == -1) {
+				formatted = (char *)_mut("Error in Error: Could not allocate buffer for error message.");
+				if (!formatted)
+					formatted =
+						(char *) "Error in Error: Could not allocate buffer for error message.";
+			}
+			va_end(args);
+			runtime_error(type,formatted);
+			free(formatted);
+		}
 
 	        /// Return the collected errors and warnings.
 		/**
@@ -703,16 +748,57 @@ namespace mutabor {
 		static void lock_callback(hidden::mutabor_logic_parsed * logic);
 		static void unlock_callback(hidden::mutabor_logic_parsed * logic);
 		static void free_mutex_callback(hidden::mutabor_logic_parsed * logic);
+
+		void dog_watching() {
+			int counter;
+			{ // lock the mutex as short as possible.
+				ScopedLock lock(logic_timing_mutex);
+				if (logic_timing >= 0) {
+					counter = logic_timing++;
+				} else return;
+			}
+
+			if (counter > 5) {
+				interrupt_logic(true);
+				issue_error(hidden::runtime_error,
+					      _mut("Timeout while executing logic in box %d."),
+					      get_routefile_id());
+			} else if (counter == 1) {
+				issue_error(hidden::runtime_warning,
+					      _mut("The logic in box %d is too slow."),
+					      get_routefile_id());
+			}
+		}
+
+		template<class T>
+		void remove_watchdog(T dog) {
+			mutASSERT(dog == loopguard);
+			loopguard = NULL;
+		}
+
 	protected:
 		struct BoxLock: public ScopedLock {
 			Box box;
 			BoxLock(BoxClass * b):ScopedLock(b->mutex),
 					      box(b) {
 				mutASSERT(IsOk());
+				if (b && b->box && b->box->flags.auto_reset_break_logic)
+					b->box->flags.break_logic = 0;
 			}
 			~BoxLock() {
 				box->UpdateTones();
 				box->ExecuteCallbacks(box->updateflags);
+			}
+		};
+
+		struct scoped_watchdog: public BoxLock {
+			scoped_watchdog(BoxClass * b):BoxLock(b) {
+				ScopedLock(box->logic_timing_mutex);
+				box->logic_timing = 0;
+			}
+			~scoped_watchdog() {
+				ScopedLock(box->logic_timing_mutex);
+				box->logic_timing = -1;
 			}
 		};
 	        static listtype boxList;
@@ -745,6 +831,10 @@ namespace mutabor {
 		CompileCallback * current_compile_callback;
 		static mutabor::hidden::mutabor_callback_type backend_callbacks;
 		Mutex mutex;
+		int logic_timing;
+		Mutex logic_timing_mutex;
+		mutint64 loop_timeout;
+		watchdog<Box> * loopguard;
 
 		BoxClass(int id = -1);
 
@@ -773,6 +863,8 @@ namespace mutabor {
 			return FindInBoxList(b) != boxList.end();
 		}
 		static void TruncateBoxList (Box dev);
+
+
 
 
 	private:
@@ -843,6 +935,7 @@ namespace mutabor {
 		/** \param config configuration to be written to
 		 */
 		static void SaveBoxes(tree_storage & config);
+
 
 	protected:
 		typedef std::vector<BoxFactory *> factorylist;

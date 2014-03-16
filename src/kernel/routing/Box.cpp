@@ -390,12 +390,27 @@ namespace mutabor {
 
 	bool BoxClass::DoOpen() {
 		Reset();
+		loopguard = new watchdog<Box>(this,
+					      loop_timeout);
+		wxThreadError result = loopguard -> Create(1024*100); // Stack Size
+		if (result != wxTHREAD_NO_ERROR) {
+			delete loopguard;
+			//loopguard = NULL;
+			Close();
+			return false;
+		}
+		loopguard->Run();
 		// hidden::mutabor_reset_action_trace(box);
 		return true;
 	}
 
 	void BoxClass::DoClose() {
 		Reset();
+		mutASSERT(loopguard);
+		if (loopguard) {
+			loopguard -> request_exit();
+			loopguard = NULL;
+		}
 	}
 
 	struct BoxClass_CallReset {
@@ -806,7 +821,11 @@ namespace mutabor {
 				    updateflags(0),
 				    callbacks(),
 				    current_compile_callback(NULL),
-				    mutex() {
+				    mutex(),
+				    logic_timing(-1),
+				    loop_timeout(500000),
+				    loopguard()
+	{
 		AppendToBoxList(this);
 		box = (mutabor_box_type *) malloc(sizeof(mutabor_box_type));
 		if (!box) return;

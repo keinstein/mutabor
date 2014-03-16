@@ -88,9 +88,20 @@ struct mutabor_logic_parsed;
 struct mini_heap;
 
 struct mutabor_box_flags {
-	char local_harmony_before_global:1;
-	char local_keyboard_before_global:1;
-	char local_midi_before_global:1;
+	unsigned char local_harmony_before_global:1;
+	unsigned char local_keyboard_before_global:1;
+	unsigned char local_midi_before_global:1;
+	unsigned char break_logic:1; 	/**<
+					 * If set to 1 Break the execution of the logic.
+					 * This is useful to break endless loops.
+					 */
+	unsigned char auto_reset_break_logic:1; /**< Automatically reset logic
+						   breaking.  Certain functions
+						   may reset the flag
+						   break_logic. This flag is
+						   used to indicate whether it
+						   is allowed to be done. */
+
 };
 
 /** Mutabor box type. */
@@ -143,7 +154,7 @@ struct mutabor_box_type {
 	struct mutabor_scanner_data * scanner;
 	struct mutabor_logic_parsed * file;
 
-	struct mutabor_box_flags flags;
+	volatile struct mutabor_box_flags flags;
 
 };
 typedef struct mutabor_box_type mutabor_box_type;

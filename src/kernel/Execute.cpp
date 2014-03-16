@@ -200,6 +200,8 @@ inline static void call_actions (mutabor_box_type * box,
 	interpreter_parameter_list * current_parameters;
 	interpreter_parameter_list * old_parameters = box->current_parameters;
 
+	if (!box || box->flags.break_logic) return;
+
 	// check whether we must allocate memory
 	if ((box->current_parameters == NULL && box->parameters == NULL)
 	    || box->current_parameters->next == NULL) {
