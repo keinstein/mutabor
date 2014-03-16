@@ -496,7 +496,7 @@ namespace mutabor {
 		 * \return Time in μs.
 		 */
 		mutint64 Get() { return is_realtime?Time():time; }
-		
+
 		/** 
 		 * Dummy function for stopping the timer.
 		 * 
