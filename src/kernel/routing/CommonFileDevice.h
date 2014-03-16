@@ -137,7 +137,6 @@ namespace mutabor {
 					if (file->timer == this)
 						file -> timer = NULL;
 				}
-				std::fprintf(stderr,"exiting thread");
 			}
 
 			ExitCode Entry() {

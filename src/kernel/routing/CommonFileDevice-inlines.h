@@ -351,48 +351,6 @@ namespace mutabor {
 		}
 	}
 
-#if 0
-	void CommonFileInputDevice::Sleep(mutint64 time) {
-#if _XOPEN_SOURCE >= 600 || _POSIX_C_SOURCE >= 200112L
-		struct timespec data,remain = {0,0};
-#ifdef DEBUG
-		if (debugFlags::flags.timer) {
-			clock_getres(CLOCK_MONOTONIC, &data);
-			DEBUGLOGTYPE(timer,
-				     CommonFileInputDevice,
-				  _T("Timer resolution: %d s %ld ns"),
-				  (int)data.tv_sec,
-				  (long)data.tv_nsec);
-		}
-#endif
-		data.tv_sec = time/1000000;
-		mutint64 tmp = time % 1000000;
-		if (tmp < 0) tmp+= 1000000;
-		data.tv_nsec = (long)(tmp *1000);
-		DEBUGLOGTYPE(timer,
-			     CommonFileInputDevice,
-			     _T("sleeping time: %d s, %ld ns"),
-			     (int)data.tv_sec,
-			     (long)data.tv_nsec);
-		int status = clock_nanosleep(CLOCK_MONOTONIC,0,&data,&remain);
-		DEBUGLOGTYPE(timer,
-			     CommonFileInputDevice,
-			     _T("Remaining time: %d s, %ld ns"),
-			     (int)remain.tv_sec,
-			     (long)remain.tv_nsec);
-		mutASSERT(status != EINTR);
-		mutASSERT(status != EINVAL);
-		mutASSERT(status != EFAULT);
-		mutASSERT(!status);
-#else 
-		DEBUGLOGTYPE(timer,
-			     CommonFileInputDevice,
-			     _T("wxSleeping: %lu ms"),
-			     (unsigned long) time/1000);
-		Thread::Sleep((unsigned long)time/1000);
-#endif
-	}
-#endif
 
 
 	/* we use microseconds as errors sum up */
@@ -406,22 +364,6 @@ namespace mutabor {
 		mutASSERT(Mode != DeviceCompileError );
 
 
-#if 0
-		/* this looks a little bit strange. But it is hard to
-		 * compare two sined and unsiged integers whose size we do not
-		 * know. */
-		mutint64 maxallowed = (mutint64)(std::numeric_limits<mutint64>::max());
-		const unsigned long maxulong = (std::numeric_limits<unsigned long>::max());
-		maxallowed /= 1000;
-		mutint64 alloweddelta;
-		
-		if ((unsigned long) maxallowed <= maxulong && 
-		    (maxallowed  <= (mutint64) maxulong ||
-		     (mutint64) maxulong < 0))
-			alloweddelta = std::numeric_limits<mutint64>::max();
-		else 
-			alloweddelta = 1000*(mutint64)maxulong;
-#endif
 
 		if (Mode == DeviceInitializing) 
 			Mode = DeviceStop;
