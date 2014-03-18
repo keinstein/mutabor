@@ -182,6 +182,22 @@ namespace mutaborGUI {
 
 		/// Exit the program
 		void CmQuit (wxCommandEvent& event);
+		
+		/** 
+		 * Print an error message.
+		 * 
+		 * \param event Event containing the message as string and the type as integer.
+		 */
+		void CmPrintError (wxCommandEvent& event);
+
+		/** 
+		 * Print an error or warning message
+		 * 
+		 * \param type   Message type see \ref mutabor::hidden::mutabor_error_type for possible values.
+		 * \param s      String to be displayed;
+		 * \param parent Parent window. If NULL the current top level window is used.
+		 */
+		void PrintError(int type, const wxString & s, wxWindow * parent = NULL);
 #ifdef DEBUG
 		/// Exit immediately with exit()
 		/** This function meight be helpful in compiling */

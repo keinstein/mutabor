@@ -319,9 +319,19 @@ namespace mutabor {
 				if ((reopen = IsOpen()))
 					Close();
 			}
-			if (rtmidiout) 
-				Name = muT (rtmidiout->getPortName (DevId).c_str());
-			else
+			if (rtmidiout) {
+				try {
+					Name = muT (rtmidiout->getPortName (DevId).c_str());
+				} catch (RtError &error) {
+					runtime_error(false,
+						      _("Could not get the name of the MIDI device with id %d:\n%s"),
+						      DevId,
+						      error.what());
+					Name = _("invalid device");
+					return ;
+				}
+			
+			} else
 				Name = _("no device");
 			if (reopen) {
 				Open();

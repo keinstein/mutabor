@@ -509,6 +509,14 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 		DWORD l;
 		timing.reset();
 
+		if (!Name) {
+			runtime_error(false,
+				      _("You instructed me to open a file without file name. I can't do that."));
+			Mode = DeviceCompileError;
+			isOpen = false;
+			Tracks.clear();
+			return false;
+		}
 
 		// read file
 		mutOpenIFstream(is, Name);

@@ -901,7 +901,7 @@ namespace mutaborGUI {
 		if (port)  {
 			InputDeviceClass * dev = port->GetDevice();
 			TRACEC;
-			if (LogicOn && !(dev->IsOpen()))
+			if (LogicOn && !(dev->IsOpen()) && !(!name))
 				dev->Open();
 			return dev;
 		} else

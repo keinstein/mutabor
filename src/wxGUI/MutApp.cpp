@@ -143,6 +143,7 @@ namespace mutaborGUI {
 	EVT_MENU(CM_HELPONHELP,                MutApp::CmHelp)
 	EVT_MENU(CM_ABOUT,                     MutApp::CmAbout)
 	EVT_MENU(CM_EXIT,                      MutApp::CmQuit)
+	EVT_MENU(CM_PRINT_ERROR,               MutApp::CmPrintError)
 #ifdef DEBUG
 	EVT_MENU(cmCallExitId,                 MutApp::CmCallExit)
 #endif
@@ -992,6 +993,38 @@ namespace mutaborGUI {
 		DEBUGLOG (other, _T("finished loop"));
 	}
 
+
+	void MutApp::CmPrintError (wxCommandEvent& event) {
+		PrintError(event.GetInt(),event.GetString());
+	}
+
+	void MutApp::PrintError(int type, const wxString & s, wxWindow * parent) {
+#if wxCHECK_VERSION(2,9,0)
+		wxString head(mutabor::to_string((mutabor::error_type)type));
+#else
+		wxString head=wxString::FromUTF8(mutabor::to_string((mutabor::error_type)type));
+#endif
+		int style = wxOK | wxCENTRE;
+		switch (type) {
+	case mutabor::compiler_warning:
+	case mutabor::runtime_warning:
+	case mutabor::warning: 
+		style |= wxICON_EXCLAMATION;
+		break;
+	case mutabor::error:
+	case mutabor::internal_error:
+	case mutabor::compiler_error:
+	case mutabor::runtime_error:
+		style |= wxICON_ERROR;
+		break;
+	default: 
+		style |= wxICON_INFORMATION;
+	}
+		wxMessageDialog * dialog  = new wxMessageDialog (parent?parent:GetTopWindow(), s, head, style);
+		dialog->ShowModal();
+		dialog->Destroy();
+			
+	}
 
 
 	wxString MutApp::GetResourceName(const wxString & file)

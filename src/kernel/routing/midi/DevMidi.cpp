@@ -380,9 +380,10 @@ OutputMidiPort:\n\
 			hMidiIn->openPort(DevId,(const char *)(GetName().ToUTF8()));
 		} catch (RtError &error) {
 			runtime_error(false,
-				      _("Can not open Midi input device no. %d (%s)."),
+				      _("Can not open Midi input device no. %d (%s):\n%s"),
 				      DevId,
-				      (const mutChar *)(GetName().c_str()));
+				      (const mutChar *)(GetName().c_str()),
+				      error.what());
 			return false;
 		}
 
