@@ -25,7 +25,7 @@
  * \addtogroup kernel
  * \{
  ********************************************************************/
-// availlable groups: GUI, route, kernel, muwx, debug, docview, config, docview
+/* available groups: GUI, route, kernel, muwx, debug, docview, config, docview */
 
 /* we guard a little bit complicated to ensure the references are set right
  */
@@ -36,16 +36,19 @@
 #define SRC_WXINTL_LIBINTL
 #endif
 
-// ---------------------------------------------------------------------------
-// headers
-// ---------------------------------------------------------------------------
+/* --------------------------------------------------------------------------- */
+/* headers */
+/* --------------------------------------------------------------------------- */
 
 #include "src/kernel/Defs.h"
 
 #ifndef SRC_WXINTL_LIBINTL_PRECOMPILED
 #define SRC_WXINTL_LIBINTL_PRECOMPILED
 
-// system headers which do seldom change
+#define bindtextdomain wxwidgets_bindtextdomain
+#define textdomain wxwidgets_textdomain
+
+/* system headers which do seldom change */
 
 #ifdef __cplusplus 
 extern "C" {
@@ -55,15 +58,15 @@ extern "C" {
 #endif
 
 	extern const char * wxwidgets_sgettext(const char * msgid)
-		__attribute_format_arg__ (1);
+		__mutabor_attribute_format_arg__ (1,0);
 	extern const char * wxwidgets_dgettext(const char * domainname, 
 					       const char * msgid)
-		__attribute_format_arg__ (2);
+		__mutabor_attribute_format_arg__ (1,0);
 #if 0
 	extern const char * wxwidgets_dcgettext(const char * domainname, 
 						const char * msgid,
 						int category)
-		__attribute_format_arg__ (2);
+		__mutabor_attribute_format_arg__ (2,0);
 #endif
 
 	
@@ -74,13 +77,13 @@ extern "C" {
 	   number N.  */
 	extern const char *wxwidgets_sngettext (const char * msgid1, const char * msgid2,
 					       unsigned long int n)
-		__attribute_format_arg__ (1) __attribute_format_arg__ (2);
+		__mutabor_attribute_format_arg__ (1,0) __mutabor_attribute_format_arg__ (2,0);
 
 	/* Similar to `dgettext' but select the plural form corresponding to the
 	   number N.  */
 	extern const char *wxwidgets_dngettext (const char * domainname, const char * msgid1,
 						const char * msgid2, unsigned long int n)
-		__attribute_format_arg__ (2) __attribute_format_arg__ (3);
+		__mutabor_attribute_format_arg__ (2,0) __mutabor_attribute_format_arg__ (3,0);
 
 #if 0
 	/* Similar to `dcgettext' but select the plural form corresponding to the
@@ -88,7 +91,7 @@ extern "C" {
 	extern const char *wxwidgets_dcngettext (const char * domainname, const char * msgid1,
 						 const char * msgid2, unsigned long int n,
 						 int __category)
-		__attribute_format_arg__ (2) __attribute_format_arg__ (3);
+		__mutabor_attribute_format_arg__ (2,0) __mutabor_attribute_format_arg__ (3,0);
 #endif
 
 
@@ -149,9 +152,9 @@ extern const char *wxwidgets_gettext (const std::string & domainname,
 #endif
 
 
-//#define wxwidgets_gettext wxwidgets_pgettext
+/*#define wxwidgets_gettext wxwidgets_pgettext */
 const char * wxwidgets_gettext(const char * msgid)
-	__attribute_format_arg__ (1) ;
+	__mutabor_attribute_format_arg__ (1,0) ;
 inline const char * wxwidgets_gettext(const char * msgid)
 {
 	std::string m(msgid);
@@ -159,7 +162,7 @@ inline const char * wxwidgets_gettext(const char * msgid)
 }
 const char * wxwidgets_gettext(const char * domainname, 
 				      const char * msgid)
-	__attribute_format_arg__ (2);
+	__mutabor_attribute_format_arg__ (2,0);
 inline const char * wxwidgets_gettext(const char * domainname, 
 				      const char * msgid)
 {
@@ -171,7 +174,7 @@ inline const char * wxwidgets_gettext(const char * domainname,
 const char * wxwidgets_gettext(const char * domainname, 
 				      const char * msgid,
 				      int category)
-	__attribute_format_arg__ (2);
+	__mutabor_attribute_format_arg__ (2,0);
 inline const char * wxwidgets_gettext(const char * domainname, 
 				      const char * msgid,
 				      int category)
@@ -187,7 +190,7 @@ inline const char * wxwidgets_gettext(const char * domainname,
  const char *wxwidgets_gettext (const char * msgid1, 
 				      const char * msgid2,
 				      unsigned long int n)
-	 __attribute_format_arg__ (1) __attribute_format_arg__ (2);
+	 __mutabor_attribute_format_arg__ (1,0) __mutabor_attribute_format_arg__ (2,0);
 inline const char *wxwidgets_gettext (const char * msgid1, 
 				      const char * msgid2,
 				      unsigned long int n)
@@ -201,7 +204,7 @@ inline const char *wxwidgets_gettext (const char * msgid1,
 const char *wxwidgets_gettext (const char * domainname, 
 				      const char * msgid1,
 				      const char * msgid2, unsigned long int n)
-	__attribute_format_arg__ (2) __attribute_format_arg__ (3);
+	__mutabor_attribute_format_arg__ (2,0) __mutabor_attribute_format_arg__ (3,0);
 inline const char *wxwidgets_gettext (const char * domainname, 
 				      const char * msgid1,
 				      const char * msgid2, unsigned long int n)
@@ -218,7 +221,7 @@ const char *wxwidgets_gettext (const char * domainname,
 				      const char * msgid2, 
 				      unsigned long int n,
 				      int category)
-	__attribute_format_arg__ (2) __attribute_format_arg__ (3);
+	__mutabor_attribute_format_arg__ (2,0) __mutabor_attribute_format_arg__ (3,0);
 extern const char *wxwidgets_gettext (const char * domainname, 
 				      const char * msgid1,
 				      const char * msgid2, 
@@ -233,8 +236,8 @@ extern const char *wxwidgets_gettext (const char * domainname,
 
 
 #endif
-#endif // precompiled
-#endif // header loaded
+#endif /* precompiled */
+#endif /* header loaded */
 
 
-///\}
+/** \} */
