@@ -795,7 +795,7 @@ namespace mutaborGUI {
 		if (port)  {
 			OutputDeviceClass * dev = port->GetDevice();
 			TRACEC;
-			if (LogicOn && !(dev->IsOpen()))
+			if (LogicOn && !(dev->IsOpen()) && ! name.empty())
 				dev->Open();
 			return dev;
 		} else
@@ -814,7 +814,7 @@ namespace mutaborGUI {
 		if (port)  {
 			InputDeviceClass * dev = port->GetDevice();
 			TRACEC;
-			if (LogicOn && !(dev->IsOpen()))
+			if (LogicOn && !(dev->IsOpen()) && !(name.empty()))
 				dev->Open();
 			return dev;
 		} else
@@ -868,7 +868,7 @@ namespace mutaborGUI {
 		if (port)  {
 			OutputDeviceClass * dev = port->GetDevice();
 			TRACEC;
-			if (LogicOn && !(dev->IsOpen()))
+			if (LogicOn && !(dev->IsOpen()) && !(name.empty()))
 				dev->Open();
 			return dev;
 		} else
@@ -931,7 +931,7 @@ namespace mutaborGUI {
 		if (port)  {
 			OutputDeviceClass * dev = port->GetDevice();
 			TRACEC;
-			if (LogicOn && !(dev->IsOpen()))
+			if (LogicOn && !(dev->IsOpen()) && ! name.empty())
 				dev->Open();
 			return dev;
 		} else
@@ -950,7 +950,7 @@ namespace mutaborGUI {
 		if (port)  {
 			InputDeviceClass * dev = port->GetDevice();
 			TRACEC;
-			if (LogicOn && !(dev->IsOpen()))
+			if (LogicOn && !(dev->IsOpen()) && !(name.empty()))
 				dev->Open();
 			return dev;
 		} else

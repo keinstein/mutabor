@@ -770,15 +770,19 @@ namespace mutabor {
 						      MutaborModeType mode,
 						      int id) const
 	{
+		/** \todo unify kernel device factories::DoCreate... */
 		InputGis * dev = new InputGis(name,mode,id);
 		switch (mode) {
 		case DevicePause:
 		case DeviceStop:
-			dev -> Open();
+			if (!name.empty())
+				dev -> Open();
 			break;
 		case DevicePlay:
-			dev -> Open();
-			dev -> Play();
+			if (!name.empty()) {
+				dev -> Open();
+				dev -> Play();
+			}
 			break;
 		case DeviceUnregistered:
 		case DeviceCompileError:
