@@ -387,19 +387,14 @@ namespace mutaborGUI {
 	}
 
 	void BoxData::runtime_error(mutabor::error_type type, const char * message) {
-#if wxCHECK_VERSION(2,9,0)
-		wxString msg(message), head(mutabor::to_string(type));
-#else
-		wxString msg=wxString::FromUTF8(message), 
-			head=wxString::FromUTF8(mutabor::to_string(type));
-#endif
-		msg = head + _T(": ") + msg;
+		std::string head(mutabor::to_string((mutabor::error_type)type));
+		std::string msg = head + ": " + message;
 #ifdef DEBUG
 		if (type == mutabor::internal_error) {
 			wxFAIL_MSG(msg);
 		}
 #endif
-		fprintf(stderr,"%s: %s\n",mutabor::to_string(type),message);
+		fprintf(stderr, "%s\n", msg.c_str());
 #ifdef DEBUG
 		fprintf(stderr,"%s:%d:\nIn order to debug this message you should watch mutaborGUI::BoxData::runtime_error.\n",
 			__FILE__,
@@ -407,7 +402,7 @@ namespace mutaborGUI {
 #endif
 
 		wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, CM_PRINT_ERROR);
-		event.SetString(msg);
+		event.SetString(wxString::FromUTF8(msg.c_str()));
 		event.SetInt(type);
 		wxPostEvent(&wxGetApp(),event);
 	       

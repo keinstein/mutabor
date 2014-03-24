@@ -504,15 +504,15 @@ namespace mutaborGUI {
 
 	void GUIRouteBase::runtime_error(int type, const std::string& message) {
 		std::string head(mutabor::to_string((error_type)type));
-		std::string msg = head + ": " + msg;
+		std::string msg = head + ": " + message;
 #ifdef DEBUG
 		if (type == mutabor::internal_error) {
 			wxFAIL_MSG(msg);
 		}
 #endif
-		fprintf(stderr, "%s\n",msg.c_str());
+		fprintf(stderr, "%s\n", msg.c_str());
 #ifdef DEBUG
-		fprintf(stderr,"%s:%d:\nIn order to debug this message you should watch mutaborGUI::BoxData::runtime_error.\n",
+		fprintf(stderr,"%s:%d:\nIn order to debug this message you should watch mutaborGUI::GUIRouteBase::runtime_error.\n",
 			__FILE__,
 			__LINE__);
 #endif
@@ -668,15 +668,15 @@ namespace mutaborGUI {
 
 	void GUIOutputDeviceBase::runtime_error(int type, const std::string& message) {
 		std::string head(mutabor::to_string((mutabor::error_type)type));
-		std::string msg = head + ": " + msg;
+		std::string msg = head + ": " + message;
 #ifdef DEBUG
 		if (type == mutabor::internal_error) {
 			wxFAIL_MSG(msg);
 		}
 #endif
-		fprintf(stderr,"%s\n",msg.c_str());
+		fprintf(stderr, "%s\n", msg.c_str());
 #ifdef DEBUG
-		fprintf(stderr,"%s:%d:\nIn order to debug this message you should watch mutaborGUI::BoxData::runtime_error.\n",
+		fprintf(stderr,"%s:%d:\nIn order to debug this message you should watch mutaborGUI::GUIOutputDeviceBase::runtime_error.\n",
 			__FILE__,
 			__LINE__);
 #endif
@@ -741,15 +741,15 @@ namespace mutaborGUI {
 
 	void GUIInputDeviceBase::runtime_error(int type, const std::string& message) {
 		std::string head(mutabor::to_string((mutabor::error_type)type));
-		std::string msg = head + ": " + msg;
+		std::string msg = head + ": " + message;
 #ifdef DEBUG
 		if (type == mutabor::internal_error) {
 			wxFAIL_MSG(msg);
 		}
 #endif
-		fprintf(stderr,"%s\n", msg.c_str());
+		fprintf(stderr, "%s\n", msg.c_str());
 #ifdef DEBUG
-		fprintf(stderr,"%s:%d:\nIn order to debug this message you should watch mutaborGUI::BoxData::runtime_error.\n",
+		fprintf(stderr,"%s:%d:\nIn order to debug this message you should watch mutaborGUI::GUIInputDeviceBase::runtime_error.\n",
 			__FILE__,
 			__LINE__);
 #endif
