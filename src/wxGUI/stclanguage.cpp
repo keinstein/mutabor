@@ -29,10 +29,9 @@
 * \{
 ********************************************************************/
 #include "src/wxGUI/stclanguage.h"       // Preferences
-#include "src/kernel/box.h"
-using namespace mutabor;
-
+#include "src/kernel/routing/Box.h"
 #include "src/kernel/mutlex.h"
+using namespace mutabor;
 
 namespace mutaborGUI {
 //============================================================================
@@ -370,7 +369,7 @@ namespace mutaborGUI {
 		wxPoint editpos = editor->GetPosition();
 		int laststyled = editor->GetEndStyled();
 		DEBUGLOG(editlexer, 
-			 _T("event.pos = %d, editor pos = (%d,%d), last syled pos = %d"),
+			 ("event.pos = %d, editor pos = (%d,%d), last syled pos = %d"),
 			 pos,editpos.x,editpos.y,laststyled);
 		int style = ERROR;
 		if (laststyled) {
@@ -393,7 +392,7 @@ namespace mutaborGUI {
 		}
 
 		oldlevel = editor->GetFoldLevel(lineNumber) & wxSTC_FOLDLEVELNUMBERMASK;
-		DEBUGLOG(editlexer,_T("laststyed style = %x"),style);
+		DEBUGLOG (editlexer, "laststyed style = %x" ,style);
 
 		editor->StartStyling (laststyled, 0x1f);
 		wxCharBuffer text = editor->GetTextRangeRaw(laststyled,pos);
@@ -532,7 +531,7 @@ namespace mutaborGUI {
 				break;
 			}
 			length = lexer.YYLeng();
-			DEBUGLOG(editlexer,_T("flex style %d for %d chars: %s"),
+			DEBUGLOG (editlexer, "flex style %d for %d chars: %s" ,
 				 style, length, ((wxString::FromUTF8(lexer.YYText(), length)).c_str()));
 			
 			laststyled = SetStyling(style, laststyled, length);
@@ -543,7 +542,7 @@ namespace mutaborGUI {
 			if (!forceheader && level <= oldlevel)
 				levelstatus &= ~wxSTC_FOLDLEVELHEADERFLAG;
 			editor->SetFoldLevel(lineNumber, levelstatus | oldlevel);
-			DEBUGLOG(editlexer,_T("line status: %x, level %d – %d"),
+			DEBUGLOG (editlexer, "line status: %x, level %d – %d" ,
 				 editor->GetFoldLevel(lineNumber),
 				 oldlevel,
 				 editor->GetFoldLevel(lineNumber) & wxSTC_FOLDLEVELNUMBERMASK);
@@ -557,7 +556,7 @@ namespace mutaborGUI {
 				forceheader = false;
 				levelstatus &= ~wxSTC_FOLDLEVELHEADERFLAG;
 				editor -> SetFoldLevel(++lineNumber, tmplevelstatus);
-				DEBUGLOG(editlexer,_T("line status: %x, level %d – %d"),
+				DEBUGLOG (editlexer, "line status: %x, level %d – %d" ,
 					 editor->GetFoldLevel(lineNumber),
 					 oldlevel,
 					 editor->GetFoldLevel(lineNumber) & wxSTC_FOLDLEVELNUMBERMASK);
@@ -583,7 +582,7 @@ namespace mutaborGUI {
 		for (int i = pos ; i< (int) pos+length; i++) {
 			if ((editor->GetStyleAt(i) & 0x1f) != style) {
 				DEBUGLOG(editlexer,
-					 _T("checking style at %d (%d – %d), %x == %x"),
+					 ("checking style at %d (%d – %d), %x == %x"),
 					 (int)i,(int)pos,(int)pos+length,(int)editor->GetStyleAt(i),(int)style);
 				mutASSERT((editor->GetStyleAt(i) & 0x1f) == style);
 			}

@@ -1,70 +1,50 @@
-/** \file 
- ********************************************************************
- * Description
- *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/gmn/GSP.cpp,v 1.6 2011/11/02 14:31:57 keinstein Exp $
- * Copyright:   (c) 2008 TU Dresden
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/11/02 14:31:57 $
- * \version $Revision: 1.6 $
- * \license GPL
- *
- * $Log: GSP.cpp,v $
- * Revision 1.6  2011/11/02 14:31:57  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.5  2011-09-27 20:13:22  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.4  2011-02-20 22:35:56  keinstein
- * updated license information; some file headers have to be revised, though
- *
- *
- *
- ********************************************************************
- * \addtogroup route
- * \{
- ********************************************************************/
+/** \file
+********************************************************************
+* main file of gsp (GMN Soft Parser)
+*
+* Copyright:   (c) 2008 TU Dresden
+* \author Volker Abel or someone else
+* \author Tobias Schlemmer
+* \license GPL
+*
+*
+*
+********************************************************************
+* \addtogroup route
+* \{
+********************************************************************/
 // ##################################################################
-// main file of gsp (GMN Soft Parser)
+//
 // ##################################################################
 
 #include "GSP.h"
 #include "GSP_File.h"
-#ifdef WX
-#include "wx/wxchar.h"
-#else
-#include <string.h>
-#endif
+#include <string>
+#include <cctype>
+using namespace mutabor;
 
 // global data
 
 int GspCurrentLineNr;    // curent line parser deals with
 int GspErrorLineNr;      // line of occured error
 int GspErrorPos;         // column of occured error in line
-mutString GspErrorLine;      // text of error line
+std::string GspErrorLine;      // text of error line
 int GspError;            // error id
 
 // last saved position (before an error occurs)
 int PossibleErrorLineNr;
 int PossibleErrorPos;
-mutString PossibleErrorLine; //[GSP_MAX_LINE];
+std::string PossibleErrorLine; //[GSP_MAX_LINE];
 
-#ifdef WX
-mutString Sep = mutEmptyString;
+std::string Sep = "";
 inline size_t SepPos()
 {
-	size_t a =  (Sep.Len());
+	size_t a =  (Sep.length());
 	return a;
 }
 
 #define SepPos SepPos()
-#else
+#if 0
 char Sep[GSP_MAX_SEP];
 int  SepPos;
 #endif
@@ -73,11 +53,10 @@ int  SepPos;
 char ParaMode;
 char Komma;
 int  NumberLength;
-#ifdef WX
-mutString Brackets = mutEmptyString;
-#define BracketDeep \
-  (Brackets.Len())
-#else
+std::string Brackets = "";
+#define BracketDeep						      \
+	(Brackets.length())
+#if 0
 int  BracketDeep;
 char Brackets[200];
 #endif
@@ -86,52 +65,48 @@ char LastTag;
 
 static int octave;
 
-static mutString accedentials /*[GSP_MAX_LINE]*/;
+static std::string accedentials /*[GSP_MAX_LINE]*/;
 
 static frac duration;
 
-#define NEW_LINE mutT("\n")
-mutChar SepChars[] = mutT(" \t\r\n");
-
-mutChar DelimitChars[] = mutT("{}[]()");
+#define NEW_LINE "\n"
+char SepChars[] = " \t\r\n";
+char DelimitChars[] = "{}[]()";
 
 #define uchar unsigned char
 
 // ##################################################################
 // Work with strings
 
-#ifdef WX
-inline void AddStr(mutString & Target, int Pos, const mutString& Source)
+inline void AddStr(std::string & Target, int Pos, const std::string& Source)
 {
 	mutUnused(Pos);
-	DEBUGLOG2(other,_T("%s + %s"), Target.c_str(), Source.c_str());
+	DEBUGLOG2(other,("%s + %s"), Target.c_str(), Source.c_str());
 	Target += Source;
-	DEBUGLOG2(other,_T("=%s"), Target.c_str());
+	DEBUGLOG2(other,("=%s"), Target.c_str());
 }
 
-inline int CharIn(mutChar c, const mutChar * s)
-
+inline int CharIn(char c, const char * s)
 {
-	DEBUGLOG2(other,_T("'%c' is in '%s' at position %d, returning %d"),
-	          c, s, (int)(mutStrChr(s, c)-s), (int)(mutStrChr(s, c) != NULL));
-	return mutStrChr(s, c) != NULL;
+	DEBUGLOG2(other,("'%c' is in '%s' at position %d, returning %d"),
+	          c, s, (int)(strchr(s, c)-s), (int)(strchr(s, c) != NULL));
+	return strchr(s, c) != NULL;
 }
 
-inline int IsLetter(mutChar c)
-
+inline int IsLetter(char c)
 {
-	return ((mutT('a') <= c) && (c <= mutT('z'))) ||
-	       ((mutT('A') <= c) && (c <= mutT('Z'))) ||
-	       ( c == mutT('_') );
+	return (('a' <= c) && (c <= 'z')) ||
+		(('A' <= c) && (c <= 'Z')) ||
+		( c == ('_') );
 }
 
 /*
-inline int IsNumber(mutChar c)
-{
+  inline int IsNumber(mutChar c)
+  {
   return (mutIsDigit(c));
-}
+  }
 */
-#else
+#if 0
 void AddStr(char *Target, int &Pos, char *Source)
 {
 	for (int i = 0; Source[i]; i++) {
@@ -141,7 +116,7 @@ void AddStr(char *Target, int &Pos, char *Source)
 	Target[Pos] = 0;
 }
 
-int CharIn(mutChar c, const mutString s)
+int CharIn(mutChar c, const std::string s)
 {
 	return mutStrChr(s, c) != 0;
 }
@@ -149,14 +124,14 @@ int CharIn(mutChar c, const mutString s)
 int IsLetter(mutChar c)
 
 {
-	return ((mutT('a') <= c) && (c <= mutT('z'))) ||
-	       ((mutT('A') <= c) && (c <= mutT('Z'))) ||
-	       ( c == mutT('_') );
+	return ((('a') <= c) && (c <= ('z'))) ||
+		((('A') <= c) && (c <= ('Z'))) ||
+		( c == ('_') );
 }
 
 int IsNumber(mutChar c)
 {
-	return (mutT('0') <= c) && (c <= mutT('9'));
+	return (('0') <= c) && (c <= ('9'));
 }
 
 #endif
@@ -167,18 +142,14 @@ int IsNumber(mutChar c)
 int DoError(int nr, int pos = -1)
 {
 	if ( GspError ) return GspError;
-
 	GspError = nr;
-
 	GspErrorLineNr = GspCurrentLineNr;
-
 	if ( pos == -1 )
 		GspErrorPos = CurrentPos;
 	else
 		GspErrorPos = pos;
 
 	GspErrorLine = CurrentLine;
-
 	return nr;
 }
 
@@ -186,17 +157,11 @@ int DoError(int nr, int pos = -1)
 int CheckError(int nr)
 {
 	if ( !nr ) return 0; // no error
-
 	if ( GspError ) return GspError;
-
 	GspError = nr;
-
 	GspErrorLineNr = PossibleErrorLineNr;
-
 	GspErrorPos = PossibleErrorPos;
-
 	GspErrorLine = PossibleErrorLine;
-
 	return nr;
 }
 
@@ -205,7 +170,7 @@ void SavePos()
 {
 	PossibleErrorLineNr = GspCurrentLineNr;
 	PossibleErrorPos = CurrentPos;
-	mutCopyIntoString(PossibleErrorLine, CurrentLine);
+	PossibleErrorLine = CurrentLine;
 }
 
 // ##################################################################
@@ -213,10 +178,10 @@ void SavePos()
 
 #define CHAR0 CurrentLine[CurrentPos]
 #define CHAR1 CurrentLine[CurrentPos+1]
-inline wxString & takesep()
+inline std::string & takesep()
 {
 	Sep += CurrentLine[CurrentPos++];
-	DEBUGLOG2(other,_T("New Sep: %s"), Sep.c_str());
+	DEBUGLOG2(other,("New Sep: %s"), Sep.c_str());
 	return Sep;
 }
 
@@ -226,9 +191,8 @@ inline wxString & takesep()
 // reading separator string
 int GetSep()
 {
-#ifdef WX
-	Sep = mutEmptyString;
-#else
+	Sep = "";
+#if 0
 	SepPos = 0;
 #endif
 	Komma = 0;
@@ -236,64 +200,43 @@ int GetSep()
 	int RemLine = 0;
 
 	while ( !Eof && !GspError ) {
-#ifdef WX
-		DEBUGLOG2(other,_T("%d >= %d? Sep.Len=%d"),
-			  (int)CurrentPos,(int)CurrentLine.Len(),(int)Sep.Len());
-		DEBUGLOG2(other,_T("%s"),CurrentLine.c_str());
+		DEBUGLOG2(other,("%d >= %d? Sep.Len=%d"),
+			  (int)CurrentPos,(int)CurrentLine.length(),(int)Sep.length());
+		DEBUGLOG2(other,("%s"),CurrentLine.c_str());
+		if (CurrentPos >= CurrentLine.length())	{
 
-		if (CurrentPos >= CurrentLine.Len())
-#else
-		mutChar c = CHAR0;
-
-		if ( !c ) // new Line
-#endif
-		{
-
-			if ( ReadNewLine() )
-			{
+			if ( ReadNewLine() ) {
 				DoError(32);
-#ifdef WX
-				Sep = Sep.Left(1);
-				DEBUGLOG2(other,_T("Returning 1 at with (%d) '%s'"),
-				          (int)SepPos, Sep.c_str());
-				return SepPos;
-#else
-				return ( SepPos = 1 );
-#endif
+				Sep = Sep.substr(0,1);
+				DEBUGLOG2(other,("Returning 1 at with (%d) '%s'"),
+					  (int)SepPos, Sep.c_str());
+				return Sep.length();
 			}
 
 			RemLine = 0;
-
 			if ( GspCurrentLineNr != 1 )
-				AddStr(Sep, SepPos, NEW_LINE);
-
+				Sep += NEW_LINE;
 			continue;
 		}
 
-#ifdef WX
-		mutChar c = CHAR0;
+		char c = CHAR0;
 
-#endif
-
-		if ( c == mutT('(') && CHAR1 == mutT('*') )  // comment start
-		{
-			TAKESEP;
-			TAKESEP;
-			RemDeep++;
-			continue;
+		// comment start
+		if ( c == '(' && CHAR1 == '*' ) {
+				TAKESEP;
+				TAKESEP;
+				RemDeep++;
+				continue;
 		}
 
-		if ( RemDeep ) // during a comment
-		{
-
-			if ( c == mutT('*') && CHAR1 == mutT(')') )
-			{
+		// during a comment
+		if ( RemDeep ) {
+			if ( c == '*' && CHAR1 == ')' )	{
 				TAKESEP;
 				TAKESEP;
 				RemDeep--;
 			} else
 				TAKESEP;
-
 			continue;
 		}
 
@@ -302,20 +245,20 @@ int GetSep()
 			continue;
 		}
 
-		if ( c == mutT('%') ) // line comment
-		{
+		// line comment
+		if ( c == '%' ) {
 			RemLine = 1;
 			continue;
 		}
 
-		if ( CharIn(c, SepChars) ) // separating chars
-		{
+		// separating chars
+		if ( CharIn(c, SepChars) ) {
 			TAKESEP;
 			continue;
 		}
 
-		if ( c == mutT(',') && ParaMode ) // sequenz separator
-		{
+		// sequenz separator
+		if ( c == ',' && ParaMode ) {
 			TAKESEP;
 			Komma = 1;
 			continue;
@@ -324,11 +267,9 @@ int GetSep()
 		break;
 	}
 
-	DEBUGLOG2(other,_T("Returning with (%d) '%s'"),(int)SepPos,Sep.c_str());
+	DEBUGLOG2(other,("Returning with (%d) '%s'"),(int)Sep.length(),Sep.c_str());
 
-#ifndef WX
-	Sep[SepPos] = 0;
-#endif
+	Sep += "\0";
 	return SepPos;
 }
 
@@ -345,10 +286,10 @@ long ReadLong(int SignAllowed)
 	minus = false;
 
 	if ( SignAllowed ) {
-		DEBUGLOG2(other,_T("Sign char %c?"), CHAR0);
+		DEBUGLOG2(other,("Sign char %c?"), CHAR0);
 
-		if ( CHAR0 == mutT('+') ) CurrentPos++;
-		else if ( CHAR0 == mutT('-') ) {
+		if ( CHAR0 == ('+') ) CurrentPos++;
+		else if ( CHAR0 == ('-') ) {
 			CurrentPos++;
 			minus = true;
 		}
@@ -356,9 +297,9 @@ long ReadLong(int SignAllowed)
 
 	GetSep();
 
-	while ( mutIsdigit(CHAR0) && !SepPos ) {
-		DEBUGLOG2(other,_T("Number char %c? (a=%ld)"), CHAR0, a);
-		a = a*10 + (CurrentLine[CurrentPos++]-mutT('0'));
+	while ( isdigit(CHAR0) && Sep.empty() ) {
+		DEBUGLOG2(other,("Number char %c? (a=%ld)"), CHAR0, a);
+		a = a*10 + (CurrentLine[CurrentPos++]-('0'));
 		NumberLength++;
 		GetSep();
 	}
@@ -372,24 +313,18 @@ long ReadLong(int SignAllowed)
 int ReadParaNumber()
 {
 	long a = ReadLong(1);
-
-	if ( SepPos || CHAR0 != mutT('.') ) // integer
+	if ( !Sep.empty() || CHAR0 != ('.') ) // integer
 		return CheckError(TagParaInt(a));
 
 	// real
 	CurrentPos++; // comma position
-
 	GetSep();
-
-	mutChar minus1 = minus;
-
+	char minus1 = minus;
 	double r = (double)a;
-
-	if ( SepPos ) // real without fraction part
+	if ( !Sep.empty() ) // real without fraction part
 		return CheckError(TagParaReal(r));
 
 	float b = (double) ReadLong(0);
-
 	for (int i = 1; i <= NumberLength; i++)
 		b = b / 10;
 
@@ -401,38 +336,32 @@ int ReadParaNumber()
 // reads a parameter string
 int ReadParaStr()
 {
-#ifdef WX
-	mutString s /*[GSP_MAX_LINE]*/ = mutT("");
-#else
+	std::string s = "";
+#if 0
 	mutChar s[GSP_MAX_LINE] = "";
 #endif
-	int i = 0;
 	CurrentPos++;
 
-	while ( (CHAR0 != mutT('"') || CHAR1 == mutT('"')) && !Eof ) {
-		if ( !CHAR0 ) // new Line
-		{
+	while ( (CHAR0 != '"' || CHAR1 == '"') && !Eof ) {
+		// new Line
+		if ( !CHAR0 ) {
 			ReadNewLine();
-			AddStr(s, i, NEW_LINE);
+			s += NEW_LINE;
 			continue;
 		}
-		if ( CHAR0 == mutT('"') ) CurrentPos++;
+		if ( CHAR0 == ('"') )
+			CurrentPos++;
 
-#ifdef WX
 		s += CurrentLine[CurrentPos++];
-
-#else
+#if 0
 		s[i++] = CurrentLine[CurrentPos++];
 
 #endif
 	}
 
-	if ( CHAR0 == mutT('"') ) CurrentPos++;
+	if ( CHAR0 == ('"') ) CurrentPos++;
 
-#ifndef WX
-	s[i] = 0;
-
-#endif
+	s += (char)0;
 	GetSep();
 
 	return CheckError(TagParaStr(s));
@@ -441,34 +370,30 @@ int ReadParaStr()
 // reads a tag
 int ReadTag()
 {
-	mutString Name/* [GSP_MAX_LINE] */ = mutT("");
-	mutChar i = 0;
+	std::string Name = "";
+	int i = 0;
 	LastTag = 2; // to have an indicator, wether the last token was a tag
 	CurrentPos++;
 	GetSep();
-#ifdef WX
 	i = CurrentPos;
-#endif
 
 	while ( IsLetter(CHAR0) && !SepPos ) {
-#ifdef WX
 		CurrentPos++;
-#else
+#if 0
 		Name[i++] = CurrentLine[CurrentPos++];
 #endif
 		GetSep();
 	}
 
-#ifdef WX
-	Name = CurrentLine (i,CurrentPos-i);
+	Name = CurrentLine.substr (i,CurrentPos-i);
 
-#else
+#if 0
 	Name[i] = 0;
 
 #endif
 	if ( !GspError ) CheckError(Tag(Name));
 
-	if ( CHAR0 == mutT('<') ) {
+	if ( CHAR0 == '<' ) {
 		CurrentPos++;
 		GetSep();
 
@@ -477,7 +402,7 @@ int ReadTag()
 		ParaMode = 1;
 	}
 
-	if ( CHAR0 == mutT('>') ) {
+	if ( CHAR0 == '>' ) {
 		CurrentPos++;
 		GetSep();
 
@@ -492,31 +417,29 @@ int ReadTag()
 // reads a note
 int ReadNote()
 {
-	mutChar i = 0;
-#ifdef WX
-	mutString Name /* [GSP_MAX_LINE]*/ = wxEmptyString;
-	accedentials = wxEmptyString;
-#else
-	mutChar Name[GSP_MAX_LINE] = mutT("");
+	int i = 0;
+	std::string Name = "";
+	accedentials = "";
+#if 0
+	mutChar Name[GSP_MAX_LINE] = ("");
 	accedentials[0] = 0;
 #endif
 
 	GetSep();
 
-#ifdef WX
 
 	for (i = CurrentPos; IsLetter(CHAR0) && !SepPos; CurrentPos++)
 		GetSep();
 
-	Name = CurrentLine(i,CurrentPos-i);
+	Name = CurrentLine.substr(i,CurrentPos-i);
 
 	GetSep();
 
-#else
+#if 0
 	while ( IsLetter(CHAR0) && !SepPos ) {
 		Name[i++] = CurrentLine[CurrentPos++];
 		GetSep();
-		mutString Name /* [GSP_MAX_LINE]*/ = mutT("");
+		std::string Name /* [GSP_MAX_LINE]*/ = ("");
 
 	}
 
@@ -524,46 +447,40 @@ int ReadNote()
 
 #endif
 
-	DEBUGLOG2(other,_T("SepPos: %d"),(int)SepPos);
+	DEBUGLOG2(other,("SepPos: %d"),(int)SepPos);
 
 	if ( SepPos )
 		return CheckError(Note(Name, accedentials, octave, duration));
 
 	i = 0; // accedentials
 
-	while ( CharIn(CHAR0, mutT("#&")) && !SepPos ) {
-#ifdef WX
+	while ( CharIn(CHAR0, "#&") && !SepPos ) {
 		accedentials += CurrentLine[CurrentPos++];
-#else
+#if 0
 		accedentials[i++] = CurrentLine[CurrentPos++];
 #endif
 		GetSep();
 	}
 
-#ifndef WX
+#if 0
 	accedentials[i] = 0;
 
 #endif
 
-	DEBUGLOG2(other,_T("SepPos: %d"),(int)SepPos);
+	DEBUGLOG2(other,("SepPos: %d"),(int)SepPos);
 
 	if ( SepPos )
 		return CheckError(Note(Name, accedentials, octave, duration));
 
 	size_t cp = CurrentPos; // octave
-
 	int oct = ReadLong(1);
-
 	if ( cp != CurrentPos ) octave = oct;
-
-	if ( SepPos || !CharIn(CHAR0, mutT("/*.")) )
+	if ( SepPos || !CharIn(CHAR0, "/*.") )
 		return CheckError(Note(Name, accedentials, octave, duration));
 
 	int DurOk = 0; // duration
-
 	duration = frac(1,1);
-
-	if ( CHAR0 == mutT('*') ) {
+	if ( CHAR0 == ('*') ) {
 		DurOk = 1;
 		CurrentPos++;
 		duration = frac(ReadLong(0));
@@ -572,10 +489,10 @@ int ReadNote()
 			return DoError(21); // error: nominator expected
 	}
 
-	if ( SepPos || !CharIn(CHAR0, mutT("/.")) )
+	if ( SepPos || !CharIn(CHAR0, "/.") )
 		return CheckError(Note(Name, accedentials, octave, duration));
 
-	if ( CHAR0 == mutT('/') ) {
+	if ( CHAR0 == '/' ) {
 		DurOk = 1;
 		CurrentPos++;
 		duration /= ReadLong(0);
@@ -587,18 +504,15 @@ int ReadNote()
 	if ( SepPos )
 		return CheckError(Note(Name, accedentials, octave, duration));
 
-	if ( CHAR0 == mutT('.') && !DurOk )
+	if ( CHAR0 == '.' && !DurOk )
 		return DoError(23); // error: dotting wihtout duration
 
 	frac add = duration;
 
-	while ( CHAR0 == mutT('.') && !SepPos ) {
+	while ( CHAR0 == '.' && !SepPos ) {
 		add *= frac(1,2);
-
 		duration += add;
-
 		CurrentPos++;
-
 		GetSep();
 	}
 
@@ -614,161 +528,137 @@ int DoParse()
 	ParaMode = 0;
 
 	while ( !Eof ) {
-		mutChar c = CHAR0;
+		char c = CHAR0;
 		SavePos();
 		Komma = 0;
 
 		if ( ParaMode ) {
-			if ( mutIsdigit(c) || ( c == mutT('+')) || ( c == mutT('-')) ) // number parameter
-			{
-
+			if ( isdigit(c) || ( c == '+') || ( c == '-') ) {
+				// number parameter
 				if ( ReadParaNumber() ) return GspError;
-			} else if ( c == mutT('"') ) // string parameter
-			{
-
+			}
+			else if ( c == ('"') ) {
+				// string parameter
 				if ( ReadParaStr() ) return GspError;
-			} else // wrong parameter
-			{
+			}
+			else {
+				// wrong parameter
 				return DoError(10);
 			}
 
-			if ( CHAR0 == mutT('>') ) // end of parameterlist
-			{
+			// end of parameterlist
+			if ( CHAR0 == '>' ) {
 				CurrentPos++;
 				GetSep();
-
 				if ( CheckError(EndParameter()) ) return GspError;
-
 				ParaMode = 0;
-
 				continue;
 			}
-			if ( !Komma ) // , or > expected
-			{
+
+			// , or > expected
+			if ( !Komma ) {
 				return DoError(11);
 			}
-		} else // not ParaMode
-		{
+		}
+		else {
+		// not ParaMode
 			if ( LastTag ) LastTag --;
-
 			if ( CharIn(c, DelimitChars) ) {
-				mutChar i = 0;
-
+				int i = 0;
 				while ( DelimitChars[(size_t)i] != c ) i++;
-
-				if ( i & 1 ) // closing bracket
-				{
-
+				if ( i & 1 ) {
+					// closing bracket
 					if ( !BracketDeep )
 						return DoError(1);
 
-#ifdef WX
-					DEBUGLOGBASE (other,_T(""),
-					              _T("brackets: %s, i= %d, last = %d"),
-					              Brackets.c_str(),
-					              i,
-					              Brackets[Brackets.Len()-1]);
+					DEBUGLOGBASE (other,(""),
+						      ("brackets: %s, i= %d, last = %d"),
+						      Brackets.c_str(),
+						      i,
+						      Brackets[Brackets.length()-1]);
 
-					if ( Brackets[Brackets.Len()-1] != i-1 )
+					if ( Brackets[Brackets.length()-1] != i-1 )
 						return DoError(2 + (int) Brackets[BracketDeep-1]/2);
 
-					Brackets = Brackets.Left(Brackets.Len()-1);
+					Brackets = Brackets.substr(0,Brackets.length()-1);
 
-#else
+#if 0
 					if ( Brackets[--BracketDeep] != i-1 )
 						return DoError(2 + Brackets[BracketDeep]/2);
 
 #endif
 				} else // opening bracket
-#ifdef WX
 					Brackets += i;
 
-#else
-					Brackets[BracketDeep++] = i;
+#if 0
+				Brackets[BracketDeep++] = i;
 
 #endif
 #ifdef GMN_STRICT
-				if ( !LastTag && c == mutT('(') ) return DoError(41); // error: range without tag
+				if ( !LastTag && c == '(' )
+					return DoError(41); // error: range without tag
 
 #endif
 				CurrentPos++;
-
 				GetSep();
-
 				switch ( c ) {
-				case mutT('{'): if ( CheckError(BeginSegment()) ) return GspError;
-
+				case '{': if ( CheckError(BeginSegment()) ) return GspError;
+					break;
+				case '}': if ( CheckError(EndSegment()) ) return GspError;
 					break;
 
-				case mutT('}'): if ( CheckError(EndSegment()) ) return GspError;
-
+				case '[': if ( CheckError(BeginSequenz()) ) return GspError;
 					break;
 
-				case mutT('['): if ( CheckError(BeginSequenz()) ) return GspError;
-
+				case ']': if ( CheckError(EndSequenz()) ) return GspError;
 					break;
 
-				case mutT(']'): if ( CheckError(EndSequenz()) ) return GspError;
-
+				case '(': if ( CheckError(BeginRange()) ) return GspError;
 					break;
 
-				case mutT('('): if ( CheckError(BeginRange()) ) return GspError;
-
-					break;
-
-				case mutT(')'): if ( CheckError(EndRange()) ) return GspError;
-
+				case ')': if ( CheckError(EndRange()) ) return GspError;
 					break;
 				}
 
 				/*		  if ( Komma )
-							 if ( CheckError(NextSequenz()) ) return GspError; */
+						  if ( CheckError(NextSequenz()) ) return GspError; */
 				continue;
 			}
 
-			if ( c == mutT('\\') ) {
+			if ( c == '\\' ) {
 				if ( ReadTag() ) return GspError;
-
 				/*		  if ( !ParaMode && Komma )
-							 if ( CheckError(NextSequenz()) ) return GspError; */
+						  if ( CheckError(NextSequenz()) ) return GspError; */
 				continue;
 			}
 
-			if ( c == mutT('|') ) {
+			if ( c == '|' ) {
 				CurrentPos++;
 				GetSep();
 #ifdef NO_SHORT_BAR
-
-				if ( CheckError(Tag(mutT("bar"))) ) return GspError;
+				if ( CheckError(Tag("bar")) ) return GspError;
 
 #else
-				if ( CheckError(Tag(mutT("|"))) ) return GspError;
-
+				if ( CheckError(Tag("|")) ) return GspError;
 #endif
 				/*		  if ( Komma )
-							 if ( CheckError(NextSequenz()) ) return GspError; */
+						  if ( CheckError(NextSequenz()) ) return GspError; */
 				continue;
 			}
 
-			if ( c == mutT(',') ) {
+			if ( c == ',' ) {
 				if ( Brackets[BracketDeep-1] != 0 )
 					return DoError(24); // unexpected comma
-
 				CurrentPos++;
-
 				GetSep();
-
 				if ( CheckError(Comma()) ) return GspError;
-
 				continue;
 			}
 
 			if ( IsLetter(c) ) {
 				if ( ReadNote() ) return GspError;
-
 				if ( Komma )
 					if ( CheckError(NextSequenz()) ) return GspError;
-
 				continue;
 			}
 
@@ -776,27 +666,26 @@ int DoParse()
 			return DoError(20);
 		}
 	}
-
 	return 0;
 }
 
 // ##################################################################
 // main procedure
 
-int GspParse(const mutString &FileName)
+int GspParse(const std::string &FileName)
 {
 	GspCurrentLineNr = 0;
 	CurrentPos = 0;
-	CurrentLine = _T("");
+	CurrentLine = "";
 
 	GspErrorLineNr = 0;
 	GspErrorPos = 0;
-	GspErrorLine = mutEmptyString;
+	GspErrorLine = "";
 	GspError = 0;
 
 	Eof = 0;
 #ifdef WX
-	Brackets = mutEmptyString;
+	Brackets = "";
 #else
 	BracketDeep = 0;
 #endif

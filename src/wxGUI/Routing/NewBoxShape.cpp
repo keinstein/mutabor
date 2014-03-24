@@ -50,7 +50,7 @@ namespace mutaborGUI {
 	MutIcon& NewMutBoxShape::GetMutIcon()
 	{
 
-		DEBUGLOG (other, _T("Checking icon"));
+		DEBUGLOG (other, "Checking icon" );
 		mutASSERT(NewBoxBitmap.IsOk ());
 		return NewBoxBitmap;
 	}

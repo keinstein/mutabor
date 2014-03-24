@@ -103,11 +103,20 @@ dist_pkgdata_DATA = src/xrc/Mutabor.xrc \
 
 
 bin_PROGRAMS = mutabor
-noinst_LIBRARIES = libmutaborgui.a libmutaborrouting.a libmutaborkernel.a libmutabordebug.a librtmidi.a #libmutaborGUIrouting.a libmutaborGUI.a
-check_LIBRARIES = libmutabordebugtest.a libmutabormaintest.a
+noinst_LIBRARIES = \
+	libmutaborgui.a \
+	libmutaborrouting.a \
+	libmutaborkernel.a \
+	libmutabordebug.a \
+	librtmidi.a #libmutaborGUIrouting.a libmutaborGUI.a
+check_LIBRARIES = \
+	libmutabordebugtest.a \
+	libmutabormaintest.a
 
 if HAVE_CPPUNIT
-check_LIBRARIES += libmutabordebugcppunit.a libmutabormaincppunit.a
+check_LIBRARIES += \
+	libmutabordebugcppunit.a \
+	libmutabormaincppunit.a
 endif
 
 #-------------------------------------------------------------
@@ -297,7 +306,9 @@ libmutaborkernel_a_INDENTHEADERS = \
 		src/kernel/Runtime.h \
 		src/kernel/TabGen.h \
 		src/kernel/treestorage.h \
-		src/kernel/mutlex.h
+		src/kernel/mutlex.h \
+		src/kernel/debug.h \
+		src/kernel/interface_deps.h
 
 
 libmutaborkernel_a_INDENTS = \
@@ -306,10 +317,11 @@ libmutaborkernel_a_INDENTS = \
 		src/kernel/Execute.cpp \
 		src/kernel/Frac.cpp \
 		src/kernel/Hilfs.cpp \
-		src/kernel/Interval.cpp \
+		src/kernel/Interval.c \
 		src/kernel/Parser.cpp \
 		src/kernel/Runtime.cpp \
-		src/kernel/TabGen.cpp 
+		src/kernel/TabGen.cpp \
+		src/kernel/debug.cpp 
 
 noinst_HEADERS += $(libmutaborkernel_a_INLINEHEADERS) $(libmutaborkernel_a_INDENTHEADERS)
 
@@ -325,10 +337,11 @@ libmutaborkernel_a_SOURCES = $(libmutaborkernel_a_INDENTS) \
 #-------------------------------------------------------------
 
 libmutabordebug_a_INLINEHEADERS = \
-		src/wxGUI/generic/mutDebugFlags.h
+		src/kernel/debugFlags.h
 libmutabordebug_a_INDENTHEADERS = \
 		src/wxGUI/generic/mutDebug.h
 libmutabordebug_a_INDENTS = \
+		src/wxGUI/interface_deps_wxWidgets.cpp \
 		src/wxGUI/generic/mutDebug.cpp
 
 noinst_HEADERS += $(libmutabordebug_a_INLINEHEADERS) $(libmutabordebug_a_INDENTHEADERS)
@@ -362,6 +375,7 @@ libmutabormaincppunit_a_INLINEHEADERS =
 libmutabormaincppunit_a_INDENTHEADERS = \
 		src/wxGUI/MutApp.h
 libmutabormaincppunit_a_INDENTS = \
+		src/kernel/interface_deps_cppunit.cpp \
 		src/wxGUI/MutApp.cpp
 
 # no noinst_HEADERS or POTSOURCES needed as we are using common files declared elsewhere
@@ -390,6 +404,7 @@ libmutabordebugtest_a_INDENTHEADERS = \
 
 libmutabordebugtest_a_INDENTS = \
 		$(libmutabordebug_a_INDENTS) \
+		src/kernel/interface_deps_generic.cpp \
 		src/wxGUI/MutApp.cpp
 
 
@@ -400,13 +415,14 @@ libmutabordebugtest_a_CXXFLAGS = $(AM_CXXFLAGS) -DMUTABOR_TEST
 
 
 #-------------------------------------------------------------
-# libmutabordebugtest.a
+# libmutabormaintest.a
 #-------------------------------------------------------------
 
 libmutabormaintest_a_INLINEHEADERS = 
 libmutabormaintest_a_INDENTHEADERS = \
 		src/wxGUI/MutApp.h
 libmutabormaintest_a_INDENTS = \
+		src/kernel/interface_deps_generic.cpp \
 		src/wxGUI/MutApp.cpp
 
 # no noinst_HEADERS or POTSOURCES needed as we are using common files declared elsewhere
@@ -499,7 +515,13 @@ endif
 mutabor_CXXLD=$(CXX)
 mutabor_SHORTNAME = mutabor
 mutabor_LDADD = libmutaborgui.a libmutaborrouting.a libmutaborkernel.a libmutabordebug.a librtmidi.a \
-	$(WXINTLLDADD) $(LDADD) $(AM_LDFLAGS)
+	$(WXINTLLDADD) \
+	$(LDADD) \
+	$(AM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LDFLAGS) \
+	$(BOOST_SYSTEM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIBS) \
+	$(BOOST_SYSTEM_LIBS)
 
 if COND_WINRC
 CLEANFILES +=  $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)

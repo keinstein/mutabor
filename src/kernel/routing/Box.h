@@ -61,6 +61,7 @@
 #include <sstream>
 #include <stdarg.h>
 #include <stdio.h>
+#include "boost/format.hpp"
 
 
 namespace mutaborGUI {
@@ -245,33 +246,33 @@ namespace mutabor {
 			return routefile_id >= Box0 ? Box0 : (BoxType) routefile_id;
 		}
 
-		virtual mutString GetTypeName() {
+		virtual std::string GetTypeName() {
 			switch (GetType()) {
 			case NewBox:
-				return _("New box");
+				return _mut("New box");
 			case NoBox:
-				return _("No box");
+				return _mut("No box");
 			case GmnBox:
-				return _("GUIDO Music Notation box");
+				return _mut("GUIDO Music Notation box");
 			case Box0:
-				return _("Mutabor box");
+				return _mut("Mutabor box");
 			}
-			return _("Unknown box type");
+			return _mut("Unknown box type");
 		}
 
-		virtual mutString GetLabel() {
+		virtual std::string GetLabel() {
 			switch (GetType()) {
 			case NewBox:
-				return _("New box");
+				return _mut("New box");
 			case NoBox:
-				return _("No box");
+				return _mut("No box");
 			case GmnBox:
-				return _("GUIDO box");
+				return _mut("GUIDO box");
 			case Box0:
-				return mutString::Format(_("Box %d"),
-							 get_routefile_id());
+				return (boost::format(_mut("Box %d")) 
+					% get_routefile_id()).str();
 			}
-			return _("Unknown box type");
+			return _mut("Unknown box type");
 		}
 
 		bool IsNormal() {
@@ -400,6 +401,7 @@ namespace mutabor {
 		virtual void Panic(Route r, int type, size_t unique_id);
 		virtual void Reset();
 
+#if 0
 #if defined(_MSC_VER)
 #pragma warning(push) // Save warning settings.
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
@@ -408,6 +410,7 @@ namespace mutabor {
 		virtual void WriteData(wxConfigBase * config) {};
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
+#endif
 #endif
 
 		bool Open() {
@@ -512,8 +515,8 @@ namespace mutabor {
 		// this mimics CompDlg
 		struct CompileCallback {
 			virtual void Refresh() = 0;
-			virtual void SetStatus(mutString status) = 0;
-			virtual void SetMessage(mutString message) = 0;
+			virtual void SetStatus(std::string status) = 0;
+			virtual void SetMessage(std::string message) = 0;
 			virtual void SetStatus(int logics,
 					       int tones,
 					       int tunings,
@@ -599,9 +602,9 @@ namespace mutabor {
 		 *
 		 * \param keys
 		 */
-		void KeyboardAnalysis(const mutStringRef keys) {
+		void KeyboardAnalysis(const std::string keys) {
 			scoped_watchdog lock(this);
-			hidden::KeyboardIn(box,keys.ToUTF8());
+			hidden::KeyboardIn(box,keys.c_str());
 		}
 
 		tone get_frequency(int note);
@@ -637,24 +640,24 @@ namespace mutabor {
 
 #if 0
 		/// Sets the name of the currently active logic
-		/** \param s wxString name of the logic
+		/** \param s std::string name of the logic
 		*/
-		void SetLogicName(const wxString & s) { current_logic = s; }
+		void SetLogicName(const std::string & s) { current_logic = s; }
 		/// Returns the name of the currently active logic
-		/** \return wxString name of the logic
+		/** \return std::string name of the logic
 		 */
-		wxString GetLogicName() const { return current_logic; }
+		std::string GetLogicName() const { return current_logic; }
 
 
 
 		/// Sets the name of the currently active tone system
-		/** \param s wxString name of the tone system
+		/** \param s std::string name of the tone system
 		*/
-		void SetTonesystem(const wxString & s) { current_tonesystem = s; }
+		void SetTonesystem(const std::string & s) { current_tonesystem = s; }
 		/// Returns the name of the currently active tone system
-		/** \return wxString name of the tone system
+		/** \return std::string name of the tone system
 		 */
-		wxString GetTonesystem() const { return current_tonesystem; }
+		std::string GetTonesystem() const { return current_tonesystem; }
 
 
 
@@ -703,9 +706,7 @@ namespace mutabor {
 		 */
 		static void InitializeIds();
 
-#ifdef WX
-		wxString TowxString() const;
-#endif
+		operator std::string() const;
 
 		/// Process an error message (doing the real work)
 		virtual void runtime_error(error_type type, const char * message);
@@ -738,8 +739,8 @@ namespace mutabor {
 		 *
 		 * \return a string containing the collected error messages
 		 */
-		virtual const mutStringRef get_errors() {
-			static mutString nothing = mutEmptyString;
+		virtual const std::string get_errors() {
+			static std::string nothing = "";
 			return nothing;
 		}
 		std::string ActionToString(ChangedCallback::action * action);
@@ -811,8 +812,8 @@ namespace mutabor {
 		int routefile_id;
 		routeListType routes;
 		bool open ;
-		mutString current_logic;
-		mutString current_tonesystem;
+		std::string current_logic;
+		std::string current_tonesystem;
 		int current_key_tonesystem; // 0
 		int current_key_logic; // 1
 		unsigned int updateflags;

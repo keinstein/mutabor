@@ -72,12 +72,12 @@ namespace mutaborGUI {
 		TypeBox = DeviceChoice->GetContainingSizer();
 		PortBox = PortChoice->GetContainingSizer();
 		MidiFileBox = MidiFilePicker->GetContainingSizer();
-		DEBUGLOG (other,_T ("MidiFilePicker Growable: %d"), MidiFilePicker->IsPickerCtrlGrowable());
+		DEBUGLOG (other, ("MidiFilePicker Growable: %d"), MidiFilePicker->IsPickerCtrlGrowable());
 		if (MidiFilePicker->HasTextCtrl()) {
-			DEBUGLOG (other,_T ("MidiFileTextCtrl Growable: %d"), 
+			DEBUGLOG (other, ("MidiFileTextCtrl Growable: %d"), 
 				  MidiFilePicker->IsTextCtrlGrowable());
 			MidiFilePicker->SetTextCtrlGrowable(true);
-			DEBUGLOG (other,_T ("MidiFileTextCtrl Growable: %d"), 
+			DEBUGLOG (other, ("MidiFileTextCtrl Growable: %d"), 
 				  MidiFilePicker->IsTextCtrlGrowable());
 		}
 		GuidoFileBox = GuidoFilePicker->GetContainingSizer();
@@ -151,14 +151,14 @@ namespace mutaborGUI {
 		int Type = FindType (type);
 		DeviceChoice -> SetSelection (Type);
 
-		DEBUGLOG (other, _T("%d"),type);
+		DEBUGLOG (other, "%d" ,type);
 		wxSizer * sizer = GetSizer();
 
-		DEBUGLOG (other, _T("%d"),DTMidiPort);
+		DEBUGLOG (other, "%d" ,DTMidiPort);
 		sizer->Show(PortBox, type == DTMidiPort, true);
-		DEBUGLOG (other, _T("%d"),DTMidiFile);
+		DEBUGLOG (other, "%d" ,DTMidiFile);
 		sizer->Show(MidiFileBox, (type == DTMidiFile), true);
-		DEBUGLOG (other, _T("%d"),DTGis);
+		DEBUGLOG (other, "%d" ,DTGis);
 		sizer->Show(GuidoFileBox, (type == DTGis) , true);
 
 		// We need Layout here, since otherwise the input boxex are not
@@ -181,7 +181,7 @@ namespace mutaborGUI {
 
 	void InputDevDlg::OnFileChanged ( wxFileDirPickerEvent & event ) 
 	{
-		DEBUGLOG (other,_T ("Path changed: %s"),event.GetPath().c_str());
+		DEBUGLOG (other, ("Path changed: %s"),event.GetPath().c_str());
 		GetSizer()->SetSizeHints(this);
 		Fit();
 	}
@@ -191,7 +191,7 @@ namespace mutaborGUI {
 	{
 		TypeData * Data;
 		for (unsigned int i = 0; i < DeviceChoice->GetCount(); i++) {
-			DEBUGLOG (other,_T ("Choice #%d of %d"),i, DeviceChoice->GetCount());
+			DEBUGLOG (other, ("Choice #%d of %d"),i, DeviceChoice->GetCount());
 			Data = (TypeData *)DeviceChoice->GetClientObject(i);
 			if (Data) {
 				if (*Data == t) return i;

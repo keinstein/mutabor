@@ -35,9 +35,9 @@
 #define MU32_Hilfs_H
 #endif
 
-// ---------------------------------------------------------------------------
-// headers
-// ---------------------------------------------------------------------------
+/* --------------------------------------------------------------------------- */
+/* headers */
+/* --------------------------------------------------------------------------- */
 
 #include "Defs.h"
 #include "box.h"
@@ -45,7 +45,7 @@
 #ifndef MU32_Hilfs_H_PRECOMPILED
 #define MU32_Hilfs_H_PRECOMPILED
 
-// system headers which do seldom change
+/* system headers which do seldom change */
 #include <stdio.h>
 
 
@@ -87,4 +87,4 @@ void xde_alloca (void * pointer);
 #endif /* MU32_HILFS_H */
 
 
-///\}
+/** \} */

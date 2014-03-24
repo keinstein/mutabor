@@ -121,7 +121,9 @@ MutFileDataType FileNameDialog(wxWindow * parent,
 
 #include "mutDebug.h"
 
+#if 0
 // STUBs should generate error messages even in non-debug mode
+
 #define STUBBASE(stubtype,typestr) \
 do { \
 	std::cerr << stubtype << " in " ; \
@@ -142,15 +144,7 @@ do { \
 #define STUBCT(type) STUBBASE("stub function",((const char *) (typeid(type).name())))
 /// functions or code that has to be written -- use for normal class members
 #define STUBC STUBCT(*this)
-
-#define UNREACHABLE STUBBASE("unreachable code","")
-#define UNREACHABLECT(type) STUBBASE("unreachable code",((const char *) (typeid(type).name())))
-#define UNREACHABLEC UNREACHABLECT(*this)
-
-#define ABSTRACT_FUNCTION STUBBASE("unreachable function","")
-#define ABSTRACT_FUNCTIONCT(type) STUBBASE("unreachable function",((const char *) (typeid(type).name())))
-#define ABSTRACT_FUNCTIONC ABSTRACT_FUNCTIONCT(*this)
-
+#endif
 
 /** 
  * Call update on a Window hierarchy recursively.

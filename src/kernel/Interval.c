@@ -50,8 +50,10 @@ extern "C" {
 static double get_intervall_wert (mutabor_box_type * box,
 				  const char * name)
 {
-
 	struct intervall *lauf;
+
+	mutASSERT(box);
+	DEBUGLOG2(kernel_tabgen,"name = %s", name);
 
 	for (lauf = box->file->list_of_intervalle; lauf; lauf = lauf -> next) {
 		if ( ! strcasecmp (name, lauf->name)) {
@@ -148,7 +150,8 @@ static void belege_intervalle (struct intervall **intervalle, struct intervall *
 
 static int intervall_nummer (mutabor_box_type * box, const char *name)
 {
-	for (size_t i=0; i<box->file->interval_count; i++)
+	size_t i;
+	for (i=0; i<box->file->interval_count; i++)
 		if ( ! strcasecmp (name, box->file->check_intervals[i]->name)) return i;
 
 	mutabor_error_message(box,
@@ -161,7 +164,8 @@ static int intervall_nummer (mutabor_box_type * box, const char *name)
 
 static void test_zyklen (mutabor_box_type * box, int startknoten)
 {
-	for (size_t i=0; i<box->file->interval_count; i++) {
+	size_t i;
+	for (i=0; i<box->file->interval_count; i++) {
 		if (adjacent (box->file, startknoten, i)) {
 			if (box->file->visited_intervals [i]) {
 				mutabor_error_message(box,
@@ -227,7 +231,7 @@ void berechne_intervalle_absolut (mutabor_box_type * box, struct intervall * lis
 
 	box->file->interval_count = intervall_list_laenge (list_of_intervalle);
 
-	box->file->check_intervals = (intervall* *) xalloca (box, sizeof(struct intervall *) * box->file->interval_count);
+	box->file->check_intervals = (struct intervall* *) xalloca (box, sizeof(struct intervall *) * box->file->interval_count);
 	box->file->visited_intervals = (char*) xalloca (box, sizeof(char) * box->file->interval_count);
 	box->file->interval_matrix = (char*) xalloca (box, sizeof(char) * box->file->interval_count * box->file->interval_count);
 
@@ -358,7 +362,7 @@ void check_komplex_intervall (mutabor_box_type * box,
 					      internal_error,
 					      _("Undefined interval type %d for interval %s (%s:%d)."),
 					      help->intervall_typ,
-					      _T(__FILE__), 
+					      (__FILE__), 
 					      __LINE__);
 			return;
 		}
@@ -369,4 +373,4 @@ void check_komplex_intervall (mutabor_box_type * box,
 #ifdef __cplusplus
 }
 #endif
-///\}
+/** \} */

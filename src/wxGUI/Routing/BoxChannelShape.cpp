@@ -58,7 +58,7 @@ namespace mutaborGUI {
 //		m_parent->SetFocus();// we don't need the focus, currently
 #if 0
 		this->MutIconShape::GotFocus();
-		DEBUGLOG (other, _T(""));
+		DEBUGLOG (other, "" );
 		UpdateBorder(wxBORDER_NONE);
 #endif
 	}
@@ -73,7 +73,7 @@ namespace mutaborGUI {
 	{
 		DetachChannel();
 /*
-  DEBUGLOG(routing,_T("Parent is %p"),m_parent);
+  DEBUGLOG (routing, "Parent is %p" ,m_parent);
   if (m_parent) {
   wxSizer * sizer = GetContainingSizer();
   if (sizer)
@@ -140,7 +140,7 @@ namespace mutaborGUI {
 	MutIcon& MutBoxChannelShape::GetMutIcon()
 	{
 
-		DEBUGLOG (other, _T("Checking icons"));
+		DEBUGLOG (other, "Checking icons" );
 
 		mutASSERT(ActiveChannelBitmap.IsOk ()
 			  && PassiveChannelBitmap.IsOk ());
@@ -168,7 +168,7 @@ namespace mutaborGUI {
 	void MutBoxChannelShape::Add(mutabor::Route & r)
 	{
 		if (route) UNREACHABLEC;
-		DEBUGLOG(smartptr,_T("Adding route %p"),(void *)r.get());
+		DEBUGLOG (smartptr, "Adding route %p" ,(void *)r.get());
 		route = r;
 		Icon = GetMutIcon();
 	}
@@ -204,7 +204,7 @@ namespace mutaborGUI {
 					  mutabor::Route & newroute) {
 		bool retval = oldroute == route;
 		if (retval) {
-			DEBUGLOG(smartptr,_T("Replacing route %p by %p"),
+			DEBUGLOG (smartptr, "Replacing route %p by %p" ,
 				 (void *)oldroute.get(), (void *)newroute.get());
 
 			route = newroute;
@@ -242,7 +242,7 @@ namespace mutaborGUI {
 		if (!retval)
 			UNREACHABLEC;
 		if (retval) {
-			DEBUGLOG(smartptr,_T("removing route %p"),(void *)r.get());
+			DEBUGLOG (smartptr, "removing route %p" ,(void *)r.get());
 			route.reset();
 		}
 		return retval;
@@ -311,7 +311,7 @@ namespace mutaborGUI {
 			TRACET(MutBoxChannelShape);
 			route = shape->route;
 			DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
-				     _T("set intermediete route %p (%d)"),
+				     ("set intermediete route %p (%d)"),
 				     (void *)route.get(),
 				     (int)intrusive_ptr_get_refcount(route.get()));
 		} else
@@ -344,7 +344,7 @@ namespace mutaborGUI {
 			TRACET(MutBoxChannelShape);
 		}
 		DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
-			     _T("End of function. Destruct pointer to  %p (%d)"),
+			     ("End of function. Destruct pointer to  %p (%d)"),
 			     (void*)route.get(),
 			     (int)intrusive_ptr_get_refcount(route.get()));
 	}
@@ -361,7 +361,7 @@ namespace mutaborGUI {
 		Route  route;
 		if (shape) {
 			DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
-				     _T("setting intermediete route %p"),
+				     ("setting intermediete route %p"),
 				     (void *)shape->route.get());
 			route = shape->route;
 		} else
@@ -389,7 +389,7 @@ namespace mutaborGUI {
 		if (!found)
 			panel->AddBox(NULL, true);
 		DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
-			     _T("End of function: destruct pointer to  %p"),
+			     ("End of function: destruct pointer to  %p"),
 			     (void *)route.get());
 	}
 
@@ -411,7 +411,7 @@ namespace mutaborGUI {
 		Route  route;
 		if (shape) {
 			DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
-				     _T("setting intermediete route %p"),
+				     ("setting intermediete route %p"),
 				     (void*)shape->route.get());
 			route = shape->route;
 		} else
@@ -438,7 +438,7 @@ namespace mutaborGUI {
 					  device);
 		}
 		DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
-			     _T("End of function destruct pointer to  %p"),
+			     ("End of function destruct pointer to  %p"),
 			     (void*)route.get());
 	}
 
@@ -459,7 +459,7 @@ namespace mutaborGUI {
 			return;
 		}
 
-		DEBUGLOG (dialog, _T("Setting route channel: old: %d; new: %d"),
+		DEBUGLOG (dialog, "Setting route channel: old: %d; new: %d" ,
 			  route->GetActive(),
 			  panel->GetActive());
 		route->SetActive(panel->GetActive());
@@ -649,10 +649,10 @@ namespace mutaborGUI {
 		mutASSERT(r.width > 0);
 		mutASSERT(r.height > 0);
 		DEBUGLOG (routinggui,
-			  _T("Rect: (%d,%d) -- (%d,%d)"),
+			  ("Rect: (%d,%d) -- (%d,%d)"),
 			  r.x,r.y,r.x+r.width,r.y+r.height);
 		DEBUGLOG (routinggui,
-			  _T("Points: i = (%d,%d), o = (%d, %d)"),i.x,i.y,o.x,o.y);
+			  ("Points: i = (%d,%d), o = (%d, %d)"),i.x,i.y,o.x,o.y);
 //	wxRect ir = GetIconRect();
 
 		wxPoint savepoint(0, r.height/2);

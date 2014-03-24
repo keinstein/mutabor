@@ -31,7 +31,6 @@
 //#include "src/kernel/GrafKern.h"
 #include "src/kernel/MidiKern.h"
 #include "src/kernel/routing/Route-inlines.h"
-#include "wx/msgdlg.h"
 #include <boost/foreach.hpp>
 
 
@@ -63,9 +62,9 @@ namespace mutabor {
 	 */
 	void OutputMidiPort::Save (tree_storage & config)
 	{
-		config.Write(_T("Device Id"),DevId);
-		config.Write(_T("Device Name"),Name);
-		config.Write(_T("Bending Range"),GetBendingRange());
+		config.Write("Device Id",DevId);
+		config.Write("Device Name",Name);
+		config.Write("Bending Range",GetBendingRange());
 	}
 
         /// Save route settings (filter settings) for a given route
@@ -77,18 +76,17 @@ namespace mutabor {
 	void OutputMidiPort::Save (tree_storage & config, const RouteClass * route)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
 		mutASSERT(route);
 
-		config.toLeaf(_T("Midi Output"));
-		config.Write(_T("Avoid Drum Channel"), route->OutputAvoidDrumChannel());
-		config.Write(_T("Channel Range From"), route->GetOutputFrom());
-		config.Write(_T("Channel Range To"), route->GetOutputTo());
+		config.toLeaf("Midi Output");
+		config.Write("Avoid Drum Channel", route->OutputAvoidDrumChannel());
+		config.Write("Channel Range From", route->GetOutputFrom());
+		config.Write("Channel Range To", route->GetOutputTo());
 		config.toParent();
 		mutASSERT(oldpath == config.GetPath());
 	}
-
 
 /// Load current device settings from a tree storage
 /** \argument config (tree_storage) storage class, where the data will be loaded from.
@@ -96,12 +94,14 @@ namespace mutabor {
 	void OutputMidiPort::Load (tree_storage & config)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		DevId = config.Read(_T("Device Id"),0);
-		Name = config.Read(_T("Device Name"), rtmidiout?(rtmidiout->getPortCount()?
-				   muT(rtmidiout->getPortName(0).c_str()):wxString(_("Unknown"))):wxString(_("no device")));
-		SetBendingRange(config.Read(_T("Bending Range"),DEFAULT_BENDING_RANGE));
+		DevId = config.Read("Device Id",0);
+		Name = config.Read("Device Name", rtmidiout?(rtmidiout->getPortCount()?
+							     rtmidiout->getPortName(0).c_str()
+							     :_mut("Unknown"))
+				   :_mut("no device"));
+		SetBendingRange(config.Read("Bending Range",DEFAULT_BENDING_RANGE));
 		mutASSERT(oldpath == config.GetPath());
 	}
 
@@ -114,14 +114,14 @@ namespace mutabor {
 	void OutputMidiPort::Load (tree_storage & config, RouteClass * route)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
 		mutASSERT(route);
-		config.toLeaf(_T("Midi Output"));
-		route->OutputAvoidDrumChannel(config.Read(_T("Avoid Drum Channel"), true));
+		config.toLeaf("Midi Output");
+		route->OutputAvoidDrumChannel(config.Read("Avoid Drum Channel", true));
 		int oldfrom, oldto;
-		route->SetOutputFrom(oldfrom = config.Read(_T("Channel Range From"), GetMinChannel()));
-		route->SetOutputTo(oldto = config.Read(_T("Channel Range To"), GetMaxChannel()));
+		route->SetOutputFrom(oldfrom = config.Read("Channel Range From", GetMinChannel()));
+		route->SetOutputTo(oldto = config.Read("Channel Range To", GetMaxChannel()));
 		bool correct = true;
 		if (oldfrom < GetMinChannel()) {
 			correct = false;
@@ -139,52 +139,50 @@ namespace mutabor {
 			correct = false;
 			route->SetOutputTo(GetMaxChannel());
 		}
-		if (!correct)
-			wxMessageBox(wxString::Format(_("The Channel range %d--%d of the MIDI output device %s must be inside %d--%d. The current route had to be corrected."),
-						      oldfrom,oldto,GetName().c_str(),GetMinChannel(),GetMaxChannel()),
-				     _("Warning loading route"),wxICON_EXCLAMATION);
+		if (!correct) {
+			runtime_error(mutabor::warning,
+				      boost::str(boost::format("The Channel range %d--%d of the MIDI output device %s must be inside %d--%d. The current route had to be corrected.") 
+					  % oldfrom % oldto % GetName().c_str() % GetMinChannel() % GetMaxChannel()));
+		}
 		config.toParent();
 		mutASSERT(oldpath == config.GetPath());
 	}
 
 
-
 #if 0
 	void OutputMidiPort::ReadData(wxConfigBase * config)
 	{
-		midi.SetBendingRange(config->Read(_("Bending_Range"),
+		midi.SetBendingRange(config->Read(_mut("Bending_Range"),
 						  DEFAULT_BENDING_RANGE));
 	}
 
 	void OutputMidiPort::WriteData(wxConfigBase * config)
 	{
-		config->Write(_("Bending_Range"), (long)bending_range);
+		config->Write(_mut("Bending_Range"), (long)bending_range);
 	}
 #endif
 
-#ifdef WX
-	wxString OutputMidiPort::TowxString() const {
-		wxString channelString;
+	OutputMidiPort::operator std::string() const {
+		std::string channelString;
 		for (int i = 0 ; i<16; i++) {
-			channelString += wxString::Format(_T(" ({not implemented},%d,[in=%d,p=%d,b=%d,u=%d,ch=%d])"),
-							  ton_auf_kanal[i].active,
-							  ton_auf_kanal[i].inkey,
-							  ton_auf_kanal[i].outkey.pitch,
-							  ton_auf_kanal[i].outkey.bend,
-							  (int)ton_auf_kanal[i].unique_id,
-							  (int)ton_auf_kanal[i].channel
-				);
+			channelString += boost::str(boost::format(" ({not implemented},%d,[in=%d,p=%d,b=%d,u=%d,ch=%d])")
+								  % ton_auf_kanal[i].active 
+								  % ton_auf_kanal[i].inkey
+								  % ton_auf_kanal[i].outkey.pitch
+								  % ton_auf_kanal[i].outkey.bend
+								  % (int)ton_auf_kanal[i].unique_id
+								  % (int)ton_auf_kanal[i].channel
+								  );
 		}
-		return OutputDeviceClass::TowxString()
-			+ wxString::Format(_T("\
+		return OutputDeviceClass::operator std::string()
+			+ boost::str(boost::format("\
 OutputMidiPort:\n\
    channels ({sound,sustain,MSB,LSB,pitch},KeyDir,[tasta,outkey,id]):\n\
              %s\n\
    nKeyOn   = %d\n\
-"), (const wxChar *)channelString, nKeyOn);
+") % channelString % nKeyOn);
 
 	}
-#endif
 
 // InputMidiPort -------------------------------------------------------
 
@@ -226,10 +224,10 @@ OutputMidiPort:\n\
 	void InputMidiPort::Save (tree_storage & config)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		config.Write(_T("Device Id"),   DevId);
-		config.Write(_T("Device Name"), Name);
+		config.Write("Device Id",   DevId);
+		config.Write("Device Name", Name);
 		mutASSERT(oldpath == config.GetPath());
 	}
 
@@ -242,18 +240,18 @@ OutputMidiPort:\n\
 	void InputMidiPort::Save (tree_storage & config, const RouteClass * route)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		config.toLeaf(_T("Midi Input"));
-		config.Write(_T("Filter Type"), route->GetType());
+		config.toLeaf("Midi Input");
+		config.Write("Filter Type", route->GetType());
 		switch(route->GetType()) {
 		case RTchannel:
-			config.Write(_T("Channel From"), route->GetInputFrom());
-			config.Write(_T("Channel To"), route->GetInputTo());
+			config.Write("Channel From", route->GetInputFrom());
+			config.Write("Channel To", route->GetInputTo());
 			break;
 		case RTstaff:
-			config.Write(_T("Key From"), route->GetInputFrom());
-			config.Write(_T("Key To"), route->GetInputTo());
+			config.Write("Key From", route->GetInputFrom());
+			config.Write("Key To", route->GetInputTo());
 			break;
 		case RTelse:
 		case RTall:
@@ -270,13 +268,15 @@ OutputMidiPort:\n\
 	void InputMidiPort::Load (tree_storage & config)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		DevId = config.Read(_T("Device Id"), 0);
-		Name  = config.Read(_T("Device Name"),
-				    (rtmidiin?(
-				    rtmidiin->getPortCount()?
-				    muT(rtmidiin->getPortName(0).c_str()):wxString(_("Unknown"))):wxString(_("no device"))));
+		DevId = config.Read("Device Id", 0);
+		Name  = config.Read("Device Name",
+				    (rtmidiin?
+				     (rtmidiin->getPortCount()?
+				      rtmidiin->getPortName(0).c_str()
+				      :"Unknown")
+				     :"no device"));
 		mutASSERT(oldpath == config.GetPath());
 	}
 
@@ -289,16 +289,16 @@ OutputMidiPort:\n\
 	void InputMidiPort::Load (tree_storage & config, RouteClass * route)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		config.toLeaf(_T("Midi Input"));
-		route->SetType((RouteType) config.Read(_T("Filter Type"), (int) RTchannel));
+		config.toLeaf("Midi Input");
+		route->SetType((RouteType) config.Read("Filter Type", (int) RTchannel));
 		switch(route->GetType()) {
 		case RTchannel:
 		{
 			int oldfrom, oldto;
-			route->SetInputFrom(oldfrom = config.Read(_T("Channel From"), GetMinChannel()));
-			route->SetInputTo(oldto = config.Read(_T("Channel To"), GetMaxChannel()));
+			route->SetInputFrom(oldfrom = config.Read("Channel From", GetMinChannel()));
+			route->SetInputTo(oldto = config.Read("Channel To", GetMaxChannel()));
 			bool correct = true;
 			if (oldfrom < GetMinChannel()) {
 				correct = false;
@@ -317,17 +317,20 @@ OutputMidiPort:\n\
 				route->SetInputTo(GetMaxChannel());
 			}
 			if (!correct)
-				wxMessageBox(wxString::Format(_("The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. The current route had to be corrected."),
-							      oldfrom,oldto,GetName().c_str(),GetMinChannel(),GetMaxChannel()),
-					     _("Warning loading route"),wxICON_EXCLAMATION);
+				runtime_error(false,boost::str(boost::format(_mut("The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. The current route had to be corrected."))
+							       % oldfrom
+							       % oldto
+							       % GetName().c_str()
+							       % GetMinChannel()
+							       % GetMaxChannel()));
 			break;
 		}
-
+		
 		case RTstaff:
 		{
 			int oldfrom, oldto;
-			route->SetInputFrom(oldfrom = config.Read(_T("Key From"), GetMinKey()));
-			route->SetInputTo(oldto = config.Read(_T("Key To"), GetMaxKey()));
+			route->SetInputFrom(oldfrom = config.Read(("Key From"), GetMinKey()));
+			route->SetInputTo(oldto = config.Read(("Key To"), GetMaxKey()));
 			bool correct = true;
 			if (oldfrom < GetMinKey()) {
 				correct = false;
@@ -345,10 +348,12 @@ OutputMidiPort:\n\
 				correct = false;
 				route->SetInputTo(GetMaxKey());
 			}
-			if (!correct)
-				wxMessageBox(wxString::Format(_("The Channel range %d--%d of the MIDI input device must be inside %d--%d. The current route had to be corrected."),
-							      oldfrom,oldto, GetName().c_str(),GetMinKey(), GetMaxKey()),
-					     _("Warning loading route"),wxICON_EXCLAMATION);
+			if (!correct) {
+				runtime_error(false,
+					      boost::str(boost::format("The Channel range %d--%d of the MIDI input device must be inside %d--%d. The current route had to be corrected.")
+							 % oldfrom % oldto %  GetName().c_str() 
+							 % GetMinKey() %  GetMaxKey()));
+			}
 			break;
 		}
 		case RTelse:
@@ -369,31 +374,33 @@ OutputMidiPort:\n\
 		try {
 			hMidiIn = new RtMidiIn(RtMidi::UNSPECIFIED, PACKAGE_STRING);
 		} catch (RtError &error) {
-			runtime_error(false,
-				      _("Can not open Midi input device no. %d (%s)."),
-				      DevId,
-				      (const mutChar *)(GetName().c_str()));
+			runtime_error(mutabor::warning,
+				      boost::str(boost::format(_mut("Can not open Midi input device no. %d (%s):\n%s"))
+						 % DevId
+						 % (GetName().c_str())
+						 % error.what()));
 			return false;
 		}
 
 		try {
-			hMidiIn->openPort(DevId,(const char *)(GetName().ToUTF8()));
+			hMidiIn->openPort(DevId,(GetName().c_str()));
 		} catch (RtError &error) {
-			runtime_error(false,
-				      _("Can not open Midi input device no. %d (%s):\n%s"),
-				      DevId,
-				      (const mutChar *)(GetName().c_str()),
-				      error.what());
+			runtime_error(mutabor::warning,
+				      boost::str(boost::format(_mut("Can not open Midi input device no. %d (%s):\n%s"))
+						 % DevId
+						 % (GetName().c_str())
+						 % error.what()));
 			return false;
 		}
 
 		try {
 			hMidiIn->setCallback(mycallback, this);
 		} catch (RtError & error) {
-			runtime_error(false,
-				      _("Can not open Midi input device no. %d (%s)."),
-				      DevId,
-				      (const mutChar *)(GetName().c_str()));
+			runtime_error(mutabor::warning,
+				      boost::str(boost::format(_mut("Can not open Midi input device no. %d (%s):\n%s"))
+						 % DevId
+						 % (GetName().c_str())
+						 % error.what()));
 		}
 
 #else
@@ -421,24 +428,22 @@ OutputMidiPort:\n\
 	}
 
 
+	
 
-
-#ifdef WX
-	wxString InputMidiPort::TowxString() const {
-		wxString channelString;
+	 InputMidiPort::operator std::string() const {
+		std::string channelString;
 		for (int i = 0; i < 16; i++) {
-			channelString += wxString::Format(_T(" {not implemented}"));
+			channelString += " {not implemented}";
 		}
-		return InputDeviceClass::TowxString()
-			+wxString::Format(_T("\
+		return InputDeviceClass::operator std::string()
+			+ boost::str(boost::format("\
 InputMidiPort:\n\
    hMidiIn = %p\n\
    channels {sound,sustain,MSB,LSB,pitch}:\n\
              %s\n\
-"), (void*)hMidiIn, (const wxChar *)channelString);
+") %  (void*)hMidiIn % channelString);
 
 	}
-#endif
 
 
 	InputMidiPort::proceed_bool InputMidiPort::shouldProceed(Route R, const std::vector<unsigned char > * midiCode, int data)
@@ -469,9 +474,9 @@ InputMidiPort:\n\
 
 	void InputMidiPort::Proceed(const std::vector<unsigned char > * midiCode, int data, int channel_offset) {
 		/** \todo implement system messages */
-		BYTE MidiChannel = (midiCode->at(0) & 0x0F) + channel_offset;
-		BYTE MidiStatus  = midiCode->at(0);
-		DEBUGLOG (midifile, _T("Status: %x"), MidiStatus);
+		uint8_t MidiChannel = (midiCode->at(0) & 0x0F) + channel_offset;
+		uint8_t MidiStatus  = midiCode->at(0);
+		DEBUGLOG (midifile, "Status: %x" , MidiStatus);
 
 		switch ( MidiStatus ) {
 		case midi::SYSTEM_UNDEFINED1:
@@ -522,7 +527,7 @@ InputMidiPort:\n\
 
 
 
-	mutabor::OutputDeviceClass * MidiPortFactory::DoCreateOutput(const mutStringRef name,
+	mutabor::OutputDeviceClass * MidiPortFactory::DoCreateOutput(const std::string & name,
 								     int id) const
 	{
 		OutputMidiPort * port = new OutputMidiPort(name,id);
@@ -532,7 +537,7 @@ InputMidiPort:\n\
 
 /*
 	mutabor::OutputDeviceClass *  MidiPortFactory::DoCreateOutput (int devId,
-							   const mutStringRef name,
+							   const std::string name,
 							   MutaborModeType mode,
 							   int id) const
 	{
@@ -555,7 +560,7 @@ InputMidiPort:\n\
 	}
 */
 
-	mutabor::InputDeviceClass *  MidiPortFactory::DoCreateInput (const mutStringRef name,
+	mutabor::InputDeviceClass *  MidiPortFactory::DoCreateInput (const std::string & name,
 								     MutaborModeType mode,
 								     int id) const
 	{
@@ -605,5 +610,4 @@ InputMidiPort:\n\
 	}
 
 }
-
 ///\}

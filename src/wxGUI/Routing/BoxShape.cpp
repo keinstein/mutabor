@@ -52,7 +52,7 @@ namespace mutaborGUI {
 		wxSize s  = box->DoGetBestSize();
 		mutASSERT(s.x > 0);
 		mutASSERT(s.y > 0);
-		DEBUGLOGTYPE(other,*box,_T("Best Size: %dx%d"),s.x,s.y);
+		DEBUGLOGTYPE(other,*box,("Best Size: %dx%d"),s.x,s.y);
 		return s;
 	}
 
@@ -186,7 +186,7 @@ namespace mutaborGUI {
 			wxSize s = channel->GetBestSize();
 			mutASSERT(s.x > 0);
 			mutASSERT(s.y > 0);
-			DEBUGLOG (other, _T("channel best size: %dx%d"),s.x,s.y);
+			DEBUGLOG (other, "channel best size: %dx%d" ,s.x,s.y);
 #endif
 			InvalidateBestSize();
 			SetInitialSize(wxDefaultSize);
@@ -220,7 +220,7 @@ namespace mutaborGUI {
 #if 0
 	MutBoxChannelShape * MutBoxShape::AddChannel(Route & route)
 	{
-		DEBUGLOG (other, _T("Adding route %p to window %p"),(void*)route.get(), (void*)m_parent);
+		DEBUGLOG (other, "Adding route %p to window %p" ,(void*)route.get(), (void*)m_parent);
 		MutBoxChannelShape * channel =
 			GUIRouteFactory::CreateBoxChannelShape(route,this);
 		return Add(channel);
@@ -275,7 +275,7 @@ namespace mutaborGUI {
 		wxPoint pos4 = rect2.GetTopLeft();
 		wxPoint pos5 = GetParent()->ClientToScreen(pos4);
 		wxSize parentborder = (GetSize()-GetClientSize()).Scale(0.5,0.5);
-		DEBUGLOG(routinggui,_T("screen pos (%d,%d), client pos (%d,%d)"),
+		DEBUGLOG (routinggui, "screen pos (%d,%d), client pos (%d,%d)" ,
 			 pos1.x,pos1.y,pos2.x,pos2.y);
 		mutASSERT(pos1 == pos2 + parentborder);
 		mutASSERT(pos1 == pos3);

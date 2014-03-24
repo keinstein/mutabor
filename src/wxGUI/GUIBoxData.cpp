@@ -97,7 +97,7 @@ namespace mutaborGUI {
 				((id & 0x800) >> 7) | ((id & 0x4000) >> 11) | ((id & 0x20000) >> 15) |
 				((id & 0x100000) >> 19) | ((id & 0x800000) >> 23);
 			b = b?b-1:0;
-			DEBUGLOG2(other,_T("Box %d color %x,%x,%x"),id-1,r,g,b);
+			DEBUGLOG2(other,("Box %d color %x,%x,%x"),id-1,r,g,b);
 			if (r+b+g < 0x180) 
 				text_colour = *wxWHITE;
 			else
@@ -259,24 +259,24 @@ namespace mutaborGUI {
 
 	void BoxData::Save(mutabor::tree_storage & config) {
 		mutabor::BoxClass::Save(config);
-		config.Write(_T("KeyWindow"), 
+		config.Write("KeyWindow",
 			     winattr.want_key_window);
-		config.Write(_T("ToneSystemWindow"), 
+		config.Write("ToneSystemWindow", 
 			     winattr.want_tonesystem_window);
-		config.Write(_T("ActionsWindow"), 
+		config.Write("ActionsWindow", 
 			     winattr.want_actions_window);
 	}
 
 	void BoxData::Load(mutabor::tree_storage & config) {
 		mutabor::BoxClass::Load(config);
-		winattr.want_key_window = config.Read(_T("KeyWindow"), 
-						       (long int)false) != 0l;
+		winattr.want_key_window = config.Read("KeyWindow", 
+						      (long int)false) != 0l;
 		winattr.want_tonesystem_window =
-			config.Read(_T("ToneSystemWindow"),
-				     (long int)false) != 0l;
+			config.Read("ToneSystemWindow",
+				    (long int)false) != 0l;
 		winattr.want_actions_window =
-			config.Read(_T("ActionsWindow"), 
-				     (long int)false) != 0l;
+			config.Read("ActionsWindow", 
+				    (long int)false) != 0l;
 	}
 
 #if 0
@@ -284,7 +284,7 @@ namespace mutaborGUI {
 	{
 		bool retval = true;
 		for (size_t box = 0 ; box < vector.size() ; box++) {
-			config->SetPath(wxString::Format(_T("%d"),(int)box));
+			config->SetPath(wxString::Format(("%d"),(int)box));
 			retval &= vector[box].Save(config);
 			config->SetPath(_T(".."));
 		}
@@ -418,7 +418,7 @@ namespace mutaborGUI {
 	MutBoxShape * GUIBoxFactory::DoCreateBoxShape(mutabor::Box & box,
 						      wxWindow * parent) const {
 		MutBoxShape * shape;	
-		DEBUGLOG(routing,_T("Adding box shape for box %p (list of %d)"),
+		DEBUGLOG (routing, "Adding box shape for box %p (list of %d)" ,
 			 box.get(),(int)(ToGUIBase(box)->GetShapes().size()));
 		
 	
@@ -430,7 +430,7 @@ namespace mutaborGUI {
 			    
 			shape = new MutBoxShape(parent, wxID_ANY,box);
 
-		DEBUGLOG(routing,_T("Added box shape for box %p (list of %d)"),
+		DEBUGLOG (routing, "Added box shape for box %p (list of %d)" ,
 			 box.get(),(int)(ToGUIBase(box)->GetShapes().size()));
 
 		return shape;

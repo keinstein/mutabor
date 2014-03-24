@@ -236,7 +236,7 @@ namespace mutaborGUI {
 		TagMinSize(80,40)
 	{
 
-		DEBUGLOG(other,_T("box %p"), box.get());
+		DEBUGLOG (other, "box %p" , box.get());
 
 
 		SetScrollRate( 10, 10 );
@@ -349,7 +349,7 @@ namespace mutaborGUI {
 			parent = GetParent();
 
 			while (parent && !(dynamic_cast<MutFrame *>(parent))) {
-				DEBUGLOG (other, _T("Searching for MutFrame: %p..."),(void*)parent);
+				DEBUGLOG (other, "Searching for MutFrame: %p..." ,(void*)parent);
 				parent = parent->GetParent();
 			}
 
@@ -362,11 +362,11 @@ namespace mutaborGUI {
 
 		Destroy();
 
-		DEBUGLOGBASE(other,"MutLogicWnd",_T("Destroyed Window"));
+		DEBUGLOGBASE(other,"MutLogicWnd",("Destroyed Window"));
 
 		if (parent /* && stop*/) wxPostEvent(parent,event1);
 
-		DEBUGLOGBASE(other,"MutLogicWnd",_T("Destroyed Window"));
+		DEBUGLOGBASE(other,"MutLogicWnd",("Destroyed Window"));
 	}
 
 
@@ -509,7 +509,7 @@ namespace mutaborGUI {
 
 	void MutLogicWnd::CmBox()
 	{
-		DEBUGLOG (other, _T("%s at box %p"),CompiledFile.c_str(),box.get() );
+		DEBUGLOG (other, "%s at box %p" ,CompiledFile.c_str(),box.get() );
 		// Titel setzen
 		GetParent()->SetName(MakeTitle());
 		// Tags updaten

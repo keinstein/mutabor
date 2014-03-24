@@ -259,7 +259,7 @@ void yyerror(YYLTYPE* locp, mutabor_box_type * box, const char* err)
 {
 	mutabor_error_message(box,
 			      compiler_error,
-			      _("%s at line %d"),
+			      _mut("%s at line %d"),
 			      err,
 			      locp->first_line);
 }
@@ -1729,7 +1729,7 @@ yyreduce:
     {  
 			mutabor_error_message(box,
 		                              compiler_error,
-		                              _("Syntax error in line %d."),
+		                              _mut("Syntax error in line %d."),
 		                              FEHLERZEILE);
 		}
 #line 1736 "src/kernel/mut.cc" /* yacc.c:1646  */
@@ -1777,7 +1777,7 @@ yyreduce:
 				    get_new_intervall (box, (yyvsp[-4].identifier), (yyvsp[-2].f_value) / (yyvsp[0].f_value));
                       else
 			      mutabor_error_message (box,compiler_error,
-					   _("Bad interval value in %s"),
+					   _mut("Bad interval value in %s"),
 					   ((yyvsp[-4].identifier)) );
 		}
 #line 1784 "src/kernel/mut.cc" /* yacc.c:1646  */
@@ -1789,7 +1789,7 @@ yyreduce:
 				    get_new_intervall (box, (yyvsp[-4].identifier), pow ((yyvsp[0].f_value), 1 / (yyvsp[-2].f_value)));
                       else
 			      mutabor_error_message (box,compiler_error,
-						     _("Bad interval value in %s"),
+						     _mut("Bad interval value in %s"),
 						     ((yyvsp[-4].identifier)));
 		}
 #line 1796 "src/kernel/mut.cc" /* yacc.c:1646  */
@@ -1806,7 +1806,7 @@ yyreduce:
     {
 		  mutabor_error_message(box,
 		                        compiler_error,
-		_("Bad interval declaration of intervall %s in line %d."),
+		_mut("Bad interval declaration of intervall %s in line %d."),
 		((yyvsp[-2].identifier)),
 		FEHLERZEILE);
 		}
@@ -1816,10 +1816,10 @@ yyreduce:
   case 29:
 #line 254 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {
-		mutabor_error_message(box,
-				      compiler_error,
-				      _("Wrong character. Expecting %s in line %d."),
-				      mutT("="),FEHLERZEILE);
+		  mutabor_error_message(box,
+					compiler_error,
+					_mut("Wrong character. Expecting %s in line %d."),
+					"=",FEHLERZEILE);
 	  }
 #line 1825 "src/kernel/mut.cc" /* yacc.c:1646  */
     break;
@@ -1856,7 +1856,7 @@ yyreduce:
     {
 		  mutabor_error_message(box,
 		compiler_error,
-		_("Bad tone declaration of tone %s in line %d."),
+		_mut("Bad tone declaration of tone %s in line %d."),
 		((yyvsp[-2].identifier)),
 		FEHLERZEILE);
 		}
@@ -1894,7 +1894,7 @@ yyreduce:
 			   else
 				   mutabor_error_message(box,
 							 compiler_error,
-							 _("Division by (nearly) 0 in line %d."),
+							 _mut("Division by (nearly) 0 in line %d."),
 							 FEHLERZEILE);
 		   }
 #line 1901 "src/kernel/mut.cc" /* yacc.c:1646  */
@@ -1907,7 +1907,7 @@ yyreduce:
                      else
 				   mutabor_error_message(box,
 							 compiler_error,
-							 _("Division by (nearly) 0 in line %d."),
+							 _mut("Division by (nearly) 0 in line %d."),
 							 FEHLERZEILE);
 		   }
 #line 1914 "src/kernel/mut.cc" /* yacc.c:1646  */
@@ -1920,7 +1920,7 @@ yyreduce:
                      else
 			     mutabor_error_message(box,
 						   compiler_error,
-						   _("Division by (nearly) 0 in line %d."),
+						   _mut("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);
 		   }
 #line 1927 "src/kernel/mut.cc" /* yacc.c:1646  */
@@ -1933,7 +1933,7 @@ yyreduce:
                      else
 			     mutabor_error_message(box,
 						   compiler_error,
-						   _("Division by (nearly) 0 in line %d."),
+						   _mut("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);
 		   }
 #line 1940 "src/kernel/mut.cc" /* yacc.c:1646  */
@@ -1961,7 +1961,7 @@ yyreduce:
                      else
 			     mutabor_error_message(box,
 						   compiler_error,
-						   _("Division by (nearly) 0 in line %d."),
+						   _mut("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);
 		   }
 #line 1968 "src/kernel/mut.cc" /* yacc.c:1646  */
@@ -1975,7 +1975,7 @@ yyreduce:
                      else
 			     mutabor_error_message(box,
 						   compiler_error,
-						   _("Division by (nearly) 0 in line %d."),
+						   _mut("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);
 		   }
 #line 1982 "src/kernel/mut.cc" /* yacc.c:1646  */
@@ -2029,7 +2029,7 @@ yyreduce:
 #line 463 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1646  */
     {     mutabor_error_message(box,
 		compiler_error,
-		_("Bad tonesystem declaration in line %d."),
+		_mut("Bad tonesystem declaration in line %d."),
 		FEHLERZEILE);
 		}
 #line 2036 "src/kernel/mut.cc" /* yacc.c:1646  */
@@ -2074,7 +2074,7 @@ yyreduce:
 		    (yyval.parameters) = NULL;
 		    mutabor_error_message(box,
 					  compiler_warning,
-		                          _("Arguments named “DISTANCE” or “ABSTAND” have a fixed meaning. Using them as parameters as in line %d is not supported. Expect undexpected behaviour."),
+		                          _mut("Arguments named “DISTANCE” or “ABSTAND” have a fixed meaning. Using them as parameters as in line %d is not supported. Expect undexpected behaviour."),
 		                          FEHLERZEILE);
 		}
 #line 2081 "src/kernel/mut.cc" /* yacc.c:1646  */
@@ -2086,7 +2086,7 @@ yyreduce:
 			(yyval.parameters) = NULL;
 		        mutabor_error_message(box,
 					  compiler_warning,
-		                          _("Arguments named “DISTANCE” or “ABSTAND” have a fixed meaning. Using them as parameters as in line %d is not supported. Expect undexpected behaviour."),
+		                          _mut("Arguments named “DISTANCE” or “ABSTAND” have a fixed meaning. Using them as parameters as in line %d is not supported. Expect undexpected behaviour."),
  		                          FEHLERZEILE);
 		}
 #line 2093 "src/kernel/mut.cc" /* yacc.c:1646  */
@@ -2200,7 +2200,7 @@ yyreduce:
  		                                       (yyvsp[-2].parameters));
 		        mutabor_error_message(box,
 		                              compiler_error,
-		                              _("Invalid parameter list in retuning %s line %d"),
+		                              _mut("Invalid parameter list in retuning %s line %d"),
 		                              (yyvsp[-4].identifier), FEHLERZEILE);
 		}
 #line 2207 "src/kernel/mut.cc" /* yacc.c:1646  */
@@ -2223,7 +2223,7 @@ yyreduce:
  		                                       NULL);
 		        mutabor_error_message(box,
 		                              compiler_error,
-		                              _("Error while reading %s line %d"),
+		                              _mut("Error while reading %s line %d"),
                                		      (yyvsp[-2].identifier), FEHLERZEILE);
 		}
 #line 2230 "src/kernel/mut.cc" /* yacc.c:1646  */
@@ -2300,7 +2300,7 @@ yyreduce:
     {
 		mutabor_error_message(box,
 				      compiler_error,
-				      _("Bad retuning in line %d."),
+				      _mut("Bad retuning in line %d."),
 				      FEHLERZEILE);
 	  }
 #line 2307 "src/kernel/mut.cc" /* yacc.c:1646  */
@@ -2539,7 +2539,7 @@ yyreduce:
     { get_new_aktion_aufruf_element (box,(yyvsp[-4].identifier), (yyvsp[-2].arguments));
 			    mutabor_error_message(box,
 						 compiler_error,
-						 _("Invalid argument list for call to %s in line %d"),
+						 _mut("Invalid argument list for call to %s in line %d"),
 						 (yyvsp[-4].identifier),
 						 FEHLERZEILE);
 		    }
@@ -2671,7 +2671,7 @@ yyreduce:
     {
 		mutabor_error_message(box,
 		compiler_error,
-		_("There is an error in the chroma list in harmony “%s” at line %d."),
+		_mut("There is an error in the chroma list in harmony “%s” at line %d."),
 		((yyvsp[-4].identifier)),
 		FEHLERZEILE);
                 yyclearin;
@@ -2684,7 +2684,7 @@ yyreduce:
     {
 		  mutabor_error_message(box,
 		                        compiler_error,
-					_("The chroma list must be enclosed in braces '{' '}' in harmony “%s” at line %d."),
+					_mut("The chroma list must be enclosed in braces '{' '}' in harmony “%s” at line %d."),
 					((yyvsp[-2].identifier)),
 		                        FEHLERZEILE);
                 yyclearin;
@@ -2908,7 +2908,7 @@ yyreduce:
     {
 		mutabor_error_message(box,
 				      compiler_error,
-				      _("Bad MIDI list in line %d"),
+				      _mut("Bad MIDI list in line %d"),
 				      FEHLERZEILE );
 	  }
 #line 2915 "src/kernel/mut.cc" /* yacc.c:1646  */
@@ -3232,9 +3232,9 @@ start_lex:
     /* Ignore whitespace, get first nonwhitespace character */
     while ( box->scanner->anzahl_eingelesene_zeichen ++,
             isspace(c = *(box->scanner->pos++)) ) {
-	    DEBUGLOG2(other,_T("char %x"),c);
+	    DEBUGLOG2(other,("char %x"),c);
 	    if (c == '\n') {
-		    DEBUGLOG2(other,_T("New line"));
+		    DEBUGLOG2(other,("New line"));
 		    if (!(llocp->first_line ++ % LINE_DRAW_QUANTUM))
 			    show_line_number(box,llocp->first_line);
 	    }
@@ -3306,7 +3306,7 @@ start_lex:
         if (errno || newpos == box->scanner->pos) {
 		mutabor_error_message(box,
 				      compiler_error,
-				      _("No hex number after # (line %d)"),
+				      _mut("No hex number after # (line %d)"),
 				      llocp->first_line + 1);
 		return MUTABOR_TOKEN_ERROR;
         }
@@ -3395,9 +3395,9 @@ static struct {
             }
 
             symbuffer[i++] = c;
-	    DEBUGLOG2(other,_T("character #%d = %x"),i,c);
+	    DEBUGLOG2(other,("character #%d = %x"),i,c);
 	    c = *(box->scanner->pos++);
-	    DEBUGLOG2(other,_T("character #%d = %x"),i,c);
+	    DEBUGLOG2(other,("character #%d = %x"),i,c);
             box->scanner->anzahl_eingelesene_zeichen ++;
 
         } while ((c) &&
@@ -3450,7 +3450,7 @@ static struct {
 
     mutabor_error_message(box,
 			  compiler_error,
-			  _("Invalid character: “%c” = %x at line %d."),
+			  _mut("Invalid character: “%c” = %x at line %d."),
 			  c,c,llocp->first_line + 1);
 
     return 0;  /* um Compilerwarnungen zu vermeiden */

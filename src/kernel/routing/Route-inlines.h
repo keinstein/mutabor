@@ -156,7 +156,7 @@ namespace mutabor {
 	}
 
 	inline bool reconnect(OutputDevice out, Route oldroute, Route newroute) {
-		DEBUGLOG2(smartptr,_T("out: %p, oldroute: %p, newroute: %p"),
+		DEBUGLOG2(smartptr,("out: %p, oldroute: %p, newroute: %p"),
 			  (void *)(out.get()),(void *)(oldroute.get()),(void *)(newroute.get()));
 
 		bool ok = oldroute->Remove(out);
@@ -165,13 +165,13 @@ namespace mutabor {
 		if (ok) {
 			newroute->Add(out);
 		}
-		DEBUGLOG2(smartptr,_T("out: %p, oldroute: %p, newroute: %p"),
+		DEBUGLOG2(smartptr,("out: %p, oldroute: %p, newroute: %p"),
 			  (void *)(out.get()),(void*)(oldroute.get()),(void *)(newroute.get()));
 		return ok;
 	}
 
 	inline bool reconnect(InputDevice in, Route oldroute, Route newroute) {
-		DEBUGLOG2(smartptr,_T("in: %p, oldroute: %p, newroute: %p"),
+		DEBUGLOG2(smartptr,("in: %p, oldroute: %p, newroute: %p"),
 			  (void *)(in.get()),(void *)(oldroute.get()),(void *)(newroute.get()));
 
 		bool ok = oldroute->Remove(in);
@@ -180,7 +180,7 @@ namespace mutabor {
 		if (ok) {
 			newroute->Add(in);
 		}
-		DEBUGLOG2(smartptr,_T("in: %p, oldroute: %p, newroute: %p"),
+		DEBUGLOG2(smartptr,("in: %p, oldroute: %p, newroute: %p"),
 			  (void *)(in.get()),(void *)(oldroute.get()),(void *)(newroute.get()));
 		return ok;
 	}
@@ -197,13 +197,13 @@ namespace mutabor {
 					int oTo,
 					bool oNoDrum)
 	{
-		DEBUGLOG(smartptr,_T("Route %p (%d)"),
+		DEBUGLOG (smartptr, "Route %p (%d)" ,
 			 (void*)this, 
 			 (int)intrusive_ptr_get_refcount(this));
-		DEBUGLOG(smartptr,_T("input device %p (%d)"),
+		DEBUGLOG (smartptr, "input device %p (%d)" ,
 			 (void*)in.get(),
 			 (int)intrusive_ptr_get_refcount(in.get()));
-		DEBUGLOG(smartptr,_T("output device %p (%d)"),
+		DEBUGLOG (smartptr, "output device %p (%d)" ,
 			 (void*)out.get(),
 			 (int)intrusive_ptr_get_refcount(out.get()));
 		Route self(this);
@@ -255,11 +255,11 @@ namespace mutabor {
 					  int oTo,
 					  bool oNoDrum) {
 
-		DEBUGLOGTYPE(smartptr,RouteFactory,_T("input device %p (%d)"),
+		DEBUGLOGTYPE(smartptr,RouteFactory,("input device %p (%d)"),
 			     (void *)in.get(),
 			     (int)intrusive_ptr_get_refcount(in.get()));
 
-		DEBUGLOGTYPE(smartptr,RouteFactory,_T("output device %p (%d)"),
+		DEBUGLOGTYPE(smartptr,RouteFactory,("output device %p (%d)"),
 			     (void *)out.get(),
 			     (int)intrusive_ptr_get_refcount(out.get()));
 
@@ -276,7 +276,7 @@ namespace mutabor {
 							   oNoDrum);
 			DEBUGLOGTYPE(smartptr,
 				     RouteFactory,
-				     _T("Shipping %p from factory"),
+				     ("Shipping %p from factory"),
 				     (void *)r);
 
 			return r;

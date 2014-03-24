@@ -43,6 +43,8 @@
 
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/gmn/GIS.h"
+#if 0
+#endif
 #include "src/kernel/routing/Route.h"
 #include "src/kernel/routing/timing.h"
 #include "src/kernel/MidiKern.h"
@@ -156,7 +158,7 @@ namespace mutabor {
 				controller.resize(number +1,-1);
 			int retval = controller[number];
 			int param = -1;
-			DEBUGLOG(midiio,_T("ctrl: %d, %d => %d"),(int)number,(int)retval,(int)data);
+			DEBUGLOG(midiio,("ctrl: %d, %d => %d"),(int)number,(int)retval,(int)data);
 			controller[number] = data;
 
 			// we allow to set a controller to an udefined state.
@@ -577,24 +579,16 @@ namespace mutabor {
 			return Mode;
 		}
 
-		/// Process an error message
-		void runtime_error(int type, mutString message, ...) {
-			va_list args;
-			va_start(args,message);
-			runtime_error(type,message,args);
-		}
-
 		/// Process an error message (doing the real work)
 		virtual void runtime_error(int type,
-					   const mutStringRef message,
-					   va_list & args);
+					   const std::string& message);
 
 
-		const wxString & GetName() const {
+		const std::string & GetName() const {
 			return Name;
 		}
 
-		virtual void SetName(const wxString & s) {
+		virtual void SetName(const std::string & s) {
 			Name = s;
 		}
 
@@ -616,7 +610,7 @@ namespace mutabor {
 		int get_routefile_id() const {
 			return routefile_id;
 		}
-
+		/*
 #if defined(_MSC_VER)
 #pragma warning(push) // Save warning settings.
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
@@ -626,8 +620,9 @@ namespace mutabor {
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
 #endif
-		virtual mutString GetTypeName () const {
-			return N_("Device base class");
+		*/
+		virtual std::string GetTypeName () const {
+			return _mutN("Device base class");
 		}
 
 		virtual bool Open() = 0;
@@ -640,7 +635,7 @@ namespace mutabor {
 
 
 #ifdef WX
-		virtual wxString TowxString() const;
+		virtual operator std::string() const;
 #endif
 	protected:
 		/** \todo lift this restrection afer GUI is working again */
@@ -651,13 +646,13 @@ namespace mutabor {
 		 */
 		idtype<Device> session_id;
 		int routefile_id;
-		mutString Name;
+		std::string Name;
 		bool dirty:1;
 		bool isOpen:1;
 		enum MutaborModeType Mode;
 		routeListType routes;
 
-		Device(const mutStringRef name = mutEmptyString,
+		Device(const std::string& name = "",
 		       int id = -1):session_id(),
 				    routefile_id(id),
 				    Name(name),
@@ -702,7 +697,7 @@ namespace mutabor {
 			AppendToDeviceList(static_cast<thistype *>(this));
 		}
 
-		CommonTypedDeviceAPI(const mutStringRef name,
+		CommonTypedDeviceAPI(const std::string& name,
 				     int id = -1):Device(name, id) {
 			AppendToDeviceList(static_cast<thistype *>(this));
 		}
@@ -812,7 +807,7 @@ namespace mutabor {
 			}
 		}
 #ifdef WX
-		virtual wxString TowxString() const;
+		virtual operator  std::string() const;
 #endif
 
 	protected:
@@ -848,7 +843,7 @@ namespace mutabor {
 	public:
 		virtual ~OutputDeviceClass() {
 			TRACEC;
-			wxASSERT(!IsOpen());
+			mutASSERT(!IsOpen());
 			TRACEC;
 		}
 		void NoteOn(Box box,
@@ -901,7 +896,7 @@ namespace mutabor {
 			ScopedLock lock(write_lock);
 			do_MidiOut(box,data);
 		}
-		void MidiOut(BYTE *p, size_t n) {
+		void MidiOut(uint8_t *p, size_t n) {
 			ScopedLock lock(write_lock);
 			do_MidiOut(p,n);
 		}
@@ -944,12 +939,11 @@ namespace mutabor {
 			return DTUnknown;
 		}
 
-		virtual mutString GetTypeName () const {
-			return N_("Undefined output device");
+		virtual std::string GetTypeName () const {
+			return _mutN("Undefined output device");
 		}
-#ifdef WX
-		virtual wxString TowxString() const;
-#endif
+
+		virtual operator std::string() const;
 
 	protected:
 		Mutex write_lock;
@@ -961,7 +955,7 @@ namespace mutabor {
 		OutputDeviceClass():CommonTypedDeviceAPI<OutputDeviceClass>(),
 				    write_lock() {}
 
-		OutputDeviceClass(const mutStringRef name,
+		OutputDeviceClass(const std::string& name,
 				  int id = -1):
 			CommonTypedDeviceAPI<OutputDeviceClass>(name, id),
 			write_lock() {}
@@ -1000,7 +994,7 @@ namespace mutabor {
 		virtual void do_Gis(GisToken *token, char turn) = 0;
 		virtual void do_AddTime(frac time) = 0;
 		virtual void do_MidiOut(mutabor::Box box, midi_string data) = 0;
-		virtual void do_MidiOut(BYTE *p, size_t n) = 0;
+		virtual void do_MidiOut(uint8_t *p, size_t n) = 0;
 		virtual void do_handle_event(event e) = 0;
 		virtual void do_Quiet(Route r, int type) = 0;
 		virtual void do_Quiet(Route r, int type, size_t id) = 0;
@@ -1077,7 +1071,7 @@ namespace mutabor {
 						 i,
 						 &c,
 						 userdata));
-				DEBUGLOG(routing,_T("(key = %d, channel = %lu, id = %lu)"),
+				DEBUGLOG(routing,("(key = %d, channel = %lu, id = %lu)"),
 					 key,
 					 (unsigned long)R->get_session_id(),
 					 (unsigned long)unique_id);
@@ -1094,7 +1088,7 @@ namespace mutabor {
 					map.equal_range(entry(key,unique_id,velocity, R, NULL, NULL, NULL));
 				if (range.first != map.end()) {
 					map.erase(range.first);
-					DEBUGLOG(routing,_T("(key = %d, channel = %lu, id = %lu)"),
+					DEBUGLOG(routing,("(key = %d, channel = %lu, id = %lu)"),
 						 key,
 						 (unsigned long)R->get_session_id(),
 						 (unsigned long)unique_id);
@@ -1239,8 +1233,8 @@ namespace mutabor {
 			return DTUnknown;
 		}
 
-		virtual mutString GetTypeName () const {
-			return N_("Undefined input device");
+		virtual std::string GetTypeName () const {
+			return _mutN("Undefined input device");
 		}
 
 		static mutint64 GetNO_DELTA() {
@@ -1252,7 +1246,7 @@ namespace mutabor {
 		}
 
 #ifdef WX
-		virtual wxString TowxString() const;
+		virtual operator std::string() const;
 #endif
 
 		void NoteOn(Route &R, int key, int velocity,
@@ -1260,7 +1254,7 @@ namespace mutabor {
 			    const ChannelData & input_channel_data,
 			    void * userdata) {
 			ScopedLock lock(write_lock);
-			DEBUGLOG(routing,_T("(key = %d, channel = %lu, id = %lu)"),
+			DEBUGLOG(routing,("(key = %d, channel = %lu, id = %lu)"),
 				 key,
 				 (unsigned long)R->get_session_id(),
 				 (unsigned long)make_unique);
@@ -1297,7 +1291,7 @@ namespace mutabor {
 				R->NoteOff(key,velocity,make_unique);
 			}
 			current_keys.remove(key, velocity, make_unique, R);
-			DEBUGLOG(routing,_T("(key = %d, channel = %lu, id = %lu)"),
+			DEBUGLOG(routing,("(key = %d, channel = %lu, id = %lu)"),
 				 key,
 				 (unsigned long)R->get_session_id(),
 				 (unsigned long)make_unique);
@@ -1321,7 +1315,7 @@ namespace mutabor {
 		Mutex write_lock;
 		static bool last_was_stop;
 
-		InputDeviceClass(const mutStringRef name = mutEmptyString,
+		InputDeviceClass(const std::string& name = "",
 				 mutabor::MutaborModeType m = DeviceStop,
 				 int id = -1):
 			CommonTypedDeviceAPI<InputDeviceClass>(name, id)
@@ -1368,7 +1362,7 @@ namespace mutabor {
 		virtual ~DeviceFactory();
 
 		static OutputDevice CreateOutput (int type,
-						  const mutStringRef name = mutEmptyString,
+						  const std::string& name = "",
 						  MutaborModeType mode = DeviceStop,
 						  int id = -1) {
 			/* \todo implement output device record/pause */
@@ -1385,7 +1379,7 @@ namespace mutabor {
 
 
 		static InputDevice CreateInput(int type,
-					       const mutStringRef name = mutEmptyString,
+					       const std::string& name = "",
 					       MutaborModeType mode = DeviceStop,
 					       int id = -1) {
 			mutASSERT(type >= 0);
@@ -1400,7 +1394,7 @@ namespace mutabor {
 		}
 
 		template<class T> static T Create(int type,
-						  const mutStringRef name = mutEmptyString,
+						  const std::string& name = "",
 						  MutaborModeType mode = DeviceStop,
 						  int id = -1);
 
@@ -1444,10 +1438,10 @@ namespace mutabor {
 
 		virtual size_t GetType() const = 0;
 
-		virtual OutputDeviceClass * DoCreateOutput(const mutStringRef name,
+		virtual OutputDeviceClass * DoCreateOutput(const std::string& name,
 							   int id = -1) const = 0;
 
-		virtual InputDeviceClass * DoCreateInput(const mutStringRef name,
+		virtual InputDeviceClass * DoCreateInput(const std::string& name,
 							 MutaborModeType mode,
 							 int id = -1) const = 0;
 
@@ -1476,7 +1470,7 @@ namespace mutabor {
 
 	template <>
 	inline InputDevice DeviceFactory::Create<InputDevice>(int type,
-						       const mutStringRef name,
+						       const std::string& name,
 						       MutaborModeType mode,
 						       int id) {
 	        return CreateInput(type,name,mode,id);
@@ -1484,7 +1478,7 @@ namespace mutabor {
 
 	template<>
 	inline OutputDevice DeviceFactory::Create<OutputDevice>(int type,
-						       const mutStringRef name,
+						       const std::string& name,
 						       MutaborModeType mode,
 						       int id) {
 	        return CreateOutput(type,name,mode,id);

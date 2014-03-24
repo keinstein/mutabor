@@ -191,7 +191,7 @@ MutRouteWnd::MutRouteWnd(wxWindow *parent, const wxPoint& pos, const wxSize& siz
 //	m_container.SetContainerWindow(this);
 //
 
-        DEBUGLOG (other, _T("this is window %p"), (void*)this);
+        DEBUGLOG (other, "this is window %p" , (void*)this);
         SetSizer(new wxFlexGridSizer(3,0,50));
         SetScrollRate(1, 1);
 	SetAutoLayout(true);
@@ -271,7 +271,7 @@ void MutRouteWnd::createInputDevices(wxSizerFlags flags)
 		InputDeviceClass::GetDeviceList();
 	for ( InputDeviceList::const_iterator In = list.begin();
 	      In != list.end(); In++) {
-                DEBUGLOG (other, _T("In the loop %p"),
+                DEBUGLOG (other, "In the loop %p" ,
 			  (void*)(*In).get());
 		TRACEC;
                 MutInputDeviceShape * newin =
@@ -456,7 +456,7 @@ void MutRouteWnd::CmRouteLoad(wxCommandEvent& event)
 				   MurFileData.name.GetFullPath().c_str());
 			return;
 		}
-		compat30::LoadRoutes(text);
+		compat30::LoadRoutes((const char *)text.ToUTF8());
 	}
 		break;
 	case MutFileDataType::XMLRoute1: {
@@ -553,7 +553,7 @@ void MutRouteWnd::CmRouteSave(wxCommandEvent& event)
 			return;
 		}
 
-		wxString RouteConfig;
+		std::string RouteConfig;
 
 		compat30::SaveRoutes(RouteConfig);
 
@@ -724,7 +724,7 @@ void MutRouteWnd::OnDraw(wxPaintDC& dc)
         for (wxSizerItemList::const_iterator i = list.begin(); i != list.end(); i++) {
                 MutBoxShape * box = static_cast<MutBoxShape * > ((*i)->GetWindow());
 		mutASSERT(dynamic_cast<MutBoxShape *> ((*i)->GetWindow()));
-		DEBUGLOG(routinggui,_T("Redrawing box %p"),box);
+		DEBUGLOG (routinggui, "Redrawing box %p" ,box);
 		if (box)
 			box->DrawLines(*gc,this, origin);
         }
@@ -732,7 +732,7 @@ void MutRouteWnd::OnDraw(wxPaintDC& dc)
 }
 
 void MutRouteWnd::OnMoveShape(wxCommandEvent& event) {
-	DEBUGLOG(routinggui,_T("Move Event: %d"),(int)event.GetId());
+	DEBUGLOG (routinggui, "Move Event: %d" ,(int)event.GetId());
 	wxWindow * win = FindFocus();
 	if (dynamic_cast<MutBoxShape *>(win) ||
 	    dynamic_cast<MutInputDeviceShape *>(win) ||

@@ -84,7 +84,7 @@ namespace mutabor {
 		timing_params (): 
 			is_fixed_ticks(true),
 			fps(0),
-			quarter_duration(wxLL(500000)),
+			quarter_duration(500000),
 			quarter_divisions(1000) {
 		}
 
@@ -304,11 +304,8 @@ namespace mutabor {
 			return duration;
 
 		}
-
-		wxString TowxString ();
-		const mutChar * c_str() {
-			return (this->TowxString()).c_str();
-		}
+		
+		operator std::string() const;
 	protected:
 		bool is_fixed_ticks;       //< indicates whether we are in MIDI time code and ignore quarter_duration
 		int fps;                   //< fps rate
@@ -316,6 +313,7 @@ namespace mutabor {
 		mutint64 quarter_divisions; //< divisions of quarter notes
  	};
 
+	inline std::string str(const timing_params & t) { return t; }
 
 #if _XOPEN_SOURCE >= 600 || _POSIX_C_SOURCE >= 200112L
 	class CurrentTimerBase {
@@ -326,11 +324,11 @@ namespace mutabor {
 		void Sleep(mutint64 time) {
 			struct timespec data,remain = {0,0};
 #ifdef DEBUG
-			if (debugFlags::flags.timer) {
+			if (isDebugFlag(timer)) {
 				clock_getres(CLOCK_MONOTONIC, &data);
 				DEBUGLOGTYPE(timer,
 					     CurrentTimerBase,
-					     _T("Timer resolution: %d s %ld ns"),
+					     ("Timer resolution: %d s %ld ns"),
 					     (int)data.tv_sec,
 					     data.tv_nsec);
 			}
@@ -341,13 +339,13 @@ namespace mutabor {
 			data.tv_nsec = (long)(tmp *1000);
 			DEBUGLOGTYPE(timer,
 				     CurrentTimerBase,
-				     _T("sleeping time: %d s, %ld ns"),
+				     ("sleeping time: %d s, %ld ns"),
 				     (int)data.tv_sec,
 				     data.tv_nsec);
 			int status = clock_nanosleep(CLOCK_MONOTONIC,0,&data,&remain);
 			DEBUGLOGTYPE(timer,
 				     CurrentTimerBase,
-				     _T("Remaining time: %d s, %ld ns"),
+				     ("Remaining time: %d s, %ld ns"),
 				     (int)remain.tv_sec,
 				     remain.tv_nsec);
 			mutASSERT(status != EINTR);
@@ -375,7 +373,7 @@ namespace mutabor {
 			}
 			DEBUGLOGTYPE(timer,
 				     CurrentTimerBase,
-				     _T("Starting time: %d s, %ld ns"),
+				     ("Starting time: %d s, %ld ns"),
 				     (int)start.tv_sec,
 				     start.tv_nsec);
 			running=true;
@@ -389,7 +387,7 @@ namespace mutabor {
 			tmp.tv_nsec -= start.tv_nsec;
 			DEBUGLOGTYPE(timer,
 				     CurrentTimerBase,
-				     _T("Elapsed time: %d s, %ld ns; = %ld μs"),
+				     ("Elapsed time: %d s, %ld ns; = %ld μs"),
 				     (int)tmp.tv_sec,
 				     tmp.tv_nsec,
 				     tmp.tv_sec *1000*1000 + tmp.tv_nsec/1000);
@@ -404,7 +402,7 @@ namespace mutabor {
 		static void Sleep(mutint64 time) {
 			DEBUGLOGTYPE(timer,
 				     CurrentTimerBase,
-				     _T("wxSleeping: %lu ms"),
+				     ("wxSleeping: %lu ms"),
 				     (unsigned long) time/1000);
 			Thread::Sleep((unsigned long)time/1000);
 		}

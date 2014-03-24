@@ -63,7 +63,7 @@ namespace mutaborGUI {
 	}
 
 
-	long xmltree::Read(const mutStringRef key, long defval)
+	long xmltree::Read(const wxString & key, long defval)
 	{
 		wxXmlProperty * prop = GetProperty(key, true);
 		if (!prop) return defval;
@@ -73,7 +73,7 @@ namespace mutaborGUI {
 		return retval;
 	}
 
-	double xmltree::Read(const mutStringRef key, double defval)
+	double xmltree::Read(const wxString & key, double defval)
 	{
 		wxXmlProperty * prop = GetProperty(key, true);
 		if (!prop) return defval;
@@ -83,7 +83,7 @@ namespace mutaborGUI {
 		return retval;
 	}
 
-	int xmltree::Read(const mutStringRef key, int defval)
+	int xmltree::Read(const wxString & key, int defval)
 	{
 		wxXmlProperty * prop = GetProperty(key, true);
 		if (!prop) return defval;
@@ -93,7 +93,7 @@ namespace mutaborGUI {
 		return retval;
 	}
 
-	bool xmltree::Read(const mutStringRef key, bool defval)
+	bool xmltree::Read(const wxString & key, bool defval)
 	{
 		wxXmlProperty * prop = GetProperty(key, true);
 		if (!prop) return defval;
@@ -107,7 +107,7 @@ namespace mutaborGUI {
 		return val == _T("true");
 	}
 
-	mutString xmltree::Read(const mutStringRef key, const mutStringRef defval)
+	wxString xmltree::Read(const wxString & key, const wxString & defval)
 	{
 		if (key == _T("name")) {
 			wxXmlProperty * prop = GetProperty(key, true);
@@ -126,35 +126,35 @@ namespace mutaborGUI {
 		return node->GetNodeContent();
 	}
 
-	void xmltree::Write (const mutStringRef key, long value)
+	void xmltree::Write (const wxString & key, long value)
 	{
 		wxXmlProperty * prop = GetProperty(key, true);
 		if (!prop) return;
 		prop->SetValue(wxString::Format(_T("%ld"),value));
 	}
 
-	void xmltree::Write (const mutStringRef key, double value)
+	void xmltree::Write (const wxString & key, double value)
 	{
 		wxXmlProperty * prop = GetProperty(key, true);
 		if (!prop) return;
 		prop->SetValue(wxString::Format(_T("%20g"),value));
 	}
 
-	void xmltree::Write (const mutStringRef key, int value)
+	void xmltree::Write (const wxString & key, int value)
 	{
 		wxXmlProperty * prop = GetProperty(key, true);
 		if (!prop) return;
 		prop->SetValue(wxString::Format(_T("%d"),value));
 	}
 
-	void xmltree::Write (const mutStringRef key, bool value)
+	void xmltree::Write (const wxString & key, bool value)
 	{
 		wxXmlProperty * prop = GetProperty(key, true);
 		if (!prop) return;
 		prop->SetValue(value?_T("true"):_T("false"));
 	}
 
-	void xmltree::Write (const mutStringRef key, const mutStringRef value)
+	void xmltree::Write (const wxString & key, const wxString & value)
 	{
 		if (key == _T("name")) {
 			wxXmlProperty * prop = GetProperty(key, true);
@@ -174,7 +174,7 @@ namespace mutaborGUI {
 		}
 	}
 
-	bool xmltree::HasGroup(const mutStringRef subdir)
+	bool xmltree::HasGroup(const wxString & subdir)
 	{
 		wxString sanitized_name = subdir;
 		NormalizeName(sanitized_name);
@@ -188,14 +188,14 @@ namespace mutaborGUI {
 		return retval;
 	}
 
-	void xmltree::toLeaf(const mutStringRef subdir)
+	void xmltree::toLeaf(const wxString & subdir)
 	{
 		wxString sanitized_name = subdir;
 		NormalizeName(sanitized_name);
-		DEBUGLOG(config,_T("going to group '%s'"),sanitized_name.c_str());
+		DEBUGLOG (config, "going to group '%s'" ,sanitized_name.c_str());
 #if 0
 		mutASSERT(sanitized_name.Find('/') == wxNOT_FOUND);
-		mutASSERT(sanitized_name != _T(".."));
+		mutASSERT(sanitized_name != _(".."));
 		if (sanitized_name.Find('/') != wxNOT_FOUND || sanitized_name == _T("..")) {
 			UNREACHABLEC;
 			return;
@@ -204,18 +204,18 @@ namespace mutaborGUI {
 		SetPath(sanitized_name);
 		state newstate(current_node,sanitized_name);
 
-		DEBUGLOG(config,_T("setting path to '%s'"),(sanitized_name).c_str());
+		DEBUGLOG (config, "setting path to '%s'" ,(sanitized_name).c_str());
 		states.push(newstate);
-		DEBUGLOG(config,_T("current path = '%s', newstate(node = %p)"),
+		DEBUGLOG (config, "current path = '%s', newstate(node = %p)" ,
 			 GetPath().c_str(), newstate.node);
 	}
 
-	void xmltree::toLeaf(const mutStringRef name, int id)
+	void xmltree::toLeaf(const wxString & name, int id)
 	{
 		wxString sanitized_name = name;
 		NormalizeName(sanitized_name);
 		if (!current_node) return;
-		DEBUGLOG(config,_T("going to group '%s' with id %d"),sanitized_name.c_str(),id);
+		DEBUGLOG (config, "going to group '%s' with id %d" ,sanitized_name.c_str(),id);
 		node_type * node = current_node;
 		bool create = create_tree;
 		create_tree = false;
@@ -280,16 +280,16 @@ namespace mutaborGUI {
 		if (node)
 			states.push(state(node,sanitized_name));
 
-		DEBUGLOG(config,_T("current path = '%s'"),
+		DEBUGLOG (config, "current path = '%s'" ,
 			 GetPath().c_str());
 	}
 
-	int xmltree::toFirstLeaf(const mutStringRef name,
-				 mutStringRef id)
+	int xmltree::toFirstLeaf(const wxString & name,
+				 wxString & id)
 	{
 		wxString sanitized_name = name;
 		NormalizeName(sanitized_name);
-		DEBUGLOG(config,_T("going to first leaf of group '%s'"),name.c_str());
+		DEBUGLOG (config, "going to first leaf of group '%s'" ,name.c_str());
 		toLeaf(sanitized_name);
 		if (current_node) {
 #if wxCHECK_VERSION(2,9,0)
@@ -304,7 +304,7 @@ namespace mutaborGUI {
 	}
 
 
-	int xmltree::toNextLeaf(const mutStringRef name, mutStringRef id)
+	int xmltree::toNextLeaf(const wxString & name, wxString & id)
 	{
 		wxString sanitized_name = name;
 		NormalizeName(sanitized_name);
@@ -336,7 +336,7 @@ namespace mutaborGUI {
 
 	void xmltree::toParent(unsigned int count)
 	{
-		DEBUGLOG(config,_T("going up %d level groups"),count);
+		DEBUGLOG (config, "going up %d level groups" ,count);
 		while (count--) {
 #ifdef DEBUG
 			mutASSERT(states.size());
@@ -352,7 +352,7 @@ namespace mutaborGUI {
 		}
 	}
 
-	mutString xmltree::GetPath()
+	wxString xmltree::GetwxPath()
 	{
 		node_type * node = current_node;
 		if (!node) return _T("/");
@@ -362,7 +362,7 @@ namespace mutaborGUI {
 		return path;
 	}
 
-	void xmltree::SetPath(const mutStringRef path)
+	void xmltree::SetPath(const wxString & path)
 	{
 
 		/* Warning!!!
@@ -442,7 +442,7 @@ namespace mutaborGUI {
 		return;
 	}
 
-	void xmltree::DeleteEntry(const mutStringRef path) {
+	void xmltree::DeleteEntry(const wxString & path) {
 		if (!current_node) return;
 #if wxCHECK_VERSION(2,9,0)
 		wxXmlAttribute * prop =
@@ -495,7 +495,7 @@ namespace mutaborGUI {
 			delete prop;
 	}
 
-	void xmltree::DeleteGroup(const mutStringRef path) {
+	void xmltree::DeleteGroup(const wxString & path) {
 		wxXmlNode * node = current_node;
 		bool create = create_tree;
 		create_tree = false;
@@ -507,7 +507,7 @@ namespace mutaborGUI {
 		current_node = node;
 	}
 
-	wxXmlProperty * xmltree::GetProperty (mutString name,
+	wxXmlProperty * xmltree::GetProperty (wxString name,
 					      bool create)
 	{
 		NormalizeName(name);
@@ -538,8 +538,8 @@ namespace mutaborGUI {
 		}
 		return prop;
 	}
-	wxXmlProperty * xmltree::SetProperty (mutString name,
-					      mutStringRef value)
+	wxXmlProperty * xmltree::SetProperty (wxString name,
+					      const wxString & value)
 	{
 		NormalizeName(name);
 		if (!current_node) return NULL;
@@ -573,7 +573,7 @@ namespace mutaborGUI {
 	}
 
 
-	void xmltree::NormalizeName(mutStringRef name) {
+	void xmltree::NormalizeName(wxString & name) {
 		name.Replace(_T(" "),_T("-"));
 	}
 }

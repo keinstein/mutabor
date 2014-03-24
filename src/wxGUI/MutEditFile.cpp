@@ -35,6 +35,7 @@
 
 #include "src/kernel/Defs.h"
 #include "src/wxGUI/generic/mhDefs.h"
+#include "src/wxGUI/MutApp.h"
 
 #include <iostream>
 
@@ -174,17 +175,27 @@ namespace mutaborGUI {
 				   wxHSCROLL | wxVSCROLL | wxBORDER_SUNKEN 
 				   | wxWANTS_CHARS, 
 				   name),
-		  lexer(this)
-	{
-		Init();
+		  m_filename(_T("")),
+		  m_language(NULL),
+		  m_LineNrID(0),
+		  m_LineNrMargin(0),
+		  m_FoldingID(0),
+		  m_FoldingMargin(0),
+		  m_DividerID(0),
 #if wxUSE_FINDREPLDLG
-		m_dlgFind = m_dlgReplace = NULL;
+		  m_dlgFind(NULL),
+		  m_dlgReplace(NULL),
 #endif
-		if (parent) 
+		view(NULL),
+		autoConverter(wxFONTENCODING_ISO8859_15),
+		lexer(this)
+	{
+	        Init();
+	        if (parent) 
 			StatusBar::SetInsert(this,!GetOvertype());
-
-		
-	}
+	
+	
+        }
 	
 	MutEditFile::MutEditFile(MutView * v,
 				 wxWindow* parent, 
@@ -199,13 +210,22 @@ namespace mutaborGUI {
 				   wxHSCROLL | wxVSCROLL | wxBORDER_SUNKEN  
 				   | wxWANTS_CHARS, 
 				   name),
-		  view(v),
-		  lexer(this)
+		  m_filename(_T("")),
+		  m_language(NULL),
+		  m_LineNrID(0),
+		  m_LineNrMargin(0),
+		  m_FoldingID(0),
+		  m_FoldingMargin(0),
+		  m_DividerID(0),
+#if wxUSE_FINDREPLDLG
+		  m_dlgFind(NULL),
+		m_dlgReplace(NULL),
+#endif
+		view(v),
+		autoConverter(wxFONTENCODING_ISO8859_15),
+		lexer(this)
 	{
 		Init();
-#if wxUSE_FINDREPLDLG
-		m_dlgFind = m_dlgReplace = NULL;
-#endif
 		if (parent) 
 			StatusBar::SetInsert(this,!GetOvertype());
 	}
@@ -260,7 +280,7 @@ namespace mutaborGUI {
 		if (activate) {
 			wxGetApp().SaveState();
 			DebugCheckRoutes();
-			DEBUGLOG (gui, _T("Restoring state for debugging"));
+			DEBUGLOG (gui, "Restoring state for debugging" );
 			wxGetApp().RestoreState();
 			DebugCheckRoutes();
 		}
@@ -324,26 +344,24 @@ namespace mutaborGUI {
 
 		if ( file.IsOpened() ) {
 			wxString text;
-
-			if ( file.ReadAll(&text, autoConverter) ) {
-				DEBUGLOG(mutparser,_T("%s"),text.c_str());
-
-				SetText(text);
-				EmptyUndoBuffer();
-				SetSavePoint();
-				m_filename = filename;
-				file.Close();
-				wxFileName fname (m_filename);
-				InitializePrefs (DeterminePrefs (fname.GetFullName()));
-				return true;
+			if ( !file.ReadAll(&text, autoConverter) ) {
+				wxGetApp().PrintError(mutabor::error,
+						     _("Could not load the file contents into memory."),
+						     this);
+				return false ;
 			}
 
-#ifdef DEBUG
-			else
-				DEBUGLOG (mutparser,
-					  _T("File opened, but couldn't be loaded."));
+			DEBUGLOG (mutparser, "%s" ,text.c_str());
 
-#endif
+			SetText(text);
+			EmptyUndoBuffer();
+			SetSavePoint();
+			m_filename = filename;
+			file.Close();
+			wxFileName fname (m_filename);
+			InitializePrefs (DeterminePrefs (fname.GetFullName()));
+			return true;
+
 		}
 
 		wxLogError(_("File couldn't be loaded."));
@@ -354,7 +372,7 @@ namespace mutaborGUI {
 
 	{
 #if wxUSE_FFILE
-		DEBUGLOG(mutparser,_T("File contents:\n%s"),
+		DEBUGLOG (mutparser, "File contents:\n%s" ,
 			 (const wxChar *)GetValue());
 
 		wxFFile file(filename, _T("w"));
@@ -408,7 +426,7 @@ namespace mutaborGUI {
 	{
 
 		DEBUGLOG (other, 
-			  _T("MutEditFile::CmCompile(Event(%d)); filename = %s"),
+			  ("MutEditFile::CmCompile(Event(%d)); filename = %s"),
 			  event.GetId(),m_filename.c_str());
 		Compile(false);
 		event.Skip(false);
@@ -477,7 +495,7 @@ namespace mutaborGUI {
 	wxString MutEditFile::GetValue() const
 	{
 
-		DEBUGLOG(other,_T(""));
+		DEBUGLOG (other, "" );
 		// range 0..-1 is special for GetRange() and means to retrieve all text
 		return GetRange(0, -1);
 	}
@@ -653,7 +671,7 @@ namespace mutaborGUI {
 
 	void MutEditFile::OnFindDialog (wxFindDialogEvent& event)
 	{
-		DEBUGLOG(editor,_T("Find (flags=%x,%s)"),
+		DEBUGLOG (editor, "Find (flags=%x,%s)" ,
 			 event.GetFlags(),
 			 (const wxChar*)event.GetFindString());
 		wxEventType type = event.GetEventType();
@@ -717,7 +735,7 @@ namespace mutaborGUI {
 #endif
 				DoFind(findString,
 				 FindFlags().Down(event.GetFlags() & wxFR_DOWN));
-			DEBUGLOG(editor,_T("Find (flags=%x,%s) = %d"),
+			DEBUGLOG (editor, "Find (flags=%x,%s) = %d" ,
 				 event.GetFlags(),
 				 (const wxChar*)findString,result);
 		} else if (type == wxEVT_COMMAND_FIND_REPLACE_ALL )
@@ -992,7 +1010,7 @@ namespace mutaborGUI {
 			if (currentLine > 0) {
 				lineInd = GetLineIndentation(currentLine - 1);
 			}
-			DEBUGLOG(editor,_T("Indentation: %d"),lineInd);
+			DEBUGLOG (editor, "Indentation: %d" ,lineInd);
 			if (lineInd == 0) return;
 			SetLineIndentation (currentLine, lineInd);
 			GotoPos(PositionFromLine (currentLine) + lineInd);
@@ -1039,7 +1057,7 @@ namespace mutaborGUI {
 	}
 
 	bool MutEditFile::InitializePrefs (const wxString &name) {
-		DEBUGLOG(editlexer, _T("initialising prefs for %s"), name.c_str());
+		DEBUGLOG (editlexer, "initialising prefs for %s" , name.c_str());
 
 		// initialize styles
 		StyleClearAll();
@@ -1404,16 +1422,16 @@ namespace mutaborGUI {
 		// get print page informations and convert to printer pixels
 		wxSize ppiScr;
 		GetPPIScreen (&ppiScr.x, &ppiScr.y);
-                DEBUGLOG(editor,_T("Screen resolution %dx%d ppi"),ppiScr.x,ppiScr.y);
+                DEBUGLOG (editor, "Screen resolution %dx%d ppi" ,ppiScr.x,ppiScr.y);
 
 		wxSize ppiPrint;
 		GetPPIPrinter (&ppiPrint.x, &ppiPrint.y);
-                DEBUGLOG(editor,_T("Printer resolution %dx%d ppi"),
+                DEBUGLOG (editor, "Printer resolution %dx%d ppi" ,
                          ppiPrint.x,
                          ppiPrint.y);
 
                 wxRect paper = GetPaperRectPixels();
-		DEBUGLOG(editor,_T("Paper rect in pixels: x=%d, y=%d, w=%d, h=%d"),
+		DEBUGLOG (editor, "Paper rect in pixels: x=%d, y=%d, w=%d, h=%d" ,
 			 paper.x,
 			 paper.y,
 			 paper.width,
@@ -1421,7 +1439,7 @@ namespace mutaborGUI {
 
                 wxSize page;
 		GetPageSizePixels(&page.x,&page.y);
-		DEBUGLOG(editor,_T("Page size in pixels: %dx%d"),
+		DEBUGLOG (editor, "Page size in pixels: %dx%d" ,
 			 page.x,
 			 page.y);
 
@@ -1434,10 +1452,10 @@ namespace mutaborGUI {
 		/ ppiPrint.x);
 		paper.height = static_cast<int> (paper.height *
 		ppiScr.y / ppiPrint.y);
-		DEBUGLOG(editor,_T("Page size in pixels: %dx%d"),
+		DEBUGLOG (editor, "Page size in pixels: %dx%d" ,
 			 page.x,
 			 page.y);
-		DEBUGLOG(editor,_T("Paper rect in pixels: x=%d, y=%d, w=%d, h=%d"),
+		DEBUGLOG (editor, "Paper rect in pixels: x=%d, y=%d, w=%d, h=%d" ,
 			 paper.x,
 			 paper.y,
 			 paper.width,
@@ -1457,7 +1475,7 @@ namespace mutaborGUI {
 		left = static_cast<int> (left * ppiScr.x / 25.4);
 		right = static_cast<int> (right * ppiScr.x / 25.4);
 		DEBUGLOG(editor,
-                         _T("Margins (pixels): top=%d, bottom=%d, left=%d, right=%d"),
+                         ("Margins (pixels): top=%d, bottom=%d, left=%d, right=%d"),
 			 top,
 			 bottom,
 			 left,
@@ -1470,7 +1488,7 @@ namespace mutaborGUI {
                 top = std::max(paper.y + top,0);
                 bottom = std::max(bottom - (paper.height + paper.y - page.y),0);
 		DEBUGLOG(editor,
-                         _T("Margins (pixels): top=%d, bottom=%d, left=%d, right=%d"),
+                         ("Margins (pixels): top=%d, bottom=%d, left=%d, right=%d"),
 			 top,
 			 bottom,
 			 left,
@@ -1480,7 +1498,7 @@ namespace mutaborGUI {
 				      top,
 				      page.x - (left + right),
 				      page.y - (top + bottom));
-		DEBUGLOG(editor,_T("Print rect (pixels): x=%d, y=%d, w=%d, h=%d"),
+		DEBUGLOG (editor, "Print rect (pixels): x=%d, y=%d, w=%d, h=%d" ,
 			 m_printRect.x,
 			 m_printRect.y,
 			 m_printRect.width,
@@ -1499,13 +1517,13 @@ namespace mutaborGUI {
 						       m_printRect, m_pageRect);
 			m_ranges.push_back(std::pair<int,int>(oldpos, currpos));
 			*maxPage += 1;
-                        DEBUGLOG(editor,_T("Page %d: %d–%d"),*maxPage,oldpos,currpos);
+                        DEBUGLOG (editor, "Page %d: %d–%d" ,*maxPage,oldpos,currpos);
 		}
 		if (*maxPage > 0) *minPage = 1;
 		*selPageFrom = *minPage;
 		*selPageTo = *maxPage;
                 DEBUGLOG(editor,
-                         _T("pages %d-%d, selected pages %d-%d"),
+                         ("pages %d-%d, selected pages %d-%d"),
                          (*minPage),
                          (*maxPage),
                          (*selPageFrom),
@@ -1535,7 +1553,7 @@ namespace mutaborGUI {
 			ppiPrt.y = ppiScr.y;
 		}
 		wxSize dcSize = dc->GetSize();
-                DEBUGLOG(editor,_T("DC size: %dx%d"),dcSize.x,dcSize.y);
+                DEBUGLOG (editor, "DC size: %dx%d" ,dcSize.x,dcSize.y);
 		wxSize pageSize;
 		GetPageSizePixels (&pageSize.x, &pageSize.y);
 
@@ -1545,7 +1563,7 @@ namespace mutaborGUI {
 		float scale_y = (float)(ppiPrt.y * dcSize.y) /
 			(float)(ppiScr.y * pageSize.y);
 		dc->SetUserScale (scale_x, scale_y);
-                DEBUGLOG(editor,_T("Scaled page by %gx%g"),scale_x,scale_y);
+                DEBUGLOG (editor, "Scaled page by %gx%g" ,scale_x,scale_y);
 
 		return true;
 	}
@@ -1559,7 +1577,7 @@ namespace mutaborGUI {
 
 	{
 		
-		DEBUGLOG(other,_T("(from %ld, to %ld)"),from,to);
+		DEBUGLOG (other, "(from %ld, to %ld)" ,from,to);
 		wxString str;
 
 		if ( from >= to && to != -1 ) {
@@ -1571,13 +1589,13 @@ namespace mutaborGUI {
 		if ( IsRich() ) {
 			int len = GetWindowTextLength(GetHwnd());
 
-			DEBUGLOG(other,_T("len = %d"),len);
+			DEBUGLOG (other, "len = %d" ,len);
 
 			if ( len > from ) {
 				if ( to == -1 )
 					to = len;
 
-				DEBUGLOG(other,_T("to = %d"), to);
+				DEBUGLOG (other, "to = %d" , to);
 
 #if !(wxUSE_UNICODE || wxUSE_WCHAR_T)
 				// we must use EM_STREAMOUT if we don't want to lose all characters
@@ -1608,7 +1626,7 @@ namespace mutaborGUI {
 					str = StreamOut(encoding);
 
 
-					DEBUGLOG(other,_T("str.Len() = %d"),
+					DEBUGLOG (other, "str.Len() = %d" ,
 						 str.Len());
 
 					if ( !str.empty() ) {
@@ -1616,7 +1634,7 @@ namespace mutaborGUI {
 						// this is easy in this case as EOL characters in str are
 						// just LFs because we remove CRs in mutRichEditStreamOut
 						str = str.Mid(from, to - from);
-						DEBUGLOG(other,_T("str.Len() = %d"),
+						DEBUGLOG (other, "str.Len() = %d" ,
 							 str.Len());
 					}
 				}
@@ -1662,12 +1680,12 @@ namespace mutaborGUI {
 			// retrieve all text
 			str = wxGetWindowText(GetHWND());
 
-		DEBUGLOG(other,_T("str.Len() = %d"), str.Len());
+		DEBUGLOG (other, "str.Len() = %d" , str.Len());
 
 		// need only a range?
 		if ( from < to ) {
 			str = str.Mid(from, to - from);
-			DEBUGLOG(other,_T("str.Len() = %d"), str.Len());
+			DEBUGLOG (other, "str.Len() = %d" , str.Len());
 		}
 
 		// WM_GETTEXT uses standard DOS CR+LF (\r\n) convention - convert to the
@@ -1675,7 +1693,7 @@ namespace mutaborGUI {
 		// of controls and, more importantly, with the other ports
 		str = wxTextFile::Translate(str, wxTextFileType_Unix);
 
-		DEBUGLOG(other,_T("str.Len() = %d"), str.Len());
+		DEBUGLOG (other, "str.Len() = %d" , str.Len());
 	}
 
 	return str;
@@ -1695,7 +1713,7 @@ public:
 		: m_count(count)
 		{
 			mutASSERT_MSG( m_count == -1 || m_count == -2,
-				      _T("wrong initial m_updatesCount value") );
+				      ("wrong initial m_updatesCount value") );
 
 			if (m_count != -2)
 				m_count = 0;
@@ -1761,7 +1779,7 @@ struct wxStreamOutData
 DWORD CALLBACK
 mutRichEditStreamOut(DWORD_PTR dwCookie, BYTE *buf, LONG cb, LONG *pcb)
 {
-	DEBUGLOG(other,_T("dwCookie = %p, buf = %p, cb = %ld, pcb = %p"),
+	DEBUGLOG (other, "dwCookie = %p, buf = %p, cb = %ld, pcb = %p" ,
 		 dwCookie, buf, cb, pcb);
 	*pcb = 0;
 
@@ -1771,7 +1789,7 @@ mutRichEditStreamOut(DWORD_PTR dwCookie, BYTE *buf, LONG cb, LONG *pcb)
 
 	wchar_t *wpc = data->wpc;
 
-	DEBUGLOG(other,_T("wpc = %ld"), wpc);
+	DEBUGLOG (other, "wpc = %ld" , wpc);
 
 	while ( cb ) {
 		wchar_t wch = *wbuf++;
@@ -1779,7 +1797,7 @@ mutRichEditStreamOut(DWORD_PTR dwCookie, BYTE *buf, LONG cb, LONG *pcb)
 		string[sizeof(wchar_t)] = 0;
 		(wchar_t &)*string = wch;
 
-		DEBUGLOG(other,_T("%s"),(const wxChar *)wxString(string));
+		DEBUGLOG (other, "%s" ,(const wxChar *)wxString(string));
 
 		// turn "\r\n" into "\n" on the fly
 //        if ( wch != L'\r' ) {
@@ -1793,7 +1811,7 @@ mutRichEditStreamOut(DWORD_PTR dwCookie, BYTE *buf, LONG cb, LONG *pcb)
 
 	data->wpc = wpc;
 
-	DEBUGLOG(other,_T("wpc = %ld"), wpc);
+	DEBUGLOG (other, "wpc = %ld" , wpc);
 
 	return 0;
 }
@@ -1858,7 +1876,7 @@ MutEditFile::StreamIn(const wxString& value,
 	// It's okay for EN_UPDATE to not be sent if the selection is empty and
 	// the text is empty, otherwise warn the programmer about it.
 	mutASSERT_MSG( ucf.GotUpdate() || ( !HasSelection() && value.empty() ),
-	              _T("EM_STREAMIN didn't send EN_UPDATE?") );
+	              ("EM_STREAMIN didn't send EN_UPDATE?") );
 
 	if ( eds.dwError ) {
 		wxLogLastError(_T("EM_STREAMIN"));
@@ -1881,7 +1899,7 @@ MutEditFile::StreamOut(wxFontEncoding encoding, bool selectionOnly) const
 
 	const int len = GetWindowTextLength(GetHwnd());
 
-	DEBUGLOG(other,_T("len = %d"), len);
+	DEBUGLOG (other, "len = %d" , len);
 
 //#if wxUSE_WCHAR_T
 //    wxWCharBuffer wchBuf(len+1);
@@ -1927,7 +1945,7 @@ MutEditFile::StreamOut(wxFontEncoding encoding, bool selectionOnly) const
 		wchBuf[data.len] = 0;
 //#endif
 
-		DEBUGLOG(other,_T("len = %d"), len);
+		DEBUGLOG (other, "len = %d" , len);
 		wxString test("test");
 
 		// now convert to the given encoding (this is a possibly lossful
@@ -1935,10 +1953,10 @@ MutEditFile::StreamOut(wxFontEncoding encoding, bool selectionOnly) const
 		wxCSConv conv(encoding);
 		size_t lenNeeded = conv.WC2MB(NULL, wchBuf, 0);
 //        size_t lenNeeded = conv.MB2WC( wchBuf, NULL,0);
-		DEBUGLOG(other,_T("len = %d"), len);
-		DEBUGLOG(other,_T("lenNeeded = %d"), lenNeeded);
-		DEBUGLOG(other,_T("wchBuf[len] = %d"), wchBuf[len]);
-		DEBUGLOG(other,_T("wchBuf[lenNeeded] = %d"), wchBuf[lenNeeded]);
+		DEBUGLOG (other, "len = %d" , len);
+		DEBUGLOG (other, "lenNeeded = %d" , lenNeeded);
+		DEBUGLOG (other, "wchBuf[len] = %d" , wchBuf[len]);
+		DEBUGLOG (other, "wchBuf[lenNeeded] = %d" , wchBuf[lenNeeded]);
 		out.Alloc(lenNeeded+1);
 		//wxStringBuffer buf(out, lenNeeded+1);
 
@@ -1949,10 +1967,10 @@ MutEditFile::StreamOut(wxFontEncoding encoding, bool selectionOnly) const
 			for (int i=0; i<= len; i++) {
 				(wchar_t &)*string = wchBuf[i];
 
-				DEBUGLOG(other,_T("%d: %s"),
+				DEBUGLOG (other, "%d: %s" ,
 					 i,(const wxChar *) wxString(string));
 				out[i] = *string;
-				DEBUGLOG(other,_T(" %s"),
+				DEBUGLOG (other, " %s" ,
 					 (const wxChar *) wxString(out));
 				std::cout<< out<<std::endl;
 			}
@@ -1961,7 +1979,7 @@ MutEditFile::StreamOut(wxFontEncoding encoding, bool selectionOnly) const
 //			conv.MB2WC(wchBuf,wxStringBuffer(out,lenNeeded+1),lenNeeded/2);
 		}
 
-		DEBUGLOG(other,_T("lenNeeded = %d"), lenNeeded);
+		DEBUGLOG (other, "lenNeeded = %d" , lenNeeded);
 	}
 
 

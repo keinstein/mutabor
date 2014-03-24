@@ -151,7 +151,7 @@ double get_komplex_frequenz (mutabor_box_type * box, struct ton * dieser)
 		 mutabor_error_message(box,
 				      internal_error,
 				      _("Unknown parameter type %d detected at %s:%d"),
-				      _T(__FILE__),
+				      (__FILE__),
 				      __LINE__ );
 	 }
 }
@@ -276,7 +276,7 @@ generate_argument_list (mutabor_box_type * box,
 					      internal_error,
 					      _("Unknown argument type %d detected at \n%s:%d."),
 					      element->argument.argument_type,
-					      _T(__FILE__),
+					      (__FILE__),
 					      __LINE__ );
 			help->types[j] = mutabor_argument_invalid;
 
@@ -308,7 +308,7 @@ static inline void resolve_parameters(mutabor_box_type * box,
 						      internal_error,
 						      _("Argument number %d has nonexistent index %d at \n%s:%d."),
 						      i, j,
-						      _T(__FILE__),
+						      (__FILE__),
 						      __LINE__ );
 				target->types[i] = mutabor_argument_invalid;
 				break;
@@ -325,7 +325,7 @@ static inline void resolve_parameters(mutabor_box_type * box,
 					      internal_error,
 					      _("Unknown argument type %d detected at \n%s:%d."),
 					      target->types[i],
-					      _T(__FILE__),
+					      (__FILE__),
 					      __LINE__ );
 			target->types[i] = mutabor_argument_invalid;
 
@@ -367,7 +367,7 @@ static int * get_wert_of_argument (mutabor_box_type * box,
 					      compiler_error,
 					      _("Unknown parameter number %d detected at \n%s:%d."),
 					      argument->u.parameter.parameter_nummer,
-					      _T(__FILE__),
+					      (__FILE__),
 					      __LINE__ );
 			return NULL;
 		}
@@ -380,7 +380,7 @@ static int * get_wert_of_argument (mutabor_box_type * box,
 				      internal_error,
 				      _("Unknown argument type %d detected at \n%s:%d."),
 				      argument->argument_typ,
-				      _T(__FILE__),
+				      (__FILE__),
 				      __LINE__ );
 
 		return NULL;
@@ -408,7 +408,7 @@ static struct ton_einstell * expand_tonliste (mutabor_box_type * box,
 	case ton_absolut:
 		if (the_tonliste->name) {
 			help -> ton_einstell_typ = einstell_absolut;
-			help -> tone =
+			help -> u.tone =
 				mutabor_convert_frequency_to_tone(
 			                        the_tonliste->u.ton_absolut.ton_wert);
 		} else {
@@ -424,7 +424,7 @@ static struct ton_einstell * expand_tonliste (mutabor_box_type * box,
 			if ( ! strcasecmp (the_tonliste->name, "@")) {
 				if (the_tonliste->u.ton_komplex.komplex_liste) {
 					help -> ton_einstell_typ = einstell_relativ;
-					help -> interval =
+					help -> u.interval =
 					        mutabor_convert_factor_to_interval (
 						       get_komplex_faktor (box, the_tonliste->u.ton_komplex.komplex_liste));
 				} else {
@@ -432,7 +432,7 @@ static struct ton_einstell * expand_tonliste (mutabor_box_type * box,
 				}
 			} else { /* normaler ton */
 				help -> ton_einstell_typ = einstell_absolut;
-				help -> tone =
+				help -> u.tone =
 				        mutabor_convert_frequency_to_tone (
 					       get_komplex_frequenz (box,the_tonliste));
 
@@ -1260,7 +1260,7 @@ static void expandiere_in_globale_liste (mutabor_box_type * box)
 	lauf_harmonie = box->file->global_harmonies;
 	while (lauf_harmonie) {
 		mutASSERT(lauf_harmonie);
-		DEBUGLOG2(kernel_tabgen,_T("lauf_harmonie(=%p)->the_logic_to_expand = %p"),
+		DEBUGLOG2(kernel_tabgen,("lauf_harmonie(=%p)->the_logic_to_expand = %p"),
 			  (void*)lauf_harmonie,(void*)lauf_harmonie -> the_logik_to_expand);
 		lauf_harmonie -> aktion =
 			expandiere_logik (box,lauf_harmonie -> the_logik_to_expand);

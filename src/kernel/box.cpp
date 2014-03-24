@@ -32,8 +32,10 @@
 #include "Execute.h"
 #include "Hilfs.h"
 #include "TabGen.h"
+#include "string.h"
 
 #ifdef __cplusplus
+
 namespace mutabor {
 	namespace hidden {
 		extern "C" {

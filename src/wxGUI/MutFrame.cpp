@@ -474,7 +474,7 @@ namespace mutaborGUI {
 
 			}
 		*/
-		DEBUGLOG(eventqueue,_T("Skippen? %d, Propagate? %d"),
+		DEBUGLOG (eventqueue, "Skippen? %d, Propagate? %d" ,
 			 event.GetSkipped(), event.ShouldPropagate());
 
 
@@ -491,7 +491,7 @@ namespace mutaborGUI {
 		}
 
 		//	}text.mb_str(*wxConvFileName)
-		DEBUGLOG(other,_T("frame: %p"),(void*)frame);
+		DEBUGLOG (other, "frame: %p" ,(void*)frame);
 
 		event.Skip();
 
@@ -510,7 +510,7 @@ namespace mutaborGUI {
 	{
 
 		TRACEC;
-		DEBUGLOG (other, _T("%p == %p"),(void*)this,(void*)ActiveWindow);
+		DEBUGLOG (other, "%p == %p" ,(void*)this,(void*)ActiveWindow);
 
 		if ( event.CanVeto() ) {
 			if (!static_cast<MutDocument *>(GetDocument())
@@ -594,7 +594,7 @@ namespace mutaborGUI {
 			return;
 
 
-		DEBUGLOG(other,_T("%d == %d?"),(int)CM_EXECUTE, event.GetId());
+		DEBUGLOG (other, "%d == %d?" ,(int)CM_EXECUTE, event.GetId());
 
 		switch (event.GetId()) {
 
@@ -644,7 +644,7 @@ namespace mutaborGUI {
 
 		MutEditFile * editor = new MutEditFile(this, wxPoint(0, 0), wxDefaultSize);
 
-		DEBUGLOG(other,_T("Loading %s"),(const wxChar *)path);
+		DEBUGLOG (other, "Loading %s" ,(const wxChar *)path);
 
 		if (!(!path))
 			editor->LoadFile(path);
@@ -668,7 +668,7 @@ namespace mutaborGUI {
 			return false;
 		}
 
-		DEBUGLOG(docview,_T("Setting client of %p to %p with title '%s'"),
+		DEBUGLOG (docview, "Setting client of %p to %p with title '%s'" ,
 			 (void*)this,
 			 (void*)win,
 			 (const wxChar *)title.c_str());
@@ -723,7 +723,7 @@ namespace mutaborGUI {
 
 		// aktivieren
 #ifndef NOACTIVATE
-		DEBUGLOG(other,_T("Activate"));
+		DEBUGLOG (other, "Activate" );
 
 
 		bool realtime = true;
@@ -744,7 +744,7 @@ while playing by computer keyboard.)"),
 
 #endif
 
-		DEBUGLOG(other,_T("Initialize state"));
+		DEBUGLOG (other, "Initialize state" );
 
 #if 0
 // this should be done during ActivateAll
@@ -760,7 +760,7 @@ while playing by computer keyboard.)"),
 			boxdata.reset();
 		}
 
-		DEBUGLOG(other,_T("Check used boxes"));
+		DEBUGLOG (other, "Check used boxes" );
 
 		// curBox checken
 		CheckBoxesUsed();
@@ -788,10 +788,10 @@ while playing by computer keyboard.)"),
 		MutFrame * routewin = dynamic_cast<MutFrame *>(FindWindowById(WK_ROUTE));
 		if ( routewin ) routewin->UpdateBoxMenu();
 
-		DEBUGLOG (gui, _T("Open other than logic; One window mode: %d"),OWM);
+		DEBUGLOG (gui, "Open other than logic; One window mode: %d" ,OWM);
 
 
-		DEBUGLOG (gui, _T("Open Logic window"));
+		DEBUGLOG (gui, "Open Logic window" );
 		// curBox-Fenstersetzen
 		//  LogicWinOpen(curBox);
 		LogicOn = true;
@@ -800,7 +800,7 @@ while playing by computer keyboard.)"),
 		StatusBar::AllSetActive(LogicOn);
 		StatusBar::AllSetPlaystate(StatusBar::Stop,false);
 
-		DEBUGLOG (other, _T("Open Text boxes: %d -- %d"),WK_KEY,WK_ACT);
+		DEBUGLOG (other, "Open Text boxes: %d -- %d" ,WK_KEY,WK_ACT);
 
 		Freeze();
 
@@ -830,7 +830,7 @@ while playing by computer keyboard.)"),
 		Thaw();
 		auimanager.Update();
 
-		DEBUGLOG (other, _T("Repaint route"));
+		DEBUGLOG (other, "Repaint route" );
 
 		repaint_route();
 
@@ -867,7 +867,7 @@ To start the translation hit the play button or select “Play” from the “Se
 	{
 
 		wxMenu * menu = item->GetSubMenu();
-		DEBUGLOG (other, _T("item: '%s' on %p\n"),
+		DEBUGLOG (other, "item: '%s' on %p\n" ,
 			  (item->GetItemLabel()).c_str(),
 			  (void*)item);
 
@@ -878,11 +878,11 @@ To start the translation hit the play button or select “Play” from the “Se
 
 		wxMenuItemList& l = menu->GetMenuItems();
 
-		DEBUGLOG (other, _T(" %d items"),(int)l.GetCount());
+		DEBUGLOG (other, " %d items" ,(int)l.GetCount());
 
 		for (wxMenuItemList::iterator i = l.begin(); i!=l.end(); i=l.begin()) {
 			wxMenuItem * node = *i;
-			DEBUGLOG (other, _T("ptr %p handling %s"),
+			DEBUGLOG (other, "ptr %p handling %s" ,
 				  (void*)node,(node->GetItemLabel()).c_str());
 
 			if (node->IsSubMenu())
@@ -890,7 +890,7 @@ To start the translation hit the play button or select “Play” from the “Se
 
 			Disconnect(node->GetId(),wxEVT_COMMAND_MENU_SELECTED);
 
-			DEBUGLOG (other, _T("destroying %s"),(node->GetItemLabel()).c_str());
+			DEBUGLOG (other, "destroying %s" ,(node->GetItemLabel()).c_str());
 
 			//    node->GetNext();
 			menu->Destroy(node);
@@ -900,15 +900,15 @@ To start the translation hit the play button or select “Play” from the “Se
 	void MutFrame::RaiseLogic(wxCommandEvent& event)
 	{
 		if (!RaiseTheFrame()) {
-			DEBUGLOG (other, _T("Calling Logic frame for id %d"), event.GetId());
+			DEBUGLOG (other, "Calling Logic frame for id %d" , event.GetId());
 			ActiveWindow -> RaiseLogic(event);
 			return;
 		}
 
-		DEBUGLOG (other, _T("Reached logic frame"));
+		DEBUGLOG (other, "Reached logic frame" );
 
 		mutASSERT(ActiveWindow == this);
-		DEBUGLOG (other, _T("%d"),event.GetId());
+		DEBUGLOG (other, "%d" ,event.GetId());
 
 		bool is_current = (event.GetId() == CM_BOX);
 		mutabor::Box box =
@@ -929,7 +929,7 @@ To start the translation hit the play button or select “Play” from the “Se
 
 			if (win) win->Raise();
 
-			DEBUGLOG (other, _T("Parent type: %s"),
+			DEBUGLOG (other, "Parent type: %s" ,
 				  muT(typeid(*( w->GetParent())).name()).c_str());
 
 			if (!is_current)
@@ -1011,7 +1011,7 @@ To start the translation hit the play button or select “Play” from the “Se
 	void MutFrame::CmRoutes(wxCommandEvent& event)
 	{
 		if ( GetId()== WK_ROUTE ) {
-			DEBUGLOG (other, _T("setting Focus"));
+			DEBUGLOG (other, "setting Focus" );
 			auimanager.Update();
 			Raise();
 			return;
@@ -1119,11 +1119,11 @@ To start the translation hit the play button or select “Play” from the “Se
 			UNREACHABLEC;
 		}
 
-		DEBUGLOG(gui,_T("LogicOn %d"),LogicOn);
+		DEBUGLOG (gui, "LogicOn %d" ,LogicOn);
 
 		if ( !LogicOn ) return;
 
-		DEBUGLOG(gui,_T("IsOpen(%d, %p) = %d"),kind,GetCurrentBox().get(),IsOpen(kind, b));
+		DEBUGLOG (gui, "IsOpen(%d, %p) = %d" ,kind,GetCurrentBox().get(),IsOpen(kind, b));
 		mutASSERT(IsOpen(kind,b) == !openclose);
 
 		if (openclose) {
@@ -1182,7 +1182,7 @@ To start the translation hit the play button or select “Play” from the “Se
 
 	void MutFrame::TextBoxOpen(WinKind kind, Box & box, bool update_auimanager)
 	{
-		DEBUGLOG (other, _T("%d,%p"),kind,box.get());
+		DEBUGLOG (other, "%d,%p" ,kind,box.get());
 
 		int width, height;
 
@@ -1196,13 +1196,13 @@ To start the translation hit the play button or select “Play” from the “Se
 						-1,
 						wxDefaultPosition,
 						wxSize(width, height));
-		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
-		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
+		DEBUGLOG (gui, "client->winKind=%d" ,client->GetKind());
+		DEBUGLOG (gui, "client->winKind=%d" ,client->GetKind());
 
 		wxString str = wxEmptyString;
 
-		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
-		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
+		DEBUGLOG (gui, "client->winKind=%d" ,client->GetKind());
+		DEBUGLOG (gui, "client->winKind=%d" ,client->GetKind());
 
 		switch ( kind ) {
 		case WK_KEY:
@@ -1246,7 +1246,7 @@ To start the translation hit the play button or select “Play” from the “Se
 			UNREACHABLEC;
 		}
 
-		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
+		DEBUGLOG (gui, "client->winKind=%d" ,client->GetKind());
 
 		auimanager.AddPane(client,wxAuiPaneInfo()
 				   .CaptionVisible(true).Caption(client->MakeTitle())
@@ -1347,14 +1347,14 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		} else {
 			event.Enable(false);
 			event.Show(false);
-			DEBUGLOG(menu,_T("box: %d, Checked: %d"),
+			DEBUGLOG (menu, "box: %d, Checked: %d" ,
 				 box?box->get_routefile_id():-10000,
 				 event.GetChecked());
 			return;
 		}
 		BoxData * guibox = ToGUIBase(box);
 		event.Check(guibox?guibox->WantKeyWindow():false);
-		DEBUGLOG(menu,_T("box: %d, guibox: %p, Checked: %d, Enabled: %d, Shown: %d"),
+		DEBUGLOG (menu, "box: %d, guibox: %p, Checked: %d, Enabled: %d, Shown: %d" ,
 			 guibox?box->get_routefile_id():-10000,
 			 guibox,
 			 event.GetChecked(),
@@ -1677,7 +1677,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 	void MutFrame::CeInDevPlay(wxUpdateUIEvent& event)
 	{
 		if ( !LogicOn ) {
-			DEBUGLOG (other, _T("Logic is off"));
+			DEBUGLOG (other, "Logic is off" );
 			event.Enable(false);
 			return;
 		}
@@ -1687,7 +1687,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		for ( InputDeviceList::const_iterator In = list.begin();
 		      In != list.end(); In++) {
 			DEBUGLOG (routing,
-				  _T("checking Device type %d >= %d with mode %d for pointer %p"),
+				  ("checking Device type %d >= %d with mode %d for pointer %p"),
 				  (*In)->GetType(),
 				  DTMidiFile,
 				  (*In)->GetMode(),
@@ -1696,12 +1696,12 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 			if ( (*In)->GetType() >= DTMidiFile &&
 			     ((*In)->GetMode() == DeviceStop ||
 			      (*In)->GetMode() == DevicePause) ) {
-				DEBUGLOG (routing, _T("Device can be activated"));
+				DEBUGLOG (routing, "Device can be activated" );
 				event.Enable(true);
 				return;
 			}
 
-			DEBUGLOG (routing, _T("Device can not be activated"));
+			DEBUGLOG (routing, "Device can not be activated" );
 		}
 
 		event.Enable(false);
@@ -1905,12 +1905,12 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		   the complexity of this function can be roughly
 		   estimated by $#(boxes) * max\{#(used_boxes_so_far)\}$.
 		*/
-		DEBUGLOG(other,_T("MutFrame::CmDoActivate: Set Box selection menu"));
+		DEBUGLOG (other, "MutFrame::CmDoActivate: Set Box selection menu" );
 		wxMenuItem * boxSelector = ClearMenuItem(CM_SELECTBOX);
 		mutASSERT(boxSelector->IsSubMenu());
 		wxMenu * boxMenu = boxSelector->GetSubMenu();
 		mutASSERT(boxMenu);
-		DEBUGLOG (other, _T("boxMenu = %p"),(void*)boxMenu);
+		DEBUGLOG (other, "boxMenu = %p" ,(void*)boxMenu);
 		//  wxID_HIGHEST
 		//  wxMenu *
 

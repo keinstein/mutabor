@@ -37,9 +37,9 @@
 #define MU32_INTERPRE_H
 #endif
 
-// ---------------------------------------------------------------------------
-// headers
-// ---------------------------------------------------------------------------
+/* --------------------------------------------------------------------------- */
+/* headers */
+/* --------------------------------------------------------------------------- */
 
 #include "Defs.h"
 #include "MidiKern.h"
@@ -48,19 +48,21 @@
 #ifndef MU32_INTERPRE_H_PRECOMPILED
 #define MU32_INTERPRE_H_PRECOMPILED
 
+
+/* system headers which do seldom change */
+#include <limits.h>
+
+
 #ifdef __cplusplus
 namespace mutabor {
 	namespace hidden {
 		extern "C" {
 #endif
 
-// system headers which do seldom change
-
-
 /* Zur Umrechnung in die Midi-Darstellung
    als Gleitpunktzahl in long.
    Erstes Byte Vorkommastellen, drei Bytes Nachkommastellen. */
-//#define DOUBLE_TO_LONG(x) ((long int) ((x) * (1L<<24)))
+/*#define DOUBLE_TO_LONG(x) ((long int) ((x) * (1L<<24))) */
 
 void message_tasten_liste( void );
 
@@ -76,10 +78,10 @@ enum mutabor_interval_type_constants {
 
 /* Datenstrukturen: */
 typedef struct MUT_INTERVAL {
-	mutabor_interval_type_constants active;
+	enum mutabor_interval_type_constants active;
 	mutint64 value;
 } mutabor_interval;
-			//typedef long mutabor_interval;
+			/*typedef long mutabor_interval; */
 typedef mutabor_interval mutabor_tone;
 
 typedef struct TSYS
@@ -98,11 +100,11 @@ typedef struct TSYS
  *
  * \return true if the interval is not set or empty.
  */
-inline mutabor_interval_type_constants
+inline enum mutabor_interval_type_constants
 mutabor_get_interval_type(mutabor_interval interval) {
 	return interval.active;
 }
-inline  mutabor_interval_type_constants
+inline  enum mutabor_interval_type_constants
 mutabor_get_tone_type(mutabor_tone tone) {
 	return tone.active;
 }
@@ -157,14 +159,13 @@ inline double mutabor_convert_interval_to_factor(mutabor_interval interval)
  */
 inline mutabor_interval mutabor_convert_factor_to_interval(double interval)
 {
-	mutabor_interval retval = {
-		(interval > -1
-		 ? (interval > 0
-		    ? mutabor_active_interval
-		    : mutabor_empty_interval)
-		 : mutabor_invalid_interval),
-		(mutint64)(mutabor_convert_factor_to_pitch(interval ) * (double) (0x01000000))
-	};
+	mutabor_interval retval;
+	retval.active = (interval > -1
+			 ? (interval > 0
+			    ? mutabor_active_interval
+			    : mutabor_empty_interval)
+			 : mutabor_invalid_interval);
+	retval.value = (mutint64)(mutabor_convert_factor_to_pitch(interval ) * (double) (0x01000000));
 	return retval;
 }
 
@@ -182,10 +183,9 @@ inline mutabor_interval mutabor_convert_factor_to_interval(double interval)
  */
 inline mutabor_interval mutabor_get_interval_from_pitch(double pitch)
 {
-	mutabor_interval retval = {
-		mutabor_active_interval,
-		(mutint64)(pitch * (double) (0x01000000))
-	};
+	mutabor_interval retval;
+	retval.active = mutabor_active_interval;
+	retval.value  = (mutint64)(pitch * (double) (0x01000000));
 	return retval;
 }
 
@@ -243,14 +243,13 @@ inline mutabor_tone mutabor_convert_factor_to_tone(double tone)
  */
 inline mutabor_tone mutabor_convert_frequency_to_tone(double frequency)
 {
-	mutabor_interval retval = {
-		(frequency > -1
-		 ? (frequency > 0
-		    ? mutabor_active_tone
-		    : mutabor_empty_tone)
-		 : mutabor_invalid_tone),
-		(mutint64)(mutabor_convert_frequency_to_pitch(frequency ) * (double) (0x01000000))
-	};
+	mutabor_interval retval;
+	retval.active = (frequency > -1
+			 ? (frequency > 0
+			    ? mutabor_active_tone
+			    : mutabor_empty_tone)
+			 : mutabor_invalid_tone);
+	retval.value  = (mutint64)(mutabor_convert_frequency_to_pitch(frequency ) * (double) (0x01000000));
 	return retval;
 }
 
@@ -267,10 +266,9 @@ inline mutabor_tone mutabor_convert_frequency_to_tone(double frequency)
  */
 inline mutabor_tone mutabor_get_tone_from_pitch(double pitch)
 {
-	mutabor_tone retval = {
-		mutabor_active_tone,
-		(mutint64)(pitch * (double) (0x01000000))
-	};
+	mutabor_tone retval;
+	retval.active = mutabor_active_tone;
+	retval.value  = (mutint64)(pitch * (double) (0x01000000));
 	return retval;
 }
 
@@ -295,10 +293,9 @@ inline double mutabor_get_pitch_from_tone(mutabor_tone tone)
 inline mutabor_tone mutabor_add_interval_to_tone(const mutabor_tone tone,
 						 int count,
 						 const mutabor_interval interval) {
-	mutabor_tone retval = {
-		tone.active,
-		tone.value + ((mutint64) count) * interval.value
-	};
+	mutabor_tone retval;
+	retval.active = tone.active;
+	retval.value  = tone.value + ((mutint64) count) * interval.value;
 	switch (interval.active) {
 	case mutabor_empty_interval:
 		if (tone.active == mutabor_invalid_interval)
@@ -315,10 +312,9 @@ inline mutabor_tone mutabor_add_interval_to_tone(const mutabor_tone tone,
 
 inline mutabor_interval mutabor_tone_get_interval(const mutabor_tone t1,
 						  const mutabor_tone t2) {
-	mutabor_interval retval = {
-		t1.active,
-		t1.value - t2.value
-	};
+	mutabor_interval retval;
+	retval.active = t1.active;
+	retval.value  = t1.value - t2.value;
 	switch (t2.active) {
 	case mutabor_empty_tone:
 		if (t1.active == mutabor_invalid_tone)
@@ -337,10 +333,9 @@ inline mutabor_interval mutabor_tone_get_interval(const mutabor_tone t1,
 inline mutabor_interval mutabor_add_intervals(const mutabor_interval interval1,
 						 int count,
 						 const mutabor_interval interval2) {
-	mutabor_interval retval = {
-		interval1.active,
-		interval1.value + ((mutint64) count) * interval2.value
-	};
+	mutabor_interval retval;
+	retval.active = interval1.active;
+	retval.value  = interval1.value + ((mutint64) count) * interval2.value;
 	switch (interval2.active) {
 	case mutabor_empty_interval:
 		if (interval1.active == mutabor_invalid_interval)
@@ -387,8 +382,9 @@ inline mutabor_tone mutabor_tone_copy_distance(const mutabor_tone offset,
 }
 
 inline int mutabor_get_note_index(int note, tone_system * system) {
+	int retval;
 	if (!system) return INT_MIN;
-	int retval = (note - system->anker) % system->breite;
+	retval = (note - system->anker) % system->breite;
 	if (retval < 0)  retval += system->breite;
 	mutASSERT(0 <= retval);
 	mutASSERT(retval < system->breite);
@@ -396,9 +392,10 @@ inline int mutabor_get_note_index(int note, tone_system * system) {
 }
 
 inline int mutabor_get_note_distance(int note, tone_system * system) {
+	int delta, retval;
 	if (!system) return INT_MIN;
-	int delta = (note - system->anker);
-	int retval = delta / system->breite;
+	delta = (note - system->anker);
+	retval = delta / system->breite;
 	if (retval * system->breite > delta) 
 		retval -= 1;
 	mutASSERT(system -> anker + retval * system -> breite <= note);
@@ -476,7 +473,7 @@ struct ton_einstell
 	union {
 		mutabor_tone     tone;
 		mutabor_interval interval;
-	};
+	} u;
 	struct ton_einstell * next;
 };
 
@@ -608,14 +605,14 @@ struct do_aktion
 		} aufruf_umst_toene_veraendert;
 
 #if 0
-		// currently no data fields
+		/* currently no data fields */
 		struct {
 		} aufruf_umst_umst_bund;
 #endif
 
 		struct {
 #if 0
-		    // first argument
+		    /* first argument */
 		    int * choice;
 #endif
 			struct case_element * umst_case;
@@ -635,7 +632,7 @@ struct do_aktion
 struct midi_ereignis
 {
 	int * first_pos;
-	//	int * scan_pos;
+	/*	int * scan_pos; */
 	const char * name;
 	struct do_aktion * aktion;
 	struct logik * the_logik_to_expand;
@@ -679,7 +676,7 @@ struct harmonie_ereignis
 /* moved to box.h
 int liegende_tasten[MAX_BOX][64];
 int liegende_tasten_max[MAX_BOX];
-long last_note_id[MAX_BOX];           // unused
+long last_note_id[MAX_BOX];           / * unused * /
 int laufzeit_abstand[MAX_BOX];
 int laufzeit_zentrum[MAX_BOX];
 */
@@ -702,4 +699,4 @@ int laufzeit_zentrum[MAX_BOX];
 
 
 
-///\}
+/** \} */

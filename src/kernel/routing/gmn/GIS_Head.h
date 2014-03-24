@@ -1,5 +1,5 @@
 //     -*- C++ -*-
-/** \file 
+/** \file
 ********************************************************************
 * Description
 *
@@ -45,6 +45,7 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
+#include "src/kernel/Frac.h"
 #include "src/kernel/routing/Box.h"
 #include "src/kernel/routing/gmn/GIS.h"
 
@@ -68,34 +69,32 @@ public:
 	GisReadHead *Boss;
 	int nSub;
 	GisToken *Cursor;
-	frac Time;
-	mutString Id;
+	mutabor::frac Time;
+	std::string Id;
 	char Turn;
 	bool SingleToken; // proceed only one token (in accords)
 
-	GisReadHead(GisReadHead *boss, GisToken *cursor, const mutString &id, bool singleToken = false)
+	GisReadHead(GisReadHead *boss, GisToken *cursor, const std::string &id, bool singleToken = false)
 		{
 			PrevPtr = &Prev;
-			DEBUGLOG(gmnfile,_T("boss = %p"),(void *)boss);
+			DEBUGLOG (gmnfile, "boss = %p" ,(void *)boss);
 			Next = Prev = NULL;
 			Cursor = cursor;
-			mutCopyString(Id,id);
+			Id = id;
 			InsertInfrontOf(boss);
 			Boss = boss;
 			nSub = -1;
-			Time = frac(0, 1);
+			Time = mutabor::frac(0, 1);
 			SingleToken = singleToken;
 		}
 
 	virtual ~GisReadHead()
 
 		{
-			mutFreeString(Id);
-
 			if ( Next ) delete Next; // only the following will be deleted
 		}
 
-	virtual GisReadHead *Build(GisReadHead *boss, GisToken *cursor, const mutString &id, bool singleToken = false)
+	virtual GisReadHead *Build(GisReadHead *boss, GisToken *cursor, const std::string &id, bool singleToken = false)
 		{
 			return new GisReadHead(boss, cursor, id, singleToken);
 		}
@@ -120,17 +119,15 @@ public:
 	void CreateSegmentSubs();
 	void CreateSequenzSubs();
 	void Read();
-#ifdef WX
-	operator wxString()
+	operator std::string()
 		{
 			if (Next)
-				return ToString() + (wxString) (*Next) ;
+				return ToString() + (std::string) (*Next) ;
 			else
 				return ToString();
 		}
 
-	virtual wxString ToString();
-#endif
+	virtual std::string ToString();
 
 };
 
@@ -138,7 +135,9 @@ typedef void GisReadProceed(GisReadHead*, char) ;
 
 extern GisReadProceed GisReadDummy;
 
-frac GisReadHeadOn(GisReadHead **Head, frac dTime = frac(0, 1), GisReadProceed *proceed = GisReadDummy);
+mutabor::frac GisReadHeadOn(GisReadHead **Head,
+			    mutabor::frac dTime = mutabor::frac(0, 1),
+			    GisReadProceed *proceed = GisReadDummy);
 
 // TagList ----------------------------------------------------------
 
@@ -163,7 +162,7 @@ class GisReadArtHead : public GisReadHead
 {
 
 public:
-	frac Time2;
+	mutabor::frac Time2;
 	mutint64 Delta; // in μs
 	mutabor::Box Box;
 
@@ -177,11 +176,11 @@ private:
 
 public:
 
-	GisReadArtHead(GisReadArtHead *boss, GisToken *cursor, const mutString id, bool singleToken = false)
+	GisReadArtHead(GisReadArtHead *boss, GisToken *cursor, const std::string id, bool singleToken = false)
 		: GisReadHead(boss, cursor, id, singleToken)
 		{
-			DEBUGLOG(gmnfile,_T("boss = %p"), (void *)boss);
-			DEBUGLOG(gmnfile,_T("cursor = %p"), (void *)cursor);
+			DEBUGLOG (gmnfile, "boss = %p" , (void *)boss);
+			DEBUGLOG (gmnfile, "cursor = %p" , (void *)cursor);
 
 			if ( boss ) {
 				Intensity = Copy(boss->Intensity);
@@ -218,9 +217,9 @@ public:
 			Erase(Tempo);
 		}
 
-	virtual GisReadHead *Build(GisReadHead *boss, GisToken *cursor, const mutString & id, bool singleToken = false)
+	virtual GisReadHead *Build(GisReadHead *boss, GisToken *cursor, const std::string & id, bool singleToken = false)
 		{
-			mutASSERT(!boss 
+			mutASSERT(!boss
 				  || dynamic_cast<GisReadArtHead*>(boss));
 			return new GisReadArtHead(static_cast<GisReadArtHead*>(boss),
 						  cursor, id, singleToken);
@@ -277,34 +276,34 @@ public:
 
 	int GetSpeedFactor()
 		{
-			DEBUGLOG(gmnfile,_T("Tempo: %p"),(void *)Tempo);
+			DEBUGLOG (gmnfile, "Tempo: %p" ,(void *)Tempo);
 
 			if (Tempo) {
-				DEBUGLOG(gmnfile,_T("Tempo->Data.i: %ld"),Tempo->Data.i);
+				DEBUGLOG (gmnfile, "Tempo->Data.i: %ld" ,Tempo->Data.i);
 				return Tempo->Data.i;
 			}
 			else
 				return 2000;
 		}
 
-#ifdef WX
-	operator wxString()
+	operator std::string()
 		{
 			if (Next)
-				return ToString() + (wxString) (*Next) ;
+				return ToString() + (std::string) (*Next) ;
 			else
 				return ToString();
 		}
 
-	virtual wxString ToString();
-#endif
+	virtual std::string ToString();
 };
 
 typedef void GisReadArtProceed(GisReadArtHead* token, char turn) ;
 
 extern GisReadArtProceed GisReadArtDummy;
 
-frac GisReadArtHeadOn(GisReadArtHead **Head, frac dTime = frac(0, 1), GisReadArtProceed *proceed = GisReadArtDummy);
+mutabor::frac GisReadArtHeadOn(GisReadArtHead **Head,
+			       mutabor::frac dTime = mutabor::frac(0, 1),
+			       GisReadArtProceed *proceed = GisReadArtDummy);
 
 // GisWriteHead -----------------------------------------------------
 
@@ -318,8 +317,8 @@ public:
 	GisWriteHead *Boss;
 	int nSub;
 	GisToken *Data, **Cursor;
-	frac TotalTime, CurrentTime;
-	mutString Id;
+	mutabor::frac TotalTime, CurrentTime;
+	std::string Id;
 	char SingleToken; // proceed only one token (in accords)
 	GisToken **ChordPos;
 	ChordNote *ChordNotes;
@@ -328,7 +327,7 @@ public:
 	TagList *Octave;
 	TagList *Key;
 
-	GisWriteHead(GisWriteHead *boss, const mutString id)
+	GisWriteHead(GisWriteHead *boss, const std::string id)
 		{
 			Prev = 0;
 			Next = 0;
@@ -346,8 +345,8 @@ public:
 
 			nSub = -1;
 
-			TotalTime = frac(0, 1);
-			CurrentTime = frac(0, 1);
+			TotalTime = mutabor::frac(0, 1);
+			CurrentTime = mutabor::frac(0, 1);
 			SingleToken = (boss && boss->State() == GTSegment);
 			ChordNotes = 0;
 			NoteOn = 0;
@@ -359,7 +358,6 @@ public:
 	~GisWriteHead()
 
 		{
-			mutFreeString(Id);
 			Erase(Octave);
 			Erase(Key);
 
@@ -384,7 +382,7 @@ public:
 	int CloseCurrentToken(char insertRest = 1);
 	int ProceedGis(GisToken *token, char turn = 0);  // returns error code, 0 means OK
 	void WriteChord();
-	void AddTime(frac dTime);
+	void AddTime(mutabor::frac dTime);
 	int GetOctave()
 		{
 			if ( Octave )
@@ -403,7 +401,7 @@ public:
 };
 
 
-int GisWriteHeadGis(GisWriteHead **head, mutString id, GisToken *token, char turn);
+int GisWriteHeadGis(GisWriteHead **head, std::string id, GisToken *token, char turn);
 
 /*
   int GisWriteAlteredNoteOn(GisWriteHead **head,  char *id, long freq, int noteId,
@@ -411,7 +409,7 @@ int GisWriteHeadGis(GisWriteHead **head, mutString id, GisToken *token, char tur
   int GisWriteAlteredNoteOff(GisWriteHead **head,  char *id, int noteId);
 */
 // search the header with the matching Id
-GisWriteHead *GetMatchingHeader(GisWriteHead **head, mutString id);
+GisWriteHead *GetMatchingHeader(GisWriteHead **head, std::string id);
 
 void CloseAllSubs(GisWriteHead *head);
 
@@ -436,15 +434,15 @@ public:
 	GisToken *Data;
 	GisToken **Cursor;
 	GisWriteHead *Boss;
-	frac CurrentTime;
-	frac TotalTime;
+	mutabor::frac CurrentTime;
+	mutabor::frac TotalTime;
 	GisToken **BossPos;
 	int InstrId;
 	char Status;
 	GisToken **AlterBegin;
 	GisToken **TieBegin;
 	int nTie;  // number of notes in tie
-	mutString *LastSep;
+	std::string *LastSep;
 	int Taste;     // original pressed key
 	int Key;       // outputed key
 	double Pitch;  // corresponding pitch
@@ -458,11 +456,11 @@ public:
 			Cursor = &Data;
 
 			if ( (bool) TotalTime )
-				AddGis(new GisNote(mutT("_"),
-						   mutEmptyString,
+				AddGis(new GisNote("_",
+						   "",
 						   0,
 						   TotalTime,
-						   mutT(" "), 0));
+						   " ", 0));
 
 			CurrentTime = 0;
 
@@ -492,7 +490,7 @@ public:
 			if ( Next ) delete Next;
 		}
 
-	void CountOnTime(frac dTime);
+	void CountOnTime(mutabor::frac dTime);
 	void SetNoteOn(GisToken *note);
 	int SetNoteOff(GisToken *note); // returns 1, when note was finished, else 0
 	void AddGis(GisToken *token);
@@ -504,7 +502,7 @@ public:
 			CheckCloseTie();
 		}
 
-	int MutNoteOn(int key, double pitch, int instrId, int taste, mutString sep);
+	int MutNoteOn(int key, double pitch, int instrId, int taste, std::string sep);
 	int MutNoteOff();
 	char CheckId(int instrId, int taste)
 		{

@@ -47,13 +47,13 @@
 
 #include "src/kernel/Defs.h"
 
+#if 0
 #if wxUSE_WCHAR_T
 
 #ifndef WX_PRECOMP
 #endif //WX_PRECOMP
 
 #include "muconvauto.h"
-
 #ifdef __BORLANDC__
 #pragma hdrstop
 #endif
@@ -244,4 +244,5 @@ size_t muConvAuto::FromWChar(char *dst, size_t dstLen,
 
 wxMBConv * muConvAutoFallback = &wxConvISO8859_1;
 
+#endif
 ///\}

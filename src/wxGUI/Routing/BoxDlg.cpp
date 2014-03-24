@@ -204,10 +204,10 @@ namespace mutaborGUI {
 
 #ifdef DEBUG
 		if (b) {
-			DEBUGLOG(dialog,_T("Entry box %p at Entry No. %d"),
+			DEBUGLOG (dialog, "Entry box %p at Entry No. %d" ,
 				 b.get(),number);
 		} else {
-			DEBUGLOG(dialog,_T("Entry 'new box' at Entry No. %d"),
+			DEBUGLOG (dialog, "Entry 'new box' at Entry No. %d" ,
 				 number);
 		}
 #endif
@@ -240,10 +240,10 @@ namespace mutaborGUI {
 			// Avoid flipping of size.
 			EnableRoute(false);
 			wxSize disabledSize = DoGetBestSize();
-			DEBUGLOG(dialog,_T("disabledSize = (%d,%d)"),disabledSize.x,disabledSize.y);
+			DEBUGLOG (dialog, "disabledSize = (%d,%d)" ,disabledSize.x,disabledSize.y);
 			EnableRoute(true);
 			wxSize enabledSize = DoGetBestSize();
-			DEBUGLOG(dialog,_T("enabledSize = (%d,%d)"),enabledSize.x,enabledSize.y);
+			DEBUGLOG (dialog, "enabledSize = (%d,%d)" ,enabledSize.x,enabledSize.y);
 			SetInitialSize(wxSize(std::max(disabledSize.x,enabledSize.x),std::max(disabledSize.y,enabledSize.y)));
 		}
 		return created;
@@ -328,7 +328,7 @@ namespace mutaborGUI {
 	bool BoxDlg::SetBoxType(int type) {
 		mutASSERT(boxType && boxTypeChoice);
 		if (!boxType || !boxTypeChoice) return false;
-		DEBUGLOG(dialog,_T("Setting box type number %d"), type);
+		DEBUGLOG (dialog, "Setting box type number %d" , type);
 		if (0<= type) type = Box0;
 		wxWindow * page;
 		switch (type) {

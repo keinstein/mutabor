@@ -54,32 +54,30 @@ namespace mutabor {
 	BoxListType BoxClass::boxList;
 	int BoxClass::nextboxid = Box0;
 
-#ifdef WX
-	wxString BoxClass::TowxString() const {
-		wxString routeString;
+	BoxClass::operator std::string() const {
+		std::string routeString;
 		for (routeListType::const_iterator r = routes.begin();
 		     r != routes.end(); r++)
-			routeString += wxString::Format(_T(" %d:(%d->%d->%d)"),
-							(*r)->get_routefile_id(),
-							(*r)->GetDeviceId(InputDevice()),
-							(*r)->GetBoxId(),
-							(*r)->GetDeviceId(OutputDevice()));
+			routeString += boost::str(boost::format((" %d:(%d->%d->%d)"))
+						  % (*r)->get_routefile_id()
+						  % (*r)->GetDeviceId(InputDevice())
+						  % (*r)->GetBoxId()
+						  %(*r)->GetDeviceId(OutputDevice()));
 
 
-		return wxString::Format(_T("\nBox:\n\
+		return boost::str(boost::format("\nBox:\n\
    session_id    = %lu\n\
    routefile_id  = %d\n\
-   routes: %s\n"),
-					(unsigned long)session_id(),
-					routefile_id,routeString.c_str());
+   routes: %s\n") % (unsigned long)session_id()
+				  % routefile_id
+				  % routeString.c_str());
 	}
-#endif
 
 
 	BoxClass::~BoxClass()
 	{
 		// if there are remaining pointers we have other problems.
-		DEBUGLOG(routing,_T("this = %p"),(void*)this);
+		DEBUGLOG (routing, "this = %p" ,(void*)this);
 		if (open) Close();
 #ifdef DEBUG
 		// prevent from endless destroy loop
@@ -125,7 +123,7 @@ namespace mutabor {
 
 	void BoxClass::Add(Route & route) {
 		BoxLock lock(this);
-		DEBUGLOG(smartptr,_T("Route; %p"),(void*)route.get());
+		DEBUGLOG (smartptr, "Route; %p" ,(void*)route.get());
 #ifdef DEBUG
 		routeListType::const_iterator i =
 			find(routes.begin(),routes.end(),route);
@@ -134,25 +132,25 @@ namespace mutabor {
 #endif
 		TRACEC;
 		routes.push_back(route);
-		DEBUGLOG(smartptr,_T("Route; %p saved"),(void*)route.get());
+		DEBUGLOG (smartptr, "Route; %p saved" ,(void*)route.get());
 	}
 
 	bool BoxClass::Replace(Route & oldroute, Route & newroute) {
-		DEBUGLOG(smartptr,_T("oldroute; %p, newroute; %p"),
+		DEBUGLOG (smartptr, "oldroute; %p, newroute; %p" ,
 			 (void*)oldroute.get(),(void*)newroute.get());
 		bool found = Remove(oldroute);
 		mutASSERT(found);
 		if (found)
 			Add(newroute);
 
-		DEBUGLOG(smartptr,_T("oldroute; %p, newroute; %p"),
+		DEBUGLOG (smartptr, "oldroute; %p, newroute; %p" ,
 			 (void*)oldroute.get(),(void*)newroute.get());
 		return found;
 	}
 
 	bool BoxClass::Remove(Route & route) {
 		BoxLock lock(this);
-		DEBUGLOG(smartptr,_T("Route: %p (%d)"),
+		DEBUGLOG (smartptr, "Route: %p (%d)" ,
 			 (void*)route.get(),
 			 (int)intrusive_ptr_get_refcount(route.get()));
 		routeListType::iterator i =
@@ -164,7 +162,7 @@ namespace mutabor {
 			// but route must be deleted
 			routes.erase(i);
 		}
-		DEBUGLOG(smartptr,_T("Route; %p (%d)"),(void*)route.get(),
+		DEBUGLOG (smartptr, "Route; %p (%d)" ,(void*)route.get(),
 			 (int)intrusive_ptr_get_refcount(route.get()));
 		return found;
 	}
@@ -282,7 +280,7 @@ namespace mutabor {
 	void BoxClass::AppendToBoxList (Box b)
 	{
 #ifdef DEBUG
-		DEBUGLOG2(routing,_T("Adding box %p"),b.get());
+		DEBUGLOG2(routing,("Adding box %p"),b.get());
 		print_stacktrace(isDebugFlag(smartptr));
 		typename listtype::iterator i =
 			FindInBoxList(b);
@@ -363,7 +361,7 @@ namespace mutabor {
 		}
 
 		if (key != NULL) {
-			DEBUGLOG(routing,_T("(key = %d, channel = %lu, id = %lu)"),
+			DEBUGLOG (routing, "(key = %d, channel = %lu, id = %lu)" ,
 				 key->number,
 				 key->channel,
 				 key->id);
@@ -468,7 +466,7 @@ namespace mutabor {
 
 #if 0
 		if ( !ok ) {
-			wxMessageBox(Fmeldung, _("Activation error"), wxOK | wxICON_ASTERISK );
+			wxMessageBox(Fmeldung, _mut("Activation error"), wxOK | wxICON_ASTERISK );
 
 			return false;
 		}
@@ -528,7 +526,7 @@ namespace mutabor {
 				  BoxClass::logic_entry::Logic)),
 				(box->last_trigger.type
 				 == mutabor::hidden::any_trigger::key &&
-				 box->last_trigger.key_trigger == i),
+				 box->last_trigger.u.key_trigger == i),
 				(i->name?i->name:""),
 				(start_tuning?start_tuning:""),
 				i->taste,
@@ -546,7 +544,7 @@ namespace mutabor {
 		     i ; i=i->next) {
 			mutabor::hidden::any_trigger trigger;
 			trigger.type = mutabor::hidden::any_trigger::harmony;
-			trigger.harmony_trigger = i;
+			trigger.u.harmony_trigger = i;
 			BoxClass::logic_entry entry = {
 				((i->the_logik_to_expand == NULL)?
 				 BoxClass::logic_entry::none:
@@ -555,7 +553,7 @@ namespace mutabor {
 				  BoxClass::logic_entry::Logic)),
 				(box->last_trigger.type ==
 				 mutabor::hidden::any_trigger::harmony &&
-				 box->last_trigger.harmony_trigger == i),
+				 box->last_trigger.u.harmony_trigger == i),
 				i->name,
 				(i->the_logik_to_expand && i->the_logik_to_expand->parser_tuning
 				 ?i->the_logik_to_expand->parser_tuning->u.aktion_aufruf.name:
@@ -575,7 +573,7 @@ namespace mutabor {
 		     i ; i=i->next) {
 			mutabor::hidden::any_trigger trigger;
 			trigger.type = mutabor::hidden::any_trigger::midi;
-			trigger.midi_trigger = i;
+			trigger.u.midi_trigger = i;
 			BoxClass::logic_entry entry = {
 				((i->the_logik_to_expand == NULL)?
 				 BoxClass::logic_entry::none:
@@ -583,7 +581,7 @@ namespace mutabor {
 				  BoxClass::logic_entry::CurrentLogic :
 				  BoxClass::logic_entry::Logic)),
 				(box->last_trigger.type == mutabor::hidden::any_trigger::midi &&
-				 box->last_trigger.midi_trigger == i),
+				 box->last_trigger.u.midi_trigger == i),
 				i->name,
 				(i->the_logik_to_expand && i->the_logik_to_expand->parser_tuning?
 				 i->the_logik_to_expand->parser_tuning->u.aktion_aufruf.name:
@@ -708,7 +706,7 @@ namespace mutabor {
 
 				//	 show_line_number(-1);
 
-				callback->SetStatus(_("Generating tables"));
+				callback->SetStatus(_mut("Generating tables"));
 				callback->Refresh();
 			}
 
@@ -716,15 +714,15 @@ namespace mutabor {
 
 
 			if (callback) {
-				callback->SetStatus(_("Translation successful"));
-				callback->SetMessage(_("No error occured."));
+				callback->SetStatus(_mut("Translation successful"));
+				callback->SetMessage(_mut("No error occured."));
 				callback->Refresh();
 			}
 			return true;
 		} else {
 			//show_line_number(-1);
 			if (callback) {
-				callback->SetStatus(_("Translation interrupted."));
+				callback->SetStatus(_mut("Translation interrupted."));
 				callback->SetMessage(get_errors());
 				callback->Refresh();
 			}
@@ -967,19 +965,19 @@ namespace mutabor {
 	void BoxFactory::LoadBoxes(tree_storage & config)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		config.toLeaf(_T("Boxes"));
+		config.toLeaf(("Boxes"));
 
-		int i = config.toFirstLeaf(_T("Box"));
+		int i = config.toFirstLeaf(("Box"));
 		while (i != wxNOT_FOUND) {
-			DEBUGLOGTYPE(config,BoxClass,_T("Loading box device with id %d"),i);
-			int type = config.Read(_T("Type"), NoBox);
+			DEBUGLOGTYPE(config,BoxClass,("Loading box device with id %d"),i);
+			int type = config.Read(("Type"), NoBox);
 			Box b = BoxFactory::Create(type);
 			if (!b) continue;
 			b -> set_routefile_id(i);
 			b -> Load(config);
-			i = config.toNextLeaf(_T("Box"));
+			i = config.toNextLeaf(("Box"));
 		}
 
 		config.toParent(2);
@@ -989,18 +987,18 @@ namespace mutabor {
 	void BoxFactory::SaveBoxes(tree_storage & config)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		config.toLeaf(_T("Boxes"));
+		config.toLeaf(("Boxes"));
 
 		const BoxListType & list =
 			BoxClass::GetBoxList();
 		for (BoxListType::const_iterator b = list.begin();
 		     b != list.end(); b++) {
 			int id = (*b)->get_routefile_id();
-			config.toLeaf(_T("Box"), id);
-			config.Write(_T("Type"), (*b)->GetType() );
-			config.Write(_T("Type Name"),(*b)->GetTypeName());
+			config.toLeaf(("Box"), id);
+			config.Write(("Type"), (*b)->GetType() );
+			config.Write(("Type Name"),(*b)->GetTypeName());
 			(*b) -> Save (config);
 			config.toParent();
 		}

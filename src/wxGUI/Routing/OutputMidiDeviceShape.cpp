@@ -73,7 +73,7 @@ namespace mutaborGUI {
 
 	void MutOutputMidiDeviceShape::InitializeDialog(OutputDevDlg * out) const
 	{
-		DEBUGLOG (other, _T("Type: %d"),DTMidiPort);
+		DEBUGLOG (other, "Type: %d" ,DTMidiPort);
 		mutASSERT(device);
 		mutASSERT(device->GetType() == DTMidiPort);
 		mutASSERT(out);
@@ -93,7 +93,7 @@ namespace mutaborGUI {
 		OutputMidiPort * dev = dynamic_cast<OutputMidiPort *> (device.get());
 		if (!dev) return false;
 		mutASSERT (dev);
-		DEBUGLOG(routing,_T("New midi device: %d"),out -> GetMidiDevice());
+		DEBUGLOG (routing, "New midi device: %d" ,out -> GetMidiDevice());
 		dev->SetDevId (out -> GetMidiDevice());
 		dev->SetBendingRange (out->GetMidiBendingRange());
 		SetLabel (dev->GetName());

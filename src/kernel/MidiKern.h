@@ -26,8 +26,8 @@
  * \addtogroup runtime
  * \{
  ********************************************************************/
-// ------------------------------------------------------------------
-// ------------------------------------------------------------------
+/* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------ */
 
 /* we guard a little bit complicated to ensure the references are set right
  */
@@ -38,35 +38,24 @@
 #define MU32_MIDIKERN_H
 #endif
 
-// ---------------------------------------------------------------------------
-// headers
-// ---------------------------------------------------------------------------
+/* --------------------------------------------------------------------------- */
+/* headers */
+/* --------------------------------------------------------------------------- */
 
 #include "Defs.h"
 
 #ifndef MU32_MIDIKERN_H_PRECOMPILED
 #define MU32_MIDIKERN_H_PRECOMPILED
 
-// system headers which do seldom change
+/* system headers which do seldom change */
+#include <math.h>
 
+#define MIDI_MIN_CHANNEL 0
+#define DRUMCHANNEL 9  /* drum channel in general MIDI (0 based 9, 10 else). */
+#define MIDI_MAX_CHANNEL 15
+#define MIDI_MIN_KEY 0
+#define MIDI_MAX_KEY 0x7f
 
-#define DRUMCHANNEL 9  // drum channel in general MIDI (0 based 9, 10 else).
-
-#if 0
-#define ZWZ pow(2.0l,1.0l/12.0l)// 12 √ 2
-
-inline double LONG_TO_HERTZ( long freq ) {
-	return 440.0*pow(2.0l,((double)(freq-69*0x01000000) / ((double) (0x01000000*12))));
-}
-/* 440 * (12 √ 2) ^ (pitch difference to “a440” in half tones)  */
-
-/** Despite its name the following macro translates a long value into halftones.
- *  Cents are easy to deduce: they are the first two decimals.
- */
-inline double LONG_TO_CENT( long freq ) {
-	return ( (double)(freq) / ((double) 0x01000000));
-}
-#endif
 
 /**
  * Convert an interval represented as MIDI based double value to a
@@ -218,19 +207,19 @@ namespace mutabor {
 			BANK_COARSE              = 0x00,
 			MODULATION_WHEEL_COARSE  = 0x01,
 			BREATH_COARSE            = 0x02,
-			// free controller 0x03
+			/* free controller 0x03 */
 			FOOT_PEDAL_COARSE        = 0x04,
 			PORTAMENTO_TIME_COARSE   = 0x05,
 			DATA_ENTRY_COARSE        = 0x06,
 			VOLUME_COARSE            = 0x07,
 			BALANCE_COARSE           = 0x08,
-			// free controller 0x09
+			/* free controller 0x09 */
 			PAN_POSITION_COARSE      = 0x0A,
 			EXPRESSION_COARSE        = 0x0B,
 			EFFECT_CONTROL_1_COARSE  = 0x0C,
 			EFFECT_CONTROL_2_COARSE  = 0x0D,
 
-			// free controllers 0x0E, 0x0F
+			/* free controllers 0x0E, 0x0F */
 
 			/* general purpose controllers */
 			GENERAL_PURPOSE_SLIDER_1 = 0x10,
@@ -238,25 +227,25 @@ namespace mutabor {
 			GENERAL_PURPOSE_SLIDER_3 = 0x12,
 			GENERAL_PURPOSE_SLIDER_4 = 0x13,
 
-			// free controllers 0x14-0x1F
+			/* free controllers 0x14-0x1F */
 
 			/* fine controllers */
 			BANK_FINE                = 0x20,
 			MODULATION_WHEEL_FINE    = 0x21,
 			BREATH_FINE              = 0x22,
-			// free controller 3
+			/* free controller 3 */
 			FOOT_PEDAL_FINE          = 0x24,
 			PORTAMENTO_TIME_FINE     = 0x25,
 			DATA_ENTRY_FINE          = 0x26,
 			VOLUME_FINE              = 0x27,
 			BALANCE_FINE             = 0x28,
-			// free controller 9
+			/* free controller 9 */
 			PAN_POSITION_FINE        = 0x2A,
 			EXPRESSION_FINE          = 0x2B,
 			EFFECT_CONTROL_1_FINE    = 0x2C,
 			EFFECT_CONTROL_2_FINE    = 0x2D,
 
-			// free 0x2E–0x3F
+			/* free 0x2E–0x3F */
 
 			/* on/off controllers */
 			HOLD_PEDAL_ON_OFF        = 0x40,
@@ -290,7 +279,7 @@ namespace mutabor {
 			GENERAL_PURPOSE_ON_OFF_3 = 0x52,
 			GENERAL_PURPOSE_ON_OFF_4 = 0x53,
 
-			// free 0x54-0x57
+			/* free 0x54-0x57 */
 
 			/* levels */
 			EFFECTS_LEVEL            = 0x5B,
@@ -307,20 +296,20 @@ namespace mutabor {
 			REGISTERED_PARAMETER_FINE = 0x64,
 			REGISTERED_PARAMETER_COARSE = 0x65,
 
-			// free 0x66-0x77
+			/* free 0x66-0x77 */
 
 			/* management controllers */
 			ALL_SOUND_OFF            = 0x78,
 			ALL_CONTROLLERS_OFF      = 0x79,
-			LOCAL_ON_OFF             = 0x7A, // (122)
+			LOCAL_ON_OFF             = 0x7A, /* (122) */
 			ALL_NOTES_OFF            = 0x7B,
 			OMNI_OFF                 = 0x7C,
-			OMNI_ON                  = 0x7D, // (125)
-			// mono means not poly and vice versa
-			MONO_ON                  = 0x7E, // 126
-			POLY_OFF                 = 0x7E, // 126
-			MONO_OFF                 = 0x7F, // (127)
-			POLY_ON                  = 0x7F // (127)
+			OMNI_ON                  = 0x7D, /* (125) */
+			/* mono means not poly and vice versa */
+			MONO_ON                  = 0x7E, /* 126 */
+			POLY_OFF                 = 0x7E, /* 126 */
+			MONO_OFF                 = 0x7F, /* (127) */
+			POLY_ON                  = 0x7F /* (127) */
 		};
 
 		enum non_midi_controllers {
@@ -343,7 +332,7 @@ namespace mutabor {
 		};
 
 		enum midi_registered_parameters {
-			// Form: 0x1MMLL
+			/* Form: 0x1MMLL */
 			FIRST_RPN              = 0x10000,
 			PITCH_BEND_SENSITIVITY = 0x10000,
 			CHANNEL_FINE_TUNING    = 0x10001,
@@ -413,7 +402,7 @@ namespace mutabor {
 			switch(controller) {
 			case HOLD_PEDAL_ON_OFF:
 			case SOSTENUTO_ON_OFF:
-				// = CHORD_HOLD_PEDAL_ON_OFF
+				/* = CHORD_HOLD_PEDAL_ON_OFF */
 			case LEGATO_PEDAL_ON_OFF:
 			case HOLD_2_PEDAL_ON_OFF:
 				return true;
@@ -434,7 +423,7 @@ namespace mutabor {
 			static const int values [] = {
 				HOLD_PEDAL_ON_OFF,
 				SOSTENUTO_ON_OFF,
-				// = CHORD_HOLD_PEDAL_ON_OFF
+				/* = CHORD_HOLD_PEDAL_ON_OFF */
 				LEGATO_PEDAL_ON_OFF,
 				HOLD_2_PEDAL_ON_OFF,
 				-1
@@ -445,7 +434,7 @@ namespace mutabor {
 		inline int get_default_controller_value(int ctrl) {
 			/* The corresponding specification is RP
 			   15. It is availlable at
-			   http://www.midi.org/techspecs/rp15.php */
+			   http://www.midi.org/techspecs/rp15.php  */
 			if ((ctrl >= midi::FIRST_RPN && ctrl <= midi::LAST_RPN)
 			    || (ctrl >= midi::FIRST_NRPN && ctrl <= midi::LAST_NRPN)) {
 				return CONTROLLER_UNKNOWN;
@@ -492,7 +481,7 @@ namespace mutabor {
 			case OMNI_ON:
 			case MONO_ON:
 			case POLY_ON:
-				// do not reset
+				/* do not reset */
 				return CONTROLLER_UNKNOWN_NOSEND;
 			case MODULATION_WHEEL_COARSE:
 			case MODULATION_WHEEL_FINE:
@@ -514,4 +503,4 @@ namespace mutabor {
 
 
 
-///\}
+/** \} */

@@ -33,10 +33,11 @@
 //#include "src/kernel/GrafKern.h"
 #include "src/kernel/Runtime.h"
 
-
+#if 0
 #include "wx/wfstream.h"
 #include "wx/msgdlg.h"
 #include "wx/timer.h"
+#endif
 
 #if _XOPEN_SOURCE >= 600 || _POSIX_C_SOURCE >= 200112L
 #include <time.h>
@@ -55,9 +56,9 @@ namespace mutabor {
 	inline void CommonFileOutputDevice::Save (tree_storage & config) 
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		config.Write(_T("File Name"),Name);
+		config.Write(("File Name"),Name);
 #ifdef DEBUG
 		mutASSERT(oldpath == config.GetPath());
 #endif
@@ -71,9 +72,9 @@ namespace mutabor {
 	inline void CommonFileOutputDevice::Load (tree_storage & config)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		Name = config.Read(_T("File Name"),mutEmptyString);
+		Name = config.Read(("File Name"),"");
 #ifdef DEBUG
 		mutASSERT(oldpath == config.GetPath());
 #endif
@@ -92,14 +93,12 @@ namespace mutabor {
 		isOpen = false;
 	}
 
-#ifdef WX
-	inline wxString CommonFileOutputDevice::TowxString() const {
-		wxString s = OutputDeviceClass::TowxString() +
-			wxString::Format(_T("\n  Name = %s\n  session_id = %lu\n  routefile_id = %d"), 
-					 Name.c_str(), (unsigned long)session_id(), routefile_id);
+	inline CommonFileOutputDevice::operator std::string() const {
+		std::string s = OutputDeviceClass::operator std::string() +
+			boost::str(boost::format("\n  Name = %s\n  session_id = %lu\n  routefile_id = %d")
+				   % Name.c_str() % (unsigned long)session_id() % routefile_id);
 		return s;
 	}
-#endif
 
 
 
@@ -114,9 +113,9 @@ namespace mutabor {
 	inline void CommonFileInputDevice::Save (tree_storage & config)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		config.Write(_T("File Name"),Name);
+		config.Write(("File Name"),Name);
 #ifdef DEBUG
 		mutASSERT(oldpath == config.GetPath());
 #endif
@@ -130,9 +129,9 @@ namespace mutabor {
 	inline void CommonFileInputDevice::Load (tree_storage & config)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		Name = config.Read(_T("File Name"),mutEmptyString);
+		Name = config.Read(("File Name"),"");
 #ifdef DEBUG
 		mutASSERT(oldpath == config.GetPath());
 #endif
@@ -145,13 +144,13 @@ namespace mutabor {
 	{
 		
 		mutASSERT(!isOpen);
-		DEBUGLOG (other, _T("start"));
+		DEBUGLOG (other, "start" );
 
 		Mode = DeviceStop;
 		// init
 		Stop();
 		DEBUGLOG (other, 
-			  _T("finished. Mode = %d, this = %p"),
+			  ("finished. Mode = %d, this = %p"),
 			  Mode,
 			  (void*)this);
 
@@ -159,12 +158,12 @@ namespace mutabor {
 		if ( mutabor::CurrentTime.isRealtime() ) {
 			mutASSERT(timer == NULL);
 			DEBUGLOG(thread,
-				 _T("Thread %p locking at threadsignal = %x"),
+				 ("Thread %p locking at threadsignal = %x"),
 				 Thread::This(),
 				 threadsignal.get());
 			ScopedLock locker(waitMutex);
 			DEBUGLOG(thread,
-				 _T("Thread %p locked at threadsignal = %x"),
+				 ("Thread %p locked at threadsignal = %x"),
 				 Thread::This(),
 				 threadsignal.get());
 			
@@ -190,17 +189,17 @@ namespace mutabor {
 			threadsignal = RequestPause;
 			/* wait until the timer thread has been initialized */
 			DEBUGLOG(thread,
-				 _T("Thread %p waiting at threadsignal = %x"),
+				 ("Thread %p waiting at threadsignal = %x"),
 				 Thread::This(),
 				 threadsignal.get());
 			waitCondition.Wait();
 			DEBUGLOG(thread,
-				 _T("Thread %p continue at %d threadsignal = %x"),
+				 ("Thread %p continue at threadsignal = %x"),
 				 Thread::This(),
 				 threadsignal.get());
 		}
 
-		DEBUGLOG(timer,_T("timer = %p"),(void*)timer);
+		DEBUGLOG (timer, "timer = %p" ,(void*)timer);
 		isOpen = true;
 		return true;
 	}
@@ -215,17 +214,17 @@ namespace mutabor {
 #endif
 		Stop();
 		
-		DEBUGLOG(thread,_T("timer = %p"),(void *)timer);
+		DEBUGLOG (thread, "timer = %p" ,(void *)timer);
 		if (timer) {
 			DEBUGLOG(thread,
-				 _T("Thread %p locking at threadsignal = %x"),
+				 ("Thread %p locking at threadsignal = %x"),
 				 Thread::This(),
 				 threadsignal.get());
 			waitMutex.Lock();
 			// prepare exit when the thread is paused.
 			threadsignal |= RequestExit;
 			DEBUGLOG(thread,
-				 _T("Thread %p broadcasting at threadsignal = %x"),
+				 ("Thread %p broadcasting at threadsignal = %x"),
 				 Thread::This(),
 				 threadsignal.get());
 			FileTimer *tmp = timer;
@@ -254,7 +253,7 @@ namespace mutabor {
 	inline void CommonFileInputDevice::Stop()
 	{
 		ScopedLock modelock(lockMode);
-		DEBUGLOG(routing,_T("old mode = %d"),Mode);
+		DEBUGLOG (routing, "old mode = %d" ,Mode);
 		if ( Mode == DevicePlay || Mode == DeviceTimingError ) {
 			threadsignal |= RequestPanic;
 			Pause();
@@ -282,7 +281,7 @@ namespace mutabor {
 		case DeviceUnregistered:
 		case DeviceKilled:
 			DEBUGLOG(timer,
-				 _T("Returnung due to device error."));
+				 ("Returnung due to device error."));
 			starting = false; 
 			return;
 		case DeviceInitializing: 
@@ -293,7 +292,7 @@ namespace mutabor {
 			pauseTime = 0;
 		case DevicePause:
 			DEBUGLOG(timer,
-				 _T("Paused. Realtime = %d."),
+				 ("Paused. Realtime = %d."),
 				 (int)CurrentTime.isRealtime());
 			// threadsignal |= ResetTime;
 			referenceTime += CurrentTime.Get() - pauseTime;
@@ -304,12 +303,12 @@ namespace mutabor {
 			if (timer) {
 				threadsignal &= ~(int)RequestPause;
 				DEBUGLOG(thread,
-					 _T("Thread %p locking at threadsignal = %x"),
+					 ("Thread %p locking at threadsignal = %x"),
 					 Thread::This(),
 					 threadsignal.get());
 				waitMutex.Lock();
 				DEBUGLOG(thread,
-					 _T("Thread %p broadcasting at threadsignal = %x"),
+					 ("Thread %p broadcasting at threadsignal = %x"),
 					 Thread::This(),
 					 threadsignal.get());
 				waitCondition.Broadcast();
@@ -321,7 +320,7 @@ namespace mutabor {
 			return;
 			
 		}
-		DEBUGLOG(timer,_T("timer = %p"),(void*)timer);
+		DEBUGLOG (timer, "timer = %p" ,(void*)timer);
 		Mode = DevicePlay;
 		starting = false;
 	}
@@ -369,31 +368,31 @@ namespace mutabor {
 			Mode = DeviceStop;
 		/* tell the main thread that we are initialized */
 		DEBUGLOG(thread,
-			 _T("Thread %p locking at threadsignal = %x"),
+			 ("Thread %p locking at threadsignal = %x"),
 			 Thread::This(),
 			 threadsignal.get());
 		waitMutex.Lock(); 
 		DEBUGLOG(thread,
-			 _T("Thread %p broadcasting at threadsignal = %x"),
+			 ("Thread %p broadcasting at threadsignal = %x"),
 			 Thread::This(),
 			 threadsignal.get());
 		waitCondition.Broadcast();
 		DEBUGLOG(thread,
-			 _T("Thread %p locking again at threadsignal = %x"),
+			 ("Thread %p locking again at threadsignal = %x"),
 			 Thread::This(),
 			 threadsignal.get());
 		/* leave Mutex locked */
 		/*
 		waitMutex.Lock();
 		DEBUGLOG(thread,
-			 _T("Thread %p locked at threadsignal = %x"),
+			 ("Thread %p locked at threadsignal = %x"),
 			 Thread::This(),
 			 threadsignal.get());
 		*/
 
-		mutint64 nextEvent = wxLL(0); // in μs
-		mutint64 playTime  = wxLL(0); // in μs
-		mutint64 reference = wxLL(0); // in μs
+		mutint64 nextEvent = (0); // in μs
+		mutint64 playTime  = (0); // in μs
+		mutint64 reference = (0); // in μs
 		mutint64 delta = GetNO_DELTA(); // in ms
 		wxThread::ExitCode e = 0;
 		while (true) {
@@ -405,26 +404,26 @@ namespace mutabor {
 					SilenceKeys(false);
 				}
 				DEBUGLOG(thread,
-					 _T("Thread %p waiting at threadsignal = %x"),
+					 ("Thread %p waiting at threadsignal = %x"),
 					 Thread::This(),
 					 threadsignal.get());
 				waitCondition.Wait();
 				DEBUGLOG(thread,
-					 _T("Thread %p continuing and locking at threadsignal = %x"),
+					 ("Thread %p continuing and locking at threadsignal = %x"),
 					 Thread::This(),
 					 threadsignal.get());
 #if 0
 				waitMutex.Lock();
 				DEBUGLOG(thread,
-					 _T("Thread %p Locked at threadsignal = %x"),
+					 ("Thread %p Locked at threadsignal = %x"),
 					 Thread::This(),
 					 threadsignal.get());
 #endif
 				if (threadsignal & RequestExit)
 					break;
 				if (threadsignal & ResetTime) {
-					nextEvent = wxLL(0); // in μs
-					playTime  = wxLL(0); // in μs
+					nextEvent = (0); // in μs
+					playTime  = (0); // in μs
 					doResetTime();
 					threadsignal &= ~(int)ResetTime;
 				} 
@@ -438,10 +437,10 @@ namespace mutabor {
 				nextEvent = PrepareNextEvent();
 				mutASSERT(nextEvent >= 0);
 				DEBUGLOG(timer,
-					 _T("Preparing next event is at %ld (isdelta=%d)"), 
+					 ("Preparing next event is at %ld (isdelta=%d)"), 
 					 nextEvent,
 					 IsDelta(nextEvent));
-				DEBUGLOG(timer,_T("NoDelta = %ld"), GetNO_DELTA());
+				DEBUGLOG (timer, "NoDelta = %ld" , GetNO_DELTA());
 				if (IsDelta(nextEvent)) {
 					reference = referenceTime;
 					playTime += nextEvent;
@@ -465,9 +464,9 @@ namespace mutabor {
 				}
 				Stop();
 			} else if (!(threadsignal & (ResetTime | RequestExit | RequestPause))) {
-				DEBUGLOG(timer,_T("time: %ld μs"),CurrentTime.Get());
+				DEBUGLOG (timer, "time: %ld μs" ,CurrentTime.Get());
 				delta = reference + playTime - CurrentTime.Get();
-				DEBUGLOG(timer,_T("Delta %ld μs."),delta);
+				DEBUGLOG (timer, "Delta %ld μs." ,delta);
 
 				/* we wake up in regular time intervals in order
 				   to assure that external commands (stop/close)
@@ -487,7 +486,7 @@ namespace mutabor {
 				}
 			}
 		}
-		DEBUGLOG(timer,_T("returning"));
+		DEBUGLOG (timer, "returning" );
 		switch (Mode) {
 		case DevicePlay:
 		case DevicePause: 
@@ -501,7 +500,7 @@ namespace mutabor {
 			break;
 		}
 		DEBUGLOG(thread,
-			 _T("Thread %p unlocking at threadsignal = %x"),
+			 ("Thread %p unlocking at threadsignal = %x"),
 			 Thread::This(),
 			 threadsignal.get());
 		// assure that Close() has done its worke before exiting
@@ -513,13 +512,11 @@ namespace mutabor {
 	}
 
 	
-#ifdef WX
-	inline wxString CommonFileInputDevice::TowxString() const {
-		return InputDeviceClass::TowxString() +
-			wxString::Format(_T("\n  time zero at = %ld ms\n  paused at  = %ld msx"),
-					 referenceTime, pauseTime);
+	inline CommonFileInputDevice::operator std::string() const {
+		return InputDeviceClass::operator std::string() +
+			boost::str(boost::format("\n  time zero at = %ld ms\n  paused at  = %ld msx")
+				   % referenceTime % pauseTime);
 	}
-#endif
 
 }
 ///\}

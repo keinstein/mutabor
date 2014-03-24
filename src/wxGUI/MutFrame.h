@@ -315,11 +315,11 @@ namespace mutaborGUI {
 			mutASSERT(auimanager.GetPane(w).IsDestroyOnClose());
 			// undocumented but does what we want
 			auimanager.ClosePane(auimanager.GetPane(w));
-			DEBUGLOG(other, _T("Detaching pane."));
+			DEBUGLOG (other, "Detaching pane." );
 			// should be done by ClosePane: auimanager.DetachPane(w);
 			if (update) auimanager.Update();
 
-			DEBUGLOG(other, _T("Closing window."));
+			DEBUGLOG (other, "Closing window." );
 			// should be done by ClosePane:	w->Close();
 			// win should be invalid now.
 		}

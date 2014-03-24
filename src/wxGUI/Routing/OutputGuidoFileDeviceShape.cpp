@@ -47,7 +47,7 @@ namespace mutaborGUI {
 		mutASSERT(device->GetType() == DTGis);
 		mutASSERT(out);
 		out -> SetType(DTGis);
-		out -> SetGUIDOFile(device->GetName());
+		out -> SetGUIDOFile(wxString::FromUTF8(device->GetName().c_str()));
 	}
 
 	bool MutOutputGuidoFileDeviceShape::readDialog (OutputDevDlg * out)
@@ -56,8 +56,8 @@ namespace mutaborGUI {
 		mutASSERT(device->GetType() == DTGis);
 		mutASSERT(out);
 		mutASSERT (out -> GetType() == DTGis);
-		DEBUGLOG (other,_T ("File %s"),  (out -> GetGUIDOFile()).c_str());
-		device->SetName (out -> GetGUIDOFile());
+		DEBUGLOG (other, ("File %s"),  (out -> GetGUIDOFile()).c_str());
+		device->SetName ((const char *)(out -> GetGUIDOFile().ToUTF8()));
 		SetLabel (device->GetName());
 		return true;
 	}

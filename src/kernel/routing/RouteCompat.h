@@ -47,27 +47,28 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
-#include "src/kernel/treestorage.h"
 
 #ifndef MU32_ROUTING_ROUTECOMPAT_H_PRECOMPILED
 #define MU32_ROUTING_ROUTECOMPAT_H_PRECOMPILED
 
-#ifdef WX
-#include "wx/config.h"
-#endif
-
-
 namespace compat30 {
+	class RouteIOError:public std::range_error {
+	public:
+		explicit RouteIOError (const std::string& what_arg):
+			range_error(what_arg) {}
+	};
 	
 	/// load the routes from a text string
 	/** \param config string to be read from
+	 * \return the error message in case of an error.
 	 */
-	void LoadRoutes(const mutStringRef);
+	void LoadRoutes(const std::string &);
 
 	/// write the routes to the given string
 	/** \param config string to be written to
+	 * \return the error message in case of an error.
 	 */
-	void SaveRoutes(mutStringRef);
+	void SaveRoutes(std::string &);
 }
 
 #endif /* PRECOMPILED */

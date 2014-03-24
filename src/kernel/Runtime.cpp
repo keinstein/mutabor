@@ -44,7 +44,6 @@
 #include "src/kernel/routing/gmn/DevGIS.h"
 #include "src/kernel/routing/midi/DevMidi.h"
 #include "src/kernel/routing/midi/DevMidF.h"
-#include "wx/msgdlg.h"
 
 #ifdef __cplusplus
 namespace mutabor {
@@ -106,9 +105,9 @@ void  SetChannels(mutabor_box_type * box, int base, int from, int to, int thru) 
 
 // scan-Hilfsfunktionen ---------------------------------------------
 
-bool GetELine(const wxString& p, size_t& i, wxString &s);
+bool GetELine(const std::string& p, size_t& i, std::string &s);
 
-DevType Str2DT(const wxString& type);
+DevType Str2DT(const std::string& type);
 
 // aus p eine Zeile in s lesen, p wird verschoben
 bool GetLine(char **p, char *s) {

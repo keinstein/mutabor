@@ -43,14 +43,11 @@
 namespace mutabor {
 
 	wxThread::ExitCode CommonFileInputDevice::exception_error() {
-#if wxCHECK_VERSION(2,9,0)
-		mutString str = boost::current_exception_diagnostic_information();
-#else
-		mutString str = wxString::FromUTF8(boost::current_exception_diagnostic_information().c_str());
-#endif
-		runtime_error(mutabor::runtime_error,_("The playback thread has been killed.\n\
+		std::string str = boost::current_exception_diagnostic_information();
+		runtime_error(mutabor::runtime_error,
+			      (_mut("The playback thread has been killed.\n\
 Please report the error to the developers and include (if possible)\n	\
-the current file and the following information:\n%s"),(const char *)str.ToUTF8());
+the current file and the following information:\n%s") + str).c_str());
 		Stop();
 		Mode=DeviceKilled;
 		return (void *)Mode;

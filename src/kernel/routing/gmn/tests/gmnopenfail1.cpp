@@ -159,7 +159,7 @@ int main(int argc, char **argv)
 		std::clog << "Class construction failed." << std::endl;
 		exit(-1);
 	}
-	in -> SetName(_T("+-*”„“"));
+	in -> SetName(("+-*”„“"));
 //	mutabor::InputDevice prevent_from_deletion(in);
 	if (!(in -> Open())) {
 		std::clog << "Open faild. Exiting." << std::endl;

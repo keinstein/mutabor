@@ -42,6 +42,9 @@
 #define H_MMSYSTEM
 #endif
 #endif
+#include "boost/filesystem.hpp"
+#include "boost/filesystem/fstream.hpp"
+#include "boost/filesystem/detail/utf8_codecvt_facet.hpp"
 
 #include "src/kernel/routing/midi/DevMidF.h"
 #include "src/kernel/routing/midi/DevMidi.h"
@@ -50,14 +53,14 @@
 #include "src/kernel/Runtime.h"
 #include "src/kernel/routing/Route-inlines.h"
 
-#include "wx/wfstream.h"
-#include "wx/msgdlg.h"
 #include <inttypes.h>
 
 #include "src/kernel/routing/midi/midicmn-inlines.h"
 
 // the following file is not compiled independently
 #include "src/kernel/routing/midi/midicmn.cpp"
+
+
 
 namespace mutabor {
 	using namespace midi;
@@ -89,12 +92,12 @@ namespace mutabor {
 
 #endif
 
-	static DWORD ReadLength(mutIFstream &is)
+	static uint32_t ReadLength(std::istream &is)
 	{
-		BYTE a[4] = {0,0,0,0};
-		mutReadStream(is,(char*)a, 4);
-		return (((DWORD)a[0]) << 24) + (((DWORD)a[1]) << 16) +
-			(((DWORD)a[2]) << 8) + ((DWORD)a[3]);
+		uint8_t a[4] = {0,0,0,0};
+		is.read((char*)a, 4);
+		return (((uint32_t)a[0]) << 24) + (((uint32_t)a[1]) << 16) +
+			(((uint32_t)a[2]) << 8) + ((uint32_t)a[3]);
 	}
 
 
@@ -105,7 +108,7 @@ namespace mutabor {
 	{
 		mutASSERT(remaining_delta != MUTABOR_NO_DELTA);
 		current_delta = ReadInt();
-		DEBUGLOG(midifile,_T("%s"),(this->c_str()));
+		DEBUGLOG (midifile, "%s" ,(this->c_str()));
 		remaining_delta += timing.get_time_midi(current_delta);
 		return remaining_delta;
 	}
@@ -117,7 +120,7 @@ namespace mutabor {
 		// note: Deltatime may be a little bit ahead if get_delta rounds up
 		mutint64 Delta = timing.get_delta_midi(Deltatime);
 		DEBUGLOG(midifile,
-			 _T("Deltatime = %ld, Delta = %ld, get_time_midi(Delta) = %ld, get_delta_midi(get_time_midi(Delta)) = %ld"),
+			 ("Deltatime = %ld, Delta = %ld, get_time_midi(Delta) = %ld, get_delta_midi(get_time_midi(Delta)) = %ld"),
 			 Deltatime, Delta, timing.get_time_midi(Delta), timing.get_delta_midi(timing.get_time_midi(Delta)));
 		mutASSERT(timing.get_delta_midi(timing.get_time_midi(Delta)) == Delta);
 		// we should take care of rounding errors
@@ -137,7 +140,7 @@ namespace mutabor {
 		int i =0 ;
 		do {
 			if (++i > 4) {
-				BOOST_THROW_EXCEPTION(delta_length_error(gettext_noop("Number contains too many bytes")));
+				BOOST_THROW_EXCEPTION(delta_length_error(_mutN("Number contains too many bytes")));
 			}
 			a = at(position);
 			position++;
@@ -158,7 +161,7 @@ namespace mutabor {
 		} else status = running_status;
 		if (! (status & 0x80)) {
 			char * tmp;
-			asprintf(&tmp, _("Invalid status byte: %x  at position %d"), status, position);
+			asprintf(&tmp, _mut("Invalid status byte: %x  at position %d"), status, position);
 			std::string s = tmp;
 			free(tmp);
 			BOOST_THROW_EXCEPTION(invalid_status (s));
@@ -189,17 +192,17 @@ namespace mutabor {
 		return retval;
 	}
 
-	void Track::WriteLength(mutOFstream &os, size_t l)
+	void Track::WriteLength(std::ostream &os, size_t l)
 	{
-		mutPutC(os,(BYTE) ((l >> 24) & 0xFF));
-		mutPutC(os,(BYTE) ((l >> 16) & 0xFF));
-		mutPutC(os,(BYTE) ((l >> 8) & 0xFF));
-		mutPutC(os,(BYTE) (l & 0xFF));
+		os.put((uint8_t) ((l >> 24) & 0xFF));
+		os.put((uint8_t) ((l >> 16) & 0xFF));
+		os.put((uint8_t) ((l >> 8) & 0xFF));
+		os.put((uint8_t) (l & 0xFF));
 	}
 
-	void Track::Save(mutOFstream &os)
+	void Track::Save(std::ostream &os)
 	{
-		mutWriteStream(os,"MTrk",4);
+		os.write("MTrk",4);
 
 		const uint8_t tempo_events[] = {
 			/// \todo Implement Format 2 files with one separate track for each route
@@ -226,19 +229,20 @@ namespace mutabor {
 
 		WriteLength(os, 15+size()+4);
 
-		mutWriteStream(os,tempo_events,15);
-		mutWriteStream(os,data(),size());
-		mutWriteStream(os,EOT,4);
+		os.write(reinterpret_cast<const char *>(&tempo_events[0]),15);
+		os.write(reinterpret_cast<const char *>((const uint8_t*)data()),size());
+		os.write(reinterpret_cast<const char *>(EOT),4);
 	}
 
-	wxString Track::TowxString () {
-		return wxString::Format(_T("\
+	Track::operator std::string () const {
+		return boost::str(boost::format("\
 timing: %s\n\
 Time = %ld, position = %d/%d, current_delta = %ld, remaining_delta = %ld\n\
-Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
-					timing.TowxString().c_str(),
-					Time,(int)position,(int)size(),current_delta,remaining_delta,
-					running_status,running_status,running_sysex?_T("true"):_T("false"),sysex_id,sysex_id);
+Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
+				  % str(timing).c_str() 
+				  % Time % (int)position % (int)size() % current_delta % remaining_delta 
+				  % running_status % running_status 
+				  % (running_sysex?("true"):("false")) % sysex_id % sysex_id);
 	}
 
 // OutputMidiFile ------------------------------------------------------
@@ -249,10 +253,10 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 	void OutputMidiFile::Save (tree_storage & config)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		config.Write(_T("Bending Range"),bending_range);
-		config.Write(_T("File Name"),Name);
+		config.Write(("Bending Range"),bending_range);
+		config.Write(("File Name"),Name);
 		mutASSERT(oldpath == config.GetPath());
 	}
 
@@ -265,13 +269,13 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 	void OutputMidiFile::Save (tree_storage & config, const RouteClass * route)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		config.toLeaf(_T("Midi File Output"));
+		config.toLeaf(("Midi File Output"));
 		mutASSERT(route);
-		config.Write(_T("Avoid Drum Channel"), route->OutputAvoidDrumChannel());
-		config.Write(_T("Channel Range From"), route->GetOutputFrom());
-		config.Write(_T("Channel Range To"), route->GetOutputTo());
+		config.Write(("Avoid Drum Channel"), route->OutputAvoidDrumChannel());
+		config.Write(("Channel Range From"), route->GetOutputFrom());
+		config.Write(("Channel Range To"), route->GetOutputTo());
 		config.toParent();
 		mutASSERT(oldpath == config.GetPath());
 	}
@@ -283,10 +287,10 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 	void OutputMidiFile::Load (tree_storage & config)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		bending_range=config.Read(_T("Bending Range"), bending_range);
-		Name = config.Read(_T("File Name"),mutEmptyString);
+		bending_range=config.Read(("Bending Range"), bending_range);
+		Name = config.Read(("File Name"),"");
 		mutASSERT(oldpath == config.GetPath());
 	}
 
@@ -299,14 +303,14 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 	void OutputMidiFile::Load (tree_storage & config, RouteClass * route)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		config.toLeaf(_T("Midi File Output"));
+		config.toLeaf(("Midi File Output"));
 		mutASSERT(route);
-		route->OutputAvoidDrumChannel(config.Read (_T("Avoid Drum Channel"), true));
+		route->OutputAvoidDrumChannel(config.Read (("Avoid Drum Channel"), true));
 		int oldfrom, oldto;
-		route->SetOutputFrom(oldfrom = config.Read(_T("Channel Range From"), GetMinChannel()));
-		route->SetOutputTo(oldto = config.Read(_T("Channel Range To"), GetMaxChannel()));
+		route->SetOutputFrom(oldfrom = config.Read(("Channel Range From"), GetMinChannel()));
+		route->SetOutputTo(oldto = config.Read(("Channel Range To"), GetMaxChannel()));
 		bool correct = true;
 		if (oldfrom < GetMinChannel()) {
 			correct = false;
@@ -325,9 +329,9 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 			route->SetOutputTo(GetMaxChannel());
 		}
 		if (!correct)
-			wxMessageBox(wxString::Format(_("The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The current route had to be corrected."),
-						      oldfrom,oldto,GetName().c_str(),GetMinChannel(),GetMaxChannel()),
-				     _("Warning loading route"),wxICON_EXCLAMATION);
+			runtime_error(mutabor::warning,
+				      boost::str(boost::format(_mut("The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The current route had to be corrected."))  
+						 % oldfrom%oldto % GetName().c_str() % GetMinChannel() %GetMaxChannel()));
 		config.toParent();
 		mutASSERT(oldpath == config.GetPath());
 	}
@@ -337,42 +341,47 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 	{
 		base::Close();
 
-		mutOpenOFstream(os,Name);
+		/* tell boost that we are using UTF-8 file names */
+		boost::filesystem::detail::utf8_codecvt_facet utf8;
+		boost::filesystem::path p;
+		p.assign(Name, utf8);
+
+		boost::filesystem::ofstream os(p,  
+					       std::ios::out | std::ios::binary);
+
 		Out.Save(os);
 	}
 
 
 
-#ifdef WX
-	wxString OutputMidiFile::TowxString() const {
-		wxString s = OutputDeviceClass::TowxString() +
-			wxString::Format(_T("\n  Name = %s\n  session_id = %lu\n  routefile_id = %d\n  Bending Range = %d\n  nKeyOn = %d"),
-					 Name.c_str(), (unsigned long)session_id(), routefile_id, bending_range, nKeyOn);
+	OutputMidiFile::operator std::string() const {
+		std::string s = OutputDeviceClass::operator std::string() +
+			boost::str(boost::format("\n  Name = %s\n  session_id = %lu\n  routefile_id = %d\n  Bending Range = %d\n  nKeyOn = %d")
+				   % Name.c_str() % (unsigned long)session_id() % routefile_id % bending_range % nKeyOn);
 
-		s.Printf(_T("]\n  ton_auf_kanal = [ t=%d,k=%d,b=%d"),
-			 ton_auf_kanal[0].inkey,
-			 ton_auf_kanal[0].outkey.pitch,
-			 ton_auf_kanal[0].outkey.bend);
+		s += boost::str(boost::format("]\n  ton_auf_kanal = [ t=%d,k=%d,b=%d")
+				% ton_auf_kanal[0].inkey
+				% ton_auf_kanal[0].outkey.pitch
+				% ton_auf_kanal[0].outkey.bend);
 		for (int i = 1; i<16; i++)
-			s.Printf(_T("; t=%d,k=%d,b=%d"),
-				 ton_auf_kanal[i].inkey,
-				 ton_auf_kanal[i].outkey.pitch,
-				 ton_auf_kanal[0].outkey.bend);
-		s+=_T("]");
+			s += boost::str(boost::format("; t=%d,k=%d,b=%d")
+					% ton_auf_kanal[i].inkey
+					% ton_auf_kanal[i].outkey.pitch
+					% ton_auf_kanal[0].outkey.bend);
+		s+=("]");
 		return s;
-		}
-#endif
+	}
 
 #if 0
 	void OutputMidiFile::ReadData(wxConfigBase * config)
 	{
-		bending_range = config->Read(_("Bending_Range"),
+		bending_range = config->Read(_mut("Bending_Range"),
 					     (long)bending_range);
 	}
 
 	void OutputMidiFile::WriteData(wxConfigBase * config)
 	{
-		config->Write(_("Bending_Range"), (long)bending_range);
+		config->Write(_mut("Bending_Range"), (long)bending_range);
 	}
 #endif
 
@@ -380,7 +389,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 // InputMidiFile -------------------------------------------------------
 
 /*
-  void CALLBACK MidiTimeFunc(UINT wTimerID, UINT wMsg, DWORD dwUser, DWORD dw1, DWORD dw2)
+  void CALLBACK MidiTimeFunc(UINT wTimerID, UINT wMsg, uint32_t dwUser, uint32_t dw1, uint32_t dw2)
   {
   ((InputMidiFile*)dwUser)->IncDelta();
   }
@@ -397,18 +406,18 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 	void InputMidiFile::Save (tree_storage & config, const RouteClass * route)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		config.toLeaf(_T("Midi File Input"));
-		config.Write(_T("Filter Type"), route->GetType());
+		config.toLeaf(("Midi File Input"));
+		config.Write(("Filter Type"), route->GetType());
 		switch(route->GetType()) {
 		case RTchannel:
-			config.Write(_T("Channel From"), route->GetInputFrom());
-			config.Write(_T("Channel To"), route->GetInputTo());
+			config.Write(("Channel From"), route->GetInputFrom());
+			config.Write(("Channel To"), route->GetInputTo());
 			break;
 		case RTstaff:
-			config.Write(_T("Track From"), route->GetInputFrom());
-			config.Write(_T("Track To"), route->GetInputTo());
+			config.Write(("Track From"), route->GetInputFrom());
+			config.Write(("Track To"), route->GetInputTo());
 			break;
 		case RTelse:
 		case RTall:
@@ -429,16 +438,16 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 	void InputMidiFile::Load (tree_storage & config, RouteClass *  route)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		config.toLeaf(_T("Midi File Input"));
-		route -> SetType((RouteType) config.Read(_T("Filter Type"), (int)RTchannel));
+		config.toLeaf(("Midi File Input"));
+		route -> SetType((RouteType) config.Read(("Filter Type"), (int)RTchannel));
 		switch(route->GetType()) {
 		case RTchannel:
 		{
 			int oldfrom, oldto;
-			route->SetInputFrom(oldfrom = config.Read(_T("Channel From"), GetMinChannel()));
-			route->SetInputTo(oldto = config.Read(_T("Channel To"), GetMaxChannel()));
+			route->SetInputFrom(oldfrom = config.Read(("Channel From"), GetMinChannel()));
+			route->SetInputTo(oldto = config.Read(("Channel To"), GetMaxChannel()));
 			bool correct = true;
 			if (oldfrom < GetMinChannel()) {
 				correct = false;
@@ -457,16 +466,20 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 				route->SetInputTo(GetMaxChannel());
 			}
 			if (!correct)
-				wxMessageBox(wxString::Format(_("The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The current route had to be corrected."),
-							      oldfrom,oldto,GetName().c_str(),GetMinChannel(),GetMaxChannel()),
-					     _("Warning loading route"),wxICON_EXCLAMATION);
+				runtime_error(mutabor::warning,
+					      boost::str(boost::format(_mut("The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The current route had to be corrected."))
+							 % oldfrom
+							 % oldto
+							 % GetName().c_str()
+							 % GetMinChannel()
+							 % GetMaxChannel()));
 			break;
 		}
 		case RTstaff:
 		{
 			int oldfrom, oldto;
-			route -> SetInputFrom(oldfrom = config.Read(_T("Track From"), GetMinTrack()));
-			route -> SetInputTo(oldto = config.Read(_T("Track To"), GetMaxTrack()));
+			route -> SetInputFrom(oldfrom = config.Read(("Track From"), GetMinTrack()));
+			route -> SetInputTo(oldto = config.Read(("Track To"), GetMaxTrack()));
 			bool correct = true;
 			if (oldfrom < GetMinTrack()) {
 				correct = false;
@@ -485,9 +498,13 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 				route->SetInputTo(GetMaxTrack());
 			}
 			if (!correct)
-				wxMessageBox(wxString::Format(_("The Track range %d--%d of the MIDI file %s must be inside %d--%d. The current route had to be corrected."),
-							      oldfrom,oldto,GetName().c_str(), GetMinTrack(), GetMaxTrack()),
-					     _("Warning loading route"),wxICON_EXCLAMATION);
+				runtime_error(mutabor::warning,
+					      boost::str(boost::format(_mut("The Track range %d--%d of the MIDI file %s must be inside %d--%d. The current route had to be corrected."))
+								       % oldfrom
+								       % oldto
+								       % GetName().c_str()
+								       % GetMinTrack()
+								       % GetMaxTrack()));
 			break;
 		}
 		case RTelse:
@@ -502,16 +519,16 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 	bool InputMidiFile::Open()
 	{
 		mutASSERT(!isOpen);
-		DEBUGLOG (midifile, _T("start"));
+		DEBUGLOG (midifile, "start" );
 		Tracks.clear();
 		char Header[5] = {0,0,0,0,0};   // storage for header mark
 		size_t nTrack;
-		DWORD l;
+		uint32_t l;
 		timing.reset();
 
-		if (!Name) {
-			runtime_error(false,
-				      _("You instructed me to open a file without file name. I can't do that."));
+		if (Name.empty()) {
+			runtime_error(error,
+				      _mut("You instructed me to open a file without file name. I can't do that."));
 			Mode = DeviceCompileError;
 			isOpen = false;
 			Tracks.clear();
@@ -519,91 +536,94 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 		}
 
 		// read file
-		mutOpenIFstream(is, Name);
+		boost::filesystem::detail::utf8_codecvt_facet utf8;
+		boost::filesystem::path p;
+		p.assign(Name, utf8);
 
-		if ( mutStreamBad(is) ) {
-			DEBUGLOG (midifile, _T("Opening Stream failed"));
-			runtime_error(false,
-				      _("Can not open Midi input file '%s'."),
-				      (const mutChar *) Name.c_str());
+		boost::filesystem::ifstream is(p,  
+					       std::ios::in | std::ios::binary);
+		if ( is.bad() ) {
+			DEBUGLOG (midifile, "Opening Stream failed" );
+			runtime_error(error,
+				      boost::str(boost::format(_mut("Can not open Midi input file '%s'."))
+						 % Name.c_str()));
 			goto error_cleanup;
 		}
 
 		// Header Chunk
 		// Flawfinder: ignore
-		mutReadStream(is,Header, 4);
+		is.read(Header, 4);
 		if (strcmp(Header,"MThd")) {
-			runtime_error(false,
-				      _("File '%s' is not a valid midi file."),
-				      (const mutChar *)Name.c_str())	;
+			runtime_error(error,
+				      boost::str(boost::format(_mut("File '%s' is not a valid midi file."))
+						 % Name.c_str()));
 			goto error_cleanup;
 		}
 
 		l = mutabor::ReadLength(is);
 
 		if (l!=6) {
-			runtime_error(false,
-				      _("Unknown header (chunk length %d) in file '%s'."),
-				      l,
-				      (const mutChar *)Name.c_str());
+			runtime_error(error,
+				      boost::str(boost::format(_mut("Unknown header (chunk length %d) in file '%s'."))
+						 % l % Name.c_str()));
 			goto error_cleanup;
 		}
 
-		BYTE a, b;
+		uint8_t a, b;
 
 		// file type
-		a = mutGetC(is); //mutGetC(is,a);
-		FileType = ((int)a << 8) + mutGetC(is); //mutGetC(is,FileType);
+		a = is.get(); //mutGetC(is,a);
+		FileType = ((int)a << 8) + is.get(); //mutGetC(is,FileType);
 		if (FileType > 3) {
-			runtime_error(false,
-				      _("Unknown file typ %d in file '%s'."),
-				      FileType,
-				      (const mutChar *) Name.c_str());
+			runtime_error(error,
+				      boost::str(boost::format(_mut("Unknown file type %d in file '%s'."))
+						 % FileType % Name.c_str()));
 			goto error_cleanup;
 		}
 
 		// number of tracks
-		a = mutGetC(is); //mutGetC(is,a);
-		b = mutGetC(is); // mutGetC(is,b);
+		a = is.get(); //mutGetC(is,a);
+		b = is.get(); // mutGetC(is,b);
 		nTrack = (((int)a) << 8) + b;
 
 		// speed info
-		a = mutGetC(is); //mutGetC(is,a);
-		b = mutGetC(is); //mutGetC(is,b);
+		a = is.get(); //mutGetC(is,a);
+		b = is.get(); //mutGetC(is,b);
 		try {
 			timing.set_MIDI_tick_signature(a,b);
 		} catch (std::range_error e) {
-			runtime_error(false,
-				      _("Midi file '%s' has corrupted timing information."),
-				      (const mutChar *)Name.c_str())	;
+			runtime_error(error,
+				      boost::str(boost::format(_mut("Midi file '%s' has corrupted timing information."))
+						 % Name.c_str()));
 		}
 		DEBUGLOG(midifile,
-			 _T("File type: %d; Tracks: %d; Speed: %d Ticks/Qarter"),
+			 ("File type: %d; Tracks: %d; Speed: %d Ticks/Qarter"),
 			 FileType,
 			 (int)nTrack,
 			 (int)timing.get_ticks());
 
 		// rest of header
-		DWORD i;
+		uint32_t i;
 
-		for (i = 6; i < l && !mutStreamEOF(is) && mutStreamGood(is); i++ )
-			a = mutGetC(is);// mutGetC(is,a);
+		for (i = 6; i < l && !is.eof() && is.good(); i++ )
+			a = is.get();// mutGetC(is,a);
 
 		// Tracks lesen
 		Tracks.resize(nTrack,Track(timing));
 		channel_data.resize(16*nTrack);
 		if (Tracks.empty()) {
-			runtime_error(false,
-				      _("Could not allocate memory for the track list of file '%s'."),
-				      (const mutChar *)Name.c_str())	;
+			runtime_error(error,
+				      boost::str(boost::format(_mut("Could not allocate memory for the track list of file '%s'."))
+						 %Name.c_str()));
 			goto error_cleanup;
 		}
 
 		for (i = 0; i < nTrack; i++ ) {
-			mutReadStream(is,Header, 4);
+			is.read(Header, 4);
 			if (strcmp(Header,"MTrk")) {
-				runtime_error(false,_("File '%s' has a broken track header."),
-					      (const mutChar *)Name.c_str())	;
+				runtime_error(error,
+					      boost::str(boost::format(_mut("File '%s' has a broken track header."))
+							 % Name.c_str()));
 				goto error_cleanup;
 			}
 
@@ -618,9 +638,9 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 
 			if ( Tracks[i].size() < l) {
 				Mode = DeviceCompileError;
-				runtime_error(false,
-					      _("Could not allocate data for track %d of MIDI input file '%s'."),
-					      i, (const mutChar *)Name.c_str());
+				runtime_error(error,
+					      boost::str(boost::format(_mut("Could not allocate data for track %d of MIDI input file '%s'."))
+							 % i % Name.c_str()));
 				goto error_cleanup;
 			}
 
@@ -628,30 +648,27 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 			if ( l > 0x10000000) {
 				// in order to avoid problems with 32bit integers we read large tracks in 3 chunks
 
-				mutReadStream(is, (char*)(Tracks[i].data()), l/3);
-				mutReadStream(is, (char*)(Tracks[i].data())+l/3, l/3);
-				mutReadStream(is, (char*)(Tracks[i].data())+l/3+l/3,l-l/3- l/3);
+				is.read((char*)(Tracks[i].data()), l/3);
+				is.read((char*)(Tracks[i].data())+l/3, l/3);
+				is.read((char*)(Tracks[i].data())+l/3+l/3,l-l/3- l/3);
 			} else
-				mutReadStream(is, (char*)(Tracks[i].data()), l);
+				is.read((char*)(Tracks[i].data()), l);
 
-			if ( mutStreamBad(is) ) {
-				runtime_error(false,
-					      _("The MIDI input file “%s” is corrupted. This has been detected while reading track %d."),
-					      (const mutChar *)Name.c_str(),i);
+			if ( is.bad() ) {
+				runtime_error(error,
+					      boost::str(boost::format(_mut("The MIDI input file “%s” is corrupted. This has been detected while reading track %d."))
+							 % Name.c_str() % i));
 				goto error_cleanup;
 			}
 
 			channel_data[i].Reset();
 		}
 
-		mutCloseStream(is);
-
 		return base::Open();
 
 	error_cleanup:
 		Mode = DeviceCompileError;
 		isOpen = false;
-		mutCloseStream(is);
 		Tracks.clear();
 		return false;
 	}
@@ -694,7 +711,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 		mutint64 NewMinDelta = MUTABOR_NO_DELTA;
 		for (size_t i = 0; i < Tracks.size(); i++ ) {
 			mutint64 delta = Tracks[i].GetDelta();
-			DEBUGLOG(midifile,_T("Track: %d, delta: %ld μs"),(int)i,delta);
+			DEBUGLOG (midifile, "Track: %d, delta: %ld μs" ,(int)i,delta);
 			if ( delta  == MUTABOR_NO_DELTA )
 				continue;
 			if ( delta <= passedDelta )
@@ -706,9 +723,9 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 			    delta < NewMinDelta ) {
 					NewMinDelta = delta;
 			}
- 			DEBUGLOG(midifile,_T("Track: %d, delta: %ld μs"),(int)i,Tracks[i].GetDelta());
+ 			DEBUGLOG (midifile, "Track: %d, delta: %ld μs" ,(int)i,Tracks[i].GetDelta());
 		}
-		DEBUGLOG(midifile,_T("Next event after %ld μs (MUTABOR_NO_DELTA = %ld)"),minDelta,MUTABOR_NO_DELTA);
+		DEBUGLOG (midifile, "Next event after %ld μs (MUTABOR_NO_DELTA = %ld)" ,minDelta,MUTABOR_NO_DELTA);
 		minDelta = NewMinDelta;
 		return NewMinDelta;
 	}
@@ -759,7 +776,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 									     j>nr ? deltatime - time: (mutint64)0);
 
 					DEBUGLOG(midifile,
-						 _T("Change tempo to %ldμs per quarter (next event after %ld)"),
+						 ("Change tempo to %ldμs per quarter (next event after %ld)"),
 						 ev->get_tempo(), minDelta);
 				}
 
@@ -774,7 +791,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 			Delta = Tracks[nr].ReadDelta();
 
 			DEBUGLOG(midifile,
-				 _T("Next event on Track %d after %ld μs"),
+				 ("Next event on Track %d after %ld μs"),
 				 (int)nr, Delta);
 		}
 #ifdef DEBUG
@@ -791,9 +808,9 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 
 	void InputMidiFile::Proceed(const std::vector<unsigned char > * midiCode, int data, int channel_offset) {
 		/** \todo implement system messages */
-		BYTE MidiChannel = (midiCode->at(0) & 0x0F) + channel_offset;
-		BYTE MidiStatus  = midiCode->at(0);
-		DEBUGLOG (midifile, _T("Status: %x"), MidiStatus);
+		uint8_t MidiChannel = (midiCode->at(0) & 0x0F) + channel_offset;
+		uint8_t MidiStatus  = midiCode->at(0);
+		DEBUGLOG (midifile, "Status: %x" , MidiStatus);
 
 		switch ( MidiStatus ) {
 		case midi::CLOCK:
@@ -828,20 +845,18 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 	}
 
 
-#ifdef WX
-	wxString InputMidiFile::TowxString() const {
-		return InputDeviceClass::TowxString() +
-			wxString::Format(_T("\n\
+	InputMidiFile::operator std::string() const {
+		return InputDeviceClass::operator std::string() +
+			boost::str(boost::format("\n\
   FileType = %d\n\
   Tracks: %d\n\
   minDelta = %ld\n				\
-  Busy = %d\n"),
-					 FileType,
-					 (int)Tracks.size(),
-					 minDelta,
-					 Busy);
+  Busy = %d\n") 
+				   % FileType
+				   % (int)Tracks.size()
+				   % minDelta
+				   % Busy);
 	}
-#endif
 
 
 	InputMidiFile::proceed_bool InputMidiFile::shouldProceed(Route R,
@@ -850,7 +865,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 	{
 		mutASSERT(midiCode);
 
-		//		DEBUGLOG(midifile,_T("midiCode: %x, track %d"),midiCode,track);
+		//		DEBUGLOG (midifile, "midiCode: %x, track %d" ,midiCode,track);
 		switch ( R->GetType() ) {
 		case RTchannel:
 			if ( R->Check(midiCode->at(0) & 0x0F) ) {
@@ -876,13 +891,13 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 
 	MidiFileFactory::~MidiFileFactory() {}
 
-	OutputDeviceClass * MidiFileFactory::DoCreateOutput (const mutStringRef name,
+	OutputDeviceClass * MidiFileFactory::DoCreateOutput (const std::string & name,
 							     int id) const
 	{
 		return new OutputMidiFile(name,id);
 	}
 
-	InputDeviceClass * MidiFileFactory::DoCreateInput (const mutStringRef name,
+	InputDeviceClass * MidiFileFactory::DoCreateInput (const std::string & name,
 							   MutaborModeType mode,
 							   int id) const
 	{

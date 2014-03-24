@@ -306,12 +306,12 @@ wxSize MutIconShapeClass<T>::DoGetBestSize() const
 	//  wxSize s(GetWindowBorderSize()/2);
 	wxSize s(0,0);
 	wxSize s1(0,0);
-	DEBUGLOG (other, _T("best size: %dx%d"),s.x,s.y);
+	DEBUGLOG (other, "best size: %dx%d" ,s.x,s.y);
 //	return s;
 
 
 	if (staticText) s += staticText->GetBestSize();
-	DEBUGLOG (other, _T("staticText %p best size: %dx%d"),(void*)&staticText,s.x,s.y);
+	DEBUGLOG (other, "staticText %p best size: %dx%d" ,(void*)&staticText,s.x,s.y);
 	if (GetIcon().IsOk()) {
 		s.x = std::max (Icon.GetWidth(), s.x);
 		int h = Icon.GetHeight();
@@ -320,7 +320,7 @@ wxSize MutIconShapeClass<T>::DoGetBestSize() const
 
 	if (this->GetSizer()) {
 		s1 = this->GetSizer()->CalcMin();
-		DEBUGLOG (other, _T("our %p sizer best size: %dx%d"),(void*)this,s1.x,s1.y);
+		DEBUGLOG (other, "our %p sizer best size: %dx%d" ,(void*)this,s1.x,s1.y);
 		s.x = std::max(s.x,s1.x);
 		s.y += std::max(s1.y,0);
 	}
@@ -329,7 +329,7 @@ wxSize MutIconShapeClass<T>::DoGetBestSize() const
 	wxSize s2 = this->GetSize() - this->GetClientSize();
 	s2.IncTo(wxSize(0,0));
 
-	DEBUGLOG(gui,_T("s1: (%d,%d), maxBorderSize: (%d,%d)"),
+	DEBUGLOG (gui, "s1: (%d,%d), maxBorderSize: (%d,%d)" ,
 		 s2.x,s2.y,2*maxBorderSize.x,2*maxBorderSize.y);
 	mutASSERT(!maxBorderSize.x || s2.x <= 2*maxBorderSize.x);
 	mutASSERT(!maxBorderSize.y || s2.y <= 2*maxBorderSize.y);
@@ -339,11 +339,11 @@ wxSize MutIconShapeClass<T>::DoGetBestSize() const
 
 	// s1 = MutPanel::DoGetBestSize();
         // call to base class not needed.
-	DEBUGLOG (other, _T("our %p parent best size: %dx%d"),(void*)this,s1.x,s1.y);
+	DEBUGLOG (other, "our %p parent best size: %dx%d" ,(void*)this,s1.x,s1.y);
 
 	s1.IncTo(s);
 
-	DEBUGLOG (other, _T("our %p best size: %dx%d"),(void*)this,s.x,s.y);
+	DEBUGLOG (other, "our %p best size: %dx%d" ,(void*)this,s.x,s.y);
 	wxConstCast(this,MutIconShapeClass<T>)->SetMinSize(s1);
 	this->CacheBestSize(s1);
 	return s1;
@@ -404,28 +404,28 @@ template<typename T>
 template<typename T>
 void MutIconShapeClass<T>::GotFocus() {
 #ifdef DEBUG
-	DEBUGLOG (other, _T("Current focus is at"));
+	DEBUGLOG (other, "Current focus is at" );
 	wxWindow * focuswin =wxWindow::FindFocus();
 	if (focuswin) {
 		DEBUGLOGTYPE (other,
 			      (*(focuswin)),
-			      _T(" focus has objet %p"),
+			      (" focus has objet %p"),
 			      (void*)wxWindow::FindFocus());
 	} else
-		DEBUGLOG(other,_T("NULL pointer"));
+		DEBUGLOG (other, "NULL pointer" );
 #endif
 /*
 	parenttype::SetFocus();
 #ifdef DEBUG
-	DEBUGLOG (other, _T("Current focus is at"));
+	DEBUGLOG (other, "Current focus is at" );
 	focuswin =wxWindow::FindFocus();
 	if (focuswin) {
 		DEBUGLOGTYPE (other,
 			      (*(focuswin)),
-			      _T(" focus has objet %p"),
+			      (" focus has objet %p"),
 			      wxWindow::FindFocus());
 	} else
-		DEBUGLOG(other,_T("NULL pointer"));
+		DEBUGLOG (other, "NULL pointer" );
 #endif
 */
 	UpdateBorder(wxBORDER_SUNKEN);
@@ -508,14 +508,14 @@ void MutIconShapeClass<T>::OnDraw (wxPaintDC & dc)
 	}
 #endif
 
-	DEBUGLOG (other, _T("Checking icon"));
+	DEBUGLOG (other, "Checking icon" );
 
 	if (!GetIcon().IsOk()) {
 		SetIcon(GetMutIcon());
-		DEBUGLOG (other, _T("Checking icon again"));
+		DEBUGLOG (other, "Checking icon again" );
 
 	}
-	DEBUGLOG (other, _T("Icon ok."));
+	DEBUGLOG (other, "Icon ok." );
 
 	int y = borderOffset.y;
 	wxPoint center(size.width/2,y + GetIcon().GetHeight()/2);
@@ -535,7 +535,7 @@ void MutIconShapeClass<T>::OnDraw (wxPaintDC & dc)
 
 	if (GetIcon().IsOk()) {
 		int x = 0;
-		DEBUGLOG (other, _T("Size: %dx%d"),GetIcon().GetHeight(),
+		DEBUGLOG (other, "Size: %dx%d" ,GetIcon().GetHeight(),
 			 GetIcon().GetWidth());
 		x = (size.width-GetIcon().GetWidth())/2;
 #if __WXMAC__ || __WXGTK__
@@ -546,7 +546,7 @@ void MutIconShapeClass<T>::OnDraw (wxPaintDC & dc)
 
 	delete gc;
 
-	DEBUGLOG (other, _T("Focus %p and this %p"),(void*)this->FindFocus(),(void*)this);
+	DEBUGLOG (other, "Focus %p and this %p" ,(void*)this->FindFocus(),(void*)this);
 }
 
 template<typename T>
@@ -554,12 +554,12 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 //	wxPoint inner = ScreenToClient(i); unused
 	wxPoint myoffset = GetPositionInWindow(paintingWindow);
 	wxPoint outer = o - myoffset;
-	DEBUGLOG(routinggui,_T("outer (%d,%d) is in device (%d,%d)"),o.x,o.y,outer.x,outer.y);
+	DEBUGLOG (routinggui, "outer (%d,%d) is in device (%d,%d)" ,o.x,o.y,outer.x,outer.y);
 	wxRect iconRect = this->GetIconRect();
-	DEBUGLOG(routinggui,_T("Icon rect: x=%d, y=%d, w=%d, h=%d"),iconRect.x,iconRect.y,iconRect.width,iconRect.height);
+	DEBUGLOG (routinggui, "Icon rect: x=%d, y=%d, w=%d, h=%d" ,iconRect.x,iconRect.y,iconRect.width,iconRect.height);
 	wxPoint iconCenter(iconRect.x+iconRect.width/2,
 			   iconRect.y+iconRect.height/2);
-	DEBUGLOG(routinggui,_T("center = (%d,%d)"), iconCenter.x, iconCenter.y);
+	DEBUGLOG (routinggui, "center = (%d,%d)" , iconCenter.x, iconCenter.y);
 /*
 	wxRect screenRect = this->GetScreenRect();
 	// transform Screen rect to upper left and
@@ -569,7 +569,7 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 	wxRect screenRect = this->GetClientRect();
 	wxPoint upperLeft(screenRect.x,screenRect.y);
 	wxPoint lowerRight(screenRect.x+screenRect.width,screenRect.y+screenRect.height);
-	DEBUGLOG(routinggui,_T("Rectangle: (%d,%d) -- (%d,%d)"),upperLeft.x, upperLeft.y, lowerRight.x, lowerRight.y);
+	DEBUGLOG (routinggui, "Rectangle: (%d,%d) -- (%d,%d)" ,upperLeft.x, upperLeft.y, lowerRight.x, lowerRight.y);
 
 	wxPoint perimeterpoint(0,0);
 	if (lowerRight.x <= outer.x) {
@@ -596,7 +596,7 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 
 	wxPoint retval = perimeterpoint + myoffset;
 
-	DEBUGLOG(routinggui,_T("perimeter point (%d,%d), returning (%d,%d)"),
+	DEBUGLOG (routinggui, "perimeter point (%d,%d), returning (%d,%d)" ,
 		 perimeterpoint.x,perimeterpoint.y,retval.x,retval.y);
 
 	return retval;
@@ -604,8 +604,8 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 
 #if 0
 	wxRect r = this->GetRect();
-	DEBUGLOG (other, _T("Rect: (%d,%d) -- (%d,%d)"),r.x,r.y,r.x+r.width,r.y+r.height);
-	DEBUGLOG (other, _T("Points: i = (%d,%d), o = (%d, %d)"),i.x,i.y,o.x,o.y);
+	DEBUGLOG (other, "Rect: (%d,%d) -- (%d,%d)" ,r.x,r.y,r.x+r.width,r.y+r.height);
+	DEBUGLOG (other, "Points: i = (%d,%d), o = (%d, %d)" ,i.x,i.y,o.x,o.y);
 	wxRect ir = this->GetIconRect();
 #ifdef DEBUG
 	std::cerr.flush();
@@ -703,7 +703,7 @@ bool MutIconShapeClass<T>::Layout() {
 	// If there is a sizer, use it instead of the constraints
 	if ( this->GetSizer() )
 	{
-		DEBUGLOG (other, _T("sizer"));
+		DEBUGLOG (other, "sizer" );
 		wxRect sizerrect(borderOffset.x,y,w,h);
 #if __WXMAC__   //adjust the sizer to the right size inside
 		sizerrect=wxRect(0,y,rect.width,rect.height);
@@ -721,7 +721,7 @@ bool MutIconShapeClass<T>::Layout() {
 #if wxUSE_CONSTRAINTS
 	else
 	{
-		DEBUGLOG (other, _T("constraints"));
+		DEBUGLOG (other, "constraints" );
 		this->SatisfyConstraints(); // Find the right constraints values
 		this->SetConstraintSizes(); // Recursively set the real window sizes
 	}

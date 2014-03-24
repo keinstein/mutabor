@@ -135,8 +135,8 @@ namespace mutaborGUI {
 		mutASSERT(device->GetType() == DTGis);
 		mutASSERT(in);
 		mutASSERT (in -> GetType() == DTGis);
-		DEBUGLOG (other,_T ("File %s"),  (in -> GetGUIDOFile()).c_str());
-		device->SetName (in -> GetGUIDOFile());
+		DEBUGLOG (other, ("File %s"),  (in -> GetGUIDOFile()).c_str());
+		device->SetName (std::string(in -> GetGUIDOFile().ToUTF8()));
 		SetLabel (device->GetName());
 		return true;
 	}

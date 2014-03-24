@@ -48,7 +48,7 @@ namespace mutabor {
 		if (!is_fixed_ticks) {
 			retval.first = (quarter_divisions >> 8)& 0xFF;
 			retval.second = quarter_divisions & 0xFF;
-			DEBUGLOG(midifile,_T("%lx: %x %x"),
+			DEBUGLOG (midifile, "%lx: %x %x" ,
 				 quarter_divisions, 
 				 retval.first,
 				 retval.second);
@@ -59,7 +59,7 @@ namespace mutabor {
 			quotient = quarter_divisions / myfps;
 			retval.second = quotient & 0xFF;
 			if (quarter_divisions % myfps) {
-				BOOST_THROW_EXCEPTION( std::range_error(gettext_noop("frame rate does not divide time divisiens")));
+				BOOST_THROW_EXCEPTION( std::range_error(_mutN("frame rate does not divide time divisiens")));
 			}
 			
 		} else { 
@@ -70,7 +70,7 @@ namespace mutabor {
 			else if (!(quarter_divisions % 24)) 
 				fps = 24;
 			else {
-				BOOST_THROW_EXCEPTION( std::range_error(gettext_noop("frame rate does not divide time divisiens")));
+				BOOST_THROW_EXCEPTION( std::range_error(_mutN("frame rate does not divide time divisiens")));
 			}
 
 			quotient = quarter_divisions / fps;
@@ -79,10 +79,10 @@ namespace mutabor {
 		}
 
 		if (quotient > 0xFF) {
-			BOOST_THROW_EXCEPTION( std::range_error(gettext_noop("time division is too high for current frame rate")));
+			BOOST_THROW_EXCEPTION( std::range_error(_mutN("time division is too high for current frame rate")));
 		}
 
-		DEBUGLOG(midifile,_T("%lx: %x %x"),
+		DEBUGLOG (midifile, "%lx: %x %x" ,
 			 quarter_divisions,
 			 retval.first,
 			 retval.second);
@@ -93,23 +93,23 @@ namespace mutabor {
 		if (!(bfps & 0x80)) {
 			// quarter divisions
 			if (!bfps && ! bcount) 
-				BOOST_THROW_EXCEPTION( std::range_error(gettext_noop("Trying to set bad midi header parameters")));
+				BOOST_THROW_EXCEPTION( std::range_error(_mutN("Trying to set bad midi header parameters")));
 			quarter_divisions = (((int) bfps) << 8) + bcount;
 			is_fixed_ticks = false;
 			return;
 		}
 		if (! bcount) 
-			BOOST_THROW_EXCEPTION( std::range_error(gettext_noop("Trying to set bad midi header parameters")));
+			BOOST_THROW_EXCEPTION( std::range_error(_mutN("Trying to set bad midi header parameters")));
 		is_fixed_ticks = true;
 		fps = 0x100 - (int) bfps;
 		if (fps == 29) fps = 30; // ignoring NTSC 29.97Hz frame dropping should be ok.
 		quarter_divisions = (mutint64)fps * (mutint64)bcount;
 	}
 
-	wxString timing_params::TowxString() {
-		return wxString::Format(_T("\
-is_fixed_ticks = %d, fps = %d, quarter_divisions = %ld, quarter_duration = %ld"),
-					is_fixed_ticks, fps, quarter_divisions, quarter_duration);
+	timing_params::operator std::string() const {
+		return boost::str(boost::format("\
+is_fixed_ticks = %d, fps = %d, quarter_divisions = %ld, quarter_duration = %ld") %
+					is_fixed_ticks % fps %  quarter_divisions %  quarter_duration);
 	}
 
 

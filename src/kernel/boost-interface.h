@@ -116,7 +116,7 @@ inline void intrusive_ptr_add_ref(intrusive_ptr_T * obj)
 {
 	if (!obj) return;
 	++(obj->intrusive_ptr_refcount);
-	DEBUGLOGTYPE(smartptr,*obj,_T("Incrementing %p to %d"),
+	DEBUGLOGTYPE(smartptr,*obj,("Incrementing %p to %d"),
 		     (void *)obj,(int)intrusive_ptr_get_refcount(obj));
 	// print_stacktrace(isDebugFlag(smartptr));
 }
@@ -125,7 +125,7 @@ template <class intrusive_ptr_T>
 inline void intrusive_ptr_release(intrusive_ptr_T * obj)
 {
 	if (!obj) return;
-	DEBUGLOGTYPE(smartptr,*obj,_T("Decrementing %p from %d"),
+	DEBUGLOGTYPE(smartptr,*obj,("Decrementing %p from %d"),
 		     (void *)obj,(int)intrusive_ptr_get_refcount(obj));
 	//	print_stacktrace(isDebugFlag(smartptr));
 	if (!(--(obj->intrusive_ptr_refcount))) delete obj;
@@ -159,7 +159,7 @@ namespace boost {
 			intrusive_ptr() : base(),
 					  backtrace(1)
 			{
-				DEBUGLOG(smartptr,_T("Creating %p (@ %p)"),
+				DEBUGLOG (smartptr, "Creating %p (@ %p)" ,
 					 this,
 					 (void *)backtrace.front());
 			}
@@ -168,10 +168,10 @@ namespace boost {
 				base(p,add_ref),
 				backtrace(1)
 			{
-				DEBUGLOG(smartptr,_T("Creating %p (@ %p)"),
+				DEBUGLOG (smartptr, "Creating %p (@ %p)" ,
 					 this,
 					 (void *)backtrace.front());
-				DEBUGLOG(smartptr,_T("New value %p -> %p"),this,this->get());
+				DEBUGLOG (smartptr, "New value %p -> %p" ,this,this->get());
 			}
 
 #if !defined(BOOST_NO_MEMBER_TEMPLATES) || defined(BOOST_MSVC6_MEMBER_TEMPLATES)
@@ -191,10 +191,10 @@ namespace boost {
 				backtrace(1)
 #endif
 			{
-				DEBUGLOG(smartptr,_T("Creating %p (@ %p)"),
+				DEBUGLOG (smartptr, "Creating %p (@ %p)" ,
 					 this,
 					 (void *)backtrace.front());
-				DEBUGLOG(smartptr,_T("New value %p -> %p"),
+				DEBUGLOG (smartptr, "New value %p -> %p" ,
 					 this,this->get());
 			}
 
@@ -205,18 +205,18 @@ namespace boost {
 				backtrace(1)
 
 			{
-				DEBUGLOG(smartptr,_T("Creating %p (@ %p)"),
+				DEBUGLOG (smartptr, "Creating %p (@ %p)" ,
 					 this,
 					 (void *)backtrace.front());
 				DEBUGLOG(smartptr,
-					 _T("New value %p -> %p"),
+					 ("New value %p -> %p"),
 					 this,this->get());
 			}
 
 			~intrusive_ptr() {
 				void * ptr = NULL;
 				DEBUGLOG(smartptr,
-					 _T("Destroying %p -> %p (NULL=“%p”, @ %p)"),
+					 ("Destroying %p -> %p (NULL=“%p”, @ %p)"),
 					 this,
 					 this->get(),
 					 ptr,
@@ -235,7 +235,7 @@ namespace boost {
 				if (backtrace.get_global_print())
 					backtrace.set_print();
 				base::operator=(rhs);
-				DEBUGLOG(smartptr,_T("New value %p -> %p"),
+				DEBUGLOG (smartptr, "New value %p -> %p" ,
 					 this,this->get());
 				return *this;
 			}
@@ -246,7 +246,7 @@ namespace boost {
 				if (backtrace.get_global_print())
 					backtrace.set_print();
 				base::operator=(static_cast<base const &>(rhs));
-				DEBUGLOG(smartptr,_T("New value %p -> %p"),
+				DEBUGLOG (smartptr, "New value %p -> %p" ,
 					 this,this->get());
 				return *this;
 			}
@@ -256,7 +256,7 @@ namespace boost {
 				if (backtrace.get_global_print())
 					backtrace.set_print();
 				base::operator=(rhs);
-				DEBUGLOG(smartptr,_T("New value %p -> %p"),
+				DEBUGLOG (smartptr, "New value %p -> %p" ,
 					 this,this->get());
 				return *this;
 			}
@@ -273,10 +273,10 @@ namespace boost {
 				backtrace(1)
 
 			{
-				DEBUGLOG(smartptr,_T("Creating %p (@ %p)"),
+				DEBUGLOG (smartptr, "Creating %p (@ %p)" ,
 					 this,
 					 (void *)backtrace.front());
-				DEBUGLOG(smartptr,_T("New value %p -> %p"),
+				DEBUGLOG (smartptr, "New value %p -> %p" ,
 					 this,this->get());
 			}
 
@@ -285,13 +285,13 @@ namespace boost {
 			void reset() BOOST_NOEXCEPT
 			{
 				base::reset();
-				DEBUGLOG(smartptr,_T("New value %p -> %p"),this,this->get());
+				DEBUGLOG (smartptr, "New value %p -> %p" ,this,this->get());
 			}
 
 			void reset( T * rhs )
 			{
 				base::reset(rhs);
-				DEBUGLOG(smartptr,_T("New value %p -> %p"),this,this->get());
+				DEBUGLOG (smartptr, "New value %p -> %p" ,this,this->get());
 			}
 
 			T & operator*() const
@@ -311,8 +311,8 @@ namespace boost {
 			void swap(intrusive_ptr & rhs) BOOST_NOEXCEPT
 			{
 				base::swap(rhs);
-				DEBUGLOG(smartptr,_T("New value %p -> %p"),this,this->get());
-				DEBUGLOG(smartptr,_T("New value %p -> %p"),&rhs,rhs.get());
+				DEBUGLOG (smartptr, "New value %p -> %p" ,this,this->get());
+				DEBUGLOG (smartptr, "New value %p -> %p" ,&rhs,rhs.get());
 			}
 
 			void print_backtrace() {

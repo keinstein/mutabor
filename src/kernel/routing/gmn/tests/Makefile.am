@@ -26,13 +26,21 @@ playgmn1_LDADD = \
 	$(top_builddir)/libmutabormaintest.a \
 	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
-	$(AM_LDFLAGS)
+	$(AM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LDFLAGS) \
+	$(BOOST_SYSTEM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIBS) \
+	$(BOOST_SYSTEM_LIBS)
 
 gmnopenfail1_LDADD = \
 	$(top_builddir)/libmutabormaintest.a \
 	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
-	$(AM_LDFLAGS)
+	$(AM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LDFLAGS) \
+	$(BOOST_SYSTEM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIBS) \
+	$(BOOST_SYSTEM_LIBS)
 
 gmnopenfail1_SOURCES = \
 	gmnopenfail1.cpp

@@ -708,22 +708,22 @@ AC_CACHE_CHECK([syntax for signalling printf format attributes], ac_cv_format_ar
 [
  AC_COMPILE_IFELSE([
 	AC_LANG_PROGRAM([
-	int test (constchar * auto, ...) __attribute_format_arg__(1);
+	int test (const char * auto, ...) __attribute_format_arg__(1);
 	],[])],[ac_cv_format_arg="__attribute_format_arg__"],[])
  AS_IF(test -z "$ac_cv_format_arg",
   AC_COMPILE_IFELSE([
 	AC_LANG_PROGRAM([
-	int test (constchar * auto, ...) __attribute__((format_arg(1)));
+	int test (const char * auto, ...) __attribute__((format_arg(1)));
 	],[])],[ac_cv_format_arg="__attribute__(format_arg(number))"],[]))
  AS_IF(test -z "$ac_cv_format_arg",
   AC_COMPILE_IFELSE([
 	AC_LANG_PROGRAM([
-	int test (constchar * auto, ...) __attribute__((__format_arg__(1)));
+	int test (const char * auto, ...) __attribute__((__format_arg__(1)));
 	],[])],[ac_cv_format_arg="__attribute__(format_arg(number))"],[]))
  AS_IF(test -z "$ac_cv_format_arg",
   AC_COMPILE_IFELSE([
 	AC_LANG_PROGRAM([
-	int test (constchar * auto, ...) __attribute__((__format_arg__(1)));
+	int test (const char * auto, ...) __attribute__((__format_arg__(1)));
 	],[])],[ac_cv_format_arg="__attribute__(format_arg(number))"],[]))
 ])
 
@@ -749,15 +749,33 @@ dnl then
 dnl	AC_DEFINE(MUST_REUSE,1,[Define to x if the scope of C++ loop variables is inside the loop])
 dnl fi
 
-AX_BOOST_BASE
+BOOST_REQUIRE([1.50.0])
+BOOST_FORMAT
+dnl BOOST_INTRUSIVE_PTR
+dnl BOOST_RATIONAL
+BOOST_FOREACH
+dnl BOOST_SPIRIT
+dnl BOOST_ALGORITHM
+BOOST_SMART_PTR
+BOOST_FILESYSTEM
+BOOST_SYSTEM
+BOOST_THREADS
+
+dnl AX_BOOST_BASE
+dnl AX_BOOST_SYSTEM
+dnl AX_BOOST_FILESYSTEM
+dnl AX_BOOST_IOSTREAMS
 tmpcppflags="$CPPFLAGS"
 CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
 AC_CHECK_HEADERS([boost/intrusive_ptr.hpp])
 AC_CHECK_HEADERS([boost/rational.hpp])
+AC_CHECK_HEADERS([boost/lexical_cast.hpp])
 AC_CHECK_HEADERS([boost/foreach.hpp])
+AC_CHECK_HEADERS([boost/format.hpp])
 AC_CHECK_HEADERS([boost/spirit/core.hpp])
 AC_CHECK_HEADERS([boost/spirit/actor/push_back_actor.hpp])
 AC_CHECK_HEADERS([boost/exception/diagnostic_information.hpp])
+AC_CHECK_HEADERS([boost/algorithm/string.hpp])
 CPPFLAGS="$tmpcppflags"
 AC_LANG_POP(C++)
 
@@ -780,7 +798,7 @@ AC_FUNC_MEMCMP
 AC_FUNC_REALLOC
 AC_FUNC_SELECT_ARGTYPES
 AC_FUNC_VPRINTF
-AC_CHECK_FUNCS([memmove pow getcwd gettimeofday memset select stpcpy strchr strstr])
+AC_CHECK_FUNCS([memmove pow getcwd gettimeofday memset select stpcpy strchr strstr bcopy bzero bcmp])
 AC_CHECK_FUNC(strdup)
 AC_FUNCTION_VECTOR_DATA
 

@@ -38,16 +38,16 @@
 #define MU32_EXECUTE_H
 #endif
 
-// ---------------------------------------------------------------------------
-// headers
-// ---------------------------------------------------------------------------
+/* --------------------------------------------------------------------------- */
+/* headers */
+/* --------------------------------------------------------------------------- */
 
 #include "Defs.h"
 
 #ifndef MU32_EXECUTE_H_PRECOMPILED
 #define MU32_EXECUTE_H_PRECOMPILED
 
-// system headers which do seldom change
+/* system headers which do seldom change */
 #include <stdio.h>
 
 #ifdef __cplusplus
@@ -57,7 +57,6 @@ namespace mutabor {
 #endif
 
 			struct mutabor_box_type;
-			typedef struct mutabor_box_type mutabor_box_type;
 			struct mutabor_logic_parsed;
 			
 			struct keyboard_ereignis;
@@ -87,49 +86,49 @@ namespace mutabor {
 					midi 
 				} type;
 				union {
-					keyboard_ereignis * key_trigger;
-					harmonie_ereignis * harmony_trigger;
-					midi_ereignis     * midi_trigger;
-				};
+					struct keyboard_ereignis * key_trigger;
+					struct harmonie_ereignis * harmony_trigger;
+					struct midi_ereignis     * midi_trigger;
+				} u;
 			};
 
 
 
-		    const char * mutabor_error_type_to_string(mutabor_error_type type);
+		    const char * mutabor_error_type_to_string(enum mutabor_error_type type);
 
-			typedef void mutabor_callback_update_type(mutabor_box_type * box,
+			typedef void (* mutabor_callback_update_type) (struct mutabor_box_type * box,
 								  unsigned int flags);
-			typedef void mutabor_callback_midi_out_type (mutabor_box_type * box,
+			typedef void (* mutabor_callback_midi_out_type) (struct mutabor_box_type * box,
 								     struct midiliste * outliste);
-			typedef void mutabor_callback_error_message_type(mutabor_box_type * box,
-									 mutabor_error_type type,
+			typedef void (* mutabor_callback_error_message_type)(struct mutabor_box_type * box,
+									 enum mutabor_error_type type,
 									 const char * message);
-			typedef void mutabor_callback_update_display(mutabor_box_type * box, int line_number);
-			typedef void mutabor_callback_log_action(mutabor_box_type * box,
+			typedef void (*mutabor_callback_update_display)(struct mutabor_box_type * box, int line_number);
+			typedef void (*mutabor_callback_log_action)(struct mutabor_box_type * box,
 								 const char * action);
 
-			typedef void mutabor_callback_lock_logic(mutabor_logic_parsed * logic);
+			typedef void (*mutabor_callback_lock_logic)(struct mutabor_logic_parsed * logic);
 
 
 			struct mutabor_callback_type {
-				mutabor_callback_update_type * update;
-				mutabor_callback_midi_out_type * midi_out;
-				mutabor_callback_error_message_type * error_message;
-				mutabor_callback_update_display * update_display;
-				mutabor_callback_log_action * log_action;
-				mutabor_callback_lock_logic * lock_logic;
-				mutabor_callback_lock_logic * unlock_logic;
-				mutabor_callback_lock_logic * free_mutex;
+				mutabor_callback_update_type  update;
+				mutabor_callback_midi_out_type  midi_out;
+				mutabor_callback_error_message_type  error_message;
+				mutabor_callback_update_display  update_display;
+				mutabor_callback_log_action  log_action;
+				mutabor_callback_lock_logic  lock_logic;
+				mutabor_callback_lock_logic  unlock_logic;
+				mutabor_callback_lock_logic  free_mutex;
 			};
 
 			extern struct mutabor_callback_type * mutabor_callbacks;
 
-			inline void mutabor_update(mutabor_box_type * box, unsigned int flags) {
+			inline void mutabor_update(struct mutabor_box_type * box, unsigned int flags) {
 				if (flags)
 					mutabor_callbacks->update(box,flags);
 			}
 
-			inline void mutabor_midi_out(mutabor_box_type * box,
+			inline void mutabor_midi_out(struct mutabor_box_type * box,
 						     struct midiliste * outliste) {
 				mutabor_callbacks->midi_out(box,outliste);
 			}
@@ -141,7 +140,7 @@ namespace mutabor {
 						   ...)  __attribute__ ((format(printf, 3, 4))) ;*/
 
 			
-			inline void mutabor_error_message(mutabor_box_type * box,
+			inline void mutabor_error_message(struct mutabor_box_type * box,
 							  enum mutabor_error_type type,
 							  const char * message,
 							  ...) {
@@ -159,24 +158,24 @@ namespace mutabor {
 				free(formatted);
 			}
 
-			inline void show_line_number(mutabor_box_type * box, int line_number ) {
+			inline void show_line_number(struct mutabor_box_type * box, int line_number ) {
 				mutabor_callbacks->update_display(box,line_number);
 			}
 
 
-			inline void mutabor_log_action(mutabor_box_type * box, const char * action) {
+			inline void mutabor_log_action(struct mutabor_box_type * box, const char * action) {
 				mutabor_callbacks->log_action(box,action);
 			}
 
-			inline void mutabor_lock_logic(mutabor_logic_parsed * logic) {
+			inline void mutabor_lock_logic(struct mutabor_logic_parsed * logic) {
 				mutabor_callbacks->lock_logic(logic);
 			}
 
-			inline void mutabor_unlock_logic(mutabor_logic_parsed * logic) {
+			inline void mutabor_unlock_logic(struct mutabor_logic_parsed * logic) {
 				mutabor_callbacks->unlock_logic(logic);
 			}
 
-			inline void mutabor_free_logic_mutex(mutabor_logic_parsed * logic) {
+			inline void mutabor_free_logic_mutex(struct mutabor_logic_parsed * logic) {
 				mutabor_callbacks->free_mutex(logic);
 			}
 
@@ -191,36 +190,36 @@ namespace mutabor {
 			 *
 			 * \return old callback object.
 			 */
-			mutabor_callback_type * mutabor_set_callbacks(mutabor_callback_type * callbacks);
+			struct mutabor_callback_type * mutabor_set_callbacks(struct mutabor_callback_type * callbacks);
 			/**
 			 * Get the currently active callback object.
 			 *
 			 *
 			 * \return pointer to the currently active callback object
 			 */
-			mutabor_callback_type * mutabor_get_callbacks();
+			struct mutabor_callback_type * mutabor_get_callbacks();
 
 
 			void KeyboardIn(struct mutabor_box_type * box, const char *keys);
 
 
-			void AddKey(mutabor_box_type * box, int taste, size_t id, size_t channel, void * userdata);
-			void DeleteKey(mutabor_box_type * box, int taste, size_t id, size_t channel);
-			void MidiAnalysis(mutabor_box_type * box, const uint8_t * message, size_t size);
+			void AddKey(struct mutabor_box_type * box, int taste, size_t id, size_t channel, void * userdata);
+			void DeleteKey(struct mutabor_box_type * box, int taste, size_t id, size_t channel);
+			void MidiAnalysis(struct mutabor_box_type * box, const uint8_t * message, size_t size);
 
-			void KeyboardAnalyse(mutabor_box_type * box, int taste, char isLogic);
-			void KeyboardAnalyseSimple(mutabor_box_type * box, int taste);
+			void KeyboardAnalyse(struct mutabor_box_type * box, int taste, char isLogic);
+			void KeyboardAnalyseSimple(struct mutabor_box_type * box, int taste);
 
 #ifdef __cplusplus
-		} // extern "C"
-	} // namespace hidden
-} // namespace mutabor
+		} /* extern "C" */
+	} /* namespace hidden */
+} /* namespace mutabor */
 #endif
 
 
-#endif // precompiled
+#endif /* precompiled */
 #endif
 
 
 
-///\}
+/** \} */

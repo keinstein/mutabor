@@ -241,10 +241,11 @@ $(top_srcdir)/src/xrc/reslocale.cpp : $(top_srcdir)/src/xrc/Mutabor.xrc
 	wxrc -g -o reslocale.cpp Mutabor.xrc)
 
 debugPaths.cpp: Makefile
-	echo '#include "src/kernel/Defs.h"' >$@
-	echo 'const mutChar * srcdir = _T("$(srcdir)");' >> $@
-	echo 'const mutChar * top_srcdir = _T("$(top_srcdir)");' >> $@
-	echo 'const mutChar * top_builddir = _T("$(top_builddir)");' >> $@
+	echo '#include "src/kernel/Defs.h"' >$@.tmp
+	echo 'const char * srcdir = "$(srcdir)";' >> $@.tmp
+	echo 'const char * top_srcdir = "$(top_srcdir)";' >> $@.tmp
+	echo 'const char * top_builddir = "$(top_builddir)";' >> $@.tmp
+	cmp $@ $@.tmp && rm -f $@.tmp || mv $@.tmp $@
 
 $(top_builddir)/src/wxintl/libwxintl.a:
 	$(MAKE) -C $(top_builddir)/src/wxintl libwxintl.a

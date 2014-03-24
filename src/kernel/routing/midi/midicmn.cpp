@@ -295,7 +295,7 @@ namespace mutabor {
 			return;
 		}
 
-		DEBUGLOG (midiio, _T("box %p, inkey %d, velocity %d, id %d"),
+		DEBUGLOG (midiio, "box %p, inkey %d, velocity %d, id %d" ,
 			  box.get(), inkey, velocity, (int)id);
 		//		int free = 16, freeSus = r->OTo, freeVelocitycity = 64, freeSusVelocitycity = 64, s;
 		//		DWORD p;
@@ -383,7 +383,7 @@ namespace mutabor {
 			UNREACHABLEC;
 			return;
 		}
-		DEBUGLOG (midiio, _T("box %p, key %d, velo %d, id %d"),
+		DEBUGLOG (midiio, "box %p, key %d, velo %d, id %d" ,
 			  box.get(), inkey, velo, (int)id);
 
 
@@ -445,7 +445,7 @@ namespace mutabor {
 				TAK & tone = ton_auf_kanal[channel];
 
 				DEBUGLOG(midiio,
-					 _T("old(hex/dec): channel = %01x/%d, Inkey = %02x/%d, key = %02x/%d, pitch = %06x/%d"),
+					 ("old(hex/dec): channel = %01x/%d, Inkey = %02x/%d, key = %02x/%d, pitch = %06x/%d"),
 					 channel,channel,
 					 tone.inkey,tone.inkey,
 					 tone.outkey.pitch,tone.outkey.pitch,
@@ -705,7 +705,7 @@ namespace mutabor {
 	}
 
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::do_SplitOut (BYTE * p, size_t n) {
+	void CommonMidiOutput<T,D>::do_SplitOut (uint8_t * p, size_t n) {
 		mutASSERT(this->isOpen);
 		size_t pos = 0;
 		size_t datalength = 0;
@@ -966,14 +966,14 @@ namespace mutabor {
 			UNREACHABLEC;
 			return;
 		}
-		DEBUGLOG (midifile, _T("Code: %p, Active: %d, Out: %p"),
+		DEBUGLOG (midifile, "Code: %p, Active: %d, Out: %p" ,
 			  (void*)midiCode,
 			  route->GetActive(),
 			  (void*)route->GetOutputDevice().get());
 		Box box = route->GetBox();
 		unsigned char MidiChannel = (midiCode->at(0) & 0x0F) + channel_offset;
 		unsigned char MidiStatus  = midiCode->at(0) & 0xF0;
-		DEBUGLOG (midifile, _T("Status: %x"), MidiStatus);
+		DEBUGLOG (midifile, "Status: %x" , MidiStatus);
 
 		switch ( MidiStatus ) {
 

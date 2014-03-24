@@ -90,13 +90,13 @@ namespace mutabor {
 		return trigger.type == any_trigger::key;
 	}
 	inline keyboard_action * get_key_trigger(struct any_trigger & trigger) {
-		return trigger.key_trigger;
+		return trigger.u.key_trigger;
 	}
 	inline harmony_action * get_harmony_trigger(struct any_trigger & trigger) {
-		return trigger.harmony_trigger;
+		return trigger.u.harmony_trigger;
 	}
 	inline midi_action * get_midi_trigger(struct any_trigger & trigger) {
-		return trigger.midi_trigger;
+		return trigger.u.midi_trigger;
 	}
 
 }

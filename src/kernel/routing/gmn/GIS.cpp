@@ -33,93 +33,85 @@
 #include "src/kernel/Frac.h"
 #include "src/kernel/routing/gmn/GIS.h"
 #include "src/kernel/routing/gmn/GSP.h"
-
+using namespace mutabor;
 
 // registered tags
 
-const mutChar * Tags[NTAGS] =
+const char * Tags[NTAGS] =
         {
-                mutT(""),
-		mutT("intens"),
-		mutT("slur"),
-		mutT("beam"),
-		mutT("text"),
-                mutT("bar"),
-		mutT("cresc"),
-		mutT("dim"),
-		mutT("crescBegin"),
-		mutT("crescEnd"),
-                mutT("dimBegin"),
-		mutT("dimEnd"),
-		mutT("tempo"),
-		mutT("accel"),
-		mutT("rit"),
-                mutT("accelBegin"),
-		mutT("accelEnd"),
-		mutT("ritBegin"),
-		mutT("ritEnd"),
-		mutT("instr"),
-                mutT("tie"),
-		mutT("stacc"),
-		mutT("accent"),
-		mutT("ten"),
-		mutT("marcato"),
-                mutT("trill"),
-		mutT("mord"),
-		mutT("turn"),
-		mutT("trem"),
-		mutT("fermata"),
-                mutT("grace"),
-		mutT("cue"),
-		mutT("repeatBegin"),
-		mutT("repeatEnd"),
-		mutT("clef"),
-                mutT("meter"),
-		mutT("key"),
-		mutT("oct"),
-		mutT("staff"),
-		mutT("beamsAuto"),
-                mutT("beamsOff"),
-		mutT("stemsAuto"),
-		mutT("stemsUp"),
-		mutT("stemsDown"),
-		mutT("doubleBar"),
-                mutT("tactus"),
-		mutT("title"),
-		mutT("composer"),
-		mutT("mark"),
-		mutT("label"),
-                mutT("alter"),
-		mutT("mutabor")
+                (""),
+		("intens"),
+		("slur"),
+		("beam"),
+		("text"),
+                ("bar"),
+		("cresc"),
+		("dim"),
+		("crescBegin"),
+		("crescEnd"),
+                ("dimBegin"),
+		("dimEnd"),
+		("tempo"),
+		("accel"),
+		("rit"),
+                ("accelBegin"),
+		("accelEnd"),
+		("ritBegin"),
+		("ritEnd"),
+		("instr"),
+                ("tie"),
+		("stacc"),
+		("accent"),
+		("ten"),
+		("marcato"),
+                ("trill"),
+		("mord"),
+		("turn"),
+		("trem"),
+		("fermata"),
+                ("grace"),
+		("cue"),
+		("repeatBegin"),
+		("repeatEnd"),
+		("clef"),
+                ("meter"),
+		("key"),
+		("oct"),
+		("staff"),
+		("beamsAuto"),
+                ("beamsOff"),
+		("stemsAuto"),
+		("stemsUp"),
+		("stemsDown"),
+		("doubleBar"),
+                ("tactus"),
+		("title"),
+		("composer"),
+		("mark"),
+		("label"),
+                ("alter"),
+		("mutabor")
         };
 
-const mutChar * TagShorts[NTAGSHORTS] =
+const char * TagShorts[NTAGSHORTS] =
         {
-                mutT(""),
-		mutT("i"),
-		mutT("sl"),
-		mutT("bm"),
-		mutT("t"),
-		mutT("|")
+                (""),
+		("i"),
+		("sl"),
+		("bm"),
+		("t"),
+		("|")
         };
 
 GisToken *Root;
-
 GisToken **Current, *LastOpenBracket;
-
 GisTagBegin *LastOpenRange;
-
 char TagMode;
-
-mutString TagName;
-
-mutString TagSep;
-
+std::string TagName;
+std::string TagSep;
 GisToken *Para, *LastPara;
-
 int LastOctave;
-
-frac LastDuration;
+mutabor::frac LastDuration;
 
 #ifdef DEBUG
 int debugcount = 0;
@@ -280,10 +272,10 @@ void GisTagEnd::Stream(ostream &out, char sep)
 
 #endif
 
-int Name2Key(const mutString name)
+int Name2Key(const std::string name)
 {
-	mutChar notes[] = mutT("c d ef g a b");
-	size_t l = mutLen(name);
+	char notes[] = "c d ef g a b";
+	size_t l = name.length();
 	int i = 11;
 
 	if ( l == 1 ) {
@@ -313,15 +305,15 @@ int Name2Key(const mutString name)
 		return -1;
 }
 
-int Acc2Int(const mutString acc)
+int Acc2Int(const std::string &acc)
 
 {
-	if ( !acc ) return 0;
+	if ( acc.empty() ) return 0;
 
 	int i = 0;
 
 #ifdef WX
-	for (size_t j = 0; j < mutLen(acc); j++)
+	for (size_t j = 0; j < acc.length(); j++)
 #else
 	for (int j = 0; acc[j]; j++)
 #endif
@@ -348,24 +340,24 @@ char *strdupchr(char a)
 
 #endif
 
-GisNote::GisNote(int key, int octave, int acc, mutString sep, GisToken *next)
+GisNote::GisNote(int key,
+		 int octave,
+		 int acc,
+		 const std::string & sep,
+		 GisToken *next)
 		: GisToken(sep, next)
 {
 	if ( key == GMN_NO_KEY ) {
-#ifdef WX
-		Name = mutT("_");
-#else
-		Name = strdup("_");
-#endif
-		Accedentials = mutEmptyString;
+		Name = "_";
+		Accedentials = "";
 		;
 		Octave = 0;
 	} else {
-		mutChar Flats[]   = mutT("cddeefggaabb");
-		mutChar FlatsA[]  = mutT(" & &  & & & ");
-		mutChar Sharps[]  = mutT("ccddeffggaab");
-		mutChar SharpsA[] = mutT(" # #  # # # ");
-		mutChar accs;
+		char Flats[]   = "cddeefggaabb";
+		char FlatsA[]  = " & &  & & & ";
+		char Sharps[]  = "ccddeffggaab";
+		char SharpsA[] = " # #  # # # ";
+		char accs;
 		int Index = key % 12;
 		int Abstand = key /12;
 
@@ -375,17 +367,17 @@ GisNote::GisNote(int key, int octave, int acc, mutString sep, GisToken *next)
 		}
 
 		if ( acc < 0 ) {
-			Name = strdupchr(Flats[Index]);
+			Name = Flats[Index];
 			accs = FlatsA[Index];
 		} else {
 			Name = strdupchr(Sharps[Index]);
 			accs = SharpsA[Index];
 		}
 
-		if ( accs != mutT(' ') )
+		if ( accs != ' ' )
 			Accedentials = strdupchr(accs);
 		else
-			Accedentials = mutEmptyString;
+			Accedentials = "";
 
 		Octave = Abstand - 5 - octave;
 	}
@@ -498,9 +490,9 @@ void GisComma::Stream(ostream &out, char sep)
 
 #ifdef WX
 #define AddStr(s1,s2,s3) (s1 += s2 + s3)
-void Clear(mutString * s)
+void Clear(std::string * s)
 {
-	*s = mutEmptyString;
+	*s = "";
 }
 
 #else
@@ -537,7 +529,7 @@ char *AddStr(char **s1, const char *s2, const char *s3)
 
 int BuildTag()
 {
-	DEBUGLOG2(gmnfile,_T("TagName.len %d, '%s'"),(int)TagName.Len(),TagName.c_str());
+	DEBUGLOG2(gmnfile,("TagName.len %d, '%s'"),(int)TagName.length(),TagName.c_str());
 	GisTag *Tag = new GisTag(TagName, Para, TagSep);
 	*Current = Tag;
 	Current = &(Tag->Next);
@@ -554,7 +546,7 @@ int BuildTag()
 
 int StartSep()
 {
-	DEBUGLOG2(gmnfile,_T("saving Sep %s"),Sep.c_str());
+	DEBUGLOG2(gmnfile,("saving Sep %s"),Sep.c_str());
 	*Current = new GisToken(Sep, 0);
 	Current = &((*Current)->Next);
 	return 0;
@@ -562,7 +554,7 @@ int StartSep()
 
 int BeginSegment()
 {
-	DEBUGLOG2(gmnfile,_T("{"));
+	DEBUGLOG2(gmnfile,("{"));
 
 	if ( TagMode ) BuildTag();
 
@@ -579,16 +571,12 @@ int BeginSegment()
 
 int EndSegment()
 {
-	DEBUGLOG2(gmnfile,_T("}"));
+	DEBUGLOG2(gmnfile,("}"));
 
 	if ( TagMode ) BuildTag();
-
 	*Current = 0;
-
-	mutCopyString(((GisSegment*)(LastOpenBracket))->Sep2, Sep);
-
+	((GisSegment*)(LastOpenBracket))->Sep2 = Sep;
 	Current = &(LastOpenBracket->Next);
-
 	LastOpenBracket = LastOpenBracket->Next;
 
 	return 0;
@@ -596,7 +584,7 @@ int EndSegment()
 
 int BeginSequenz()
 {
-	DEBUGLOG2(gmnfile,_T("["));
+	DEBUGLOG2(gmnfile,("["));
 
 	if ( TagMode ) BuildTag();
 
@@ -613,13 +601,13 @@ int BeginSequenz()
 
 int EndSequenz()
 {
-	DEBUGLOG2(gmnfile,_T("]"));
+	DEBUGLOG2(gmnfile,("]"));
 
 	if ( TagMode ) BuildTag();
 
 	*Current = 0;
 
-	mutCopyString(((GisSequenz*)LastOpenBracket)->Sep2, Sep);
+	((GisSequenz*)LastOpenBracket)->Sep2 =Sep;
 
 	Current = &(LastOpenBracket->Next);
 
@@ -630,33 +618,33 @@ int EndSequenz()
 
 int BeginParameter()
 {
-	DEBUGLOG2(gmnfile,_T("<"));
-	AddStr(TagSep, mutT("<"), Sep);
+	DEBUGLOG2(gmnfile,("<"));
+	AddStr(TagSep, ("<"), Sep);
 	return 0;
 }
 
 int EndParameter()
 {
-	DEBUGLOG2(gmnfile,_T(">"));
+	DEBUGLOG2(gmnfile,(">"));
 
 	if ( Para )
-		AddStr((LastPara->Sep), mutT(">"), Sep);
+		AddStr((LastPara->Sep), (">"), Sep);
 	else
-		AddStr(TagSep, mutT(">"), Sep);
+		AddStr(TagSep, (">"), Sep);
 
 	return 0;
 }
 
 int BeginRange()
 {
-	DEBUGLOG2(gmnfile,_T("( "));
+	DEBUGLOG2(gmnfile,("( "));
 
 	if ( LastPara )
-		AddStr(LastPara->Sep, mutT("("), Sep);
+		AddStr(LastPara->Sep, ("("), Sep);
 	else if ( Para )
-		AddStr(Para->Sep, mutT("("), Sep);
+		AddStr(Para->Sep, ("("), Sep);
 	else
-		AddStr(TagSep, mutT("("), Sep);
+		AddStr(TagSep, ("("), Sep);
 
 	GisTagBegin *Tag = new GisTagBegin(TagName, Para, TagSep, 0);
 
@@ -683,7 +671,7 @@ int BeginRange()
 
 int EndRange()
 {
-	DEBUGLOG2(gmnfile,_T(")\n"));
+	DEBUGLOG2(gmnfile,(")\n"));
 
 	if ( TagMode ) BuildTag();
 
@@ -702,24 +690,27 @@ int EndRange()
 
 int NextSequenz()
 {
-	DEBUGLOG2(gmnfile,_T(", "));
+	DEBUGLOG2(gmnfile,(", "));
 
 	if ( TagMode ) BuildTag();
 
 	return 0;
 }
 
-int Note(const mutString name, const mutString accedentials, int octave, frac duration)
+int Note(const std::string &name,
+	 const std::string &accedentials,
+	 int octave,
+	 const mutabor::frac & duration)
 {
-	DEBUGLOG2(gmnfile,_T("%s%s%d*%s: Note '%s' %s Oktave %d, Duration: %s "),
+	DEBUGLOG2(gmnfile,("%s%s%d*%s: Note '%s' %s Oktave %d, Duration: %s "),
 	          name.c_str(),
 	          accedentials.c_str(),
 	          octave,
-		  TowxString(duration).c_str(),
+		  str(duration).c_str(),
 	          name.c_str(),
 	          accedentials.c_str(),
 	          octave,
-		  TowxString(duration).c_str());
+		  str(duration).c_str());
 
 	if ( TagMode ) BuildTag();
 
@@ -732,15 +723,15 @@ int Note(const mutString name, const mutString accedentials, int octave, frac du
 	return 0;
 }
 
-int Tag(const mutString tagName)
+int Tag(const std::string &tagName)
 {
-	DEBUGLOG2(gmnfile,_T("\\%s"),tagName.c_str());
+	DEBUGLOG2(gmnfile,("\\%s"),tagName.c_str());
 
 	if ( TagMode ) BuildTag();
 
-	mutCopyString(TagName, tagName);
+	TagName =  tagName;
 
-	mutCopyString(TagSep, Sep);
+	TagSep = Sep;
 
 	TagMode = 1;
 
@@ -749,7 +740,7 @@ int Tag(const mutString tagName)
 
 int TagParaInt(long i)
 {
-	DEBUGLOG2(gmnfile,_T("ParaInt: %ld"),i);
+	DEBUGLOG2(gmnfile,("ParaInt: %ld"),i);
 	GisParaInt *p = new GisParaInt(i, Sep);
 
 	if ( LastPara )
@@ -764,7 +755,7 @@ int TagParaInt(long i)
 
 int TagParaReal(double x)
 {
-	DEBUGLOG2(gmnfile,_T("ParaReal: %g"), x);
+	DEBUGLOG2(gmnfile,("ParaReal: %g"), x);
 	GisParaReal *p = new GisParaReal(x, Sep, 0);
 
 	if ( LastPara )
@@ -777,9 +768,9 @@ int TagParaReal(double x)
 	return 0;
 }
 
-int TagParaStr(mutString s)
+int TagParaStr(const std::string &s)
 {
-	DEBUGLOG2(gmnfile,_T("ParaStr: %s"), s.c_str());
+	DEBUGLOG2(gmnfile,("ParaStr: %s"), s.c_str());
 	GisParaStr *p = new GisParaStr(s, Sep, 0);
 
 	if ( LastPara )
@@ -794,7 +785,7 @@ int TagParaStr(mutString s)
 
 int Comma()
 {
-	DEBUGLOG2(gmnfile,_T(","));
+	DEBUGLOG2(gmnfile,(","));
 
 	if ( TagMode ) BuildTag();
 
@@ -838,10 +829,10 @@ GisType GetGisType(GisToken* token)
 		return GTNull;
 }
 
-int GetTagId(const mutString &name, mutString &registered)
+int GetTagId(const std::string &name, std::string &registered)
 
 {
-	if (!name) {
+	if (name.empty()) {
 		registered = Tags[0];
 		return 0;
 	}
@@ -850,8 +841,8 @@ int GetTagId(const mutString &name, mutString &registered)
 	int i;
 
 	for (i = 0; i < NTAGS; i++) {
-		DEBUGLOG2(gmnfile,_T("comparing '%s' with tag'%s'"),name.c_str(),Tags[i]);
-		if ( mutStrEq2(wxString(name), Tags[i]) ) {
+		DEBUGLOG2(gmnfile,("comparing '%s' with tag'%s'"),name.c_str(),Tags[i]);
+		if ( name == Tags[i]) {
 			registered = Tags[i];
 			return i;
 		} ;
@@ -859,16 +850,16 @@ int GetTagId(const mutString &name, mutString &registered)
 
 	// check short form
 	for (i = 0; i < NTAGSHORTS; i++) {
-		DEBUGLOG2(gmnfile,_T("comparing '%s' with tag'%s'"),name.c_str(),TagShorts[i]);
+		DEBUGLOG2(gmnfile,("comparing '%s' with tag'%s'"),name.c_str(),TagShorts[i]);
 
-		if ( mutStrEq2(name, TagShorts[i]) ) {
+		if ( name == TagShorts[i] ) {
 			registered = TagShorts[i];
 			return i;
 		}
 	}
 
 	// no registered tag
-	registered = mutEmptyString;
+	registered = "";
 
 	return -1;
 }
@@ -888,18 +879,18 @@ GisToken *CopyPara(GisToken *para)
 	return C;
 }
 
-GisToken *GisParse(const mutString FileName)
+GisToken *GisParse(const std::string FileName)
 {
 	Root = 0;
 	Current = &Root;
 	LastOpenBracket = 0;
 	LastOpenRange = 0;
 	TagMode = 0;
-	TagName = mutEmptyString;
-	TagSep = mutEmptyString;
+	TagName = "";
+	TagSep = "";
 	Para = 0;
 	LastPara = 0;
-	DEBUGLOG2(gmnfile,_T("TagName.len %d, '%s'"),(int)TagName.Len(),TagName.c_str());
+	DEBUGLOG2(gmnfile,("TagName.len %d, '%s'"),(int)TagName.length(),TagName.c_str());
 
 	if ( GspParse(FileName) ) {
 		UnRavel();
@@ -910,28 +901,25 @@ GisToken *GisParse(const mutString FileName)
 	return Root;
 }
 
-#ifdef WX
-wxString GISPrettyPrint(wxString s)
+std::string GISPrettyPrint(std::string s)
 {
-	wxString ret = wxEmptyString;
-	wxString pre = wxEmptyString;
+	std::string ret = "";
+	std::string pre = "";
 
-	for (size_t start = 0, current = 0 ; current < s.Len(); current++) {
-		wxChar c = s[current];
+	for (size_t start = 0, current = 0 ; current < s.length(); current++) {
+		char c = s[current];
 
-		if (c == _T('{')) {
-			pre += _T("  ");
-		} else if (c == _T('}')) {
-			if (pre.Len() >= 2) pre = pre.Left(pre.Len()-2);
-		} else if (c == _T('\n')) {
-			ret += s (start, current - start + 1) + pre;
+		if (c == ('{')) {
+			pre += ("  ");
+		} else if (c == ('}')) {
+			if (pre.length() >= 2) pre = pre.substr(0,pre.length()-2);
+		} else if (c == ('\n')) {
+			ret += s.substr (start, current - start + 1) + pre;
 			start = current + 1;
 		}
 	}
 
 	return ret;
 }
-
-#endif
 
 ///\}

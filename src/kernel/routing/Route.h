@@ -62,7 +62,7 @@
 #include "boost/throw_exception.hpp"
 //#include "boost/intrusive_ptr.hpp"
 
-#ifdef WX
+#if 0
 #include "wx/config.h"
 #endif
 // Route ------------------------------------------------------------
@@ -83,7 +83,7 @@ namespace mutabor {
 		RTstaff							 /**< use only a certain staff/track/… range (depends on the input device type) */
 	};
 
-	extern const mutString RTName[];
+	extern const std::string RTName[];
 
 	class OutputDeviceClass;
 	typedef boost::intrusive_ptr<OutputDeviceClass> OutputDevice;
@@ -126,7 +126,7 @@ namespace mutabor {
 		public:
 			Route route;
 			NoOutputDevice(const thistype * r):
-			invalid_argument(gettext_noop("No such output device")) {
+			invalid_argument(_mutN("No such output device")) {
 				route = const_cast<thistype *>(r);
 			}
 			virtual ~NoOutputDevice() throw() {}
@@ -176,7 +176,7 @@ namespace mutabor {
 			if (Active) {
 				// global C part
 				box->AddNote(key, make_unique, session_id, userdata);
-				DEBUGLOG(routing,_T("(key = %d, channel = %lu, id = %lu)"),
+				DEBUGLOG (routing, "(key = %d, channel = %lu, id = %lu)" ,
 					 key,
 					 (unsigned long)get_session_id(),
 					 (unsigned long)make_unique);
@@ -340,7 +340,7 @@ namespace mutabor {
 			Type = type;
 		}
 
-		const mutString & GetTypeName()	{
+		const std::string & GetTypeName()	{
 			return RTName[Type];
 		}
 
@@ -456,9 +456,8 @@ namespace mutabor {
 			mutASSERT(intrusive_ptr_get_refcount(d.get()) <= 1);
 			TRACET(thistype);
 		}
-#ifdef WX
-		virtual wxString TowxString() const;
-#endif
+		virtual operator std::string() const;
+
 	protected: // members
 		WATCHEDPTR(void,routing,TRouteClass) userdata;
 		OutputDevice Out;
@@ -486,7 +485,7 @@ namespace mutabor {
 
 		// functions
 		TRouteClass():
-			userdata(this,_T("userdata")) {
+			userdata(this,"userdata") {
 			TRACEC;
 			AppendToRouteList(this);
 			InputDevice in (NULL);
@@ -509,7 +508,7 @@ namespace mutabor {
 			int oFrom = -1,
 			int oTo = -1,
 			bool oNoDrum = true):
-			userdata(this,_T("userdata"))
+			userdata(this,"userdata")
 			{
 				TRACEC;
 				AppendToRouteList(this);
@@ -573,12 +572,12 @@ namespace mutabor {
 		struct FactoryAlreadySet:public std::logic_error {
 			RouteFactory * old;
 			RouteFactory * created;
-			FactoryAlreadySet(RouteFactory * o, RouteFactory * n): logic_error(gettext_noop("Route factory already set")),
+			FactoryAlreadySet(RouteFactory * o, RouteFactory * n): logic_error(_mutN("Route factory already set")),
 											   old(o), created(n) {}
 		};
 
 		struct RouteFactoryNotSet:public std::logic_error {
-			RouteFactoryNotSet():logic_error(gettext_noop("Trying to create a route without the correct factory. You (the programmer) must create one!")) {}
+			RouteFactoryNotSet():logic_error(_mutN("Trying to create a route without the correct factory. You (the programmer) must create one!")) {}
 		};
 
                 /** Creates a route Factory.
@@ -758,7 +757,7 @@ namespace mutabor {
 		}
 	};
 
-	extern const mutString DevTypeName[];
+	extern const std::string DevTypeName[];
 
 }
 

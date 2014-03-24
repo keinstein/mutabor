@@ -43,6 +43,7 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
+#include "src/wxGUI/generic/mhDefs.h"
 #include "src/wxGUI/MutBitmaps.h"
 
 #ifndef WXGUI_STATUSBAR_PRECOMPILED

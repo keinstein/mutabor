@@ -40,21 +40,21 @@
 #define MU32_GLOBAL_H
 #endif
 
-// ---------------------------------------------------------------------------
-// headers
-// ---------------------------------------------------------------------------
+/* --------------------------------------------------------------------------- */
+/* headers */
+/* --------------------------------------------------------------------------- */
 
 #include "Defs.h"
 
 #ifndef MU32_GLOBAL_H_PRECOMPILED
 #define MU32_GLOBAL_H_PRECOMPILED
 
-// system headers which do seldom change
+/* system headers which do seldom change */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include <string>
+#include <string.h>
 #include <math.h>
 
 
@@ -64,9 +64,15 @@ namespace mutabor {
 		extern "C" {
 #endif
 /* #define alloca xmalloc */
+#ifndef HAVE_BCOPY
 #define bcopy(from,to,n) memcpy((to),(from),(n))
+#endif
+#ifndef HAVE_BZERO
 #define bzero(s,n) memset((s),0,(n))
+#endif
+#ifndef HAVE_BCMP
 #define bcmp(b1,b2,len) memcmp((b1),(b2),(len))
+#endif
 
 /* originial values were: 72, 36, 96 */
 #define MUTABOR_KEYRANGE_MAX_WIDTH 128
@@ -84,9 +90,9 @@ namespace mutabor {
 /* 17.31... ist 12/log(2)  */
 #endif
 
-//#define MAX_BOX 256   // Anzahl der Boxen/Instumente
+/*#define MAX_BOX 256   // Anzahl der Boxen/Instumente */
 
-//void init_yylex (void);
+/*void init_yylex (void); */
 
 /****** Allgemeine Strukturen *******/
 
@@ -97,7 +103,7 @@ struct parameter_list
     struct parameter_list * next;
 };
 
-		    //typedef int parameter_typ;
+		    /*typedef int parameter_typ; */
 
 enum argument_typ {
 	mutabor_argument_integer, 
@@ -331,7 +337,7 @@ struct umstimmung
 
 struct taste
 {
-	int code;     //int taste - Namensprobleme
+	int code;     /*int taste - Namensprobleme */
 	char stern;      /* TRUE oder FALSE, ob Stern deklariert ist */
 
 	struct taste * next;
@@ -412,7 +418,7 @@ struct aktions_liste
 			struct argument_list * argument_liste;
 		} aktion_aufruf;
 #if 0
-		// currently empty
+		/* currently empty */
 		struct {
 		} aktion_harmony_analysis;
 #endif
@@ -508,19 +514,19 @@ int loesche_speicher_total( void );
 
 
 
-///#define MAXLINE_ton_system 18
-///#define MAXLINE_AKTIONEN 18
+/*/#define MAXLINE_ton_system 18 */
+/*/#define MAXLINE_AKTIONEN 18 */
 #define LINE_DRAW_QUANTUM 17
 
 
 #ifdef __cplusplus
-		} // extern "C"
-	} // namespace hidden
-} // namespace mutabor
+		} /* extern "C" */
+	} /* namespace hidden */
+} /* namespace mutabor */
 #endif
 
-#endif // precompiled
+#endif /* precompiled */
 #endif
 
 
-///\}
+/*/\} */

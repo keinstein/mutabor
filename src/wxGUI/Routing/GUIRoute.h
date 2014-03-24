@@ -84,7 +84,7 @@ namespace mutaborGUI {
 		void ReconfigureBox(int oldbox, int newbox) {
 			box = &(BoxClass::GetBox(newbox,BoxClass::IdTypeFile));
 
-			DEBUGLOG(routing, _T("Set Box data to %p from id %d"),
+			DEBUGLOG (routing, "Set Box data to %p from id %d" ,
 				 (void*)box, newbox);
 			BoxData::ReOpenRoute(oldbox, newbox);
 		}
@@ -187,7 +187,7 @@ namespace mutaborGUI {
 		*/
 		MutBoxChannelShape * GetShape(wxWindow * parent);
 
-		virtual void runtime_error(int type, const mutString& message, va_list & args);
+		virtual void runtime_error(int type, const std::string& message);
 	};
 
 
@@ -266,11 +266,9 @@ namespace mutaborGUI {
 		virtual void Destroy();
 
 		virtual void  runtime_error(int type,
-					    const mutString& message,
-					    va_list & args) {
+					    const std::string& message) {
 			GUIRouteBase::runtime_error(type,
-						    message,
-						    args);
+						    message);
 		}
 	};
 
@@ -405,7 +403,7 @@ namespace mutaborGUI {
 
 		void Destroy();
 
-		virtual void runtime_error(int type, const mutStringRef message, va_list & args);
+		virtual void runtime_error(int type, const std::string & message);
 	};
 
 	template<class T>
@@ -417,7 +415,7 @@ namespace mutaborGUI {
 		typedef T basetype;
 		typedef GUIfiedOutputDevice<T> thistype;
 	protected:
-		GUIfiedOutputDevice(const mutStringRef name = mutEmptyString,
+		GUIfiedOutputDevice(const std::string name = "",
 				    int id = -1):T(name, id),
 						 GUIOutputDeviceBase() {
 			this->setUserData(static_cast<GUIOutputDeviceBase *>(this));
@@ -443,11 +441,9 @@ namespace mutaborGUI {
 		virtual void DisconnectFromAll();
 		virtual	int MoveInList(int count);
 		virtual void  runtime_error(int type,
-					    const mutString& message,
-					    va_list & args) {
+					    const std::string& message) {
 			GUIOutputDeviceBase::runtime_error(type,
-							   message,
-							   args);
+							   message);
 		}
 	};
 
@@ -556,7 +552,7 @@ namespace mutaborGUI {
 		 */
 		virtual	void MoveToInList(int newpos);
 		void Destroy();
-		virtual void runtime_error(int type, const mutStringRef message, va_list & args);
+		virtual void runtime_error(int type, const std::string& message);
 	protected:
 		void NotifyShapes();
 	};
@@ -572,7 +568,7 @@ namespace mutaborGUI {
 		typedef GUIfiedInputDevice<T> thistype;
 
 	protected:
-		GUIfiedInputDevice(const mutStringRef name = mutEmptyString,
+		GUIfiedInputDevice(const std::string& name = "",
 				   mutabor::MutaborModeType mode
 				   = mutabor::DeviceStop,
 				   int id = -1):T(name,
@@ -629,11 +625,9 @@ namespace mutaborGUI {
 		virtual void DisconnectFromAll();
 		virtual	int MoveInList(int count);
 		virtual void  runtime_error(int type,
-					    const mutString& message,
-					    va_list & args) {
+					    const std::string& message) {
 			GUIInputDeviceBase::runtime_error(type,
-							  message,
-							  args);
+							  message);
 		}
 	};
 
@@ -694,11 +688,11 @@ namespace mutaborGUI {
 				return mutabor::DTMidiPort;
 			}
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name,
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const std::string& name,
 								    int id = -1) const;
 
 
- 		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name,
+ 		virtual mutabor::InputDeviceClass * DoCreateInput(const std::string& name,
 							   mutabor::MutaborModeType mode,
 							   int id = -1) const;
 
@@ -726,9 +720,9 @@ namespace mutaborGUI {
 				return mutabor::DTMidiFile;
 			}
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name,
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const std::string& name,
 								    int id = -1) const;
-		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name,
+		virtual mutabor::InputDeviceClass * DoCreateInput(const std::string& name,
 								  mutabor::MutaborModeType mode,
 								  int id = -1) const;
 		virtual MutOutputDeviceShape * DoCreateShape(
@@ -753,10 +747,10 @@ namespace mutaborGUI {
 		virtual size_t GetType() const { return mutabor::DTGis;	}
 
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name,
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const std::string& name,
 								    int id = -1) const;
 
-		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name,
+		virtual mutabor::InputDeviceClass * DoCreateInput(const std::string& name,
 								  mutabor::MutaborModeType mode,
 								  int id = -1) const;
 		virtual MutOutputDeviceShape * DoCreateShape(

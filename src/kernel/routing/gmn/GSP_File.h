@@ -1,4 +1,4 @@
-/** \file 
+/** \file
  ********************************************************************
  * file input of gsp (GMN Soft Parser)
  *
@@ -27,7 +27,7 @@
  * \{
  ********************************************************************/
 // ##################################################################
-// 
+//
 // ##################################################################
 
 /* we guard a little bit complicated to ensure the references are set right
@@ -52,13 +52,13 @@
 // system headers which do seldom change
 
 
-extern mutString CurrentLine; //[GSP_MAX_LINE];
+extern std::string CurrentLine; //[GSP_MAX_LINE];
 
 extern size_t  CurrentPos;
 
 extern int  Eof;
 
-int OpenFile(const mutString &Name);
+int OpenFile(const std::string &Name);
 
 int CloseFile();
 

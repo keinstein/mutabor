@@ -111,7 +111,7 @@ namespace mutaborGUI {
 	{
 		if (!d) return false;
 
-		DEBUGLOG (other,_T ("Checking icon"));
+		DEBUGLOG (other, ("Checking icon"));
 		mutASSERT(MidiInputDevBitmap.IsOk());
 		mutASSERT(MidiOutputDevBitmap.IsOk());
 
@@ -588,7 +588,7 @@ namespace mutaborGUI {
 #ifdef RTMIDI
 		nMidi = (rtmidiout?rtmidiout->getPortCount():0);
 
-		DEBUGLOG (other, _T("Midi ports %d"),nMidi);
+		DEBUGLOG (other, "Midi ports %d" ,nMidi);
 		if ( nMidi )  {
 			wxString portName;
 

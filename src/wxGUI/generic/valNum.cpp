@@ -66,7 +66,7 @@ END_EVENT_TABLE()
 wxNumValidator::wxNumValidator(long *val, int style, int min, int max, wxCheckBox* enabler)
 		: wxTextValidator(wxFILTER_NUMERIC, &bufferString)
 {
-	DEBUGLOG(other,_T("val: %p, style: %d, min: %d, max: %d, enabler: %p"),
+	DEBUGLOG (other, "val: %p, style: %d, min: %d, max: %d, enabler: %p" ,
 	         (void*)val,style,min,max,(void*)enabler);
 	Style = style ;
 	Min = min;
@@ -92,9 +92,9 @@ wxNumValidator::wxNumValidator(const wxNumValidator& val)
 bool wxNumValidator::Copy(const wxNumValidator& val)
 
 {
-	DEBUGLOG(other,_T("%p"),(void*)m_stringValue);
+	DEBUGLOG (other, "%p" ,(void*)m_stringValue);
 	wxTextValidator::Copy(val);
-	DEBUGLOG(other,_T("%p"),(void*)m_stringValue);
+	DEBUGLOG (other, "%p" ,(void*)m_stringValue);
 	m_stringValue = &bufferString;
 
 	Style = val.Style ;
@@ -109,7 +109,7 @@ bool wxNumValidator::Copy(const wxNumValidator& val)
 wxNumValidator::~wxNumValidator()
 
 {
-	DEBUGLOG(other,_T("value: %s"),bufferString.c_str());
+	DEBUGLOG (other, "value: %s" ,bufferString.c_str());
 }
 
 // Called when the value in the window must be validated.
@@ -197,12 +197,12 @@ bool wxNumValidator::TransferFromWindow(void)
 
 	bool res = m_stringValue->ToLong(m_intValue);
 
-	DEBUGLOG(other,_T("before enabler"));
+	DEBUGLOG (other, "before enabler" );
 
 	if ( !Enabler || Enabler->GetValue() )
 		return res;
 
-	DEBUGLOG(other,_T("after enabler"));
+	DEBUGLOG (other, "after enabler" );
 
 	if ( !res )
 		(*m_intValue) = 0;

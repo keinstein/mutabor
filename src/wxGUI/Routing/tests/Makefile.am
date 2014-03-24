@@ -26,7 +26,11 @@ testcppunit_LDADD = \
 	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
-	$(CPPUNIT_LIBS)
+	$(CPPUNIT_LIBS) \
+	$(BOOST_FILESYSTEM_LDFLAGS) \
+	$(BOOST_SYSTEM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIBS) \
+	$(BOOST_SYSTEM_LIBS)
 endif
 
 if COPYDLLS

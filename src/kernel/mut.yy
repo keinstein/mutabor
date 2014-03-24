@@ -159,7 +159,7 @@ void yyerror(YYLTYPE* locp, mutabor_box_type * box, const char* err)
 {
 	mutabor_error_message(box,
 			      compiler_error,
-			      _("%s at line %d"),
+			      _mut("%s at line %d"),
 			      err,
 			      locp->first_line);
 }
@@ -176,7 +176,7 @@ start : /* empty */
 	|  	error blocks {  
 			mutabor_error_message(box,
 		                              compiler_error,
-		                              _("Syntax error in line %d."),
+		                              _mut("Syntax error in line %d."),
 		                              FEHLERZEILE);
 		}
 ;
@@ -228,7 +228,7 @@ intervalldekl2 :
 				    get_new_intervall (box, $1, $3 / $5);
                       else
 			      mutabor_error_message (box,compiler_error,
-					   _("Bad interval value in %s"),
+					   _mut("Bad interval value in %s"),
 					   ($1) );
 		}
 
@@ -238,7 +238,7 @@ intervalldekl2 :
 				    get_new_intervall (box, $1, pow ($5, 1 / $3));
                       else
 			      mutabor_error_message (box,compiler_error,
-						     _("Bad interval value in %s"),
+						     _mut("Bad interval value in %s"),
 						     ($1));
 		}
 	| MUTABOR_TOKEN_IDENTIFIER '=' 
@@ -247,15 +247,15 @@ intervalldekl2 :
         | MUTABOR_TOKEN_IDENTIFIER '=' error {
 		  mutabor_error_message(box,
 		                        compiler_error,
-		_("Bad interval declaration of intervall %s in line %d."),
+		_mut("Bad interval declaration of intervall %s in line %d."),
 		($1),
 		FEHLERZEILE);
 		}
         | MUTABOR_TOKEN_IDENTIFIER error {
-		mutabor_error_message(box,
-				      compiler_error,
-				      _("Wrong character. Expecting %s in line %d."),
-				      mutT("="),FEHLERZEILE);
+		  mutabor_error_message(box,
+					compiler_error,
+					_mut("Wrong character. Expecting %s in line %d."),
+					"=",FEHLERZEILE);
 	  }
       ;
 
@@ -295,7 +295,7 @@ tondekl2 :
 	| 	MUTABOR_TOKEN_IDENTIFIER '=' error {
 		  mutabor_error_message(box,
 		compiler_error,
-		_("Bad tone declaration of tone %s in line %d."),
+		_mut("Bad tone declaration of tone %s in line %d."),
 		($1),
 		FEHLERZEILE);
 		}
@@ -329,7 +329,7 @@ KOMPLEX_TON_1 :
 			   else
 				   mutabor_error_message(box,
 							 compiler_error,
-							 _("Division by (nearly) 0 in line %d."),
+							 _mut("Division by (nearly) 0 in line %d."),
 							 FEHLERZEILE);
 		   }
 
@@ -339,7 +339,7 @@ KOMPLEX_TON_1 :
                      else
 				   mutabor_error_message(box,
 							 compiler_error,
-							 _("Division by (nearly) 0 in line %d."),
+							 _mut("Division by (nearly) 0 in line %d."),
 							 FEHLERZEILE);
 		   }
 
@@ -349,7 +349,7 @@ KOMPLEX_TON_1 :
                      else
 			     mutabor_error_message(box,
 						   compiler_error,
-						   _("Division by (nearly) 0 in line %d."),
+						   _mut("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);
 		   }
 
@@ -359,7 +359,7 @@ KOMPLEX_TON_1 :
                      else
 			     mutabor_error_message(box,
 						   compiler_error,
-						   _("Division by (nearly) 0 in line %d."),
+						   _mut("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);
 		   }
 /******
@@ -398,7 +398,7 @@ KOMPLEX_TON_START :
                      else
 			     mutabor_error_message(box,
 						   compiler_error,
-						   _("Division by (nearly) 0 in line %d."),
+						   _mut("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);
 		   }
 
@@ -409,7 +409,7 @@ KOMPLEX_TON_START :
                      else
 			     mutabor_error_message(box,
 						   compiler_error,
-						   _("Division by (nearly) 0 in line %d."),
+						   _mut("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);
 		   }
 /****
@@ -462,7 +462,7 @@ ton_element :
 	| /* 	empty */     { get_new_ton_in_tonsystem (box, NULL); }
         | 	error {     mutabor_error_message(box,
 		compiler_error,
-		_("Bad tonesystem declaration in line %d."),
+		_mut("Bad tonesystem declaration in line %d."),
 		FEHLERZEILE);
 		}
 		;
@@ -494,14 +494,14 @@ parameter:
 		    $$ = NULL;
 		    mutabor_error_message(box,
 					  compiler_warning,
-		                          _("Arguments named “DISTANCE” or “ABSTAND” have a fixed meaning. Using them as parameters as in line %d is not supported. Expect undexpected behaviour."),
+		                          _mut("Arguments named “DISTANCE” or “ABSTAND” have a fixed meaning. Using them as parameters as in line %d is not supported. Expect undexpected behaviour."),
 		                          FEHLERZEILE);
 		}
 	|	MUTABOR_TOKEN_ANCHOR {
 			$$ = NULL;
 		        mutabor_error_message(box,
 					  compiler_warning,
-		                          _("Arguments named “DISTANCE” or “ABSTAND” have a fixed meaning. Using them as parameters as in line %d is not supported. Expect undexpected behaviour."),
+		                          _mut("Arguments named “DISTANCE” or “ABSTAND” have a fixed meaning. Using them as parameters as in line %d is not supported. Expect undexpected behaviour."),
  		                          FEHLERZEILE);
 		}
 		;
@@ -510,7 +510,7 @@ parameter:
 /*
 	| 	error {
 		    mutabor_error_message(box,	compiler_error,
-		_("Bad parameter list in call in line %d"),
+		_mut("Bad parameter list in call in line %d"),
 		FEHLERZEILE);
 		}
 		;
@@ -535,7 +535,7 @@ nonempty_argument_list :
 	| 	error {
 		mutabor_error_message(box,
 		compiler_error,
-		_("Bad parameter list in call to %s in line %d"),
+		_mut("Bad parameter list in call to %s in line %d"),
 		FEHLERZEILE);
 		}
 		*/
@@ -595,7 +595,7 @@ retuning_definition :
  		                                       $3);
 		        mutabor_error_message(box,
 		                              compiler_error,
-		                              _("Invalid parameter list in retuning %s line %d"),
+		                              _mut("Invalid parameter list in retuning %s line %d"),
 		                              $1, FEHLERZEILE);
 		} retuning_term {
 			get_new_umstimmung (box);
@@ -608,7 +608,7 @@ retuning_definition :
  		                                       NULL);
 		        mutabor_error_message(box,
 		                              compiler_error,
-		                              _("Error while reading %s line %d"),
+		                              _mut("Error while reading %s line %d"),
                                		      $1, FEHLERZEILE);
 		}
 		retuning_term { get_new_umstimmung (box); }
@@ -628,7 +628,7 @@ retuning_term :
         | error {
 		mutabor_error_message(box,
 				      compiler_error,
-				      _("Bad retuning in line %d."),
+				      _mut("Bad retuning in line %d."),
 				      FEHLERZEILE);
 	  }
         ;
@@ -746,7 +746,7 @@ aktion :
 		    { get_new_aktion_aufruf_element (box,$1, $3);
 			    mutabor_error_message(box,
 						 compiler_error,
-						 _("Invalid argument list for call to %s in line %d"),
+						 _mut("Invalid argument list for call to %s in line %d"),
 						 $1,
 						 FEHLERZEILE);
 		    }
@@ -809,7 +809,7 @@ harmonie_dekl_2 :
         | MUTABOR_TOKEN_IDENTIFIER '=' '{' error '}' {
 		mutabor_error_message(box,
 		compiler_error,
-		_("There is an error in the chroma list in harmony “%s” at line %d."),
+		_mut("There is an error in the chroma list in harmony “%s” at line %d."),
 		($1),
 		FEHLERZEILE);
                 yyclearin;
@@ -817,7 +817,7 @@ harmonie_dekl_2 :
         | MUTABOR_TOKEN_IDENTIFIER '=' error {
 		  mutabor_error_message(box,
 		                        compiler_error,
-					_("The chroma list must be enclosed in braces '{' '}' in harmony “%s” at line %d."),
+					_mut("The chroma list must be enclosed in braces '{' '}' in harmony “%s” at line %d."),
 					($1),
 		                        FEHLERZEILE);
                 yyclearin;
@@ -922,7 +922,7 @@ integersequenz :
         | error {
 		mutabor_error_message(box,
 				      compiler_error,
-				      _("Bad MIDI list in line %d"),
+				      _mut("Bad MIDI list in line %d"),
 				      FEHLERZEILE );
 	  }
         ;
@@ -977,9 +977,9 @@ start_lex:
     /* Ignore whitespace, get first nonwhitespace character */
     while ( box->scanner->anzahl_eingelesene_zeichen ++,
             isspace(c = *(box->scanner->pos++)) ) {
-	    DEBUGLOG2(other,_T("char %x"),c);
+	    DEBUGLOG2(other,("char %x"),c);
 	    if (c == '\n') {
-		    DEBUGLOG2(other,_T("New line"));
+		    DEBUGLOG2(other,("New line"));
 		    if (!(llocp->first_line ++ % LINE_DRAW_QUANTUM))
 			    show_line_number(box,llocp->first_line);
 	    }
@@ -1051,7 +1051,7 @@ start_lex:
         if (errno || newpos == box->scanner->pos) {
 		mutabor_error_message(box,
 				      compiler_error,
-				      _("No hex number after # (line %d)"),
+				      _mut("No hex number after # (line %d)"),
 				      llocp->first_line + 1);
 		return MUTABOR_TOKEN_ERROR;
         }
@@ -1140,9 +1140,9 @@ static struct {
             }
 
             symbuffer[i++] = c;
-	    DEBUGLOG2(other,_T("character #%d = %x"),i,c);
+	    DEBUGLOG2(other,("character #%d = %x"),i,c);
 	    c = *(box->scanner->pos++);
-	    DEBUGLOG2(other,_T("character #%d = %x"),i,c);
+	    DEBUGLOG2(other,("character #%d = %x"),i,c);
             box->scanner->anzahl_eingelesene_zeichen ++;
 
         } while ((c) &&
@@ -1195,7 +1195,7 @@ static struct {
 
     mutabor_error_message(box,
 			  compiler_error,
-			  _("Invalid character: “%c” = %x at line %d."),
+			  _mut("Invalid character: “%c” = %x at line %d."),
 			  c,c,llocp->first_line + 1);
 
     return 0;  /* um Compilerwarnungen zu vermeiden */

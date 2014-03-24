@@ -40,21 +40,21 @@ namespace mutaborGUI {
 	void MutBoxIconShape::GetBordersForSizer(int &borderTop, int &borderOther) const
 	{
 		wxSize s = DoGetBestSize();
-		DEBUGLOG (other, _T("Best Size: %dx%d"),s.x,s.y);
+		DEBUGLOG (other, ("Best Size: %dx%d"),s.x,s.y);
 		borderTop = s.y;
 		borderOther = 0;
 	}
 
 	void MutBoxIconShape::OnDraw (wxPaintDC & dc)
 	{
-		DEBUGLOG (other, _T("Checking icon"));
+		DEBUGLOG (other, ("Checking icon"));
 
 		if (!GetIcon().IsOk()) {
 			SetIcon(GetMutIcon());
-			DEBUGLOG (other, _T("Checking icon again"));
+			DEBUGLOG (other, ("Checking icon again"));
 
 		}
-		DEBUGLOG (other, _T("Icon ok."));
+		DEBUGLOG (other, ("Icon ok."));
 
 		int x, y;
 		x = 0;
@@ -83,7 +83,7 @@ namespace mutaborGUI {
 		y += borderOffset.y;
 		if (staticText) y += staticText->GetSize().y;
 		if (GetIcon().IsOk()) {
-			DEBUGLOG (other, _T("Size: %dx%d"),GetIcon().GetHeight(),
+			DEBUGLOG (other, ("Size: %dx%d"),GetIcon().GetHeight(),
 				  GetIcon().GetWidth());
 			x = (size.width-GetIcon().GetWidth())/2;
 #if __WXMAC__ || __WXGTK__

@@ -28,14 +28,13 @@
 
 #include "src/kernel/box.h"
 #include "src/kernel/routing/tests/BoxTest.h"
-#include "src/wxGUI/generic/muconvauto.h"
-#include "wx/file.h"
 #include <stdarg.h>
 /// not for headers
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
 
+extern const char * top_srcdir;
 
 
 extern "C" {
@@ -65,11 +64,11 @@ struct mutabor::hidden::mutabor_callback_type test_backend_callbacks  = {
 
 struct MyCompileCallback:public mutabor::BoxClass::CompileCallback {
 	void Refresh() {}
-	void SetStatus(mutString status) {
-		DEBUGLOG(kernel_parser,_T("INFO: %s"), (const wxChar *)status);
+	void SetStatus(std::string status) {
+		DEBUGLOG(kernel_parser,("INFO: %s"), status);
 	}
-	void SetMessage(mutString status) {
-		DEBUGLOG(kernel_parser,_T("INFO: %s"), (const wxChar *)status);
+	void SetMessage(std::string status) {
+		DEBUGLOG(kernel_parser,("INFO: %s"), status);
 	}
 	void SetStatus(int logics, 
 		       int tones, 
@@ -80,29 +79,29 @@ struct MyCompileCallback:public mutabor::BoxClass::CompileCallback {
 	void SetLine(int number) {}
 };
 
-const mutChar * logic_file_names [] = {
-	_T("/Examples/german/Cdur.mut"),
-	_T("/Examples/german/Instr.mut"),
-	_T("/Examples/german/Demo-utf8.mut"),
-	_T("/Examples/german/Extern.mut"),
-	_T("/Examples/german/Demos.mut"),
-	_T("/Examples/german/Demo.mut"),
-	_T("/Examples/german/Nix.mut"),
-	_T("/Examples/german/Cohen.mut"),
-	_T("/Examples/german/Midi.mut"),
-	_T("/Examples/english/extern.mut"),
-	_T("/Examples/english/instr.mut"),
-	_T("/Examples/english/cdur.mut"),
-	_T("/Examples/english/nix.mut"),
-	_T("/Examples/english/demo.mut"),
-	_T("/Examples/english/demos.mut"),
-	_T("/Examples/english/cohen.mut"),
-	_T("/Examples/english/midi.mut"),
-	_T("/Examples/english/tutorial.mut"),
+const char * logic_file_names [] = {
+	("/Examples/german/Cdur.mut"),
+	("/Examples/german/Instr.mut"),
+	("/Examples/german/Demo-utf8.mut"),
+	("/Examples/german/Extern.mut"),
+	("/Examples/german/Demos.mut"),
+	("/Examples/german/Demo.mut"),
+	("/Examples/german/Nix.mut"),
+	("/Examples/german/Cohen.mut"),
+	("/Examples/german/Midi.mut"),
+	("/Examples/english/extern.mut"),
+	("/Examples/english/instr.mut"),
+	("/Examples/english/cdur.mut"),
+	("/Examples/english/nix.mut"),
+	("/Examples/english/demo.mut"),
+	("/Examples/english/demos.mut"),
+	("/Examples/english/cohen.mut"),
+	("/Examples/english/midi.mut"),
+	("/Examples/english/tutorial.mut"),
 	NULL
 };
 
-static muConvAuto autoConverter;
+//static muConvAuto autoConverter;
 
 
 void BoxTest::setUp() 
@@ -133,15 +132,17 @@ void BoxTest::testParser() {
 	CPPUNIT_ASSERT(Box0->Compile(&callback, ""));
 
 	for (size_t i = 0 ; logic_file_names[i] ; i++ ) {
-		wxString name = top_srcdir;
+		std::string name = top_srcdir;
 		name += logic_file_names[i];
 
-		std::cerr << name.ToUTF8() << std::endl;
-		wxFile file(name);
-		CPPUNIT_ASSERT(file.IsOpened());
-		wxFileOffset length = file.Length();
-		logic_string = (char *) malloc(length+1);
-		CPPUNIT_ASSERT(file.Read(logic_string, length) == length);
+		std::cerr << name.c_str() << std::endl;
+		std::ifstream file(name.c_str());
+		CPPUNIT_ASSERT(file.is_open());
+		file.seekg(0, std::ios::end);
+		std::streampos length = file.tellg();
+		file.seekg(0, std::ios::beg);
+		logic_string = (char *) malloc((size_t)length+1);
+		CPPUNIT_ASSERT(file.read(logic_string, length).gcount() == length);
 		logic_string[length] = 0;
 		CPPUNIT_ASSERT(Box0->Compile(&callback, logic_string));
 		free(logic_string);
@@ -157,19 +158,23 @@ void BoxTest::testCopyPLay() {
 	char * logic_string;
 
 
-	wxString name = top_srcdir;
-	name += _T("/src/kernel/tests/all.mut");
+	std::string name = top_srcdir;
+	name += ("/src/kernel/tests/all.mut");
 	
-	wxFile file(name);
-	CPPUNIT_ASSERT(file.IsOpened());
-	wxFileOffset length = file.Length();
-	logic_string = (char *) malloc(length+1);
-	CPPUNIT_ASSERT(file.Read(logic_string, length) == length);
+	std::ifstream file(name.c_str());
+	CPPUNIT_ASSERT(file.is_open());
+	file.seekg(0, std::ios::end);
+	std::streampos length = file.tellg();
+	file.seekg(0, std::ios::beg);
+	logic_string = (char *) malloc((size_t)length+1);
+	CPPUNIT_ASSERT(file.read(logic_string, length).gcount() == length);
 	logic_string[length] = 0;
 
 	CPPUNIT_ASSERT(Box0->Compile(&callback, logic_string));
+
 	free(logic_string);
 	logic_string = NULL;
+
 
 	Box1->SetLogic(Box0);
 	Box0->Destroy();
@@ -178,7 +183,7 @@ void BoxTest::testCopyPLay() {
 	Box2->Destroy();
 	Box2 = NULL;
 	
-	Box1->KeyboardAnalysis(_T("&N")); // activate the Tonnetz
+	Box1->KeyboardAnalysis(("&N")); // activate the Tonnetz
 	
 	Box1->AddNote(60,0,0,NULL);
 	Box1->AddNote(64,0,0,NULL);

@@ -74,14 +74,14 @@ namespace mutaborGUI {
 
 	bool MutCommandProcessor::DoCommand(wxCommand& cmd)
 	{
-		DEBUGLOG(editor,_T("doing Command: %s"),
+		DEBUGLOG (editor, "doing Command: %s" ,
 			 (const wxChar*)cmd.GetName().c_str());
 		return cmd.Do();
 	}
 
 	bool MutCommandProcessor::UndoCommand(wxCommand& cmd)
 	{
-		DEBUGLOG(editor,_T("undoing Command: %s"),
+		DEBUGLOG (editor, "undoing Command: %s" ,
 			 (const wxChar*)cmd.GetName().c_str());
 		return cmd.Undo();
 	}
@@ -92,7 +92,7 @@ namespace mutaborGUI {
 	bool MutCommandProcessor::Submit(wxCommand *command, bool storeIt)
 	{
 
-		DEBUGLOG(editor,_T("Submitted command (storeIt = %d): %s"),
+		DEBUGLOG (editor, "Submitted command (storeIt = %d): %s" ,
 			 storeIt,
 			 (command?(const wxChar*)command->GetName().c_str():_T(""))
 			);
@@ -101,7 +101,7 @@ namespace mutaborGUI {
 
 	void MutCommandProcessor::Store(wxCommand *command)
 	{
-		DEBUGLOG(editor,_T("storing command: %s"),
+		DEBUGLOG (editor, "storing command: %s" ,
 			 (command?(const wxChar*)command->GetName().c_str():_T(""))
 			);
 		wxCommandProcessor::Store(command);
@@ -109,47 +109,47 @@ namespace mutaborGUI {
 
 	bool MutCommandProcessor::Undo()
 	{
-		DEBUGLOG(editor,_T("."));
+		DEBUGLOG (editor, "." );
 		STUBC;
 		return wxCommandProcessor::Undo();
 	}
 
 	bool MutCommandProcessor::Redo()
 	{
-		DEBUGLOG(editor,_T("."));
+		DEBUGLOG (editor, "." );
 		STUBC;
 		return wxCommandProcessor::Redo();
 	}
 
 	bool MutCommandProcessor::CanUndo() const
 	{
-		DEBUGLOG(editor,_T("Can undo?"));
+		DEBUGLOG (editor, "Can undo?" );
 		STUBC;
 		return true;
 	}
 
 	bool MutCommandProcessor::CanRedo() const
 	{
-		DEBUGLOG(editor,_T("Can redo?"));
+		DEBUGLOG (editor, "Can redo?" );
 		STUBC;
 		return true;
 	}
 
 	void MutCommandProcessor::Initialize()
 	{
-		DEBUGLOG(editor,_T("."));
+		DEBUGLOG (editor, "." );
 		wxCommandProcessor::Initialize();
 	}
 
 	void MutCommandProcessor::SetMenuStrings()
 	{
-		DEBUGLOG(editor,_T("."));
+		DEBUGLOG (editor, "." );
 		wxCommandProcessor::SetMenuStrings();
 	}
 
 	void MutCommandProcessor::ClearCommands()
 	{
-		DEBUGLOG(editor,_T("."));
+		DEBUGLOG (editor, "." );
 		wxCommandProcessor::ClearCommands();
 	}
 
@@ -191,7 +191,7 @@ namespace mutaborGUI {
 		mutASSERT(view);
 		if (!view->GetTextsw()->LoadFile(filename))
 			return false;
-		DEBUGLOG(docview,_T("New title: ")+GetDocumentManager()->MakeFrameTitle(this));
+		DEBUGLOG (docview, "New title: %s", (GetDocumentManager()->MakeFrameTitle(this)));
 		SetTitle(GetDocumentManager()->MakeFrameTitle(this));
 		SetFilename(filename,true);
 		return true;
@@ -201,7 +201,7 @@ namespace mutaborGUI {
 	{
 		if (!wxDocument::OnNewDocument()) 
 			return false;
-		DEBUGLOG(docview,_T("New title: ")+GetDocumentManager()->MakeFrameTitle(this));
+		DEBUGLOG (docview, "New title: %s", GetDocumentManager()->MakeFrameTitle(this));
 		
 		
 		MutView *view = (MutView *)GetFirstView();
@@ -217,7 +217,7 @@ namespace mutaborGUI {
 		if (!LogicOn) return true;
 		MutFrame * frame = MutFrame::GetActiveWindow();
 		if (frame && frame->GetDocument() == this) {
-			DEBUGLOG (other, _T("We are the active window."));
+			DEBUGLOG (other, "We are the active window." );
 
 			wxString msg;
 			msg.Printf(_("This logic is currently active. On closing it will be deactivated. Really close this window?"));
@@ -249,7 +249,7 @@ namespace mutaborGUI {
 
 	wxSTD istream& MutDocument::LoadObject(wxSTD istream& stream)
 	{
-		DEBUGLOG(docview,_T("."));
+		DEBUGLOG (docview, "." );
 		bool bOK(false);
 		int nA(0);
 		char ch(0);
@@ -259,13 +259,13 @@ namespace mutaborGUI {
 
 		if(stream.good())
 		{
-			DEBUGLOG(docview,_T("num is %d and char is %c"), nA, ch);
+			DEBUGLOG (docview, "num is %d and char is %c" , nA, ch);
 			bOK = true;
 		}
 
 		if(bOK == false)
 		{
-			DEBUGLOG(docview,_T("load error"));
+			DEBUGLOG (docview, "load error" );
 			// tell the framework to abort the load procedure
 			stream.clear(std::ios_base::badbit);
 		}
@@ -362,7 +362,7 @@ namespace mutaborGUI {
 	bool MutDocument::TryParent(wxEvent& event)
 	{
 		mutUnused(event);
-		DEBUGLOG(eventqueue,_T("."));
+		DEBUGLOG (eventqueue, "." );
 		// if we must pass some events to the Application, 
 		// they must be handled here somehow replacing false
 		return false;

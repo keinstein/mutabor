@@ -40,6 +40,8 @@
 #ifndef _MYWX_CONVAUTO_H_
 #define _MYWX_CONVAUTO_H_
 
+#if 0
+
 #include "wx/convauto.h"
 #include "wx/strconv.h"
 
@@ -184,7 +186,7 @@ typedef wxMBConv muConvAuto;
 
 #endif // wxUSE_WCHAR_T/!wxUSE_WCHAR_T
 
-
+#endif // 0
 
 #endif // _MYWX_CONVAUTO_H_
 

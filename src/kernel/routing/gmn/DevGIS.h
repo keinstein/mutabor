@@ -42,6 +42,7 @@
 
 #include "src/kernel/Defs.h"
 //#include "Global.h"
+#include "src/kernel/Frac.h"
 #include "src/kernel/routing/CommonFileDevice.h"
 #include "src/kernel/routing/gmn/GIS_Head.h"
 //#include "Interpre.h"
@@ -51,12 +52,10 @@
 
 // system headers which do seldom change
 
-#include "wx/timer.h"
-
 namespace mutabor {
-	extern mutString CurrentId;
+	extern std::string CurrentId;
 
-	extern mutString CurrentSep;
+	extern std::string CurrentSep;
 
 // OutputGis -----------------------------------------------------------
 
@@ -74,7 +73,7 @@ namespace mutabor {
 				Head = 0;
 			}
 
-		OutputGis(const mutStringRef name,
+		OutputGis(const std::string name,
 			  int id = -1) : OutputDeviceClass(name, id)
 			{
 				Head = new GisWriteHead(0, name);
@@ -122,7 +121,7 @@ namespace mutabor {
 				CloseAllSubs(Head);
 			};
 
-		virtual void SetName(const wxString & s)
+virtual void SetName(const std::string & s)
 			{
 				if (s != Name) {
 					bool reopen = IsOpen();
@@ -141,17 +140,14 @@ namespace mutabor {
 				return DTGis;
 			}
 
-		virtual mutString GetTypeName () const {
-			return N_("GIS output file");
+		virtual std::string GetTypeName () const {
+			return _mutN("GIS output file");
 		}
 
-#ifdef WX
-		virtual wxString TowxString() const {
-			return OutputDeviceClass::TowxString() +
-				wxString::Format(_T("\n  Name = %s"),
-						 Name.c_str());
+		virtual operator std::string() const {
+			return OutputDeviceClass::operator std::string() +
+				"\n  Name = %s" + Name;
 		}
-#endif
 	protected:
 
 		virtual bool do_Open()
@@ -193,8 +189,8 @@ namespace mutabor {
 			}
 
 		virtual void do_Gis(GisToken *token, char turn);
-		virtual void do_MidiOut(DWORD data, size_t n) {};
-		virtual void do_MidiOut(BYTE *p, size_t n)	{};
+		virtual void do_MidiOut(uint32_t, size_t n) {};
+		virtual void do_MidiOut(uint8_t *p, size_t n)	{};
 		virtual void do_MidiOut(mutabor::Box box, midi_string data) {};
 		virtual void do_handle_event(event e) {};
 		virtual void do_AddTime(frac time)
@@ -224,7 +220,7 @@ namespace mutabor {
 		GisToken *Data;
 		GisReadArtHead *Head;
 
-		InputGis(const mutStringRef name = mutEmptyString,
+		InputGis(const std::string name = "",
 			 mutabor::MutaborModeType mode
 			 = mutabor::DeviceStop,
 			 int id = -1)
@@ -275,8 +271,8 @@ namespace mutabor {
 
 		mutint64 PrepareNextEvent();
 
-		virtual mutString GetTypeName () const {
-			return N_("GIS input file");
+		virtual std::string GetTypeName () const {
+			return _mutN("GIS input file");
 		}
 
 		virtual ChannelData & GetChannelData(const current_keys_type::entry & key) const {
@@ -284,16 +280,11 @@ namespace mutabor {
 		}
 
 
-#ifdef WX
-		virtual wxString TowxString() const {
-			return InputDeviceClass::TowxString() +
-				wxString::Format(_T("\n\
-  Id: %s\n  minDelta = %ld\n"),
-						 Name.c_str(),
-						 minDelta);
+		virtual operator std::string() const {
+			return InputDeviceClass::operator std::string() +
+				str(boost::format("\n\
+  Id: %s\n  minDelta = %ld\n") % Name.c_str() %	 minDelta);
 		}
-#endif
-
 
 	private:
 		static const ChannelData channel_data; /// currently unused
@@ -317,10 +308,10 @@ namespace mutabor {
 			}
 
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name,
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const std::string & name,
 								    int id = -1) const;
 
-		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name,
+		virtual mutabor::InputDeviceClass * DoCreateInput(const std::string & name,
 								  mutabor::MutaborModeType mode,
 								  int id = -1) const;
 	};

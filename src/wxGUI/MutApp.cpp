@@ -45,7 +45,7 @@
 #include "wx/cmdline.h"
 #include "wx/file.h"
 #include "wx/event.h"
-
+#include "wx/strconv.h"
 
 #if !defined(__WXMSW__)
 #include "Images/Icons/xpm/Mutabor.xpm"
@@ -395,7 +395,7 @@ namespace mutaborGUI {
 		parser.SetDesc(cmdLineDesc);
 
 #ifdef DEBUG
-		debugFlags::InitCommandLine(parser);
+		InitDebugCommandLine(parser);
 #endif
 
 
@@ -404,7 +404,7 @@ namespace mutaborGUI {
 	bool MutApp::OnCmdLineParsed(wxCmdLineParser&  parser) {
 		if (!wxApp::OnCmdLineParsed(parser)) return false;
 #ifdef DEBUG
-		debugFlags::ProcessCommandLine(parser);
+		ProcessDebugCommandLine(parser);
 #endif
 		wxString str;
 		int count = parser.GetParamCount();
@@ -412,7 +412,7 @@ namespace mutaborGUI {
 		{
 			// we have a document to open
 			str = parser.GetParam(i);
-			DEBUGLOG(always,_T("cmd line param: %s\n"), WXSTRINGCAST(str));
+			DEBUGLOG (always, "cmd line param: %s\n" , WXSTRINGCAST(str));
 			// this will probably see if the file exists, and has the right extension
 
 //		MutFrame * frame = CreateMainFrame(EditorMenu);
@@ -422,7 +422,7 @@ namespace mutaborGUI {
 				document_manager->CreateDocument(str, wxDOC_SILENT);
 		}
 
-		DEBUGLOG (other, _T("Command line parsed."));
+		DEBUGLOG (other, "Command line parsed." );
 		return true;
 	}
 
@@ -477,8 +477,11 @@ namespace mutaborGUI {
 				    const wxChar *cond,
 				    const wxChar *msg)
 	{
-
-		mutAssertFailure(file,line,func,cond,msg);
+		mutabor_assert_fail(wxConvUTF8.cWX2MB(file),
+				    line,
+				    wxConvUTF8.cWX2MB(func),
+				    wxConvUTF8.cWX2MB(cond),
+				    wxConvUTF8.cWX2MB(msg));
 	}
 #endif
 
@@ -491,7 +494,7 @@ namespace mutaborGUI {
 #ifdef DEBUG
 		if (!retval) {
 			DEBUGLOG(eventqueue,
-				 _T("Unhandled event %p, id=%d, type=%d"),
+				 ("Unhandled event %p, id=%d, type=%d"),
 				 static_cast<void *>(&event),
 				 (int)(event.GetId()),
 				 (int)(event.GetEventType())
@@ -504,7 +507,7 @@ namespace mutaborGUI {
 	// may be removed
 	void MutApp::PassEventToDocManagerCMD(wxCommandEvent& event)
 	{
-		DEBUGLOG(eventqueue,_T("Command %p, id=%d, type=%d"),
+		DEBUGLOG (eventqueue, "Command %p, id=%d, type=%d" ,
 			 static_cast<void *>(&event),
 			 event.GetId(),
 			 (int)event.GetEventType()
@@ -514,7 +517,7 @@ namespace mutaborGUI {
 	}
 	void MutApp::PassEventToDocManagerUPD(wxUpdateUIEvent& event)
 	{
-		DEBUGLOG(eventqueue,_T("UpdateUI: %p, id=%d, type=%d"),
+		DEBUGLOG (eventqueue, "UpdateUI: %p, id=%d, type=%d" ,
 			 static_cast<void *>(&event),
 			 event.GetId(),
 			 (int)event.GetEventType()
@@ -588,8 +591,8 @@ namespace mutaborGUI {
 		/*
 		  (void)wxMessageBox(wxString::Format(_("%s\nAuthors: \n%s\nUsage: %s"),
 		  mumT(PACKAGE_STRING),
-		  _T("Ruediger Krausze <krausze@mail.berlios.de>\n")
-		  _T("Tobias Schlemmer <keinstein@mail.berlios.de>\n"),
+		  ("Ruediger Krausze <krausze@mail.berlios.de>\n")
+		  ("Tobias Schlemmer <keinstein@mail.berlios.de>\n"),
 		  mumT(PACKAGE)),
 		  wxString::Format(_("About %s"),mumT(PACKAGE_NAME)));
 		*/
@@ -790,7 +793,7 @@ namespace mutaborGUI {
 
 		frame->OpenFile(path);
 
-		DEBUGLOG(other,_T("%d == %d?"),(int)CM_EXECUTE,event.GetId());
+		DEBUGLOG (other, "%d == %d?" ,(int)CM_EXECUTE,event.GetId());
 
 		switch (event.GetId()) {
 
@@ -818,7 +821,7 @@ namespace mutaborGUI {
 
 	void MutApp::CmRoutes (wxCommandEvent& event)
 	{
-		DEBUGLOG(other,_T("window %p is casted %p"),
+		DEBUGLOG (other, "window %p is casted %p" ,
 			 (void*)wxWindow::FindWindowById(WK_ROUTE),
 			 (void*)dynamic_cast <MutFrame *>(wxWindow::FindWindowById(WK_ROUTE)));
 
@@ -943,7 +946,7 @@ namespace mutaborGUI {
 
 		//	if (frames.empty()) {
 		if ((window = GetTopWindow()) == NULL) {
-			DEBUGLOG (other, _T("No Frames."));
+			DEBUGLOG (other, "No Frames." );
 			quitting = false;
 			ExitMainLoop();
 			return;
@@ -957,13 +960,13 @@ namespace mutaborGUI {
 		}
 
 
-		DEBUGLOG (other, _T("Starting Loop"));
+		DEBUGLOG (other, "Starting Loop" );
 
 /*	while (Pending())
 	Dispatch();
 
 
-	DEBUGLOG (other, _T("Dispatched all events"));
+	DEBUGLOG (other, "Dispatched all events" );
 
 	wxIdleMode imode = wxIdleEvent::GetMode();
 	wxIdleEvent::SetMode(wxIDLE_PROCESS_ALL);
@@ -990,7 +993,7 @@ namespace mutaborGUI {
 			Yield();
 		}
 
-		DEBUGLOG (other, _T("finished loop"));
+		DEBUGLOG (other, "finished loop" );
 	}
 
 
@@ -1034,24 +1037,24 @@ namespace mutaborGUI {
 		wxString dir = rcname.GetPath();
 		wxChar sep = rcname.GetPathSeparator();
 		if (dir.empty())
-			rcname.SetPath(srcdir);
+			rcname.SetPath(wxString::FromUTF8(srcdir));
 		else
-			rcname.SetPath(srcdir + sep + dir);
+			rcname.SetPath(wxString::FromUTF8(srcdir) + sep + dir);
 		if (rcname.IsFileReadable()) {
 			return rcname.GetFullPath();
 		}
 		if (dir.empty())
-			rcname.SetPath(top_srcdir);
+			rcname.SetPath(wxString::FromUTF8(top_srcdir));
 		else
-			rcname.SetPath(top_srcdir + sep + dir);
+			rcname.SetPath(wxString::FromUTF8(top_srcdir) + sep + dir);
 		if (rcname.IsFileReadable()) {
 			return rcname.GetFullPath();
 		}
-		rcname.SetPath(mutString(top_srcdir) + _T("/Images/Icons/png/"));
+		rcname.SetPath(wxString::FromUTF8(top_srcdir) + _T("/Images/Icons/png/"));
 		if (dir.empty())
-			rcname.SetPath(mutString(top_srcdir) + _T("/Images/Icons/png/"));
+			rcname.SetPath(wxString::FromUTF8(top_srcdir) + _T("/Images/Icons/png/"));
 		else
-			rcname.SetPath(mutString(top_srcdir) + _T("/Images/Icons/png/") + dir);
+			rcname.SetPath(wxString::FromUTF8(top_srcdir) + _T("/Images/Icons/png/") + dir);
 		if (rcname.IsFileReadable()) {
 			return rcname.GetFullPath();
 		}
@@ -1066,15 +1069,15 @@ namespace mutaborGUI {
 		wxFileName relativename(file);
 		wxFileName rcname(relativename);
 		rcname.MakeAbsolute(sp.GetLocalizedResourcesDir(localename));
-		DEBUGLOGTYPE(other,MutApp,_T("Trying do load resources...\n%s\n%s"),rcname.GetFullPath().c_str(),sp.GetResourcesDir().c_str());
+		DEBUGLOGTYPE(other,MutApp,("Trying do load resources...\n%s\n%s"),rcname.GetFullPath().c_str(),sp.GetResourcesDir().c_str());
 		if (!rcname.IsFileReadable()) {
 			rcname = relativename;
 			rcname.MakeAbsolute(sp.GetLocalizedResourcesDir(localename.BeforeFirst(_T('_'))));
-			DEBUGLOGTYPE(other,MutApp,_T("Trying %s"),rcname.GetFullPath().c_str());
+			DEBUGLOGTYPE(other,MutApp,("Trying %s"),rcname.GetFullPath().c_str());
 			if (!rcname.IsFileReadable()) {
 				rcname = relativename;
 				rcname.MakeAbsolute(sp.GetResourcesDir());
-				DEBUGLOGTYPE(other,MutApp,_T("Trying %s"),rcname.GetFullPath().c_str());
+				DEBUGLOGTYPE(other,MutApp,("Trying %s"),rcname.GetFullPath().c_str());
 			}
 		}
 		localename = rcname.GetFullPath();
@@ -1133,7 +1136,7 @@ namespace mutaborGUI {
 		menu->AppendSeparator();
 #endif
 		menu->Append(wxID_EXIT);
-		DEBUGLOG(docview,_T("Adding file history menu"));
+		DEBUGLOG (docview, "Adding file history menu" );
 		document_manager->FileHistoryUseMenu(menu);
 		document_manager->GetFileHistory()->AddFilesToMenu(menu);
 
@@ -1417,7 +1420,7 @@ namespace mutaborGUI {
 		return;
 		//  wxApp::MacOpenFile(fileName);
 
-		DEBUGLOG (other, _T("Filename: %s"),fileName.c_str());
+		DEBUGLOG (other, "Filename: %s" ,fileName.c_str());
 
 		MutFrame * frame = dynamic_cast<MutFrame*>(GetTopWindow());
 

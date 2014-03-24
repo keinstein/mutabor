@@ -55,7 +55,7 @@ namespace mutaborGUI {
 	inline void connect(mutabor::Box & box, MutBoxShape * shape) {
 		BoxData * guibox = ToGUIBase(box);
  		TRACE;
-		DEBUGLOG2(routing,_T("Connecting %p"),(void*)shape);
+		DEBUGLOG2(routing,("Connecting %p"),(void*)shape);
 		if (!shape || !guibox) {
 			UNREACHABLE;
 			return;
@@ -79,7 +79,7 @@ namespace mutaborGUI {
 			MutBoxChannelShape * channel =
 				ToGUIBase(r)->GetShape(parent);
 			if (channel) {
-				DEBUGLOG2(always,_T("Strange... a route without box shape should not have a box channel shape"));
+				DEBUGLOG2(always,("Strange... a route without box shape should not have a box channel shape"));
 				UNREACHABLE;
 				shape->Add(channel);
 				TRACE;
@@ -95,7 +95,7 @@ namespace mutaborGUI {
 	{
 		BoxData * guibox = ToGUIBase(box);
  		TRACE;
-		DEBUGLOG2(routing,_T("Connecting %p"),(void*)shape);
+		DEBUGLOG2(routing,("Connecting %p"),(void*)shape);
 		if (!shape || !guibox) {
 			UNREACHABLE;
 			return false;

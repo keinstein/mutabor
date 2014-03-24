@@ -112,7 +112,7 @@ public:
 			int m = std::max(width,height);
 			int newsize;
 
-			DEBUGLOG(other, _T("max: %d"),m);
+			DEBUGLOG (other, "max: %d" ,m);
 			if ((m == 16) || (m == 32) || (m == 48) || (m >= 128)) {
 				// if >128  I don't know, what to do
 				newsize = m;
@@ -126,24 +126,24 @@ public:
 					newsize = 32;
 				else newsize = 16;
 			}
-			DEBUGLOG(other, _T("newsize: %d"), newsize);
+			DEBUGLOG (other, "newsize: %d" , newsize);
 
 			wxBitmap bitmap;
 			wxImage image;
 			image.LoadFile(name,type);
 			image.ConvertAlphaToMask();
-			DEBUGLOG(other, _T("Mask: %d; Alpha: %d"),
+			DEBUGLOG (other, "Mask: %d; Alpha: %d" ,
 				 (int)image.HasMask(),
 				 (int)image.HasAlpha());
 			image.Resize(wxSize(newsize,newsize),wxPoint(0,0));
 			bitmap = image;
 			CopyFromBitmap(bitmap);
-			DEBUGLOG(other, _T("Real size: %dx%d"),
+			DEBUGLOG (other, "Real size: %dx%d" ,
 				 wxIcon::GetWidth(),wxIcon::GetHeight());
 
 			SetWidth(width);
 			SetHeight(height);
-			DEBUGLOG(other, _T("Set size: %dx%d (%d,%d)"),
+			DEBUGLOG (other, "Set size: %dx%d (%d,%d)" ,
 				 GetWidth(),GetHeight(),width,height);
 
 			return true;

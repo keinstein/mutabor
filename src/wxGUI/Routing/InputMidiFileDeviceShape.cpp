@@ -64,7 +64,7 @@ namespace mutaborGUI {
 		mutASSERT(device->GetType() == DTMidiFile);
 		mutASSERT(in);
 		mutASSERT (in -> GetType() == DTMidiFile);
-		device->SetName (in -> GetMidiFile());
+		device->SetName ((const char *)(in -> GetMidiFile().ToUTF8()));
 		SetLabel (device->GetName());
 		return true;
 	}

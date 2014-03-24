@@ -120,7 +120,7 @@ namespace mutaborGUI {
 				wxSafeYield(this,true);
 			}
 
-		void SetStatus(wxString s) {
+		void SetStatus(std::string s) {
 			if (wxID_OK) {
 				wxID_OK->SetLabel(s);
 				wxID_OK->InvalidateBestSize();
@@ -129,7 +129,7 @@ namespace mutaborGUI {
 			wxSafeYield(this,true);
 		}
 
-		void SetMessage(wxString s)
+		void SetMessage(std::string s)
 			{
 				if (message) {
 					message->SetLabel(s);

@@ -105,7 +105,7 @@ void MutTextBox::OnClose(wxCloseEvent& event)
 {
 	mutUnused(event);
 	mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-	DEBUGLOG (other, _T("winKind: %d"), winKind);
+	DEBUGLOG (other, "winKind: %d" , winKind);
         BoxData * boxdata = ToGUIBase(box);
 	if ( LogicOn ) {
                 switch (winKind) {
@@ -418,7 +418,7 @@ void MutTextBox::NewText(char *s, bool newTitle)
 
 void MutTextBox::NewText(const wxString &s, bool newTitle)
 {
-	DEBUGLOG (other, _T("s=%s; newTitle=%d; winKind=%d"),s.c_str(),newTitle,winKind);
+	DEBUGLOG (other, "s=%s; newTitle=%d; winKind=%d" ,s.c_str(),newTitle,winKind);
 	mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 
 	Freeze();

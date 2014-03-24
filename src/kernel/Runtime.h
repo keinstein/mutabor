@@ -25,10 +25,10 @@
  * \addtogroup runtime
  * \{
  ********************************************************************/
-// ------------------------------------------------------------------
-// Mutabor 2.win, 1997, R.Krauﬂe
-// Laufzeitfunktionen der DLL
-// ------------------------------------------------------------------
+/* ------------------------------------------------------------------ */
+/* Mutabor 2.win, 1997, R.Krauﬂe */
+/* Laufzeitfunktionen der DLL */
+/* ------------------------------------------------------------------ */
 
 /* we guard a little bit complicated to ensure the references are set right
  */
@@ -39,34 +39,35 @@
 #define MU32_RUNTIME_H
 #endif
 
-// ---------------------------------------------------------------------------
-// headers
-// ---------------------------------------------------------------------------
+/* --------------------------------------------------------------------------- */
+/* headers */
+/* --------------------------------------------------------------------------- */
 
 #include "src/kernel/Defs.h"
-#include "src/wxGUI/CompDlg.h"
-#include "src/kernel/routing/Device.h"
 
 #ifndef MU32_RUNTIME_H_PRECOMPILED
 #define MU32_RUNTIME_H_PRECOMPILED
 
-// system headers which do seldom change
+/* system headers which do seldom change */
 
-
-#include "wx/wxchar.h"
-#if !defined(__WXMSW__)
-#ifndef UINT
-#define UINT unsigned int
-#endif
-#endif
 #include <setjmp.h>
 
 
 extern jmp_buf weiter_gehts_nach_compilerfehler;
 
 
-//  void  InDeviceActionAll(char action);
-//void  InDeviceAction(int inDevNr, enum mutabor::MutaborModeType action);
+/*  void  InDeviceActionAll(char action); */
+/*void  InDeviceAction(int inDevNr, enum mutabor::MutaborModeType action); */
+
+#if 0
+#include "wx/wxchar.h"
+#if !defined(__WXMSW__)
+#ifndef UINT
+#define UINT unsigned int
+#endif
+#endif
+#endif
+
 
 
 #endif /* precompiled */
@@ -74,4 +75,4 @@ extern jmp_buf weiter_gehts_nach_compilerfehler;
 
 
 
-///\}
+/** \} */

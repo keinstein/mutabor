@@ -82,51 +82,44 @@ namespace mutabor {
 
 	template <> size_t idtype<Device>::idpool(0);
 
-	void Device::runtime_error(int type, const mutStringRef message, va_list & args) {
-#if wxCHECK_VERSION(2,9,0)
-		mutString t = mutabor::to_string((mutabor::error_type)type);
-#else
-		mutString t = mutString::FromUTF8(mutabor::to_string((mutabor::error_type)type));
-#endif
-		mutPrintf(_T("%s: "),(const mutChar *)(t));
-		mutVPrintf(message,args);
+	void Device::runtime_error(int type, const std::string & message) {
+		std::string t = mutabor::to_string((mutabor::error_type)type);
+		std::cerr << t << ": " << message << std::endl;
 	}
 
 
-#ifdef WX
-	wxString Device::TowxString() const {
-		wxString routeString;
+	Device::operator std::string() const {
+		std::string routeString;
 		for (routeListType::const_iterator r = routes.begin();
 		     r != routes.end(); r++)
-			routeString += wxString::Format(_T(" %d:(%d->%d->%d)"),
-							(*r)->get_routefile_id(),
-							(*r)->GetDeviceId(InputDevice()),
-							(*r)->GetBox()?(*r)->GetBox()->get_routefile_id():NoBox,
-							(*r)->GetDeviceId(OutputDevice()));
+			routeString += boost::str(boost::format(" %d:(%d->%d->%d)") 
+						  % ((*r)->get_routefile_id())
+						  % ((*r)->GetDeviceId(InputDevice()))
+						  % ((*r)->GetBox()?(*r)->GetBox()->get_routefile_id():NoBox)
+						  % ((*r)->GetDeviceId(OutputDevice())));
 
 
-		return wxString::Format(_T("\nDevice:\n\
+		return boost::str(boost::format("\nDevice:\n\
    session_id    = %lu\n\
    routefile_id  = %d\n\
    userdata      = %p\n\
    Name          = '%s'\n\
-   Flags:        dirty:%d, isOpen:%d\n\
-   Routes:       %s\n"),
-					(unsigned long)session_id(),
-					routefile_id,
-					userdata,
-					(const wxChar *) Name,
-					dirty,isOpen,
-					(const wxChar *) routeString);
+   Flags:        dirty:%d, isOpen:%d\n				      \
+   Routes:       %s\n")
+				  % (unsigned long)session_id()
+				  % routefile_id
+				  % userdata 
+				  % Name
+				  % dirty
+				  % isOpen
+				  % routeString);
 	}
-#endif
-
 
 	template <class T, class P, class L>
 	CommonTypedDeviceAPI<T,P,L>::~CommonTypedDeviceAPI()
 	{
 		// if there are remaining pointers we have other problems.
-		DEBUGLOG(routing,_T("this = %p"),(void*)this);
+		DEBUGLOG (routing, "this = %p" ,(void*)this);
 #ifdef Debug
 		listttype::iterator i = FindInDeviceList(this);
 		if (i != deviceList.end()) {
@@ -140,7 +133,7 @@ namespace mutabor {
 
 	template <class T, class P, class L>
 	void CommonTypedDeviceAPI<T,P,L>::Add(Route & route) {
-		DEBUGLOG(smartptr,_T("Route; %p"),(void*)route.get());
+		DEBUGLOG (smartptr, "Route; %p" ,(void*)route.get());
 #ifdef DEBUG
 		routeListType::const_iterator i =
 			find(routes.begin(),routes.end(),route);
@@ -149,27 +142,27 @@ namespace mutabor {
 #endif
 		TRACEC;
 		routes.push_back(route);
-		DEBUGLOG(smartptr,_T("Route; %p saved"),(void*)route.get());
+		DEBUGLOG (smartptr, "Route; %p saved" ,(void*)route.get());
 	}
 
 	template <class T, class P, class L>
 	bool CommonTypedDeviceAPI<T,P,L>::Replace(Route & oldroute,
 						  Route & newroute) {
-		DEBUGLOG(smartptr,_T("oldroute; %p, newroute; %p"),
+		DEBUGLOG (smartptr, "oldroute; %p, newroute; %p" ,
 			 (void*)oldroute.get(),(void*)newroute.get());
 		bool found = CommonTypedDeviceAPI<T,P,L>::Remove(oldroute);
 		mutASSERT(found);
 		if (found)
 			CommonTypedDeviceAPI<T,P,L>::Add(newroute);
 
-		DEBUGLOG(smartptr,_T("oldroute; %p, newroute; %p"),
+		DEBUGLOG (smartptr, "oldroute; %p, newroute; %p" ,
 			 (void*)oldroute.get(),(void*)newroute.get());
 		return found;
 	}
 
 	template <class T, class P, class L>
 	bool CommonTypedDeviceAPI<T,P,L>::Remove(Route & route) {
-		DEBUGLOG(smartptr,_T("Route: %p (%d)"),
+		DEBUGLOG (smartptr, "Route: %p (%d)" ,
 			 (void*)route.get(),
 			 (int)intrusive_ptr_get_refcount(route.get()));
 		routeListType::iterator i =
@@ -181,7 +174,7 @@ namespace mutabor {
 			// but route must be deleted
 			routes.erase(i);
 		}
-		DEBUGLOG(smartptr,_T("Route; %p (%d)"),(void*)route.get(),
+		DEBUGLOG (smartptr, "Route; %p (%d)" ,(void*)route.get(),
 			 (int)intrusive_ptr_get_refcount(route.get()));
 		return found;
 	}
@@ -284,16 +277,14 @@ namespace mutabor {
 	}
 
 
-#ifdef WX
 	template <class T, class P, class L>
-	wxString CommonTypedDeviceAPI<T,P,L>::TowxString() const {
-		return Device::TowxString()
-			+ wxString::Format(_T("\
+	CommonTypedDeviceAPI<T,P,L>::operator std::string() const {
+		return Device::operator std::string()
+			+ boost::str(boost::format("\
 CommonTypedDeviceAPI:\n\
    ptrct    = %d\n\
-"),(int)intrusive_ptr_get_refcount(this));
+") % (int)intrusive_ptr_get_refcount(this));
 	}
-#endif
 
 // protected:
 
@@ -348,24 +339,21 @@ CommonTypedDeviceAPI:\n\
 	template class CommonTypedDeviceAPI<InputDeviceClass>;
 
 
-#ifdef WX
-	wxString OutputDeviceClass::TowxString() const {
+	OutputDeviceClass::operator std::string() const {
 		return CommonTypedDeviceAPI<OutputDeviceClass>::
-			TowxString() + wxString::Format(_T("\
+			operator std::string() + "\
 OutputDeviceClass:\n\
    no data.\n\
-"));
+";
 
 	}
-#endif
-
 
 	bool InputDeviceClass::last_was_stop = true;
 
 	void InputDeviceClass::DoSilenceKeys(bool remove) {
 		current_keys_type::iterator i;
 		size_t j = 0;
-		DEBUGLOG(routing,_T(""));
+		DEBUGLOG (routing, "" );
 		for (i = current_keys.begin();i!= current_keys.end();i++) {
 			for (const int * k = midi::get_holds();
 			     *k >= 0; k++) {
@@ -376,7 +364,7 @@ OutputDeviceClass:\n\
 			i->route->NoteOff(i->key,i->velocity,i->unique_id);
 			j++;
 		}
-		DEBUGLOG(routing,_T("silenced %lu keys"),(unsigned long)j);
+		DEBUGLOG (routing, "silenced %lu keys" ,(unsigned long)j);
 		if (remove) {
 			current_keys.clear();
 		}
@@ -386,11 +374,11 @@ OutputDeviceClass:\n\
 	void InputDeviceClass::ResumeKeys() {
 		ScopedLock lock(write_lock);
 
-		DEBUGLOG(routing,_T(""));
+		DEBUGLOG (routing, "" );
 		current_keys_type::iterator i;
 		size_t j = 0;
 		for (i = current_keys.begin();i!= current_keys.end();i++) {
-			DEBUGLOG(routing,_T("(key = %d, channel = %lu, id = %lu)"),
+			DEBUGLOG (routing, "(key = %d, channel = %lu, id = %lu)" ,
 				 i->key,
 				 (unsigned long)i->route->get_session_id(),
 				 (unsigned long)i->unique_id);
@@ -407,7 +395,7 @@ OutputDeviceClass:\n\
 					 i->userdata);
 			j++;
 		}
-		DEBUGLOG(routing,_T("revived %lu keys"),(unsigned long)j);
+		DEBUGLOG (routing, "revived %lu keys" ,(unsigned long)j);
 	}
 
 
@@ -518,16 +506,14 @@ OutputDeviceClass:\n\
 	}
 
 
-#ifdef WX
-	wxString InputDeviceClass::TowxString() const {
+	InputDeviceClass::operator std::string() const {
 		return (CommonTypedDeviceAPI<InputDeviceClass>::
-			TowxString()) + wxString::Format(_T("\
+			operator std::string()) + boost::str(boost::format("\
 InputDeviceClass:\n\
    Mode     = %d\n\
-"),Mode);
+") % Mode);
 
 	}
-#endif
 
 	DeviceFactory::factorylist DeviceFactory::factories;
 
@@ -548,27 +534,27 @@ InputDeviceClass:\n\
 	void DeviceFactory::LoadOutputDevices(tree_storage & config)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		config.toLeaf(_T("OutputDevices"));
+		config.toLeaf("OutputDevices");
 
-		int i = config.toFirstLeaf(_T("Device"));
+		int i = config.toFirstLeaf("Device");
 		while (i != wxNOT_FOUND) {
-			DEBUGLOGTYPE(config,OutputDeviceClass,_T("Loading output device with id %d"),i);
-			DevType type = (DevType) config.Read(_T("Type"), DTMidiPort);
+			DEBUGLOGTYPE(config,OutputDeviceClass,"Loading output device with id %d",i);
+			DevType type = (DevType) config.Read("Type", DTMidiPort);
 			OutputDevice out = DeviceFactory::CreateOutput(type);
 			if (!out) continue;
 			out -> set_routefile_id(i);
-			wxString name = config.Read(_T("Type Name"),
-						    _T("Midi output device"));
+			std::string name = config.Read("Type Name",
+						    "Midi output device");
 			DEBUGLOGTYPE(config,
 				     OutputDeviceClass,
-				     _T("device type name '%s' == '%s'?"),
-				     (const mutChar *)name,
-				     (const mutChar *)(out->GetTypeName()));
+				     "device type name '%s' == '%s'?",
+				     name,
+				     (out->GetTypeName()));
 			mutASSERT(name == out->GetTypeName());
 			out -> Load(config);
-			i = config.toNextLeaf(_T("Device"));
+			i = config.toNextLeaf("Device");
 		}
 
 		config.toParent(2);
@@ -578,18 +564,18 @@ InputDeviceClass:\n\
 	void DeviceFactory::SaveOutputDevices(tree_storage & config)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		config.toLeaf(_T("OutputDevices"));
+		config.toLeaf("OutputDevices");
 
 		const OutputDeviceList & list =
 			OutputDeviceClass::GetDeviceList();
 		for (OutputDeviceList::const_iterator out = list.begin();
 		     out != list.end(); out++) {
-			config.toLeaf(_T("Device"),
+			config.toLeaf("Device",
 				      static_cast<Device *>((*out).get())->get_routefile_id());
-			config.Write(_T("Type"),(*out)->GetType());
-			config.Write(_T("Type Name"),(*out)->GetTypeName());
+			config.Write("Type",(*out)->GetType());
+			config.Write("Type Name",(*out)->GetTypeName());
 			(*out) -> Save (config);
 			config.toParent();
 		}
@@ -601,30 +587,30 @@ InputDeviceClass:\n\
 	void DeviceFactory::LoadInputDevices(tree_storage & config)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		config.toLeaf(_T("InputDevices"));
+		config.toLeaf("InputDevices");
 
-		int i = config.toFirstLeaf(_T("Device"));
+		int i = config.toFirstLeaf("Device");
 		while (i != wxNOT_FOUND) {
-			DevType type = (DevType) config.Read(_T("Type"), DTMidiPort);
+			DevType type = (DevType) config.Read("Type", DTMidiPort);
 			TRACE;
 			InputDevice in = CreateInput(type);
 			TRACE;
 			in -> Device::set_routefile_id(i);
 #ifdef DEBUG
-			wxString name = config.Read(_T("Type Name"),
-						    _T("Midi input device"));
+			std::string name = config.Read("Type Name",
+						    "Midi input device");
 			DEBUGLOGTYPE(config,
 				     InputDeviceClass,
-				     _T("device type name '%s' == '%s'?"),
-				     (const mutChar *)name,
-				     (const mutChar *)(in->GetTypeName()));
+				     ("device type name '%s' == '%s'?"),
+				     name,
+				     (in->GetTypeName()));
 			mutASSERT(name == in -> GetTypeName());
 #endif
 			in -> Load(config);
 			TRACE;
-			i = config.toNextLeaf(_T("Device"));
+			i = config.toNextLeaf("Device");
 		}
 
 		config.toParent(2);
@@ -634,18 +620,18 @@ InputDeviceClass:\n\
 	void DeviceFactory::SaveInputDevices(tree_storage & config)
 	{
 #ifdef DEBUG
-		wxString oldpath = config.GetPath();
+		std::string oldpath = config.GetPath();
 #endif
-		config.toLeaf(_T("InputDevices"));
+		config.toLeaf("InputDevices");
 
 
 		TRACE;
 		const InputDeviceList & list = InputDeviceClass::GetDeviceList();
 		for (InputDeviceList::const_iterator in = list.begin();
 		     in != list.end(); in++) {
-			config.toLeaf(_T("Device"),(*in)->get_routefile_id());
-			config.Write(_T("Type"),(*in)->GetType());
-			config.Write(_T("Type Name"),(*in)->GetTypeName());
+			config.toLeaf("Device",(*in)->get_routefile_id());
+			config.Write("Type",(*in)->GetType());
+			config.Write("Type Name",(*in)->GetTypeName());
 			(*in) -> Save (config);
 			config.toParent();
 		}
@@ -692,7 +678,7 @@ InputDeviceClass:\n\
 	bool OutOpen()
 	{
 		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList();
-		DEBUGLOG2(midiio,_T("count: %d"),(int)list.size());
+		DEBUGLOG2(midiio,("count: %d"),(int)list.size());
 		for (OutputDeviceList::const_iterator Out = list.begin();
 		     Out != list.end(); Out++)
 			if ( !(*Out)->Open() ) {
@@ -734,7 +720,7 @@ InputDeviceClass:\n\
 				     In1 != In; In1++)
 					(*In1)->Close();
 
-				DEBUGLOGBASE(other,"",_T("Opening failed"));
+				DEBUGLOGBASE(other,"",("Opening failed"));
 
 				return false;
 			}

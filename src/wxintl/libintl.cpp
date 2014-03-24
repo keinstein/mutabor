@@ -38,6 +38,8 @@
 #include <map>
 #include "wx/intl.h"
 
+#define muT(x) x
+
 /// not for headers
 #ifdef __BORLANDC__
 #pragma hdrstop

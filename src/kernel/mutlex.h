@@ -31,10 +31,10 @@
 /* we guard a little bit complicated to ensure the references are set right
  */
 
-#if (!defined(HEADERFILENAME) && !defined(PRECOMPILE))	\
-	|| (!defined(HEADERFILENAME_PRECOMPILED))
+#if (!defined(SRC_KERNEL_MUTLEX_H) && !defined(PRECOMPILE))	\
+	|| (!defined(SRC_KERNEL_MUTLEX_H_PRECOMPILED))
 #ifndef PRECOMPILE
-#define HEADERFILENAME
+#define SRC_KERNEL_MUTLEX_H
 #endif
 
 // ---------------------------------------------------------------------------
@@ -50,8 +50,8 @@ namespace mutabor {
 	}
 }
 
-#ifndef HEADERFILENAME_PRECOMPILED
-#define HEADERFILENAME_PRECOMPILED
+#ifndef SRC_KERNEL_MUTLEX_H_PRECOMPILED
+#define SRC_KERNEL_MUTLEX_H_PRECOMPILED
 
 // system headers which do seldom change
  

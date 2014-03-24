@@ -25,7 +25,7 @@
  * \addtogroup kernel
  * \{
  ********************************************************************/
-// availlable groups: GUI, route, kernel, muwx, debug, docview, config, docview
+/* availlable groups: GUI, route, kernel, muwx, debug, docview, config, docview */
 
 /* we guard a little bit complicated to ensure the references are set right
  */
@@ -36,9 +36,9 @@
 #define SRC_KERNEL_PARSER_H
 #endif
 
-// ---------------------------------------------------------------------------
-// headers
-// ---------------------------------------------------------------------------
+/* --------------------------------------------------------------------------- */
+/* headers */
+/* --------------------------------------------------------------------------- */
 
 #include "src/kernel/Defs.h"
 #include "src/kernel/box.h"
@@ -54,7 +54,7 @@ namespace mutabor {
 	namespace hidden {
 		extern "C" {
 #endif
-// system headers which do seldom change
+/* system headers which do seldom change */
 
 struct mutabor_scanner_data {
 	const char * data;
@@ -209,10 +209,10 @@ struct logik * get_logik (const char * name, struct logik * liste);
 
 void init_integersequenz (mutabor_box_type * box);
 void get_new_integer_in_integersequenz (mutabor_box_type * box, int wert);
-		    //void init_parameter_liste (mutabor_box_type * box);
+		    /*void init_parameter_liste (mutabor_box_type * box); */
 struct parameter_list * get_new_name_in_parameterlist (mutabor_box_type * box, const char * name);
 void enumerate_parameters (mutabor_box_type * box, struct parameter_list * parameters);
-		    //void init_argument_liste (mutabor_box_type * box);
+		    /*void init_argument_liste (mutabor_box_type * box); */
 struct argument_list * get_new_number_in_argument_list (mutabor_box_type * box, double number);
 struct argument_list * get_new_name_in_argument_list (mutabor_box_type * box, const char * parameter);
 struct argument_list * get_new_distance_in_argument_list (mutabor_box_type * box);
@@ -245,18 +245,18 @@ void init_umstimmung (mutabor_box_type * box, const char * name);
 void get_new_umstimmung (mutabor_box_type * box);
 void eintrage_parameterliste_in_umstimmung (mutabor_box_type * box,
 					    struct umstimmung * ret,
-					    parameter_list * list);
+					    struct parameter_list * list);
 
 
 void get_umstimmung_taste_abs (mutabor_box_type * box,
-			       argument_list * argument);
+			       struct argument_list * argument);
 void get_umstimmung_taste_rel (mutabor_box_type * box,
-			       argument_list * argument,
+			       struct argument_list * argument,
 			       char vorzeichen);
 void get_umstimmung_breite_abs (mutabor_box_type * box,
-				argument_list * argument);
+				struct argument_list * argument);
 void get_umstimmung_breite_rel (mutabor_box_type * box,
-				argument_list * argument,
+				struct argument_list * argument,
 				char vorzeichen);
 void init_umstimm_expression_list (mutabor_box_type * box);
 void get_new_umstimm_expression (mutabor_box_type * box,
@@ -274,7 +274,7 @@ void get_umstimmung_umstimmungs_bund (mutabor_box_type * box);
 void get_umstimmungs_case_zahl_element (mutabor_box_type * box, int konstante);
 void get_umstimmungs_case_default_element (mutabor_box_type * box);
 void init_umstimmungs_case_liste (mutabor_box_type * box);
-void get_umstimmung_umstimm_case (mutabor_box_type * box, argument_list * argument);
+void get_umstimmung_umstimm_case (mutabor_box_type * box, struct argument_list * argument);
 void get_umstimmung_midi_out (mutabor_box_type * box);
 void init_tastenliste (mutabor_box_type * box);
 void get_new_taste (mutabor_box_type * box, int taste, char stern);
@@ -313,8 +313,8 @@ void get_instrument_dekl (mutabor_box_type * box, int midi_in, int midi_von, int
 #endif
 
 
-#endif // precompiled
-#endif // header loaded
+#endif /* precompiled */
+#endif /* header loaded */
 
 
-///\}
+/** \} */

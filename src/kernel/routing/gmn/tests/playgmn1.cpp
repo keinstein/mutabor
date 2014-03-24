@@ -141,7 +141,7 @@ int main(int argc, char **argv)
 #ifdef DEBUG
 //	debugFlags::flags.timer = true;
 //	debugFlags::flags.gmnfile = true;
-	debugFlags::flags.thread = true;
+	isDebugFlag(thread) = true;
 #endif
 	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
 
@@ -157,13 +157,13 @@ int main(int argc, char **argv)
 	in = static_cast<mutabor::InputDeviceClass *>(new myDevice());
 //	mutabor::InputDevice in(mutabor::DeviceFactory::CreateInput(mutabor::DTMidiFile));
 	if (!in) {
-		DEBUGLOG2(always,_T("Class construction failed."));
+		DEBUGLOG2(always,("Class construction failed."));
 		exit(-1);
 	}
-	in -> SetName(_T(SRCDIR) _T("/gmn1_source.gmn"));
+	in -> SetName(SRCDIR "/gmn1_source.gmn");
 //	mutabor::InputDevice prevent_from_deletion(in);
 	if (!(in -> Open())) {
-		DEBUGLOG2(always,_T("Open failed. Exiting."));
+		DEBUGLOG2(always,("Open failed. Exiting."));
 		exit(1);
 	}
 	in -> Play();

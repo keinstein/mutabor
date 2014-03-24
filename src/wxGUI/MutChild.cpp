@@ -114,7 +114,7 @@ namespace mutaborGUI {
 			    const wxSize & size):
 	MutTextBox(k,box,parent,id,pos,size)
 	{
-		DEBUGLOG (other, _T("winKind=%d"),k);
+		DEBUGLOG (other, "winKind=%d" ,k);
 		mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 		BoxData * boxdata = ToGUIBase(box);
 		switch (k) {
@@ -147,7 +147,7 @@ namespace mutaborGUI {
 			wxLogError(_("Unexpected window kind: %d"), k);
 			UNREACHABLEC;
 		}
-		DEBUGLOG (other, _T("winKind=%d"),k);
+		DEBUGLOG (other, "winKind=%d" ,k);
 	}
 
 	MutChild::~MutChild()
@@ -187,7 +187,7 @@ namespace mutaborGUI {
 		BoxData * boxdata = ToGUIBase(box);
 		mutASSERT(boxdata);
 		mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-		DEBUGLOG (gui, _T("winKind: %d, setWant: %d, wanted: %d%d%d" ),
+		DEBUGLOG (gui, "winKind: %d, setWant: %d, wanted: %d%d%d" ,
 			  winKind, 
 			  setWant,
 			  boxdata->WantKeyWindow(),
@@ -232,7 +232,7 @@ namespace mutaborGUI {
 			wxLogError(_("Unexpected window kind: %d"), winKind);
 			UNREACHABLEC;
 		}	
-		DEBUGLOG (gui, _T("winKind: %d, setWant: %d, wanted: %d%d%d"),
+		DEBUGLOG (gui, "winKind: %d, setWant: %d, wanted: %d%d%d" ,
 			  winKind, 
 			  setWant,
 			  boxdata->WantKeyWindow(),

@@ -27,6 +27,10 @@
  *\addtogroup GUIroute
  *\{
  ********************************************************************/
+#ifdef __cplusplus
+#else
+dturiaedtr
+#endif
 #include "NewOutputDeviceShape.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/MutRouteWnd.h"

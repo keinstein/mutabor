@@ -43,7 +43,7 @@ MutFileDataType FileNameDialog(wxWindow * parent,
                         int Command,
                         wxString Filename)
 {
-	DEBUGLOG2(gui,_T("Command: %d"),Command);
+	DEBUGLOG2(gui,("Command: %d"),Command);
 
 	static const wxString logic_sources(_("Mutabor tuning file (*.mut)|*.mut|Old Mutabor tuning file (*.mus)|*.mus|All files (*.*)|*.*"));
 
@@ -150,15 +150,15 @@ MutFileDataType FileNameDialog(wxWindow * parent,
 void PRINTWINDOW (wxWindow * window, const wxString & offset = _T ("")) 
 {
 		mutUnused(offset);
-        if (!window) DEBUGLOG2 (other,_T("NULL window."));
+        if (!window) DEBUGLOG2 (other, ("NULL window."));
         
 }
 
 #ifdef DEBUG
 void PRINTSIZER (wxSizer * sizer, const wxString & offset) 
 {
-        if (!sizer) DEBUGLOG2 (other,_T("NULL Pointer."));
-        DEBUGLOGTYPE (other, *sizer, _T ("%sSizer: %p to Window %p"),
+        if (!sizer) DEBUGLOG2 (other,("NULL Pointer."));
+        DEBUGLOGTYPE (other, *sizer, ("%sSizer: %p to Window %p"),
                       offset.c_str (),
                       (void*)sizer,(void*)sizer->GetContainingWindow ());
         wxSizerItemList &childs = sizer -> GetChildren ();
@@ -168,21 +168,21 @@ void PRINTSIZER (wxSizer * sizer, const wxString & offset)
                 wxRect rect = item->GetRect ();
                 if (item->IsSizer ()) {
                         DEBUGLOGTYPE (other, *sizer,
-                                      _T ("%s%s sizer from (%d,%d) to (%d,%d):"),
+                                      ("%s%s sizer from (%d,%d) to (%d,%d):"),
                                       offset.c_str (),
                                       (item -> IsShown ()?
-                                       _T ("shown"):_T ("hidden")),
+				       ("shown"): ("hidden")),
                                       rect.x,rect.y, rect.x+rect.width,
                                       rect.y+rect.height);
                         PRINTSIZER (item->GetSizer (), offset + _T (" | "));
                 } else if (item -> IsWindow ()) {
                         wxWindow * window = item->GetWindow ();
                         DEBUGLOGTYPE (other, *window, 
-                                      _T ("%sWindow: %p with parent window %p (%s) from (%d,%d) to (%d,%d)"),
+                                      ("%sWindow: %p with parent window %p (%s) from (%d,%d) to (%d,%d)"),
                                       offset.c_str (),
                                       (void*)window,(void*)window->GetParent (),
                                       (item -> IsShown ()?
-                                       _T ("shown"):_T ("hidden")),
+				       ("shown"): ("hidden")),
                                       rect.x,rect.y, rect.x+rect.width,
                                       rect.y+rect.height);
 			if (window -> GetSizer()) 
@@ -190,11 +190,11 @@ void PRINTSIZER (wxSizer * sizer, const wxString & offset)
                 } else if (item -> IsSpacer ()) {
                         wxSize size = item->GetSpacer ();
                         DEBUGLOGTYPE (other, size,
-                                      _T ("%sSpacer: %d x %d (%s) from (%d,%d) to (%d,%d)"),
+                                      ("%sSpacer: %d x %d (%s) from (%d,%d) to (%d,%d)"),
                                       offset.c_str (),
                                       size.x,size.y,
                                       (item -> IsShown ()?
-                                       _T ("shown"):_T ("hidden")),
+				       ("shown"): ("hidden")),
                                       rect.x,rect.y, rect.x+rect.width,
                                       rect.y+rect.height);
                 }

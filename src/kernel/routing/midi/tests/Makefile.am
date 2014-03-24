@@ -55,7 +55,11 @@ playmidi1_LDADD = \
 	$(top_builddir)/librtmidi.a \
 	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
-	$(AM_LDFLAGS)
+	$(AM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LDFLAGS) \
+	$(BOOST_SYSTEM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIBS) \
+	$(BOOST_SYSTEM_LIBS)
 
 midiopenfail1_LDADD = \
 	$(top_builddir)/libmutabordebugtest.a \
@@ -65,7 +69,11 @@ midiopenfail1_LDADD = \
 	$(top_builddir)/librtmidi.a \
 	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
-	$(AM_LDFLAGS)
+	$(AM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LDFLAGS) \
+	$(BOOST_SYSTEM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIBS) \
+	$(BOOST_SYSTEM_LIBS)
 
 midiopenfail1_SOURCES = \
 	midiopenfail1.cpp
@@ -108,7 +116,11 @@ testcppunit_LDADD = \
 	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(CPPUNIT_LIBS) \
 	$(LDADD) \
-	$(AM_LDFLAGS)
+	$(AM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LDFLAGS) \
+	$(BOOST_SYSTEM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIBS) \
+	$(BOOST_SYSTEM_LIBS)
 endif
 
 

@@ -56,6 +56,7 @@
 
 
 #include "src/kernel/treestorage.h"
+#include "src/kernel/Frac.h"
 #include "src/kernel/routing/midi/midicmn.h"
 
 #include <cppunit/extensions/HelperMacros.h>
@@ -70,7 +71,7 @@ public:
 	typedef mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider,
 					  mutabor::OutputDeviceClass> base;
 
-	midicmnOutputDevice(wxString name, 
+	midicmnOutputDevice(std::string name, 
 			    int id = -1, 
 			    int bendingRange = 2):base(name,id,bendingRange) {}
 	~midicmnOutputDevice() {}
@@ -81,15 +82,15 @@ public:
 	void Save(mutabor::tree_storage&, const mutabor::RouteClass*) {}
 	void Load(mutabor::tree_storage&) {}
 	void Load(mutabor::tree_storage&, mutabor::RouteClass*) {}
-	void do_AddTime(frac) {}
+	void do_AddTime(mutabor::frac time) {}
 	int GetMaxChannel() const { return 15; }
 	int GetMinChannel() const { return 0; }
-	bool Check(mutString s,int line = -1, mutString filename = _T(__FILE__)) {
-		bool retval = (s == (mutString)Out);
+	bool Check(std::string s,int line = -1, std::string filename = (__FILE__)) {
+		bool retval = (s == (std::string)Out);
 		if (!retval) {
-			DEBUGLOG(always,_T("Check failed:\n%s:%d:"),filename.c_str(),line);
-			DEBUGLOG(always,_T("Expected:\n%s"),s.c_str());
-			DEBUGLOG(always,_T("Got:\n%s"), mutString(Out).c_str());
+			DEBUGLOG (always, "Check failed:\n%s:%d:" ,filename.c_str(),line);
+			DEBUGLOG (always, "Expected:\n%s" ,s.c_str());
+			DEBUGLOG (always, "Got:\n%s" , std::string(Out).c_str());
 		}
 		Out.ClearData();
 //		retval = true;
@@ -138,7 +139,7 @@ class  midicmnInputDevice:public mutabor::CommonMidiInput<mutabor::InputDeviceCl
 public:
 	typedef mutabor::CommonMidiInput<mutabor::InputDeviceClass> base;
 
-	midicmnInputDevice( wxString name = wxEmptyString):base(name) {
+	midicmnInputDevice( std::string name = ""):base(name) {
 		channel_data.resize(16);
 		// reserve a hash table that is large enough to hold all data
 		// as rehashing leads to unpredictable results.
@@ -152,7 +153,7 @@ public:
 	void Load(mutabor::tree_storage&) {}
 	void Load(mutabor::tree_storage&, mutabor::RouteClass*) {}
 	bool Open () { isOpen = true; return true; }
-	proceed_bool shouldProceed(mutabor::Route R, DWORD midiCode,  int data =0) { return ProceedYes; }
+	proceed_bool shouldProceed(mutabor::Route R, uint32_t midiCode,  int data =0) { return ProceedYes; }
 	proceed_bool shouldProceed(mutabor::Route R, 
 				   const std::vector<unsigned char > * midiCode,  
 				   int data =0) { return ProceedYes; }

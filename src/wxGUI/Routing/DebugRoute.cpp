@@ -65,7 +65,7 @@ namespace mutaborGUI {
 	static void CheckOutputDevice(const OutputDevice Out, 
 				      const MutBoxChannelShape * channel) 
 	{
-		DEBUGLOG2(routing,_T("Output device %p, Channel %p"),Out.get(),channel);
+		DEBUGLOG2(routing,("Output device %p, Channel %p"),Out.get(),channel);
 		MutOutputDeviceShapeList & shapes = ToGUIBase(Out).GetShapes();
 		bool noshape = true;
 		for (MutOutputDeviceShapeList::const_iterator si = shapes.begin();
@@ -82,16 +82,16 @@ namespace mutaborGUI {
 					break;
 				}
 			mutASSERT(found);
-			DEBUGLOG2(routing,_T("Output device shape %p"),shape);
+			DEBUGLOG2(routing,("Output device shape %p"),shape);
 			mutASSERT(shape->GetDevice() == Out);
 			mutASSERT(channel->GetOutput() == shape);
 			noshape = false;
 		}
 		if (noshape) {
-			DEBUGLOG2(routing,_T("No output device shape"));
+			DEBUGLOG2(routing,("No output device shape"));
 		}
 		DEBUGLOG2(routing,
-			  _T("Output device %p '%s' Type %d:\n%s"),
+			  ("Output device %p '%s' Type %d:\n%s"),
 			  Out.get(),
 			  Out->GetName().c_str(),
 			  Out->GetType(),
@@ -102,14 +102,14 @@ namespace mutaborGUI {
 			       const MutInputDeviceShape * In) 
 	{
 		DEBUGLOG2(routing,
-			  _T("Route %p id %d, Type %d, Input range %d -- %d"),
+			  ("Route %p id %d, Type %d, Input range %d -- %d"),
 			  route,
 			  route->GetId(),
 			  route->GetType(),
 			  route->GetInputFrom(), 
 			  route->GetInputTo());
 		DEBUGLOG2(routing,
-			  _T("Box %d, active %d, Output range %d -- %d (no Drum: %d)"),
+			  ("Box %d, active %d, Output range %d -- %d (no Drum: %d)"),
 			  route->GetBox(),
 			  route->GetActive(),
 			  route->GetOutputFrom(), 
@@ -124,19 +124,19 @@ namespace mutaborGUI {
 			MutBoxChannelShape * shape = *i;
 			mutASSERT((In && shape ) || !(In || shape));
 			if (shape) {
-				DEBUGLOG2(routing,_T("Box channel shape %p"), shape);
+				DEBUGLOG2(routing,("Box channel shape %p"), shape);
 				MutBoxShape * box = 
 					dynamic_cast<MutBoxShape *> 
 					(shape->GetParent());
 				DEBUGLOG2(routing,
-					  _T("Box shape %p box %d"),
+					  ("Box shape %p box %d"),
 					  box,
 					  box->GetBoxId());
 				mutASSERT(shape->GetRoute() == route);
 				mutASSERT(shape->GetInput() == In);
 				mutASSERT(box->GetBoxId() == route->GetBox());
 			} else {
-				DEBUGLOG2(routing,_T("No Box Channel shape"));
+				DEBUGLOG2(routing,("No Box Channel shape"));
 			}
 			OutputDevice Out = route->GetOutputDevice();
 			if (Out) CheckOutputDevice(Out, shape);
@@ -146,7 +146,7 @@ namespace mutaborGUI {
 	static void CheckInputDevice(const InputDeviceClass *  In)
 	{
 		DEBUGLOG2(routing,
-			  _T("Input device %p '%s' %d:\n%s"), 
+			  ("Input device %p '%s' %d:\n%s"), 
 			  In.get(),
 			  In->GetName().c_str(),
 			  In->GetType(),
@@ -165,10 +165,10 @@ namespace mutaborGUI {
 		     i++) {
 			MutInputDeviceShape * shape = *i;
 			if (shape) {
-				DEBUGLOG2(routing,_T("Input device shape %p"),shape);
+				DEBUGLOG2(routing,("Input device shape %p"),shape);
 				mutASSERT (shape->GetDevice() == In);
 			} else {
-				DEBUGLOG2(routing,_T("No input device shape"));
+				DEBUGLOG2(routing,("No input device shape"));
 			}
 		}
 	}
@@ -183,7 +183,7 @@ namespace mutaborGUI {
 	 */
 	template<class T> 
 	static void CheckList(const T & list) {
-		DEBUGLOG2(routing,_T("List at %p has %d entries"),(void*)&list,(int)list.size());
+		DEBUGLOG2(routing,("List at %p has %d entries"),(void*)&list,(int)list.size());
 		for (typename T::const_iterator i = list.begin();
 		     i != list.end(); i++) {
 			typename T::const_iterator j = i;
@@ -275,7 +275,7 @@ namespace mutaborGUI {
 	}
 
 	static void Check(const InputDeviceClass * input) {
-		DEBUGLOG2(routing,_T("%s"),(const wxChar *)(input->TowxString()));
+		DEBUGLOG2(routing,("%s"),(std::string)(*input));
 		// associated routes for input device
 		const routeListType & routes = input->GetRoutes();
 		CheckList(routes);
@@ -389,7 +389,7 @@ namespace mutaborGUI {
 	}
 
 	static void Check(const OutputDeviceClass * output) {
-		DEBUGLOG2(routing,_T("%s"),(const wxChar *)(output->TowxString()));
+		DEBUGLOG2(routing,("%s"),(std::string)(*output));
 		// associated routes for output device
 		const routeListType & routes = output->GetRoutes();
 		CheckList(routes);
@@ -509,7 +509,7 @@ namespace mutaborGUI {
 	}
 
 	static void Check(const BoxClass * box) {
-		DEBUGLOG2(routing,_T("%s"),(const wxChar *)(box->TowxString()));
+		DEBUGLOG2(routing,("%s"),(box->operator std::string()));
 		// associated routes for box device
 		const routeListType & routes = box->GetRoutes();
 		CheckList(routes);
@@ -558,7 +558,7 @@ namespace mutaborGUI {
 
 #if 0
 		const MutBoxShapeList & list = ToGUIBase(route)->GetBoxChannelShapes();
-		DEBUGLOG2(routing, _T("Box %d: %p == %p (%d entries)"),
+		DEBUGLOG2(routing, ("Box %d: %p == %p (%d entries)"),
 			  route->GetBox(),
 			  (void*)&list,
 			  (void*)&(ToGUIBase(route->GetBox())->GetBoxShapes()),
@@ -569,11 +569,11 @@ namespace mutaborGUI {
 			     routeboxdata != &(BoxData::GetBox(route->GetBox())); 
 		     i++);
 		if (i < MAX_BOX) {
-			DEBUGLOG2(routing, _T("Box %p has GUI number %d and id %d"),
+			DEBUGLOG2(routing, ("Box %p has GUI number %d and id %d"),
 				  (void*)routeboxdata,
 				  i,route->GetBox());
 		} else {
-			DEBUGLOG2(routing, _T("Box %p has no GUI number but id %d"),
+			DEBUGLOG2(routing, ("Box %p has no GUI number but id %d"),
 				  (void*)routeboxdata,
 				  route->GetBox());
 		}
@@ -588,7 +588,7 @@ namespace mutaborGUI {
 #endif
 
 	static void Check(const RouteClass * route) {
-		DEBUGLOG2(routing,_T("%s"),(const wxChar *)(route->TowxString()));
+		DEBUGLOG2(routing,("%s"),(route->operator std::string()));
 #if wxGUI
 		const MutBoxChannelShapeList & channels = 
 			ToGUIBase(route)->GetBoxChannelShapes();

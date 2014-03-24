@@ -1,4 +1,4 @@
-/** \file 
+/** \file
  ********************************************************************
  * Description
  *
@@ -31,13 +31,10 @@
 // ##################################################################
 #include "GIS_Head.h"
 #include <stdlib.h>
-
-#ifdef WX
-#include "wx/string.h"
-#else
-#include <string.h>
-#define muT(x) x
-#endif
+#include <string>
+#include "boost/algorithm/string.hpp"
+#include "boost/lexical_cast.hpp"
+using namespace mutabor;
 
 char ArticulationHold[5] = { 80, 100, 90, 90, 60 }; // range: 0-100
 char ArticulationOff[5] = { 80, 80, 60, 127, 127 }; // range: 0-127
@@ -58,20 +55,21 @@ double GetReal(GisToken *token)
 char GetMidiInstrument(GisToken *token)
 {
 	if ( token && GetGisType(token) == GTParaStr ) {
-		mutString t;
-#ifdef WX
-		mutString v;
-		long value;
-		t=(((GisParaStr*)token)->s).Upper();
-		DEBUGLOG2(gmnfile,_T("t= %s"), t.c_str());
+		std::string v;
+		int value = 0;
+		std::string t=boost::to_upper_copy(((GisParaStr*)token)->s);
+		DEBUGLOG2(gmnfile,("t= %s"), t.c_str());
 
-		if (t.StartsWith(mutT("MIDI"),&v)) {
-			v.ToLong(&value);
-			DEBUGLOG2(gmnfile,_T("v= %s"), v.c_str());
+		if (t.substr(0,4) == "MIDI") {
+			try {
+				value = boost::lexical_cast<int>(t.substr(4));
+			} catch( boost::bad_lexical_cast const& ) {
+			}
+			DEBUGLOG2(gmnfile,("v= %s"), v.c_str());
 			return (char) value;
 		}
 
-#else
+#if 0
 		strncpy(t, ((GisParaStr*)token)->s, 30);
 
 		strupr(t);
@@ -85,26 +83,26 @@ char GetMidiInstrument(GisToken *token)
 	return 0;
 }
 
-#define ZIFFER (mutT('0') <= t[i] && t[i] <= mutT('9'))
+#define ZIFFER (('0') <= t[i] && t[i] <= ('9'))
 
-/** 
- * This function returns the speed factor that must be multiplied to 
+/**
+ * This function returns the speed factor that must be multiplied to
  * the duration value in order to get a delta timestamp in μs.
- * 
+ *
  * \param token Token to be parsed in the form numerator/denominator = bpm.
- * 
+ *
  * \return fraction in μs for 1/1 duration.
  */
 mutint64 GetTheSpeedFactor(GisToken *token)
 {
-	DEBUGLOG2(gmnfile,_T("%p"),(void*)token);
-	
+	DEBUGLOG2(gmnfile,("%p"),(void*)token);
+
 	mutint64 retval = 2l * 1000l * 1000l; // 1/4 = 120bpm => 1/1 = 2s
 
 	if ( token && GetGisType(token) == GTParaStr ) {
-		const mutString &t = ((GisParaStr*) token) -> s;
+		const std::string &t = ((GisParaStr*) token) -> s;
 
-		DEBUGLOG2(gmnfile,_T("%s"),t.c_str());
+		DEBUGLOG2(gmnfile,("%s"),t.c_str());
 
 		size_t i = 0;
 
@@ -115,28 +113,28 @@ mutint64 GetTheSpeedFactor(GisToken *token)
 			i++;
 
 		while ( ZIFFER )
-			numerator = numerator*10 + (t[i++]-mutT('0'));
+			numerator = numerator*10 + (t[i++]-('0'));
 
 		while ( !ZIFFER && t[i] )
 			i++;
 
 		while ( ZIFFER )
-			denominator = denominator*10 + (t[i++]-mutT('0'));
+			denominator = denominator*10 + (t[i++]-('0'));
 
 		while ( !ZIFFER && t[i] )
 			i++;
 
 		while ( ZIFFER )
-			bpm = bpm*10 + (t[i++]-mutT('0'));
+			bpm = bpm*10 + (t[i++]-('0'));
 
-		DEBUGLOG2(gmnfile,_T("%ld / %ld / %ld"),denominator, numerator, bpm);
+		DEBUGLOG2(gmnfile,("%ld / %ld / %ld"),denominator, numerator, bpm);
 
 
 		if ( numerator && denominator && bpm > 0 ) {
 			retval = (denominator * 60*1000*1000) / (numerator * bpm); // 1/1 = 1bpm => 60s per measure
 		}
 	}
-	DEBUGLOG2(gmnfile,_T("Returning fraction %s"), TowxString(retval).c_str());
+	DEBUGLOG2(gmnfile,("Returning factor %d"), retval);
 
 	return retval;
 }
@@ -146,7 +144,7 @@ mutint64 GetTheSpeedFactor(GisToken *token)
 
 GisReadHead* GisReadHead::InsertInfrontOf(GisReadHead *position)
 {
-	DEBUGLOG (gmnfile, _T("pos = %p; this = %p"),(void*)position,(void*)this);
+	DEBUGLOG (gmnfile, "pos = %p; this = %p" ,(void*)position,(void*)this);
 
 	if ( !position ) {
 		Next = NULL;
@@ -157,7 +155,7 @@ GisReadHead* GisReadHead::InsertInfrontOf(GisReadHead *position)
 #if 0
 	// *(position->Prev) == position
 	if ( *(position->PrevPtr) == position ) { // first position
-		DEBUGLOG (gmnfile, _T("first position %p, Prev: %p, Next: %p, cmp: %p"),
+		DEBUGLOG (gmnfile, "first position %p, Prev: %p, Next: %p, cmp: %p" ,
 		         position,
 		         position->Prev,
 		         position->Next,
@@ -165,7 +163,7 @@ GisReadHead* GisReadHead::InsertInfrontOf(GisReadHead *position)
 		        );
 		*(position->PrevPtr) = this;
 	} else { // normal position in list
-		DEBUGLOG (gmnfile, _T("first position %p, Prev: %p, Next: %p, cmp: %p"),
+		DEBUGLOG (gmnfile, "first position %p, Prev: %p, Next: %p, cmp: %p" ,
 		         position,
 		         position->Prev,
 		         position->Next,
@@ -183,7 +181,7 @@ GisReadHead* GisReadHead::InsertInfrontOf(GisReadHead *position)
 	// *(position->Prev) == position
 
 	if ( *(position->PrevPtr) == position ) { // first position
-		DEBUGLOG (gmnfile, _T("first position %p, Prev: %p, Next: %p, cmp: %p"),
+		DEBUGLOG (gmnfile, "first position %p, Prev: %p, Next: %p, cmp: %p" ,
 			  (void*)position,
 		          (void*)position->Prev,
 		          (void*)position->Next,
@@ -193,7 +191,7 @@ GisReadHead* GisReadHead::InsertInfrontOf(GisReadHead *position)
 		PrevPtr = position->PrevPtr;
 		position->PrevPtr = &(position->Prev);
 	} else { // normal position in list
-		DEBUGLOG (gmnfile, _T("first position %p, Prev: %p, Next: %p, cmp: %p"),
+		DEBUGLOG (gmnfile, "first position %p, Prev: %p, Next: %p, cmp: %p" ,
 		          (void*)position,
 		          (void*)position->Prev,
 		          (void*)position->Next,
@@ -266,9 +264,8 @@ void GisReadHead::CreateSegmentSubs()
 {
 	GisSegment *Seg = (GisSegment*)Cursor;
 	GisToken *Cont = Seg->Contents;
-#ifdef WX
-	mutString id = Id + mutT("*");
-#else
+	std::string id = Id + ("*");
+#if 0
 	char *id = (char*)malloc(strlen(Id)+2);
 	strcpy(id, Id);
 	strcat(id, "*");
@@ -278,8 +275,8 @@ void GisReadHead::CreateSegmentSubs()
 	while ( Cont ) // create the single token subs
 	{
 		nSub++;
-		id[mutLen(Id)] = nSub;
-		DEBUGLOG (gmnfile, _T("Creating Sub for %p (%d, %s)"), (void*)Cont,nSub,id.c_str());
+		id[Id.length()] = nSub;
+		DEBUGLOG (gmnfile, "Creating Sub for %p (%d, %s)" , (void*)Cont,nSub,id.c_str());
 
 //		GisReadHead *Sub = // unused variable
 			Build(this, Cont, id, 1);
@@ -303,9 +300,8 @@ void GisReadHead::CreateSegmentSubs()
 void GisReadHead::CreateSequenzSubs()
 {
 	GisSegment *Seq = (GisSegment*)Cursor;
-#ifdef WX
-	mutString id = Id + mutT("\x01");
-#else
+	std::string id = Id + ("\x01");
+#if 0
 	char *id = (char*)malloc(strlen(Id)+2);
 	strcpy(id, Id);
 	strcat(id, "\x01");
@@ -318,7 +314,7 @@ void GisReadHead::CreateSequenzSubs()
 // reading the token at the cursor
 void GisReadHead::Read()
 {
-	DEBUGLOG (gmnfile, _T("Cursor: %p"), (void*)Cursor);
+	DEBUGLOG (gmnfile, "Cursor: %p" , (void*)Cursor);
 
 	if ( !Cursor ) return;
 
@@ -335,7 +331,7 @@ void GisReadHead::Read()
 		break;
 
 	case GTNote:
-		DEBUGLOG (gmnfile, _T("Setting time"));
+		DEBUGLOG (gmnfile, "Setting time" );
 
 		Time = ((GisNote*)Cursor)->Duration;
 
@@ -343,26 +339,23 @@ void GisReadHead::Read()
 	case GTNull:case GTUnknown:case GTTag:case GTTagBegin:case GTTagEnd:
 	case GTParaInt:case GTParaReal:case GTParaStr:case GTComma:
 		;
-		
+
 	}
 
 	// the other tokens dont influenz the way of reading
 }
 
-#ifdef WX
-wxString GisReadHead::ToString()
+std::string GisReadHead::ToString()
 {
-	wxString ret = wxString::Format(_T("GisReadHead: {\nthis: %p; Boss: %p; Next: %p; Prev: %p; PrevPtr: %p; *PrevPtr: %p;\n"
-	                                   "nSub: %d; Cursor: {\n"),
-	                                 (void*)this,  (void*)Boss,  (void*)Next,  (void*)Prev,
-	                                 (void*)PrevPtr,  (void*)*PrevPtr, nSub) +
-	               (Cursor?((wxString) *Cursor):wxString(_T(""))) + _T("}\nTime: ") + (TowxString(Time)) +
-	               wxString::Format(_T("; Id: '%s'; Turn: %d; SingleToken: %d\n}\n"),
-	                                Id.c_str(), Turn, SingleToken);
+	std::string ret = boost::str(boost::format("GisReadHead: {\nthis: %p; Boss: %p; Next: %p; Prev: %p; PrevPtr: %p; *PrevPtr: %p;\n"
+	                                   "nSub: %d; Cursor: {\n")
+				     % (void*)this%  (void*)Boss%  (void*)Next%  (void*)Prev%
+				     (void*)PrevPtr%  (void*)*PrevPtr% nSub) +
+		(Cursor?((std::string) *Cursor):std::string((""))) + ("}\nTime: ") + (str(Time)) +
+		boost::str(boost::format("; Id: '%s'; Turn: %d; SingleToken: %d\n}\n")%
+			   Id.c_str()% Turn% SingleToken);
 	return ret;
 }
-
-#endif
 
 // ##################################################################
 // procedures with GisReadHead
@@ -516,13 +509,13 @@ TagList *EndTag(TagList **list, GisTagEnd *tagEnd)
 void GisReadArtHead::Read()
 {
 	int Id = 0;
-	DEBUGLOG (gmnfile, _T("Id: %d; Cursor: %p"), Id, (void*) Cursor);
+	DEBUGLOG (gmnfile, "Id: %d; Cursor: %p" , Id, (void*) Cursor);
 
 	if ( !Cursor ) return;
 
 	Turn = 3;
 
-	DEBUGLOG (gmnfile, _T("Cursor->Type %d"), Cursor->Type());
+	DEBUGLOG (gmnfile, "Cursor->Type %d" , Cursor->Type());
 
 	switch ( Cursor->Type() ) {
 
@@ -545,12 +538,12 @@ void GisReadArtHead::Read()
 
 		Time = Time2 * frac(ArticulationHold[GetArticulation()], 100);
 
-		DEBUGLOG (gmnfile, _T("GTNote: Time: %ld/%ld; Time2: %ld/%ld (=Cursor->Duration)"),
+		DEBUGLOG (gmnfile, "GTNote: Time: %ld/%ld; Time2: %ld/%ld (=Cursor->Duration)" ,
 		         Time.numerator(),Time.denominator(),Time2.numerator(),Time2.denominator());
 
 		Time2 -= Time;
 
-		DEBUGLOG (gmnfile, _T("Time: %ld/%ld; Time2: %ld/%ld"),
+		DEBUGLOG (gmnfile, "Time: %ld/%ld; Time2: %ld/%ld" ,
 		         Time.numerator(),Time.denominator(),Time2.numerator(),Time2.denominator());
 
 		Turn = 1;
@@ -585,19 +578,19 @@ void GisReadArtHead::Read()
 				long int speed =
 				        (AddTag(&Tempo, TAG)->Data.i =
 				                 GetTheSpeedFactor(TAG->GetPara(2)));
-				DEBUGLOG (gmnfile, _T("Got speed factor %ld"),speed);
+				DEBUGLOG (gmnfile, "Got speed factor %ld" ,speed);
 			}
 		}
 
 		break;
 
 	case GTTagEnd:
-		DEBUGLOG (gmnfile, _T("Ended tag."));
+		DEBUGLOG (gmnfile, "Ended tag." );
 
 		if ( !TAGEND->Begin )
 			break;
 
-		DEBUGLOG (gmnfile, _T("Tag Id was %d."),TAGEND->Begin->Id);
+		DEBUGLOG (gmnfile, "Tag Id was %d." ,TAGEND->Begin->Id);
 
 		Id = TAGEND->Begin->Id;
 
@@ -616,31 +609,26 @@ void GisReadArtHead::Read()
 	case GTNull:case GTUnknown:
 	case GTParaInt:case GTParaReal:case GTParaStr:case GTComma:
 		;
-		
+
 
 	}
 
 	// the other tokens don't influenz the way of reading
 }
 
-#ifdef WX
-wxString GisReadArtHead::ToString()
+std::string GisReadArtHead::ToString()
 {
-	wxString ret = _T("GisReadArtHead: {\n") ;
+	std::string ret = ("GisReadArtHead: {\n") ;
 	ret += GisReadHead::ToString();
-	ret += _T("Time2: ") + (TowxString(Time2));
-	ret +=
-	        wxString::Format(_T("; Delta: %ld; Box: %d (%p)\n"
+	ret += ("Time2: ") + (str(Time2));
+	ret += boost::str(boost::format("; Delta: %ld; Box: %d (%p)\n"
 	                            "Intensity: %p; Articulation: %p; Octave: %p\n"
 	                            "Alter: %p; Instr: %p; Tempo: %p\n"
-	                            "}\n"),
-	                         Delta,Box->get_routefile_id(),Box.get(),
-				 (void*)Intensity, (void*)Articulation, (void*)Octave, 
-				 (void*)Alter, (void*)Instr, (void*)Tempo);
+	                            "}\n") % Delta % Box->get_routefile_id() % Box.get() %
+				 (void*)Intensity %  (void*)Articulation %  (void*)Octave %
+				 (void*)Alter %  (void*)Instr %  (void*)Tempo);
 	return ret;
 }
-
-#endif
 
 
 // ##################################################################
@@ -681,7 +669,7 @@ beginloop:
 			if ( h->Time <= frac(0, 1) )
 			{
 				proceed(h, h->Turn++);
-				DEBUGLOG2(gmnfile, _T("Turn:2; Moving time2 to time (old: %s, new: %s)"),TowxString(h->Time).c_str(), TowxString(h->Time2).c_str());
+				DEBUGLOG2(gmnfile, ("Turn:2; Moving time2 to time (old: %s, new: %s)"),str(h->Time).c_str(), str(h->Time2).c_str());
 
 				if ( h->Turn == 2 ) {
 					h->Time = h->Time2;
@@ -705,7 +693,7 @@ beginloop:
 				proceed(h, h->Turn++);
 
 				if ( h->Turn == 2 ) {
-					DEBUGLOG2(gmnfile, _T("Turn:2; Moving time2 to time (old: %s, new: %s)"),TowxString(h->Time).c_str(), TowxString(h->Time2).c_str());
+					DEBUGLOG2(gmnfile, ("Turn:2; Moving time2 to time (old: %s, new: %s)"),str(h->Time).c_str(), str(h->Time2).c_str());
 					h->Time = h->Time2;
 					h->Time2 = 0;
 				}
@@ -753,14 +741,13 @@ beginloop:
 #define NOTE1 ((GisNote*)note1)
 #define NOTE2 ((GisNote*)note2)
 
-#ifdef WX
 
-int StrCmp(const mutString &s1, const mutString &s2)
+inline int StrCmp(const std::string &s1, const std::string &s2)
 {
-	return s1.Cmp(s2);
+	return s1.compare(s2);
 }
 
-#else
+#if 0
 char StrCmp(const char *s1, const char *s2)
 {
 	if ( s1 ) {
@@ -803,7 +790,7 @@ ChordNote::ChordNote(ChordNote *first) // not the first ChordNote
 	TotalTime = Boss->TotalTime;
 
 	if ( TotalTime )
-		AddGis(new GisNote(mutT("_"), mutEmptyString, 0, TotalTime, mutT(" "), 0));
+		AddGis(new GisNote("_", "", 0, TotalTime, " ", 0));
 
 	CurrentTime = 0;
 
@@ -873,19 +860,19 @@ void ChordNote::AddGis(GisToken *token)
 void ChordNote::CheckCloseAlter()
 {
 	if ( Status & CNAlter ) {
-		mutString s = mutEmptyString;
-		mutString *Sep = LastSep;
+		std::string s = "";
+		std::string *Sep = LastSep;
 
 		if ( !LastSep ) Sep = &s;
 
 		AddGis(new GisTagEnd((GisTagBegin*)*AlterBegin, *Sep));
 
-#ifdef WX
+
 		if ( Sep->size() ) {
-			*Sep = wxEmptyString;
+			Sep->clear();
 		}
 
-#else
+#if 0
 		if ( *Sep.length() ) {
 			free(*Sep);
 			*Sep = 0;
@@ -904,10 +891,10 @@ void ChordNote::CheckCloseTie()
 		// close alter
 		CheckCloseAlter();
 		// insert begin range
-		*TieBegin = new GisTagBegin(TTtie, 0, 0, mutT("("), *TieBegin);
+		*TieBegin = new GisTagBegin(TTtie, 0, 0, "(", *TieBegin);
 		// add end range
-		mutString s = mutEmptyString;
-		mutString *Sep = LastSep;
+		std::string s = "";
+		std::string *Sep = LastSep;
 
 		if ( !LastSep ) Sep = &s;
 
@@ -915,7 +902,7 @@ void ChordNote::CheckCloseTie()
 
 #ifdef WX
 		if ( Sep->size() ) {
-			*Sep=mutEmptyString;
+			*Sep="";
 		}
 
 #else
@@ -932,7 +919,7 @@ void ChordNote::CheckCloseTie()
 	nTie = 0;
 }
 
-int ChordNote::MutNoteOn(int key, double pitch, int instrId, int taste, mutString sep)
+int ChordNote::MutNoteOn(int key, double pitch, int instrId, int taste, std::string sep)
 {
 	if ( Status & CNNoteOn )
 		return 1;
@@ -940,7 +927,7 @@ int ChordNote::MutNoteOn(int key, double pitch, int instrId, int taste, mutStrin
 	if ( pitch != Pitch && key != GMN_NO_KEY ) {
 		CheckCloseAlter();
 		AlterBegin = Cursor;
-		AddGis(new GisTagBegin(TTalter, 0, new GisParaReal(pitch, mutT(">(")), mutT("<"), 0));
+		AddGis(new GisTagBegin(TTalter, 0, new GisParaReal(pitch, ">("), "<", 0));
 		Status |= CNAlter;
 		Pitch = pitch;
 	}
@@ -1050,7 +1037,7 @@ ChordNote *GisWriteHead::GetFreeNote()
 	while ( *ANote ) {
 		if ( !((*ANote)->Status & CNNoteOn) ) {
 			if ( (*ANote)->CurrentTime )
-				(*ANote)->AddGis(new GisNote(mutT("_"), mutEmptyString, 0, (*ANote)->CurrentTime, mutT(" "), 0));
+				(*ANote)->AddGis(new GisNote("_", "", 0, (*ANote)->CurrentTime, " ", 0));
 
 			return *ANote;
 		}
@@ -1167,7 +1154,7 @@ int GisWriteHead::CloseSubs(GisToken **cont)
 			Cont = h->Cursor;
 
 		if ( nSub > 1 && !h->CommaAtEnd ) {
-			*Cont = new GisComma(mutT(" "), 0);
+			*Cont = new GisComma(" ", 0);
 			Cont = &((*Cont)->Next);
 		}
 
@@ -1194,7 +1181,7 @@ int GisWriteHead::CloseCurrentToken(char insertRest)
 	case GTNull:
 		if ( insertRest && CurrentTime ) // write a rest
 		{
-			*Cursor = new GisNote(mutT("_"), mutT(""), 0, CurrentTime, mutT(" "));
+			*Cursor = new GisNote("_", "", 0, CurrentTime, " ");
 			Cursor = &((*Cursor)->Next);
 			CurrentTime = 0;
 		}
@@ -1445,28 +1432,25 @@ void GisWriteHead::AddTime(frac dTime)
 
 // search the header with the matching Id
 
-GisWriteHead *GetMatchingHeader(GisWriteHead **head, const mutString id)
+GisWriteHead *GetMatchingHeader(GisWriteHead **head, const std::string id)
 {
 	GisWriteHead *h = *head, *LastHead = 0;
 	GisWriteHead *Boss = h;
-	size_t  BossIdLength = mutLen(h->Id);
+	size_t  BossIdLength = h->Id.length();
 	char CmpRes = 0;
 	// search header
 
 	while ( h ) {
 
-#ifdef WX
 
-		if ( (id.StartsWith(h->Id)) && (mutLen(h->Id) >= BossIdLength) ) {
+		if ( (!id.compare(0,h->Id.length(),h->Id)) && (h->Id.length() >= BossIdLength) ) {
 			Boss = h;
-			BossIdLength = mutLen(h->Id) + 1;
+			BossIdLength = h->Id.length() + 1;
 		}
-
-		CmpRes = mutStrCmp(h->Id, id);
-
+		CmpRes = h->Id.compare(id);
 		if ( CmpRes >= 0 ) break;
 
-#else
+#if 0
 		if ( !strncmp(h->Id, id, strlen(h->Id)) && (strlen(h->Id) >= BossIdLength) ) {
 			Boss = h;
 			BossIdLength = strlen(h->Id) + 1;
@@ -1503,7 +1487,7 @@ GisWriteHead *GetMatchingHeader(GisWriteHead **head, const mutString id)
 }
 
 // write from a GisToken
-int GisWriteHeadGis(GisWriteHead **head,  mutString id, GisToken *token, char turn)
+int GisWriteHeadGis(GisWriteHead **head,  std::string id, GisToken *token, char turn)
 {
 	return GetMatchingHeader(head, id)->ProceedGis(token, turn);
 }
@@ -1535,11 +1519,11 @@ void CloseAllSubs(GisWriteHead *head)
 		// check for segment
 		if ( GetGisType(*Boss->Cursor) != GTSegment ) {
 			if ( Boss->Data && !Boss->CommaAtEnd ) {
-				*Boss->Cursor = new GisComma(mutT(" "), 0);
+				*Boss->Cursor = new GisComma(" ", 0);
 				Boss->Cursor = &((*Boss->Cursor)->Next);
 			}
 
-			Boss->Data = new GisSegment(Boss->Data, mutT(" "), 0);
+			Boss->Data = new GisSegment(Boss->Data, " ", 0);
 
 			GisToken **Cont = Boss->Cursor;
 

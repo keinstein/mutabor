@@ -94,9 +94,9 @@ namespace mutaborGUI {
 		mutASSERT (out -> GetType() == DTMidiFile);
 		OutputMidiFile * d = dynamic_cast<OutputMidiFile *>(device.get());
 		mutASSERT(d);
-		d->SetName (out -> GetMidiFile());
+		d->SetName ((const char * )(out -> GetMidiFile().ToUTF8()));
 		d->SetBendingRange (out -> GetMidiFileBendingRange());
-		SetLabel (device->GetName());
+		SetLabel (wxString::FromUTF8(device->GetName().c_str()));
 		return true;
 	}
 

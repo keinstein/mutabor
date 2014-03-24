@@ -51,9 +51,6 @@
 #include "src/kernel/routing/midi/midicmn.h"
 #include "src/kernel/routing/midi/midicmn.h"
 
-#ifdef WX
-//#include "src/wxGUI/generic/mhArray.h"
-#endif
 
 #ifndef MU32_ROUTING_MIDI_DEVMIDF_H_PRECOMPILED
 #define MU32_ROUTING_MIDI_DEVMIDF_H_PRECOMPILED
@@ -61,7 +58,6 @@
 // system headers which do seldom change
 
 #include <fstream>
-#include "wx/timer.h"
 
 
 
@@ -106,7 +102,7 @@ namespace mutabor {
 			 running_sysex(false),
 			 sysex_id() {
 			reserve(100);
-			DEBUGLOG(midifile,_T("%s"), (this->c_str()));
+			DEBUGLOG (midifile, "%s" , (this)->c_str().c_str());
 
 		}
 
@@ -120,7 +116,7 @@ namespace mutabor {
 					running_sysex(false),
 					sysex_id() {
 			reserve(100);
-			DEBUGLOG(midifile,_T("%s"), (this->c_str()));
+			DEBUGLOG (midifile, "%s" , (this->c_str()));
 		}
 
 
@@ -136,11 +132,11 @@ namespace mutabor {
 				Time = 0;
 				current_delta = remaining_delta = 0;
 			}
-			DEBUGLOG(midifile,_T("%s"), (this->c_str()));
+			DEBUGLOG (midifile, "%s" , (this->c_str()));
  		}
 
 		void ResetDelta() {
-			DEBUGLOG(midifile,_T("resetting remaining delta to 0"));
+			DEBUGLOG (midifile, "resetting remaining delta to 0" );
 			remaining_delta = 0;
 		}
 
@@ -155,7 +151,7 @@ namespace mutabor {
 			mutASSERT(p >= 0);
 			mutASSERT(remaining_delta != MUTABOR_NO_DELTA);
 			mutASSERT(p != MUTABOR_NO_DELTA);
-			DEBUGLOG(midifile,_T("remaining_delta = %ld - %ld"),remaining_delta, p);
+			DEBUGLOG (midifile, "remaining_delta = %ld - %ld" ,remaining_delta, p);
 			if (p  == MUTABOR_NO_DELTA)
 				return remaining_delta = MUTABOR_NO_DELTA;
 			if (remaining_delta == MUTABOR_NO_DELTA)
@@ -165,7 +161,7 @@ namespace mutabor {
 		mutint64 UpdateDelta() {
 			mutASSERT(remaining_delta != MUTABOR_NO_DELTA);
 			mutASSERT(current_delta != MUTABOR_NO_DELTA);
-			DEBUGLOG(midifile,_T("remaining_delta = %ld + %ld"),remaining_delta, current_delta);
+			DEBUGLOG (midifile, "remaining_delta = %ld + %ld" ,remaining_delta, current_delta);
 			if (current_delta  == MUTABOR_NO_DELTA)
 				return remaining_delta = MUTABOR_NO_DELTA;
 			if (remaining_delta == MUTABOR_NO_DELTA)
@@ -184,7 +180,7 @@ namespace mutabor {
 			timing_params old(timing);
 			timing.set_quarter_duration(new_duration);
 			DEBUGLOG(midifile,
-				 _T("remaining_dellta = %ld, new_duration = %ld, offset = %ld"),
+				 ("remaining_dellta = %ld, new_duration = %ld, offset = %ld"),
 				 remaining_delta,
 				 new_duration,
 				 offset);
@@ -196,7 +192,7 @@ namespace mutabor {
 									      old,
 									      timing)
 				+ offset;
-			DEBUGLOG(midifile, _T("remaining delta: %ld"),remaining_delta);
+			DEBUGLOG (midifile, "remaining delta: %ld" ,remaining_delta);
 		}
 
 #if 0
@@ -236,14 +232,14 @@ namespace mutabor {
 				count >>= 7;
 			}
 			if (count)
-				BOOST_THROW_EXCEPTION(delta_length_error(gettext_noop("trying to write number > 0x0FFFFFFF")));
+				BOOST_THROW_EXCEPTION(delta_length_error(_mutN("trying to write number > 0x0FFFFFFF")));
 
 			if (i == 0) i++;
 			while (--i)
 				push_back(tmp[i] | 0x80);
 			push_back(tmp[0]);
 		}
-		void WriteLength(mutOFstream &os, size_t l);
+		void WriteLength(std::ostream &os, size_t l);
 
 		void MidiOut(uint8_t c1, uint8_t c2, uint8_t c3) {
 			FixSysEx();
@@ -316,14 +312,14 @@ namespace mutabor {
 
 			if (from == to) {
 				BOOST_THROW_EXCEPTION(message_length_error(
-									    gettext_noop("The system exclusive message must contain at least a device id.")));
+									    _mutN("The system exclusive message must contain at least a device id.")));
 			}
 
 			int tmp_sysex_id = *from ;
 			if (tmp_sysex_id == 0) {
 				i myfrom = from + 1;
 				if (to - myfrom < 2) {
-					BOOST_THROW_EXCEPTION(wrong_id(gettext_noop("System exclusive message contains an invalid device id")));
+					BOOST_THROW_EXCEPTION(wrong_id(_mutN("System exclusive message contains an invalid device id")));
 				}
 				tmp_sysex_id = 0x10000 | ((*(myfrom++)) << 8);
 				tmp_sysex_id |= ((*myfrom) << 8);
@@ -332,7 +328,7 @@ namespace mutabor {
 			if (!running_sysex) {
 				sysex_id = tmp_sysex_id;
 			} else if (sysex_id != tmp_sysex_id) {
-				BOOST_THROW_EXCEPTION(wrong_id(gettext_noop("Device id of continuation package deos not match the id of the system exclusive message")));
+				BOOST_THROW_EXCEPTION(wrong_id(_mutN("Device id of continuation package deos not match the id of the system exclusive message")));
 			}
 
 			if (delta == MUTABOR_NO_DELTA) {
@@ -373,7 +369,7 @@ namespace mutabor {
 		}
 
 
-		void Save(mutOFstream &os);
+		void Save(std::ostream &os);
 
 		void Stop() {
 			remaining_delta = current_delta = MUTABOR_NO_DELTA;
@@ -385,11 +381,9 @@ namespace mutabor {
 #ifdef DEFINE_VECTOR_DATA
 		base::value_type * data() { return &(this->at(0)); }
 #endif
+		operator std::string() const;
+		std::string c_str() const { return *this; }
 
-		wxString TowxString ();
-		const mutChar * c_str() {
-			return (this->TowxString ()).c_str();
-		}
 	protected:
 		mutint64 Time;            //< Time of last action (at least in record mode)
 		timing_params timing;
@@ -415,7 +409,7 @@ namespace mutabor {
 		}
 
 		void Close() {}
-		void Close(mutOFstream &os) {
+		void Close(std::ostream &os) {
 			Tracks.Save(os);
 		}
 
@@ -536,7 +530,7 @@ namespace mutabor {
 		 *
 		 * \param os stream to write to
 		 */
-		void Save(mutOFstream &os) {
+		void Save(std::ostream &os) {
 			std::pair<uint8_t,uint8_t > ticks = Tracks.getMidiIickSignature();
 
 			// Let's try to generate Format 0 files: 1 Track including all information.
@@ -553,7 +547,7 @@ namespace mutabor {
 				   ticks_per_frame */
 			};
 
-			mutWriteStream(os,Header, 14);
+			os.write(reinterpret_cast<char *>(Header), 14);
 			Tracks.Save(os);
 		}
 
@@ -604,7 +598,7 @@ namespace mutabor {
 
 
 		virtual void Close();
-		virtual void SetName(const wxString & s)
+		virtual void SetName(const std::string & s)
 		{
 			if (s != Name) {
 				bool reopen = IsOpen();
@@ -628,21 +622,19 @@ namespace mutabor {
 		virtual int GetMaxChannel() const { return 15; }
 		virtual int GetMinChannel() const { return 0; }
 
-		virtual mutString GetTypeName () const {
-			return N_("MIDI output file");
+		virtual std::string GetTypeName () const {
+			return _mutN("MIDI output file");
 		}
 
-#ifdef WX
-		virtual wxString TowxString() const;
-#endif
+		virtual operator std::string() const;
 
-		void Save(mutOFstream &os) {
+		void Save(std::ostream &os) {
 			Out.Save(os);
 		}
 	protected:
 		OutputMidiFile(): base() {}
 
-		OutputMidiFile(const mutStringRef name,
+		OutputMidiFile(const std::string name,
 			       int id = -1,
 			       int bendingRange = 2)
 			: base(name, id, bendingRange) {}
@@ -679,7 +671,7 @@ namespace mutabor {
 				 Busy(false),
 				 timing() { }
 
-		InputMidiFile(mutString name,
+		InputMidiFile(std::string name,
 			      MutaborModeType mode,
 			      int id): base(name,
 					    mode,
@@ -752,13 +744,11 @@ namespace mutabor {
 		virtual int GetMaxTrack() const { return 0xFFFF; }
 		virtual int GetMinTrack() const { return 0; }
 
-		virtual mutString GetTypeName () const {
-			return N_("MIDI input file");
+		virtual std::string GetTypeName () const {
+			return _mutN("MIDI input file");
 		}
 
-#ifdef WX
-		virtual wxString TowxString() const;
-#endif
+		virtual operator std::string() const;
 
 		proceed_bool shouldProceed(Route R,
 					   const std::vector<unsigned char > * midiCode,
@@ -769,7 +759,7 @@ namespace mutabor {
 		int FileType;
 		TrackList Tracks;
 		mutint64 minDelta;        //< time interval to next event μs
-		BOOL Busy;
+		bool Busy;
 		timing_params timing;    //< timing parameters
 		mutint64 ReadMidiProceed(size_t nr, mutint64 time);
 	};
@@ -788,10 +778,10 @@ namespace mutabor {
 			}
 
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name,
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const std::string &name,
 								    int id = -1) const;
 
-		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name,
+		virtual mutabor::InputDeviceClass * DoCreateInput(const std::string &name,
 								  mutabor::MutaborModeType mode,
 								  int id = -1) const;
 	};

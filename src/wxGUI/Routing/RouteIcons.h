@@ -47,7 +47,7 @@
 #define MUWX_ROUTING_ROUTEICONS_H_PRECOMPILED
 
 // system headers which do seldom change
-
+#include "wx/icon.h"
 
 namespace mutaborGUI {
 

@@ -43,6 +43,7 @@
 #ifndef MU32_ERRORS_H_PRECOMPILED
 #define MU32_ERRORS_H_PRECOMPILED
 
+#if 0
 // system headers which do seldom change
 
 extern const mutTranslationChar * Error_text[];
@@ -177,6 +178,7 @@ const char * Warning_text[] =
     N_("Error in GMN-File %s position(%d, %d): %s")
   };
 */
+#endif
 #endif //PRECOMPILED
 #endif
 

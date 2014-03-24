@@ -53,6 +53,7 @@
 // system headers which do seldom change
 
 #include <cassert>
+#include "boost/format.hpp"
 
 #ifdef RTMIDI
 #include "lib/rtmidi/RtMidi.h"
@@ -83,22 +84,22 @@ namespace mutabor {
 			}
 		}
 
-		bool Open(int id, const mutStringRef name) {
+		bool Open(int id, const std::string name) {
 #ifdef RTMIDI
 			try {
 				port = new RtMidiOut(RtMidi::UNSPECIFIED, PACKAGE_STRING);
 			} catch (RtError &error) {
 				device->runtime_error(false,
-						      _("Can not open ouput Midi devices due to memory allocation  problems."));
+						      _mut("Can not open ouput Midi devices due to memory allocation  problems."));
 				return false;
 			}
 			
 			try {
-				port->openPort(id,(const char *)name.ToUTF8());
+				port->openPort(id, name);
 			} catch (RtError &error) {
 				device->runtime_error(false,
-						      _("Can not open output Midi device no. %d (%s)"), 
-						      id, (const mutChar *)(name.c_str()));
+						      str(boost::format(_mut("Can not open output Midi device no. %d (%s)"))
+							  % id % name.c_str()));
 				return false;
 			}
 
@@ -321,18 +322,18 @@ namespace mutabor {
 			}
 			if (rtmidiout) {
 				try {
-					Name = muT (rtmidiout->getPortName (DevId).c_str());
+					Name = rtmidiout->getPortName (DevId).c_str();
 				} catch (RtError &error) {
 					runtime_error(false,
-						      _("Could not get the name of the MIDI device with id %d:\n%s"),
-						      DevId,
-						      error.what());
-					Name = _("invalid device");
+						      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s")) 
+							  % DevId
+							  % error.what()));
+					Name = _mut("invalid device");
 					return ;
 				}
 			
 			} else
-				Name = _("no device");
+				Name = _mut("no device");
 			if (reopen) {
 				Open();
 			}
@@ -345,8 +346,8 @@ namespace mutabor {
 				return DTMidiPort;
 			}
 
-		virtual mutString GetTypeName () const {
-			return N_("Midi output device");
+		virtual std::string GetTypeName () const {
+			return _mutN("Midi output device");
 		}
 
 #if 0
@@ -354,9 +355,7 @@ namespace mutabor {
 		virtual void WriteData(wxConfigBase * config);
 #endif
 	
-#ifdef WX
-		virtual wxString TowxString() const;
-#endif
+		virtual operator std::string() const;
 
 		virtual int GetMaxChannel() const { return 15; }
 		virtual int GetMinChannel() const { return 0; }
@@ -371,7 +370,7 @@ namespace mutabor {
 #endif
 #endif
 		
-		OutputMidiPort(wxString name = mutEmptyString, 
+		OutputMidiPort(std::string name = "", 
 			       int id = -1, 
 			       int bendingRange = 2):
 			base(name, id, bendingRange),
@@ -474,9 +473,9 @@ namespace mutabor {
 					Close();
 			}
 			if (rtmidiin)
-				Name = muT (rtmidiin->getPortName (DevId).c_str());
+				Name = rtmidiin->getPortName (DevId).c_str();
 			else
-				Name = _("no device");
+				Name = _mut("no device");
 			if (reopen) {
 				Open();
 			}
@@ -487,7 +486,7 @@ namespace mutabor {
 				return DevId; 
 			}
 
-		virtual wxString &GetName()
+		virtual const std::string& GetName()
 			{
 				return Name;
 			}
@@ -497,7 +496,7 @@ namespace mutabor {
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
 #endif
 
-		virtual void SetName(const wxString & s) 
+		virtual void SetName(const std::string & s) 
 			{
 				assert (false);
 				//Name = s;
@@ -525,13 +524,11 @@ namespace mutabor {
 				return DTMidiPort;
 			}
 
-		virtual mutString GetTypeName () const {
-			return N_("Midi input device");
+		virtual std::string GetTypeName () const {
+			return _mutN("Midi input device");
 		}
 
-#ifdef WX
-		virtual wxString TowxString() const;
-#endif
+		virtual operator std::string() const;
 
 
 	protected:
@@ -544,7 +541,7 @@ namespace mutabor {
 		HMIDIIN hMidiIn;
 
 #endif
-		InputMidiPort(const mutStringRef name = mutEmptyString,
+		InputMidiPort(const std::string name = "",
 			      MutaborModeType mode = DeviceStop,
 			      int id = -1):
 			parentType (name,mode,id),
@@ -569,10 +566,10 @@ namespace mutabor {
 			}
 
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name, 
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const std::string &name, 
 								    int id = -1) const;
 		
-		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name, 
+		virtual mutabor::InputDeviceClass * DoCreateInput(const std::string &name, 
 								  mutabor::MutaborModeType mode, 
 								  int id = -1) const;
 	};

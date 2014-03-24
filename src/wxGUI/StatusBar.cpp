@@ -61,7 +61,7 @@ namespace mutaborGUI {
 	{
 		wxRect rect;
 		wxSize size = GetSize(), border = GetWindowBorderSize();
-		DEBUGLOG(gui, _T("Size: %dx%d, Border: %d,%d"),size.x,size.y,border.x,border.y);
+		DEBUGLOG (gui, "Size: %dx%d, Border: %d,%d" ,size.x,size.y,border.x,border.y);
 		if (!border.x) border.x = 2;
 		int widths[countStatusbarRegions] = { -1, 0, 0, 0, 0, 0 };
 		widths[StatusbarSizeGrip] = size.GetHeight();
@@ -69,19 +69,19 @@ namespace mutaborGUI {
 		if (insertStatus) {
 			widths[StatusbarInsert] = insertStatus->GetBestSize().GetWidth()+
 				2*border.x+2;
-			DEBUGLOG(gui,_T("INS width = %d"),widths[StatusbarInsert]);
+			DEBUGLOG (gui, "INS width = %d" ,widths[StatusbarInsert]);
 			
 		}
 		if (active) {
 			widths[StatusbarLogicActive] = active->GetBestSize().GetWidth() +
 			       2*border.x+2;
-			DEBUGLOG(gui,_T("Logic width = %d"),widths[StatusbarLogicActive]);
+			DEBUGLOG (gui, "Logic width = %d" ,widths[StatusbarLogicActive]);
 			
 		}
 		if (play) {
 			widths[StatusbarPlayback] = play->GetBestSize().GetWidth() +
 			       2*border.x+2;
-			DEBUGLOG(gui,_T("Play width = %d"),widths[StatusbarPlayback]);
+			DEBUGLOG (gui, "Play width = %d" ,widths[StatusbarPlayback]);
 			
 		}
 		SetFieldsCount(countStatusbarRegions, widths);

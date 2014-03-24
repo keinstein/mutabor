@@ -139,7 +139,7 @@ int main(int argc, char **argv)
 	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
 #ifdef DEBUG
 //	debugFlags::flags.timer = true;
-	debugFlags::flags.thread = true;
+	mutabor_debug_flags.thread = true;
 #endif
 
 	wxInitializer initializer;

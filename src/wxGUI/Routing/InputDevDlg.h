@@ -131,7 +131,7 @@ namespace mutaborGUI {
 		void SetMidiDevice(int value)
 
 			{
-				DEBUGLOG(other, _T("%d"),value);
+				DEBUGLOG (other, "%d" ,value);
 				PortChoice->SetSelection (value) ;
 				Update();
 			}
@@ -141,24 +141,22 @@ namespace mutaborGUI {
 				return MidiFilePicker->GetPath() ;
 			}
 
-		void SetMidiFile(wxString value)
-
-			{
-				DEBUGLOG(other, value);
-				MidiFilePicker->SetPath(value);
-				Update();
-				DEBUGLOG(other, _T("done"));
-			}
+		void SetMidiFile(wxString value) {
+			DEBUGLOG(other, "%s", value);
+			MidiFilePicker->SetPath(value);
+			Update();
+			DEBUGLOG (other, "done" );
+		}
 
 		wxString GetGUIDOFile() const
-			{
-				return GuidoFilePicker->GetPath() ;
-			}
+		{
+			return GuidoFilePicker->GetPath() ;
+		}
 
 		void SetGUIDOFile(wxString value)
 
 			{
-				DEBUGLOG(other, value);
+				DEBUGLOG(other, "", value);
 				GuidoFilePicker->SetPath(value);
 				Update();
 			}
@@ -178,7 +176,7 @@ namespace mutaborGUI {
 		void SetType(mutabor::DevType value)
 
 			{
-				DEBUGLOG(other, _T("%d"),value);
+				DEBUGLOG (other, "%d" ,value);
 				UpdateLayout(value);
 				Update();
 			}

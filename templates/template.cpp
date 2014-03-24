@@ -25,7 +25,7 @@
  * \addtogroup templates
  * \{
  ********************************************************************/
-// availlable groups: GUI, Parser, route, kernel, debug, docview, config, GUIroute
+/* available groups: GUI, Parser, route, kernel, debug, docview, config, GUIroute */
 
 /* we guard a little bit complicated to ensure the references are set right
  */
@@ -36,24 +36,24 @@
 #define HEADERFILENAME
 #endif
 
-// ---------------------------------------------------------------------------
-// headers
-// ---------------------------------------------------------------------------
+/* ---------------------------------------------------------------------------
+ * headers
+ * --------------------------------------------------------------------------- */
 
 #include "src/kernel/Defs.h"
 
 #ifndef HEADERFILENAME_PRECOMPILED
 #define HEADERFILENAME_PRECOMPILED
 
-// system headers which do seldom change
+/* system headers which do seldom change */
 
-/// not for headers
+/** not for headers */
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
 
-#endif // precompiled
-#endif // header loaded
+#endif /* precompiled */
+#endif /* header loaded */
 
 
-///\}
+/** \} */

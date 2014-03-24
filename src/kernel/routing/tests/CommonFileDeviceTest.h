@@ -33,6 +33,7 @@
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/kernel/routing/timing.h"
 #include <cstdlib>
+#include "cppunit/extensions/HelperMacros.h"
 
 
 class testCommonFileDeviceTimer: public mutabor::CommonFileInputDevice {
@@ -53,7 +54,7 @@ public:
 		lasttime = mutabor::CurrentTime.Get();
 		CommonFileInputDevice::Play();
 		firsttime += lasttime - pausetime;
-		DEBUGLOG(timer,_T("Paused for %ld μs"),(long) lasttime-pausetime);
+		DEBUGLOG (timer, "Paused for %ld μs" ,(long) lasttime-pausetime);
 	}
 
 	void Pause() {
@@ -70,7 +71,7 @@ public:
 		CommonFileInputDevice::Stop();
 		// check the overall time
 		mutint64 time = mutabor::CurrentTime.Get() - firsttime;
-		DEBUGLOG(timer,_T("Stopped at time: %ld μs"),(long)time);
+		DEBUGLOG (timer, "Stopped at time: %ld μs" ,(long)time);
 		CPPUNIT_ASSERT(time <= ((mutint64)1000*i*(i-1))/2+30000);
 		CPPUNIT_ASSERT(time >= ((mutint64)1000*i*(i-1))/2-30000);
 	}
@@ -89,7 +90,7 @@ public:
 		mutint64 deviation =  tl - (mutint64) i*1000;
 		if (max < deviation)  max = deviation;
 		if (min > deviation || min == 0) min = deviation;
-		DEBUGLOG(timer,_T("deviation = %ld, min = %ld, max = %ld"), (long)deviation, (long)min, (long)max);
+		DEBUGLOG (timer, "deviation = %ld, min = %ld, max = %ld" , (long)deviation, (long)min, (long)max);
 		if (deviation > 10000) {
 			std::cerr << "Too slow: (" << i << "^2 + " << i << ") / 2 = " << (i*(i+1))/2 
 				  << " Runtime: " << tl << "μs" << std::endl;
@@ -103,8 +104,8 @@ public:
 
 		lasttime = newtime;
 		if (++i<100) {
-			DEBUGLOG(timer,_T("Returning %ldμs"),(unsigned long)(i*1000));
-			DEBUGLOG(timer,_T("Time spent in function: %ldμs"), (long)(mutabor::CurrentTime.Get()-newtime));
+			DEBUGLOG (timer, "Returning %ldμs" ,(unsigned long)(i*1000));
+			DEBUGLOG (timer, "Time spent in function: %ldμs" , (long)(mutabor::CurrentTime.Get()-newtime));
 			return (mutint64)(i * 1000);
 		}
 		return GetNO_DELTA();
@@ -145,7 +146,7 @@ public:
 		// change DEBUGA to DEBUG in case you need the debug output
 #ifdef DEBUG
 		//                debugFlags::flags.timer = true;
-		debugFlags::flags.thread = true;
+		isDebugFlag(thread) = true;
 		// debugFlags::flags.midifile = true;
 #endif
 	}
@@ -167,21 +168,21 @@ public:
 		CPPUNIT_ASSERT(tim);
 		mutabor::ScopedInputDevice prevent_from_deletion;
 		prevent_from_deletion = tim;
-		DEBUGLOG(timer,_T("Opening..."));
+		DEBUGLOG (timer, "Opening..." );
 		tim->Open();
 		CPPUNIT_ASSERT(tim->GetMode()==mutabor::DeviceStop);
-		DEBUGLOG(timer,_T("Opened."));
+		DEBUGLOG (timer, "Opened." );
 		tim->Play();
-		DEBUGLOG(timer, _T("Cheking play: mode = %d"), (int)tim->GetMode());
+		DEBUGLOG (timer, "Cheking play: mode = %d" , (int)tim->GetMode());
 		CPPUNIT_ASSERT(tim->GetMode()==mutabor::DevicePlay);
-		DEBUGLOG(timer,_T("Sleeping 2000μs"));
+		DEBUGLOG (timer, "Sleeping 2000μs" );
 		mutint64 sleped = mutabor::CurrentTime.Get();
 		usleep(2000);
-		DEBUGLOG(timer,_T("Slept 2000μs"));
+		DEBUGLOG (timer, "Slept 2000μs" );
 		sleped = mutabor::CurrentTime.Get() - sleped;
-		DEBUGLOG(timer, _T("In fact it was %ldms"), (long)sleped);
+		DEBUGLOG (timer, "In fact it was %ldms" , (long)sleped);
 		CPPUNIT_ASSERT(tim->GetMode()==mutabor::DevicePlay);
-		DEBUGLOG(timer,_T("pausing"));
+		DEBUGLOG (timer, "pausing" );
 		tim->Pause();
 		CPPUNIT_ASSERT(tim->GetMode()==mutabor::DevicePause);
 		usleep(2000);

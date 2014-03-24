@@ -1,38 +1,31 @@
-/** \file 
+/** \file               -*- C++ -*-
  ********************************************************************
- * Description
+ * header file of GIS (GMN Intern Structur)
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/gmn/GIS.h,v 1.5 2011/11/02 14:31:57 keinstein Exp $
- * Copyright:   (c) 2008 TU Dresden
+ * Copyright:   (c) 2008 Tobias Schlemmer
+ * \author  Volker Abel
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/11/02 14:31:57 $
- * \version $Revision: 1.5 $
  * \license GPL
  *
- * $Log: GIS.h,v $
- * Revision 1.5  2011/11/02 14:31:57  keinstein
- * fix some errors crashing Mutabor on Windows
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.4  2011-09-27 20:13:22  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.3  2011-02-20 22:35:56  keinstein
- * updated license information; some file headers have to be revised, though
- *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
  ********************************************************************
  * \addtogroup route
  * \{
  ********************************************************************/
-/// ##################################################################
-// header file of GIS (GMN Intern Structur)
-// ##################################################################
 
 /* we guard a little bit complicated to ensure the references are set right
  */
@@ -67,25 +60,16 @@
 #include <stdlib.h>
 
 
-#ifdef WX
 #define CHECKDUP(target, source) target = source;
-#else
-#define CHECKDUP(target, source) \
-  if ( source )	               \
-	 target = mutStrdup(source);     \
-  else                           \
-	 target = 0
-
-#endif
 
 // regisered tags ---------------------------------------------------
 
 #define NTAGS 52
 #define NTAGSHORTS 6
 
-extern const mutChar * Tags[NTAGS];
+extern const char * Tags[NTAGS];
 
-extern const mutChar * TagShorts[NTAGSHORTS];
+extern const char * TagShorts[NTAGSHORTS];
 
 #define TTintens   1
 #define TTslur     2
@@ -106,7 +90,7 @@ extern const mutChar * TagShorts[NTAGSHORTS];
 
 // ------------------------------------------------------------------
 
-int GetTagId(const mutString &name, mutString &registered);
+int GetTagId(const std::string &name, std::string &registered);
 
 // ##################################################################
 // GIS types
@@ -134,20 +118,18 @@ class GisToken
 
 public:
 	GisToken *Next;
-	mutString Sep;
+	std::string Sep;
 
-	GisToken(const mutString &sep = mutEmptyString, GisToken *next = 0)
+	GisToken(const std::string &sep = "", GisToken *next = 0)
 	{
 		CHECKDUP(Sep, sep);
-		DEBUGLOG(other, _T("New Token: %s (was %s)"),Sep.c_str(),sep.c_str());
+		DEBUGLOG(other, ("New Token: %s (was %s)"),Sep.c_str(),sep.c_str());
 		Next = next;
 	}
 
 	virtual ~GisToken()
 
 	{
-		mutFreeString(Sep);
-
 		if ( Next ) delete Next;
 	}
 
@@ -170,21 +152,19 @@ public:
 	}
 
 #endif
-#ifdef WX
-	operator wxString()
+
+	virtual operator std::string() const
 	{
 		if (Next)
-			return ToString() + ((wxString) *Next);
+			return ToString() + ((std::string) *Next);
 		else
 			return ToString();
 	}
 
-	virtual wxString ToString()
+	virtual std::string ToString() const
 	{
-		return _T("GisToken: { Sep: '") + Sep + _T("' }\n");
+		return ("GisToken: { Sep: '") + Sep + ("' }\n");
 	}
-
-#endif
 };
 
 GisToken *CopyPara(GisToken *para);
@@ -195,21 +175,19 @@ class GisSequenz : public GisToken
 {
 
 public:
-	mutString Sep2;
+	std::string Sep2;
 	GisToken *Contents;
 
-	GisSequenz(GisToken *contents = 0, const mutString sep = mutEmptyString, GisToken *next = 0) :
+	GisSequenz(GisToken *contents = 0, const std::string sep = "", GisToken *next = 0) :
 			GisToken(sep, next)
 	{
 		Contents = contents;
-		Sep2 = mutEmptyString;
+		Sep2 = "";
 	}
 
 	~GisSequenz()
 
 	{
-		mutFreeString(Sep2);
-
 		if ( Contents ) delete Contents;
 	}
 
@@ -227,15 +205,13 @@ public:
 	}
 
 #endif
-#ifdef WX
-	virtual wxString ToString()
+	virtual std::string ToString() const
 	{
-		return _T("GisSequenz: {\n") + GisToken::ToString() +
-		       _T("Sep2: '") + Sep2 + _T("'; Contents: {\n") +
-		       (Contents?((wxString) *Contents):wxString(_T(""))) + _T("}\n}\n");
+		return ("GisSequenz: {\n") + GisToken::ToString() +
+		       ("Sep2: '") + Sep2 + ("'; Contents: {\n") +
+			(Contents?((std::string) *Contents):std::string((""))) + ("}\n}\n");
 	}
 
-#endif
 };
 
 // segment
@@ -244,22 +220,20 @@ class GisSegment : public GisToken
 {
 
 public:
-	mutString Sep2;
+	std::string Sep2;
 
 	GisToken *Contents;
 
-	GisSegment(GisToken *contents = 0, const mutString sep = mutEmptyString, GisToken *next = 0) :
+	GisSegment(GisToken *contents = 0, const std::string sep = "", GisToken *next = 0) :
 			GisToken(sep, next)
 	{
 		Contents = contents;
-		Sep2 = mutEmptyString;
+		Sep2 = "";
 	}
 
 	~GisSegment()
 
 	{
-		mutFreeString(Sep2);
-
 		if ( Contents ) delete Contents;
 	}
 
@@ -277,15 +251,14 @@ public:
 	}
 
 #endif
-#ifdef WX
-	virtual wxString ToString()
+
+	virtual std::string ToString() const
 	{
-		return _T("GisSegment: {\n") + GisToken::ToString() +
-		       _T("Sep2: '") + Sep2 + _T("'; Contents: {\n") +
-		       (Contents?((wxString) *Contents):wxString(_T(""))) + _T("}\n}\n");
+		return ("GisSegment: {\n") + GisToken::ToString() +
+		       ("Sep2: '") + Sep2 + ("'; Contents: {\n") +
+			(Contents?((std::string) *Contents):std::string((""))) + ("}\n}\n");
 	}
 
-#endif
 };
 
 // tag --------------------------------------------------------------
@@ -295,14 +268,14 @@ class GisTag : public GisToken
 
 public:
 	int Id;     // 0 ... no registered id
-	mutString Name;
+	std::string Name;
 	GisToken *Para;
 
-	GisTag(mutString name = mutEmptyString, GisToken *para = 0,
-	       mutString sep = mutEmptyString, GisToken *next = 0)
+	GisTag(std::string name = "", GisToken *para = 0,
+	       std::string sep = "", GisToken *next = 0)
 			: GisToken(sep, next)
 	{
-		DEBUGLOG(other, _T("name.len %d"),(int)(name.Len()));
+		DEBUGLOG(other, ("name.len %d"),(int)(name.length()));
 		Id = GetTagId(name, Name);
 
 		if ( Id == -1 ) {
@@ -313,7 +286,7 @@ public:
 		Para = para;
 	}
 
-	GisTag(int id, char shortForm, GisToken *para = 0, mutString sep = mutEmptyString, GisToken *next = 0)
+	GisTag(int id, char shortForm, GisToken *para = 0, std::string sep = "", GisToken *next = 0)
 			: GisToken(sep, next)
 	{
 		Id = id;
@@ -328,7 +301,6 @@ public:
 
 	~GisTag()
 	{
-		if ( !Id && Name.size() ) mutFreeString(Name);
 		if ( Para ) delete Para;
 	}
 
@@ -353,15 +325,13 @@ public:
 	}
 
 #endif
-#ifdef WX
-	virtual wxString ToString()
-	{
-		return _T("GisTag: {\n") + GisToken::ToString() +
-		       wxString::Format(_T("Id: %d\nName: '"),Id) + Name + _T("'; Para: {\n") +
-		       (Para?((wxString) *Para):wxString(_T(""))) + _T("}\n}\n");
-	}
 
-#endif
+	virtual std::string ToString() const
+	{
+		return ("GisTag: {\n") + GisToken::ToString() +
+			boost::str(boost::format("Id: %d\nName: '") % Id) + Name + ("'; Para: {\n") +
+		       (Para?((std::string) *Para):std::string((""))) + ("}\n}\n");
+	}
 };
 
 // begin ranged tag -------------------------------------------------
@@ -372,15 +342,15 @@ class GisTagBegin : public GisTag
 public:
 	GisToken *End;
 
-	GisTagBegin(mutString name = mutEmptyString, GisToken *para = 0,
-	            mutString sep = mutEmptyString, GisToken *next = 0)
+	GisTagBegin(std::string name = "", GisToken *para = 0,
+	            std::string sep = "", GisToken *next = 0)
 			: GisTag(name, para, sep, next)
 	{
 		End = 0;
 	}
 
 	GisTagBegin(int id, char shortForm, GisToken *para = 0,
-	            mutString sep = mutEmptyString, GisToken *next = 0)
+	            std::string sep = "", GisToken *next = 0)
 			: GisTag(id, shortForm, para, sep, next)
 	{
 		End = 0;
@@ -405,14 +375,11 @@ public:
 	}
 
 #endif
-#ifdef WX
-	virtual wxString ToString()
+	virtual std::string ToString() const
 	{
-		return _T("GisTagBegin: {\n") + GisTag::ToString() +
-			wxString::Format(_T("End: %p\n}\n"),(void *)End);
+		return ("GisTagBegin: {\n") + GisTag::ToString() +
+			boost::str(boost::format("End: %p\n}\n")%(void *)End);
 	}
-
-#endif
 };
 
 // end ranged tag ---------------------------------------------------
@@ -422,7 +389,7 @@ class GisTagEnd : public GisToken
 
 public:
 	GisTagBegin *Begin;
-	GisTagEnd(GisTagBegin *begin = 0, mutString sep = mutEmptyString, GisToken *next = 0)
+	GisTagEnd(GisTagBegin *begin = 0, std::string sep = "", GisToken *next = 0)
 			: GisToken(sep, next)
 	{
 		Begin = begin;
@@ -442,14 +409,13 @@ public:
 	}
 
 #endif
-#ifdef WX
-	virtual wxString ToString()
+
+	virtual std::string ToString() const
 	{
-		return _T("GisTagEnd: {\n") + GisToken::ToString() +
-			wxString::Format(_T("Begin: %p\n}\n"),(void *)Begin);
+		return ("GisTagEnd: {\n") + GisToken::ToString() +
+			boost::str(boost::format("Begin: %p\n}\n") % (void *)Begin);
 	}
 
-#endif
 };
 
 // note -------------------------------------------------------------
@@ -458,16 +424,16 @@ class GisNote : public GisToken
 {
 
 public:
-	mutString Name;
-	mutString Accedentials;
+	std::string Name;
+	std::string Accedentials;
 	int Octave;
-	frac Duration;
+	mutabor::frac Duration;
 
-	GisNote(const mutString &name = mutEmptyString, 
-		const mutString &accedentials = mutEmptyString, 
+	GisNote(const std::string &name = "",
+		const std::string &accedentials = "",
 		int octave = 0,
-	        frac duration = frac(1,4), 
-		const mutString &sep = mutEmptyString, 
+		const mutabor::frac & duration = mutabor::frac(1,4),
+		const std::string &sep = "",
 		GisToken *next = 0)
 			: GisToken(sep, next),
 		Name(name),
@@ -479,7 +445,11 @@ public:
 		CHECKDUP(Accedentials, accedentials);
 	}
 
-	GisNote(int key, int octave, int acc, const mutString sep = mutEmptyString, GisToken *next = 0);
+	GisNote(int key,
+		int octave,
+		int acc,
+		const std::string & sep = "",
+		GisToken *next = 0);
 
 	int GetKey();
 
@@ -489,7 +459,7 @@ public:
 	}
 
 #ifndef FOR_MUTWIN
-	virtual void Stream(ostream &out, mutChar sep);
+	virtual void Stream(ostream &out, char sep);
 
 	virtual void Echo()
 	{
@@ -497,16 +467,15 @@ public:
 	}
 
 #endif
-#ifdef WX
-	virtual wxString ToString()
+
+	virtual std::string ToString() const
 	{
-		return _T("GisNote: {\n") + GisToken::ToString() +
-		       wxString::Format(_T("Name: '%s'; Accedentials: '%s'; Octave: %d; Duration: "),
-		                        Name.c_str(),Accedentials.c_str(),Octave) +
-		       (TowxString(Duration)) + _T("\n}\n");
+		return ("GisNote: {\n") + GisToken::ToString() +
+			boost::str(boost::format("Name: '%s'; Accedentials: '%s'; Octave: %d; Duration: ")
+				   % Name.c_str() % Accedentials.c_str() % Octave) +
+			mutabor::str(Duration) + ("\n}\n");
 	}
 
-#endif
 };
 
 // integer parameter ------------------------------------------------
@@ -517,7 +486,7 @@ class GisParaInt : public GisToken
 public:
 	int i;
 
-	GisParaInt(int value = 0, mutString sep = mutEmptyString, GisToken *next = 0)
+	GisParaInt(int value = 0, std::string sep = "", GisToken *next = 0)
 			: GisToken(sep, next)
 	{
 		i = value;
@@ -535,16 +504,14 @@ public:
 	}
 
 #ifndef FOR_MUTWIN
-	virtual void Stream(ostream &out, mutChar sep);
+	virtual void Stream(ostream &out, char sep);
 #endif
-#ifdef WX
-	virtual wxString ToString()
+	virtual std::string ToString() const
 	{
-		return _T("GisParaInt: { ") + GisToken::ToString() +
-		       wxString::Format(_T("i: %d }\n"),i);
+		return ("GisParaInt: { ") + (GisToken::ToString()) +
+			boost::str(boost::format("i: %d }\n") % i);
 	}
 
-#endif
 };
 
 // real parameter ---------------------------------------------------
@@ -555,7 +522,7 @@ class GisParaReal : public GisToken
 public:
 	double x;
 
-	GisParaReal(double value = 0, mutString sep = mutEmptyString, GisToken *next = 0)
+	GisParaReal(double value = 0, std::string sep = "", GisToken *next = 0)
 			: GisToken(sep, next)
 	{
 		x = value;
@@ -575,14 +542,13 @@ public:
 #ifndef FOR_MUTWIN
 	virtual void Stream(ostream &out, char sep);
 #endif
-#ifdef WX
-	virtual wxString ToString()
+
+	virtual std::string ToString() const
 	{
-		return _T("GisParaReal: { ") + GisToken::ToString() +
-		       wxString::Format(_T("x: %g }\n"),x);
+		return ("GisParaReal: { ") + GisToken::ToString() +
+			boost::str(boost::format("x: %g }\n") % x);
 	}
 
-#endif
 };
 
 // string parameter -------------------------------------------------
@@ -591,9 +557,9 @@ class GisParaStr : public GisToken
 {
 
 public:
-	mutString s;
+	std::string s;
 
-	GisParaStr(const mutString value = mutEmptyString, mutString sep = mutEmptyString, GisToken *next = 0)
+	GisParaStr(const std::string value = "", std::string sep = "", GisToken *next = 0)
 			: GisToken(sep, next)
 	{
 		CHECKDUP(s, value);
@@ -602,11 +568,8 @@ public:
 	~GisParaStr()
 
 	{
-#ifdef WX
-#else
-
+#if 0
 		if ( s ) delete s;
-
 #endif
 	}
 
@@ -622,16 +585,13 @@ public:
 	}
 
 #ifndef FOR_MUTWIN
-	virtual void Stream(ostream &out, mutChar sep);
+	virtual void Stream(ostream &out, char sep);
 #endif
-#ifdef WX
-	virtual wxString ToString()
+	virtual std::string ToString() const
 	{
-		return _T("GisParaStr: { ") + GisToken::ToString() +
-		       wxString::Format(_T("s: '%s' }\n"),s.c_str());
+		return ("GisParaStr: { ") + GisToken::ToString() +
+			boost::str(boost::format("s: '%s' }\n")%s.c_str());
 	}
-
-#endif
 };
 
 // comma (in chord as separator) ------------------------------------
@@ -641,7 +601,7 @@ class GisComma : public GisToken
 
 public:
 
-	GisComma(const mutString sep = mutEmptyString, GisToken *next = 0)
+	GisComma(const std::string sep = "", GisToken *next = 0)
 			: GisToken(sep, next)
 	{ };
 
@@ -651,7 +611,7 @@ public:
 	}
 
 #ifndef FOR_MUTWIN
-	virtual void Stream(ostream &out, mutChar sep);
+	virtual void Stream(ostream &out, char sep);
 
 	virtual void Echo()
 	{
@@ -659,14 +619,12 @@ public:
 	}
 
 #endif
-#ifdef WX
-	virtual wxString ToString()
+	virtual std::string ToString() const
 	{
-		return _T("GisComma: { ") + GisToken::ToString() +
-		       _T(" }\n");
+		return ("GisComma: { ") + GisToken::ToString() +
+		       (" }\n");
 	}
 
-#endif
 };
 
 // ##################################################################
@@ -674,7 +632,7 @@ public:
 
 GisType GetGisType(GisToken* token);
 
-GisToken *GisParse(const mutString FileName);
+GisToken *GisParse(const std::string FileName);
 
 extern int StartSep();  // at the beginning, to get comments infront of the first token
 
@@ -696,22 +654,23 @@ extern int EndRange();
 
 extern int NextSequenz();
 
-extern int Tag(mutString tagName);
+extern int Tag(const std::string & tagName);
 
 extern int TagParaInt(long i);
 
 extern int TagParaReal(double x);
 
-extern int TagParaStr(mutString s);
+extern int TagParaStr(const std::string &s);
 
 extern int Comma();
 
-int Note(const mutString name, const mutString accedentials, int octave, frac duration);
+int Note(const std::string & name,
+	 const std::string & accedentials,
+	 int octave,
+	 const mutabor::frac & duration);
 
-#ifdef WX
-wxString GISPrettyPrint(wxString s);
+std::string GISPrettyPrint(std::string s);
 
-#endif
 
 
 #endif /* precompiled */

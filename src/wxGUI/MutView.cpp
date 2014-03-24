@@ -185,7 +185,7 @@ namespace mutaborGUI {
 	{
 		mutUnused(deactiveView);
 		// don't implement this function before looking at the debug output
-		DEBUGLOG(docview,_T("Activate: %d && %p == %p"),
+		DEBUGLOG (docview, "Activate: %d && %p == %p" ,
 			 activate, (void*)activeView, (void*)this);
 	}
 

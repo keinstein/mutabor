@@ -116,8 +116,8 @@ public:
 	void tearDown()
 	{ 
 #ifdef DEBUG
-		debugFlags::flags.timer = false;
-		debugFlags::flags.midifile = false;
+		isDebugFlag(timer) = false;
+		isDebugFlag(midifile) = false;
 #endif
 		if (in) 
 			in -> Destroy();
@@ -130,14 +130,14 @@ public:
 	void testOpenFail() 
 	{ 	  
 		CPPUNIT_ASSERT( in );
-		in -> SetName(_T("+-*”„“"));
+		in -> SetName(("+-*”„“"));
 		CPPUNIT_ASSERT(!(in -> Open()));
 	}
 
 	void testPlayMidi() 
 	{ 
 		CPPUNIT_ASSERT( in );
-		in -> SetName(_T(SRCDIR) _T("/midi1_source.mid"));
+		in -> SetName(SRCDIR "/midi1_source.mid");
 		CPPUNIT_ASSERT((in -> Open()));
 	
 		in -> Play();
@@ -195,8 +195,8 @@ public:
 	void AddTime(frac) {}
 	int GetMaxChannel() const { return 15; }
 	int GetMinChannel() const { return 0; }
-	bool Check(mutString s) {
-		bool retval = (s == (mutString)Out);
+	bool Check(std::string s) {
+		bool retval = (s == (std::string)Out);
 		Out.ClearData();
 		return retval;
 	}
@@ -229,7 +229,7 @@ public:
 	void setUp();
 	void tearDown();
 
-	bool CheckOut(mutString s, int line, const mutChar * file);
+	bool CheckOut(std::string s, int line, const char * file);
 
 	void testNoteOnOff();
 	void testBatchPlay1();

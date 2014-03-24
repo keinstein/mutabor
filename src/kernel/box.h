@@ -40,9 +40,9 @@
 #define MU32_BOX_H
 #endif
 
-// ---------------------------------------------------------------------------
+/* ---------------------------------------------------------------------------
 // headers
-// ---------------------------------------------------------------------------
+// --------------------------------------------------------------------------- */
 
 #include "Defs.h"
 #include "Global.h"
@@ -59,7 +59,7 @@ namespace mutabor {
 		extern "C" {
 #endif
 
-// system headers which do seldom change
+/* system headers which do seldom change */
 
 
 
@@ -88,14 +88,14 @@ struct mutabor_logic_parsed;
 struct mini_heap;
 
 struct mutabor_box_flags {
-	unsigned char local_harmony_before_global:1;
-	unsigned char local_keyboard_before_global:1;
-	unsigned char local_midi_before_global:1;
-	unsigned char break_logic:1; 	/**<
+	unsigned int local_harmony_before_global:1;
+	unsigned int local_keyboard_before_global:1;
+	unsigned int local_midi_before_global:1;
+	unsigned int break_logic:1; 	/**<
 					 * If set to 1 Break the execution of the logic.
 					 * This is useful to break endless loops.
 					 */
-	unsigned char auto_reset_break_logic:1; /**< Automatically reset logic
+	unsigned int auto_reset_break_logic:1; /**< Automatically reset logic
 						   breaking.  Certain functions
 						   may reset the flag
 						   break_logic. This flag is
@@ -105,9 +105,9 @@ struct mutabor_box_flags {
 };
 
 /** Mutabor box type. */
-struct mutabor_box_type {
+typedef struct mutabor_box_type {
         int id;
-//	int next_used;
+/*	int next_used; */
 	void * userdata;
 
 	mutabor_key_index_type current_keys;
@@ -156,16 +156,15 @@ struct mutabor_box_type {
 
 	volatile struct mutabor_box_flags flags;
 
-};
-typedef struct mutabor_box_type mutabor_box_type;
+} mutabor_box_type;
 
 
-//extern mutabor_box_type mut_box[MAX_BOX];
-// extern int laufzeit_meldungen_erlaubt;
-			// extern int aktuelles_midi_instrument;
+/*extern mutabor_box_type mut_box[MAX_BOX]; */
+/* extern int laufzeit_meldungen_erlaubt; */
+			/* extern int aktuelles_midi_instrument; */
 extern size_t minimal_box_used;
 
-			// extern int keys_changed_sum;
+			/* extern int keys_changed_sum; */
 void mutabor_set_logic(struct mutabor_box_type * box, struct mutabor_logic_parsed * logic);
 void mutabor_reset_keys(struct mutabor_box_type * box);
 void mutabor_reset_box(struct mutabor_box_type * box);
@@ -223,6 +222,7 @@ inline size_t mutabor_find_key_in_box_by_key(mutabor_box_type * box, int key_num
  */
 inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t index) {
 	mutabor_note_type *last_key, *current_key;
+	size_t last_index;
 
 	if (!box->key_count) return;
 
@@ -254,11 +254,11 @@ inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t index) {
 
 	
 	
-	DEBUGLOG2(kernel_box,_T("index = %d"),(int)index);
+	DEBUGLOG2(kernel_box,("index = %d"),(int)index);
 	last_key = mutabor_find_key_in_box(box,0);
-	size_t last_index = 0;
+	last_index = 0;
 	while (last_key != NULL && last_key -> next != index) {
-//		DEBUGLOG2(kernel_box,_T("last_key->next = %d"), last_key->next);
+/*		DEBUGLOG2(kernel_box,_T("last_key->next = %d"), last_key->next); */
 		last_index = last_key->next;
 		last_key = mutabor_find_key_in_box(box,last_index);
 	}
@@ -353,4 +353,4 @@ inline mutabor_note_type * mutabor_create_key_in_box (mutabor_box_type * box) {
 #endif
 
 
-///\}
+/** \} */

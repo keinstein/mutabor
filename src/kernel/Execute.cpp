@@ -49,13 +49,7 @@
 #include "src/kernel/Interpre.h"
 #include "src/kernel/routing/Device.h"
 #include "src/kernel/routing/Route-inlines.h"
-#include "wx/log.h"
 #include "limits.h"
-
-#ifdef _
-#undef _
-#endif
-#define _ _mut
 
 #ifdef __cplusplus
 namespace mutabor {
@@ -66,14 +60,14 @@ namespace mutabor {
 		    const char * mutabor_error_type_to_string(mutabor_error_type type)
 		    {
 			switch (type) {
-			case warning: return _("Warning");
-			case compiler_warning: return _("Compiler warning");
-			case runtime_warning: return _("Runtime warning");
-			case error: return _("Error");
+			case warning: return _mut("Warning");
+			case compiler_warning: return _mut("Compiler warning");
+			case runtime_warning: return _mut("Runtime warning");
+			case error: return _mut("Error");
 			case internal_error: return ("Internal error");
 			case compiler_error: return ("Compiler error");
 			case runtime_error: return ("Runtime error");
-			default: return _("Unknown error");
+			default: return _mut("Unknown error");
 			}
 		    }
 
@@ -290,7 +284,7 @@ inline static void call_actions (mutabor_box_type * box,
 				switch (aktion->aufruf_typ) {
 				case aufruf_logik: {
 					struct logik * logic = aktion->calling.logic;
-					asprintf(&name, _("%s {logic}"),aktion->name?aktion->name:"");
+					asprintf(&name, _mut("%s {logic}"),aktion->name?aktion->name:"");
 					TRACE;
 
 					mutASSERT(logic);
@@ -318,7 +312,7 @@ inline static void call_actions (mutabor_box_type * box,
 					break;
 				}
 				case aufruf_tonsystem:
-					asprintf(&name, _("%s {tone system}"),aktion->name?aktion->name:"");
+					asprintf(&name, _mut("%s {tone system}"),aktion->name?aktion->name:"");
 					TRACE;
 					*(box -> tonesystem) =
 						*aktion->u.aufruf_tonsystem.tonsystem;
@@ -337,11 +331,11 @@ inline static void call_actions (mutabor_box_type * box,
 					    !parameters->data) {
 					    mutabor_error_message(box,
 								  internal_error,
-								  _("Trying to set the anchor with incompatible parameters. Please report to the MUTABOR team."));
+								  _mut("Trying to set the anchor with incompatible parameters. Please report to the MUTABOR team."));
 					    break;
 					}
 
-					asprintf(&name, _("%s:%d[]"),aktion->name?aktion->name:"",parameters->data[0]);
+					asprintf(&name, _mut("%s:%d[]"),aktion->name?aktion->name:"",parameters->data[0]);
 
 					change_anker(box, parameters->data[0]);
 
@@ -360,11 +354,11 @@ inline static void call_actions (mutabor_box_type * box,
 					    !parameters->data) {
 					    mutabor_error_message(box,
 								  internal_error,
-								  _("Setting tone system width with incompatible parameters. Please report to the MUTABOR team."));
+								  _mut("Setting tone system width with incompatible parameters. Please report to the MUTABOR team."));
 					    break;
 					}
 
-					asprintf(&name, _("%s:[<< %d >>]"),aktion->name?aktion->name:"",parameters->data[0]);
+					asprintf(&name, _mut("%s:[<< %d >>]"),aktion->name?aktion->name:"",parameters->data[0]);
 
 					change_breite(box, parameters->data[0]);
 					update_pattern(box);
@@ -379,7 +373,7 @@ inline static void call_actions (mutabor_box_type * box,
 					TRACE;
 					mutabor_interval period =
 						aktion->u.aufruf_umst_wiederholung_abs.interval;
-					asprintf(&name, _("%s:[]%f HT"),aktion->name?aktion->name:"",
+					asprintf(&name, _mut("%s:[]%f HT"),aktion->name?aktion->name:"",
 							       mutabor_get_pitch_from_interval(period));
 
 					box->tonesystem->periode = period;
@@ -396,7 +390,7 @@ inline static void call_actions (mutabor_box_type * box,
 					TRACE;
 					mutabor_interval period =
 						aktion->u.aufruf_umst_wiederholung_abs.interval;
-					asprintf(&name, _("%s:[]@+%f HT"),aktion->name?aktion->name:"",
+					asprintf(&name, _mut("%s:[]@+%f HT"),aktion->name?aktion->name:"",
 						 mutabor_get_pitch_from_interval(period));
 
 					box->tonesystem->periode
@@ -420,10 +414,10 @@ inline static void call_actions (mutabor_box_type * box,
 					    !parameters->data) {
 					    mutabor_error_message(box,
 								  internal_error,
-								  _("Changing anchor with incompatible parameters. Please report to the MUTABOR team."));
+								  _mut("Changing anchor with incompatible parameters. Please report to the MUTABOR team."));
 					    break;
 					}
-					asprintf(&name,_("%s:@%c%d[]"),aktion->name?aktion->name:"",
+					asprintf(&name,_mut("%s:@%c%d[]"),aktion->name?aktion->name:"",
 						 aktion->u.aufruf_umst_taste_rel.rechenzeichen,
 						 parameters->data[0]);
 
@@ -461,10 +455,10 @@ inline static void call_actions (mutabor_box_type * box,
 					    !parameters->data) {
 					    mutabor_error_message(box,
 								  internal_error,
-								  _("Changing tone system width with incompatible parameters. Please report to the MUTABOR team."));
+								  _mut("Changing tone system width with incompatible parameters. Please report to the MUTABOR team."));
 					    break;
 					}
-					asprintf(&name, _("%s:[<<@%c%d>>]"),
+					asprintf(&name, _mut("%s:[<<@%c%d>>]"),
 							       name,
 							       aktion->u.aufruf_umst_breite_rel.rechenzeichen,
 							       parameters->data[0]);
@@ -502,7 +496,7 @@ inline static void call_actions (mutabor_box_type * box,
 					mutabor_tone * ton_zeiger;
 					struct ton_einstell * lauf;
 					TRACE;
-					asprintf(&name, _("%s:[.,.,.]"),
+					asprintf(&name, _mut("%s:[.,.,.]"),
 						 aktion->name?aktion->name:"");
 
 					for (ton_zeiger = box->tonesystem->ton,
@@ -523,7 +517,7 @@ inline static void call_actions (mutabor_box_type * box,
 							break;
 
 						case einstell_absolut:
-							* ton_zeiger = lauf->tone;
+							* ton_zeiger = lauf->u.tone;
 
 							break;
 
@@ -531,7 +525,7 @@ inline static void call_actions (mutabor_box_type * box,
 							* ton_zeiger =
 								mutabor_add_interval_to_tone(*ton_zeiger,
 											     1,
-											     lauf->interval);
+											     lauf->u.interval);
 
 							break;
 
@@ -560,7 +554,7 @@ inline static void call_actions (mutabor_box_type * box,
 						asprintf(&params, "%d", parameters->data[0]);
 						for (size_t i = 1; i < parameters->size; i++) {
 							oldparams = params;
-							asprintf(&params, _("%s,%d"),
+							asprintf(&params, _mut("%s,%d"),
 								 oldparams,
 								 parameters->data[i]);
 							free(oldparams);
@@ -581,7 +575,7 @@ inline static void call_actions (mutabor_box_type * box,
 					    !parameters->data) {
 					    mutabor_error_message(box,
 								  internal_error,
-								  _("Switching cases with incompatible parameter list. Please report to the MUTABOR team."));
+								  _mut("Switching cases with incompatible parameter list. Please report to the MUTABOR team."));
 					    break;
 					}
 					i=parameters->data[0];
@@ -612,7 +606,7 @@ inline static void call_actions (mutabor_box_type * box,
 					} else params = NULL;
 					for (; i ;  i = i->next) {
 						oldparams = params;
-						asprintf(&params, _("%s %x"),
+						asprintf(&params, _mut("%s %x"),
 							 oldparams,
 							 i -> midi_code);
 						free(oldparams);
@@ -636,7 +630,7 @@ inline static void call_actions (mutabor_box_type * box,
 				default:
 					mutabor_error_message(box,
 							      internal_error,
-							      _("Unexpected action type: %d"), aktion->aufruf_typ);
+							      _mut("Unexpected action type: %d"), aktion->aufruf_typ);
 					UNREACHABLE;
 					name = strdup("???");
 				}
@@ -712,7 +706,7 @@ inline static void call_actions (mutabor_box_type * box,
 		tone_system * tonsys = box->tonesystem;
 		int i;
 
-		DEBUGLOG2(kernel_exec,_T("Box %p got new width: %d"), (void*)box, neu);
+		DEBUGLOG2(kernel_exec,("Box %p got new width: %d"), (void*)box, neu);
 		if ( neu <= 0 ) neu = 1;
 		if ( neu > MUTABOR_KEYRANGE_MAX_WIDTH)
 			neu = MUTABOR_KEYRANGE_MAX_WIDTH;
@@ -834,7 +828,7 @@ inline static void call_actions (mutabor_box_type * box,
 					break;
 				box->last_trigger.type
 					= any_trigger::harmony;
-				box->last_trigger.harmony_trigger = index;
+				box->last_trigger.u.harmony_trigger = index;
 				call_actions(box,
 					     index->aktion,
 					     NULL);
@@ -865,7 +859,7 @@ inline static void call_actions (mutabor_box_type * box,
 					// PASST !!!
 					box->last_trigger.type
 						= any_trigger::harmony;
-					box->last_trigger.harmony_trigger
+					box->last_trigger.u.harmony_trigger
 						= index;
 					box->distance = i;
 					call_actions(box,
@@ -879,7 +873,7 @@ inline static void call_actions (mutabor_box_type * box,
 			case mutabor_is_else_path: // default
 				TRACE;
 				box->last_trigger.type            = any_trigger::harmony;
-				box->last_trigger.harmony_trigger = index;
+				box->last_trigger.u.harmony_trigger = index;
 
 				call_actions(box, index->aktion, NULL);
 				mutabor_update (box,mutabor_action_changed);
@@ -887,7 +881,7 @@ inline static void call_actions (mutabor_box_type * box,
 			default:
 				mutabor_error_message(box,
 						      internal_error,
-						      _("Undefined harmonic harmony class %d in HarmonyAnalysis().\n\
+						      _mut("Undefined harmonic harmony class %d in HarmonyAnalysis().\n\
 Please, report this error to the MUTABOR team."),
 						      index->ist_harmonieform);
 			}
@@ -939,7 +933,7 @@ Please, report this error to the MUTABOR team."),
 		new_key->channel = channel;
 		new_key->id = id;
 		new_key->userdata = userdata;
-		DEBUGLOG2(routing,_T("(key = %d, channel = %lu, id = %lu, userdata = %p)"),
+		DEBUGLOG2(routing,("(key = %d, channel = %lu, id = %lu, userdata = %p)"),
 			 taste,
 			 (unsigned long)channel,
 			 (unsigned long)id,
@@ -966,7 +960,7 @@ Please, report this error to the MUTABOR team."),
 
 		if (key == NULL) return;
 		mutabor_delete_key_in_box(box,index);
-		DEBUGLOG2(routing,_T("(key = %d, channel = %lu, id = %lu)"),
+		DEBUGLOG2(routing,("(key = %d, channel = %lu, id = %lu)"),
 			 taste,
 			 (unsigned long)channel,
 			 (unsigned long)id);
@@ -1063,7 +1057,7 @@ Please, report this error to the MUTABOR team."),
 
 		if ( index ) {
 			box->last_trigger.type = any_trigger::midi;
-			box->last_trigger.midi_trigger = index;
+			box->last_trigger.u.midi_trigger = index;
 			call_actions( box, index->aktion, NULL);
 			mutabor_update(box,mutabor_action_changed);
 			return true;
@@ -1117,7 +1111,7 @@ Please, report this error to the MUTABOR team."),
 			     && (is_simple
 				 || is_logic == (help->the_logik_to_expand != NULL))) {
 				box->last_trigger.type        = any_trigger::key;
-				box->last_trigger.key_trigger = help;
+				box->last_trigger.u.key_trigger = help;
 				call_actions(box, help->aktion, NULL);
 				mutabor_update (box,mutabor_action_changed);
 				return true;

@@ -65,7 +65,7 @@ namespace mutabor {
 	protected:
 		CommonFileOutputDevice(): OutputDeviceClass() {}
 
-		CommonFileOutputDevice(const mutStringRef name,
+		CommonFileOutputDevice(const std::string name,
 				       int id = -1)
 			: OutputDeviceClass(name, id) { }
  	public:
@@ -86,7 +86,7 @@ namespace mutabor {
 		virtual bool do_Open();
 		virtual void Close();
 
-		virtual void SetName(const wxString & s)
+		virtual void SetName(const std::string & s)
 			{
 				if (s != Name) {
 					bool reopen = IsOpen();
@@ -101,14 +101,12 @@ namespace mutabor {
 			}
 
 
-		virtual mutString GetTypeName () const {
+		virtual std::string GetTypeName () const {
 			mutASSERT(false);
-			return N_("Generic output file");
+			return _mutN("Generic output file");
 		}
 
-#ifdef WX
-		virtual wxString TowxString() const;
-#endif
+		virtual operator std::string() const;
 	};
 
 
@@ -206,7 +204,7 @@ namespace mutabor {
 		 */
 		virtual void threadCleanUp() {}
 
-		virtual void SetName(const wxString & s) {
+		virtual void SetName(const std::string & s) {
 			if (s != Name) {
 				bool reopen = IsOpen();
 				if (reopen)
@@ -259,12 +257,12 @@ namespace mutabor {
 				mutASSERT(wxThread::This() != timer);
 				if (wxThread::This() != timer) {
 					DEBUGLOG(thread,
-						 _T("Thread %p locking at threadsignal = %x"),
+						 ("Thread %p locking at threadsignal = %x"),
 						 Thread::This(),
 						 threadsignal.get());
 					ScopedLock lock(waitMutex);
 					DEBUGLOG(thread,
-						 _T("Thread %p locked at threadsignal = %x"),
+						 ("Thread %p locked at threadsignal = %x"),
 						 Thread::This(),
 						 threadsignal.get());
 
@@ -286,13 +284,11 @@ namespace mutabor {
 			return 0;
 	}
 
-		virtual mutString GetTypeName () const {
-			return N_("Generic input file");
+		virtual std::string GetTypeName () const {
+			return _mutN("Generic input file");
 		}
 
-#ifdef WX
-		virtual wxString TowxString() const;
-#endif
+		virtual operator std::string() const;
 
 	protected:
 		FileTimer * timer;             //< timer thread for the file player
@@ -331,7 +327,7 @@ namespace mutabor {
 					 pauseTime(0),
 					 threadkind(wxTHREAD_DETACHED) { }
 
-		CommonFileInputDevice(wxString name,
+		CommonFileInputDevice(std::string name,
 				      MutaborModeType mode,
 				      int id): InputDeviceClass(name,
 								mode,
@@ -364,20 +360,20 @@ namespace mutabor {
 
 		virtual mutabor::InputDeviceClass * DoCreateInput() const = 0;
 		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
-							     const mutStringRef name,
+							     const std::string name,
 							     int id = -1) const = 0;
 
 		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
-							   const mutStringRef name,
+							   const std::string name,
 							   int id = -1) const = 0;
 
 		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
-							     const mutStringRef name,
+							     const std::string name,
 							     mutabor::MutaborModeType mode,
 							     int id = -1) const = 0;
 
 		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
-							   const mutStringRef name,
+							   const std::string name,
 							   mutabor::MutaborModeType mode,
 							   int id = -1) const = 0;
 	};

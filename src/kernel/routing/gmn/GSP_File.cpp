@@ -1,11 +1,11 @@
-/** \file 
+/** \file
  ********************************************************************
  * Description
  *
  * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/gmn/GSP_File.cpp,v 1.3 2011/02/20 22:35:56 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
+ * \date
  * $Date: 2011/02/20 22:35:56 $
  * \version $Revision: 1.3 $
  * \license GPL
@@ -28,28 +28,19 @@
 
 #include "GSP_File.h"
 
-#ifdef WX
-#include "wx/textfile.h"
-#else
 #include <fstream>
-#endif
+#include "boost/filesystem.hpp"
+#include "boost/filesystem/fstream.hpp"
+#include "boost/filesystem/detail/utf8_codecvt_facet.hpp"
 
-#ifdef WX
-mutString CurrentLine;//[GSP_MAX_LINE];
-#else
-mutChar CurrentLine[GSP_MAX_LINE];
-#endif
+std::string CurrentLine;//[GSP_MAX_LINE];
 size_t  CurrentPos;
 int  Eof;
 
-mutTextStream* File;  // the file
+boost::filesystem::ifstream * File;  // the file
 
 #ifdef WX
-
-static bool initialized = false;
-
 static int bad = 0;
-
 #endif
 
 // ##################################################################
@@ -59,14 +50,23 @@ static int bad = 0;
 // the current line number.
 
 // opens the file
-int OpenFile(const mutString &Name)
+int OpenFile(const std::string &Name)
 {
+	/* tell boost that we are using UTF-8 file names */
+	boost::filesystem::detail::utf8_codecvt_facet utf8;
+	boost::filesystem::path p;
+	p.assign(Name, utf8);
+
 //  File = new STD_PRE::ifstream(Name, STD_PRE::ios::in/*, 0/*int = filebuf::openprot*/);
-	File = new mutOpenITextStream(Name);
-#ifdef WX
+	File = new boost::filesystem::ifstream(p, std::ios::in);
+	if (!File ) return -1;
+	if (!File->is_open()) return -2;
+	if (File->bad()) return -3;
+	if (File->fail()) return -4;
+	return 0;
+#if 0
 	initialized = false;
 	return bad=(!(File->Open()));
-#else
 	return mutStreamBad(*File);
 #endif
 }
@@ -83,24 +83,19 @@ int CloseFile()
 int ReadNewLine()
 {
 	CurrentPos = 0;
-#ifdef WX
+	if (!File) return -1;
 
-	if ( (Eof = mutStreamEOF(*File)) || bad ) {
-		CurrentLine  = mutEmptyString;
+	if ( (Eof = File->eof()) || (bad = File->bad()) ) {
+		CurrentLine  = "";
 		return bad;
 	}
 
-	if (initialized)
-		CurrentLine = File->GetNextLine();
-	else {
-		CurrentLine = File->GetFirstLine();
-		initialized = true;
-	}
+	std::getline(*File, CurrentLine);
 
 	GspCurrentLineNr++;
 
-	return bad;
-#else
+	return bad = File->bad();
+#if 0
 
 	if ( (Eof = mutStreamEOF(*File)) || mutStreamBad(*File) ) {
 		CurrentLine[0] = 0;

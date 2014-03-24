@@ -47,6 +47,7 @@
 #include "wx/docview.h"
 #include "wx/stc/stc.h"
 #include "wx/fontdlg.h"
+#include "wx/convauto.h"
 #if wxUSE_FINDREPLDLG
     #include "wx/fdrepdlg.h"
 #endif // wxUSE_FINDREPLDLG
@@ -255,7 +256,8 @@ namespace mutaborGUI {
 #endif // wxUSE_FINDREPLDLG
 
 		MutView * view;
-		muConvAuto autoConverter;
+		//		muConvAuto autoConverter;
+		wxConvAuto autoConverter;
 		MutSTCLexer lexer;
 
 		DECLARE_EVENT_TABLE()

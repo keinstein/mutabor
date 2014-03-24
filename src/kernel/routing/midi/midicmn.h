@@ -93,15 +93,15 @@ namespace mutabor {
 		template<class F>
 		iterator find_matching_channel  (iterator start, F filter) {
 			if (start == this->end()) {
-				DEBUGLOG(midiio,_T("No channel found"));
+				DEBUGLOG (midiio, "No channel found" );
 				return start;
 			}
 			iterator actual = start;
 			while (actual != this->end() && (!(filter((int)(*actual))))) {
-				DEBUGLOG(midiio,_T("Not using Channel %d"),(int)(*actual));
+				DEBUGLOG (midiio, "Not using Channel %d" ,(int)(*actual));
 				++actual;
 			}
-			DEBUGLOG(midiio,_T("Using Channel %d"),(actual != this->end()?(int)(*actual):(int)-1));
+			DEBUGLOG (midiio, "Using Channel %d" ,(actual != this->end()?(int)(*actual):(int)-1));
 			return actual;
 		}
 
@@ -325,7 +325,7 @@ namespace mutabor {
 			mutASSERT(!open);
 			open = true;
 			WriteTime();
-			data += _T("Opened...\n");
+			data += "Opened...\n";
 			return true;
 		}
 
@@ -344,7 +344,7 @@ namespace mutabor {
 			mutASSERT(open);
 			open = false;
 			WriteTime();
-			data += _T("...closed.\n");
+			data += "...closed.\n";
 		}
 
 		/**
@@ -382,11 +382,12 @@ namespace mutabor {
 						  uint8_t byte3) {
 			// Flawfinder: ignore
 			mutASSERT(open);
-			mutString tmp;
+			std::string tmp;
 			WriteTime();
-			tmp.Printf(_T("%3d: %02x %02x %02x"), channel, byte1, byte2, byte3);
-			DEBUGLOG(midiio,_T("MIDI OUT to %s"),tmp.c_str());
-			data += tmp + _T("\n");
+			tmp = (boost::format("%3d: %02x %02x %02x") 
+			       % channel % (int) byte1 % (int) byte2 % (int)byte3).str();
+			DEBUGLOG (midiio, "MIDI OUT to %s" ,tmp.c_str());
+			data += tmp + ("\n");
 			return *this;
 		}
 
@@ -421,11 +422,12 @@ namespace mutabor {
 						  uint8_t byte2) {
 			// Flawfinder: ignore
 			mutASSERT(open);
-			mutString tmp;
+			std::string tmp;
 			WriteTime();
-			tmp.Printf(_T("%3d: %02x %02x"), channel, byte1,byte2);
-			DEBUGLOG(midiio,_T("MIDI OUT to %s"),tmp.c_str());
-			data += tmp + _T("\n");
+			tmp = (boost::format("%3d: %02x %02x") 
+			       % channel % (int) byte1 % (int)byte2).str();
+			DEBUGLOG (midiio, "MIDI OUT to %s" ,tmp.c_str());
+			data += tmp + "\n";
 			return * this;
 		}
 
@@ -441,11 +443,11 @@ namespace mutabor {
 			// channel is used in multi track environments
 			// Flawfinder: ignore
 			mutASSERT(open);
-			mutString tmp;
+			std::string tmp;
 			WriteTime();
-			tmp.Printf(_T("%3d: %02x"), channel, byte1);
-			DEBUGLOG(midiio,_T("MIDI OUT to %s"),tmp.c_str());
-			data += tmp + _T("\n");
+			tmp = (boost::format("%3d: %02x") % channel % (int)byte1).str();
+			DEBUGLOG (midiio, "MIDI OUT to %s" ,tmp.c_str());
+			data += tmp + "\n";
 			return * this;
 		}
 
@@ -470,28 +472,28 @@ namespace mutabor {
 				return *this;
 			}
 			WriteTime();
-			mutString tmp = mutString::Format(_T("%3d: SysEx"),channel);
+			std::string tmp = boost::str(boost::format("%3d: SysEx")% channel);
 			while ( from != to)
-				tmp += mutString::Format(_T(" %02x"),*(from++));
+				tmp += boost::str(boost::format(" %02x") % (int)(*(from++)));
 
-			DEBUGLOG(midiio,_T("MIDI OUT to %s"),tmp.c_str());
-			data += tmp + _T(" End\n");
+			DEBUGLOG (midiio, "MIDI OUT to %s" ,tmp.c_str());
+			data += tmp + (" End\n");
 			return * this;
 		}
 
-		operator mutString () { return data; }
-		void ClearData() { data = _T(""); }
+		operator std::string () const { return data; }
+		void ClearData() { data = ""; }
 	protected:
 		Device * device;
 		/* the data fields not not necessary for and output provider */
-		mutString data;
+		std::string data;
 		// Flawfinder: ignore
 		bool open;
 
 		void WriteTime() {
-			mutString tmp;
+			std::string tmp;
 			if (!CurrentTime.isRealtime()) {
-				tmp.Printf(_T("%ld "),CurrentTime.Get());
+				tmp = str(boost::format("%ld ") % CurrentTime.Get());
 				data += tmp;
 			}
 		}
@@ -627,7 +629,7 @@ namespace mutabor {
 		 * \param e event to be acted on.
 		 */
 		void do_handle_event(event e);
-		void do_SplitOut (BYTE * p, size_t n);
+		void do_SplitOut (uint8_t * p, size_t n);
 		void do_Quiet(Route r, int type);
 		void do_Quiet(Route r, int type, size_t id);
 		void do_Panic(int type);
@@ -647,7 +649,7 @@ namespace mutabor {
 		 * Ignore GIS tokens.
 		 */
 		void do_Gis(GisToken*, char) {}
-		void do_MidiOut(BYTE *p, size_t n) {
+		void do_MidiOut(uint8_t *p, size_t n) {
 			do_SplitOut(p,n);
 		}
 		void do_MidiOut(mutabor::Box box, midi_string data) {
@@ -712,7 +714,7 @@ namespace mutabor {
 				BOOST_THROW_EXCEPTION(TooSmallPitchBend());
 
 			int pb = value + pitch_bend_border;
-			DEBUGLOG2(midiio,_T("MIDI_PITCH(%x/%d,%x/%d) = %x/%d (%x/%d, %x/%d, %x/%d)"),
+			DEBUGLOG2(midiio,("MIDI_PITCH(%x/%d,%x/%d) = %x/%d (%x/%d, %x/%d, %x/%d)"),
 				  channel,channel,
 				  value,value,
 				  pb,pb,
@@ -725,7 +727,7 @@ namespace mutabor {
 		}
 
 		void program_change(int channel, int sound, int lsb, int msb) {
-			DEBUGLOG(midiio,_T("ch: %d, pr: %d, lsb: %d, msb: %d, send mode: %d"), channel, sound, lsb, msb, bank_mode);
+			DEBUGLOG (midiio, "ch: %d, pr: %d, lsb: %d, msb: %d, send mode: %d" , channel, sound, lsb, msb, bank_mode);
 			/* if only one bank byte has been set we correct it in case we send
 			   msb or lsb only. Otherwise we do not have access to the internal state
 			   of the devie and leave it alone with the setting the user provided */
@@ -765,7 +767,7 @@ namespace mutabor {
 
 		void controller(int channel, int controller, int value) {
 			mutASSERT(0 <= value && value < 0x80);
-			DEBUGLOG(midiio,_T("ch: %d, ctrl: %d, value: %d"),channel, controller, value);
+			DEBUGLOG (midiio, "ch: %d, ctrl: %d, value: %d" ,channel, controller, value);
 			switch (controller) {
 			case midi::CHANNEL_PRESSURE_VAL: {
 				Out(channel,midi::CHANNEL_PRESSURE, value);
@@ -919,7 +921,7 @@ namespace mutabor {
 				   bank_mode(lsb_first),
 				   nKeyOn(0) { }
 
-		CommonMidiOutput(wxString name,
+		CommonMidiOutput(std::string name,
 				 int id = -1,
 				 int bendingRange = 2)
 			: base(name, id),
@@ -945,7 +947,7 @@ namespace mutabor {
 
 	protected:
 
-		CommonMidiInput(const mutStringRef name = mutEmptyString,
+		CommonMidiInput(const std::string name = "",
 				MutaborModeType mode = DeviceStop,
 				int id = -1):parenttype(name,mode,id) {}
 

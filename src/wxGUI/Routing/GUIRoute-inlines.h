@@ -113,7 +113,7 @@ namespace mutaborGUI {
 	inline void connect_device_shape(device_class * dev, shape_class * shape) 
 	{
  		TRACE;
-		DEBUGLOG2(routing,_T("Disconnecting %p"),(void*)shape);
+		DEBUGLOG2(routing,("Disconnecting %p"),(void*)shape);
 		if (!shape || !dev) {
 			UNREACHABLE;
 			return;
@@ -175,7 +175,7 @@ namespace mutaborGUI {
 	}
 
 	inline bool disconnect(mutabor::Route & r, MutBoxChannelShape *  shape) {
-		DEBUGLOG2(routing,_T("Disconnecting %p"),(void*)shape);
+		DEBUGLOG2(routing,("Disconnecting %p"),(void*)shape);
 		if (!shape) {
 			UNREACHABLE;
 			return false;
@@ -185,45 +185,45 @@ namespace mutaborGUI {
 		MutInputDeviceShape * in = 
 			shape -> GetInput();
  		if (retval && in) {
-			DEBUGLOG2(routing,_T("Disconnecting %p from %p"),(void*)shape,(void*)in);
-			DEBUGLOG2(smartptr,_T("R.Get(): %p (%d), removing in from shape"),
+			DEBUGLOG2(routing,("Disconnecting %p from %p"),(void*)shape,(void*)in);
+			DEBUGLOG2(smartptr,("R.Get(): %p (%d), removing in from shape"),
 				  (void *)r.get(), 
 				  (int)intrusive_ptr_get_refcount(r.get()));
 			retval = retval && shape->Remove(in);
-			DEBUGLOG2(smartptr,_T("R.Get(): %p (%d), removing shape from in"),
+			DEBUGLOG2(smartptr,("R.Get(): %p (%d), removing shape from in"),
 				  (void *)r.get(), 
 				  (int)intrusive_ptr_get_refcount(r.get()));
 			retval = retval && in->Remove(shape);
 		}
-		DEBUGLOG2(smartptr,_T("R.Get(): %p (%d), disconnecting shapes"),
+		DEBUGLOG2(smartptr,("R.Get(): %p (%d), disconnecting shapes"),
 			  (void *)r.get(), 
 			  (int)intrusive_ptr_get_refcount(r.get()));
 
 		MutOutputDeviceShape * out = 
 			shape -> GetOutput();
 		if (retval && out) {
-			DEBUGLOG2(routing,_T("Disconnecting %p from %p"),(void *)shape,(void *)out);
+			DEBUGLOG2(routing,("Disconnecting %p from %p"),(void *)shape,(void *)out);
 			retval = retval && shape->Remove(out);
-			DEBUGLOG2(smartptr,_T("R.Get(): %p (%d), removed out from shape"),
+			DEBUGLOG2(smartptr,("R.Get(): %p (%d), removed out from shape"),
 				  (void *)r.get(), 
 				  (int)intrusive_ptr_get_refcount(r.get()));
 			retval = retval && out->Remove(shape);
-			DEBUGLOG2(smartptr,_T("R.Get(): %p (%d), removed shape from out"),
+			DEBUGLOG2(smartptr,("R.Get(): %p (%d), removed shape from out"),
 				  (void *)r.get(), 
 				  (int)intrusive_ptr_get_refcount(r.get()));
 		}
 		
 		GUIRouteBase * route = ToGUIBase(r);
-		DEBUGLOG2(routing,_T("Disconnecting %p from %p"),(void*)shape,(void*)route);
+		DEBUGLOG2(routing,("Disconnecting %p from %p"),(void*)shape,(void*)route);
 		if (retval && route) 
 			retval = route->Remove(shape);
-			DEBUGLOG2(smartptr,_T("Route: %p (%d), removed shape"),
+			DEBUGLOG2(smartptr,("Route: %p (%d), removed shape"),
 				  (void *)r.get(), 
 				  (int)intrusive_ptr_get_refcount(r.get()));
 
 		if (retval && r) {
 			retval = shape->Remove(r);
-			DEBUGLOG2(smartptr,_T("Route: %p (%d), removed from shape"),
+			DEBUGLOG2(smartptr,("Route: %p (%d), removed from shape"),
 				  (void *)r.get(), 
 				  (int)intrusive_ptr_get_refcount(r.get()));
 		}
@@ -256,7 +256,7 @@ namespace mutaborGUI {
 	inline bool disconnect_device_shape(device_class * dev, shape_class * shape) 
 	{
  		TRACE;
-		DEBUGLOG2(routing,_T("Disconnecting %p"),(void*)shape);
+		DEBUGLOG2(routing,("Disconnecting %p"),(void*)shape);
 		if (!shape) {
 			UNREACHABLE;
 			return false;
@@ -264,12 +264,12 @@ namespace mutaborGUI {
 		bool retval = true; 
 		const MutBoxChannelShapeList & channels = 
 			shape->GetChannels();
-		DEBUGLOG2(routing,_T("%d channels"), (int)channels.size());
+		DEBUGLOG2(routing,("%d channels"), (int)channels.size());
 		MutBoxChannelShapeList::const_iterator i;
 		while ( (i = channels.begin()) != channels.end()) {
 			MutBoxChannelShape * channel = 
 				const_cast<MutBoxChannelShape *>(*i);
-			DEBUGLOG2(routing,_T("Disconnecting %p from %p"),
+			DEBUGLOG2(routing,("Disconnecting %p from %p"),
 				  (void*)shape,(void*)channel);
 			TRACE;
 			retval = retval && shape -> Remove(channel);
@@ -277,7 +277,7 @@ namespace mutaborGUI {
 			retval = retval && channel -> Remove(shape);
 		}
 
-		DEBUGLOG2(routing,_T("Disconnecting %p from %p"),(void*)shape,(void*)dev);
+		DEBUGLOG2(routing,("Disconnecting %p from %p"),(void*)shape,(void*)dev);
  		TRACE;
 		if (retval) 
 			retval = dev->Remove(shape);
@@ -418,7 +418,7 @@ namespace mutaborGUI {
 		
 #if 0
 		mutASSERT(MIN_BOX <= boxid && boxid < MAX_BOX);
-		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ching box %d"),
+		DEBUGLOG (smartptr, "Route; %p (%d), atta(t)ching box %d" ,
 			 (void *)this, 
 			 (int)intrusive_ptr_get_refcount(GetRoute()),
 			 boxid);
@@ -442,7 +442,7 @@ namespace mutaborGUI {
 				}
 			}
 		}
-		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ched box %p"),
+		DEBUGLOG (smartptr, "Route; %p (%d), atta(t)ched box %p" ,
 			 (void *)this, 
 			 (int)intrusive_ptr_get_refcount(GetRoute()),
 			 boxbase);
@@ -457,7 +457,7 @@ namespace mutaborGUI {
 		
 		bool retval = true;
 		mutASSERT(olddev && newdev);
-		DEBUGLOG(smartptr,_T("Route; %p (%d), reconnecting output device\
+		DEBUGLOG(smartptr,("Route; %p (%d), reconnecting output device\
  from %p (%d) to %p (%d)"),
 			 (void *)this, 
 			 (int)intrusive_ptr_get_refcount(GetRoute()),
@@ -489,7 +489,7 @@ namespace mutaborGUI {
 				(*i)->Add(newshape);
 			}
 		}
-		DEBUGLOG(smartptr,_T("Route; %p (%d), reconnected output device\
+		DEBUGLOG(smartptr,("Route; %p (%d), reconnected output device\
  from %p (%d) to %p (%d)"),
 			 (void *)this, 
 			 (int)intrusive_ptr_get_refcount(GetRoute()),
@@ -510,7 +510,7 @@ namespace mutaborGUI {
 		
 		bool retval = true;
 		mutASSERT(olddev && newdev);
-		DEBUGLOG(smartptr,_T("Route; %p (%d), reconnecting input device\
+		DEBUGLOG(smartptr,("Route; %p (%d), reconnecting input device\
  from %p (%d) to %p (%d)"),
 			 (void *)this, 
 			 (int)intrusive_ptr_get_refcount(GetRoute()),
@@ -542,7 +542,7 @@ namespace mutaborGUI {
 				(*i)->Add(newshape);
 			}
 		}
-		DEBUGLOG(smartptr,_T("Route; %p (%d), reconnected input device\
+		DEBUGLOG(smartptr,("Route; %p (%d), reconnected input device\
  from %p (%d) to %p (%d)"),
 			 (void *)this, 
 			 (int)intrusive_ptr_get_refcount(GetRoute()),
@@ -616,7 +616,7 @@ namespace mutaborGUI {
 		bool retval = false;
 		mutASSERT(dev);
 		DEBUGLOG(smartptr,
-			 _T("Route; %p (%d), deta(t)ching output device %p (%d)"),
+			 ("Route; %p (%d), deta(t)ching output device %p (%d)"),
 			 (void *)this, 
 			 (int)intrusive_ptr_get_refcount(GetRoute()),
 			 (void *)dev.get(),
@@ -641,7 +641,7 @@ namespace mutaborGUI {
 		}
 
 		DEBUGLOG(smartptr,
-			 _T("Route; %p (%d), deta(t)ched output device %p (%d)"),
+			 ("Route; %p (%d), deta(t)ched output device %p (%d)"),
 			 (void *)this, 
 			 (int)intrusive_ptr_get_refcount(GetRoute()),
 			 (void *)dev.get(),
@@ -658,7 +658,7 @@ namespace mutaborGUI {
 		bool retval = false;
 		mutASSERT(dev);
 		DEBUGLOG(smartptr,
-			 _T("Route; %p (%d), deta(t)ching input device %p (%d)"),
+			 ("Route; %p (%d), deta(t)ching input device %p (%d)"),
 			 (void *)this, 
 			 (int)intrusive_ptr_get_refcount(GetRoute()),
 			 (void *)dev.get(),
@@ -683,7 +683,7 @@ namespace mutaborGUI {
 		}
 
 		DEBUGLOG(smartptr,
-			 _T("Route; %p (%d), deta(t)ched input device %p (%d)"),
+			 ("Route; %p (%d), deta(t)ched input device %p (%d)"),
 			 (void *)this, 
 			 (int)intrusive_ptr_get_refcount(GetRoute()),
 			 (void *)dev.get(),
@@ -699,7 +699,7 @@ namespace mutaborGUI {
 
 #if 0		
 		mutASSERT(MIN_BOX <= boxid && boxid < MAX_BOX);
-		DEBUGLOG(smartptr,_T("Route; %p (%d), deta(t)ching box %d"),
+		DEBUGLOG (smartptr, "Route; %p (%d), deta(t)ching box %d" ,
 			 (void *)this, 
 			 (int)intrusive_ptr_get_refcount(GetRoute()),
 			 boxid);
@@ -722,7 +722,7 @@ namespace mutaborGUI {
 				} else retval = false;
 			}
 		}
-		DEBUGLOG(smartptr,_T("Route; %p (%d), deta(t)ching box %p"),
+		DEBUGLOG (smartptr, "Route; %p (%d), deta(t)ching box %p" ,
 			 (void *)this, 
 			 (int)intrusive_ptr_get_refcount(GetRoute()),
 			 box.get());
@@ -846,7 +846,7 @@ namespace mutaborGUI {
 		// according to thir parents.
 		
 		mutASSERT(route);
-		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ching output device %p (%d)"),
+		DEBUGLOG (smartptr, "Route; %p (%d), atta(t)ching output device %p (%d)" ,
 			 (void *)route.get(), 
 			 (int)intrusive_ptr_get_refcount(route.get()),
 			 (void *)GetDevice(),
@@ -865,7 +865,7 @@ namespace mutaborGUI {
 			}
 		}
 
-		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ched output device %p (%d)"),
+		DEBUGLOG (smartptr, "Route; %p (%d), atta(t)ched output device %p (%d)" ,
 			 (void *)route.get(), 
 			 (int)intrusive_ptr_get_refcount(route.get()),
 			 (void *)GetDevice(),
@@ -912,7 +912,7 @@ namespace mutaborGUI {
 		bool retval = true;
 		mutASSERT(route);
 		DEBUGLOG(smartptr,
-			 _T("Route; %p (%d), removing from output device %p (%d)"),
+			 ("Route; %p (%d), removing from output device %p (%d)"),
 			 (void *)route.get(), 
 			 (int)intrusive_ptr_get_refcount(route.get()),
 			 (void *)GetDevice(),
@@ -932,7 +932,7 @@ namespace mutaborGUI {
 			} else retval = false;
 		}
 		DEBUGLOG(smartptr,
-			 _T("Route; %p (%d) removed from output device %p (%d)"),
+			 ("Route; %p (%d) removed from output device %p (%d)"),
 			 (void *)route.get(), 
 			 (int)intrusive_ptr_get_refcount(route.get()),
 			 (void *)GetDevice(),
@@ -1040,7 +1040,7 @@ namespace mutaborGUI {
 		// according to thir parents.
 		
 		mutASSERT(route);
-		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ching input device %p (%d)"),
+		DEBUGLOG (smartptr, "Route; %p (%d), atta(t)ching input device %p (%d)" ,
 			 (void *)route.get(), 
 			 (int)intrusive_ptr_get_refcount(route.get()),
 			 (void *)GetDevice(),
@@ -1059,7 +1059,7 @@ namespace mutaborGUI {
 			}
 		}
 
-		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ched input device %p (%d)"),
+		DEBUGLOG (smartptr, "Route; %p (%d), atta(t)ched input device %p (%d)" ,
 			 (void *)route.get(), 
 			 (int)intrusive_ptr_get_refcount(route.get()),
 			 (void *)GetDevice(),
@@ -1109,7 +1109,7 @@ namespace mutaborGUI {
 		bool retval = true;
 		mutASSERT(route);
 		DEBUGLOG(smartptr,
-			 _T("Route; %p (%d), removing from input device %p (%d)"),
+			 ("Route; %p (%d), removing from input device %p (%d)"),
 			 (void *)route.get(), 
 			 (int)intrusive_ptr_get_refcount(route.get()),
 			 (void *)GetDevice(),
@@ -1129,7 +1129,7 @@ namespace mutaborGUI {
 			} else retval = false;
 		}
 		DEBUGLOG(smartptr,
-			 _T("Route; %p (%d) removed from input device %p (%d)"),
+			 ("Route; %p (%d) removed from input device %p (%d)"),
 			 (void *)route.get(), 
 			 (int)intrusive_ptr_get_refcount(route.get()),
 			 (void *)GetDevice(),

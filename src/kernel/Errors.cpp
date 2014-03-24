@@ -15,7 +15,7 @@
  ********************************************************************/
 //#include "GrafKern.h"
 #include "Errors.h"
-
+#if 0
 #if defined(WX)
 #else
 #ifndef N_
@@ -264,5 +264,5 @@ const mutTranslationChar * Warning_text[] =
         };
 
 #endif
-
+#endif
 ///\}

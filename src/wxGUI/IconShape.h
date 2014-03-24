@@ -38,6 +38,7 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
+#include "src/wxGUI/generic/mhDefs.h"
 #include "src/wxGUI/Panel.h"
 #include "src/wxGUI/MutIcon.h"
 //#include "Device.h"
@@ -173,7 +174,7 @@ public:
 	void DeleteSelfEvent(wxCloseEvent & event) __attribute__((deprecated))
 	{
 		mutUnused(event);
-		DEBUGLOG(other, _T("Destroying"));
+		DEBUGLOG (other, "Destroying" );
 		this->Destroy();
 	}
 

@@ -25,11 +25,11 @@
  * \addtogroup debug
  * \{
  ********************************************************************/
-// the description is translated by wxWidgets
+/* the description is translated by wxWidgets */
 DEBUGFLAG(other,          N_("Unspecified debug information"))
 DEBUGFLAG(kernel_exec,    N_("Debug Execute.cpp"))
 DEBUGFLAG(kernel_tabgen,  N_("Debug table generator"))
-DEBUGFLAG(kernel_runtime, N_T("Debug other runtime functions of the kernel"))
+DEBUGFLAG(kernel_runtime, N_("Debug other runtime functions of the kernel"))
 DEBUGFLAG(kernel_parser,  N_("Debug the parser of the Mutabor kernel"))
 DEBUGFLAG(kernel_box,     N_("Debug the parser of the Mutabor kernel"))
 DEBUGFLAG(gmnfile,        N_("Debug the GUIDO file devices"))
@@ -52,4 +52,4 @@ DEBUGFLAG(timer,          N_("Trace thread timer problems"))
 DEBUGFLAG(thread,         N_("Trace thread problems"))
 DEBUGFLAG(always,         N_("Show messages that are always shown ;-). (for internal use only)"))
 
-///\}
+/* \} */

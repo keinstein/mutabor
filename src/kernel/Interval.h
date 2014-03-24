@@ -26,10 +26,10 @@
  * \addtogroup kernel
  * \{
  ********************************************************************/
-// ------------------------------------------------------------------
-// Mutabor 2.win, 1997, R.Krauße
-// Intervallberechnungen
-// ------------------------------------------------------------------
+/* ------------------------------------------------------------------ */
+/* Mutabor 2.win, 1997, R.Krauße */
+/* Intervallberechnungen */
+/* ------------------------------------------------------------------ */
 
 
 /* we guard a little bit complicated to ensure the references are set right
@@ -41,9 +41,9 @@
 #define MU32_INTERVAL_H
 #endif
 
-// ---------------------------------------------------------------------------
-// headers
-// ---------------------------------------------------------------------------
+/* --------------------------------------------------------------------------- */
+/* headers */
+/* --------------------------------------------------------------------------- */
 
 #include "Defs.h"
 
@@ -56,7 +56,7 @@ namespace mutabor {
 		extern "C" {
 #endif
 
-// system headers which do seldom change
+/* system headers which do seldom change */
 
 int intervall_list_laenge (struct intervall *list);
 
@@ -79,4 +79,4 @@ double get_wert_komplex_intervall (mutabor_box_type * box,
 #endif
 
 
-///\}
+/** \} */

@@ -71,12 +71,12 @@ namespace mutaborGUI {
 		TypeBox = DeviceChoice->GetContainingSizer();
 		PortBox = PortChoice->GetContainingSizer();
 		MidiFileBox = MidiFilePicker->GetContainingSizer();
-		DEBUGLOG (other,_T ("MidiFilePicker Growable: %d"), MidiFilePicker->IsPickerCtrlGrowable());
+		DEBUGLOG (other, ("MidiFilePicker Growable: %d"), MidiFilePicker->IsPickerCtrlGrowable());
 		if (MidiFilePicker->HasTextCtrl()) {
-			DEBUGLOG (other,_T ("MidiFileTextCtrl Growable: %d"), 
+			DEBUGLOG (other, ("MidiFileTextCtrl Growable: %d"), 
 				  MidiFilePicker->IsTextCtrlGrowable());
 			MidiFilePicker->SetTextCtrlGrowable(true);
-			DEBUGLOG (other,_T ("MidiFileTextCtrl Growable: %d"), 
+			DEBUGLOG (other, ("MidiFileTextCtrl Growable: %d"), 
 				  MidiFilePicker->IsTextCtrlGrowable());
 		}
 		GuidoFileBox = GuidoFilePicker->GetContainingSizer();
@@ -128,9 +128,9 @@ namespace mutaborGUI {
 
 	void OutputDevDlg::UpdateLayout(DevType type)
 	{
-		DEBUGLOG (other, _T("type: %d"),type);
+		DEBUGLOG (other, "type: %d" ,type);
 		if (type == DTNotSet) {
-			DEBUGLOG (other, _T("Type not set"));
+			DEBUGLOG (other, "Type not set" );
 			if (FindType (type) == wxNOT_FOUND)
 				DeviceChoice->Insert (_ ("Choose device type"),
 						      0,
@@ -151,14 +151,14 @@ namespace mutaborGUI {
 		int Type = FindType (type);
 		DeviceChoice -> SetSelection (Type);
 
-		DEBUGLOG (other, _T("found Number %d (wxNOT_FOUND=%d)"),type,wxNOT_FOUND);
+		DEBUGLOG (other, "found Number %d (wxNOT_FOUND=%d)" ,type,wxNOT_FOUND);
 		wxSizer * sizer = GetSizer();
 
-		DEBUGLOG (other, _T("DTMidiPort=%d"),DTMidiPort);
+		DEBUGLOG (other, "DTMidiPort=%d" ,DTMidiPort);
 		sizer->Show(PortBox, type == DTMidiPort, true);
-		DEBUGLOG (other, _T("DTMidiFile=%d"),DTMidiFile);
+		DEBUGLOG (other, "DTMidiFile=%d" ,DTMidiFile);
 		sizer->Show(MidiFileBox, (type == DTMidiFile), true);
-		DEBUGLOG (other, _T("DTGis=%d"),DTGis);
+		DEBUGLOG (other, "DTGis=%d" ,DTGis);
 		sizer->Show(GuidoFileBox, (type == DTGis) , true);
 
 		// We need Layout here, since otherwise the output boxex are not
@@ -182,7 +182,7 @@ namespace mutaborGUI {
 
 	void OutputDevDlg::OnFileChanged ( wxFileDirPickerEvent & event ) 
 	{
-		DEBUGLOG (other,_T ("Path changed: %s"),event.GetPath().c_str());
+		DEBUGLOG (other, ("Path changed: %s"),event.GetPath().c_str());
 		SetSize(wxDefaultSize);
 		Layout();
 		Fit();
@@ -193,7 +193,7 @@ namespace mutaborGUI {
 	{
 		TypeData * Data;
 		for (unsigned int i = 0; i < DeviceChoice->GetCount(); i++) {
-			DEBUGLOG (other,_T ("Choice #%d of %d"),i, DeviceChoice->GetCount());
+			DEBUGLOG (other, ("Choice #%d of %d"),i, DeviceChoice->GetCount());
 			Data = (TypeData *)DeviceChoice->GetClientObject(i);
 			if (Data) {
 				if (*Data == t) return i;

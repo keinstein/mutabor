@@ -83,7 +83,7 @@ namespace mutaborGUI {
 		if (!wxEvtHandler::ProcessEvent(event))
 		{
 			wxView* view = GetCurrentView();
-			DEBUGLOG(eventqueue,_T("View: %p"),
+			DEBUGLOG (eventqueue, "View: %p" ,
 				 (void*)(dynamic_cast<MutView *>(view)));
 			if (view && view->ProcessEvent(event))
 				return true;

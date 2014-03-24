@@ -647,7 +647,7 @@ void boxTest::testCycles () {
 	mutabor_box_type * box = &boxes[0];
 #ifdef DEBUG
 	yydebug = 0;
-	debugFlags::flags.kernel_parser = true;
+	mutabor_debug_flags.kernel_parser = true;
 #endif
 	const char * logic_string = "\
 INTERVAL\n\

@@ -71,7 +71,7 @@ namespace mutaborGUI {
 		// according to thir parents.
 
 		mutASSERT(dev);
-		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ching output device %p (%d)"),
+		DEBUGLOG (smartptr, "Route; %p (%d), atta(t)ching output device %p (%d)" ,
 			 route,
 			 intrusive_ptr_get_refcount(route),
 			 dev.get(),
@@ -92,7 +92,7 @@ namespace mutaborGUI {
 				}
 			}
 		}
-		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ched output device %p (%d)"),
+		DEBUGLOG (smartptr, "Route; %p (%d), atta(t)ched output device %p (%d)" ,
 			 route,
 			 intrusive_ptr_get_refcount(route),
 			 dev.get(),
@@ -105,7 +105,7 @@ namespace mutaborGUI {
 		// according to thir parents.
 
 		mutASSERT(dev);
-		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ching input device %p (%d)"),
+		DEBUGLOG (smartptr, "Route; %p (%d), atta(t)ching input device %p (%d)" ,
 			 route,
 			 intrusive_ptr_get_refcount(route),
 			 dev.get(),
@@ -126,7 +126,7 @@ namespace mutaborGUI {
 				}
 			}
 		}
-		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ed input device %p (%d)"),
+		DEBUGLOG (smartptr, "Route; %p (%d), atta(t)ed input device %p (%d)" ,
 			 route,
 			 intrusive_ptr_get_refcount(route),
 			 dev.get(),
@@ -140,7 +140,7 @@ namespace mutaborGUI {
 
 
 		mutASSERT(MIN_BOX <= boxid && boxid < MAX_BOX);
-		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ching box %d"),
+		DEBUGLOG (smartptr, "Route; %p (%d), atta(t)ching box %d" ,
 			 route,
 			 intrusive_ptr_get_refcount(route),
 			 boxid);
@@ -163,7 +163,7 @@ namespace mutaborGUI {
 				}
 			}
 		}
-		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ched box %d"),
+		DEBUGLOG (smartptr, "Route; %p (%d), atta(t)ched box %d" ,
 			 route,
 			 intrusive_ptr_get_refcount(route),
 			 boxid);
@@ -444,7 +444,7 @@ namespace mutaborGUI {
 		// according to thir parents.
 
 		mutASSERT(MIN_BOX <= boxid && boxid < MAX_BOX);
-		DEBUGLOG(smartptr,_T("Route; %p (%d), deta(t)ching box %d"),
+		DEBUGLOG (smartptr, "Route; %p (%d), deta(t)ching box %d" ,
 			 route,
 			 intrusive_ptr_get_refcount(route),
 			 boxid);
@@ -466,7 +466,7 @@ namespace mutaborGUI {
 				} else retval = false;
 			}
 		}
-		DEBUGLOG(smartptr,_T("Route; %p (%d), deta(t)ching box %d"),
+		DEBUGLOG (smartptr, "Route; %p (%d), deta(t)ching box %d" ,
 			 route,
 			 intrusive_ptr_get_refcount(route),
 			 boxid);
@@ -477,45 +477,40 @@ namespace mutaborGUI {
 
 	void GUIRouteBase::Destroy() {
 		Route r(GetRoute());
-		DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
+		DEBUGLOG (smartptr, "Route: %p (%d), disconnecting shapes" ,
 			 (void*)r.get(),
 			 (int)intrusive_ptr_get_refcount(r.get()));
 		MutBoxChannelShapeList::iterator i;
 		while ( (i = shapes.begin()) != shapes.end()) {
 			MutBoxChannelShape * shape = *i;
-			DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
+			DEBUGLOG (smartptr, "Route: %p (%d), disconnecting shapes" ,
 				 (void*)r.get(),
 				 (int)intrusive_ptr_get_refcount(r.get()));
 			disconnect(r,shape);
-			DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
+			DEBUGLOG (smartptr, "Route: %p (%d), disconnecting shapes" ,
 				 (void*)r.get(),
 				 (int)intrusive_ptr_get_refcount(r.get()));
 			shape -> Destroy();
-			DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
+			DEBUGLOG (smartptr, "Route: %p (%d), disconnecting shapes" ,
 				 (void*)r.get(),
 				 (int)intrusive_ptr_get_refcount(r.get()));
 		}
-		DEBUGLOG(smartptr,_T("Route; %p (%d), disconnected shapes"),
+		DEBUGLOG (smartptr, "Route; %p (%d), disconnected shapes" ,
 			 (void*)r.get(),
 			 (int)intrusive_ptr_get_refcount(r.get()));
 //		box -> Detatch(route);
 		r.reset();
 	}
 
-	void GUIRouteBase::runtime_error(int type, const mutStringRef message, va_list & args) {
-		wxString msg = wxString::FormatV(message,args);
-#if wxCHECK_VERSION(2,9,0)
-		wxString head(mutabor::to_string((error_type)type));
-#else
-		wxString head = wxString::FromUTF8(mutabor::to_string((error_type)type));
-#endif
-		msg = head + _T(": ") + msg;
+	void GUIRouteBase::runtime_error(int type, const std::string& message) {
+		std::string head(mutabor::to_string((error_type)type));
+		std::string msg = head + ": " + msg;
 #ifdef DEBUG
 		if (type == mutabor::internal_error) {
 			wxFAIL_MSG(msg);
 		}
 #endif
-		fprintf(stderr,"%s: %s\n",(const char *)head.ToUTF8(),(const char *)msg.ToUTF8());
+		fprintf(stderr, "%s\n",msg.c_str());
 #ifdef DEBUG
 		fprintf(stderr,"%s:%d:\nIn order to debug this message you should watch mutaborGUI::BoxData::runtime_error.\n",
 			__FILE__,
@@ -523,7 +518,7 @@ namespace mutaborGUI {
 #endif
 
 		wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, CM_PRINT_ERROR);
-		event.SetString(msg);
+		event.SetString(wxString::FromUTF8(msg.c_str()));
 		event.SetInt(type);
 		wxPostEvent(&wxGetApp(),event);
 	}
@@ -533,23 +528,23 @@ namespace mutaborGUI {
 	void GUIfiedRoute<T>::Destroy()
 	{
 //		int saveboxid = T::GetBox();
-		DEBUGLOG(smartptr,_T("Route; %p (%d), saving pointer"),
+		DEBUGLOG (smartptr, "Route; %p (%d), saving pointer" ,
 			 (void*)this,
 			 (int)intrusive_ptr_get_refcount(this));
 		Route self(this); // prevent us from beeing deleted
-		DEBUGLOG(smartptr,_T("Route; %p (%d), calling T::Destroy()"),
+		DEBUGLOG (smartptr, "Route; %p (%d), calling T::Destroy()" ,
 			 (void*) this,
 			 (int)intrusive_ptr_get_refcount(this));
 		// Disconnecting the Route before destroying the GUI
 		// part is slow, but safe as this path must work
 		// anyway.
 		T::Destroy();
-		DEBUGLOG(smartptr,_T("Route; %p (%d), destroying GUI"),
+		DEBUGLOG (smartptr, "Route; %p (%d), destroying GUI" ,
 			 (void*)this,
 			 (int)intrusive_ptr_get_refcount(this));
 		GUIRouteBase::Destroy();    //
 		mutASSERT(intrusive_ptr_get_refcount(this) <= 2);
-		DEBUGLOG(smartptr,_T("Route; %p (%d), leaving function"),
+		DEBUGLOG (smartptr, "Route; %p (%d), leaving function" ,
 			 (void*)this,
 			 (int)intrusive_ptr_get_refcount(this));
 //		BoxData::CloseRoute(saveboxid);
@@ -576,10 +571,10 @@ namespace mutaborGUI {
 					       bool oNoDrum/*,
 							     mutabor::Route next*/) const
 	{
-		DEBUGLOG(smartptr,_T("input device %p (%d)"),
+		DEBUGLOG (smartptr, "input device %p (%d)" ,
 			 (void*)in.get(),
 			 (int)intrusive_ptr_get_refcount(in.get()));
-		DEBUGLOG(smartptr,_T("output device %p (%d)"),
+		DEBUGLOG (smartptr, "output device %p (%d)" ,
 			 (void*)out.get(),
 			 (int)intrusive_ptr_get_refcount(out.get()));
 		GUIRoute * r = new GUIRoute (in,out,type,
@@ -588,7 +583,7 @@ namespace mutaborGUI {
 					     oFrom,oTo,
 					     oNoDrum/*,next*/);
 		if (r) {
-			DEBUGLOG(smartptr,_T("Route; %p (%d), created"),
+			DEBUGLOG (smartptr, "Route; %p (%d), created" ,
 				 (void*)r->GetRoute(),
 				 (int)intrusive_ptr_get_refcount(r->GetRoute()));
 			return (r->GetRoute());
@@ -599,7 +594,7 @@ namespace mutaborGUI {
 	MutBoxShape * GUIRouteFactory::DoCreateBoxShape(mutabor::Box & box,
 							wxWindow * parent) const {
 		MutBoxShape * shape;
-		DEBUGLOG(routing,_T("Adding box shape for box %d (list of %d)"),
+		DEBUGLOG (routing, "Adding box shape for box %d (list of %d)" ,
 			 box,(int)ToGUIBase(box)->GetShapes().size());
 
 
@@ -611,7 +606,7 @@ namespace mutaborGUI {
 
 			shape = new MutBoxShape(parent, wxID_ANY,box);
 
-		DEBUGLOG(routing,_T("Added box shape for box %d (list of %d)"),
+		DEBUGLOG (routing, "Added box shape for box %d (list of %d)" ,
 			 box,(int)BoxData::GetBox(box).GetBoxShapes().size());
 
 		return shape;
@@ -623,7 +618,7 @@ namespace mutaborGUI {
 						 wxWindow * parent) const {
 		/** \todo implement ID sharing between the different
 		    shapes of one common route */
-		DEBUGLOG(smartptr,_T("Route; %p (%d), new shape"),
+		DEBUGLOG (smartptr, "Route; %p (%d), new shape" ,
 			 (void*)route.get(),
 			 (int)intrusive_ptr_get_refcount(route.get()));
 
@@ -649,7 +644,7 @@ namespace mutaborGUI {
 			ToGUIBase(route).Attatch(shape);
 		}
 		*/
-		DEBUGLOG(smartptr,_T("Route; %p (%d), shape created"),
+		DEBUGLOG (smartptr, "Route; %p (%d), shape created" ,
 			 (void*)route.get(),
 			 (int)intrusive_ptr_get_refcount(route.get()));
 		return shape;
@@ -671,20 +666,15 @@ namespace mutaborGUI {
 		TRACEC;
 	}
 
-	void GUIOutputDeviceBase::runtime_error(int type, const mutString& message, va_list & args) {
-		wxString msg = wxString::FormatV(message,args);
-#if wxCHECK_VERSION(2,9,0)
-		wxString head(mutabor::to_string((mutabor::error_type)type));
-#else
-		wxString head = wxString::FromUTF8(mutabor::to_string((mutabor::error_type)type));
-#endif
-		msg = head + _T(": ") + msg;
+	void GUIOutputDeviceBase::runtime_error(int type, const std::string& message) {
+		std::string head(mutabor::to_string((mutabor::error_type)type));
+		std::string msg = head + ": " + msg;
 #ifdef DEBUG
 		if (type == mutabor::internal_error) {
 			wxFAIL_MSG(msg);
 		}
 #endif
-		fprintf(stderr,"%s: %s\n",(const char *)head.ToUTF8(),(const char *)msg.ToUTF8());
+		fprintf(stderr,"%s\n",msg.c_str());
 #ifdef DEBUG
 		fprintf(stderr,"%s:%d:\nIn order to debug this message you should watch mutaborGUI::BoxData::runtime_error.\n",
 			__FILE__,
@@ -692,7 +682,7 @@ namespace mutaborGUI {
 #endif
 
 		wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, CM_PRINT_ERROR);
-		event.SetString(msg);
+		event.SetString(wxString::FromUTF8(msg.c_str()));
 		event.SetInt(type);
 		wxPostEvent(&wxGetApp(),event);
 	}
@@ -749,20 +739,15 @@ namespace mutaborGUI {
 		TRACEC;
 	}
 
-	void GUIInputDeviceBase::runtime_error(int type, const mutString& message, va_list & args) {
-		wxString msg = wxString::FormatV(message,args);
-#if wxCHECK_VERSION(2,9,0)
-		wxString head(mutabor::to_string((mutabor::error_type)type));
-#else
-		wxString head=wxString::FromUTF8(mutabor::to_string((mutabor::error_type)type));
-#endif
-		msg = head + _T(": ") + msg;
+	void GUIInputDeviceBase::runtime_error(int type, const std::string& message) {
+		std::string head(mutabor::to_string((mutabor::error_type)type));
+		std::string msg = head + ": " + msg;
 #ifdef DEBUG
 		if (type == mutabor::internal_error) {
 			wxFAIL_MSG(msg);
 		}
 #endif
-		fprintf(stderr,"%s: %s\n",(const char *)head.ToUTF8(),(const char *)msg.ToUTF8());
+		fprintf(stderr,"%s\n", msg.c_str());
 #ifdef DEBUG
 		fprintf(stderr,"%s:%d:\nIn order to debug this message you should watch mutaborGUI::BoxData::runtime_error.\n",
 			__FILE__,
@@ -770,7 +755,7 @@ namespace mutaborGUI {
 #endif
 
 		wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, CM_PRINT_ERROR);
-		event.SetString(msg);
+		event.SetString(wxString::FromUTF8(msg.c_str()));
 		event.SetInt(type);
 		wxPostEvent(&wxGetApp(),event);
 	}
@@ -801,7 +786,7 @@ namespace mutaborGUI {
 	GUIMidiPortFactory::~GUIMidiPortFactory() {}
 
 
-	mutabor::OutputDeviceClass * GUIMidiPortFactory::DoCreateOutput(const mutStringRef name,
+	mutabor::OutputDeviceClass * GUIMidiPortFactory::DoCreateOutput(const std::string& name,
 									int id) const
 	{
 		TRACEC;
@@ -818,7 +803,7 @@ namespace mutaborGUI {
 	}
 
 
-	mutabor::InputDeviceClass *  GUIMidiPortFactory::DoCreateInput (const mutStringRef name,
+	mutabor::InputDeviceClass *  GUIMidiPortFactory::DoCreateInput (const std::string& name,
 									MutaborModeType mode,
 									int id) const
 	{
@@ -842,7 +827,7 @@ namespace mutaborGUI {
 	{
 		/** \todo implement ID sharing between the different
 		    shapes of one common route */
-		DEBUGLOG(routing,_T("Creating device shape"));
+		DEBUGLOG (routing, "Creating device shape" );
 		mutASSERT (d);
 		if (!d) return NULL;
 
@@ -859,7 +844,7 @@ namespace mutaborGUI {
 	{
 		/** \todo implement ID sharing between the different
 		    shapes of one common route */
-		DEBUGLOG(routing,_T("Creating device shape"));
+		DEBUGLOG (routing, "Creating device shape" );
 		mutASSERT (d);
 		if (!d) return NULL;
 
@@ -874,7 +859,7 @@ namespace mutaborGUI {
 
 	GUIMidiFileFactory::~GUIMidiFileFactory() {}
 
-	mutabor::OutputDeviceClass * GUIMidiFileFactory::DoCreateOutput (const mutStringRef name,
+	mutabor::OutputDeviceClass * GUIMidiFileFactory::DoCreateOutput (const std::string& name,
 									 int id) const
 	{
 		TRACEC;
@@ -890,7 +875,7 @@ namespace mutaborGUI {
 			return NULL;
 	}
 
-	mutabor::InputDeviceClass * GUIMidiFileFactory::DoCreateInput (const mutStringRef name,
+	mutabor::InputDeviceClass * GUIMidiFileFactory::DoCreateInput (const std::string& name,
 								       mutabor::MutaborModeType mode,
 								       int id) const
 	{
@@ -901,7 +886,7 @@ namespace mutaborGUI {
 		if (port)  {
 			InputDeviceClass * dev = port->GetDevice();
 			TRACEC;
-			if (LogicOn && !(dev->IsOpen()) && !(!name))
+			if (LogicOn && !(dev->IsOpen()) && !name.empty())
 				dev->Open();
 			return dev;
 		} else
@@ -912,7 +897,7 @@ namespace mutaborGUI {
 	GUIMidiFileFactory::DoCreateShape(mutabor::InputDevice & d,
 					  wxWindow * parent) const
 	{
-		DEBUGLOG(routing,_T("Creating device shape"));
+		DEBUGLOG (routing, "Creating device shape" );
 		mutASSERT (d);
 		if (!d) return NULL;
 
@@ -925,7 +910,7 @@ namespace mutaborGUI {
 	GUIMidiFileFactory::DoCreateShape(mutabor::OutputDevice & d,
 					  wxWindow * parent) const
 	{
-		DEBUGLOG(routing,_T("Creating device shape"));
+		DEBUGLOG (routing, "Creating device shape" );
 		mutASSERT (d);
 		if (!d) return NULL;
 
@@ -937,7 +922,7 @@ namespace mutaborGUI {
 
 	GUIGisFactory::~GUIGisFactory() {}
 
-	mutabor::OutputDeviceClass * GUIGisFactory::DoCreateOutput(const mutStringRef name,
+	mutabor::OutputDeviceClass * GUIGisFactory::DoCreateOutput(const std::string& name,
 								   int id) const
 	{
 		TRACEC;
@@ -953,7 +938,7 @@ namespace mutaborGUI {
 			return NULL;
 	}
 
-	mutabor::InputDeviceClass * GUIGisFactory::DoCreateInput (const mutStringRef name,
+	mutabor::InputDeviceClass * GUIGisFactory::DoCreateInput (const std::string& name,
 								  mutabor::MutaborModeType mode,
 								  int id) const
 	{
@@ -976,7 +961,7 @@ namespace mutaborGUI {
 	GUIGisFactory::DoCreateShape(mutabor::InputDevice & d,
 				     wxWindow * parent) const
 	{
-		DEBUGLOG(routing,_T("Creating device shape"));
+		DEBUGLOG (routing, "Creating device shape" );
 		mutASSERT (d);
 		if (!d) return NULL;
 
@@ -989,7 +974,7 @@ namespace mutaborGUI {
 	GUIGisFactory::DoCreateShape(mutabor::OutputDevice & d,
 				     wxWindow * parent) const
 	{
-		DEBUGLOG(routing,_T("Creating device shape"));
+		DEBUGLOG (routing, "Creating device shape" );
 		mutASSERT (d);
 		if (!d) return NULL;
 
