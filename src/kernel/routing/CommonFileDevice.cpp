@@ -47,15 +47,14 @@ namespace mutabor {
 		runtime_error(mutabor::runtime_error,
 			      (_mut("The playback thread has been killed.\n\
 Please report the error to the developers and include (if possible)\n	\
-the current file and the following information:\n%s") + str).c_str());
-		Stop();
-		Mode=DeviceKilled;
+the current file and the following information:\n") + str).c_str());
+
 		return (void *)Mode;
 	}
 
 
 #if __WXMSW__ && 0
-	void CALLBACK CommonFileInputDevice::ostimer::Callback(PVOID lpParam, BOOLEAN TimerOrWaitFired) 
+	void CALLBACK CommonFileInputDevice::ostimer::Callback(PVOID lpParam, BOOLEAN TimerOrWaitFired)
 	{
 		static_cast<MidiTimer *>(lpParam)->Notify();
 	}
