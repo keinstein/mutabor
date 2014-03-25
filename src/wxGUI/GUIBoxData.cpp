@@ -371,6 +371,7 @@ namespace mutaborGUI {
 
 		MutFrame * routewin = dynamic_cast<MutFrame *>(wxWindow::FindWindowById(WK_ROUTE));
 		if ( routewin ) routewin->UpdateBoxMenu();
+		mutabor::BoxClass::DoClose();
 	}
 
 	void BoxData::Activate () {
