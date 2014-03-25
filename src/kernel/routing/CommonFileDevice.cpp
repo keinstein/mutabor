@@ -44,6 +44,9 @@ namespace mutabor {
 
 	wxThread::ExitCode CommonFileInputDevice::exception_error() {
 		std::string str = boost::current_exception_diagnostic_information();
+		Stop();
+		Mode=DeviceKilled;
+		print_stacktrace(true);
 		runtime_error(mutabor::runtime_error,
 			      (_mut("The playback thread has been killed.\n\
 Please report the error to the developers and include (if possible)\n	\
