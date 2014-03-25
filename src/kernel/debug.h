@@ -54,7 +54,7 @@
 #include <cstdio>
 using std::fflush;
 #include "boost/format.hpp"
-#else 
+#else
 #include <stdio.h>
 #endif
 
@@ -83,7 +83,7 @@ extern struct mutabor_debug_flagtype mutabor_debug_flags;
 struct debugFlags {
 
 	debugFlags();
-	
+
 	struct nogetflag {
 		bool operator()() const { return false; }
 	};
@@ -276,7 +276,7 @@ public:
 		DEBUGLOGTYPEINT(flag()(),"???",parenttype,"nothing");
 		(*this) = d;
 	}
-	
+
 	watchedPtr<T,flag,P> &operator= (datatype * d)
 	{
 		DEBUGLOGTYPEINT(flag()(),"???",parenttype,
@@ -285,19 +285,19 @@ public:
 		data = d;
 		return *this;
 	}
-	
-	
+
+
 	operator dataptr () const
 	{
 		return data;
 	}
-	
+
 #if 0
 	datatype & operator -> ()
 	{
 		return *data;
 	}
-	
+
 	const datatype & operator -> () const
 	{
 		return *data;
@@ -325,9 +325,9 @@ public:
 protected:
 	bool print;
 	static bool global_print;
-	struct backtrace_state * state;
+	static struct backtrace_state * state;
 };
-#else 
+#else
 extern "C" {
 inline void debug_destroy_class(void * ptr, std::string file, int l) {}
 inline void debug_destruct_class(void * ptr) {}

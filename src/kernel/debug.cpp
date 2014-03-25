@@ -67,7 +67,7 @@ bool mutabor_backtrace::global_print = false;
 
 namespace mutabor {
 	extern "C" {
-		
+
 		struct mutabor_debug_flagtype mutabor_debug_flags;
 		debugFlags debugFlagInitialiser;
 
@@ -81,7 +81,7 @@ namespace mutabor {
 			// manual overrides for debug purposes
 			//	flags.smartptr = true;
 		}
-		
+
 		static Mutex debugmutex;
 	}
 }
@@ -242,37 +242,6 @@ extern "C" {
 		return 0;
 	}
 
-	mutabor_backtrace::mutabor_backtrace(int omit_count):base(0),
-							     print(false)
-	{
-		reserve(10);
-
-		state = backtrace_create_state(NULL,
-					       false,
-					       &mutabor_backtrace_error_callback,
-					       reinterpret_cast<void *>(this));
-		backtrace_simple(state,
-				 omit_count + 1,
-				 mutabor_save_backtrace_callback,
-				 mutabor_backtrace_error_callback,
-				 reinterpret_cast<void *>(this));
-	}
-
-	mutabor_backtrace::~mutabor_backtrace() {
-		if (!(print && global_print))
-			return;
-
-		fprintf(stderr,"Stack trace:");
-		for (base::iterator i = begin();
-		     i!= end(); ++i) {
-			backtrace_pcinfo (state,
-					  *i,
-					  mutabor_backtrace_print_callback,
-					  mutabor_backtrace_error_callback,
-					  NULL);
-		}
-	}
-
 
 #endif
 
@@ -338,6 +307,45 @@ extern "C" {
 
 }
 
+#ifdef DEBUG
+
+struct backtrace_state * mutabor_backtrace::state =
+	backtrace_create_state(NULL,
+			       true,
+			       &mutabor_backtrace_error_callback,
+			       NULL);
+
+mutabor_backtrace::mutabor_backtrace(int omit_count):base(0),
+						     print(false)
+{
+	reserve(10);
+
+	backtrace_simple(state,
+			 omit_count + 1,
+			 mutabor_save_backtrace_callback,
+			 mutabor_backtrace_error_callback,
+			 reinterpret_cast<void *>(this));
+}
+
+mutabor_backtrace::~mutabor_backtrace() {
+	if (!(print && global_print))
+		return;
+
+	fprintf(stderr,"Stack trace:");
+	for (base::iterator i = begin();
+	     i!= end(); ++i) {
+		backtrace_pcinfo (state,
+				  *i,
+				  mutabor_backtrace_print_callback,
+				  mutabor_backtrace_error_callback,
+				  NULL);
+	}
+}
+
+#endif
+
+
+
 #endif /* precompiled */
 #endif /* header loaded */
 
@@ -351,7 +359,7 @@ std::string StreamToHex(std::istream & buf)
 
 	int tmpchar = buf.get();
 	for (size_t i = 1 ; !buf.eof() ; i++) {
-		retval << "  " 
+		retval << "  "
 		       << std::hex << std::setfill('0')
 		       << std::setw (2) << tmpchar
 		       << " ";
