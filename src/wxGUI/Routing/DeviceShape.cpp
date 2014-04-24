@@ -557,7 +557,7 @@ namespace mutaborGUI {
 				try {
 					portName = muT(rtmidiin->getPortName(i).c_str());
 					in->AppendPortChoice(portName);
-				} catch (RtError &error) {
+				} catch (RtMidiError &error) {
 					error.printMessage();
 					break;
 				}
@@ -595,7 +595,7 @@ namespace mutaborGUI {
 			for (int i = 0; i < nMidi; i++) {
 				try {
 					portName = muT(rtmidiout->getPortName(i).c_str());
-				} catch (RtError &error) {
+				} catch (RtMidiError &error) {
 					error.printMessage();
 					break;
 				}

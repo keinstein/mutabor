@@ -373,7 +373,7 @@ OutputMidiPort:\n\
 #ifdef RTMIDI
 		try {
 			hMidiIn = new RtMidiIn(RtMidi::UNSPECIFIED, PACKAGE_STRING);
-		} catch (RtError &error) {
+		} catch (RtMidiError &error) {
 			runtime_error(mutabor::warning,
 				      boost::str(boost::format(_mut("Can not open Midi input device no. %d (%s):\n%s"))
 						 % DevId
@@ -384,7 +384,7 @@ OutputMidiPort:\n\
 
 		try {
 			hMidiIn->openPort(DevId,(GetName().c_str()));
-		} catch (RtError &error) {
+		} catch (RtMidiError &error) {
 			runtime_error(mutabor::warning,
 				      boost::str(boost::format(_mut("Can not open Midi input device no. %d (%s):\n%s"))
 						 % DevId
@@ -395,7 +395,7 @@ OutputMidiPort:\n\
 
 		try {
 			hMidiIn->setCallback(mycallback, this);
-		} catch (RtError & error) {
+		} catch (RtMidiError & error) {
 			runtime_error(mutabor::warning,
 				      boost::str(boost::format(_mut("Can not open Midi input device no. %d (%s):\n%s"))
 						 % DevId
@@ -586,14 +586,14 @@ InputMidiPort:\n\
 
 		try {
 			rtmidiout = new RtMidiOut(RtMidi::UNSPECIFIED, PACKAGE_STRING);
-		} catch (RtError &error) {
+		} catch (RtMidiError &error) {
 			error.printMessage();
 			// abort();
 		}
 
 		try {
 			rtmidiin = new RtMidiIn(RtMidi::UNSPECIFIED, PACKAGE_STRING);
-		} catch (RtError &error) {
+		} catch (RtMidiError &error) {
 			error.printMessage();
 			// abort();
 		}

@@ -444,7 +444,6 @@ libmutabormaintest_a_DEPENDENCIES = $(libmutabormaintest_a_LIBADD)
 CLEANFILES += lib/rtmidi/*.class
 
 librtmidi_a_INLINEHEADERS = \
-		lib/rtmidi/RtError.h \
 		lib/rtmidi/RtMidi.h
 
 librtmidi_a_INDENTHEADERS =

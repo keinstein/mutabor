@@ -88,7 +88,7 @@ namespace mutabor {
 #ifdef RTMIDI
 			try {
 				port = new RtMidiOut(RtMidi::UNSPECIFIED, PACKAGE_STRING);
-			} catch (RtError &error) {
+			} catch (RtMidiError &error) {
 				device->runtime_error(false,
 						      _mut("Can not open ouput Midi devices due to memory allocation  problems."));
 				return false;
@@ -96,7 +96,7 @@ namespace mutabor {
 			
 			try {
 				port->openPort(id, name);
-			} catch (RtError &error) {
+			} catch (RtMidiError &error) {
 				device->runtime_error(false,
 						      str(boost::format(_mut("Can not open output Midi device no. %d (%s)"))
 							  % id % name.c_str()));
@@ -323,7 +323,7 @@ namespace mutabor {
 			if (rtmidiout) {
 				try {
 					Name = rtmidiout->getPortName (DevId).c_str();
-				} catch (RtError &error) {
+				} catch (RtMidiError &error) {
 					runtime_error(false,
 						      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s")) 
 							  % DevId
