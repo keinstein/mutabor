@@ -32,32 +32,26 @@ Step by step
 
 To compile MUTABOR from the git repositiory do the following:
 
-1. clone the repositiory
-    git clone --depth 1 --single-branch --branch master git://git.code.sf.net/p/mutabor/code mutabor-code
-   For Development omit the depth parameter.
-
+1. clone the repositiory (For Development omit the depth parameter)
 2. Fetch the submodules
-    cd mutabor-code
-    git submodule init
-    git submodule update
-
-2. create the configuration script (some files have to be installed)
-   autoreconf -i
-
-3. configure the build
-
-    ./configure
-
+3. create the configuration script (some files have to be installed)
+4. configure the build
    Note that configure has several configuration options which might be interesting
 
     ./configure --help
 
-4. build MUTABOR
+5. build MUTABOR
+6. install MUTABOR
 
+In short: open a shell and enter the following commands
+
+    git clone --depth 1 --single-branch --branch master git://git.code.sf.net/p/mutabor/code mutabor-code
+    cd mutabor-code
+    git submodule init
+    git submodule update
+    autoreconf -i
+    ./configure
     make
-
-5. install MUTABOR
-
     make install
 
 
