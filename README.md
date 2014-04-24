@@ -1,0 +1,63 @@
+Building from GIT
+==================
+
+Requirements
+------------
+
+The following libraries are known to work. Minimal versions (marked with “>=”) indicate
+versions that introduced new features that are used.
+
+- Boost (1.54)
+- wxWidgets (>=2.9)
+- autoconf (>=2.67)
+- automake (1.14.1)
+- gettext (0.18.3)
+- Realtime MIDI library (development files for) for:
+  - ALSA or Jack (Linux),
+  - CoreMidi or Jack (Mac OS X)
+  - WinMM (Windows)
+- git
+- pkg-config
+- NSIS (for a windows installer)
+
+Optional packages that can be helpful (omitting these is not well-tested)
+- TeX4HT (20090611)
+- cppunit (1.12)
+- inkscape (0.48.4)
+- bison (3.0)
+- flex  (2.5.35)
+
+Step by step
+------------
+
+To compile MUTABOR from the git repositiory do the following:
+
+1. clone the repositiory
+    git clone --depth 1 --single-branch --branch master git://git.code.sf.net/p/mutabor/code mutabor-code
+   For Development omit the depth parameter.
+
+2. Fetch the submodules
+    cd mutabor-code
+    git submodule init
+    git submodule update
+
+2. create the configuration script (some files have to be installed)
+   autoreconf -i
+
+3. configure the build
+
+    ./configure
+
+   Note that configure has several configuration options which might be interesting
+
+    ./configure --help
+
+4. build MUTABOR
+
+    make
+
+5. install MUTABOR
+
+    make install
+
+
