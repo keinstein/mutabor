@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.67])
-AC_INIT([Mutabor],[4.0.0beta4],[mutabor@mailbox.tu-dresden.de])
+AC_INIT([Mutabor],[4.0.0beta4+sm],[mutabor@mailbox.tu-dresden.de])
 
 AC_ARG_ENABLE(XCode,
 	AS_HELP_STRING([--enable-XCode],[Enable XCode compilation mode]),

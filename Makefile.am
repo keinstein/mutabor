@@ -258,7 +258,8 @@ libmutaborrouting_a_INDENTHEADERS = \
 		src/kernel/routing/event.h \
 		src/kernel/routing/RouteCompat.h \
 		src/kernel/routing/timing.h \
-		src/kernel/routing/thread.h
+		src/kernel/routing/thread.h \
+		src/kernel/routing/watchdog.h
 
 libmutaborrouting_a_INDENTS = \
 		src/kernel/routing/gmn/DevGIS.cpp \

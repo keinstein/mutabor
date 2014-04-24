@@ -120,8 +120,6 @@ extern "C" {
 void mutabor_debug_lock();
 void mutabor_debug_unlock();
 
-
-
 #ifdef __cplusplus
 #define GET_ARG_16(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,...) a15
 #define COUNT_ARGS(...) GET_ARG_16(__VA_ARGS__,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0)
@@ -193,15 +191,6 @@ void mutabor_debug_unlock();
 	} while (false)
 
 
-#define DEBUGLOGBASE(level,type,...) DEBUGLOGBASEINT(isDebugFlag(level),#level,type,__VA_ARGS__)
-#define DEBUGLOG(level,...) DEBUGLOGBASE(level, typeid(*this).name(),__VA_ARGS__)
-#define DEBUGLOG2(level,...) DEBUGLOGBASE(level, "",__VA_ARGS__)
-#define DEBUGLOGTYPE(level, type,...) DEBUGLOGBASE(level, typeid(type).name(), __VA_ARGS__)
-#define DEBUGLOGTYPEINT(level, strlevel,type,...) DEBUGLOGBASEINT(level, strlevel, typeid(type).name(), __VA_ARGS__)
-
-#define TRACE DEBUGLOGBASE(trace,"",".")
-#define TRACEC DEBUGLOG(trace,".")
-#define TRACET(type) DEBUGLOGTYPE(trace,type,".")
 
 #define STUBBASE(stubtype,classtype)					\
 	do {								\
@@ -216,6 +205,48 @@ void mutabor_debug_unlock();
 			mutabor_debug_unlock();				\
 	} while (false)
 
+
+#define mutRefCast(type,value) dynamic_cast<type &>(value)
+#define mutPtrCast(type,value) (mutASSERT(dynamic_cast<type *>(value)), dynamic_cast<type *>(value))
+#define mutPtrDynCast mutPtrCast
+
+#else /* no DEBUG */
+
+#define STUBBASE(stubtype,classtype)					\
+	do {								\
+			fprintf(stderr, "%s:%d:%s::%s: %s",		\
+				__FILE__,				\
+				__LINE__,				\
+				classtype,				\
+				__FUNCTION__,				\
+				stubtype);				\
+			fflush(stderr);					\
+	} while (false)
+
+#define isDebugFlag(level) false
+# define DEBUGLOGBASEINT(...) do {} while (0)
+# define PRINTSIZER(X) do {} while (0)
+
+#define mutRefCast(type,value) static_cast<type &>(value)
+#define mutPtrCast(type,value) static_cast<type *>(value)
+#define mutPtrDynCast(type,value) dynamic_cast<type *>(value)
+
+#define WATCHEDPTR(T,f,P) watchedPtr<T,nogetflag,P>
+#define DEFWATCHEDPTR
+
+#endif /* DEBUG */
+
+#define DEBUGLOGBASE(level,type,...) DEBUGLOGBASEINT(isDebugFlag(level),#level,type,__VA_ARGS__)
+#define DEBUGLOG(level,...) DEBUGLOGBASE(level, typeid(*this).name(),__VA_ARGS__)
+#define DEBUGLOG2(level,...) DEBUGLOGBASE(level, "",__VA_ARGS__)
+#define DEBUGLOGTYPE(level, type,...) DEBUGLOGBASE(level, typeid(type).name(), __VA_ARGS__)
+#define DEBUGLOGTYPEINT(level, strlevel,type,...) DEBUGLOGBASEINT(level, strlevel, typeid(type).name(), __VA_ARGS__)
+
+#define TRACE DEBUGLOGBASE(trace,"",".")
+#define TRACEC DEBUGLOG(trace,".")
+#define TRACET(type) DEBUGLOGTYPE(trace,type,".")
+
+
 #define STUB STUBBASE("stub.", "")
 #define STUBCT(type) STUBBASE("stub.",((const char *) (typeid(type).name())))
 #define STUBC STUBCT(*this)
@@ -229,27 +260,11 @@ void mutabor_debug_unlock();
 #define ABSTRACT_FUNCTIONC ABSTRACT_FUNCTIONCT(*this)
 
 
-#define mutRefCast(type,value) dynamic_cast<type &>(value)
-#define mutPtrCast(type,value) (mutASSERT(dynamic_cast<type *>(value)), dynamic_cast<type *>(value))
-#define mutPtrDynCast mutPtrCast
-
-#else /* no DEBUG */
-#define isDebugFlag(level) false
-# define DEBUGLOGBASEINT(...) do {} while (0)
-# define DEBUGLOGBASE(...) do {} while (0)
-# define PRINTSIZER(X) do {} while (0)
-
-#define mutRefCast(type,value) static_cast<type &>(value)
-#define mutPtrCast(type,value) static_cast<type *>(value)
-#define mutPtrDynCast(type,value) dynamic_cast<type *>(value)
-
-#define WATCHEDPTR(T,f,P) watchedPtr<T,nogetflag,P>
-#define DEFWATCHEDPTR
-
-#endif /* DEBUG */
 
 #ifdef __cplusplus
+#ifdef DEBUG
 }
+#endif
 struct nogetflag {
 		bool operator()() const { return false; }
 };
@@ -333,7 +348,7 @@ inline void debug_destroy_class(void * ptr, std::string file, int l) {}
 inline void debug_destruct_class(void * ptr) {}
 inline void debug_print_pointers() {}
 inline bool debug_is_all_deleted() { return true; }
-inline void print_stacktrace (){}
+inline void print_stacktrace (bool flag){}
 }
 
 class mutabor_backtrace {

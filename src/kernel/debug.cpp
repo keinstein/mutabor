@@ -49,11 +49,13 @@
 #define HEADERFILENAME_PRECOMPILED
 
 /* system headers which do seldom change */
+
+#include <iomanip>
+#include <sstream>
+
 #ifdef DEBUG
 #include <list>
 #include <cstring>
-#include <sstream>
-#include <iomanip>
 #include <cstdio>
 #if __LINUX__
 #include "backtrace.h"
@@ -86,7 +88,9 @@ namespace mutabor {
 	}
 }
 
+#endif
 extern "C" {
+#ifdef DEBUG
 	void mutabor_debug_lock() {
 		mutabor::debugmutex.Lock();
 	}

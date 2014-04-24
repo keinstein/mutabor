@@ -46,8 +46,8 @@
 #ifndef SRC_KERNEL_INTERFACE_DEPS_H_PRECOMPILED
 #define SRC_KERNEL_INTERFACE_DEPS_H_PRECOMPILED
 
+#if defined(DEBUG) || defined(CPPUNIT)
 /* system headers which do seldom change */
-
 #define mutASSERT(expr)							\
 	if (!(expr)) {							\
 		mutabor_assert_fail(__FILE__,				\
@@ -56,6 +56,10 @@
 				    #expr,				\
 				    "");				\
 	}
+
+#else
+#define mutASSERT(exp)
+#endif
 
 #ifdef __cplusplus 
 extern "C" {
