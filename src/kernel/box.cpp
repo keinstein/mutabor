@@ -49,7 +49,7 @@ namespace mutabor {
 size_t minimal_box_used = 0;
 			// int keys_changed_sum = 0;
 
-void mutabor_set_logic(struct mutabor_box_type * box, struct mutabor_logic_parsed * logic) {
+void mutabor_set_logic(mutabor_box_type * box, struct mutabor_logic_parsed * logic) {
 	if (logic == box->file) return;
 	if (logic) {
 		mutabor_lock_logic(logic);
@@ -76,7 +76,7 @@ void mutabor_set_logic(struct mutabor_box_type * box, struct mutabor_logic_parse
 }
 
 
-void mutabor_reset_keys(struct mutabor_box_type * box)
+void mutabor_reset_keys(mutabor_box_type * box)
 {
 #if 0
 	if ( box->last_global_harmony && *(box->last_global_harmony) )
@@ -104,7 +104,7 @@ void mutabor_reset_keys(struct mutabor_box_type * box)
 
 /* This function uses tonsystem_memory which is just a set of tone systems
    that will be assigned to the boxes via pointers later. */
-void mutabor_reset_box(struct mutabor_box_type * box)
+void mutabor_reset_box(mutabor_box_type * box)
 {
 	static tone_system tonesystem_init =
 		{0, 1, mutabor_get_interval_from_pitch (1), 

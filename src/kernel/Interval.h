@@ -60,7 +60,8 @@ namespace mutabor {
 
 int intervall_list_laenge (struct intervall *list);
 
-void berechne_intervalle_absolut (mutabor_box_type * box, struct intervall * list_of_intervalle);
+void berechne_intervalle_absolut (mutabor_box_type * box,
+				  struct intervall * list_of_intervalle);
 
 void check_komplex_intervall (mutabor_box_type * box, 
 			      struct komplex_intervall * liste,

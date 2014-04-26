@@ -865,7 +865,7 @@ namespace mutabor {
 
 
 
-	void BoxClass::UpdateCallback(struct mutabor_box_type * b, unsigned int flags) {
+	void BoxClass::UpdateCallback(mutabor_box_type * b, unsigned int flags) {
 		unsigned int newflags = 0;
 		if (flags & mutabor::hidden::mutabor_box_changed) newflags |= ChangedCallback::BoxChanged;
 		if (flags & mutabor::hidden::mutabor_logic_changed) newflags |= ChangedCallback::LogicChanged;
@@ -875,7 +875,7 @@ namespace mutabor {
 	}
 
 
-	void BoxClass::MidiOutCallback(struct mutabor::hidden::mutabor_box_type * b,
+	void BoxClass::MidiOutCallback(mutabor::hidden::mutabor_box_type * b,
 				       struct mutabor::hidden::midiliste * outliste) {
 		BoxClass * box =
 			reinterpret_cast<BoxClass *>(b -> userdata);
@@ -883,7 +883,7 @@ namespace mutabor {
 		box->MidiOut(outliste);
 	}
 
-	void BoxClass::compile_callback(struct mutabor_box_type * b, int line_number) {
+	void BoxClass::compile_callback(mutabor_box_type * b, int line_number) {
 		BoxClass * box =
 			reinterpret_cast<BoxClass *>(b -> userdata);
 		if (box->current_compile_callback) {

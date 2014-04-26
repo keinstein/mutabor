@@ -56,7 +56,8 @@ namespace mutabor {
 		extern "C" {
 #endif
 
-			struct mutabor_box_type;
+			struct mutabor_box_type_struct;
+			typedef struct mutabor_box_type_struct mutabor_box_type;
 			struct mutabor_logic_parsed;
 			
 			struct keyboard_ereignis;
@@ -96,15 +97,15 @@ namespace mutabor {
 
 		    const char * mutabor_error_type_to_string(enum mutabor_error_type type);
 
-			typedef void (* mutabor_callback_update_type) (struct mutabor_box_type * box,
+			typedef void (* mutabor_callback_update_type) (mutabor_box_type * box,
 								  unsigned int flags);
-			typedef void (* mutabor_callback_midi_out_type) (struct mutabor_box_type * box,
+			typedef void (* mutabor_callback_midi_out_type) (mutabor_box_type * box,
 								     struct midiliste * outliste);
-			typedef void (* mutabor_callback_error_message_type)(struct mutabor_box_type * box,
+			typedef void (* mutabor_callback_error_message_type)(mutabor_box_type * box,
 									 enum mutabor_error_type type,
 									 const char * message);
-			typedef void (*mutabor_callback_update_display)(struct mutabor_box_type * box, int line_number);
-			typedef void (*mutabor_callback_log_action)(struct mutabor_box_type * box,
+			typedef void (*mutabor_callback_update_display)(mutabor_box_type * box, int line_number);
+			typedef void (*mutabor_callback_log_action)(mutabor_box_type * box,
 								 const char * action);
 
 			typedef void (*mutabor_callback_lock_logic)(struct mutabor_logic_parsed * logic);
@@ -123,12 +124,12 @@ namespace mutabor {
 
 			extern struct mutabor_callback_type * mutabor_callbacks;
 
-			inline void mutabor_update(struct mutabor_box_type * box, unsigned int flags) {
+			inline void mutabor_update(mutabor_box_type * box, unsigned int flags) {
 				if (flags)
 					mutabor_callbacks->update(box,flags);
 			}
 
-			inline void mutabor_midi_out(struct mutabor_box_type * box,
+			inline void mutabor_midi_out(mutabor_box_type * box,
 						     struct midiliste * outliste) {
 				mutabor_callbacks->midi_out(box,outliste);
 			}
@@ -140,7 +141,7 @@ namespace mutabor {
 						   ...)  __attribute__ ((format(printf, 3, 4))) ;*/
 
 			
-			inline void mutabor_error_message(struct mutabor_box_type * box,
+			inline void mutabor_error_message(mutabor_box_type * box,
 							  enum mutabor_error_type type,
 							  const char * message,
 							  ...) {
@@ -158,12 +159,12 @@ namespace mutabor {
 				free(formatted);
 			}
 
-			inline void show_line_number(struct mutabor_box_type * box, int line_number ) {
+			inline void show_line_number(mutabor_box_type * box, int line_number ) {
 				mutabor_callbacks->update_display(box,line_number);
 			}
 
 
-			inline void mutabor_log_action(struct mutabor_box_type * box, const char * action) {
+			inline void mutabor_log_action(mutabor_box_type * box, const char * action) {
 				mutabor_callbacks->log_action(box,action);
 			}
 
@@ -200,15 +201,15 @@ namespace mutabor {
 			struct mutabor_callback_type * mutabor_get_callbacks();
 
 
-			void KeyboardIn(struct mutabor_box_type * box, const char *keys);
+			void KeyboardIn(mutabor_box_type * box, const char *keys);
 
 
-			void AddKey(struct mutabor_box_type * box, int taste, size_t id, size_t channel, void * userdata);
-			void DeleteKey(struct mutabor_box_type * box, int taste, size_t id, size_t channel);
-			void MidiAnalysis(struct mutabor_box_type * box, const uint8_t * message, size_t size);
+			void AddKey(mutabor_box_type * box, int taste, size_t id, size_t channel, void * userdata);
+			void DeleteKey(mutabor_box_type * box, int taste, size_t id, size_t channel);
+			void MidiAnalysis(mutabor_box_type * box, const uint8_t * message, size_t size);
 
-			void KeyboardAnalyse(struct mutabor_box_type * box, int taste, char isLogic);
-			void KeyboardAnalyseSimple(struct mutabor_box_type * box, int taste);
+			void KeyboardAnalyse(mutabor_box_type * box, int taste, char isLogic);
+			void KeyboardAnalyseSimple(mutabor_box_type * box, int taste);
 
 #ifdef __cplusplus
 		} /* extern "C" */

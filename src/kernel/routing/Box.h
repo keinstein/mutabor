@@ -527,7 +527,7 @@ namespace mutabor {
 		};
 
 		bool Compile(CompileCallback * callback, const char * logic);
-		static void compile_callback(struct mutabor_box_type * b, int line_number);
+		static void compile_callback(mutabor_box_type * b, int line_number);
 
 		void MidiAnalysis(const std::vector<unsigned char > * midiCode) {
 			scoped_watchdog lock(this);
@@ -535,7 +535,7 @@ namespace mutabor {
 		}
 
 		void MidiOut(struct midiliste * outliste);
-		static void MidiOutCallback(struct mutabor::hidden::mutabor_box_type * b,
+		static void MidiOutCallback(mutabor::hidden::mutabor_box_type * b,
 				     struct mutabor::hidden::midiliste * outliste);
 		/**
 		 * Update the currently playing tones to the current tone system.
@@ -745,7 +745,7 @@ namespace mutabor {
 		}
 		std::string ActionToString(ChangedCallback::action * action);
 		static void log_action(mutabor_box_type * box, const char * action);
-		static void UpdateCallback(struct mutabor_box_type * b, unsigned int flags);
+		static void UpdateCallback(mutabor_box_type * b, unsigned int flags);
 		static void lock_callback(hidden::mutabor_logic_parsed * logic);
 		static void unlock_callback(hidden::mutabor_logic_parsed * logic);
 		static void free_mutex_callback(hidden::mutabor_logic_parsed * logic);
@@ -807,7 +807,7 @@ namespace mutabor {
 		friend class ::mutaborGUI::BoxData;
 		friend class BoxFactory;
 		friend void initialize_box_data();
-		struct mutabor_box_type * box;
+		mutabor_box_type * box;
 		idtype<BoxClass> session_id;
 		int routefile_id;
 		routeListType routes;

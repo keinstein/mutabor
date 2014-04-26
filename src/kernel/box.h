@@ -105,7 +105,7 @@ struct mutabor_box_flags {
 };
 
 /** Mutabor box type. */
-typedef struct mutabor_box_type {
+typedef struct mutabor_box_type_struct {
         int id;
 /*	int next_used; */
 	void * userdata;
@@ -165,9 +165,9 @@ typedef struct mutabor_box_type {
 extern size_t minimal_box_used;
 
 			/* extern int keys_changed_sum; */
-void mutabor_set_logic(struct mutabor_box_type * box, struct mutabor_logic_parsed * logic);
-void mutabor_reset_keys(struct mutabor_box_type * box);
-void mutabor_reset_box(struct mutabor_box_type * box);
+void mutabor_set_logic(mutabor_box_type * box, struct mutabor_logic_parsed * logic);
+void mutabor_reset_keys(mutabor_box_type * box);
+void mutabor_reset_box(mutabor_box_type * box);
 
 void mutabor_initialize_box(mutabor_box_type * box, int id);
 void mutabor_initialize_boxes();
