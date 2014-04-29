@@ -720,16 +720,20 @@ namespace mutabor {
 		void issue_error(error_type type, const char * format, ...) {
 			char * formatted;
 			va_list args;
+			bool allocated = true;
 			va_start(args,format);
 			if (vasprintf(&formatted,format,args) == -1) {
+				allocated = false;
 				formatted = (char *)_mut("Error in Error: Could not allocate buffer for error message.");
-				if (!formatted)
+				if (!formatted) {
 					formatted =
 						(char *) "Error in Error: Could not allocate buffer for error message.";
+				}
 			}
 			va_end(args);
 			runtime_error(type,formatted);
-			free(formatted);
+			if (allocated)
+				free(formatted);
 		}
 
 	        /// Return the collected errors and warnings.

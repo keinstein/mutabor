@@ -147,16 +147,20 @@ namespace mutabor {
 							  ...) {
 				char * formatted;
 				va_list args;
+				bool allocated = true;
 				va_start(args,message);
 				if (vasprintf(&formatted,message,args) == -1) {
+					allocated = false;
 					formatted = (char *)_mut("Error in Error: Could not allocate buffer for error message.");
-					if (!formatted) 
+					if (!formatted) {
 						formatted = 
 							(char *) "Error in Error: Could not allocate buffer for error message.";
+					}
 				}
 				va_end(args);
 				mutabor_callbacks->error_message(box,type,formatted);
-				free(formatted);
+				if (allocated)
+					free(formatted);
 			}
 
 			inline void show_line_number(mutabor_box_type * box, int line_number ) {
