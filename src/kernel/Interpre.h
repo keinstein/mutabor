@@ -404,10 +404,16 @@ inline int mutabor_get_note_distance(int note, tone_system * system) {
 }
 
 inline mutabor_interval mutabor_get_note_frequency(int note, tone_system * system) {
-	return mutabor_add_interval_to_tone(system->ton[mutabor_get_note_index(note,
-									       system)],
-					    mutabor_get_note_distance(note,system),
-					    system->periode);
+	int index = mutabor_get_note_index(note, system);
+	if (index >= 0)
+		return mutabor_add_interval_to_tone(system->ton[index],
+						    mutabor_get_note_distance(note,system),
+						    system->periode);
+	else {
+		mutabor_interval retval;
+		mutabor_clear_interval(&retval);
+		return retval;
+	}
 }
 
 

@@ -148,7 +148,6 @@ namespace mutabor {
 		// "mittelste Taste weglassen"
 		mutint64 AM = 0; // arithmetisches Mittel der Tasten
 		int j;
-		int free = -1;
 
 		for (j = r->GetOutputFrom(); j <= r->GetOutputTo(); j++)
 			if ( j != DRUMCHANNEL || !r->OutputAvoidDrumChannel() ) {
@@ -160,6 +159,7 @@ namespace mutabor {
 
 		AM /= r->GetOutputTo() + 1 - r->GetOutputFrom();
 		mutint64 reference = AM;
+		int free = 0;
 
 
 		for ( j = r->GetOutputFrom(); j <= r->GetOutputTo(); j++ ) {

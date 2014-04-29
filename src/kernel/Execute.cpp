@@ -942,7 +942,9 @@ Please, report this error to the MUTABOR team."),
 			 userdata);
 
 		if (box->tonesystem && box->tonesystem != NULL) {
-			box->pattern.tonigkeit[mutabor_get_note_index(taste,box->tonesystem)]++;
+			int index = mutabor_get_note_index(taste,box->tonesystem);
+			if (index >= 0)
+				box->pattern.tonigkeit[index]++;
 			HarmonyAnalysis(box, &(box->pattern));
 		}
 		KEY_CHANGED(box);
@@ -968,7 +970,9 @@ Please, report this error to the MUTABOR team."),
 			 (unsigned long)id);
 
 		if (box->tonesystem) {
-			box->pattern.tonigkeit[mutabor_get_note_index(taste,box->tonesystem)]--;
+			int index = mutabor_get_note_index(taste,box->tonesystem);
+			if (index >= 0)
+				box->pattern.tonigkeit[index]--;
 			HarmonyAnalysis(box, &(box->pattern));
 		}
 		KEY_CHANGED(box);
