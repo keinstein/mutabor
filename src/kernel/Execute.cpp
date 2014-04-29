@@ -626,7 +626,7 @@ inline static void call_actions (mutabor_box_type * box,
 				case aufruf_harmony_analysis:
 					name=strdup("HarmonyAnalysis");
 					HarmonyAnalysis(box, &(box->pattern));
-
+					break;
 				default:
 					mutabor_error_message(box,
 							      internal_error,
@@ -659,7 +659,9 @@ inline static void call_actions (mutabor_box_type * box,
 		for (mutabor_note_type * key = mutabor_find_key_in_box(box,0);
 		     key != NULL;
 		     key = mutabor_find_key_in_box(box,key->next)) {
-			(temp_pattern->tonigkeit[mutabor_get_note_index( key->number, tonsys )])++;
+			int index = mutabor_get_note_index( key->number, tonsys );
+			if (index >= 0)
+				(temp_pattern->tonigkeit[index])++;
 		}
 	}
 
