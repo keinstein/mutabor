@@ -46,9 +46,6 @@
 #include <conio.h>
 #include <stdio.h>
 #endif
-#if __LINUX__
-#include <backtrace.h>
-#endif
 
 #include "src/kernel/routing/Route-inlines.h"
 
