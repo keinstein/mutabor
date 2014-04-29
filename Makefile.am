@@ -26,6 +26,7 @@ NOCOMPSOURCES= \
 
 
 EXTRA_DIST = config.rpath \
+	README.md \
 	m4/ChangeLog  \
 	debian \
 	lib/libasprintf \
