@@ -616,6 +616,8 @@ namespace mutabor {
 	BoxClass::tone_system BoxClass::GetToneSystem () {
 		ScopedLock lock(mutex);
 		tone_system retval;
+		retval.anchor = 60;
+		retval.period = 1;
 		if (!box) return retval;
 		struct mutabor_logic_parsed * file = box->file;
 		if (!file) return retval;

@@ -399,8 +399,8 @@ static void checkchan(void)
 
 void checknote()
 {
-    int c;
-    if (yylex() != NOTE || ((c=yylex()) != INT && c != NOTEVAL))
+    int c = yylex();
+    if (c != NOTE || (c != INT && c != NOTEVAL))
 		syntax();
     if (c == NOTEVAL) {
         static int notes[] = {

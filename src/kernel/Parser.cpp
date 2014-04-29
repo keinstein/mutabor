@@ -2740,7 +2740,7 @@ This harmonic form trigger will be ignored."),
 
  static void check_aktionen (mutabor_box_type * box, struct aktions_liste * aktionen, const char * name)
 {
-	bool may_do_harmony_analysis;
+	bool may_do_harmony_analysis = false;
 	TRACE;
 
 	for ( ; aktionen ; aktionen = aktionen -> next ) {
