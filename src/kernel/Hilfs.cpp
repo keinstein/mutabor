@@ -340,6 +340,8 @@ void * ymalloc (mutabor_box_type * box, size_t size)
 	if (help1 == NULL || help2 == NULL) {
 		DEBUGLOG2(other,("help1 == %p(%d) ; help2 == %p(%d)"),
 		          help1,(int)size,(void*)help2,(int)sizeof(struct mini_heap));
+		if (help1) free(help1);
+		if (help2) free(help2);
 		mutabor_error_message(box,error,
 				      _mut("Not enough memory."));
 		return NULL;
