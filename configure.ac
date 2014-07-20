@@ -235,6 +235,7 @@ AC_ARG_ENABLE(address-sanitizer,
 			          AC_MSG_RESULT([no])])
 			AC_LANG_POP(C)
 	       done
+	       AC_LANG_POP(C++)
 	       )
 	]
 )
@@ -242,6 +243,7 @@ AC_ARG_ENABLE(address-sanitizer,
 AC_ARG_ENABLE(thread-sanitizer,
 	AS_HELP_STRING([--enable-thread-sanitizer],[Enable gcc/clang thread santizer]),
 	[AS_IF(test "$enableval" = yes,
+	       AC_LANG_PUSH(C++)
 	       for flag in  -fsanitize=thread  -fno-omit-frame-pointer  -fno-common -fPIC
 	       do
 		       tmpcxxflags="$CXXFLAGS"
@@ -271,6 +273,7 @@ AC_ARG_ENABLE(thread-sanitizer,
 					 [LDFLAGS="$tmpldflags"
 			         AC_MSG_RESULT([no])])
 	       done
+	       AC_LANG_POP(C++)
 	       )
 	]
 )
